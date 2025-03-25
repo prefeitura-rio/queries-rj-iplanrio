@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: adm_processo_interno_sicop_staging
+    database: rj-iplanrio
+    schema: adm_processo_interno_sicop_staging
+    tables:
+      - name: apenso
+      - name: assunto
+      - name: documento
+      - name: orgao
+      - name: processo
+      - name: tramitacao_documento

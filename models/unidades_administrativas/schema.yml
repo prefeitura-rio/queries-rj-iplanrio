@@ -1,0 +1,34 @@
+version: 2
+models :
+  - name: orgaos
+    description: "**Descrição**: Retorna todas as Unidades de Gestão associadas ao
+      tipo Unidade Administrativa, com o relacionamento entre elas, informando o código
+      da unidade pai, para a composição da árvore de UAs da PCRJ.\n**Frequência de
+      atualização**: Diário\n**Cobertura temporal**: Não informado\n**Órgão gestor
+      dos dados**: GBP/CGGI\n**Publicado por**: Sandra Regina Fonseca da Costa\n**Publicado
+      por (email)**: sandracostasmu@gmail.com\n"
+    columns:
+      - name: id_unidade_administrativa
+        description: Código da Unidade Administrativa da PCRJ, é uma Unidade de Gestão
+          que possui existência física e é ocupada por objetos e/ou pessoas e consome
+          material de escritório, de limpeza, etc
+      - name: sigla_unidade_administrativa
+        description: Sigla da Unidade Administrativa da PCRJ
+      - name: nome_unidade_administrativa
+        description: Nome da Unidade Administrativa da PCRJ
+      - name: id_unidade_administrativa_pai
+        description: Código da Unidade Administrativa imediatamente acima na árvore
+          hierarquica
+      - name: nivel
+        description: Nível hierárquico na árvore das Unidades Administrativas
+      - name: ordem_unidade_administrativa_basica
+        description: A ordem da UA basica é uma numeração para ordenar as unidades
+          do segundo nível da PCRJ. Todos os demais níveis terão a mesma ordem da
+          UA basica para aquela UA
+      - name: ordem_absoluta
+        description: Ordem absoluta é a posição da Unidade Administrativa em relação
+          a sua Unidade Básica. Será 1, quando a UA é a própria UA básica e sequencialmente
+          todas as UAs filhas
+      - name: ordem_relativa
+        description: Ordem relativa é a posição da Unidade Administrativa em relação
+          a sua Unidade Administrativa Pai.
