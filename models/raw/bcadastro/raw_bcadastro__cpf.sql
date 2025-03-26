@@ -14,6 +14,12 @@
 with
     fonte as (
         select * from {{ source("brutos_bcadastro_staging", "chcpf_bcadastros") }}
+
+        {% if target.name == "dev" %}
+            where
+                timestamp(_airbyte_extracted_at)
+                >= timestamp_sub(current_timestamp(), interval 3 day)
+        {% endif %}
     ),
 
     municipio_bd as (

@@ -14,18 +14,14 @@
 with
     fonte as (
         select
-            _airbyte_raw_id,
-            _airbyte_extracted_at,
-            _airbyte_meta,
-            _airbyte_generation_id,
-            id,
-            doc,
-            key,
-            seq,
-            value,
-            last_seq
+           *
         from {{ source("brutos_bcadastro_staging", "chcnpj_bcadastros") }}
-        {# where timestamp_trunc(_airbyte_extracted_at, day) = timestamp("2025-03-23") #}
+
+        {% if target.name == "dev" %}
+            where
+                timestamp(_airbyte_extracted_at)
+                >= timestamp_sub(current_timestamp(), interval 3 day)
+        {% endif %}
     ),
 
     sigla_uf_bd as (select sigla from {{ source("br_bd_diretorios_brasil", "uf") }}),

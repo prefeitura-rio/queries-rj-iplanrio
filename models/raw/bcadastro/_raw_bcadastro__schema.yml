@@ -1,5 +1,5 @@
 models:
-  - name: cpf
+  - name: raw_bcadastro__cpf
     description: O modelo cpf é um conjunto de dados abrangente que contém informações detalhadas sobre indivíduos, incluindo seus dados pessoais, informações de contato e detalhes de localização. Inclui campos como CPF (um identificador único para indivíduos no Brasil), nomes, datas de nascimento, gênero, ocupação, detalhes de contato (telefone e e-mail), detalhes de endereço (incluindo cidade, estado e país de residência e nascimento) e outras informações relevantes. Este modelo é particularmente útil para usuários de negócios que precisam entender a demografia dos clientes, acompanhar dados dos clientes ao longo do tempo ou analisar o comportamento do cliente com base em atributos pessoais ou de localização.
     columns:
       - name: cpf
@@ -8,9 +8,9 @@ models:
         quote: true
         data_tests:
           - not_null:
-              name: raw_bcadastro__cpf__not_null
+              name: raw_bcadastro__cpf__cpf__not_null
           - unique:
-              name: raw_bcadastro__cpf__unique
+              name: raw_bcadastro__cpf__cpf__unique
       - name: id_municipio_domicilio
         description: Este é o identificador único do município onde o indivíduo reside. É um valor string que é usado para vincular a outras tabelas para obter informações mais detalhadas sobre o município.
         data_type: string
@@ -199,7 +199,7 @@ models:
         description: Esta coluna representa a partição do CPF (Cadastro de Pessoas Físicas), que é a identificação do registro de contribuinte individual brasileiro. Este é um número único para cada indivíduo. O 'cpf_particao' é usado para otimizar o processamento e consulta de dados, dividindo os dados em partes menores e mais gerenciáveis, conhecidas como partições. Para usuários de negócios, este campo é usado principalmente para fins de gerenciamento de dados e pode não ter valor analítico significativo.
         data_type: int64
         quote: true
-  - name: cnpj
+  - name: raw_bcadastro__cnpj
     description: O modelo cnpj é um conjunto de dados abrangente que contém informações detalhadas sobre empresas, incluindo seus dados cadastrais, informações de contato, detalhes de localização, informações sobre o quadro societário e informações sobre empresas sucedidas. Inclui campos como CNPJ (um identificador único para empresas no Brasil), nomes, informações de contato (telefone e e-mail), detalhes de endereço (incluindo cidade, estado e país), informações sobre a natureza jurídica da empresa, informações sobre o porte da empresa e outras informações relevantes. Este modelo é particularmente útil para usuários de negócios que precisam entender a demografia das empresas, acompanhar dados das empresas ao longo do tempo ou analisar o comportamento da empresa com base em atributos cadastrais ou de localização.
     columns:
       - name: cnpj
@@ -208,9 +208,9 @@ models:
         quote: true
         data_tests:
           - not_null:
-              name: raw_bcadastro__cnpj__not_null
+              name: raw_bcadastro__cnpj__cnpj__not_null
           - unique:
-              name: raw_bcadastro__cnpj__unique
+              name: raw_bcadastro__cnpj__cnpj__unique
       - name: id_municipio
         description: Este é o identificador único do município onde a empresa está localizada. É um valor string que é usado para vincular a outras tabelas para obter informações mais detalhadas sobre o município.
         data_type: string
@@ -562,23 +562,4 @@ models:
       - name: cnpj_particao
         description: Esta coluna representa a partição do CNPJ (Cadastro Nacional da Pessoa Jurídica). O 'cnpj_particao' é usado para otimizar o processamento e consulta de dados, dividindo os dados em partes menores.
         data_type: integer
-        quote: true
-  - name: dominio
-    description: O modelo dominio é um dicionario de ids dos dados do bcadastro
-    columns:
-      - name: id
-        description: Código Identificador
-        data_type: string
-        quote: true
-      - name: descricao
-        description: Descrição do identificador
-        data_type: string
-        quote: true
-      - name: column
-        description: Identificador do dominio (sexo, codigo_pais, tipo_socio, ...)
-        data_type: string
-        quote: true
-      - name: source
-        description: Indica se a fonte do dominio é cpf ou cnpj
-        data_type: string
         quote: true
