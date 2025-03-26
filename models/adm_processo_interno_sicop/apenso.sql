@@ -11,4 +11,4 @@ SELECT
   SAFE_CAST(
     REGEXP_REPLACE(a.i22005_cod_oper, r'\.0$', '') AS INT64
   ) i22005_cod_oper
- FROM {{ source('adm_processo_interno_sicop_staging', 'apenso') }}
+ FROM {{ source('adm_processo_interno_sicop_staging', 'apenso') }} As a

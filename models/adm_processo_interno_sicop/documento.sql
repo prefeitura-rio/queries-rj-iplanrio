@@ -35,4 +35,4 @@ SELECT
   SAFE_CAST(
     REGEXP_REPLACE(d.assun_comp, r'\.0$', '') AS STRING
   ) assun_comp
- FROM {{ source('adm_processo_interno_sicop_staging', 'documento') }}
+ FROM {{ source('adm_processo_interno_sicop_staging', 'documento') }} As d

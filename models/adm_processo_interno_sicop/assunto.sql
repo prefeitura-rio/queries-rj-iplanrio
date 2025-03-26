@@ -11,4 +11,4 @@ SELECT
   SAFE_CAST(
     REGEXP_REPLACE(a.desc_assunto, r'\.0$', '') AS STRING
   ) desc_assunto
- FROM {{ source('adm_processo_interno_sicop_staging', 'assunto') }}
+ FROM {{ source('adm_processo_interno_sicop_staging', 'assunto') }} AS a
