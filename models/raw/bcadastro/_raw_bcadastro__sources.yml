@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: brutos_bcadastro_staging
+    database: rj-iplanrio
+    schema: brutos_bcadastro_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
+    tables:
+    - name: chcpf_bcadastros
+    - name: chcno_bcadastros
+    - name: chcaepf_bcadastros
+    - name: chcnpj_bcadastros
+    - name: dominio_cpf
+    - name: dominio_cnpj
+  - name: br_bd_diretorios_brasil
+    database: basedosdados
+    schema: br_bd_diretorios_brasil
+    tables:
+    - name: municipio
+    - name: uf

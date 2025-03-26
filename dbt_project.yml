@@ -20,23 +20,23 @@ models:
     relation: true
     columns: true
   queries:
-    adm_processo_interno_processorio:
-      +materialized: table
-      +schema: adm_processo_interno_processorio
-    adm_processo_interno_sicop:
-      +materialized: table
-      +schema: adm_processo_interno_sicop
-    unidades_administrativas:
-      +materialized: table
-      +schema: unidades_administrativas
-    transporte_rodoviario_taxirio:
-      +materialized: table
-      +schema: transporte_rodoviario_taxirio
-    transporte_rodoviario_taxirio_homologacao:
-      +materialized: table
-      +schema: transporte_rodoviario_taxirio_homologacao
-    dbt_bigquery_monitoring:
-        +schema: "dbt_bigquery_monitoring"
+    raw:
+      adm_processo_interno_processorio:
+        +materialized: table
+        +schema: adm_processo_interno_processorio
+      adm_processo_interno_sicop:
+        +materialized: table
+        +schema: adm_processo_interno_sicop
+      unidades_administrativas:
+        +materialized: table
+        +schema: unidades_administrativas
+      transporte_rodoviario_taxirio:
+        +materialized: table
+        +schema: transporte_rodoviario_taxirio
+      transporte_rodoviario_taxirio_homologacao:
+        +materialized: table
+        +schema: transporte_rodoviario_taxirio_homologacao
+
 
 vars:
   # dbt bigquery monitoring vars
