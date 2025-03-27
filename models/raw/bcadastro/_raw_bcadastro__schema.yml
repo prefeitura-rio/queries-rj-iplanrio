@@ -563,3 +563,22 @@ models:
         description: Esta coluna representa a partição do CNPJ (Cadastro Nacional da Pessoa Jurídica). O 'cnpj_particao' é usado para otimizar o processamento e consulta de dados, dividindo os dados em partes menores.
         data_type: integer
         quote: true
+  - name: raw_bcadastro__dominio
+    description: O modelo dominio é um dicionario de ids dos dados do bcadastro
+    columns:
+      - name: id
+        description: Código Identificador
+        data_type: string
+        quote: true
+      - name: descricao
+        description: Descrição do identificador
+        data_type: string
+        quote: true
+      - name: column
+        description: Identificador do dominio (sexo, codigo_pais, tipo_socio, ...)
+        data_type: string
+        quote: true
+      - name: source
+        description: Indica se a fonte do dominio é cpf ou cnpj
+        data_type: string
+        quote: true
