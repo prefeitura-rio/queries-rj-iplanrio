@@ -1,0 +1,43 @@
+version: 2
+
+sources:
+  - name: transporte_rodoviario_taxirio_staging
+    database: rj-iplanrio
+    schema: transporte_rodoviario_taxirio_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: cities
+        freshness:
+          error_after: {count: 30, period: day}
+
+      - name: discounts
+        freshness:
+          error_after: {count: 30, period: day}
+
+      - name: drivers
+        freshness:
+          error_after: {count: 30, period: day}
+
+      - name: passengers
+        freshness:
+          error_after: {count: 7, period: day}
+
+      - name: paymentmethods
+        freshness:
+          error_after: {count: 30, period: day}
+
+      - name: races
+        freshness:
+          error_after: {count: 24, period: hour}
+
+      - name: rankingraces
+        freshness:
+          error_after: {count: 24, period: hour}
+
+      - name: users
+        freshness:
+          error_after: {count: 7, period: day}
+
+
+      

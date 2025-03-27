@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: processo
+  - name: raw_adm_processo_interno_sicop__processo
     description:
       "**Descrição**: Processo administrativo aberto na prefeitura do Rio\
       \ de Janeiro, tanto na administração direta como indireta. Um processo é um\
@@ -13,14 +13,17 @@ models:
     columns:
       - name: org_transc
         description: Órgão que cadastrou o processo no sistema.
+
       - name: num_processo
         description:
           Número dado pela prefeitura ao processo. No número constam a
           secretaria e o ano de abertura.
+        
       - name: cpf_cgc
         description:
           Número do documento do requerente de acordo com o atributo ident.
           Quando é por ofício fica em branco.
+
       - name: ident
         description:
           "Tipo do documento fornecido pelo requerente. 1-CPF, 2-CNPJ,\
@@ -28,10 +31,12 @@ models:
           \ do CASS, 7-Notificação, \r\n8-Número Cadastral do Imóvel, 9-Identidade,\
           \ 10-Órgão da Administração Pública/Requerente sem documento, \r\n11–Notificação\
           \ (Multa de Transporte Urbano). Quando é por ofício fica em branco."
+        
       - name: requerente
         description:
           Nome do requerente do processo. Requerente é a pessoa que solicita
           a abertura do processo.
+        
       - name: cod_assu_p
         description:
           Código do assunto ao qual o processo é relativo. Um processo
@@ -65,7 +70,8 @@ models:
         description: Mês da data em que o processo foi inserido no sistema.
       - name: dia_sist2
         description: Dia da data em que o processo foi inserido no sistema.
-  - name: orgao
+
+  - name: raw_adm_processo_interno_sicop__orgao
     description:
       "**Descrição**: Órgão da prefeitura do Rio de Janeiro. Um órgão pode\
       \ ser uma secretaria, uma empresa da prefeitura, própria prefeitura, a vice-prefeitura\
@@ -79,7 +85,7 @@ models:
         description: código do órgão no SICOP.
       - name: cod_orcto
         description: código do órgão no Orçamento.
-  - name: documento
+  - name: raw_adm_processo_interno_sicop__documento
     description:
       "**Descrição**: Documento que faz parte de um processo administrativo\
       \ da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Diário\n\
@@ -120,7 +126,7 @@ models:
         description: Mês da data em que foi aberto o protocolo para o documento.
       - name: dia_sist2
         description: Dia da data em que foi aberto o protocolo para o documento.
-  - name: assunto
+  - name: raw_adm_processo_interno_sicop__assunto
     description:
       "**Descrição**: Assunto que pode ser associado a um processo administrativo\
       \ ou a um documento incluído em um processo administrativo da prefeitura do\
@@ -144,7 +150,7 @@ models:
           são guardadas como histórico.
       - name: desc_assunto
         description: Descrição do assunto, despacho ou documento.
-  - name: tramitacao_documento
+  - name: raw_adm_processo_interno_sicop__tramitacao_documento
     description:
       "**Descrição**: Tramitação de um documento na prefeitura do Rio de\
       \ Janeiro. Uma tramitação ocorre quando um órgão envia para outro órgão da prefeitura\
@@ -178,7 +184,7 @@ models:
         description: Mês da data da última tramitação do documento.
       - name: dia_remes2
         description: Dia da data da última tramitação do documento.
-  - name: apenso
+  - name: raw_adm_processo_interno_sicop__apenso
     description:
       "**Descrição**: Processo administrativo da prefeitura do Rio de Janeiro\
       \ que foi apensado a um outro processo administrativo da prefeitura do Rio de\
