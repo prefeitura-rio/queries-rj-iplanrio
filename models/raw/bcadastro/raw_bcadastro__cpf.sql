@@ -154,7 +154,6 @@ with
             -- Address
             endereco_cep,
             endereco_uf,
-            endereco_municipio,
             endereco_bairro,
             endereco_tipo_logradouro,
             endereco_logradouro,
@@ -166,7 +165,7 @@ with
             mn.municipio_nome as nascimento_municipio,
             nascimento_pais,
             residencia_pais,
-            md.municipio_nome as municipio_domicilio,
+            md.municipio_nome as endereco_municipio,
 
             -- Occupation
             o.descricao as ocupacao_nome,
