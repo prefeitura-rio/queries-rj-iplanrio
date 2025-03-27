@@ -4,6 +4,8 @@ sources:
   - name: adm_processo_interno_sicop_staging
     database: rj-iplanrio
     schema: adm_processo_interno_sicop_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
     tables:
       - name: apenso
       - name: assunto
@@ -11,3 +13,5 @@ sources:
       - name: orgao
       - name: processo
       - name: tramitacao_documento
+
+      

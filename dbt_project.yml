@@ -21,9 +21,9 @@ models:
     columns: true
   queries:
     raw:
-      adm_processo_interno_processorio:
-        +materialized: table
-        +schema: adm_processo_interno_processorio
+      #adm_processo_interno_processorio:
+      #  +materialized: table
+      #  +schema: adm_processo_interno_processorio
       adm_processo_interno_sicop:
         +materialized: table
         +schema: adm_processo_interno_sicop
@@ -33,9 +33,9 @@ models:
       transporte_rodoviario_taxirio:
         +materialized: table
         +schema: transporte_rodoviario_taxirio
-      transporte_rodoviario_taxirio_homologacao:
-        +materialized: table
-        +schema: transporte_rodoviario_taxirio_homologacao
+      #transporte_rodoviario_taxirio_homologacao:
+      #  +materialized: table
+      #  +schema: transporte_rodoviario_taxirio_homologacao
 
 
 vars:

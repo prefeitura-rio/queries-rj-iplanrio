@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: orgaos
+  - name: raw_unidades_administrativas__orgaos
     description: "**Descrição**: Retorna todas as Unidades de Gestão associadas ao
       tipo Unidade Administrativa, com o relacionamento entre elas, informando o código
       da unidade pai, para a composição da árvore de UAs da PCRJ.\n**Frequência de
