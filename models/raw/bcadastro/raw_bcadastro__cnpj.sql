@@ -1,3 +1,4 @@
+
 {{
     config(
         alias="cnpj",
@@ -77,7 +78,7 @@ with
             -- Business data
             nullif(json_value(doc, '$.nomeEmpresarial'), '') as nome_empresarial,
             nullif(json_value(doc, '$.nomeFantasia'), '') as nome_fantasia,
-            nullif(json_value(doc, '$.capitalSocial'), '') as capital_social,
+            cast(nullif(json_value(doc, '$.capitalSocial'), '') as int64) as capital_social,
             nullif(json_value(doc, '$.cnaeFiscal'), '') as cnae_fiscal,
             nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnae_secundarias,
             nullif(json_value(doc, '$.nire'), '') as nire,
