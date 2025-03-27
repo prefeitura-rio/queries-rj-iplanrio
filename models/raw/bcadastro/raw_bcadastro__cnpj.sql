@@ -222,8 +222,8 @@ with
             seq,
             version,
             nullif(json_value(so, '$.codigoPais'), "") as codigo_pais,
-            SUBSTR(nullif(json_value(so, '$.cpfCnpj'),""), -11) as socio_cpf,
-            nullif(json_value(so, '$.cpfCnpj'), "") as socio_cnpj,
+            SUBSTR(nullif(json_value(so, '$.cpfCnpj'),""), -11) as cpf_socio,
+            nullif(json_value(so, '$.cpfCnpj'), "") as cnpj_socio,
             nullif(
                 json_value(so, '$.cpfRepresentanteLegal'), ""
             ) as cpf_representante_legal,
@@ -275,9 +275,9 @@ with
             seq,
             version,
             so.codigo_pais,
-            so.socio_cpf,
-            {{validate_cpf("so.socio_cpf")}} as cpf_valido_indicador,
-            so.socio_cnpj,
+            so.cpf_socio,
+            {{validate_cpf("so.cpf_socio")}} as cpf_valido_indicador,
+            so.cnpj_socio,
             so.cpf_representante_legal,
             so.data_situacao_especial,
             so.nome_socio_estrangeiro,
@@ -297,13 +297,13 @@ with
                 struct(
                     so.codigo_pais,
                     CASE 
-                        WHEN cpf_valido_indicador = TRUE THEN so.socio_cpf
+                        WHEN cpf_valido_indicador = TRUE THEN so.cpf_socio
                         ELSE NULL
-                    END as cpf,
+                    END as cpf_socio,
                     CASE 
-                        WHEN cpf_valido_indicador = FALSE THEN so.socio_cnpj
+                        WHEN cpf_valido_indicador = FALSE THEN so.cnpj_socio
                         ELSE NULL
-                    END as cnpj, 
+                    END as cnpj_socio, 
                     so.cpf_representante_legal,
                     so.data_situacao_especial,
                     so.nome_socio_estrangeiro,
@@ -594,6 +594,7 @@ with
             -- Business arrays
             actb.tipos_unidade,
             actb.formas_atuacao,
+            array_length(soc.socios) as numero_socios,
             soc.socios,
             suc.sucessoes,
 
@@ -767,6 +768,7 @@ with
             -- Business arrays
             t.tipos_unidade,
             t.formas_atuacao,
+            t.numero_socios,
             t.socios,
             t.sucessoes,
             -- Metadata
@@ -884,6 +886,7 @@ with
             -- Business arrays
             tipos_unidade,
             formas_atuacao,
+            numero_socios,
             socios,
             sucessoes,
 
