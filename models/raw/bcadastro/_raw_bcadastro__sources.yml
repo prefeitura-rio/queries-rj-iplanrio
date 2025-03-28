@@ -14,6 +14,7 @@ sources:
     - name: chcnpj_bcadastros
     - name: dominio_cpf
     - name: dominio_cnpj
+
   - name: br_bd_diretorios_brasil
     database: basedosdados
     schema: br_bd_diretorios_brasil
