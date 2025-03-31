@@ -1,7 +1,6 @@
 {{
     config(
         alias="cpf",
-        schema="brutos_bcadastro",
         materialized="table",
         partition_by={
             "field": "cpf_particao",

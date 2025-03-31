@@ -44,7 +44,7 @@ models:
       +tags: "raw"
       bcadastro:
         +materialized: table
-        +schema: bcadastro
+        +schema: brutos_bcadastro
         +tags: "weekly"
 
 
