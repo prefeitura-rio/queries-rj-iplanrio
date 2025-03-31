@@ -47,4 +47,4 @@ SELECT
   SAFE_CAST(
     REGEXP_REPLACE(p.status, r'\.0$', '') AS STRING
   ) status
- FROM {{ source('adm_processo_interno_sicop_staging', 'processo') }} As processo
+ FROM {{ source('adm_processo_interno_sicop_staging', 'processo') }} As p
