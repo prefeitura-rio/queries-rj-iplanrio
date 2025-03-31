@@ -22,27 +22,13 @@ models:
   queries:
     raw:
       +tags: "raw"
-      #adm_processo_interno_processorio:
-      #  +materialized: table
-      #  +schema: adm_processo_interno_processorio
-      adm_processo_interno_sicop:
+      bcadastro:
         +materialized: table
-        +schema: adm_processo_interno_sicop
+        +schema: bcadastro
         +tags: "daily"
 
-      unidades_administrativas:
-        +materialized: table
-        +schema: unidades_administrativas
-        +tags: "daily"
 
-      transporte_rodoviario_taxirio:
-        +materialized: table
-        +schema: transporte_rodoviario_taxirio
-        +tags: "daily"
 
-      #transporte_rodoviario_taxirio_homologacao:
-      #  +materialized: table
-      #  +schema: transporte_rodoviario_taxirio_homologacao
 
 
 vars:
