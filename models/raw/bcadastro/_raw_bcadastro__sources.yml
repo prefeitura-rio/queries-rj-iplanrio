@@ -13,7 +13,11 @@ sources:
     - name: chcaepf_bcadastros
     - name: chcnpj_bcadastros
     - name: dominio_cpf
+      freshness:
+
     - name: dominio_cnpj
+      freshness:
+
 
   - name: br_bd_diretorios_brasil
     database: basedosdados

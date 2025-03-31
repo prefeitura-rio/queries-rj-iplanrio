@@ -30,7 +30,16 @@ models:
 
 
 
-
+# BigQuery Monitoring
 vars:
-  # dbt bigquery monitoring vars
-  input_gcp_projects: [ 'rj-iplanrio','rj-iplanrio-dev']
+
+  bq_region: 'us'
+  input_gcp_projects: ['rj-iplanrio']
+  enable_gcp_bigquery_audit_logs: false
+  gcp_bigquery_audit_logs_storage_project: 'rj-iplanrio'
+  gcp_bigquery_audit_logs_dataset: 'gerenciamento__bq_custos'
+  gcp_bigquery_audit_logs_table: 'gerenciamento__bq_audit_logs'
+
+query-comment:
+  comment: '{{ dbt_bigquery_monitoring.get_query_comment(node) }}'
+  job-label: True # Use query comment JSON as job labels
