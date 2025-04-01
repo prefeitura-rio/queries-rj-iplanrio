@@ -29,7 +29,7 @@ vars:
   gcp_bigquery_audit_logs_storage_project: 'rj-iplanrio'
   gcp_bigquery_audit_logs_dataset: 'gerenciamento_bigquery_audit_logs'
   gcp_bigquery_audit_logs_table: 'gcp_audit_logs'
-
+  google_information_schema_model_materialization: 'ephemeral'
 
 
 models:
