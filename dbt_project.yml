@@ -38,6 +38,10 @@ models:
     columns: true
   dbt_bigquery_monitoring:
     +schema: "gerenciamento_bigquery_monitoring"
+    information_schema:
+      jobs:
+        +enabled: false
+
   queries:
     raw:
       +tags: "raw"
