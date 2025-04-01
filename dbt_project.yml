@@ -39,9 +39,21 @@ models:
   dbt_bigquery_monitoring:
     +schema: "gerenciamento_bigquery_monitoring"
     information_schema:
-      jobs:
+      search_indexes:
         +enabled: false
-
+      reservations:
+        information_schema_reservations:
+          +enabled: false
+        information_schema_reservations_timeline:
+          +enabled: false
+        information_schema_reservation_changes:
+          +enabled: false
+      vector_indexes:
+        information_schema_vector_indexes:
+          +enabled: false
+      datasets:
+        information_schema_shared_dataset_usage:
+          +enabled: false
   queries:
     raw:
       +tags: "raw"
