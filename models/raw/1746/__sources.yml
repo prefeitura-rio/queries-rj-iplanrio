@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: adm_central_atendimento_1746_staging
+    database: rj-segovi
+    schema: adm_central_atendimento_1746_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: chamado
+        loaded_at_field: data_particao
+
