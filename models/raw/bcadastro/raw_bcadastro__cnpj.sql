@@ -2,7 +2,6 @@
 {{
     config(
         alias="cnpj",
-        schema="brutos_bcadastro",
         materialized="table",
         partition_by={
             "field": "cnpj_particao",

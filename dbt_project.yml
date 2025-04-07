@@ -15,29 +15,36 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+
+vars:
+
+  # BigQuery Monitoring
+  bq_region: 'us'
+  input_gcp_projects: ['rj-iplanrio']
+  enable_gcp_bigquery_audit_logs: false
+  gcp_billing_export_storage_project: 'rj-iplanrio'
+  gcp_billing_export_dataset: 'gerenciamento_bigquery_billing'
+  gcp_billing_export_table: 'gcp_billing_export'
+  enable_gcp_billing_export: false
+  gcp_bigquery_audit_logs_storage_project: 'rj-iplanrio'
+  gcp_bigquery_audit_logs_dataset: 'gerenciamento_bigquery_audit_logs'
+  gcp_bigquery_audit_logs_table: 'gcp_audit_logs'
+  google_information_schema_model_materialization: 'ephemeral'
+
+
 models:
   +persist_docs:
     relation: true
     columns: true
+  dbt_bigquery_monitoring:
+    +schema: "gerenciamento_bigquery_monitoring"
+
   queries:
     raw:
-      adm_processo_interno_processorio:
+      +tags: "raw"
+      bcadastro:
         +materialized: table
-        +schema: adm_processo_interno_processorio
-      adm_processo_interno_sicop:
-        +materialized: table
-        +schema: adm_processo_interno_sicop
-      unidades_administrativas:
-        +materialized: table
-        +schema: unidades_administrativas
-      transporte_rodoviario_taxirio:
-        +materialized: table
-        +schema: transporte_rodoviario_taxirio
-      transporte_rodoviario_taxirio_homologacao:
-        +materialized: table
-        +schema: transporte_rodoviario_taxirio_homologacao
+        +schema: brutos_bcadastro
+        +tags: "weekly"
 
 
-vars:
-  # dbt bigquery monitoring vars
-  input_gcp_projects: [ 'rj-iplanrio','rj-iplanrio-dev']
