@@ -8,3 +8,6 @@ dependencies = [
     "dbt-bigquery>=1.9.1",
     "dbt-core>=1.9.3",
 ]
+
+[tool.setuptools]
+py-modules = []

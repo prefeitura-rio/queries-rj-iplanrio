@@ -1,3 +1,4 @@
+
 {{
     config(
         alias="cnpj",
@@ -21,6 +22,8 @@ with
                 timestamp(_airbyte_extracted_at)
                 >= timestamp_sub(current_timestamp(), interval 3 day)
         {% endif %}
+        {# where timestamp_trunc(_airbyte_extracted_at, day) = timestamp("2025-03-23") #}
+
     ),
 
     sigla_uf_bd as (select sigla from {{ source("br_bd_diretorios_brasil", "uf") }}),
@@ -76,7 +79,7 @@ with
             -- Business data
             nullif(json_value(doc, '$.nomeEmpresarial'), '') as nome_empresarial,
             nullif(json_value(doc, '$.nomeFantasia'), '') as nome_fantasia,
-            nullif(json_value(doc, '$.capitalSocial'), '') as capital_social,
+            cast(nullif(json_value(doc, '$.capitalSocial'), '') as int64) as capital_social,
             nullif(json_value(doc, '$.cnaeFiscal'), '') as cnae_fiscal,
             nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnae_secundarias,
             nullif(json_value(doc, '$.nire'), '') as nire,
@@ -212,29 +215,26 @@ with
         group by cnpj, seq, version
     ),
 
-    socios_tb as (
+    _socios_tb as (
         select
             cnpj,
             seq,
             version,
-            array_agg(
-                struct(
-                    nullif(json_value(so.codigopais), "") as codigo_pais,
-                    nullif(json_value(so.cpfcnpj), "") as cpf_cnpj,
-                    nullif(
-                        json_value(so.cpfrepresentantelegal), ""
-                    ) as cpf_representante_legal,
-                    safe.parse_date(
-                        '%Y%m%d', nullif(json_value(so.dataentrada), '')
-                    ) as data_situacao_especial,
-                    nullif(
-                        json_value(so.nomesocioestrangeiro), ""
-                    ) as nome_socio_estrangeiro,
-                    qrl.descricao as qualificacao_representante_legal,  -- qualificacao_representante_legal
-                    qs.descricao as qualificacao_socio,  -- qualificacao_socio
-                    ts.descricao as tipo  -- tipo_socio
-                )
-            ) as socios
+            nullif(json_value(so, '$.codigoPais'), "") as codigo_pais,
+            SUBSTR(nullif(json_value(so, '$.cpfCnpj'),""), -11) as cpf_socio,
+            nullif(json_value(so, '$.cpfCnpj'), "") as cnpj_socio,
+            nullif(
+                json_value(so, '$.cpfRepresentanteLegal'), ""
+            ) as cpf_representante_legal,
+            safe.parse_date(
+                '%Y%m%d', nullif(json_value(so, '$.dataEntrada'), '')
+            ) as data_situacao_especial,
+            nullif(
+                json_value(so, '$.nomeSocioEstrangeiro'), ""
+            ) as nome_socio_estrangeiro,
+            qrl.descricao as qualificacao_representante_legal,  -- qualificacao_representante_legal
+            qs.descricao as qualificacao_socio,  -- qualificacao_socio
+            ts.descricao as tipo  -- tipo_socio
         from fonte_parseada t, unnest(t.socios) as so
         left join
             (
@@ -244,7 +244,7 @@ with
             ) qrl
             on cast(
                 cast(
-                    nullif(json_value(so.qualificacaorepresentantelegal), "") as int64
+                    nullif(json_value(so, '$.qualificacaoRepresentanteLegal'), "") as int64
                 ) as string
             )
             = qrl.qualificacao_representante_legal_id
@@ -255,7 +255,7 @@ with
                 where column = 'qualificacao_socio'
             ) qs
             on cast(
-                cast(nullif(json_value(so.qualificacaosocio), "") as int64) as string
+                cast(nullif(json_value(so, '$.qualificacaoSocio'), "") as int64) as string
             )
             = qs.qualificacao_socio_id
         left join
@@ -264,10 +264,57 @@ with
                 from dominio
                 where column = 'tipo_socio'
             ) ts
-            on cast(cast(nullif(json_value(so.tipo), "") as int64) as string)
+            on cast(cast(nullif(json_value(so, '$.tipo'), "") as int64) as string)
             = ts.tipo_socio_id
+    ),
+
+    _socios_tb_validate_cpf as (
+        select
+            cnpj,
+            seq,
+            version,
+            so.codigo_pais,
+            so.cpf_socio,
+            {{validate_cpf("so.cpf_socio")}} as cpf_valido_indicador,
+            so.cnpj_socio,
+            so.cpf_representante_legal,
+            so.data_situacao_especial,
+            so.nome_socio_estrangeiro,
+            so.qualificacao_representante_legal,
+            so.qualificacao_socio,
+            so.tipo
+        from _socios_tb so
+    ),
+
+
+    socios_tb as (
+        select 
+            cnpj,
+            seq,
+            version,
+            array_agg(
+                struct(
+                    so.codigo_pais,
+                    CASE 
+                        WHEN cpf_valido_indicador = TRUE THEN so.cpf_socio
+                        ELSE NULL
+                    END as cpf_socio,
+                    CASE 
+                        WHEN cpf_valido_indicador = FALSE THEN so.cnpj_socio
+                        ELSE NULL
+                    END as cnpj_socio, 
+                    so.cpf_representante_legal,
+                    so.data_situacao_especial,
+                    so.nome_socio_estrangeiro,
+                    so.qualificacao_representante_legal,
+                    so.qualificacao_socio,
+                    so.tipo
+                )
+            ) as socios
+        from _socios_tb_validate_cpf so
         group by cnpj, seq, version
     ),
+
 
     sucessoes_tb as (
         select
@@ -278,12 +325,12 @@ with
                 struct(
                     ev.descricao as evento_sucedida,  -- evento
                     safe.parse_date(
-                        '%Y%m%d', nullif(json_value(su.dataeventosucedida), '')
+                        '%Y%m%d', nullif(json_value(su,'$.dataEventoSucedida'), '')
                     ) as data_evento_sucedida,
                     safe.parse_date(
-                        '%Y%m%d', nullif(json_value(su.dataprocessamento), '')
+                        '%Y%m%d', nullif(json_value(su,'$.dataProcessamento'), '')
                     ) as data_processamento,
-                    nullif(json_value(su.sucessoras), "") as sucessoras
+                    nullif(json_value(su,'$.sucessoras'), "") as sucessoras
 
                 )
             ) as sucessoes
@@ -291,7 +338,7 @@ with
         left join
             (select id as evento_id, descricao from dominio where column = 'eventos') ev
             on cast(
-                cast(nullif(json_value(su.codigoeventosucedida), "") as int64) as string
+                cast(nullif(json_value(su,'$.codigoEventoSucedida'), "") as int64) as string
             )
             = ev.evento_id
         group by cnpj_sucedida, seq, version
@@ -471,7 +518,10 @@ with
     fonte_intermediaria as (
         select
             -- Primary key
-            t.cnpj,
+            CASE
+                WHEN t.cnpj IS NULL THEN t.cnpj_sucedida
+                ELSE t.cnpj
+            END  as cnpj,
 
             -- Foreign keys
             t.id_municipio,
@@ -491,7 +541,6 @@ with
             t.cnae_fiscal,
             t.cnae_secundarias,
             t.nire,
-            t.cnpj_sucedida,
             -- Dates
             t.data_inicio_atividade,
             t.data_situacao_cadastral,
@@ -544,6 +593,7 @@ with
             -- Business arrays
             actb.tipos_unidade,
             actb.formas_atuacao,
+            array_length(soc.socios) as numero_socios,
             soc.socios,
             suc.sucessoes,
 
@@ -673,7 +723,6 @@ with
             t.cnae_fiscal,
             t.cnae_secundarias,
             t.nire,
-            t.cnpj_sucedida,
             -- Dates
             t.data_inicio_atividade,
             t.data_situacao_cadastral,
@@ -718,6 +767,7 @@ with
             -- Business arrays
             t.tipos_unidade,
             t.formas_atuacao,
+            t.numero_socios,
             t.socios,
             t.sucessoes,
             -- Metadata
@@ -783,7 +833,6 @@ with
             cnae_fiscal,
             cnae_secundarias,
             nire,
-            cnpj_sucedida,
             tipo_orgao_registro,
             porte_empresa,
             indicador_matriz,
@@ -836,6 +885,7 @@ with
             -- Business arrays
             tipos_unidade,
             formas_atuacao,
+            numero_socios,
             socios,
             sucessoes,
 

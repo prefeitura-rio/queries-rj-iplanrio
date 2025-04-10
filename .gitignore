@@ -1,6 +1,8 @@
-
+.vscode/
 target/
 dbt_packages/
 logs/
 .qodo
 .cursor/
+
+queries_rj_iplanrio.egg-info
