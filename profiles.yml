@@ -10,7 +10,7 @@ iplan:
       method: service-account
       priority: interactive
       project: rj-iplanrio-dev
-      threads: 1
+      threads: 8
       type: bigquery
     prod:
       dataset: dbt
@@ -21,6 +21,6 @@ iplan:
       method: service-account
       priority: interactive
       project: rj-iplanrio
-      threads: 1
+      threads: 8
       type: bigquery
 
