@@ -1,7 +1,35 @@
-
+# DBT specific
 target/
+target-base/
 dbt_packages/
 logs/
-.qodo
+.user.yml
+
+
+# Python virtual environments
+.venv/
+dbt-env/
+venv/
+ENV/
+
+# IDE and editor specific
 .cursor/
+.vscode/
+.idea/
+.qodo/
+*.swp
+*.swo
+*~
+
+# OS specific
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Project specific
+
+
+# Temporary files
+*.log
+*.tmp
+*.temp
