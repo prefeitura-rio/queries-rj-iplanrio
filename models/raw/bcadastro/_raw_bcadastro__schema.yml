@@ -227,7 +227,7 @@ models:
         description: Este campo representa o identificador único da qualificação do responsável pela empresa. É um valor string.
         data_type: string
         quote: true
-      - name: id_porte_empresa
+      - name: id_porte
         description: Este campo representa o identificador único do porte da empresa. É um valor string.
         data_type: string
         quote: true
@@ -247,7 +247,7 @@ models:
         description: Este campo representa o identificador único da situação cadastral da empresa.
         data_type: string
         quote: true
-      - name: nome_empresarial
+      - name: razao_social
         description: Esta coluna representa o nome empresarial (razão social) da empresa.
         data_type: string
         quote: true
@@ -279,11 +279,11 @@ models:
         description: Descrição do tipo de órgão de registro.
         data_type: string
         quote: true
-      - name: porte_empresa
+      - name: porte_descricao
         description: Descrição do porte da empresa.
         data_type: string
         quote: true
-      - name: indicador_matriz
+      - name: indicador_matriz_descricao
         description: Indica se a empresa é matriz ou filial ('1' para Matriz, '2' para Filial).
         data_type: string
         quote: true
@@ -327,105 +327,125 @@ models:
         description: Descrição do Ente Federativo Responsável (EFR).
         data_type: string
         quote: true
-      - name: telefone
+      - name: contato
+        description: Informações de contato da empresa.
+        data_type: record
+        quote: true
+      - name: contato.telefone
         description: Informações de telefone da empresa.
         data_type: record
         quote: true
-      - name: telefone.ddd
+      - name: contato.telefone.ddd
         description: DDD do telefone da empresa.
         data_type: string
         quote: true
-      - name: telefone.telefone
+      - name: contato.telefone.telefone
         description: Número de telefone da empresa.
         data_type: string
         quote: true
-      - name: email
+      - name: contato.email
         description: Endereço de e-mail da empresa.
         data_type: string
         quote: true
-      - name: endereco_uf
+      - name: endereco
+        description: Informações de endereço da empresa.
+        data_type: record
+        quote: true
+      - name: endereco.uf
         description: Estado (UF) do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_cep
+      - name: endereco.cep
         description: CEP do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_municipio
+      - name: endereco.municipio_nome
         description: Município do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_bairro
+      - name: endereco.bairro
         description: Bairro do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_tipo_logradouro
+      - name: endereco.tipo_logradouro
         description: Tipo de logradouro do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_logradouro
+      - name: endereco.logradouro
         description: Logradouro do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_numero
+      - name: endereco.numero
         description: Número do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_complemento
+      - name: endereco.complemento
         description: Complemento do endereço da empresa.
         data_type: string
         quote: true
-      - name: endereco_nome_cidade_exterior
+      - name: endereco.cidade_exterior_nome
         description: Nome da cidade no exterior (para empresas com endereço no exterior).
         data_type: string
         quote: true
-      - name: tipo_crc_contador_pf
+      - name: contador
+        description: Informações do contador da empresa.
+        data_type: record
+        quote: true
+      - name: contador.pf
+        description: Informações do contador pessoa física.
+        data_type: record
+        quote: true
+      - name: contador.pf.tipo_crc
         description: Tipo do CRC do contador pessoa física.
         data_type: string
         quote: true
-      - name: contador_pj
-        description: CNPJ do contador pessoa jurídica.
-        data_type: string
-        quote: true
-      - name: classificacao_crc_contador_pf
+      - name: contador.pf.classificacao_crc
         description: Classificação do CRC do contador pessoa física.
         data_type: string
         quote: true
-      - name: sequencial_crc_contador_pf
+      - name: contador.pf.sequencial_crc
         description: Número sequencial do CRC do contador pessoa física.
         data_type: string
         quote: true
-      - name: contador_pf
+      - name: contador.pf.id
         description: CPF do contador pessoa física.
         data_type: string
         quote: true
-      - name: tipo_crc_contador_pj
+      - name: contador.pj
+        description: Informações do contador pessoa jurídica.
+        data_type: record
+        quote: true
+      - name: contador.pj.id
+        description: CNPJ do contador pessoa jurídica.
+        data_type: string
+        quote: true
+      - name: contador.pj.tipo_crc
         description: Tipo do CRC do contador pessoa jurídica.
         data_type: string
         quote: true
-      - name: classificacao_crc_contador_pj
+      - name: contador.pj.classificacao_crc
         description: Classificação do CRC do contador pessoa jurídica.
         data_type: string
         quote: true
-      - name: uf_crc_contador_pj
-        description: UF do CRC do contador pessoa jurídica.
-        data_type: string
-        quote: true
-      - name: uf_crc_contador_pf
-        description: UF do CRC do contador pessoa física.
-        data_type: string
-        quote: true
-      - name: sequencial_crc_contador_pj
+      - name: contador.pj.sequencial_crc
         description: Número sequencial do CRC do contador pessoa jurídica.
         data_type: string
         quote: true
-      - name: cpf_responsavel
+      - name: responsavel
+        description: Informações do responsável pela empresa.
+        data_type: record
+        quote: true
+      - name: responsavel.cpf
         description: CPF do responsável pela empresa.
         data_type: string
         quote: true
-      - name: qualificacao_responsavel
+      - name: responsavel.qualificacao
         description: Qualificação do responsável pela empresa.
         data_type: string
+        quote: true
+      - name: socios_quantidade
+        description: Quantidade de sócios da empresa.
+        data_type: integer
         quote: true
       - name: tipos_unidade
         description: Tipos de unidade da empresa (Matriz, Filial).
