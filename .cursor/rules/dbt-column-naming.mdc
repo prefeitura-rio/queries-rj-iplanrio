@@ -5,7 +5,7 @@ alwaysApply: false
 ---
 # IplanRio Column Naming Conventions
 
-This document provides detailed guidelines for naming columns (campos) within IplanRio's dbt models, ensuring clarity, consistency, and adherence to the official Guia de Estilo.
+This document provides detailed guidelines for naming columns within IplanRio's dbt models, ensuring clarity, consistency, and adherence to the official Guia de Estilo.
 
 ## General Naming Pattern
 

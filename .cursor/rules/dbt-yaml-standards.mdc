@@ -6,11 +6,12 @@ alwaysApply: false
 # dbt YAML Standards
 
 ## Model Configuration Block
-Every model YAML file must include a configuration block with:
+Every model YAML file must include a description, followed by a configuration block with:
 
 ```yaml
 models:
   - name: model_name
+    description: my table description
     config:
       alias: model_name
       schema: layer_name  # raw, intermediate, or marts
@@ -63,7 +64,7 @@ Each field must include:
 ```
 
 ## Testing Standards
-All tests must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rules/dbt-naming-convetions.mdc)
+All tests must have a name following [dbt-test-standards.mdc](mdc:.cursor/rules/dbt-test-standards.mdc)
 1. Primary Keys:
 ```yaml
 - name: id_field

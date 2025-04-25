@@ -3,39 +3,7 @@ description:
 globs: models/**/*.sql,models/**/*.yml
 alwaysApply: false
 ---
-# Cursor Rules for IplanRio Data Lake Project
-
-## Column Naming Conventions
-
-### General Pattern
-- Pattern: `[id_][<entity>_][<dimension>][_<unit>]`
-- Example: `id_municipio_populacao_habitantes`
-
-### ID Fields
-- Primary and foreign keys must start with `id_` prefix
-- Examples: `id_cnes`, `id_material`, `id_municipio`, `id_cid`
-- Exception: Well-known identifiers (e.g., CPF, CNS) may omit the prefix for readability
-
-### Partition Columns
-For partitioned tables, use standardized date partition columns:
-- `ano_particao`: Format 'YYYY'
-- `mes_particao`: Format 'MM'
-- `data_particao`: Format 'YYYY-MM-DD'
-
-### Column Ordering
-1. Primary keys always come first
-2. Foreign keys follow in descending order of scope
-3. Group remaining columns by theme/importance
-
-Example order for an attendance table:
-```sql
-id_atendimento,
-id_uf,
-id_municipio,
-id_cnes,
-paciente_cpf,
--- other columns grouped by theme
-```
+# IplanRio Test Naming Conventions
 
 ## Testing Conventions
 
@@ -90,9 +58,9 @@ Custom generic test macros should follow the same naming pattern:
 ```
 macros/
   └── tests/
-      ├── raw__generic__any__cep__valid_format.sql
-      ├── raw__generic__any__sus_card__valid_number.sql
-      └── mart__generic__any__date__within_business_hours.sql
+      ├── raw_generic_any_cep__valid_format.sql
+      ├── raw_generic_any_sus_card__valid_number.sql
+      └── mart_generic_any_date__within_business_hours.sql
 ```
 
 Note: For generic tests that can be applied across multiple datasets/tables, use 'generic' as the dataset and 'any' as the table name.
@@ -179,75 +147,3 @@ models:
               warn_if: ">10"
               error_if: ">100"
 ```
-
-## Documentation Requirements
-
-### Model Documentation
-Every model should include:
-1. General description
-2. Purpose/business context
-3. Update frequency
-4. Primary stakeholders
-
-Example:
-```yaml
-version: 2
-
-models:
-  - name: fct_atendimentos
-    description: >
-      Fact table containing all medical appointments.
-      Updated daily from SISREG system.
-      Primary stakeholders: Health Department
-    columns:
-      - name: id_atendimento
-        description: Unique identifier for each appointment
-```
-
-### Column Documentation
-Critical columns should document:
-1. Data type
-2. Business definition
-3. Valid values/ranges
-4. Source system
-
-Example:
-```yaml
-version: 2
-
-models:
-  - name: fct_atendimentos
-    columns:
-      - name: status_atendimento
-        description: >
-          Current status of the appointment
-          Valid values: 'AGENDADO', 'REALIZADO', 'CANCELADO'
-          Source: SISREG.status_atual
-```
-
-## Development Workflow
-
-### Branch Naming
-- Feature branches: `feature/description-of-change`
-- Bug fixes: `fix/description-of-bug`
-- Documentation: `docs/description-of-docs`
-
-### Model Naming
-- Staging models: `stg_<source>_<entity>`
-- Intermediate models: `int_<entity>_<transformation>`
-- Fact tables: `fct_<entity>`
-- Dimension tables: `dim_<entity>`
-
-### Testing Workflow
-1. Run `dbt test` before any commit
-2. Address all errors before merging
-3. Document any warning-level test failures
-4. Add new tests for any new columns or business rules
-
-### Performance Considerations
-1. Use appropriate materialization strategy:
-   - Views for frequently updated, less queried data
-   - Tables for stable, frequently queried data
-   - Incremental models for large, append-only data
-2. Add appropriate indexes and partitioning
-3. Document performance-critical models 
