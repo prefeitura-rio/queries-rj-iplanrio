@@ -1,0 +1,130 @@
+---
+description: 
+globs: models/**/*.yml
+alwaysApply: false
+---
+# dbt Struct Patterns
+
+## Common Data Structures
+Standard patterns for common nested structures in our models.
+
+### Contact Information
+```yaml
+- name: contato.telefone.ddd
+  description: "DDD do telefone"
+  data_type: string
+  tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        regex: '^[0-9]{2}$'
+        severity: warn
+
+- name: contato.telefone.numero
+  description: "Número do telefone"
+  data_type: string
+  tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        regex: '^[0-9]{8,9}$'
+        severity: warn
+
+- name: contato.email
+  description: "Endereço de e-mail"
+  data_type: string
+  tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        severity: warn
+```
+
+### Address Structure
+```yaml
+- name: endereco.cep
+  description: "CEP do endereço"
+  data_type: string
+  tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        regex: '^[0-9]{8}$'
+        severity: warn
+
+- name: endereco.uf
+  description: "UF do endereço"
+  data_type: string
+
+- name: endereco.municipio_nome
+  description: "Nome do município"
+  data_type: string
+
+- name: endereco.bairro
+  description: "Nome do bairro"
+  data_type: string
+
+- name: endereco.logradouro
+  description: "Nome do logradouro"
+  data_type: string
+
+- name: endereco.numero
+  description: "Número do endereço"
+  data_type: string
+
+- name: endereco.complemento
+  description: "Complemento do endereço"
+  data_type: string
+```
+
+### Document Information
+```yaml
+- name: documento.tipo
+  description: "Tipo do documento (CPF, CNPJ, etc)"
+  data_type: string
+
+- name: documento.numero
+  description: "Número do documento"
+  data_type: string
+  tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        regex: '^[0-9]+$'
+        severity: warn
+```
+
+### Metadata Structure
+```yaml
+- name: metadata.fonte_sistema
+  description: "Sistema de origem dos dados"
+  data_type: string
+
+- name: metadata.data_atualizacao
+  description: "Data da última atualização"
+  data_type: timestamp
+
+- name: metadata.versao
+  description: "Versão do registro"
+  data_type: string
+```
+
+### Airbyte Metadata
+```yaml
+- name: airbyte.id
+  description: "Identificador único do Airbyte"
+  data_type: string
+
+- name: airbyte.airbyte_extracted_at
+  description: "Data e hora da extração pelo Airbyte"
+  data_type: timestamp
+
+- name: airbyte.airbyte_meta.changes
+  description: "Alterações detectadas pelo Airbyte"
+  data_type: string
+```
+
+## Naming Conventions
+1. Use lowercase for all field names
+2. Use dots (.) to separate nested levels
+3. Keep names in Portuguese
+4. Use singular form for struct names
+5. Maximum nesting depth: 3 levels
+
+## Testing Requirements
+1. All date/timestamp fields should have range tests
+2. All coded fields (CEP, phone, documents) should have format tests
+3. All email fields should have format validation
+4. All required fields should have not_null tests
+5. All test must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rules/dbt-naming-convetions.mdc)

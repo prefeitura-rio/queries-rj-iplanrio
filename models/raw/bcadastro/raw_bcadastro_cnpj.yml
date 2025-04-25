@@ -2,15 +2,35 @@ version: 2
 
 models:
   - name: raw_bcadastro_cnpj
-    description: O modelo cnpj é um conjunto de dados abrangente que contém informações detalhadas sobre empresas, incluindo seus dados cadastrais, informações de contato, detalhes de localização, informações sobre o quadro societário e informações sobre empresas sucedidas. Inclui campos como CNPJ (um identificador único para empresas no Brasil), nomes, informações de contato (telefone e e-mail), detalhes de endereço (incluindo cidade, estado e país), informações sobre a natureza jurídica da empresa, informações sobre o porte da empresa e outras informações relevantes. Este modelo é particularmente útil para usuários de negócios que precisam entender a demografia das empresas, acompanhar dados das empresas ao longo do tempo ou analisar o comportamento da empresa com base em atributos cadastrais ou de localização.
+    description: >
+      O modelo cnpj é um conjunto de dados abrangente que contém informações detalhadas sobre empresas, incluindo seus dados cadastrais, 
+      informações de contato, detalhes de localização, informações sobre o quadro societário e informações sobre empresas sucedidas. 
+      Inclui campos como CNPJ (um identificador único para empresas no Brasil), nomes, informações de contato (telefone e e-mail), 
+      detalhes de endereço (incluindo cidade, estado e país), informações sobre a natureza jurídica da empresa, informações sobre o 
+      porte da empresa e outras informações relevantes. Este modelo é particularmente útil para usuários de negócios que precisam 
+      entender a demografia das empresas, acompanhar dados das empresas ao longo do tempo ou analisar o comportamento da empresa 
+      com base em atributos cadastrais ou de localização.
+      
+      Fonte: Base de Cadastro Nacional
+      Frequência de Atualização: Diária
+      Stakeholders: Secretaria Municipal de Desenvolvimento Econômico
     config:
       alias: raw_bcadastro_cnpj
       schema: raw
       materialized: view
-
+      tags: ['raw', 'bcadastro', 'cnpj']
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1
+          severity: error
     columns:
       - name: cnpj
-        description: Esta coluna representa o CNPJ (Cadastro Nacional da Pessoa Jurídica), que é um identificador único para empresas brasileiras. É armazenado como uma string e é crucial para identificar empresas individuais no Brasil.
+        description: >
+          Esta coluna representa o CNPJ (Cadastro Nacional da Pessoa Jurídica), que é um identificador único para empresas brasileiras. 
+          É armazenado como uma string e é crucial para identificar empresas individuais no Brasil.
+          
+          Formato: 14 dígitos numéricos
+          Exemplo: 00000000000191
         data_type: string
         quote: true
         tests:
@@ -21,44 +41,74 @@ models:
           - dbt_expectations.expect_column_value_lengths_to_equal:
               value: 14
               severity: error
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{14}$'
+              severity: error
 
       - name: id_municipio
-        description: Este é o identificador único do município onde a empresa está localizada. É um valor string que é usado para vincular a outras tabelas para obter informações mais detalhadas sobre o município.
+        description: >
+          Este é o identificador único do município onde a empresa está localizada. É um valor string que é usado para vincular 
+          a outras tabelas para obter informações mais detalhadas sobre o município.
+          
+          Fonte: IBGE
+          Formato: Código IBGE do município (7 dígitos)
         data_type: string
         quote: true
         tests:
-          - not_null
+          - not_null:
+              severity: error
           - relationships:
               to: ref('raw_bcadastro_municipios')
               field: id_municipio
+              severity: error
+          - dbt_expectations.expect_column_value_lengths_to_equal:
+              value: 7
+              severity: warn
 
       - name: id_pais
-        description: Este campo representa o identificador único do país onde a empresa está localizada. É um campo do tipo string e é usado para vincular ao diretório de países para obter informações mais detalhadas.
+        description: >
+          Este campo representa o identificador único do país onde a empresa está localizada. É um campo do tipo string e é usado 
+          para vincular ao diretório de países para obter informações mais detalhadas.
+          
+          Fonte: Bacen
+          Formato: Código do país conforme Banco Central
         data_type: string
         quote: true
         tests:
-          - not_null
+          - not_null:
+              severity: error
           - relationships:
               to: ref('raw_bcadastro_paises')
               field: id_pais
+              severity: error
 
       - name: id_natureza_juridica
-        description: Este campo representa o identificador único da natureza jurídica da empresa. É um valor string e é usado para vincular à tabela 'naturezas_juridicas' para obter mais detalhes. Este campo é importante para entender a estrutura legal da empresa.
+        description: >
+          Este campo representa o identificador único da natureza jurídica da empresa. É um valor string e é usado para vincular 
+          à tabela 'naturezas_juridicas' para obter mais detalhes. Este campo é importante para entender a estrutura legal da empresa.
+          
+          Fonte: Receita Federal
+          Formato: Código de natureza jurídica (4 dígitos)
         data_type: string
         quote: true
         tests:
-          - not_null
+          - not_null:
+              severity: error
           - relationships:
               to: ref('raw_bcadastro_naturezas_juridicas')
               field: id_natureza_juridica
+              severity: error
+          - dbt_expectations.expect_column_value_lengths_to_equal:
+              value: 4
+              severity: warn
 
       - name: id_qualificacao_responsavel
-        description: Este campo representa o identificador único da qualificação do responsável pela empresa. É um valor string.
+        description: Este campo representa o identificador único da qualificação do responsável pela empresa.
         data_type: string
         quote: true
 
       - name: id_porte
-        description: Este campo representa o identificador único do porte da empresa. É um valor string.
+        description: Este campo representa o identificador único do porte da empresa.
         data_type: string
         quote: true
 
@@ -86,6 +136,8 @@ models:
         description: Esta coluna representa o nome empresarial (razão social) da empresa.
         data_type: string
         quote: true
+        tests:
+          - not_null
 
       - name: nome_fantasia
         description: Esta coluna representa o nome fantasia da empresa.
@@ -93,12 +145,19 @@ models:
         quote: true
 
       - name: capital_social
-        description: Esta coluna representa o capital social da empresa, em reais.
+        description: >
+          Esta coluna representa o capital social da empresa, em reais.
+          
+          Formato: Valor decimal com até 2 casas decimais
+          Exemplo: 1000000.00
         data_type: string
         quote: true
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: '^[0-9]+(\.[0-9]{1,2})?$'
+              severity: warn
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: '0'
               severity: warn
 
       - name: cnae_fiscal
@@ -137,11 +196,16 @@ models:
         quote: true
 
       - name: data_inicio_atividade
-        description: Esta coluna representa a data de início das atividades da empresa.
+        description: >
+          Esta coluna representa a data de início das atividades da empresa.
+          
+          Formato: YYYY-MM-DD
+          Regra: Data não pode ser futura
         data_type: date
         quote: true
         tests:
-          - not_null
+          - not_null:
+              severity: error
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: '1900-01-01'
               max_value: "{{ current_timestamp() }}"
@@ -192,148 +256,157 @@ models:
         data_type: string
         quote: true
 
-      - name: contato
-        description: Informações de contato da empresa.
-        data_type: record
+      - name: contato.telefone.ddd
+        description: >
+          DDD do telefone da empresa.
+          
+          Formato: 2 dígitos numéricos
+          Exemplo: 21
+        data_type: string
         quote: true
-        columns:
-          - name: telefone
-            description: Informações de telefone da empresa.
-            data_type: record
-            quote: true
-            columns:
-              - name: ddd
-                description: DDD do telefone da empresa.
-                data_type: string
-                quote: true
-                tests:
-                  - dbt_expectations.expect_column_values_to_match_regex:
-                      regex: '^[0-9]{2}$'
-                      severity: warn
-              - name: telefone
-                description: Número de telefone da empresa.
-                data_type: string
-                quote: true
-                tests:
-                  - dbt_expectations.expect_column_values_to_match_regex:
-                      regex: '^[0-9]{8,9}$'
-                      severity: warn
-          - name: email
-            description: Endereço de e-mail da empresa.
-            data_type: string
-            quote: true
-            tests:
-              - dbt_expectations.expect_column_values_to_match_regex:
-                  regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-                  severity: warn
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{2}$'
+              severity: warn
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: '11'
+              max_value: '99'
+              severity: warn
 
-      - name: endereco
-        description: Informações de endereço da empresa.
-        data_type: record
+      - name: contato.telefone.numero
+        description: Número de telefone da empresa.
+        data_type: string
         quote: true
-        columns:
-          - name: uf
-            description: Estado (UF) do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: cep
-            description: CEP do endereço da empresa.
-            data_type: string
-            quote: true
-            tests:
-              - dbt_expectations.expect_column_values_to_match_regex:
-                  regex: '^[0-9]{8}$'
-                  severity: warn
-          - name: municipio_nome
-            description: Município do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: bairro
-            description: Bairro do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: tipo_logradouro
-            description: Tipo de logradouro do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: logradouro
-            description: Logradouro do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: numero
-            description: Número do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: complemento
-            description: Complemento do endereço da empresa.
-            data_type: string
-            quote: true
-          - name: cidade_exterior_nome
-            description: Nome da cidade no exterior (para empresas com endereço no exterior).
-            data_type: string
-            quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{8,9}$'
+              severity: warn
 
-      - name: contador
-        description: Informações do contador da empresa.
-        data_type: record
+      - name: contato.email
+        description: Endereço de e-mail da empresa.
+        data_type: string
         quote: true
-        columns:
-          - name: pf
-            description: Informações do contador pessoa física.
-            data_type: record
-            quote: true
-            columns:
-              - name: tipo_crc
-                description: Tipo do CRC do contador pessoa física.
-                data_type: string
-                quote: true
-              - name: classificacao_crc
-                description: Classificação do CRC do contador pessoa física.
-                data_type: string
-                quote: true
-              - name: sequencial_crc
-                description: Número sequencial do CRC do contador pessoa física.
-                data_type: string
-                quote: true
-              - name: id
-                description: CPF do contador pessoa física.
-                data_type: string
-                quote: true
-          - name: pj
-            description: Informações do contador pessoa jurídica.
-            data_type: record
-            quote: true
-            columns:
-              - name: id
-                description: CNPJ do contador pessoa jurídica.
-                data_type: string
-                quote: true
-              - name: tipo_crc
-                description: Tipo do CRC do contador pessoa jurídica.
-                data_type: string
-                quote: true
-              - name: classificacao_crc
-                description: Classificação do CRC do contador pessoa jurídica.
-                data_type: string
-                quote: true
-              - name: sequencial_crc
-                description: Número sequencial do CRC do contador pessoa jurídica.
-                data_type: string
-                quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+              severity: warn
 
-      - name: responsavel
-        description: Informações do responsável pela empresa.
-        data_type: record
+      - name: endereco.uf
+        description: Estado (UF) do endereço da empresa.
+        data_type: string
         quote: true
-        columns:
-          - name: cpf
-            description: CPF do responsável pela empresa.
-            data_type: string
-            quote: true
-          - name: qualificacao
-            description: Qualificação do responsável pela empresa.
-            data_type: string
-            quote: true
+
+      - name: endereco.cep
+        description: >
+          CEP do endereço da empresa.
+          
+          Formato: 8 dígitos numéricos sem hífen
+          Exemplo: 20000000
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{8}$'
+              severity: warn
+          - not_null:
+              severity: warn
+
+      - name: endereco.municipio_nome
+        description: Município do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: endereco.bairro
+        description: Bairro do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: endereco.tipo_logradouro
+        description: Tipo de logradouro do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: endereco.logradouro
+        description: Logradouro do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: endereco.numero
+        description: Número do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: endereco.complemento
+        description: Complemento do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: endereco.cidade_exterior_nome
+        description: Nome da cidade no exterior (para empresas com endereço no exterior).
+        data_type: string
+        quote: true
+
+      - name: contador.pf.tipo_crc
+        description: Tipo do CRC do contador pessoa física.
+        data_type: string
+        quote: true
+
+      - name: contador.pf.classificacao_crc
+        description: Classificação do CRC do contador pessoa física.
+        data_type: string
+        quote: true
+
+      - name: contador.pf.sequencial_crc
+        description: Número sequencial do CRC do contador pessoa física.
+        data_type: string
+        quote: true
+
+      - name: contador.pf.id
+        description: CPF do contador pessoa física.
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{11}$'
+              severity: warn
+
+      - name: contador.pj.id
+        description: CNPJ do contador pessoa jurídica.
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{14}$'
+              severity: warn
+
+      - name: contador.pj.tipo_crc
+        description: Tipo do CRC do contador pessoa jurídica.
+        data_type: string
+        quote: true
+
+      - name: contador.pj.classificacao_crc
+        description: Classificação do CRC do contador pessoa jurídica.
+        data_type: string
+        quote: true
+
+      - name: contador.pj.sequencial_crc
+        description: Número sequencial do CRC do contador pessoa jurídica.
+        data_type: string
+        quote: true
+
+      - name: responsavel.cpf
+        description: CPF do responsável pela empresa.
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{11}$'
+              severity: warn
+
+      - name: responsavel.qualificacao
+        description: Qualificação do responsável pela empresa.
+        data_type: string
+        quote: true
 
       - name: socios_quantidade
         description: Quantidade de sócios da empresa.
@@ -350,65 +423,73 @@ models:
         data_type: string
         quote: true
 
-      - name: socios
-        description: Informações sobre os sócios da empresa.
-        data_type: record
+      - name: socios.codigo_pais
+        description: Código do país do sócio.
+        data_type: string
         quote: true
-        columns:
-          - name: codigo_pais
-            description: Código do país do sócio.
-            data_type: string
-            quote: true
-          - name: cpf_cnpj
-            description: CPF ou CNPJ do sócio.
-            data_type: string
-            quote: true
-          - name: cpf_representante_legal
-            description: CPF do representante legal do sócio.
-            data_type: string
-            quote: true
-          - name: data_situacao_especial
-            description: Data da situação especial do sócio.
-            data_type: date
-            quote: true
-          - name: nome_socio_estrangeiro
-            description: Nome do sócio estrangeiro.
-            data_type: string
-            quote: true
-          - name: qualificacao_representante_legal
-            description: Qualificação do representante legal do sócio.
-            data_type: string
-            quote: true
-          - name: qualificacao_socio
-            description: Qualificação do sócio.
-            data_type: string
-            quote: true
-          - name: tipo
-            description: Tipo de sócio (Pessoa Física ou Pessoa Jurídica).
-            data_type: string
-            quote: true
 
-      - name: sucessoes
-        description: Informações sobre as sucessões da empresa.
-        data_type: record
+      - name: socios.cpf_cnpj
+        description: CPF ou CNPJ do sócio.
+        data_type: string
         quote: true
-        columns:
-          - name: evento_sucedida
-            description: Evento que originou a sucessão.
-            data_type: string
-            quote: true
-          - name: data_evento_sucedida
-            description: Data do evento que originou a sucessão.
-            data_type: date
-            quote: true
-          - name: data_processamento
-            description: Data do processamento da sucessão.
-            data_type: date
-            quote: true
-          - name: sucessoras
-            description: Lista de CNPJs das empresas sucessoras.
-            data_type: string
-            quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{11}|[0-9]{14}$'
+              severity: warn
+
+      - name: socios.cpf_representante_legal
+        description: CPF do representante legal do sócio.
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: '^[0-9]{11}$'
+              severity: warn
+
+      - name: socios.data_situacao_especial
+        description: Data da situação especial do sócio.
+        data_type: date
+        quote: true
+
+      - name: socios.nome_socio_estrangeiro
+        description: Nome do sócio estrangeiro.
+        data_type: string
+        quote: true
+
+      - name: socios.qualificacao_representante_legal
+        description: Qualificação do representante legal do sócio.
+        data_type: string
+        quote: true
+
+      - name: socios.qualificacao_socio
+        description: Qualificação do sócio.
+        data_type: string
+        quote: true
+
+      - name: socios.tipo
+        description: Tipo de sócio (Pessoa Física ou Pessoa Jurídica).
+        data_type: string
+        quote: true
+
+      - name: sucessoes.evento_sucedida
+        description: Evento que originou a sucessão.
+        data_type: string
+        quote: true
+
+      - name: sucessoes.data_evento_sucedida
+        description: Data do evento que originou a sucessão.
+        data_type: date
+        quote: true
+
+      - name: sucessoes.data_processamento
+        description: Data do processamento da sucessão.
+        data_type: date
+        quote: true
+
+      - name: sucessoes.sucessoras
+        description: Lista de CNPJs das empresas sucessoras.
+        data_type: string
+        quote: true
 
       - name: timestamp
         description: Timestamp da extração dos dados.
@@ -416,72 +497,85 @@ models:
         quote: true
 
       - name: language
-        description: codigo do idioma.
+        description: Código do idioma.
         data_type: string
         quote: true
 
-      - name: airbyte
-        description: Metadados do Airbyte.
-        data_type: record
+      - name: airbyte.id
+        description: ID do Airbyte.
+        data_type: string
         quote: true
-        columns:
-          - name: id
-            description: id.
-            data_type: string
-            quote: true
-          - name: key
-            description: key.
-            data_type: string
-            quote: true
-          - name: rev
-            description: rev.
-            data_type: string
-            quote: true
-          - name: _id
-            description: _id.
-            data_type: string
-            quote: true
-          - name: _rev
-            description: _rev.
-            data_type: string
-            quote: true
-          - name: version
-            description: version.
-            data_type: string
-            quote: true
-          - name: seq
-            description: seq.
-            data_type: string
-            quote: true
-          - name: last_seq
-            description: last_seq.
-            data_type: string
-            quote: true
-          - name: airbyte_raw_id
-            description: airbyte_raw_id.
-            data_type: string
-            quote: true
-          - name: airbyte_extracted_at
-            description: Data e hora da extração pelo Airbyte.
-            data_type: timestamp
-            quote: true
-          - name: airbyte_meta
-            description: Metadados adicionais do Airbyte.
-            data_type: record
-            quote: true
-            columns:
-              - name: changes
-                description: Alterações detectadas pelo Airbyte.
-                data_type: string
-                quote: true
-              - name: sync_id
-                description: ID de sincronização do Airbyte.
-                data_type: string
-                quote: true
-          - name: airbyte_generation_id
-            description: ID de geração do Airbyte.
-            data_type: integer
-            quote: true
+
+      - name: airbyte.key
+        description: Chave do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.rev
+        description: Revisão do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte._id
+        description: ID interno do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte._rev
+        description: Revisão interna do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.version
+        description: Versão do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.seq
+        description: Sequência do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.last_seq
+        description: Última sequência do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_raw_id
+        description: ID bruto do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_extracted_at
+        description: >
+          Data e hora da extração pelo Airbyte.
+          
+          Formato: YYYY-MM-DD HH:MM:SS
+          Timezone: UTC
+        data_type: timestamp
+        quote: true
+        tests:
+          - not_null:
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: '2020-01-01'
+              max_value: "{{ current_timestamp() }}"
+              severity: warn
+
+      - name: airbyte.airbyte_meta.changes
+        description: Alterações detectadas pelo Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_meta.sync_id
+        description: ID de sincronização do Airbyte.
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_generation_id
+        description: ID de geração do Airbyte.
+        data_type: integer
+        quote: true
 
       - name: cnpj_particao
         description: Esta coluna representa a partição do CNPJ (Cadastro Nacional da Pessoa Jurídica). O 'cnpj_particao' é usado para otimizar o processamento e consulta de dados, dividindo os dados em partes menores.
