@@ -1,6 +1,6 @@
 ---
 description: 
-globs: 
+globs: *.sql,*.yml
 alwaysApply: false
 ---
 # IplanRio Column Naming Conventions
