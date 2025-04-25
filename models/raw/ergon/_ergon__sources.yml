@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: brutos_ergon_staging
+    database: rj-smfp
+    schema: brutos_ergon_staging
+    tables:
+      - name: VW_DLK_ERG_CARGOS_
+      - name: VW_DLK_ERG_EMPRESAS
+      - name: VW_DLK_ERG_FUNCIONARIOS
+      - name: VW_DLK_ERG_PROVIMENTOS_EV
+      - name: VW_DLK_ERG_HSETOR_
+      - name: VW_DLK_ERG_VINCULOS
