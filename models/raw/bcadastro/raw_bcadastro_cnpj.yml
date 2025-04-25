@@ -1,0 +1,439 @@
+version: 2
+
+models:
+  - name: raw_bcadastro_cnpj
+    description: O modelo cnpj é um conjunto de dados abrangente que contém informações detalhadas sobre empresas, incluindo seus dados cadastrais, informações de contato, detalhes de localização, informações sobre o quadro societário e informações sobre empresas sucedidas. Inclui campos como CNPJ (um identificador único para empresas no Brasil), nomes, informações de contato (telefone e e-mail), detalhes de endereço (incluindo cidade, estado e país), informações sobre a natureza jurídica da empresa, informações sobre o porte da empresa e outras informações relevantes. Este modelo é particularmente útil para usuários de negócios que precisam entender a demografia das empresas, acompanhar dados das empresas ao longo do tempo ou analisar o comportamento da empresa com base em atributos cadastrais ou de localização.
+
+    columns:
+      - name: cnpj
+        description: Esta coluna representa o CNPJ (Cadastro Nacional da Pessoa Jurídica), que é um identificador único para empresas brasileiras. É armazenado como uma string e é crucial para identificar empresas individuais no Brasil.
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - unique
+
+      - name: id_municipio
+        description: Este é o identificador único do município onde a empresa está localizada. É um valor string que é usado para vincular a outras tabelas para obter informações mais detalhadas sobre o município.
+        data_type: string
+        quote: true
+
+      - name: id_pais
+        description: Este campo representa o identificador único do país onde a empresa está localizada. É um campo do tipo string e é usado para vincular ao diretório de países para obter informações mais detalhadas.
+        data_type: string
+        quote: true
+
+      - name: id_natureza_juridica
+        description: Este campo representa o identificador único da natureza jurídica da empresa. É um valor string e é usado para vincular à tabela 'naturezas_juridicas' para obter mais detalhes. Este campo é importante para entender a estrutura legal da empresa.
+        data_type: string
+        quote: true
+
+      - name: id_qualificacao_responsavel
+        description: Este campo representa o identificador único da qualificação do responsável pela empresa. É um valor string.
+        data_type: string
+        quote: true
+
+      - name: id_porte
+        description: Este campo representa o identificador único do porte da empresa. É um valor string.
+        data_type: string
+        quote: true
+
+      - name: id_indicador_matriz
+        description: Este campo representa o identificador se a empresa é matriz (1) ou filial (2).
+        data_type: string
+        quote: true
+
+      - name: id_tipo_orgao_registro
+        description: Este campo representa o identificador único do tipo de órgão de registro da empresa.
+        data_type: string
+        quote: true
+
+      - name: id_motivo_situacao
+        description: Este campo representa o identificador único do motivo da situação cadastral da empresa.
+        data_type: string
+        quote: true
+
+      - name: id_situacao_cadastral
+        description: Este campo representa o identificador único da situação cadastral da empresa.
+        data_type: string
+        quote: true
+
+      - name: razao_social
+        description: Esta coluna representa o nome empresarial (razão social) da empresa.
+        data_type: string
+        quote: true
+
+      - name: nome_fantasia
+        description: Esta coluna representa o nome fantasia da empresa.
+        data_type: string
+        quote: true
+
+      - name: capital_social
+        description: Esta coluna representa o capital social da empresa, em reais.
+        data_type: string
+        quote: true
+
+      - name: cnae_fiscal
+        description: Esta coluna representa o código CNAE (Classificação Nacional de Atividades Econômicas) principal da empresa.
+        data_type: string
+        quote: true
+
+      - name: cnae_secundarias
+        description: Esta coluna contém uma lista de códigos CNAE secundários da empresa.
+        data_type: string
+        quote: true
+
+      - name: nire
+        description: Esta coluna representa o NIRE (Número de Identificação do Registro de Empresas) da empresa.
+        data_type: string
+        quote: true
+
+      - name: cnpj_sucedida
+        description: Esta coluna representa o CNPJ da empresa sucedida, em casos de sucessão empresarial.
+        data_type: string
+        quote: true
+
+      - name: tipo_orgao_registro
+        description: Descrição do tipo de órgão de registro.
+        data_type: string
+        quote: true
+
+      - name: porte_descricao
+        description: Descrição do porte da empresa.
+        data_type: string
+        quote: true
+
+      - name: indicador_matriz_descricao
+        description: Indica se a empresa é matriz ou filial ('1' para Matriz, '2' para Filial).
+        data_type: string
+        quote: true
+
+      - name: data_inicio_atividade
+        description: Esta coluna representa a data de início das atividades da empresa.
+        data_type: date
+        quote: true
+
+      - name: data_situacao_cadastral
+        description: Esta coluna representa a data da situação cadastral da empresa.
+        data_type: date
+        quote: true
+
+      - name: data_situacao_especial
+        description: Esta coluna representa a data da situação especial da empresa, se houver.
+        data_type: date
+        quote: true
+
+      - name: data_inclusao_responsavel
+        description: Esta coluna representa a data de inclusão do responsável pela empresa.
+        data_type: date
+        quote: true
+
+      - name: situacao_cadastral
+        description: Descrição da situação cadastral da empresa.
+        data_type: string
+        quote: true
+
+      - name: natureza_juridica
+        description: Descrição da natureza jurídica da empresa.
+        data_type: string
+        quote: true
+
+      - name: situacao_especial
+        description: Descrição da situação especial da empresa, se houver.
+        data_type: string
+        quote: true
+
+      - name: motivo_situacao
+        description: Descrição do motivo da situação cadastral da empresa.
+        data_type: string
+        quote: true
+
+      - name: id_ente_federativo
+        description: Identificador do Ente Federativo Responsável (EFR).
+        data_type: string
+        quote: true
+
+      - name: ente_federativo
+        description: Descrição do Ente Federativo Responsável (EFR).
+        data_type: string
+        quote: true
+
+      - name: contato
+        description: Informações de contato da empresa.
+        data_type: record
+        quote: true
+        columns:
+          - name: telefone
+            description: Informações de telefone da empresa.
+            data_type: record
+            quote: true
+            columns:
+              - name: ddd
+                description: DDD do telefone da empresa.
+                data_type: string
+                quote: true
+              - name: telefone
+                description: Número de telefone da empresa.
+                data_type: string
+                quote: true
+          - name: email
+            description: Endereço de e-mail da empresa.
+            data_type: string
+            quote: true
+
+      - name: endereco
+        description: Informações de endereço da empresa.
+        data_type: record
+        quote: true
+        columns:
+          - name: uf
+            description: Estado (UF) do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: cep
+            description: CEP do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: municipio_nome
+            description: Município do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: bairro
+            description: Bairro do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: tipo_logradouro
+            description: Tipo de logradouro do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: logradouro
+            description: Logradouro do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: numero
+            description: Número do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: complemento
+            description: Complemento do endereço da empresa.
+            data_type: string
+            quote: true
+          - name: cidade_exterior_nome
+            description: Nome da cidade no exterior (para empresas com endereço no exterior).
+            data_type: string
+            quote: true
+
+      - name: contador
+        description: Informações do contador da empresa.
+        data_type: record
+        quote: true
+        columns:
+          - name: pf
+            description: Informações do contador pessoa física.
+            data_type: record
+            quote: true
+            columns:
+              - name: tipo_crc
+                description: Tipo do CRC do contador pessoa física.
+                data_type: string
+                quote: true
+              - name: classificacao_crc
+                description: Classificação do CRC do contador pessoa física.
+                data_type: string
+                quote: true
+              - name: sequencial_crc
+                description: Número sequencial do CRC do contador pessoa física.
+                data_type: string
+                quote: true
+              - name: id
+                description: CPF do contador pessoa física.
+                data_type: string
+                quote: true
+          - name: pj
+            description: Informações do contador pessoa jurídica.
+            data_type: record
+            quote: true
+            columns:
+              - name: id
+                description: CNPJ do contador pessoa jurídica.
+                data_type: string
+                quote: true
+              - name: tipo_crc
+                description: Tipo do CRC do contador pessoa jurídica.
+                data_type: string
+                quote: true
+              - name: classificacao_crc
+                description: Classificação do CRC do contador pessoa jurídica.
+                data_type: string
+                quote: true
+              - name: sequencial_crc
+                description: Número sequencial do CRC do contador pessoa jurídica.
+                data_type: string
+                quote: true
+
+      - name: responsavel
+        description: Informações do responsável pela empresa.
+        data_type: record
+        quote: true
+        columns:
+          - name: cpf
+            description: CPF do responsável pela empresa.
+            data_type: string
+            quote: true
+          - name: qualificacao
+            description: Qualificação do responsável pela empresa.
+            data_type: string
+            quote: true
+
+      - name: socios_quantidade
+        description: Quantidade de sócios da empresa.
+        data_type: integer
+        quote: true
+
+      - name: tipos_unidade
+        description: Tipos de unidade da empresa (Matriz, Filial).
+        data_type: string
+        quote: true
+
+      - name: formas_atuacao
+        description: Formas de atuação da empresa.
+        data_type: string
+        quote: true
+
+      - name: socios
+        description: Informações sobre os sócios da empresa.
+        data_type: record
+        quote: true
+        columns:
+          - name: codigo_pais
+            description: Código do país do sócio.
+            data_type: string
+            quote: true
+          - name: cpf_cnpj
+            description: CPF ou CNPJ do sócio.
+            data_type: string
+            quote: true
+          - name: cpf_representante_legal
+            description: CPF do representante legal do sócio.
+            data_type: string
+            quote: true
+          - name: data_situacao_especial
+            description: Data da situação especial do sócio.
+            data_type: date
+            quote: true
+          - name: nome_socio_estrangeiro
+            description: Nome do sócio estrangeiro.
+            data_type: string
+            quote: true
+          - name: qualificacao_representante_legal
+            description: Qualificação do representante legal do sócio.
+            data_type: string
+            quote: true
+          - name: qualificacao_socio
+            description: Qualificação do sócio.
+            data_type: string
+            quote: true
+          - name: tipo
+            description: Tipo de sócio (Pessoa Física ou Pessoa Jurídica).
+            data_type: string
+            quote: true
+
+      - name: sucessoes
+        description: Informações sobre as sucessões da empresa.
+        data_type: record
+        quote: true
+        columns:
+          - name: evento_sucedida
+            description: Evento que originou a sucessão.
+            data_type: string
+            quote: true
+          - name: data_evento_sucedida
+            description: Data do evento que originou a sucessão.
+            data_type: date
+            quote: true
+          - name: data_processamento
+            description: Data do processamento da sucessão.
+            data_type: date
+            quote: true
+          - name: sucessoras
+            description: Lista de CNPJs das empresas sucessoras.
+            data_type: string
+            quote: true
+
+      - name: timestamp
+        description: Timestamp da extração dos dados.
+        data_type: string
+        quote: true
+
+      - name: language
+        description: codigo do idioma.
+        data_type: string
+        quote: true
+
+      - name: airbyte
+        description: Metadados do Airbyte.
+        data_type: record
+        quote: true
+        columns:
+          - name: id
+            description: id.
+            data_type: string
+            quote: true
+          - name: key
+            description: key.
+            data_type: string
+            quote: true
+          - name: rev
+            description: rev.
+            data_type: string
+            quote: true
+          - name: _id
+            description: _id.
+            data_type: string
+            quote: true
+          - name: _rev
+            description: _rev.
+            data_type: string
+            quote: true
+          - name: version
+            description: version.
+            data_type: string
+            quote: true
+          - name: seq
+            description: seq.
+            data_type: string
+            quote: true
+          - name: last_seq
+            description: last_seq.
+            data_type: string
+            quote: true
+          - name: airbyte_raw_id
+            description: airbyte_raw_id.
+            data_type: string
+            quote: true
+          - name: airbyte_extracted_at
+            description: Data e hora da extração pelo Airbyte.
+            data_type: timestamp
+            quote: true
+          - name: airbyte_meta
+            description: Metadados adicionais do Airbyte.
+            data_type: record
+            quote: true
+            columns:
+              - name: changes
+                description: Alterações detectadas pelo Airbyte.
+                data_type: string
+                quote: true
+              - name: sync_id
+                description: ID de sincronização do Airbyte.
+                data_type: string
+                quote: true
+          - name: airbyte_generation_id
+            description: ID de geração do Airbyte.
+            data_type: integer
+            quote: true
+
+      - name: cnpj_particao
+        description: Esta coluna representa a partição do CNPJ (Cadastro Nacional da Pessoa Jurídica). O 'cnpj_particao' é usado para otimizar o processamento e consulta de dados, dividindo os dados em partes menores.
+        data_type: integer
+        quote: true 

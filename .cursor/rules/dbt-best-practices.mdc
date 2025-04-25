@@ -1,0 +1,74 @@
+---
+description: 
+globs: models/**/*.sql,macros/**/*.sql
+alwaysApply: false
+---
+# dbt Best Practices
+
+## Model Configuration
+- Use `config` blocks at the top of each model file
+- Set appropriate `materialization` strategy based on model type:
+  - Use `view` for staging/raw models
+  - Use `table` for intermediate and mart models
+  - Use `incremental` for large fact tables that are frequently updated
+- Always add config block on top of the file containig:
+  - `alias`
+  - `schema`
+
+## SQL Style
+- Write modular code using CTEs
+- Name CTEs using clear, descriptive names
+- Order CTEs from least to most complex
+- Add comments to explain complex logic or business rules
+- Use `--` for single line comments
+- Group related columns together with comments
+- Only write comments in brazilian portuguese
+- Include timezone adjustments when dealing with timestamps
+- Use consistent indentation (2 or 4 spaces)
+
+## Source Usage
+- Only use `{{ ref() }}` to reference models
+- Only suggest as input for  `{{ ref() }}` the name of .sql files of the project
+- Only use ``{{ source() }}` macro to reference raw tables
+- Never use `ref()`
+- Never use `source()`
+- Define all sources in `sources.yml` files
+- Include tests and documentation in yml files
+
+## Testing
+- Add at minimum these generic tests for each model:
+  - unique
+  - not_null
+  - relationships
+  - accepted_values
+- Create custom tests for complex business logic
+- Test all joins to ensure referential integrity
+
+## Documentation
+- Document all models in their respective .yml files
+- Include descriptions for all columns
+- Document business logic and assumptions
+- Add inline SQL comments for complex transformations
+
+## Performance
+- Materialize staging models as views
+- Use appropriate indexes and partitioning
+- Limit joins to only necessary columns
+- Use CTEs instead of subqueries
+- Consider incremental models for large tables
+
+## Project Structure
+- Organize models by their purpose:
+  - raw/
+  - intermediate/
+  - marts/
+- Keep related models together
+- Use a consistent file structure across projects
+
+## BigQuery Specific
+- Only use functions functions available in Big Query or in macros folder
+- Handle JSON data using appropriate JSON functions
+- Consider partitioning and clustering for large tables
+- Use appropriate data types for columns
+
+
