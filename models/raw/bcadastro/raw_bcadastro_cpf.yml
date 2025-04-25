@@ -1,0 +1,230 @@
+version: 2
+
+models:
+  - name: raw_bcadastro_cpf 
+    description: >
+      Tabela contendo dados de pessoas físicas do Cadastro de Pessoas Físicas (CPF).
+      Atualizada diariamente a partir do sistema BCadastro.
+      Stakeholders principais: Secretaria Municipal de Fazenda.
+    config:
+      alias: cpf
+      schema: brutos_bcadastro
+      materialized: table
+      partition_by:
+        field: cpf_particao
+        data_type: int64
+        range:
+          start: 0
+          end: 100000000000
+          interval: 34722222
+
+    columns:
+      - name: cpf
+        description: "Número de inscrição no Cadastro de Pessoas Físicas (CPF)"
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_bcadastro_cpf__cpf__unique
+              severity: error
+          - not_null:
+              name: raw_bcadastro_cpf__cpf__not_null
+              severity: error
+
+      # Dados pessoais
+      - name: nome
+        description: "Nome completo do contribuinte"
+        data_type: string
+
+      - name: nome_social
+        description: "Nome social do contribuinte, quando aplicável"
+        data_type: string
+
+      - name: mae_nome
+        description: "Nome completo da mãe do contribuinte"
+        data_type: string
+
+      # Datas
+      - name: nascimento_data
+        description: "Data de nascimento do contribuinte"
+        data_type: date
+
+      - name: inscricao_data
+        description: "Data de inscrição no CPF"
+        data_type: date
+
+      - name: atualizacao_data
+        description: "Data da última atualização do registro"
+        data_type: timestamp
+
+      # Status e demografia
+      - name: situacao_cadastral_tipo
+        description: "Situação cadastral do CPF (ex: Regular, Suspenso, Cancelado, etc)"
+        data_type: string
+
+      - name: sexo
+        description: "Sexo do contribuinte (masculino/feminino)"
+        data_type: string
+
+      - name: obito_ano
+        description: "Ano do óbito, se aplicável"
+        data_type: string
+
+      - name: estrangeiro_indicador
+        description: "Indica se o contribuinte é estrangeiro (true/false)"
+        data_type: boolean
+
+      - name: residente_exterior_indicador
+        description: "Indica se o contribuinte é residente no exterior (true/false)"
+        data_type: boolean
+
+      # Estruturas aninhadas - Contato
+      - name: contato.telefone.ddi
+        description: "Código DDI do telefone do contribuinte"
+        data_type: string
+
+      - name: contato.telefone.ddd
+        description: "Código DDD do telefone do contribuinte"
+        data_type: string
+
+      - name: contato.telefone.numero
+        description: "Número do telefone do contribuinte"
+        data_type: string
+
+      - name: contato.email
+        description: "Endereço de e-mail do contribuinte"
+        data_type: string
+
+      # Estruturas aninhadas - Endereço
+      - name: endereco.cep
+        description: "CEP do endereço do contribuinte"
+        data_type: string
+
+      - name: endereco.uf
+        description: "Unidade Federativa do endereço do contribuinte"
+        data_type: string
+
+      - name: endereco.municipio
+        description: "Município do endereço do contribuinte"
+        data_type: string
+
+      - name: endereco.bairro
+        description: "Bairro do endereço do contribuinte"
+        data_type: string
+
+      - name: endereco.tipo_logradouro
+        description: "Tipo do logradouro do endereço (ex: Rua, Avenida, etc)"
+        data_type: string
+
+      - name: endereco.logradouro
+        description: "Nome do logradouro do endereço"
+        data_type: string
+
+      - name: endereco.numero
+        description: "Número do endereço"
+        data_type: string
+
+      - name: endereco.complemento
+        description: "Complemento do endereço"
+        data_type: string
+
+      # Estruturas aninhadas - Nascimento
+      - name: nascimento.uf
+        description: "UF de nascimento do contribuinte"
+        data_type: string
+
+      - name: nascimento.municipio
+        description: "Município de nascimento do contribuinte"
+        data_type: string
+
+      - name: nascimento.pais
+        description: "País de nascimento do contribuinte"
+        data_type: string
+
+      - name: nascimento.id_municipio
+        description: "ID do município de nascimento"
+        data_type: string
+
+      - name: nascimento.id_pais
+        description: "ID do país de nascimento"
+        data_type: string
+
+      # Estruturas aninhadas - Residência
+      - name: residencia.pais
+        description: "País de residência do contribuinte"
+        data_type: string
+
+      - name: residencia.id_pais
+        description: "ID do país de residência"
+        data_type: string
+
+      - name: residencia.id_municipio
+        description: "ID do município de residência"
+        data_type: string
+
+      # Estruturas aninhadas - Ocupação
+      - name: ocupacao.nome
+        description: "Nome da ocupação do contribuinte"
+        data_type: string
+
+      - name: ocupacao.id_ocupacao
+        description: "ID da ocupação"
+        data_type: string
+
+      - name: ocupacao.id_natureza_ocupacao
+        description: "ID da natureza da ocupação"
+        data_type: string
+
+      - name: ocupacao.id_ua
+        description: "ID da unidade administrativa"
+        data_type: string
+
+      # Estruturas aninhadas - Metadados
+      - name: metadados.ano_exercicio
+        description: "Ano do exercício fiscal"
+        data_type: integer
+
+      - name: metadados.version
+        description: "Versão do registro"
+        data_type: string
+
+      - name: metadados.tipo
+        description: "Tipo do registro"
+        data_type: string
+
+      - name: metadados.timestamp
+        description: "Timestamp do registro"
+        data_type: string
+
+      # Campos técnicos
+      - name: airbyte.seq
+        description: "Sequência do registro no Airbyte"
+        data_type: integer
+
+      - name: airbyte.last_seq
+        description: "Última sequência do registro no Airbyte"
+        data_type: integer
+
+      - name: airbyte.airbyte_raw_id
+        description: "ID do registro raw no Airbyte"
+        data_type: string
+
+      - name: airbyte.airbyte_extracted_at
+        description: "Data e hora da extração do registro pelo Airbyte"
+        data_type: timestamp
+
+      - name: airbyte.airbyte_meta.changes
+        description: "Mudanças detectadas pelo Airbyte"
+        data_type: string
+
+      - name: airbyte.airbyte_meta.sync_id
+        description: "ID da sincronização no Airbyte"
+        data_type: string
+
+      - name: airbyte.airbyte_generation_id
+        description: "ID da geração do registro no Airbyte"
+        data_type: string
+
+      # Campo de particionamento
+      - name: cpf_particao
+        description: "Campo usado para particionamento da tabela"
+        data_type: integer 

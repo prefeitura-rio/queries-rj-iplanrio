@@ -1,15 +1,3 @@
-{{
-    config(
-        alias="cnpj",
-        materialized="table",
-        partition_by={
-            "field": "cnpj_particao",
-            "data_type": "int64",
-            "range": {"start": 0, "end": 100000000000, "interval": 34722222},
-        },
-    )
-}}
-
 with
     fonte as (
         select *
@@ -826,17 +814,6 @@ with
             -- Primary key
             id_cnpj as cnpj,
 
-            -- Foreign keys
-            id_municipio,
-            id_pais,
-            id_natureza_juridica,
-            id_qualificacao_responsavel,
-            id_porte,
-            id_indicador_matriz,
-            id_tipo_orgao_registro,
-            id_motivo_situacao,
-            id_situacao_cadastral,
-
             -- Business data
             razao_social,
             nome_fantasia,
@@ -844,20 +821,32 @@ with
             cnae_fiscal,
             cnae_secundarias,
             nire,
-            tipo_orgao_registro_descricao as orgao_registro_tipo,
-            porte_descricao as porte,
-            indicador_matriz_descricao as matriz_filial_tipo,
+
+            struct(
+                id_natureza_juridica as id, natureza_juridica_descricao as descricao
+            ) as natureza_juridica,
+
+            struct(id_porte as id, porte_descricao as descricao) as porte,
+
+            struct(
+                id_indicador_matriz as id, indicador_matriz_descricao as descricao
+            ) as matriz_filial,
+
+            struct(
+                id_tipo_orgao_registro as id, tipo_orgao_registro_descricao as descricao
+            ) as orgao_registro,
 
             -- Dates
             data_inicio_atividade as inicio_atividade_data,
 
             -- Status and demographics
             struct(
+                id_situacao_cadastral as id,
                 situacao_cadastral_descricao as descricao,
                 data_situacao_cadastral as data,
-                motivo_situacao_descricao as motivo
+                id_motivo_situacao as motivo_id,
+                motivo_situacao_descricao as motivo_descricao
             ) as situacao_cadastral,
-            natureza_juridica_descricao as natureza_juridica,
             struct(
                 situacao_especial as descricao, data_situacao_especial as data
             ) as situacao_especial,
@@ -870,15 +859,18 @@ with
 
             -- Address information grouped in struct
             struct(
-                endereco_uf as uf,
                 endereco_cep as cep,
+                id_pais,
+                endereco_uf as uf,
+                id_municipio,
                 endereco_municipio_nome as municipio_nome,
+                endereco_cidade_exterior_nome as municipio_exterior_nome,
                 endereco_bairro as bairro,
                 endereco_tipo_logradouro as tipo_logradouro,
                 endereco_logradouro as logradouro,
                 endereco_numero as numero,
-                endereco_complemento as complemento,
-                endereco_cidade_exterior_nome as cidade_exterior_nome
+                endereco_complemento as complemento
+
             ) as endereco,
 
             -- Accountant information grouped in struct
@@ -900,7 +892,8 @@ with
             -- Responsible Person
             struct(
                 responsavel_cpf as cpf,
-                responsavel_qualificacao_descricao as qualificacao,
+                id_qualificacao_responsavel as qualificacao_id,
+                responsavel_qualificacao_descricao as qualificacao_descricao,
                 data_inclusao_responsavel as inclusao_data
             ) as responsavel,
 
