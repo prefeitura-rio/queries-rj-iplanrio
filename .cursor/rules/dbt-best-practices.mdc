@@ -1,6 +1,6 @@
 ---
 description: 
-globs: models/**/*.sql,macros/**/*.sql
+globs: models/**/*.sql,macros/**/*.sql,models/**/*.yml
 alwaysApply: false
 ---
 # dbt Best Practices
@@ -27,11 +27,10 @@ alwaysApply: false
 - Use consistent indentation (2 or 4 spaces)
 
 ## Source Usage
-- Only use `{{ ref() }}` to reference models
-- Only suggest as input for  `{{ ref() }}` the name of .sql files of the project
+- Only use `{{ ref() }}` to reference models in sql files
+- Only use `ref()` to reference models in yml files
+- Only suggest as input for  `ref` function models in the codebase
 - Only use ``{{ source() }}` macro to reference raw tables
-- Never use `ref()`
-- Never use `source()`
 - Define all sources in `sources.yml` files
 - Include tests and documentation in yml files
 

@@ -44,7 +44,7 @@ paciente_cpf,
 #### Standard Test Name Pattern
 All tests should follow this naming pattern:
 ```
-{layer}__{dataset}__{table}__{column}__{test_name}
+{layer}_{dataset}_{table}__{column}__{test_name}
 ```
 
 Where:
@@ -64,13 +64,13 @@ models:
       - name: id_atendimento
         data_tests:
             - unique:
-                name: mart__saude__fct_atendimentos__id_atendimento__unique
+                name: mart_saude_fct_atendimentos__id_atendimento__unique
             - not_null:
-                name: mart__saude__fct_atendimentos__id_atendimento__not_null
+                name: mart_saude_fct_atendimentos__id_atendimento__not_null
       - name: paciente_idade
         data_tests:
             - dbt_expectations.expect_column_mean_to_be_between:
-              name: mart__saude__fct_atendimentos__paciente_idade__mean_between_20_and_70
+              name: mart_saude_fct_atendimentos__paciente_idade__mean_between_20_and_70
               min_value: 20
               max_value: 70
 
@@ -80,9 +80,9 @@ models:
 Files should be named following the same pattern:
 ```
 tests/
-  ├── raw__sisreg__atendimentos__valor__assert_positive.sql
-  ├── staging__saude__pacientes__cpf__check_format.sql
-  └── mart__saude__fct_atendimentos__table__validate_business_hours.sql
+  ├── raw_sisreg_atendimentos__valor__assert_positive.sql
+  ├── staging_saude_pacientes__cpf__check_format.sql
+  └── mart_saude_fct_atendimentos__table__validate_business_hours.sql
 ```
 
 #### Custom Generic Tests
