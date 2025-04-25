@@ -1,6 +1,6 @@
 ---
 description: 
-globs: models/**/*.yml
+globs: models/**/*.yml,models/**/*.sql
 alwaysApply: false
 ---
 # dbt YAML Standards
@@ -67,7 +67,7 @@ All tests must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rul
 1. Primary Keys:
 ```yaml
 - name: id_field
-  datatests:
+  data_tests:
     - unique:
         name: model_name__id_field__unique
         severity: error
@@ -79,7 +79,7 @@ All tests must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rul
 2. Foreign Keys:
 ```yaml
 - name: id_related
-  datatests:
+  data_tests:
     - relationships:
         name: model_name__id_related__relationships
         to: ref('related_model')
@@ -89,7 +89,7 @@ All tests must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rul
 3. Data Quality:
 ```yaml
 - name: field
-  datatests:
+  data_tests:
     - dbt_expectations.expect_column_values_to_match_regex:
         name: model_name__fied__expect_column_values_to_match_regex
         regex: '^pattern$'

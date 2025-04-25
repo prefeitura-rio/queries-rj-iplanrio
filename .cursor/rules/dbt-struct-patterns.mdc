@@ -13,7 +13,7 @@ Standard patterns for common nested structures in our models.
 - name: contato.telefone.ddd
   description: "DDD do telefone"
   data_type: string
-  tests:
+  data_tests:
     - dbt_expectations.expect_column_values_to_match_regex:
         regex: '^[0-9]{2}$'
         severity: warn
@@ -21,7 +21,7 @@ Standard patterns for common nested structures in our models.
 - name: contato.telefone.numero
   description: "Número do telefone"
   data_type: string
-  tests:
+  data_tests:
     - dbt_expectations.expect_column_values_to_match_regex:
         regex: '^[0-9]{8,9}$'
         severity: warn
@@ -29,7 +29,7 @@ Standard patterns for common nested structures in our models.
 - name: contato.email
   description: "Endereço de e-mail"
   data_type: string
-  tests:
+  data_tests:
     - dbt_expectations.expect_column_values_to_match_regex:
         regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
         severity: warn
@@ -40,7 +40,7 @@ Standard patterns for common nested structures in our models.
 - name: endereco.cep
   description: "CEP do endereço"
   data_type: string
-  tests:
+  data_tests:
     - dbt_expectations.expect_column_values_to_match_regex:
         regex: '^[0-9]{8}$'
         severity: warn
@@ -79,7 +79,7 @@ Standard patterns for common nested structures in our models.
 - name: documento.numero
   description: "Número do documento"
   data_type: string
-  tests:
+  data_tests:
     - dbt_expectations.expect_column_values_to_match_regex:
         regex: '^[0-9]+$'
         severity: warn
@@ -127,4 +127,4 @@ Standard patterns for common nested structures in our models.
 2. All coded fields (CEP, phone, documents) should have format tests
 3. All email fields should have format validation
 4. All required fields should have not_null tests
-5. All test must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rules/dbt-naming-convetions.mdc)
+5. All tests must have a name following [dbt-naming-convetions.mdc](mdc:.cursor/rules/dbt-naming-convetions.mdc)
