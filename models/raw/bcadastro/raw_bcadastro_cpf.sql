@@ -1,18 +1,8 @@
-{{
-    config(
-        alias="cpf",
-        materialized="table",
-        partition_by={
-            "field": "cpf_particao",
-            "data_type": "int64",
-            "range": {"start": 0, "end": 100000000000, "interval": 34722222},
-        },
-    )
-}}
 
 with
     fonte as (
-        select * from {{ source("brutos_bcadastro_staging", "chcpf_bcadastros") }}
+        select *
+        from {{ source("brutos_bcadastro_staging", "chcpf_bcadastros") }}
 
         {% if target.name == "dev" %}
             where
@@ -28,7 +18,7 @@ with
 
     dominio as (
         select id, {{ proper_br("descricao") }} as descricao, column
-        from {{ source("brutos_bcadastro_staging","dominio_cpf") }}
+        from {{ source("brutos_bcadastro_staging", "dominio_cpf") }}
     ),
 
     fonte_parseada as (
@@ -153,7 +143,6 @@ with
             -- Address
             endereco_cep,
             endereco_uf,
-            endereco_municipio,
             endereco_bairro,
             endereco_tipo_logradouro,
             endereco_logradouro,
@@ -165,7 +154,7 @@ with
             mn.municipio_nome as nascimento_municipio,
             nascimento_pais,
             residencia_pais,
-            md.municipio_nome as municipio_domicilio,
+            md.municipio_nome as endereco_municipio,
 
             -- Occupation
             o.descricao as ocupacao_nome,
@@ -278,7 +267,7 @@ with
             residente_exterior_indicador,
 
             -- Contact
-            TRIM(telefone) as telefone_original,
+            trim(telefone) as telefone_original,
             case
                 when regexp_contains(telefone, r'\+')
                 then regexp_extract(telefone, r'\+([^\s]+)')
@@ -359,19 +348,18 @@ with
     ),
 
     final as (
-
         select
             -- Primary key
             cpf,
 
             -- Foreign keys
-            id_municipio_domicilio,
-            id_nascimento_municipio,
-            id_pais_nascimento,
-            id_pais_residencia,
-            id_natureza_ocupacao,
-            id_ocupacao,
-            id_ua,
+            -- id_municipio_domicilio,
+            -- id_nascimento_municipio,
+            -- id_pais_nascimento,
+            -- id_pais_residencia,
+            -- id_natureza_ocupacao,
+            -- id_ocupacao,
+            -- id_ua,
 
             -- Person data
             nome,
@@ -390,42 +378,55 @@ with
             estrangeiro_indicador,
             residente_exterior_indicador,
 
-            -- Contact
-            TRIM(telefone_ddi) as telefone_ddi,
-            TRIM(telefone_ddd) as telefone_ddd,
-            TRIM(telefone_numero) as telefone_numero,
-            email,
+            -- Contato
+            struct(
+                struct(
+                    telefone_ddi as ddi, telefone_ddd as ddd, telefone_numero as numero
+                ) as telefone,
+                email
+            ) as contato,
 
-            -- Address
-            endereco_cep,
-            endereco_uf,
-            endereco_municipio,
-            endereco_bairro,
-            endereco_tipo_logradouro,
-            endereco_logradouro,
-            endereco_numero,
-            endereco_complemento,
+            -- Endereço
+            struct(
+                endereco_cep as cep,
+                id_pais_residencia as id_pais,
+                residencia_pais as pais,
+                endereco_uf as uf,
+                id_municipio_domicilio as id_municipio,
+                endereco_municipio as municipio,
+                endereco_bairro as bairro,
+                endereco_tipo_logradouro as tipo_logradouro,
+                endereco_logradouro as logradouro,
+                endereco_numero as numero,
+                endereco_complemento as complemento 
+            ) as endereco,
 
-            -- Birth and residence
-            nascimento_uf,
-            nascimento_municipio,
-            nascimento_pais,
-            residencia_pais,
+            -- Nascimento e residência
+            struct(
+                id_pais_nascimento as id_pais,
+                nascimento_pais as pais,
+                nascimento_uf as uf,
+                id_nascimento_municipio as id_municipio,
+                nascimento_municipio as municipio
+            ) as nascimento_local,
 
-            -- Occupation
-            ocupacao_nome,
+            -- Ocupação
+            struct(
+                id_ocupacao as id,
+                ocupacao_nome as nome,
+                id_natureza_ocupacao as id_natureza,
+                id_ua
+            ) as ocupacao,
 
-            -- Metadata
-            ano_exercicio,
-            version,
-            tipo,
-            timestamp,
+            -- Metadados
+            struct(ano_exercicio, version, tipo, timestamp) as metadados,
 
             -- Technical fields
             airbyte,
 
             -- Partition
             cpf_particao
+
         from fonte_deduplicada
     )
 

@@ -22,8 +22,10 @@ project_root/
 ```
 
 ## Model File Naming Convention
-SQL files should follow the pattern: `{layer}_{dataset}_{table}.sql`
-YAML files should follow the pattern: `{layer}_{dataset}_{table}.yml`
+Model name should follow the pattern:`{layer}_{dataset}_{table}`
+SQL files should follow the pattern: `{model}.sql`
+YAML configuration files should follow the pattern: `{model}.yml`
+YAML source files should follow the pattern: `_{layer}_{dataset}__sources.yml`
 
 ### Layer Prefixes
 - `raw_` - Raw data models
@@ -68,12 +70,12 @@ tests/
 
 ## YAML Configuration Files
 Each model should have its own YAML file with an underscore prefix:
-- Pattern: `{layer}_{dataset}_{table}.yml`
+- Pattern: `{model}.yml`
 - Place the YAML file next to its corresponding SQL file
 - One YAML file per model for better maintainability and version control
-- The underscore prefix helps group configuration files together in directory listings
 
-### Example YAML Structure
+
+### Example YAML Configuration Files Structure
 ```yaml
 version: 2
 
@@ -87,7 +89,7 @@ models:
     columns:
       - name: customer_id
         description: "Primary key of the customers table"
-        tests:
+        data_tests:
           - unique
           - not_null
           - relationships:

@@ -1,0 +1,106 @@
+---
+description: 
+globs: *.sql,*.yml
+alwaysApply: false
+---
+# IplanRio Column Naming Conventions
+
+This document provides detailed guidelines for naming columns within IplanRio's dbt models, ensuring clarity, consistency, and adherence to the official Guia de Estilo.
+
+## General Naming Pattern
+
+All column names should strive to follow this structured pattern:
+
+`[id_][<entidade>_]<dimensão>[_<unidade>]`
+
+Let's break down each component:
+
+- **`id_` (Optional Prefix):**
+    - Use this prefix *only* for columns representing primary keys or foreign keys that link to entities defined within the Data Lake.
+    - Example: `id_cnes`, `id_material`, `id_municipio`.
+    - **Exception:** For widely recognized identifiers like `cpf` or `cns`, the `id_` prefix can be omitted for better readability.
+    - **Guidance:** Helps group key columns together in data exploration tools.
+
+- **`<entidade>_` (Optional Prefix):**
+    - Specifies the business entity the column belongs to if it's different from the main entity of the table. This is common in denormalized tables (especially Marts layer).
+    - **Example:** In an `estoque` (stock) table, a column for the material's pharmaceutical form would be `material_forma_farmaceutica`.
+    - **Example:** In a `material` table, the same attribute would simply be `forma_farmaceutica`.
+    - **Recommendation:** In Marts layer tables (highly denormalized), it's recommended to *always* use the entity prefix for all columns to aid discoverability in BI tools (due to alphabetical sorting).
+
+- **`<dimensão>` (Required):**
+    - The core part of the name, describing the specific attribute, metric, or characteristic represented by the column.
+    - Should be concise and descriptive.
+    - Examples: `nome`, `nascimento_data`, `quantidade_atendimentos`, `valor_total`, `tipo_logradouro`.
+
+- **`_<unidade>` (Optional Suffix):**
+    - A suffix indicating the semantic type or unit of the column's data. This significantly improves readability and understanding.
+    - **Allowed Suffixes:** The Guia de Estilo explicitly lists the following recommended suffixes:
+        - `_nome`: For proper names or descriptions.
+        - `_data`: For date values.
+        - `_datahora`: For timestamp/datetime values.
+        - `_valor`: For monetary or general numeric values.
+        - `_quantidade`: For counts or quantities.
+        - `_proporcao`: For percentage values (typically 0-100).
+        - `_taxa`: For rates or ratios.
+        - `_razao`: For ratios.
+        - `_indicador`: For boolean or flag-type values (True/False, 0/1).
+        - `_tipo`: For categorical types or classifications.
+        - `_sigla`: For acronyms or codes.
+    - **Note:** While physical units like `_km` or `_metro` might appear in specific contexts, the standard emphasizes these semantic suffixes.
+
+**Putting it Together - Examples:**
+
+- `id_estabelecimento`: Primary key for an establishment.
+- `estabelecimento_nome`: Name of the establishment (using `_nome` semantic unit).
+- `atendimento_partica`: Partition date (using `_data` semantic unit).
+- `ano`: Year (dimension only, no unit suffix needed).
+- `id_municipio`: Foreign key for the municipality.
+- `atendimento_quantidade`: Quantity of attendances (using `_quantidade` semantic unit).
+- `valor_total_pago_valor`: Total amount paid (using `_valor` semantic unit).
+- `ativo_indicador`: Flag indicating if active (using `_indicador` semantic unit).
+- `paciente_tipo_logradouro_sigla`: Acronym for the patient's street type (combining entity, dimension, and `_sigla` unit).
+
+## Column Selection Guidelines
+
+Beyond naming, remember these rules from the Guia de Estilo when deciding which columns to include:
+
+- **Normalization:** Aim for partial normalization. Balance redundancy reduction with query performance.
+- **Redundant Names:** Avoid storing descriptive names (e.g., `nome_estabelecimento`) if the corresponding ID (e.g., `id_cnes`) already exists and links to the name in another table.
+- **Partition Columns:** Do not include columns in the `SELECT` list if the table is already partitioned by them (e.g., don't select `ano_particao`, `mes_particao`, `data_particao` if they define the table's partitions).
+- **Keys:**
+    - Retain original primary keys from source systems.
+    - Add foreign keys that are relevant for joining to other core entities (e.g., `id_municipio`).
+    - Remove foreign keys that are irrelevant to common analytical use cases.
+
+## Column Ordering
+
+To ensure consistency and facilitate data exploration, columns within tables should be ordered according to the following structure:
+
+1.  **Primary Key(s):** The unique identifier(s) for the table's main entity should always appear first.
+    - Example: `id_atendimento`
+
+2.  **Core Entity Attributes:** Columns that directly describe the primary entity of the table (excluding keys and metadata).
+    - Example: `data_atendimento`, `tipo_atendimento`, `descricao_ocorrencia`
+
+3.  **Foreign Key Groups:** Foreign keys (`id_...`) grouped together with their corresponding descriptive attributes from the referenced entity.
+    - Order these groups logically, often by decreasing scope (e.g., geography before specific facility).
+    - Example Group 1: `id_paciente`, `paciente_nome`, `paciente_data_nascimento`
+    - Example Group 2: `id_estabelecimento`, `estabelecimento_nome`, `estabelecimento_tipo`
+
+4.  **Processing Metadata:** Columns containing information about the data loading, transformation process, and source system timestamps.
+    - Example: `data_carga`, `id_processamento_lote`, `fonte_dados_origem`, `data_atualizacao_origem`, `data_criacao_origem`
+
+5.  **Partitioning Columns:** Columns specifically created and used for partitioning the table in the data warehouse (these are often excluded from final `SELECT *` statements but define the table structure).
+    - Example: `ano_particao`, `mes_particao`, `data_particao`
+
+## Exceções (Exceptions)
+
+While the above guidelines should be followed whenever possible, some specific exceptions exist:
+
+- **`id_` Prefix Omission:** For widely recognized, globally unique identifiers like `cpf` or `cns`, the `id_` prefix can be omitted for better readability and common usage.
+- **Partitioning Columns:** Standard date/time/integer partitioning columns generated during loading (e.g., `ano_particao`, `mes_particao`, `data_particao`) follow a specific, fixed naming pattern using the `_particao` suffix. While they use a `<dimensão>` (`ano`, `mes`, `data`), the `_particao` suffix is specific to them and isn't part of the general list of semantic `_<unidade>` suffixes. These columns also have special treatment in selection (often excluded from selects) and ordering (placed last).
+- **External Standards:** When integrating data adhering to specific external standards (e.g., GTFS for public transport), maintaining the standard's original naming might be preferable for interoperability, especially in Raw or Staging layers. Document these cases clearly.
+
+*Add other specific, approved exceptions here as needed.*
+
+Adhering strictly to these naming, selection, and ordering conventions is crucial for building a maintainable, understandable, and scalable Data Lakehouse at IplanRio.

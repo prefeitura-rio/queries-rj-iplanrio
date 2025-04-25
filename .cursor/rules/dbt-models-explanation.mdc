@@ -1,0 +1,38 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# dbt Models Explanation
+
+## Definition
+A **model** in this dbt project is a SQL file located within the `models/` directory. Each model contains a single `SELECT` statement that defines a transformation, resulting in a new table or view in the data warehouse.
+
+## Location and Structure
+Models are organized into subdirectories within the [`models/`](mdc:models) directory based on their stage in the data transformation pipeline:
+- [`models/raw/`](mdc:models/raw): Models that select directly from source data, often performing light cleaning or casting.
+- [`models/intermediate/`](mdc:models/intermediate): Models that perform intermediate transformations, often combining or reshaping data from raw models. These are not typically exposed directly to end-users.
+- [`models/core/`](mdc:models/core): Models representing core business entities and logic.
+- [`models/mart/`](mdc:models/mart): Models that represent data marts, tailored for specific business intelligence or analytical use cases.
+
+## Naming Convention
+Model SQL files follow the pattern: `{layer}_{dataset}_{table}.sql`. Examples include:
+- `raw_bcadastro_escolas.sql`
+- `stg_gestao_escolar_alunos.sql`
+- `mart_educacao_indicadores.sql`
+
+## Associated Files
+Each model typically has:
+- A **SQL file (`.sql`)**: Contains the transformation logic (the `SELECT` statement).
+- A **YAML file (`.yml`)**: Defines metadata, documentation, and tests for the model. It shares the same base name as the SQL file (e.g., `raw_bcadastro_escolas.yml`) and is located in the same directory. See the [dbt-folder-structure.mdc](mdc:.cursor/rules/dbt-folder-structure.mdc) rule for YAML structure details.
+- An optional **Markdown file (`.md`)**: Provides more detailed documentation for the model, also sharing the same base name and location.
+
+## Purpose
+Models serve several key functions:
+- **Transformation**: Cleaning, reshaping, and enriching raw data.
+- **Business Logic**: Encapsulating calculations and business rules.
+- **Modularity**: Breaking down complex pipelines into manageable, reusable units.
+- **Documentation**: Describing data lineage and definitions via YAML and Markdown files.
+- **Testing**: Ensuring data quality and integrity through defined tests in YAML files.
+
+Refer to the [dbt-folder-structure.mdc](mdc:.cursor/rules/dbt-folder-structure.mdc) rule for the overall project structure and specific file naming conventions.
