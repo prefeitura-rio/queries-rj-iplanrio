@@ -13,7 +13,7 @@ venv/
 ENV/
 
 # IDE and editor specific
-.cursor/
+.cursor/**/*.json
 .vscode/
 .idea/
 .qodo/
@@ -33,3 +33,4 @@ desktop.ini
 *.log
 *.tmp
 *.temp
+.qodo

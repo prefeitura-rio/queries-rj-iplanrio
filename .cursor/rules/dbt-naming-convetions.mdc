@@ -1,0 +1,253 @@
+---
+description: 
+globs: models/**/*.sql,models/**/*.yml
+alwaysApply: false
+---
+# Cursor Rules for IplanRio Data Lake Project
+
+## Column Naming Conventions
+
+### General Pattern
+- Pattern: `[id_][<entity>_][<dimension>][_<unit>]`
+- Example: `id_municipio_populacao_habitantes`
+
+### ID Fields
+- Primary and foreign keys must start with `id_` prefix
+- Examples: `id_cnes`, `id_material`, `id_municipio`, `id_cid`
+- Exception: Well-known identifiers (e.g., CPF, CNS) may omit the prefix for readability
+
+### Partition Columns
+For partitioned tables, use standardized date partition columns:
+- `ano_particao`: Format 'YYYY'
+- `mes_particao`: Format 'MM'
+- `data_particao`: Format 'YYYY-MM-DD'
+
+### Column Ordering
+1. Primary keys always come first
+2. Foreign keys follow in descending order of scope
+3. Group remaining columns by theme/importance
+
+Example order for an attendance table:
+```sql
+id_atendimento,
+id_uf,
+id_municipio,
+id_cnes,
+paciente_cpf,
+-- other columns grouped by theme
+```
+
+## Testing Conventions
+
+### Test Naming Conventions
+
+#### Standard Test Name Pattern
+All tests should follow this naming pattern:
+```
+{layer}__{dataset}__{table}__{column}__{test_name}
+```
+
+Where:
+- `layer`: The data layer (e.g., raw, staging, mart)
+- `dataset`: The business domain or system (e.g., saude, educacao)
+- `table`: The specific table being tested
+- `column`: The column being tested (use 'table' for table-level tests)
+- `test_name`: The specific test being performed
+
+Examples:
+```yaml
+version: 2
+
+models:
+  - name: fct_atendimentos
+    columns:
+      - name: id_atendimento
+        data_tests:
+            - unique:
+                name: mart__saude__fct_atendimentos__id_atendimento__unique
+            - not_null:
+                name: mart__saude__fct_atendimentos__id_atendimento__not_null
+      - name: paciente_idade
+        data_tests:
+            - dbt_expectations.expect_column_mean_to_be_between:
+              name: mart__saude__fct_atendimentos__paciente_idade__mean_between_20_and_70
+              min_value: 20
+              max_value: 70
+
+```
+
+#### Singular Tests
+Files should be named following the same pattern:
+```
+tests/
+  ├── raw__sisreg__atendimentos__valor__assert_positive.sql
+  ├── staging__saude__pacientes__cpf__check_format.sql
+  └── mart__saude__fct_atendimentos__table__validate_business_hours.sql
+```
+
+#### Custom Generic Tests
+Custom generic test macros should follow the same naming pattern:
+```
+macros/
+  └── tests/
+      ├── raw__generic__any__cep__valid_format.sql
+      ├── raw__generic__any__sus_card__valid_number.sql
+      └── mart__generic__any__date__within_business_hours.sql
+```
+
+Note: For generic tests that can be applied across multiple datasets/tables, use 'generic' as the dataset and 'any' as the table name.
+
+### Required Tests
+Every model should have at minimum:
+
+1. Primary Key Tests:
+```yaml
+version: 2
+
+models:
+  - name: your_model
+    columns:
+      - name: id_column
+        data_tests:
+            - unique
+            - not_null
+```
+
+2. Foreign Key Tests:
+```yaml
+version: 2
+
+models:
+  - name: your_model
+    columns:
+      - name: id_foreign
+        data_tests:
+            - relationships:
+                to: ref('parent_model')
+                field: id
+```
+
+3. Data Quality Tests:
+- Add tests for business-critical columns
+- Test for expected value ranges
+- Test for valid formats (e.g., CPF, dates)
+
+### Custom Data Tests
+Create singular tests for complex business rules:
+
+```sql
+-- tests/assert_valid_business_rule.sql
+select *
+from {{ ref('your_model') }}
+where -- condition that should return 0 rows
+```
+
+### Composite Unique Tests
+For multi-column unique constraints:
+
+```yaml
+version: 2
+
+models:
+  - name: your_model
+    data_tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+                - column_1
+                - column_2
+```
+
+### Test Severity Levels
+Configure test severity appropriately:
+```yaml
+version: 2
+
+models:
+  - name: your_model
+    columns:
+      - name: critical_column
+        data_tests:
+          - unique:
+              name:   
+              severity: error
+          - not_null:
+              severity: error
+      - name: non_critical_column
+        data_tests:
+          - unique:
+              severity: warn
+              warn_if: ">10"
+              error_if: ">100"
+```
+
+## Documentation Requirements
+
+### Model Documentation
+Every model should include:
+1. General description
+2. Purpose/business context
+3. Update frequency
+4. Primary stakeholders
+
+Example:
+```yaml
+version: 2
+
+models:
+  - name: fct_atendimentos
+    description: >
+      Fact table containing all medical appointments.
+      Updated daily from SISREG system.
+      Primary stakeholders: Health Department
+    columns:
+      - name: id_atendimento
+        description: Unique identifier for each appointment
+```
+
+### Column Documentation
+Critical columns should document:
+1. Data type
+2. Business definition
+3. Valid values/ranges
+4. Source system
+
+Example:
+```yaml
+version: 2
+
+models:
+  - name: fct_atendimentos
+    columns:
+      - name: status_atendimento
+        description: >
+          Current status of the appointment
+          Valid values: 'AGENDADO', 'REALIZADO', 'CANCELADO'
+          Source: SISREG.status_atual
+```
+
+## Development Workflow
+
+### Branch Naming
+- Feature branches: `feature/description-of-change`
+- Bug fixes: `fix/description-of-bug`
+- Documentation: `docs/description-of-docs`
+
+### Model Naming
+- Staging models: `stg_<source>_<entity>`
+- Intermediate models: `int_<entity>_<transformation>`
+- Fact tables: `fct_<entity>`
+- Dimension tables: `dim_<entity>`
+
+### Testing Workflow
+1. Run `dbt test` before any commit
+2. Address all errors before merging
+3. Document any warning-level test failures
+4. Add new tests for any new columns or business rules
+
+### Performance Considerations
+1. Use appropriate materialization strategy:
+   - Views for frequently updated, less queried data
+   - Tables for stable, frequently queried data
+   - Incremental models for large, append-only data
+2. Add appropriate indexes and partitioning
+3. Document performance-critical models 
