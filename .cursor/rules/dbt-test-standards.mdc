@@ -3,13 +3,11 @@ description:
 globs: models/**/*.sql,models/**/*.yml
 alwaysApply: false
 ---
-# IplanRio Test Naming Conventions
+# IplanRio Testing Conventions
 
-## Testing Conventions
+## Test Naming Conventions
 
-### Test Naming Conventions
-
-#### Standard Test Name Pattern
+### Standard Test Name Pattern
 All tests should follow this naming pattern:
 ```
 {layer}_{dataset}_{table}__{column}__{test_name}
@@ -44,7 +42,7 @@ models:
 
 ```
 
-#### Singular Tests
+### Singular Tests
 Files should be named following the same pattern:
 ```
 tests/
@@ -53,7 +51,7 @@ tests/
   └── mart_saude_fct_atendimentos__table__validate_business_hours.sql
 ```
 
-#### Custom Generic Tests
+### Custom Generic Tests
 Custom generic test macros should follow the same naming pattern:
 ```
 macros/
@@ -65,7 +63,7 @@ macros/
 
 Note: For generic tests that can be applied across multiple datasets/tables, use 'generic' as the dataset and 'any' as the table name.
 
-### Required Tests
+## Required Tests
 Every model should have at minimum:
 
 1. Primary Key Tests:
@@ -100,7 +98,7 @@ models:
 - Test for expected value ranges
 - Test for valid formats (e.g., CPF, dates)
 
-### Custom Data Tests
+## Custom Data Tests
 Create singular tests for complex business rules:
 
 ```sql
@@ -110,7 +108,7 @@ from {{ ref('your_model') }}
 where -- condition that should return 0 rows
 ```
 
-### Composite Unique Tests
+## Composite Unique Tests
 For multi-column unique constraints:
 
 ```yaml
@@ -125,7 +123,7 @@ models:
                 - column_2
 ```
 
-### Test Severity Levels
+## Test Severity Levels
 Configure test severity appropriately:
 ```yaml
 version: 2

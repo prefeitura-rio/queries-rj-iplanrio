@@ -25,7 +25,7 @@ project_root/
 Model name should follow the pattern:`{layer}_{dataset}_{table}`
 SQL files should follow the pattern: `{model}.sql`
 YAML configuration files should follow the pattern: `{model}.yml`
-YAML source files should follow the pattern: `_{layer}_{dataset}_sources.yml`
+YAML source files should follow the pattern: `_{layer}_{dataset}__sources.yml`
 
 ### Layer Prefixes
 - `raw_` - Raw data models
