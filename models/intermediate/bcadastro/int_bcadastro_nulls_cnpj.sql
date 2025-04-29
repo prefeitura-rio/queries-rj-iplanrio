@@ -790,7 +790,6 @@ with
             sum(case when _rev = '' then 1 else 0 end),
             sum(case when _rev is not null and _rev != '' then 1 else 0 end)
         from fonte_extracted
-        union all
 
     -- UNION ALL blocks for any source columns (like top-level id, key, rev from value)
     -- are excluded as per the request to use original *JSON* key names from 'doc'.
