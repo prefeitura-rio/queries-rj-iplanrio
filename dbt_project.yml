@@ -26,7 +26,7 @@ vars:
 
 
   use_flat_pricing: false # We use on-demand pricing
-  enable_gcp_bigquery_audit_logs: true
+  enable_gcp_bigquery_audit_logs: false # False until we have a solution to "labels" error
   gcp_bigquery_audit_logs_storage_project: 'rj-iplanrio'
   gcp_bigquery_audit_logs_dataset: 'logs_bq'
   gcp_bigquery_audit_logs_table: "{{ env_var('DBT_BQ_MONITORING_GCP_BIGQUERY_AUDIT_LOGS_TABLE') }}"
