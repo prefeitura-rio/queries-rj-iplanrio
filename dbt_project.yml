@@ -23,14 +23,20 @@ vars:
   # BigQuery Monitoring
   bq_region: 'us'
   input_gcp_projects: ['rj-iplanrio']
-  enable_gcp_bigquery_audit_logs: false
-  gcp_billing_export_storage_project: 'rj-iplanrio'
-  gcp_billing_export_dataset: 'gerenciamento_bigquery_billing'
-  gcp_billing_export_table: 'gcp_billing_export'
-  enable_gcp_billing_export: false
+
+
+  use_flat_pricing: false # We use on-demand pricing
+  enable_gcp_bigquery_audit_logs: true
   gcp_bigquery_audit_logs_storage_project: 'rj-iplanrio'
-  gcp_bigquery_audit_logs_dataset: 'gerenciamento_bigquery_audit_logs'
-  gcp_bigquery_audit_logs_table: 'gcp_audit_logs'
+  gcp_bigquery_audit_logs_dataset: 'logs_bq'
+  gcp_bigquery_audit_logs_table: "{{ env_var('DBT_BQ_MONITORING_GCP_BIGQUERY_AUDIT_LOGS_TABLE') }}"
+  should_combine_audit_logs_and_information_schema: true
+  # https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup
+  enable_gcp_billing_export: true
+  gcp_billing_export_storage_project: 'dados-rio-billing'
+  gcp_billing_export_dataset: "{{ env_var('DBT_BQ_MONITORING_GCP_BILLING_EXPORT_DATASET') }}"
+  gcp_billing_export_table: "{{ env_var('DBT_BQ_MONITORING_GCP_BILLING_EXPORT_TABLE') }}"
+
   google_information_schema_model_materialization: 'ephemeral'
 
 
