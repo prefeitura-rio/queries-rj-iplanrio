@@ -48,5 +48,8 @@ models:
         +materialized: table
         +schema: brutos_bcadastro
         +tags: "weekly"
-
+      unidades_administrativas:
+        +materialized: table
+        +schema: brutos_unidades_administrativas
+        +tags: "daily"
 

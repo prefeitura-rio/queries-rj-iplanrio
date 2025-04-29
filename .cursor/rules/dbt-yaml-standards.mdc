@@ -1,0 +1,110 @@
+---
+description: 
+globs: models/**/*.yml,models/**/*.sql
+alwaysApply: false
+---
+# dbt YAML Standards
+
+## Model Configuration Block
+Every model YAML file must include a description, followed by a configuration block with:
+
+```yaml
+models:
+  - name: model_name
+    description: my table description
+    config:
+      alias: model_name
+      schema: layer_name  # raw, intermediate, or marts
+      materialized: view  # for raw models
+```
+
+## Struct Field References
+Nested structures (structs) must follow the dot notation pattern:
+
+```yaml
+# Correct
+- name: struct.field
+- name: struct.nested.field
+
+# Incorrect ❌
+- name: field
+  data_type: record
+  columns:
+    - name: subfield
+```
+
+### Examples:
+1. Contact Information:
+```yaml
+- name: contato.telefone.ddd
+- name: contato.telefone.numero
+- name: contato.email
+```
+
+2. Address Fields:
+```yaml
+- name: endereco.cep
+- name: endereco.logradouro
+- name: endereco.numero
+```
+
+3. Nested Metadata:
+```yaml
+- name: metadata.source.system
+- name: metadata.source.timestamp
+```
+
+## Required Field Attributes
+Each field must include:
+```yaml
+- name: field_name
+  description: "Clear description in Portuguese"
+  data_type: string|integer|date|timestamp|boolean
+  quote: true  # for string fields
+```
+
+## Testing Standards
+All tests must have a name following [dbt-test-standards.mdc](mdc:.cursor/rules/dbt-test-standards.mdc)
+1. Primary Keys:
+```yaml
+- name: id_field
+  data_tests:
+    - unique:
+        name: model_name__id_field__unique
+        severity: error
+    - not_null:
+        name: model_name__id_field__not_null
+        severity: error
+```
+
+2. Foreign Keys:
+```yaml
+- name: id_related
+  data_tests:
+    - relationships:
+        name: model_name__id_related__relationships
+        to: ref('related_model')
+        field: id_field
+```
+
+3. Data Quality:
+```yaml
+- name: field
+  data_tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        name: model_name__fied__expect_column_values_to_match_regex
+        regex: '^pattern$'
+        severity: warn
+```
+
+## File Organization
+- One YAML file per model
+- Place YAML files next to corresponding SQL files
+- Follow naming convention: `model_name.yml`
+
+## Documentation
+All descriptions must be in Brazilian Portuguese and should include:
+- Purpose of the field
+- Business context
+- Valid values or ranges
+- Source system reference

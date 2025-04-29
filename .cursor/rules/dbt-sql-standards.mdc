@@ -1,0 +1,51 @@
+---
+description: 
+globs: models/**/*.sql,macros/**/*.sql,models/**/*.yml
+alwaysApply: false
+---
+# dbt SQL Standards
+
+## Configuration Block
+- Use `config` blocks at the top of each model file
+- Set appropriate `materialization` strategy based on model type:
+  - Use `view` for staging/raw models
+  - Use `table` for intermediate and mart models
+  - Use `incremental` for large fact tables that are frequently updated
+- Always add config block on top of the file containig:
+  - `alias`
+  - `schema`
+
+## SQL Style
+- Write modular code using CTEs
+- Name CTEs using clear, descriptive names
+- Name CTEs in brazilian portuguese
+- Order CTEs from least to most complex
+- Add comments to explain complex logic or business rules
+- Use `--` for single line comments
+- Group related columns together with comments
+- Only write comments in brazilian portuguese
+- Include timezone adjustments when dealing with timestamps
+- Use consistent indentation (2 or 4 spaces)
+
+## Source Usage
+- Only use `{{ ref() }}` to reference models in sql files
+- Only use `ref()` to reference models in yml files
+- Only suggest as input for  `ref` function models in the codebase. See model definition at [dbt-models-explanation.mdc](mdc:.cursor/rules/dbt-models-explanation.mdc)
+- Only use ``{{ source() }}` macro to reference raw tables
+- Define all sources in `sources.yml` files
+- Include tests and documentation in yml files
+
+## Performance
+- Materialize staging models as views
+- Use appropriate indexes and partitioning
+- Limit joins to only necessary columns
+- Use CTEs instead of subqueries
+- Consider incremental models for large tables
+
+## BigQuery Specific
+- Only use functions functions available in Big Query or in macros folder
+- Handle JSON data using appropriate JSON functions
+- Consider partitioning and clustering for large tables
+- Use appropriate data types for columns
+
+

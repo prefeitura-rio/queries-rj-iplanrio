@@ -1,0 +1,133 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# dbt Folder and File Structure Standards
+
+## Project Root Structure
+```
+project_root/
+├── analyses/
+├── macros/
+├── models/
+│   ├── raw/
+│   ├── intermediate/
+│   └── marts/
+├── seeds/
+├── snapshots/
+└── tests/
+    ├── generic/
+    └── singular/
+```
+
+## Model File Naming Convention
+Model name should follow the pattern:`{layer}_{dataset}_{table}`
+SQL files should follow the pattern: `{model}.sql`
+YAML configuration files should follow the pattern: `{model}.yml`
+YAML source files should follow the pattern: `_{layer}_{dataset}__sources.yml`
+
+### Layer Prefixes
+- `raw_` - Raw data models
+- `stg_` - Staging models
+- `int_` - Intermediate models
+- `fct_` - Fact tables
+- `dim_` - Dimension tables
+- `mart_` - Mart tables
+
+### Examples
+```
+models/
+├── raw/
+│   ├── raw_crm_customers.sql
+│   └── raw_crm_customers.yml
+├── intermediate/
+│   ├── int_crm_customers_cleaned.sql
+│   └── int_crm_customers_cleaned.yml
+└── marts/
+    ├── core/
+    │   ├── dim_customers.sql
+    │   ├── dim_customers.yml
+    │   ├── fct_orders.sql
+    │   └── fct_orders.yml
+    └── marketing/
+        ├── mart_customer_behavior.sql
+        └── mart_customer_behavior.yml
+```
+
+## Test File Naming Convention
+Test files should follow the pattern: `{test_type}__{model}__{column}__{test_name}.sql`
+
+### Examples
+```
+tests/
+├── generic/
+│   └── unique_combination.sql
+└── singular/
+    ├── test__customers__email__valid_format.sql
+    └── test__orders__status__allowed_values.sql
+```
+
+## YAML Configuration Files
+Each model should have its own YAML file with an underscore prefix:
+- Pattern: `{model}.yml`
+- Place the YAML file next to its corresponding SQL file
+- One YAML file per model for better maintainability and version control
+
+
+### Example YAML Configuration Files Structure
+```yaml
+version: 2
+
+models:
+  - name: stg_crm_customers
+    description: "Staged customer data from CRM system"
+    config:
+      alias: stg_crm_customers
+      schema: staging
+      materialized: view
+    columns:
+      - name: customer_id
+        description: "Primary key of the customers table"
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('raw_crm_customers')
+              field: id
+```
+
+## Documentation Files
+- Place documentation in `.md` files next to the models they document
+- Use the same naming convention as the model: `{layer}_{dataset}_{table}.md`
+
+## Seeds Structure
+```
+seeds/
+├── reference_data/
+│   ├── _country_codes.yml
+│   ├── country_codes.csv
+│   ├── _currency_rates.yml
+│   └── currency_rates.csv
+```
+
+## Macros Organization
+```
+macros/
+├── utils/
+│   ├── date_spine.sql
+│   └── generate_schema_name.sql
+└── transformations/
+    └── pivot_values.sql
+```
+
+## Best Practices
+1. Keep related models together in the same directory
+2. Use subdirectories in marts/ to organize by business domain
+3. Place tests close to the models they test
+4. Use consistent naming across all project files
+5. Document all models, columns, and tests in their respective YAML files
+6. Keep macros organized by their function (utils, transformations, etc.)
+7. Use seeds only for static reference data
+8. Place analysis SQL files in the analyses/ directory
+9. Keep YAML files next to their corresponding SQL files for better maintainability
