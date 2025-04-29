@@ -1,3 +1,5 @@
+queries_rj_iplanrio.egg-info/
+
 # DBT specific
 target/
 target-base/
