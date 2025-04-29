@@ -60,7 +60,6 @@ with
             -- Technical fields from doc and source, based on your models
             json_value(doc, '$._id') as _id,  -- String from doc
             json_value(doc, '$._rev') as _rev,  -- String from doc
-            json_value(doc, '$.id') as id_doc,  -- String from doc, if different from source 'id'
 
             -- 'cnaes' looks like an array - use JSON_EXTRACT_ARRAY
             json_extract_array(doc, '$.cnaes') as cnaes,  -- Array or NULL

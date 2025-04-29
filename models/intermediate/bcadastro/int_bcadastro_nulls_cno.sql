@@ -56,7 +56,6 @@ with
             -- Technical fields from doc, based on your CPF model
             json_value(doc, '$._id') as _id,  -- String
             json_value(doc, '$._rev') as _rev,  -- String
-            json_value(doc, '$.id') as id_doc,  -- String from doc, if different from source 'id'
 
             -- 'areas' looks like an array
             json_extract_array(doc, '$.areas') as areas  -- Array or NULL
@@ -332,13 +331,6 @@ with
             sum(case when _rev is null then 1 else 0 end),
             sum(case when _rev = '' then 1 else 0 end),
             sum(case when _rev is not null and _rev != '' then 1 else 0 end)
-        from fonte_extracted
-        union all
-        select
-            'id_doc' as column_name,
-            sum(case when id_doc is null then 1 else 0 end),
-            sum(case when id_doc = '' then 1 else 0 end),
-            sum(case when id_doc is not null and id_doc != '' then 1 else 0 end)
         from fonte_extracted
         union all
 

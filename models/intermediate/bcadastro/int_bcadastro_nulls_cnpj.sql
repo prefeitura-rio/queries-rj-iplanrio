@@ -110,9 +110,7 @@ with
             -- structure)
             json_value(doc, '$._id') as _id,
             json_value(doc, '$._rev') as _rev,
-            -- Assuming 'id' extracted from doc maps to key 'id'
-            json_value(doc, '$.id') as id_doc
-
+        -- Assuming 'id' extracted from doc maps to key 'id'
         from `rj-iplanrio.brutos_bcadastro_staging.chcnpj_bcadastros`
     ),
 
@@ -793,13 +791,6 @@ with
             sum(case when _rev is not null and _rev != '' then 1 else 0 end)
         from fonte_extracted
         union all
-        -- Assuming 'id' extracted from doc maps to key 'id'
-        select
-            'id' as column_name,
-            sum(case when id_doc is null then 1 else 0 end),
-            sum(case when id_doc = '' then 1 else 0 end),
-            sum(case when id_doc is not null and id_doc != '' then 1 else 0 end)
-        from fonte_extracted
 
     -- UNION ALL blocks for any source columns (like top-level id, key, rev from value)
     -- are excluded as per the request to use original *JSON* key names from 'doc'.
