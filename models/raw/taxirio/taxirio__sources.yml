@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio
+    schema: brutos_taxirio_staging
+    tables:    
+        - name: races
