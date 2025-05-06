@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio
+    schema: brutos_taxirio_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
+    tables:
+    - name: races
