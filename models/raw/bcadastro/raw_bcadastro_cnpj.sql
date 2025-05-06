@@ -8,7 +8,6 @@ with
                 timestamp(_airbyte_extracted_at)
                 >= timestamp_sub(current_timestamp(), interval 3 day)
         {% endif %}
-    {# where timestamp_trunc(_airbyte_extracted_at, day) = timestamp("2025-03-23") #}
     ),
 
     sigla_uf_bd as (select sigla from {{ source("br_bd_diretorios_brasil", "uf") }}),
@@ -799,9 +798,15 @@ with
         from fonte_intermediaria t
     ),
 
-    fonte_deduplicada as (
+    remove_registros_incorretos as (
         select *
         from fonte_padronizada
+        where length(id_cnpj) = 14
+    ),
+
+    fonte_deduplicada as (
+        select *
+        from remove_registros_incorretos
         qualify
             row_number() over (
                 partition by id_cnpj order by data_situacao_cadastral desc

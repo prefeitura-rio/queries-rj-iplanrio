@@ -341,9 +341,13 @@ with
         from fonte_intermediaria
     ),
 
+    remove_registros_incorretos as (
+        select * from fonte_padronizada where length(cpf) = 11
+    ),
+
     fonte_deduplicada as (
         select *
-        from fonte_padronizada
+        from remove_registros_incorretos
         qualify row_number() over (partition by cpf order by atualizacao_data desc) = 1
     ),
 

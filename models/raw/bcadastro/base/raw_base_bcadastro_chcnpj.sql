@@ -149,9 +149,13 @@ with
         from fonte
     ),
 
+    remove_registros_incorretos as (
+        select * from fonte_parseada where length(cnpj) = 14
+    ),
+
     dedup as (
         select *
-        from fonte_parseada
+        from remove_registros_incorretos
         qualify
             row_number() over (partition by cnpj order by airbyte.extracted_at desc)
             = 1
