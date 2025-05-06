@@ -68,7 +68,6 @@ with
                 nullif(json_value(doc, '$.capitalSocial'), '') as int64
             ) as capital_social,
             nullif(json_value(doc, '$.cnaeFiscal'), '') as cnae_fiscal,
-            nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnae_secundarias,
             nullif(json_value(doc, '$.nire'), '') as nire,
             nullif(json_value(doc, '$.cnpjSucedida'), '') as id_cnpj_sucedida,
 
@@ -142,6 +141,7 @@ with
             nullif(json_value(doc, '$.cpfResponsavel'), '') as responsavel_cpf,
 
             -- arrays
+            json_extract_array(doc, '$.cnaeSecundarias') as cnae_secundarias,
             json_extract_array(doc, '$.tiposUnidade') as tipos_unidade,
             json_extract_array(doc, '$.formasAtuacao') as formas_atuacao,
             json_extract_array(doc, '$.socios') as socios,
