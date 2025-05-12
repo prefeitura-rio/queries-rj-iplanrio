@@ -22,7 +22,51 @@ vars:
 
   # BigQuery Monitoring
   bq_region: 'us'
-  input_gcp_projects: ['rj-iplanrio']
+  input_gcp_projects:
+      - rj-cetrio
+      - rj-cetrio-dev
+      - rj-cor
+      - rj-cor-dev
+      - rj-cvl
+      - rj-cvl-dev
+      - rj-civitas
+      - rj-civitas-dev
+      #- rj-dados
+      #- rj-dados-dev
+      - rj-escritorio
+      #- rj-escritorio-dev
+      - rj-iplanrio
+      - rj-iplanrio-dev
+      - rj-rioaguas
+      - rj-rioaguas-dev
+      - rj-seconserva
+      - rj-seconserva-dev
+      - rj-segovi
+      - rj-segovi-dev
+      - rj-seop
+      - rj-seop-dev
+      - rj-setur
+      - rj-setur-dev
+      - rj-siurb
+      #- rj-siurb-dev
+      - rj-smfp
+      - rj-smfp-dev
+      #- rj-smfp-egp
+      #- rj-smfp-egp-dev
+      - rj-smas
+      - rj-smas-dev
+      - rj-smdue
+      #- rj-smdue-dev
+      - rj-sme
+      - rj-sme-dev
+      - rj-smi
+      - rj-smi-dev
+      - rj-sms
+      #- rj-sms-dev
+      - rj-smtr
+      - rj-smtr-dev
+      #- rj-smtr-staging
+      #- rj-smtr-staging-dev
 
 
   use_flat_pricing: false # We use on-demand pricing
