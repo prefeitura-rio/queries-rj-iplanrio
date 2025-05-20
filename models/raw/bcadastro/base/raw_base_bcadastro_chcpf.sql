@@ -91,3 +91,5 @@ with
 
 select *
 from dedup
+where cpfId is not null and cpfId != ''
+
