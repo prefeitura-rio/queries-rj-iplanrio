@@ -69,11 +69,6 @@ with
             json_value(doc, '$.tipo') as tipo,
             json_value(doc, '$.timestamp') as timestamp,
 
-            -- Technical fields (extracted as STRING from doc, plus 'rev' from 'value')
-            json_value(doc, '$.id') as id_doc,  -- Extraction for doc.id
-            -- Assuming 'value' is a source column that is JSON or STRUCT
-            json_value(value, '$.rev') as rev,  -- Extraction for value.rev
-
             -- _id, _rev from doc
             json_value(doc, '$._id') as _id,
             json_value(doc, '$._rev') as _rev
@@ -453,20 +448,6 @@ with
             sum(case when timestamp is null then 1 else 0 end),
             sum(case when timestamp = '' then 1 else 0 end),
             sum(case when timestamp is not null and timestamp != '' then 1 else 0 end)
-        from fonte_extracted
-        union all
-        select
-            'id' as column_name,
-            sum(case when id_doc is null then 1 else 0 end),
-            sum(case when id_doc = '' then 1 else 0 end),
-            sum(case when id_doc is not null and id_doc != '' then 1 else 0 end)
-        from fonte_extracted
-        union all  -- Key 'id' from doc
-        select
-            'rev' as column_name,
-            sum(case when rev is null then 1 else 0 end),
-            sum(case when rev = '' then 1 else 0 end),
-            sum(case when rev is not null and rev != '' then 1 else 0 end)
         from fonte_extracted
         union all  -- 'rev' from value column
         select

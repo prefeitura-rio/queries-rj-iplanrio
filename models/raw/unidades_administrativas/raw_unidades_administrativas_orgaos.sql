@@ -8,9 +8,10 @@ SELECT
   SAFE_CAST(
     REGEXP_REPLACE(nome_ua, r'\.0$', '') AS STRING
   ) as nome_unidade_administrativa,
-  SAFE_CAST(
-    REGEXP_REPLACE(cd_ua_pai, r'\.0$', '') AS STRING
-  ) as id_unidade_administrativa_pai,
+  -- SAFE_CAST(
+  --  REGEXP_REPLACE(cd_ua_pai, r'\.0$', '') AS STRING
+  -- #) as id_unidade_administrativa_pai,
+  -- COLUMN REMOVED FROM SCHEMA
   SAFE_CAST(
     REGEXP_REPLACE(nivel, r'\.0$', '') AS STRING
   ) as nivel,
