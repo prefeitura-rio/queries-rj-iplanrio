@@ -428,6 +428,7 @@ with
             cpf_particao
 
         from fonte_deduplicada
+        where cpf is not null and cpf != ''
     )
 
 select *
