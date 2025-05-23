@@ -4,6 +4,15 @@
         alias="chcaepf_bcadastros_parsed",
         schema="brutos_bcadastro_staging",
         materialized="table",
+        partition_by={
+            "field": "cpf_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 100000000000,
+                "interval": 34722222
+            }
+        }
     )
 }}
 
@@ -74,11 +83,16 @@ with
                 nullif(json_value(_airbyte_meta, '$.changes'), "") as changes,
                 nullif(json_value(_airbyte_meta, '$.sync_id'), "") as sync_id
             ) as airbyte,
+
+            
         from fonte
     ),
 
     dedup as (
-        select *
+        select *,
+            -- Partition by cpf
+            cast(nroCpf as int64) as cpf_particao,
+
         from fonte_parseada
         qualify
             row_number() over (partition by nroCpf order by airbyte.extracted_at desc)

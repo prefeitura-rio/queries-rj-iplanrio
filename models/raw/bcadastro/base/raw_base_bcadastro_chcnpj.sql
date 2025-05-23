@@ -150,7 +150,9 @@ with
     ),
 
     dedup as (
-        select *
+        select *,
+         -- Partition by cnpj
+            cast(cnpj as int64) as cnpj_particao,
         from fonte_parseada
         qualify
             row_number() over (partition by cnpj order by airbyte.extracted_at desc)
