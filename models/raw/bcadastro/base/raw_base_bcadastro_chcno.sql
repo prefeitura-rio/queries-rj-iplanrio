@@ -74,7 +74,9 @@ with
     ),
 
     dedup as (
-        select *
+        select *,
+        -- Partition by cno
+            cast(cno as int64) as cno_particao,
         from fonte_parseada
         qualify
             row_number() over (partition by cno order by airbyte.extracted_at desc) = 1
