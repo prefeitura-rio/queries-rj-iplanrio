@@ -82,7 +82,10 @@ with
     ),
 
     dedup as (
-        select *
+        select *,
+         -- Partition by cpfId
+            cast(cpfId as int64) as cpfId_particao,
+        
         from fonte_parseada
         qualify
             row_number() over (partition by cpfId order by airbyte.extracted_at desc)
