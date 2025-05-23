@@ -52,8 +52,8 @@ select
     struct(
         b.id_bairro as id_bairro,
         b.nome as bairro,
-        b.nome_regiao_planejamento as nome_regiao_planejamento,
-        b.nome_regiao_administrativa as nome_regiao_administrativa,
+        b.nome_regiao_planejamento as regiao_planejamento,
+        b.nome_regiao_administrativa as regiao_administrativa,
         b.subprefeitura as subprefeitura
     ) as bairro,
 

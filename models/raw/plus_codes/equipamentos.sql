@@ -23,8 +23,16 @@ endereco STRUCT<
     cep         STRING
 >
 
+
+
+
 bairro STRUCT<
     id_bairro STRING,
+    bairro STRING,
+    nome_regiao_planejamento STRING,
+    nome_regiao_administrativa STRING,
+    subprefeitura STRING,
+
 
 >
 contato STRUCT<
