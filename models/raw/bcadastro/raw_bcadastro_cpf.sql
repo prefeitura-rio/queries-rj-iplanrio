@@ -251,7 +251,7 @@ with
 
             -- Person data
             {{ proper_br("nome") }} as nome,
-            nome_social,
+            {{ proper_br("nome_social") }} as nome_social,
             {{ proper_br("mae_nome") }} as mae_nome,
 
             -- Dates
