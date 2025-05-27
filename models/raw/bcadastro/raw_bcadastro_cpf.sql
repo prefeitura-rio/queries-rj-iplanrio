@@ -151,7 +151,7 @@ with
 
             -- Birth and residence
             nascimento_uf,
-            mn.municipio_nome as nascimento_municipio,
+            mn.municipio_nome as nascimento_municipio,  -- TODO: CORRIGIR
             nascimento_pais,
             residencia_pais,
             md.municipio_nome as endereco_municipio,
@@ -191,7 +191,7 @@ with
             = cast(md.id_municipio_rf as int64)
         left join
             municipio_bd as mn
-            on cast(t.id_municipio_domicilio as int64)
+            on cast(t.id_nascimento_municipio as int64)
             = cast(mn.id_municipio_rf as int64)
         left join
             (
@@ -250,9 +250,9 @@ with
             id_ua,
 
             -- Person data
-            {{ proper_br("nome") }} as nome,
-            {{ proper_br("nome_social") }} as nome_social,
-            {{ proper_br("mae_nome") }} as mae_nome,
+            nome,
+            nome_social,
+            mae_nome,
 
             -- Dates
             nascimento_data,
@@ -260,7 +260,7 @@ with
             atualizacao_data,
 
             -- Status and demographics
-            {{ proper_br("situacao_cadastral_tipo") }} as situacao_cadastral_tipo,
+            situacao_cadastral_tipo,
             lower(sexo) as sexo,
             obito_ano,
             estrangeiro_indicador,
@@ -296,21 +296,21 @@ with
             -- Address
             endereco_cep,
             lower(endereco_uf) as endereco_uf,
-            {{ proper_br("endereco_municipio") }} as endereco_municipio,
-            {{ proper_br("endereco_bairro") }} as endereco_bairro,
-            {{ proper_br("endereco_tipo_logradouro") }} as endereco_tipo_logradouro,
-            {{ proper_br("endereco_logradouro") }} as endereco_logradouro,
+            endereco_municipio,
+            endereco_bairro,
+            endereco_tipo_logradouro,
+            endereco_logradouro,
             endereco_numero,
-            {{ proper_br("endereco_complemento") }} as endereco_complemento,
+            endereco_complemento,
 
             -- Birth and residence
             lower(nascimento_uf) as nascimento_uf,
-            {{ proper_br("nascimento_municipio") }} as nascimento_municipio,
+            nascimento_municipio,
             nascimento_pais,
             residencia_pais,
 
             -- Occupation
-            {{ proper_br("ocupacao_nome") }} as ocupacao_nome,
+            ocupacao_nome,
 
             -- Metadata
             exercicio_ano as ano_exercicio,
