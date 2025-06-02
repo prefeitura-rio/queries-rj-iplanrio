@@ -18,7 +18,7 @@ clean-targets:
 
 vars:
   # Internal variables
-  DBT_USER: "{{ env_var('DBT_USER', 'geraldomaia') }}"
+  DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
 
   # BigQuery Monitoring
   bq_region: 'us'
@@ -58,8 +58,3 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
-      brutos_taxirio:
-        +materialized: table
-        +schema: brutos_taxirio
-        +tags: "daily"
-        
