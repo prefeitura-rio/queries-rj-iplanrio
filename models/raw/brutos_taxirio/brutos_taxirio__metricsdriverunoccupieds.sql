@@ -23,4 +23,4 @@ SELECT
 DATE(SAFE_CAST(ano_particao AS INT64), SAFE_CAST(mes_particao AS INT64), 1) AS data_particao
 
 FROM
-  `rj-iplanrio.brutos_taxirio_staging.metricsdriverunoccupieds`
+  {{ source('brutos_taxirio_staging','metricsdriverunoccupieds')}}

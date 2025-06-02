@@ -14,4 +14,4 @@ SELECT
   SAFE_CAST (name as STRING) as nome,
   SAFE_CAST (type as STRING) as tipo
 FROM
-  `rj-iplanrio.brutos_taxirio_staging.paymentmethods`
+  {{ source('brutos_taxirio_staging','paymentmethods') }}

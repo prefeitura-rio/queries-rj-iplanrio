@@ -32,4 +32,4 @@ SELECT
 
   
 FROM
-  `rj-iplanrio.brutos_taxirio_staging.users`
+  {{  source('brutos_taxirio_staging','users')}}

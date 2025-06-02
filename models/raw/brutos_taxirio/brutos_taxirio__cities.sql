@@ -15,5 +15,6 @@ SELECT
   SAFE_CAST (isCalulatedInApp as BOOL) as calculado_no_app,
   SAFE_CAST (loginLabel as STRING) as forma_de_login,
   PARSE_JSON (serviceStations) as estacoes_de_servico
+
 FROM
-  `rj-iplanrio.brutos_taxirio_staging.cities`
+  {{ source('brutos_taxirio_staging', 'cities') }}

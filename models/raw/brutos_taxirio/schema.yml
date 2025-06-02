@@ -10,6 +10,7 @@ models:
         data_type: string
         data_tests:
           - not_null
+          - unique
       - name: nome_municipio
         description: "Nome do Municipio"
         data_type: string
@@ -31,205 +32,323 @@ models:
       alias: discounts
     columns:
       - name: id_desconto_associado
-        description: ""
+        description: Identificador do Associado
+        data_tests:
+          - not_null
+          - unique
       - name: descricao
-        description: ""
+        description: Descrição do Desconto
       - name: desconto
-        description: ""
       - name: data_criacao
-        description: ""
+    description: tabelas de descontos
   - name: brutos_taxirio__users
     config:
       alias: users
     columns:
       - name: ano_particao
-        description: ""
+        description: "Parte da data de criação do usuário (Ano)"
       - name: mes_particao
-        description: ""
+        description: "Parte da data de criação do usuário (Mês)"
       - name: dia_particao
-        description: ""
+        description: "Parte da data de criação do usuário (Dia)"
       - name: data_criacao
-        description: ""
+        description: "Data de criação do usuário"
       - name: id_usuario
-        description: ""
+        description: "Identificador do usuário"
       - name: sexo
-        description: ""
+        description: "Sexo do usuário"
       - name: data_nascimento
-        description: ""
+        description: "Data de nascimento do usuário"
   - name: brutos_taxirio__rankingraces
     config:
       alias: rankingraces
     columns:
       - name: ano_particao
-        description: ""
+        description: "Parte da data de criação da corrida (Ano)"
       - name: mes_particao
-        description: ""
+        description: "Parte da data de criação da corrida (Mês)"
       - name: dia_particao
-        description: ""
+        description: "Parte da data de criação da corrida (Dia)"
       - name: data_criacao
-        description: ""
+        description: "Data de criação da corrida"
       - name: data_atualizacao
-        description: ""
+        description: "Data de atualização da corrida"
       - name: id_ranking_corrida
-        description: ""
+        description: "Identificador do ranking da corrida"
       - name: id_corrida
-        description: ""
+        description: "Identificador da corrida"
       - name: competidores
-        description: ""
+        description: "Competidores da corrida"
   - name: brutos_taxirio__paymentmethods
     config:
       alias: paymentmethods
     columns:
       - name: id_pagamento_associado
-        description: ""
-      - name: pindex
-        description: ""
+        description: "Identificador do pagamento associado"
+      - name: pindex  
+        description: "Identificador do pagamento"
       - name: nome
-        description: ""
+        description: "Nome do pagamento"
       - name: tipo
-        description: ""
+        description: "Tipo de pagamento"
   - name: brutos_taxirio__races
     config:
-      alias: races
+      alias: corridas
     colunms:
       - name: ano_particao
-        description: ""
+        description: "Parte da data de criação da corrida (Ano)"
       - name: mes_particao
-        description: ""
+        description: "Parte da data de criação da corrida (Mês)"
       - name: dia_particao
-        description: ""
+        description: "Parte da data de criação da corrida (Dia)"
       - name: data_criacao
-        description: ""
+        description: "Data de criação da corrida"
       - name: id_corrida
-        description: ""
+        description: "Identificador da corrida"
       - name: id_evento
-        description: ""
+        description: "Identificador do evento"
       - name: id_passageiro
-        description: ""
+        description: "Identificador do passageiro"
       - name: id_municipio
-        description: ""
+        description: "Identificador do município"
       - name: id_pagamento_associado
-        description: ""
+        description: "Identificador do pagamento associado"
       - name: qtd_transmissao
-        description: ""
+        description: "Quantidade de transmissão"
       - name: nota_avaliacao
-        description: ""
+        description: "Nota de avaliação"
       - name: suspeito
-        description: ""
+        description: "Flag se a corrida é suspeita"
       - name: invalido
-        description: ""
+        description: "Flag se a corrida é inválida"
       - name: status
-        description: ""
+        description: "Status da corrida"
       - name: distancia_rota
-        description: ""
+        description: "Distância da rota"
       - name: duracao_rota
-        description: ""
+        description: "Duração da rota"
       - name: valor_estimado
-        description: ""
+        description: "Valor estimado"
       - name: id_taximetro_associado
-        description: ""
+        description: "Identificador do taxímetro associado"
       - name: id_tarifa_minima_associada
-        description: ""
+        description: "Identificador da tarifa mínima associada"
       - name: id_desconto_associado
-        description: ""
+        description: "Identificador do desconto associado"
       - name: propriedade_corporativa
-        description: ""
+        description: "Flag se a corrida é propriedade corporativa (True/ False) "
+    description: tabela de corridas dos taxiatas
+    columns:
+      - name: id_corrida
+        description: Identificador da corrida
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: data_criacao
+        description: data do início da corrida
+        data_type: datetime
+        quote: true
+      - name: id_evento
+        data_type: string
+        quote: true
+      - name: id_passageiro
+        description: identificação do passageiro chave estrangeira na tabela passangers
+        data_type: string
+        tests:
+          - not_null
+        quote: true
+      - name: id_municipio
+        data_type: string
+        quote: true
+      - name: id_pagamento_associado
+        data_type: string
+        quote: true
+      - name: qtd_transmissao
+        data_type: int64
+        quote: true
+      - name: nota_avaliacao
+        data_type: int64
+        quote: true
+      - name: suspeito
+        data_type: boolean
+        quote: true
+      - name: invalido
+        data_type: boolean
+        quote: true
+      - name: status
+        data_type: string
+        quote: true
+      - name: distancia_rota_texto
+        data_type: string
+        quote: true
+      - name: distancia_rota_valor
+        data_type: int64
+        quote: true
+      - name: duracao_rota_texto
+        data_type: string
+        quote: true
+      - name: duracao_rota_valor
+        data_type: int64
+        quote: true
+      - name: valor_estimado
+        data_type: float64
+        quote: true
+      - name: id_taximetro_associado
+        data_type: string
+        quote: true
+      - name: id_tarifa_minima_associada
+        data_type: string
+        quote: true
+      - name: id_desconto_associado
+        data_type: string
+        quote: true
+      - name: id_desconto_passageiro
+        data_type: string
+        quote: true
+      - name: valor_total_a_pagar
+        data_type: float64
+        quote: true
+      - name: valor_total_pedagio
+        data_type: float64
+        quote: true
+      - name: valor_total_com_desconto
+        data_type: float64
+        quote: true
+      - name: valor_total_desconto
+        data_type: float64
+        quote: true
+      - name: valor_total_sem_desconto
+        data_type: float64
+        quote: true
+      - name: valor_total_por_taximetro
+        data_type: float64
+        quote: true
+      - name: valor_total_por_tempo_parado
+        data_type: float64
+        quote: true
+      - name: valor_total_por_km
+        data_type: float64
+        quote: true
+      - name: valor_minimo
+        data_type: float64
+        quote: true
+      - name: propriedade_corporativa
+        data_type: boolean
+        quote: true
+      - name: ano_particao
+        data_type: int64
+        quote: true
+      - name: mes_particao
+        data_type: int64
+        quote: true
+      - name: dia_particao
+        data_type: int64
+        quote: true
   - name: brutos_taxirio__passengers
     config:
       alias: passengers
     columns:
       - name: ano_particao
-        description: ""
+        description: "Parte da data de criação do passageiro (Ano)"
       - name: mes_particao
-        description: ""
+        description: "Parte da data de criação do passageiro (Mês)"
       - name: dia_particao
-        description: ""
+        description: "Parte da data de criação do passageiro (Dia)"
       - name: data_criacao
-        description: ""
+        description: "Data de criação do passageiro"
       - name: id_passageiro
-        description: ""
+        description: "Identificador do passageiro"
       - name: id_usuario
-        description: ""
+        description: "Identificador do usuário"
       - name: pode_usar_pagamento_app
-        description: ""
+        description: "Flag se o pagamento pode ser feito pelo aplicativo"
       - name: id_phone
-        description: ""
+        description: "Identificador do telefone"
       - name: phone_atualizacao
-        description: ""
+        description: "Data de atualização do telefone"
       - name: phone_versao_app
-        description: ""
+        description: "Versão do aplicativo do telefone"
       - name: phone_modelo
-        description: ""
+        description: "Modelo do telefone"
       - name: phone_fabricante
-        description: ""
+        description: "Fabricante do telefone"
       - name: phone_versao_sistema
-        description: ""
+        description: "Versão do sistema do telefone"
       - name: phone_nome_sistema
-        description: ""
+        description: "Nome do sistema do telefone"
   - name: brutos_taxirio__drivers
     config:
       alias: drivers
     columns:
       - name: ano_particao
-        description: ""
+        description: "Ano (Pate do campo data criação)"
       - name: mes_particao
-        description: ""
+        description: "Mês  (Pate do campo data criação)"
       - name: dia_particao
-        description: ""
+        description: "Dia (Pate do campo data criação)"
       - name: data_criacao
-        description: ""
+        description: "data da inclusão na tabela"
       - name: id_motorista
-        description: ""
+        description: "Identificador do Motorista"
+        data_tests:
+          - not_null
       - name: id_usuario
-        description: ""
+        description: "Identificador do usuário"
+        data_tests:
+          - not_null
       - name: id_motorista_taxi
-        description: ""
+        description: Identificador do Motorista  do Taxi
       - name: id_carro_associado
-        description: ""
+        description: Identificador do Carro
       - name: id_desconto_associado
-        description: ""
+        description: Identificador do desconto para a corrida
       - name: id_pagamento_associado
-        description: ""
+        description: Identificador do Pagamento associado
       - name: pode_receber_pagamento_app
-        description: ""
+        description: Flag que indica se o pagamento pode ser feito pelo App
       - name: pode_receber_pagamento_prefeitura
-        description: ""
+        description: Flag que indica se o pagamento pode ser feito pela prefeitura
       - name: avaliacoes_recebidas
-        description: ""
       - name: nota_media
-        description: ""
       - name: status
-        description: ""
+        description: Status do Motorista
       - name: ocupado
-        description: ""
       - name: ultima_nota_media
-        description: ""
       - name: id_corrida_bloqueada
-        description: ""
       - name: id_municipio
-        description: ""
+        description: Identificador do Município
       - name: taxa_servico
-        description: ""
       - name: nota
-        description: ""
       - name: id_phone
-        description: ""
       - name: phone_atualizacao
-        description: ""
       - name: phone_versao_app
-        description: ""
       - name: phone_modelo
-        description: ""
       - name: phone_fabricante
-        description: ""
       - name: phone_versao_sistema
-        description: ""
       - name: phone_nome_sistema
-        description: ""
       - name: corrida_origem_posicao_lng
-        description: ""
       - name: corrida_origem_posicao_lat
-        description: ""
       - name: id_corrida
-        description: ""
       - name: data_bloqueio_espirado
+    description: Tabela de Motoristas
+
+   
+
+
+sources:
+  - name: brutos_taxirio_staging    # 1º argumento do source()
+    database: rj-iplanrio           # opcional no BigQuery
+    schema: brutos_taxirio_staging  # schema do BigQuery
+    tables:
+      - name: drivers               # 2º argumento do source()
+      - name: cities
+      - name: discounts
+      - name: paymentmethods
+      - name: corridas
+      - name: rankingraces
+      - name: users
+      - name: passengers
+      - name: metricsdriverunoccupieds
+      - name: metricsdriveroccupieds

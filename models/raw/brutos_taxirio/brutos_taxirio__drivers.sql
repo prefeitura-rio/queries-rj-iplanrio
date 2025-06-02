@@ -36,13 +36,13 @@ SELECT
   SAFE_CAST (serviceRecordRate as FLOAT64) as taxa_servico,
   SAFE_CAST (nota as FLOAT64) as nota,
   SAFE_CAST (averageTT as FLOAT64) as mediatt,
-  DATETIME (TIMESTAMP(infoPhone_updatedAt)) as phone_atualizacao,
+  DATETIME (TIMESTAMP(infoPhone_updatedAt)) as atualizacao_telefone,
   SAFE_CAST (infoPhone_id as STRING) as id_phone,
-  SAFE_CAST (infoPhone_appVersion as STRING) as phone_versao_app,
-  SAFE_CAST (infoPhone_phoneModel as STRING) as phone_modelo,
-  SAFE_CAST (infoPhone_phoneManufacturer as STRING) as phone_fabricante,
-  SAFE_CAST (infoPhone_osVersion as STRING) as phone_versao_sistema,
-  SAFE_CAST (infoPhone_osName as STRING) as phone_nome_sistema,
+  SAFE_CAST (infoPhone_appVersion as STRING) as versao_app_telefone,
+  SAFE_CAST (infoPhone_phoneModel as STRING) as modelo_telefone,
+  SAFE_CAST (infoPhone_phoneManufacturer as STRING) as fabricante_telefone,
+  SAFE_CAST (infoPhone_osVersion as STRING) as versao_sistema_telefone,
+  SAFE_CAST (infoPhone_osName as STRING) as nome_sistema_telefone,
   SAFE_CAST (tokeninfo_httpSalt as STRING) as ficha_http_aleatorio,
   SAFE_CAST (tokeninfo_wssSalt as STRING) as ficha_wss_aleatorio,
   SAFE_CAST (tokeninfo_pushToken as STRING) as ficha_envio,
@@ -58,4 +58,4 @@ SELECT
   SAFE_CAST (mes_particao as INT64) as mes_particao,
   DATE(SAFE_CAST(ano_particao AS INT64), SAFE_CAST(mes_particao AS INT64), 1) AS data_particao
 FROM
-  `rj-iplanrio.brutos_taxirio_staging.drivers`
+  {{ source('brutos_taxirio_staging','drivers') }}

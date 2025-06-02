@@ -24,4 +24,4 @@ SELECT
  
   
 FROM
-  `rj-iplanrio.brutos_taxirio_staging.rankingraces`
+  {{ source('brutos_taxirio_staging','rankingraces') }}
