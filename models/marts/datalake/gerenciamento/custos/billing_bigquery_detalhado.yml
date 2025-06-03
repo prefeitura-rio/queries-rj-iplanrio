@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: billing_bigquery_detalhado
+    description: "Modelo que detalha os custos de execução do BigQuery por job, incluindo processamento, faturamento e métricas de uso."
+    config:
+      schema: gerenciamento_custos
+      alias: gcp_billing_bigquery_detalhado
+    data_tests:
+      - dbt_expectations.expect_column_values_to_be_between:
+          name: mart_gerenciamento_billing_bigquery_detalhado__datahora_criacao__valid_period
+          column_name: datahora_criacao
+          min_value: "2024-01-01"
+          max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
+          severity: error
+    columns:
+      - name: origem_projeto
+        description: "Projeto de origem da execução (rj-iplanrio ou rj-iplanrio-dev)"
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_billing_bigquery_detalhado__origem_projeto__not_null
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: mart_gerenciamento_billing_bigquery_detalhado__origem_projeto__valid_values
+              value_set: ["rj-iplanrio", "rj-iplanrio-dev"]
+              severity: error
+
+      - name: projeto_id
+        description: "ID do projeto GCP onde o job foi executado"
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_billing_bigquery_detalhado__projeto_id__not_null
+              severity: error
+
+      - name: id_job
+        description: "Identificador único do job no BigQuery"
+        data_tests:
+          - unique:
+              name: mart_gerenciamento_billing_bigquery_detalhado__id_job__unique
+              severity: error
+          - not_null:
+              name: mart_gerenciamento_billing_bigquery_detalhado__id_job__not_null
+              severity: error
+
+      - name: datahora_criacao
+        description: "Data e hora de criação do job"
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_billing_bigquery_detalhado__datahora_criacao__not_null
+              severity: error
+
+      - name: custo_estimado_valor
+        description: "Custo estimado em USD do job"
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_gerenciamento_billing_bigquery_detalhado__custo_estimado_valor__positive
+              min_value: 0
+              severity: error
+
+      - name: tib_processado_quantidade
+        description: "Quantidade de TiB processados pelo job"
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_gerenciamento_billing_bigquery_detalhado__tib_processado_quantidade__positive
+              min_value: 0
+              severity: error
+
+      - name: data_faturamento
+        description: "Data de faturamento do job"
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_billing_bigquery_detalhado__data_faturamento__not_null
+              severity: error
