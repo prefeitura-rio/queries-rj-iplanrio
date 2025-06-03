@@ -29,18 +29,18 @@ models:
         description: "Identificador do usuário"
       - name: pode_usar_pagamento_app
         description: "Flag se o pagamento pode ser feito pelo aplicativo"
-      - name: id_phone
+      - name: id_telefone
         description: "Identificador do telefone"
-      - name: phone_atualizacao
-        description: "Data de atualização do telefone"
-      - name: phone_versao_app
+      - name: versao_app_telefone
         description: "Versão do aplicativo do telefone"
-      - name: phone_modelo
+      - name: versao_sistema_telefone
+        description: "Versão do aplicativo do telefone"
+      - name: modelo_telefone
         description: "Modelo do telefone"
-      - name: phone_fabricante
+      - name: fabricante_telefone
         description: "Fabricante do telefone"
-      - name: phone_versao_sistema
+      - name: versao_sistema_telefone
         description: "Versão do sistema do telefone"
-      - name: phone_nome_sistema
+      - name: nome_sistema_telefone
         
   
