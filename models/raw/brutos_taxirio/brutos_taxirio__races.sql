@@ -13,6 +13,8 @@ SELECT
   SAFE_CAST (isSuspect as BOOL) as suspeito,
   SAFE_CAST (isInvalid as BOOL) as invalido,
   SAFE_CAST (status as STRING) as status,
+  SAFE_CAST (car as STRING) as id_carro,
+  SAFE_CAST (driver as STRING) as id_motorista,
   SAFE_CAST (routeOriginDestination_distance_text as STRING) as distancia_rota_texto,
   SAFE_CAST (routeOriginDestination_distance_value as INT64) as distancia_rota_valor,
   SAFE_CAST (routeOriginDestination_duration_text as STRING) as duracao_rota_texto,
