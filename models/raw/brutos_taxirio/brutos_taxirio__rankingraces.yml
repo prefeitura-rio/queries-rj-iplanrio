@@ -22,11 +22,17 @@ models:
         description: "Data de atualização da corrida"
       - name: id_ranking_corrida
         description: "Identificador do ranking da corrida"
+        data_type: string
         data_tests:
         - not_null
         - unique
       - name: id_corrida
         description: "Identificador da corrida"
+        data_type: string
       - name: competidores
         description: "Competidores da corrida"
+        data_type: json
+      - name: data_particao
+        description: "Data de partição"
+        data_type: date
   

@@ -12,21 +12,31 @@ models:
     columns:
       - name: ano_particao
         description: "Parte da data de criação do usuário (Ano)"
+        data_type: int64
       - name: mes_particao
         description: "Parte da data de criação do usuário (Mês)"
+        data_type: int64
       - name: dia_particao
         description: "Parte da data de criação do usuário (Dia)"
+        data_type: int64
       - name: data_criacao
         description: "Data de criação do usuário"
+        data_type: datetime
       - name: id_usuario
         description: "Identificador do usuário"
+        data_type: string
         data_tests:
           - not_null
           - unique
       - name: sexo
         description: "Sexo do usuário"
+        data_type: string
       - name: data_nascimento
         description: "Data de nascimento do usuário"
+        data_type: datetime
+      - name: data_particao
+        description: "Data de partição"
+        data_type: date
   
  
    

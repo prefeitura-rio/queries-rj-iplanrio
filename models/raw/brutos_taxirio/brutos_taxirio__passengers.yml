@@ -14,33 +14,48 @@ models:
     columns:
       - name: ano_particao
         description: "Parte da data de criação do passageiro (Ano)"
+        data_type: int64
       - name: mes_particao
         description: "Parte da data de criação do passageiro (Mês)"
+        data_type: int64
       - name: dia_particao
         description: "Parte da data de criação do passageiro (Dia)"
+        data_type: int64
       - name: data_criacao
         description: "Data de criação do passageiro"
+        data_type: datetime
       - name: id_passageiro
         description: "Identificador do passageiro"
+        data_type: string
         data_tests:
-        - not_null
-        - unique
+          - not_null
+          - unique
       - name: id_usuario
         description: "Identificador do usuário"
+        data_type: string
       - name: pode_usar_pagamento_app
         description: "Flag se o pagamento pode ser feito pelo aplicativo"
+        data_type: boolean
       - name: id_telefone
         description: "Identificador do telefone"
+        data_type: string
       - name: versao_app_telefone
         description: "Versão do aplicativo do telefone"
-      - name: versao_sistema_telefone
-        description: "Versão do aplicativo do telefone"
-      - name: modelo_telefone
-        description: "Modelo do telefone"
-      - name: fabricante_telefone
-        description: "Fabricante do telefone"
+        data_type: string
       - name: versao_sistema_telefone
         description: "Versão do sistema do telefone"
+        data_type: string
+      - name: modelo_telefone
+        description: "Modelo do telefone"
+        data_type: string
+      - name: fabricante_telefone
+        description: "Fabricante do telefone"
+        data_type: string
       - name: nome_sistema_telefone
+        description: "Nome do sistema do telefone"
+        data_type: string
+      - name: data_particao
+        description: "Data de partição"
+        data_type: date
         
   
