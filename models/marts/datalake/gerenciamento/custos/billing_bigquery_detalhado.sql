@@ -28,33 +28,38 @@
 {% set projetos = [
     'rj-cetrio',
     'rj-cetrio-dev',
-
-
+    'rj-chatbot',
+    'rj-chatbot-dev',
     'rj-civitas',
     'rj-civitas-dev',
-
-
-
+    'rj-cmp',
+    'rj-comunicacao',
+    'rj-comunicacao-dev',
     'rj-cor',
     'rj-cor-dev',
-
+    'rj-crm-registry',
+    'rj-crm-registry-dev',
     'rj-cvl',
     'rj-cvl-dev',
-
-
+    'rj-datalab-sandbox',
+    'rj-escritorio',
+    'rj-escritorio-dev',
     'rj-iplanrio',
     'rj-iplanrio-dev',
-
-
-
-
-
+    'rj-iplanrio-ia-dev',
+    'rj-ipp',
+    'rj-ipp-dev',
+    'rj-mapa-realizacoes',
+    'rj-mapa-realizacoes-dev',
+    'rj-multirio',
+    'rj-multirio-dev',
     'rj-pgm',
-
-
+    'rj-precipitacao',
+    'rj-rec-rio',
+    'rj-rec-rio-dev',
     'rj-rioaguas',
     'rj-rioaguas-dev',
-
+    'rj-riosaude',
     'rj-seconserva',
     'rj-seconserva-dev',
     'rj-segovi',
@@ -64,9 +69,11 @@
     'rj-setur',
     'rj-setur-dev',
     'rj-siurb',
-
+    'rj-smac',
+    'rj-smac-dev',
     'rj-smas',
-
+    'rj-smas-dev',
+    'rj-smas-dev-432320',
     'rj-smdue',
     'rj-sme',
     'rj-sme-dev',
@@ -75,8 +82,14 @@
     'rj-smfp-egp',
     'rj-smi',
     'rj-smi-dev',
-
-
+    'rj-sms',
+    'rj-sms-dev',
+    'rj-sms-sandbox',
+    'rj-smtr',
+    'rj-smtr-dev',
+    'rj-smtr-staging',
+    'rj-vision-ai',
+    'rj-vision-ai-dev'
 ] %}
 
 {% set all_queries = [] %}

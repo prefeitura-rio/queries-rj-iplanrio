@@ -56,4 +56,8 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
+      billing_bigquery_detalhado:
+        +materialized: table
+        +schema: gerenciamento_custos
+        +tags: "daily"
 
