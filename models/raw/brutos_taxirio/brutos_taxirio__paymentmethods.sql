@@ -1,13 +1,4 @@
 
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'metodos_pagamentos',
-    materialized='table',
-
-)}}
-
-
 SELECT
   SAFE_CAST (id as STRING) as id_pagamento_associado,
   SAFE_CAST (pindex as INT64) as pindex,

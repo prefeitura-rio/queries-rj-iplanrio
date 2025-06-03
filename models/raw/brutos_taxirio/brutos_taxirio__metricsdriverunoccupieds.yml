@@ -1,0 +1,29 @@
+version: 2
+models:
+  - name: brutos_taxirio__metricsdriverunoccupieds
+    config:
+      schema: brutos_taxirio
+      alias: medidas_ocupacao_motoristas
+      materialized: table
+      tags: ['raw', 'taxirio', 'medidas_ocupacao_motoristas']
+      description: "medidas de disponibilidade de motoristas"
+      partition_by:
+        field: data_particao
+        data_type: date
+    columns:
+      - name: id_metricas_motoriasta_desocupado
+        description: Identificador da métrica de disponibilidade de motorista
+        data_tests:
+        - not_null
+        - unique
+      - name: id_motorista
+        description: Identificador do motorista
+      - name: id_desconto_associado
+        description: Identificador do desconto associado
+      - name: data_criacao
+        description: Data de criação da métrica
+      - name: ano_particao
+        description: Ano da partição
+      - name: mes_particao
+        description: Mês da partição
+    

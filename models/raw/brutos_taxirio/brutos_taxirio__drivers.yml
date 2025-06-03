@@ -1,0 +1,65 @@
+version: 2
+models:
+  - name: brutos_taxirio__drivers
+    config:
+      schema: brutos_taxirio
+      alias: drivers
+      materialized: table
+      tags: ['raw', 'taxirio', 'drivers']
+      description: "Tabela de Motoristas"
+      partition_by:
+        field: data_particao
+        data_type: date
+    columns:
+      - name: ano_particao
+        description: "Ano (Pate do campo data criação)"
+      - name: mes_particao
+        description: "Mês  (Pate do campo data criação)"
+      - name: dia_particao
+        description: "Dia (Pate do campo data criação)"
+      - name: data_criacao
+        description: "data da inclusão na tabela"
+      - name: id_motorista
+        description: "Identificador do Motorista"
+        data_tests:
+        - not_null
+        - unique
+      - name: id_usuario
+        description: "Identificador do usuário"
+        data_tests:
+          - not_null
+      - name: id_motorista_taxi
+        description: Identificador do Motorista  do Taxi
+      - name: id_carro_associado
+        description: Identificador do Carro
+      - name: id_desconto_associado
+        description: Identificador do desconto para a corrida
+      - name: id_pagamento_associado
+        description: Identificador do Pagamento associado
+      - name: pode_receber_pagamento_app
+        description: Flag que indica se o pagamento pode ser feito pelo App
+      - name: pode_receber_pagamento_prefeitura
+        description: Flag que indica se o pagamento pode ser feito pela prefeitura
+      - name: avaliacoes_recebidas
+      - name: nota_media
+      - name: status
+        description: Status do Motorista
+      - name: ocupado
+      - name: ultima_nota_media
+      - name: id_corrida_bloqueada
+      - name: id_municipio
+        description: Identificador do Município
+      - name: taxa_servico
+      - name: nota
+      - name: id_phone
+      - name: phone_atualizacao
+      - name: phone_versao_app
+      - name: phone_modelo
+      - name: phone_fabricante
+      - name: phone_versao_sistema
+      - name: phone_nome_sistema
+      - name: corrida_origem_posicao_lng
+      - name: corrida_origem_posicao_lat
+      - name: id_corrida
+      - name: data_bloqueio_espirado
+    

@@ -1,0 +1,22 @@
+version: 2
+models:
+  - name: brutos_taxirio__paymentmethods
+    config:
+      schema: brutos_taxirio
+      alias: paymentmethods
+      materialized: table
+      tags: ['raw', 'taxirio', 'paymentmethods']
+     
+
+    columns:
+      - name: id_pagamento_associado
+        description: "Identificador do pagamento associado"
+        data_tests:
+          - not_null
+          - unique
+      - name: pindex  
+        description: "Identificador do pagamento"
+      - name: nome
+        description: "Nome do pagamento"
+      - name: tipo
+        description: "Tipo de pagamento"

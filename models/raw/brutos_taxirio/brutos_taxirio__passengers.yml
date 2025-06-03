@@ -1,0 +1,46 @@
+version: 2
+models:
+  - name: brutos_taxirio__passengers
+    config:
+      schema: brutos_taxirio
+      alias: passageiros
+      materialized: table
+      partition_by:
+        field: data_particao
+        data_type: date
+      tags: ['raw', 'taxirio', 'passageiros']
+ 
+
+    columns:
+      - name: ano_particao
+        description: "Parte da data de criação do passageiro (Ano)"
+      - name: mes_particao
+        description: "Parte da data de criação do passageiro (Mês)"
+      - name: dia_particao
+        description: "Parte da data de criação do passageiro (Dia)"
+      - name: data_criacao
+        description: "Data de criação do passageiro"
+      - name: id_passageiro
+        description: "Identificador do passageiro"
+        data_tests:
+        - not_null
+        - unique
+      - name: id_usuario
+        description: "Identificador do usuário"
+      - name: pode_usar_pagamento_app
+        description: "Flag se o pagamento pode ser feito pelo aplicativo"
+      - name: id_phone
+        description: "Identificador do telefone"
+      - name: phone_atualizacao
+        description: "Data de atualização do telefone"
+      - name: phone_versao_app
+        description: "Versão do aplicativo do telefone"
+      - name: phone_modelo
+        description: "Modelo do telefone"
+      - name: phone_fabricante
+        description: "Fabricante do telefone"
+      - name: phone_versao_sistema
+        description: "Versão do sistema do telefone"
+      - name: phone_nome_sistema
+        
+  

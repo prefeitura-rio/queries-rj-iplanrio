@@ -1,15 +1,5 @@
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'usuarios',
-    materialized='table',
-    partition_by={
-      'field': 'data_particao',
-      'data_type': 'date'
-    },
 
 
-)}}
 SELECT
   SAFE_CAST (id as STRING) as id_usuario,
   SAFE_CAST (displayName as STRING) as nome_exibicao,

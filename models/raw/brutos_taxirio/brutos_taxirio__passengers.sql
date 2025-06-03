@@ -1,17 +1,4 @@
 
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'passageiros',
-    materialized='table',
-    partition_by={
-      'field': 'data_particao',
-      'data_type': 'date'
-    },
-
-
-)}}
-
 
 SELECT
   

@@ -1,0 +1,120 @@
+version: 2
+models:
+  - name: brutos_taxirio__races
+    config:
+      schema: brutos_taxirio
+      alias: corridas
+      materialized: table
+      tags: ['raw', 'taxirio', 'corridas']
+      partition_by:
+        field: data_particao
+        data_type: date
+    
+    columns:
+      - name: id_corrida
+        description: Identificador da corrida
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: data_criacao
+        description: data do início da corrida
+        data_type: datetime
+        quote: true
+      - name: id_evento
+        data_type: string
+        quote: true
+      - name: id_passageiro
+        description: identificação do passageiro chave estrangeira na tabela passangers
+        data_type: string
+        tests:
+          - not_null
+        quote: true
+      - name: id_municipio
+        data_type: string
+        quote: true
+      - name: id_pagamento_associado
+        data_type: string
+        quote: true
+      - name: qtd_transmissao
+        data_type: int64
+        quote: true
+      - name: nota_avaliacao
+        data_type: int64
+        quote: true
+      - name: suspeito
+        data_type: boolean
+        quote: true
+      - name: invalido
+        data_type: boolean
+        quote: true
+      - name: status
+        data_type: string
+        quote: true
+      - name: distancia_rota_texto
+        data_type: string
+        quote: true
+      - name: distancia_rota_valor
+        data_type: int64
+        quote: true
+      - name: duracao_rota_texto
+        data_type: string
+        quote: true
+      - name: duracao_rota_valor
+        data_type: int64
+        quote: true
+      - name: valor_estimado
+        data_type: float64
+        quote: true
+      - name: id_taximetro_associado
+        data_type: string
+        quote: true
+      - name: id_tarifa_minima_associada
+        data_type: string
+        quote: true
+      - name: id_desconto_associado
+        data_type: string
+        quote: true
+      - name: id_desconto_passageiro
+        data_type: string
+        quote: true
+      - name: valor_total_a_pagar
+        data_type: float64
+        quote: true
+      - name: valor_total_pedagio
+        data_type: float64
+        quote: true
+      - name: valor_total_com_desconto
+        data_type: float64
+        quote: true
+      - name: valor_total_desconto
+        data_type: float64
+        quote: true
+      - name: valor_total_sem_desconto
+        data_type: float64
+        quote: true
+      - name: valor_total_por_taximetro
+        data_type: float64
+        quote: true
+      - name: valor_total_por_tempo_parado
+        data_type: float64
+        quote: true
+      - name: valor_total_por_km
+        data_type: float64
+        quote: true
+      - name: valor_minimo
+        data_type: float64
+        quote: true
+      - name: propriedade_corporativa
+        data_type: boolean
+        quote: true
+      - name: ano_particao
+        data_type: int64
+        quote: true
+      - name: mes_particao
+        data_type: int64
+        quote: true
+      - name: dia_particao
+        data_type: int64
+        quote: true

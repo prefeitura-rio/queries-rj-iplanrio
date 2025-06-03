@@ -1,17 +1,4 @@
 
-
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'medidas_ocupacao_motoristas',
-    materialized='table',
-    partition_by={
-      'field': 'data_particao',
-      'data_type': 'date'
-    }
-
-)}}
-
 SELECT
   SAFE_CAST (id as STRING) as id_metricas_motoriasta_desocupado,
   SAFE_CAST (driver as STRING) as id_motorista,

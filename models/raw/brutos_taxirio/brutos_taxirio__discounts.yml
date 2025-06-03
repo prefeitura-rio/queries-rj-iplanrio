@@ -1,0 +1,20 @@
+version: 2
+models:
+ - name: brutos_taxirio__discounts
+   config:
+      schema: brutos_taxirio
+      alias: descontos
+      materialized: table
+      tags: ['raw', 'taxirio', 'descontos']
+      description: "Tabela de Descontos"
+   columns:
+    - name: id_desconto_associado
+      description: Identificador do Associado
+      data_tests:
+        - not_null
+        - unique
+    - name: descricao
+      description: Descrição do Desconto
+    - name: desconto
+    - name: data_criacao
+    

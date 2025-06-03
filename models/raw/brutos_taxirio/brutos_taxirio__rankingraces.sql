@@ -1,15 +1,4 @@
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'rank_corridas',
-    materialized='table',
-    partition_by={
-      'field': 'data_particao',
-      'data_type': 'date'
-    },
 
-
-)}}
 
 SELECT
   SAFE_CAST (id as STRING) as id_ranking_corrida,

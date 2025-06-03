@@ -1,12 +1,4 @@
 
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'cidades',
-    materialized='table',
-
-)}}
-
 SELECT
   SAFE_CAST (id as STRING) as id_municipio,
   SAFE_CAST (name as STRING) as nome_municipio,

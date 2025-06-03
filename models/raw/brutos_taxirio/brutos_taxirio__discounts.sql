@@ -1,12 +1,4 @@
 
-{{
-  config(
-    schema= 'brutos_taxirio',
-    alias= 'descontos',
-    materialized='table',
-
-)}}
-
 SELECT
   SAFE_CAST (id as STRING) as id_desconto_associado,
   SAFE_CAST (description as STRING) as descricao,

@@ -1,0 +1,32 @@
+version: 2
+models:
+  - name: brutos_taxirio__cities
+    config:
+      schema: brutos_taxirio
+      alias: cities
+      materialized: table
+      tags: ['raw', 'taxirio', 'cities']
+      description: "Tabela de Cidades"
+    columns:
+      - name: id_municipio
+        description: "Identificador da cidade"
+        data_type: string
+        data_tests:
+          - not_null
+          - unique
+      - name: nome_municipio
+        description: "Nome do Municipio"
+        data_type: string
+      - name: abrev_municipio
+        description: "Abreviação do Município"
+        data_type: string
+      - name: pode_usar_pagamento_app
+        description: "Flag se pode usar o pagamento pelo aplicativo (True/ False)"
+        data_type: boolean
+      - name: calculado_no_app
+        description: "Flag se o calculo é pelo aplicativo  (True/ False)"
+        data_type: boolean
+      - name: forma_de_login
+        data_type: string
+      - name: estacoes_de_servico
+        data_type: json
