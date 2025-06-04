@@ -18,7 +18,7 @@ clean-targets:
 
 vars:
   # Internal variables
-  DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
+  DBT_USER: "{{ env_var('DBT_USER', 'geraldomaia') }}"
 
   # BigQuery Monitoring
   bq_region: 'us'

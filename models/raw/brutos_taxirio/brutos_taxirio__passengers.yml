@@ -8,9 +8,9 @@ models:
       partition_by:
         field: data_particao
         data_type: date
+        granularity: hour
       tags: ['raw', 'taxirio', 'passageiros']
- 
-
+      description: "Tabela de Passageiros"
     columns:
       - name: ano_particao
         description: "Parte da data de criação do passageiro (Ano)"

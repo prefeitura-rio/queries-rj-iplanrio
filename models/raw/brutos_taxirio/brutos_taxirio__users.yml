@@ -9,6 +9,8 @@ models:
       partition_by:
         field: data_particao
         data_type: date
+        granularity: hour
+      description: "Tabela de Usuários"
     columns:
       - name: ano_particao
         description: "Parte da data de criação do usuário (Ano)"

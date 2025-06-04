@@ -6,9 +6,11 @@ models:
       alias: corridas
       materialized: table
       tags: ['raw', 'taxirio', 'corridas']
-      partition_by:
-        field: data_particao
+      partition_by={
+        field: data_criacao
         data_type: date
+        granularity: hour
+      }
       description: "Corridas em andamento ou já encerradas."
     
     columns:

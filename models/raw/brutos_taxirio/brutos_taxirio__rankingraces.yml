@@ -6,9 +6,12 @@ models:
       alias: rankingraces
       materialized: table
       tags: ['raw', 'taxirio', 'rankingraces']
-      partition_by:
-        field: data_particao
+      partition_by={
+        field: data_criacao
         data_type: date
+        granularity: hour
+      }
+      description: "Tabela de Ranking das Corridas"
     columns:
       - name: ano_particao
         description: "Parte da data de criação da corrida (Ano)"

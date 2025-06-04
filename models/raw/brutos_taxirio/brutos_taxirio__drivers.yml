@@ -5,11 +5,12 @@ models:
       schema: brutos_taxirio
       alias: drivers
       materialized: table
+      partition_by:
+        field: data_criacao
+        data_type: date
+        granularity: hour
       tags: ['raw', 'taxirio', 'drivers']
       description: "Tabela de Motoristas"
-      partition_by:
-        field: data_particao,
-        data_type: date
     columns:
       - name: ano_particao
         description: "Ano (Pate do campo data criação)"

@@ -7,9 +7,11 @@ models:
       materialized: table
       tags: ['raw', 'taxirio', 'medidas_ocupacao_motoristas']
       description: "medidas de disponibilidade de motoristas"
-      partition_by:
-        field: data_particao
+      partition_by={
+        field: data_criacao
         data_type: date
+        granularity: hour
+      }
     columns:
       - name: id_metricas_motoriasta_desocupado
         description: Identificador da métrica de disponibilidade de motorista

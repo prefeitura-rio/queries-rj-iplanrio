@@ -1,5 +1,4 @@
 
-
 SELECT
   SAFE_CAST (id as STRING) as id_motorista,
   SAFE_CAST (dia_particao as INT64) as dia_particao,
@@ -46,6 +45,5 @@ SELECT
   DATETIME (TIMESTAMP(expiredBlockByRankingDate)) as data_bloqueio_expirado,
   SAFE_CAST (ano_particao as INT64) as ano_particao,
   SAFE_CAST (mes_particao as INT64) as mes_particao,
-  DATE(SAFE_CAST(ano_particao AS INT64), SAFE_CAST(mes_particao AS INT64), 1) AS data_particao
 FROM
   {{ source('brutos_taxirio_staging','drivers') }}

@@ -18,8 +18,6 @@ SELECT
   SAFE_CAST (federalRevenueData_sex as STRING) as sexo_receita_federal,          
   SAFE_CAST (ano_particao as INT64) as ano_particao,
   SAFE_CAST (mes_particao as INT64) as mes_particao,
-  DATE(SAFE_CAST(ano_particao AS INT64), SAFE_CAST(mes_particao AS INT64), 1) AS data_particao
-
-  
+   
 FROM
   {{  source('brutos_taxirio_staging','users')}}
