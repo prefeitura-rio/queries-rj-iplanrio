@@ -58,4 +58,10 @@ models:
         description: "Data de partição"
         data_type: date
         
-  
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: passengers
+        description: "Source table for passenger information"   

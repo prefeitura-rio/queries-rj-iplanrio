@@ -5,10 +5,6 @@ models:
       schema: brutos_taxirio
       alias: paymentmethods
       materialized: table
-      partition_by:
-        field: data_particao
-        data_type: date
-        granularity: hour
       tags: ['raw', 'taxirio', 'paymentmethods']
       description: "Tabela de Métodos de Pagamento"
 
@@ -31,3 +27,12 @@ models:
       - name: data_particao
         description: "Data de partição"
         data_type: date
+
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: paymentmethods
+        description: "Source table for paymentmethods information"  

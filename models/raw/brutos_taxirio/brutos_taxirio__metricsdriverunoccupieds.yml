@@ -5,13 +5,14 @@ models:
       schema: brutos_taxirio
       alias: medidas_ocupacao_motoristas
       materialized: table
-      tags: ['raw', 'taxirio', 'medidas_ocupacao_motoristas']
-      description: "medidas de disponibilidade de motoristas"
-      partition_by={
+      partition_by:
         field: data_criacao
         data_type: date
         granularity: hour
-      }
+      tags: ['raw', 'taxirio', 'medidas_ocupacao_motoristas']
+      description: "medidas de disponibilidade de motoristas"
+
+      
     columns:
       - name: id_metricas_motoriasta_desocupado
         description: Identificador da métrica de disponibilidade de motorista
@@ -41,3 +42,10 @@ models:
         description: Data de partição
         data_type: date
     
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: metricsdriverunoccupieds
+        description: "Source table for metricsdriverunoccupieds information"  

@@ -6,11 +6,10 @@ models:
       alias: corridas
       materialized: table
       tags: ['raw', 'taxirio', 'corridas']
-      partition_by={
+      partition_by:
         field: data_criacao
-        data_type: date
-        granularity: hour
-      }
+        data_type: timestamp
+        granularity: day
       description: "Corridas em andamento ou já encerradas."
     
     columns:
@@ -60,7 +59,7 @@ models:
         quote: true
       - name: suspeito
         data_type: boolean
-        description: "Flag para indicar se a corrida é suspeita de ser Inválida. Podendo não ser. Essa corrida será analisada no atendimento que irá determinar se é Válida ou não. Essa situação é chamada de "Em Análise"."
+        description: "Flag para indicar se a corrida é suspeita de ser Inválida. Podendo não ser. Essa corrida será analisada no atendimento que irá determinar se é Válida ou não. Essa situação é chamada de Em Análise."
         quote: true
       - name: invalido
         data_type: boolean
@@ -158,3 +157,15 @@ models:
         data_type: int64  
         description:  "Dia da partição."
         quote: true
+      - name: data_particao
+        data_type: date
+        description: "Data da partição."
+        quote: true
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: races
+        description: "Source table for races information"

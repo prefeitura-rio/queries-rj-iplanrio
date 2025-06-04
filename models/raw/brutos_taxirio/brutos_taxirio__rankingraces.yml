@@ -6,11 +6,11 @@ models:
       alias: rankingraces
       materialized: table
       tags: ['raw', 'taxirio', 'rankingraces']
-      partition_by={
+      partition_by:
         field: data_criacao
-        data_type: date
-        granularity: hour
-      }
+        data_type: timestamp
+        granularity: day
+      
       description: "Tabela de Ranking das Corridas"
     columns:
       - name: ano_particao
@@ -38,4 +38,11 @@ models:
       - name: data_particao
         description: "Data de partição"
         data_type: date
-  
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: rankingraces
+        description: "Source table for rankingraces information"

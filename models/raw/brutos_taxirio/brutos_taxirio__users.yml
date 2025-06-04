@@ -8,8 +8,8 @@ models:
       tags: ['raw', 'taxirio', 'users']
       partition_by:
         field: data_particao
-        data_type: date
-        granularity: hour
+        data_type: timestamp
+        granularity: day
       description: "Tabela de Usuários"
     columns:
       - name: ano_particao
@@ -39,6 +39,12 @@ models:
       - name: data_particao
         description: "Data de partição"
         data_type: date
-  
- 
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: users
+        description: "Source table for users information"
    

@@ -20,7 +20,7 @@ SELECT
   SAFE_CAST (tokenInfo_wssSalt as STRING) as ficha_wss_aleatorio,
   SAFE_CAST (tokenInfo_pushToken as STRING) as ficha_envio,
   SAFE_CAST (ano_particao as INT64) as ano_particao,
-  SAFE_CAST (mes_particao as INT64) as mes_particao,
+  SAFE_CAST (mes_particao as INT64) as mes_particao
   
 FROM
   {{ source('brutos_taxirio_staging','passengers') }}

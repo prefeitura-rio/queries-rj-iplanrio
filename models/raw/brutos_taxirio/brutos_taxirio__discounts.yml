@@ -8,7 +8,7 @@ models:
       partition_by:
         field: data_criacao
         data_type: date
-        granularity: hour
+        granularity: day
       tags: ['raw', 'taxirio', 'descontos']
       description: "Tabela de Descontos"
    columns:
@@ -37,3 +37,11 @@ models:
       description: Dia da partição
       data_type: int64
     
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: discounts
+        description: "Source table for discount information"
