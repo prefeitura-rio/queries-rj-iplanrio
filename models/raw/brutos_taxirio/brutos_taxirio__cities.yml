@@ -3,7 +3,7 @@ models:
   - name: brutos_taxirio__cities
     config:
       schema: brutos_taxirio
-      alias: cities
+      alias: cidades
       materialized: table
       tags: ['raw', 'taxirio', 'cities']
       description: "Tabela de Cidades"
