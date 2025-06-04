@@ -1,13 +1,3 @@
-{{
-  config(
-    materialized='table',
-    partition_by={
-      'field': 'data_criacao',
-      'data_type': 'date',
-      'granularity': 'hour'
-    }
-  )
-}}
 
 SELECT
   SAFE_CAST (id as STRING) as id_desconto_associado,
