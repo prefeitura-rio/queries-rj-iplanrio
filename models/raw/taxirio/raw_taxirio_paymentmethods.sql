@@ -1,0 +1,16 @@
+{{  
+    config(
+        schema="brutos_taxirio",
+        alias="metodos_pagamentos",
+        materialized="table",       
+        tags=["raw", "taxirio", "pagamentos"],
+        description="Tabela de Pagamentos"
+    )
+}}
+SELECT
+  SAFE_CAST (id as STRING) as id_pagamento_associado,
+  SAFE_CAST (pindex as INT64) as pindex,
+  SAFE_CAST (name as STRING) as nome,
+  SAFE_CAST (type as STRING) as tipo
+FROM
+  {{ source('brutos_taxirio_staging','paymentmethods') }}

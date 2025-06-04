@@ -1,0 +1,160 @@
+version: 2
+models:
+  - name: brutos_taxi
+    columns:
+      - name: id_corrida
+        description: "Identificador único dado pelo sistema à corrida."
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: data_criacao
+        description: "Data que a corrida foi iniciada, quando o passageiro estava embarcado e o taxista começou a levá-lo para o destino."
+        data_type: datetime
+        quote: true
+      - name: id_evento
+        data_type: string
+        quote: true
+      - name: id_passageiro
+        description: "Código do passageiro da corrida.Identificação do passageiro chave estrangeira na tabela passangers."
+        data_type: string
+        tests:
+          - not_null
+        quote: true
+      - name: id_municipio
+        data_type: string
+        description: "Código da cidade onde essa corrida ocorreu. A Cidade é uma cidade conveniada pelo TAXI.RIO Cidades. Identificação do municipio chave estrangeira na tabela cities."
+        quote: true
+      - name: id_carro
+        data_type: string
+        description: "Código do veículo da corrida. O veículo tem que ser um táxi e deve estar associado ao taxista da corrida.Identificação do carro chave estrangeira na tabela cars."
+        quote: true
+      - name: id_motorista
+        data_type: string
+        description: "Código do Motorista da corrida. Deve ser um motorista de táxi, deve estar associado ao taxi.rio e deve estar relacionado ao carro da corrida. O taxista aceitou disputar a corrida e ganhou a disputa. Identificação do motorista chave estrangeira na tabela drivers."
+        quote: true
+      - name: id_pagamento_associado
+        data_type: string
+        description: "Código do método de pagamento usado para pagar a corrida. Identificação do pagamento associado chave estrangeira na tabela payments."
+        quote: true
+      - name: qtd_transmissao
+        data_type: int64
+        description: "Quantidade de transmissões da corrida."
+        quote: true
+      - name: nota_avaliacao
+        description: "Avaliação da corrida pelo passageiro, pode ir de 0 a 5. 0 é quando o Passageiro NÃO avaliou a corrida."
+        data_type: int64
+        quote: true
+      - name: suspeito
+        data_type: boolean
+        description: "Flag para indicar se a corrida é suspeita de ser Inválida. Podendo não ser. Essa corrida será analisada no atendimento que irá determinar se é Válida ou não. Essa situação é chamada de Em Análise."
+        quote: true
+      - name: invalido
+        data_type: boolean
+        description: "Flag para indicar se a corrida é inválida. Corridas inválidas são corridas com Km =0, tempo = 0, velocidade média muito baixa, muito alta etc."
+        quote: true
+      - name: status
+        data_type: string
+        description: "Status da corrida. Código da última transição de estados que a corrida sofreu."
+        quote: true
+      - name: distancia_rota_texto
+        data_type: string
+        description: "Distância da rota em texto."
+        quote: true
+      - name: distancia_rota_valor
+        data_type: int64
+        description: "Distância da rota em valor."
+        quote: true
+      - name: duracao_rota_texto
+        data_type: string
+        description: "Duração da rota em texto."
+        quote: true
+      - name: duracao_rota_valor
+        data_type: int64
+        description: "Duração da rota em valor."
+        quote: true
+      - name: valor_estimado
+        data_type: float64
+        description: "Valor estimado da corrida."
+        quote: true
+      - name: id_taximetro_associado
+        data_type: string
+        description: "Identificação do taxímetro associado chave estrangeira na tabela taximeters."
+        quote: true
+      - name: id_tarifa_minima_associada
+        data_type: string
+        description: "Identificação da tarifa mínima associada chave estrangeira na tabela tariffs."
+        quote: true
+      - name: id_desconto_associado
+        data_type: string
+        description: "Código do desconto dado na corrida. Identificação do desconto associado chave estrangeira na tabela discounts."
+        quote: true
+      - name: id_desconto_passageiro
+        data_type: string
+        description: "Identificação do desconto do passageiro chave estrangeira na tabela discounts."
+        quote: true
+      - name: valor_total_a_pagar
+        data_type: float64
+        description: "Valor total a pagar da corrida (c/ desconto e c/ pedágio, pode ser preço mínimo)"
+        quote: true
+      - name: valor_total_pedagio
+        data_type: float64  
+        description: "Valor da soma dos pedágios, se houver."
+        quote: true
+      - name: valor_total_com_desconto
+        data_type: float64
+        description: "Valor total com desconto."
+        quote: true
+      - name: valor_total_desconto
+        data_type: float64
+        description: "Valor total de desconto."
+        quote: true
+      - name: valor_total_sem_desconto
+        data_type: float64
+        description: "Valor total sem desconto."
+        quote: true
+      - name: valor_total_por_taximetro
+        data_type: float64
+        description: "Valor da corrida calculado pelo taxímetro virtual ou físico, s/ desconto e s/ pedágio."
+        quote: true
+      - name: valor_total_por_tempo_parado
+        data_type: float64
+        description: "Valor total por tempo parado."
+        quote: true
+      - name: valor_total_por_km
+        data_type: float64
+        description: "Valor total por km."
+        quote: true
+      - name: valor_minimo
+        data_type: float64  
+        description: "Valor mínimo da corrida."
+        quote: true
+      - name: propriedade_corporativa
+        data_type: boolean
+        description: "Flag se a corrida é corporativa."
+        quote: true
+      - name: ano_particao
+        data_type: int64
+        description: "Ano da partição."
+        quote: true
+      - name: mes_particao
+        data_type: int64  
+        description: "Mês da partição."
+        quote: true
+      - name: dia_particao
+        data_type: int64  
+        description:  "Dia da partição."
+        quote: true
+      - name: data_particao
+        data_type: date
+        description: "Data da partição."
+        quote: true
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: races
+        description: "Source table for races information"

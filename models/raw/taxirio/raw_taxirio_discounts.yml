@@ -1,0 +1,37 @@
+version: 2
+models:
+ - name: brutos_taxirio__discounts
+   columns:
+    - name: id_desconto_associado
+      description: Identificador do Associado
+      data_type: string
+      data_tests:
+        - not_null
+        - unique
+    - name: descricao
+      description: Descrição do Desconto
+      data_type: string
+    - name: desconto
+      description: Valor do Desconto
+      data_type: float64
+    - name: data_criacao
+      description: Data de criação do Desconto
+      data_type: datetime
+    - name: ano_particao
+      description: Ano da partição
+      data_type: int64
+    - name: mes_particao
+      description: Mês da partição
+      data_type: int64
+    - name: dia_particao
+      description: Dia da partição
+      data_type: int64
+    
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: discounts
+        description: "Source table for discount information"
