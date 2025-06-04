@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxirio__metricsdriverunoccupieds
+  - name: raw_taxirio_metricsdriverunoccupieds
     columns:
       - name: id_metricas_motoriasta_desocupado
         description: Identificador da métrica de disponibilidade de motorista

@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxi
+  - name: raw_taxirio_races
     columns:
       - name: id_corrida
         description: "Identificador único dado pelo sistema à corrida."
@@ -150,7 +150,11 @@ models:
         data_type: date
         description: "Data da partição."
         quote: true
-
+      - name: id_evento
+        data_type: string
+        description: "Identificador do evento."
+        quote: true
+      
 sources:
   - name: brutos_taxirio_staging
     database: rj-iplanrio   # optional if same as target

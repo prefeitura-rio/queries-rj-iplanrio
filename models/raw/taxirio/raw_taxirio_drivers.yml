@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxirio__drivers
+  - name: raw_taxirio_drivers
     columns:
       - name: ano_particao
         description: "Ano (Pate do campo data criação)"
@@ -102,7 +102,54 @@ models:
       - name: data_particao
         description: Data de partição
         data_type: date
-    
+      - name: id_carro_taxi 
+        description: Identificador do carro do taxi
+        data_type: string
+      - name: pagamento_metodo
+        description: Método de pagamento
+        data_type: Json
+      - name: pagamento_valor
+        description: Valor do pagamento
+        data_type: float64
+      - name: pagamento_data
+        description: Data do pagamento
+      - name: usuario 
+        description: Identificador do usuário no Taxi
+        data_type: string
+      - name: senha
+        description: senha do usuário no Taxirio
+        data_type: string
+      - name: dado_aleatorio 
+        description: Dado aleatório
+        data_type: string
+      - name: data_termino_classificacao_bloqueio
+        description: Data de término da classificação de bloqueio
+        data_type: datetime
+      - name: atualizacao_telefone  
+        description: Data de atualização do telefone
+        data_type: datetime
+      - name: nota
+        description: Nota do motorista
+        data_type: float64
+      - name: mediatt      
+        description: Média de avaliações dos passageiros
+        data_type: float64
+      - name: id_phone  
+        description: Identificador do telefone
+        data_type: string
+      - name: ficha_http_aleatorio
+        description: Ficha HTTP aleatória
+        data_type: string
+      - name: ficha_wss_aleatorio
+        description: Ficha WSS aleatória
+        data_type: string
+      - name: ficha_envio
+        description: Ficha de envio
+        data_type: string
+      - name: data_bloqueio_expirado
+        description: Data de expiração do bloqueio
+        data_type: datetime
+      
 sources:
   - name: brutos_taxirio_staging
     database: rj-iplanrio   # optional if same as target

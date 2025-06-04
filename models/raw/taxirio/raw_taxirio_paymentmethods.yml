@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxirio__paymentmethods
+  - name: raw_taxirio_paymentmethods
     columns:
       - name: id_pagamento_associado
         description: "Identificador do pagamento associado"

@@ -1,6 +1,6 @@
 version: 2
 models:
- - name: brutos_taxirio__discounts
+ - name: raw_taxirio_discounts
    columns:
     - name: id_desconto_associado
       description: Identificador do Associado

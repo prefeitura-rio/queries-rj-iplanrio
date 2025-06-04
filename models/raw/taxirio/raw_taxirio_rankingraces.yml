@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxirio__rankingraces
+  - name: raw_taxirio_rankingraces
     columns:
       - name: ano_particao
         description: "Parte da data de criação da corrida (Ano)"

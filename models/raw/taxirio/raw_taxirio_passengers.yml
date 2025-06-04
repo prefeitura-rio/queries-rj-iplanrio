@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxirio__passengers
+  - name: raw_taxirio_passengers
     columns:
       - name: ano_particao
         description: "Parte da data de criação do passageiro (Ano)"
@@ -47,7 +47,28 @@ models:
       - name: data_particao
         description: "Data de partição"
         data_type: date
-        
+      - name: usuario
+        description: "Usuário login do passageiro"
+        data_type: string
+      - name: senha
+        description: "Senha do passageiro"
+        data_type: string
+      - name: aleatorio
+        description: "Valor aleatório para o login do passageiro"
+        data_type: string
+      - name: data_atualizacao_telefone
+        description: "Data de atualização do telefone"
+        data_type: datetime
+      - name: ficha_http_aleatorio
+        description: "Ficha HTTP aleatória"
+        data_type: string
+      - name: ficha_wss_aleatorio
+        description: "Ficha WSS aleatório"
+        data_type: string
+      - name: ficha_envio
+        description: "Ficha de envio"
+        data_type: string
+      
 sources:
   - name: brutos_taxirio_staging
     database: rj-iplanrio   # optional if same as target

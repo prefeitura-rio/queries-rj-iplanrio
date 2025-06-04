@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: brutos_taxirio__cities
+  - name: raw_taxirio_cities
     columns:
       - name: id_municipio  
         description: "Identificador da cidade"  
@@ -21,10 +21,12 @@ models:
         description: "Flag se o calculo é pelo aplicativo  (True/ False)"
         data_type: boolean
       - name: forma_de_login
+        description: "Forma de login"
         data_type: string
       - name: estacoes_de_servico
+        description: "Estacoes de servico"
         data_type: json
-
+      
 sources:
   - name: brutos_taxirio_staging
     database: rj-iplanrio   # optional if same as target
