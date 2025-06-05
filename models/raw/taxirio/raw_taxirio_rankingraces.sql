@@ -8,7 +8,7 @@
             "data_type": "timestamp",
             "granularity": "day"
         },
-        tags=["raw", "taxirio", "ranking_corridas"],
+        tags=["raw", "taxirio"],
         description="Tabela de Ranking de Corridas"
     )
 }}  

@@ -6,8 +6,12 @@ models:
         description: Identificador da métrica de disponibilidade de motorista
         data_type: string
         data_tests:
-        - not_null
-        - unique
+        - not_null:
+            name: raw_taxirio_id_metricas_motoriasta_desocupado_not_null
+            severity: error
+        - unique:
+            name: raw_taxirio_id_metricas_motoriasta_desocupado_unique
+            severity: error
       - name: id_motorista
         description: Identificador do motorista
         data_type: string
@@ -18,17 +22,15 @@ models:
         description: Data de criação da métrica
         data_type: datetime
       - name: ano_particao
-        description: Ano da partição
+        description: Ano (Pate do campo data criação)
         data_type: int64
       - name: mes_particao
-        description: Mês da partição
+        description: Mês  (Pate do campo data criação)
         data_type: int64
       - name: dia_particao
-        description: Dia da partição
+        description: Dia (Pate do campo data criação)
         data_type: int64
-      - name: data_particao
-        description: Data de partição
-        data_type: date
+
     
 sources:
   - name: brutos_taxirio_staging

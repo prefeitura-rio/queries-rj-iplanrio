@@ -8,13 +8,12 @@
         "data_type": "timestamp",
         "granularity": "day"
       },
-      tags=["raw", "taxirio", "drivers"],
+      tags=["raw", "taxirio"],
       description="Tabela de Motoristas"
     )
 }}
 SELECT
   SAFE_CAST (id as STRING) as id_motorista,
-  SAFE_CAST (dia_particao as INT64) as dia_particao,
   DATETIME (TIMESTAMP(createdAt)) as data_criacao,
   SAFE_CAST (user as STRING) as id_usuario,
   SAFE_CAST (taxiDriverId as STRING) as id_motorista_taxi,
@@ -36,10 +35,10 @@ SELECT
   SAFE_CAST (blockedRace as STRING) as id_corrida_bloqueada,
   SAFE_CAST (city as STRING) as id_municipio,
   SAFE_CAST (serviceRecordRate as FLOAT64) as taxa_servico,
-  SAFE_CAST (nota as FLOAT64) as nota,
+  SAFE_CAST (nota as FLOAT64) as nota_passageiro,
   SAFE_CAST (averageTT as FLOAT64) as mediatt,
   DATETIME (TIMESTAMP(infoPhone_updatedAt)) as atualizacao_telefone,
-  SAFE_CAST (infoPhone_id as STRING) as id_phone,
+  SAFE_CAST (infoPhone_id as STRING) as id_telefone,
   SAFE_CAST (infoPhone_appVersion as STRING) as versao_app_telefone,
   SAFE_CAST (infoPhone_phoneModel as STRING) as modelo_telefone,
   SAFE_CAST (infoPhone_phoneManufacturer as STRING) as fabricante_telefone,
@@ -58,5 +57,6 @@ SELECT
   DATETIME (TIMESTAMP(expiredBlockByRankingDate)) as data_bloqueio_expirado,
   SAFE_CAST (ano_particao as INT64) as ano_particao,
   SAFE_CAST (mes_particao as INT64) as mes_particao,
+  SAFE_CAST (dia_particao as INT64) as dia_particao
 FROM
   {{ source('brutos_taxirio_staging','drivers') }}

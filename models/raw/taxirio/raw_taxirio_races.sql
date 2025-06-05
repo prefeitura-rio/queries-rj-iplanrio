@@ -3,7 +3,7 @@
         schema="brutos_taxirio",
         alias="corridas",
         materialized="table",
-        tags=["raw", "taxirio", "corridas"],
+        tags=["raw", "taxirio"],
         description="Corridas em andamento ou já encerradas.",
         partition_by={
             "field": "data_criacao",

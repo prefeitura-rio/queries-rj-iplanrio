@@ -2,36 +2,52 @@ version: 2
 models:
   - name: raw_taxirio_drivers
     columns:
-      - name: ano_particao
-        description: "Ano (Pate do campo data criação)"
-        data_type: int64
-      - name: mes_particao
-        description: "Mês  (Pate do campo data criação)"
-        data_type: int64
-      - name: dia_particao
-        description: "Dia (Pate do campo data criação)"
-        data_type: int64
-      - name: data_criacao
-        description: "data da inclusão na tabela"
+     
       - name: id_motorista
         description: "Identificador do Motorista"
+        data_type: string
         data_tests:
-        - not_null
-        - unique
+        - not_null: 
+            name: raw_taxirio_id_motorista_not_null
+            severity: error
+        - unique:
+            name: raw_taxirio_id_motorista_unique
+            severity: error
+      - name: data_criacao
+        description: "data da inclusão na tabela"
+        data_type: datetime
       - name: id_usuario
         description: "Identificador do usuário" 
         data_type: string
       - name: id_motorista_taxi
         description: Identificador do Motorista  do Taxi
         data_type: string
-      - name: id_carro_associado
+      - name: id_carro_taxi
         description: Identificador do Carro
+        data_type: string
+      - name: nota_media
+        description: Média das avaliações recebidas
+        data_type: float64
+      - name: id_carro_associado
+        description: Identificador do Carro associado
+        data_type: string
+      - name: status
+        description: Status do Motorista
         data_type: string
       - name: id_desconto_associado
         description: Identificador do desconto para a corrida
         data_type: string
-      - name: id_pagamento_associado
-        description: Identificador do Pagamento associado
+      - name: pagamento_metodo
+        description: Método de pagamento
+        data_type: Json
+      - name: usuario
+        description: Identificador do usuário no Taxi
+        data_type: string
+      - name: senha
+        description: senha do usuário no Taxirio
+        data_type: string
+      - name: dado_aleatorio
+        description: Dado aleatório
         data_type: string
       - name: pode_receber_pagamento_app
         description: Flag que indica se o pagamento pode ser feito pelo App
@@ -42,18 +58,15 @@ models:
       - name: avaliacoes_recebidas
         description: Quantidade de avaliações recebidas
         data_type: int64
-      - name: nota_media
-        description: Média das avaliações recebidas
-        data_type: float64
-      - name: status
-        description: Status do Motorista
-        data_type: string
-      - name: ocupado 
+      - name: ocupado
         description: Flag que indica se o motorista está ocupado
         data_type: boolean
       - name: ultima_nota_media
         description: Última nota média recebida
         data_type: float64
+      - name: data_termino_classificacao_bloqueio
+        description: Data de término da classificação de bloqueio
+        data_type: datetime
       - name: id_corrida_bloqueada
         description: Identificador da corrida bloqueada
         data_type: string
@@ -66,12 +79,15 @@ models:
       - name: nota_passageiro
         description: Última nota recebida do passageiro
         data_type: float64
+      - name: mediatt
+        description: Média de avaliações dos passageiros
+        data_type: float64
+      - name: atualizacao_telefone
+        description: Data de atualização do telefone
+        data_type: datetime
       - name: id_telefone
         description: Identificador do telefone
         data_type: string
-      - name: data_atualizacao_telefone
-        description: Data de atualização do telefone
-        data_type: datetime
       - name: versao_app_telefone
         description: Versão do aplicativo do telefone
         data_type: string
@@ -87,69 +103,37 @@ models:
       - name: nome_sistema_telefone
         description: Nome do sistema do telefone
         data_type: string
-      - name: corrida_origem_posicao_lng
-        description: Longitude da origem da corrida
-        data_type: float64
-      - name: corrida_origem_posicao_lat
-        description: Latitude da origem da corrida  
-        data_type: float64
-      - name: id_corrida
-        description: Identificador da corrida
-        data_type: string
-      - name: data_bloqueio_espirado
-        description: Data de bloqueio expirado
-        data_type: datetime
-      - name: data_particao
-        description: Data de partição
-        data_type: date
-      - name: id_carro_taxi 
-        description: Identificador do carro do taxi
-        data_type: string
-      - name: pagamento_metodo
-        description: Método de pagamento
-        data_type: Json
-      - name: pagamento_valor
-        description: Valor do pagamento
-        data_type: float64
-      - name: pagamento_data
-        description: Data do pagamento
-      - name: usuario 
-        description: Identificador do usuário no Taxi
-        data_type: string
-      - name: senha
-        description: senha do usuário no Taxirio
-        data_type: string
-      - name: dado_aleatorio 
-        description: Dado aleatório
-        data_type: string
-      - name: data_termino_classificacao_bloqueio
-        description: Data de término da classificação de bloqueio
-        data_type: datetime
-      - name: atualizacao_telefone  
-        description: Data de atualização do telefone
-        data_type: datetime
-      - name: nota
-        description: Nota do motorista
-        data_type: float64
-      - name: mediatt      
-        description: Média de avaliações dos passageiros
-        data_type: float64
-      - name: id_phone  
-        description: Identificador do telefone
-        data_type: string
       - name: ficha_http_aleatorio
         description: Ficha HTTP aleatória
         data_type: string
       - name: ficha_wss_aleatorio
         description: Ficha WSS aleatória
         data_type: string
-      - name: ficha_envio
+      - name: ficha_envio       
         description: Ficha de envio
+        data_type: string
+      - name: corrida_origem_posicao_lng
+        description: Longitude da origem da corrida
+        data_type: float64
+      - name: corrida_origem_posicao_lat  
+        description: Latitude da origem da corrida
+        data_type: float64
+      - name: id_corrida
+        description: Identificador da corrida
         data_type: string
       - name: data_bloqueio_expirado
         description: Data de expiração do bloqueio
         data_type: datetime
-      
+      - name: ano_particao
+        description: "Ano (Pate do campo data criação)"
+        data_type: int64
+      - name: mes_particao
+        description: "Mês  (Pate do campo data criação)"
+        data_type: int64
+      - name: dia_particao
+        description: "Dia (Pate do campo data criação)"
+        data_type: int64
+            
 sources:
   - name: brutos_taxirio_staging
     database: rj-iplanrio   # optional if same as target

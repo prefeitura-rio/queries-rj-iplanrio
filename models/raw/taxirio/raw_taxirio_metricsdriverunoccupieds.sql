@@ -8,7 +8,7 @@
             "data_type": "timestamp",
             "granularity": "day"
         },
-        tags=["raw", "taxirio", "metricas_motorista_desocupado"],
+        tags=["raw", "taxirio"],
         description="Medidas de disponibilidade de motoristas"
     )
 }}

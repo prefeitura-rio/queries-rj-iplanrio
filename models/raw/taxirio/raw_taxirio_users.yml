@@ -2,45 +2,18 @@ version: 2
 models:
   - name: raw_taxirio_users
     columns:
-      - name: ano_particao
-        description: "Parte da data de criação do usuário (Ano)"
-        data_type: int64
-      - name: mes_particao
-        description: "Parte da data de criação do usuário (Mês)"
-        data_type: int64
-      - name: dia_particao
-        description: "Parte da data de criação do usuário (Dia)"
-        data_type: int64
-      - name: data_criacao
-        description: "Data de criação do usuário"
-        data_type: datetime
+      
+      
       - name: id_usuario
         description: "Identificador do usuário"
         data_type: string
-        data_tests:
-          - not_null
-          - unique
-      - name: sexo
-        description: "Sexo do usuário"
-        data_type: string
-      - name: data_nascimento
-        description: "Data de nascimento do usuário"
-        data_type: datetime
-      - name: data_particao
-        description: "Data de partição"
-        data_type: date
-      - name: id_municipio
-        description: "Identificador do Município"
-        data_type: string
-      - name: id_pais
-        description: "Identificador do País"
-        data_type: string
-      - name: id_estado
-        description: "Identificador do Estado"
-        data_type: string
-      - name: id_cidade
-        description: "Identificador da Cidade"
-        data_type: string
+        data_tests:       
+          - not_null:
+              name: raw_taxirio_id_usuario_not_null
+              severity: error
+          - unique:
+              name: raw_taxirio_id_usuario_unique
+              severity: error
       - name: nome_exibicao
         description: "Nome de exibição do usuário"
         data_type: string
@@ -56,6 +29,12 @@ models:
       - name: cpf
         description: "CPF do usuário" 
         data_type: string
+      - name: data_criacao
+        description: "Data de criação do usuário"
+        data_type: datetime
+      - name: data_nascimento
+        description: "Data de nascimento do usuário"
+        data_type: datetime
       - name: receita_validada
         description: "Flag da Receita validada"
         data_type: boolean
@@ -77,7 +56,17 @@ models:
       - name: sexo_receita_federal  
         description: "Sexo na receita Federal"
         data_type: string
-      
+      - name: ano_particao
+        description: "Parte da data de criação do usuário (Ano)"
+        data_type: int64
+      - name: mes_particao
+        description: "Parte da data de criação do usuário (Mês)"
+        data_type: int64
+      - name: dia_particao
+        description: "Parte da data de criação do usuário (Dia)"
+        data_type: int64
+
+
 sources:
   - name: brutos_taxirio_staging
     database: rj-iplanrio   # optional if same as target

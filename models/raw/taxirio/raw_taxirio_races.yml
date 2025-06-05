@@ -5,9 +5,13 @@ models:
       - name: id_corrida
         description: "Identificador único dado pelo sistema à corrida."
         data_type: string
-        tests:
-          - not_null
-          - unique
+        data_tests:
+          - not_null:
+              name: raw_taxirio_id_corrida_not_null
+              severity: error
+          - unique:
+              name: raw_taxirio_id_corrida_unique
+              severity: error
         quote: true
       - name: data_criacao
         description: "Data que a corrida foi iniciada, quando o passageiro estava embarcado e o taxista começou a levá-lo para o destino."
@@ -15,24 +19,15 @@ models:
         quote: true
       - name: id_evento
         data_type: string
+        description: "Identificador do evento."
         quote: true
       - name: id_passageiro
         description: "Código do passageiro da corrida.Identificação do passageiro chave estrangeira na tabela passangers."
         data_type: string
-        tests:
-          - not_null
         quote: true
       - name: id_municipio
         data_type: string
         description: "Código da cidade onde essa corrida ocorreu. A Cidade é uma cidade conveniada pelo TAXI.RIO Cidades. Identificação do municipio chave estrangeira na tabela cities."
-        quote: true
-      - name: id_carro
-        data_type: string
-        description: "Código do veículo da corrida. O veículo tem que ser um táxi e deve estar associado ao taxista da corrida.Identificação do carro chave estrangeira na tabela cars."
-        quote: true
-      - name: id_motorista
-        data_type: string
-        description: "Código do Motorista da corrida. Deve ser um motorista de táxi, deve estar associado ao taxi.rio e deve estar relacionado ao carro da corrida. O taxista aceitou disputar a corrida e ganhou a disputa. Identificação do motorista chave estrangeira na tabela drivers."
         quote: true
       - name: id_pagamento_associado
         data_type: string
@@ -57,6 +52,14 @@ models:
       - name: status
         data_type: string
         description: "Status da corrida. Código da última transição de estados que a corrida sofreu."
+        quote: true
+      - name: id_carro
+        data_type: string
+        description: "Código do veículo da corrida. O veículo tem que ser um táxi e deve estar associado ao taxista da corrida.Identificação do carro chave estrangeira na tabela cars."
+        quote: true
+      - name: id_motorista
+        data_type: string
+        description: "Código do Motorista da corrida. Deve ser um motorista de táxi, deve estar associado ao taxi.rio e deve estar relacionado ao carro da corrida. O taxista aceitou disputar a corrida e ganhou a disputa. Identificação do motorista chave estrangeira na tabela drivers."
         quote: true
       - name: distancia_rota_texto
         data_type: string
@@ -146,14 +149,7 @@ models:
         data_type: int64  
         description:  "Dia da partição."
         quote: true
-      - name: data_particao
-        data_type: date
-        description: "Data da partição."
-        quote: true
-      - name: id_evento
-        data_type: string
-        description: "Identificador do evento."
-        quote: true
+      
       
 sources:
   - name: brutos_taxirio_staging

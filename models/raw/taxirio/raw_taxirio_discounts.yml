@@ -6,8 +6,12 @@ models:
       description: Identificador do Associado
       data_type: string
       data_tests:
-        - not_null
-        - unique
+        - not_null:
+            name: raw_taxirio_id_desconto_associado_not_null
+            severity: error
+        - unique:
+            name: raw_taxirio_id_desconto_associado_unique
+            severity: error
     - name: descricao
       description: Descrição do Desconto
       data_type: string
@@ -17,15 +21,7 @@ models:
     - name: data_criacao
       description: Data de criação do Desconto
       data_type: datetime
-    - name: ano_particao
-      description: Ano da partição
-      data_type: int64
-    - name: mes_particao
-      description: Mês da partição
-      data_type: int64
-    - name: dia_particao
-      description: Dia da partição
-      data_type: int64
+   
     
 
 sources:
