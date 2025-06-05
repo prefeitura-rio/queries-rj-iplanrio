@@ -1,0 +1,33 @@
+version: 2
+models:
+  - name: raw_taxirio_paymentmethods
+    columns:
+      - name: id_pagamento_associado
+        description: "Identificador do pagamento associado"
+        data_type: string
+        data_tests:   
+          - not_null:
+              name: raw_taxirio_id_pagamento_associado_not_null
+              severity: error
+          - unique:
+              name: raw_taxirio_id_pagamento_associado_unique
+              severity: error
+      - name: pindex  
+        description: "Identificador do pagamento"
+        data_type: int64
+      - name: nome
+        description: "Nome do pagamento"
+        data_type: string
+      - name: tipo
+        description: "Tipo de pagamento"
+        data_type: string
+     
+
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: paymentmethods
+        description: "Source table for paymentmethods information"  

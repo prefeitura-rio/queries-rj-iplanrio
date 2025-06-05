@@ -1,0 +1,41 @@
+version: 2
+models:
+  - name: raw_taxirio_metricsdriverunoccupieds
+    columns:
+      - name: id_metricas_motoriasta_desocupado
+        description: Identificador da métrica de disponibilidade de motorista
+        data_type: string
+        data_tests:
+        - not_null:
+            name: raw_taxirio_id_metricas_motoriasta_desocupado_not_null
+            severity: error
+        - unique:
+            name: raw_taxirio_id_metricas_motoriasta_desocupado_unique
+            severity: error
+      - name: id_motorista
+        description: Identificador do motorista
+        data_type: string
+      - name: id_desconto_associado
+        description: Identificador do desconto associado
+        data_type: string
+      - name: data_criacao
+        description: Data de criação da métrica
+        data_type: datetime
+      - name: ano_particao
+        description: Ano (Pate do campo data criação)
+        data_type: int64
+      - name: mes_particao
+        description: Mês  (Pate do campo data criação)
+        data_type: int64
+      - name: dia_particao
+        description: Dia (Pate do campo data criação)
+        data_type: int64
+
+    
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # optional if same as target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: metricsdriverunoccupieds
+        description: "Source table for metricsdriverunoccupieds information"  
