@@ -1,13 +1,22 @@
+
+{{
+    config(
+        alias="codes",
+        schema="plus_codes",
+        materialized="table",
+    )
+}}
+
 DECLARE raio_padrao INT64 DEFAULT 100000;  -- metros; ajuste se precisar
 
-CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.codes` AS (
+{# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.codes` AS ( #}
 
 WITH
 grid AS (
   SELECT
     plus8,
     geometry AS centro_geometry
-  FROM `rj-iplanrio.plus_codes.grid`
+  FROM {{ source('plus_codes', 'grid') }}
 ),
 
 -- 2) Pares grid × equipamento dentro do raio
@@ -23,7 +32,7 @@ pairs AS (
         ST_DISTANCE(e.geometry, g.centro_geometry) AS distancia_metros
     ) AS equip_full
   FROM grid AS g
-  JOIN `rj-iplanrio.plus_codes.equipamentos` AS e
+  JOIN {{ ref("raw_equipamentos")}} AS e
     ON ST_DWITHIN(e.geometry, g.centro_geometry, raio_padrao)
 ),
 
@@ -52,4 +61,4 @@ SELECT
 FROM ranqueado
 WHERE rn <= 3
 GROUP BY plus8, categoria
-)
+{# ) #}

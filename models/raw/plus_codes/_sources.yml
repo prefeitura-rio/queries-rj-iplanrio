@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: br_geobr_mapas
+    database: basedosdados
+    schema: br_geobr_mapas
+    tables:
+      - name: municipio
+  - name: saude_dados_mestres
+    database: rj-sms
+    schema: saude_dados_mestres
+    tables:
+      - name: estabelecimento
+  - name: dados_mestres
+    database: datario
+    schema: dados_mestres
+    tables:
+      - name: bairro
+  - name: plus_codes
+    database: rj-iplanrio
+    schema: plus_codes
+    tables:
+      - name: grid
+  - name: brutos_equipamentos
+    database: rj-iplanrio
+    schema: brutos_equipamentos
+    tables:
+      - name: escolas

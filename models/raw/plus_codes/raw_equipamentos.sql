@@ -62,7 +62,17 @@ update_at      TIMESTAMP,
 
 -- do union all with equipaments from other sources
 
-CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.equipamentos` AS (
+{# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.equipamentos` AS ( #}
+
+
+{{
+    config(
+        alias="equipamentos",
+        schema="plus_codes",
+        materialized="table",
+    )
+}}
+
 
 with saude AS (
     select
@@ -89,9 +99,37 @@ with saude AS (
         vigencia_fim,
         metadata,
         update_at
-    from `rj-iplanrio.plus_codes.equipamentos_saude`
+    from {{ ref("raw_equipamentos_saude") }}
+),
+
+educacao AS (
+    select
+        plus8,
+        geometry,
+        plus11,
+        id_equipamento,
+        secretaria_responsavel,
+        tipo_equipamento,
+        nome_oficial,
+        nome_popular,
+        plus10,
+        plus6,
+        latitude,
+        longitude,
+        endereco,
+        bairro,
+        contato,
+        ativo,
+        aberto_ao_publico,
+        horario_funcionamento,
+        fonte,
+        vigencia_inicio,
+        vigencia_fim,
+        metadata,
+        update_at
+    from {{ ref("raw_equipamentos_educacao") }}
 )
 
 select * from saude
-
-)
+UNION all
+select * from educacao

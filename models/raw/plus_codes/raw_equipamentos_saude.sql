@@ -7,7 +7,7 @@
     )
 }}
 
-CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.equipamentos_saude` AS (
+{# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.equipamentos_saude` AS ( #}
 
 with tb as (
 select
@@ -109,7 +109,7 @@ select
             cast([] as array<struct<dia string, abre time, fecha time>>)
     end as horario_funcionamento,
 
-    'rj-sms.saude_dados_mestres.estabelecimento' as fonte,
+    {{ source("saude_dados_mestres","estabelecimento") }} as fonte,
     cast(null as date) as vigencia_inicio,
     cast(null as date) as vigencia_fim,
 
@@ -148,9 +148,9 @@ select
 
     -- Last update timestamp
     current_timestamp() as update_at
-from `rj-sms.saude_dados_mestres.estabelecimento` as t
+from {{ source("saude_dados_mestres","estabelecimento") }} as t
 left join
-    `datario.dados_mestres.bairro` as b
+    {{ source("dados_mestres","bairro") }} as b
     on st_contains(b.geometry, st_geogpoint(t.endereco_longitude, t.endereco_latitude))
 )
 
@@ -179,4 +179,4 @@ select
     metadata,
     update_at
 from tb
-)
+{# ) #}
