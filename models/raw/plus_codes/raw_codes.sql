@@ -1,4 +1,3 @@
-
 {{
     config(
         alias="codes",
@@ -7,58 +6,53 @@
     )
 }}
 
-DECLARE raio_padrao INT64 DEFAULT 100000;  -- metros; ajuste se precisar
 
-{# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.codes` AS ( #}
+with
+    grid as (
+        select plus8, geometry as centro_geometry
+        from {{ source('plus_codes', 'grid') }}
+    ),
 
-WITH
-grid AS (
-  SELECT
-    plus8,
-    geometry AS centro_geometry
-  FROM {{ source('plus_codes', 'grid') }}
-),
+    -- 2) Pares grid × equipamento dentro do raio
+    pairs as (
+        select
+            g.plus8,
+            g.centro_geometry,
+            e.tipo_equipamento as categoria,
 
--- 2) Pares grid × equipamento dentro do raio
-pairs AS (
-  SELECT
-    g.plus8,
-    g.centro_geometry,
-    e.tipo_equipamento AS categoria,
+            -- Struct contendo TODA a linha do equipamento + distância
+            (
+                select as struct
+                    e.*,  -- todos os campos de equipamentos_geo
+                    st_distance(e.geometry, g.centro_geometry) as distancia_metros
+            ) as equip_full
+        from grid as g
+        join
+            {{ ref("raw_equipamentos") }} as e
+            on st_dwithin(e.geometry, g.centro_geometry, 100000000)
+    ),
 
-    -- Struct contendo TODA a linha do equipamento + distância
-    (SELECT AS STRUCT
-        e.*,                                           -- todos os campos de equipamentos_geo
-        ST_DISTANCE(e.geometry, g.centro_geometry) AS distancia_metros
-    ) AS equip_full
-  FROM grid AS g
-  JOIN {{ ref("raw_equipamentos")}} AS e
-    ON ST_DWITHIN(e.geometry, g.centro_geometry, raio_padrao)
-),
-
--- 3) Rankeia por distância
-ranqueado AS (
-  SELECT
-    plus8,
-    categoria,
-    equip_full.distancia_metros AS distancia_metros,
-    centro_geometry,
-    equip_full,
-    ROW_NUMBER() OVER (
-      PARTITION BY plus8, categoria
-      ORDER BY equip_full.distancia_metros
-    ) AS rn
-  FROM pairs
-)
+    -- 3) Rankeia por distância
+    ranqueado as (
+        select
+            plus8,
+            categoria,
+            equip_full.distancia_metros as distancia_metros,
+            centro_geometry,
+            equip_full,
+            row_number() over (
+                partition by plus8, categoria order by equip_full.distancia_metros
+            ) as rn
+        from pairs
+    )
 
 -- 4) Agrega os 3 mais próximos
-SELECT
-  plus8,
-  categoria,
-  ANY_VALUE(centro_geometry) AS geometry,
-  ARRAY_AGG(equip_full ORDER BY distancia_metros LIMIT 3) AS equipamentos,
-  CURRENT_TIMESTAMP()    AS ingestion_timestamp
-FROM ranqueado
-WHERE rn <= 3
-GROUP BY plus8, categoria
-{# ) #}
+select
+    plus8,
+    categoria,
+    any_value(centro_geometry) as geometry,
+    array_agg(equip_full order by distancia_metros limit 3) as equipamentos,
+    current_timestamp() as ingestion_timestamp
+from ranqueado
+where rn <= 3
+group by plus8, categoria

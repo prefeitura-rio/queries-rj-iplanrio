@@ -1,6 +1,6 @@
 {{
     config(
-        alias="equipamentos_educacao",
+        alias="equipamentos_cultura",
         schema="plus_codes",
         materialized="table",
     )
@@ -16,9 +16,8 @@ with
             ) as plus11,
 
             -- Identificação principal do equipamento
-            -- Gerando um ID único caso não exista um na tabela de origem
-            cast(null as string) as id_equipamento,
-            'SME' as secretaria_responsavel,  -- Secretaria Municipal de Educação
+            cast(null as string) as id_equipamento,  -- Mantendo o padrão do modelo anterior
+            'SMC' as secretaria_responsavel,  -- Secretaria Municipal de Cultura
             upper(t.categoria) as tipo_equipamento,
             upper(t.nome) as nome_oficial,
             upper(t.nome) as nome_popular,  -- Usando o nome oficial como popular por falta de um campo específico
@@ -37,12 +36,8 @@ with
             -- Detalhes de localização
             t.latituasdasdde as latitude,
             t.longitude as longitude,
-            -- Utilizando a geometria existente na tabela de origem, que é mais
-            -- confiável.
-            -- Caso a coluna t.geometry não seja confiável, pode-se usar a linha
-            -- comentada abaixo.
             t.geometry,
-            -- ST_GEOGPOINT(t.longitude, t.latituasdasdde) as geometry,
+
             -- Endereço estruturado
             struct(
                 upper(t.logradouro) as logradouro,
@@ -61,11 +56,11 @@ with
                 upper(b.subprefeitura) as subprefeitura
             ) as bairro,
 
-            -- Informações de contato estruturadas
+            -- Informações de contato estruturadas (nulas, pois não existem na origem)
             struct(
-                cast([] as array<string>) as telefones,  -- Não há campo de telefone na origem
-                cast(null as string) as email,  -- Não há campo de email na origem
-                cast(null as string) as site,  -- Não há campo de site na origem
+                cast([] as array<string>) as telefones,
+                cast(null as string) as email,
+                cast(null as string) as site,
                 struct(
                     cast(null as string) as facebook,
                     cast(null as string) as instagram,
@@ -73,7 +68,8 @@ with
                 ) as redes_social
             ) as contato,
 
-            -- Flags de status (assumindo que todas as escolas na lista estão ativas)
+            -- Flags de status (assumindo que todos os equipamentos na lista estão
+            -- ativos)
             true as ativo,
             true as aberto_ao_publico,
 
@@ -82,25 +78,22 @@ with
                 [] as array<struct<dia string, abre time, fecha time>>
             ) as horario_funcionamento,
 
-            -- Fonte dos dados (usando a sintaxe de source do dbt)
-            '{{ source("brutos_equipamentos", "escolas") }}' as fonte,
+            -- Fonte dos dados (ajuste o nome da tabela 'cultura' se necessário)
+            '{{ source("brutos_equipamentos", "culturais") }}' as fonte,
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
             -- Metadata como JSON (incluindo colunas não utilizadas diretamente)
-            to_json_string(
-                struct(
-                    t.cre, t.designacao, t.rua  -- O campo 'rua' parece redundante com 'logradouro', mas o incluímos aqui para não perder a informação
-                )
-            ) as metadata,
+            to_json_string(struct(t.id_equipamento, t.rua_original)) as metadata,
 
             -- Timestamp da última atualização
             current_timestamp() as updated_at
 
-        from {{ source("brutos_equipamentos", "escolas") }} as t
+        from {{ source("brutos_equipamentos", "culturais") }} as t
         left join
             {{ source("dados_mestres", "bairro") }} as b
-            -- O join é feito pela geometria da escola contida na geometria do bairro
+            -- O join é feito pela geometria do equipamento contida na geometria do
+            -- bairro
             on st_contains(b.geometry, t.geometry)
     )
 

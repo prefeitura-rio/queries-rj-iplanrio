@@ -26,3 +26,4 @@ sources:
     schema: brutos_equipamentos
     tables:
       - name: escolas
+      - name: culturais

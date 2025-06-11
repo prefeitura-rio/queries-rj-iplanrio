@@ -33,8 +33,8 @@ with
                             -- 2. Converte uma lista extensa de abreviações para os nomes completos
                             regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(
                                 upper(
-                                  REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(
-                                    REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(rua, 
+                                  regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(
+                                    regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(rua, 
                                   "31 de março", "Trinta e Um de março"),
                                   "28 De Setembro,","vinte e oito De Setembro,"),
                                   "13 De Julho,","Treze De Julho,"),
