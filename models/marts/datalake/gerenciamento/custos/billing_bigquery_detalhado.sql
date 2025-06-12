@@ -6,7 +6,8 @@
         schema="gerenciamento_custos",
         alias="gcp_billing_bigquery_detalhado",
         materialized="incremental",
-        incremental_strategy="insert_overwrite",
+         unique_key="job_id",
+        incremental_strategy="merge",
         partition_by={
             "field": "data_faturamento",
             "data_type": "date",
@@ -18,10 +19,21 @@
 
 {% set first_day_of_month = "date_trunc(current_date('America/Sao_Paulo'), month)" %}
 
--- Data inicial para coleta dos dados de faturamento
-{% set start_date = "2024-01-01" %}
--- Data atual para limite superior da coleta
-{% set end_date = modules.datetime.datetime.now().strftime("%Y-%m-%d") %}
+-- JOBS_BY_PROJECT SÓ ARMAZENA DADOS DE 180 DIAS
+{% set start_date_query %}
+  SELECT COALESCE(MAX(data_faturamento), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
+  FROM {{ ref('jobs_historico') }}
+{% endset %}
+
+{% if execute %}
+  {% set results = run_query(start_date_query) %}
+  {% set start_date = results.columns[0].values()[0] %}
+  {% set end_date = modules.datetime.datetime.utcnow().strftime('%Y-%m-%d') %}
+{% else %}
+  {% set start_date = '2023-01-01' %}  -- valor default para compilação
+  {% set end_date = '2099-12-31' %}  -- valor default para compilação
+{% endif %}
+
 
 -- SOURCES
 
@@ -123,6 +135,15 @@ with all_usage as (
     {{ all_queries | join('\nunion all\n') }}
 ),
 
+-- Deduplicação de jobs com mesmo job_id
+deduped_usage as (
+    select * except(rn) from (
+        select *,
+            row_number() over (partition by project_id, job_id order by creation_time desc) as rn
+        from all_usage
+    ) where rn = 1
+),
+
 all_usage_with_multiplier as (
     select
         origem_projeto,
@@ -137,7 +158,11 @@ all_usage_with_multiplier as (
         destination_table_id as tabela_destino_id,
         error_result as resultado_erro,
         creation_time as horario_criacao,
-        extract(date from end_time at time zone 'PST8PDT') as data_faturamento,
+        CASE
+            WHEN end_time IS NOT NULL AND SAFE_CAST(end_time AS STRING) != '' THEN
+                extract(date from end_time at time zone 'PST8PDT')
+            ELSE NULL
+        END as data_faturamento,
         total_bytes_processed / 1024 / 1024 / 1024 / 1024 as tib_processado,
         total_bytes_billed / 1024 / 1024 / 1024 / 1024 as tib_faturado,
         case
@@ -146,7 +171,7 @@ all_usage_with_multiplier as (
                 when 'CREATE_MODEL' then 50 * 6.25
                 else 6.25
         end as multiplicador
-    from all_usage
+    from deduped_usage
 ),
 
 cost_added as (
