@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: billing_bigquery_detalhado
-    description: "Modelo que detalha os custos de execução do BigQuery por job, incluindo processamento, faturamento e métricas de uso."
+    description: "Modelo que detalha os custos de execução do BigQuery por job, incluindo processamento, faturamento e métricas de uso. Cada linha representa um job executado, com informações detalhadas para análise de custos, auditoria e otimização do uso do BigQuery."
     config:
       schema: gerenciamento_custos
       alias: gcp_billing_bigquery_detalhado
@@ -15,7 +15,7 @@ models:
           severity: error
     columns:
       - name: origem_projeto
-        description: "Projeto de origem da execução (rj-iplanrio ou rj-iplanrio-dev)"
+        description: "Projeto GCP de origem da execução do job (ex: rj-iplanrio, rj-iplanrio-dev). Usado para rastreabilidade e análise de custos por projeto."
         data_tests:
           - not_null:
               name: mart_gerenciamento_billing_bigquery_detalhado__origem_projeto__not_null
@@ -26,14 +26,14 @@ models:
               severity: error
 
       - name: projeto_id
-        description: "ID do projeto GCP onde o job foi executado"
+        description: "ID do projeto GCP onde o job foi executado. Exemplo: 'rj-iplanrio'."
         data_tests:
           - not_null:
               name: mart_gerenciamento_billing_bigquery_detalhado__projeto_id__not_null
               severity: error
 
       - name: id_job
-        description: "Identificador único do job no BigQuery"
+        description: "Identificador único do job no BigQuery. Exemplo: 'job_1234567890abcdef'."
         data_tests:
           - unique:
               name: mart_gerenciamento_billing_bigquery_detalhado__id_job__unique
@@ -43,14 +43,14 @@ models:
               severity: error
 
       - name: datahora_criacao
-        description: "Data e hora de criação do job"
+        description: "Data e hora de criação do job (horário UTC). Exemplo: '2024-04-01T12:34:56Z'."
         data_tests:
           - not_null:
               name: mart_gerenciamento_billing_bigquery_detalhado__datahora_criacao__not_null
               severity: error
 
       - name: custo_estimado_valor
-        description: "Custo estimado em USD do job"
+        description: "Custo estimado em dólares americanos (USD) do job, calculado com base no volume faturado e multiplicador de preço vigente. Exemplo: 0.25 para 25 centavos de dólar."
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: mart_gerenciamento_billing_bigquery_detalhado__custo_estimado_valor__positive
@@ -58,7 +58,7 @@ models:
               severity: error
 
       - name: tib_processado_quantidade
-        description: "Quantidade de TiB processados pelo job"
+        description: "Quantidade de TiB (Tebibytes) processados pelo job. Exemplo: 0.25 para 256 GiB processados."
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: mart_gerenciamento_billing_bigquery_detalhado__tib_processado_quantidade__positive
@@ -66,7 +66,7 @@ models:
               severity: error
 
       - name: data_faturamento
-        description: "Data de faturamento do job"
+        description: "Data de faturamento do job (formato: 'YYYY-MM-DD'). Utilizada para partição e análise temporal dos custos."
         data_tests:
           - not_null:
               name: mart_gerenciamento_billing_bigquery_detalhado__data_faturamento__not_null

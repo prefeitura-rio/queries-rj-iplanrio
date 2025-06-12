@@ -56,8 +56,20 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
-      billing_bigquery_detalhado:
+      gcp_billing_bigquery_detalhado:
         +materialized: table
         +schema: gerenciamento_custos
         +tags: "daily"
 
+    marts:
+      datalake:
+        gerenciamento:
+          custos:
+            jobs_historico:
+              +tags: ["historico_jobs", "incremental"]
+              +materialized: incremental
+              +unique_key: ["project_id", "job_id"]
+              +partition_by:
+                field: data_faturamento
+                data_type: date
+                granularity: month
