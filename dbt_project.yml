@@ -22,7 +22,51 @@ vars:
 
   # BigQuery Monitoring
   bq_region: 'us'
-  input_gcp_projects: ['rj-iplanrio']
+  input_gcp_projects:
+      - rj-cetrio
+      - rj-cetrio-dev
+      - rj-cor
+      - rj-cor-dev
+      - rj-cvl
+      - rj-cvl-dev
+      - rj-civitas
+      - rj-civitas-dev
+      #- rj-dados
+      #- rj-dados-dev
+      - rj-escritorio
+      #- rj-escritorio-dev
+      - rj-iplanrio
+      - rj-iplanrio-dev
+      - rj-rioaguas
+      - rj-rioaguas-dev
+      - rj-seconserva
+      - rj-seconserva-dev
+      - rj-segovi
+      - rj-segovi-dev
+      - rj-seop
+      - rj-seop-dev
+      - rj-setur
+      - rj-setur-dev
+      - rj-siurb
+      #- rj-siurb-dev
+      - rj-smfp
+      - rj-smfp-dev
+      #- rj-smfp-egp
+      #- rj-smfp-egp-dev
+      - rj-smas
+      - rj-smas-dev
+      - rj-smdue
+      #- rj-smdue-dev
+      - rj-sme
+      - rj-sme-dev
+      - rj-smi
+      - rj-smi-dev
+      - rj-sms
+      #- rj-sms-dev
+      - rj-smtr
+      - rj-smtr-dev
+      #- rj-smtr-staging
+      #- rj-smtr-staging-dev
 
 
   use_flat_pricing: false # We use on-demand pricing
@@ -44,6 +88,7 @@ models:
   +persist_docs:
     relation: true
     columns: true
+
   dbt_bigquery_monitoring:
     +schema: "gerenciamento_bigquery_monitoring"
 
@@ -58,4 +103,20 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
+      gcp_billing_bigquery_detalhado:
+        +materialized: table
+        +schema: gerenciamento_custos
+        +tags: "daily"
 
+    marts:
+      datalake:
+        gerenciamento:
+          custos:
+            jobs_historico:
+              +tags: ["historico_jobs", "incremental"]
+              +materialized: incremental
+              +unique_key: ["project_id", "job_id"]
+              +partition_by:
+                field: data_faturamento
+                data_type: date
+                granularity: month
