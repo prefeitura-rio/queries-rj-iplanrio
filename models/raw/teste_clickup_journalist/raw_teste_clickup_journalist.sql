@@ -1,9 +1,17 @@
+-- tabela de CNO - Cadastro Nacional de Obras
+{{
+    config(
+        materialized="table",
+    )
+}}
+
+
 SELECT
   SAFE_CAST(
     REGEXP_REPLACE(cd_ua, r'\.0$', '') AS STRING
   ) as id_unidade_administrativa,
-  SAFE_CAST(
-    REGEXP_REPLACE(sigla_ua, r'\.0$', '') AS STRING
+  CAST(
+    REGEXP_REPLACE(sigla_ua, r'\.0$', '') AS INT64
   ) as sigla_unidade_administrativa,
   SAFE_CAST(
     REGEXP_REPLACE(nome_ua, r'\.0$', '') AS STRING
