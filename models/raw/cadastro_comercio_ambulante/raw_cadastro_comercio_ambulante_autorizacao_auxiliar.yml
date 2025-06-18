@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_cadastro_comercio_ambulante_autorizacao_auxiliar
+    description: "Dados dos Auxiliares vinculados ao Titular da Autorização do comércio ambulante. Origem: dbo.vw_auxiliar_autorizacao."
+    config:
+      alias: raw_cadastro_comercio_ambulante_autorizacao_auxiliar
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_autoriz_titular
+        description: "Identificador interno da autorização do Titular"
+        tests:
+          - not_null
+      - name: num_inscricao_municipal
+        description: "Número da Inscrição Municipal (e da Autorização ) do Titular da Autorização que o Auxiliar está vinculado" 
+        datatype: String
+      - name: cpf_auxiliar
+        description: "Número do CPF do Auxiliar do Titular da Autorização"
+        datatype: String
+      - name: tipo_pessoa
+        description: "Pessoa Fisica (F) ou Juridica (J)"
+        datatype: String
+      - name: data_inicio_vigencia_auxiliar
+        description: "Data que o Auxiliar foi vinculado ao Titular da Autorização" 
+        datatype: Datetime
