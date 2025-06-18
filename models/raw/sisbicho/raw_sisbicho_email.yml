@@ -1,0 +1,34 @@
+ version: 2
+
+models:
+  - name: raw_sisbicho_email
+    description: "Tabela contendo os emails cadastrados no sistema SisBicho"
+    columns:
+      - name: id_email
+        description: "Identificador único para cada email"
+        datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_email__id_email__unique
+              severity: error
+      - name: identificacao_codigo
+        description: "Identificação do email"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_email__identificacao_codigo__not_null
+              severity: error
+      - name: texto_conteudo
+        description: "Conteúdo do email"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_email__texto_conteudo__not_null
+              severity: error
+      - name: assunto_nome
+        description: "Assunto do email"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_email__assunto_nome__not_null
+              severity: error

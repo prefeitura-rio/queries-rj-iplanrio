@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_especie
+    description: "Tabela contendo as espécies de animais cadastradas no sistema SisBicho"
+    columns:
+      - name: id_especie
+        description: "Código único numérico que identifica cada espécie na base de dados"
+        datatype: smallint
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_especie__id_especie__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_especie__id_especie__not_null
+              severity: error
+
+      - name: especie_nome
+        description: "Nome científico completo da espécie, seguindo a nomenclatura binomial"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_especie__especie_nome__not_null
+              severity: error
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_especie__especie_nome__unique
+              severity: error
+
+      - name: avatar_dados
+        description: "Imagem represe  ntativa da espécie, podendo ser uma foto, ilustração ou desenho" 
+        datatype: bytes

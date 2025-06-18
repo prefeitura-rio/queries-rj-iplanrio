@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_credenciada_usuario
+    description: "Tabela contendo os registros de usuários das credenciadas no sistema SisBicho"
+    columns:
+      - name: id_credenciada_usuario
+        description: "Identificador único para cada usuário credenciado no sistema"
+        datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__id_credenciada_usuario__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__id_credenciada_usuario__not_null
+              severity: error
+
+      - name: id_credenciada
+        description: "Identificador único da credenciada, entidade principal a qual o usuário está associado"
+        datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__id_credenciada__not_null
+              severity: error
+          - relationships:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__id_credenciada__relationships
+              to: ref('raw_sisbicho_credenciada')
+              field: id_credenciada
+              severity: error
+
+      - name: usuario_codigo
+        description: "Código numérico interno do usuário, utilizado para referenciar o usuário em sistemas legados"
+        datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__usuario_codigo__not_null
+              severity: error
+
+      - name: usuario_login
+        description: "Campo que registra o login do usuário durante o processo de cadastro"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__usuario_login__not_null
+              severity: error
+
+      - name: registro_datahora
+        description: "Data e hora do registro do usuário no sistema"
+        datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__registro_datahora__not_null
+              severity: error
+
+      - name: associado_indicador
+        description: "Indica se o usuário está associado à credenciada"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__associado_indicador__not_null
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__associado_indicador__valid_values
+              value_set: ['S', 'N']
+              severity: warn
+
+      - name: gestor_indicador
+        description: "Indica se o usuário possui permissões de gestor no sistema"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__gestor_indicador__not_null
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_credenciada_usuario__gestor_indicador__valid_values
+              value_set: ['S', 'N']
+              severity: warn 

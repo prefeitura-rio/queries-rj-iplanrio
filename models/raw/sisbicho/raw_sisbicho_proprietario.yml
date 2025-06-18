@@ -1,0 +1,157 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_proprietario
+    description: "Tabela contendo os registros de proprietários de animais no sistema SisBicho"
+    columns:
+      - name: id_proprietario
+        description: "Identificador único numérico para cada proprietário"
+        datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_proprietario__id_proprietario__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_proprietario__id_proprietario__not_null
+              severity: error
+
+      - name: proprietario_nome
+        description: "Nome completo do proprietário, pessoa física ou jurídica" 
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_proprietario__proprietario_nome__not_null
+              severity: error
+
+      - name: cpf_numero
+        description: "Cadastro de Pessoa Física do proprietário, se pessoa física"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_proprietario__cpf_numero__valid_format
+              regex: '^\d{11}$'
+              severity: warn
+
+      - name: cnpj_numero
+        description: "Cadastro Nacional da Pessoa Jurídica do proprietário, se pessoa jurídica"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_proprietario__cnpj_numero__valid_format
+              regex: '^\d{14}$'
+              severity: warn
+
+      - name: id_logradouro
+        description: "Código numérico de identificação do logradouro"
+        datatype: integer
+
+      - name: logradouro_nome
+        description: "Nome da rua, avenida, etc., onde o proprietário reside"
+        datatype: string
+
+      - name: numero_porta
+        description: "Número da residência ou estabelecimento do proprietário"
+        datatype: string
+
+      - name: complemento_nome
+        description: "Informações complementares sobre o endereço"
+        datatype: string
+
+      - name: bairro_nome
+        description: "Nome do bairro onde o proprietário reside"
+        datatype: string
+
+      - name: id_bairro
+        description: "Código numérico de identificação do bairro"
+        datatype: integer
+
+      - name: cep_numero
+        description: "Código de Endereçamento Postal do endereço do proprietário"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_proprietario__cep_numero__valid_format
+              regex: '^\d{8}$'
+              severity: warn
+
+      - name: cidade_nome
+        description: "Nome da cidade onde o proprietário reside"
+        datatype: string
+
+      - name: uf_sigla
+        description: "Sigla da Unidade Federativa (estado) onde o proprietário reside"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_proprietario__uf_sigla__valid_values
+              value_set: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+              severity: warn
+
+      - name: telefone_numero
+        description: "Número de telefone fixo do proprietário"
+        datatype: string
+
+      - name: celular_numero
+        description: "Número de telefone celular do proprietário"
+        datatype: string
+
+      - name: email_endereco
+        description: "Endereço de e-mail do proprietário"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_proprietario__email_endereco__valid_format
+              regex: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+              severity: warn
+
+      - name: tipo_pessoa_sigla
+        description: "Identificador indicando se é pessoa física ('PF') ou jurídica ('PJ')"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_proprietario__tipo_pessoa_sigla__not_null
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_proprietario__tipo_pessoa_sigla__valid_values
+              value_set: ['PF', 'PJ']
+              severity: warn
+
+      - name: registro_datahora
+        description: "Data e hora do registro do proprietário no sistema"
+        datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_proprietario__registro_datahora__not_null
+              severity: error
+
+      - name: usuario_login
+        description: "Login do usuário que registrou o proprietário no sistema"
+        datatype: string
+
+      - name: divulgar_contato_indicador
+        description: "Indica se o contato do proprietário pode ser divulgado"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_proprietario__divulgar_contato_indicador__valid_values
+              value_set: ['S', 'N']
+              severity: warn
+
+      - name: id_credenciada
+        description: "Identificador da credenciada, se aplicável"
+        datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_raw_sisbicho_proprietario__id_credenciada__relationships
+              to: ref('raw_sisbicho_credenciada')
+              field: id_credenciada
+              severity: error
+
+      - name: tutor_rua_indicador
+        description: "Indica se o proprietário é um tutor de animal em situação de rua"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_proprietario__tutor_rua_indicador__valid_values
+              value_set: ['S', 'N']
+              severity: warn 

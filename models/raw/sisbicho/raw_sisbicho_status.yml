@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_status
+    description: "Tabela contendo os registros de status possíveis para animais no sistema SisBicho"
+    columns:
+      - name: id_status
+        description: "Código numérico único que identifica o status de cada registro na planilha. Serve como chave primária para referenciar o status"
+        datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_status__id_status__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_status__id_status__not_null
+              severity: error
+
+      - name: status_nome
+        description: "Descriço textual do estado atual do registro, podendo indicar, por exemplo, 'Aberto', 'Em Andamento', 'Concluído' ou 'Cancelado'"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_status__status_nome__not_null
+              severity: error
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_status__status_nome__unique
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_status__status_nome__valid_values
+              value_set: ['Aberto', 'Em Andamento', 'Concluído', 'Cancelado', 'Adotado', 'Disponível']
+              severity: warn 

@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_raca
+    description: "Tabela contendo as raças de animais cadastradas no sistema SisBicho"
+    columns:
+      - name: id_raca
+        description: "Identificador único numérico para cada raça, utilizado internamente pelo sistema"
+        datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_raca__id_raca__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_raca__id_raca__not_null
+              severity: error
+
+      - name: raca_nome
+        description: "Nome descritivo da raça, utilizado para exibição ao usuário"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_raca__raca_nome__not_null
+              severity: error
+
+      - name: id_especie
+        description: "Chave estrangeira referenciando a tabela Especie, identificando a espécie à qual a raça pertence"
+        datatype: smallint
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_raca__id_especie__not_null
+              severity: error
+          - relationships:
+              name: raw_sisbicho_raw_sisbicho_raca__id_especie__relationships
+              to: ref('raw_sisbicho_especie')
+              field: id_especie
+              severity: error
+
+      - name: id_tipo_especie
+        description: "Chave estrangeira referenciando a tabela TipoEspecie, especificando o tipo de espécie"
+        datatype: smallint
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_raw_sisbicho_raca__id_tipo_especie__relationships
+              to: ref('raw_sisbicho_tipo_especie')
+              field: id_tipo_especie
+              severity: error 

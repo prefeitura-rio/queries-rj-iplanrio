@@ -1,0 +1,156 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_credenciada
+    description: "Tabela contendo os registros de credenciadas no sistema SisBicho"
+    columns:
+      - name: id_credenciada
+        description: "Identificador único numérico para cada credenciada"
+        datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_credenciada__id_credenciada__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada__id_credenciada__not_null
+              severity: error
+
+      - name: razao_social_nome
+        description: "Nome completo da empresa ou instituição credenciada"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada__razao_social_nome__not_null
+              severity: error
+
+      - name: cnpj_numero
+        description: "Número de Cadastro Nacional da Pessoa Jurídica" 
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_credenciada__cnpj_numero__valid_format
+              regex: '^\d{14}$'
+              severity: warn
+
+      - name: inscricao_municipal_numero
+        description: "Número de inscrição municipal da credenciada"
+        datatype: string
+
+      - name: id_logradouro
+        description: "Código de identificação do logradouro"
+        datatype: integer
+
+      - name: logradouro_nome
+        description: "Nome da rua, avenida, etc., onde a credenciada está localizada"
+        datatype: string
+
+      - name: numero_porta
+        description: "Número da porta ou endereço da credenciada"
+        datatype: string
+
+      - name: complemento_nome
+        description: "Informações complementares do endereço"
+        datatype: string
+
+      - name: bairro_nome
+        description: "Nome do bairro onde a credenciada está localizada"
+        datatype: string
+
+      - name: id_bairro
+        description: "Código de identificação do bairro"
+        datatype: integer
+
+      - name: cep_numero
+        description: "Código de Endereçamento Postal"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_credenciada__cep_numero__valid_format
+              regex: '^\d{8}$'
+              severity: warn
+
+      - name: cidade_nome
+        description: "Nome da cidade onde a credenciada está localizada"
+        datatype: string
+
+      - name: uf_sigla
+        description: "Sigla da Unidade Federativa (estado)"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_credenciada__uf_sigla__valid_values
+              value_set: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+              severity: warn
+
+      - name: telefone_numero
+        description: "Número de telefone fixo da credenciada"
+        datatype: string
+
+      - name: celular_numero
+        description: "Número de telefone celular da credenciada"  
+        datatype: string
+
+      - name: email_endereco
+        description: "Endereço de e-mail da credenciada"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_credenciada__email_endereco__valid_format
+              regex: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+              severity: warn
+
+      - name: registro_data
+        description: "Data de registro da credenciada no sistema"
+        datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_credenciada__registro_data__not_null
+              severity: error
+
+      - name: usuario_login
+        description: "Nome de usuário para acesso ao sistema"
+
+      - name: licenca_sanitaria_numero
+        description: "Número da licença sanitária"
+        datatype: string
+
+      - name: licenca_sanitaria_data
+        description: "Data de emissão da licença sanitária"
+        datatype: datetime
+
+      - name: cpf_numero
+        description: "Número de Cadastro de Pessoa Física (para pessoas físicas)"
+        datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_credenciada__cpf_numero__valid_format
+              regex: '^\d{11}$'
+              severity: warn
+
+      - name: id_tipo_pessoa
+        description: "Identificador do tipo de pessoa (física ou jurídica)"
+        datatype: string
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_raw_sisbicho_credenciada__id_tipo_pessoa__relationships
+              to: ref('raw_sisbicho_tipo_pessoa')
+              field: id_tipo_pessoa
+              severity: error
+
+      - name: id_responsavel_tecnico
+        description: "Identificador do responsável técnico" 
+        datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
+              to: ref('raw_sisbicho_responsavel_tecnico')
+              field: id_responsavel_tecnico
+              severity: error
+
+      - name: tipo_licenca_sigla
+        description: "Tipo de licença sanitária"
+        datatype: string
+
+      - name: autorizacao_sanitaria_numero
+        description: "Número de autorização sanitária da credenciada" 
+        datatype: string

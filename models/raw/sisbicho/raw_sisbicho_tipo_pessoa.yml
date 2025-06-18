@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_tipo_pessoa
+    description: "Tabela contendo os registros de tipos de pessoa (física ou jurídica) no sistema SisBicho"
+    columns:
+      - name: id_tipo_pessoa
+        description: "Identificador único numérico que categoriza o tipo de pessoa (física ou jurídica). Serve como chave primária para a tabela de tipos de pessoas"
+        datatype: string
+        data_tests:
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__id_tipo_pessoa__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__id_tipo_pessoa__not_null
+              severity: error
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__id_tipo_pessoa__valid_format
+              regex: '^[A-Z]{2}$'
+              severity: warn
+
+      - name: tipo_pessoa_nome
+        description: "Descrição textual detalhada do tipo de pessoa, fornecendo contexto e informações relevantes para a sua compreensão"
+        datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__not_null
+              severity: error
+          - unique:
+              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__unique
+              severity: error
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
+              value_set: ['Pessoa Física', 'Pessoa Jurídica']
+              severity: warn 
