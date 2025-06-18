@@ -6,7 +6,7 @@
         schema="gerenciamento_custos",
         alias="gcp_billing_bigquery_detalhado",
         materialized="incremental",
-         unique_key="job_id",
+         unique_key="id_job",
         incremental_strategy="merge",
         partition_by={
             "field": "data_faturamento",
