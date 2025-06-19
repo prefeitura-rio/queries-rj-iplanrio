@@ -168,3 +168,11 @@ models:
       - name: foto_dados
         description: "Foto do animal" 
         datatype: bytes
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: Animal
+        description: "Tabela de animal do sistema Sisbicho"         

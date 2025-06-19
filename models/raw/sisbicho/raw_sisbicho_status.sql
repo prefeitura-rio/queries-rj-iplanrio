@@ -9,6 +9,6 @@
 }}
 
 SELECT 
-    SAFE_cast([IDStatus] as integer) as id_status,
-    SAFE_cast([Status] as string) as status_nome
-FROM {{ source('brutos_sisbicho_staging', 'Status') }} 
+    SAFE_CAST(IDStatus AS INT64) AS id_status,
+    SAFE_CAST(Status.Status AS STRING) AS status_nome
+FROM {{ source('brutos_sisbicho_staging', 'Status') }}

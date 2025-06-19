@@ -9,6 +9,6 @@
 }}
 
 SELECT 
-    SAFE_cast([IDTipoPessoa] as string) as id_tipo_pessoa,
-    SAFE_cast([Descricao] as string) as tipo_pessoa_nome
+    SAFE_cast(IDTipoPessoa as string) as id_tipo_pessoa,
+    SAFE_cast(Descricao as string) as tipo_pessoa_nome
 FROM {{ source('brutos_sisbicho_staging', 'TipoPessoa') }} 

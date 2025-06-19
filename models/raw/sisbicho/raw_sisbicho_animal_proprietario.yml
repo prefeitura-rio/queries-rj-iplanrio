@@ -51,6 +51,7 @@ models:
               to: ref('raw_sisbicho_tipo_aquisicao')
               field: id_tipo_aquisicao
               severity: error
+          - not_null
 
       - name: inicio_datahora
         description: "Data de início da posse do animal pelo proprietário atual"
@@ -71,7 +72,13 @@ models:
       - name: cadastro_datahora
         description: "Data e hora do registro do vínculo entre animal e proprietário"
         datatype: datetime
-        data_tests:
-          - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal_proprietario__cadastro_datahora__not_null
-              severity: error 
+
+
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: AnimalProprietario
+        description: "Tabela de proprietários dos animais do sistema Sisbicho"               

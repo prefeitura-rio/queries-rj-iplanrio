@@ -32,3 +32,12 @@ models:
           - not_null:
               name: raw_sisbicho_raw_sisbicho_email__assunto_nome__not_null
               severity: error
+
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: EMail
+        description: "Tabela de email do sistema Sisbicho"               

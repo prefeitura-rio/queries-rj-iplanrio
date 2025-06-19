@@ -27,5 +27,13 @@ models:
               severity: error
           - dbt_expectations.expect_column_values_to_be_in_set:
               name: raw_sisbicho_raw_sisbicho_status__status_nome__valid_values
-              value_set: ['Aberto', 'Em Andamento', 'Concluído', 'Cancelado', 'Adotado', 'Disponível']
+              value_set: ['Óbito', 'Desaparecido', 'Fugiu', 'Normal', 'Doação']
               severity: warn 
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: Status
+        description: "Tabela de status do sistema Sisbicho"    

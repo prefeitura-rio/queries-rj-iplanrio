@@ -45,3 +45,12 @@ models:
               to: ref('raw_sisbicho_tipo_especie')
               field: id_tipo_especie
               severity: error 
+
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: Raca
+        description: "Tabela de raças do sistema Sisbicho" 

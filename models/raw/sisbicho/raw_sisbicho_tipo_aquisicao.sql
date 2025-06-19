@@ -9,6 +9,6 @@
 }}
 
 SELECT 
-    SAFE_cast([IDTipoAquisicao] as smallint) as id_tipo_aquisicao,
-    SAFE_cast([Descricao] as string) as tipo_aquisicao_nome
+    SAFE_cast(IDTipoAquisicao as smallint) as id_tipo_aquisicao,
+    SAFE_cast(Descricao as string) as tipo_aquisicao_nome
 FROM {{ source('brutos_sisbicho_staging', 'TipoAquisicao') }} 

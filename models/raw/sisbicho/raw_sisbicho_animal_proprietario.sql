@@ -9,12 +9,12 @@
 }}
 
 SELECT 
-    SAFE_cast([IDAnimalProprietario] as integer) as id_animal_proprietario,
-    SAFE_cast([IDAnimal] as integer) as id_animal,
-    SAFE_cast([IDProprietario] as integer) as id_proprietario,
-    SAFE_cast([IDTipoAquisicao] as smallint) as id_tipo_aquisicao,
-    SAFE_cast([DataInicio] as datetime) as inicio_datahora,
-    SAFE_cast([DataFim] as datetime) as fim_datahora,
-    SAFE_cast([USR_CODIGO] as integer) as usuario_codigo,
-    SAFE_cast([DataCadastro] as datetime) as cadastro_datahora
-FROM {{ source('brutos_sisbicho_staging', 'AnimalProprietario') }} 
+    SAFE_CAST(IDAnimalProprietario AS INT64) AS id_animal_proprietario,
+    SAFE_CAST(IDAnimal AS INT64) AS id_animal,
+    SAFE_CAST(IDProprietario AS INT64) AS id_proprietario,
+    SAFE_CAST(IDTipoAquisicao AS INT64) AS id_tipo_aquisicao,
+    SAFE_CAST(DataInicio AS DATETIME) AS inicio_datahora,
+    SAFE_CAST(DataFim AS DATETIME) AS fim_datahora,
+    SAFE_CAST(USR_CODIGO AS INT64) AS usuario_codigo,
+    SAFE_CAST(DataCadastro AS DATETIME) AS cadastro_datahora
+FROM {{ source('brutos_sisbicho_staging', 'AnimalProprietario') }}
