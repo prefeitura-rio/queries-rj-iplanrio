@@ -27,7 +27,7 @@ models:
               severity: error
           - dbt_expectations.expect_column_values_to_be_in_set:
               name: raw_sisbicho_raw_sisbicho_status__status_nome__valid_values
-              value_set: ['Aberto', 'Em Andamento', 'Concluído', 'Cancelado', 'Adotado', 'Disponível']
+              value_set: ['Óbito', 'Desaparecido', 'Fugiu', 'Normal', 'Doação']
               severity: warn 
 
 sources:

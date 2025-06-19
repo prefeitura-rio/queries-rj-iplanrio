@@ -1,6 +1,10 @@
 packages:
   - package: bqbooster/dbt_bigquery_monitoring
     version: 0.19.3
+  - package: calogica/dbt_expectations
+    version: 0.10.4
   - package: dbt-labs/dbt_utils
     version: 1.3.0
-sha1_hash: 96a6655edc1995511732f2d38ea182edee19ee20
+  - package: calogica/dbt_date
+    version: 0.10.1
+sha1_hash: 2893e3af581ed2db8528f73c0b89fb8e9d3ec607

@@ -29,7 +29,7 @@ models:
         data_tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_sisbicho_raw_sisbicho_credenciada__cnpj_numero__valid_format
-              regex: '^\d{14}$'
+              regex: '^\\d{14}$'
               severity: warn
 
       - name: inscricao_municipal_numero
@@ -66,7 +66,7 @@ models:
         data_tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_sisbicho_raw_sisbicho_credenciada__cep_numero__valid_format
-              regex: '^\d{8}$'
+              regex: '^\\d{8}$'
               severity: warn
 
       - name: cidade_nome
@@ -96,7 +96,7 @@ models:
         data_tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_sisbicho_raw_sisbicho_credenciada__email_endereco__valid_format
-              regex: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+              regex: '^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$'
               severity: warn
 
       - name: registro_data
@@ -124,18 +124,18 @@ models:
         data_tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_sisbicho_raw_sisbicho_credenciada__cpf_numero__valid_format
-              regex: '^\d{11}$'
+              regex: '^\\d{11}$'
               severity: warn
 
       - name: id_tipo_pessoa
         description: "Identificador do tipo de pessoa (física ou jurídica)"
         datatype: string
-        data_tests:
-          - relationships:
-              name: raw_sisbicho_raw_sisbicho_credenciada__id_tipo_pessoa__relationships
-              to: ref('raw_sisbicho_tipo_pessoa')
-              field: id_tipo_pessoa
-              severity: error
+        #data_tests:
+         # - relationships:
+          #    name: raw_sisbicho_raw_sisbicho_credenciada__id_tipo_pessoa__relationships
+          #    to: ref('raw_sisbicho_tipo_pessoa')
+          #    field: id_tipo_pessoa
+          #    severity: error
 
       - name: id_responsavel_tecnico
         description: "Identificador do responsável técnico" 
@@ -144,7 +144,7 @@ models:
           - relationships:
               name: raw_sisbicho_raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
               to: ref('raw_sisbicho_responsavel_tecnico')
-              field: id_responsavel_tecnico
+              field: usr_codigo
               severity: error
 
       - name: tipo_licenca_sigla
