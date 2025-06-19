@@ -29,3 +29,11 @@ models:
               name: raw_sisbicho_raw_sisbicho_status__status_nome__valid_values
               value_set: ['Aberto', 'Em Andamento', 'Concluído', 'Cancelado', 'Adotado', 'Disponível']
               severity: warn 
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: status
+        description: "Tabela de status do sistema Sisbicho"    

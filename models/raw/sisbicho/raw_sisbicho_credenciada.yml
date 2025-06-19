@@ -154,3 +154,12 @@ models:
       - name: autorizacao_sanitaria_numero
         description: "Número de autorização sanitária da credenciada" 
         datatype: string
+
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: credenciada
+        description: "Tabela de credenciada do sistema Sisbicho"         

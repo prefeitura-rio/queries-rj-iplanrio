@@ -67,3 +67,11 @@ models:
       - name: num_interno_agrupam_concessao
         description: "Agrupamento interno do sistema para conceder as Autorizações" 
         datatype: String
+
+sources:
+  - name: brutos_cadastro_comercio_ambulantes_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_cadastro_comercio_ambulantes_staging
+    tables:
+      - name: autorizacao
+        description: "Tabela de autorizações do sistema de cadastro de comércio de ambulantes"         

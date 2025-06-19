@@ -2,25 +2,27 @@ iplan:
   target: dev
   outputs:
     dev:
-      dataset: dbt
+      schema: dbt
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /home/geraldo/Projetos/DBT/credencial/rj-iplanrio-af7a2b8f5bab.json
+      keyfile: /home/geraldo/Projetos/DBT/Credencial/rj-iplanrio-af7a2b8f5bab.json
       location: US
       method: service-account
       priority: interactive
       project: rj-iplanrio-dev
       threads: 8
       type: bigquery
+      
     prod:
-      dataset: dbt
+      schema: dbt
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /home/geraldo/Projetos/DBT/credencial/rj-iplanrio-af7a2b8f5bab.json
+      keyfile: /home/geraldo/Projetos/DBT/Credencial/rj-iplanrio-af7a2b8f5bab.json
       location: US
       method: service-account
       priority: interactive
       project: rj-iplanrio
       threads: 8
       type: bigquery
+      
 

@@ -56,3 +56,11 @@ models:
           - not_null:
               name: raw_sisbicho_raw_sisbicho_animal_status__usuario_codigo__not_null
               severity: error 
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: animal_status
+        description: "Tabela de status dos animais do sistema Sisbicho"               

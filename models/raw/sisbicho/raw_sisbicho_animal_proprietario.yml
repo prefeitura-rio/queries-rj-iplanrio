@@ -75,3 +75,12 @@ models:
           - not_null:
               name: raw_sisbicho_raw_sisbicho_animal_proprietario__cadastro_datahora__not_null
               severity: error 
+
+
+sources:
+  - name: brutos_sisbicho_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: animal_proprietario
+        description: "Tabela de proprietários dos animais do sistema Sisbicho"               

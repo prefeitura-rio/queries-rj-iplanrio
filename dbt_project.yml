@@ -41,13 +41,14 @@ vars:
 
 
 models:
-  +persist_docs:
-    relation: true
-    columns: true
-  dbt_bigquery_monitoring:
-    +schema: "gerenciamento_bigquery_monitoring"
+  queries:                         # nome do seu projeto (igual ao "name" no topo)
+    +persist_docs:
+      relation: true
+      columns: true
 
-  queries:
+    dbt_bigquery_monitoring:
+      +schema: "gerenciamento_bigquery_monitoring"
+
     raw:
       +tags: "raw"
       bcadastro:

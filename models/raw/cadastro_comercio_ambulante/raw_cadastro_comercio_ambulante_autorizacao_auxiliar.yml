@@ -24,3 +24,14 @@ models:
       - name: data_inicio_vigencia_auxiliar
         description: "Data que o Auxiliar foi vinculado ao Titular da Autorização" 
         datatype: Datetime
+
+
+
+
+sources:
+  - name: brutos_cadastro_comercio_ambulantes_staging
+    database: rj-iplanrio-dev   # optional if same as target
+    schema: brutos_cadastro_comercio_ambulantes_staging
+    tables:
+      - name: autorizacao_auxiliar
+        description: "Tabela de autorizações de auxiliar do sistema de cadastro de comércio de ambulantes"                 
