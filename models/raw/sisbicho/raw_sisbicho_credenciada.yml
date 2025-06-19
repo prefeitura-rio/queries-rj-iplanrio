@@ -161,5 +161,5 @@ sources:
     database: rj-iplanrio-dev   # optional if same as target
     schema: brutos_sisbicho_staging
     tables:
-      - name: credenciada
+      - name: Credenciada
         description: "Tabela de credenciada do sistema Sisbicho"         

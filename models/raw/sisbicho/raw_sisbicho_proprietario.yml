@@ -163,5 +163,5 @@ sources:
     database: rj-iplanrio-dev   # optional if same as target
     schema: brutos_sisbicho_staging
     tables:
-      - name: proprietario
+      - name: Proprietario
         description: "Tabela de proprietários do sistema Sisbicho" 

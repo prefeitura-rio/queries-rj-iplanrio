@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: raw_cadastro_comercio_ambulante
+  - name: raw_cadastro_comercio_ambulantes
     description: "Dados da Autorização e do titular correspondente do comércio ambulante. Origem: dbo.vw_autorizacao_datalake."
     config:
-      alias: raw_cadastro_comercio_ambulante
+      alias: raw_cadastro_comercio_ambulantes
       schema: raw
       materialized: view
     columns:
@@ -73,5 +73,5 @@ sources:
     database: rj-iplanrio-dev   # optional if same as target
     schema: brutos_cadastro_comercio_ambulantes_staging
     tables:
-      - name: autorizacao
+      - name: vw_autorizacao_datalake
         description: "Tabela de autorizações do sistema de cadastro de comércio de ambulantes"         

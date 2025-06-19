@@ -1,15 +1,16 @@
 version: 2
 
 models:
-  - name: raw_cadastro_comercio_ambulante_autorizacao_auxiliar
+  - name: raw_cadastro_comercio_ambulantes_autorizacao_auxiliar
     description: "Dados dos Auxiliares vinculados ao Titular da Autorização do comércio ambulante. Origem: dbo.vw_auxiliar_autorizacao."
     config:
-      alias: raw_cadastro_comercio_ambulante_autorizacao_auxiliar
+      alias: raw_cadastro_comercio_ambulantes_autorizacao_auxiliar
       schema: raw
       materialized: view
     columns:
       - name: id_autoriz_titular
         description: "Identificador interno da autorização do Titular"
+        datatype: integer
         tests:
           - not_null
       - name: num_inscricao_municipal
@@ -33,5 +34,5 @@ sources:
     database: rj-iplanrio-dev   # optional if same as target
     schema: brutos_cadastro_comercio_ambulantes_staging
     tables:
-      - name: autorizacao_auxiliar
+      - name: vw_autorizacao_auxiliares_datalake
         description: "Tabela de autorizações de auxiliar do sistema de cadastro de comércio de ambulantes"                 

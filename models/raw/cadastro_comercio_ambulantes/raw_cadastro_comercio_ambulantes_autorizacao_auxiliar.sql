@@ -1,9 +1,9 @@
 {{
     config(
-      schema="cadastro_comercio_ambulante",
+      schema="cadastro_comercio_ambulantes",
       alias="autorizacao_auxiliares",
       materialized="table",
-      tags=["raw", "cadastro_comercio_ambulante"],
+      tags=["raw", "cadastro_comercio_ambulantes"],
       description="Dados do Auxiliar do Titular da Autorização"
     )
 }}
@@ -15,4 +15,4 @@ SELECT
     SAFE_CAST(cpf as String) as cpf_auxiliar,
     SAFE_CAST(tipo_pessoa as String) as tipo_pessoa,
     SAFE_CAST(inicioVigenciaAuxiliar as datetime) as data_inicio_vigencia_auxiliar
-FROM {{ source('brutos_cadastro_comercio_ambulante_staging', 'autorizacao_auxiliares') }}  
+FROM {{ source('brutos_cadastro_comercio_ambulantes_staging', 'vw_autorizacao_auxiliares_datalake') }}  

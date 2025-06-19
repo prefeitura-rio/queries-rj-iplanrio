@@ -1,9 +1,9 @@
 {{
     config(
-      schema="cadastro_comercio_ambulante",
+      schema="cadastro_comercio_ambulantes",
       alias="autorizacao",
       materialized="table",
-      tags=["raw", "cadastro_comercio_ambulante"],
+      tags=["raw", "cadastro_comercio_ambulantes"],
       description="Dados do Titular da Autorização"
     )
 }}
@@ -28,4 +28,4 @@ SELECT
     SAFE_CAST(permanente as String) as ind_autoriz_permanente,
     SAFE_CAST(processaConcessaoIM as String) as num_processo_concessao,
     SAFE_CAST(processoSeletivo as String) as num_interno_agrupam_concessao
-FROM {{ source('brutos_cadastro_comercio_ambulante_staging', 'autorizacao') }}
+FROM {{ source('brutos_cadastro_comercio_ambulantes_staging', 'vw_autorizacao_datalake') }}
