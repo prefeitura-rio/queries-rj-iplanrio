@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: raw_cadastro_comercio_ambulantes
+  - name: raw_cadastro_comercio_ambulantes_autorizacao
     description: "Dados da Autorização e do titular correspondente do comércio ambulante. Origem: dbo.vw_autorizacao_datalake."
     config:
-      alias: raw_cadastro_comercio_ambulantes
+      alias: raw_cadastro_comercio_ambulantes_autorizacao
       schema: raw
       materialized: view
     columns:
@@ -31,6 +31,8 @@ models:
       - name: dt_concessao
         description: "Data que Autorização foi concedida"
         datatype: Datetime
+        tests:
+          - not_null
       - name: dt_cancelamento
         description: "Data que Autorização foi cancelada"
         datatype: Datetime
@@ -61,6 +63,8 @@ models:
       - name: ind_autoriz_permanente
         description: "Autorização Permanente (S) ou Temporária (N) - Ex: Autorizações concedidas para trabalhar durante o Carnaval"
         datatype: String
+        tests:
+          - not_null
       - name: num_processo_concessao
         description: "Número do Processo Administrativo que contém o deferimento para o Titular da autorização trabalhar no comércio ambulante"
         datatype: String
