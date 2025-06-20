@@ -4,7 +4,12 @@
       alias="animal",
       materialized="table",
       tags=["raw", "sisbicho"],
-      description="Tabela de Animais"
+      description="Tabela de Animais",
+      partition_by={
+            "field": "nascimento_data",
+            "data_type": "datetime",
+            "granularity": "month"
+       }
     )
 }}
 
@@ -15,7 +20,7 @@ SELECT
     SAFE_cast(IDEspecie as smallint) as id_especie,
     SAFE_cast(Sexo as string) as sexo_sigla,
     SAFE_cast(IDRaca as integer) as id_raca,
-    SAFE_cast(DataNascimento as string) as nascimento_data,
+    SAFE_cast(DataNascimento as datetime) as nascimento_data,
     SAFE_cast(Pedigree as string) as pedigree_indicador,
     SAFE_cast(PedigreeOrigem as string) as pedigree_origem_nome,
     SAFE_cast(DataRegistro as datetime) as registro_data,
