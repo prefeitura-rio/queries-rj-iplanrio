@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: "queries"
 version: "1.0.0"
 config-version: 2
@@ -73,3 +74,4 @@ models:
                 field: data_faturamento
                 data_type: date
                 granularity: month
+
