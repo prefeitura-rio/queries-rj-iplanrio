@@ -8,7 +8,7 @@
     )
 }}
 
-SELECT 
-    SAFE_cast(USR_CODIGO as integer) as usr_codigo,
-    SAFE_cast(CRMV as String) as crmv
-FROM {{ source('brutos_sisbicho_staging', 'ResponsavelTecnico') }} 
+select 
+    safe_cast(usr_codigo as integer) as codigo_usuario,
+    safe_cast(crmv as string) as crm
+from {{ source('brutos_sisbicho_staging', 'ResponsavelTecnico') }} 

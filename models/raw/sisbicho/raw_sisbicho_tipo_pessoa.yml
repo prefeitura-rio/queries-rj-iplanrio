@@ -33,11 +33,3 @@ models:
               name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
               value_set: ['Pessoa Física', 'Pessoa Jurídica','Preifeitura']
               severity: warn 
-
-sources:
-  - name: brutos_sisbicho_staging
-    database: rj-iplanrio-dev   # optional if same as target
-    schema: brutos_sisbicho_staging
-    tables:
-      - name: TipoPessoa
-        description: "Tabela do Tipos de Pessoas do sistema Sisbicho"      

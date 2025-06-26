@@ -8,8 +8,8 @@
     )
 }}
 
-SELECT 
-    SAFE_cast(IDTipoEspecie as smallint) as id_tipo_especie,
-    SAFE_cast(NomeTipoEspecie as string) as tipo_especie_nome,
-    SAFE_cast(IDEspecie as smallint) as id_especie
+select
+    safe_cast(IDTipoEspecie as smallint) as id_tipo_especie,
+    safe_cast(NomeTipoEspecie as string) as tipo_especie_nome,
+    safe_cast(IDEspecie as smallint) as id_especie
 FROM {{ source('brutos_sisbicho_staging', 'TipoEspecie') }} 

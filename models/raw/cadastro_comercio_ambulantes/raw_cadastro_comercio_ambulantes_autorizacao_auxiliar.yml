@@ -4,16 +4,22 @@ models:
   - name: raw_cadastro_comercio_ambulantes_autorizacao_auxiliar
     description: "Dados dos Auxiliares vinculados ao Titular da Autorização do comércio ambulante. Origem: dbo.vw_auxiliar_autorizacao."
     config:
-      alias: raw_cadastro_comercio_ambulantes_autorizacao_auxiliar
+      alias: raw__cadastro_comercio_ambulantes__autorizacao_auxiliar
       schema: raw
       materialized: view
     columns:
       - name: id_autoriz_titular
         description: "Identificador interno da autorização do Titular"
         datatype: integer
-        tests:
-          - not_null
-      - name: num_inscricao_municipal
+        data_tests: 
+          - unique:
+              name: raw_sisbicho_animal_proprietario__id_animal_proprietario__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_raw_sisbicho_animal_proprietario__id_animal_proprietario__not_null
+              severity: error
+
+        name: num_inscricao_municipal
         description: "Número da Inscrição Municipal (e da Autorização ) do Titular da Autorização que o Auxiliar está vinculado" 
         datatype: string
       - name: cpf_auxiliar
@@ -29,10 +35,4 @@ models:
 
 
 
-sources:
-  - name: brutos_cadastro_comercio_ambulantes_staging
-    database: rj-iplanrio-dev   # optional if same as target
-    schema: brutos_cadastro_comercio_ambulantes_staging
-    tables:
-      - name: vw_autorizacao_auxiliares_datalake
-        description: "Tabela de autorizações de auxiliar do sistema de cadastro de comércio de ambulantes"                 
+            

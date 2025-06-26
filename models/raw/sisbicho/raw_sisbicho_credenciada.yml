@@ -156,10 +156,4 @@ models:
         datatype: string
 
 
-sources:
-  - name: brutos_sisbicho_staging
-    database: rj-iplanrio-dev   # optional if same as target
-    schema: brutos_sisbicho_staging
-    tables:
-      - name: Credenciada
-        description: "Tabela de credenciada do sistema Sisbicho"         
+   

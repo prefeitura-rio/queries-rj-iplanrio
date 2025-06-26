@@ -31,11 +31,3 @@ models:
               severity: warn 
 
 
-
-sources:
-  - name: brutos_sisbicho_staging
-    database: rj-iplanrio-dev   # optional if same as target
-    schema: brutos_sisbicho_staging
-    tables:
-      - name: Porte
-        description: "Tabela de porte do sistema Sisbicho" 

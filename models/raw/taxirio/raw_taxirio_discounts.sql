@@ -4,7 +4,7 @@
       alias="descontos",
       materialized="table",
       partition_by={
-        "field": "data_criacao",
+        "field": "data_criacao_particao",
         "data_type": "date",
         "granularity": "day"
       },
@@ -13,9 +13,10 @@
     )
 }}
 SELECT
-  SAFE_CAST (id as STRING) as id_desconto_associado,
-  SAFE_CAST (description as STRING) as descricao,
-  SAFE_CAST (value as FLOAT64) as desconto,
-  SAFE_CAST (createdAt as DATE) as data_criacao
+  safe_cast(id as string) as id_desconto_associado,
+  safe_cast(description as string) as descricao,
+  safe_cast(value as float64) as desconto,
+  safe_cast(createdAt as date) as data_criacao,
+  safe_cast(createdAt as date) as data_criacao_particao
 
 FROM {{ source('brutos_taxirio_staging', 'discounts') }}

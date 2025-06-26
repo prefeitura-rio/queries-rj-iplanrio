@@ -47,11 +47,3 @@ models:
             - tipo_especie_nome
             - id_especie
           severity: error 
-
-sources:
-  - name: brutos_sisbicho_staging
-    database: rj-iplanrio-dev   # optional if same as target
-    schema: brutos_sisbicho_staging
-    tables:
-      - name: TipoEspecie
-        description: "Tabela do Tipo de Espécies do sistema Sisbicho"      

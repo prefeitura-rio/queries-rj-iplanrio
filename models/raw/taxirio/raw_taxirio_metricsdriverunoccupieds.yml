@@ -7,10 +7,10 @@ models:
         data_type: string
         data_tests:
         - not_null:
-            name: raw_taxirio_id_metricas_motoriasta_desocupado_not_null
+            name: raw_taxirio__id_metricas_motoriasta_desocupado__not_null
             severity: error
         - unique:
-            name: raw_taxirio_id_metricas_motoriasta_desocupado_unique
+            name: raw_taxirio__id_metricas_motoriasta_desocupado__unique
             severity: error
       - name: id_motorista
         description: Identificador do motorista
@@ -32,10 +32,3 @@ models:
         data_type: int64
 
     
-sources:
-  - name: brutos_taxirio_staging
-    database: rj-iplanrio   # optional if same as target
-    schema: brutos_taxirio_staging
-    tables:
-      - name: metricsdriverunoccupieds
-        description: "Source table for metricsdriverunoccupieds information"  

@@ -7,10 +7,10 @@ models:
       data_type: string
       data_tests:
         - not_null:
-            name: raw_taxirio_id_desconto_associado_not_null
+            name: raw_taxirio__id_desconto_associado__not_null
             severity: error
         - unique:
-            name: raw_taxirio_id_desconto_associado_unique
+            name: raw_taxirio__id_desconto_associad__unique
             severity: error
     - name: descricao
       description: Descrição do Desconto
@@ -21,13 +21,3 @@ models:
     - name: data_criacao
       description: Data de criação do Desconto
       data_type: datetime
-   
-    
-
-sources:
-  - name: brutos_taxirio_staging
-    database: rj-iplanrio   # optional if same as target
-    schema: brutos_taxirio_staging
-    tables:
-      - name: discounts
-        description: "Source table for discount information"

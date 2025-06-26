@@ -7,10 +7,10 @@ models:
         data_type: string
         data_tests:
           - not_null:
-              name: raw_taxirio_id_municipio_not_null,
+              name: raw_taxirio__id_municipio__not_null,
               severity: error
           - unique:
-              name: raw_taxirio_id_municipio_unique,
+              name: raw_taxirio__id_municipio__unique,
               severity: error
       - name: nome_municipio
         description: "Nome do Municipio"
@@ -30,11 +30,3 @@ models:
       - name: estacoes_de_servico
         description: "Estacoes de servico"
         data_type: json
-      
-sources:
-  - name: brutos_taxirio_staging
-    database: rj-iplanrio   # optional if same as target
-    schema: brutos_taxirio_staging
-    tables:
-      - name: cities
-        description: "Source table for city information"

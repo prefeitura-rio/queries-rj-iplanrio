@@ -9,10 +9,10 @@ models:
         data_type: string
         data_tests:
           - not_null: 
-              name: raw_taxirio_id_passageiro_not_null
+              name: raw_taxirio__id_passageiro__not_null
               severity: error
           - unique:
-              name: raw_taxirio_id_passageiro_unique
+              name: raw_taxirio__id_passageiro__unique
               severity: error
       - name: id_usuario
         description: "Identificador do usuário"
@@ -70,12 +70,4 @@ models:
         data_type: int64
       - name: dia_particao
         description: "Parte da data de criação do passageiro (Dia)"
-        data_type: int64
-
-sources:
-  - name: brutos_taxirio_staging
-    database: rj-iplanrio   # optional if same as target
-    schema: brutos_taxirio_staging
-    tables:
-      - name: passengers
-        description: "Source table for passenger information"   
+        data_type: int64 

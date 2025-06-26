@@ -7,12 +7,12 @@
       description="Tabela de usuários das credenciadas"
     )
 }}
-SELECT 
-    SAFE_cast(IDCredenciadaUsuario as integer) as id_credenciada_usuario,
-    SAFE_cast(IDCredenciada as integer) as id_credenciada,
-    SAFE_cast(USR_CODIGO as integer) as usuario_codigo,
-    SAFE_cast(LOGIN_REGISTRO as string) as usuario_login,
-    SAFE_cast(DATA_REGISTRO as datetime) as registro_datahora,
-    SAFE_cast(ASSOCIADO as string) as associado_indicador,
-    SAFE_cast(Gestor as string) as gestor_indicador
+select
+    safe_cast(IDCredenciadaUsuario as integer) as id_credenciada_usuario,
+    safe_cast(IDCredenciada as integer) as id_credenciada,
+    safe_cast(USR_CODIGO as integer) as usuario_codigo,
+    safe_cast(LOGIN_REGISTRO as string) as usuario_login,
+    safe_cast(DATA_REGISTRO as datetime) as registro_datahora,
+    safe_cast(ASSOCIADO as string) as associado_indicador,
+    safe_cast(Gestor as string) as gestor_indicador
 FROM {{ source('brutos_sisbicho_staging', 'CredenciadaUsuario') }} 

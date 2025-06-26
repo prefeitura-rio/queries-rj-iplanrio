@@ -7,10 +7,10 @@ models:
         data_type: string
         data_tests:
           - not_null:
-              name: raw_taxirio_id_corrida_not_null
+              name: raw_taxirio__id_corrida__not_null
               severity: error
           - unique:
-              name: raw_taxirio_id_corrida_unique
+              name: raw_taxirio__id_corrida__unique
               severity: error
         quote: true
       - name: data_criacao
@@ -149,12 +149,3 @@ models:
         data_type: int64  
         description:  "Dia da partição."
         quote: true
-      
-      
-sources:
-  - name: brutos_taxirio_staging
-    database: rj-iplanrio   # optional if same as target
-    schema: brutos_taxirio_staging
-    tables:
-      - name: races
-        description: "Source table for races information"

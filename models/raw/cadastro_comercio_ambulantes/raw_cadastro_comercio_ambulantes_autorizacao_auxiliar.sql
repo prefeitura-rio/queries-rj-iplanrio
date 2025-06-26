@@ -8,11 +8,11 @@
     )
 }}
 
-SELECT 
-    SAFE_CAST(idAutorizacao as integer) as id_autoriz_titular,
-    SAFE_CAST(inscricaoMunicipal as String) as num_inscricao_municipal,
-    SAFE_CAST(nome as String) as nome_titular_autoriz,
-    SAFE_CAST(cpf as String) as cpf_auxiliar,
-    SAFE_CAST(tipo_pessoa as String) as tipo_pessoa,
-    SAFE_CAST(inicioVigenciaAuxiliar as datetime) as data_inicio_vigencia_auxiliar
-FROM {{ source('brutos_cadastro_comercio_ambulantes_staging', 'vw_autorizacao_auxiliares_datalake') }}  
+select 
+    safe_cast(idAutorizacao as integer) as id_autoriz_titular,
+    safe_cast(inscricaoMunicipal as string) as num_inscricao_municipal,
+    safe_cast(nome as string) as nome_titular_autoriz,
+    safe_cast(cpf as string) as cpf_auxiliar,
+    safe_cast(tipo_pessoa as string) as tipo_pessoa,
+    safe_cast(inicioVigenciaAuxiliar as datetime) as data_inicio_vigencia_auxiliar
+from {{ source('brutos_cadastro_comercio_ambulantes_staging', 'vw_autorizacao_auxiliares_datalake') }}  

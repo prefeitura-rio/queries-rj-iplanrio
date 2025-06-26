@@ -8,21 +8,12 @@ models:
       schema: raw
       materialized: view
     columns:
-      - name: usr_codigo
+      - name: codigo_usuario
         description: "Código único de identificação do usuário no sistema, composto por números e/ou letras. Utilizado para acesso e controle interno. Código de usuário na tabela FR_USUARIO, representando o responsável técnico ou usuário cadastrado no sistema, utilizado como chave estrangeira em diversas tabelas."
         datatype: integer
         tests:
           - not_null
-      - name: crmv
+      - name: crm
         description: "Conselho Regional de Medicina Veterinária. Código de inscrição do profissional veterinário no conselho de sua região. Número do Conselho Regional de Medicina Veterinária do responsável técnico, identificando-o de forma única e validando sua credencial profissional." 
         datatype: string
 
-
-
-sources:
-  - name: brutos_sisbicho_staging
-    database: rj-iplanrio-dev   # optional if same as target
-    schema: brutos_sisbicho_staging
-    tables:
-      - name: ResponsavelTecnico
-        description: "Tabela de responsáveis técnicos do sistema Sisbicho" 

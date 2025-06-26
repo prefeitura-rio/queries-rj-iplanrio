@@ -8,9 +8,9 @@
     )
 }}
 
-SELECT 
-    SAFE_cast(IDEMail as integer) as id_email,
-    SAFE_cast(Identificacao as string) as identificacao_codigo,
-    SAFE_cast(Texto as string) as texto_conteudo,
-    SAFE_cast(Assunto as string) as assunto_nome
+select
+    safe_cast(IDEMail as integer) as id_email,
+    safe_cast(Identificacao as string) as identificacao_codigo,
+    safe_cast(Texto as string) as texto_conteudo,
+    safe_cast(Assunto as string) as assunto_nome
 FROM {{ source('brutos_sisbicho_staging', 'EMail') }} 

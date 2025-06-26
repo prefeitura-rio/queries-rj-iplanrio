@@ -7,10 +7,10 @@ models:
         data_type: string
         data_tests:   
           - not_null:
-              name: raw_taxirio_id_pagamento_associado_not_null
+              name: raw_taxirio__id_pagamento_associado__not_null
               severity: error
           - unique:
-              name: raw_taxirio_id_pagamento_associado_unique
+              name: raw_taxirio__id_pagamento_associado__unique
               severity: error
       - name: pindex  
         description: "Identificador do pagamento"
@@ -22,12 +22,3 @@ models:
         description: "Tipo de pagamento"
         data_type: string
      
-
-
-sources:
-  - name: brutos_taxirio_staging
-    database: rj-iplanrio   # optional if same as target
-    schema: brutos_taxirio_staging
-    tables:
-      - name: paymentmethods
-        description: "Source table for paymentmethods information"  

@@ -8,9 +8,9 @@
     )
 }}
 SELECT
-  SAFE_CAST (id as STRING) as id_pagamento_associado,
-  SAFE_CAST (pindex as INT64) as pindex,
-  SAFE_CAST (name as STRING) as nome,
-  SAFE_CAST (type as STRING) as tipo
+  safe_cast(id as string) as id_pagamento_associado,
+  safe_cast(pindex as int64) as pindex,
+  safe_cast(name as string) as nome,
+  safe_cast(type as string) as tipo
 FROM
   {{ source('brutos_taxirio_staging','paymentmethods') }}

@@ -8,7 +8,7 @@
     )
 }}
 
-SELECT 
-    SAFE_cast(IDPorte as integer) as id_porte,
-    SAFE_cast(Porte.Porte as string) as porte_nome
+select
+    safe_cast(idporte as integer) as id_porte,
+    safe_cast(porte.porte as string) as porte_nome
 FROM {{ source('brutos_sisbicho_staging', 'Porte') }} 

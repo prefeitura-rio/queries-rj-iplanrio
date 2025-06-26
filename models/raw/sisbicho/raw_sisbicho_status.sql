@@ -8,7 +8,7 @@
     )
 }}
 
-SELECT 
-    SAFE_CAST(IDStatus AS INT64) AS id_status,
-    SAFE_CAST(Status.Status AS STRING) AS status_nome
+select
+    safe_cast(IDStatus AS int64) AS id_status,
+    safe_cast(Status.Status AS string) AS status_nome
 FROM {{ source('brutos_sisbicho_staging', 'Status') }}
