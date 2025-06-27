@@ -156,7 +156,7 @@ final as (
         projeto_id,
         id_job,
         horario_criacao as datahora_criacao,
-        email_usuario,
+        email_usuario,l
         tipo_job,
         consulta_sql,
         estado_job,
