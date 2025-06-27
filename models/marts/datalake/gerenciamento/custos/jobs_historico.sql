@@ -16,7 +16,7 @@
 -- Definição do período incremental
 {% if is_incremental() and execute %}
   {% set start_date_query %}
-    SELECT COALESCE(MAX(data_faturamento), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
+    SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
     FROM {{ this }}
   {% endset %}
   {% if execute %}

@@ -21,17 +21,26 @@
 
 -- JOBS_BY_PROJECT SÓ ARMAZENA DADOS DE 180 DIAS
 {% set start_date_query %}
-  SELECT COALESCE(MAX(data_faturamento), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
-  FROM {{ ref('jobs_historico') }}
+  SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
+  FROM FROM {{ this }}
 {% endset %}
 
-{% if execute %}
-  {% set results = run_query(start_date_query) %}
-  {% set start_date = results.columns[0].values()[0] %}
-  {% set end_date = modules.datetime.datetime.utcnow().strftime('%Y-%m-%d') %}
+{% if is_incremental() %}
+  {% set start_date_query %}
+    SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
+    FROM {{ this }}
+  {% endset %}
+  {% if execute %}
+    {% set results = run_query(start_date_query) %}
+    {% set start_date = results.columns[0].values()[0] %}
+    {% set end_date = modules.datetime.datetime.utcnow().strftime('%Y-%m-%d') %}
+  {% else %}
+    {% set start_date = '2023-01-01' %}  -- valor default para compilação
+    {% set end_date = '2099-12-31' %}  -- valor default para compilação
+  {% endif %}
 {% else %}
-  {% set start_date = '2023-01-01' %}  -- valor default para compilação
-  {% set end_date = '2099-12-31' %}  -- valor default para compilação
+  {% set start_date = '2023-01-01' %}
+  {% set end_date = '2099-12-31' %}
 {% endif %}
 
 
@@ -123,10 +132,10 @@
             end_time,
             statement_type,
             total_bytes_processed,
-            total_bytes_billed
+            total_bytes_billed,
+            extract(date from end_time at time zone 'PST8PDT') as data_faturamento
         from `{{ projeto }}`.`region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
         where DATE(creation_time) >= DATE('{{ start_date }}')
-          and DATE(creation_time) <= DATE('{{ end_date }}')
     {% endset %}
     {% do all_queries.append(q) %}
 {% endfor %}
@@ -158,11 +167,7 @@ all_usage_with_multiplier as (
         destination_table_id as tabela_destino_id,
         error_result as resultado_erro,
         creation_time as horario_criacao,
-        CASE
-            WHEN end_time IS NOT NULL AND SAFE_CAST(end_time AS STRING) != '' THEN
-                extract(date from end_time at time zone 'PST8PDT')
-            ELSE NULL
-        END as data_faturamento,
+        data_faturamento,
         total_bytes_processed / 1024 / 1024 / 1024 / 1024 as tib_processado,
         total_bytes_billed / 1024 / 1024 / 1024 / 1024 as tib_faturado,
         case
