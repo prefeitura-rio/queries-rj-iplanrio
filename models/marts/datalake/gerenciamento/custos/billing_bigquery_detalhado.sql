@@ -44,74 +44,32 @@
 {% endif %}
 
 
--- SOURCES
+-- descoberta de projetos
+{% set discover_projects_query %}
+  SELECT DISTINCT project_id
+  FROM `region-us`.INFORMATION_SCHEMA.JOBS_BY_ORGANIZATION
+  WHERE project_id LIKE 'rj-%'
+  ORDER BY project_id
+{% endset %}
 
-{% set projetos = [
-    'rj-cetrio',
-    'rj-cetrio-dev',
-    'rj-chatbot',
-    'rj-chatbot-dev',
-    'rj-civitas',
-    'rj-civitas-dev',
-    'rj-cmp',
-    'rj-comunicacao',
-    'rj-comunicacao-dev',
-    'rj-cor',
-    'rj-cor-dev',
-    'rj-crm-registry',
-    'rj-crm-registry-dev',
-    'rj-cvl',
-    'rj-cvl-dev',
-    'rj-datalab-sandbox',
-    'rj-escritorio',
-    'rj-escritorio-dev',
-    'rj-iplanrio',
-    'rj-iplanrio-dev',
-    'rj-iplanrio-ia-dev',
-    'rj-ipp',
-    'rj-ipp-dev',
-    'rj-mapa-realizacoes',
-    'rj-mapa-realizacoes-dev',
-    'rj-multirio',
-    'rj-multirio-dev',
-    'rj-pgm',
-    'rj-precipitacao',
-    'rj-rec-rio',
-    'rj-rec-rio-dev',
-    'rj-rioaguas',
-    'rj-rioaguas-dev',
-    'rj-riosaude',
-    'rj-seconserva',
-    'rj-seconserva-dev',
-    'rj-segovi',
-    'rj-segovi-dev',
-    'rj-seop',
-    'rj-seop-dev',
-    'rj-setur',
-    'rj-setur-dev',
-    'rj-siurb',
-    'rj-smac',
-    'rj-smac-dev',
-    'rj-smas',
-    'rj-smas-dev',
-    'rj-smas-dev-432320',
-    'rj-smdue',
-    'rj-sme',
-    'rj-sme-dev',
-    'rj-smfp',
-    'rj-smfp-dev',
-    'rj-smfp-egp',
-    'rj-smi',
-    'rj-smi-dev',
-    'rj-sms',
-    'rj-sms-dev',
-    'rj-sms-sandbox',
-    'rj-smtr',
-    'rj-smtr-dev',
-    'rj-smtr-staging',
-    'rj-vision-ai',
-    'rj-vision-ai-dev'
-] %}
+{% if execute %}
+  {% set results = run_query(discover_projects_query) %}
+  {% set projetos = results.columns[0].values() %}
+
+  {% if projetos | length == 0 %}
+    {{ log("ERRO: Nenhum projeto foi descoberto! Verifique as permissões.", info=true) }}
+    {{ return("") }}  -- Para a execução se não encontrar projetos
+  {% else %}
+    {{ log("Descobertos " ~ projetos | length ~ " projetos:", info=true) }}
+    {% for projeto in projetos %}
+      {{ log("  - " ~ projeto, info=true) }}
+    {% endfor %}
+  {% endif %}
+{% else %}
+
+  {% set projetos = [] %}
+{% endif %}
+
 
 {% set all_queries = [] %}
 {% for projeto in projetos %}
