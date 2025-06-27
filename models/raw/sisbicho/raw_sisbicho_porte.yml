@@ -5,28 +5,24 @@ models:
     description: "Tabela contendo os portes de animais cadastrados no sistema SisBicho"
     columns:
       - name: id_porte
-        description: "Identificador único numérico para cada porte de animal"
+        description: "Identificador único do porte"
         datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_raw_sisbicho_porte__id_porte__unique
-              severity: error
+              name: raw_sisbicho_porte__id_porte__unique
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_porte__id_porte__not_null
-              severity: error
+              name: raw_sisbicho_porte__id_porte__not_null
 
       - name: porte_nome
-        description: "Classificação do tamanho do animal (Pequeno, Médio, Grande)"
+        description: "Nome do porte"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_porte__porte_nome__not_null
-              severity: error
+              name: raw_sisbicho_porte__porte_nome__not_null
           - unique:
-              name: raw_sisbicho_raw_sisbicho_porte__porte_nome__unique
-              severity: error
+              name: raw_sisbicho_porte__porte_nome__unique
           - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_raw_sisbicho_porte__porte_nome__valid_values
+              name: raw_sisbicho_porte__porte_nome__valid_values
               value_set: ['Pequeno', 'Médio', 'Grande']
               severity: warn 
 

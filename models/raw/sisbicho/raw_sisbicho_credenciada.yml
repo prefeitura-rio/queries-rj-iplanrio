@@ -5,32 +5,27 @@ models:
     description: "Tabela contendo os registros de credenciadas no sistema SisBicho"
     columns:
       - name: id_credenciada
-        description: "Identificador único numérico para cada credenciada"
+        description: "Identificador único da credenciada"
         datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_raw_sisbicho_credenciada__id_credenciada__unique
-              severity: error
+              name: raw_sisbicho_credenciada__id_credenciada__unique
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_credenciada__id_credenciada__not_null
-              severity: error
+              name: raw_sisbicho_credenciada__id_credenciada__not_null
 
       - name: razao_social_nome
-        description: "Nome completo da empresa ou instituição credenciada"
+        description: "Razão social da credenciada"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_credenciada__razao_social_nome__not_null
-              severity: error
+              name: raw_sisbicho_credenciada__razao_social_nome__not_null
 
       - name: cnpj_numero
-        description: "Número de Cadastro Nacional da Pessoa Jurídica" 
+        description: "CNPJ da credenciada"
         datatype: string
         data_tests:
-          - dbt_expectations.expect_column_values_to_match_regex:
-              name: raw_sisbicho_raw_sisbicho_credenciada__cnpj_numero__valid_format
-              regex: '^\\d{14}$'
-              severity: warn
+          - valid_format:
+              name: raw_sisbicho_credenciada__cnpj_numero__valid_format
 
       - name: inscricao_municipal_numero
         description: "Número de inscrição municipal da credenciada"
@@ -61,26 +56,22 @@ models:
         datatype: integer
 
       - name: cep_numero
-        description: "Código de Endereçamento Postal"
+        description: "CEP da credenciada"
         datatype: string
         data_tests:
-          - dbt_expectations.expect_column_values_to_match_regex:
-              name: raw_sisbicho_raw_sisbicho_credenciada__cep_numero__valid_format
-              regex: '^\\d{8}$'
-              severity: warn
+          - valid_format:
+              name: raw_sisbicho_credenciada__cep_numero__valid_format
 
       - name: cidade_nome
         description: "Nome da cidade onde a credenciada está localizada"
         datatype: string
 
       - name: uf_sigla
-        description: "Sigla da Unidade Federativa (estado)"
+        description: "Sigla da UF da credenciada"
         datatype: string
         data_tests:
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_raw_sisbicho_credenciada__uf_sigla__valid_values
-              value_set: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
-              severity: warn
+          - valid_values:
+              name: raw_sisbicho_credenciada__uf_sigla__valid_values
 
       - name: telefone_numero
         description: "Número de telefone fixo da credenciada"
@@ -94,18 +85,15 @@ models:
         description: "Endereço de e-mail da credenciada"
         datatype: string
         data_tests:
-          - dbt_expectations.expect_column_values_to_match_regex:
-              name: raw_sisbicho_raw_sisbicho_credenciada__email_endereco__valid_format
-              regex: '^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$'
-              severity: warn
+          - valid_format:
+              name: raw_sisbicho_credenciada__email_endereco__valid_format
 
       - name: registro_data
-        description: "Data de registro da credenciada no sistema"
+        description: "Data de registro da credenciada"
         datatype: datetime
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_credenciada__registro_data__not_null
-              severity: error
+              name: raw_sisbicho_credenciada__registro_data__not_null
 
       - name: usuario_login
         description: "Nome de usuário para acesso ao sistema"
@@ -119,33 +107,29 @@ models:
         datatype: datetime
 
       - name: cpf_numero
-        description: "Número de Cadastro de Pessoa Física (para pessoas físicas)"
+        description: "CPF do responsável pela credenciada"
         datatype: string
         data_tests:
-          - dbt_expectations.expect_column_values_to_match_regex:
-              name: raw_sisbicho_raw_sisbicho_credenciada__cpf_numero__valid_format
-              regex: '^\\d{11}$'
-              severity: warn
+          - valid_format:
+              name: raw_sisbicho_credenciada__cpf_numero__valid_format
 
       - name: id_tipo_pessoa
-        description: "Identificador do tipo de pessoa (física ou jurídica)"
-        datatype: string
-        #data_tests:
-         # - relationships:
-          #    name: raw_sisbicho_raw_sisbicho_credenciada__id_tipo_pessoa__relationships
-          #    to: ref('raw_sisbicho_tipo_pessoa')
-          #    field: id_tipo_pessoa
-          #    severity: error
-
-      - name: id_responsavel_tecnico
-        description: "Identificador do responsável técnico" 
+        description: "Identificador do tipo de pessoa da credenciada"
         datatype: integer
         data_tests:
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
+              name: raw_sisbicho_credenciada__id_tipo_pessoa__relationships
+              to: ref('raw_sisbicho_tipo_pessoa')
+              field: id_tipo_pessoa
+
+      - name: id_responsavel_tecnico
+        description: "Identificador do responsável técnico"
+        datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
               to: ref('raw_sisbicho_responsavel_tecnico')
-              field: usr_codigo
-              severity: error
+              field: id_responsavel_tecnico
 
       - name: tipo_licenca_sigla
         description: "Tipo de licença sanitária"

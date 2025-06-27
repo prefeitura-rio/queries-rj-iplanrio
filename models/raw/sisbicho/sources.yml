@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: brutos_sisbicho_staging
-    database: rj-iplanrio-dev   # opcional se igual ao target
+    #database: rj-iplanrio   # opcional se igual ao target
     schema: brutos_sisbicho_staging
     tables:
       - name: Animal

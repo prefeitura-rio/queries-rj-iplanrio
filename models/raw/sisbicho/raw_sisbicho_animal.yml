@@ -9,10 +9,10 @@ models:
         datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_raw_sisbicho_animal__id_animal__unique
+              name:   - name: raw_sisbicho_animal__id_animal__unique
               severity: error
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal__id_animal__not_null
+              name:   - name: raw_sisbicho_animal__id_animal__not_null
               severity: error
 
       - name: animal_nome
@@ -24,10 +24,10 @@ models:
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal__microchip_numero__not_null
+              name: raw_sisbicho_animal__microchip_numero__not_null
               severity: error
           - dbt_expectations.expect_column_value_lengths_to_be_between:
-              name: raw_sisbicho_raw_sisbicho_animal__microchip_numero__length_15
+              name: raw_sisbicho_animal__microchip_numero__length_15
               min_value: 15
               max_value: 15
               severity: error
@@ -37,10 +37,10 @@ models:
         datatype: smallint
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal__id_especie__not_null
+              name: raw_sisbicho_animal__id_especie__not_null
               severity: warn
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal__id_especie__relationships
+              name: raw_sisbicho_animal__id_especie__relationships
               to: ref('raw_sisbicho_especie')
               field: id_especie
               severity: error
@@ -54,7 +54,7 @@ models:
         datatype: integer
         data_tests:
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal__id_raca__relationships
+              name: raw_sisbicho_animal__id_raca__relationships
               to: ref('raw_sisbicho_raca')
               field: id_raca
               severity: error
@@ -68,7 +68,7 @@ models:
         datatype: string
         data_tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_raw_sisbicho_animal__pedigree_indicador__valid_values
+              name: raw_sisbicho_pedigree_indicador__valid_values
               value_set: ['S', 'N']
               severity: warn
 
@@ -85,7 +85,7 @@ models:
         datatype: integer
         data_tests:
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal__id_porte__relationships
+              name: raw_sisbicho_animal__id_porte__relationships
               to: ref('raw_sisbicho_porte')
               field: id_porte
               severity: error
@@ -107,7 +107,7 @@ models:
         datatype: integer
         data_tests:
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal__id_credenciada__relationships
+              name: raw_sisbicho_animal__id_credenciada__relationships
               to: ref('raw_sisbicho_credenciada')
               field: id_credenciada
               severity: error
@@ -119,10 +119,9 @@ models:
       - name: inativo_indicador
         description: "Indica se o registro do animal está inativo (S/N)"
         datatype: string
-
         data_tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_raw_sisbicho_animal__inativo_indicador__valid_values
+              name: raw_sisbicho_animal__inativo_indicador__valid_values
               value_set: ['S', 'N']
               severity: warn
 
@@ -131,7 +130,7 @@ models:
         datatype: smallint
         data_tests:
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal__id_tipo_especie__relationships
+              name: raw_sisbicho_animal__id_tipo_especie__relationships
               to: ref('raw_sisbicho_tipo_especie')
               field: id_tipo_especie
               severity: error
@@ -161,7 +160,7 @@ models:
         datatype: string
         data_tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_raw_sisbicho_animal__castrado_indicador__valid_values
+              name: raw_sisbicho_animal__castrado_indicador__valid_values
               value_set: ['S', 'N']
               severity: warn
 

@@ -9,10 +9,10 @@ models:
         datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_raw_sisbicho_animal_status__id_animal_status__unique
+              name: raw_sisbicho_animal_status__id_animal_status__unique
               severity: error
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal_status__id_animal_status__not_null
+              name: raw_sisbicho_animal_status__id_animal_status__not_null
               severity: error
 
       - name: id_status
@@ -20,10 +20,10 @@ models:
         datatype: integer
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal_status__id_status__not_null
+              name: raw_sisbicho_animal_status__id_status__not_null
               severity: error
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal_status__id_status__relationships
+              name: raw_sisbicho_animal_status__id_status__relationships
               to: ref('raw_sisbicho_status')
               field: id_status
               severity: error
@@ -33,10 +33,10 @@ models:
         datatype: integer
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal_status__id_animal__not_null
+              name: raw_sisbicho_animal_status__id_animal__not_null
               severity: error
           - relationships:
-              name: raw_sisbicho_raw_sisbicho_animal_status__id_animal__relationships
+              name: raw_sisbicho_animal_status__id_animal__relationships
               to: ref('raw_sisbicho_animal')
               field: id_animal
               severity: error
@@ -46,7 +46,7 @@ models:
         datatype: datetime
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal_status__registro_datahora__not_null
+              name: raw_sisbicho_animal_status__registro_datahora__not_null
               severity: error
 
       - name: usuario_codigo
@@ -54,5 +54,5 @@ models:
         datatype: integer
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_animal_status__usuario_codigo__not_null
+              name: raw_sisbicho_animal_status__usuario_codigo__not_null
               severity: error 

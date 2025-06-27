@@ -5,33 +5,31 @@ models:
     description: "Tabela contendo os emails cadastrados no sistema SisBicho"
     columns:
       - name: id_email
-        description: "Identificador único para cada email"
+        description: "Identificador único do e-mail"
         datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_raw_sisbicho_email__id_email__unique
-              severity: error
+              name: raw_sisbicho_email__id_email__unique
+          - not_null:
+              name: raw_sisbicho_email__id_email__not_null
       - name: identificacao_codigo
-        description: "Identificação do email"
+        description: "Código de identificação do e-mail"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_email__identificacao_codigo__not_null
-              severity: error
+              name: raw_sisbicho_email__identificacao_codigo__not_null
       - name: texto_conteudo
-        description: "Conteúdo do email"
+        description: "Conteúdo do e-mail"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_email__texto_conteudo__not_null
-              severity: error
+              name: raw_sisbicho_email__texto_conteudo__not_null
       - name: assunto_nome
-        description: "Assunto do email"
+        description: "Assunto do e-mail"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_email__assunto_nome__not_null
-              severity: error
+              name: raw_sisbicho_email__assunto_nome__not_null
 
 
          

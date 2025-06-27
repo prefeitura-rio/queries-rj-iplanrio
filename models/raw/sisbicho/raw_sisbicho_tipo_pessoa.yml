@@ -5,31 +5,27 @@ models:
     description: "Tabela contendo os registros de tipos de pessoa (física ou jurídica) no sistema SisBicho"
     columns:
       - name: id_tipo_pessoa
-        description: "Identificador único numérico que categoriza o tipo de pessoa (física ou jurídica). Serve como chave primária para a tabela de tipos de pessoas"
-        datatype: string
+        description: "Identificador único do tipo de pessoa"
+        datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__id_tipo_pessoa__unique
-              severity: error
+              name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__unique
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__id_tipo_pessoa__not_null
-              severity: error
-          - dbt_expectations.expect_column_values_to_match_regex:
-              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__id_tipo_pessoa__valid_format
-              regex: '^[A-Z]{2}$'
-              severity: warn
+              name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__not_null
+          - valid_format:
+              name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__valid_format
 
       - name: tipo_pessoa_nome
-        description: "Descrição textual detalhada do tipo de pessoa, fornecendo contexto e informações relevantes para a sua compreensão"
+        description: "Nome do tipo de pessoa"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__not_null
-              severity: error
+              name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__not_null
           - unique:
-              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__unique
-              severity: error
+              name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__unique
+          - valid_values:
+              name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
           - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
+              name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
               value_set: ['Pessoa Física', 'Pessoa Jurídica','Preifeitura']
               severity: warn 
