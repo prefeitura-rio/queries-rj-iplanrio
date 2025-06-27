@@ -6,7 +6,7 @@
         schema="gerenciamento_custos",
         alias="gcp_billing_bigquery_detalhado",
         materialized="incremental",
-         unique_key="id_job",
+        unique_key="id_job",
         incremental_strategy="merge",
         partition_by={
             "field": "data_faturamento",
@@ -22,7 +22,7 @@
 -- JOBS_BY_PROJECT SÓ ARMAZENA DADOS DE 180 DIAS
 {% set start_date_query %}
   SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
-  FROM FROM {{ this }}
+  FROM {{ ref('raw_gcp_bigquery_jobs') }}
 {% endset %}
 
 {% if is_incremental() %}
@@ -156,7 +156,7 @@ final as (
         projeto_id,
         id_job,
         horario_criacao as datahora_criacao,
-        email_usuario,l
+        email_usuario,
         tipo_job,
         consulta_sql,
         estado_job,
