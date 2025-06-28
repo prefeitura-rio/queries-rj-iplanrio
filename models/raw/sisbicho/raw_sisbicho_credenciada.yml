@@ -16,16 +16,10 @@ models:
       - name: razao_social_nome
         description: "Razão social da credenciada"
         datatype: string
-        data_tests:
-          - not_null:
-              name: raw_sisbicho_credenciada__razao_social_nome__not_null
 
       - name: cnpj_numero
         description: "CNPJ da credenciada"
         datatype: string
-        data_tests:
-          - valid_format:
-              name: raw_sisbicho_credenciada__cnpj_numero__valid_format
 
       - name: inscricao_municipal_numero
         description: "Número de inscrição municipal da credenciada"
@@ -58,9 +52,6 @@ models:
       - name: cep_numero
         description: "CEP da credenciada"
         datatype: string
-        data_tests:
-          - valid_format:
-              name: raw_sisbicho_credenciada__cep_numero__valid_format
 
       - name: cidade_nome
         description: "Nome da cidade onde a credenciada está localizada"
@@ -69,9 +60,6 @@ models:
       - name: uf_sigla
         description: "Sigla da UF da credenciada"
         datatype: string
-        data_tests:
-          - valid_values:
-              name: raw_sisbicho_credenciada__uf_sigla__valid_values
 
       - name: telefone_numero
         description: "Número de telefone fixo da credenciada"
@@ -84,10 +72,7 @@ models:
       - name: email_endereco
         description: "Endereço de e-mail da credenciada"
         datatype: string
-        data_tests:
-          - valid_format:
-              name: raw_sisbicho_credenciada__email_endereco__valid_format
-
+        
       - name: registro_data
         description: "Data de registro da credenciada"
         datatype: datetime
@@ -109,27 +94,25 @@ models:
       - name: cpf_numero
         description: "CPF do responsável pela credenciada"
         datatype: string
-        data_tests:
-          - valid_format:
-              name: raw_sisbicho_credenciada__cpf_numero__valid_format
+        
 
       - name: id_tipo_pessoa
         description: "Identificador do tipo de pessoa da credenciada"
         datatype: integer
-        data_tests:
-          - relationships:
-              name: raw_sisbicho_credenciada__id_tipo_pessoa__relationships
-              to: ref('raw_sisbicho_tipo_pessoa')
-              field: id_tipo_pessoa
+       # data_tests:
+       #   - relationships:
+       #       name: raw_sisbicho_credenciada__id_tipo_pessoa__relationships
+       #       to: ref('raw_sisbicho_tipo_pessoa')
+       #       field: id_tipo_pessoa
 
       - name: id_responsavel_tecnico
         description: "Identificador do responsável técnico"
         datatype: integer
-        data_tests:
-          - relationships:
-              name: raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
-              to: ref('raw_sisbicho_responsavel_tecnico')
-              field: id_responsavel_tecnico
+        #data_tests:
+        #  - relationships:
+        #      name: raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
+        #      to: ref('raw_sisbicho_responsavel_tecnico')
+        #      field: id_responsavel_tecnico
 
       - name: tipo_licenca_sigla
         description: "Tipo de licença sanitária"

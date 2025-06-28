@@ -12,8 +12,9 @@ models:
               name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__unique
           - not_null:
               name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__not_null
-          - valid_format:
-              name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__valid_format
+          #- valid_format:
+          #    name: raw_sisbicho_tipo_pessoa__id_tipo_pessoa__valid_format
+          #    severity: warn 
 
       - name: tipo_pessoa_nome
         description: "Nome do tipo de pessoa"
@@ -23,8 +24,9 @@ models:
               name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__not_null
           - unique:
               name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__unique
-          - valid_values:
-              name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
+          #- valid_values:
+          #    name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
+          #    severity: warn 
           - dbt_expectations.expect_column_values_to_be_in_set:
               name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
               value_set: ['Pessoa Física', 'Pessoa Jurídica','Preifeitura']

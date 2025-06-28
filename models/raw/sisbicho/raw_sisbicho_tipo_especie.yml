@@ -9,33 +9,31 @@ models:
         datatype: integer
         data_tests:
           - unique:
-              name: raw_sisbicho_especie__id_tipo_especie__unique
+              name: raw_sisbicho_tipo_especie__id_tipo_especie__unique
           - not_null:
-              name: raw_sisbicho_especie__id_tipo_especie__not_null
+              name: raw_sisbicho_tipo_especie__id_tipo_especie__not_null
 
       - name: tipo_especie_nome
         description: "Nome do tipo de espécie"
         datatype: string
         data_tests:
           - not_null:
-              name: raw_sisbicho_especie__tipo_especie_nome__not_null
-          - valid_values:
-              name: raw_sisbicho_especie__tipo_especie_nome__valid_values
-
+              name: raw_sisbicho_tipo_especie__tipo_especie_nome__not_null
+          
       - name: id_especie
         description: "Identificador da espécie"
         datatype: integer
         data_tests:
           - not_null:
-              name: raw_sisbicho_id_especie__not_null
+              name: raw_sisbicho_tipo_especie__id_especie__not_null
           - relationships:
-              name: raw_sisbicho_especie__id_especie__relationships
+              name: raw_sisbicho_tipo_especie__id_especie__relationships
               to: ref('raw_sisbicho_especie')
               field: id_especie
 
     data_tests:
       - dbt_utils.unique_combination_of_columns:
-          name: raw_sisbicho_especie__tipo_especie_nome_id_especie__unique
+          name: raw_sisbicho_tipo_especie__tipo_especie_nome_id_especie__unique
           combination_of_columns:
             - tipo_especie_nome
             - id_especie

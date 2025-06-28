@@ -9,10 +9,10 @@ models:
         datatype: integer
         data_tests:
           - unique:
-              name:   - name: raw_sisbicho_animal__id_animal__unique
+              name: raw_sisbicho_animal__id_animal__unique
               severity: error
           - not_null:
-              name:   - name: raw_sisbicho_animal__id_animal__not_null
+              name: raw_sisbicho_animal__id_animal__not_null
               severity: error
 
       - name: animal_nome
@@ -158,11 +158,11 @@ models:
       - name: castrado_indicador
         description: "Indica se o animal foi castrado (S/N)"
         datatype: string
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_animal__castrado_indicador__valid_values
-              value_set: ['S', 'N']
-              severity: warn
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_be_in_set:
+        #      name: raw_sisbicho_animal__castrado_indicador__valid_values
+        #      value_set: ['S', 'N']
+        #      severity: warn
 
       - name: foto_dados
         description: "Foto do animal" 

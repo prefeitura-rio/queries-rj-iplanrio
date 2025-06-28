@@ -35,3 +35,22 @@ sources:
         description: "Tabela do Tipo de Espécies do sistema Sisbicho"
       - name: TipoPessoa
         description: "Tabela do Tipos de Pessoas do sistema Sisbicho" 
+
+
+# Ordem de execução 
+        
+#dbt build --select raw_sisbicho_porte
+#dbt build --select raw_sisbicho_raca
+#dbt build --select raw_sisbicho_especie
+#dbt build --select raw_sisbicho_tipo_especie
+#dbt build --select raw_sisbicho_email
+#dbt build --select raw_sisbicho_status
+#dbt build --select raw_sisbicho_animal_status
+#dbt build --select raw_sisbicho_tipo_pessoa
+#dbt build --select raw_sisbicho_tipo_aquisicao
+#dbt build --select raw_sisbicho_animal_proprietario
+#dbt build --select raw_sisbicho_proprietario
+#dbt build --select raw_sisbicho_animal
+#dbt build --select raw_sisbicho_responsavel_tecnico
+#dbt build --select raw_sisbicho_credenciada
+#dbt build --select raw_sisbicho_credenciada_usuario

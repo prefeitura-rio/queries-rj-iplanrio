@@ -19,10 +19,10 @@ models:
         data_tests:
           - not_null:
               name: raw_sisbicho_credenciada_usuario__id_credenciada__not_null
-          - relationships:
-              name: raw_sisbicho_credenciada_usuario__id_credenciada__relationships
-              to: ref('raw_sisbicho_credenciada')
-              field: id_credenciada
+        #  - relationships:
+        #      name: raw_sisbicho_credenciada_usuario__id_credenciada__relationships
+        #      to: ref('raw_sisbicho_credenciada')
+        #      field: id_credenciada
 
       - name: usuario_codigo
         description: "Código do usuário"

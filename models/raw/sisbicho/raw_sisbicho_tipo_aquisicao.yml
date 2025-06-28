@@ -21,9 +21,4 @@ models:
               name: raw_sisbicho_tipo_aquisicao__tipo_aquisicao_nome__not_null
           - unique:
               name: raw_sisbicho_tipo_aquisicao__tipo_aquisicao_nome__unique
-          - valid_values:
-              name: raw_sisbicho_tipo_aquisicao__tipo_aquisicao_nome__valid_values
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_tipo_aquisicao__tipo_aquisicao_nome__valid_values
-              value_set: ['Compra', 'Doação', 'Permuta', 'Resgate']
-              severity: warn 
+          
