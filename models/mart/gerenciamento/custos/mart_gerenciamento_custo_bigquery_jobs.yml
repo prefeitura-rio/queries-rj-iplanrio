@@ -112,19 +112,20 @@ models:
         data_type: string
         quote: true
 
-      - name: destino
-        description: "Estrutura com informações do destino do job: projeto, dataset e tabela."
-        data_type: struct
-        columns:
-           - name: destino.projeto_id
-             description: "ID do projeto de destino."
-             data_type: string
-           - name: destino.dataset_id
-             description: "ID do dataset de destino."
-             data_type: string
-           - name: destino.tabela_id
-             description: "ID da tabela de destino."
-             data_type: string
+      - name: destino.projeto_id
+        description: "ID do projeto de destino."
+        data_type: string
+        quote: true
+
+      - name: destino.dataset_id
+        description: "ID do dataset de destino."
+        data_type: string
+        quote: true
+
+      - name: destino.tabela_id
+        description: "ID da tabela de destino."
+        data_type: string
+        quote: true
 
       - name: tib_processado_quantidade
         description: "Quantidade de TiB (Tebibytes) processados pelo job."
