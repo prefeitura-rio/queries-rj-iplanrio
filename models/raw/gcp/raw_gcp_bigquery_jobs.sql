@@ -1,22 +1,23 @@
 {{
     config(
-        schema="gerenciamento_custos",
-        alias="jobs_historico",
+        schema="brutos_gcp",
+        alias="gcp_bigquery_jobs",
         materialized="incremental",
+        full_refresh = false,
         unique_key=["project_id", "job_id"],
         partition_by={
             "field": "data_faturamento",
             "data_type": "date",
             "granularity": "month"
         },
-        tags=["historico_jobs", "incremental"]
+        tags=["gcp_bigquery_jobs", "incremental"]
     )
 }}
 
 -- Definição do período incremental
 {% if is_incremental() and execute %}
   {% set start_date_query %}
-    SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
+    SELECT COALESCE(MAX(data_faturamento), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
     FROM {{ this }}
   {% endset %}
   {% if execute %}
@@ -29,30 +30,73 @@
   {% set start_date = (modules.datetime.datetime.utcnow() - modules.datetime.timedelta(days=180)).strftime('%Y-%m-%d') %}
 {% endif %}
 
--- Descoberta de projetos
-{% set discover_projects_query %}
-  SELECT DISTINCT project_id
-  FROM `region-us`.INFORMATION_SCHEMA.JOBS_BY_ORGANIZATION
-  WHERE project_id LIKE 'rj-%'
-  ORDER BY project_id
-{% endset %}
 
-{% if execute %}
-  {% set results = run_query(discover_projects_query) %}
-  {% set projetos = results.columns[0].values() %}
-
-  {% if projetos | length == 0 %}
-    {{ log("ERRO: Nenhum projeto foi descoberto! Verifique as permissões.", info=true) }}
-    {{ return("") }}
-  {% else %}
-    {{ log("Descobertos " ~ projetos | length ~ " projetos:", info=true) }}
-    {% for projeto in projetos %}
-      {{ log("  - " ~ projeto, info=true) }}
-    {% endfor %}
-  {% endif %}
-{% else %}
-  {% set projetos = [] %}
-{% endif %}
+{% set projetos = [
+    'rj-cetrio',
+    'rj-cetrio-dev',
+    'rj-chatbot',""
+    'rj-chatbot-dev',
+    'rj-civitas',
+    'rj-civitas-dev',
+    'rj-cmp',
+    'rj-comunicacao',
+    'rj-comunicacao-dev',
+    'rj-cor',
+    'rj-cor-dev',
+    'rj-crm-registry',
+    'rj-crm-registry-dev',
+    'rj-cvl',
+    'rj-cvl-dev',
+    'rj-datalab-sandbox',
+    'rj-escritorio',
+    'rj-escritorio-dev',
+    'rj-iplanrio',
+    'rj-iplanrio-dev',
+    'rj-iplanrio-ia-dev',
+    'rj-ipp',
+    'rj-ipp-dev',
+    'rj-mapa-realizacoes',
+    'rj-mapa-realizacoes-dev',
+    'rj-multirio',
+    'rj-multirio-dev',
+    'rj-pgm',
+    'rj-precipitacao',
+    'rj-rec-rio',
+    'rj-rec-rio-dev',
+    'rj-rioaguas',
+    'rj-rioaguas-dev',
+    'rj-riosaude',
+    'rj-seconserva',
+    'rj-seconserva-dev',
+    'rj-segovi',
+    'rj-segovi-dev',
+    'rj-seop',
+    'rj-seop-dev',
+    'rj-setur',
+    'rj-setur-dev',
+    'rj-siurb',
+    'rj-smac',
+    'rj-smac-dev',
+    'rj-smas',
+    'rj-smas-dev',
+    'rj-smas-dev-432320',
+    'rj-smdue',
+    'rj-sme',
+    'rj-sme-dev',
+    'rj-smfp',
+    'rj-smfp-dev',
+    'rj-smfp-egp',
+    'rj-smi',
+    'rj-smi-dev',
+    'rj-sms',
+    'rj-sms-dev',
+    'rj-sms-sandbox',
+    'rj-smtr',
+    'rj-smtr-dev',
+    'rj-smtr-staging',
+    'rj-vision-ai',
+    'rj-vision-ai-dev'
+] %}
 
 {% set all_queries = [] %}
 {% for projeto in projetos %}

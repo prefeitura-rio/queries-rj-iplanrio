@@ -1,10 +1,10 @@
 -- Custos do BigQuery abertos por execução
--- Ref: https://cloud.google.com/bigquery/docs/information-schema-jobs#compare_on-demand_job_usage_to_billing_data
+-- Baseado na tabela brutos_gcp.gcp_bigquery_jobs
 
 {{
     config(
         schema="gerenciamento_custos",
-        alias="gcp_billing_bigquery_detalhado",
+        alias="custo_bigquery_jobs",
         materialized="incremental",
         unique_key="id_job",
         incremental_strategy="merge",
@@ -17,101 +17,7 @@
     )
 }}
 
-{% set first_day_of_month = "date_trunc(current_date('America/Sao_Paulo'), month)" %}
-
--- JOBS_BY_PROJECT SÓ ARMAZENA DADOS DE 180 DIAS
-{% set start_date_query %}
-  SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
-  FROM {{ ref('raw_gcp_bigquery_jobs') }}
-{% endset %}
-
-{% if is_incremental() %}
-  {% set start_date_query %}
-    SELECT COALESCE(DATE_SUB(MAX(data_faturamento), INTERVAL 1 DAY), DATE_SUB(CURRENT_DATE(), INTERVAL 180 DAY)) AS start_date
-    FROM {{ this }}
-  {% endset %}
-  {% if execute %}
-    {% set results = run_query(start_date_query) %}
-    {% set start_date = results.columns[0].values()[0] %}
-    {% set end_date = modules.datetime.datetime.utcnow().strftime('%Y-%m-%d') %}
-  {% else %}
-    {% set start_date = '2023-01-01' %}  -- valor default para compilação
-    {% set end_date = '2099-12-31' %}  -- valor default para compilação
-  {% endif %}
-{% else %}
-  {% set start_date = '2023-01-01' %}
-  {% set end_date = '2099-12-31' %}
-{% endif %}
-
-
--- descoberta de projetos
-{% set discover_projects_query %}
-  SELECT DISTINCT project_id
-  FROM `region-us`.INFORMATION_SCHEMA.JOBS_BY_ORGANIZATION
-  WHERE project_id LIKE 'rj-%'
-  ORDER BY project_id
-{% endset %}
-
-{% if execute %}
-  {% set results = run_query(discover_projects_query) %}
-  {% set projetos = results.columns[0].values() %}
-
-  {% if projetos | length == 0 %}
-    {{ log("ERRO: Nenhum projeto foi descoberto! Verifique as permissões.", info=true) }}
-    {{ return("") }}  -- Para a execução se não encontrar projetos
-  {% else %}
-    {{ log("Descobertos " ~ projetos | length ~ " projetos:", info=true) }}
-    {% for projeto in projetos %}
-      {{ log("  - " ~ projeto, info=true) }}
-    {% endfor %}
-  {% endif %}
-{% else %}
-
-  {% set projetos = [] %}
-{% endif %}
-
-
-{% set all_queries = [] %}
-{% for projeto in projetos %}
-    {% set q %}
-        select
-            '{{ projeto }}' as origem_projeto,
-            project_id,
-            job_id,
-            user_email,
-            job_type,
-            query,
-            state,
-            destination_table.project_id as destination_project_id,
-            destination_table.dataset_id as destination_dataset_id,
-            destination_table.table_id as destination_table_id,
-            error_result,
-            creation_time,
-            end_time,
-            statement_type,
-            total_bytes_processed,
-            total_bytes_billed,
-            extract(date from end_time at time zone 'PST8PDT') as data_faturamento
-        from `{{ projeto }}`.`region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
-        where DATE(creation_time) >= DATE('{{ start_date }}')
-    {% endset %}
-    {% do all_queries.append(q) %}
-{% endfor %}
-
-with all_usage as (
-    {{ all_queries | join('\nunion all\n') }}
-),
-
--- Deduplicação de jobs com mesmo job_id
-deduped_usage as (
-    select * except(rn) from (
-        select *,
-            row_number() over (partition by project_id, job_id order by creation_time desc) as rn
-        from all_usage
-    ) where rn = 1
-),
-
-all_usage_with_multiplier as (
+with base_data as (
     select
         origem_projeto,
         project_id as projeto_id,
@@ -125,16 +31,32 @@ all_usage_with_multiplier as (
         destination_table_id as tabela_destino_id,
         error_result as resultado_erro,
         creation_time as horario_criacao,
-        data_faturamento,
+        CASE
+            WHEN end_time IS NOT NULL AND SAFE_CAST(end_time AS STRING) != '' THEN
+                extract(date from end_time at time zone 'PST8PDT')
+            ELSE NULL
+        END as data_faturamento,
         total_bytes_processed / 1024 / 1024 / 1024 / 1024 as tib_processado,
         total_bytes_billed / 1024 / 1024 / 1024 / 1024 as tib_faturado,
+        statement_type
+    from {{ ref('raw_gcp_bigquery_jobs') }}
+    {% if is_incremental() %}
+        -- Pega apenas dados novos baseado na data de faturamento
+        where data_faturamento > (select max(data_faturamento) from {{ this }})
+           or data_faturamento is null
+    {% endif %}
+),
+
+all_usage_with_multiplier as (
+    select
+        *,
         case
             statement_type
                 when 'SCRIPT' then 0
                 when 'CREATE_MODEL' then 50 * 6.25
                 else 6.25
         end as multiplicador
-    from deduped_usage
+    from base_data
 ),
 
 cost_added as (
@@ -147,6 +69,17 @@ cost_added as (
             else false
         end as job_faturavel  -- indica se foi cobrado (custo > 0)
     from all_usage_with_multiplier
+),
+
+-- CTE para taxa de câmbio diária
+taxa_diaria as (
+    SELECT
+        CAST(usage_end_time AS DATE) AS dia,
+        AVG(currency_conversion_rate) AS taxa
+    FROM
+        `dados-rio-billing.billing.gcp_billing_export_*`
+    GROUP BY
+        dia
 ),
 
 final as (
@@ -166,7 +99,7 @@ final as (
                 dataset_destino_id,
                 r'(dev_fantasma__|diego__|miloskimatheus__|pedro__|thiago__|vit__)',
                 ''
-            ) as dataset_id, -- ver se inclui o pessoal da iplan dps
+            ) as dataset_id,
             tabela_destino_id as tabela_id
         ) as destino,
         tib_processado as tib_processado_quantidade,
@@ -174,10 +107,45 @@ final as (
         data_faturamento,
         uso_estimado_tib as uso_estimado_tib_quantidade,
         custo_estimado_usd as custo_estimado_valor,
-        job_faturavel
+        job_faturavel,
+
+        -- Transformações adicionadas
+        custo_estimado_usd * COALESCE(taxa_diaria.taxa, 1) as custo_estimado_reais,
+        EXTRACT(YEAR FROM horario_criacao) AS ano,
+        REGEXP_EXTRACT(email_usuario, r'^([^@]+@[^.]+)') AS identificador_completo,
+        CASE
+            WHEN REGEXP_CONTAINS(email_usuario, r'gserviceaccount')
+            THEN 'SIM'
+            ELSE 'NÃO'
+        END AS eh_service_account,
+        CASE
+            WHEN projeto_id IS NULL THEN 'SND'
+            WHEN projeto_id IN (
+                'crm-registry',
+                'rj-comunicacao-dev',
+                'rj-superapp',
+                'rj-vision-ai',
+                'dados-rio-billing',
+                'rj-chatbot',
+                'rj-chatbot-dev'
+            ) THEN 'IPLANRIO'
+            WHEN REGEXP_CONTAINS(projeto_id, r'hackathon') THEN 'IPLANRIO'
+            WHEN REGEXP_CONTAINS(projeto_id, r'datario') THEN 'IPLANRIO'
+            WHEN REGEXP_CONTAINS(projeto_id, r'^rj-rec') THEN 'RECRIO'
+            WHEN REGEXP_CONTAINS(projeto_id, r'^rj-') THEN
+                UPPER(REGEXP_EXTRACT(projeto_id, r'^rj-([^-\s]+)'))
+            ELSE UPPER(projeto_id)
+        END AS orgao_tratado,
+        CASE
+            WHEN REGEXP_CONTAINS(email_usuario, r'iam\.gserviceaccount\.com$')
+                THEN REGEXP_EXTRACT(email_usuario, r'^([^@]+)@iam\.gserviceaccount\.com$')
+            ELSE REGEXP_EXTRACT(email_usuario, r'^([^@]+)@')
+        END AS identificador_usuario
+
     from cost_added
+    LEFT JOIN taxa_diaria
+        ON DATE(cost_added.horario_criacao) = taxa_diaria.dia
 )
 
 select *
 from final
-{% if is_incremental() %} where data_faturamento >= {{ first_day_of_month }} {% endif %}

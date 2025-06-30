@@ -1,73 +1,168 @@
 version: 2
 
 models:
-  - name: billing_bigquery_detalhado
+  - name: mart_gerenciamento_custo_bigquery_jobs
     description: "Modelo que detalha os custos de execução do BigQuery por job, incluindo processamento, faturamento e métricas de uso. Cada linha representa um job executado, com informações detalhadas para análise de custos, auditoria e otimização do uso do BigQuery."
     config:
       schema: gerenciamento_custos
-      alias: gcp_billing_bigquery_detalhado
+      alias: mart_gerenciamento_custo_bigquery_jobs
     data_tests:
       - dbt_expectations.expect_column_values_to_be_between:
-          name: mart_gerenciamento_billing_bigquery_detalhado__datahora_criacao__valid_period
+          name: mart_gerenciamento_custo_bigquery_jobs__datahora_criacao__valid_period
           column_name: datahora_criacao
           min_value: "2024-01-01"
           max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
           severity: error
     columns:
-      - name: origem_projeto
-        description: "Projeto GCP de origem da execução do job (ex: rj-iplanrio, rj-iplanrio-dev). Usado para rastreabilidade e análise de custos por projeto."
+      - name: id_job
+        description: "Identificador único do job no BigQuery."
+        data_type: string
+        quote: true
         data_tests:
-          - not_null:
-              name: mart_gerenciamento_billing_bigquery_detalhado__origem_projeto__not_null
+          - unique:
+              name: mart_gerenciamento_custo_bigquery_jobs__id_job__unique
               severity: error
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: mart_gerenciamento_billing_bigquery_detalhado__origem_projeto__valid_values
-              value_set: ["rj-iplanrio", "rj-iplanrio-dev"]
+          - not_null:
+              name: mart_gerenciamento_custo_bigquery_jobs__id_job__not_null
               severity: error
 
       - name: projeto_id
-        description: "ID do projeto GCP onde o job foi executado. Exemplo: 'rj-iplanrio'."
+        description: "ID do projeto GCP onde o job foi executado."
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
-              name: mart_gerenciamento_billing_bigquery_detalhado__projeto_id__not_null
+              name: mart_gerenciamento_custo_bigquery_jobs__projeto_id__not_null
               severity: error
 
-      - name: id_job
-        description: "Identificador único do job no BigQuery. Exemplo: 'job_1234567890abcdef'."
+      - name: origem_projeto
+        description: "Projeto GCP de origem da execução do job."
+        data_type: string
+        quote: true
         data_tests:
-          - unique:
-              name: mart_gerenciamento_billing_bigquery_detalhado__id_job__unique
-              severity: error
           - not_null:
-              name: mart_gerenciamento_billing_bigquery_detalhado__id_job__not_null
+              name: mart_gerenciamento_custo_bigquery_jobs__origem_projeto__not_null
               severity: error
+
+      - name: orgao
+        description: "Órgão extraído do ID do projeto, utilizado para agrupamento e análise de custos por órgão."
+        data_type: string
+        quote: true
+
+      - name: orgao_tratado
+        description: "Órgão tratado/classificado a partir do projeto, para agrupamentos padronizados."
+        data_type: string
+        quote: true
+
+      - name: ano
+        description: "Ano de execução do job, extraído da data de criação."
+        data_type: integer
 
       - name: datahora_criacao
-        description: "Data e hora de criação do job (horário UTC). Exemplo: '2024-04-01T12:34:56Z'."
+        description: "Data e hora de criação do job (UTC)."
+        data_type: timestamp
         data_tests:
           - not_null:
-              name: mart_gerenciamento_billing_bigquery_detalhado__datahora_criacao__not_null
-              severity: error
-
-      - name: custo_estimado_valor
-        description: "Custo estimado em dólares americanos (USD) do job, calculado com base no volume faturado e multiplicador de preço vigente. Exemplo: 0.25 para 25 centavos de dólar."
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              name: mart_gerenciamento_billing_bigquery_detalhado__custo_estimado_valor__positive
-              min_value: 0
-              severity: error
-
-      - name: tib_processado_quantidade
-        description: "Quantidade de TiB (Tebibytes) processados pelo job. Exemplo: 0.25 para 256 GiB processados."
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              name: mart_gerenciamento_billing_bigquery_detalhado__tib_processado_quantidade__positive
-              min_value: 0
+              name: mart_gerenciamento_custo_bigquery_jobs__datahora_criacao__not_null
               severity: error
 
       - name: data_faturamento
         description: "Data de faturamento do job (formato: 'YYYY-MM-DD'). Utilizada para partição e análise temporal dos custos."
+        data_type: date
         data_tests:
           - not_null:
-              name: mart_gerenciamento_billing_bigquery_detalhado__data_faturamento__not_null
+              name: mart_gerenciamento_custo_bigquery_jobs__data_faturamento__not_null
               severity: error
+
+      - name: estado_job
+        description: "Estado final do job no BigQuery (ex: DONE, FAILED, etc)."
+        data_type: string
+        quote: true
+
+      - name: tipo_job
+        description: "Tipo do job executado (QUERY, LOAD, etc)."
+        data_type: string
+        quote: true
+
+      - name: consulta_sql
+        description: "Consulta SQL executada no job. Útil para auditoria e rastreabilidade."
+        data_type: string
+        quote: true
+
+      - name: job_faturavel
+        description: "Indica se o job gerou custo faturável (true/false)."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_custo_bigquery_jobs__job_faturavel__not_null
+              severity: error
+
+      - name: eh_service_account
+        description: "Indica se o job foi executado por uma service account (SIM/NÃO)."
+        data_type: string
+        quote: true
+
+      - name: identificador_usuario
+        description: "Identificador do usuário (ou service account) que executou o job."
+        data_type: string
+        quote: true
+
+      - name: identificador_completo
+        description: "Identificador extraído do e-mail do usuário que executou o job."
+        data_type: string
+        quote: true
+
+      - name: destino
+        description: "Estrutura com informações do destino do job: projeto, dataset e tabela."
+        data_type: struct
+        columns:
+           - name: destino.projeto_id
+             description: "ID do projeto de destino."
+             data_type: string
+           - name: destino.dataset_id
+             description: "ID do dataset de destino."
+             data_type: string
+           - name: destino.tabela_id
+             description: "ID da tabela de destino."
+             data_type: string
+
+      - name: tib_processado_quantidade
+        description: "Quantidade de TiB (Tebibytes) processados pelo job."
+        data_type: float
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_gerenciamento_custo_bigquery_jobs__tib_processado_quantidade__positive
+              min_value: 0
+              severity: error
+
+      - name: uso_estimado_tib_quantidade
+        description: "Quantidade estimada de TiB faturados pelo job."
+        data_type: float
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_gerenciamento_custo_bigquery_jobs__uso_estimado_tib_quantidade__positive
+              min_value: 0
+              severity: error
+
+      - name: custo_estimado_valor
+        description: "Custo estimado em dólares americanos (USD) do job, calculado com base no volume faturado e multiplicador de preço vigente."
+        data_type: float
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_gerenciamento_custo_bigquery_jobs__custo_estimado_valor__positive
+              min_value: 0
+              severity: error
+
+      - name: custo_estimado_reais
+        description: "Custo estimado do job convertido para reais (BRL), considerando a taxa de câmbio diária."
+        data_type: float
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_gerenciamento_custo_bigquery_jobs__custo_estimado_reais__positive
+              min_value: 0
+              severity: error
+
+      - name: resultado_erro
+        description: "Mensagem de erro retornada pelo BigQuery, caso o job tenha falhado."
+        data_type: string
+        quote: true
