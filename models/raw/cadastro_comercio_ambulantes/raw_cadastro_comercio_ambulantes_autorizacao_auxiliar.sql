@@ -15,5 +15,5 @@ select
     safe_cast(cpf as string) as cpf_auxiliar,
     safe_cast(tipo_pessoa as string) as tipo_pessoa,
     safe_cast(inicioVigenciaAuxiliar as datetime) as data_inicio_vigencia_auxiliar,
-    safe_cast(fimVigenciaAuxiliar as datetime) as data_fim_vigencia_auxiliar
+   
 from {{ source('brutos_cadastro_comercio_ambulantes_staging', 'vw_autorizacao_auxiliares_datalake') }}  
