@@ -8,7 +8,7 @@ models:
       schema: raw
       materialized: view
     columns:
-      - name: id_autoriz_titular
+      - name: id_autorizacao_titular
         description: "Identificador interno da autorização do Titular"
         datatype: integer
         data_tests: 

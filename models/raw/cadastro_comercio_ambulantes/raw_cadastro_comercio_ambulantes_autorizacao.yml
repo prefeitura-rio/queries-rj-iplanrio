@@ -8,17 +8,17 @@ models:
       schema: raw
       materialized: view
     columns:
-      - name: id_autoriz_titular
+      - name: id_autorizacao_titular
         description: "Identificador interno da autorização do Titular"
         datatype: Integer
         data_tests:     
           - unique:
-              name: raw_cadastro_comercio_ambulantes_autorizacao__id_autoriz_titular__unique
+              name: raw_cadastro_comercio_ambulantes_autorizacao__id_autorizacao_titular__unique
               severity: error
           - not_null:
-              name: raw_cadastro_comercio_ambulantes_autorizacao__id_autoriz_titular__not_null
+              name: raw_cadastro_comercio_ambulantes_autorizacao__id_autorizacao_titular__not_null
               severity: error
-      - name: num_inscricao_municipal
+      - name: numero_inscricao_municipal
         description: "Número da Inscrição Municipal (e da Autorização ) do Titular da Autorização"
         datatype: String
       - name: tipo_pessoa
@@ -27,53 +27,53 @@ models:
       - name: cpf_titular
         description: "Número do CPF do Titular da Autorização"
         datatype: String
-      - name: nome_titular_autoriz
+      - name: nome_titular_autorizacao
         description: "Nome do Titular da Autorização"
         datatype: String
-      - name: sit_inscricao_municipal
+      - name: situacao_inscricao_municipal
         description: "Situação da Inscrição Municipal do Titular da Autorização, podendo ser: PENDENTE, CANCELADO ou ATIVO"
         datatype: String
-      - name: dt_concessao
+      - name: data_concessao
         description: "Data que Autorização foi concedida"
         datatype: Datetime
         tests:
           - not_null
-      - name: dt_cancelamento
+      - name: data_cancelamento
         description: "Data que Autorização foi cancelada"
         datatype: Datetime
-      - name: end_corporativo_cod_logradouro_ponto
+      - name: endereco_corporativo_codigo_logradouro_ponto
         description: "Código do Logradouro (Corporativo) do endereço do ponto do Titular da Autorização"
         datatype: String
-      - name: end_corporativo_logradouro_ponto
+      - name: endereco_corporativo_logradouro_ponto
         description: "Logradouro (Corporativo) do endereço do ponto do Titular da Autorização"
         datatype: String
-      - name: end_corporativo_referencia_ponto
+      - name: endereco_corporativo_referencia_ponto
         description: "Referência do ponto do Titular da Autorização, exemplo: Em frente, esquina, no entorno, perto de etc"
         datatype: String
-      - name: end_corporativo_num_porta_ponto
+      - name: endereco_corporativo_numero_porta_ponto
         description: "Número da porta do endereço do Ponto do Titular da Autorização"
         datatype: String
-      - name: end_corpotativo_compl_ponto
+      - name: endereco_corporativo_complemento_ponto
         description: "Complemento  do endereço do Ponto do Titular da Autorização"
         datatype: String
-      - name: end_cod_bairro_ponto
+      - name: endereco_corporativo_codigo_bairro_ponto
         description: "Código do Bairro (Corporativo)  do endereço do Ponto do Titular da Autorização"
         datatype: String
-      - name: end_bairro_ponto
+      - name: endereco_corporativo_bairro_ponto
         description: "Nome do Bairro do endereço do Ponto do Titular da Autorização"
         datatype: String
-      - name: nom_equip_autorizado
+      - name: nome_equipamento_autorizado
         description: "Equipamento autorizado para utilização"
         datatype: String
-      - name: ind_autoriz_permanente
+      - name: indicador_autorizacao_permanente
         description: "Autorização Permanente (S) ou Temporária (N) - Ex: Autorizações concedidas para trabalhar durante o Carnaval"
         datatype: String
         tests:
           - not_null
-      - name: num_processo_concessao
+      - name: numero_processo_concessao
         description: "Número do Processo Administrativo que contém o deferimento para o Titular da autorização trabalhar no comércio ambulante"
         datatype: String
-      - name: num_interno_agrupam_concessao
+      - name: numero_interno_agrupamento_concessao
         description: "Agrupamento interno do sistema para conceder as Autorizações" 
         datatype: String
     
