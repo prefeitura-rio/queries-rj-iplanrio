@@ -6,8 +6,6 @@ repos:
         - id: dbt-docs-generate
           args: ["--cmd-flags", "++no-compile"]
         - id: check-script-semicolon
-        - id: check-script-has-no-table-name # check if the script has only source or ref to specific table
+        - id: check-script-has-no-table-name
         - id: check-model-columns-have-desc
           files: ^models/mart
-
-  
