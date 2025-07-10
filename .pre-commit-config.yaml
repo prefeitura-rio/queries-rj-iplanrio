@@ -14,3 +14,4 @@ repos:
       - id: check-script-has-no-table-name # check if the script has only source or ref to specific table
       - id: check-model-columns-have-desc
         files: ^models/mart
+        
