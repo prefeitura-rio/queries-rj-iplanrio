@@ -1,0 +1,36 @@
+name: dbt-checkpoint
+
+on:
+  push:
+  pull_request:
+    branches:
+      - feat/add-github-action
+
+jobs:
+  dbt-checkpoint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+
+      - id: Get file changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: " "
+
+      - name: Set up keyfile for dbt
+        run: 'echo "$KEYFILE" > ./.gcloud/dbt-service-account.json'
+        shell: bash
+        env:
+          KEYFILE: ${{secrets.CREDENTIALS}}
+
+      - name: Run dbt checkpoint
+        uses: dbt-checkpoint/action@v0.1
+        with:
+          extra_args: --files ${{ steps.get_file_changes.outputs.files}}
+          dbt_version: 1.9.0
+          dbt_adapter: dbt-bigquery

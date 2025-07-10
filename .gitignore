@@ -2,7 +2,8 @@
 queries_rj_iplanrio.egg-info/
 
 # DBT specific
-target/
+target/*
+!target/manifest.json
 target-base/
 dbt_packages/
 logs/
@@ -37,3 +38,4 @@ desktop.ini
 *.tmp
 *.temp
 .qodo
+dbt_internal_packages/
