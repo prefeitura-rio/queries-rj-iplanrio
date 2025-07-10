@@ -3,7 +3,7 @@ repos:
     hooks:
       - id: some_test
         name: script_I_want_to_run
-        entry: python -m pip install dbt-core=1.9.0 dbt-bigquery
+        entry: python -m pip install dbt-core==1.9.0 dbt-bigquery
         language: system
         types: [python]
         always_run: true
