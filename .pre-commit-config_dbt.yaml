@@ -1,9 +1,0 @@
-repos:
-  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-    rev: v2.0.7
-    hooks:
-      - id: check-script-semicolon
-      - id: check-script-has-no-table-name # check if the script has only source or ref to specific table
-      - id: check-model-columns-have-desc
-        files: ^models/mart
-        
