@@ -1,24 +1,7 @@
 repos:
-  - repo: local
-    hooks:
-      - id: some_test
-        name: script_I_want_to_run
-        entry: python -m pip install dbt-core==1.9.0 dbt-bigquery
-        language: system
-        types: [python]
-        always_run: true
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
       - id: check-added-large-files # prevents adding large files
       - id: detect-private-key # detects private keys
       - id: fix-byte-order-marker # fixes BOM
-
-  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-    rev: v2.0.7
-    hooks:
-      - id: check-script-semicolon
-      - id: check-script-has-no-table-name # check if the script has only source or ref to specific table
-      - id: check-model-columns-have-desc
-        files: ^models/mart

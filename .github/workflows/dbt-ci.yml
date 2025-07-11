@@ -34,6 +34,6 @@ jobs:
       - name: Run dbt checkpoint
         uses: dbt-checkpoint/action@v0.1
         with:
-          extra_args: --files ${{ steps.get_file_changes.outputs.files}}
+          extra_args: --files ${{ steps.get_file_changes.outputs.files}} --config .pre-commit-config_dbt.yaml
           dbt_version: 1.9.0
           dbt_adapter: dbt-bigquery
