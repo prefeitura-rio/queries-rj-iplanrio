@@ -19,3 +19,4 @@ select 'caepf' as table, *
 from {{ ref('int_bcadastro_nulls_caepf') }}
 
 
+

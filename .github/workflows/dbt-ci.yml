@@ -34,6 +34,8 @@ jobs:
 
       - name: Run dbt checkpoint
         uses: dbt-checkpoint/action@v0.1
+        env:
+          DBT_PROJECT_DIR: ${{ github.workspace }}
         with:
           extra_args: --files ${{ steps.get_file_changes.outputs.files}}
           dbt_version: 1.9.0
