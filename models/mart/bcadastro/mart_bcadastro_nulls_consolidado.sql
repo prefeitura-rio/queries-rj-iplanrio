@@ -21,3 +21,4 @@ from {{ ref('int_bcadastro_nulls_caepf') }}
 
 
 
+
