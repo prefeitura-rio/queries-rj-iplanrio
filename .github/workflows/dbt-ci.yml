@@ -33,8 +33,14 @@ jobs:
         with:
           output: ' '
 
-    # Transforming the output of get_file_changes to a string we can use for our next step
-    # We want to take in account both new files and files that have been modified
+      - name: Set up keyfile for dbt
+        run: 'echo "$KEYFILE" > ./.gcloud/dbt-service-account.json'
+        shell: bash
+        env:
+          KEYFILE: ${{secrets.CREDENTIALS}}
+
+      # Transforming the output of get_file_changes to a string we can use for our next step
+      # We want to take in account both new files and files that have been modified
       - name: Get changed .sql files in /models to lint
         id: get_files_to_lint
         shell: bash -l {0}
