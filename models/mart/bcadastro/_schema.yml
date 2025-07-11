@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: mart_bcadastro_nulls_consolidado
+    description: "Consolida os registros nulos das tabelas CPF, CNPJ, CNO e CAEPF do bcadastro, indicando a origem de cada registro."
+    config:
+      alias: nulls_consolidado
+      schema: debug_bcadastro
+      materialized: table
+    columns:
+      - name: table
+        
