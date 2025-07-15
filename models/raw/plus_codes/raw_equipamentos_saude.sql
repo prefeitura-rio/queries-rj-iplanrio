@@ -162,8 +162,8 @@ with
 select
     plus11,
     id_equipamento,
-    secretaria_responsavel,
-    tipo_equipamento,
+    trim(secretaria_responsavel) as secretaria_responsavel,
+    trim(tipo_equipamento) as tipo_equipamento,
     nome_oficial,
     nome_popular,
     plus10,

@@ -68,7 +68,6 @@ updated_at      TIMESTAMP,
     )
 }}
 
-
 with
     saude as (
         select
@@ -95,7 +94,7 @@ with
             vigencia_fim,
             metadata,
             updated_at
-        from {{ ref("raw_equipamentos_saude") }}
+        from `rj-iplanrio`.`plus_codes`.`equipamentos_saude`
     ),
 
     educacao as (
@@ -123,7 +122,7 @@ with
             vigencia_fim,
             metadata,
             updated_at
-        from {{ ref("raw_equipamentos_educacao") }}
+        from `rj-iplanrio`.`plus_codes`.`equipamentos_educacao`
     ),
 
     cultura as (
@@ -151,14 +150,47 @@ with
             vigencia_fim,
             metadata,
             updated_at
-        from {{ ref("raw_equipamentos_cultura") }}
+        from `rj-iplanrio`.`plus_codes`.`equipamentos_cultura`
+    ),
+
+    equipamentos as (
+        select *
+        from saude
+        union all
+        select *
+        from educacao
+        union all
+        select *
+        from cultura
+    ),
+
+    equipamentos_categorias as (
+        select
+            eq.plus8,
+            eq.geometry,
+            eq.plus11,
+            eq.id_equipamento,
+            eq.secretaria_responsavel,
+            eq.tipo_equipamento as categoria,
+            eq.nome_oficial,
+            eq.nome_popular,
+            eq.plus10,
+            eq.plus6,
+            eq.latitude,
+            eq.longitude,
+            eq.endereco,
+            eq.bairro,
+            eq.contato,
+            eq.ativo,
+            eq.aberto_ao_publico,
+            eq.horario_funcionamento,
+            eq.fonte,
+            eq.vigencia_inicio,
+            eq.vigencia_fim,
+            eq.metadata,
+            eq.updated_at
+        from equipamentos eq
     )
 
 select *
-from saude
-union all
-select *
-from educacao
-union all
-select *
-from cultura
+from equipamentos_categorias

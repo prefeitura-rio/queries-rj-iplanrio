@@ -89,7 +89,7 @@ with
             -- Timestamp da última atualização
             current_timestamp() as updated_at
 
-        from {{ source("brutos_equipamentos", "culturais") }} as t
+        from {{ ref("raw_equipamentos_culturais") }} as t
         left join
             {{ source("dados_mestres", "bairro") }} as b
             -- O join é feito pela geometria do equipamento contida na geometria do
@@ -101,8 +101,8 @@ with
 select
     plus11,
     id_equipamento,
-    secretaria_responsavel,
-    tipo_equipamento,
+    trim(secretaria_responsavel) as secretaria_responsavel,
+    trim(tipo_equipamento) as tipo_equipamento,
     nome_oficial,
     nome_popular,
     plus10,

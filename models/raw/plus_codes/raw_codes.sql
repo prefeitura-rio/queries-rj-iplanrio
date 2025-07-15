@@ -3,6 +3,11 @@
         alias="codes",
         schema="plus_codes",
         materialized="table",
+        cluster_by = ["categoria"],
+        partition_by={
+            "field": "plus8",
+            "data_type": "string"
+        }
     )
 }}
 
@@ -18,7 +23,8 @@ with
         select
             g.plus8,
             g.centro_geometry,
-            e.tipo_equipamento as categoria,
+            e.secretaria_responsavel,
+            e.categoria,
 
             -- Struct contendo TODA a linha do equipamento + distância
             (
@@ -37,11 +43,13 @@ with
         select
             plus8,
             categoria,
+            secretaria_responsavel,
             equip_full.distancia_metros as distancia_metros,
             centro_geometry,
             equip_full,
             row_number() over (
-                partition by plus8, categoria order by equip_full.distancia_metros
+                partition by plus8, secretaria_responsavel, categoria
+                order by equip_full.distancia_metros
             ) as rn
         from pairs
     )
@@ -49,10 +57,11 @@ with
 -- 4) Agrega os 3 mais próximos
 select
     plus8,
-    categoria,
+    trim(secretaria_responsavel) as secretaria_responsavel,
+    trim(categoria) as categoria,
     any_value(centro_geometry) as geometry,
     array_agg(equip_full order by distancia_metros limit 3) as equipamentos,
     current_timestamp() as ingestion_timestamp
 from ranqueado
 where rn <= 3
-group by plus8, categoria
+group by plus8, secretaria_responsavel, categoria

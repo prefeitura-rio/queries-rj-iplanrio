@@ -97,7 +97,7 @@ with
             -- Timestamp da última atualização
             current_timestamp() as updated_at
 
-        from {{ source("brutos_equipamentos", "escolas") }} as t
+        from {{ ref("raw_equipamentos_escolas") }} as t
         left join
             {{ source("dados_mestres", "bairro") }} as b
             -- O join é feito pela geometria da escola contida na geometria do bairro
@@ -108,8 +108,8 @@ with
 select
     plus11,
     id_equipamento,
-    secretaria_responsavel,
-    tipo_equipamento,
+    trim(secretaria_responsavel) as secretaria_responsavel,
+    trim(tipo_equipamento) as tipo_equipamento,
     nome_oficial,
     nome_popular,
     plus10,
