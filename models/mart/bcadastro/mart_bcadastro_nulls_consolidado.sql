@@ -4,6 +4,7 @@
         schema="debug_bcadastro",
         materialized="table",
     )
+    
 }}
 
 select 'cpf' as table, *
