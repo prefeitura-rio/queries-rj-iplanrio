@@ -16,4 +16,3 @@ repos:
         files: ^models/mart
       - id: check-model-has-description
         files: ^models/mart
-        
