@@ -5,7 +5,7 @@ models:
     description: "Tabela histórica incremental com todos os jobs do BigQuery extraídos do INFORMATION_SCHEMA.JOBS_BY_PROJECT. Permite auditoria, rastreio, análise de uso e persistência de dados além do retention de 180 dias do BigQuery. Cada linha representa um job executado em um dos projetos monitorados, com informações detalhadas para auditoria, controle de custos e troubleshooting."
     config:
       schema: brutos_gcp
-      alias: jobs_historico
+      alias: gcp_bigquery_jobs
     data_tests:
       - dbt_expectations.expect_column_values_to_be_between:
           name: jobs_historico__data_faturamento__valid_period
