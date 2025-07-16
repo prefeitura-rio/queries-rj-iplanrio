@@ -37,3 +37,4 @@ desktop.ini
 *.tmp
 *.temp
 .qodo
+dbt_internal_packages/
