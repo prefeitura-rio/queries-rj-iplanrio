@@ -1,4 +1,4 @@
-{{
+{# {{
     config(
         alias="codes",
         schema="plus_codes",
@@ -10,7 +10,7 @@ DECLARE step FLOAT64 DEFAULT 0.0001;  -- latitude step
 DECLARE bbox ARRAY<FLOAT64> DEFAULT [-43.8, -23.1, -43.0, -22.7];  -- [W,S,E,N]
 
 
-CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.grid` AS (
+{# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.grid` AS ( #}
 
 
 {# CREATE OR REPLACE FUNCTION tools.encode_pluscode(latitude FLOAT64, longitude FLOAT64, len INT64)
@@ -31,7 +31,7 @@ with
     grid as (select latitude, longitude from lats cross join lons),
     rio_boundary as (
         select geometria
-        from `basedosdados.br_geobr_mapas.municipio`
+        from {{ source('br_geobr_mapas', 'municipio') }}
         where id_municipio = '3304557'
     ),
     inside as (
@@ -53,5 +53,5 @@ select
     plus6,
     geometry
 from final_tb
-)
-
+{# ) #}
+ #}
