@@ -1,3 +1,0 @@
-packages:
-  - package: bqbooster/dbt_bigquery_monitoring
-    version: 0.19.3
