@@ -8,7 +8,6 @@ dependencies = [
     "dbt-bigquery>=1.9.1",
     "dbt-core>=1.9.3",
     "shandy-sqlfmt[jinjafmt]>=0.26.0",
-    "sqlfmt>=0.0.3",
 ]
 
 [tool.setuptools]
