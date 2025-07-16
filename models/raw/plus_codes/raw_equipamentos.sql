@@ -69,6 +69,25 @@ updated_at      TIMESTAMP,
 }}
 
 with
+    controle_especifico as (
+        select
+            secretaria_responsavel,
+            trim(tipo_equipamento) as tipo_equipamento,
+            trim(tipo) as tipo,
+            nome,
+            case when use = '0' then false else true end as use
+        from {{ source("plus_codes", "equipamentos_controle_categorias") }}
+    ),
+
+    controle_generico as (
+        select
+            secretaria_responsavel,
+            trim(tipo_equipamento) as tipo_equipamento,
+            trim(tipo) as tipo,
+            use
+        from controle_especifico
+    ),
+
     saude as (
         select
             plus8,
@@ -94,7 +113,7 @@ with
             vigencia_fim,
             metadata,
             updated_at
-        from `rj-iplanrio`.`plus_codes`.`equipamentos_saude`
+        from {{ ref("raw_equipamentos_saude") }}
     ),
 
     educacao as (
@@ -122,7 +141,7 @@ with
             vigencia_fim,
             metadata,
             updated_at
-        from `rj-iplanrio`.`plus_codes`.`equipamentos_educacao`
+        from {{ ref("raw_equipamentos_educacao") }}
     ),
 
     cultura as (
@@ -150,7 +169,7 @@ with
             vigencia_fim,
             metadata,
             updated_at
-        from `rj-iplanrio`.`plus_codes`.`equipamentos_cultura`
+        from {{ ref("raw_equipamentos_cultura") }}
     ),
 
     equipamentos as (
@@ -165,13 +184,14 @@ with
     ),
 
     equipamentos_categorias as (
-        select
+        select distinct
             eq.plus8,
-            eq.geometry,
             eq.plus11,
             eq.id_equipamento,
             eq.secretaria_responsavel,
-            eq.tipo_equipamento as categoria,
+            coalesce(c_esp.tipo, c_gen.tipo, eq.tipo_equipamento) as categoria,
+            coalesce(c_esp.use, c_gen.use, true) as use,
+            eq.tipo_equipamento,
             eq.nome_oficial,
             eq.nome_popular,
             eq.plus10,
@@ -190,7 +210,50 @@ with
             eq.metadata,
             eq.updated_at
         from equipamentos eq
+        -- 1. Tenta fazer o JOIN com as regras específicas primeiro
+        left join
+            controle_especifico as c_esp
+            on eq.secretaria_responsavel = c_esp.secretaria_responsavel
+            and eq.tipo_equipamento = c_esp.tipo_equipamento
+            and eq.nome_oficial like '%' || c_esp.nome || '%'
+        -- 2. Tenta fazer o JOIN com as regras genéricas em paralelo
+        left join
+            controle_generico as c_gen
+            on eq.secretaria_responsavel = c_gen.secretaria_responsavel
+            and eq.tipo_equipamento = c_gen.tipo_equipamento
+        order by eq.secretaria_responsavel, eq.tipo_equipamento
     )
 
-select *
-from equipamentos_categorias
+select
+    eq.plus8,
+    eq.plus11,
+    eq.id_equipamento,
+    eqg.geometry,
+    eq.secretaria_responsavel,
+    eq.categoria,
+    eq.use,
+    eq.tipo_equipamento,
+    eq.nome_oficial,
+    eq.nome_popular,
+    eq.plus10,
+    eq.plus6,
+    eq.latitude,
+    eq.longitude,
+    eq.endereco,
+    eq.bairro,
+    eq.contato,
+    eq.ativo,
+    eq.aberto_ao_publico,
+    eq.horario_funcionamento,
+    eq.fonte,
+    eq.vigencia_inicio,
+    eq.vigencia_fim,
+    eq.metadata,
+    eq.updated_at
+from equipamentos_categorias eq
+left join
+    equipamentos eqg
+    on eq.plus8 = eqg.plus8
+    and eq.secretaria_responsavel = eqg.secretaria_responsavel
+    and eq.tipo_equipamento = eqg.tipo_equipamento
+    and eq.nome_oficial = eqg.nome_oficial

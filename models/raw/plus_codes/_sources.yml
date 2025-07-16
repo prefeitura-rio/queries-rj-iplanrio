@@ -21,6 +21,7 @@ sources:
     schema: plus_codes
     tables:
       - name: grid
+      - name: equipamentos_controle_categorias
   - name: brutos_equipamentos
     database: rj-iplanrio
     schema: brutos_equipamentos

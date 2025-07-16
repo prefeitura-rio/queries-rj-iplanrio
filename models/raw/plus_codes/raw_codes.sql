@@ -60,8 +60,8 @@ select
     trim(secretaria_responsavel) as secretaria_responsavel,
     trim(categoria) as categoria,
     any_value(centro_geometry) as geometry,
-    array_agg(equip_full order by distancia_metros limit 3) as equipamentos,
+    array_agg(equip_full order by distancia_metros limit 1) as equipamentos,
     current_timestamp() as ingestion_timestamp
 from ranqueado
-where rn <= 3
+where rn <= 1
 group by plus8, secretaria_responsavel, categoria
