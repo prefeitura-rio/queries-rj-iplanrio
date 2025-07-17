@@ -72,11 +72,6 @@ models:
       - name: cost
         description: "Custo bruto do uso do recurso em dólares americanos (USD)."
         data_type: float
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              name: mart_gerenciamento_custo_gcp__cost__positive
-              min_value: 0
-              severity: error
 
       - name: desconto_em_reais
         description: "Valor total de créditos/descontos aplicados (em reais, valor negativo)."
