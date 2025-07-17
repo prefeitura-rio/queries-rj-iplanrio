@@ -58,7 +58,7 @@ with base_data as (
     from {{ ref('raw_gcp_billing') }}
     {% if is_incremental() %}
         where usage_end_time > (
-            select coalesce(max(usage_end_time), timestamp('2025-01-01'))
+            select coalesce(max(usage_end_time), timestamp('1970-01-01'))
             from {{ this }}
         )
     {% endif %}
