@@ -20,32 +20,11 @@ vars:
   # Internal variables
   DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
 
-  # BigQuery Monitoring
-  bq_region: 'us'
-  input_gcp_projects: ['rj-iplanrio']
-
-
-  use_flat_pricing: false # We use on-demand pricing
-  enable_gcp_bigquery_audit_logs: false # False until we have a solution to "labels" error
-  gcp_bigquery_audit_logs_storage_project: 'rj-iplanrio'
-  gcp_bigquery_audit_logs_dataset: 'logs_bq'
-  gcp_bigquery_audit_logs_table: 'cloudaudit_googleapis_com_data_access'
-  should_combine_audit_logs_and_information_schema: true
-  # https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup
-  enable_gcp_billing_export: true
-  gcp_billing_export_storage_project: 'dados-rio-billing'
-  gcp_billing_export_dataset: 'billing'
-  gcp_billing_export_table: 'gcp_billing_export_resource_v1_017DB4_593D94_BEEC50'
-
-  google_information_schema_model_materialization: 'ephemeral'
-
 
 models:
   +persist_docs:
     relation: true
     columns: true
-  dbt_bigquery_monitoring:
-    +schema: "gerenciamento_bigquery_monitoring"
 
   queries:
     raw:
