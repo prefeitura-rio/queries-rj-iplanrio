@@ -10,7 +10,7 @@
             "data_type": "date",
             "granularity": "month"
         },
-        tags=["gcp_bigquery_jobs", "incremental"]
+        tags=["daily"]
     )
 }}
 

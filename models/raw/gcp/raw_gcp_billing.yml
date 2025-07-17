@@ -46,13 +46,8 @@ models:
         data_type: timestamp
 
       - name: cost
-        description: "Custo bruto do uso do recurso em dólares americanos (USD)."
+        description: "Custo bruto do uso do recurso em dólares americanos (USD). Valores negativos representam créditos ou ajustes."
         data_type: float
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              name: raw_gcp_billing__cost__positive
-              min_value: 0
-              severity: error
 
       - name: cost_at_effective_price_default
         description: "Custo calculado pelo preço efetivo padrão do GCP."
@@ -66,10 +61,6 @@ models:
         description: "ID do projeto GCP."
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_gcp_billing__project.id__not_null
-              severity: error
 
       - name: project.number
         description: "Número do projeto GCP."

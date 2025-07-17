@@ -23,13 +23,13 @@ models:
         quote: true
 
       - name: project_id
-        description: "ID do projeto GCP."
+        description: "ID do projeto GCP. Pode ser NULL para recursos não atribuídos a projetos específicos."
         data_type: string
         quote: true
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_gcp__project_id__not_null
-              severity: error
+              severity: warn
 
       - name: project_name
         description: "Nome do projeto GCP."
@@ -70,13 +70,8 @@ models:
         data_type: timestamp
 
       - name: cost
-        description: "Custo bruto do uso do recurso em dólares americanos (USD)."
+        description: "Custo bruto do uso do recurso em dólares americanos (USD). Valores negativos representam créditos ou ajustes."
         data_type: float
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_between:
-              name: mart_gerenciamento_custo_gcp__cost__positive
-              min_value: 0
-              severity: error
 
       - name: desconto_em_reais
         description: "Valor total de créditos/descontos aplicados (em reais, valor negativo)."

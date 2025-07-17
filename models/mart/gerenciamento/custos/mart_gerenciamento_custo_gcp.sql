@@ -11,7 +11,7 @@
             "granularity": "month"
         },
         cluster_by=["orgao", "project_id", "service_id"],
-        tags=["custo_gcp", "incremental"]
+        tags=["daily"]
     )
 }}
 

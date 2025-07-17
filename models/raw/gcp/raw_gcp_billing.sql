@@ -10,7 +10,7 @@
         "data_type": "timestamp",
         "granularity": "month"
     },
-    tags=["incremental"]
+    tags=["daily"]
 ) }}
 
 select *

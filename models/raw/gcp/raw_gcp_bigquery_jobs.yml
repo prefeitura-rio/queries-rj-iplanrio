@@ -10,8 +10,8 @@ models:
       - dbt_expectations.expect_column_values_to_be_between:
           name: jobs_historico__data_faturamento__valid_period
           column_name: data_faturamento
-          min_value: "2024-01-01"
-          max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
+          min_value: "DATE('2024-01-01')"
+          max_value: "CURRENT_DATE()"
           severity: error
     columns:
       - name: origem_projeto
@@ -111,8 +111,8 @@ models:
               severity: error
 
       - name: data_faturamento
-        description: "Data de faturamento do job (base para partição e auditoria). Formato: 'YYYY-MM-DD'."
+        description: "Data de faturamento do job (base para partição e auditoria). Formato: 'YYYY-MM-DD'. Pode ser NULL para jobs que falharam ou ainda estão em execução."
         data_tests:
           - not_null:
               name: jobs_historico__data_faturamento__not_null
-              severity: error
+              severity: warn
