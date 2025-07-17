@@ -1,0 +1,126 @@
+version: 2
+
+models:
+  - name: raw_gcp_billing
+    description: "Tabela incremental bruta com todos os registros de faturamento exportados do GCP Billing. Cada linha representa um evento de uso e custo de recurso no GCP, permitindo auditoria, análise de custos e rastreabilidade detalhada."
+    config:
+      schema: brutos_gcp
+      alias: gcp_billing
+
+    columns:
+      - name: billing_account_id
+        description: "ID da conta de faturamento do GCP."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_gcp_billing__billing_account_id__not_null
+              severity: error
+
+      - name: service.id
+        description: "ID do serviço GCP."
+        data_type: string
+        quote: true
+
+      - name: service.description
+        description: "Descrição do serviço GCP."
+        data_type: string
+        quote: true
+
+      - name: sku.id
+        description: "ID do SKU do serviço."
+        data_type: string
+        quote: true
+
+      - name: sku.description
+        description: "Descrição do SKU do serviço."
+        data_type: string
+        quote: true
+
+      - name: usage_start_time
+        description: "Data e hora de início do uso do recurso."
+        data_type: timestamp
+
+      - name: usage_end_time
+        description: "Data e hora de término do uso do recurso."
+        data_type: timestamp
+
+      - name: cost
+        description: "Custo bruto do uso do recurso em dólares americanos (USD). Valores negativos representam créditos ou ajustes."
+        data_type: float
+
+      - name: cost_at_effective_price_default
+        description: "Custo calculado pelo preço efetivo padrão do GCP."
+        data_type: float
+
+      - name: cost_at_list_consumption_model
+        description: "Custo calculado pelo preço de lista do modelo de consumo."
+        data_type: float
+
+      - name: project.id
+        description: "ID do projeto GCP."
+        data_type: string
+        quote: true
+
+      - name: project.number
+        description: "Número do projeto GCP."
+        data_type: string
+        quote: true
+
+      - name: project.name
+        description: "Nome do projeto GCP."
+        data_type: string
+        quote: true
+
+      - name: location.location
+        description: "Localização do recurso."
+        data_type: string
+        quote: true
+
+      - name: location.country
+        description: "País da localização do recurso."
+        data_type: string
+        quote: true
+
+      - name: location.region
+        description: "Região do recurso no GCP."
+        data_type: string
+        quote: true
+
+      - name: location.zone
+        description: "Zona do recurso no GCP."
+        data_type: string
+        quote: true
+
+      - name: resource.name
+        description: "Nome do recurso utilizado."
+        data_type: string
+        quote: true
+
+      - name: resource.global_name
+        description: "Nome global do recurso no GCP."
+        data_type: string
+        quote: true
+
+      - name: export_time
+        description: "Data e hora de exportação do registro de faturamento."
+        data_type: timestamp
+
+      - name: labels
+        description: "Labels associados ao recurso."
+        data_type: string
+        quote: true
+
+      - name: tags
+        description: "Tags associadas ao recurso."
+        data_type: string
+        quote: true
+
+      - name: credits
+        description: "Créditos aplicados ao uso do recurso."
+        data_type: string
+        quote: true
+
+      - name: price
+        description: "Preço unitário do recurso utilizado."
+        data_type: float

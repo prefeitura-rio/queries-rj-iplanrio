@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: raw_gcp_bigquery_jobs
+    description: "Tabela histórica incremental com todos os jobs do BigQuery extraídos do INFORMATION_SCHEMA.JOBS_BY_PROJECT. Permite auditoria, rastreio, análise de uso e persistência de dados além do retention de 180 dias do BigQuery. Cada linha representa um job executado em um dos projetos monitorados, com informações detalhadas para auditoria, controle de custos e troubleshooting."
+    config:
+      schema: brutos_gcp
+      alias: gcp_bigquery_jobs
+    data_tests:
+      - dbt_expectations.expect_column_values_to_be_between:
+          name: jobs_historico__data_faturamento__valid_period
+          column_name: data_faturamento
+          min_value: "DATE('2024-01-01')"
+          max_value: "CURRENT_DATE()"
+          severity: error
+    columns:
+      - name: origem_projeto
+        description: "Projeto GCP de origem do job (ex: rj-iplanrio, rj-iplanrio-dev, etc). Indica de qual projeto o job foi extraído para fins de auditoria e rastreabilidade."
+        data_tests:
+          - not_null:
+              name: jobs_historico__origem_projeto__not_null
+              severity: error
+
+      - name: project_id
+        description: "ID do projeto GCP onde o job foi executado. Exemplo: 'rj-iplanrio'."
+        data_tests:
+          - not_null:
+              name: jobs_historico__project_id__not_null
+              severity: error
+
+      - name: job_id
+        description: "Identificador único do job no BigQuery, utilizado para rastreamento e auditoria. Exemplo: 'job_1234567890abcdef'."
+        data_tests:
+          - unique:
+              name: jobs_historico__job_id__unique
+              severity: error
+          - not_null:
+              name: jobs_historico__job_id__not_null
+              severity: error
+
+      - name: user_email
+        description: "E-mail do usuário ou conta de serviço responsável pela execução do job. Exemplo: 'usuario@iplanrio.rj.gov.br'. Pode ser nulo em execuções automáticas."
+        data_tests:
+          - not_null:
+              name: jobs_historico__user_email__not_null
+              severity: warn
+
+      - name: job_type
+        description: "Tipo do job executado (ex: QUERY, LOAD, EXPORT, etc). Indica a natureza da operação realizada no BigQuery."
+        data_tests:
+          - not_null:
+              name: jobs_historico__job_type__not_null
+              severity: error
+
+      - name: query
+        description: "Consulta SQL executada pelo job, quando aplicável. Pode ser nulo para jobs que não envolvem SQL diretamente (ex: LOAD, EXPORT)."
+        data_tests: []
+
+      - name: state
+        description: "Status final do job (ex: DONE, PENDING, RUNNING, FAILED). Indica o resultado da execução."
+        data_tests:
+          - not_null:
+              name: jobs_historico__state__not_null
+              severity: error
+
+      - name: destination_project_id
+        description: "ID do projeto de destino dos resultados do job, quando aplicável. Exemplo: 'rj-iplanrio'. Pode ser nulo para jobs sem destino definido."
+        data_tests: []
+
+      - name: destination_dataset_id
+        description: "Dataset de destino dos resultados do job, quando aplicável. Exemplo: 'meu_dataset'. Pode ser nulo."
+        data_tests: []
+
+      - name: destination_table_id
+        description: "Tabela de destino dos resultados do job, quando aplicável. Exemplo: 'minha_tabela'. Pode ser nulo."
+        data_tests: []
+
+      - name: error_result
+        description: "Informação sobre erro do job, quando houver. Estrutura JSON com detalhes do erro. Nulo se o job foi bem-sucedido."
+        data_tests: []
+
+      - name: creation_time
+        description: "Data e hora de criação do job (horário UTC). Exemplo: '2024-04-01T12:34:56Z'."
+        data_tests:
+          - not_null:
+              name: jobs_historico__creation_time__not_null
+              severity: error
+
+      - name: end_time
+        description: "Data e hora de término do job (horário UTC). Exemplo: '2024-04-01T12:35:10Z'. Pode ser nulo se o job ainda está em execução."
+        data_tests: []
+
+      - name: statement_type
+        description: "Tipo de statement SQL executado (ex: SELECT, INSERT, UPDATE, DML, DDL). Pode ser nulo para jobs não SQL."
+        data_tests: []
+
+      - name: total_bytes_processed
+        description: "Total de bytes processados pelo job. Valor inteiro em bytes. Exemplo: 1048576 para 1 MiB."
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: jobs_historico__total_bytes_processed__positive
+              min_value: 0
+              severity: error
+
+      - name: total_bytes_billed
+        description: "Total de bytes faturados pelo job. Valor inteiro em bytes. Exemplo: 1048576 para 1 MiB."
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: jobs_historico__total_bytes_billed__positive
+              min_value: 0
+              severity: error
+
+      - name: data_faturamento
+        description: "Data de faturamento do job (base para partição e auditoria). Formato: 'YYYY-MM-DD'. Pode ser NULL para jobs que falharam ou ainda estão em execução."
+        data_tests:
+          - not_null:
+              name: jobs_historico__data_faturamento__not_null
+              severity: warn

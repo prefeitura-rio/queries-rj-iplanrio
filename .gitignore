@@ -38,3 +38,7 @@ desktop.ini
 *.temp
 .qodo
 dbt_internal_packages/
+
+#wsl
+**/*.Identifier
+

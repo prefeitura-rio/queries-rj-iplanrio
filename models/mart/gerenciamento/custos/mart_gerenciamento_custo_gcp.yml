@@ -1,0 +1,143 @@
+version: 2
+
+models:
+  - name: mart_gerenciamento_custo_gcp
+    description: "Tabela mart incremental que detalha os custos do Google Cloud Platform (GCP) por projeto, serviço, SKU e período de uso, incluindo descontos, agrupamentos e informações de localização. Cada linha representa um registro de uso e custo do GCP, facilitando análises financeiras, auditorias e otimização de recursos."
+    config:
+      schema: gerenciamento_custos
+      alias: custo_gcp
+
+    columns:
+      - name: billing_account_id
+        description: "ID da conta de faturamento do GCP."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_custo_gcp__billing_account_id__not_null
+              severity: error
+
+      - name: orgao
+        description: "Órgão classificado a partir do projeto, para agrupamento e análise de custos."
+        data_type: string
+        quote: true
+
+      - name: project_id
+        description: "ID do projeto GCP. Pode ser NULL para recursos não atribuídos a projetos específicos."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_custo_gcp__project_id__not_null
+              severity: warn
+
+      - name: project_name
+        description: "Nome do projeto GCP."
+        data_type: string
+        quote: true
+
+      - name: project_number
+        description: "Número do projeto GCP."
+        data_type: string
+        quote: true
+
+      - name: service_id
+        description: "ID do serviço GCP."
+        data_type: string
+        quote: true
+
+      - name: service_description
+        description: "Descrição do serviço GCP."
+        data_type: string
+        quote: true
+
+      - name: sku_id
+        description: "ID do SKU do serviço."
+        data_type: string
+        quote: true
+
+      - name: sku_description
+        description: "Descrição do SKU do serviço."
+        data_type: string
+        quote: true
+
+      - name: usage_start_time
+        description: "Data e hora de início do uso do recurso."
+        data_type: timestamp
+
+      - name: usage_end_time
+        description: "Data e hora de término do uso do recurso."
+        data_type: timestamp
+
+      - name: cost
+        description: "Custo bruto do uso do recurso em dólares americanos (USD). Valores negativos representam créditos ou ajustes."
+        data_type: float
+
+      - name: desconto_em_reais
+        description: "Valor total de créditos/descontos aplicados (em reais, valor negativo)."
+        data_type: float
+
+      - name: custo_liquido
+        description: "Custo líquido do uso do recurso, considerando descontos/créditos (em USD)."
+        data_type: float
+
+      - name: cost_at_effective_price_default
+        description: "Custo calculado pelo preço efetivo padrão do GCP."
+        data_type: float
+
+      - name: cost_at_list_consumption_model
+        description: "Custo calculado pelo preço de lista do modelo de consumo."
+        data_type: float
+
+      - name: location
+        description: "Localização do recurso (região ou zona)."
+        data_type: string
+        quote: true
+
+      - name: country
+        description: "País da localização do recurso."
+        data_type: string
+        quote: true
+
+      - name: region
+        description: "Região do recurso no GCP."
+        data_type: string
+        quote: true
+
+      - name: zone
+        description: "Zona do recurso no GCP."
+        data_type: string
+        quote: true
+
+      - name: resource_name
+        description: "Nome do recurso utilizado."
+        data_type: string
+        quote: true
+
+      - name: agrupamento_resource_name
+        description: "Agrupamento categorizado do nome do recurso, para facilitar análises."
+        data_type: string
+        quote: true
+
+      - name: resource_global_name
+        description: "Nome global do recurso no GCP."
+        data_type: string
+        quote: true
+
+      - name: export_time
+        description: "Data e hora de exportação do registro de faturamento."
+        data_type: timestamp
+
+      - name: labels
+        description: "Labels associados ao recurso, em formato struct ou JSON."
+        data_type: string
+        quote: true
+
+      - name: tags
+        description: "Tags associadas ao recurso, em formato struct ou JSON."
+        data_type: string
+        quote: true
+
+      - name: price
+        description: "Preço unitário do recurso utilizado."
+        data_type: float
