@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio   # opcional se igual ao target
+    schema: brutos_taxirio_staging
+    tables:
+      - name: cities
+        description: "Source table for city information"
+      - name: discounts
+        description: "Source table for discount information"
+      - name: drivers
+        description: "Source table for driver information"
+      - name: metricsdriverunoccupieds
+        description: "Source table for metricsdriverunoccupieds information"
+      - name: passengers
+        description: "Source table for passenger information"
+      - name: paymentmethods
+        description: "Source table for paymentmethods information"
+      - name: races
+        description: "Source table for races information"
+      - name: rankingraces
+        description: "Source table for rankingraces information"
+      - name: users
+        description: "Source table for users information" 
