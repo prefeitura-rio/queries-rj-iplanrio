@@ -34,7 +34,7 @@
 {% set projetos = [
     'rj-cetrio',
     'rj-cetrio-dev',
-    'rj-chatbot',""
+    'rj-chatbot',
     'rj-chatbot-dev',
     'rj-civitas',
     'rj-civitas-dev',
