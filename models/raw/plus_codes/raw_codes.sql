@@ -18,8 +18,68 @@ with
         from {{ source('plus_codes', 'grid') }}
     ),
 
+
+    equipamentos as (
+        select *
+        from {{ ref("raw_equipamentos") }}
+    ),
+
+    equipamentos_proximidade as (
+        select *
+        from equipamentos
+        where fonte not in ('{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}')
+    ),
+    
+    equipamentos_territorio as (
+        select *
+        from equipamentos e
+        where fonte in ('{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}')
+    ),
+
+     pair_territorio as (
+        select 
+            g.plus8,
+            g.centro_geometry,
+            e.secretaria_responsavel,
+            e.categoria,
+        (
+            select as struct
+                    e.plus8,
+                    e.plus11,
+                    e.id_equipamento,
+                    e.geometry,
+                    e.secretaria_responsavel,
+                    e.categoria,
+                    e.use,
+                    e.tipo_equipamento,
+                    e.nome_oficial,
+                    e.nome_popular,
+                    e.plus10,
+                    e.plus6,
+                    e.latitude,
+                    e.longitude,
+                    e.endereco,
+                    e.bairro,
+                    e.contato,
+                    e.ativo,
+                    e.aberto_ao_publico,
+                    e.horario_funcionamento,
+                    e.fonte,
+                    e.vigencia_inicio,
+                    e.vigencia_fim,
+                    e.metadata,
+                    e.updated_at,
+                    CAST(NULL AS FLOAT64) as distancia_metros,
+        ) as equip_full
+        from grid g
+        left join equipamentos_territorio e
+            on ST_CONTAINS(e.geometry, g.centro_geometry)
+        WHERE categoria is not null
+    ),
+
+
     -- 2) Pares grid × equipamento dentro do raio
-    pairs as (
+    pairs_proximidade as (
         select
             g.plus8,
             g.centro_geometry,
@@ -29,13 +89,38 @@ with
             -- Struct contendo TODA a linha do equipamento + distância
             (
                 select as struct
-                    e.*,  -- todos os campos de equipamentos_geo
-                    st_distance(e.geometry, g.centro_geometry) as distancia_metros
+                        e.plus8,
+                        e.plus11,
+                        e.id_equipamento,
+                        e.geometry,
+                        e.secretaria_responsavel,
+                        e.categoria,
+                        e.use,
+                        e.tipo_equipamento,
+                        e.nome_oficial,
+                        e.nome_popular,
+                        e.plus10,
+                        e.plus6,
+                        e.latitude,
+                        e.longitude,
+                        e.endereco,
+                        e.bairro,
+                        e.contato,
+                        e.ativo,
+                        e.aberto_ao_publico,
+                        e.horario_funcionamento,
+                        e.fonte,
+                        e.vigencia_inicio,
+                        e.vigencia_fim,
+                        e.metadata,
+                        e.updated_at,
+                        st_distance(e.geometry, g.centro_geometry) as distancia_metros
             ) as equip_full
         from grid as g
         join
-            {{ ref("raw_equipamentos") }} as e
+            equipamentos_proximidade as e
             on st_dwithin(e.geometry, g.centro_geometry, 100000000)
+        
     ),
 
     -- 3) Rankeia por distância
@@ -51,7 +136,17 @@ with
                 partition by plus8, secretaria_responsavel, categoria
                 order by equip_full.distancia_metros
             ) as rn
-        from pairs
+        from pairs_proximidade
+        union all
+        select
+            plus8,
+            categoria,
+            secretaria_responsavel,
+            equip_full.distancia_metros as distancia_metros,
+            centro_geometry,
+            equip_full,
+            1 as rn
+        from pair_territorio
     )
 
 -- 4) Agrega os 3 mais próximos
@@ -65,3 +160,62 @@ select
 from ranqueado
 where rn <= 1
 group by plus8, secretaria_responsavel, categoria
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# WITH  grid as (
+        select plus8, geometry as centro_geometry
+        from `rj-iplanrio`.`plus_codes`.`grid`
+    ),
+
+    equipamentos as (
+        select *
+        from `rj-iplanrio`.`plus_codes`.`equipamentos`
+    ),
+
+
+        equipamentos_territorio as (
+        select *
+        from `rj-iplanrio`.`plus_codes`.`equipamentos` e
+        where fonte in ('`rj-iplanrio`.`brutos_equipamentos`.`saude_equipe_familia`')
+        ),
+
+        tb as (
+          select 
+            g.plus8,
+            g.centro_geometry,
+            e.secretaria_responsavel,
+            e.categoria,
+            e.id_equipamento,
+        (
+            select as struct
+                e.*
+        ) as equip_full
+        from grid g
+        left join equipamentos_territorio e
+            on ST_CONTAINS(e.geometry, g.centro_geometry)
+        )
+        
+SELECT 
+  e.*
+FROM equipamentos_territorio e
+LEFT JOIN tb t
+on  #}

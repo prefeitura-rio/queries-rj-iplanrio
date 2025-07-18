@@ -7,3 +7,5 @@ sources:
     tables:
       - name: escolas
       - name: culturais_datario
+      - name: unidades_saude_poligonos_arcgis
+      - name: unidades_saude_arcgis

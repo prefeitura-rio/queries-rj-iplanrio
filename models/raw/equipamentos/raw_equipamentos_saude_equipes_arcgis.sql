@@ -1,12 +1,21 @@
+
+{{
+    config(
+        alias="saude_equipe_familia",
+        schema="brutos_equipamentos",
+        materialized="table",
+    )
+}}
+
 with base as (
     SELECT
         CAP as cap,
         CNES as cnes,
         COD_Equipe as id_equipe,
         COD_INE as id_ine,
-        NOME_FANTASIA as nome,
-        AP as ap,
-        TIPO_UNIDADE_APS as tipo_unidade_aps,
+        NOME_FANTASIA as nome_unidade,
+        AP as area_planejamento,
+        TIPO_UNIDADE_APS as categoria,
         LOGRADOURO as logradouro,
         NUMERO as numero,
         COMPLEMENTO as complemento,
@@ -35,9 +44,19 @@ with base as (
         INSTAGRAM as instagram,
         TWITTER as twitter,
         ST_GEOGFROMTEXT(geometry, make_valid => TRUE) as geometry
-    FROM `rj-iplanrio.brutos_equipamentos_staging.unidades_saude_poligonos_arcgis`
+    FROM {{ source("brutos_equipamentos_staging", "unidades_saude_poligonos_arcgis") }}
 )
 
-SELECT
-    *
+SELECT 
+  area_planejamento,
+  'EQUIPE DA FAMILIA' as categoria,
+  nome_area,
+  id_equipe,
+  id_ine,
+  tipo_equipe,
+  medicos,
+  enfermeiros,
+  telefone_equipe as telefone,
+  geometry
 FROM base
+
