@@ -1,0 +1,126 @@
+version: 2
+
+models:
+  - name: mart_gerenciamento_custo_bigquery_jobs
+    description: "Modelo que detalha os custos de execução do BigQuery por job, incluindo processamento, faturamento e métricas de uso. Cada linha representa um job executado, com informações detalhadas para análise de custos, auditoria e otimização do uso do BigQuery."
+    config:
+      schema: gerenciamento_custos
+      alias: mart_gerenciamento_custo_bigquery_jobs
+    columns:
+      - name: id_job
+        description: "Identificador único do job no BigQuery."
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: mart_gerenciamento_custo_bigquery_jobs__id_job__unique
+              severity: error
+          - not_null:
+              name: mart_gerenciamento_custo_bigquery_jobs__id_job__not_null
+              severity: error
+
+      - name: projeto_id
+        description: "ID do projeto GCP onde o job foi executado."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_gerenciamento_custo_bigquery_jobs__projeto_id__not_null
+              severity: error
+
+      - name: origem_projeto
+        description: "Projeto GCP de origem da execução do job."
+        data_type: string
+        quote: true
+
+      - name: orgao
+        description: "Órgão extraído do ID do projeto, utilizado para agrupamento e análise de custos por órgão."
+        data_type: string
+        quote: true
+
+      - name: orgao_tratado
+        description: "Órgão tratado/classificado a partir do projeto, para agrupamentos padronizados."
+        data_type: string
+        quote: true
+
+      - name: ano
+        description: "Ano de execução do job, extraído da data de criação."
+        data_type: integer
+
+      - name: datahora_criacao
+        description: "Data e hora de criação do job (UTC)."
+        data_type: timestamp
+
+      - name: data_faturamento
+        description: "Data de faturamento do job (formato: 'YYYY-MM-DD'). Utilizada para partição e análise temporal dos custos."
+        data_type: date
+
+      - name: estado_job
+        description: "Estado final do job no BigQuery (ex: DONE, FAILED, etc)."
+        data_type: string
+        quote: true
+
+      - name: tipo_job
+        description: "Tipo do job executado (QUERY, LOAD, etc)."
+        data_type: string
+        quote: true
+
+      - name: consulta_sql
+        description: "Consulta SQL executada no job. Útil para auditoria e rastreabilidade."
+        data_type: string
+        quote: true
+
+      - name: job_faturavel
+        description: "Indica se o job gerou custo faturável (true/false)."
+        data_type: boolean
+
+      - name: eh_service_account
+        description: "Indica se o job foi executado por uma service account (SIM/NÃO)."
+        data_type: string
+        quote: true
+
+      - name: identificador_usuario
+        description: "Identificador do usuário (ou service account) que executou o job."
+        data_type: string
+        quote: true
+
+      - name: identificador_completo
+        description: "Identificador extraído do e-mail do usuário que executou o job."
+        data_type: string
+        quote: true
+
+      - name: destino.projeto_id
+        description: "ID do projeto de destino."
+        data_type: string
+        quote: true
+
+      - name: destino.dataset_id
+        description: "ID do dataset de destino."
+        data_type: string
+        quote: true
+
+      - name: destino.tabela_id
+        description: "ID da tabela de destino."
+        data_type: string
+        quote: true
+
+      - name: tib_processado_quantidade
+        description: "Quantidade de TiB (Tebibytes) processados pelo job."
+        data_type: float
+
+      - name: uso_estimado_tib_quantidade
+        description: "Quantidade estimada de TiB faturados pelo job."
+        data_type: float
+
+      - name: custo_estimado_valor
+        description: "Custo estimado em dólares americanos (USD) do job, calculado com base no volume faturado e multiplicador de preço vigente."
+        data_type: float
+
+      - name: custo_estimado_reais
+        description: "Custo estimado do job convertido para reais (BRL), considerando a taxa de câmbio diária."
+        data_type: float
+
+      - name: resultado_erro
+        description: "Mensagem de erro retornada pelo BigQuery, caso o job tenha falhado."
+        data_type: string
+        quote: true
