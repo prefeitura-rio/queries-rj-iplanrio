@@ -1,5 +1,5 @@
 iplan:
-  target: ci
+  target: dev
   outputs:
     dev:
       dataset: dbt
