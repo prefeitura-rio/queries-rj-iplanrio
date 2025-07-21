@@ -64,7 +64,6 @@ Especifica qual branch analisar. Se não fornecida, o script usa a branch atual.
 Especifica o ambiente de destino dbt para construção e geração de documentação. Valores comuns incluem:
 - `dev` (padrão)
 - `staging`
-- `prod`
 
 ```bash
 ./tools/recce.sh --target staging
@@ -144,7 +143,7 @@ O script inclui várias verificações de erro:
 ## Dicas e Melhores Práticas
 
 1. **Use dry-run primeiro**: Avalie as mudanças na estrutura da tabela com `--dry-run` antes de executar o fluxo completo
-2. **Escolha alvos apropriados**: Use `dev` para desenvolvimento, `staging` para teste, `prod` para ambientes similares à produção
+2. **Escolha alvos apropriados**: Use `dev` para desenvolvimento, `staging` para homologação
 3. **Mantenha a master atualizada**: Garanta que sua branch master esteja atualizada para comparações precisas
 4. **Monitore a saída**: Preste atenção na saída colorida para informações de status
 5. **Use o Recce efetivamente**: Uma vez que o servidor inicie, use a interface web para analisar mudanças
