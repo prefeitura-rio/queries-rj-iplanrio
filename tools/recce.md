@@ -4,17 +4,6 @@
 
 O script `recce.sh` é uma ferramenta utilitária projetada para otimizar o fluxo de trabalho de desenvolvimento dbt com integração Recce. Ele automatiza o processo de comparação de modelos dbt entre diferentes branches e ambientes, facilitando a identificação de mudanças e seu impacto.
 
-## Propósito
-
-Este script executa o seguinte fluxo de trabalho:
-
-1. **Muda para a branch master** e baixa as últimas alterações
-2. **Gera artefatos base** do ambiente de produção
-3. **Muda para a branch de destino** (branch atual por padrão)
-4. **Constrói modelos modificados** usando comparação de estado dbt
-5. **Gera documentação** para o ambiente atual
-6. **Inicia o servidor Recce** para comparação visual
-
 ## Pré-requisitos
 
 - Repositório Git com projeto dbt
@@ -90,45 +79,6 @@ Executa o script em modo de teste, mostrando o que seria executado sem realmente
 ./tools/recce.sh -b feature-branch --dry-run
 ```
 
-## Etapas do Fluxo de Trabalho
-
-### 1. Configuração da Branch Master
-```bash
-git checkout master
-git pull
-```
-Garante que a comparação base seja contra a branch master mais recente.
-
-### 2. Geração de Artefatos Base
-```bash
-dbt docs generate --target prod --target-path target-base/
-```
-Cria artefatos do ambiente de produção como linha de base para comparação.
-
-### 3. Mudança para Branch de Destino
-```bash
-git checkout "$BRANCH_NAME"
-```
-Muda para a branch especificada (ou branch atual se não especificada).
-
-### 4. Construção de Modelos
-```bash
-dbt build -s "state:modified+" --target $TARGET_ENV --defer --full-refresh --state target-base/
-```
-Constrói apenas os modelos que foram modificados em comparação com o estado base.
-
-### 5. Geração de Documentação
-```bash
-dbt docs generate --target $TARGET_ENV
-```
-Gera documentação para o ambiente atual.
-
-### 6. Servidor Recce
-```bash
-recce server
-```
-Inicia o servidor Recce para comparação visual das mudanças.
-
 ## Exemplos
 
 ### Exemplo 1: Fluxo de Trabalho Rápido de Desenvolvimento
@@ -170,6 +120,17 @@ Isso irá:
 - Usar ambiente de destino `dev`
 - Construir modelos modificados
 - Iniciar servidor Recce
+
+## Fluxo de Trabalho
+
+Este script executa o seguinte fluxo de trabalho:
+
+1. **Muda para a branch master** e baixa as últimas alterações
+2. **Gera artefatos base** do ambiente de produção
+3. **Muda para a branch de destino** (branch atual por padrão)
+4. **Constrói modelos modificados** usando comparação de estado dbt
+5. **Gera documentação** para o ambiente atual
+6. **Inicia o servidor Recce** para comparação visual
 
 ## Tratamento de Erros
 
