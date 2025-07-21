@@ -249,11 +249,13 @@ with
             coalesce(d14.version, d8.version) as version,
             
             -- Airbyte fields
-            coalesce(d14.airbyte.raw_id, d8.airbyte.raw_id) as airbyte_raw_id,
-            coalesce(d14.airbyte.extracted_at, d8.airbyte.extracted_at) as airbyte_extracted_at,
-            coalesce(d14.airbyte.generation_id, d8.airbyte.generation_id) as airbyte_generation_id,
-            coalesce(d14.airbyte.changes, d8.airbyte.changes) as airbyte_changes,
-            coalesce(d14.airbyte.sync_id, d8.airbyte.sync_id) as airbyte_sync_id
+            struct(
+                coalesce(d14.airbyte.raw_id, d8.airbyte.raw_id) as raw_id,
+                coalesce(d14.airbyte.extracted_at, d8.airbyte.extracted_at) as extracted_at,
+                coalesce(d14.airbyte.generation_id, d8.airbyte.generation_id) as generation_id,
+                coalesce(d14.airbyte.changes, d8.airbyte.changes) as changes,
+                coalesce(d14.airbyte.sync_id, d8.airbyte.sync_id) as sync_id
+            ) as airbyte
             
         from dedup_14 as d14
         left join dedup_8 as d8 on d14.cnpj_8 = d8.cnpj_8
