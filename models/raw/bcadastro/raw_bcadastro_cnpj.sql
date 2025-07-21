@@ -93,11 +93,7 @@ with
             version,
 
             -- Outros
-            airbyte_raw_id,
-            airbyte_extracted_at,
-            airbyte_generation_id,
-            airbyte_changes,
-            airbyte_sync_id
+            airbyte
 
         from cnpj_base
     ),
@@ -503,11 +499,7 @@ with
             t.version,
 
             -- Outros
-            t.airbyte_raw_id,
-            t.airbyte_extracted_at,
-            t.airbyte_generation_id,
-            t.airbyte_changes,
-            t.airbyte_sync_id,
+            t.airbyte,
 
             -- Joins
             md.municipio_nome as endereco_municipio_nome,
@@ -662,13 +654,8 @@ with
             t.language,
 
             -- Outros
-            struct(
-                t.airbyte_raw_id,
-                t.airbyte_extracted_at,
-                t.airbyte_generation_id,
-                t.airbyte_changes,
-                t.airbyte_sync_id
-            ) as airbyte,
+            t.airbyte,
+            
             -- descricoes
             {{ proper_br("tipo_orgao_registro_descricao") }}
             as tipo_orgao_registro_descricao,
