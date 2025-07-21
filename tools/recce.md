@@ -83,7 +83,7 @@ Especifica o ambiente de destino dbt para construção e geração de documenta�
 ```
 
 #### `--dry-run`
-Executa o script em modo de teste, mostrando o que seria executado sem realmente executar o comando dbt build. Útil para testar configurações.
+Executa o script em modo de teste, mostrando o que seria executado sem realmente executar o comando dbt build. Útil para avaliar mudanças na estrutura da tabela.
 
 ```bash
 ./tools/recce.sh --dry-run
@@ -182,7 +182,7 @@ O script inclui várias verificações de erro:
 
 ## Dicas e Melhores Práticas
 
-1. **Use dry-run primeiro**: Teste sua configuração com `--dry-run` antes de executar o fluxo completo
+1. **Use dry-run primeiro**: Avalie as mudanças na estrutura da tabela com `--dry-run` antes de executar o fluxo completo
 2. **Escolha alvos apropriados**: Use `dev` para desenvolvimento, `staging` para teste, `prod` para ambientes similares à produção
 3. **Mantenha a master atualizada**: Garanta que sua branch master esteja atualizada para comparações precisas
 4. **Monitore a saída**: Preste atenção na saída colorida para informações de status
