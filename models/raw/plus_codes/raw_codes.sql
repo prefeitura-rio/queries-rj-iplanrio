@@ -30,54 +30,6 @@ with
         where fonte not in ('{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}')
     ),
     
-    equipamentos_territorio as (
-        select *
-        from equipamentos e
-        where fonte in ('{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}')
-    ),
-
-     pair_territorio as (
-        select 
-            g.plus8,
-            g.centro_geometry,
-            e.secretaria_responsavel,
-            e.categoria,
-        (
-            select as struct
-                    e.plus8,
-                    e.plus11,
-                    e.id_equipamento,
-                    e.geometry,
-                    e.secretaria_responsavel,
-                    e.categoria,
-                    e.use,
-                    e.tipo_equipamento,
-                    e.nome_oficial,
-                    e.nome_popular,
-                    e.plus10,
-                    e.plus6,
-                    e.latitude,
-                    e.longitude,
-                    e.endereco,
-                    e.bairro,
-                    e.contato,
-                    e.ativo,
-                    e.aberto_ao_publico,
-                    e.horario_funcionamento,
-                    e.fonte,
-                    e.vigencia_inicio,
-                    e.vigencia_fim,
-                    e.metadata,
-                    e.updated_at,
-                    CAST(NULL AS FLOAT64) as distancia_metros,
-        ) as equip_full
-        from grid g
-        left join equipamentos_territorio e
-            on ST_CONTAINS(e.geometry, g.centro_geometry)
-        WHERE categoria is not null
-    ),
-
-
     -- 2) Pares grid × equipamento dentro do raio
     pairs_proximidade as (
         select
@@ -137,16 +89,6 @@ with
                 order by equip_full.distancia_metros
             ) as rn
         from pairs_proximidade
-        union all
-        select
-            plus8,
-            categoria,
-            secretaria_responsavel,
-            equip_full.distancia_metros as distancia_metros,
-            centro_geometry,
-            equip_full,
-            1 as rn
-        from pair_territorio
     )
 
 -- 4) Agrega os 3 mais próximos
