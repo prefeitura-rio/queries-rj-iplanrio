@@ -26,52 +26,52 @@ with
             nullif(json_value(doc, '$.bairro'), '') as bairro,
             cast(
                 nullif(json_value(doc, '$.capitalSocial'), '') as int64
-            ) as capitalSocial,
+            ) as capitalsocial,
             nullif(json_value(doc, '$.cep'), '') as cep,
             cast(
                 cast(
                     nullif(json_value(doc, '$.classificacaoCrcContadorPF'), '') as int64
                 ) as string
-            ) as classificacaoCrcContadorPF,
+            ) as classificacaocrccontadorpf,
             cast(
                 cast(
                     nullif(json_value(doc, '$.classificacaoCrcContadorPJ'), '') as int64
                 ) as string
-            ) as classificacaoCrcContadorPJ,
+            ) as classificacaocrccontadorpj,
             nullif(json_value(doc, '$.cnae'), '') as cnae,
             nullif(json_value(doc, '$.cnaeFiscal'), '') as cnaefiscal,
             nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnaesecundarias,
             nullif(json_value(doc, '$.cnpj'), '') as cnpj,
-            nullif(json_value(doc, '$.cnpjSucedida'), '') as cnpjSucedida,
-            nullif(json_value(doc, '$.codMunDomic'), '') as codMunDomic,
-            nullif(json_value(doc, '$.codMunNat'), '') as codMunNat,
-            nullif(json_value(doc, '$.codNatOcup'), '') as codNatOcup,
-            nullif(json_value(doc, '$.codOcup'), '') as codOcup,
-            nullif(json_value(doc, '$.codPaisNac'), '') as codPaisNac,
-            nullif(json_value(doc, '$.codPaisRes'), '') as codPaisRes,
-            nullif(json_value(doc, '$.codSexo'), '') as codSexo,
-            nullif(json_value(doc, '$.codSitCad'), '') as codSitCad,
-            nullif(json_value(doc, '$.codUA'), '') as codUA,
-            nullif(json_value(doc, '$.codigoMunicipio'), '') as codigoMunicipio,
-            nullif(json_value(doc, '$.codigoPais'), '') as codigoPais,
+            nullif(json_value(doc, '$.cnpjSucedida'), '') as cnpjsucedida,
+            nullif(json_value(doc, '$.codMunDomic'), '') as codmundomic,
+            nullif(json_value(doc, '$.codMunNat'), '') as codmunnat,
+            nullif(json_value(doc, '$.codNatOcup'), '') as codnatocup,
+            nullif(json_value(doc, '$.codOcup'), '') as codocup,
+            nullif(json_value(doc, '$.codPaisNac'), '') as codpaisnac,
+            nullif(json_value(doc, '$.codPaisRes'), '') as codpaisres,
+            nullif(json_value(doc, '$.codSexo'), '') as codsexo,
+            nullif(json_value(doc, '$.codSitCad'), '') as codsitcad,
+            nullif(json_value(doc, '$.codUA'), '') as codua,
+            nullif(json_value(doc, '$.codigoMunicipio'), '') as codigomunicipio,
+            nullif(json_value(doc, '$.codigoPais'), '') as codigopais,
             nullif(json_value(doc, '$.complemento'), '') as complemento,
-            nullif(json_value(doc, '$.contadorPF'), '') as contadorPF,
-            nullif(json_value(doc, '$.contadorPJ'), '') as contadorPJ,
-            nullif(json_value(doc, '$.cpfResponsavel'), '') as cpfResponsavel,
-            nullif(json_value(doc, '$.dddTelefone1'), '') as dddTelefone1,
-            nullif(json_value(doc, '$.dddTelefone2'), '') as dddTelefone2,
+            nullif(json_value(doc, '$.contadorPF'), '') as contadorpf,
+            nullif(json_value(doc, '$.contadorPJ'), '') as contadorpj,
+            nullif(json_value(doc, '$.cpfResponsavel'), '') as cpfresponsavel,
+            nullif(json_value(doc, '$.dddTelefone1'), '') as dddtelefone1,
+            nullif(json_value(doc, '$.dddTelefone2'), '') as dddtelefone2,
             safe.parse_date(
                 '%Y%m%d', nullif(json_value(doc, '$.dataInclusaoResponsavel'), '')
-            ) as dataInclusaoResponsavel,
+            ) as datainclusaoresponsavel,
             safe.parse_date(
                 '%Y%m%d', nullif(json_value(doc, '$.dataInicioAtividade'), '')
-            ) as dataInicioAtividade,
+            ) as datainicioatividade,
             safe.parse_date(
                 '%Y%m%d', nullif(json_value(doc, '$.dataSituacaoCadastral'), '')
-            ) as dataSituacaoCadastral,
+            ) as datasituacaocadastral,
             safe.parse_date(
                 '%Y%m%d', nullif(json_value(doc, '$.dataSituacaoEspecial'), '')
-            ) as dataSituacaoEspecial,
+            ) as datasituacaoespecial,
             nullif(json_value(doc, '$.email'), '') as email,
             case
                 when regexp_contains(json_value(doc, '$.enteFederativo'), r'^[0-9]+$')
@@ -82,61 +82,61 @@ with
                         ) as string
                     )
                 else upper(nullif(json_value(doc, '$.enteFederativo'), ''))
-            end as enteFederativo,
-            json_extract_array(doc, '$.formasAtuacao') as formasAtuacao,
+            end as entefederativo,
+            json_extract_array(doc, '$.formasAtuacao') as formasatuacao,
             cast(
                 cast(
                     nullif(json_value(doc, '$.indicadorMatriz'), '') as int64
                 ) as string
-            ) as indicadorMatriz,
+            ) as indicadormatriz,
             nullif(json_value(doc, '$.language'), '') as language,
             nullif(json_value(doc, '$.logradouro'), '') as logradouro,
             cast(
                 cast(nullif(json_value(doc, '$.motivoSituacao'), '') as int64) as string
-            ) as motivoSituacao,
+            ) as motivosituacao,
             cast(
                 cast(
                     nullif(json_value(doc, '$.naturezaJuridica'), '') as int64
                 ) as string
-            ) as naturezaJuridica,
+            ) as naturezajuridica,
             nullif(json_value(doc, '$.nire'), '') as nire,
-            nullif(json_value(doc, '$.nomeCidadeExterior'), '') as nomeCidadeExterior,
-            nullif(json_value(doc, '$.nomeEmpresarial'), '') as nomeEmpresarial,
-            nullif(json_value(doc, '$.nomeFantasia'), '') as nomeFantasia,
+            nullif(json_value(doc, '$.nomeCidadeExterior'), '') as nomecidadeexterior,
+            nullif(json_value(doc, '$.nomeEmpresarial'), '') as nomeempresarial,
+            nullif(json_value(doc, '$.nomeFantasia'), '') as nomefantasia,
             nullif(json_value(doc, '$.numero'), '') as numero,
             cast(
                 cast(nullif(json_value(doc, '$.porteEmpresa'), '') as int64) as string
-            ) as porteEmpresa,
+            ) as porteempresa,
             cast(
                 cast(
                     nullif(json_value(doc, '$.qualificacaoResponsavel'), '') as int64
                 ) as string
-            ) as qualificacaoResponsavel,
+            ) as qualificacaoresponsavel,
             nullif(
                 json_value(doc, '$.sequencialCrcContadorPF'), ''
-            ) as sequencialCrcContadorPF,
+            ) as sequencialcrccontadorpf,
             nullif(
                 json_value(doc, '$.sequencialCrcContadorPJ'), ''
-            ) as sequencialCrcContadorPJ,
+            ) as sequencialcrccontadorpj,
             cast(
                 cast(
                     nullif(json_value(doc, '$.situacaoCadastral'), '') as int64
                 ) as string
-            ) as situacaoCadastral,
-            nullif(json_value(doc, '$.situacaoEspecial'), '') as situacaoEspecial,
+            ) as situacaocadastral,
+            nullif(json_value(doc, '$.situacaoEspecial'), '') as situacaoespecial,
             json_extract_array(doc, '$.socios') as socios,
             json_extract_array(doc, '$.sucessoes') as sucessoes,
             nullif(json_value(doc, '$.telefone1'), '') as telefone1,
             nullif(json_value(doc, '$.telefone2'), '') as telefone2,
             nullif(json_value(doc, '$.timestamp'), '') as timestamp,
-            nullif(json_value(doc, '$.tipoLogradouro'), '') as tipoLogradouro,
-            nullif(json_value(doc, '$.tipoOrgaoRegistro'), '') as tipoOrgaoRegistro,
-            json_extract_array(doc, '$.tiposUnidade') as tiposUnidade,
-            nullif(json_value(doc, '$.tipoCrcContadorPF'), '') as tipoCrcContadorPF,
-            nullif(json_value(doc, '$.tipoCrcContadorPJ'), '') as tipoCrcContadorPJ,
+            nullif(json_value(doc, '$.tipoLogradouro'), '') as tipologradouro,
+            nullif(json_value(doc, '$.tipoOrgaoRegistro'), '') as tipoorgaoregistro,
+            json_extract_array(doc, '$.tiposUnidade') as tiposunidade,
+            nullif(json_value(doc, '$.tipoCrcContadorPF'), '') as tipocrccontadorpf,
+            nullif(json_value(doc, '$.tipoCrcContadorPJ'), '') as tipocrccontadorpj,
             nullif(json_value(doc, '$.uf'), '') as uf,
-            nullif(json_value(doc, '$.ufCrcContadorPF'), '') as ufCrcContadorPF,
-            nullif(json_value(doc, '$.ufCrcContadorPJ'), '') as ufCrcContadorPJ,
+            nullif(json_value(doc, '$.ufCrcContadorPF'), '') as ufcrccontadorpf,
+            nullif(json_value(doc, '$.ufCrcContadorPJ'), '') as ufcrccontadorpj,
             nullif(
                 json_value(replace(to_json_string(doc), '~', ''), '$.version'), ''
             ) as version,
@@ -153,113 +153,159 @@ with
         from fonte
     ),
 
-    dedup as (
-        select
-            *,
-            -- Partition by cnpj
-            cast(cnpj as int64) as cnpj_particao,
+    -- separa as collections em tabelas diferentes
+    matriz as (
+        select * except (cnpj), cnpj as cnpj_matriz
         from fonte_parseada
+        where length(cnpj) = 8
+    ),
+    estabelecimento as (
+        select *, left(cnpj, 8) as cnpj_matriz
+        from fonte_parseada
+        where length(cnpj) = 14
+    ),
+    sucessao as (
+        select * from fonte_parseada where cnpj is null and cnpjsucedida is not null
+    ),
+
+    -- dedup das tabelas
+    dedup_matriz as (
+        select *
+        from matriz
         qualify
-            row_number() over (partition by cnpj order by airbyte.extracted_at desc) = 1
+            row_number() over (
+                partition by cnpj_matriz order by airbyte.extracted_at desc
+            )
+            = 1
     ),
 
-    -- FIX: trucamento de registros com 8 digitos que perderam os digitos depois da barra
-    --- relacao de cnpj com 14 digitos
-    dedup_14 as (select *, left(cnpj, 8) as cnpj_8 from dedup where length(cnpj) = 14),
-
-    -- relacao de cnpj com 8 digitos (perderam os digitos depois da barra)
-    dedup_8 as (select *, cnpj as cnpj_8 from dedup where length(cnpj) = 8),
-
-    -- cnpj com 8 digitos com mais de 1 registro de 14 digitos
-    cnpj_em_quarentena as (
-        select cnpj, cnpj_8 from dedup_14
-        where cnpj_8 in (
-            select cnpj_8 from dedup_14 group by cnpj_8 having count(*) > 1
-        )
-        order by cnpj
+    dedup_estabelecimento as (
+        select *
+        from estabelecimento
+        qualify
+            row_number() over (
+                partition by cnpj order by airbyte.extracted_at desc
+            )
+            = 1
     ),
 
-    merge_14_8 as (
+    dedup_sucessao as (
+        select *
+        from sucessao
+        qualify
+            row_number() over (
+                partition by cnpjSucedida order by airbyte.extracted_at desc
+            )
+            = 1
+    ),
+
+    merged as (
         select
-            d14.cnpj,
-            -- d8.cnpj_8,
-            coalesce(d14.bairro, d8.bairro) as bairro,
-            coalesce(d14.capitalSocial, d8.capitalSocial) as capitalSocial,
-            coalesce(d14.cep, d8.cep) as cep,
-            coalesce(d14.classificacaoCrcContadorPF, d8.classificacaoCrcContadorPF) as classificacaoCrcContadorPF,
-            coalesce(d14.classificacaoCrcContadorPJ, d8.classificacaoCrcContadorPJ) as classificacaoCrcContadorPJ,
-            coalesce(d14.cnae, d8.cnae) as cnae,
-            coalesce(d14.cnaeFiscal, d8.cnaeFiscal) as cnaeFiscal,
-            coalesce(d14.cnaeSecundarias, d8.cnaeSecundarias) as cnaeSecundarias,
-            coalesce(d14.cnpj_particao, d8.cnpj_particao) as cnpj_particao,
-            coalesce(d14.cnpjSucedida, d8.cnpjSucedida) as cnpjSucedida,
-            coalesce(d14.codMunDomic, d8.codMunDomic) as codMunDomic,
-            coalesce(d14.codMunNat, d8.codMunNat) as codMunNat,
-            coalesce(d14.codNatOcup, d8.codNatOcup) as codNatOcup,
-            coalesce(d14.codOcup, d8.codOcup) as codOcup,
-            coalesce(d14.codPaisNac, d8.codPaisNac) as codPaisNac,
-            coalesce(d14.codPaisRes, d8.codPaisRes) as codPaisRes,
-            coalesce(d14.codSexo, d8.codSexo) as codSexo,
-            coalesce(d14.codSitCad, d8.codSitCad) as codSitCad,
-            coalesce(d14.codUA, d8.codUA) as codUA,
-            coalesce(d14.codigoMunicipio, d8.codigoMunicipio) as codigoMunicipio,
-            coalesce(d14.codigoPais, d8.codigoPais) as codigoPais,
-            coalesce(d14.complemento, d8.complemento) as complemento,
-            coalesce(d14.contadorPF, d8.contadorPF) as contadorPF,
-            coalesce(d14.contadorPJ, d8.contadorPJ) as contadorPJ,
-            coalesce(d14.cpfResponsavel, d8.cpfResponsavel) as cpfResponsavel,
-            coalesce(d14.dddTelefone1, d8.dddTelefone1) as dddTelefone1,
-            coalesce(d14.dddTelefone2, d8.dddTelefone2) as dddTelefone2,
-            coalesce(d14.dataInclusaoResponsavel, d8.dataInclusaoResponsavel) as dataInclusaoResponsavel,
-            coalesce(d14.dataInicioAtividade, d8.dataInicioAtividade) as dataInicioAtividade,
-            coalesce(d14.dataSituacaoCadastral, d8.dataSituacaoCadastral) as dataSituacaoCadastral,
-            coalesce(d14.dataSituacaoEspecial, d8.dataSituacaoEspecial) as dataSituacaoEspecial,
-            coalesce(d14.email, d8.email) as email,
-            coalesce(d14.enteFederativo, d8.enteFederativo) as enteFederativo,
-            coalesce(d14.formasAtuacao, d8.formasAtuacao) as formasAtuacao,
-            coalesce(d14.indicadorMatriz, d8.indicadorMatriz) as indicadorMatriz,
-            coalesce(d14.language, d8.language) as language,
-            coalesce(d14.logradouro, d8.logradouro) as logradouro,
-            coalesce(d14.motivoSituacao, d8.motivoSituacao) as motivoSituacao,
-            coalesce(d14.naturezaJuridica, d8.naturezaJuridica) as naturezaJuridica,
-            coalesce(d14.nire, d8.nire) as nire,
-            coalesce(d14.nomeCidadeExterior, d8.nomeCidadeExterior) as nomeCidadeExterior,
-            coalesce(d8.nomeEmpresarial, d14.nomeEmpresarial) as nomeEmpresarial,
-            coalesce(d14.nomeFantasia, d8.nomeFantasia) as nomeFantasia,
-            coalesce(d14.numero, d8.numero) as numero,
-            coalesce(d14.porteEmpresa, d8.porteEmpresa) as porteEmpresa,
-            coalesce(d14.qualificacaoResponsavel, d8.qualificacaoResponsavel) as qualificacaoResponsavel,
-            coalesce(d14.sequencialCrcContadorPF, d8.sequencialCrcContadorPF) as sequencialCrcContadorPF,
-            coalesce(d14.sequencialCrcContadorPJ, d8.sequencialCrcContadorPJ) as sequencialCrcContadorPJ,
-            coalesce(d14.situacaoCadastral, d8.situacaoCadastral) as situacaoCadastral,
-            coalesce(d14.situacaoEspecial, d8.situacaoEspecial) as situacaoEspecial,
-            coalesce(d14.socios, d8.socios) as socios,
-            coalesce(d14.sucessoes, d8.sucessoes) as sucessoes,
-            coalesce(d14.telefone1, d8.telefone1) as telefone1,
-            coalesce(d14.telefone2, d8.telefone2) as telefone2,
-            coalesce(d14.timestamp, d8.timestamp) as timestamp,
-            coalesce(d14.tipoLogradouro, d8.tipoLogradouro) as tipoLogradouro,
-            coalesce(d14.tipoOrgaoRegistro, d8.tipoOrgaoRegistro) as tipoOrgaoRegistro,
-            coalesce(d14.tiposUnidade, d8.tiposUnidade) as tiposUnidade,
-            coalesce(d14.tipoCrcContadorPF, d8.tipoCrcContadorPF) as tipoCrcContadorPF,
-            coalesce(d14.tipoCrcContadorPJ, d8.tipoCrcContadorPJ) as tipoCrcContadorPJ,
-            coalesce(d14.uf, d8.uf) as uf,
-            coalesce(d14.ufCrcContadorPF, d8.ufCrcContadorPF) as ufCrcContadorPF,
-            coalesce(d14.ufCrcContadorPJ, d8.ufCrcContadorPJ) as ufCrcContadorPJ,
-            coalesce(d14.version, d8.version) as version,
-            
+            est.cnpj,
+            -- mat.cnpj_8,
+            coalesce(est.bairro, mat.bairro) as bairro,
+            coalesce(est.capitalsocial, mat.capitalsocial) as capitalsocial,
+            coalesce(est.cep, mat.cep) as cep,
+            coalesce(
+                est.classificacaocrccontadorpf, mat.classificacaocrccontadorpf
+            ) as classificacaocrccontadorpf,
+            coalesce(
+                est.classificacaocrccontadorpj, mat.classificacaocrccontadorpj
+            ) as classificacaocrccontadorpj,
+            coalesce(est.cnae, mat.cnae) as cnae,
+            coalesce(est.cnaefiscal, mat.cnaefiscal) as cnaefiscal,
+            coalesce(est.cnaesecundarias, mat.cnaesecundarias) as cnaesecundarias,
+            coalesce(est.cnpjsucedida, mat.cnpjsucedida) as cnpjsucedida,
+            coalesce(est.codmundomic, mat.codmundomic) as codmundomic,
+            coalesce(est.codmunnat, mat.codmunnat) as codmunnat,
+            coalesce(est.codnatocup, mat.codnatocup) as codnatocup,
+            coalesce(est.codocup, mat.codocup) as codocup,
+            coalesce(est.codpaisnac, mat.codpaisnac) as codpaisnac,
+            coalesce(est.codpaisres, mat.codpaisres) as codpaisres,
+            coalesce(est.codsexo, mat.codsexo) as codsexo,
+            coalesce(est.codsitcad, mat.codsitcad) as codsitcad,
+            coalesce(est.codua, mat.codua) as codua,
+            coalesce(est.codigomunicipio, mat.codigomunicipio) as codigomunicipio,
+            coalesce(est.codigopais, mat.codigopais) as codigopais,
+            coalesce(est.complemento, mat.complemento) as complemento,
+            coalesce(est.contadorpf, mat.contadorpf) as contadorpf,
+            coalesce(est.contadorpj, mat.contadorpj) as contadorpj,
+            coalesce(est.cpfresponsavel, mat.cpfresponsavel) as cpfresponsavel,
+            coalesce(est.dddtelefone1, mat.dddtelefone1) as dddtelefone1,
+            coalesce(est.dddtelefone2, mat.dddtelefone2) as dddtelefone2,
+            coalesce(
+                est.datainclusaoresponsavel, mat.datainclusaoresponsavel
+            ) as datainclusaoresponsavel,
+            coalesce(
+                est.datainicioatividade, mat.datainicioatividade
+            ) as datainicioatividade,
+            coalesce(
+                est.datasituacaocadastral, mat.datasituacaocadastral
+            ) as datasituacaocadastral,
+            coalesce(
+                est.datasituacaoespecial, mat.datasituacaoespecial
+            ) as datasituacaoespecial,
+            coalesce(est.email, mat.email) as email,
+            coalesce(est.entefederativo, mat.entefederativo) as entefederativo,
+            coalesce(est.formasatuacao, mat.formasatuacao) as formasatuacao,
+            coalesce(est.indicadormatriz, mat.indicadormatriz) as indicadormatriz,
+            coalesce(est.language, mat.language) as language,
+            coalesce(est.logradouro, mat.logradouro) as logradouro,
+            coalesce(est.motivosituacao, mat.motivosituacao) as motivosituacao,
+            coalesce(est.naturezajuridica, mat.naturezajuridica) as naturezajuridica,
+            coalesce(est.nire, mat.nire) as nire,
+            coalesce(
+                est.nomecidadeexterior, mat.nomecidadeexterior
+            ) as nomecidadeexterior,
+            coalesce(est.nomeempresarial, mat.nomeempresarial) as nomeempresarial,
+            coalesce(est.nomefantasia, mat.nomefantasia) as nomefantasia,
+            coalesce(est.numero, mat.numero) as numero,
+            coalesce(est.porteempresa, mat.porteempresa) as porteempresa,
+            coalesce(
+                est.qualificacaoresponsavel, mat.qualificacaoresponsavel
+            ) as qualificacaoresponsavel,
+            coalesce(
+                est.sequencialcrccontadorpf, mat.sequencialcrccontadorpf
+            ) as sequencialcrccontadorpf,
+            coalesce(
+                est.sequencialcrccontadorpj, mat.sequencialcrccontadorpj
+            ) as sequencialcrccontadorpj,
+            coalesce(est.situacaocadastral, mat.situacaocadastral) as situacaocadastral,
+            coalesce(est.situacaoespecial, mat.situacaoespecial) as situacaoespecial,
+            coalesce(est.socios, mat.socios) as socios,
+            suc.sucessoes as sucessoes,
+            coalesce(est.telefone1, mat.telefone1) as telefone1,
+            coalesce(est.telefone2, mat.telefone2) as telefone2,
+            coalesce(est.timestamp, mat.timestamp) as timestamp,
+            coalesce(est.tipologradouro, mat.tipologradouro) as tipologradouro,
+            coalesce(est.tipoorgaoregistro, mat.tipoorgaoregistro) as tipoorgaoregistro,
+            coalesce(est.tiposunidade, mat.tiposunidade) as tiposunidade,
+            coalesce(est.tipocrccontadorpf, mat.tipocrccontadorpf) as tipocrccontadorpf,
+            coalesce(est.tipocrccontadorpj, mat.tipocrccontadorpj) as tipocrccontadorpj,
+            coalesce(est.uf, mat.uf) as uf,
+            coalesce(est.ufcrccontadorpf, mat.ufcrccontadorpf) as ufcrccontadorpf,
+            coalesce(est.ufcrccontadorpj, mat.ufcrccontadorpj) as ufcrccontadorpj,
+            coalesce(est.version, mat.version) as version,
+
             -- Airbyte fields
             struct(
-                coalesce(d14.airbyte.raw_id, d8.airbyte.raw_id) as raw_id,
-                coalesce(d14.airbyte.extracted_at, d8.airbyte.extracted_at) as extracted_at,
-                coalesce(d14.airbyte.generation_id, d8.airbyte.generation_id) as generation_id,
-                coalesce(d14.airbyte.changes, d8.airbyte.changes) as changes,
-                coalesce(d14.airbyte.sync_id, d8.airbyte.sync_id) as sync_id
-            ) as airbyte
-            
-        from dedup_14 as d14
-        left join dedup_8 as d8 on d14.cnpj_8 = d8.cnpj_8
-        where d14.cnpj not in (select cnpj from cnpj_em_quarentena)
+                coalesce(est.airbyte.raw_id, mat.airbyte.raw_id) as raw_id,
+                coalesce(
+                    est.airbyte.extracted_at, mat.airbyte.extracted_at
+                ) as extracted_at,
+                coalesce(
+                    est.airbyte.generation_id, mat.airbyte.generation_id
+                ) as generation_id,
+                coalesce(est.airbyte.changes, mat.airbyte.changes) as changes,
+                coalesce(est.airbyte.sync_id, mat.airbyte.sync_id) as sync_id
+            ) as airbyte,
+
+            cast(est.cnpj as int64) as cnpj_particao,
+
+        from dedup_estabelecimento as est
+        left join dedup_matriz as mat on est.cnpj_matriz = mat.cnpj_matriz
+        left join dedup_sucessao as suc on est.cnpj = suc.cnpjSucedida
     )
 
-select * from merge_14_8
+select *
+from merged

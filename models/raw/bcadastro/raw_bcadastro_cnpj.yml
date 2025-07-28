@@ -25,6 +25,13 @@ models:
           Formato: 14 dígitos numéricos Exemplo: 00000000000191
         data_type: string
         quote: true
+        data_tests:
+          - unique:
+              name: raw_bcadastro_cnpj__cnpj__unique
+              severity: error
+          - not_null:
+              name: raw_bcadastro_cnpj__cnpj__not_null
+              severity: error
 
       - name: razao_social
         description: Nome empresarial (razão social) da empresa.
