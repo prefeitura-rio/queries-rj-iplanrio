@@ -1,0 +1,126 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_credenciada
+    description: "Tabela contendo os registros de credenciadas no sistema SisBicho"
+    columns:
+      - name: id_credenciada
+        description: "Identificador único da credenciada"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_credenciada__id_credenciada__unique
+          - not_null:
+              name: raw_sisbicho_credenciada__id_credenciada__not_null
+
+      - name: razao_social_nome
+        description: "Razão social da credenciada"
+        #datatype: string
+
+      - name: cnpj_numero
+        description: "CNPJ da credenciada"
+        #datatype: string
+
+      - name: inscricao_municipal_numero
+        description: "Número de inscrição municipal da credenciada"
+        #datatype: string
+
+      - name: id_logradouro
+        description: "Código de identificação do logradouro"
+        #datatype: integer
+
+      - name: logradouro_nome
+        description: "Nome da rua, avenida, etc., onde a credenciada está localizada"
+        #datatype: string
+
+      - name: numero_porta
+        description: "Número da porta ou endereço da credenciada"
+        #datatype: string
+
+      - name: complemento_nome
+        description: "Informações complementares do endereço"
+        #datatype: string
+
+      - name: bairro_nome
+        description: "Nome do bairro onde a credenciada está localizada"
+        #datatype: string
+
+      - name: id_bairro
+        description: "Código de identificação do bairro"
+        #datatype: integer
+
+      - name: cep_numero
+        description: "CEP da credenciada"
+        #datatype: string
+
+      - name: cidade_nome
+        description: "Nome da cidade onde a credenciada está localizada"
+        #datatype: string
+
+      - name: uf_sigla
+        description: "Sigla da UF da credenciada"
+        #datatype: string
+
+      - name: telefone_numero
+        description: "Número de telefone fixo da credenciada"
+        #datatype: string
+
+      - name: celular_numero
+        description: "Número de telefone celular da credenciada"  
+        #datatype: string
+
+      - name: email_endereco
+        description: "Endereço de e-mail da credenciada"
+        #datatype: string
+        
+      - name: registro_data
+        description: "Data de registro da credenciada"
+        #datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_credenciada__registro_data__not_null
+
+      - name: usuario_login
+        description: "Nome de usuário para acesso ao sistema"
+
+      - name: licenca_sanitaria_numero
+        description: "Número da licença sanitária"
+        #datatype: string
+
+      - name: licenca_sanitaria_data
+        description: "Data de emissão da licença sanitária"
+        #datatype: datetime
+
+      - name: cpf_numero
+        description: "CPF do responsável pela credenciada"
+        #datatype: string
+        
+
+      - name: id_tipo_pessoa
+        description: "Identificador do tipo de pessoa da credenciada"
+        #datatype: integer
+       # data_tests:
+       #   - relationships:
+       #       name: raw_sisbicho_credenciada__id_tipo_pessoa__relationships
+       #       to: ref('raw_sisbicho_tipo_pessoa')
+       #       field: id_tipo_pessoa
+
+      - name: id_responsavel_tecnico
+        description: "Identificador do responsável técnico"
+        #datatype: integer
+        #data_tests:
+        #  - relationships:
+        #      name: raw_sisbicho_credenciada__id_responsavel_tecnico__relationships
+        #      to: ref('raw_sisbicho_responsavel_tecnico')
+        #      field: id_responsavel_tecnico
+
+      - name: tipo_licenca_sigla
+        description: "Tipo de licença sanitária"
+        #datatype: string
+
+      - name: autorizacao_sanitaria_numero
+        description: "Número de autorização sanitária da credenciada" 
+        # datatype: string
+
+
+   

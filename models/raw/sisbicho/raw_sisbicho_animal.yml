@@ -1,0 +1,170 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_animal
+    description: "Tabela contendo os registros de animais cadastrados no sistema SisBicho"
+    columns:
+      - name: id_animal
+        description: "Identificador único numérico para cada animal registrado no sistema"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_animal__id_animal__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_animal__id_animal__not_null
+              severity: error
+
+      - name: animal_nome
+        description: "Nome do animal, como registrado pelo proprietário"
+        #datatype: string
+
+      - name: microchip_numero
+        description: "Número de identificação do microchip implantado no animal"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_animal__microchip_numero__not_null
+              severity: error
+          - dbt_expectations.expect_column_value_lengths_to_be_between:
+              name: raw_sisbicho_animal__microchip_numero__length_15
+              min_value: 15
+              max_value: 15
+              severity: error
+
+      - name: id_especie
+        description: "Identificador numérico da espécie do animal"
+        #datatype: smallint
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_animal__id_especie__not_null
+              severity: warn
+          - relationships:
+              name: raw_sisbicho_animal__id_especie__relationships
+              to: ref('raw_sisbicho_especie')
+              field: id_especie
+              severity: error
+
+      - name: sexo_sigla
+        description: "Sexo do animal (M/F)"
+        #datatype: string
+
+      - name: id_raca
+        description: "Identificador numérico da raça do animal"
+        #datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_animal__id_raca__relationships
+              to: ref('raw_sisbicho_raca')
+              field: id_raca
+              severity: error
+
+      - name: nascimento_data
+        description: "Data de nascimento do animal"
+        #datatype: string
+
+      - name: pedigree_indicador
+        description: "Indica se o animal possui pedigree (S/N)"
+        #datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_pedigree_indicador__valid_values
+              value_set: ['S', 'N']
+              severity: warn
+
+      - name: pedigree_origem_nome
+        description: "Origem do pedigree do animal"
+        #datatype: string
+
+      - name: registro_data
+        description: "Data de registro do animal no sistema"
+        #datatype: datetime
+
+      - name: id_porte
+        description: "Identificador numérico do porte do animal"
+        #datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_animal__id_porte__relationships
+              to: ref('raw_sisbicho_porte')
+              field: id_porte
+              severity: error
+
+      - name: usuario_login
+        description: "Login do usuário que registrou o animal"
+        #datatype: string
+
+      - name: fase_vida_nome
+        description: "Fase de vida do animal"
+        #datatype: string
+
+      - name: pedigree_codigo
+        description: "Código do pedigree do animal"
+        #datatype: string
+
+      - name: id_credenciada
+        description: "Identificador da instituição credenciada para o registro"
+        #datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_animal__id_credenciada__relationships
+              to: ref('raw_sisbicho_credenciada')
+              field: id_credenciada
+              severity: error
+
+      - name: motivo_nome
+        description: "Motivo de inativação do registro"
+        #datatype: string
+
+      - name: inativo_indicador
+        description: "Indica se o registro do animal está inativo (S/N)"
+        #datatype: string
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_animal__inativo_indicador__valid_values
+              value_set: ['S', 'N']
+              severity: warn
+
+      - name: id_tipo_especie
+        description: "Identificador do tipo de espécie"
+        #datatype: smallint
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_animal__id_tipo_especie__relationships
+              to: ref('raw_sisbicho_tipo_especie')
+              field: id_tipo_especie
+              severity: error
+
+      - name: antirrabica_data
+        description: "Data da última vacinação antirrábica"
+        #datatype: datetime
+
+      - name: antirrabica_validade_data
+        description: "Data de validade da vacinação antirrábica"
+        #datatype: datetime
+
+      - name: vermifugacao_data
+        description: "Data da última vermifugação"
+        #datatype: datetime
+
+      - name: vermifugacao_validade_data
+        description: "Data de validade da vermifugação"
+        #datatype: datetime
+
+      - name: qrcode_dados
+        description: "Código QR contendo informações do animal"
+        #datatype: bytes
+
+      - name: castrado_indicador
+        description: "Indica se o animal foi castrado (S/N)"
+        #datatype: string
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_be_in_set:
+        #      name: raw_sisbicho_animal__castrado_indicador__valid_values
+        #      value_set: ['S', 'N']
+        #      severity: warn
+
+      - name: foto_dados
+        description: "Foto do animal" 
+        #datatype: bytes
+

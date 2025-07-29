@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_status
+    description: "Tabela contendo os registros de status possíveis para animais no sistema SisBicho"
+    columns:
+      - name: id_status
+        description: "Identificador único do status"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_status__id_status__unique
+          - not_null:
+              name: raw_sisbicho_status__id_status__not_null
+
+      - name: status_nome
+        description: "Nome do status"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_status__status_nome__not_null
+          - unique:
+              name: raw_sisbicho_status__status_nome__unique
+          #- valid_values:
+          #    name: raw_sisbicho_status__status_nome__valid_values
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: raw_sisbicho_status__status_nome__valid_values
+              value_set: ['Óbito', 'Desaparecido', 'Fugiu', 'Normal', 'Doação']
+              severity: warn 
