@@ -32,4 +32,12 @@ models:
               name: raw_sisbicho_email__assunto_nome__not_null
 
 
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
+
+
          

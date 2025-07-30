@@ -14,5 +14,7 @@ select
     safe_cast(LOGIN_REGISTRO as string) as usuario_login,
     safe_cast(DATA_REGISTRO as datetime) as registro_datahora,
     safe_cast(ASSOCIADO as string) as associado_indicador,
-    safe_cast(Gestor as string) as gestor_indicador
+    safe_cast(Gestor as string) as gestor_indicador,
+    _airbyte_extracted_at as loaded_at, 
+    current_timestamp() as transformed_at
 FROM {{ source('brutos_sisbicho_staging', 'CredenciadaUsuario') }} 

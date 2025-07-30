@@ -26,4 +26,9 @@ models:
               value_set: ['Pequeno', 'Médio', 'Grande']
               severity: warn 
 
-
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

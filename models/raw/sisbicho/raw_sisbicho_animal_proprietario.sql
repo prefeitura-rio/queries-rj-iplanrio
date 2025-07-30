@@ -16,5 +16,7 @@ select
     safe_cast(DataInicio as datetime) as inicio_datahora,
     safe_cast(DataFim as datetime) as fim_datahora,
     safe_cast(USR_CODIGO as int64) as usuario_codigo,
-    safe_cast(DataCadastro as datetime) as cadastro_datahora
+    safe_cast(DataCadastro as datetime) as cadastro_datahora,
+    _airbyte_extracted_at as loaded_at, 
+    current_timestamp() as transformed_at
 FROM {{ source('brutos_sisbicho_staging', 'AnimalProprietario') }}

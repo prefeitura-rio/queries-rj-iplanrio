@@ -39,3 +39,10 @@ models:
               name: raw_sisbicho_raca__id_tipo_especie__relationships
               to: ref('raw_sisbicho_tipo_especie')
               field: id_tipo_especie 
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

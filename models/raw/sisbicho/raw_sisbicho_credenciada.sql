@@ -33,5 +33,7 @@ select
     safe_cast(IDTipoPessoa as string) as id_tipo_pessoa,
     safe_cast(IDResponsavelTecnico as integer) as id_responsavel_tecnico,
     safe_cast(TipoLicenca as string) as tipo_licenca_sigla,
-    safe_cast(AutorizacaoSanitaria as string) as autorizacao_sanitaria_numero
+    safe_cast(AutorizacaoSanitaria as string) as autorizacao_sanitaria_numero,
+    _airbyte_extracted_at as loaded_at, 
+    current_timestamp() as transformed_at
 FROM {{ source('brutos_sisbicho_staging', 'Credenciada') }} 

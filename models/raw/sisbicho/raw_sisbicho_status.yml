@@ -27,3 +27,10 @@ models:
               name: raw_sisbicho_status__status_nome__valid_values
               value_set: ['Óbito', 'Desaparecido', 'Fugiu', 'Normal', 'Doação']
               severity: warn 
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

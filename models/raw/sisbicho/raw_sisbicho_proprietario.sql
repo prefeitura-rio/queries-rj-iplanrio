@@ -30,5 +30,7 @@ select
     safe_cast(USR_LOGIN as string) as usuario_login,
     safe_cast(DivulgarContato as string) as divulgar_contato_indicador,
     safe_cast(IDCredenciada as integer) as id_credenciada,
-    safe_cast(TutorEmSituacaoDeRua as string) as tutor_rua_indicador
+    safe_cast(TutorEmSituacaoDeRua as string) as tutor_rua_indicador,
+    _airbyte_extracted_at as loaded_at, 
+    current_timestamp() as transformed_at
 FROM {{ source('brutos_sisbicho_staging', 'Proprietario') }} 

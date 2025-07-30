@@ -62,3 +62,11 @@ models:
               name: raw_sisbicho_credenciada_usuario__gestor_indicador__not_null
           - valid_values:
               name: raw_sisbicho_credenciada_usuario__gestor_indicador__valid_values 
+
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

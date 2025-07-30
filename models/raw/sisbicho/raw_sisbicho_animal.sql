@@ -38,5 +38,7 @@ select
     safe_cast(DataVermifugacaoValidade as datetime) as vermifugacao_validade_data,
     safe_cast(QRCode as bytes) as qrcode_dados,
     safe_cast(Castrado as string) as castrado_indicador,
-    safe_cast(Foto as bytes) as foto_dados
+    safe_cast(Foto as bytes) as foto_dados,
+    _airbyte_extracted_at as loaded_at, 
+    current_timestamp() as transformed_at   
 FROM {{ source('brutos_sisbicho_staging', 'Animal') }} 
