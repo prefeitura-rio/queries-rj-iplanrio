@@ -38,7 +38,7 @@ with
             ) as classificacaocrccontadorpj,
             nullif(json_value(doc, '$.cnae'), '') as cnae,
             nullif(json_value(doc, '$.cnaeFiscal'), '') as cnaefiscal,
-            nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnaesecundarias,
+            json_extract_array(doc, '$.cnaeSecundarias') as cnaesecundarias,
             nullif(json_value(doc, '$.cnpj'), '') as cnpj,
             nullif(json_value(doc, '$.cnpjSucedida'), '') as cnpjsucedida,
             nullif(json_value(doc, '$.codMunDomic'), '') as codmundomic,
@@ -139,6 +139,17 @@ with
                 json_value(replace(to_json_string(doc), '~', ''), '$.version'), ''
             ) as version,
 
+            -- CouchDB Fields
+            struct(
+                id,
+                key,
+                nullif(json_value(value, '$.rev'), '') as rev,
+                nullif(json_value(doc, '$._id'), '') as _id,
+                nullif(json_value(doc, '$._rev'), '') as _rev,
+                seq,
+                last_seq,
+            ) as couchdb,
+
             -- Airbyte fields
             struct(
                 _airbyte_raw_id as raw_id,
@@ -181,10 +192,7 @@ with
         select *
         from estabelecimento
         qualify
-            row_number() over (
-                partition by cnpj order by airbyte.extracted_at desc
-            )
-            = 1
+            row_number() over (partition by cnpj order by airbyte.extracted_at desc) = 1
     ),
 
     dedup_sucessao as (
@@ -192,7 +200,7 @@ with
         from sucessao
         qualify
             row_number() over (
-                partition by cnpjSucedida order by airbyte.extracted_at desc
+                partition by cnpjsucedida order by airbyte.extracted_at desc
             )
             = 1
     ),
@@ -202,87 +210,87 @@ with
             est.cnpj,
             -- mat.cnpj_8,
             coalesce(est.bairro, mat.bairro) as bairro,
-            coalesce(est.capitalsocial, mat.capitalsocial) as capitalSocial,
+            coalesce(est.capitalsocial, mat.capitalsocial) as capitalsocial,
             coalesce(est.cep, mat.cep) as cep,
             coalesce(
                 est.classificacaocrccontadorpf, mat.classificacaocrccontadorpf
-            ) as classificacaoCrcContadorPF,
+            ) as classificacaocrccontadorpf,
             coalesce(
                 est.classificacaocrccontadorpj, mat.classificacaocrccontadorpj
-            ) as classificacaoCrcContadorPJ,
+            ) as classificacaocrccontadorpj,
             coalesce(est.cnae, mat.cnae) as cnae,
-            coalesce(est.cnaefiscal, mat.cnaefiscal) as cnaeFiscal,
-            coalesce(est.cnaesecundarias, mat.cnaesecundarias) as cnaeSecundarias,
-            coalesce(est.cnpjsucedida, mat.cnpjsucedida) as cnpjSucedida,
-            coalesce(est.codmundomic, mat.codmundomic) as codMunDomic,
-            coalesce(est.codmunnat, mat.codmunnat) as codMunNat,
-            coalesce(est.codnatocup, mat.codnatocup) as codNatOcup,
-            coalesce(est.codocup, mat.codocup) as codOcup,
-            coalesce(est.codpaisnac, mat.codpaisnac) as codPaisNac,
-            coalesce(est.codpaisres, mat.codpaisres) as codPaisRes,
-            coalesce(est.codsexo, mat.codsexo) as codSexo,
-            coalesce(est.codsitcad, mat.codsitcad) as codSitCad,
-            coalesce(est.codua, mat.codua) as codUA,
-            coalesce(est.codigomunicipio, mat.codigomunicipio) as codigoMunicipio,
-            coalesce(est.codigopais, mat.codigopais) as codigoPais,
+            coalesce(est.cnaefiscal, mat.cnaefiscal) as cnaefiscal,
+            coalesce(est.cnaesecundarias, mat.cnaesecundarias) as cnaesecundarias,
+            coalesce(est.cnpjsucedida, mat.cnpjsucedida) as cnpjsucedida,
+            coalesce(est.codmundomic, mat.codmundomic) as codmundomic,
+            coalesce(est.codmunnat, mat.codmunnat) as codmunnat,
+            coalesce(est.codnatocup, mat.codnatocup) as codnatocup,
+            coalesce(est.codocup, mat.codocup) as codocup,
+            coalesce(est.codpaisnac, mat.codpaisnac) as codpaisnac,
+            coalesce(est.codpaisres, mat.codpaisres) as codpaisres,
+            coalesce(est.codsexo, mat.codsexo) as codsexo,
+            coalesce(est.codsitcad, mat.codsitcad) as codsitcad,
+            coalesce(est.codua, mat.codua) as codua,
+            coalesce(est.codigomunicipio, mat.codigomunicipio) as codigomunicipio,
+            coalesce(est.codigopais, mat.codigopais) as codigopais,
             coalesce(est.complemento, mat.complemento) as complemento,
-            coalesce(est.contadorpf, mat.contadorpf) as contadorPF,
-            coalesce(est.contadorpj, mat.contadorpj) as contadorPJ,
-            coalesce(est.cpfresponsavel, mat.cpfresponsavel) as cpfResponsavel,
-            coalesce(est.dddtelefone1, mat.dddtelefone1) as dddTelefone1,
-            coalesce(est.dddtelefone2, mat.dddtelefone2) as dddTelefone2,
+            coalesce(est.contadorpf, mat.contadorpf) as contadorpf,
+            coalesce(est.contadorpj, mat.contadorpj) as contadorpj,
+            coalesce(est.cpfresponsavel, mat.cpfresponsavel) as cpfresponsavel,
+            coalesce(est.dddtelefone1, mat.dddtelefone1) as dddtelefone1,
+            coalesce(est.dddtelefone2, mat.dddtelefone2) as dddtelefone2,
             coalesce(
                 est.datainclusaoresponsavel, mat.datainclusaoresponsavel
-            ) as dataInclusaoResponsavel,
+            ) as datainclusaoresponsavel,
             coalesce(
                 est.datainicioatividade, mat.datainicioatividade
-            ) as dataInicioAtividade,
+            ) as datainicioatividade,
             coalesce(
                 est.datasituacaocadastral, mat.datasituacaocadastral
-            ) as dataSituacaoCadastral,
+            ) as datasituacaocadastral,
             coalesce(
                 est.datasituacaoespecial, mat.datasituacaoespecial
-            ) as dataSituacaoEspecial,
+            ) as datasituacaoespecial,
             coalesce(est.email, mat.email) as email,
-            coalesce(est.entefederativo, mat.entefederativo) as enteFederativo,
-            coalesce(est.formasatuacao, mat.formasatuacao) as formasAtuacao,
-            coalesce(est.indicadormatriz, mat.indicadormatriz) as indicadorMatriz,
+            coalesce(est.entefederativo, mat.entefederativo) as entefederativo,
+            coalesce(est.formasatuacao, mat.formasatuacao) as formasatuacao,
+            coalesce(est.indicadormatriz, mat.indicadormatriz) as indicadormatriz,
             coalesce(est.language, mat.language) as language,
             coalesce(est.logradouro, mat.logradouro) as logradouro,
-            coalesce(est.motivosituacao, mat.motivosituacao) as motivoSituacao,
-            coalesce(est.naturezajuridica, mat.naturezajuridica) as naturezaJuridica,
+            coalesce(est.motivosituacao, mat.motivosituacao) as motivosituacao,
+            coalesce(est.naturezajuridica, mat.naturezajuridica) as naturezajuridica,
             coalesce(est.nire, mat.nire) as nire,
             coalesce(
                 est.nomecidadeexterior, mat.nomecidadeexterior
-            ) as nomeCidadeExterior,
-            coalesce(est.nomeempresarial, mat.nomeempresarial) as nomeEmpresarial,
-            coalesce(est.nomefantasia, mat.nomefantasia) as nomeFantasia,
+            ) as nomecidadeexterior,
+            coalesce(est.nomeempresarial, mat.nomeempresarial) as nomeempresarial,
+            coalesce(est.nomefantasia, mat.nomefantasia) as nomefantasia,
             coalesce(est.numero, mat.numero) as numero,
-            coalesce(est.porteempresa, mat.porteempresa) as porteEmpresa,
+            coalesce(est.porteempresa, mat.porteempresa) as porteempresa,
             coalesce(
                 est.qualificacaoresponsavel, mat.qualificacaoresponsavel
-            ) as qualificacaoResponsavel,
+            ) as qualificacaoresponsavel,
             coalesce(
                 est.sequencialcrccontadorpf, mat.sequencialcrccontadorpf
-            ) as sequencialCrcContadorPF,
+            ) as sequencialcrccontadorpf,
             coalesce(
                 est.sequencialcrccontadorpj, mat.sequencialcrccontadorpj
-            ) as sequencialCrcContadorPJ,
-            coalesce(est.situacaocadastral, mat.situacaocadastral) as situacaoCadastral,
-            coalesce(est.situacaoespecial, mat.situacaoespecial) as situacaoEspecial,
+            ) as sequencialcrccontadorpj,
+            coalesce(est.situacaocadastral, mat.situacaocadastral) as situacaocadastral,
+            coalesce(est.situacaoespecial, mat.situacaoespecial) as situacaoespecial,
             coalesce(est.socios, mat.socios) as socios,
             suc.sucessoes as sucessoes,
             coalesce(est.telefone1, mat.telefone1) as telefone1,
             coalesce(est.telefone2, mat.telefone2) as telefone2,
             coalesce(est.timestamp, mat.timestamp) as timestamp,
-            coalesce(est.tipologradouro, mat.tipologradouro) as tipoLogradouro,
-            coalesce(est.tipoorgaoregistro, mat.tipoorgaoregistro) as tipoOrgaoRegistro,
-            coalesce(est.tiposunidade, mat.tiposunidade) as tiposUnidade,
-            coalesce(est.tipocrccontadorpf, mat.tipocrccontadorpf) as tipoCrcContadorPF,
-            coalesce(est.tipocrccontadorpj, mat.tipocrccontadorpj) as tipoCrcContadorPJ,
+            coalesce(est.tipologradouro, mat.tipologradouro) as tipologradouro,
+            coalesce(est.tipoorgaoregistro, mat.tipoorgaoregistro) as tipoorgaoregistro,
+            coalesce(est.tiposunidade, mat.tiposunidade) as tiposunidade,
+            coalesce(est.tipocrccontadorpf, mat.tipocrccontadorpf) as tipocrccontadorpf,
+            coalesce(est.tipocrccontadorpj, mat.tipocrccontadorpj) as tipocrccontadorpj,
             coalesce(est.uf, mat.uf) as uf,
-            coalesce(est.ufcrccontadorpf, mat.ufcrccontadorpf) as ufCrcContadorPF,
-            coalesce(est.ufcrccontadorpj, mat.ufcrccontadorpj) as ufCrcContadorPJ,
+            coalesce(est.ufcrccontadorpf, mat.ufcrccontadorpf) as ufcrccontadorpf,
+            coalesce(est.ufcrccontadorpj, mat.ufcrccontadorpj) as ufcrccontadorpj,
             coalesce(est.version, mat.version) as version,
 
             -- Airbyte fields
@@ -302,7 +310,7 @@ with
 
         from dedup_estabelecimento as est
         left join dedup_matriz as mat on est.cnpj_matriz = mat.cnpj_matriz
-        left join dedup_sucessao as suc on est.cnpj = suc.cnpjSucedida
+        left join dedup_sucessao as suc on est.cnpj = suc.cnpjsucedida
     )
 
 select *
