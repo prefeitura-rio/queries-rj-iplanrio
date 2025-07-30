@@ -1,6 +1,6 @@
 with
     -- SOURCES
-    cnpj_base as (select * from {{ ref("int_bcadastro_chcnpj") }}),
+    cnpj_base as (select * from {{ ref("int_bcadastro_chcnpj_parse") }}),
 
     sigla_uf_bd as (select sigla from {{ source("br_bd_diretorios_brasil", "uf") }}),
 
