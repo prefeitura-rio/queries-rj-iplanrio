@@ -147,7 +147,7 @@ with
                 nullif(json_value(doc, '$._id'), '') as _id,
                 nullif(json_value(doc, '$._rev'), '') as _rev,
                 seq,
-                last_seq,
+                last_seq
             ) as couchdb,
 
             -- Airbyte fields
