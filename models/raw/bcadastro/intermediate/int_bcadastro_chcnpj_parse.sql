@@ -293,6 +293,15 @@ with
             coalesce(est.ufcrccontadorpj, mat.ufcrccontadorpj) as ufcrccontadorpj,
             coalesce(est.version, mat.version) as version,
 
+            -- CouchDB fields
+            struct(
+                coalesce(est.couchdb.id, mat.couchdb.id) as id,
+                coalesce(est.couchdb.key, mat.couchdb.key) as key,
+                coalesce(est.couchdb.rev, mat.couchdb.rev) as rev,
+                coalesce(est.couchdb.seq, mat.couchdb.seq) as seq,
+                coalesce(est.couchdb.last_seq, mat.couchdb.last_seq) as last_seq
+            ) as couchdb,
+
             -- Airbyte fields
             struct(
                 coalesce(est.airbyte.raw_id, mat.airbyte.raw_id) as raw_id,
@@ -305,6 +314,7 @@ with
                 coalesce(est.airbyte.changes, mat.airbyte.changes) as changes,
                 coalesce(est.airbyte.sync_id, mat.airbyte.sync_id) as sync_id
             ) as airbyte,
+    
 
             cast(est.cnpj as int64) as cnpj_particao,
 

@@ -93,6 +93,7 @@ with
             version,
 
             -- Outros
+            couchdb,
             airbyte
 
         from cnpj_base
@@ -500,6 +501,7 @@ with
 
             -- Outros
             t.airbyte,
+            t.couchdb,
 
             -- Joins
             md.municipio_nome as endereco_municipio_nome,
@@ -654,6 +656,7 @@ with
             t.language,
 
             -- Outros
+            t.couchdb,
             t.airbyte,
             
             -- descricoes
@@ -783,6 +786,7 @@ with
             language,
 
             -- Outros
+            couchdb,
             airbyte,
 
             -- Partition
