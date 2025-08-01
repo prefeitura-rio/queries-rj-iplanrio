@@ -1,11 +1,6 @@
 {{
     config(
         alias="usuarios",
-        partition_by={
-            "field": "data_criacao_particao",
-            "data_type": "timestamp",
-            "granularity": "day",
-        },
         description="Tabela de Usuarios",
     )
 }}
@@ -18,7 +13,6 @@ select
     safe_cast(phonenumber as string) as telefone,
     safe_cast(cpf as string) as cpf,
     safe.parse_datetime('%d/%m/%Y', createdat) as data_criacao,
-    safe.parse_datetime('%d/%m/%Y', createdat) as data_criacao_particao,
     safe.parse_date('%d/%m/%Y', birthdate) as data_nascimento,
     safe_cast(validadoreceita as bool) as receita_validada,
     safe_cast(federalrevenuedata_name as string) as nome_receita_federal,

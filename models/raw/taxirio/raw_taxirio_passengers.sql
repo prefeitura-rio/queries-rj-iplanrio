@@ -1,11 +1,6 @@
 {{
     config(
         alias="passageiros",
-        partition_by={
-            "field": "data_criacao_particao",
-            "data_type": "timestamp",
-            "granularity": "day",
-        },
         description="Tabela de Passageiros",
     )
 }}
@@ -15,7 +10,6 @@ select
     safe_cast(id as string) as id_passageiro,
     safe_cast(user as string) as id_usuario,
     datetime(timestamp(createdat)) as data_criacao,
-    datetime(timestamp(createdat)) as data_criacao_particao,
     safe_cast(login as string) as usuario,
     safe_cast(password as string) as senha,
     safe_cast(salt as string) as aleatorio,

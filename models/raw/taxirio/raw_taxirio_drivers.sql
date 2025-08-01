@@ -1,11 +1,6 @@
 {{
     config(
         alias="motoristas",
-        partition_by={
-            "field": "data_criacao_particao",
-            "data_type": "timestamp",
-            "granularity": "day",
-        },
         description="Tabela de Motoristas",
     )
 }}
@@ -13,7 +8,6 @@
 select
     safe_cast(id as string) as id_motorista,
     datetime(timestamp(createdat)) as data_criacao,
-    datetime(timestamp(createdat)) as data_criacao_particao,
     safe_cast(user as string) as id_usuario,
     safe_cast(taxidriverid as string) as id_motorista_taxi,
     safe_cast(cars as string) as id_carro_taxi,
