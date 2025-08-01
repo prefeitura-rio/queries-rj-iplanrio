@@ -2,7 +2,6 @@ version: 2
 models:
   - name: raw_taxirio_drivers
     columns:
-     
       - name: id_motorista
         description: "Identificador do Motorista"
         data_type: string
