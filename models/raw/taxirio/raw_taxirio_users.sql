@@ -12,11 +12,11 @@
 
 select
     safe_cast(id as string) as id_usuario,
-    safe_cast(displayname as string) as nome_usuario,
-    safe_cast(fullname as string) as nome_completo_usuario,
-    safe_cast(email as string) as email_usuario,
-    safe_cast(phonenumber as string) as telefone_usuario,
-    safe_cast(cpf as string) as cpf_usuario,
+    safe_cast(displayname as string) as nome_exibicao,
+    safe_cast(fullname as string) as nome_completo,
+    safe_cast(email as string) as email,
+    safe_cast(phonenumber as string) as telefone,
+    safe_cast(cpf as string) as cpf,
     safe.parse_datetime('%d/%m/%Y', createdat) as data_criacao,
     safe.parse_datetime('%d/%m/%Y', createdat) as data_criacao_particao,
     safe.parse_date('%d/%m/%Y', birthdate) as data_nascimento,
