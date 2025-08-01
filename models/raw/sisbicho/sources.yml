@@ -1,0 +1,56 @@
+version: 2
+
+sources:
+  - name: brutos_sisbicho_staging
+    #database: rj-iplanrio   # opcional se igual ao target
+    schema: brutos_sisbicho_staging
+    tables:
+      - name: Animal
+        description: "Tabela de animal do sistema Sisbicho"
+      - name: AnimalProprietario
+        description: "Tabela de proprietários dos animais do sistema Sisbicho"
+      - name: AnimalStatus
+        description: "Tabela de status dos animais do sistema Sisbicho"
+      - name: Credenciada
+        description: "Tabela de credenciada do sistema Sisbicho"
+      - name: CredenciadaUsuario
+        description: "Tabela de credenciada do usuário do sistema Sisbicho"
+      - name: EMail
+        description: "Tabela de email do sistema Sisbicho"
+      - name: Especie
+        description: "Tabela de Espécies do sistema Sisbicho"
+      - name: Porte
+        description: "Tabela de porte do sistema Sisbicho"
+      - name: Proprietario
+        description: "Tabela de proprietários do sistema Sisbicho"
+      - name: Raca
+        description: "Tabela de raças do sistema Sisbicho"
+      - name: ResponsavelTecnico
+        description: "Tabela de responsáveis técnicos do sistema Sisbicho"
+      - name: Status
+        description: "Tabela de status do sistema Sisbicho"
+      - name: TipoAquisicao
+        description: "Tabela de tipo de aquisição do sistema Sisbicho"
+      - name: TipoEspecie
+        description: "Tabela do Tipo de Espécies do sistema Sisbicho"
+      - name: TipoPessoa
+        description: "Tabela do Tipos de Pessoas do sistema Sisbicho" 
+
+
+# Ordem de execução 
+        
+#dbt build --select raw_sisbicho_porte
+#dbt build --select raw_sisbicho_raca
+#dbt build --select raw_sisbicho_especie
+#dbt build --select raw_sisbicho_tipo_especie
+#dbt build --select raw_sisbicho_email
+#dbt build --select raw_sisbicho_status
+#dbt build --select raw_sisbicho_animal_status
+#dbt build --select raw_sisbicho_tipo_pessoa
+#dbt build --select raw_sisbicho_tipo_aquisicao
+#dbt build --select raw_sisbicho_animal_proprietario
+#dbt build --select raw_sisbicho_proprietario
+#dbt build --select raw_sisbicho_animal
+#dbt build --select raw_sisbicho_responsavel_tecnico
+#dbt build --select raw_sisbicho_credenciada
+#dbt build --select raw_sisbicho_credenciada_usuario
