@@ -1,0 +1,41 @@
+version: 2
+models:
+  - name: raw_taxirio_rankingraces
+    columns:
+      
+      
+      - name: id_ranking_corrida
+        description: "Identificador do ranking da corrida"
+        data_type: string
+        data_tests: 
+        - not_null:
+            name: raw_taxirio__id_ranking_corrida__not_null
+            severity: error
+        - unique:
+            name: raw_taxirio__id_ranking_corrida__unique
+            severity: error
+      - name: id_corrida
+        description: "Identificador da corrida"
+        data_type: string
+      - name: data_criacao
+        description: "Data de criação da corrida"
+        data_type: datetime
+      - name: data_criacao_particao
+        description: "Campo de partição baseado na data de criação"
+        data_type: date
+      - name: data_atualizacao
+        description: "Data de atualização da corrida"
+        data_type: datetime
+      - name: competidores
+        description: "Competidores da corrida"
+        data_type: json
+      - name: ano_particao
+        description: "Parte da data de criação da corrida (Ano)"
+        data_type: int64
+      - name: mes_particao
+        description: "Parte da data de criação da corrida (Mês)"
+        data_type: int64
+      - name: dia_particao
+        description: "Parte da data de criação da corrida (Dia)"
+        data_type: int64
+     
