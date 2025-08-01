@@ -15,6 +15,9 @@ models:
       - name: data_criacao
         description: "data da inclusão na tabela"
         data_type: datetime
+      - name: data_criacao_particao
+        description: "Campo de partição baseado na data de criação"
+        data_type: date
       - name: id_usuario
         description: "Identificador do usuário" 
         data_type: string

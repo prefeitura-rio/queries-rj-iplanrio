@@ -21,3 +21,6 @@ models:
     - name: data_criacao
       description: Data de criação do Desconto
       data_type: datetime
+    - name: data_criacao_particao
+      description: "Campo de partição baseado na data de criação"
+      data_type: date

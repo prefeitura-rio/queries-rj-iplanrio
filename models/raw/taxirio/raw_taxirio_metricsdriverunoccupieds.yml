@@ -21,6 +21,9 @@ models:
       - name: data_criacao
         description: Data de criação da métrica
         data_type: datetime
+      - name: data_criacao_particao
+        description: "Campo de partição baseado na data de criação"
+        data_type: date
       - name: ano_particao
         description: Ano (Pate do campo data criação)
         data_type: int64

@@ -17,6 +17,9 @@ models:
         description: "Data que a corrida foi iniciada, quando o passageiro estava embarcado e o taxista começou a levá-lo para o destino."
         data_type: datetime
         quote: true
+      - name: data_criacao_particao
+        description: "Campo de partição baseado na data de criação"
+        data_type: date
       - name: id_evento
         data_type: string
         description: "Identificador do evento."

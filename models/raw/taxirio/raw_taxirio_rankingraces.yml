@@ -20,6 +20,9 @@ models:
       - name: data_criacao
         description: "Data de criação da corrida"
         data_type: datetime
+      - name: data_criacao_particao
+        description: "Campo de partição baseado na data de criação"
+        data_type: date
       - name: data_atualizacao
         description: "Data de atualização da corrida"
         data_type: datetime
