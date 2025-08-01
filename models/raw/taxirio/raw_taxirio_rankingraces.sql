@@ -1,21 +1,33 @@
 {{
     config(
         alias="ranking_corridas",
+        materialized="incremental",
+        incremental_strategy="insert_overwrite",
         partition_by={
             "field": "data_criacao_particao",
-            "data_type": "timestamp",
+            "data_type": "date",
             "granularity": "day",
         },
         description="Tabela de Ranking de Corridas",
     )
 }}
 
-select
-    safe_cast(id as string) as id_ranking_corrida,
-    datetime(timestamp(createdat)) as data_criacao,
-    datetime(timestamp(createdat)) as data_criacao_particao,
-    datetime(timestamp(updatedat)) as data_atualizacao,
-    safe_cast(race as string) as id_corrida,
-    to_json_string(competitors) as competidores
+with
+    source as (select * from {{ source("brutos_taxirio_staging", "rankingraces") }}),
 
-from {{ source("brutos_taxirio_staging", "rankingraces") }}
+    renamed as (
+        select
+            safe_cast(id as string) as id_ranking_corrida,
+            datetime(timestamp(createdat)) as data_criacao,
+            cast(timestamp(createdat) as date) as data_criacao_particao,
+            datetime(timestamp(updatedat)) as data_atualizacao,
+            safe_cast(race as string) as id_corrida,
+            to_json_string(competitors) as competidores
+        from source
+    )
+
+select *
+from renamed
+{% if is_incremental() %}
+    where data_criacao_particao >= date_add(current_date(), interval -3 day)
+{% endif %}
