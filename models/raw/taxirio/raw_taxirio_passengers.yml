@@ -1,0 +1,76 @@
+version: 2
+models:
+  - name: raw_taxirio_passengers
+    columns:
+      
+      
+      - name: id_passageiro
+        description: "Identificador do passageiro"
+        data_type: string
+        data_tests:
+          - not_null: 
+              name: raw_taxirio__id_passageiro__not_null
+              severity: error
+          - unique:
+              name: raw_taxirio__id_passageiro__unique
+              severity: error
+      - name: id_usuario
+        description: "Identificador do usuário"
+        data_type: string
+      - name: data_criacao
+        description: "Data de criação do passageiro"
+        data_type: datetime
+      - name: data_criacao_particao
+        description: "Campo de partição baseado na data de criação"
+        data_type: date
+      - name: usuario
+        description: "Usuário login do passageiro"
+        data_type: string
+      - name: senha
+        description: "Senha do passageiro"
+        data_type: string
+      - name: aleatorio 
+        description: "Valor aleatório para o login do passageiro"
+        data_type: string
+      - name: pode_usar_pagamento_app
+        description: "Flag se o pagamento pode ser feito pelo aplicativo"
+        data_type: boolean
+      - name: data_atualizacao_telefone
+        description: "Data de atualização do telefone"
+        data_type: datetime
+      - name: id_telefone
+        description: "Identificador do telefone"
+        data_type: string
+      - name: versao_app_telefone
+        description: "Versão do aplicativo do telefone"
+        data_type: string
+      - name: modelo_telefone
+        description: "Modelo do telefone"
+        data_type: string
+      - name: fabricante_telefone
+        description: "Fabricante do telefone"
+        data_type: string
+      - name: versao_sistema_telefone
+        description: "Versão do sistema do telefone"
+        data_type: string 
+      - name: nome_sistema_telefone
+        description: "Nome do sistema do telefone"
+        data_type: string
+      - name: ficha_http_aleatorio
+        description: "Ficha HTTP aleatória"
+        data_type: string
+      - name: ficha_wss_aleatorio
+        description: "Ficha WSS aleatório"
+        data_type: string
+      - name: ficha_envio
+        description: "Ficha de envio"
+        data_type: string
+      - name: ano_particao
+        description: "Parte da data de criação do passageiro (Ano)"
+        data_type: int64
+      - name: mes_particao
+        description: "Parte da data de criação do passageiro (Mês)"
+        data_type: int64
+      - name: dia_particao
+        description: "Parte da data de criação do passageiro (Dia)"
+        data_type: int64 

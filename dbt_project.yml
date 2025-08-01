@@ -20,7 +20,6 @@ vars:
   # Internal variables
   DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
 
-
 models:
   +persist_docs:
     relation: true
@@ -33,6 +32,10 @@ models:
         +materialized: table
         +schema: brutos_bcadastro
         +tags: "weekly"
+      taxirio:
+        +materialized: table
+        +schema: brutos_taxirio
+        +tags: "daily"
       unidades_administrativas:
         +materialized: table
         +schema: brutos_unidades_administrativas
