@@ -1,14 +1,11 @@
 {{
     config(
-        schema="brutos_taxirio",
         alias="descontos",
-        materialized="table",
         partition_by={
             "field": "data_criacao_particao",
             "data_type": "date",
             "granularity": "day",
         },
-        tags=["raw", "taxirio"],
         description="Tabela de Descontos",
     )
 }}

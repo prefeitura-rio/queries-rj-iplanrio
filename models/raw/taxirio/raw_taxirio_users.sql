@@ -1,14 +1,11 @@
 {{
     config(
-        schema="brutos_taxirio",
         alias="usuarios",
-        materialized="table",
         partition_by={
             "field": "data_criacao_particao",
             "data_type": "timestamp",
             "granularity": "day",
         },
-        tags=["raw", "taxirio"],
         description="Tabela de Usuarios",
     )
 }}

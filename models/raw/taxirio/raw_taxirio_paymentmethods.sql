@@ -1,9 +1,6 @@
 {{
     config(
-        schema="brutos_taxirio",
         alias="metodos_pagamentos",
-        materialized="table",
-        tags=["raw", "taxirio"],
         description="Tabela de Pagamentos",
     )
 }}

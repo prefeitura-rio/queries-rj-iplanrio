@@ -1,9 +1,6 @@
 {{
     config(
-        schema="brutos_taxirio",
         alias="cidades",
-        materialized="table",
-        tags=["raw", "taxirio"],
         description="Tabela de Cidades",
     )
 }}

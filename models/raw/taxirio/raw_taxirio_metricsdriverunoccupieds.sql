@@ -1,14 +1,11 @@
 {{
     config(
-        schema="brutos_taxirio",
         alias="metricas_motorista_desocupado",
-        materialized="table",
         partition_by={
             "field": "data_criacao_particao",
             "data_type": "timestamp",
             "granularity": "day",
         },
-        tags=["raw", "taxirio"],
         description="Medidas de disponibilidade de motoristas",
     )
 }}

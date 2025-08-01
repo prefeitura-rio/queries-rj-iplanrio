@@ -33,6 +33,10 @@ models:
         +materialized: table
         +schema: brutos_bcadastro
         +tags: "weekly"
+      taxirio:
+        +materialized: table
+        +schema: brutos_taxirio
+        +tags: "daily"
       unidades_administrativas:
         +materialized: table
         +schema: brutos_unidades_administrativas
