@@ -26,6 +26,10 @@ sources:
       - name: TUR_Turma
       - name: TUR_TurmaCurriculo
       - name: TUR_TurmaDisciplina
+        config:
+          freshness:
+            error_after: {count: 48, period: hour}
+
       - name: TUR_TurmaRelTurmaDisciplina
       - name: VW_BI_Aluno
       - name: VW_BI_Aluno_Todos_Os_Anos
