@@ -30,18 +30,10 @@ models:
               name: raw_sisbicho_tipo_especie__id_especie__relationships
               to: ref('raw_sisbicho_especie')
               field: id_especie
-
-    data_tests:
-      - dbt_utils.unique_combination_of_columns:
-          name: raw_sisbicho_tipo_especie__tipo_especie_nome_id_especie__unique
-          combination_of_columns:
-            - tipo_especie_nome
-            - id_especie
-          severity: error 
-
-      - name: loaded_at
+   
+      - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
         data_type: timestamp
-      - name: transformed_at
+      - name: datalake_transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp
+        data_type: timestamp

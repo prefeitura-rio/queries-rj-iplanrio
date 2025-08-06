@@ -69,12 +69,12 @@ models:
       - name: cadastro_datahora
         description: "Data e hora do registro do vínculo entre animal e proprietário"
         #datatype: datetime
-      - name: loaded_at
+      - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
         data_type: timestamp
-      - name: transformed_at
+      - name: datalake_transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp
+        data_type: timestamp
 
 
 

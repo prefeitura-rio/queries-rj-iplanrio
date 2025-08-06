@@ -23,10 +23,10 @@ models:
               name: raw_sisbicho_tipo_aquisicao__tipo_aquisicao_nome__unique
 
 
-      - name: loaded_at
+      - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
         data_type: timestamp
-      - name: transformed_at
+      - name: datalake_transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp
+        data_type: timestamp
           

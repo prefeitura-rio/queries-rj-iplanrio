@@ -1,7 +1,7 @@
 {{
     config(
-      schema="brutos_sisbicho",
       alias="credenciada",
+      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") , 
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de credenciadas do sistema"

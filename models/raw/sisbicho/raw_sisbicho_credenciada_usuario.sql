@@ -1,7 +1,7 @@
 {{
     config(
-      schema="brutos_sisbicho",
       alias="credenciada_usuario",
+      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") , 
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de usuários das credenciadas"
@@ -15,6 +15,6 @@ select
     safe_cast(DATA_REGISTRO as datetime) as registro_datahora,
     safe_cast(ASSOCIADO as string) as associado_indicador,
     safe_cast(Gestor as string) as gestor_indicador,
-    _airbyte_extracted_at as loaded_at, 
-    current_timestamp() as transformed_at
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at
 FROM {{ source('brutos_sisbicho_staging', 'CredenciadaUsuario') }} 

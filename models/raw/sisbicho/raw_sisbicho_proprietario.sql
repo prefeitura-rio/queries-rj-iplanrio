@@ -1,7 +1,7 @@
 {{
     config(
-      schema="brutos_sisbicho",
       alias="proprietario",
+      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") , 
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de proprietários de animais"

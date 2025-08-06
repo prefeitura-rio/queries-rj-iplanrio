@@ -121,12 +121,12 @@ models:
       - name: autorizacao_sanitaria_numero
         description: "Número de autorização sanitária da credenciada" 
         # datatype: string
-      - name: loaded_at
+      - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
         data_type: timestamp
-      - name: transformed_at
+      - name: datalake_transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp      
+        data_type: timestamp      
 
 
    
