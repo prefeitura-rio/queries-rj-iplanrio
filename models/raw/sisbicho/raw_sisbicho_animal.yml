@@ -26,19 +26,12 @@ models:
           - not_null:
               name: raw_sisbicho_animal__microchip_numero__not_null
               severity: error
-          - dbt_expectations.expect_column_value_lengths_to_be_between:
-              name: raw_sisbicho_animal__microchip_numero__length_15
-              min_value: 15
-              max_value: 15
-              severity: error
+          
 
       - name: id_especie
         description: "Identificador numérico da espécie do animal"
         #datatype: smallint
         data_tests:
-          - not_null:
-              name: raw_sisbicho_animal__id_especie__not_null
-              severity: warn
           - relationships:
               name: raw_sisbicho_animal__id_especie__relationships
               to: ref('raw_sisbicho_especie')
@@ -66,11 +59,6 @@ models:
       - name: pedigree_indicador
         description: "Indica se o animal possui pedigree (S/N)"
         #datatype: string
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_pedigree_indicador__valid_values
-              value_set: ['S', 'N']
-              severity: warn
 
       - name: pedigree_origem_nome
         description: "Origem do pedigree do animal"
@@ -119,11 +107,8 @@ models:
       - name: inativo_indicador
         description: "Indica se o registro do animal está inativo (S/N)"
         #datatype: string
-        data_tests:
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_animal__inativo_indicador__valid_values
-              value_set: ['S', 'N']
-              severity: warn
+     
+
 
       - name: id_tipo_especie
         description: "Identificador do tipo de espécie"

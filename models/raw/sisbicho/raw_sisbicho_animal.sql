@@ -5,11 +5,6 @@
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de Animais",
-      partition_by={
-            "field": "nascimento_data",
-            "data_type": "datetime",
-            "granularity": "month"
-       }
     )
 }}
 

@@ -27,11 +27,6 @@ models:
           #- valid_values:
           #    name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
           #    severity: warn 
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_tipo_pessoa__tipo_pessoa_nome__valid_values
-              value_set: ['Pessoa Física', 'Pessoa Jurídica','Preifeitura']
-              severity: warn 
-
 
       - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."

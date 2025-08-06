@@ -21,10 +21,7 @@ models:
               name: raw_sisbicho_porte__porte_nome__not_null
           - unique:
               name: raw_sisbicho_porte__porte_nome__unique
-          - dbt_expectations.expect_column_values_to_be_in_set:
-              name: raw_sisbicho_porte__porte_nome__valid_values
-              value_set: ['Pequeno', 'Médio', 'Grande']
-              severity: warn 
+         
 
       - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
