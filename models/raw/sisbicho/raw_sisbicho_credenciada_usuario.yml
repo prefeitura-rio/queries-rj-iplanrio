@@ -51,8 +51,6 @@ models:
         data_tests:
           - not_null:
               name: raw_sisbicho_credenciada_usuario__associado_indicador__not_null
-          
-
       - name: gestor_indicador
         description: "Indicador se o usuário é gestor"
         
