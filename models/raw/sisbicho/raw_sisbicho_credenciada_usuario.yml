@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_credenciada_usuario
+    description: "Tabela contendo os registros de usuários das credenciadas no sistema SisBicho"
+    columns:
+      - name: id_credenciada_usuario
+        description: "Identificador único do usuário credenciado"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_credenciada_usuario__id_credenciada_usuario__unique
+          - not_null:
+              name: raw_sisbicho_credenciada_usuario__id_credenciada_usuario__not_null
+
+      - name: id_credenciada
+        description: "Identificador da credenciada"
+        #datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_credenciada_usuario__id_credenciada__not_null
+        #  - relationships:
+        #      name: raw_sisbicho_credenciada_usuario__id_credenciada__relationships
+        #      to: ref('raw_sisbicho_credenciada')
+        #      field: id_credenciada
+
+      - name: usuario_codigo
+        description: "Código do usuário"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_credenciada_usuario__usuario_codigo__not_null
+
+      - name: usuario_login
+        description: "Login do usuário"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_credenciada_usuario__usuario_login__not_null
+
+      - name: registro_datahora
+        description: "Data e hora do registro"
+        #datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_credenciada_usuario__registro_datahora__not_null
+
+      - name: associado_indicador
+        description: "Indicador se o usuário é associado"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_credenciada_usuario__associado_indicador__not_null
+      - name: gestor_indicador
+        description: "Indicador se o usuário é gestor"
+        
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

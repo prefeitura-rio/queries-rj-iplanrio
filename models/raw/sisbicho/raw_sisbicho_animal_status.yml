@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_animal_status
+    description: "Tabela contendo os registros de status dos animais no sistema SisBicho"
+    columns:
+      - name: id_animal_status
+        description: "Identificador único para cada registro de status do animal"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_animal_status__id_animal_status__unique
+              severity: error
+          - not_null:
+              name: raw_sisbicho_animal_status__id_animal_status__not_null
+              severity: error
+
+      - name: id_status
+        description: "Código numérico que identifica o tipo de status do animal"
+        #datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_animal_status__id_status__not_null
+              severity: error
+          - relationships:
+              name: raw_sisbicho_animal_status__id_status__relationships
+              to: ref('raw_sisbicho_status')
+              field: id_status
+              severity: error
+
+      - name: id_animal
+        description: "Identificador único para cada animal cadastrado no sistema"
+        #datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_animal_status__id_animal__not_null
+              severity: error
+          - relationships:
+              name: raw_sisbicho_animal_status__id_animal__relationships
+              to: ref('raw_sisbicho_animal')
+              field: id_animal
+              severity: error
+
+      - name: registro_datahora
+        description: "Data e hora do registro do status do animal"
+        #datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_animal_status__registro_datahora__not_null
+              severity: error
+
+      - name: usuario_codigo
+        description: "Código do usuário que registrou o status do animal"
+        #datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_animal_status__usuario_codigo__not_null
+              severity: error 
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp 
