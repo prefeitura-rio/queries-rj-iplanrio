@@ -40,4 +40,14 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
+      sme_brutos_gestao_escolar:
+        +materialized: table
+        +schema: brutos_sme_brutos_gestao_escolar_teste
+        +tags: ["daily", "sme"]
+        +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-sme' }}"
 
+  mart:
+    sme_frequencia:
+      +materialized: table
+      +schema: marts
+      +tags: ["daily", "sme"]

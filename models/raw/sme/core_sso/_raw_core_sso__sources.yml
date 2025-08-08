@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw_core_sso_staging
+    database: rj-iplanrio
+    schema: raw_core_sso_staging
+    tables:
+    - name: SYS_DiaNaoUtil
