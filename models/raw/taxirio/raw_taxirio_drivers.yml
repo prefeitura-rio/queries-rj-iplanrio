@@ -131,4 +131,10 @@ models:
         data_type: int64
       - name: dia_particao
         description: "Dia (Pate do campo data criação)"
-        data_type: int64
+        data_type: int64 
+      - name: datalake_loaded_at
+        description: "Data de carregamento do dado no datalake"
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado no datalake"
+        data_type: timestamp

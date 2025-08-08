@@ -56,5 +56,11 @@ models:
       - name: sexo_receita_federal  
         description: "Sexo na receita Federal"
         data_type: string
+      - name: datalake_loaded_at
+        description: "Data de carregamento do dado no datalake"
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado no datalake"
+        data_type: timestamp
      
 

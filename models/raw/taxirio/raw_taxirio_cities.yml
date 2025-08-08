@@ -30,3 +30,9 @@ models:
       - name: estacoes_de_servico
         description: "Estacoes de servico"
         data_type: json
+      - name: datalake_loaded_at
+        description: "Data de carregamento do dado no datalake"
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado no datalake"
+        data_type: timestamp

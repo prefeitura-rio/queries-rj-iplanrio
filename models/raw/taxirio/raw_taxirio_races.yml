@@ -152,3 +152,9 @@ models:
         data_type: int64  
         description:  "Dia da partição."
         quote: true
+      - name: datalake_loaded_at
+        description: "Data de carregamento do dado no datalake"
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado no datalake"
+        data_type: timestamp

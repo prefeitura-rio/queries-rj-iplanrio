@@ -52,5 +52,6 @@ select
     ) as corrida_origem_posicao_lat,
     safe_cast(associatedrace_race as string) as id_corrida,
     datetime(timestamp(expiredblockbyrankingdate)) as data_bloqueio_expirado,
-
+    _airbyte_extracted_at as datalake_loaded_at,    
+    current_timestamp() as datalake_transformed_at     
 from {{ source("brutos_taxirio_staging", "drivers") }}

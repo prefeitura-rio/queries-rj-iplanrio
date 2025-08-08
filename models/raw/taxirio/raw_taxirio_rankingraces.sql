@@ -22,7 +22,9 @@ with
             cast(timestamp(createdat) as date) as data_criacao_particao,
             datetime(timestamp(updatedat)) as data_atualizacao,
             safe_cast(race as string) as id_corrida,
-            to_json_string(competitors) as competidores
+            to_json_string(competitors) as competidores,
+            _airbyte_extracted_at as datalake_loaded_at,    
+            current_timestamp() as datalake_transformed_at      
         from source
     )
 
