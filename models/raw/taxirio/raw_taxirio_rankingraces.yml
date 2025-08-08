@@ -38,4 +38,10 @@ models:
       - name: dia_particao
         description: "Parte da data de criação da corrida (Dia)"
         data_type: int64
-     
+      - name: datalake_loaded_at
+        description: "Data de carregamento do dado no datalake"
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado no datalake"
+        data_type: timestamp
+    
