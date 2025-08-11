@@ -40,4 +40,10 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
-
+      smfp:
+        +tags: "smfp"
+        +project: "{{ 'rj-smfp' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+        recursos_humanos_ergon:
+          +materialized: table
+          +schema: brutos_recursos_humanos_ergon
+          +tags: "daily"
