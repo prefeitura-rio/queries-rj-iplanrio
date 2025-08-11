@@ -1,6 +1,6 @@
 {{
     config(
-        alias='raw_recursos_humanos_ergon__orgaos_regime_juridico',
+        alias='orgaos_regime_juridico',
     )
 }}
 

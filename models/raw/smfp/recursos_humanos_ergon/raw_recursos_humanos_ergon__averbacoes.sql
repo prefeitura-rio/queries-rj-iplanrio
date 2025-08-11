@@ -1,6 +1,6 @@
 {{
     config(
-        alias='raw_recursos_humanos_ergon__averbacoes',
+        alias='averbacoes',
     )
 }}
 

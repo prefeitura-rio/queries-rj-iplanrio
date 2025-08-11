@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        alias='raw_recursos_humanos_ergon__fita_banco',
+        alias='fita_banco',
         schema='raw',
         partition_by={
             "field": "data_particao",

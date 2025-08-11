@@ -2,7 +2,7 @@
 {{
     config(
         materialized='incremental',
-        alias='raw_recursos_humanos_ergon__frequencia',
+        alias='frequencia',
         partition_by={
             "field": "data_particao",
             "data_type": "date",
