@@ -7,7 +7,8 @@
             "field": "data_particao",
             "data_type": "date",
             "granularity": "month",
-        }
+        },
+        alias='licenca_afastamento',
     )
 }}
 SELECT

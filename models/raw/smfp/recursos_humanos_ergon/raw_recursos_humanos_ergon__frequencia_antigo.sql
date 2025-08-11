@@ -1,6 +1,6 @@
 {{
     config(
-        alias='raw_recursos_humanos_ergon__frequencia_antigo',
+        alias='frequencia_antigo',
     )
 }}
 

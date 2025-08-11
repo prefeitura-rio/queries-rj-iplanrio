@@ -7,7 +7,7 @@
             "data_type": "date",
             "granularity": "month",
         },
-        alias='raw_recursos_humanos_ergon__vantagens',
+        alias='vantagens',
     )
 }}
 

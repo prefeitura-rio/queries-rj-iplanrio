@@ -1,6 +1,6 @@
 {{
     config(
-        alias='raw_recursos_humanos_ergon__afastamento_antigo_nomes',
+        alias='afastamento_antigo_nomes',
     )
 }}
 

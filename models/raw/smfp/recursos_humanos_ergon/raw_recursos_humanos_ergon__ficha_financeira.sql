@@ -1,7 +1,7 @@
 {{
     config(
         materialized='table',
-        alias='raw_recursos_humanos_ergon__ficha_financeira',
+        alias='ficha_financeira',
         schema='raw',
         partition_by={
             "field": "data_particao",
