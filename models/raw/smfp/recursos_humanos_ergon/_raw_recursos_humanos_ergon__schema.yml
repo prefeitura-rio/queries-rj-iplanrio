@@ -610,5 +610,3 @@ models :
         description: Valor da correção monetária.
       - name: id_empresa
         description: Código da empresa.
-  - name: raw_recursos_humanos_ergon__ficha_financeira_contabil
-  - name: raw_recursos_humanos_ergon__fita_banco
