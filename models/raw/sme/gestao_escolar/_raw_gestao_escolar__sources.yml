@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: raw_gestao_escolar_staging_airbyte
+  - name: brutos_gestao_escolar_staging_airbyte
     database: rj-sme
-    schema: raw_gestao_escolar_staging
+    schema: brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: _airbyte_extracted_at
@@ -34,9 +34,9 @@ sources:
       - name: VW_BI_Aluno
       - name: VW_BI_Aluno_Todos_Os_Anos
 
-  - name: raw_gestao_escolar_staging_prefect
+  - name: brutos_gestao_escolar_staging_prefect
     database: rj-iplanrio 
-    schema: raw_gestao_escolar_staging
+    schema: brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: CAST(loaded_at AS TIMESTAMP)

@@ -20,31 +20,31 @@ with alunos_aulas as (
         end as numeroAulas,                        -- número de aulas ou tempos de aula
         fav.tipo_frequencia_apurada,         -- parametro que indica se numeroAulas 1-será o tempo da aula ou 2-se será o dia de aula
         coalesce(tjf.tjf_abonaFalta, FALSE) as abonaFalta -- informa que houve abono no dia
-    from {{ ref('sme_brutos_gestao_escolar__turma_aula_aluno') }} as taa
-    inner join {{ ref('sme_brutos_gestao_escolar__turma_aula') }} as tau
+    from {{ ref('raw_gestao_escolar__turma_aula_aluno') }} as taa
+    inner join {{ ref('raw_gestao_escolar__turma_aula') }} as tau
         on taa.id_disciplina_turma = tau.id_disciplina
         and taa.id_aula_disciplina = tau.id_aula_disciplina       -- identificador da aula em uma dada turma discilina - sequencial que compoe a chave da TurmaAula
         and taa.id_situacao in ('1', '4', '6')   -- situaçao do registro = 1-ativo; 3-excluído; 6-cancelado; 4-???
         and tau.id_situacao in ('1', '4', '6')   -- situaçao do registro = 1-ativo; 3-excluído; 6-cancelado; 4-???
         and tau.efetivado = TRUE         -- indica aula cuja a frequencia foi confirmada pelo professor (1-efetivado; 0-não efetivada)
-    inner join {{ ref('sme_brutos_gestao_escolar__mtr_matricula_turma') }} as mtu
+    inner join {{ ref('raw_gestao_escolar__mtr_matricula_turma') }} as mtu
         on taa.id_aluno = mtu.alu_id
         and taa.id_matricula_turma = mtu.mtu_id
         and mtu.mtu_situacao in (1, 5)   -- situação da matricula (1-ativo;5-ativo com movimentação)
         -- considera a frequencia somente as aulas dentro do período de matricula do aluno, inclusive na entrada e exclusive na saída
         and tau.data_aula >= mtu.mtu_dataMatricula
         and tau.data_aula < coalesce(mtu.mtu_dataSaida, current_date())  -- apuração da frequencia desconsidera o dia de saida da turma na movimentacao
-    inner join {{ ref('sme_brutos_gestao_escolar__tur_turma') }} as tur
+    inner join {{ ref('raw_gestao_escolar__tur_turma') }} as tur
         on mtu.tur_id = tur.tur_id
-    inner join {{ ref('sme_brutos_gestao_escolar__formato_avaliacao') }} as fav
+    inner join {{ ref('raw_gestao_escolar__formato_avaliacao') }} as fav
         on tur.fav_id = fav.id_formato_avaliacao   -- para obter o parametro fav_tipoApuracaoFrequencia
     -- para verificar a justificativa que abona as faltas no dia
-    left join {{ ref('sme_brutos_gestao_escolar__aluno_justificativa_falta') }} as afj
+    left join {{ ref('raw_gestao_escolar__aluno_justificativa_falta') }} as afj
         on afj.alu_id = taa.id_aluno
         and afj.afj_situacao <> 3       -- situação diferente de registro excluído
         and tau.data_aula >= afj.afj_dataInicio
         and (afj.afj_dataFim is null or tau.data_aula <= afj.afj_dataFim)
-    left join {{ ref('sme_brutos_gestao_escolar__tipo_justificativa_falta') }} as tjf
+    left join {{ ref('raw_gestao_escolar__tipo_justificativa_falta') }} as tjf
         on tjf.tjf_id = afj.tjf_id
         and tjf.tjf_situacao <> 3       -- situação diferente de registro excluído
     -- para excluír os dias de feriado

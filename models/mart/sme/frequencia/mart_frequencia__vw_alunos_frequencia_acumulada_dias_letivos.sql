@@ -10,17 +10,17 @@ WITH frequencia_acumulada AS (
         CAP.tpc_id,
         AAT.aat_numeroAulas AS numeroAulas,
         AAT.aat_numeroFaltas AS numeroFaltas
-    FROM {{ ref('sme_brutos_gestao_escolar__aluno_avaliacao_turma') }} AAT
-    INNER JOIN {{ ref('sme_brutos_gestao_escolar__avaliacao') }} AVA
+    FROM {{ ref('raw_gestao_escolar__aluno_avaliacao_turma') }} AAT
+    INNER JOIN {{ ref('raw_gestao_escolar__avaliacao') }} AVA
         ON AAT.fav_id = AVA.fav_id
         AND AAT.ava_id = AVA.ava_id
-    INNER JOIN {{ ref('sme_brutos_gestao_escolar__tur_turma') }} TUR
+    INNER JOIN {{ ref('raw_gestao_escolar__tur_turma') }} TUR
         ON AAT.tur_id = TUR.tur_id
         AND TUR.tur_situacao IN (1,5)
-    INNER JOIN {{ ref('sme_brutos_gestao_escolar__calendario_anual') }} CAL
+    INNER JOIN {{ ref('raw_gestao_escolar__calendario_anual') }} CAL
         ON TUR.cal_id = CAL.cal_id
         AND CAL.cal_ano = EXTRACT(YEAR FROM CURRENT_DATE())
-    INNER JOIN {{ ref('sme_brutos_gestao_escolar__calendario_periodo') }} CAP
+    INNER JOIN {{ ref('raw_gestao_escolar__calendario_periodo') }} CAP
         ON TUR.cal_id = CAP.cal_id
         AND CAP.cap_id = AVA.tpc_id
         AND CAP.cap_dataFim < CURRENT_DATE()
@@ -33,7 +33,7 @@ WITH frequencia_acumulada AS (
         NUM.tpc_id,
         NUM.numeroAulas,
 		SUM(SQ_FALTAS.num_faltas) AS numeroFaltas
-    FROM {{ ref('sme_brutos_gestao_escolar__numeroDeAulasCte') }} NUM
+    FROM {{ ref('raw_gestao_escolar__numeroDeAulasCte') }} NUM
     LEFT JOIN (
         -- Subquery para calcular faltas do COC atual
         SELECT
@@ -41,28 +41,28 @@ WITH frequencia_acumulada AS (
             TAU.id_tipo_calendario,
             --MTU.mtu_id,
             SUM(TAA.faltas_disciplina_dia) AS num_faltas
-        FROM {{ ref('sme_brutos_gestao_escolar__turma_aula_aluno') }} TAA
-        INNER JOIN {{ ref('sme_brutos_gestao_escolar__turma_aula') }} TAU
+        FROM {{ ref('raw_gestao_escolar__turma_aula_aluno') }} TAA
+        INNER JOIN {{ ref('raw_gestao_escolar__turma_aula') }} TAU
             ON TAA.id_disciplina_turma = TAU.id_disciplina
             AND TAA.id_aula_disciplina = TAU.id_aula_disciplina
             AND TAA.id_situacao IN ('1','4','6')
             AND TAU.id_situacao IN ('1','4','6')
             AND TAU.efetivado = TRUE
             AND TAA.faltas_disciplina_dia > 0
-        INNER JOIN {{ ref('sme_brutos_gestao_escolar__mtr_matricula_turma') }} MTU
+        INNER JOIN {{ ref('raw_gestao_escolar__mtr_matricula_turma') }} MTU
             ON TAA.id_aluno = MTU.alu_id
             AND TAA.id_matricula_turma = MTU.mtu_id
             AND MTU.mtu_situacao IN (1,5)
             AND TAU.data_aula >= MTU.mtu_dataMatricula
             AND TAU.data_aula < COALESCE(MTU.mtu_dataSaida, CURRENT_DATE())
-        INNER JOIN {{ ref('sme_brutos_gestao_escolar__tur_turma') }} TUR
+        INNER JOIN {{ ref('raw_gestao_escolar__tur_turma') }} TUR
             ON MTU.tur_id = TUR.tur_id
-        LEFT JOIN {{ ref('sme_brutos_gestao_escolar__aluno_justificativa_falta') }} AFJ
+        LEFT JOIN {{ ref('raw_gestao_escolar__aluno_justificativa_falta') }} AFJ
             ON AFJ.alu_id = TAA.id_aluno
             AND AFJ.afj_situacao != 3
             AND TAU.data_aula >= AFJ.afj_dataInicio
             AND (AFJ.afj_dataFim IS NULL OR TAU.data_aula <= AFJ.afj_dataFim)
-        LEFT JOIN {{ ref('sme_brutos_gestao_escolar__tipo_justificativa_falta') }} TJF
+        LEFT JOIN {{ ref('raw_gestao_escolar__tipo_justificativa_falta') }} TJF
             ON TJF.tjf_id = AFJ.tjf_id
             AND TJF.tjf_situacao != 3
         LEFT JOIN {{ source('brutos_core_sso_staging', 'SYS_DiaNaoUtil') }} DNU

@@ -6,7 +6,7 @@ with frqtrn as (
     select
         trn_id,
         count(*) / 5 as temposDia
-    from {{ ref('sme_brutos_gestao_escolar__turno_horario') }}
+    from {{ ref('raw_gestao_escolar__turno_horario') }}
     where trh_situacao = 1
     group by trn_id
 ), frqbase as (
@@ -70,7 +70,7 @@ with frqtrn as (
 
         from {{ ref('mart_frequencia__frq_frequencia') }} frq
 
-        inner join {{ ref('sme_brutos_gestao_escolar__aluno_curriculo') }} alc
+        inner join {{ ref('raw_gestao_escolar__aluno_curriculo') }} alc
             on alc.alu_id = frq.id_aluno
             and alc.esc_id = frq.id_escola
             and alc.alc_situacao <> 3
@@ -79,7 +79,7 @@ with frqtrn as (
         inner join frqtrn trn
             on trn.trn_id = frq.id_turno
 
-        inner join {{ ref('sme_brutos_gestao_escolar__diasCoc')}} dia
+        inner join {{ ref('raw_gestao_escolar__diasCoc')}} dia
             on dia.cal_id = frq.id_ano_calendario and dia.tpc_id = frq.id_tipo_calendario
 
         where frq.efetivado = TRUE
@@ -150,8 +150,8 @@ select
     freq_coc5,
     faltas_coc5,
     nm_aulas_coc5
-from {{ ref('sme_brutos_gestao_escolar__vw_bi_aluno') }} alu
-inner join {{ ref('sme_brutos_gestao_escolar__tur_turma') }} tur on alu.tur_id = tur.tur_id and tur.tur_situacao = 1
-inner join {{ ref('sme_brutos_gestao_escolar__esc_escola') }} esc on esc.id_esc = tur.esc_id and esc.esc_situacao = 1
+from {{ ref('raw_gestao_escolar__vw_bi_aluno') }} alu
+inner join {{ ref('raw_gestao_escolar__tur_turma') }} tur on alu.tur_id = tur.tur_id and tur.tur_situacao = 1
+inner join {{ ref('raw_gestao_escolar__esc_escola') }} esc on esc.id_esc = tur.esc_id and esc.esc_situacao = 1
 inner join frqpri on frqpri.alu_id = alu.alu_id
 

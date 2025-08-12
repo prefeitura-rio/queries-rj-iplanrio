@@ -18,18 +18,18 @@
                 trn.id_turno,
                 tcr.id_curso,
                 fav.tipo_frequencia_apurada
-            FROM {{ ref('sme_brutos_gestao_escolar__tur_turma') }} tur
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__turma_disciplina_rel') }} rtd
+            FROM {{ ref('raw_gestao_escolar__tur_turma') }} tur
+            INNER JOIN {{ ref('raw_gestao_escolar__turma_disciplina_rel') }} rtd
                 ON rtd.id_turma = tur.tur_id AND tur_situacao = 1
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__turma_disciplina') }} tud
+            INNER JOIN {{ ref('raw_gestao_escolar__turma_disciplina') }} tud
                 ON tud.id_disciplina_turma = rtd.id_disciplina AND id_situacao = '1'
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__formato_avaliacao') }} fav
+            INNER JOIN {{ ref('raw_gestao_escolar__formato_avaliacao') }} fav
                 ON fav.id_formato_avaliacao = tur.fav_id AND situacao_registro <> 3
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__turno') }} trn
+            INNER JOIN {{ ref('raw_gestao_escolar__turno') }} trn
                 ON tur.trn_id = trn.id_turno AND situacao = 1
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__esc_escola') }} esc
+            INNER JOIN {{ ref('raw_gestao_escolar__esc_escola') }} esc
                 ON tur.esc_id = esc.id_esc AND esc_situacao = 1
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__turma_curriculo') }} tcr
+            INNER JOIN {{ ref('raw_gestao_escolar__turma_curriculo') }} tcr
                 ON tcr.id_turma = tur.tur_id AND tcr.id_situacao = '1'
         ),
         FrequenciaDia as (
@@ -70,14 +70,14 @@
                 EXTRACT(YEAR FROM tau.data_aula) AS cal_ano,
                 taa.data_alteracao AS updated_at
             FROM Turmas tur
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__turma_aula') }} tau
+            INNER JOIN {{ ref('raw_gestao_escolar__turma_aula') }} tau
                 ON tau.id_disciplina = tur.id_disciplina_turma
-                AND EXTRACT(YEAR FROM tau.data_aula) = 2025
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__turma_aula_aluno') }} taa
+                AND EXTRACT(YEAR FROM tau.data_aula) = 2025  -- TODO: Verificar se o ano é fixo
+            INNER JOIN {{ ref('raw_gestao_escolar__turma_aula_aluno') }} taa
                 ON taa.id_disciplina_turma = tau.id_disciplina
                 AND taa.id_aula_disciplina = CAST(tau.id_aula_disciplina AS STRING)
                 AND CAST(taa.data_alteracao AS DATETIME) >= '2025-01-01'
-            INNER JOIN {{ ref('sme_brutos_gestao_escolar__mtr_matricula_turma') }} mtu
+            INNER JOIN {{ ref('raw_gestao_escolar__mtr_matricula_turma') }} mtu
                 ON CAST(mtu.mtu_id AS STRING) = taa.id_matricula_turma
                 AND CAST(mtu.alu_id AS STRING) = taa.id_aluno
                 AND mtu.mtu_situacao <> 3

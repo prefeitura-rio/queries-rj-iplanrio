@@ -15,12 +15,12 @@ WITH frequencia_acumulada as (
         sum(vaa.falta) as numero_faltas,
         sum(vaa.numeroAulas) as numero_aulas
     from {{ ref('mart_frequencia__vw_alunos_aulas') }} vaa
-    inner join {{ ref('sme_brutos_gestao_escolar__mtr_matricula_turma') }} mtu
+    inner join {{ ref('raw_gestao_escolar__mtr_matricula_turma') }} mtu
         on vaa.id_aluno = mtu.alu_id
         and vaa.id_matricula_turma = mtu.mtu_id
-    inner join {{ ref('sme_brutos_gestao_escolar__tur_turma') }} tur
+    inner join {{ ref('raw_gestao_escolar__tur_turma') }} tur
         on mtu.tur_id = tur.tur_id
-    inner join {{ ref('sme_brutos_gestao_escolar__calendario_anual') }} cal
+    inner join {{ ref('raw_gestao_escolar__calendario_anual') }} cal
         on tur.cal_id = cal.cal_id
         and cal.cal_ano = EXTRACT(YEAR FROM CURRENT_DATE() )   -- limita a busca ao ano corrente
     where vaa.data_aula >= cal.cal_dataInicio
