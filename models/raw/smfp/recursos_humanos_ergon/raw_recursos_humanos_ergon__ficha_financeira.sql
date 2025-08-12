@@ -2,7 +2,6 @@
     config(
         materialized='table',
         alias='ficha_financeira',
-        schema='raw',
         partition_by={
             "field": "data_particao",
             "data_type": "date",

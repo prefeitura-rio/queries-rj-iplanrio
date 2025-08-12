@@ -2,7 +2,6 @@
     config(
         materialized='table',
         alias='fita_banco',
-        schema='raw',
         partition_by={
             "field": "data_particao",
             "data_type": "date",
