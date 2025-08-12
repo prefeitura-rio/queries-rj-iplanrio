@@ -46,4 +46,4 @@ models:
         recursos_humanos_ergon:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
-#         +tags: "daily"
+          +tags: "daily"
