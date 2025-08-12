@@ -16,7 +16,7 @@
 }}
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging_prefect', 'CLS_TurmaAulaAluno') }}
+    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'CLS_TurmaAulaAluno') }}
     {% if is_incremental() %}
       where data_particao in (CAST(current_date AS STRING), CAST(date_sub(current_date, interval 1 day) AS STRING))
     {% endif %}

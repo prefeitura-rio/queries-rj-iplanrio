@@ -1,7 +1,7 @@
 {{ config(alias='vw_bi_aluno', schema='brutos_gestao_escolar') }}
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging_airbyte', 'VW_BI_Aluno') }}
+    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'VW_BI_Aluno') }}
 ),
 
 renamed as (

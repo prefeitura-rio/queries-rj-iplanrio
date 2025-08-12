@@ -1,7 +1,7 @@
 {{ config(alias='turno_horario', schema='brutos_gestao_escolar') }}
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging_airbyte', 'ACA_TurnoHorario') }}
+    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_TurnoHorario') }}
 ),
 
 renamed as (

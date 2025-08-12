@@ -1,7 +1,7 @@
 {{ config(alias='processo_fechamento_inicio', schema='brutos_gestao_escolar') }}
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging_airbyte', 'MTR_ProcessoFechamentoInicio') }}
+    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'MTR_ProcessoFechamentoInicio') }}
 ),
 
 renamed as (

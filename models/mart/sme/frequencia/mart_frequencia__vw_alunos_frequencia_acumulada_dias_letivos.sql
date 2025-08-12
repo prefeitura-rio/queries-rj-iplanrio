@@ -65,7 +65,7 @@ WITH frequencia_acumulada AS (
         LEFT JOIN {{ ref('raw_gestao_escolar__tipo_justificativa_falta') }} TJF
             ON TJF.tjf_id = AFJ.tjf_id
             AND TJF.tjf_situacao != 3
-        LEFT JOIN {{ source('brutos_core_sso_staging', 'SYS_DiaNaoUtil') }} DNU
+        LEFT JOIN {{ source('sme_brutos_core_sso_staging', 'SYS_DiaNaoUtil') }} DNU
             ON (
                 TAU.data_aula = CAST(DNU.dnu_data AS DATE)
                 OR

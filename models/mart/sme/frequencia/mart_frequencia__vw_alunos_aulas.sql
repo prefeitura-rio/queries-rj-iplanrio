@@ -48,7 +48,7 @@ with alunos_aulas as (
         on tjf.tjf_id = afj.tjf_id
         and tjf.tjf_situacao <> 3       -- situação diferente de registro excluído
     -- para excluír os dias de feriado
-    left join {{ source('brutos_core_sso_staging', 'SYS_DiaNaoUtil') }} as dnu
+    left join {{ source('sme_brutos_core_sso_staging', 'SYS_DiaNaoUtil') }} as dnu
         on (
             tau.data_aula = SAFE_CAST(dnu.dnu_data AS DATE) -- se existe feriado no mesmo dia da aula planejada
             or (

@@ -13,7 +13,7 @@
     )}}
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging_airbyte', 'MTR_MatriculaTurma') }}
+    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'MTR_MatriculaTurma') }}
     {% if is_incremental() %}
         where _airbyte_extracted_at > (select max(loaded_at) from {{ this }})
     {% endif %}
