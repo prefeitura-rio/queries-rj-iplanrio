@@ -4,6 +4,13 @@ models:
   - name: mart_gerenciamento_custo_gcp
     description: "Tabela mart incremental que detalha os custos do Google Cloud Platform (GCP) por projeto, serviço, SKU e período de uso, incluindo descontos, agrupamentos e informações de localização. Cada linha representa um registro de uso e custo do GCP, facilitando análises financeiras, auditorias e otimização de recursos."
 
+    data_tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: export_time
+          interval: 1
+          name: mart_gerenciamento_custo_gcp__export_time__recency
+
     columns:
       - name: billing_account_id
         description: "O ID da conta de faturamento do Cloud que o uso está associado."
