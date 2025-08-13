@@ -10,7 +10,6 @@
             "granularity": "month",
         },
         cluster_by=["orgao"],
-        tags=["custo_gcp"],
     )
 }}
 

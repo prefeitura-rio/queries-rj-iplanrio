@@ -26,12 +26,18 @@ models:
     columns: true
 
   queries:
+    mart:
+      gerenciamento:
+        custos:
+          +tags: ["daily", "custos"]
     raw:
       +tags: "raw"
       bcadastro:
         +materialized: table
         +schema: brutos_bcadastro
         +tags: "weekly"
+      gcp:
+        +tags: ["daily", "custos"]
       taxirio:
         +materialized: table
         +schema: brutos_taxirio

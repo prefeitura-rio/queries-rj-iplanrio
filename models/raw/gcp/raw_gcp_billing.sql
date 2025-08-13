@@ -9,7 +9,6 @@
             "data_type": "date",
             "granularity": "month",
         },
-        tags=["incremental"],
     )
 }}
 
