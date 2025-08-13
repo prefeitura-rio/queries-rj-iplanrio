@@ -1,5 +1,6 @@
 {{
     config(
+        enabled=false,
         project = ("rj-sms" if target.name == "prod" else "rj-iplanrio-dev"),
         schema="gerenciamento_custos",
         alias="custo_gcp_sms",
