@@ -1,0 +1,336 @@
+version: 2
+models :
+  - name: raw_gestao_escolar__turma_aula_aluno
+    description: "**Descrição**: Falta de um aluno em plano de aula de determinado
+      tipo de determinada disciplina em um dado dia. Uma disciplina pode ter vários
+      tempos em um mesmo dia. Para saber o dia da frequencia do aluno deve-se acessar
+      a tabela turma-aula. Pode haver vários planos de aula de uma mesma disciplina
+      em um dia, um para cada tipo de aula. Por exemplo um plano de aula para prova
+      e outra para aulas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**:
+      Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura
+      Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: faltas_disciplina_dia
+        description: Quantidade de faltas do aluno no dia
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: anotacao
+        description: Anotação sobre o aluno na aula
+      - name: frequencia_tempo
+        description: Frequencia do tempo
+      - name: usuario_alteracao
+        description: Identificador do usuário que realizou a última alteração no registro
+      - name: id_matricula_disciplina
+        description: Identificador de matricula do aluno para determinada disciplina
+          em uma turma
+      - name: id_disciplina_turma
+        description: Identificador de disciplina para cada turma
+      - name: id_aluno
+        description: Identificador do aluno
+      - name: id_matricula_turma
+        description: Identificador de matrícula do aluno na turma
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo;  3 – Excluído. É excluído quando
+          foram inseridos dados incorretamente'
+      - name: id_aula_disciplina
+        description: Identificador das aulas da disciplina da turma em determinado
+          dia. Uma aula corresponde a um tempo da disciplina. Este identificador pode
+          corresponder a várias aulas, desde que estejam no mesmo dia
+  - name: raw_gestao_escolar__turma_curriculo
+    description: "**Descrição**: Grupamento de determinada turma.\n**Frequência de
+      atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos
+      dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado
+      por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: prioridade_curriculo
+        description: Número de prioridade do currículo da turma
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo; 3 – Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: id_periodo_curriculo
+        description: Identificador do período do currículo, sequencial (manual) com
+          base no curso e no currículo
+      - name: id_curriculo
+        description: Identificador de currículo, sequencial (manual) com base no curso
+      - name: id_curso
+        description: Identificador de curso, sequencial
+      - name: id_turma
+        description: Identificador de turma
+  - name: raw_gestao_escolar__turma_disciplina
+    description: "**Descrição**: Disciplina de determinada turma de escolas municipais
+      do município do Rio de Janeiro. A turma associada deve ser vista na tabela turma_disciplina_rel.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n
+      **Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da
+      Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: multiseriado
+        description: Verificador se a disciplina da turma é multiseriada
+      - name: numero_vagas
+        description: Número de vagas da disciplina da turma
+      - name: minimo_matriculados
+        description: Número mínimo de matriculados na disciplina da turma
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: id_modo
+        description: 'Modo: 1 – Normal; 2 – Regime Especial; 3 – Excepcional'
+      - name: id_disciplina
+        description: Código da disciplina da turma
+      - name: nome_disciplina
+        description: Nome da disciplina da turma
+      - name: data_inicio
+        description: Data inicial da disciplina da turma
+      - name: data_fim
+        description: Data final da disciplina da turma
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo; 3 – Excluído; 4 – Cancelada;
+          5 – Encerrada'
+      - name: global
+        description: Verificador se a disciplina da turma é global
+      - name: disciplina_especial
+        description: Indicar se a turma/disciplina
+      - name: id_disciplina_turma
+        description: Identificador sequencial da disciplina da turma
+      - name: aula_fora_periodo_normal
+        description: Verificador se existe aulas fora do período normal
+      - name: carga_hora_semanal
+        description: Carga horária semanal da disciplina da turma
+      - name: id_duracao
+        description: 'Duração: 1 – Anual; 2 – Semestral; 3 – Condensada; 4 – Livre'
+      - name: id_tipo
+        description: '"Tipo: 1 – Obrigatória; 2 – Estágio; 3 – Optativa; 4 – Eletiva'
+  - name: raw_gestao_escolar__turma_aula
+    description: "**Descrição**: Plano de aula de determinado tipo de aula. Um plano
+      de aula contém o conteúdo ( e dinâmica ) dado nos tempos de uma determinada
+      disciplina em determinado dia. Dinâmica indica a forma de alcançar os objetivos
+      pedagógicos pré-estabelecidos. Pode haver vários planos de aula de uma mesma
+      disciplina em um dia, um para cada tipo de aula. Por exemplo um plano de aula
+      para prova e outra para aulas.\n**Frequência de atualização**: Diário\n**Cobertura
+      temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
+      Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_aula_disciplina
+        description: Parte do identificador do plano de aula, que é composto também
+          por tud_id.
+      - name: sequencia_aula
+        description: Número da ordem do tempo no plano de aula.
+      - name: data_aula
+        description: Data do plano de aula.
+      - name: numero_aula
+        description: Número de tempo da disciplina no plano de aula de determinado
+          tipo.
+      - name: plano_aula
+        description: Descrição do plano de aula. Contém o conteúdo a ser dado e a
+          dinâmica.
+      - name: diario_classe
+        description: Diário de classe da disciplina da turma. Eventos que aconteceram
+          na turma.
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Aula prevista; 3 – Excluído; 4 – Aula
+          dada; 6 – Aula cancelada'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: conteudo
+        description: Conteúdo efetivamente dado nas aulas e a sua dinâmica.
+      - name: efetivado
+        description: Indica que o professor realizou o plano de aula. Isto ocorre
+          mesmo que somente um tempo tenha sido dado.
+      - name: posicao_docente
+        description: Indica se o docente que ministrou o plano de aula foi o titular
+          ou o substituto.
+      - name: id_usuario_criacao
+        description: Usuário do sistema que criou o registro.
+      - name: id_usuario_alteracao
+        description: Usuário do sistema que realizou a ultima alteração do registro.
+      - name: status_anotacoes
+        description: Status que indica a existência ou não de anotações
+      - name: status_plano_aula
+        description: Status que indica a existência ou não de plano de aula.
+      - name: id_tipo_calendario
+        description: Identificador do COC onde o plano de aula foi realizado.
+      - name: id_disciplina
+        description: Identificador de disciplina
+      - name: recursos_utilizados
+        description: lnforme dos recursos utilizados na aula
+      - name: atividade_casa
+        description: Assunto da atividade indicada para os alunos da turma realizarem
+          em casa.
+  - name: raw_gestao_escolar__formato_avaliacao
+    description: "**Descrição**: Formato de avaliação dos grupamentos. Este formato
+      pode ter impacto na contagem de frequencia e avaliação das notas. Por exemplo
+      a avalição pode ser por nota ou conceito, a frequência mínima pode ser 60% ou
+      75%.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n
+      **Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da
+      Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_formato_avaliacao
+        description: Identificador sequencial de formato de avaliação
+      - name: id_entidade
+        description: Identificador de entidade
+      - name: id_escola
+        description: 'FK: Identificador de escola'
+      - name: id_unidade_escola
+        description: 'FK: Identificador de unidade da escola'
+      - name: formato_avaliacao
+        description: Verificador se o formato de avaliação é padrão
+      - name: nome_avaliacao
+        description: Nome do formato de avaliação
+      - name: tipo_avaliacao
+        description: "Tipo do formato de avaliação:\r\n · 1 – Conceito global\r\n
+          · 2 – Por disciplina\r\n · 3 – Conceito global e por disciplina"
+      - name: tipo_frequencia
+        description: "Tipo de lançamento de frequência:\r\n · 1 – Aulas planejadas\r
+          \n · 2 – Período"
+      - name: conceito_global
+        description: 'FK: Identificador de escala de avaliação'
+      - name: valor_aprovacao_global
+        description: Valor mínimo para aprovação do conceito global
+      - name: valor_aprovacao_disciplina
+        description: Valor mínimo para aprovação por disciplina
+      - name: percentual_frequencia
+        description: Percentual mínimo de frequência para aprovação
+      - name: tipo_progressao
+        description: "Tipo de progressão parcial:\r\n · 1 – Período de matrícula seguinte\r
+          \n · 2 – Anterior ao período de matrícula seguinte\r\n · 3 - Sem progressão
+          parcial"
+      - name: valor_progressao
+        description: Valor mínimo de progressão parcial por disciplina
+      - name: maximo_progressao
+        description: Quantidade máxima de progressão parcial
+      - name: situacao_registro
+        description: "Situação do registro:\r\n · 1 – Ativo\r\n · 2 – Bloqueado\r\n
+          · 3 – Excluído"
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_altercao
+        description: Data/hora da última alteração
+      - name: tipo_frequencia_apurada
+        description: "Define se a frequencia será apurada por dia ou por tempos\r\n
+          1 - Tempos de Aula\r\n2 - Dias"
+  - name: raw_gestao_escolar__turma_disciplina_rel
+    description: "**Descrição**: Disciplina de determinada turma de escolas municipais
+      do município do Rio de Janeiro.\n**Frequência de atualização**: Diário\n**Cobertura
+      temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
+      Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_disciplina
+        description: Identificador de disciplina da turma
+      - name: id_turma
+        description: Identificador de turma
+  - name: raw_gestao_escolar__turno
+    description: "**Descrição**: Turnos das escolas.\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n
+      **Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**:
+      camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_turno
+        description: Identificador, seqüencial do turno
+      - name: id_entidade
+        description: Identificador de entidade
+      - name: descricao_turno
+        description: Descrição do turno
+      - name: turno_padrao
+        description: Verificador se o turno é padrão
+      - name: situacao
+        description: 'Situação do registro: 1 – Ativo; 2 – Bloqueado; 3 – Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: controle_tempo
+        description: 'Controle de tempo:  1 – Tempo de aula; 2 – Horas'
+      - name: hora_inicio
+        description: Horário inicial do turno
+      - name: hora_fim
+        description: Horário final do turno
+      - name: id_tipo_turno
+        description: Identificador de tipo de turno
+
+
+  - name: raw_gestao_escolar__curriculo_periodo
+    description: "**Descrição**: Grupamentos das etapas.  Grupamento - berçario, maternal
+      I e maternal II e pré-escola I e II, 1º ao 9º.  Etapa, o mesmo que curso:  um
+      subtipo de segmento. Exemplos: fundamental I bilingue, Fundamental ( 1 ao 9
+      ) bilingue.  Segmento - educação infantil, ensino fundamental I ( 1º ano, 2º
+      ano etc ... ), fundamental II.\n**Frequência de atualização**: Diário\n**Cobertura
+      temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
+      Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_periodo_curriculo
+        description: Identificador do período do currículo, sequencial (manual) com
+          base no curso e no currículo
+      - name: ordem_periodo
+        description: Ordem do período do currículo
+      - name: descricao_periodo
+        description: Descrição do período do currículo
+      - name: ano_idade_inicio
+        description: Ano da idade ideal inicial
+      - name: mes_idade_inicio
+        description: Mês da idade ideal inicial
+      - name: ano_idade_final
+        description: Ano da idade ideal final
+      - name: mes_idade_final
+        description: Mês da idade ideal final
+      - name: id_situacao
+        description: 'Situação do registro: 1–Ativo; 3–Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: controle_tempo
+        description: 'Controle de tempo: 1–Tempo de aula; 2-Horas'
+      - name: aulas_semana
+        description: Quantidade de aulas por semana
+      - name: tempos_semana
+        description: Quantidade de tempos de aula por semana
+      - name: horas_dia
+        description: Quantidade de horas por dia
+      - name: minutos_dia
+        description: Quantidade de minutos por dia
+      - name: id_coc
+        description: Número do Conselho de Classe (coc) que subdivide o ano escolar
+          em período de 2 meses e meio. Valores posíveis (1,2,3,4,5, NULL). Sempre
+          NULL
+      - name: id_curriculo
+        description: Identificador de currículo, sequencial (manual) com base no curso,
+          sempre 1
+      - name: id_etapa_mec_inep
+        description: Identificador de etapa do MEC/INEP. Sempre NULL
+      - name: id_curso
+        description: Identificador de curso, sequencia. Etapa???
+  - name: raw_gestao_escolar__tipo_turno
+    description: "**Descrição**: Tipos de turno possíveis.  Ex. integral, manhã, noite
+        e tarde.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde
+        2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira
+        da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+    - name: id_tipo_turno
+      description: Identificador, sequencial do tipo de turno
+    - name: tipo_turno
+      description: Nome do tipo de turno.
+    - name: id_situacao
+      description: 'Situação do registro: 1 – Ativo; 2 – Bloqueado; 3 – Excluído'
+    - name: data_criacao
+      description: Data/hora de criação do registro
+    - name: data_alteracao
+      description: Data/hora da última alteração
+  - name: raw_gestao_escolar__calendario_periodo
+  - name: raw_gestao_escolar__turno_horario
+  - name: raw_gestao_escolar__vw_bi_aluno
+  - name: raw_gestao_escolar__calendario_anual
+  - name: raw_gestao_escolar__processo_fechamento_inicio
+  - name: raw_gestao_escolar__aluno_curriculo
+  - name: raw_gestao_escolar__aluno_justificativa_falta
+  - name: raw_gestao_escolar__tipo_justificativa_falta
+  - name: raw_gestao_escolar__aluno_historico_completo
+  - name: raw_gestao_escolar__avaliacao
+  - name: raw_gestao_escolar__diasCoc
+  - name: raw_gestao_escolar__numeroDeAulasCte

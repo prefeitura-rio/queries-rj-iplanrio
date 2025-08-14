@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: brutos_gestao_escolar_staging_airbyte
-    database: rj-sme
-    schema: brutos_gestao_escolar_staging
+  - name: sme_brutos_gestao_escolar_staging_airbyte
+    database: rj-iplanrio
+    schema: sme_brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: _airbyte_extracted_at
@@ -34,9 +34,9 @@ sources:
       - name: VW_BI_Aluno
       - name: VW_BI_Aluno_Todos_Os_Anos
 
-  - name: brutos_gestao_escolar_staging_prefect
-    database: rj-sme
-    schema: educacao_basica_frequencia_staging
+  - name: sme_brutos_gestao_escolar_staging_prefect
+    database: rj-iplanrio 
+    schema: sme_brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: CAST(loaded_at AS TIMESTAMP)
@@ -44,4 +44,4 @@ sources:
       - name: CLS_TurmaAulaAluno
       - name: numeroDeAulasCte
       - name: CLS_AlunoAvaliacaoTurma
-#      - name: diasCoc
+      - name: diasCoc
