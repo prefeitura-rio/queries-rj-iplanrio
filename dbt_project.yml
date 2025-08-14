@@ -50,8 +50,8 @@ models:
         gestao_escolar:
           +materialized: table
           +schema: brutos_sme_brutos_gestao_escolar_teste
-          +tags: ["daily", "sme"]
-          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-sme' }}"
+          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
+          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
       smfp:
         +tags: "smfp"
         +project: "{{ 'rj-smfp' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
@@ -64,6 +64,7 @@ models:
       sme:
         frequencia:
           +materialized: table
-          +schema: marts
-          +tags: ["daily", "sme"]
+          +schema: frequencia
+          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
+          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
         
