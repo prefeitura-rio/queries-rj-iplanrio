@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: sme_brutos_gestao_escolar_staging_airbyte
-    database: rj-sme
+    database: rj-iplanrio
     schema: sme_brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
