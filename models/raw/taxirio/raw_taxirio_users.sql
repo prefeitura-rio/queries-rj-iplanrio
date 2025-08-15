@@ -21,6 +21,8 @@ select
     ) as data_nascimento_receita_federal,
     safe_cast(federalrevenuedata_mothersname as string) as nome_mae_receita_federal,
     safe_cast(federalrevenuedata_yearofdeath as string) as ano_morte_receita_federal,
-    safe_cast(federalrevenuedata_sex as string) as sexo_receita_federal
+    safe_cast(federalrevenuedata_sex as string) as sexo_receita_federal,
+    _airbyte_extracted_at as datalake_loaded_at,    
+    current_timestamp() as datalake_transformed_at   
 
 from {{ source("brutos_taxirio_staging", "users") }}

@@ -24,5 +24,6 @@ select
     safe_cast(tokeninfo_httpsalt as string) as ficha_http_aleatorio,
     safe_cast(tokeninfo_wsssalt as string) as ficha_wss_aleatorio,
     safe_cast(tokeninfo_pushtoken as string) as ficha_envio,
-
+    _airbyte_extracted_at as datalake_loaded_at,    
+    current_timestamp() as datalake_transformed_at     
 from {{ source("brutos_taxirio_staging", "passengers") }}
