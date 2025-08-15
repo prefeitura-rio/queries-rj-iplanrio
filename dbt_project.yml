@@ -30,6 +30,12 @@ models:
       gerenciamento:
         custos:
           +tags: ["daily", "custos"]
+      sme:
+        frequencia:
+          +materialized: table
+          +schema: frequencia
+          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
+          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
     raw:
       +tags: "raw"
       bcadastro:
@@ -60,11 +66,5 @@ models:
           +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
 
-    mart:
-      sme:
-        frequencia:
-          +materialized: table
-          +schema: frequencia
-          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
-          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+      
         
