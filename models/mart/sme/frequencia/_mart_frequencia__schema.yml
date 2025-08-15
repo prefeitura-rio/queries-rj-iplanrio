@@ -6,7 +6,6 @@ models :
     config:
       schema: marts
       materialized: table
-      tags: ['daily']
     columns:
       - name: id_aluno
         description: Identificador único do aluno (tabela origem ACA_Aluno)
@@ -48,7 +47,6 @@ models :
     config:
       schema: marts
       materialized: table
-      tags: ['daily']
     columns:
       - name: id_aluno
         description: Identificador único do aluno
@@ -67,7 +65,6 @@ models :
     config:
       schema: marts
       materialized: table
-      tags: ['daily']
     columns:
     - name: updated_at
       description: "Usado para controle incremental"
@@ -137,12 +134,10 @@ models :
     config:
       schema: marts
       materialized: table
-      tags: ['daily']
 
   - name: mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos
     description: "**Descrição**: Calcula o indicador de frequência acumulada por aluno considerando apenas os dias letivos, a partir do início do ano letivo até a data atual, considerando o período de matrícula do aluno na(s) turma(s)."
     config:
       schema: marts
       materialized: table
-      tags: ['daily']
   
