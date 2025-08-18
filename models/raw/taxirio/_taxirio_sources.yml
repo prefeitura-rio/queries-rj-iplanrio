@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: brutos_taxirio_staging
+    database: rj-iplanrio 
+    schema: brutos_taxirio_staging
+    tables:
+      - name: cities
+        description: "Source table for city information"
+      - name: discounts
+        description: "Source table for discount information"
+      - name: drivers
+        description: "Source table for driver information"
+      - name: metricsdriverunoccupieds
+        description: "Source table for metricsdriverunoccupieds information"
+      - name: passengers
+        description: "Source table for passenger information"
+      - name: paymentmethods
+        description: "Source table for paymentmethods information"
+      - name: races
+        description: "Source table for races information"
+        freshness: 
+          error_after: {count: 24, period: hour}
+        loaded_at_field: 'datetime(timestamp(createdat))'
+      - name: rankingraces
+        description: "Source table for rankingraces information"
+        freshness: 
+          error_after: {count: 24, period: hour}
+        loaded_at_field: 'datetime(timestamp(createdat))'
+      - name: users
+        description: "Source table for users information" 

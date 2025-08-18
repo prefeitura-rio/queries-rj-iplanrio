@@ -1,8 +1,0 @@
-version: 2
-
-models:
-  - name: mart_bcadastro_nulls_consolidado
-    columns:
-      - name: table
-      
-        

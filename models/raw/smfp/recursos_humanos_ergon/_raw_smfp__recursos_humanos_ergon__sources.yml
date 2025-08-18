@@ -1,0 +1,70 @@
+version: 2
+
+sources:
+  - name: recursos_humanos_ergon
+    description: "Dados de recursos humanos do sistema ERGON da Prefeitura do Rio de Janeiro"
+    database: rj-smfp
+    schema: recursos_humanos_ergon_staging
+    tables:
+      - name: afastamento_antigo
+        description: "Tabela de afastamentos antigos dos servidores"
+      - name: afastamento_antigo_nomes
+        description: "Nomes dos tipos de afastamentos antigos"
+      - name: averbacoes
+        description: "Tabela de averbações de tempo de serviço"
+      - name: averbacoes_contagem
+        description: "Contagem de averbações por finalidade"
+      - name: cargo
+        description: "Tipos de cargos existentes na administração"
+      - name: categoria
+        description: "Categorias existentes na administração"
+      - name: ficha_financeira
+        description: "Fichas financeiras dos funcionários da COMLURB"
+      - name: ficha_financeira_contabil
+        description: "Fichas financeiras contábeis dos funcionários"
+      - name: fita_banco
+        description: "Fitas enviadas para o tesouro municipal"
+      - name: forma_provimento
+        description: "Formas de provimentos possíveis"
+      - name: frequencia
+        description: "Ocorrências de frequência do servidor municipal"
+      - name: frequencia_antigo
+        description: "Frequência de servidores em sistemas antigos"
+      - name: funcionario
+        description: "Pessoas físicas cadastradas no sistema"
+      - name: horario_trabalho
+        description: "Horários possíveis para funcionários"
+      - name: jornada
+        description: "Tipos de jornadas existentes"
+      - name: licenca_afastamento
+        description: "Licenças e afastamentos dos servidores"
+      - name: matricula
+        description: "Matrículas dos funcionários"
+      - name: orgaos_externos
+        description: "Órgãos de outros entes federativos"
+      - name: orgaos_regime_juridico
+        description: "Regimes jurídicos aceitos para contratação"
+      - name: pre_contagem
+        description: "Contagens anteriores ao sistema"
+      - name: provimento
+        description: "Eventos relacionados aos vínculos funcionais"
+      - name: regime_juridico
+        description: "Tipos de regimes jurídicos existentes"
+      - name: rubrica
+        description: "Rubricas de pagamento"
+      - name: setor
+        description: "Setores existentes na administração"
+      - name: tipo_orgao
+        description: "Tipos de órgãos da administração"
+      - name: tipo_tempo
+        description: "Tipos de tempo para contagem de benefícios"
+      - name: tipo_vinculo
+        description: "Tipos de vínculos existentes"
+      - name: total_contagem
+        description: "Resultado das contagens de tempo para benefícios"
+      - name: vantagens
+        description: "Vantagens e atributos dos servidores"
+      - name: vinculo
+        description: "Vínculos de pagamento dos funcionários"
+      - name: vinculo_pagamento
+        description: "Vínculos de pagamento (visão alternativa)"
