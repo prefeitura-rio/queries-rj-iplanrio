@@ -1,7 +1,7 @@
 -- tabela de CNO - Cadastro Nacional de Obras
 {{
     config(
-        materialized="table",
+        materialized="table", 
     )
 }}
 
