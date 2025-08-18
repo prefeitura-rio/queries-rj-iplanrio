@@ -51,17 +51,17 @@ jobs:
         gsutil cp gs://${{ env.GCLOUD_STORAGE_PATH_MANIFEST }}/manifest.json ./ || echo "Manifest not found"
 
     - name: Run dbt debug
-      run: dbt debug --target prod
+      run: dbt debug --target pr_prod
 
     - name: Run dbt deps
-      run: dbt deps --target prod
+      run: dbt deps --target pr_prod
 
     - name: Run dbt build
       run: |
         if [ -f "./manifest.json" ]; then
-          dbt build -s 'state:modified+' --state ./ --target prod
+          dbt build -s 'state:modified+' --state ./ --target pr_prod
         else
-          dbt build --target prod
+          dbt build --target pr_prod
         fi
 
     - name: Copy new manifest.json to Google Cloud Storage
