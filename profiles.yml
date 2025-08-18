@@ -47,7 +47,7 @@ iplan:
       type: bigquery
       method: service-account-json
       project: rj-iplanrio-dev
-      dataset: "pr_{{ var('schema_id') }}"
+      dataset: dbt_ci
       threads: 4
 
       # These fields come from the service account json keyfile
