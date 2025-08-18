@@ -17,7 +17,7 @@ with
     unpacked_logs as (
         -- CTE 1: Desagrupa o JSON bruto em linhas.
         select
-            project_id, cast(last_update as timestamp) as last_update, user_id, message
+            environment, cast(last_update as timestamp) as last_update, user_id, message
         from
             `rj-iplanrio.brutos_eai_logs_staging.history`,
             unnest(json_extract_array(messages)) as message
@@ -26,7 +26,7 @@ with
     parsed_logs as (
         -- CTE 2: Parseia cada linha de JSON, incluindo TODOS os campos originais.
         select
-            project_id,
+            environment,
             last_update,
             user_id,
             json_extract_scalar(message, '$.id') as message_id,
@@ -77,7 +77,7 @@ with
     tool_executions as (
         -- CTE 3: Cria as linhas unificadas para cada execução de ferramenta.
         select
-            c.project_id,
+            c.environment,
             c.last_update,
             c.user_id,
             c.message_id,
@@ -116,7 +116,7 @@ with
         -- CTE 4: Isola todas as outras mensagens, agora com seleção explícita de
         -- colunas.
         select
-            project_id,
+            environment,
             last_update,
             user_id,
             message_id,
