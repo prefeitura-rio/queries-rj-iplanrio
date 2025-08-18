@@ -55,7 +55,7 @@ models:
       sme:
         gestao_escolar:
           +materialized: table
-          +schema: brutos_sme_brutos_gestao_escolar_teste
+          +schema: brutos_gestao_escolar
           #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
           +project: rj-sme
       smfp:
