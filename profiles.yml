@@ -23,15 +23,43 @@ iplan:
       project: rj-iplanrio
       threads: 8
       type: bigquery
-    ci:
-      dataset: dbt_ci
-      job_execution_timeout_seconds: 300
-      job_retries: 1
-      keyfile: ./.gcloud/dbt-service-account.json
-      location: US
-      method: service-account
-      priority: interactive
-      project: rj-iplanrio
-      threads: 8
+    pr:
       type: bigquery
-      
+      method: service-account-json
+      project: rj-iplanrio-dev
+      dataset: "pr_{{ var('schema_id') }}"
+      threads: 4
+
+      # These fields come from the service account json keyfile
+      keyfile_json:
+        type: "{{ env_var('DBT_ENV_SECRET_TYPE') }}"
+        project_id: "{{ env_var('DBT_ENV_SECRET_PROJECT_ID') }}"
+        private_key_id: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY_ID') }}"
+        private_key: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY') }}"
+        client_email: "{{ env_var('DBT_ENV_SECRET_CLIENT_EMAIL') }}"
+        client_id: "{{ env_var('DBT_ENV_SECRET_CLIENT_ID') }}"
+        auth_uri: "{{ env_var('DBT_ENV_SECRET_AUTH_URI') }}"
+        token_uri: "{{ env_var('DBT_ENV_SECRET_TOKEN_URI') }}"
+        auth_provider_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL') }}"
+        client_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_CLIENT_X509_CERT_URL') }}"
+
+    pr_prod:
+      type: bigquery
+      method: service-account-json
+      project: rj-iplanrio-dev
+      dataset: "pr_{{ var('schema_id') }}"
+      threads: 4
+
+      # These fields come from the service account json keyfile
+      keyfile_json:
+        type: "{{ env_var('DBT_ENV_SECRET_TYPE') }}"
+        project_id: "{{ env_var('DBT_ENV_SECRET_PROJECT_ID') }}"
+        private_key_id: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY_ID') }}"
+        private_key: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY') }}"
+        client_email: "{{ env_var('DBT_ENV_SECRET_CLIENT_EMAIL') }}"
+        client_id: "{{ env_var('DBT_ENV_SECRET_CLIENT_ID') }}"
+        auth_uri: "{{ env_var('DBT_ENV_SECRET_AUTH_URI') }}"
+        token_uri: "{{ env_var('DBT_ENV_SECRET_TOKEN_URI') }}"
+        auth_provider_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL') }}"
+        client_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_CLIENT_X509_CERT_URL') }}"
+

@@ -11,6 +11,10 @@
 
         {%- endif -%}
 
+    {%- elif target.name == "pr" -%}	
+        {%- set default_schema = target.schema -%}
+
+            {{default_schema}}
     {%- else %}
 
         {%- set default_schema = target.schema -%}

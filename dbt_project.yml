@@ -35,7 +35,7 @@ models:
           +materialized: table
           +schema: frequencia
           #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
-          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+          +project: rj-sme
     raw:
       +tags: "raw"
       bcadastro:
@@ -55,16 +55,20 @@ models:
       sme:
         gestao_escolar:
           +materialized: table
-          +schema: brutos_sme_brutos_gestao_escolar_teste
+          +schema: brutos_gestao_escolar
           #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
-          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+          +project: rj-sme
       smfp:
         +tags: "smfp"
-        +project: "{{ 'rj-smfp' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+        +project: rj-smfp
         recursos_humanos_ergon:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
+      teste_actions:
+        +materialized: table
+        +schema: TESTE
+        +project: rj-sme
       plus_codes:
         +materialized: table
         +schema: plus_codes

@@ -1,16 +1,15 @@
-name: CI-DBT
+name: CD-DBT
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 
 jobs:
-  test-dbt-models:
+  deploy-dbt:
     runs-on: ubuntu-latest
 
     env:
-
       GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
       GCLOUD_STORAGE_PATH_MANIFEST: ${{ secrets.GCLOUD_STORAGE_PATH_MANIFEST }}
       DBT_ENV_SECRET_TYPE: ${{ secrets.DBT_ENV_SECRET_TYPE }} 
@@ -50,23 +49,21 @@ jobs:
     - name: Copy manifest.json from Google Cloud Storage
       run: |
         gsutil cp gs://${{ env.GCLOUD_STORAGE_PATH_MANIFEST }}/manifest.json ./ || echo "Manifest not found"
-    
-    - name: Get Schema ID
-      id: schema_id
-      run: echo "SCHEMA_ID=${{ github.event.pull_request.number }}__${{ github.sha }}" >> $GITHUB_ENV
 
     - name: Run dbt debug
-      run: |
-        dbt debug --target pr --vars "schema_id: $SCHEMA_ID"
+      run: dbt debug --target pr_prod
 
     - name: Run dbt deps
-      run: |
-        dbt deps --target pr --vars "schema_id: $SCHEMA_ID"
+      run: dbt deps --target pr_prod
 
     - name: Run dbt build
       run: |
         if [ -f "./manifest.json" ]; then
-          dbt build -s 'state:modified+' --defer --state ./ --target pr --vars "schema_id: $SCHEMA_ID"
+          dbt build -s 'state:modified+' --state ./ --target pr_prod
         else
-          dbt build --target pr --vars "schema_id: $SCHEMA_ID"
+          dbt build --target pr_prod
         fi
+
+    - name: Copy new manifest.json to Google Cloud Storage
+      run: |
+        gsutil cp ./target/manifest.json gs://${{ env.GCLOUD_STORAGE_PATH_MANIFEST }}/
