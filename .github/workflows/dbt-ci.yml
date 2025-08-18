@@ -3,7 +3,7 @@ name: CI_action
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   CI_job:
