@@ -116,6 +116,63 @@ with
         from {{ ref("raw_equipamentos_saude") }}
     ),
 
+    saude_territorio_unidades as (
+        select
+            plus8,
+            geometry,
+            plus11,
+            id_equipamento,
+            secretaria_responsavel,
+            tipo_equipamento,
+            nome_oficial,
+            nome_popular,
+            plus10,
+            plus6,
+            latitude,
+            longitude,
+            endereco,
+            bairro,
+            contato,
+            ativo,
+            aberto_ao_publico,
+            horario_funcionamento,
+            fonte,
+            vigencia_inicio,
+            vigencia_fim,
+            metadata,
+            updated_at
+        from {{ ref("raw_equipamentos_saude_unidades") }}
+    ),
+
+
+    saude_territorio_equipes as (
+        select
+            plus8,
+            geometry,
+            plus11,
+            id_equipamento,
+            secretaria_responsavel,
+            tipo_equipamento,
+            nome_oficial,
+            nome_popular,
+            plus10,
+            plus6,
+            latitude,
+            longitude,
+            endereco,
+            bairro,
+            contato,
+            ativo,
+            aberto_ao_publico,
+            horario_funcionamento,
+            fonte,
+            vigencia_inicio,
+            vigencia_fim,
+            metadata,
+            updated_at
+        from {{ ref("raw_equipamentos_saude_equipe_familia") }}
+    ),
+
     educacao as (
         select
             plus8,
@@ -177,6 +234,12 @@ with
         from saude
         union all
         select *
+        from saude_territorio_unidades
+        union all
+        select *
+        from saude_territorio_equipes
+        union all
+        select *
         from educacao
         union all
         select *
@@ -208,7 +271,8 @@ with
             eq.vigencia_inicio,
             eq.vigencia_fim,
             eq.metadata,
-            eq.updated_at
+            eq.updated_at,
+            ST_ASTEXT(eq.geometry) as geometry_text
         from equipamentos eq
         -- 1. Tenta fazer o JOIN com as regras específicas primeiro
         left join
@@ -228,7 +292,7 @@ select
     eq.plus8,
     eq.plus11,
     eq.id_equipamento,
-    eqg.geometry,
+    ST_GEOGFROMTEXT(eq.geometry_text) as geometry,
     eq.secretaria_responsavel,
     eq.categoria,
     eq.use,
@@ -251,9 +315,4 @@ select
     eq.metadata,
     eq.updated_at
 from equipamentos_categorias eq
-left join
-    equipamentos eqg
-    on eq.plus8 = eqg.plus8
-    and eq.secretaria_responsavel = eqg.secretaria_responsavel
-    and eq.tipo_equipamento = eqg.tipo_equipamento
-    and eq.nome_oficial = eqg.nome_oficial
+

@@ -69,4 +69,12 @@ models:
         +materialized: table
         +schema: TESTE
         +project: rj-sme
+      plus_codes:
+        +materialized: table
+        +schema: plus_codes
+        +tags: "daily"
+      eai_logs:
+        +materialized: table
+        +schema: eai_logs
+
         
