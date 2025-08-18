@@ -1,7 +1,7 @@
 WITH unpacked_logs AS (
   -- Passo 1: Extrair e desagrupar o array JSON em linhas individuais.
   SELECT
-    project_id,
+    environment,
     CAST(last_update AS TIMESTAMP) as last_update,
     user_id,
     message
@@ -9,12 +9,12 @@ WITH unpacked_logs AS (
     `rj-iplanrio.brutos_eai_logs_staging.history`,
     UNNEST(JSON_EXTRACT_ARRAY(messages)) AS message
   WHERE
-    project_id = 'rj-superapp'
+    environment = 'prod'
 )
 -- Passo 2: Parsear cada linha de JSON, extraindo e tipando cada campo.
 SELECT
   -- 1. Metadados da Tabela Original
-  project_id,
+  environment,
   last_update,
   user_id,
 
