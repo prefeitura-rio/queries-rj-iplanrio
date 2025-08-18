@@ -23,4 +23,15 @@ iplan:
       project: rj-iplanrio
       threads: 8
       type: bigquery
-
+    ci:
+      dataset: dbt_ci
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: ./.gcloud/dbt-service-account.json
+      location: US
+      method: service-account
+      priority: interactive
+      project: rj-iplanrio
+      threads: 8
+      type: bigquery
+      

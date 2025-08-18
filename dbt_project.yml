@@ -20,21 +20,51 @@ vars:
   # Internal variables
   DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
 
-
 models:
   +persist_docs:
     relation: true
     columns: true
 
   queries:
+    mart:
+      gerenciamento:
+        custos:
+          +tags: ["daily", "custos"]
+      sme:
+        frequencia:
+          +materialized: table
+          +schema: frequencia
+          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
+          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
     raw:
       +tags: "raw"
       bcadastro:
         +materialized: table
         +schema: brutos_bcadastro
         +tags: "weekly"
+      gcp:
+        +tags: ["daily", "custos"]
+      taxirio:
+        +materialized: table
+        +schema: brutos_taxirio
+        +tags: "daily"
       unidades_administrativas:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
+      sme:
+        gestao_escolar:
+          +materialized: table
+          +schema: brutos_sme_brutos_gestao_escolar_teste
+          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
+          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+      smfp:
+        +tags: "smfp"
+        +project: "{{ 'rj-smfp' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+        recursos_humanos_ergon:
+          +materialized: table
+          +schema: brutos_recursos_humanos_ergon
+          +tags: "daily"
 
+      
+        
