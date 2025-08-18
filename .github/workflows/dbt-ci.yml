@@ -1,4 +1,4 @@
-name: CI_action
+name: CI-DBT
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  CI_job:
+  test-dbt-models:
     runs-on: ubuntu-latest
 
     env:

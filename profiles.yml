@@ -23,7 +23,7 @@ iplan:
       project: rj-iplanrio
       threads: 8
       type: bigquery
-    ci:
+    pr:
       type: bigquery
       method: service-account-json
       project: "{{ env_var('DBT_ENV_SECRET_PROJECT_ID') }}"
