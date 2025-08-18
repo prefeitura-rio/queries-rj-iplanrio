@@ -31,3 +31,4 @@ select
     current_timestamp() as transformed_at
 from {{ source('brutos_mais_valia_staging', 'vwCTP_darm_ctp') }}
 where codigo_calculo is not null
+and data_vencimento is not null
