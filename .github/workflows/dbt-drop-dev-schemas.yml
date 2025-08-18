@@ -1,16 +1,15 @@
-name: CI_action
+name: CI schema drop on PR close
 
 on:
   pull_request:
-    branches:
-      - main
+    types:
+      - closed
 
 jobs:
-  CI_job:
+  CI_TEARDOWN_job:
     runs-on: ubuntu-latest
 
     env:
-
       GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
       GCLOUD_STORAGE_PATH_MANIFEST: ${{ secrets.GCLOUD_STORAGE_PATH_MANIFEST }}
       DBT_ENV_SECRET_TYPE: ${{ secrets.DBT_ENV_SECRET_TYPE }} 
@@ -25,7 +24,7 @@ jobs:
       DBT_ENV_SECRET_CLIENT_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_CLIENT_X509_CERT_URL }} 
 
     steps:
-    - name: Checkout repository
+    - name: checkout
       uses: actions/checkout@v3
 
     - name: Set up Python
@@ -46,26 +45,12 @@ jobs:
       with:
         project_id: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
 
-    - name: Copy manifest.json from Google Cloud Storage
-      run: |
-        gsutil cp gs://${{ env.GCLOUD_STORAGE_PATH_MANIFEST }}/manifest.json ./ || echo "Manifest not found"
-    
-    - name: Get Schema ID
+    - name: Get PR NUM
       id: schema_id
-      run: echo "SCHEMA_ID=${{ github.event.pull_request.number }}__${{ github.sha }}" >> $GITHUB_ENV
+      run: echo "PR_NUM=${{ github.event.number }}" >> $GITHUB_ENV
 
-    - name: Run dbt debug
-      run: |
-        dbt debug --target pr --vars "schema_id: $SCHEMA_ID"
+    - name: dbt deps
+      run: dbt deps
 
-    - name: Run dbt deps
-      run: |
-        dbt deps --target pr --vars "schema_id: $SCHEMA_ID"
-
-    - name: Run dbt build
-      run: |
-        if [ -f "./manifest.json" ]; then
-          dbt build -s 'state:modified+' --defer --state ./ --target pr --vars "schema_id: $SCHEMA_ID"
-        else
-          dbt build --target pr --vars "schema_id: $SCHEMA_ID"
-        fi
+    - name: drop PR schemas
+      run: dbt run-operation drop_pr_staging_schemas --args "{'project_id'":" '${DBT_ENV_SECRET_PROJECT_ID}', 'PR_number'":" '${PR_NUM}' }" --profiles-dir ./

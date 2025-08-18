@@ -35,6 +35,7 @@ SELECT
   CAST(
     PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%E*S%Ez', updated_at) 
     AS DATETIME
-  ) AS updated_at
+  ) AS updated_at,
+  "TESTE" as teste
     
 FROM `rj-iplanrio.unidades_administrativas_staging.orgaos`
