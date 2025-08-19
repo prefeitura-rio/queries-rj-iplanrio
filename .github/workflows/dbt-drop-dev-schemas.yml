@@ -46,11 +46,13 @@ jobs:
         project_id: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
 
     - name: Get PR NUM
-      id: schema_id
       run: echo "PR_NUM=${{ github.event.number }}" >> $GITHUB_ENV
+
+    - name: Get Schema ID
+      run: echo "SCHEMA_ID=${{ github.event.pull_request.number }}__${{ github.sha }}" >> $GITHUB_ENV
 
     - name: dbt deps
       run: dbt deps
 
     - name: drop PR schemas
-      run: dbt run-operation drop_pr_staging_schemas --args "{'PR_number'":" '${PR_NUM}' }" --target pr
+      run: dbt run-operation drop_pr_staging_schemas --args "{'PR_number'":" '${PR_NUM}' }" --target pr --vars "{'schema_id'":" '${SCHEMA_ID}' }"
