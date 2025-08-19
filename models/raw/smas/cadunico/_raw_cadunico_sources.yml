@@ -1,10 +1,10 @@
 version: 2
 
 sources:
-  - name: brutos_data_metrica
+  - name: brutos_data_metrica_staging
     description: Dados brutos da API Datametrica
     tables:
-      - name: raw_cadunico_agendamentos
+      - name: agendamentos_cadunico
         description: Dados de agendamentos da Datametrica
         columns:
           - name: id
