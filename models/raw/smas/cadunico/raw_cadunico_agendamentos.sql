@@ -22,7 +22,7 @@ with source_data as (
         unidade_endereco,
         unidade_bairro,
         current_timestamp() as processed_at
-    from {{ source('brutos_data_metrica', 'agendamentos_cadunico') }}
+    from {{ source('brutos_data_metrica', 'raw_cadunico_agendamentos') }}
     where data_hora is not null
 )
 
