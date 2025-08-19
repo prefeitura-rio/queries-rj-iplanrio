@@ -7,6 +7,6 @@
 
 
 SELECT
-  "TESTE2" as teste
+  "TESTE3" as teste
     
 FROM `rj-iplanrio.unidades_administrativas_staging.orgaos`
