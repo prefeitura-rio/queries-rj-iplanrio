@@ -3,7 +3,7 @@
     {% set pr_cleanup_query %}
         with pr_staging_schemas as (
             select schema_name
-            from `{{ DBT_ENV_SECRET_DROP_SCHEMA_PROJECT }}.region-us.INFORMATION_SCHEMA.SCHEMATA`
+            from `{{ env.DBT_ENV_SECRET_DROP_SCHEMA_PROJECT }}.region-us.INFORMATION_SCHEMA.SCHEMATA`
             where
             schema_name like 'pr_'||{{ PR_number }}||'__%'
         )
