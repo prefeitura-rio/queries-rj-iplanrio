@@ -49,8 +49,9 @@ jobs:
       id: schema_id
       run: echo "PR_NUM=${{ github.event.number }}" >> $GITHUB_ENV
 
+
     - name: dbt deps
       run: dbt deps
 
     - name: drop PR schemas
-      run: dbt run-operation drop_pr_staging_schemas --args "{'PR_number'":" '${PR_NUM}' }" --target pr_prod
+      run: dbt run-operation drop_pr_staging_schemas --args "{'PR_number'":" '${PR_NUM}' }" --target pr --vars "schema_id: $PR_NUM"
