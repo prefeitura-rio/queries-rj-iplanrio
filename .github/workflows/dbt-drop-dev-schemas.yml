@@ -22,6 +22,7 @@ jobs:
       DBT_ENV_SECRET_TOKEN_URI: ${{ secrets.DBT_ENV_SECRET_TOKEN_URI }}
       DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL }} 
       DBT_ENV_SECRET_CLIENT_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_CLIENT_X509_CERT_URL }} 
+      DBT_ENV_SECRET_DROP_SCHEMA_PROJECT: ${{ secrets.DBT_ENV_SECRET_DROP_SCHEMA_PROJECT }}
 
     steps:
     - name: checkout
@@ -53,4 +54,4 @@ jobs:
       run: dbt deps
 
     - name: drop PR schemas
-      run: dbt run-operation drop_pr_staging_schemas --args "{'project_id'":" 'rj-iplanrio-dev', 'PR_number'":" '${PR_NUM}' }" --profiles-dir ./
+      run: dbt run-operation drop_pr_staging_schemas --args '{PR_number:'${PR_NUM}' }' --target pr

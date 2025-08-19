@@ -65,10 +65,6 @@ models:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
-      teste_actions:
-        +materialized: table
-        +schema: TESTE
-        +project: rj-sme
       plus_codes:
         +materialized: table
         +schema: plus_codes
