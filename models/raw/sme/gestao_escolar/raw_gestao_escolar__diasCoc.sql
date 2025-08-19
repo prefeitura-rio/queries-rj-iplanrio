@@ -5,7 +5,6 @@
 ) }}
 
 
-
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'diasCoc') }}
   ),
