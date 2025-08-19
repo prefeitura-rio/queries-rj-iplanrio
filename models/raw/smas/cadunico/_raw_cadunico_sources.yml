@@ -4,7 +4,7 @@ sources:
   - name: brutos_data_metrica
     description: Dados brutos da API Datametrica
     tables:
-      - name: agendamentos_cadunico
+      - name: raw_cadunico_agendamentos
         description: Dados de agendamentos da Datametrica
         columns:
           - name: id
