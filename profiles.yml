@@ -46,7 +46,7 @@ iplan:
     pr_prod:
       type: bigquery
       method: service-account-json
-      project: rj-iplanrio-dev
+      project: rj-iplanrio
       dataset: dbt_ci
       threads: 4
 

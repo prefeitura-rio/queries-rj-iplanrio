@@ -1,1 +1,4 @@
 models/raw/eai_logs/raw_eai_logs_alternative_history.sql
+models/raw/plus_codes/raw_grid_check.sql
+models/raw/plus_codes/raw_grid.sql
+
