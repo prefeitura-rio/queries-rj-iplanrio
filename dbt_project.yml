@@ -75,5 +75,7 @@ models:
       smas:
         cadunico:
           +materialized: table
+          +project: rj-smas
+          +schema: brutos_data_metrica
 
         
