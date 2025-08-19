@@ -3,7 +3,6 @@ version: 2
 sources:
   - name: brutos_data_metrica_staging
     description: Dados brutos da API Datametrica
-    database: rj-iplanrio
     tables:
       - name: agendamentos_cadunico
         description: Dados de agendamentos da Datametrica
