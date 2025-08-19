@@ -46,11 +46,9 @@ jobs:
         project_id: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
 
     - name: Get PR NUM
-      id: schema_id
       run: echo "PR_NUM=${{ github.event.number }}" >> $GITHUB_ENV
 
     - name: Get Schema ID
-      id: schema_id
       run: echo "SCHEMA_ID=${{ github.event.pull_request.number }}__${{ github.sha }}" >> $GITHUB_ENV
 
     - name: dbt deps
