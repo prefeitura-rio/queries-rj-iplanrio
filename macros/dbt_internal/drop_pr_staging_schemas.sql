@@ -1,9 +1,9 @@
-{%- macro drop_pr_staging_schemas(project_id, PR_number) %}
+{%- macro drop_pr_staging_schemas(PR_number) %}
 
     {% set pr_cleanup_query %}
         with pr_staging_schemas as (
             select schema_name
-            from {{ project_id }}.region-us.INFORMATION_SCHEMA.SCHEMATA
+            from `{{ DBT_ENV_SECRET_DROP_SCHEMA_PROJECT }}.region-us.INFORMATION_SCHEMA.SCHEMATA`
             where
             schema_name like 'pr_'||{{ PR_number }}||'__%'
         )
