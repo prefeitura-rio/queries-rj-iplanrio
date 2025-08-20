@@ -37,5 +37,5 @@ SELECT
         SAFE_CAST(vl_contratado AS FLOAT64) valor_contratado,
         SAFE_CAST(vl_vigente AS FLOAT64) valor_vigente,
         SAFE_CAST(pc_medido AS FLOAT64) percentual_medido,
-        SAFE_CAST(prazo_inicial AS INT64) prazo_inicial, AS t
-FROM {{ source('brutos_siscob_staging', 'obra') }}
+        SAFE_CAST(prazo_inicial AS INT64) prazo_inicial
+FROM {{ source('brutos_siscob_staging', 'obra') }} AS t
