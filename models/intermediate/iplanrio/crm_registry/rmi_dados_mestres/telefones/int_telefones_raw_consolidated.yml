@@ -1,0 +1,129 @@
+version: 2
+
+models:
+  - name: int_telefones_raw_consolidated
+    description: >
+      Tabela consolidada de telefones de todas as fontes do sistema municipal.
+      Padroniza e unifica telefones do BCadastro (CPF/CNPJ), SMS Saúde e Wetalkie.
+      Serve como fonte única para análise RMI de telefones.
+    
+    config:
+      materialized: table
+    
+    columns:
+      - name: origem_id
+        description: >
+          Identificador único da entidade proprietária do telefone.
+          CPF para pessoas físicas, CNPJ para empresas, CNS para pacientes, NULL para comunicação.
+        data_tests:
+          - not_null:
+              name: intermediario_telefones_raw_consolidated__origem_id__not_null_quando_nao_comunicacao
+              where: "origem_tipo != 'COMUNICACAO'"
+
+      - name: origem_tipo
+        description: >
+          Tipo de entidade proprietária do telefone.
+          Valores possíveis: CPF, CNPJ, CNS, COMUNICACAO.
+        data_tests:
+          - not_null:
+              name: intermediario_telefones_raw_consolidated__origem_tipo__not_null
+          - accepted_values:
+              name: intermediario_telefones_raw_consolidated__origem_tipo__accepted_values
+              values: ['CPF', 'CNPJ', 'CNS', 'COMUNICACAO']
+
+      - name: telefone_numero_completo
+        description: >
+          Número de telefone completo padronizado (DDI + DDD + número).
+          Aplicada limpeza via macro padronize_telefone para remover caracteres especiais.
+        data_tests:
+          - not_null:
+              name: intermediario_telefones_raw_consolidated__telefone_numero_completo__not_null
+
+      - name: sistema_nome
+        description: >
+          Nome do sistema de origem do telefone.
+          Valores: bcadastro, sms, wetalkie, ergon.
+        data_tests:
+          - not_null:
+              name: intermediario_telefones_raw_consolidated__sistema_nome__not_null
+          - accepted_values:
+              name: intermediario_telefones_raw_consolidated__sistema_nome__accepted_values
+              values: ['bcadastro', 'sms', 'wetalkie', 'ergon']
+
+      - name: campo_origem
+        description: >
+          Campo específico de origem do telefone na tabela fonte.
+          Permite rastreabilidade exata do dado.
+        data_tests:
+          - not_null:
+              name: intermediario_telefones_raw_consolidated__campo_origem__not_null
+          - accepted_values:
+              name: intermediario_telefones_raw_consolidated__campo_origem__accepted_values
+              values: 
+                - 'bcadastro_cpf.contato.telefone'
+                - 'bcadastro_cnpj.contato.telefone[]'
+                - 'sms_paciente.contato.telefone[]'
+                - 'wetalkie_disparos.to'
+                - 'wetalkie_disparos.vars.telefoneescola'
+                - 'ergon_funcionario.celular'
+                - 'ergon_funcionario.telefone'
+
+      - name: contexto
+        description: >
+          Contexto de uso do telefone.
+          PESSOAL (CPF), EMPRESARIAL (CNPJ), SAUDE (SMS), COMUNICACAO (Wetalkie), FUNCIONAL (ERGON).
+        data_tests:
+          - not_null:
+              name: intermediario_telefones_raw_consolidated__contexto__not_null
+          - accepted_values:
+              name: intermediario_telefones_raw_consolidated__contexto__accepted_values
+              values: ['PESSOAL', 'EMPRESARIAL', 'SAUDE', 'COMUNICACAO', 'FUNCIONAL']
+
+      - name: data_atualizacao
+        description: >
+          Data de atualização do registro na fonte original.
+          NULL quando não disponível na fonte (ex: Wetalkie).
+
+    # Testes de integridade da tabela
+    data_tests:
+      - dbt_utils.expression_is_true:
+          name: intermediario_telefones_raw_consolidated__telefone_minimo_10_digitos
+          expression: "length(telefone_numero_completo) >= 10"
+          
+      - dbt_utils.expression_is_true:
+          name: intermediario_telefones_raw_consolidated__origem_id_nulo_apenas_comunicacao
+          expression: "(origem_id is null and origem_tipo = 'COMUNICACAO') or (origem_id is not null and origem_tipo != 'COMUNICACAO')"
+          
+      - dbt_utils.expression_is_true:
+          name: intermediario_telefones_raw_consolidated__sistema_campo_consistencia
+          expression: >
+            case 
+              when sistema_nome = 'bcadastro' then campo_origem like 'bcadastro_%'
+              when sistema_nome = 'sms' then campo_origem like 'sms_%'
+              when sistema_nome = 'wetalkie' then campo_origem like 'wetalkie_%'
+              when sistema_nome = 'ergon' then campo_origem like 'ergon_%'
+              else false
+            end
+            
+      - dbt_utils.expression_is_true:
+          name: intermediario_telefones_raw_consolidated__contexto_origem_tipo_consistencia
+          expression: >
+            case 
+              when origem_tipo = 'CPF' and sistema_nome = 'bcadastro' then contexto = 'PESSOAL'
+              when origem_tipo = 'CPF' and sistema_nome = 'ergon' then contexto = 'FUNCIONAL'
+              when origem_tipo = 'CNPJ' then contexto = 'EMPRESARIAL'
+              when origem_tipo = 'CNS' then contexto = 'SAUDE'
+              when origem_tipo = 'COMUNICACAO' then contexto = 'COMUNICACAO'
+              else false
+            end
+
+      # Teste de duplicação de telefones (warning esperado)
+      # Este teste gera warning quando há telefones duplicados entre sistemas,
+      # o que é normal e esperado (ex: mesma pessoa em BCadastro e SMS)
+      - dbt_utils.unique_combination_of_columns:
+          name: intermediario_telefones_raw_consolidated__telefone_origem_unique
+          combination_of_columns:
+            - telefone_numero_completo
+            - origem_id
+            - sistema_nome
+          severity: warn

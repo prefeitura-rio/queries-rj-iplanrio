@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_pessoa_fisica_all_cpf
+    description: Lista única de CPFs consolidada de todas as fontes municipais
+    config:
+      materialized: ephemeral
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        data_tests:
+          - unique:
+              name: int_pessoa_fisica_all_cpf__cpf__unique
+              severity: error
+          - not_null:
+              name: int_pessoa_fisica_all_cpf__cpf__not_null
+              severity: error
+          # Remove malformed test for now
+      - name: origens
+        description: Array com sistemas que forneceram o CPF
+        data_type: string[]
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_all_cpf__origens__not_null
+              severity: error
+      - name: origens_count
+        description: Quantidade de sistemas que forneceram o CPF
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_all_cpf__origens_count__not_null
+              severity: error
+      - name: cpf_particao
+        description: Partição do CPF para distribuição de dados
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_all_cpf__cpf_particao__not_null
+              severity: error

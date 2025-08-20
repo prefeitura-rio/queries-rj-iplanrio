@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: base_mensagem_ativa
+    description: "Modelo base que gera uma lista de templates de mensagens ativas (HSM) do Wetalkie, com seus metadados."
+    columns:
+      - name: id_hsm
+        description: "Identificador único do template de mensagem (HSM)."
+      - name: nome_hsm
+        description: "Nome do template de mensagem (HSM)."
+      - name: ambiente
+        description: "Ambiente do template (ex: hom, prod)."
+      - name: categoria
+        description: "Categoria do template (ex: Utilidade, Marketing, Autenticação)."
+      - name: orgao
+        description: "Órgão responsável pelo template (ex: IPLAN, SME, SMS)."
+      - name: nome_campanha
+        description: "Nome da campanha associada ao template (pode ser nulo)."

@@ -68,3 +68,12 @@ sources:
         description: "Vínculos de pagamento dos funcionários"
       - name: vinculo_pagamento
         description: "Vínculos de pagamento (visão alternativa)"
+
+  # TODO: remover prod daqui quando migrar modelos da smfp
+  - name: rj-smfp
+    database: rj-smfp
+    schema: recursos_humanos_ergon
+    tables:
+    - name: funcionario
+    - name: provimento
+    - name: vinculo

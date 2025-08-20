@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: int_interacoes_hci
+    description: "Modelo intermediário que transforma episódios assistenciais do sistema SMS em interações padronizadas."
+    columns:
+      - name: id_interacao
+        description: "UUID único para a interação."
+        tests:
+          - not_null
+          - unique
+      - name: cpf_cidadao
+        description: "CPF do cidadão (11 dígitos)."
+        tests:
+          - not_null
+      - name: sistema_origem
+        description: "Sistema de origem da interação."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['HCI']
+      - name: protocolo_origem
+        description: "ID original da interação no sistema de origem."
+        tests:
+          - not_null
+      - name: tipo_interacao
+        description: "Tipo principal da interação baseado na natureza da solicitação."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['SOLICITACAO', 'CONSUMO', 'COMUNICACAO', 'CADASTRO']
+      - name: categoria_interacao
+        description: "Categoria da interação baseada no domínio do serviço."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['SAUDE']
+      - name: subcategoria_interacao
+        description: "Subcategoria específica da interação de saúde."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['SAUDE_IMUNIZACAO', 'SAUDE_INTERNACAO', 'SAUDE_EXAMES_DIAGNOSTICOS', 'SAUDE_ATENDIMENTO_EMERGENCIA', 'SAUDE_ATENDIMENTO_ENFERMAGEM', 'SAUDE_ODONTOLOGIA', 'SAUDE_ATENDIMENTO_DOMICILIAR', 'SAUDE_ATENDIMENTO_AMBULATORIAL', 'SAUDE_CONSULTA_MEDICA', 'SAUDE_AGENDAMENTO', 'SAUDE_ATENDIMENTO_GERAL']
+      - name: descricao_interacao
+        description: "Descrição aberta da interação (quando disponível)."
+      - name: canal_interacao
+        description: "Canal utilizado para a interação."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['UNIDADE_SAUDE', 'ATENDIMENTO_DOMICILIAR']
+      - name: modalidade_interacao
+        description: "Modalidade da interação (digital ou físico)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['FISICO']
+      - name: data_interacao
+        description: "Data da interação."
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              name: int_interacoes_sms__data_interacao__before_today
+              expression: "< current_date()"
+              config:
+                severity: warn
+      - name: datahora_inicio
+        description: "Timestamp de início da interação."
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              name: int_interacoes_sms__datahora_inicio__before_now
+              expression: "< current_datetime()"
+              config:
+                severity: warn
+      - name: data_particao
+        description: "Data de partição da tabela."
+        tests:
+          - not_null
+      - name: bairro_interacao
+        description: "CNES do estabelecimento de saúde."
+      - name: endereco_interacao
+        description: "Struct com dados do estabelecimento de saúde."
+      - name: coordenadas
+        description: "Coordenadas geográficas (não disponível para SMS)."
+      - name: desfecho_interacao
+        description: "Resultado da interação (quando disponível)."
+      - name: dados_origem
+        description: "JSON com os dados originais da interação de saúde."
+        tests:
+          - not_null

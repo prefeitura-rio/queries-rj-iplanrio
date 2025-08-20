@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_pessoa_fisica_dim_endereco
+    description: Consolida endereços de pessoas físicas de múltiplas fontes
+    config:
+      materialized: ephemeral
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        data_tests:
+          - unique:
+              name: int_pessoa_fisica_dim_endereco__cpf__unique
+              severity: error
+          - not_null:
+              name: int_pessoa_fisica_dim_endereco__cpf__not_null
+              severity: error
+      - name: endereco
+        description: Estrutura completa com endereços (indicador, principal, alternativo)
+        data_type: record
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_endereco__endereco__not_null
+              severity: error

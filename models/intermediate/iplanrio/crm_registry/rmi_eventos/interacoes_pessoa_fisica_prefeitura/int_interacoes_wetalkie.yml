@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: int_interacoes_wetalkie
+    description: "Modelo intermediário que transforma disparos de comunicação do sistema Wetalkie (WhatsApp) em interações padronizadas."
+    columns:
+      - name: id_interacao
+        description: "UUID único para a interação."
+        tests:
+          - not_null
+          - unique
+      - name: cpf_cidadao
+        description: "CPF do cidadão (não disponível nesta fonte - sempre NULL)."
+      - name: sistema_origem
+        description: "Sistema de origem da interação."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['WETALKIE']
+      - name: protocolo_origem
+        description: "ID original do disparo no sistema de origem (id_hsm)."
+        tests:
+          - not_null
+      - name: tipo_interacao
+        description: "Tipo principal da interação - todas as comunicações Wetalkie são COMUNICACAO."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMUNICACAO']
+      - name: categoria_interacao
+        description: "Categoria da interação - todas são comunicações institucionais."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMUNICACAO_INSTITUCIONAL']
+      - name: subcategoria_interacao
+        description: "Subcategoria específica baseada no tipo de comunicação."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMUNICACAO_SAUDE', 'COMUNICACAO_EDUCACAO', 'COMUNICACAO_TESTE', 'COMUNICACAO_INSTITUCIONAL_GERAL']
+      - name: descricao_interacao
+        description: "Descrição da comunicação baseada na campanha e conteúdo."
+        tests:
+          - not_null
+      - name: canal_interacao
+        description: "Canal utilizado para a interação - sempre WhatsApp."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['WHATSAPP']
+      - name: modalidade_interacao
+        description: "Modalidade da interação - sempre digital."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['DIGITAL']
+      - name: data_interacao
+        description: "Data do disparo da comunicação."
+        tests:
+          - not_null
+      - name: datahora_inicio
+        description: "Timestamp do disparo."
+        tests:
+          - not_null
+      - name: datahora_fim
+        description: "Timestamp de fim (não disponível para Wetalkie)."
+      - name: data_particao
+        description: "Data de partição da tabela."
+        tests:
+          - not_null
+      - name: bairro_interacao
+        description: "Bairro da interação (não disponível para comunicações em massa)."
+      - name: endereco_interacao
+        description: "Struct com endereço (não disponível para comunicações em massa)."
+      - name: coordenadas
+        description: "Coordenadas geográficas (não disponível para comunicações em massa)."
+      - name: desfecho_interacao
+        description: "Resultado da interação - sempre RESOLVIDA para comunicações enviadas."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['RESOLVIDA']
+      - name: dados_origem
+        description: "JSON com os dados originais do disparo Wetalkie (telefone, campanha, vars)."
+        tests:
+          - not_null

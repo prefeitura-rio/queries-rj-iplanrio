@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: brutos_wetalkie_staging
+    database: rj-crm-registry
+    schema: brutos_wetalkie_staging
+    config:
+      freshness: # default freshness
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+    loaded_at_field: data_particao
+    tables:
+    - name: disparos_efetuados
+    - name: fluxos_ura
+    - name: fluxo_atendimento_*
+    - name: contato_faltante
+
+

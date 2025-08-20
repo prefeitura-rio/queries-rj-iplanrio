@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: int_chatbot_base_disparo
+    description: "Base consolidada de disparos de HSM com metadados de campanha - primeira etapa do pipeline chatbot"
+    
+    columns:
+      - name: id_conta
+        description: "ID da conta que realizou o disparo"
+
+      - name: id_hsm
+        description: "ID do template de mensagem (HSM) enviado"
+        tests:
+          - not_null
+
+      - name: id_disparo
+        description: "ID único do disparo"
+
+      - name: id_sessao
+        description: "ID da sessão de conversa iniciada pelo disparo"
+
+      - name: id_externo
+        description: "ID externo associado ao contato"
+
+      - name: id_contato
+        description: "ID do contato na plataforma"
+        tests:
+          - not_null
+
+      - name: contato_telefone
+        description: "Número de telefone do contato"
+        tests:
+          - not_null
+
+      - name: nome_hsm
+        description: "Nome do template de mensagem (HSM)"
+
+      - name: nome_campanha
+        description: "Nome da campanha associada ao disparo"
+
+      - name: orgao_responsavel
+        description: "Órgão responsável pela campanha"
+
+      - name: categoria_hsm
+        description: "Categoria do template de mensagem (HSM)"
+
+      - name: ambiente
+        description: "Ambiente de onde o disparo foi feito (ex: produção, homologação, desenvolvimento)"
+
+      - name: criacao_envio_datahora
+        description: "Data e hora de quando o envio foi criado. Fuso horário America/Sao_Paulo."
+
+      - name: envio_datahora
+        description: "Data e hora de quando a mensagem foi enviada. Fuso horário America/Sao_Paulo."
+
+      - name: entrega_datahora
+        description: "Data e hora de quando a mensagem foi entregue. Fuso horário America/Sao_Paulo."
+
+      - name: leitura_datahora
+        description: "Data e hora de quando a mensagem foi lida. Fuso horário America/Sao_Paulo."
+
+      - name: falha_datahora
+        description: "Data e hora de quando o envio falhou. Fuso horário America/Sao_Paulo."
+
+      - name: resposta_datahora
+        description: "Data e hora de quando o contato respondeu. Fuso horário America/Sao_Paulo."
+
+      - name: fim_datahora
+        description: "Data e hora do último evento registrado para o disparo. Fuso horário America/Sao_Paulo."
+
+      - name: datarelay_datahora
+        description: "Timestamp do data relay. Fuso horário America/Sao_Paulo."
+
+      - name: descricao_falha
+        description: "Descrição da falha, caso tenha ocorrido"
+      
+      - name: indicador_falha
+        description: "Indicador (true/false) se o disparo resultou em falha."
+
+      - name: id_status_disparo
+        description: "ID numérico do status do disparo"
+
+      - name: status_disparo
+        description: "Descrição textual do status do disparo"
+
+      - name: ano_particao
+        description: "Ano da partição dos dados"
+
+      - name: mes_particao
+        description: "Mês da partição dos dados"
+
+      - name: data_particao
+        description: "Data da partição dos dados"
+        tests:
+          - not_null

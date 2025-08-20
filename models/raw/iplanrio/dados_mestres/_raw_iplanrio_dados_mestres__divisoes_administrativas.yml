@@ -1,0 +1,123 @@
+version: 2
+
+models:
+  - name: raw_dados_mestres_aeis
+    description: |
+      Dados brutos das Áreas de Especial Interesse Social (AEIS) do Rio de Janeiro.
+      Contém informações sobre tipologia, legislação, geometria e características urbanísticas.
+    columns:
+      - name: id_aeis
+        description: Identificador da AEIS (pode conter duplicatas e valores nulos)
+      - name: nome_aeis
+        description: Nome da AEIS
+      - name: nome_sigla
+        description: Sigla ou nome abreviado da AEIS
+      - name: tipologia
+        description: Tipologia da AEIS
+      - name: data_cadastro
+        description: Data de cadastro da AEIS
+      - name: legislacao
+        description: Legislação que institui a AEIS
+      - name: area
+        description: Área da AEIS
+      - name: comprimento
+        description: Comprimento/perímetro da AEIS
+      - name: geometry
+        description: Geometria da AEIS (GEOGRAPHY)
+      - name: geometria_wkt
+        description: Geometria em formato WKT
+      - name: item
+        description: Item de classificação
+      - name: nome_setor
+        description: Nome do setor
+      - name: nome_ar
+        description: Nome da área de planejamento/região administrativa
+      - name: planta_cadastral
+        description: Referência da planta cadastral
+      - name: projeto_loteamento
+        description: Projeto de loteamento associado
+      - name: referencia
+        description: Referência adicional
+      - name: limite_pavimentos_permitido
+        description: Limite de pavimentos permitido
+      - name: taxa_ocupacao
+        description: Taxa de ocupação permitida
+      - name: indice_aproveitamento_terreno
+        description: Índice de aproveitamento do terreno
+      - name: coeficiente_adensamento
+        description: Coeficiente de adensamento
+      - name: afastamento
+        description: Afastamento obrigatório
+      - name: nome_regiao_administrativa
+        description: Nome da região administrativa
+
+  - name: raw_dados_mestres_bairro
+    description: |
+      Dados brutos dos bairros do Rio de Janeiro, incluindo informações geográficas,
+      administrativas e de planejamento urbano.
+    columns:
+      - name: id_bairro
+        description: Identificador único do bairro
+        tests:
+          - unique
+          - not_null
+      - name: nome
+        description: Nome oficial do bairro
+        tests:
+          - not_null
+      - name: id_area_planejamento
+        description: ID da área de planejamento que contém o bairro
+        tests:
+          - not_null
+      - name: nome_regiao_planejamento
+        description: Nome da região de planejamento
+      - name: id_regiao_administrativa
+        description: ID da região administrativa
+      - name: nome_regiao_administrativa
+        description: Nome da região administrativa
+      - name: geometry
+        description: Geometria do bairro (GEOGRAPHY)
+      - name: geometry_wkt
+        description: Geometria em formato WKT
+      - name: area
+        description: Área do bairro em metros quadrados
+      - name: perimetro
+        description: Perímetro do bairro em metros
+
+  - name: raw_dados_mestres_cres
+    description: |
+      Dados brutos das Coordenadorias Regionais de Educação (CREs) do Rio de Janeiro.
+      Divisões administrativas especializadas para gestão educacional.
+    columns:
+      - name: id
+        description: Identificador único da CRE
+        tests:
+          - unique
+          - not_null
+      - name: nome
+        description: Nome da CRE
+        tests:
+          - not_null
+      - name: geometry
+        description: Geometria da CRE (GEOGRAPHY)
+      - name: geometry_wkt
+        description: Geometria em formato WKT
+
+  - name: raw_dados_mestres_subprefeitura
+    description: |
+      Dados brutos das subprefeituras do Rio de Janeiro.
+      Divisões administrativas regionais para gestão de serviços públicos locais.
+    columns:
+      - name: subprefeitura
+        description: Nome da subprefeitura
+        tests:
+          - unique
+          - not_null
+      - name: area
+        description: Área da subprefeitura em metros quadrados
+      - name: perimetro
+        description: Perímetro da subprefeitura em metros
+      - name: geometria
+        description: Geometria da subprefeitura (GEOGRAPHY)
+      - name: geometry_wkt
+        description: Geometria em formato WKT

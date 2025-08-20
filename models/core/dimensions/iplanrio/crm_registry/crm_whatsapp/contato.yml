@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: contato
+    description: "Modelo que consolida informações de contato do CRM WhatsApp, incluindo dados de opt-in/out e quarentena."
+    columns:
+      - name: id_contato
+        description: "Identificador único do contato."
+      - name: cpf
+        description: "CPF do contato (se disponível)."
+      - name: contato_nome
+        description: "Nome do contato."
+      - name: contato_telefone
+        description: "Número de telefone do contato."
+      - name: data_optin
+        description: "Data de opt-in do contato."
+      - name: data_optout
+        description: "Data de opt-out do contato."
+      - name: razao_optout
+        description: "Razão do opt-out do contato."
+      - name: data_inicio_quarentena
+        description: "Data de início do período de quarentena do contato."
+      - name: data_fim_quarentena
+        description: "Data de fim do período de quarentena do contato."
+      - name: origem_update
+        description: "Origem da última atualização do contato."
+      - name: data_update
+        description: "Data da última atualização do contato."
+      - name: data_particao
+        description: "Data de partição da tabela."

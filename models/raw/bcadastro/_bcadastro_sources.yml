@@ -19,10 +19,9 @@ sources:
     - name: dominio_cnpj
       freshness:
 
-
-  - name: br_bd_diretorios_brasil
-    database: basedosdados
-    schema: br_bd_diretorios_brasil
+  - name: brutos_bcadastro
+    database: rj-iplanrio
+    schema: brutos_bcadastro
     tables:
-    - name: municipio
-    - name: uf
+    - name: cpf
+    - name: cnpj

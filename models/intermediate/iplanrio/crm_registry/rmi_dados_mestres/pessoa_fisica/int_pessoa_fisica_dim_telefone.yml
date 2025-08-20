@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_pessoa_fisica_dim_telefone
+    description: Consolida telefones de pessoas físicas de múltiplas fontes
+    config:
+      materialized: ephemeral
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        data_tests:
+          - unique:
+              name: int_pessoa_fisica_dim_telefone__cpf__unique
+              severity: error
+          - not_null:
+              name: int_pessoa_fisica_dim_telefone__cpf__not_null
+              severity: error
+      - name: telefone
+        description: Estrutura completa com telefones (indicador, principal, alternativo)
+        data_type: record
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_telefone__telefone__not_null
+              severity: error

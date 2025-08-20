@@ -1,0 +1,148 @@
+version: 2
+
+models:
+  - name: telefone
+    description: "Dimensão principal de telefones RMI - Registro Mestre de Informações consolidado"
+    
+    columns:
+      - name: telefone_numero_completo
+        description: "Número completo formatado com DDI e DDD (ex: '5521987654321')"
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: core_telefone__telefone_numero_completo__not_null
+          - unique:
+              name: core_telefone__telefone_numero_completo__unique
+      
+      - name: telefone_ddi
+        description: "Código do país para Discagem Direta Internacional (ex: '55' para Brasil)"
+        data_type: string
+        quote: true
+        
+      - name: telefone_ddd
+        description: "Código de área para Discagem Direta à Distância, aplicável apenas para números brasileiros"
+        data_type: string
+        quote: true
+        
+      - name: telefone_numero
+        description: "Número do telefone sem DDI/DDD"
+        data_type: string
+        quote: true
+        
+      - name: telefone_tipo
+        description: "Classificação do tipo de telefone"
+        data_type: string
+        quote: true
+        tests:
+          - accepted_values:
+              name: core_telefone__telefone_tipo__accepted_values
+              values: ['CELULAR', 'FIXO', 'VOIP', 'OUTROS']
+      
+      - name: telefone_nacionalidade
+        description: "País de origem do número telefônico"
+        data_type: string
+        quote: true
+        
+      - name: telefone_qualidade
+        description: "Avaliação técnica da validade do número"
+        data_type: string
+        quote: true
+        tests:
+          - accepted_values:
+              name: core_telefone__telefone_qualidade__accepted_values
+              values: ['VALIDO', 'SUSPEITO', 'INVALIDO']
+      
+      - name: telefone_aparicoes
+        description: "Lista de aparições do telefone em diferentes sistemas"
+        data_type: record[]
+        quote: true
+        
+      - name: telefone_aparicoes.sistema
+        description: "Sistema onde o telefone aparece"
+        data_type: string
+        quote: true
+        
+      - name: telefone_aparicoes.origem
+        description: "Órgão responsável pelo sistema"
+        data_type: string
+        quote: true
+        
+      - name: telefone_aparicoes.cpf_proprietario
+        description: "CPF do proprietário do telefone no sistema"
+        data_type: string
+        quote: true
+        
+      - name: telefone_aparicoes.nome_proprietario
+        description: "Nome do proprietário do telefone no sistema"
+        data_type: string
+        quote: true
+        
+      - name: telefone_aparicoes.data_primeira_aparicao
+        description: "Data da primeira aparição do telefone no sistema"
+        data_type: timestamp
+        quote: false
+        
+      - name: telefone_aparicoes.data_ultima_aparicao
+        description: "Data da última aparição do telefone no sistema"
+        data_type: timestamp
+        quote: false
+        
+      - name: telefone_aparicoes_quantidade
+        description: "Número total de aparições do telefone em todos os sistemas"
+        data_type: integer
+        quote: false
+        tests:
+          - not_null:
+              name: core_telefone__telefone_aparicoes_quantidade__not_null
+          - dbt_utils.accepted_range:
+              name: core_telefone__telefone_aparicoes_quantidade__range
+              min_value: 0
+        
+      - name: telefone_proprietarios_quantidade
+        description: "Número de proprietários únicos associados ao telefone"
+        data_type: integer
+        quote: false
+        tests:
+          - not_null:
+              name: core_telefone__telefone_proprietarios_quantidade__not_null
+          - dbt_utils.accepted_range:
+              name: core_telefone__telefone_proprietarios_quantidade__range
+              min_value: 0
+        
+      - name: telefone_sistemas_quantidade
+        description: "Número de sistemas diferentes onde o telefone aparece"
+        data_type: integer
+        quote: false
+        tests:
+          - not_null:
+              name: core_telefone__telefone_sistemas_quantidade__not_null
+          - dbt_utils.accepted_range:
+              name: core_telefone__telefone_sistemas_quantidade__range
+              min_value: 1
+        
+      - name: rmi_data_criacao
+        description: "Data de criação do registro no RMI"
+        data_type: timestamp
+        quote: false
+        tests:
+          - not_null:
+              name: core_telefone__rmi_data_criacao__not_null
+        
+      - name: rmi_data_atualizacao
+        description: "Data da última atualização do registro no RMI"
+        data_type: timestamp
+        quote: false
+        
+      - name: rmi_versao
+        description: "Versão do schema utilizada"
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: core_telefone__rmi_versao__not_null
+        
+      - name: rmi_hash_validacao
+        description: "Hash para controle de integridade dos dados"
+        data_type: string
+        quote: true

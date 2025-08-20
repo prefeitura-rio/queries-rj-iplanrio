@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: mensagem_ativa
+    description: "Modelo que lista as mensagens ativas (HSM) utilizadas no CRM WhatsApp, com seus IDs, nomes, ambientes, categorias e órgãos responsáveis."
+    columns:
+      - name: id_hsm
+        description: "Identificador único do template de mensagem (HSM)."
+      - name: nome_hsm
+        description: "Nome do template de mensagem (HSM)."
+      - name: ambiente
+        description: "Ambiente do template (ex: hom, prod)."
+      - name: categoria
+        description: "Categoria do template (ex: Utilidade, Marketing, Autenticação)."
+      - name: orgao
+        description: "Órgão responsável pelo template (ex: IPLAN, SME, SMS)."
+      - name: nome_campanha
+        description: "Nome da campanha associada ao template (pode ser nulo)."

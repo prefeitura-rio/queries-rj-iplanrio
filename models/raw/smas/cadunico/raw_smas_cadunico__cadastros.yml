@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: base_rj-smas_cadastros
+    description: "Modelo base que extrai e renomeia as colunas da fonte `cadastros` do `rj-smas`, contendo informações de assistência social e dados cadastrais de famílias."
+    columns:
+      - name: cpf
+        description: "CPF do membro da família."
+      - name: id_membro_familia
+        description: "Identificador do membro da família."
+      - name: id_familia
+        description: "Identificador da família."
+      - name: data_particao
+        description: "Data de partição dos dados."
+      - name: dados
+        description: "Dados gerais do cadastro."
+      - name: deficiencia
+        description: "Informações sobre deficiência."
+      - name: escolaridade
+        description: "Informações sobre escolaridade."
+      - name: renda
+        description: "Informações sobre renda."
+      - name: endereco
+        description: "Informações de endereço."
+      - name: domicilio
+        description: "Informações sobre o domicílio."
+      - name: membros
+        description: "Informações sobre os membros da família."
+      - name: cpf_particao
+        description: "Partição do CPF para distribuição de dados."

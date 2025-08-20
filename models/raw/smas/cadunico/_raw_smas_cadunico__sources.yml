@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: rj-smas
+    database: rj-smas
+    schema: app_identidade_unica
+    config:
+      freshness: # default freshness
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+    loaded_at_field: metadados.processed_at
+    tables:
+    - name: cadastros
+
+

@@ -1,0 +1,152 @@
+version: 2
+
+models:
+  - name: interacoes_pessoa_fisica_prefeitura
+    description: |
+      Interações Cidadão-Prefeitura Unificada
+      
+      Consolida interações dos sistemas 1746 e SMS com ontologia padronizada 
+      e 19 campos essenciais.
+    
+    config:
+      tags: ['core', 'facts', 'daily']
+    
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: fct_interacoes_cidadao__id_interacao__unique
+          combination_of_columns:
+            - id_interacao
+
+    columns:
+      # IDENTIFICAÇÃO
+      - name: id_interacao
+        description: "UUID único da interação gerado automaticamente"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__id_interacao__not_null
+          - unique:
+              name: fct_interacoes_cidadao__id_interacao__unique
+      
+      - name: cpf_cidadao
+        description: "CPF do cidadão (11 dígitos, obrigatório)"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__cpf_cidadao__not_null
+              where: "sistema_origem != 'WETALKIE'"
+
+      # ORIGEM
+      - name: sistema_origem
+        description: "Sistema fonte da interação"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__sistema_origem__not_null
+          - accepted_values:
+              name: fct_interacoes_cidadao__sistema_origem__values
+              values: ['1746', 'HCI', 'BILHETAGEM_JAE', 'WETALKIE']
+      
+      - name: protocolo_origem
+        description: "ID/protocolo original no sistema fonte"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__protocolo_origem__not_null
+
+      # CLASSIFICAÇÃO ONTOLÓGICA
+      - name: tipo_interacao
+        description: "Tipo de interação segundo ontologia simplificada (SOLICITACAO, CONSUMO, COMUNICACAO, CADASTRO)"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__tipo_interacao__not_null
+          - accepted_values:
+              name: fct_interacoes_cidadao__tipo_interacao__values
+              values: ['SOLICITACAO', 'CONSUMO', 'COMUNICACAO', 'CADASTRO']
+      
+      - name: categoria_interacao
+        description: "Categoria da interação por domínio do serviço público"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__categoria_interacao__not_null
+          - accepted_values:
+              name: fct_interacoes_cidadao__categoria_interacao__values
+              values: ['INFRAESTRUTURA_URBANA', 'LIMPEZA_URBANA', 'FISCALIZACAO', 'MEIO_AMBIENTE', 'TRANSPORTE', 'SAUDE', 'ASSISTENCIA_SOCIAL', 'SERVICOS_PUBLICOS', 'COMUNICACAO_INSTITUCIONAL', 'OUTROS']
+
+      # CANAL
+      - name: canal_interacao
+        description: "Canal específico utilizado na interação"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__canal_interacao__not_null
+          - accepted_values:
+              name: fct_interacoes_cidadao__canal_interacao__values
+              values: ['CENTRAL_TELEFONICA', 'UNIDADE_SAUDE', 'ATENDIMENTO_DOMICILIAR', 'VALIDADOR_ONIBUS', 'VALIDADOR_VLT', 'VALIDADOR_BARCAS', 'VALIDADOR_TRANSPORTE', 'WHATSAPP']
+      
+      - name: modalidade_interacao
+        description: "Modalidade da interação (DIGITAL ou FISICO)"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__modalidade_interacao__not_null
+          - accepted_values:
+              name: fct_interacoes_cidadao__modalidade_interacao__values
+              values: ['DIGITAL', 'FISICO']
+
+      # TEMPORAL
+      - name: data_interacao
+        description: "Data da interação (usado para análises)"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__data_interacao__not_null
+      
+      - name: datahora_inicio
+        description: "Timestamp de início da interação"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__datahora_inicio__not_null
+      
+      - name: data_particao
+        description: "Data para particionamento BigQuery (deve igual data_interacao)"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__data_particao__not_null
+
+      # LOCALIZAÇÃO (opcionais)
+      - name: bairro_interacao
+        description: "Bairro da interação (quando disponível)"
+      
+      - name: endereco_interacao
+        description: "Endereço estruturado da interação (quando disponível)"
+        # Não há testes específicos para STRUCT, validação fica no nível da aplicação
+      
+      - name: coordenadas
+        description: "Coordenadas geográficas da interação (quando disponível)"
+        # Não há testes específicos para GEOGRAPHY, validação fica no nível da aplicação
+
+      # RESULTADO
+      - name: desfecho_interacao
+        description: "Resultado da interação (quando disponível)"
+        tests:
+          - accepted_values:
+              name: fct_interacoes_cidadao__desfecho_interacao__values
+              values: ['RESOLVIDA', 'NAO_RESOLVIDA', 'EM_ANDAMENTO', 'NAO_APLICAVEL', 'ABANDONADA']
+              config:
+                severity: warn
+                where: "desfecho_interacao is not null"
+
+      # FLEXÍVEL
+      - name: dados_origem
+        description: "Dados originais preservados em JSON para flexibilidade"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__dados_origem__not_null
+
+      # METADADOS
+      - name: _datalake_loaded_at
+        description: "Timestamp de carregamento no datalake"
+        tests:
+          - not_null:
+              name: fct_interacoes_cidadao__datalake_loaded_at__not_null
+      
+      - name: _schema_version
+        description: "Versão do schema (1.1)"
+        tests:
+          - accepted_values:
+              name: fct_interacoes_cidadao__schema_version__values
+              values: ['1.1']

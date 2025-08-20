@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: base_rj-crm-registy-intermediario-dados-mestres-staging_enderecos_geolocalizados
+    description: "Modelo base que extrai e renomeia as colunas da fonte `enderecos_geolocalizados` do `rj-crm-registy-intermediario-dados-mestres-staging`, preparando-as para uso em modelos downstream."
+    columns:
+      - name: logradouro_tratado
+        description: "Logradouro tratado/padronizado."
+      - name: numero_porta
+        description: "Número da porta/imóvel."
+      - name: bairro
+        description: "Nome do bairro."
+      - name: endereco_completo
+        description: "Endereço completo formatado."
+      - name: latitude
+        description: "Latitude do endereço."
+      - name: longitude
+        description: "Longitude do endereço."
+      - name: logradouro_geocode
+        description: "Logradouro geocodificado."
+      - name: numero_porta_geocode
+        description: "Número da porta geocodificado."
+      - name: bairro_geocode
+        description: "Bairro geocodificado."
+      - name: cidade_geocode
+        description: "Cidade geocodificada."
+      - name: estado_geocode
+        description: "Estado geocodificado."
+      - name: cep_geocode
+        description: "CEP geocodificado."
+      - name: confianca
+        description: "Nível de confiança da geocodificação."
+      - name: updated_date
+        description: "Data da última atualização do registro."
+      - name: geocode
+        description: "Informações de geocodificação."
+      - name: pluscode
+        description: "Plus Code do Google para o endereço."

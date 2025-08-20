@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: int_interacoes_bilhetagem_jae
+    description: "Modelo intermediário que transforma transações de transporte público do sistema SMTR em interações padronizadas."
+    columns:
+      - name: id_interacao
+        description: "UUID único para a interação."
+        tests:
+          - not_null
+          - unique
+      - name: cpf_cidadao
+        description: "CPF do cidadão (11 dígitos)."
+        tests:
+          - not_null
+      - name: sistema_origem
+        description: "Sistema de origem da interação."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['BILHETAGEM_JAE']
+      - name: protocolo_origem
+        description: "ID original da transação no sistema de origem."
+        tests:
+          - not_null
+      - name: tipo_interacao
+        description: "Tipo principal da interação - todas as transações de transporte são CONSUMO."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['CONSUMO']
+      - name: categoria_interacao
+        description: "Categoria da interação - todas as transações são de TRANSPORTE."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['TRANSPORTE']
+      - name: subcategoria_interacao
+        description: "Subcategoria específica baseada no modo de transporte."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['TRANSPORTE_PUBLICO_ONIBUS', 'TRANSPORTE_PUBLICO_BRT', 'TRANSPORTE_PUBLICO_VLT', 'TRANSPORTE_PUBLICO_VAN', 'TRANSPORTE_PUBLICO_BARCAS', 'TRANSPORTE_PUBLICO_FRETAMENTO', 'TRANSPORTE_PUBLICO_OUTROS']
+      - name: descricao_interacao
+        description: "Descrição da viagem incluindo tipo de transação, modo e operadora."
+        tests:
+          - not_null
+      - name: canal_interacao
+        description: "Canal utilizado para a interação - validadores do transporte público."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['VALIDADOR_ONIBUS', 'VALIDADOR_VLT', 'VALIDADOR_BARCAS', 'VALIDADOR_TRANSPORTE']
+      - name: modalidade_interacao
+        description: "Modalidade da interação - sempre físico para transporte público."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['FISICO']
+      - name: data_interacao
+        description: "Data da transação de transporte."
+        tests:
+          - not_null
+      - name: datahora_inicio
+        description: "Timestamp da transação."
+        tests:
+          - not_null
+      - name: datahora_fim
+        description: "Timestamp da transação (igual ao início para transporte)."
+        tests:
+          - not_null
+      - name: data_particao
+        description: "Data de partição da tabela."
+        tests:
+          - not_null
+      - name: bairro_interacao
+        description: "Bairro da interação (não disponível para transações de transporte)."
+      - name: endereco_interacao
+        description: "Struct com endereço (não disponível para transações de transporte)."
+      - name: coordenadas
+        description: "Coordenadas geográficas da transação (quando disponível)."
+      - name: desfecho_interacao
+        description: "Resultado da interação - sempre RESOLVIDA para transações registradas."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['RESOLVIDA']
+      - name: dados_origem
+        description: "JSON com os dados originais da transação de transporte (bilhetagem)."
+        tests:
+          - not_null

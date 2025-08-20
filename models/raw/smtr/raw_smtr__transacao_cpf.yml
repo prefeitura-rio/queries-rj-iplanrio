@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: base_rj-smtr_transacao_cpf
+    description: "Modelo base que extrai e renomeia as colunas da fonte `transacao_cpf` do `rj-smtr`, contendo informações sobre transações de transporte público associadas a CPFs."
+    columns:
+      - name: cpf_particao
+        description: "Partição do CPF para distribuição de dados."
+      - name: cpf_cliente
+        description: "CPF do cliente que realizou a transação."
+      - name: data
+        description: "Data da transação."
+      - name: hora
+        description: "Hora da transação."
+      - name: datetime_transacao
+        description: "Data e hora da transação."
+      - name: datetime_processamento
+        description: "Data e hora do processamento da transação."
+      - name: datetime_captura
+        description: "Data e hora da captura da transação."
+      - name: modo
+        description: "Modo de transporte (ex: ônibus, BRT, VLT)."
+      - name: id_consorcio
+        description: "Identificador do consórcio de transporte."
+      - name: consorcio
+        description: "Nome do consórcio de transporte."
+      - name: id_operadora
+        description: "Identificador da operadora de transporte."
+      - name: operadora
+        description: "Nome da operadora de transporte."
+      - name: id_servico_jae
+        description: "Identificador do serviço JAE."
+      - name: servico_jae
+        description: "Nome do serviço JAE."
+      - name: descricao_servico_jae
+        description: "Descrição do serviço JAE."
+      - name: sentido
+        description: "Sentido da viagem."
+      - name: id_veiculo
+        description: "Identificador do veículo."
+      - name: id_validador
+        description: "Identificador do validador."
+      - name: id_transacao
+        description: "Identificador único da transação."
+      - name: tipo_pagamento
+        description: "Tipo de pagamento (ex: Bilhete Único, dinheiro)."
+      - name: tipo_transacao
+        description: "Tipo de transação."
+      - name: tipo_transacao_smtr
+        description: "Tipo de transação SMTR."
+      - name: tipo_gratuidade
+        description: "Tipo de gratuidade (se aplicável)."
+      - name: latitude
+        description: "Latitude do local da transação."
+      - name: longitude
+        description: "Longitude do local da transação."
+      - name: geo_point_transacao
+        description: "Ponto geográfico da transação."
+      - name: valor_transacao
+        description: "Valor da transação."
+      - name: versao
+        description: "Versão do registro."
+      - name: datetime_ultima_atualizacao
+        description: "Data e hora da última atualização do registro."
