@@ -77,7 +77,12 @@ models:
           +materialized: table
           +project: rj-smas
           +schema: brutos_data_metrica
-
+      segovi:
+        +tags: "segovi"
+        +project: rj-segovi
+        adm_central_atendimento_1746:
+          +materialized: table
+          +schema: adm_central_atendimento_1746
       smtur:
         oferta_turistica:
           +materialized: view
