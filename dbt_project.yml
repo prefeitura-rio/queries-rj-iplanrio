@@ -78,4 +78,11 @@ models:
           +project: rj-smas
           +schema: brutos_data_metrica
 
+      smtur:
+        oferta_turistica:
+          +materialized: view
+          +schema: brutos_oferta_turistica
+          +tags: "daily"
+          +project: rj-iplanrio
+
         
