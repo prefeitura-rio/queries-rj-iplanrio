@@ -79,3 +79,10 @@ models:
           +materialized: table
           +schema: infraestrutura_siscob_obras
           +tags: "daily"        
+      smas:
+        cadunico:
+          +materialized: table
+          +project: rj-smas
+          +schema: brutos_data_metrica
+
+
