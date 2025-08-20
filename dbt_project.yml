@@ -72,6 +72,13 @@ models:
       eai_logs:
         +materialized: table
         +schema: eai_logs
+      smi:
+        +tags: "smi"
+        +project: rj-smi
+        infraestrutura_siscob_obras:
+          +materialized: table
+          +schema: infraestrutura_siscob_obras
+          +tags: "daily"        
       smas:
         cadunico:
           +materialized: table
@@ -84,6 +91,12 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+      segovi:
+        +tags: "segovi"
+        +project: rj-segovi
+        adm_central_atendimento_1746:
+          +materialized: table
+          +schema: adm_central_atendimento_1746
       smtur:
         oferta_turistica:
           +materialized: view

@@ -1,0 +1,348 @@
+version: 2
+models :
+  - name: raw_infraestrutura_siscob_obras__medicao
+    description: "**Descrição**: Valor que já foi pago ou a ser pago baseado em uma\
+      \ medição de uma etapa do cronograma de um contrato para obras ou serviços de\
+      \ engenharia contratado pela prefeitura do Rio de Janeiro. Uma medição é uma\
+      \ avaliação feita periodicamente na execução do contrato. Em geral, há várias\
+      \ medições em cada etapa do cronograma.\n**Frequência de atualização**: Semanal\n\
+      **Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado\
+      \ por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem
+          ao contrato.
+      - name: id_medicao
+        description: Número sequencial das medições desde o início do contrato. Uma
+          etapa pode possuir mais de uma medição.
+      - name: id_etapa
+        description: Número sequencial que representa a etapa de execução do cronograma.
+      - name: tipo_medicao
+        description: 'Tipo da medição. Tipos: Normal, Intermediária, Complementar
+          e Rescisão.'
+      - name: data_inicio
+        description: Data de início da medição.
+      - name: data_fim
+        description: Data de término da medição.
+      - name: valor_final
+        description: Valor a ser pago ao contratado pela execução do serviço medido.
+  - name: raw_infraestrutura_siscob_obras__cronograma_alteracao
+    description: "**Descrição**: Alterações de datas nos cronogramas dos contratos\
+      \ para obras ou serviços de engenharia contratados pela prefeitura do Rio de\
+      \ Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n\
+      **Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado\
+      \ por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem
+          ao contrato.
+      - name: id_processo
+        description: Número do processo que deu origem ao contrato ou número do processo
+          para alteração do cronograma. Em geral não se abre um novo processo somente
+          para alteração do cronograma.
+      - name: tipo_alteracao
+        description: 'Tipo da alteração no cronograma. Tipos possíveis: Suspensão/Reinício,
+          Prorrogação, Prorrogação de Serviço Continuado, Rescisão'
+      - name: data_publicacao
+        description: Data de publicação no Diário Oficial do município do Rio de Janeiro
+          da alteração do cronograma.
+      - name: id_etapa
+        description: Número da etapa que foi afetada pela alteração do cronograma.
+      - name: dias_prazo
+        description: Número de dias prorrogados na etapa.
+      - name: data_validade
+        description: Data da validade
+      - name: observacao
+        description: Observações
+  - name: raw_infraestrutura_siscob_obras__termo_aditivo
+    description: "**Descrição**: Termos aditivos aos contratos para obras ou serviços\
+      \ de engenharia contratados pela prefeitura do Rio de Janeiro. Um termo aditivo\
+      \ pode modificar a duração, serviços e valores dos itens. O termo aditivo também\
+      \ é chamado acerto contratual.\n**Frequência de atualização**: Semanal\n**Cobertura\
+      \ temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado por**: Não\
+      \ informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem
+          ao contrato.
+      - name: id_termo_aditivo
+        description: Número do termo aditivo.
+      - name: tipo_acerto
+        description: 'Tipo do acerto feito pelo termo aditivo: Adequação, Prorrogação,
+          Aditivo, Modificação de Quantidades, Modificação com Aditivos, Reequilíbrio
+          Financeiro, Reajuste e Prorrogação de Prazo e Valor'
+      - name: data_publicacao
+        description: Data de publicação do termo aditivo no diário oficial do município
+          do Rio de Janeiro.
+      - name: data_autorizacao
+        description: Data de autorização do termo aditivo.
+      - name: valor_acerto
+        description: Diferença entre o valor do contrato vigente e o valor contrato
+          gerado pelo termo aditivo.
+  - name: raw_infraestrutura_siscob_obras__programa_fonte
+    description: "**Descrição**: Dotações orçamentárias dadas a obras relacionadas\
+      \ a contratos de obras e serviços de engenharia assinados com a PCRJ.\n**Frequência\
+      \ de atualização**: Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos\
+      \ dados**: SMI\n**Publicado por**: Não informado\n**Publicado por (email)**:\
+      \ nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Código da obra para onde foi alocada a dotação.
+      - name: id_programa_trabalho
+        description: Código do Programa de Trabalho da dotação.
+      - name: programa_trabalho
+        description: Descrição do Programa de Trabalho da dotação.
+      - name: id_fonte_recurso
+        description: Código da Fonte de Recurso da dotação.
+      - name: fonte_recurso
+        description: Descrição da Fonte de Recurso da dotação.
+      - name: id_natureza_despesa
+        description: Código da Natureza de Despesa da dotação.
+      - name: natureza_despesa
+        description: Descrição da Natureza de Despesa da dotação.
+  - name: raw_infraestrutura_siscob_obras__cronograma_financeiro
+    description: "**Descrição**: Etapas dos cronogramas financeiros dos contratos\
+      \ para obras ou serviços de engenharia contratados pela prefeitura do Rio de\
+      \ Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n\
+      **Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado\
+      \ por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem
+          ao contrato.
+      - name: id_etapa
+        description: Número sequencial que representa a etapa de execução do cronograma.
+      - name: data_inicio
+        description: Data de início da etapa.
+      - name: data_fim
+        description: Data de término da etapa.
+      - name: percentual_estimado
+        description: Percentual entre o valor estimado da etapa e o valor total do
+          contrato.
+      - name: valor_estimado
+        description: Valor estimado que deverá ser gerado pela execução do contrato
+          na etapa.
+  - name: raw_infraestrutura_siscob_obras__obra
+    description: "**Descrição**: Contratos para obras ou serviços de engenharia contratados\
+      \ pela prefeitura do Rio de Janeiro. Exemplos: Contrato para tapar buracos na\
+      \ rua, contrato para construção do BRT, contrato para demolição da perimetral,\
+      \ contrato para serviços de manutenção predial.\n**Frequência de atualização**:\
+      \ Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n\
+      **Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: orgao_contratante
+        description: Órgão, da prefeitura, contratante.
+      - name: orgao_executor
+        description: Órgão da prefeitura responsável pela fiscalização do contrato.
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem
+          ao contrato.
+      - name: id_processo
+        description: Número do processo que deu origem ao contrato.
+      - name: objeto
+        description: 'Tipo de objeto do contrato. Esta informação determinará os limites
+          para aplicação de aditivos. Valores possíveis: obra, serviço ou serviço
+          continuado.'
+      - name: favorecido
+        description: Razão social da empresa que foi contratada.
+      - name: cnpj
+        description: CNPJ da empresa que foi contratada.
+      - name: id_licitacao
+        description: Número da licitação que determinou a empresa contratada.
+      - name: data_assinatura_contrato
+        description: Data de assinatura do contrato.
+      - name: modalidade_licitacao
+        description: Modalidade da licitação (Concorrência, Convite, Dispensa , Tomada
+          de Preços e Inexigibilidade) que deu origem ao contrato.
+      - name: data_inicio
+        description: Data definida para início da execução da obra ou de validade
+          do serviço descrito no contrato. Ela definirá as datas de início e término
+          de cada etapa quando informada.
+      - name: data_termino_previsto
+        description: Primeira data, calculada após a informação da data de início,
+          de fim do contrato. A data de fim pode ser modificada posteriormente pelas
+          alterações contratuais.
+      - name: data_termino_atual
+        description: Data de fim da última etapa do cronograma vigente. A data reflete
+          as suspensões, prorrogações ou diminuições,  geradas por aditivos de supressão,
+          de prazo.
+      - name: id_contrato
+        description: Número do contrato dado pelo órgão contratante. Pode haver números
+          iguais de contrato em órgãos diferentes.
+      - name: ano_inicio_contrato
+        description: Ano em que iniciou a efetividade do contrato.
+      - name: situacao
+        description: 'Situação do contrato: Executando, Suspenso, Processo de Aceite
+          Provisório/Definitivo, Devolução de Garantias, Contrato Rescindido, Conclusão
+          Financeira'
+      - name: valor_orcado
+        description: Valor do orçamento calculado e apresentado para as empresas na
+          licitação.
+      - name: valor_contratado
+        description: 'Valor do contrato oferecido pela empresa na licitação. O cálculo
+          depende do tipo definido para a licitação. Tipos: Variação, Fator K e BID'
+      - name: valor_vigente
+        description: Valor do contrato atual obtido pelo cálculo com as quantidades
+          e valores após a efetivação de alterações contratuais.
+      - name: percentual_medido
+        description: Percentual do valor do contrato já executado e medido pelo fiscal
+          da obra em relação ao valor atual do contrato.
+      - name: prazo_inicial
+        description: Prazo inicial dado para a conclusão da obra
+      - name: titulo
+        description: "Nome do projeto que deu origem ao contrato. Exemplo:\r\n\r\n\
+          A) Obras:\r\nRECUPERAÇÃO DE MUROS EXTERNOS DA E.M. FERNANDO DE AZEVEDO,\r\
+          \nDEMOLIÇÃO E CONSTRUÇÃO DE MUROS E RECUPERAÇÃO DE GRADIS CONFORME PAL 47402\
+          \ NA EDI GEÓGRAFO AZIZ AB'SABER\r\n\r\nB) Serviços:\r\n- SERVIÇO DE REGULARIZAÇÃO\
+          \ URBANÍSTICA E FUNDIÁRIA - VILA CRUZEIRO E COMPLEXO DE VILA ARARÁ;\r\n\r\
+          \nC) Serviços Continuados:\r\n- SERVIÇOS DE CONSERVAÇÃO DOS ÓRGÃOS EXTERNOS,\
+          \ VINCULADOS Á SECRETARIA MUNICIPAL DE EDUCAÇÃO, SERVIÇOS DE REMOÇÃO E TRANSPORTE\
+          \ DE ESCOMBROS DAS DEMOLIÇÕES REALIZADAS PARA ELIMINAÇÃO DE RISCOS AO PATRIMÔNIO\
+          \ PÚBLICO NO ÂMBITO DA CGOE, EM TODAS AS APS,"
+  - name: raw_infraestrutura_siscob_obras__localizacao_obra
+    description: "**Descrição**: Localização onde ocorrerão intervenções referentes\
+      \ aos contratos para obras ou serviços de engenharia contratados pela prefeitura\
+      \ do Rio de Janeiro. Exemplo: Uma AP, um logradouro, um endereço. Pode haver\
+      \ várias localizações associadas a um contrato.\n**Frequência de atualização**:\
+      \ Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n\
+      **Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem
+          ao contrato.
+      - name: endereco
+        description: Endereço da localização, caso a localização seja um endereço.
+      - name: bairro
+        description: Bairro da localização. Não é preenchido caso a localização seja
+          uma RA ou uma AP.
+      - name: id_regiao_planejamento
+        description: Área de Planejamento da localização.
+      - name: id_bairro
+        description: Identificador do Bairro
+  - name: raw_infraestrutura_siscob_obras__fiscal
+    description: "**Descrição**: Informações sobre os fiscais responsáveis pela fiscalização dos contratos para obras ou serviços de engenharia contratados pela prefeitura do Rio de Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem ao contrato.
+      - name: data_inicio_vigencia
+        description: Data de início da vigência do fiscal.
+      - name: data_fim_vigencia
+        description: Data de fim da vigência do fiscal.
+      - name: matricula
+        description: Matrícula do fiscal responsável pela obra.
+      - name: nome
+        description: Nome do fiscal responsável pela obra.
+      - name: email
+        description: Email do fiscal responsável pela obra.
+  - name: raw_infraestrutura_siscob_obras__itens_medicao
+    description: "**Descrição**: Itens específicos das medições dos contratos para obras ou serviços de engenharia contratados pela prefeitura do Rio de Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem ao contrato.
+      - name: titulo_objeto
+        description: Título do objeto do contrato.
+      - name: estado
+        description: Estado da medição.
+      - name: id_medicao
+        description: Número sequencial das medições desde o início do contrato.
+      - name: data_inicio_medicao
+        description: Data de início da medição.
+      - name: data_fim_medicao
+        description: Data de fim da medição.
+      - name: id_etapa
+        description: Número sequencial que representa a etapa de execução do cronograma.
+      - name: nome_sistema
+        description: Nome do sistema.
+      - name: nome_subsistema
+        description: Nome do subsistema.
+      - name: nome_planilha
+        description: Nome da planilha.
+      - name: numero_item
+        description: Número do item.
+      - name: chave_externa
+        description: Chave externa do item.
+      - name: descricao_item_servico
+        description: Descrição do item ou serviço.
+      - name: unidade_medida
+        description: Unidade de medida do item.
+      - name: valor_item_servico
+        description: Valor do item ou serviço.
+      - name: quantidade_medida
+        description: Quantidade medida do item.
+      - name: quantidade_acumulada
+        description: Quantidade acumulada do item.
+      - name: valor_medido
+        description: Valor medido do item.
+  - name: raw_infraestrutura_siscob_obras__itens_medidos_finalizados
+    description: "**Descrição**: Itens das medições finalizadas dos contratos para obras ou serviços de engenharia contratados pela prefeitura do Rio de Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem ao contrato.
+      - name: nome_sistema
+        description: Nome do sistema.
+      - name: nome_subsistema
+        description: Nome do subsistema.
+      - name: nome_planilha
+        description: Nome da planilha.
+      - name: numero_item
+        description: Número do item.
+      - name: chave_externa
+        description: Chave externa do item.
+      - name: descricao_item_servico
+        description: Descrição do item ou serviço.
+      - name: unidade_medida
+        description: Unidade de medida do item.
+      - name: quantidade_contratada
+        description: Quantidade contratada do item.
+      - name: valor_unitario_licitacao
+        description: Valor unitário da licitação.
+      - name: quantidade_acumulada
+        description: Quantidade acumulada do item.
+      - name: valor_acumulado_medido
+        description: Valor acumulado medido.
+      - name: data_fim_obra
+        description: Data de fim da obra.
+  - name: raw_infraestrutura_siscob_obras__obras_suspensas
+    description: "**Descrição**: Informações sobre obras suspensas dos contratos para obras ou serviços de engenharia contratados pela prefeitura do Rio de Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem ao contrato.
+      - name: titulo_objeto
+        description: Título do objeto do contrato.
+      - name: data_suspensao
+        description: Data em que a obra foi suspensa.
+      - name: motivo_suspensao
+        description: Motivo da suspensão da obra.
+      - name: previsao_retomada
+        description: Previsão para retomada da obra.
+      - name: justificativa
+        description: Justificativa da suspensão.
+      - name: nome_responsavel
+        description: Nome do responsável pela suspensão.
+  - name: raw_infraestrutura_siscob_obras__orcamento_licitado
+    description: "**Descrição**: Informações sobre o orçamento licitado dos contratos para obras ou serviços de engenharia contratados pela prefeitura do Rio de Janeiro\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Total\n**Órgão gestor dos dados**: SMI\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_obra
+        description: Número de identificação único dado ao processo que deu origem ao contrato.
+      - name: titulo_objeto
+        description: Título do objeto do contrato.
+      - name: nome_sistema
+        description: Nome do sistema.
+      - name: nome_subsistema
+        description: Nome do subsistema.
+      - name: nome_planilha
+        description: Nome da planilha.
+      - name: numero_item
+        description: Número do item.
+      - name: chave_externa
+        description: Chave externa do item.
+      - name: descricao_item_servico
+        description: Descrição do item ou serviço.
+      - name: unidade_medida
+        description: Unidade de medida do item.
+      - name: quantidade_contratada
+        description: Quantidade contratada do item.
+      - name: valor_unitario
+        description: Valor unitário do item.
+      - name: valor_total
+        description: Valor total do item.
