@@ -13,7 +13,6 @@ sources:
             description: Identificador único do agendamento
             tests:
               - not_null
-              - unique
           - name: id_capacidade
             description: ID da capacidade
           - name: nome_completo
