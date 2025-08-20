@@ -4,7 +4,7 @@ Este repositório contém todos os modelos DBT (Data Build Tool) da IplanRio, re
 
 ## Contribuindo com o projeto
 
-Se você deseja contribuir com o projeto, acesse nossa [guia de contribuição](https://iplan-rio.mintlify.app/data-lake/dbt/guia-de-contribuicao).
+Se você deseja contribuir com o projeto, acesse nossa [guia de contribuição](https://iplan-rio.mintlify.app/data-lake/dbt/colaboracao-queries).
 
 ## Sobre o DBT
 
