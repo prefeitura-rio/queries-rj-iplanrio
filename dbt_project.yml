@@ -84,3 +84,11 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+      smtur:
+        oferta_turistica:
+          +materialized: view
+          +schema: brutos_oferta_turistica
+          +tags: "daily"
+          +project: rj-iplanrio
+
+        
