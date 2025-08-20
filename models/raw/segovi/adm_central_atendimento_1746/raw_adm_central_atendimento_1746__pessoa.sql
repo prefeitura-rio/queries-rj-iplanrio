@@ -68,4 +68,4 @@ SELECT
     SAFE_CAST(
         REGEXP_REPLACE(ds_atividade_profissional, r'\.0$', '') AS STRING
     ) atividade_profissional
-FROM {{ source('brutos_1746_staging', 'pessoa') }}
+FROM {{ source('brutos_1746_staging', 'pessoa') }} AS t

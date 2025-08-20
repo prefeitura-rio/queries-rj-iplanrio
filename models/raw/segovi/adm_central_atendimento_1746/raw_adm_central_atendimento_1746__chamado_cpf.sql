@@ -12,4 +12,4 @@ SELECT
         REGEXP_REPLACE(id_chamado, r'\.0$', '') AS STRING
     ) id_chamado,
     cpf
-FROM {{ source('brutos_1746_staging', 'chamado_cpf') }}
+FROM {{ source('brutos_1746_staging', 'chamado_cpf') }} AS t

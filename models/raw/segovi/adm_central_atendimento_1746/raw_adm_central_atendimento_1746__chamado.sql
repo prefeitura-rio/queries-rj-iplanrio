@@ -20,7 +20,7 @@ WITH chamados AS (
             * EXCEPT(ds_endereco_numero),
             CASE WHEN REGEXP_CONTAINS(CAST(ds_endereco_numero AS STRING), ",") THEN SPLIT(CAST(ds_endereco_numero AS STRING), ',')[SAFE_OFFSET(0)] ELSE ds_endereco_numero END AS ds_endereco_numero,
             row_number() OVER (PARTITION BY id_chamado ORDER BY dt_fim DESC, data_particao DESC) AS ranking
-        FROM {{ source('brutos_1746_staging', 'chamado') }}
+        FROM {{ source('brutos_1746_staging', 'chamado') }} AS t
 
         -- {% if is_incremental() %}
 
