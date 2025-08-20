@@ -1,6 +1,6 @@
 {{
     config(
-        schema="brutos_data_metrica",
+        schema="brutos_data_metrica_staging",
         materialized="table",
         partition_by={
             "field": "data_hora",
@@ -22,7 +22,7 @@ with source_data as (
         unidade_endereco,
         unidade_bairro,
         current_timestamp() as processed_at
-    from {{ source('brutos_data_metrica', 'cadunico_agendamentos') }}
+    from {{ source('brutos_data_metrica', 'agendamentos_cadunico') }}
     where data_hora is not null
 )
 

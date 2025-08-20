@@ -2,6 +2,8 @@ version: 2
 
 sources:
   - name: brutos_data_metrica
+    database: rj-smas
+    schema: brutos_data_metrica_staging
     description: Dados brutos da API Datametrica
     tables:
       - name: agendamentos_cadunico
