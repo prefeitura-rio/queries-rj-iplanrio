@@ -17,7 +17,7 @@ with source_data as (
         cpf,
         telefone,
         tipo,
-        data_hora,
+        PARSE_DATETIME("%Y-%m-%d %H:%M:%S", data_hora) as data_hora,
         unidade_nome,
         unidade_endereco,
         unidade_bairro,
