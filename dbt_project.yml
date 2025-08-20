@@ -72,5 +72,10 @@ models:
       eai_logs:
         +materialized: table
         +schema: eai_logs
+      smas:
+        cadunico:
+          +materialized: table
+          +project: rj-smas
+          +schema: brutos_data_metrica
 
         
