@@ -18,4 +18,4 @@ SELECT
         ) AS data_fim,
         SAFE_CAST(vl_estimado AS FLOAT64) valor_estimado,
         SAFE_CAST(pc_percentual AS FLOAT64) percentual_estimado
-FROM {{ source('brutos_siscob_staging', 'cronograma_financeiro') }}
+FROM {{ source('brutos_siscob_staging', 'cronograma_financeiro') }} AS t

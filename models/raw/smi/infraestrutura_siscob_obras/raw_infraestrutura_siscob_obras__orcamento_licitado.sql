@@ -20,4 +20,4 @@ SELECT
         SAFE_CAST(qt_contratado AS FLOAT64) quantidade_contratada,
         SAFE_CAST(vl_unitario AS FLOAT64) valor_unitario,
         SAFE_CAST(vl_total AS FLOAT64) valor_total
-FROM {{ source('brutos_siscob_staging', 'orcamento_licitado') }}
+FROM {{ source('brutos_siscob_staging', 'orcamento_licitado') }} AS t

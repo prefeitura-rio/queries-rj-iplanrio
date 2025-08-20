@@ -21,4 +21,4 @@ SELECT
             REGEXP_REPLACE(cd_natureza_dsp, r'\.0$', '') AS STRING
         ) id_natureza_despesa,
         SAFE_CAST(natureza_despesa AS STRING) natureza_despesa,
-FROM {{ source('brutos_siscob_staging', 'programa_fonte') }}
+FROM {{ source('brutos_siscob_staging', 'programa_fonte') }} AS t

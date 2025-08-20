@@ -31,4 +31,4 @@ SELECT
         SAFE_CAST(qt_medida AS FLOAT64) quantidade_medida,
         SAFE_CAST(qt_acumulada AS FLOAT64) quantidade_acumulada,
         SAFE_CAST(vl_medido AS FLOAT64) valor_medido
-FROM {{ source('brutos_siscob_staging', 'itens_medicao') }}
+FROM {{ source('brutos_siscob_staging', 'itens_medicao') }} AS t

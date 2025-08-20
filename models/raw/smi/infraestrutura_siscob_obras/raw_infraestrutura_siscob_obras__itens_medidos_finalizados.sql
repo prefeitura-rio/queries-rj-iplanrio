@@ -23,4 +23,4 @@ SELECT
         SAFE_CAST(
             SAFE.PARSE_DATE('%Y-%m-%d', dt_fim_obra) AS DATE
         ) AS data_fim_obra
-FROM {{ source('brutos_siscob_staging', 'itens_medidos_finalizados') }}
+FROM {{ source('brutos_siscob_staging', 'itens_medidos_finalizados') }} AS t

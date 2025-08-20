@@ -17,4 +17,4 @@ SELECT
             SAFE.PARSE_TIMESTAMP ('%Y-%m-%d %H:%M:%S', dt_autorizacao) AS DATETIME
         ) AS data_autorizacao,
         SAFE_CAST(vl_acerto AS FLOAT64) valor_acerto,
-FROM {{ source('brutos_siscob_staging', 'termo_aditivo') }}
+FROM {{ source('brutos_siscob_staging', 'termo_aditivo') }} AS t

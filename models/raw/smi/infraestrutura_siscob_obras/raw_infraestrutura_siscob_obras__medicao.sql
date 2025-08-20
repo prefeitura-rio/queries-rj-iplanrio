@@ -21,4 +21,4 @@ SELECT
             SAFE.PARSE_DATE ('%Y-%m-%d', dt_fim_medicao) AS DATE
         ) AS data_fim,
         SAFE_CAST(vl_final AS FLOAT64) valor_final,
-FROM {{ source('brutos_siscob_staging', 'medicao') }}
+FROM {{ source('brutos_siscob_staging', 'medicao') }} AS t

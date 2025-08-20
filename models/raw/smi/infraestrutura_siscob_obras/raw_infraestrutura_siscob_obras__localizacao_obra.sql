@@ -45,7 +45,7 @@ WITH loc AS (
       SAFE_CAST(
           INITCAP(endereco) AS STRING
       ) endereco,
-  FROM {{ source('brutos_siscob_staging', 'localizacao_obra') }}
+  FROM {{ source('brutos_siscob_staging', 'localizacao_obra') }} AS t
 ),
 
 loc_geo AS (

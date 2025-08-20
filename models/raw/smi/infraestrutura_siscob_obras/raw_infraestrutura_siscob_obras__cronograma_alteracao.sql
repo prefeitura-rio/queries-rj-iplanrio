@@ -22,4 +22,4 @@ SELECT
         ) AS data_validade,
         SAFE_CAST(nr_prazo AS INT64) dias_prazo,
         SAFE_CAST(ds_observacao AS STRING) observacao,
-FROM {{ source('brutos_siscob_staging', 'cronograma_alteracao') }}
+FROM {{ source('brutos_siscob_staging', 'cronograma_alteracao') }} AS t

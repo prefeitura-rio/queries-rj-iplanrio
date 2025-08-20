@@ -17,4 +17,4 @@ SELECT
         SAFE_CAST(ds_previsao AS STRING) previsao_retomada,
         SAFE_CAST(ds_justificativa AS STRING) justificativa,
         SAFE_CAST(nm_responsavel AS STRING) nome_responsavel
-FROM {{ source('brutos_siscob_staging', 'obras_suspensas') }}
+FROM {{ source('brutos_siscob_staging', 'obras_suspensas') }} AS t

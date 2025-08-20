@@ -18,4 +18,4 @@ select
         SAFE_CAST(matricula AS STRING) matricula,
         SAFE_CAST(nome AS STRING) nome,
         SAFE_CAST(email AS STRING) email
-from {{ source('brutos_siscob_staging', 'fiscal') }}
+from {{ source('brutos_siscob_staging', 'fiscal') }} AS t
