@@ -1,7 +1,6 @@
 {{
     config(
         alias='rubrica',
-        schema='brutos_recursos_humanos_ergon',
     )
 }}
 

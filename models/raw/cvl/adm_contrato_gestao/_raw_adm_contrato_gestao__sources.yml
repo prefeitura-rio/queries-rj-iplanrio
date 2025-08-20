@@ -23,7 +23,6 @@ sources:
       - name: plano_contas
       - name: receita_dados
       - name: receita_item
-      - name: rubrica
       - name: saldo_dados
       - name: saldo_item
       - name: secretaria
