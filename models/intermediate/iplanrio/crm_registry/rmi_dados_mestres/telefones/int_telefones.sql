@@ -3,7 +3,7 @@
 {{
     config(
         alias="int_telefone",
-        schema="rmi_dados_mestres", 
+        schema="intermediario_rmi_telefones", 
         materialized="table",
         partition_by={"field": "rmi_data_criacao", "data_type": "datetime"},
         cluster_by=["telefone_qualidade", "telefone_tipo", "confianca_propriedade"],

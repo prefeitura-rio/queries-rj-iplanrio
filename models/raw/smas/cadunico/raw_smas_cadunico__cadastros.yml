@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: base_rj-smas_cadastros
+  - name: raw_smas_cadunico__cadastros
     description: "Modelo base que extrai e renomeia as colunas da fonte `cadastros` do `rj-smas`, contendo informações de assistência social e dados cadastrais de famílias."
     columns:
       - name: cpf

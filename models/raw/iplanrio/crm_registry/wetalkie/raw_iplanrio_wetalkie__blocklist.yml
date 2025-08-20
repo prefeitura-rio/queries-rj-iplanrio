@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: raw_iplanrio_wetalkie__blocklist
+    description: "Tabela bruta contendo a lista de telefones bloqueados (blocklist) do sistema Wetalkie."
+    columns:
+      - name: contato_telefone
+        description: "Número de telefone do contato bloqueado."
+        tests:
+          - unique
+          - not_null
+      - name: contato_nome
+        description: "Nome do contato bloqueado."
+      - name: data_bloqueio
+        description: "Data e hora em que o telefone foi bloqueado."
+        tests:
+          - not_null
+      - name: razao_bloqueio
+        description: "Razão ou motivo do bloqueio do telefone."
+      - name: data_particao
+        description: "Data de partição para otimização de consultas."

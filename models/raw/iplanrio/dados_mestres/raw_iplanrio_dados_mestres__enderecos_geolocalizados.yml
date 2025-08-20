@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: base_rj-crm-registy-intermediario-dados-mestres-staging_enderecos_geolocalizados
+  - name: raw_iplanrio_dados_mestres__enderecos_geolocalizados
     description: "Modelo base que extrai e renomeia as colunas da fonte `enderecos_geolocalizados` do `rj-crm-registy-intermediario-dados-mestres-staging`, preparando-as para uso em modelos downstream."
     columns:
       - name: logradouro_tratado

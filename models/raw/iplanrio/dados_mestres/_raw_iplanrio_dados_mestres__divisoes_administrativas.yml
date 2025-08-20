@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_dados_mestres_aeis
+  - name: raw_iplanrio_dados_mestres__aeis
     description: |
       Dados brutos das Áreas de Especial Interesse Social (AEIS) do Rio de Janeiro.
       Contém informações sobre tipologia, legislação, geometria e características urbanísticas.
@@ -51,7 +51,7 @@ models:
       - name: nome_regiao_administrativa
         description: Nome da região administrativa
 
-  - name: raw_dados_mestres_bairro
+  - name: raw_iplanrio_dados_mestres__bairro
     description: |
       Dados brutos dos bairros do Rio de Janeiro, incluindo informações geográficas,
       administrativas e de planejamento urbano.
@@ -84,7 +84,7 @@ models:
       - name: perimetro
         description: Perímetro do bairro em metros
 
-  - name: raw_dados_mestres_cres
+  - name: raw_iplanrio_dados_mestres__cres
     description: |
       Dados brutos das Coordenadorias Regionais de Educação (CREs) do Rio de Janeiro.
       Divisões administrativas especializadas para gestão educacional.
@@ -103,7 +103,7 @@ models:
       - name: geometry_wkt
         description: Geometria em formato WKT
 
-  - name: raw_dados_mestres_subprefeitura
+  - name: raw_iplanrio_dados_mestres__subprefeitura
     description: |
       Dados brutos das subprefeituras do Rio de Janeiro.
       Divisões administrativas regionais para gestão de serviços públicos locais.

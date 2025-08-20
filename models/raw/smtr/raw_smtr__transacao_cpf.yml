@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: base_rj-smtr_transacao_cpf
+  - name: raw_smtr__transacao_cpf
     description: "Modelo base que extrai e renomeia as colunas da fonte `transacao_cpf` do `rj-smtr`, contendo informações sobre transações de transporte público associadas a CPFs."
     columns:
       - name: cpf_particao
