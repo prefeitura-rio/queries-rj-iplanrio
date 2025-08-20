@@ -77,5 +77,10 @@ models:
           +materialized: table
           +project: rj-smas
           +schema: brutos_data_metrica
-
-        
+      cvl:
+        +tags: "cvl"
+        +project: rj-cvl
+        adm_contrato_gestao:
+          +materialized: table
+          +schema: adm_contrato_gestao
+          +tags: "daily"
