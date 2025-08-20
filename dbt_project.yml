@@ -72,6 +72,13 @@ models:
       eai_logs:
         +materialized: table
         +schema: eai_logs
+      smi:
+        +tags: "smi"
+        +project: rj-smi
+        infraestrutura_siscob_obras:
+          +materialized: table
+          +schema: infraestrutura_siscob_obras
+          +tags: "daily"        
       smas:
         cadunico:
           +materialized: table
