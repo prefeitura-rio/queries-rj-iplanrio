@@ -55,13 +55,9 @@ loc_geo AS (
     bairros.nome AS bairro,
     loc.id_regiao_planejamento,
     loc.endereco,
-    end_geo.latitude,
-    end_geo.longitude
   FROM loc
   LEFT JOIN {{ source('dados_mestres', 'bairro') }} bairros
     ON UPPER(loc.bairro) = UPPER(REGEXP_REPLACE(NORMALIZE(TRIM(nome), NFD), r'\pM', ''))
-  LEFT JOIN {{ source('brutos_siscob_staging', 'enderecos_geolocalizados') }} end_geo
-    ON UPPER(loc.endereco) = UPPER(end_geo.address)
 )
 
 SELECT
@@ -127,6 +123,4 @@ SELECT
   ELSE NULL
   END AS longitude_regiao_planejamento,
   l.endereco,
-  l.latitude,
-  l.longitude,
 FROM loc_geo l
