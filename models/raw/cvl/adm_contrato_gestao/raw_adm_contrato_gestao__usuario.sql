@@ -16,4 +16,4 @@ SELECT
   SAFE_CAST(DATE(data_exclusao) AS DATE) AS data_exclusao,
   SAFE_CAST(TRIM(flg_excluido) AS STRING) AS flg_excluido,
   SAFE_CAST(TRIM(cargo) AS STRING) AS cargo
-FROM {{ source('brutos_osinfo_staging', 'usuario') }}
+FROM {{ source('brutos_osinfo_staging', 'usuario') }} AS t

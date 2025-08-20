@@ -23,4 +23,4 @@ SELECT
   SAFE_CAST(TRIM(item) AS STRING) AS item,
   SAFE_CAST(TRIM(unidade_medida) AS STRING) AS unidade_medida,
   SAFE_CAST(TRIM(observacao) AS STRING) AS observacao
-FROM {{ source('brutos_osinfo_staging', 'itens_nota_fiscal') }}
+FROM {{ source('brutos_osinfo_staging', 'itens_nota_fiscal') }} AS t

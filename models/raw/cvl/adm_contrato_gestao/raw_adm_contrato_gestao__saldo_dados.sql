@@ -16,4 +16,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_contrato), r'\.0$', '') AS STRING) AS id_instrumento_contratual,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_conta_bancaria), r'\.0$', '') AS STRING) AS id_conta_bancaria,
   SAFE_CAST(TRIM(arq_img_ext) AS STRING) AS arq_img_ext
-FROM {{ source('brutos_osinfo_staging', 'saldo_dados') }}
+FROM {{ source('brutos_osinfo_staging', 'saldo_dados') }} AS t

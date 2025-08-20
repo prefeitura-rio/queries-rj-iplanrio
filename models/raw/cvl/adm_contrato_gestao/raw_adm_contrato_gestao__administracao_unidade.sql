@@ -39,4 +39,4 @@ SELECT
   SAFE_CAST(TRIM(email) AS STRING) AS email,
   SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_ultima_atualizacao) AS DATETIME) AS data_ultima_atualizacao,
   SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_avaliacao) AS DATETIME) AS data_avaliacao
-FROM {{ source('brutos_osinfo_staging', 'administracao_unidade') }}
+FROM {{ source('brutos_osinfo_staging', 'administracao_unidade') }} AS t

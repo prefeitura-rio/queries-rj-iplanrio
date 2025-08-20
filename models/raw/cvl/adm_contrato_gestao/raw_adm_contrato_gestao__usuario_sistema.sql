@@ -13,4 +13,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_perfil), r'\.0$', '') AS STRING) AS id_perfil,
   SAFE_CAST(DATE(data_inicial) AS DATE) AS data_inicial,
   SAFE_CAST(DATE(data_final) AS DATE) AS data_final
-FROM {{ source('brutos_osinfo_staging', 'usuario_sistema') }}
+FROM {{ source('brutos_osinfo_staging', 'usuario_sistema') }} AS t

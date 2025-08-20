@@ -17,4 +17,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(cod_organizacao), r'\.0$', '') AS INT64) AS cod_instituicao,
   SAFE_CAST(REGEXP_REPLACE(TRIM(cod_estado_entrega), r'\.0$', '') AS INT64) AS cod_estado_entrega,
   SAFE_CAST(REGEXP_REPLACE(TRIM(cod_tipo_entrega), r'\.0$', '') AS INT64) AS cod_tipo_entrega
-FROM {{ source('brutos_osinfo_staging', 'fechamento') }}
+FROM {{ source('brutos_osinfo_staging', 'fechamento') }} AS t

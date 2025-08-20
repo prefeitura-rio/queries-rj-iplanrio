@@ -23,4 +23,4 @@ SELECT
   SAFE_CAST(TRIM(observacao) AS STRING) AS observacao,
   SAFE_CAST(TRIM(ap) AS STRING) AS ap,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_secretaria), r'\.0$', '') AS STRING) AS id_secretaria
-FROM {{ source('brutos_osinfo_staging', 'contrato') }}
+FROM {{ source('brutos_osinfo_staging', 'contrato') }} AS t

@@ -14,4 +14,4 @@ SELECT
   SAFE_CAST(TRIM(sigla_regional) AS STRING) AS sigla_regional,
   SAFE_CAST(TRIM(cod_secretaria) AS STRING) AS cod_secretaria,
   SAFE_CAST(TRIM(flg_regional) AS STRING) AS flg_regional
-FROM {{ source('brutos_osinfo_staging', 'secretaria') }}
+FROM {{ source('brutos_osinfo_staging', 'secretaria') }} AS t

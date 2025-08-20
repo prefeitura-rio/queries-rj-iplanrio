@@ -15,4 +15,4 @@ SELECT
   SAFE_CAST(TRIM(flg_ativo) AS STRING) AS flg_ativo,
   SAFE_CAST(TRIM(cod_organizacao) AS STRING) AS cod_instituicao,
   SAFE_CAST(TRIM(cod_tipo) AS STRING) AS cod_tipo
-FROM {{ source('brutos_osinfo_staging', 'conta_bancaria') }}
+FROM {{ source('brutos_osinfo_staging', 'conta_bancaria') }} AS t

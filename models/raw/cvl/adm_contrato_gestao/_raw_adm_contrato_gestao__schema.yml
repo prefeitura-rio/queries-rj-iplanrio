@@ -146,7 +146,7 @@ models:
       - name: sigla
         description: Sigla do tipo de conta bancária. Não existem restrições.
 
-  - name: contrato
+  - name: raw_adm_contrato_gestao__contrato
     description: "**Descrição**: Tabela que armazena os Contratos de Gestão, Termos de Colaboração e Convênios da SMS com a RioSaúde. O Contrato, ou Contrato de Gestão, é um acordo de administração pública celebrado pelo Poder Público com órgãos e entidades da Administração direta, indireta e entidades privadas, qualificadas como Organizações Sociais, para lhes ampliar a autonomia gerencial, orçamentária e financeira, ou para lhes prestar variados auxílios e fixar-lhes metas de desempenho na consecução de seus objetivos.\r\nExemplo:\r\nSeria um exemplo de contrato de gestão, o texto a seguir, que foi extraído de um contrato real:\r\n \r\n¨Contrato de Gestão Nº 002/2015 que entre si celebram o Município do Rio de Janeiro, por intermédio da Secretaria Municipal de Saúde - SMS e a Organização Social Associação Paulista para o Desenvolvimento da Medicina - SPDM com vistas ao apoio ao gerenciamento, operacionalização e execução das ações e serviços de saúde no âmbito do Hospital Municipal Pedro II e CER Santa Cruz, localizadas na AP 5.3............¨\r\n  Tabela preenchida pelo usuário, na operação do sistema. OBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela contrato.tb_contrato.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_instrumento_contratual
@@ -182,7 +182,7 @@ models:
       - name: id_secretaria
         description: ID da secretaria associada ao contrato. (FK) Contidos na tabela osinfo.secretaria
 
-  - name: contrato_terceiros
+  - name: raw_adm_contrato_gestao__contrato_terceiros
     description: "**Descrição**: Tabela que armazena os dados dos contratos das instituições parceiras com seus prestadores de serviço para fins de cumprimento do objeto da parceria. Tabela preenchida pelo usuário, na operação do sistema.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_contrato_terceiro
@@ -220,7 +220,7 @@ models:
       - name: imagem_contrato
         description: Nome do arquivo carregado na base de dados de documentos (MongoDB), que contém a digitalização do contrato de terceiro. Não existem restrições.
 
-  - name: despesas
+  - name: raw_adm_contrato_gestao__despesas
     description: "**Descrição**: Tabela que armazena os dados das despesas das unidade. Tabela preenchida pelo usuário, na operação do sistema.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_documento
@@ -288,7 +288,7 @@ models:
       - name: data_validacao
         description: Data de validação da despesa. Não existem restrições.
 
-  - name: estado_entrega
+  - name: raw_adm_contrato_gestao__estado_entrega
     description: "**Descrição**: Tabela que armazena informações relativas a descrição do resultado final de uma entrega.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: cod_estado
@@ -300,7 +300,7 @@ models:
       - name: detalhe
         description: Descrição detalhada do estado da entrega.
 
-  - name: fechamento
+  - name: raw_adm_contrato_gestao__fechamento
     description: "**Descrição**: Tabela que armazena as informações relativas aos relatórios de entrega, que são os limites para inclusões ou modificação dos lançamentos no sistema. Tabela preenchida pelo sistema.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_fechamento
@@ -324,7 +324,7 @@ models:
       - name: cod_tipo_entrega
         description: Código do tipo de entrega associado ao relatório de entrega. Valores associados na tabela auxiliar osinfo_V2.tb_tipo_entrega
 
-  - name: fornecedor
+  - name: raw_adm_contrato_gestao__fornecedor
     description: "**Descrição**: Tabela que armazena os fornecedores. É toda pessoa física ou jurídica contratada pela instituição que desenvolva atividades de produção, montagem, transformação, beneficiamento, acondicionamento, renovação ou recondicionamento, criação, construção, importação, exportação, distribuição ou comercialização de produtos ou prestação de serviços para atender ao objeto contratado.\r\nExemplo:\r\nÉ exemplo de um fornecedor, a empresa de refeições XYZ Refeições Ltda., com o CNPJ 99.999.999/0001-99.\r\n  Tabela preenchida pelo usuário, na operação do sistema.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_fornecedor
@@ -372,7 +372,7 @@ models:
       - name: data_envio
         description: Data em que o fornecedor foi incluído no sistema. Valor gravado pelo sistema.
 
-  - name: historico_alteracoes
+  - name: raw_adm_contrato_gestao__historico_alteracoes
     description: "**Descrição**: Tabela que deve armazenar todos os lançamentos e alterações de dados no sistema. Tabela preenchida pelo sistema. OBS 1: Esta tabela só é alimentada se houver inclusão ou alteração de registros, feitos depois que a data do relatório de entrega é alterada.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_historico_alteracoes
@@ -398,7 +398,7 @@ models:
       - name: tipo_alteracao
         description: Tipo de alteração efetuada no registro. Inclusão, alteração, exclusão ou importação, mais a descrição do tipo de registro, Despesa, Receita, Itens de Nota Fiscal, etc.
 
-  - name: itens_nota_fiscal
+  - name: raw_adm_contrato_gestao__itens_nota_fiscal
     description: "**Descrição**: Tabela que armazena os itens associados a uma nota fiscal. Cada uma das linhas referentes aos itens constantes em uma nota fiscal, lançada em despesa.\r\nExemplo:\r\nÉ exemplo de um item de nota fiscal, na nota fiscal número 12549, série A, da compra de uma mesa de escritório, feita à empresa ACME SA, no valor de R$ 500,00, o item de nota fiscal seria:\r\n- Descrição: Mesa de compensado de 1,90 por 0,70.\r\n- Quantidade: 1.\r\n- Valor unitário: R$ 500,00.\r\n- Valor total: R$ 500,00.\r\n  Tabela preenchida pelo usuário, na operação do sistema. OBS: Com a implementação da nova arquitetura de contratos para todo sistema, Versão 3.2, os relacionamentos desta tabela mudam para os assinalados em Relacionamento (COM a implementação......).\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_item_nf
@@ -432,7 +432,7 @@ models:
       - name: observacao
         description: Observações sobre o item de nota fiscal. Não existem restrições.
 
-  - name: plano_contas
+  - name: raw_adm_contrato_gestao__plano_contas
     description: "**Descrição**: Tabela que armazena os possíveis itens de despesa. Tabela preenchida pelo usuário, na operação do sistema. Despesa e o Valor gasto com bens e serviços relativos à manutenção das atividades da Organização Social e suas unidades.\r\nExemplo:\r\nÉ exemplo de uma despesa, a nota fiscal número 12549, série A, da compra de uma mesa de escritório, feita à empresa ACME SA, no valor de R$ 500,00, no mês/ano de referência 02/2019, do contrato 016/2019, da unidade 999, da Organização Social 111.\r\n \r\nOBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela financeiro.item_despesa.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_item_plano_de_contas
@@ -448,7 +448,7 @@ models:
       - name: flg_ativo
         description: Se o item de despesa está ativo. S - ativo, N - inativo
 
-  - name: receita_dados
+  - name: raw_adm_contrato_gestao__receita_dados
     description: "**Descrição**: Tabela que armazena os dados das receitas. Receitas são as entradas monetárias em uma conta específica do projeto gerido por Organização Social.\r\nExemplo:\r\nÉ exemplo de uma receita, o recebimento da 5ª parcela fixa do contrato 016/2019, no mês/ano de referência 04/2019, no banco do Brasil, agência Centro, número 99865-9.\r\nTabela preenchida pelo usuário, na operação do sistema. OBS 1: uma única receita é lançada nesta tabela, em tantas linhas quantos diferente itens de receitas ativos existirem na tabela osinfo.receita_item\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_receita_dados
@@ -472,7 +472,7 @@ models:
       - name: id_conta_bancaria
         description: ID da conta bancária associada à receita. (FK) Contidos na tabela - depende da versão
 
-  - name: receita_item
+  - name: raw_adm_contrato_gestao__receita_item
     description: "**Descrição**: Tabela que armazena os possíveis itens de receitas. DML executada direto no banco de dados.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_receita_item
@@ -486,7 +486,7 @@ models:
       - name: id_receita_tipo
         description: ID do tipo de item de receita associado ao item de receita. (FK) Contidos na tabela osinfo.receita_tipo
 
-  - name: rubrica
+  - name: raw_adm_contrato_gestao__rubrica
     description: "**Descrição**: Tabela que armazena as possíveis rubricas. Tabela preenchida pelo usuário, na operação do sistema. As rubricas servem como classificação da execução orçamentária das despesas e estão definidas no contrato assinado entre a Prefeitura do Rio de Janeiro e a Instituição.\r\nExemplo:\r\nÉ exemplo de rubrica, de maneira resumida:\r\n  - Rubricas do contrato 016/2019 da organização social 264 – Viva Rio:\r\nOBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela financeiro.tb_rubrica.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_rubrica
@@ -496,7 +496,7 @@ models:
       - name: flg_ativo
         description: Se a rubrica está ativa. S - ativo, N - inativo
 
-  - name: saldo_dados
+  - name: raw_adm_contrato_gestao__saldo_dados
     description: "**Descrição**: Tabela que armazena os dados dos saldos. Saldo é o valor disponível e está associado ao extrato de uma conta bancária específica do projeto.\r\nExemplo:\r\nÉ exemplo de um saldo de conta bancário, o valor de R$ 568.098,89, no Banco do Brasil, agência Centro, conta corrente 56780-9, conta de provisionamento, com mês/ano de referência 05/2019.\r\nTabela preenchida pelo usuário, na operação do sistema. OBS 1: um único saldo é lançado nesta tabela, em tantas linhas quantos diferente itens de saldos ativos existirem na tabela osinfo.saldo_item\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_saldo_dados
@@ -518,7 +518,7 @@ models:
       - name: arq_img_ext
         description: Nome do arquivo carregado na base de dados de documentos (MongoDB), que contém a digitalização do extrato. Não existem restrições.
 
-  - name: saldo_item
+  - name: raw_adm_contrato_gestao__saldo_item
     description: "**Descrição**: Tabela que associa os possíveis itens de saldos. DML executada direto no banco de dados.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_saldo_item
@@ -532,7 +532,7 @@ models:
       - name: id_saldo_tipo
         description: ID do tipo de item de saldo associado ao item de saldo. Contidos na tabela osinfo.saldo_tipo
 
-  - name: secretaria
+  - name: raw_adm_contrato_gestao__secretaria
     description: "**Descrição**: Tabela que armazena as possíveis secretarias ou órgãos contratantes. Tabela preenchida pelo usuário, na operação do sistema. OBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela contrato.tb_contratante.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_secretaria
@@ -550,7 +550,7 @@ models:
       - name: flg_regional
         description: Se a secretaria trabalha com regionais. S - trabalha, N - não trabalha
 
-  - name: tipo_arquivo
+  - name: raw_adm_contrato_gestao__tipo_arquivo
     description: "**Descrição**: Tabela que armazena os tipos de arquivos que podem ter importação de dados, e suas configurações. DML executada direto no banco de dados.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_tipo_arquivo
@@ -562,7 +562,7 @@ models:
       - name: flg_atividade
         description: Se a opção de importação está ativa ou inativa. A - ativo, I - inativo
 
-  - name: tipo_documento
+  - name: raw_adm_contrato_gestao__tipo_documento
     description: "**Descrição**: Tabela que armazena os possíveis tipos de documentos comprobatórios de despesas das prestações de contas.\r\nExemplo: Nota Fiscal - NF, DARF - DARF; Imposto de Renda - IRRF;\r\nFundo de Garantia - FGTS; GPS - GPS; Folha de Pagamento - FOLHA\r\nRecibos Para Pessoa Física - RECIBO; Boleto Bancário - BOLETO\r\nOutros Tipos de Impostos - IMPOSTO\r\nTabela preenchida pelo usuário, na operação do sistema.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_tipo_documento
@@ -572,7 +572,7 @@ models:
       - name: documento
         description: Descrição do tipo de documento. Não existem restrições.
 
-  - name: usuario
+  - name: raw_adm_contrato_gestao__usuario
     description: "**Descrição**: Tabela que armazena as informações dos usuário existente no sistema. Tabela preenchida pelo usuário, na operação do sistema. OBS 1: Com a implantação da nova arquitetura de contratos, Versão 2.14, os relacionamentos desta tabela mudam para os assinalados em Relacionamento (COM a implantação......). OBS 2: Com a implantação da nova arquitetura de usuários, Versão 3.1, está tabela sofre alterações de uso, passando a ter outras tabelas auxiliares.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: cod_usuario
@@ -594,7 +594,7 @@ models:
       - name: cargo
         description: Cargo que o usuário ocupa na sua unidade. Não existem restrições.
 
-  - name: usuario_sistema
+  - name: raw_adm_contrato_gestao__usuario_sistema
     description: "**Descrição**: Tabela que armazena a relação dos usuários e os sistemas aos quais possuem acesso. DML executada direto no banco de dados.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
     columns:
       - name: id_usuario_sistema

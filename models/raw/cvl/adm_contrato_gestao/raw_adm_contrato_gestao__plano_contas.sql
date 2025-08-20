@@ -13,4 +13,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_despesa_n1), r'\.0$', '') AS STRING) AS id_item_plano_de_contas_n1,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_despesa_n2), r'\.0$', '') AS STRING) AS id_item_plano_de_contas_n2,
   SAFE_CAST(TRIM(flg_ativo) AS STRING) AS flg_ativo
-FROM {{ source('brutos_osinfo_staging', 'plano_contas') }}
+FROM {{ source('brutos_osinfo_staging', 'plano_contas') }} AS t

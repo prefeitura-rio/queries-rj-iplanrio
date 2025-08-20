@@ -11,4 +11,4 @@ SELECT
   SAFE_CAST(TRIM(estado) AS STRING) AS estado,
   SAFE_CAST(TRIM(etiqueta) AS STRING) AS etiqueta,
   SAFE_CAST(TRIM(detalhe) AS STRING) AS detalhe
-FROM {{ source('brutos_osinfo_staging', 'estado_entrega') }}
+FROM {{ source('brutos_osinfo_staging', 'estado_entrega') }} AS t

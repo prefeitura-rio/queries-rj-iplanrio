@@ -29,4 +29,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_log_importacao), r'\.0$', '') AS STRING) AS id_log_importacao,
   SAFE_CAST(TRIM(cod_organizacao) AS STRING) AS cod_organizacao,
   SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_envio_data_envio) AS DATETIME) AS data_envio
-FROM {{ source('brutos_osinfo_staging', 'fornecedor') }}
+FROM {{ source('brutos_osinfo_staging', 'fornecedor') }} AS t

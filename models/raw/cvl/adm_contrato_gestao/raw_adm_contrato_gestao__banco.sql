@@ -12,4 +12,4 @@ SELECT
   SAFE_CAST(TRIM(banco) AS STRING) AS banco,
   SAFE_CAST(TRIM(nome_fantasia) AS STRING) AS nome_fantasia,
   SAFE_CAST(TRIM(flg_ativo) AS STRING) AS flg_ativo
-FROM {{ source('brutos_osinfo_staging', 'banco') }}
+FROM {{ source('brutos_osinfo_staging', 'banco') }} AS t

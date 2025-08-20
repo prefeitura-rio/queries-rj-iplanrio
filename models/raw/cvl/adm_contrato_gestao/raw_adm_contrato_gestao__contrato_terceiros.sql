@@ -25,4 +25,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(referencia_mes_receita), r'\.0$', '') AS INT64) AS referencia_mes_receita,
   SAFE_CAST(TRIM(flg_imagem) AS STRING) AS flg_imagem,
   SAFE_CAST(TRIM(imagem_contrato) AS STRING) AS imagem_contrato
-FROM {{ source('brutos_osinfo_staging', 'contrato_terceiros') }}
+FROM {{ source('brutos_osinfo_staging', 'contrato_terceiros') }} AS t

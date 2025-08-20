@@ -13,4 +13,4 @@ SELECT
   SAFE_CAST(TRIM(digito) AS STRING) AS digito,
   SAFE_CAST(TRIM(agencia) AS STRING) AS agencia,
   SAFE_CAST(TRIM(flg_ativo) AS STRING) AS flg_ativo
-FROM {{ source('brutos_osinfo_staging', 'agencia') }}
+FROM {{ source('brutos_osinfo_staging', 'agencia') }} AS t

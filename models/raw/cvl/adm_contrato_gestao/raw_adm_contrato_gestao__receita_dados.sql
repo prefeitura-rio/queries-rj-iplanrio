@@ -17,4 +17,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_contrato), r'\.0$', '') AS STRING) AS id_instrumento_contratual,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_termo_aditivo), r'\.0$', '') AS STRING) AS id_termo_aditivo,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_conta_bancaria), r'\.0$', '') AS STRING) AS id_conta_bancaria
-FROM {{ source('brutos_osinfo_staging', 'receita_dados') }}
+FROM {{ source('brutos_osinfo_staging', 'receita_dados') }} AS t

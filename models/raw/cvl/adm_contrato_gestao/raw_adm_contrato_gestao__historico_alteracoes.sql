@@ -19,4 +19,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(ano_referencia), r'\.0$', '') AS INT64) AS ano_referencia,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_registro), r'\.0$', '') AS STRING) AS id_registro,
   SAFE_CAST(TRIM(tipo_alteracao) AS STRING) AS tipo_alteracao
-FROM {{ source('brutos_osinfo_staging', 'historico_alteracoes') }}
+FROM {{ source('brutos_osinfo_staging', 'historico_alteracoes') }} AS t

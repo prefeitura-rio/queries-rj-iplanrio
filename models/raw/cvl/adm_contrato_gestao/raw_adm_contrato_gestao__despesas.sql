@@ -39,4 +39,4 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_imagem), r'\.0$', '') AS STRING) AS id_imagem,
   SAFE_CAST(TRIM(nf_validada_sigma) AS STRING) AS nf_validada_sigma,
   SAFE_CAST(DATE(data_validacao) AS DATE) AS data_validacao
-FROM {{ source('brutos_osinfo_staging', 'despesa') }}
+FROM {{ source('brutos_osinfo_staging', 'despesa') }} AS t

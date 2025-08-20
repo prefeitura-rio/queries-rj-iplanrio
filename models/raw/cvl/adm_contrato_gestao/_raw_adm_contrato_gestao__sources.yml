@@ -15,6 +15,7 @@ sources:
       - name: contrato
       - name: contrato_terceiros
       - name: despesa
+      - name: estado_entrega
       - name: fechamento
       - name: fornecedor
       - name: historico_alteracoes
