@@ -35,3 +35,4 @@ models:
         description: Bairro da unidade de saúde
       - name: processed_at
         description: Data e hora em que o registro foi processado
+      - name: data_particao
