@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='secretaria',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_secretaria), r'\.0$', '') AS STRING) AS id_secretaria,
   SAFE_CAST(TRIM(secretaria) AS STRING) AS secretaria,

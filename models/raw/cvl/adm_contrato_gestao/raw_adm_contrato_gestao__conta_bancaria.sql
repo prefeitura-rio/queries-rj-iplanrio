@@ -1,3 +1,12 @@
+{{
+    config(
+        alias='conta_bancaria',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_conta_bancaria), r'\.0$', '') AS STRING) AS id_conta_bancaria,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_agencia), r'\.0$', '') AS STRING) AS id_agencia,

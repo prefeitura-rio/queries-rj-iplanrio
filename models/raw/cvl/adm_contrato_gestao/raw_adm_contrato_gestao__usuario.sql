@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='usuario',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(TRIM(cod_usuario) AS STRING) AS cod_usuario,
   SAFE_CAST(TRIM(cod_unidade) AS STRING) AS cod_unidade,

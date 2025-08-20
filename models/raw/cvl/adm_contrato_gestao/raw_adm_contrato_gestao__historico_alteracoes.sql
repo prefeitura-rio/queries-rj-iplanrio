@@ -1,3 +1,12 @@
+{{
+    config(
+        alias='historico_alteracoes',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_historico_alteracoes), r'\.0$', '') AS STRING) AS id_historico_alteracoes,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_tipo_arquivo), r'\.0$', '') AS STRING) AS id_tipo_arquivo,

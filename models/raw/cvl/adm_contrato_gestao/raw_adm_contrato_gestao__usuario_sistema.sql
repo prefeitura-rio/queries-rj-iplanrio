@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='usuario_sistema',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_usuario_sistema), r'\.0$', '') AS STRING) AS id_usuario_sistema,
   SAFE_CAST(TRIM(cod_usuario) AS STRING) AS cod_usuario,

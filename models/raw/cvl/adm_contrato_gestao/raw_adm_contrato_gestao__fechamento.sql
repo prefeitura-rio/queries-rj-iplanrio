@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='fechamento',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_fechamento), r'\.0$', '') AS STRING) AS id_fechamento,
   SAFE_CAST(REGEXP_REPLACE(TRIM(mes_referencia), r'\.0$', '') AS INT64) AS mes_referencia,

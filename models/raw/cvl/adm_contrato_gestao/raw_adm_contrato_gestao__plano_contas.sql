@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='plano_contas',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_despesa), r'\.0$', '') AS STRING) AS id_item_plano_de_contas,
   SAFE_CAST(TRIM(cod_despesa) AS STRING) AS cod_item_plano_de_contas,

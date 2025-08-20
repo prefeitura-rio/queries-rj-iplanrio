@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='fornecedor',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_fornecedor), r'\.0$', '') AS STRING) AS id_fornecedor,
   SAFE_CAST(TRIM(cod_fornecedor) AS STRING) AS cod_fornecedor,

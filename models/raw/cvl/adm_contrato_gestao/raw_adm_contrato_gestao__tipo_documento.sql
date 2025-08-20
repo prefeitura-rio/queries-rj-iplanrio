@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='tipo_documento',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_tipo_documento), r'\.0$', '') AS STRING) AS id_tipo_documento,
   SAFE_CAST(TRIM(tipo_documento) AS STRING) AS tipo_documento,

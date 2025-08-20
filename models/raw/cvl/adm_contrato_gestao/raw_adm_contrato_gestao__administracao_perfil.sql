@@ -1,7 +1,7 @@
 {{
     config(
         alias='administracao_perfil',
-        schema='brutos_adm_contrato_gestao',
+        schema='adm_contrato_gestao',
         materialized='table'
     )
 }}

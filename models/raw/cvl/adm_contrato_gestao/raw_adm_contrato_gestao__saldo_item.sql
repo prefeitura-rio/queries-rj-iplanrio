@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='saldo_item',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_saldo_item), r'\.0$', '') AS STRING) AS id_saldo_item,
   SAFE_CAST(TRIM(saldo_item) AS STRING) AS saldo_item,

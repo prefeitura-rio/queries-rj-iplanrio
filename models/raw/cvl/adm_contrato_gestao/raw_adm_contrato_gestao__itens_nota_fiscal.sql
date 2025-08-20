@@ -1,3 +1,12 @@
+{{
+    config(
+        alias='itens_nota_fiscal',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_item_nf), r'\.0$', '') AS STRING) AS id_item_nf,
   SAFE_CAST(TRIM(cod_item_nf) AS STRING) AS cod_item_nf,

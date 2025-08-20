@@ -1,3 +1,11 @@
+{{
+    config(
+        alias='estado_entrega',
+        schema='adm_contrato_gestao',
+        materialized='table'
+    )
+}}
+
 SELECT
   SAFE_CAST(TRIM(cod_estado) AS STRING) AS cod_estado,
   SAFE_CAST(TRIM(estado) AS STRING) AS estado,
