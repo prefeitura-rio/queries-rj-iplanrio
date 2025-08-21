@@ -1,4 +1,14 @@
 pull_request_rules:
+  - name: Automatic update for PRs
+    conditions:
+      - -conflict
+      - -draft
+      - -closed
+      - -merged
+      - "#commits-behind>0"
+      - label!=do-not-update
+    actions:
+      update:
   - name: Warn author on conflicts
     conditions:
       - conflict
