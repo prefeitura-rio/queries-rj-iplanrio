@@ -20,7 +20,7 @@ with dados_com_linha as (
 select 
   ano,
   evento,
-  taxa_de_ocupacao,
+  tx_de_ocupacao_,
   data_inicial,
   data_final,
 
