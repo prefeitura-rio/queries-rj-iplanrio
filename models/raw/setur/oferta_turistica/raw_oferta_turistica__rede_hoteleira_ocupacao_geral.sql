@@ -1,6 +1,6 @@
 {{
   config(
-    alias='rede_hoteleira_ocupacao_geral',
+    alias='rede_hoteleira_ocupacao_geral_raw',
   )
 }}
 
