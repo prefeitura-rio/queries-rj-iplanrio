@@ -2,13 +2,16 @@
 
 Este repositório contém todos os modelos DBT (Data Build Tool) da IplanRio, responsáveis pela transformação e modelagem de dados em nosso Data Lake.
 
+## Contribuindo com o projeto
+
+Se você deseja contribuir com o projeto, acesse nossa [guia de contribuição](https://iplan-rio.mintlify.app/data-lake/dbt/colaboracao-queries).
+
 ## Sobre o DBT
 
 O **DBT (Data Build Tool)** é uma ferramenta de transformação de dados que permite aos analistas e engenheiros de dados transformar dados em seus warehouses de forma eficiente e confiável. No contexto da IplanRio, utilizamos o DBT para:
 
 - **Transformação de dados**: Limpeza, padronização e enriquecimento de dados brutos
 - **Modelagem dimensional**: Criação de tabelas de fatos e dimensões para análise
-- **Documentação**: Geração automática de documentação para todos os modelos
 - **Testes**: Validação de qualidade e integridade dos dados
 - **Versionamento**: Controle de versão para todas as transformações de dados
 
@@ -17,36 +20,64 @@ O **DBT (Data Build Tool)** é uma ferramenta de transformação de dados que pe
 O projeto segue as seguintes práticas de organização do DBT:
 
 ```
-models/
-├── raw/           # Modelos de dados brutos
-├── core/          # Modelos centrais de negócio
-└── mart/          # Data marts para análise
+queries-rj-iplanrio/
+├── 📁 models/                    # Modelos DBT (transformações de dados)
+│   ├── 📁 raw/                   # Modelos de dados brutos (staging)
+│   ├── 📁 core/                  # Modelos centrais de negócio (dimensões e fatos)
+│   └── 📁 mart/                  # Data marts para análise específica
+├── 📁 macros/                    # Macros reutilizáveis
+│   ├── 📁 dbt_internal/          # Macros internos do projeto
+│   └── 📁 string/                # Macros para manipulação de strings
+├── 📁 .github/                   # Configurações do GitHub
+│   ├── 📁 workflows/             # Workflows de CI/CD
+│   │   ├── dbt-ci.yml           # CI para Pull Requests
+│   │   ├── dbt-cd.yml           # CD para produção
+│   │   ├── dbt-drop-dev-schemas.yml # Limpeza de schemas de desenvolvimento
+│   │   └── sqlfmt.yml           # Formatação automática de SQL
+├── 📁 analyses/                  # Análises ad-hoc (consultas exploratórias)
+├── 📁 seeds/                     # Dados .csv 
+├── 📁 snapshots/                 # Modelos de snapshot
+├── 📁 tests/                     # Testes customizados de qualidade
+├── 📁 .cursor/                   # Configurações do Cursor IDE
+├── dbt_project.yml               # Configuração principal do projeto DBT
+├── profiles.yml                  # Configurações de conexão com banco de dados
+├── packages.yml                  # Dependências de pacotes DBT
+├── package-lock.yml              # Versões fixas dos pacotes
+├── dbt-requirements.txt          # Dependências Python para DBT
+├── pyproject.toml                # Configuração do projeto Python
+├── uv.lock                       # Lock file do gerenciador de pacotes UV
+├── .pre-commit-config.yaml       # Hooks de pré-commit para qualidade de código
+├── .dbtignore                    # Arquivos ignorados pelo DBT
+├── .gitignore                    # Arquivos ignorados pelo Git
+├── .python-version               # Versão do Python para o projeto
+├── recce.yml                     # Configuração da ferramenta Recce
+└── README.md                     # Este arquivo de documentação
 ```
 
-## Workflows de CI/CD
+### **Arquivos de Configuração Principais:**
 
-### CI (Continuous Integration) - `dbt-ci.yml`
+- **`dbt_project.yml`**: Configurações do projeto, modelos, testes e variáveis
+- **`profiles.yml`**: Conexões com BigQuery e outros bancos de dados
+- **`packages.yml`**: Dependências de pacotes DBT externos
+- **`dbt-requirements.txt`**: Dependências Python necessárias para execução
 
-O workflow de CI é executado automaticamente em cada Pull Request para a branch `master`:
+### **Diretórios de Modelos:**
 
-1. **Validação**: Executa `dbt debug` para verificar configurações
-2. **Dependências**: Instala dependências com `dbt deps`
-3. **Build Incremental**: Executa apenas modelos modificados usando `dbt build -s 'state:modified+'`
-4. **Ambiente**: Cria um dataset único no BigQuery para cada execução do workflow
+- **`models/raw/`**: Modelos que fazem staging dos dados brutos
+- **`models/core/`**: Modelos centrais com lógica de negócio
+- **`models/mart/`**: Data marts para análises específicas
 
-### CD (Continuous Deployment) - `dbt-cd.yml`
+### **Workflows de CI/CD:**
 
-O workflow de CD é executado automaticamente após merge na branch `master`:
+- **`dbt-ci.yml`**: Executa testes e validações em Pull Requests
+- **`dbt-cd.yml`**: Deploy automático para produção após merge
+- **`dbt-drop-dev-schemas.yml`**: Limpeza automática de schemas de desenvolvimento
+- **`sqlfmt.yml`**: Formatação automática de código SQL
 
-1. **Deploy**: Executa todos os modelos com `dbt build`
-2. **Ambiente**: Utiliza o target `pr_prod` (Produção)
-3. **Manifest**: Atualiza o manifest.json no Google Cloud Storage para futuras execuções incrementais
+### **Ferramentas:**
 
-## Instalação e Configuração
-
-Para instalar e configurar o DBT em seu ambiente local, consulte nossa documentação completa:
-
-📚 **[Documentação IplanRio - Instalação DBT](https://iplan-rio.mintlify.app/data-lake/dbt/instalacao-dbt)**
+- **Recce**: Ferramenta para comparação de resultados entre diferentes execuções
+- **Pre-commit**: Hooks para validação automática de código antes do commit
 
 ## Comandos Básicos
 
@@ -71,20 +102,10 @@ dbt build --select 'seu_modelo'
 dbt debug
 ```
 
-## Contribuição
-
-1. Crie uma branch a partir de `master`
-2. Desenvolva seus modelos seguindo as convenções do projeto
-3. Execute testes localmente antes do commit
-4. Abra um Pull Request para revisão
-5. O CI será executado automaticamente para validação
-
 ## Recursos Adicionais
 
-- [Documentação oficial do DBT](https://docs.getdbt.com/)
-- [Comunidade DBT](https://community.getdbt.com/)
-- [Discourse DBT](https://discourse.getdbt.com/)
-- [Blog DBT](https://blog.getdbt.com/)
+- [Documentação oficial do DBT](https://docs.getdbt.com/docs/introduction)
+- [Documentação oficial do Data Lake](https://iplan-rio.mintlify.app/data-lake/overview)
 
 ---
 
