@@ -1,6 +1,6 @@
 {{
     config(
-        alias='fornecedor',
+        alias='raw_sigma_fornecedor',
         schema='compras_materiais_servicos_sigma'
     )
 }}
