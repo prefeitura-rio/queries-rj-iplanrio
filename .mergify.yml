@@ -1,0 +1,10 @@
+pull_request_rules:
+  - name: Warn author on conflicts
+    conditions:
+      - conflict
+    actions:
+      comment:
+        message: "@{{author}} esse pull request tem conflitos 😩"
+      label:
+        add:
+          - conflict
