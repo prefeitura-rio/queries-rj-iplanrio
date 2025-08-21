@@ -5,7 +5,7 @@
         alias="int_telefone",
         schema="intermediario_rmi_telefones", 
         materialized="table",
-        partition_by={"field": "rmi_data_criacao", "data_type": "datetime"},
+        partition_by={"field": "data_particao", "data_type": "date"},
         cluster_by=["telefone_qualidade", "telefone_tipo", "confianca_propriedade"],
         unique_key="telefone_numero_completo"
     )
@@ -55,7 +55,6 @@ telefones_frequency as (
   from telefones_all_sources
   where origem_id is not null
     and regexp_contains(telefone_numero_completo, r'^[0-9]+$')
-    and origem_tipo != 'CNS'
   group by telefone_numero_completo
 ),
 
@@ -74,7 +73,6 @@ telefones_aparicoes as (
   from telefones_all_sources
   where origem_id is not null
     and regexp_contains(telefone_numero_completo, r'^[0-9]+$')
-    and origem_tipo != 'CNS'
   group by telefone_numero_completo
 ),
 
@@ -111,10 +109,11 @@ telefones_rmi_schema as (
     freq.telefone_sistemas_quantidade,
     
     -- Auditoria RMI
-    current_datetime() as rmi_data_criacao,
-    current_datetime() as rmi_data_atualizacao,
+    current_datetime("America/Sao_Paulo") as rmi_data_atualizacao,
     '{{ var("phone_validation").rmi_version }}' as rmi_versao,
-    {{ generate_hash('freq.telefone_numero_completo', 'aparicoes.telefone_aparicoes') }} as rmi_hash_validacao
+    {{ generate_hash('freq.telefone_numero_completo', 'aparicoes.telefone_aparicoes') }} as rmi_hash_validacao,
+
+    current_date("America/Sao_Paulo") as data_particao
 
   from telefones_frequency freq
   left join telefones_aparicoes aparicoes using (telefone_numero_completo)
