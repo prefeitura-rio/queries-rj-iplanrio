@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__usuario
+    description: "**Descrição**: Tabela que armazena as informações dos usuário existente no sistema. Tabela preenchida pelo usuário, na operação do sistema. OBS 1: Com a implantação da nova arquitetura de contratos, Versão 2.14, os relacionamentos desta tabela mudam para os assinalados em Relacionamento (COM a implantação......). OBS 2: Com a implantação da nova arquitetura de usuários, Versão 3.1, está tabela sofre alterações de uso, passando a ter outras tabelas auxiliares.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: cod_usuario
+        description: ID do usuário. Auto incremental do próprio banco de dados
+      - name: cod_unidade
+        description: ID da unidade à qual o usuário está ligado. (FK) Contidos na tabela - depende da versão
+      - name: login
+        description: "Login associado ao usuário. Usado para acessar o sistema.\r\n OBS: desde a versão 3.1, o acesso ao sistema é feito através do email, e não mais pelo login. Gerado automaticamente pela aplicação."
+      - name: nome
+        description: Nome do usuário. Não existem restrições.
+      - name: data_cadastro
+        description: Data em que o usuário foi incluído no sistema. Não existem restrições.
+      - name: data_atualizacao
+        description: Data em que o usuário foi alterado no sistema. Não existem restrições.
+      - name: data_exclusao
+        description: Data em que o usuário foi excluído no sistema. Não existem restrições.
+      - name: flg_excluido
+        description: Se o usuário está excluído (exclusão lógica) do sistema. S - excluído, N - não excluído
+      - name: cargo
+        description: Cargo que o usuário ocupa na sua unidade. Não existem restrições.

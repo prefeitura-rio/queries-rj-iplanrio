@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__saldo_item
+    description: "**Descrição**: Tabela que associa os possíveis itens de saldos. DML executada direto no banco de dados.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_saldo_item
+        description: ID do item de saldo. Auto incremental do próprio banco de dados.
+      - name: saldo_item
+        description: Descrição do item de saldo. Não existem restrições.
+      - name: flg_ativo
+        description: Se o item de saldo está ativo. S - ativo, N - inativo
+      - name: ordem
+        description: Ordem em que o item de saldo é mostrado na interface. Não existem restrições.
+      - name: id_saldo_tipo
+        description: ID do tipo de item de saldo associado ao item de saldo. Contidos na tabela osinfo.saldo_tipo

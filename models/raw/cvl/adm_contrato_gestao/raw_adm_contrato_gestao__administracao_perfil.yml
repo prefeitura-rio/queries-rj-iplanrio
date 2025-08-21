@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__administracao_perfil
+    description: "**Descrição**: Tabela que armazena os possíveis perfis dos usuários do sistema. DML executada direto no banco de dados.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_perfil
+        description: ID do perfil Auto incremental do próprio banco de dados
+      - name: nome_perfil
+        description: Nome do perfil. Não existem restrições.
