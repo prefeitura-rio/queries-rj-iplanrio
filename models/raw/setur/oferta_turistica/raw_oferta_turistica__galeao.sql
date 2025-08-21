@@ -1,7 +1,6 @@
 {{
   config(
     alias='galeao',
-    materialized='view'
   )
 }}
 
@@ -12,7 +11,7 @@ with dados_com_linha as (
     string_field_2 as passageiros_domesticos,
     string_field_3 as passageiros_internacionais,
     row_number() over() as linha
-  from {{ source('oferta_turistica', 'galeao') }}
+  from {{ source('brutos_oferta_turistica_staging', 'galeao') }}
 )
 
 select 

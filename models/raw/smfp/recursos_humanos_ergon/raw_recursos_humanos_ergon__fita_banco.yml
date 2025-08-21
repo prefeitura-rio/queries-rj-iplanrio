@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__fita_banco
+    description: "**Descrição**: Fitas enviadas para o tesouro municipal contendo informações sobre pagamentos a serem feitos a funcionários tanto pela administração direta quanto indireta.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    config:
+      alias: raw_recursos_humanos_ergon__fita_banco
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_lancamento
+        description: Chave gerada pelo banco para a fitabanco para cada numfunc
+        data_type: integer
+      - name: data_folha
+        description: Mês e ano da folha de pagamentos.
+        data_type: date
+      - name: data_exercicio
+        description: Data do início do exercício do funcionário relativo a este vínculo.
+        data_type: date
+      - name: data_aposentadoria
+        description: Data de aposentadoria relacionada ao vínculo. Caso não tenha havido ainda aposentadoria fica em branco.
+        data_type: date
+      - name: data_vacancia
+        description: Data de vacância relativa ao vínculo. A vacância ocorre quando se encerra o vínculo.
+        data_type: date
+      - name: data_credito
+        description: Data em que vai ser creditado o valor na conta corrente.
+        data_type: date
+      - name: id_vinculo
+        description: Identificador no banco de dados do vínculo da pessoa que vai receber o pagamento.
+        data_type: integer
+      - name: numero_folha
+        description: Número da Folha
+        data_type: integer
+      - name: rubrica
+        description: Rubrica relativa ao pagamento a ser feito à pessoa que vai receber o pagamento. Caso haja rubricas diferentes haverá um registro para cada rubrica na fita_banco.
+        data_type: string
+        quote: true
+      - name: setor
+        description: Setor onde trabalha o funcionário. Caso não trabalhe o setor é a EGM.
+        data_type: string
+        quote: true
+      - name: valor_bruto
+        description: Remuneração bruta.
+        data_type: numeric
+      - name: valor_descontos
+        description: Total de descontos.
+        data_type: numeric
+      - name: valor_liquido
+        description: Valor liquido a ser deposito para a pessoa que vai receber o pagamento.
+        data_type: numeric
+      - name: pensionistas
+        description: Número do pensionista associado ao funcionário, usado somente para a empresa 04 (Pensionistas da PREVIRIO).
+        data_type: integer
+      - name: dependente
+        description: Número do dependente associado ao funcionário, quando dependente for cotista (pr ex. pensão alimentícia). Quando há mais de um dependente, há um registro por dependente.
+        data_type: integer
+      - name: banco
+        description: Número do banco onde está a conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
+        data_type: integer
+      - name: conta_banco
+        description: Número da conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
+        data_type: string
+        quote: true
+      - name: cargo
+        description: Cargo do funcionário associado ao pagamento.
+        data_type: string
+        quote: true
+      - name: cargo_subcategoria
+        description: Subcategoria do cargo. É uma subdivisão da categoria. Ex. Apoio, Geral, lotados na saúde.
+        data_type: string
+        quote: true
+      - name: id_referencia
+        description: Código do nível/posicionamento após o provimento. Ex PROFESSOR II, MM1, MM2, MM3, MM4, MM5, MM6, MM7, 999990 - ESPECIAL o valor do vencimento é zero.
+        data_type: integer
+      - name: funcao
+        description: Função do funcionário que vai receber o pagamento, caso seja um funcionário. Caso a pessoa não tenha funcão, fica em branco.
+        data_type: string
+        quote: true
+      - name: nome_fita_banco
+        description: Nome da fita banco.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa onde trabalha a pessoa que vai receber o pagamento.
+        data_type: integer
+      - name: id_ficha
+        description: Identificador único no banco de dados da ficha financeira da pessoa que vai receber o pagamento.
+        data_type: integer
+      - name: regime_juridico
+        description: Nome do regime jurídico da pessoa que vai receber o pagamento. Ex. Celetista, estatutário.
+        data_type: string
+        quote: true
+      - name: tipo_vinculo
+        description: 'Detalhamento do regime jurídico. Exemplo: CLT - Contrato indeterminado, CLT - Contrato determinado.'
+        data_type: string
+        quote: true
+      - name: categoria
+        description: 'Categoria do vínculo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
+        data_type: string
+        quote: true
+      - name: cpf
+        description: CPF da pessoa que vai receber o pagamento.
+        data_type: string
+        quote: true
+      - name: id_lotacao
+        description: Órgão de Lotação. Código Numérico que indica a Secretaria em que o servidor está lotado. 1800 - SMS, 1600 - SME, etc. Ver tabela hsetor_.
+        data_type: integer
+      - name: id_funcao
+        description: Identificador no banco de dados da pessoa, cadastrada na tabela de funcionários, que vai receber o pagamento.
+        data_type: integer
+      - name: agencia_banco
+        description: Número da agência onde está a conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
+        data_type: string
+        quote: true
+      - name: id_jornada
+        description: Código dado pela prefeitura do Rio de Janeiro para a jornada semanal do cargo/emprego associado ao vínculo.
+        data_type: integer
