@@ -6,7 +6,6 @@ models:
     config:
       alias: raw_recursos_humanos_ergon__vinculo
       schema: raw
-      materialized: view
     columns:
       - name: id_vinculo
         description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa que é professora, e funcionária do IPLANRIO, tem dois vínculos.
