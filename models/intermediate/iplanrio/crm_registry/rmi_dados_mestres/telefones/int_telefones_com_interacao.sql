@@ -1,6 +1,6 @@
 -- Modelo intermediário que enriquece os telefones consolidados com dados de interação do chatbot.
 -- Adiciona informações sobre a última leitura, última resposta e indicador de opt-out.
-
+-- TODO: adicionar essa query no raw_consolidated
 with
 telefones as (
     select * from {{ ref('int_telefones_raw_consolidated') }}

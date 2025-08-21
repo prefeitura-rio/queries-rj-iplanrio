@@ -13,3 +13,4 @@ SELECT
   reason as razao_bloqueio,
   DATE(date_time) as data_particao
 FROM `rj-crm-registry.brutos_wetalkie_staging.blocklist`
+WHERE phone IS NOT NULL AND date_time IS NOT NULL
