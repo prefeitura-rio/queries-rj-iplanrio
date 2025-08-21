@@ -5,6 +5,7 @@
         materialized='table'
     )
 }}
+
 SELECT
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_unidade_perfil), r'\.0$', '') AS STRING) AS id_unidade_perfil,
   SAFE_CAST(REGEXP_REPLACE(TRIM(id_usuario), r'\.0$', '') AS STRING) AS id_usuario,
