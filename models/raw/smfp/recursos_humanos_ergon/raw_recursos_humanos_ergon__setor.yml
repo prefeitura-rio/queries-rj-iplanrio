@@ -6,7 +6,6 @@ models:
     config:
       alias: raw_recursos_humanos_ergon__setor
       schema: raw
-      materialized: view
     columns:
       - name: data_inicio
         description: Data em que o setor foi colocado no presente organograma.

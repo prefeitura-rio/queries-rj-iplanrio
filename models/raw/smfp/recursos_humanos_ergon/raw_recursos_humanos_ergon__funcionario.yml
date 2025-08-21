@@ -6,7 +6,6 @@ models:
     config:
       alias: raw_recursos_humanos_ergon__funcionario
       schema: raw
-      materialized: view
     columns:
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa. A pessoa tem um vínculo caso receba algum pagamento da prefeitura.
