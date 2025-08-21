@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: brutos_siscob_staging
+    database: rj-iplanrio
+    schema: brutos_siscob_staging
+    tables:
+      - name: cronograma_alteracao
+      - name: cronograma_financeiro
+      - name: itens_medicao
+      - name: itens_medidos_finalizados
+      - name: localizacao_obra
+      - name: enderecos_geolocalizados
+      - name: medicao
+      - name: obra
+      - name: obras_suspensas
+      - name: orcamento_licitado
+      - name: programa_fonte
+      - name: termo_aditivo
+      - name: fiscal

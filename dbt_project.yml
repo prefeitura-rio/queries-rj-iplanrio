@@ -153,12 +153,41 @@ models:
       eai_logs:
         +materialized: table
         +schema: eai_logs
+      smi:
+        +tags: "smi"
+        +project: rj-smi
+        infraestrutura_siscob_obras:
+          +materialized: table
+          +schema: infraestrutura_siscob_obras
+          +tags: "daily"        
+      smas:
+        cadunico:
+          +materialized: table
+          +project: rj-smas
+          +schema: brutos_data_metrica
+      cvl:
+        +tags: "cvl"
+        +project: rj-cvl
+        adm_contrato_gestao:
+          +materialized: table
+          +schema: adm_contrato_gestao
+          +tags: "daily"
+      segovi:
+        +tags: "segovi"
+        +project: rj-segovi
+        adm_central_atendimento_1746:
+          +materialized: table
+          +schema: adm_central_atendimento_1746
+          +tags: "daily"
+      setur:
+        oferta_turistica:
+          +materialized: view
+          +schema: brutos_oferta_turistica
+          +tags: "daily"
+          +project: rj-iplanrio
       iplanrio:
         crm_registry:
           wetalkie:
             +tags: ["daily", "rmi", "whatsapp"]
         dados_mestres:
           +tags: "rmi"
-
-seeds:
-  +schema: brutos_seeds
