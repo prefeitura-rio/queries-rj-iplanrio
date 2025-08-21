@@ -1,7 +1,6 @@
 {{
   config(
     alias='santos_dumont',
-    materialized='view'
   )
 }}
 
@@ -10,7 +9,7 @@ with dados_com_linha as (
     string_field_0 as mes_ano,
     string_field_1 as total_de_passageiros,
     row_number() over() as linha
-  from {{ source('oferta_turistica', 'santos_dumont') }}
+  from {{ source('brutos_oferta_turistica_staging', 'santos_dumont') }}
 )
 
 select 

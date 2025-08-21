@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__provimento
+    description: "**Descrição**: Eventos relacionados aos vínculos funcionais tanto com a administração direta como indireta da prefeitura do Rio de Janeiro. \r\nUm provimento pode ser uma progressão, mudança de lotação, mudança de vencimento (referência) etc. Um provimento é um evento na situação funcional do vínculo.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    config:
+      alias: raw_recursos_humanos_ergon__provimento
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_vinculo
+        description: Identificador no banco de dados do vínculo da pessoa.
+        data_type: integer
+      - name: data_inicio
+        description: Data de inicio de um provimento.
+        data_type: date
+      - name: data_fim
+        description: Data de fim do provimento
+        data_type: date
+      - name: id_setor
+        description: Código dado pela prefeitura do Rio de Janeiro para o setor de lotação do servidor após o provimento. Código da estrutura organizacional atribuidos pela GI/CGGI/CSIC.
+        data_type: integer
+      - name: id_cargo
+        description: Código dado pela prefeitura do Rio de Janeiro para o cargo/emprego relacionado ao vínculo do servidor. Regime juridicos A DISPOSICAO, APOS. SERV. PUBLICO, CONT. SAL. FAMILIA e EST. AOS QUADROS o cargo é 999990 - ESPECIAL
+        data_type: integer
+      - name: id_referencia
+        description: Código do nível/posicionamento após o provimento. Ex PROFESSOR II, MM1, MM2, MM3, MM4, MM5, MM6, MM7, 999990 - ESPECIAL o valor do vencimento é zero.
+        data_type: integer
+      - name: id_jornada
+        description: Código dado pela prefeitura do Rio de Janeiro para a jornada semanal do cargo/emprego associado ao vínculo. Não é modificada pelos provimentos.
+        data_type: integer
+      - name: forma
+        description: Forma de provimento. Ex. 10 (EM EXERCÍCIO - CC/FG, ocorre quando a pessoa entra exercício em cargo em comissão).
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: Observação - texto livre. Ex. NOMEADA C/ VAL. 30/03/20 P/ C.C COORDENADOR TECNICO, 074842 CVL/SUBSC/CGRH/CTNRH, PCCS - LEI 6.739/2020 etc
+        data_type: string
+        quote: true
+      - name: regime_horas
+        description: Regime de horas após o provimento. Ex. Plantonista ou Rotina. Utilizado pela RIOSAUDE.
+        data_type: string
+        quote: true
+      - name: empresa_vinculo
+        description: Empresa do servidor após o provimento. Sempre é a mesma empresa do vínculo.
+        data_type: string
+        quote: true
+      - name: id_funcionario
+        description: Identificador no banco de dados da pessoa cadastrada na tabela de funcionários.
+        data_type: integer

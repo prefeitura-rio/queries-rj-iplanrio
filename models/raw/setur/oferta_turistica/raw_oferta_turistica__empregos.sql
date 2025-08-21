@@ -1,20 +1,19 @@
 {{
   config(
     alias='empregos_turismo',
-    materialized='view'
   )
 }}
 
 with dados_com_linha as (
   select 
     string_field_0 as mes_ano,
-    string_field_1 as no_visitantes,
+    string_field_1 as saldo,
     row_number() over() as linha
-  from {{ source('oferta_turistica', 'empregos') }}
+  from {{ source('brutos_oferta_turistica_staging', 'empregos_turismo') }}
 )
 
 select 
   mes_ano,
-  no_visitantes
+  saldo
 from dados_com_linha
 where linha > 1
