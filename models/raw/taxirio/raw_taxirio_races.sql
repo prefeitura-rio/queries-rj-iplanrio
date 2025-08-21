@@ -83,6 +83,8 @@ with
             safe_cast(
                 billing_associatedcorporative_externalpropertypassenger as bool
             ) as propriedade_corporativa,
+            _airbyte_extracted_at as datalake_loaded_at,    
+            current_timestamp() as datalake_transformed_at      
         from source
     )
 
