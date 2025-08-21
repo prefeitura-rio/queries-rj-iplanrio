@@ -127,6 +127,7 @@ models:
         quote: false
         tests:
           - not_null:
+              name: core_telefone__data_particao__not_null
         
       - name: rmi_data_atualizacao
         description: "Data e hora da última atualização do registro no RMI"
