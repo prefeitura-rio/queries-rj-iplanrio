@@ -1,6 +1,6 @@
 {{
   config(
-    alias='rede_hoteleira_ocupacao_grandes_eventos',
+    alias='rede_hoteleira_ocupacao_grandes_eventos_raw',
   )
 }}
 
