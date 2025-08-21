@@ -55,6 +55,7 @@ telefones_frequency as (
   from telefones_all_sources
   where origem_id is not null
     and regexp_contains(telefone_numero_completo, r'^[0-9]+$')
+    and origem_tipo != 'CNS'
   group by telefone_numero_completo
 ),
 
@@ -73,6 +74,7 @@ telefones_aparicoes as (
   from telefones_all_sources
   where origem_id is not null
     and regexp_contains(telefone_numero_completo, r'^[0-9]+$')
+    and origem_tipo != 'CNS'
   group by telefone_numero_completo
 ),
 

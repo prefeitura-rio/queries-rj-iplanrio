@@ -17,6 +17,9 @@ case
     -- MUITO_PROVAVEL: O usuário respondeu a uma mensagem do WhatsApp nos últimos 6 meses.
     when {{ last_reply_date }} >= date_sub(current_date(), interval 6 month) then 'MUITO_PROVAVEL'
 
+    -- MUITO_PROVAVEL: O usuário teve um agendamento nos últimos 6 meses no cadunico.
+    when {{ source_of_data }} in ('agendamento_cadunico') and {{ last_update_date }} >= date_sub(current_date(), interval 6 month) then 'MUITO_PROVAVEL'
+
     -- PROVAVEL: Atualização recente (últimos 6 meses) em uma fonte de alta confiança.
     when {{ source_of_data }} in ('sms', 'bcadastro') and {{ last_update_date }} >= date_sub(current_date(), interval 6 month) then 'PROVAVEL'
 

@@ -12,4 +12,10 @@ sources:
     tables:
     - name: cadastros
 
+  - name: brutos_data_metrica_staging
+    database: rj-smas
+    schema: brutos_data_metrica_staging
+    tables:
+    - name: agendamentos_cadunico
+
 

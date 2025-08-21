@@ -138,6 +138,22 @@ telefones_ergon_telefone as (
     and lpad(e.id_cpf, 11, '0') != '00000000000'  -- Exclude invalid CPFs
 ),
 
+-- PESSOA FÍSICA - Agendamento cadunico
+-- TYPES: origem_id STRING, origem_tipo STRING, telefone_numero_completo STRING, 
+-- sistema_nome STRING, campo_origem STRING, contexto STRING, data_atualizacao DATETIME
+telefones_agendamento_cadunico as (
+  select 
+    cpf as origem_id,
+    'CPF' as origem_tipo, 
+    {{ padronize_telefone_rmi('telefone') }} as telefone_numero_completo,
+    'agendamento_cadunico' as sistema_nome,
+    'smas_brutos_datametrica.telefone' as campo_origem,
+    'PESSOAL' as contexto,
+    DATE(data_particao) as data_atualizacao
+  from {{ source('brutos_data_metrica_staging', 'agendamentos_cadunico') }} as t
+  where telefone is not null
+),
+
 telefones_all_sources as (
   -- BCadastro CPF (Pessoas Físicas)
   select * from telefones_bcadastro_cpf
@@ -166,6 +182,10 @@ telefones_all_sources as (
   -- ERGON Telefone (Funcionários públicos - telefone fixo)
   select * from telefones_ergon_telefone
 
+  union all
+
+  select * from telefones_agendamento_cadunico
+
   
   -- All sources now use explicit table aliases and consistent field types:
   -- origem_id STRING, origem_tipo STRING, telefone_numero_completo STRING, 
@@ -173,6 +193,7 @@ telefones_all_sources as (
 )
 
 select 
+  distinct
   origem_id,
   origem_tipo,
   telefone_numero_completo,
