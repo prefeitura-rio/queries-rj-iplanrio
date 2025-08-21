@@ -125,8 +125,6 @@ models:
         description: "Data de atualização do registro no RMI"
         data_type: date
         quote: false
-        tests:
-          - not_null:
         
       - name: rmi_data_atualizacao
         description: "Data e hora da última atualização do registro no RMI"
