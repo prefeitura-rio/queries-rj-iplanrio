@@ -97,6 +97,7 @@ models:
         adm_central_atendimento_1746:
           +materialized: table
           +schema: adm_central_atendimento_1746
+          +tags: "daily"
       setur:
         oferta_turistica:
           +materialized: view
