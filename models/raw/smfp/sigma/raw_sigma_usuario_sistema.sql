@@ -1,6 +1,6 @@
 {{
     config(
-        alias='usuario_sistema',
+        alias='raw_sigma_usuario_sistema',
         schema='compras_materiais_servicos_sigma'
     )
 }}
