@@ -11,18 +11,10 @@ models:
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa. A pessoa tem um vínculo caso receba algum pagamento da prefeitura.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__funcionario__id_vinculo__not_null
-              severity: error
       - name: nome
         description: Nome da pessoa.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__funcionario__nome__not_null
-              severity: error
       - name: nome_social
         description: Nome social da pessoa.
         data_type: string

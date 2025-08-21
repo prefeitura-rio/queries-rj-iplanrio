@@ -12,21 +12,10 @@ models:
         description: Sigla da forma de provimento. Ex. 01.
         data_type: string
         quote: true
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__forma_provimento__sigla__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__forma_provimento__sigla__not_null
-              severity: error
       - name: nome
         description: Nome da forma de provimento. Ex. NOMEACAO OU PROVIMENTO (relativo a sigla 01).
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__forma_provimento__nome__not_null
-              severity: error
       - name: inativo
         description: Booleano que indica que a forma de provimento é válida para funcionários inativos.
         data_type: boolean

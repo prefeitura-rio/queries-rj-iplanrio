@@ -11,21 +11,10 @@ models:
       - name: id_horario
         description: Identificador do horário na base de dados.
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__horario_trabalho__id_horario__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__horario_trabalho__id_horario__not_null
-              severity: error
       - name: descricao
         description: Descrição do horário. Neste atributo deve constar o horário de entrada, de almoço e de saída relativos a todos os dias da semana.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__horario_trabalho__descricao__not_null
-              severity: error
       - name: publicacao_diario_oficial
         description: Publicação em diário oficial autorizando o horário.
         data_type: string

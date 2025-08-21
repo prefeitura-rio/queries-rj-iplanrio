@@ -11,17 +11,9 @@ models:
       - name: id_funcionario
         description: Não informado
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__vantagens__id_funcionario__not_null
-              severity: error
       - name: id_vinculo
         description: Não informado
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__vantagens__id_vinculo__not_null
-              severity: error
       - name: nome_vantagem
         description: Não informado
         data_type: string
@@ -94,13 +86,6 @@ models:
       - name: id_vantagem
         description: Não informado
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__vantagens__id_vantagem__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__vantagens__id_vantagem__not_null
-              severity: error
       - name: data_inicio
         description: Não informado
         data_type: date

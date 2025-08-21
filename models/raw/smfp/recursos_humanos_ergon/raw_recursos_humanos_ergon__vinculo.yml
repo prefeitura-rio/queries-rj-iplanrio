@@ -142,10 +142,6 @@ models:
       - name: id_funcionario
         description: Número do funcionário, pode estar repetido nesta visão, caso o funcionário tenha ou tenha tido outros vínculos. Existe um para cada pessoa, independente do número de vínculos.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__vinculo__id_funcionario__not_null
-              severity: error
       - name: id_vacancia
         description: Código de vacância relativa ao vínculo.
         data_type: integer

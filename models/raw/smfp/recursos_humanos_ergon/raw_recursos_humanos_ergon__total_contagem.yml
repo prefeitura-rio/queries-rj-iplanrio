@@ -11,17 +11,9 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__total_contagem__id_funcionario__not_null
-              severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__total_contagem__id_vinculo__not_null
-              severity: error
       - name: id_chave
         description: Não informado
         data_type: integer

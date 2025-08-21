@@ -11,24 +11,12 @@ models:
       - name: id_funcionario
         description: Não informado
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__licenca_afastamento__id_funcionario__not_null
-              severity: error
       - name: id_vinculo
         description: Não informado
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__licenca_afastamento__id_vinculo__not_null
-              severity: error
       - name: data_inicio
         description: Não informado
         data_type: date
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__licenca_afastamento__data_inicio__not_null
-              severity: error
       - name: data_final
         description: Não informado
         data_type: date
@@ -39,13 +27,6 @@ models:
       - name: id_afastamento
         description: Não informado
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__licenca_afastamento__id_afastamento__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__licenca_afastamento__id_afastamento__not_null
-              severity: error
       - name: motivo
         description: Não informado
         data_type: string

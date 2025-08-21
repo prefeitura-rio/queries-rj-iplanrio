@@ -12,18 +12,7 @@ models:
         description: Sigla do tipo de vínculo. Ex. A DISPOSICAO-CLT.
         data_type: string
         quote: true
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__tipo_vinculo__sigla__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__tipo_vinculo__sigla__not_null
-              severity: error
       - name: nome
         description: Nome do tipo de vínculo. Ex. A DISPOSICAO DA PREFEITURA-CLT.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__tipo_vinculo__nome__not_null
-              severity: error

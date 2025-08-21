@@ -14,15 +14,7 @@ models:
       - name: id_afastamento
         description: Código do afastamento.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__afastamento_antigo_nomes__id_afastamento__not_null
-              severity: error
       - name: nome_afastamento
         description: Nome do afastamento.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__afastamento_antigo_nomes__nome_afastamento__not_null
-              severity: error

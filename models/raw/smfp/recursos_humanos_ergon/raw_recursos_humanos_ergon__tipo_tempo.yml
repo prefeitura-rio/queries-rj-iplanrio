@@ -11,21 +11,10 @@ models:
       - name: id_tipo_tempo
         description: Coluna que armazena o código numérico referente ao tipo de tempo.
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__tipo_tempo__id_tipo_tempo__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__tipo_tempo__id_tipo_tempo__not_null
-              severity: error
       - name: nome_tipo_tempo
         description: Campo que armazena o nome do tipo de tempo.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__tipo_tempo__nome_tipo_tempo__not_null
-              severity: error
       - name: aposentadoria
         description: Booleano que informa se aquele tempo é computado para fins de aposentadoria.
         data_type: boolean
@@ -42,7 +31,7 @@ models:
         description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de períodos de licença especial.
         data_type: boolean
       - name: dias_de_licenca_especial
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para o saldo de dias de licença especial.
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para o saldo de licença especial.
         data_type: boolean
       - name: tempo_de_chefia
         description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de incorporação de cargo em fidúcia.

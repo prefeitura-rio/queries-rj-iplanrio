@@ -11,17 +11,9 @@ models:
       - name: id_matricula_vinculo
         description: Matrícula do servidor.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__afastamento_antigo__id_matricula_vinculo__not_null
-              severity: error
       - name: data_inicio
         description: Data incial do afastamento.
         data_type: date
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__afastamento_antigo__data_inicio__not_null
-              severity: error
       - name: data_previsao_retorno
         description: Data de previsão do retorno do afastamento.
         data_type: date

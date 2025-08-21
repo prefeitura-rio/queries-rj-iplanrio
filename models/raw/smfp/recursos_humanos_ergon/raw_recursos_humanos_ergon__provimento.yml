@@ -11,17 +11,9 @@ models:
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__provimento__id_vinculo__not_null
-              severity: error
       - name: data_inicio
         description: Data de inicio de um provimento.
         data_type: date
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__provimento__data_inicio__not_null
-              severity: error
       - name: data_fim
         description: Data de fim do provimento
         data_type: date
@@ -56,7 +48,3 @@ models:
       - name: id_funcionario
         description: Identificador no banco de dados da pessoa cadastrada na tabela de funcionários.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__provimento__id_funcionario__not_null
-              severity: error

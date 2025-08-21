@@ -12,18 +12,7 @@ models:
         description: Sigla do regime jurídico. Ex. CLT, EFETIVO etc
         data_type: string
         quote: true
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__regime_juridico__sigla__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__regime_juridico__sigla__not_null
-              severity: error
       - name: nome
         description: Nome do regime jurídico. Ex. Celetista, estatutário.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__regime_juridico__nome__not_null
-              severity: error

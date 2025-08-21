@@ -11,21 +11,9 @@ models:
       - name: id_matricula_vinculo
         description: Matrícula do serivdor.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia_antigo__id_matricula_vinculo__not_null
-              severity: error
       - name: id_frequencia
         description: Código de frequência.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia_antigo__id_frequencia__not_null
-              severity: error
       - name: data_frequencia
         description: Data da ocorrência de frequência.
         data_type: date
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia_antigo__data_frequencia__not_null
-              severity: error

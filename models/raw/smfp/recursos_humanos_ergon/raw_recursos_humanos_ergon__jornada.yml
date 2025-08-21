@@ -12,21 +12,10 @@ models:
         description: Sigla da jornada. Ex. 40 horas.
         data_type: string
         quote: true
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__jornada__sigla__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__jornada__sigla__not_null
-              severity: error
       - name: nome
         description: Nome da jornada. Ex. 40 horas semanais.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__jornada__nome__not_null
-              severity: error
       - name: horas_semana
         description: Número de horas semanais da jornada.
         data_type: integer

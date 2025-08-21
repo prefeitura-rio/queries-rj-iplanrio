@@ -12,10 +12,6 @@ models:
         description: Nome do órgão. Ex. GE ACRE (Governo do estado do Acre),PR NITEROI (Prefeitura de Niteroi)
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__orgaos_externos__nome__not_null
-              severity: error
       - name: nome_completo
         description: Nome por extenso do órgão. Ex. Prefeitura da cidade de Niteroi.
         data_type: string

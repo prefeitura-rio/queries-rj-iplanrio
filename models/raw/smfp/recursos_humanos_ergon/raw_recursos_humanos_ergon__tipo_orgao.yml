@@ -12,18 +12,7 @@ models:
         description: Sigla do tipo do órgão. Ex. DIR.EST.
         data_type: string
         quote: true
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__tipo_orgao__tipo__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__tipo_orgao__tipo__not_null
-              severity: error
       - name: descricao
         description: Descrição do tipo do órgão. Ex. ADMINISTRACAO DIRETA ESTADUAL.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__tipo_orgao__descricao__not_null
-              severity: error

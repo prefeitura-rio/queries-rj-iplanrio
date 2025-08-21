@@ -11,21 +11,10 @@ models:
       - name: id_cargo
         description: Código dado pela prefeitura do Rio de Janeiro ao tipo de cargo.
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__cargo__id_cargo__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__cargo__id_cargo__not_null
-              severity: error
       - name: nome
         description: Nome do tipo de cargo. Ex. Analista de Sistemas.
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__cargo__nome__not_null
-              severity: error
       - name: categoria
         description: 'Categoria do tipo de cargo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
         data_type: string

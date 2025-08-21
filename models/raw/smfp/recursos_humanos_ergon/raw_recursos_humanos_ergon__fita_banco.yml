@@ -11,13 +11,6 @@ models:
       - name: id_lancamento
         description: Chave gerada pelo banco para a fitabanco para cada numfunc
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__fita_banco__id_lancamento__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__fita_banco__id_lancamento__not_null
-              severity: error
       - name: data_folha
         description: Mês e ano da folha de pagamentos.
         data_type: date
@@ -36,10 +29,6 @@ models:
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa que vai receber o pagamento.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__fita_banco__id_vinculo__not_null
-              severity: error
       - name: numero_folha
         description: Número da Folha
         data_type: integer

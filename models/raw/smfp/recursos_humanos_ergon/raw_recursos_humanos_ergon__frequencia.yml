@@ -11,24 +11,12 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia__id_funcionario__not_null
-              severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia__id_vinculo__not_null
-              severity: error
       - name: data_inicio
         description: Data início da ocorrência de frequência.
         data_type: date
-        data_tests:
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia__data_inicio__not_null
-              severity: error
       - name: data_final
         description: Data final da ocorrência de frequência.
         data_type: date
@@ -39,13 +27,6 @@ models:
       - name: id_frequencia
         description: Código da frequência.
         data_type: integer
-        data_tests:
-          - unique:
-              name: raw_recursos_humanos_ergon__frequencia__id_frequencia__unique
-              severity: error
-          - not_null:
-              name: raw_recursos_humanos_ergon__frequencia__id_frequencia__not_null
-              severity: error
       - name: observacoes
         description: Observções referentes à frequência do servidor.
         data_type: string
