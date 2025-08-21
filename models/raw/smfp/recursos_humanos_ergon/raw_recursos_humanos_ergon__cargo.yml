@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__cargo
+    description: "**Descrição**: Tipos de cargos existentes na administração direta ou indireta da PCRJ. Não entram os tipos de cargos em comissão.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: raw_recursos_humanos_ergon__cargo
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_cargo
+        description: Código dado pela prefeitura do Rio de Janeiro ao tipo de cargo.
+        data_type: integer
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__cargo__id_cargo__unique
+              severity: error
+          - not_null:
+              name: raw_recursos_humanos_ergon__cargo__id_cargo__not_null
+              severity: error
+      - name: nome
+        description: Nome do tipo de cargo. Ex. Analista de Sistemas.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__cargo__nome__not_null
+              severity: error
+      - name: categoria
+        description: 'Categoria do tipo de cargo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
+        data_type: string
+        quote: true
+      - name: subcategoria
+        description: Subcategoria do tipo de cargo. É uma subdivisão da categoria. Ex. Apoio, Geral, lotados na saúde.
+        data_type: string
+        quote: true
+      - name: tipo_controle_vaga
+        description: 'Tipo de controle de vaga: Livre (não existe controle de vagas no ERGON), Quadro (O ERGON controla o número máximo de vagas no cargo) ou Numerada.'
+        data_type: string
+        quote: true
+      - name: escolaridade
+        description: Escolaridade minima exigida para o tipo de cargo.
+        data_type: string
+        quote: true
+      - name: aglutinador
+        description: Todos cadastrados com N.
+        data_type: string
+        quote: true

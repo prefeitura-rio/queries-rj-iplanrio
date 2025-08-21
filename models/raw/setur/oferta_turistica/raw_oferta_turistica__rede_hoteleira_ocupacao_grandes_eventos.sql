@@ -1,7 +1,6 @@
 {{
   config(
     alias='rede_hoteleira_ocupacao_grandes_eventos',
-    materialized='view'
   )
 }}
 
@@ -14,7 +13,7 @@ with dados_com_linha as (
     string_field_4 as data_final,
 
     row_number() over() as linha
-  from {{ source('oferta_turistica', 'rede_hoteleira_ocupacao_grandes_eventos') }}
+  from {{ source('brutos_oferta_turistica_staging', 'rede_hoteleira_ocupacao_grandes_eventos') }}
 )
 
 select 

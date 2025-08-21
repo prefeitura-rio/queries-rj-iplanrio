@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__rubrica
+    description: "**Descrição**: Tabela que armazena informações sobre rubricas de pagamento.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: raw_recursos_humanos_ergon__rubrica
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_rubrica
+        description: Identificador único da rubrica.
+        data_type: integer
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__rubrica__id_rubrica__unique
+              severity: error
+          - not_null:
+              name: raw_recursos_humanos_ergon__rubrica__id_rubrica__not_null
+              severity: error
+      - name: nome_rubrica
+        description: Nome da rubrica.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__rubrica__nome_rubrica__not_null
+              severity: error
+      - name: tipo_rubrica
+        description: Tipo da rubrica.
+        data_type: string
+        quote: true
+      - name: ativo
+        description: Indica se a rubrica está ativa.
+        data_type: boolean

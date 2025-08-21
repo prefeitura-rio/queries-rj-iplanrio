@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__total_contagem
+    description: "**Descrição**: Tabela que armazena o resultado das contagens de tempo para benefícios dos servidores municipais.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    config:
+      alias: raw_recursos_humanos_ergon__total_contagem
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__total_contagem__id_funcionario__not_null
+              severity: error
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__total_contagem__id_vinculo__not_null
+              severity: error
+      - name: id_chave
+        description: Não informado
+        data_type: integer
+      - name: finalidade
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: total_dias
+        description: Não informado
+        data_type: integer
+      - name: diasfpub
+        description: Não informado
+        data_type: integer
+      - name: diasfpubesp
+        description: Não informado
+        data_type: integer
+      - name: total_periodos_contagem
+        description: Não informado
+        data_type: integer
+      - name: total_anos_contagem
+        description: Não informado
+        data_type: integer
+      - name: data_previsao_proximo_periodo
+        description: Não informado
+        data_type: date
+      - name: nome_finalidade
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Não informado
+        data_type: integer
