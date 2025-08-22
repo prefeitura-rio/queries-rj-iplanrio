@@ -5,6 +5,8 @@
     )
 }}
 
+
+
 select
     safe_cast(id as string) as id_municipio,
     safe_cast(name as string) as nome_municipio,
