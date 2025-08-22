@@ -58,7 +58,7 @@ WITH claro_origem_pais_0 as (
     WHEN unnamed_0 = 'Distrito Federal' THEN "Distrito Federal, Brasil"
     ELSE unnamed_0
   END as pais_origem_google
-FROM {{ source('turismo_fluxo_visitantes_staging', 'claro_pais_origem') }}
+FROM {{ ref('raw_turismo_fluxo_visitantes__claro_pais_origem_2023_clean') }}
 UNPIVOT(metrica_valor FOR data IN (
     janeiro,
     fevereiro,
