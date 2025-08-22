@@ -475,4 +475,6 @@ SELECT
 FROM compara_mes_passado
 LEFT JOIN data_referencia_dashboard ON TRUE
 WHERE estado_origem != "Sem identificação"
+AND estado_origem != "TOTAL"
+AND estado_origem != "Total"
 ORDER BY estado_origem, data
