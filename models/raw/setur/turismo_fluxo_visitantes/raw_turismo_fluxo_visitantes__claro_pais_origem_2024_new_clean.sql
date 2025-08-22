@@ -42,4 +42,3 @@ select
   total,
   unnamed_14
 from dados_com_linha
-where linha > 1
