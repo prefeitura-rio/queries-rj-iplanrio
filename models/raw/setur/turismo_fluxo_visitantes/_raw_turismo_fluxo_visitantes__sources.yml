@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: turismo_fluxo_visitantes_staging
+    description: "Dados de fluxo de visitantes da SETUR obtidos da operadora Claro"
+    database: rj-setur
+    schema: turismo_fluxo_visitantes_staging
+    tables:
+      - name: claro_pais_origem   
+      - name: claro_pais_origem_2024_new
+      - name: claro_pais_origem_2025
+
+      - name: claro_nacionalidade_new
+      - name: claro_nacionalidade_2024_new
+      - name: claro_nacionalidade_2025
+
+      - name: claro_estado_origem_new
+      - name: claro_estado_origem_2024_new
+      - name: claro_estado_origem_2025
+
+      - name: claro_atrativos_geral_2024_new
+      - name: claro_atrativos_geral_2025
+
+      - name: claro_atrativos_turistas_2024_new
+      - name: claro_atrativos_turistas_2025

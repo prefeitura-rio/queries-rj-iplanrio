@@ -1,7 +1,6 @@
 {{
   config(
-    alias='rede_hoteleira_ocupacao_geral',
-    materialized='view'
+    alias='rede_hoteleira_ocupacao_geral_raw',
   )
 }}
 
@@ -10,7 +9,7 @@ with dados_com_linha as (
     string_field_0 as mes_ano,
     string_field_1 as tx_de_ocupacao_,
     row_number() over() as linha
-  from {{ source('oferta_turistica', 'rede_hoteleira_ocupacao_geral') }}
+  from {{ source('brutos_oferta_turistica_staging', 'rede_hoteleira_ocupacao_geral') }}
 )
 
 select 

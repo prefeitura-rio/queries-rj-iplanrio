@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__horario_trabalho
+    description: "**Descrição**: Horários possíveis para funcionários da administração direta da prefeitura do Rio de Janeiro (ainda não tem dados disponibilizados) (esperado colocação também da administração indireta).\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    config:
+      alias: raw_recursos_humanos_ergon__horario_trabalho
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_horario
+        description: Identificador do horário na base de dados.
+        data_type: integer
+      - name: descricao
+        description: Descrição do horário. Neste atributo deve constar o horário de entrada, de almoço e de saída relativos a todos os dias da semana.
+        data_type: string
+        quote: true
+      - name: publicacao_diario_oficial
+        description: Publicação em diário oficial autorizando o horário.
+        data_type: string
+        quote: true
+      - name: carga_horaria_mes
+        description: Carga mensal em horas do horário.
+        data_type: integer
+      - name: carga_horaria_semana
+        description: Carga semanal em horas do horário.
+        data_type: integer
+      - name: carga_horaria_dia
+        description: Carga diária em horas do horário.
+        data_type: integer
+      - name: id_registro
+        description: Identificação do Registro
+        data_type: integer

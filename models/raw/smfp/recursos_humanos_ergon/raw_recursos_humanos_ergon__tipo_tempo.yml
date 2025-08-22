@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__tipo_tempo
+    description: "**Descrição**: Esta tabela armazena os tipos de tempo utilizados para contagem de benefícios categorizados como finalidades. Nesta tabela se encontram os nomes dos tipos de tempo.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    config:
+      alias: raw_recursos_humanos_ergon__tipo_tempo
+      schema: raw
+      materialized: view
+    columns:
+      - name: id_tipo_tempo
+        description: Coluna que armazena o código numérico referente ao tipo de tempo.
+        data_type: integer
+      - name: nome_tipo_tempo
+        description: Campo que armazena o nome do tipo de tempo.
+        data_type: string
+        quote: true
+      - name: aposentadoria
+        description: Booleano que informa se aquele tempo é computado para fins de aposentadoria.
+        data_type: boolean
+      - name: ferias
+        description: Booleano que informa se aquele tempo é computado para fins de contagem de período aquisitivo de férias.
+        data_type: boolean
+      - name: dias_de_ferias
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para o saldo de dias de férias.
+        data_type: boolean
+      - name: trienio
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de períodos de triênio.
+        data_type: boolean
+      - name: licenca_especial
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de períodos de licença especial.
+        data_type: boolean
+      - name: dias_de_licenca_especial
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para o saldo de licença especial.
+        data_type: boolean
+      - name: tempo_de_chefia
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de incorporação de cargo em fidúcia.
+        data_type: boolean
+      - name: progressao
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de progressão no cargo.
+        data_type: boolean
+      - name: avaliacao
+        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de avalição em estágio probatório.
+        data_type: boolean
