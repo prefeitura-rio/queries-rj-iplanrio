@@ -6,7 +6,7 @@ sources:
     database: rj-setur
     schema: turismo_fluxo_visitantes_staging
     tables:
-      - name: claro_pais_origem   
+      - name: claro_pais_origem_new   
       - name: claro_pais_origem_2024_new
       - name: claro_pais_origem_2025
 
