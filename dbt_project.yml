@@ -65,6 +65,13 @@ models:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
+      mais_valia:
+        +tags: "mais_valia"
+        +project: "{{ 'rj-iplanrio' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+        +materialized: table
+        +schema: brutos_mais_valia
+        +tags: "daily"
+
 
       
         

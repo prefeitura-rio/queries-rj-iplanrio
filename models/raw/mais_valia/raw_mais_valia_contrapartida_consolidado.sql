@@ -72,4 +72,4 @@ select distinct * from calculos_contrapartida
 qualify row_number() over (partition by id_calculo order by mais_valia desc, loaded_at desc) = 1
 )
 
-select * from dedup /*where id_calculo = '10-100079'*/
+select * from dedup
