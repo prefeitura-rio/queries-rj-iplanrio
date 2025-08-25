@@ -1,0 +1,434 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__funcionario
+    description: "**Descrição**: Pessoas físicas que precisam ter suas informações guardadas pela prefeitura para algum controle, como controle de pagamento, de frequência ou de lotação. Em geral são pessoas que entram ou entraram em alguma folha de pagamento da prefeitura do Rio de Janeiro, sendo funcionário ou não, prestando serviço ou não (ex. pensionista previdenciário).\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: raw_recursos_humanos_ergon__funcionario
+      schema: raw
+    columns:
+      - name: id_vinculo
+        description: Identificador no banco de dados do vínculo da pessoa. A pessoa tem um vínculo caso receba algum pagamento da prefeitura.
+        data_type: integer
+      - name: nome
+        description: Nome da pessoa.
+        data_type: string
+        quote: true
+      - name: nome_social
+        description: Nome social da pessoa.
+        data_type: string
+        quote: true
+      - name: nome_tratamento
+        description: Nome pelo qual a pessoa geralmente é chamada, seu apelido, seu nome de guerra.
+        data_type: string
+        quote: true
+      - name: sexo
+        description: Sexo da pessoa.
+        data_type: string
+        quote: true
+      - name: raca_cor
+        description: Raça ou cor da pessoa.
+        data_type: string
+        quote: true
+      - name: deficiente
+        description: Booleano que indica que a pessoa é deficiente.
+        data_type: boolean
+      - name: tipo_deficiencia
+        description: Identificador no banco de dados do tipo de Deficiência do funcionário. Chave para a tabela 'ERG_TIPO_DEFIC'.
+        data_type: integer
+      - name: data_nascimento
+        description: Data de nascimento da pessoa.
+        data_type: date
+      - name: pais_nascimento
+        description: País de nascimento da pessoa.
+        data_type: string
+        quote: true
+      - name: municipio_nascimento
+        description: Cidade de nascimento da pessoa.
+        data_type: string
+        quote: true
+      - name: municipio_moradia
+        description: Cidade do endereço de moradia da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf_nascimento
+        description: UF de nascimento da pessoa.
+        data_type: string
+        quote: true
+      - name: grupo_sanguineo
+        description: Grupo sanguíneo da pessoa.
+        data_type: string
+        quote: true
+      - name: nome_pai
+        description: Nome do pai da pessoa.
+        data_type: string
+        quote: true
+      - name: nome_mae
+        description: Nome da mãe da pessoa.
+        data_type: string
+        quote: true
+      - name: estado_civil
+        description: Estado civil da pessoa.
+        data_type: string
+        quote: true
+      - name: escolaridade
+        description: Escolaridade da pessoa.
+        data_type: string
+        quote: true
+      - name: nacionalidade
+        description: Nacionalidade da pessoa.
+        data_type: string
+        quote: true
+      - name: tipo_logradouro
+        description: Tipo de logradouro do endereço da pessoa. Ex. Rua, praça.
+        data_type: string
+        quote: true
+      - name: logradouro
+        description: Nome do logradouro do endereço da pessoa.
+        data_type: string
+        quote: true
+      - name: numero_porta
+        description: Número de porta do enderaço da pessoa.
+        data_type: string
+        quote: true
+      - name: complemento_numero_porta
+        description: Complemento ao número de porta do endereço da pessoa. Ex. apt 87.
+        data_type: string
+        quote: true
+      - name: bairro
+        description: Bairro do endereço da pessoa.
+        data_type: string
+        quote: true
+      - name: municipio
+        description: Cidade do endereço da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf
+        description: UF do endereço da pessoa.
+        data_type: string
+        quote: true
+      - name: cep
+        description: Número do cep do endereço da pessoa.
+        data_type: string
+        quote: true
+      - name: cep_exterior
+        description: código postal de endereço no exterior da pessoa.
+        data_type: string
+        quote: true
+      - name: celular
+        description: Número do telefone celular da pessoa.
+        data_type: string
+        quote: true
+      - name: telefone
+        description: Telefone da pessoa.
+        data_type: string
+        quote: true
+      - name: ramal
+        description: Ramal do telefone da pessoa.
+        data_type: string
+        quote: true
+      - name: email
+        description: E-mail da pessoa.
+        data_type: string
+        quote: true
+      - name: email_alternativo
+        description: E-Mail alternativo da pessoa.
+        data_type: string
+        quote: true
+      - name: ano_primeiro_emprego
+        description: Ano do 1º emprego da pessoa.
+        data_type: integer
+      - name: data_primeiro_emprego
+        description: Data do primeiro emprego da pessoa na vida.
+        data_type: date
+      - name: sigla_uf_emprego_anterior
+        description: UF do emprego anterior da pessoa.
+        data_type: string
+        quote: true
+      - name: data_primeira_habitacao
+        description: Data da primeira habilitação da pessoa.
+        data_type: date
+      - name: deficiente_fisico
+        description: Booleano indicando se a pessoa tem deficiência física.
+        data_type: boolean
+      - name: deficiente_visual
+        description: Booleano indicando se a pessoa tem deficiência visual.
+        data_type: boolean
+      - name: deficiente_auditivo
+        description: Booleano indicando se a pessoa tem deficiência auditiva
+        data_type: boolean
+      - name: deficiente_mental
+        description: Booleano indicando se a pessoa tem deficiência mental
+        data_type: boolean
+      - name: deficiente_intelectual
+        description: Booleano indicando se a pessoa tem deficiência intelectual.
+        data_type: boolean
+      - name: id_rg
+        description: Número do RG da pessoa.
+        data_type: string
+        quote: true
+      - name: tipo_rg
+        description: 'Tipo do documento de RG da pessoa. Ex. Identidade. CTPS, passaporte etc '
+        data_type: string
+        quote: true
+      - name: emissor_rg
+        description: Órgão expeditor do documento de RG da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf_rg
+        description: UF do órgão expeditor do RG da pessoa.
+        data_type: string
+        quote: true
+      - name: data_expedicao_rg
+        description: Data de expedição do RG da pessoa. RG é o documento nacional de identificação civil no Brasil.
+        data_type: date
+      - name: id_cpf
+        description: Número do cpf da pessoa.
+        data_type: string
+        quote: true
+      - name: id_ctps
+        description: Número da carteira profissional da pessoa.
+        data_type: string
+        quote: true
+      - name: serie_ctps
+        description: Série da carteira de trabalho da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf_ctps
+        description: UF da carteira profissional da pessoa.
+        data_type: string
+        quote: true
+      - name: id_titulo_eleitor
+        description: Número do título de eleitor da pessoa.
+        data_type: string
+        quote: true
+      - name: zona_eleitoral
+        description: Zona do título de eleitor da pessoa.
+        data_type: string
+        quote: true
+      - name: secao_eleitoral
+        description: Seção do título de eleitor da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf_titulo_eleitor
+        description: UF do título de eleitor da pessoa.
+        data_type: string
+        quote: true
+      - name: id_documento_militar
+        description: Número do documento militar da pessoa.
+        data_type: string
+        quote: true
+      - name: serie_documento_militar
+        description: Série do documento militar da pessoa.
+        data_type: string
+        quote: true
+      - name: categoria_militar
+        description: Categoria no documento militar. Ex. 1ª, 2ª ou 3ª categoria. 1ª categoria - quando possuírem instrução militar suficiente; 2ª categoria - quando possuírem instrução militar insuficiente; 3ª categoria - quando não possuírem instrução militar.
+        data_type: string
+        quote: true
+      - name: emissor_documento_militar
+        description: Orgão Expeditor do Documento Militar da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf_documento_militar
+        description: UF do Documento Militar da pessoa.
+        data_type: string
+        quote: true
+      - name: id_cnh
+        description: Número da CNH da pessoa.
+        data_type: string
+        quote: true
+      - name: categoria_cnh
+        description: Categoria da CNH da pessoa.
+        data_type: string
+        quote: true
+      - name: validade_cnh
+        description: Validade da CNH da pessoa.
+        data_type: date
+      - name: sigla_uf_cnh
+        description: UF da CNH da pessoa.
+        data_type: string
+        quote: true
+      - name: orgao_emissor_cnh
+        description: Órgão emissor da CNH da pessoa.
+        data_type: string
+        quote: true
+      - name: data_expedicao_cnh
+        description: Data de expedição da CNH da pessoa.
+        data_type: date
+      - name: id_pispasep
+        description: 'Número do NIS da pessoa. NIS significa Número de Identificação Social. O documento está relacionado às pessoas que recebem ou não benefícios sociais do Governo Federal. '
+        data_type: string
+        quote: true
+      - name: data_inicio_pis
+        description: Data início do NIS da pessoa.
+        data_type: date
+      - name: id_nis
+        description: 'Número do NIS da pessoa. NIS significa Número de Identificação Social. O documento está relacionado às pessoas que recebem ou não benefícios sociais do Governo Federal. '
+        data_type: string
+        quote: true
+      - name: numero_banco_nis
+        description: Número do banco do NIS da pessoa.
+        data_type: string
+        quote: true
+      - name: id_identidade_profissional
+        description: Número da identidade profissional da pessoa.
+        data_type: string
+        quote: true
+      - name: tipo_identidade_profissional
+        description: Tipo de identidade profissional da pessoa.
+        data_type: string
+        quote: true
+      - name: id_ric
+        description: Número do RIC - REGISTRO DE IDENTIDADE CIVIL da pessoa. documento de registro de identidade civil, que integra todos os estados federados e o Distrito Federal, garantindo, através de processos multibiométricos e integração de bases de dados, a identificação unívoca do brasileiro nato ou naturalizado.
+        data_type: string
+        quote: true
+      - name: emissor_ric
+        description: Órgão emissor do RIC da pessoa.
+        data_type: string
+        quote: true
+      - name: data_emissao_ric
+        description: Data de amissão do RIC da pessoa.
+        data_type: date
+      - name: expedicao_documento_orgao_classe
+        description: Data de expedição do documento de órgão de classe.
+        data_type: date
+      - name: emissor_documento_orgao_classe
+        description: Órgão emissor do documento do orgão de classe.
+        data_type: string
+        quote: true
+      - name: sigla_uf_documento_orgoao_classe
+        description: "UF do documento do orgão de classe.\n"
+        data_type: string
+        quote: true
+      - name: possui_impedimento
+        description: Preenchido caso a pessoa tenha algum impedimento. Ex. Impedimento judicial, Curatela definitiva, interditado provisoriamente.
+        data_type: string
+        quote: true
+      - name: numero_banco
+        description: Número do banco com a conta corrente da pessoa.
+        data_type: string
+        quote: true
+      - name: agencia_banco
+        description: Número da agência com a conta corrente da pessoa.
+        data_type: string
+        quote: true
+      - name: conta_banco
+        description: Número da conta corrente da pessoa.
+        data_type: string
+        quote: true
+      - name: data_ultima_atualizacao_bancaria
+        description: Data da última atualização das informações bancárias da pessoa.
+        data_type: date
+      - name: tipo_certidao
+        description: "Tipo da certidão que altera o estado civil, caso o servidor tenha modificado seu estado civil apresentada, caso não tenha fica em branco.\n"
+        data_type: string
+        quote: true
+      - name: numero_certidao
+        description: Número da certidão de casamento, nascimento ou união estável da pessoa.
+        data_type: string
+        quote: true
+      - name: livro_certidao
+        description: Livro da certidão de casamento, nascimento ou união estável da pessoa.
+        data_type: string
+        quote: true
+      - name: folha_certidao
+        description: Folha da certidão de casamento, nascimento ou união estável da pessoa.
+        data_type: string
+        quote: true
+      - name: cartorio_ceridao
+        description: Cartório da certidão de casamento, nascimento ou união estável da pessoa.
+        data_type: string
+        quote: true
+      - name: sigla_uf_cartorio_certidao
+        description: UF do cartório que emitiu a certidão que altera o estado civil, caso o servidor tenha modificado seu estado civil, caso não tenha fica em branco.
+        data_type: string
+        quote: true
+      - name: municipio_emissor_certidao
+        description: Cidade de emissão da certidão que altera o estado civil, caso o servidor tenha modificado seu estado civil, caso não tenha fica em branco.
+        data_type: string
+        quote: true
+      - name: municipio_cartorio_emissor_certudai
+        description: Cidade do cartório que emitiu a certidão que altera o estado civil, caso o servidor tenha modificado seu estado civil, caso não tenha fica em branco.
+        data_type: string
+        quote: true
+      - name: matricula_certidao
+        description: Matrícula da certidão apresentada de casamento, ou de união estável ou de nascimento da pessoa.
+        data_type: string
+        quote: true
+      - name: trabalho_voluntario
+        description: Booleano se a pessoa já participou de algum Trabalho Voluntário.
+        data_type: boolean
+      - name: interesse_trabalho_voluntario
+        description: Booleano que indica se a pessoa tem interesse em participar em trabalhos voluntários.
+        data_type: boolean
+      - name: interesse_projeto_olimpico
+        description: Booleano que indica se existe interesse da pessoa em participar do projeto olímpico.
+        data_type: boolean
+      - name: interesse_projeto_sociais
+        description: Booleano que indica se existe interesse da pessoa em participar de projetos sociais.
+        data_type: boolean
+      - name: recebe_beneficio_previdenciario
+        description: "Booleano indicando se a pessoa já percebe algum benefício previdenciário (pensão, aposentadoria).\ncampo em branco"
+        data_type: boolean
+      - name: nome_posse_alteracao_sexo
+        description: Nome na posse da pessoa que mudou de sexo.
+        data_type: string
+        quote: true
+      - name: sexo_posse_alteracao_sexo
+        description: Sexo da pessoa na posse da pessoa que mudou de sexo.
+        data_type: string
+        quote: true
+      - name: data_alteracao_sexo
+        description: Data da alteração de sexo.
+        data_type: date
+      - name: id_rne
+        description: Número de inscrição da pessoa no Registro Nacional de Estrangeiros da pessoa.
+        data_type: string
+        quote: true
+      - name: ano_chegada_brasil
+        description: Ano da chegada ao Brasil caso a pessoa seja estrangeira.
+        data_type: integer
+      - name: emissor_rne
+        description: Órgão emissor do Registro Nacional de Estrangeiros.
+        data_type: string
+        quote: true
+      - name: data_expedicao_rne
+        description: Data de expedição do Registro Nacional de Estrangeiros
+        data_type: date
+      - name: data_chegada_estrangeiro
+        description: Data de chegada da pessoa ao Brasil, em caso de estrangeiro
+        data_type: date
+      - name: data_naturalizacao
+        description: Data de naturalização brasileira em caso de estrangeiro naturalizado.
+        data_type: date
+      - name: estrangeiro_casado_brasileiro
+        description: Booleano que indica se a pessoa, caso estrangeiro, é ou não casado com brasileiro.
+        data_type: boolean
+      - name: estrangeiro_filho_brasileiro
+        description: Booleano que indica se a pessoa, caso estrangeira, tem filhos brasileiros.
+        data_type: boolean
+      - name: login_facebook
+        description: Login da pessoa no Facebook.
+        data_type: string
+        quote: true
+      - name: login_twitter
+        description: Login da pessoa no Twitter.
+        data_type: string
+        quote: true
+      - name: login_google_plus
+        description: Login da pessoa no Google+.
+        data_type: string
+        quote: true
+      - name: login_instagram
+        description: Login da pessoa no Instagram.
+        data_type: string
+        quote: true
+      - name: login_linkedin
+        description: Login da pessoa no Linkedln.
+        data_type: string
+        quote: true
+      - name: login_myspace
+        description: Login da pessoa no MySpace.
+        data_type: string
+        quote: true

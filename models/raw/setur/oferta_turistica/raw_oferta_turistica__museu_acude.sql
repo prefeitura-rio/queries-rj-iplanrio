@@ -1,7 +1,6 @@
 {{
   config(
     alias='museu_acude',
-    materialized='view'
   )
 }}
 
@@ -10,7 +9,7 @@ with dados_com_linha as (
     string_field_0 as mes_ano,
     string_field_1 as no_visitantes,
     row_number() over() as linha
-  from {{ source('oferta_turistica', 'museu_acude') }}
+  from {{ source('brutos_oferta_turistica_staging', 'museu_acude') }}
 )
 
 select 
