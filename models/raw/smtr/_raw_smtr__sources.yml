@@ -1,9 +1,22 @@
 version: 2
 
+# TODO: habilitar quando o agent tiver acesso
+# sources:
+#   - name: rj-smtr
+#     database: rj-smtr-dev
+#     schema: projeto_cadastro_unico
+#     config:
+#       freshness: # default freshness
+#         warn_after: {count: 24, period: hour}
+#         error_after: {count: 48, period: hour}
+#     loaded_at_field: metadados.processed_at
+#     tables:
+#     - name: transacao_cpf
+
 sources:
   - name: rj-smtr
-    database: rj-smtr-dev
-    schema: projeto_cadastro_unico
+    database: rj-crm-registry-dev
+    schema: patricia__dbt
     config:
       freshness: # default freshness
         warn_after: {count: 24, period: hour}
@@ -11,5 +24,3 @@ sources:
     loaded_at_field: metadados.processed_at
     tables:
     - name: transacao_cpf
-
-
