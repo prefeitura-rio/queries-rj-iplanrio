@@ -96,6 +96,13 @@ models:
           +schema: infraestrutura_siscob_obras
           +tags: "daily"        
       smas:
+        +tags: "smas"
+        +project: rj-smas
+        protecao_social_cadunico:
+          +materialized: table
+          +schema: protecao_social_cadunico
+          +tags: "daily"        
+      smas:
         cadunico:
           +materialized: table
           +project: rj-smas
