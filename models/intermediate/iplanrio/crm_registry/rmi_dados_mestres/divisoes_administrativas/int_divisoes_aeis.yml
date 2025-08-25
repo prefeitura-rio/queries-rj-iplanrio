@@ -1,0 +1,114 @@
+version: 2
+
+models:
+  - name: int_divisoes_aeis
+    description: |
+      Áreas de Especial Interesse Social (AEIS) transformadas em divisões administrativas.
+      Inclui tratamento de duplicatas e valores nulos da fonte original.
+      Fonte: dados_mestres.aeis
+
+    columns:
+      - name: id_divisao
+        description: "Identificador único da AEIS (formato: aeis_{id_aeis}_{sequencia} ou aeis_sem_id_{numero})"
+        tests:
+          - unique:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__id_divisao__unique
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__id_divisao__not_null
+
+      - name: tipo_divisao
+        description: Tipo da divisão (sempre 'AEIS')
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__tipo_divisao__accepted_values
+              values: ['AEIS']
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__tipo_divisao__not_null
+
+      - name: codigo_original
+        description: ID original da AEIS na fonte (pode conter valores nulos ou duplicados)
+
+      - name: nome
+        description: Nome da AEIS
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__nome__not_null
+
+      - name: nome_abreviado
+        description: Nome abreviado ou sigla da AEIS
+
+      - name: orgao_responsavel
+        description: Órgão responsável (sempre 'SMU' - Secretaria Municipal de Urbanismo)
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__orgao_responsavel__accepted_values
+              values: ['SMU']
+
+      - name: competencias
+        description: Lista de competências da AEIS (habitação social, regularização fundiária)
+
+      - name: data_criacao
+        description: Data de cadastro da AEIS
+
+      - name: legislacao_base
+        description: Legislação que institui a AEIS
+
+      - name: area_m2
+        description: Área da AEIS em metros quadrados
+
+      - name: perimetro_m
+        description: Perímetro da AEIS em metros
+
+      - name: centroide_latitude
+        description: Latitude do centroide da AEIS
+
+      - name: centroide_longitude
+        description: Longitude do centroide da AEIS
+
+      - name: geometry
+        description: Geometria da AEIS (GEOGRAPHY)
+
+      - name: geometry_wkt
+        description: Geometria em formato WKT
+
+      - name: densidade_populacional
+        description: Densidade populacional (null para AEIS)
+
+      - name: uso_solo_predominante
+        description: Uso do solo predominante (sempre 'habitacao_social')
+
+      - name: restricoes_urbanisticas
+        description: Restrições urbanísticas baseadas na tipologia
+
+      - name: instrumentos_urbanisticos
+        description: Instrumentos urbanísticos aplicáveis (sempre inclui 'AEIS')
+
+      - name: atributos_especificos
+        description: Atributos específicos da AEIS em formato JSON
+
+      - name: metadados_fonte
+        description: Metadados da fonte original em formato JSON
+
+      - name: ativo
+        description: Indicador se a divisão está ativa (sempre true)
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__ativo__not_null
+
+      - name: data_atualizacao
+        description: Data da última atualização
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__data_atualizacao__not_null
+
+      - name: fonte_dados
+        description: Fonte original dos dados
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__fonte_dados__not_null
+
+      - name: versao_schema
+        description: Versão do schema utilizada
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_aeis__versao_schema__not_null

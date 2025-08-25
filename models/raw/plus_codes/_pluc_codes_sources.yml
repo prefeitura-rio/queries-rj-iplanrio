@@ -11,11 +11,6 @@ sources:
     schema: saude_dados_mestres
     tables:
       - name: estabelecimento
-  - name: dados_mestres
-    database: datario
-    schema: dados_mestres
-    tables:
-      - name: bairro
   - name: plus_codes
     database: rj-iplanrio
     schema: plus_codes

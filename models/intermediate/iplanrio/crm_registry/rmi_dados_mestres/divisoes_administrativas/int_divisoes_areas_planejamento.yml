@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int_divisoes_areas_planejamento
+    description: |
+      Áreas de Planejamento derivadas dos dados de bairro como divisões independentes.
+      Fonte: dados_mestres.bairro (agregado)
+    
+
+    columns:
+      - name: id_divisao
+        description: "Identificador único da área de planejamento (formato: ap_{numero})"
+        tests:
+          - unique:
+              name: intermediate_rmi_dados_mestre_int_divisoes_areas_planejamento__id_divisao__unique
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_areas_planejamento__id_divisao__not_null
+
+      - name: tipo_divisao
+        description: Tipo da divisão (sempre 'AREA_PLANEJAMENTO')
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_areas_planejamento__tipo_divisao__accepted_values
+              values: ['AREA_PLANEJAMENTO']

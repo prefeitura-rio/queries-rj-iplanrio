@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: int_pessoa_fisica_dim_ocupacao
+    description: Consolida dados de ocupação/trabalho de pessoas físicas
+    config:
+      materialized: ephemeral
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        data_tests:
+          - unique:
+              name: int_pessoa_fisica_dim_ocupacao__cpf__unique
+              severity: error
+          - not_null:
+              name: int_pessoa_fisica_dim_ocupacao__cpf__not_null
+              severity: error
+      - name: ocupacao
+        description: Estrutura com dados de ocupação
+        data_type: record
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_ocupacao__ocupacao__not_null
+              severity: error
+      - name: cpf_particao
+        description: Partição do CPF para distribuição de dados
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_ocupacao__cpf_particao__not_null
+              severity: error

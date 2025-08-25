@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int_chatbot_base_receptivo_contatos
+    description: "Modelo efêmero que extrai e consolida informações de contatos únicos a partir dos fluxos de URA, calculando datas de opt-in e última atualização."
+    
+    columns:
+      - name: contato_nome
+        description: "Nome do contato extraído do fluxo de URA."
+
+      - name: id_contato
+        description: "ID único do contato na plataforma Wetalkie."
+        tests:
+          - not_null
+          - unique
+
+      - name: data_update
+        description: "Data da última interação registrada do contato. Fuso horário America/Sao_Paulo."
+
+      - name: data_optin
+        description: "Data da primeira interação registrada do contato (opt-in). Fuso horário America/Sao_Paulo."
+
+      - name: data_particao
+        description: "Data da partição, baseada na data da última interação. Fuso horário America/Sao_Paulo."

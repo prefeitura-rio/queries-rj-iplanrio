@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: telefone_disparado
+    description: "Modelo que registra os telefones para os quais foram feitos disparos de mensagens (HSM) via CRM WhatsApp, incluindo o status de falha."
+    columns:
+      - name: id_hsm
+        description: "Identificador único do template de mensagem (HSM) disparado."
+      - name: id_disparo
+        description: "Identificador único do disparo específico."
+      - name: id_contato
+        description: "Identificador único do contato que recebeu o disparo."
+      - name: data_disparo
+        description: "Data em que o disparo foi criado/enviado."
+      - name: contato_telefone
+        description: "Número de telefone do contato que recebeu o disparo."
+      - name: descricao_falha
+        description: "Descrição da falha no disparo, se houver."
+      - name: data_particao
+        description: "Data de partição da tabela."

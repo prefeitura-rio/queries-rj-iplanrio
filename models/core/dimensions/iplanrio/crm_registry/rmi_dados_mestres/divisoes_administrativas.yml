@@ -1,0 +1,123 @@
+version: 2
+
+models:
+  - name: divisoes_administrativas
+    description: |
+      Divisões administrativas, políticas, educacionais e de planejamento urbano do Rio de Janeiro
+      consolidadas em estrutura unificada sem hierarquia fixa. Cada divisão é tratada como
+      entidade independente, com relacionamentos estabelecidos via intersecção geográfica.
+    
+
+    columns:
+      - name: id_divisao
+        description: Identificador único da divisão administrativa
+        tests:
+          - unique:
+              name: core_rmi_dados_mestre_divisoes_administrativas__id_divisao__unique
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__id_divisao__not_null
+
+      - name: tipo_divisao
+        description: Tipo da divisão administrativa
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__tipo_divisao__not_null
+          - accepted_values:
+              name: core_rmi_dados_mestre_divisoes_administrativas__tipo_divisao__accepted_values
+              values: ['MUNICIPIO', 'AREA_PLANEJAMENTO', 'REGIAO_PLANEJAMENTO', 'SUBPREFEITURA', 'REGIAO_ADMINISTRATIVA', 'BAIRRO', 'CRE', 'AEIS', 'ZONA_PLANEJAMENTO_URBANO', 'SETOR_CENSITARIO']
+
+      - name: codigo_original
+        description: Código original da fonte de dados
+        
+      - name: nome
+        description: Nome oficial da divisão
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__nome__not_null
+      
+      - name: nome_abreviado
+        description: Nome abreviado ou sigla da divisão
+      
+      - name: orgao_responsavel
+        description: Órgão municipal responsável pela divisão
+        tests:
+          - accepted_values:
+              name: core_rmi_dados_mestre_divisoes_administrativas__orgao_responsavel__accepted_values
+              values: ['PCRJ', 'IPP', 'SMU', 'SUBGAB', 'SME', 'IBGE']
+      
+      - name: competencias
+        description: Lista de competências/responsabilidades da divisão
+      
+      - name: data_criacao
+        description: Data de criação/instituição da divisão
+      
+      - name: legislacao_base
+        description: Legislação que instituiu a divisão
+      
+      - name: area_m2
+        description: Área da divisão em metros quadrados
+      
+      - name: perimetro_m
+        description: Perímetro da divisão em metros
+      
+      - name: centroide_latitude
+        description: Latitude do centroide da divisão
+      
+      - name: centroide_longitude
+        description: Longitude do centroide da divisão
+      
+      - name: geometry
+        description: Geometria completa da divisão (GEOGRAPHY)
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__geometry__not_null
+              severity: warn
+      
+      - name: geometry_wkt
+        description: Geometria em formato WKT
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__geometry_wkt__not_null
+              severity: warn
+      
+      - name: densidade_populacional
+        description: Densidade populacional da divisão (hab/km²)
+      
+      - name: uso_solo_predominante
+        description: Uso do solo predominante na divisão
+      
+      - name: restricoes_urbanisticas
+        description: Restrições urbanísticas aplicáveis
+      
+      - name: instrumentos_urbanisticos
+        description: Instrumentos urbanísticos vigentes
+      
+      - name: atributos_especificos
+        description: Campos específicos para cada tipo de divisão (JSON)
+      
+      - name: metadados_fonte
+        description: Metadados da fonte original dos dados (JSON)
+      
+      - name: ativo
+        description: Indica se a divisão está ativa
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__ativo__not_null
+      
+      - name: data_atualizacao
+        description: Data da última atualização
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__data_atualizacao__not_null
+      
+      - name: fonte_dados
+        description: Fonte original dos dados
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__fonte_dados__not_null
+      
+      - name: versao_schema
+        description: Versão do schema utilizada
+        tests:
+          - not_null:
+              name: core_rmi_dados_mestre_divisoes_administrativas__versao_schema__not_null

@@ -1,0 +1,117 @@
+version: 2
+
+models:
+  - name: int_divisoes_cres
+    description: |
+      Coordenadorias Regionais de Educação (CREs) transformadas em divisões administrativas.
+      Divisões especializadas para gestão educacional no município.
+      Fonte: dados_mestres.cres
+
+    columns:
+      - name: id_divisao
+        description: "Identificador único da CRE (formato: cre_{id})"
+        tests:
+          - unique:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__id_divisao__unique
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__id_divisao__not_null
+
+      - name: tipo_divisao
+        description: Tipo da divisão (sempre 'CRE')
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__tipo_divisao__accepted_values
+              values: ['CRE']
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__tipo_divisao__not_null
+
+      - name: codigo_original
+        description: ID original da CRE na fonte
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__codigo_original__not_null
+
+      - name: nome
+        description: Nome da CRE
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__nome__not_null
+
+      - name: nome_abreviado
+        description: "Nome abreviado da CRE (formato: CRE {numero})"
+
+      - name: orgao_responsavel
+        description: Órgão responsável (sempre 'SME' - Secretaria Municipal de Educação)
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__orgao_responsavel__accepted_values
+              values: ['SME']
+
+      - name: competencias
+        description: Lista de competências da CRE (coordenação educacional, gestão escolar)
+
+      - name: data_criacao
+        description: Data de criação da CRE (null)
+
+      - name: legislacao_base
+        description: Legislação que institui a CRE (null)
+
+      - name: area_m2
+        description: Área da CRE em metros quadrados (calculada via ST_AREA)
+
+      - name: perimetro_m
+        description: Perímetro da CRE em metros (calculado via ST_PERIMETER)
+
+      - name: centroide_latitude
+        description: Latitude do centroide da CRE
+
+      - name: centroide_longitude
+        description: Longitude do centroide da CRE
+
+      - name: geometry
+        description: Geometria da CRE (GEOGRAPHY)
+
+      - name: geometry_wkt
+        description: Geometria em formato WKT
+
+      - name: densidade_populacional
+        description: Densidade populacional (null para CREs)
+
+      - name: uso_solo_predominante
+        description: Uso do solo predominante (sempre 'educacional')
+
+      - name: restricoes_urbanisticas
+        description: Restrições urbanísticas (array vazio)
+
+      - name: instrumentos_urbanisticos
+        description: Instrumentos urbanísticos (array vazio)
+
+      - name: atributos_especificos
+        description: Atributos específicos da CRE em formato JSON
+
+      - name: metadados_fonte
+        description: Metadados da fonte original em formato JSON
+
+      - name: ativo
+        description: Indicador se a divisão está ativa (sempre true)
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__ativo__not_null
+
+      - name: data_atualizacao
+        description: Data da última atualização
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__data_atualizacao__not_null
+
+      - name: fonte_dados
+        description: Fonte original dos dados
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__fonte_dados__not_null
+
+      - name: versao_schema
+        description: Versão do schema utilizada
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_cres__versao_schema__not_null
