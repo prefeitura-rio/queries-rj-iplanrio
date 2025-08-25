@@ -69,7 +69,21 @@ sources:
       - name: vinculo_pagamento
         description: "Vínculos de pagamento (visão alternativa)"
 
-  # TODO: remover prod daqui quando migrar modelos da smfp
+  - name: brutos_ergon_staging
+    database: rj-smfp
+    schema: brutos_ergon_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
+    tables:
+      - name: VW_DLK_ERG_CARGOS_
+      - name: VW_DLK_ERG_EMPRESAS
+      - name: VW_DLK_ERG_FUNCIONARIOS
+      - name: VW_DLK_ERG_PROVIMENTOS_EV
+      - name: VW_DLK_ERG_HSETOR_
+      - name: VW_DLK_ERG_VINCULOS
+
+  # TODO: remover prod daqui quando migrar modelos da smfp 
   - name: rj-smfp
     database: rj-smfp
     schema: recursos_humanos_ergon

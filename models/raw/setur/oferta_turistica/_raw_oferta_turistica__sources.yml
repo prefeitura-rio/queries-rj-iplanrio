@@ -1,20 +1,20 @@
 version: 2
 
 sources:
-  - name: oferta_turistica
-    description: "Dados de oferta turística da Prefeitura do Rio de Janeiro extraídos da Planilha Sheets de controle"
+  - name: brutos_oferta_turistica_staging
     database: rj-iplanrio
     schema: brutos_oferta_turistica_staging
+    description: "Dados de oferta turística da Prefeitura do Rio de Janeiro extraídos da Planilha Sheets de controle"
     tables:
-      - name: aqua_rio
+      - name: aquario
         description: "Dados sobre o AquaRio - Aquário Marinho do Rio de Janeiro"
       - name: bio_parque
         description: "Dados sobre o BioParque - Parque Biológico do Rio de Janeiro"
       - name: ccbb
         description: "Dados sobre o CCBB - Centro Cultural Banco do Brasil"
-      - name: cristo
+      - name: cristo_redentor
         description: "Dados sobre o Cristo Redentor - Monumento e atração turística"
-      - name: empregos
+      - name: empregos_turismo
         description: "Dados sobre empregos no setor turístico do Rio de Janeiro"
       - name: galeao
         description: "Dados sobre o Aeroporto Internacional Tom Jobim - Galeão"

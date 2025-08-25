@@ -111,7 +111,18 @@ models:
               +tags: "whatsapp" # Add whatsapp tag to models under crm_whatsapp
             rmi_dados_mestres:
               +tags: "rmi"
-
+      smfp:
+        +project: rj-smfp
+        ergon_saude:
+          +materialized: table
+          +schema: recursos_humanos_ergon_saude
+          +tags: "daily"
+      setur:
+        +project: rj-setur
+        observatorio_do_turismo:
+          +materialized: table
+          +schema: turismo_fluxo_visitantes
+          +tags: "daily"
     raw:
       +tags: "raw"
       bcadastro:
@@ -144,6 +155,10 @@ models:
         recursos_humanos_ergon:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
+          +tags: "daily"
+        sigma:
+          +materialized: table
+          +schema: compras_materiais_servicos_sigma
           +tags: "daily"
       sms:
         +tags: ["daily", "sms"]
@@ -183,11 +198,15 @@ models:
           +schema: adm_central_atendimento_1746
           +tags: "daily"
       setur:
+        +project: rj-setur
         oferta_turistica:
           +materialized: view
-          +schema: brutos_oferta_turistica
+          +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
-          +project: rj-iplanrio
+        turismo_fluxo_visitantes:
+          +materialized: table
+          +schema: turismo_fluxo_visitantes_staging
+          +tags: "daily"
       iplanrio:
         crm_registry:
           wetalkie:
