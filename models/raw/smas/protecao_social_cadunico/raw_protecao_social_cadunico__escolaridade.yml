@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: escolaridade
+  - name: raw_protecao_social_cadunico__escolaridade
     description: Table escolaridade from number 07
     columns:
       - name: id_prefeitura

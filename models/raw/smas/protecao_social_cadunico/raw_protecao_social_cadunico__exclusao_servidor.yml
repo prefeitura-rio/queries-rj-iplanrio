@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: exclusao_servidor
+  - name: raw_protecao_social_cadunico__exclusao_servidor
     description: Table exclusao_servidor from number 18
     columns:
       - name: id_prefeitura_exclusao

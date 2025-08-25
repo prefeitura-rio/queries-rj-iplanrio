@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: representante_legal
+  - name: raw_protecao_social_cadunico__representante_legal
     description: Table representante_legal from number 20
     columns:
       - name: id_prefeitura_representante_legal

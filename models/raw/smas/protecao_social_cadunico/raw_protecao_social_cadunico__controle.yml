@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: controle
+  - name: raw_protecao_social_cadunico__controle
     description: Table controle from number 00
     columns:
       - name: versao_layout_arquivo

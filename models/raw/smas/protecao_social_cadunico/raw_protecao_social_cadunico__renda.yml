@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: renda
+  - name: raw_protecao_social_cadunico__renda
     description: Table renda from number 21
     columns:
       - name: id_prefeitura

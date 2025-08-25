@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: documento_pessoa
+  - name: raw_protecao_social_cadunico__documento_pessoa
     description: Table documento_pessoa from number 05
     columns:
       - name: id_prefeitura

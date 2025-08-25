@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: documento_membro
+  - name: raw_protecao_social_cadunico__documento_membro
     description: Table documento_membro from number 14
     columns:
       - name: id_prefeitura

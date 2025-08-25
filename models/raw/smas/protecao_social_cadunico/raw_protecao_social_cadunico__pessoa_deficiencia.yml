@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: pessoa_deficiencia
+  - name: raw_protecao_social_cadunico__pessoa_deficiencia
     description: Table pessoa_deficiencia from number 06
     columns:
       - name: id_prefeitura

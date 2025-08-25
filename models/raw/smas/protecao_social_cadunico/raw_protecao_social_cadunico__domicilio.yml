@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: domicilio
+  - name: raw_protecao_social_cadunico__domicilio
     description: Table domicilio from number 02
     columns:
       - name: id_prefeitura

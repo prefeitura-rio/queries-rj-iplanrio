@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: trabalho_remuneracao
+  - name: raw_protecao_social_cadunico__trabalho_remuneracao
     description: Table trabalho_remuneracao from number 08
     columns:
       - name: id_prefeitura

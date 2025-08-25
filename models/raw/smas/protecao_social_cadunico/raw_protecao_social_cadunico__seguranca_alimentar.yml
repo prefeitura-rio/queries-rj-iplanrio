@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: seguranca_alimentar
+  - name: raw_protecao_social_cadunico__seguranca_alimentar
     description: Table seguranca_alimentar from number 11
     columns:
       - name: id_prefeitura

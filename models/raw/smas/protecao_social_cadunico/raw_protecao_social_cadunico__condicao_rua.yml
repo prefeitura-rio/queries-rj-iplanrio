@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: condicao_rua
+  - name: raw_protecao_social_cadunico__condicao_rua
     description: Table condicao_rua from number 12
     columns:
       - name: id_prefeitura

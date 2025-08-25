@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: identificacao_membro
+  - name: raw_protecao_social_cadunico__identificacao_membro
     description: Table identificacao_membro from number 17
     columns:
       - name: id_prefeitura_origem

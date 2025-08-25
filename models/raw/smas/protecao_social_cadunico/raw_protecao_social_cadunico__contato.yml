@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: contato
+  - name: raw_protecao_social_cadunico__contato
     description: Table contato from number 09
     columns:
       - name: id_prefeitura

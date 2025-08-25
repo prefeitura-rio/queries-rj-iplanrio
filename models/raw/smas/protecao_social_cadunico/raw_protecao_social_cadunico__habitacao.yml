@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: habitacao
+  - name: raw_protecao_social_cadunico__habitacao
     description: Table habitacao from number 15
     columns:
       - name: id_prefeitura

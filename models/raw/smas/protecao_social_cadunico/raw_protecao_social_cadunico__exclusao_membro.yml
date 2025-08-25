@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: exclusao_membro
+  - name: raw_protecao_social_cadunico__exclusao_membro
     description: Table exclusao_membro from number 19
     columns:
       - name: id_prefeitura_membro_excluido

@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: status_familia
+  - name: raw_protecao_social_cadunico__status_familia
     description: Table status_familia from number 13
     columns:
       - name: id_prefeitura

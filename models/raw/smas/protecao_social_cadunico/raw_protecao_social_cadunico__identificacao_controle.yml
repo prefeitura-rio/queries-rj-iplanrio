@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: identificacao_controle
+  - name: raw_protecao_social_cadunico__identificacao_controle
     description: Table identificacao_controle from number 01
     columns:
       - name: id_prefeitura

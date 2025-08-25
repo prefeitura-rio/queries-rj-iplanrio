@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: identificacao_primeira_pessoa
+  - name: raw_protecao_social_cadunico__identificacao_primeira_pessoa
     description: Table identificacao_primeira_pessoa from number 04
     columns:
       - name: id_pessoa

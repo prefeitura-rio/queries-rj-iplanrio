@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: prefeitura
+  - name: raw_protecao_social_cadunico__prefeitura
     description: Table prefeitura from number 98
     columns:
       - name: id_prefeitura

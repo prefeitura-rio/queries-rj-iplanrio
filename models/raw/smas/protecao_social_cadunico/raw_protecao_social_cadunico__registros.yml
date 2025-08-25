@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: registros
+  - name: raw_protecao_social_cadunico__registros
     description: Table registros from number 99
     columns:
       - name: numero_registro_arquivo
