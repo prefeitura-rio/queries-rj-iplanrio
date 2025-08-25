@@ -6,6 +6,9 @@
     )
 }}
 
+{# Força dependência da UDF encode_pluscode #}
+{# {{ ref('encode_pluscode') }} #}
+
 
 with
     tb as (

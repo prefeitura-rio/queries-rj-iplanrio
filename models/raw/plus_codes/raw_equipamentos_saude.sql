@@ -6,6 +6,9 @@
     )
 }}
 
+{# Força dependência da UDF encode_pluscode #}
+{# {{ ref('encode_pluscode') }} #}
+
 {# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.equipamentos_saude` AS ( #}
 with
     tb as (
