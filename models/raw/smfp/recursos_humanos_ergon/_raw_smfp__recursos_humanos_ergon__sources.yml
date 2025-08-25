@@ -69,7 +69,7 @@ sources:
       - name: vinculo_pagamento
         description: "Vínculos de pagamento (visão alternativa)"
 
-  # TODO: remover prod daqui quando migrar modelos da smfp
+  # TODO: remover prod daqui quando migrar modelos da smfp 
   - name: rj-smfp
     database: rj-smfp
     schema: recursos_humanos_ergon
