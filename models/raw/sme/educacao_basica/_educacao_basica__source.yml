@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: educacao_basica_staging
+    database: rj-sme
+    schema: educacao_basica_staging
+    tables:
+      - name: aluno_turma
+      - name: aluno_historico
+      - name: aluno
+      - name: avaliacao
+      - name: coc
+      - name: dependencia
+      - name: escola
+      - name: frequencia
+      - name: movimentacao
+

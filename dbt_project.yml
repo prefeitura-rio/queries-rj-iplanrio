@@ -65,11 +65,16 @@ models:
         +schema: brutos_unidades_administrativas
         +tags: "daily"
       sme:
+        +project: rj-sme
+        +tags: ["sme"]
         gestao_escolar:
           +materialized: table
           +schema: brutos_gestao_escolar
-          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
-          +project: rj-sme
+          +tags: ["daily"]
+        educacao_basica:
+          +materialized: table
+          +schema: educacao_basica_staging
+          +tags: "daily"
       smfp:
         +tags: "smfp"
         +project: rj-smfp
