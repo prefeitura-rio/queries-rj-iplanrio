@@ -62,6 +62,9 @@ models:
     columns: true
 
   queries:
+    udfs:
+      +materialized: udf
+      +schema: tools
     mart:
       gerenciamento:
         custos:
