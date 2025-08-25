@@ -68,6 +68,8 @@ with
             count(*) as origens_count,
             cast(cpf as int64) as cpf_particao
         from all_cpfs
+        -- # TODO: remover esse filtro e ver pq temos nulos no cpf
+        WHERE cpf IS NOT NULL
         group by cpf
     )
 

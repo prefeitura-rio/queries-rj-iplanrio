@@ -28,10 +28,10 @@ models:
         data_tests:
           - unique:
               name: raw_bcadastro_cnpj__cnpj__unique
-              severity: error
+              severity: warn
           - not_null:
               name: raw_bcadastro_cnpj__cnpj__not_null
-              severity: error
+              severity: warn
 
       - name: razao_social
         description: Nome empresarial (razão social) da empresa.

@@ -138,8 +138,6 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
-      smas:
-        +tags: ["daily", "smas"]
       sme:
         gestao_escolar:
           +materialized: table
@@ -176,6 +174,7 @@ models:
           +schema: infraestrutura_siscob_obras
           +tags: "daily"        
       smas:
+        +tags: ["daily", "smas"]
         cadunico:
           +materialized: table
           +project: rj-smas

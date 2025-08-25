@@ -121,14 +121,6 @@ models:
               name: core_telefone__telefone_sistemas_quantidade__range
               min_value: 1
         
-      - name: rmi_data_criacao
-        description: "Data de criação do registro no RMI"
-        data_type: timestamp
-        quote: false
-        tests:
-          - not_null:
-              name: core_telefone__rmi_data_criacao__not_null
-        
       - name: rmi_data_atualizacao
         description: "Data da última atualização do registro no RMI"
         data_type: timestamp

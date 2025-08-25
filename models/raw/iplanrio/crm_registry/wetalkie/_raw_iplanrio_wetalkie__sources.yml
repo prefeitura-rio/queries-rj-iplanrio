@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: brutos_wetalkie_staging
-    database: rj-crm-registry
+    database: rj-iplanrio
     schema: brutos_wetalkie_staging
     config:
       freshness: # default freshness

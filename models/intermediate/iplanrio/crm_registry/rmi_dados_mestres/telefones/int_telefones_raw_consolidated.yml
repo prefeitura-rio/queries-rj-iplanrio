@@ -48,7 +48,7 @@ models:
               name: intermediario_telefones_raw_consolidated__sistema_nome__not_null
           - accepted_values:
               name: intermediario_telefones_raw_consolidated__sistema_nome__accepted_values
-              values: ['bcadastro', 'sms', 'wetalkie', 'ergon']
+              values: ['bcadastro', 'sms', 'wetalkie', 'ergon', 'agendamento_cadunico']
 
       - name: campo_origem
         description: >
@@ -61,12 +61,13 @@ models:
               name: intermediario_telefones_raw_consolidated__campo_origem__accepted_values
               values: 
                 - 'bcadastro_cpf.contato.telefone'
-                - 'bcadastro_cnpj.contato.telefone[]'
-                - 'sms_paciente.contato.telefone[]'
+                - 'bcadastro_cnpj.contato.telefone'
+                - 'sms_paciente.contato.telefone'
                 - 'wetalkie_disparos.to'
                 - 'wetalkie_disparos.vars.telefoneescola'
                 - 'ergon_funcionario.celular'
                 - 'ergon_funcionario.telefone'
+                - 'smas_brutos_datametrica.telefone'
 
       - name: contexto
         description: >
@@ -102,6 +103,7 @@ models:
               when sistema_nome = 'sms' then campo_origem like 'sms_%'
               when sistema_nome = 'wetalkie' then campo_origem like 'wetalkie_%'
               when sistema_nome = 'ergon' then campo_origem like 'ergon_%'
+              when sistema_nome = 'agendamento_cadunico' then campo_origem like 'smas_%'
               else false
             end
             
@@ -109,12 +111,13 @@ models:
           name: intermediario_telefones_raw_consolidated__contexto_origem_tipo_consistencia
           expression: >
             case 
-              when origem_tipo = 'CPF' and sistema_nome = 'bcadastro' then contexto = 'PESSOAL'
+              when origem_tipo = 'CPF' and sistema_nome in ('bcadastro', 'agendamento_cadunico') then contexto = 'PESSOAL'
               when origem_tipo = 'CPF' and sistema_nome = 'ergon' then contexto = 'FUNCIONAL'
+              when origem_tipo = 'CPF' and sistema_nome = 'sms' then contexto = 'SAUDE'
               when origem_tipo = 'CNPJ' then contexto = 'EMPRESARIAL'
               when origem_tipo = 'CNS' then contexto = 'SAUDE'
               when origem_tipo = 'COMUNICACAO' then contexto = 'COMUNICACAO'
-              else false
+            else false
             end
 
       # Teste de duplicação de telefones (warning esperado)
