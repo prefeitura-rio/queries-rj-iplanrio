@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=condicao_rua,
+        alias='condicao_rua',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

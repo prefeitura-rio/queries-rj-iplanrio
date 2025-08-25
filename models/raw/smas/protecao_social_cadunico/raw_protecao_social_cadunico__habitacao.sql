@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=habitacao,
+        alias='habitacao',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=pessoa_deficiencia,
+        alias='pessoa_deficiencia',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

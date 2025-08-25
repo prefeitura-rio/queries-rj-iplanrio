@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=trabalho_remuneracao,
+        alias='trabalho_remuneracao',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

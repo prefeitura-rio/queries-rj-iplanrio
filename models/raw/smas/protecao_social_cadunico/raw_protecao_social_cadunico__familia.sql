@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=familia,
+        alias='familia',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

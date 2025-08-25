@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=documento_membro,
+        alias='documento_membro',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

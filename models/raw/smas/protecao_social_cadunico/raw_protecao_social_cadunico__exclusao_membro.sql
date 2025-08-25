@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=exclusao_membro,
+        alias='exclusao_membro',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={

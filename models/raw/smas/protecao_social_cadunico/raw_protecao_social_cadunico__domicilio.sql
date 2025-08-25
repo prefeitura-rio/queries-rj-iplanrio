@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias=domicilio,
+        alias='domicilio',
         schema='protecao_social_cadunico',
         materialized="table",
         partition_by={
