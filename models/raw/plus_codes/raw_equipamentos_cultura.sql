@@ -79,7 +79,7 @@ with
             ) as horario_funcionamento,
 
             -- Fonte dos dados (ajuste o nome da tabela 'cultura' se necessário)
-            '{{ source("brutos_equipamentos", "culturais") }}' as fonte,
+            '{{ ref("raw_equipamentos_culturais") }}' as fonte,
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
