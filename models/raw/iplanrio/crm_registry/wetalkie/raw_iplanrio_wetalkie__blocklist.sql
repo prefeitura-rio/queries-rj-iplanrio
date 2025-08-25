@@ -2,7 +2,7 @@
   config(
     materialized='table',
     schema='brutos_wetalkie',
-    alias='blocklist_temp'
+    alias='blocklist'
   )
 }}
 
@@ -12,5 +12,6 @@ SELECT
   date_time as data_bloqueio,
   reason as razao_bloqueio,
   DATE(date_time) as data_particao
-FROM `rj-crm-registry.brutos_wetalkie_staging.blocklist`
+-- TODO: mudar a origem do dado
+FROM `rj-crm-registry-dev.patricia___brutos_wetalkie.blocklist`
 WHERE phone IS NOT NULL AND date_time IS NOT NULL
