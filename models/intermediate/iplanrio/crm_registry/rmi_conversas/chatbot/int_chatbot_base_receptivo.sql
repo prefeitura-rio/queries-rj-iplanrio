@@ -13,16 +13,11 @@
 
 with
     source as (
-        select * from {{ source("brutos_wetalkie_staging", "fluxos_ura") }}
+        select s.* from {{ source("brutos_wetalkie_staging", "fluxos_ura") }} as s
         {% if is_incremental() %}
             -- Filtra dados para processamento incremental baseado na data de início do atendimento
             where
-                date(
-                parse_timestamp(
-                    '%Y-%m-%dT%H:%M:%E*S%Ez', json_value(json_data, '$.beginDate')
-                ),
-                'America/Sao_Paulo'
-                )
+                DATE(s.data_particao)
                 >= (select max(data_particao) from {{ this }})
         {% endif %}
     ),

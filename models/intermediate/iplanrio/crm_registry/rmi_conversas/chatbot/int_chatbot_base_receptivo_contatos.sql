@@ -14,7 +14,8 @@
 }}
 
 WITH
-    source as (select * from {{ source("brutos_wetalkie_staging", "fluxos_ura") }}),
+    source as (
+        select * from {{ source("brutos_wetalkie_staging", "fluxos_ura") }}),
 
     fix_json as (
         select
@@ -25,23 +26,6 @@ WITH
                 'false'
             ) as json_data
         from source
-        {% if is_incremental() %}
-        where
-            date(
-                parse_timestamp(
-                    '%Y-%m-%dT%H:%M:%E*S%Ez',
-                    json_extract_scalar(
-                        replace(
-                            replace(replace(json_data, 'None', 'null'), 'True', 'true'),
-                            'False',
-                            'false'
-                        ),
-                        '$.beginDate'
-                    )
-                )
-            )
-            >= (select max(data_particao) from {{ this }})
-        {% endif %}
     ),
 
     ura_contacts_ AS (
