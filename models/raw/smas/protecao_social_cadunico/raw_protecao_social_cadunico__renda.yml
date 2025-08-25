@@ -1,0 +1,149 @@
+version: 2
+models :
+  - name: renda
+    description: Table renda from number 21
+    columns:
+      - name: id_prefeitura
+        description: 'Chave única de identificação da Família | version: 0624'
+      - name: id_afastado_semana_passada
+        description: 'Pessoa afastada na semana passada: 1-Sim, 2-Não | version: 0624'
+      - name: id_atividade_extravista
+        description: 'É atividade extrativista: 1-Sim, 2-Não | version: 0624'
+      - name: id_familia
+        description: 'Código Familiar | version: 0624'
+      - name: id_origem_valor_outra_fonte
+        description: "Flag indicadora da origem do valor do campo VAL-OUTRAS-RENDAS-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_outra_fonte
+        description: "Flag indicadora da origem do valor do campo VAL-OUTRAS-RENDAS-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_origem_valor_pensao_alimenticia
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-PENSAO-ALIMEN-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_pensao_alimenticia
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-PENSAO-ALIMEN-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_origem_valor_rendimento_bruto
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-BRUTA-12-MESES-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_rendimento_bruto
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-BRUTA-12-MESES-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_origem_valor_rendimento_mes_passado
+        description: "Flag indicadora da origem do valor do campo VAL-REMUNER-EMPREGO-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_rendimento_mes_passado
+        description: "Flag indicadora da origem do valor do campo VAL-REMUNER-EMPREGO-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_origem_valor_seguro_desemprego
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-SEGURO-DESEMP-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_seguro_desemprego
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-SEGURO-DESEMP-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_origem_valor_ajuda_doacao
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-DOACAO-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_ajuda_doacao
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-DOACAO-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_origem_valor_aposentadoria
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-APOSENT-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: origem_valor_aposentadoria
+        description: "Flag indicadora da origem do valor do campo VAL-RENDA-APOSENT-MEMB\n\
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0624"
+      - name: id_funcao_principal_trabalho
+        description: "Função principal: campo numérico de 2 posições variando de 1
+          a 11\n1-TRABALHADOR POR CONTA PROPRIA (BICO, AUTONOMO) 2-TRABALHADOR TEMPORARIO
+          EM AREA RURAL 3-EMPREGADO SEM CARTEIRA DE TRABALHO ASSINADA 4-EMPREGADO
+          COM CARTEIRA DE TRABALHO ASSINADA 5-TRABALHADOR DOMESTICO SEM CARTEIRA DE
+          TRABALHO ASSINADA 6-TRABALHADOR DOMESTICO COM CARTEIRA DE TRABALHO ASSINADA
+          7-TRABALHADOR NAO-REMUNERADO 8-MILITAR OU SERVIDOR PUBLICO 9-EMPREGADOR
+          10-ESTAGIARIO 11-APRENDIZ | version: 0624"
+      - name: funcao_principal_trabalho
+        description: "Função principal: campo numérico de 2 posições variando de 1
+          a 11\n1-TRABALHADOR POR CONTA PROPRIA (BICO, AUTONOMO) 2-TRABALHADOR TEMPORARIO
+          EM AREA RURAL 3-EMPREGADO SEM CARTEIRA DE TRABALHO ASSINADA 4-EMPREGADO
+          COM CARTEIRA DE TRABALHO ASSINADA 5-TRABALHADOR DOMESTICO SEM CARTEIRA DE
+          TRABALHO ASSINADA 6-TRABALHADOR DOMESTICO COM CARTEIRA DE TRABALHO ASSINADA
+          7-TRABALHADOR NAO-REMUNERADO 8-MILITAR OU SERVIDOR PUBLICO 9-EMPREGADOR
+          10-ESTAGIARIO 11-APRENDIZ | version: 0624"
+      - name: id_trabalho_remunerado_ultimos_12_meses
+        description: 'Pessoa com trabalho remunerado 12 meses: 1-Sim, 2-Não | version:
+          0624'
+      - name: id_trabalho_semana_passada
+        description: 'Pessoa trabalhou na semana passada: 1-Sim, 2-Não | version:
+          0624'
+      - name: data_integracao_aposentadoria
+        description: 'Data de integração referente ao campo VAL-RENDA-APOSENT-MEMB
+          conforme data de processamento de arquivo de renda origem CNIS no formato
+          DDMMAAAA | version: 0624'
+      - name: data_integracao_outras_fonte
+        description: 'Data de integração referente ao campo VAL-OUTRAS-RENDAS-MEMB
+          conforme data de processamento de arquivo de renda origem CNIS no formato
+          DDMMAAAA | version: 0624'
+      - name: data_integracao_renda_bruta_12_meses
+        description: 'Data de integração referente ao campo VAL-RENDA-BRUTA-12-MESES-MEMB
+          conforme data de processamento de arquivo de renda origem CNIS no formato
+          DDMMAAAA | version: 0624'
+      - name: data_integracao_emprego_ultimo_mes
+        description: 'Data de integração referente ao campo VAL-REMUNER-EMPREGO-MEMB
+          conforme data de processamento de arquivo de renda origem CNIS no formato
+          DDMMAAAA | version: 0624'
+      - name: renda_outras_rendas
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_outras_rendas_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_emprego_ultimo_mes_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_emprego_ultimo_mes
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_aposentadoria_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_aposentadoria
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_bruta_12_meses_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN\n\
+          O valor representado na faixa de renda é o conteúdo do campo 8.08 dividido
+          por 12\n0-0 1-1 até 109 2-110 até 218 3-219 até SM/2 4-SM/2 + 1 até SM 5-SM+1
+          até 2SM 6-2SM + 1 até 3SM 7-3SM + 1 | version: 0624"
+      - name: renda_bruta_12_meses
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN\n\
+          O valor representado na faixa de renda é o conteúdo do campo 8.08 dividido
+          por 12\n0-0 1-1 até 109 2-110 até 218 3-219 até SM/2 4-SM/2 + 1 até SM 5-SM+1
+          até 2SM 6-2SM + 1 até 3SM 7-3SM + 1 | version: 0624"
+      - name: renda_doacao_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_doacao
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_pensao_alimenticia_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_pensao_alimenticia
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_seguro_desemprego
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: renda_seguro_desemprego_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0624"
+      - name: nao_recebe_remuneracao
+        description: 'Não recebeu remuneração de trabalho: 0-Opção não marcada no
+          formulário, 1-Opção marcada no formulário | version: 0624'
+      - name: id_membro_familia
+        description: 'Número do membro da Família  | version: 0624'
+      - name: numero_registro_arquivo
+        description: '21 | version: 0624'
+      - name: meses_trabalhados_nos_ultimos_12
+        description: 'Quantidade de meses trabalhados nos últimos 12, campo numérico
+          de 2 posições, formato NN | version: 0624'

@@ -1,0 +1,59 @@
+version: 2
+models :
+  - name: pessoa_deficiencia
+    description: Table pessoa_deficiencia from number 06
+    columns:
+      - name: id_prefeitura
+        description: 'Chave única de identificação da Família | version: 0624'
+      - name: id_tem_deficiencia
+        description: 'Pessoa tem deficiência: 1-Sim, 2-Não | version: 0624'
+      - name: tem_deficiencia
+        description: 'Pessoa tem deficiência: 1-Sim, 2-Não | version: 0624'
+      - name: id_familia
+        description: 'Código Familiar | version: 0624'
+      - name: ajuda_especializada
+        description: 'Ajuda Terceiros Especializada: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: ajuda_familia
+        description: 'Ajuda Terceiros família: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: ajuda_instituicao_social
+        description: 'Ajuda Terceiros instituição rede social: 0-Opção não marcada
+          no formulário, 1-Opção marcada no formulário | version: 0624'
+      - name: nao_recebe_ajuda
+        description: 'Ajuda Terceiros não recebida: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: ajuda_terceiros
+        description: 'Ajuda Terceiros outra forma: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: ajuda_vizinhos
+        description: 'Ajuda Terceiros vizinhos: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: deficiencia_baixa_visao
+        description: 'Deficiência Baixa Visão: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: deficiencia_cegueira
+        description: 'Deficiência Cegueira: 0-Opção não marcada no formulário, 1-Opção
+          marcada no formulário | version: 0624'
+      - name: deficiencia_fisica
+        description: 'Deficiência Física: 0-Opção não marcada no formulário, 1-Opção
+          marcada no formulário | version: 0624'
+      - name: deficiencia_mental
+        description: 'Deficiência Mental: 0-Opção não marcada no formulário, 1-Opção
+          marcada no formulário | version: 0624'
+      - name: deficiencia_sindrome_down
+        description: 'Deficiência Down: 0-Opção não marcada no formulário, 1-Opção
+          marcada no formulário | version: 0624'
+      - name: deficiencia_surdez_leve
+        description: 'Deficiência Surdez leve: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: deficiencia_surdez_profunda
+        description: 'Deficiência Surdez severa: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: deficiencia_transtorno_mental
+        description: 'Deficiência Transtorno mental: 0-Opção não marcada no formulário,
+          1-Opção marcada no formulário | version: 0624'
+      - name: id_membro_familia
+        description: 'Número do membro da Família | version: 0624'
+      - name: numero_registro_arquivo
+        description: '06 | version: 0624'

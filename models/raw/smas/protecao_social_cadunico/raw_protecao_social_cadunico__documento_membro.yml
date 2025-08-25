@@ -1,0 +1,356 @@
+version: 2
+models :
+  - name: documento_membro
+    description: Table documento_membro from number 14
+    columns:
+      - name: id_prefeitura
+        description: 'Chave única de identificação da Família | version: 0624'
+      - name: id_familia
+        description: 'Código Familiar | version: 0624'
+      - name: data_oaud_memb_id_obto_rej
+        description: 'Data de inclusão da ocorrência de membro com indicativo de óbito
+          rejeitado no formato DDMMAAAA | version: 0624'
+      - name: data_paud_cpf_cancel_receita
+        description: 'Data de inclusão da pendência de CPF cancelado na base da RFB
+          no formato DDMMAAAA | version: 0624'
+      - name: data_paud_cpf_susp_receita
+        description: 'Data de inclusão da pendência de CPF suspenso na base da RFB
+          no formato DDMMAAAA | version: 0624'
+      - name: data_paud_cpo_obr_memb
+        description: 'Data de inclusão da pendência de campos obrigatórioes não preenchidos
+          no formato DDMMAAAA | version: 0624'
+      - name: data_paud_memb_cpf_mult_memb
+        description: 'Data de inclusão da pendência de membro com CPF em multiplicidade
+          no formato DDMMAAAA | version: 0624'
+      - name: data_paud_memb_cpf_titular_memb
+        description: 'Data de inclusão da pendência de membro com divergência de titularidade
+          no CPF no formato DDMMAAAA | version: 0624'
+      - name: data_paud_memb_eleitor_mult_memb
+        description: 'Data de inclusão da pendência de membro com titulo de eleitor
+          em multiplicidade no formato DDMMAAAA | version: 0624'
+      - name: data_paud_memb_id_obto
+        description: 'Data de inclusão da pendência de membro com indicativo de óbito
+          no formato DDMMAAAA | version: 0624'
+      - name: data_paud_memb_obto_orig_arq
+        description: 'Data de inclusão da pendência de membro com indicativo de óbito
+          por base externa no formato DDMMAAAA | version: 0624'
+      - name: data_paud_rf_cpf_inv_memb
+        description: 'Data de inclusão da pendência de CPF inválido no formato DDMMAAAA
+          | version: 0624'
+      - name: data_paud_rf_cpf_mult_memb
+        description: 'Data de inclusão da pendência de RF com cpf em multiplicidade
+          no formato DDMMAAAA | version: 0624'
+      - name: data_paud_rf_cpf_titular_memb
+        description: 'Data de inclusão da pendência de RF com divergência de titularidade
+          de CPF no formato DDMMAAAA | version: 0624'
+      - name: data_paud_rf_eleitor_mult_memb
+        description: 'Data de inclusão da pendência de RF com titulo de eleitor em
+          multiplicidade no formato DDMMAAAA | version: 0624'
+      - name: id_oaud_indicativo_obito
+        description: 'Existência de ocorrência "Membro da Família com Indicativo de
+          Óbito Negado" 0- Não Existe 1- Existe  | version: 0624'
+      - name: oaud_indicativo_obito
+        description: 'Existência de ocorrência "Membro da Família com Indicativo de
+          Óbito Negado" 0- Não Existe 1- Existe  | version: 0624'
+      - name: id_oaud_carteira_trabalho_multiplicidade
+        description: 'Existência de ocorrência “Multiplicidade de Carteira de Trabalho”
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: oaud_carteira_trabalho_multiplicidade
+        description: 'Existência de ocorrência “Multiplicidade de Carteira de Trabalho”
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_oaud_certidao_nascimento_multiplicidade
+        description: 'Existência de ocorrência “Multiplicidade de Certidão de Nascimento”
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: oaud_certidao_nascimento_multiplicidade
+        description: 'Existência de ocorrência “Multiplicidade de Certidão de Nascimento”
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_oaud_rg_multiplicidade
+        description: 'Existência de ocorrência “Multiplicidade de RG” 0- Não Existe
+          1- Existe NULO | version: 0624'
+      - name: oaud_rg_multiplicidade
+        description: 'Existência de ocorrência “Multiplicidade de RG” 0- Não Existe
+          1- Existe NULO | version: 0624'
+      - name: id_osrg_nao_sabe_registrada_cartorio
+        description: 'Existência de Ocorrência "Não sabe se foi registrada em Cartório
+          (conforme RN019)" para a pessoa: 0- Não Existe 1- Existe NULO | version:
+          0624'
+      - name: osrg_nao_sabe_registrada_cartorio
+        description: 'Existência de Ocorrência "Não sabe se foi registrada em Cartório
+          (conforme RN019)" para a pessoa: 0- Não Existe 1- Existe NULO | version:
+          0624'
+      - name: id_osrg_registrada_sem_cetidao_civil
+        description: 'Existência de Ocorrência "Registrada e sem Certidão Civil (conforme
+          RN019)" para a Pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: osrg_registrada_sem_cetidao_civil
+        description: 'Existência de Ocorrência "Registrada e sem Certidão Civil (conforme
+          RN019)" para a Pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_osrg_nao_registrada_cartorio
+        description: 'Existência de Ocorrência "Não registrada em cartório (conforme
+          RN019)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: osrg_nao_registrada_cartorio
+        description: 'Existência de Ocorrência "Não registrada em cartório (conforme
+          RN019)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_otrn_transferida_este_municipio_familia_existente
+        description: 'Existência de Ocorrência "• Pessoa de outro município (origem)
+          transferida para este município (destino )em família existente" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: otrn_transferida_este_municipio_familia_existente
+        description: 'Existência de Ocorrência "• Pessoa de outro município (origem)
+          transferida para este município (destino )em família existente" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_otrn_transferida_este_municipio_nova_familia
+        description: "Existência de Ocorrência \" • Pessoa de outro município (origem)
+          transferida para este município (destino ) em uma nova família\n(destino)\"\
+          \ para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624"
+      - name: otrn_transferida_este_municipio_nova_familia
+        description: "Existência de Ocorrência \" • Pessoa de outro município (origem)
+          transferida para este município (destino ) em uma nova família\n(destino)\"\
+          \ para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624"
+      - name: id_otrn_transferida_outra_familia
+        description: 'Existência de Ocorrência "Pessoa transferida para outra família
+          no mesmo município" para a pessoa: 0- Não Existe 1- Existe NULO | version:
+          0624'
+      - name: otrn_transferida_outra_familia
+        description: 'Existência de Ocorrência "Pessoa transferida para outra família
+          no mesmo município" para a pessoa: 0- Não Existe 1- Existe NULO | version:
+          0624'
+      - name: id_otrn_transferida_outro_municipio
+        description: 'Existência de Ocorrência " Pessoa transferida para outro município"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: otrn_transferida_outro_municipio
+        description: 'Existência de Ocorrência " Pessoa transferida para outro município"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_cpf_cancelado_base_receita_federal
+        description: 'Existência de pendência “CPF suspenso na base da Receita Federal”
+          0 – Não Existe 1 – Existe NULO | version: 0624'
+      - name: paud_cpf_cancelado_base_receita_federal
+        description: 'Existência de pendência “CPF suspenso na base da Receita Federal”
+          0 – Não Existe 1 – Existe NULO | version: 0624'
+      - name: id_paud_cpf_suspenso_base_receita_federal
+        description: 'Existência de pendência “CPF cancelado na base da Receita Federal”
+          0 – Não Existe 1 – Existe NULO | version: 0624'
+      - name: paud_cpf_suspenso_base_receita_federal
+        description: 'Existência de pendência “CPF cancelado na base da Receita Federal”
+          0 – Não Existe 1 – Existe NULO | version: 0624'
+      - name: id_paud_campo_obrigatorio_nao_preenchido
+        description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
+          Condicionados Não Preenchidos" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: paud_campo_obrigatorio_nao_preenchido
+        description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
+          Condicionados Não Preenchidos" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: id_paud_cadatrado_com_certidao_obito
+        description: 'Existência de pendência "Membro da Família Cadastrado e com
+          Certidão de Óbito" para a pessoa: 0- Não Existe 1- Existe NULO | version:
+          0624'
+      - name: paud_cadatrado_com_certidao_obito
+        description: 'Existência de pendência "Membro da Família Cadastrado e com
+          Certidão de Óbito" para a pessoa: 0- Não Existe 1- Existe NULO | version:
+          0624'
+      - name: id_paud_cpf_invalido
+        description: 'Existência de pendência "Membro com CPF inválido (DV inválido)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_cpf_invalido
+        description: 'Existência de pendência "Membro com CPF inválido (DV inválido)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_cpf_multiplicidade
+        description: 'Existência de pendência "Membro com CPF em multiplicidade" para
+          a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_cpf_multiplicidade
+        description: 'Existência de pendência "Membro com CPF em multiplicidade" para
+          a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Membro com divergência de titularidade
+          de CPF (validação de titularidade com base na receita federal)" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Membro com divergência de titularidade
+          de CPF (validação de titularidade com base na receita federal)" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_titulo_eleitor_invalido
+        description: 'Existência de pendência "Membro com Título de Eleitor inválido
+          (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_titulo_eleitor_invalido
+        description: 'Existência de pendência "Membro com Título de Eleitor inválido
+          (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "Membro com Título de Eleitor em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "Membro com Título de Eleitor em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_memb_obto_orig_arq
+        description: 'Existência de pendência “Indicativo de Óbito Bases Externas”
+          0 – Não Existe 1 – Existe NULO | version: 0624'
+      - name: paud_memb_obto_orig_arq
+        description: 'Existência de pendência “Indicativo de Óbito Bases Externas”
+          0 – Não Existe 1 – Existe NULO | version: 0624'
+      - name: id_paud_rejeicao_inclusao_atualizacao_dados_cadastrais
+        description: 'Existência de pendência "Rejeição de inclusão/atualização dos
+          dados cadastrais da pessoa" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: paud_rejeicao_inclusao_atualizacao_dados_cadastrais
+        description: 'Existência de pendência "Rejeição de inclusão/atualização dos
+          dados cadastrais da pessoa" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: id_paud_responsavel_sem_cpf_tiluto_eleitor
+        description: "Existência de pendência \"Responsável Familiar sem CPF ou Título
+          de Eleitor\n\" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624"
+      - name: paud_responsavel_sem_cpf_tiluto_eleitor
+        description: "Existência de pendência \"Responsável Familiar sem CPF ou Título
+          de Eleitor\n\" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624"
+      - name: id_paud_responsavel_cpf_invalido
+        description: 'Existência de pendência "• Responsável Familiar com CPF inválido
+          (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_responsavel_cpf_invalido
+        description: 'Existência de pendência "• Responsável Familiar com CPF inválido
+          (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_responsavel_cpf_multiplicidade
+        description: 'Existência de pendência "Responsável Familiar com CPF em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_responsavel_cpf_multiplicidade
+        description: 'Existência de pendência "Responsável Familiar com CPF em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_responsavel_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Responsável Familiar com divergência
+          de titularidade de CPF (validação de titularidade com base na receita federal)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_responsavel_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Responsável Familiar com divergência
+          de titularidade de CPF (validação de titularidade com base na receita federal)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_paud_responsavel_titulo_eleitor_invalido
+        description: 'Existência de pendência "Responsável Familiar com Título de
+          Eleitor inválido (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: paud_responsavel_titulo_eleitor_invalido
+        description: 'Existência de pendência "Responsável Familiar com Título de
+          Eleitor inválido (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: id_paud_responsavel_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "Responsável Familiar com Título de
+          Eleitor em multiplicidade" para a pessoa: 0- Não Existe 1- Existe NULO |
+          version: 0624'
+      - name: paud_responsavel_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "Responsável Familiar com Título de
+          Eleitor em multiplicidade" para a pessoa: 0- Não Existe 1- Existe NULO |
+          version: 0624'
+      - name: id_paud_responsavel_idade_inferior_16_anos
+        description: 'Existência de pendência "Responsável Familiar com idade inferior
+          a 16 anos" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: paud_responsavel_idade_inferior_16_anos
+        description: 'Existência de pendência "Responsável Familiar com idade inferior
+          a 16 anos" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_campo_obrigatorio_nao_preenchido
+        description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
+          Condicionados Não Preenchidos" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: pmig_campo_obrigatorio_nao_preenchido
+        description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
+          Condicionados Não Preenchidos" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: id_pmig_cpf_invalido
+        description: 'Existência de pendência "Membro com CPF inválido (DV inválido)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_cpf_invalido
+        description: 'Existência de pendência "Membro com CPF inválido (DV inválido)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_cpf_multiplicidade
+        description: 'Existência de pendência "Membro com CPF em multiplicidade" para
+          a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_cpf_multiplicidade
+        description: 'Existência de pendência "Membro com CPF em multiplicidade" para
+          a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Membro com divergência de titularidade
+          de CPF (validação de titularidade com base na receita federal)" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Membro com divergência de titularidade
+          de CPF (validação de titularidade com base na receita federal)" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "Membro com Título de Eleitor em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "Membro com Título de Eleitor em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_responsavel_sem_cpf_titulo_eleitor
+        description: "Existência de pendência \"Responsável Familiar sem CPF ou Título
+          de Eleitor\n\" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624"
+      - name: pmig_responsavel_sem_cpf_titulo_eleitor
+        description: "Existência de pendência \"Responsável Familiar sem CPF ou Título
+          de Eleitor\n\" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624"
+      - name: id_pmig_responsavel_cpf_invalido
+        description: 'Existência de pendência "• Responsável Familiar com CPF inválido
+          (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_responsavel_cpf_invalido
+        description: 'Existência de pendência "• Responsável Familiar com CPF inválido
+          (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_reponsavel_cpf_multiplicidade
+        description: 'Existência de pendência "Responsável Familiar com CPF em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_reponsavel_cpf_multiplicidade
+        description: 'Existência de pendência "Responsável Familiar com CPF em multiplicidade"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_responsavel_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Responsável Familiar com divergência
+          de titularidade de CPF (validação de titularidade com base na receita federal)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_responsavel_cpf_divergencia_titularidade
+        description: 'Existência de pendência "• Responsável Familiar com divergência
+          de titularidade de CPF (validação de titularidade com base na receita federal)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_responsavel_titulo_eleitor_invalido
+        description: 'Existência de pendência "Responsável Familiar com Título de
+          Eleitor inválido (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: pmig_responsavel_titulo_eleitor_invalido
+        description: 'Existência de pendência "Responsável Familiar com Título de
+          Eleitor inválido (DV inválido)" para a pessoa: 0- Não Existe 1- Existe NULO
+          | version: 0624'
+      - name: id_pmig_responsavel_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "• Responsável Familiar com Titulo de
+          Eleitor em multiplicidade" para a pessoa: 0- Não Existe 1- Existe NULO |
+          version: 0624'
+      - name: pmig_responsavel_titulo_eleitor_multiplicidade
+        description: 'Existência de pendência "• Responsável Familiar com Titulo de
+          Eleitor em multiplicidade" para a pessoa: 0- Não Existe 1- Existe NULO |
+          version: 0624'
+      - name: id_pmig_responsavel_idade_inferior_16_anos
+        description: 'Existência de pendência "Responsável Familiar com idade inferior
+          a 16 anos" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_responsavel_idade_inferior_16_anos
+        description: 'Existência de pendência "Responsável Familiar com idade inferior
+          a 16 anos" para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_pmig_sem_nunhuma_documentacao
+        description: 'Existência de pendência "Membro da família sem NENHUMA documentação
+          (exceto o caso da pessoa SEM registro civil conforme RN019)" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: pmig_sem_nunhuma_documentacao
+        description: 'Existência de pendência "Membro da família sem NENHUMA documentação
+          (exceto o caso da pessoa SEM registro civil conforme RN019)" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_ptab_desativacao_inep
+        description: 'Existência de pendência "Desativação de INEP" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: ptab_desativacao_inep
+        description: 'Existência de pendência "Desativação de INEP" para a pessoa:
+          0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_ptrn_verficacao_dados_inep
+        description: 'Existência de pendência "Verificação dos dados da escola (INEP)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: ptrn_verficacao_dados_inep
+        description: 'Existência de pendência "Verificação dos dados da escola (INEP)"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_ptrn_sem_relacao_parentesco
+        description: 'Existência de pendência "• Pessoa sem relação de parentesco"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: ptrn_sem_relacao_parentesco
+        description: 'Existência de pendência "• Pessoa sem relação de parentesco"
+          para a pessoa: 0- Não Existe 1- Existe NULO | version: 0624'
+      - name: id_membro_familia
+        description: 'Numero do membro da Família | version: 0624'
+      - name: numero_registro_arquivo
+        description: '14 | version: 0624'

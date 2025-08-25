@@ -1,0 +1,105 @@
+version: 2
+models :
+  - name: representante_legal
+    description: Table representante_legal from number 20
+    columns:
+      - name: id_prefeitura_representante_legal
+        description: 'Chave única de identificação da Prefeitura da família a qual
+          o membro excluído pertence | version: 0624'
+      - name: id_representante_legal
+        description: "Chave natural atual do RL\nCódigo com tamanho de 13 posição
+          que identifica a pessoa no SIISO | version: 0624"
+      - name: id_familia_representante_legal
+        description: 'Número da família no Cadastro Única | version: 0624'
+      - name: id_minicipio_nascimento_representante_legal
+        description: 'Código IBGE do município de nascimento do RL | version: 0624'
+      - name: id_pais_nascimento_representante_legal
+        description: 'Código do país de nascimento do RL | version: 0624'
+      - name: id_sexo_representante_legal
+        description: "Sexo: 1 – Masculino\n2-Feminino | version: 0624"
+      - name: sexo_representante_legal
+        description: "Sexo: 1 – Masculino\n2-Feminino | version: 0624"
+      - name: descricao_complemento_logradouro_representante_legal
+        description: 'Descrição do complemento do logradouro | version: 0624'
+      - name: descricao_representacao_legal
+        description: 'Informações digitadas pelo operador municipal com dados do documento
+          de representação legal | version: 0624'
+      - name: data_cadastro_representante_legal
+        description: "Data de cadastramento do Representante Legal no sistema\nFormato
+          DDMMAAAA | version: 0624"
+      - name: data_nascimento_representante_legal
+        description: "Data de nascimento do RL\nFormato: DDMMAAAA | version: 0624"
+      - name: email_representante_legal
+        description: 'Endereço de E-mail para contato | version: 0624'
+      - name: id_obito_acatado_representante_legal
+        description: 'Indicativo de óbito acatado: S – Óbito Acatado N – Óbito não
+          acatado Vazio para casos onde não há tratamento do óbito do RL ainda ou
+          não há indicação de óbito | version: 0624'
+      - name: obito_acatado_representante_legal
+        description: 'Indicativo de óbito acatado: S – Óbito Acatado N – Óbito não
+          acatado Vazio para casos onde não há tratamento do óbito do RL ainda ou
+          não há indicação de óbito | version: 0624'
+      - name: id_obito_representante_legal
+        description: 'Indicativo de óbito do RL: S – Possui óbito N – Não possui |
+          version: 0624'
+      - name: obito_representante_legal
+        description: 'Indicativo de óbito do RL: S – Possui óbito N – Não possui |
+          version: 0624'
+      - name: nao_sabe_nome_mae_representante_legal
+        description: 'Não sabe Nome da Mãe: 0-Opção não marcada no formulário, 1-Opção
+          marcada no formulário | version: 0624'
+      - name: nao_sabe_nome_pai_representante_legal
+        description: 'Não sabe Nome do Pai: 0-Opção não marcada no formulário, 1-Opção
+          marcada no formulário | version: 0624'
+      - name: mae_representante_legal
+        description: 'Nome da mãe do RL | version: 0624'
+      - name: pai_representante_legal
+        description: 'Nome do Pai do RL | version: 0624'
+      - name: representante_legal
+        description: 'Nome do Representante Legal | version: 0624'
+      - name: bairro_representante_legal
+        description: 'Nome Bairro | version: 0624'
+      - name: logradouro_representante_legal
+        description: 'Dados do logradouro do RL | version: 0624'
+      - name: municipio_nascimento_representante_legal
+        description: 'Nome do município de nascimento do RL | version: 0624'
+      - name: municipio_representante_legal
+        description: 'Nome do município | version: 0624'
+      - name: pais_nascimento_representante_legal
+        description: 'Nome do País de nascimento do RL | version: 0624'
+      - name: tipo_logradouro_representante_legal
+        description: 'NOME do tipo de Logradouro do RL | version: 0624'
+      - name: cep_representante_legal
+        description: 'CEP do endereço | version: 0624'
+      - name: cpf_representante_legal
+        description: 'CPF no RL | version: 0624'
+      - name: contato_ddd_representante_legal
+        description: 'DDD do telefone de contato 1 | version: 0624'
+      - name: contato_ddd_2_representante_legal
+        description: 'DDD do telefone de contato 2 | version: 0624'
+      - name: numero_logradouro_representante_legal
+        description: "Número do logradouro\nPode conter SN ou S/N | version: 0624"
+      - name: nis_representante_legal
+        description: 'NIS do Representante Legal | version: 0624'
+      - name: numero_registro_arquivo
+        description: "Número do tipo de registro\nPara o FS3 será sempre 20 | version:
+          0624"
+      - name: id_interno_representante_legal
+        description: 'Número interno que identifica o RL na base de dados | version:
+          0624'
+      - name: contato_telefone_representante_legal
+        description: 'Número do telefone de contato 1 | version: 0624'
+      - name: contato_telefone_2_representante_legal
+        description: 'Número do telefone de contato 2 | version: 0624'
+      - name: id_municipio_representante_legal
+        description: 'Código do município do RL | version: 0624'
+      - name: sigla_uf_nascimento_representante_legal
+        description: 'UF do Estado de nascimento do RL | version: 0624'
+      - name: sigla_uf_representante_legal
+        description: 'UF do Estado do logradouro | version: 0624'
+      - name: id_tipo_representacao_legal
+        description: "Tipo de Representação Legal para aquela família\nEx.: 01-Curatela,
+          02-Tutela, 03-Guarda | version: 0624"
+      - name: tipo_representacao_legal
+        description: "Tipo de Representação Legal para aquela família\nEx.: 01-Curatela,
+          02-Tutela, 03-Guarda | version: 0624"
