@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__pre_contagem
+    description: "**Descrição**: A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    config:
+      alias: raw_recursos_humanos_ergon__pre_contagem
+      schema: raw
+      materialized: view
+    columns:
+      - name: finalidade
+        description: "Tipo da finalidade que motivou o cadastro da pré-contagem. \r\nEx.: \"Aposentadoria\", \"Progressão\"."
+        data_type: string
+        quote: true
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: integer
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: integer
+      - name: periodos
+        description: Quantidade de períodos de contagem para determinada finalidade.
+        data_type: integer
+      - name: dias
+        description: Total de dias da pré-contagem.
+        data_type: integer
+      - name: data_validade
+        description: Data de validade da pré-contagem.
+        data_type: date
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: integer
+      - name: observacoes
+        description: Campo de observações sobre a pré-contagem.
+        data_type: string
+        quote: true

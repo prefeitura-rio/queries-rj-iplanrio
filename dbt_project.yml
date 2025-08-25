@@ -35,7 +35,19 @@ models:
           +materialized: table
           +schema: frequencia
           #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
-          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+          +project: rj-sme
+      smfp:
+        +project: rj-smfp
+        ergon_saude:
+          +materialized: table
+          +schema: recursos_humanos_ergon_saude
+          +tags: "daily"
+      setur:
+        +project: rj-setur
+        observatorio_do_turismo:
+          +materialized: table
+          +schema: turismo_fluxo_visitantes
+          +tags: "daily"
     raw:
       +tags: "raw"
       bcadastro:
@@ -55,12 +67,12 @@ models:
       sme:
         gestao_escolar:
           +materialized: table
-          +schema: brutos_sme_brutos_gestao_escolar_teste
+          +schema: brutos_gestao_escolar
           #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
-          +project: "{{ 'rj-sme' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+          +project: rj-sme
       smfp:
         +tags: "smfp"
-        +project: "{{ 'rj-smfp' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+        +project: rj-smfp
         recursos_humanos_ergon:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
@@ -71,7 +83,3 @@ models:
         +materialized: table
         +schema: brutos_mais_valia
         +tags: "daily"
-
-
-      
-        

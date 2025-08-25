@@ -83,7 +83,7 @@ with
             ) as horario_funcionamento,
 
             -- Fonte dos dados (usando a sintaxe de source do dbt)
-            '{{ source("brutos_equipamentos", "escolas") }}' as fonte,
+            '{{ ref("raw_equipamentos_escolas") }}' as fonte,
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
