@@ -128,8 +128,7 @@ models:
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
       mais_valia:
-        +tags: "mais_valia"
-        +project: "{{ 'rj-iplanrio' if target.name == 'prod' else 'rj-iplanrio-dev' }}"
+        +project: rj-iplanrio
         +materialized: table
         +schema: brutos_mais_valia
-        +tags: "daily"
+        +tags: ["daily", "mais_valia"]
