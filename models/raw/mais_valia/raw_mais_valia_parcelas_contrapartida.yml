@@ -47,6 +47,9 @@ models:
       - name: descricao_darm_emitido
         description: "Descrição do indicador de emissão do DARM - Emitido ou Não emitido."
         data_type: string
+      - name: lei_contrapartida
+        description: "Lei que regulamenta o cálculo de contrapartida que gerou a parcela."
+        data_type: string
       - name: valor
         description: "Valor monetário da parcela do cálculo de contrapartida."
         data_type: numeric
