@@ -4,8 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__forma_provimento
     description: "**Descrição**: Formas de provimentos possíveis tanto na administração direta como indireta da prefeitura do Rio de Janeiro. O provimento é a investidura em um cargo público.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
-      alias: raw_recursos_humanos_ergon__forma_provimento
-      schema: raw
       materialized: view
     columns:
       - name: sigla
