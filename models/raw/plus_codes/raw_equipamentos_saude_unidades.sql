@@ -6,6 +6,9 @@
     )
 }}
 
+{# Força dependência da UDF encode_pluscode #}
+{# {{ ref('encode_pluscode') }} #}
+
 WITH
   saude_unidades_processed AS (
     SELECT

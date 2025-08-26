@@ -1,0 +1,333 @@
+version: 2
+
+models:
+  - name: pessoa_juridica
+    description: Modelo contendo informações cadastrais e societárias de pessoas jurídicas (empresas)
+    config:
+      alias: pessoa_juridica
+      schema: crm_dados_mestres
+      materialized: table
+    columns:
+      - name: cnpj
+        description: Cadastro Nacional da Pessoa Jurídica (CNPJ)
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: dim_pessoa_juridica__cnpj__unique
+              severity: error
+          - not_null:
+              name: dim_pessoa_juridica__cnpj__not_null
+              severity: error
+
+      - name: nome_empresarial
+        description: Razão social da empresa
+        data_type: string
+        quote: true
+
+      - name: nome_fantasia
+        description: Nome fantasia da empresa (se existir)
+        data_type: string
+        quote: true
+
+      - name: capital_social
+        description: Valor do capital social da empresa (em centavos)
+        data_type: integer
+        quote: false
+
+      - name: cnae_fiscal
+        description: Código do CNAE fiscal principal
+        data_type: string
+        quote: true
+
+      - name: cnae_secundarias
+        description: Códigos dos CNAEs secundários (separados por vírgula)
+        data_type: string
+        quote: true
+
+      - name: nire
+        description: Número de Identificação do Registro de Empresas (NIRE)
+        data_type: string
+        quote: true
+
+      - name: tipo_orgao_registro
+        description: Tipo do órgão de registro (Junta Comercial, Cartório, etc)
+        data_type: string
+        quote: true
+
+      - name: porte_empresa
+        description: Porte da empresa (MEI, EPP, etc)
+        data_type: string
+        quote: true
+
+      - name: matriz_filial
+        description: Indica se é matriz ou filial (estrutura aninhada)
+        data_type: record
+        quote: true
+
+      - name: data_inicio_atividade
+        description: Data de início das atividades
+        data_type: date
+        quote: false
+
+      - name: data_situacao_cadastral
+        description: Data da última atualização da situação cadastral
+        data_type: date
+        quote: false
+
+      - name: data_situacao_especial
+        description: Data da situação especial (se aplicável)
+        data_type: date
+        quote: false
+
+      - name: data_inclusao_responsavel
+        description: Data de inclusão do responsável
+        data_type: date
+        quote: false
+
+      - name: situacao_cadastral
+        description: Situação cadastral atual (estrutura aninhada)
+        data_type: record
+        quote: true
+
+      - name: natureza_juridica
+        description: Código da natureza jurídica
+        data_type: string
+        quote: true
+
+      - name: situacao_especial
+        description: Situação especial (se aplicável)
+        data_type: string
+        quote: true
+
+      - name: motivo_situacao
+        description: Motivo da situação cadastral
+        data_type: string
+        quote: true
+
+      - name: id_ente_federativo
+        description: Identificador do ente federativo responsável
+        data_type: string
+        quote: true
+
+      - name: ente_federativo
+        description: Nome do ente federativo responsável
+        data_type: string
+        quote: true
+
+      # Telefones (array de registros)
+      - name: telefone.ddd
+        description: DDD dos telefones da empresa
+        data_type: string[]
+        quote: true
+
+      - name: telefone.telefone
+        description: Números de telefone da empresa
+        data_type: string[]
+        quote: true
+
+      - name: email
+        description: E-mail da empresa
+        data_type: string
+        quote: true
+
+      # Endereço
+      - name: endereco_uf
+        description: UF do endereço da empresa
+        data_type: string
+        quote: true
+
+      - name: endereco_cep
+        description: CEP do endereço da empresa
+        data_type: string
+        quote: true
+
+      - name: endereco_municipio
+        description: Município do endereço da empresa
+        data_type: string
+        quote: true
+
+      - name: endereco_bairro
+        description: Bairro do endereço da empresa
+        data_type: string
+        quote: true
+
+      - name: endereco_tipo_logradouro
+        description: Tipo de logradouro (Rua, Avenida, etc)
+        data_type: string
+        quote: true
+
+      - name: endereco_logradouro
+        description: Nome do logradouro
+        data_type: string
+        quote: true
+
+      - name: endereco_numero
+        description: Número do endereço
+        data_type: string
+        quote: true
+
+      - name: endereco_complemento
+        description: Complemento do endereço
+        data_type: string
+        quote: true
+
+      - name: endereco_nome_cidade_exterior
+        description: Nome da cidade no exterior (se aplicável)
+        data_type: string
+        quote: true
+
+      # Contador PF
+      - name: tipo_crc_contador_pf
+        description: Tipo de CRC do contador pessoa física
+        data_type: string
+        quote: true
+
+      - name: classificacao_crc_contador_pf
+        description: Classificação do CRC do contador pessoa física
+        data_type: string
+        quote: true
+
+      - name: sequencial_crc_contador_pf
+        description: Número sequencial do CRC do contador pessoa física
+        data_type: string
+        quote: true
+
+      - name: contador_pf
+        description: Nome do contador pessoa física
+        data_type: string
+        quote: true
+
+      - name: uf_crc_contador_pf
+        description: UF do CRC do contador pessoa física
+        data_type: string
+        quote: true
+
+      # Contador PJ
+      - name: contador_pj
+        description: Nome do contador pessoa jurídica
+        data_type: string
+        quote: true
+
+      - name: tipo_crc_contador_pj
+        description: Tipo de CRC do contador pessoa jurídica
+        data_type: string
+        quote: true
+
+      - name: classificacao_crc_contador_pj
+        description: Classificação do CRC do contador pessoa jurídica
+        data_type: string
+        quote: true
+
+      - name: uf_crc_contador_pj
+        description: UF do CRC do contador pessoa jurídica
+        data_type: string
+        quote: true
+
+      - name: sequencial_crc_contador_pj
+        description: Número sequencial do CRC do contador pessoa jurídica
+        data_type: string
+        quote: true
+
+      # Responsável
+      - name: responsavel
+        description: Informações do responsável pela empresa (estrutura aninhada)
+        data_type: record
+        quote: true
+
+      - name: qualificacao_responsavel
+        description: Qualificação do responsável
+        data_type: string
+        quote: true
+
+      # Tipos e formas de atuação
+      - name: tipos_unidade
+        description: Tipos de unidade da empresa
+        data_type: string[]
+        quote: true
+
+      - name: formas_atuacao
+        description: Formas de atuação da empresa
+        data_type: string[]
+        quote: true
+
+      - name: numero_socios
+        description: Número total de sócios
+        data_type: integer
+        quote: false
+
+      # Sócios (array de registros)
+      - name: socios.codigo_pais
+        description: Código do país do sócio (para estrangeiros)
+        data_type: string[]
+        quote: true
+
+      - name: socios.cpf_socio
+        description: CPF do sócio (para pessoas físicas)
+        data_type: string[]
+        quote: true
+
+      - name: socios.cnpj_socio
+        description: CNPJ do sócio (para pessoas jurídicas)
+        data_type: string[]
+        quote: true
+
+      - name: socios.cpf_representante_legal
+        description: CPF do representante legal (se aplicável)
+        data_type: string[]
+        quote: true
+
+      - name: socios.data_situacao_especial
+        description: Data da situação especial do sócio
+        data_type: date[]
+        quote: false
+
+      - name: socios.nome_socio_estrangeiro
+        description: Nome do sócio estrangeiro
+        data_type: string[]
+        quote: true
+
+      - name: socios.qualificacao_representante_legal
+        description: Qualificação do representante legal
+        data_type: string[]
+        quote: true
+
+      - name: socios.qualificacao_socio
+        description: Qualificação do sócio
+        data_type: string[]
+        quote: true
+
+      - name: socios.tipo
+        description: Tipo de sócio (pessoa física ou jurídica)
+        data_type: string[]
+        quote: true
+
+      # Sucessões (array de registros)
+      - name: sucessoes.evento_sucedida
+        description: Evento que originou a sucessão
+        data_type: string[]
+        quote: true
+
+      - name: sucessoes.data_evento_sucedida
+        description: Data do evento que originou a sucessão
+        data_type: date[]
+        quote: false
+
+      - name: sucessoes.data_processamento
+        description: Data de processamento da sucessão
+        data_type: date[]
+        quote: false
+
+      - name: sucessoes.sucessoras
+        description: CNPJs das empresas sucessoras
+        data_type: string[]
+        quote: true
+
+      - name: cnpj_particao
+        description: Partição do CNPJ para distribuição de dados
+        data_type: integer
+        quote: false
+        data_tests:
+          - not_null:
+              name: dim_pessoa_juridica__cnpj_particao__not_null
+              severity: error

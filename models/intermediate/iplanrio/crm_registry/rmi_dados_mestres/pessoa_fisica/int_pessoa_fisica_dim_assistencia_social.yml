@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_pessoa_fisica_dim_assistencia_social
+    description: Consolida dados de assistência social de pessoas físicas do SMAS
+    config:
+      materialized: ephemeral
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        data_tests:
+          - unique:
+              name: int_pessoa_fisica_dim_assistencia_social__cpf__unique
+              severity: error
+          - not_null:
+              name: int_pessoa_fisica_dim_assistencia_social__cpf__not_null
+              severity: error
+      - name: assistencia_social
+        description: Estrutura completa com dados de assistência social
+        data_type: record
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_assistencia_social__assistencia_social__not_null
+              severity: error

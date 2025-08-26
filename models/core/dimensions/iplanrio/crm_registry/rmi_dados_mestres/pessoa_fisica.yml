@@ -1,0 +1,398 @@
+version: 2
+
+models:
+  - name: pessoa_fisica
+    description: Modelo contendo informações de pessoas físicas com dados cadastrais dentro da Prefeitura
+    config:
+      alias: pessoa_fisica
+      schema: crm_dados_mestres
+      materialized: table
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: dim_pessoa_fisica__cpf__unique
+              severity: error
+          - not_null:
+              name: dim_pessoa_fisica__cpf__not_null
+              severity: error
+      - name: nome
+        description: Nome completo da pessoa física
+        data_type: string
+        quote: true
+      - name: nome_social
+        description: Nome social do indivíduo, se houver
+        data_type: string
+        quote: true
+      - name: sexo
+        description: Sexo do indivíduo ('masculino', 'feminino', 'não informado')
+        data_type: string
+        quote: true
+      - name: nascimento
+        description: Estrutura com informações de nascimento do indivíduo
+        data_type: record
+        quote: true
+      - name: nascimento.data
+        description: Data de nascimento do indivíduo
+        data_type: date
+        quote: false
+      - name: nascimento.municipio_id
+        description: Identificador do município de nascimento
+        data_type: string
+        quote: true
+      - name: nascimento.municipio
+        description: Município de nascimento
+        data_type: string
+        quote: true
+      - name: nascimento.uf
+        description: UF de nascimento
+        data_type: string
+        quote: true
+      - name: nascimento.pais_id
+        description: Identificador do país de nascimento
+        data_type: string
+        quote: true
+      - name: nascimento.pais
+        description: País de nascimento
+        data_type: string
+        quote: true
+      - name: mae
+        description: Estrutura com informações da mãe do indivíduo
+        data_type: record
+        quote: true
+      - name: mae.nome
+        description: Nome da mãe do indivíduo
+        data_type: string
+        quote: true
+      - name: mae.cpf
+        description: CPF da mãe do indivíduo (se disponível)
+        data_type: string
+        quote: true
+      - name: menor_idade
+        description: Indica se o indivíduo é menor de 18 anos
+        data_type: boolean
+        quote: false
+      - name: raca
+        description: Raça/etnia da pessoa física
+        data_type: string
+        quote: true
+      - name: obito
+        description: Estrutura com informações de óbito do indivíduo
+        data_type: record
+        quote: true
+      - name: obito.indicador
+        description: Indicador se o indivíduo está falecido
+        data_type: boolean
+        quote: false
+      - name: obito.ano
+        description: Ano do óbito do indivíduo
+        data_type: integer
+        quote: false
+      - name: documentos
+        description: Estrutura com documentos de identificação do indivíduo
+        data_type: record
+        quote: true
+      - name: documentos.cns
+        description: Cartão Nacional de Saúde (CNS) do indivíduo
+        data_type: string[]
+        quote: true
+      - name: endereco
+        description: Estrutura com informações de endereço do indivíduo
+        data_type: record
+        quote: true
+      - name: endereco.indicador
+        description: Indicador se há endereço cadastrado
+        data_type: boolean
+        quote: false
+      - name: endereco.principal
+        description: Endereço principal do indivíduo (struct com origem, sistema, cep, estado, municipio, tipo_logradouro, logradouro, numero, complemento, bairro)
+        data_type: record
+        quote: true
+      - name: endereco.principal.origem
+        description: Endereço principal do indivíduo
+        data_type: string
+        quote: true
+      - name: endereco.principal.sistema
+        description: Sistema que cadastrou o endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.cep
+        description: CEP do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.estado
+        description: Estado do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.municipio
+        description: Município do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.tipo_logradouro
+        description: Tipo de logradouro do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.logradouro
+        description: Logradouro do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.numero
+        description: Número do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.complemento
+        description: Complemento do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.bairro
+        description: Bairro do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.latitude
+        description: Latitude do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.longitude
+        description: Longitude do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.principal.pluscode
+        description: Google pluscode do endereço principal
+        data_type: string
+        quote: true
+      - name: endereco.alternativo
+        description: Lista de endereços alternativos do indivíduo (structs com origem, sistema, cep, estado, municipio, tipo_logradouro, logradouro, numero, complemento, bairro)
+        data_type: record[]
+        quote: true
+      - name: endereco.alternativo.origem
+        description: Órgão que cadastrou o endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.sistema
+        description: Sistema que cadastrou o endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.cep
+        description: CEP do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.estado
+        description: Estado do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.municipio
+        description: Município do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.tipo_logradouro
+        description: Tipo de logradouro do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.logradouro
+        description: Logradouro do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.numero
+        description: Número do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.complemento
+        description: Complemento do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.bairro
+        description: Bairro do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.latitude
+        description: Latitude do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.longitude
+        description: Longitude do endereço alternativo
+        data_type: string
+        quote: true
+      - name: endereco.alternativo.pluscode
+        description: Google pluscode do endereço alternativo
+        data_type: string
+        quote: true
+      - name: email
+        description: Estrutura com informações de e-mail do indivíduo
+        data_type: record
+        quote: true
+      - name: email.indicador
+        description: Indicador se há e-mail cadastrado
+        data_type: boolean
+        quote: false
+      - name: email.principal
+        description: E-mail principal do indivíduo (struct com origem, sistema, valor)
+        data_type: record
+        quote: true
+      - name: email.principal.origem
+        description: Órgão que cadastrou o e-mail principal
+        data_type: string
+        quote: true
+      - name: email.principal.sistema
+        description: Sistema que cadastrou o e-mail principal
+        data_type: string
+        quote: true
+      - name: email.principal.valor
+        description: Valor do e-mail principal
+        data_type: string
+        quote: true
+      - name: email.alternativo
+        description: Lista de e-mails alternativos do indivíduo (structs com origem, sistema, valor)
+        data_type: record[]
+        quote: true
+      - name: email.alternativo.origem
+        description: Órgão que cadastrou o e-mail alternativo
+        data_type: string
+        quote: true
+      - name: email.alternativo.sistema
+        description: Sistema que cadastrou o e-mail alternativo
+        data_type: string
+        quote: true
+      - name: email.alternativo.valor
+        description: Valor do e-mail alternativo
+        data_type: string
+        quote: true
+      - name: telefone
+        description: Estrutura com informações de telefone do indivíduo
+        data_type: record
+        quote: true
+      - name: telefone.indicador
+        description: Indicador se há telefone cadastrado
+        data_type: boolean
+        quote: false
+      - name: telefone.principal
+        description: Telefone principal do indivíduo (struct com origem, sistema, ddi, ddd, valor)
+        data_type: record
+        quote: true
+      - name: telefone.principal.origem
+        description: Órgão que cadastrou o telefone principal
+        data_type: string
+        quote: true
+      - name: telefone.principal.sistema
+        description: Sistema que cadastrou o telefone principal
+        data_type: string
+        quote: true
+      - name: telefone.principal.ddi
+        description: Código DDI do telefone principal
+        data_type: string
+        quote: true
+      - name: telefone.principal.ddd
+        description: Código DDD do telefone principal
+        data_type: string
+        quote: true
+      - name: telefone.principal.valor
+        description: Número do telefone principal
+        data_type: string
+        quote: true
+      - name: telefone.alternativo
+        description: Lista de telefones alternativos do indivíduo (structs com origem, sistema, ddi, ddd, valor)
+        data_type: record[]
+        quote: true
+      - name: telefone.alternativo.origem
+        description: Órgão que cadastrou o telefone alternativo
+        data_type: string
+        quote: true
+      - name: telefone.alternativo.sistema
+        description: Sistema que cadastrou o telefone alternativo
+        data_type: string
+        quote: true
+      - name: telefone.alternativo.ddi
+        description: Código DDI do telefone alternativo
+        data_type: string
+        quote: true
+      - name: telefone.alternativo.ddd
+        description: Código DDD do telefone alternativo
+        data_type: string
+        quote: true
+      - name: telefone.alternativo.valor
+        description: Número do telefone alternativo
+        data_type: string
+        quote: true
+      - name: saude
+        description: Estrutura com informações de saúde do indivíduo
+        data_type: record
+        quote: true
+      - name: saude.clinica_familia
+        description: Estrutura com informações da clínica da família vinculada
+        data_type: record
+        quote: true
+      - name: saude.clinica_familia.indicador
+        description: Indicador se está vinculado a uma clínica da família
+        data_type: boolean
+        quote: false
+      - name: saude.clinica_familia.id_cnes
+        description: Identificador CNES da clínica da família
+        data_type: string
+        quote: true
+      - name: saude.clinica_familia.nome
+        description: Nome da clínica da família
+        data_type: string
+        quote: true
+      - name: saude.clinica_familia.telefone
+        description: Telefone da clínica da família
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia
+        description: Estrutura com informações da equipe de saúde da família vinculada
+        data_type: record
+        quote: true
+      - name: saude.equipe_saude_familia.indicador
+        description: Indicador se está vinculado a uma equipe de saúde da família
+        data_type: boolean
+        quote: false
+      - name: saude.equipe_saude_familia.id_ine
+        description: Identificador INE da equipe de saúde da família
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia.nome
+        description: Nome da equipe de saúde da família
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia.telefone
+        description: Telefone da equipe de saúde da família
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia.medicos
+        description: Lista de médicos da equipe de saúde da família
+        data_type: record[]
+        quote: true
+      - name: saude.equipe_saude_familia.medicos.id_profissional_sus
+        description: Identificador do profissional SUS
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia.medicos.nome
+        description: Nome do médico
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia.enfermeiros
+        description: Lista de enfermeiros da equipe de saúde da família
+        data_type: record[]
+        quote: true
+      - name: saude.equipe_saude_familia.enfermeiros.id_profissional_sus
+        description: Identificador do profissional SUS
+        data_type: string
+        quote: true
+      - name: saude.equipe_saude_familia.enfermeiros.nome
+        description: Nome do enfermeiro
+        data_type: string
+        quote: true
+      - name: datalake
+        description: Estrutura com metadados do data lake
+        data_type: record
+        quote: true
+      - name: datalake.last_updated
+        description: Timestamp da última atualização do registro no data lake
+        data_type: timestamp
+        quote: false
+      - name: cpf_particao
+        description: Partição do CPF para distribuição de dados
+        data_type: integer
+        quote: false
+

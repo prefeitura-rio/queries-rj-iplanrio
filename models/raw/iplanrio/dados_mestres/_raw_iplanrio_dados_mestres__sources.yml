@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: rj-crm-registy-intermediario-dados-mestres-staging
+    database: rj-crm-registry
+    schema: intermediario_dados_mestres_staging
+    tables:
+    - name: enderecos_geolocalizados
+  
+  - name: dados_mestres
+    database: rj-escritorio-dev
+    schema: dados_mestres
+    tables:
+    - name: bairro
+      description: "Bairros do Rio de Janeiro com informações administrativas e geográficas"
+    - name: subprefeitura
+      description: "Subprefeituras para descentralização administrativa"
+    - name: cres
+      description: "Coordenadorias Regionais de Educação"
+    - name: aeis
+      description: "Áreas de Especial Interesse Social"

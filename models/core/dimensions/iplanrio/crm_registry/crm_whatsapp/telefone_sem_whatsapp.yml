@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: telefone_sem_whatsapp
+    description: "Modelo que identifica telefones que não possuem WhatsApp, com base em falhas de entrega de mensagens."
+    columns:
+      - name: contato_telefone
+        description: "Número de telefone que não possui WhatsApp."
+      - name: data_atualizacao
+        description: "Data da última atualização/verificação do status do telefone."

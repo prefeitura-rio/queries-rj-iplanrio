@@ -1,0 +1,117 @@
+version: 2
+
+models:
+  - name: int_divisoes_subprefeituras
+    description: |
+      Subprefeituras transformadas em divisões administrativas independentes.
+      Divisões regionais para gestão de serviços públicos locais.
+      Fonte: dados_mestres.subprefeitura
+
+    columns:
+      - name: id_divisao
+        description: "Identificador único da subprefeitura (formato: subpref_{nome_normalizado})"
+        tests:
+          - unique:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__id_divisao__unique
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__id_divisao__not_null
+
+      - name: tipo_divisao
+        description: Tipo da divisão (sempre 'SUBPREFEITURA')
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__tipo_divisao__accepted_values
+              values: ['SUBPREFEITURA']
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__tipo_divisao__not_null
+
+      - name: codigo_original
+        description: Nome original da subprefeitura na fonte
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__codigo_original__not_null
+
+      - name: nome
+        description: Nome da subprefeitura
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__nome__not_null
+
+      - name: nome_abreviado
+        description: Nome abreviado da subprefeitura (null)
+
+      - name: orgao_responsavel
+        description: Órgão responsável (sempre 'SUBGAB' - Subgabinete)
+        tests:
+          - accepted_values:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__orgao_responsavel__accepted_values
+              values: ['SUBGAB']
+
+      - name: competencias
+        description: Lista de competências da subprefeitura (administração regional, serviços públicos locais)
+
+      - name: data_criacao
+        description: Data de criação da subprefeitura (null)
+
+      - name: legislacao_base
+        description: Legislação que institui a subprefeitura (null)
+
+      - name: area_m2
+        description: Área da subprefeitura em metros quadrados
+
+      - name: perimetro_m
+        description: Perímetro da subprefeitura em metros
+
+      - name: centroide_latitude
+        description: Latitude do centroide da subprefeitura
+
+      - name: centroide_longitude
+        description: Longitude do centroide da subprefeitura
+
+      - name: geometry
+        description: Geometria da subprefeitura (GEOGRAPHY)
+
+      - name: geometry_wkt
+        description: Geometria em formato WKT
+
+      - name: densidade_populacional
+        description: Densidade populacional (null)
+
+      - name: uso_solo_predominante
+        description: Uso do solo predominante (null)
+
+      - name: restricoes_urbanisticas
+        description: Restrições urbanísticas (array vazio)
+
+      - name: instrumentos_urbanisticos
+        description: Instrumentos urbanísticos (array vazio)
+
+      - name: atributos_especificos
+        description: Atributos específicos da subprefeitura em formato JSON
+
+      - name: metadados_fonte
+        description: Metadados da fonte original em formato JSON
+
+      - name: ativo
+        description: Indicador se a divisão está ativa (sempre true)
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__ativo__not_null
+
+      - name: data_atualizacao
+        description: Data da última atualização
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__data_atualizacao__not_null
+
+      - name: fonte_dados
+        description: Fonte original dos dados
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__fonte_dados__not_null
+
+      - name: versao_schema
+        description: Versão do schema utilizada
+        tests:
+          - not_null:
+              name: intermediate_rmi_dados_mestre_int_divisoes_subprefeituras__versao_schema__not_null

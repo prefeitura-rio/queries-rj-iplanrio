@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: int_pessoa_fisica_dim_saude
+    description: Consolida dados de saúde de pessoas físicas do SMS
+    config:
+      materialized: ephemeral
+    columns:
+      - name: cpf
+        description: Cadastro de Pessoa Física (CPF) do indivíduo
+        data_type: string
+        data_tests:
+          - unique:
+              name: int_pessoa_fisica_dim_saude__cpf__unique
+              severity: error
+          - not_null:
+              name: int_pessoa_fisica_dim_saude__cpf__not_null
+              severity: error
+      - name: saude
+        description: Estrutura completa com dados de saúde (clínica família, equipe saúde família)
+        data_type: record
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_saude__saude__not_null
+              severity: error
+      - name: cpf_particao
+        description: Partição do CPF para distribuição de dados
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: int_pessoa_fisica_dim_saude__cpf_particao__not_null
+              severity: error

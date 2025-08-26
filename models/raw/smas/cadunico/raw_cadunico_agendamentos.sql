@@ -24,7 +24,7 @@ with source_data as (
         current_timestamp() as processed_at,
         DATE(data_hora) as data_particao
     from {{ source('brutos_data_metrica', 'agendamentos_cadunico') }}
-    where data_hora is not null
+    where data_hora is not null and cpf is not null and id is not null
 )
 
 select * from source_data
