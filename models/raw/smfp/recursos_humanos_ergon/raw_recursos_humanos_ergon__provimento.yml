@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__provimento
     description: "**Descrição**: Eventos relacionados aos vínculos funcionais tanto com a administração direta como indireta da prefeitura do Rio de Janeiro. \r\nUm provimento pode ser uma progressão, mudança de lotação, mudança de vencimento (referência) etc. Um provimento é um evento na situação funcional do vínculo.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
-    config:
-      alias: raw_recursos_humanos_ergon__provimento
     columns:
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa.

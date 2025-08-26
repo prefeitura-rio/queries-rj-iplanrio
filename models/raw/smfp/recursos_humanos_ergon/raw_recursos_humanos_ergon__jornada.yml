@@ -4,7 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__jornada
     description: "**Descrição**: Tipos de jornadas existentes tanto na administração direta como indireta da prefeitura do Rio de Janeiro. Jornada é a carga horária semanal.\n**Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
-      alias: raw_recursos_humanos_ergon__jornada      
       materialized: view
     columns:
       - name: sigla

@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__funcionario
     description: "**Descrição**: Pessoas físicas que precisam ter suas informações guardadas pela prefeitura para algum controle, como controle de pagamento, de frequência ou de lotação. Em geral são pessoas que entram ou entraram em alguma folha de pagamento da prefeitura do Rio de Janeiro, sendo funcionário ou não, prestando serviço ou não (ex. pensionista previdenciário).\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
-    config:
-      alias: raw_recursos_humanos_ergon__funcionario
     columns:
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa. A pessoa tem um vínculo caso receba algum pagamento da prefeitura.

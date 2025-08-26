@@ -4,7 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__frequencia
     description: "**Descrição**: Tabela que armazena as ocorrências de frequência do servidor municipal.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
     config:
-      alias: raw_recursos_humanos_ergon__frequencia
       materialized: view
     columns:
       - name: id_funcionario

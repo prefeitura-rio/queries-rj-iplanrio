@@ -4,7 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__horario_trabalho
     description: "**Descrição**: Horários possíveis para funcionários da administração direta da prefeitura do Rio de Janeiro (ainda não tem dados disponibilizados) (esperado colocação também da administração indireta).\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
-      alias: raw_recursos_humanos_ergon__horario_trabalho      
       materialized: view
     columns:
       - name: id_horario

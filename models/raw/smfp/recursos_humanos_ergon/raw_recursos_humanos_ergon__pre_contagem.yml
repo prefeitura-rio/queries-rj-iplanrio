@@ -4,7 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__pre_contagem
     description: "**Descrição**: A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
     config:
-      alias: raw_recursos_humanos_ergon__pre_contagem      
       materialized: view
     columns:
       - name: finalidade

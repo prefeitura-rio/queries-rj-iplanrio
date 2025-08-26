@@ -4,7 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__rubrica
     description: "**Descrição**: Tabela que armazena informações sobre rubricas de pagamento.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
     config:
-      alias: raw_recursos_humanos_ergon__rubrica      
       materialized: view
     columns:
       - name: id_rubrica
