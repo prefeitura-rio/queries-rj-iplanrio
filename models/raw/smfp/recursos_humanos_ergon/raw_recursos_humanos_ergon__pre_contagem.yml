@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__pre_contagem
     description: "**Descrição**: A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
-    config:
-      materialized: view
     columns:
       - name: finalidade
         description: "Tipo da finalidade que motivou o cadastro da pré-contagem. \r\nEx.: \"Aposentadoria\", \"Progressão\"."
