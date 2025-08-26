@@ -4,8 +4,6 @@ models:
   - name: raw_recursos_humanos_ergon__regime_juridico
     description: "**Descrição**: Tipos de regimes jurídicos existentes entre os vínculos de funcionários e a administração direta ou indireta da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
-      alias: raw_recursos_humanos_ergon__regime_juridico
-      schema: raw
       materialized: view
     columns:
       - name: sigla
