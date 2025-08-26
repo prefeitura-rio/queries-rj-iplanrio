@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__licenca_afastamento
     description: "**Descrição**: Tabela contendo o início e fim dos afastamentos, seu motivo e o tipo de afastamento.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
-    config:
-      materialized: view
     columns:
       - name: id_funcionario
         description: Não informado

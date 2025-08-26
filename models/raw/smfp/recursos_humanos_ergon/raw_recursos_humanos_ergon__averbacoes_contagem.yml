@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__averbacoes_contagem
     description: "**Descrição**: Nesta tabela são armazenadas informações referentes sobre finalidade de contagem e total do tempo de contagem referentes a períodos averbados pelos servidores.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
-    config:
-      materialized: view
     columns:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
