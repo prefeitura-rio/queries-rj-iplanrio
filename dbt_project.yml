@@ -75,7 +75,7 @@ models:
         +project: rj-smfp
         recursos_humanos_ergon:
           +materialized: table
-          +schema: brutos_recursos_humanos_ergon
+          +schema: recursos_humanos_ergon
           +tags: "daily"
         sigma:
           +materialized: table
