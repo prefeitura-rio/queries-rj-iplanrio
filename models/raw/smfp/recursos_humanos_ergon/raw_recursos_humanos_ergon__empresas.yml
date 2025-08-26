@@ -3,9 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__empresas
     description: "**Descrição**: Empresas da administração direta ou indireta da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
-    config:
-      alias: raw_recursos_humanos_ergon__empresas
-      schema: raw
     columns:
       - name: id_empresa
         description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
