@@ -5,7 +5,6 @@ models:
     description: "**Descrição**: Fitas enviadas para o tesouro municipal contendo informações sobre pagamentos a serem feitos a funcionários tanto pela administração direta quanto indireta.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
       alias: raw_recursos_humanos_ergon__fita_banco
-      schema: raw
       materialized: view
     columns:
       - name: id_lancamento

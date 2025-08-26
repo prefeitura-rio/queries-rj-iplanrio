@@ -5,7 +5,6 @@ models:
     description: "**Descrição**: Nesta tabela são armazenadas informações referentes sobre finalidade de contagem e total do tempo de contagem referentes a períodos averbados pelos servidores.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
     config:
       alias: raw_recursos_humanos_ergon__averbacoes_contagem
-      schema: raw
       materialized: view
     columns:
       - name: id_funcionario

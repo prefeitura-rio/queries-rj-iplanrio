@@ -5,7 +5,6 @@ models:
     description: "**Descrição**: Vínculos de pagamento ( em geral empregatícios ), tanto antigos como atuais, da administração direta e indireta da prefeitura do Rio de Janeiro. Um vínculo, em geral, está associado a uma matrícula. Uma pessoa pode ter vários vínculos com a prefeitura.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
       alias: raw_recursos_humanos_ergon__vinculo
-      schema: raw
     columns:
       - name: id_vinculo
         description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa que é professora, e funcionária do IPLANRIO, tem dois vínculos.

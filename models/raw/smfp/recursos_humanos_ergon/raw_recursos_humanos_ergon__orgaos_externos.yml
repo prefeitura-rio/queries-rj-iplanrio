@@ -4,8 +4,7 @@ models:
   - name: raw_recursos_humanos_ergon__orgaos_externos
     description: "**Descrição**: Órgãos de outros entes federativos que não da prefeitura do Rio de Janeiro mas que são de interesse da prefeitura do Rio de Janeiro.\r\nUsada, geralmente, para documentar a origem de servidores cedidos à prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     config:
-      alias: raw_recursos_humanos_ergon__orgaos_externos
-      schema: raw
+      alias: raw_recursos_humanos_ergon__orgaos_externos      
       materialized: view
     columns:
       - name: nome

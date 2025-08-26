@@ -5,7 +5,6 @@ models:
     description: "**Descrição**: Frequência de servidores da Prefeitura da Cidade do Rio de Janeiro cadastrada em sistemas de recursos humanos antigos.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
     config:
       alias: raw_recursos_humanos_ergon__frequencia_antigo
-      schema: raw
       materialized: view
     columns:
       - name: id_matricula_vinculo

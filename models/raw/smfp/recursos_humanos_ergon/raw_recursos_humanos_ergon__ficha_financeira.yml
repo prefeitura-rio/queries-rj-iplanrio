@@ -5,7 +5,6 @@ models:
     description: "**Descrição**: Valores de rubricas de fichas financeiras dos funcionários da COMLURB. Constam fichas desde o início do ERGON COMLURB. Uma ficha financeira é um resumo do contracheque do servidor.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: nao.informado@gmail.com\n"
     config:
       alias: raw_recursos_humanos_ergon__ficha_financeira
-      schema: raw
       materialized: view
     columns:
       - name: data_folha
