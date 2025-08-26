@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon__tipo_tempo
     description: "**Descrição**: Esta tabela armazena os tipos de tempo utilizados para contagem de benefícios categorizados como finalidades. Nesta tabela se encontram os nomes dos tipos de tempo.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
-    config:
-      materialized: view
     columns:
       - name: id_tipo_tempo
         description: Coluna que armazena o código numérico referente ao tipo de tempo.
