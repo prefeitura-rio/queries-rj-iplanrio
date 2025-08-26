@@ -22,6 +22,7 @@ select
         when false then "Não Emitido"
         else null
     end as descricao_darm_emitido,
+    safe_cast(lc_calculo as string) as lei_contrapartida,
     safe_cast(valor as numeric) as valor,
     safe_cast(data_emissao as date) as data_emissao,
     safe_cast(data_vencimento as date) as data_vencimento,
