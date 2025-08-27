@@ -1,6 +1,6 @@
 {{
     config(
-        alias='ergon_rubrica',
+        alias='rubrica_ergon',
     )
 }}
 
