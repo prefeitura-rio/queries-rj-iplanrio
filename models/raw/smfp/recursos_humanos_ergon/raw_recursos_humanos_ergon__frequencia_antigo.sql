@@ -5,7 +5,7 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(TRIM(m9), r'\.0$', '') AS STRING) AS id_matricula_vinculo,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(sf_ocorrencia), r'\.0$', '') AS STRING) AS id_frequencia,
-    SAFE_CAST(TRIM(sf_dt_oc_y2) AS STRING) AS data_frequencia,
-FROM {{ source('recursos_humanos_ergon', 'frequencia_antigo') }} AS t
+    SAFE_CAST(M9 AS STRING) AS id_matricula_vinculo,
+    SAFE_CAST(SF_OCORRENCIA AS STRING) AS id_frequencia,
+    SAFE_CAST(SF_DT_OC_Y2 AS STRING) AS data_frequencia,
+FROM {{ source('brutos_ergon_staging', 'VW_SIMPA_SIRHU_FREQUENCIA_GBP') }} AS t

@@ -1,84 +1,73 @@
 version: 2
 
 sources:
-  - name: recursos_humanos_ergon
-    description: "Dados de recursos humanos do sistema ERGON da Prefeitura do Rio de Janeiro"
-    database: rj-smfp
-    schema: recursos_humanos_ergon_staging
-    tables:
-      - name: afastamento_antigo
-        description: "Tabela de afastamentos antigos dos servidores"
-      - name: afastamento_antigo_nomes
-        description: "Nomes dos tipos de afastamentos antigos"
-      - name: averbacoes
-        description: "Tabela de averbações de tempo de serviço"
-      - name: averbacoes_contagem
-        description: "Contagem de averbações por finalidade"
-      - name: cargo
-        description: "Tipos de cargos existentes na administração"
-      - name: categoria
-        description: "Categorias existentes na administração"
-      - name: ficha_financeira
-        description: "Fichas financeiras dos funcionários da COMLURB"
-      - name: ficha_financeira_contabil
-        description: "Fichas financeiras contábeis dos funcionários"
-      - name: fita_banco
-        description: "Fitas enviadas para o tesouro municipal"
-      - name: forma_provimento
-        description: "Formas de provimentos possíveis"
-      - name: frequencia
-        description: "Ocorrências de frequência do servidor municipal"
-      - name: frequencia_antigo
-        description: "Frequência de servidores em sistemas antigos"
-      - name: funcionario
-        description: "Pessoas físicas cadastradas no sistema"
-      - name: horario_trabalho
-        description: "Horários possíveis para funcionários"
-      - name: jornada
-        description: "Tipos de jornadas existentes"
-      - name: licenca_afastamento
-        description: "Licenças e afastamentos dos servidores"
-      - name: matricula
-        description: "Matrículas dos funcionários"
-      - name: orgaos_externos
-        description: "Órgãos de outros entes federativos"
-      - name: orgaos_regime_juridico
-        description: "Regimes jurídicos aceitos para contratação"
-      - name: pre_contagem
-        description: "Contagens anteriores ao sistema"
-      - name: provimento
-        description: "Eventos relacionados aos vínculos funcionais"
-      - name: regime_juridico
-        description: "Tipos de regimes jurídicos existentes"
-      - name: rubrica
-        description: "Rubricas de pagamento"
-      - name: setor
-        description: "Setores existentes na administração"
-      - name: tipo_orgao
-        description: "Tipos de órgãos da administração"
-      - name: tipo_tempo
-        description: "Tipos de tempo para contagem de benefícios"
-      - name: tipo_vinculo
-        description: "Tipos de vínculos existentes"
-      - name: total_contagem
-        description: "Resultado das contagens de tempo para benefícios"
-      - name: vantagens
-        description: "Vantagens e atributos dos servidores"
-      - name: vinculo
-        description: "Vínculos de pagamento dos funcionários"
-      - name: vinculo_pagamento
-        description: "Vínculos de pagamento (visão alternativa)"
-
   - name: brutos_ergon_staging
-    database: rj-smfp
+    description: "Dados de recursos humanos do sistema ERGON da Prefeitura do Rio de Janeiro"
+    database: rj-iplanrio
     schema: brutos_ergon_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: _airbyte_extracted_at
     tables:
+      - name: VW_SIMPA_SIRHU_AFASTAMENTO_GBP
+        description: "Tabela de afastamentos antigos dos servidores"
+      - name: SIRHU_DBTABELAS_AFASTAMENTO
+        description: "Nomes dos tipos de afastamentos antigos"
+      - name: AVERBACOES_CONTA
+        description: "Tabela de averbações de tempo de serviço"
+      - name: AVERB_OQUE_CONTA
+        description: "Contagem de averbações por finalidade"
       - name: VW_DLK_ERG_CARGOS_
-      - name: VW_DLK_ERG_EMPRESAS
+        description: "Tipos de cargos existentes na administração"
+      - name: VW_DLK_ERG_CATEGORIAS_
+        description: "Categorias existentes na administração"
+      - name: FICHAS_FINANCEIRAS
+        description: "Fichas financeiras dos funcionários da COMLURB"
+      - name: IPL_PT_FICHAS
+        description: "Fichas financeiras contábeis dos funcionários"
+      - name: VW_DLK_ERG_FITA_BANCO
+        description: "Fitas enviadas para o tesouro municipal"
+      - name: VW_DLK_ERG_FORMAS_PROV_
+        description: "Formas de provimentos possíveis"
+      - name: FREQUENCIAS
+        description: "Ocorrências de frequência do servidor municipal"
+      - name: VW_SIMPA_SIRHU_FREQUENCIA_GBP
+        description: "Frequência de servidores em sistemas antigos"
       - name: VW_DLK_ERG_FUNCIONARIOS
+        description: "Pessoas físicas cadastradas no sistema"
+      - name: VW_DLK_ERG_HORARIO_TRAB_
+        description: "Horários possíveis para funcionários"
+      - name: VW_DLK_ERG_JORNADAS_
+        description: "Tipos de jornadas existentes"
+      - name: LIC_AFAST
+        description: "Licenças e afastamentos dos servidores"
+      - name: VW_DLK_ERG_ERG_MATRICULAS
+        description: "Matrículas dos funcionários"
+      - name: VW_DLK_ERG_ORGAOS_EXTERNOS
+        description: "Órgãos de outros entes federativos"
+      - name: VW_DLK_ERG_ORGAOS_REGIMES_JUR_
+        description: "Regimes jurídicos aceitos para contratação"
+      - name: PRE_CONTA
+        description: "Contagens anteriores ao sistema"
       - name: VW_DLK_ERG_PROVIMENTOS_EV
+        description: "Eventos relacionados aos vínculos funcionais"
+      - name: VW_DLK_ERG_REGIMES_JUR_
+        description: "Tipos de regimes jurídicos existentes"
+      - name: RUBRICAS
+        description: "Rubricas de pagamento"
       - name: VW_DLK_ERG_HSETOR_
+        description: "Setores existentes na administração"
+      - name: VW_DLK_ERG_TIPO_ORGAO
+        description: "Tipos de órgãos da administração"
+      - name: TIPO_TEMPO
+        description: "Tipos de tempo para contagem de benefícios"
+      - name: VW_DLK_ERG_TIPO_VINC_
+        description: "Tipos de vínculos existentes"
+      - name: TOTAL_CONTA
+        description: "Resultado das contagens de tempo para benefícios"
+      - name: VANTAGENS
+        description: "Vantagens e atributos dos servidores"
       - name: VW_DLK_ERG_VINCULOS
+        description: "Vínculos de pagamento dos funcionários"
+      - name: VW_DLK_ERG_EMPRESAS
+        description: "Empresas da administração direta ou indireta"
