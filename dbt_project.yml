@@ -35,7 +35,7 @@ models:
       sme:
         frequencia:
           +materialized: table
-          +schema: frequencia
+          +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
       smfp:

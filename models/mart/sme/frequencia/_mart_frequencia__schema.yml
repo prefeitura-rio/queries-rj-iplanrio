@@ -4,7 +4,6 @@ models :
   - name: mart_frequencia__vw_alunos_aulas
     description: "**Descrição**: Totaliza aulas/tempos que o aluno participou e faltas"
     config:
-      schema: marts
       materialized: table
     columns:
       - name: id_aluno
@@ -45,7 +44,6 @@ models :
   - name: mart_frequencia__vw_alunos_frequencia_acumulada
     description: "**Descrição**: Calcula o indicador de frequência acumulada por aluno a partir do início do ano letivo até a data atual, considerando o período de matrícula do aluno na(s) turma(s). Modelo altamente custoso, proporcional à abrangência do filtro aplicado."
     config:
-      schema: marts
       materialized: table
     columns:
       - name: id_aluno
@@ -63,7 +61,6 @@ models :
   - name: mart_frequencia__frq_frequencia
     description: "**Descrição**: Frequencia diária dos alunos no ano letivo corrente\n**Frequência de atualização**: Diariamente / À noite\n**Cobertura temporal**: Ano Corrente\n**Órgão gestor dos dados**: Secretaria Municipal de Educação\n"
     config:
-      schema: marts
       materialized: table
     columns:
     - name: updated_at
@@ -132,12 +129,10 @@ models :
   - name: mart_frequencia__carga_aluno_frequencia
     description: "**Descrição**: Carga horária e frequência dos alunos por disciplina\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Ano corrente\n**Órgão gestor dos dados**: Secretaria Municipal de Educação\n"
     config:
-      schema: marts
       materialized: table
 
   - name: mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos
     description: "**Descrição**: Calcula o indicador de frequência acumulada por aluno considerando apenas os dias letivos, a partir do início do ano letivo até a data atual, considerando o período de matrícula do aluno na(s) turma(s)."
     config:
-      schema: marts
       materialized: table
   
