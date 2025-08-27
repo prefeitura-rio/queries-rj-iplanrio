@@ -1,6 +1,6 @@
 {{
     config(
-        alias='movimentacao',
+        alias='movimentacao_escolar',
         schema='educacao_basica',
         partition_by={
             "field": "data_particao",
