@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias='frequencia',
+        alias='frequencia_ergon',
     )
 }}
 
