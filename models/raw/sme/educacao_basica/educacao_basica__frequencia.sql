@@ -1,6 +1,6 @@
 {{
     config(
-        alias='frequencia',
+        alias='frequencia_escolar',
         schema='educacao_basica',
         partition_by={
             "field": "data_particao",
