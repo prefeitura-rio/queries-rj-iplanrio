@@ -5,9 +5,9 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(TRIM(numfunc), r'\.0$', '') AS STRING) AS id_funcionario,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(numvinc), r'\.0$', '') AS STRING) AS id_vinculo,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(chaveaverb), r'\.0$', '') AS STRING) AS id_averbacao,
-    SAFE_CAST(TRIM(finalidade) AS STRING) AS finalidade,
-    SAFE_CAST(TRIM(dias) AS STRING) AS dias,
-FROM {{ source('recursos_humanos_ergon', 'averbacoes_contagem') }} AS t
+    SAFE_CAST(NUMFUNC AS STRING) AS id_funcionario,
+    SAFE_CAST(NUMVINC AS STRING) AS id_vinculo,
+    SAFE_CAST(CHAVEAVERB AS STRING) AS id_averbacao,
+    SAFE_CAST(FINALIDADE AS STRING) AS finalidade,
+    SAFE_CAST(DIAS AS STRING) AS dias,
+FROM {{ source('brutos_ergon_staging', 'AVERB_OQUE_CONTA') }} AS t

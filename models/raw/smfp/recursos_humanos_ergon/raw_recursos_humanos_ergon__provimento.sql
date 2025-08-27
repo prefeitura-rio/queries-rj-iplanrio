@@ -1,7 +1,7 @@
 {{
     config(
         alias='provimento',
-        schema='recursos_humanos_ergon'
+        schema='brutos_ergon_staging'
     )
 }}
 

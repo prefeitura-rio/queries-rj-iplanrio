@@ -5,6 +5,6 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(numfunc, r'\.0$', '') AS STRING) AS id_funcionario,
-    SAFE_CAST(REGEXP_REPLACE(matric, r'\.0$', '') AS STRING) AS id_matricula,
-FROM {{ source('recursos_humanos_ergon', 'matricula') }} AS t
+    SAFE_CAST(NUMFUNC AS STRING) AS id_funcionario,
+    SAFE_CAST(MATRIC AS STRING) AS id_matricula,
+FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_ERG_MATRICULAS') }} AS t

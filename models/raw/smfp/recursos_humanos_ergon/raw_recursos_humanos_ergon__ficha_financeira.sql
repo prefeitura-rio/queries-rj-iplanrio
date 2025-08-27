@@ -25,7 +25,7 @@ SELECT
     SAFE_CAST(REGEXP_REPLACE(correcao, r',', '.') AS FLOAT64) AS correcao,
     SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'\.0$', '') AS STRING) AS emp_codigo,
     SAFE_CAST(data_particao AS DATE) data_particao,
-FROM {{ source('recursos_humanos_ergon', 'ficha_financeira') }} AS t
+FROM {{ source('brutos_ergon_staging', 'FICHAS_FINANCEIRAS') }} AS t
 -- WHERE
 --     SAFE_CAST(data_particao AS DATE) < CURRENT_DATE('America/Sao_Paulo')
 

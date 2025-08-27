@@ -5,11 +5,11 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(codigo, r'\.0$', '') AS STRING) AS id_horario,
-    SAFE_CAST(descricao AS STRING) AS descricao,
-    SAFE_CAST(pontlei AS STRING) AS publicacao_diario_oficial,
-    SAFE_CAST(carga_hr_mes AS STRING) AS carga_horaria_mes,
-    SAFE_CAST(carga_hr_semana AS STRING) AS carga_horaria_semana,
-    SAFE_CAST(carga_hr_dia AS STRING) AS carga_horaria_dia,
-    SAFE_CAST(REGEXP_REPLACE(id_reg, r'\.0$', '') AS STRING) AS id_registro,
-FROM {{ source('recursos_humanos_ergon', 'horario_trabalho') }} AS t
+    SAFE_CAST(CODIGO AS STRING) AS id_horario,
+    SAFE_CAST(DESCRICAO AS STRING) AS descricao,
+    SAFE_CAST(PONTLEI AS STRING) AS publicacao_diario_oficial,
+    SAFE_CAST(CARGA_HR_MES AS STRING) AS carga_horaria_mes,
+    SAFE_CAST(CARGA_HR_SEMANA AS STRING) AS carga_horaria_semana,
+    SAFE_CAST(CARGA_HR_DIA AS STRING) AS carga_horaria_dia,
+    SAFE_CAST(ID_REG AS STRING) AS id_registro,
+FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_HORARIO_TRAB_') }} AS t
