@@ -23,10 +23,13 @@ sources:
         description: "Categorias existentes na administração"
       - name: FICHAS_FINANCEIRAS
         description: "Fichas financeiras dos funcionários da COMLURB"
+        freshness: null
       - name: IPL_PT_FICHAS
         description: "Fichas financeiras contábeis dos funcionários"
+        freshness: null
       - name: VW_DLK_ERG_FITA_BANCO
         description: "Fitas enviadas para o tesouro municipal"
+        freshness: null
       - name: VW_DLK_ERG_FORMAS_PROV_
         description: "Formas de provimentos possíveis"
       - name: FREQUENCIAS
@@ -65,8 +68,10 @@ sources:
         description: "Tipos de vínculos existentes"
       - name: TOTAL_CONTA
         description: "Resultado das contagens de tempo para benefícios"
+        freshness: null
       - name: VANTAGENS
         description: "Vantagens e atributos dos servidores"
+        freshness: null
       - name: VW_DLK_ERG_VINCULOS
         description: "Vínculos de pagamento dos funcionários"
       - name: VW_DLK_ERG_EMPRESAS
