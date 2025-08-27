@@ -171,90 +171,90 @@ models :
         description: Identificador da turma, criado anualmente.
       - name: id_aluno
         description: Identificador do aluno.
-  - name: educacao_basica__aluno_historico_2025
-    description: "**Descrição**: Histórico e dados pessoais de todos os alunos que
-      passaram pela rede municipal de educação da prefeitura do Rio de Janeiro.\n
-      **Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n
-      **Órgão gestor dos dados**: Secretaria Municipal de Educação\n**Publicado por**:
-      Nuno Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
-    columns:
-      - name: ano
-        description: Ano de cobertura do histórico.
-      - name: id_aluno
-        description: Identificador do aluno.
-      - name: matricula
-        description: Matrícula do aluno (anonimizada).
-      - name: nome
-        description: Nome do aluno (anonimizado).
-      - name: naturalidade
-        description: Cidade de nascimento da criança.
-      - name: endereco
-        description: Endereço do aluno. (anonimizado)
-      - name: cep
-        description: CEP do endereço do aluno. (anonimizado)
-      - name: filiacao_1
-        description: Nome da mãe. (anonimizado)
-      - name: nacionalidade
-        description: País de nascimento da criança.
-      - name: filiacao_1_profissao
-        description: Ocupação da mãe.
-      - name: filiacao_1_escolaridade
-        description: Escolaridade da mãe.
-      - name: filiacao_2
-        description: Nome do pai. (anonimizado).
-      - name: filiacao_2_profissao
-        description: Ocupação do pai.
-      - name: filiacao_2_escolaridade
-        description: Escolaridade do pai
-      - name: cpf
-        description: CPF do aluno. (anonimizado)
-      - name: nis_aluno
-        description: Número de Inscrição Social do aluno. (anonimizado)
-      - name: nis_resp
-        description: Número de Inscrição Social do responsável do aluno.(anonimizado)
-      - name: raca_cor
-        description: Raça e cor auto declarados na ocasião da matrícula.
-      - name: id_deficiencia
-        description: Código da deficiência do aluno.
-      - name: tipo_transporte
-        description: Tipo de transporte que a criança utiliza para se deslocar para
-          a escola.
-      - name: tempo_deslocamento
-        description: Descrição do tempo que a criança leva para se deslocar até a
-          escola.
-      - name: regressa_sozinho
-        description: Descrição do tempo que a criança leva para se deslocar até a
-          escola.
-      - name: religiao
-        description: Religião do aluno declarada no momento da matrícula.
-      - name: cfc
-        description: Booleano, 1 se recebe o Cartão Família Carioca e 0 se não.
-      - name: territorios_sociais
-        description: Booleano, 1 se reside na área do Territórios Sociais e 0 se não.
-      - name: clube_escolar
-        description: Booleano, 1 se frequenta o Clube Escolar e 0 se não.
-      - name: nucleo_artes
-        description: Booleano, 1 se frequenta o Núcleo de Artes e 0 se não.
-      - name: mais_educacao
-        description: Booleano, 1 se pertence ao Mais Educação e 0 se não.
-      - name: data_nascimento
-        description: Data de nascimento do aluno.
-      - name: idade_atual
-        description: Informação da idade atual do aluno.
-      - name: idade_3112
-        description: Idade do aluno em 31 de dezembro do ano corrente.
-      - name: situacao
-        description: Status de atividade do aluno, ativo ou inativo.
-      - name: id_ultima_movimentacao
-        description: Cod. da movimentação mais recente do aluno na rede escolar.
-      - name: ultima_movimentacao
-        description: Nome/descrição do tipo de movimentação do aluno na rede escolar.
-      - name: total_aluno
-        description: Sinalização para totalização na contagem de registros/ocorrências.
-      - name: deficiencia
-        description: Descrição da deficiência do aluno.
-      - name: genero
-        description: Gênero do aluno, pode ser masculino ou feminino.
+  #- name: educacao_basica__aluno_historico_2025
+  #  description: "**Descrição**: Histórico e dados pessoais de todos os alunos que
+  #    passaram pela rede municipal de educação da prefeitura do Rio de Janeiro.\n
+  #    **Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n
+  #    **Órgão gestor dos dados**: Secretaria Municipal de Educação\n**Publicado por**:
+  #    Nuno Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
+  #  columns:
+  #    - name: ano
+  #      description: Ano de cobertura do histórico.
+  #    - name: id_aluno
+  #      description: Identificador do aluno.
+  #    - name: matricula
+  #      description: Matrícula do aluno (anonimizada).
+  #    - name: nome
+  #      description: Nome do aluno (anonimizado).
+  #    - name: naturalidade
+  #      description: Cidade de nascimento da criança.
+  #    - name: endereco
+  #      description: Endereço do aluno. (anonimizado)
+  #    - name: cep
+  #      description: CEP do endereço do aluno. (anonimizado)
+  #    - name: filiacao_1
+  #      description: Nome da mãe. (anonimizado)
+  #    - name: nacionalidade
+  #      description: País de nascimento da criança.
+  #    - name: filiacao_1_profissao
+  #      description: Ocupação da mãe.
+  #    - name: filiacao_1_escolaridade
+  #      description: Escolaridade da mãe.
+  #    - name: filiacao_2
+  #      description: Nome do pai. (anonimizado).
+  #    - name: filiacao_2_profissao
+  #      description: Ocupação do pai.
+  #    - name: filiacao_2_escolaridade
+  #      description: Escolaridade do pai
+  #    - name: cpf
+  #      description: CPF do aluno. (anonimizado)
+  #    - name: nis_aluno
+  #      description: Número de Inscrição Social do aluno. (anonimizado)
+  #    - name: nis_resp
+  #      description: Número de Inscrição Social do responsável do aluno.(anonimizado)
+  #    - name: raca_cor
+  #      description: Raça e cor auto declarados na ocasião da matrícula.
+  #    - name: id_deficiencia
+  #      description: Código da deficiência do aluno.
+  #    - name: tipo_transporte
+  #      description: Tipo de transporte que a criança utiliza para se deslocar para
+  #        a escola.
+  #    - name: tempo_deslocamento
+  #      description: Descrição do tempo que a criança leva para se deslocar até a
+  #        escola.
+  #    - name: regressa_sozinho
+  #      description: Descrição do tempo que a criança leva para se deslocar até a
+  #        escola.
+  #    - name: religiao
+  #      description: Religião do aluno declarada no momento da matrícula.
+  #    - name: cfc
+  #      description: Booleano, 1 se recebe o Cartão Família Carioca e 0 se não.
+  #    - name: territorios_sociais
+  #      description: Booleano, 1 se reside na área do Territórios Sociais e 0 se não.
+  #    - name: clube_escolar
+  #      description: Booleano, 1 se frequenta o Clube Escolar e 0 se não.
+  #    - name: nucleo_artes
+  #      description: Booleano, 1 se frequenta o Núcleo de Artes e 0 se não.
+  #    - name: mais_educacao
+  #      description: Booleano, 1 se pertence ao Mais Educação e 0 se não.
+  #    - name: data_nascimento
+  #      description: Data de nascimento do aluno.
+  #    - name: idade_atual
+  #      description: Informação da idade atual do aluno.
+  #    - name: idade_3112
+  #      description: Idade do aluno em 31 de dezembro do ano corrente.
+  #    - name: situacao
+  #      description: Status de atividade do aluno, ativo ou inativo.
+  #    - name: id_ultima_movimentacao
+  #      description: Cod. da movimentação mais recente do aluno na rede escolar.
+  #    - name: ultima_movimentacao
+  #      description: Nome/descrição do tipo de movimentação do aluno na rede escolar.
+  #    - name: total_aluno
+  #      description: Sinalização para totalização na contagem de registros/ocorrências.
+  #    - name: deficiencia
+  #      description: Descrição da deficiência do aluno.
+  #    - name: genero
+  #      description: Gênero do aluno, pode ser masculino ou feminino.
   - name: educacao_basica__frequencia
     description: "**Descrição**: Frequência dos alunos matriculados ou que já tenham
       sido matriculados em uma escola da prefeitura do Rio de Janeiro desde 2012.

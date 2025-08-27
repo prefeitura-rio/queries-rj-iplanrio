@@ -19,6 +19,8 @@ clean-targets:
 vars:
   # Internal variables
   DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
+  HASH_SEED: "{{ env_var('HASH_SEED', 'H^Uq&Te1Y7Rrr!X0g%xIkhi2SYeS3mQDH$XcNSmQ$QjTk6*hRe') }}"
+
 
 models:
   +persist_docs:
@@ -34,7 +36,7 @@ models:
         frequencia:
           +materialized: table
           +schema: frequencia
-          #+tags: ["daily", "sme"] REMOVE WHILE DB IS OFFLINE
+          +tags: ["daily", "sme"]
           +project: rj-sme
       smfp:
         +project: rj-smfp
