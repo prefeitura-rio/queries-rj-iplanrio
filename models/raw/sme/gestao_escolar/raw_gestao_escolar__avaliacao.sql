@@ -1,4 +1,4 @@
-{{ config(alias='avaliacao', schema='brutos_gestao_escolar') }}
+{{ config(alias='aca_avaliacao', schema='brutos_gestao_escolar') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_Avaliacao') }}

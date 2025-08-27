@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: sme_brutos_gestao_escolar_staging_airbyte
     database: rj-iplanrio
-    schema: sme_brutos_gestao_escolar_staging
+    schema: brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: _airbyte_extracted_at
@@ -36,7 +36,7 @@ sources:
 
   - name: sme_brutos_gestao_escolar_staging_prefect
     database: rj-iplanrio 
-    schema: sme_brutos_gestao_escolar_staging
+    schema: brutos_gestao_escolar_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
     loaded_at_field: CAST(loaded_at AS TIMESTAMP)
