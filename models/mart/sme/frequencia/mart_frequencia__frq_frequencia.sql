@@ -1,5 +1,5 @@
         {{ config(
-            alias='frq_frequencia'
+            alias='frequencia'
         ) }}
 
         with Turmas as (
