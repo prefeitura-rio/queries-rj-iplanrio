@@ -7,4 +7,4 @@
 SELECT
     SAFE_CAST(sigla AS STRING) AS sigla,
     SAFE_CAST(nome AS STRING) AS nome,
-FROM {{ source('recursos_humanos_ergon', 'orgaos_regime_juridico') }} AS t
+FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_ORGAOS_REGIMES_JUR_') }} AS t

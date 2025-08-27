@@ -30,7 +30,7 @@ SELECT
     SAFE_CAST(TRIM(classificacao) AS STRING) AS classificacao,
     SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'.0$', '') AS STRING) AS emp_codigo,
     SAFE_CAST(data_particao AS DATE) data_particao,
-FROM {{ source('recursos_humanos_ergon', 'ficha_financeira_contabil') }} AS t
+FROM {{ source('brutos_ergon_staging', 'IPL_PT_FICHAS') }} AS t
 -- WHERE
 --     SAFE_CAST(data_particao AS DATE) < CURRENT_DATE('America/Sao_Paulo')
 
