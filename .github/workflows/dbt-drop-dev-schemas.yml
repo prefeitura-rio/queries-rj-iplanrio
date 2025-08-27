@@ -22,6 +22,7 @@ jobs:
       DBT_ENV_SECRET_TOKEN_URI: ${{ secrets.DBT_ENV_SECRET_TOKEN_URI }}
       DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL }} 
       DBT_ENV_SECRET_CLIENT_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_CLIENT_X509_CERT_URL }} 
+      HASH_SEED: ${{ secrets.SME_HASH_SEED }}
 
     steps:
     - name: checkout
