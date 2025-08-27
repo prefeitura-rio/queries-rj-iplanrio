@@ -1,7 +1,7 @@
 {{
     config(
         alias='empresas',
-        schema='recursos_humanos_ergon'
+        schema='brutos_ergon_staging'
     )
 }}
 

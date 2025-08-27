@@ -43,7 +43,7 @@ SELECT
     SAFE_CAST(REGEXP_REPLACE(flex_campo_05, r'\.0$', '') AS STRING) AS flex_campo_05,
     SAFE_CAST(REGEXP_REPLACE(jornada, r'\.0$', '') AS STRING) AS jornada,
     SAFE_CAST(data_particao AS DATE) data_particao,
-FROM {{ source('recursos_humanos_ergon', 'fita_banco') }} AS t
+FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_FITA_BANCO') }} AS t
 -- WHERE
 --     SAFE_CAST(data_particao AS DATE) < CURRENT_DATE('America/Sao_Paulo')
 

@@ -17,4 +17,4 @@ SELECT
     SAFE_CAST(TRIM(data_proximo) AS STRING) AS data_previsao_proximo_periodo,
     SAFE_CAST(TRIM(nome_proximo) AS STRING) AS nome_finalidade,
     SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'\.0$', '') AS STRING) AS id_empresa,
-FROM {{ source('recursos_humanos_ergon', 'total_contagem') }} AS t
+FROM {{ source('brutos_ergon_staging', 'TOTAL_CONTA') }} AS t
