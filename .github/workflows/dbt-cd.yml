@@ -7,6 +7,7 @@ on:
 
 jobs:
   deploy-dbt:
+    if: github.actor != 'mergify[bot]'
     runs-on: ubuntu-latest
 
     env:

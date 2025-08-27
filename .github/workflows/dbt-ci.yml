@@ -7,6 +7,7 @@ on:
 
 jobs:
   test-dbt-models:
+    if: github.actor != 'mergify[bot]'
     runs-on: ubuntu-latest
 
     env:
