@@ -1,0 +1,47 @@
+version: 2
+
+sources:
+  - name: sme_brutos_gestao_escolar_staging_airbyte
+    database: rj-iplanrio
+    schema: brutos_gestao_escolar_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
+    tables:
+      - name: ACA_AlunoCurriculo
+      - name: ACA_AlunoJustificativaFalta
+      - name: ACA_Avaliacao
+      - name: ACA_CalendarioAnual
+      - name: ACA_CalendarioPeriodo
+      - name: ACA_CurriculoPeriodo
+      - name: ACA_FormatoAvaliacao
+      - name: ACA_TipoJustificativaFalta
+      - name: ACA_TipoTurno
+      - name: ACA_Turno
+      - name: ACA_TurnoHorario
+      - name: CLS_TurmaAula
+      - name: ESC_Escola
+      - name: MTR_MatriculaTurma
+      - name: MTR_ProcessoFechamentoInicio
+      - name: TUR_Turma
+      - name: TUR_TurmaCurriculo
+      - name: TUR_TurmaDisciplina
+        config:
+          freshness:
+            error_after: {count: 48, period: hour}
+
+      - name: TUR_TurmaRelTurmaDisciplina
+      - name: VW_BI_Aluno
+      - name: VW_BI_Aluno_Todos_Os_Anos
+
+  - name: sme_brutos_gestao_escolar_staging_prefect
+    database: rj-iplanrio 
+    schema: brutos_gestao_escolar_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: CAST(loaded_at AS TIMESTAMP)
+    tables:
+      - name: CLS_TurmaAulaAluno
+      - name: numeroDeAulasCte
+      - name: CLS_AlunoAvaliacaoTurma
+      - name: diasCoc

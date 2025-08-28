@@ -151,7 +151,7 @@ with
 
     dedup as (
         select *,
-         -- Partition by cnpj
+        -- Partition by cnpj
             cast(cnpj as int64) as cnpj_particao,
         from fonte_parseada
         qualify

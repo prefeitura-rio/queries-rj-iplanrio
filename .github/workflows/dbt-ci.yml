@@ -1,67 +1,74 @@
-name: dbt-checkpoint
+name: CI-DBT
 
 on:
-  push:
   pull_request:
     branches:
       - master
 
 jobs:
-  dbt-checkpoint:
-    name: Install pre-commit via pip
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ['ubuntu-latest']
-        python-version: [3.10]
+  test-dbt-models:
+    if: github.actor != 'mergify[bot]'
+    runs-on: ubuntu-latest
+
+    env:
+
+      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
+      GCLOUD_STORAGE_PATH_MANIFEST: ${{ secrets.GCLOUD_STORAGE_PATH_MANIFEST }}
+      DBT_ENV_SECRET_TYPE: ${{ secrets.DBT_ENV_SECRET_TYPE }} 
+      DBT_ENV_SECRET_PROJECT_ID: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
+      DBT_ENV_SECRET_PRIVATE_KEY_ID: ${{ secrets.DBT_ENV_SECRET_PRIVATE_KEY_ID }} 
+      DBT_ENV_SECRET_PRIVATE_KEY: ${{ secrets.DBT_ENV_SECRET_PRIVATE_KEY }}  
+      DBT_ENV_SECRET_CLIENT_EMAIL: ${{ secrets.DBT_ENV_SECRET_CLIENT_EMAIL }}
+      DBT_ENV_SECRET_CLIENT_ID: ${{ secrets.DBT_ENV_SECRET_CLIENT_ID }} 
+      DBT_ENV_SECRET_AUTH_URI: ${{ secrets.DBT_ENV_SECRET_AUTH_URI }}
+      DBT_ENV_SECRET_TOKEN_URI: ${{ secrets.DBT_ENV_SECRET_TOKEN_URI }}
+      DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL }} 
+      DBT_ENV_SECRET_CLIENT_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_CLIENT_X509_CERT_URL }} 
+      HASH_SEED: ${{ secrets.SME_HASH_SEED }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      # Install dbt and pre-commit
-      - name: Install dbt and pre-commit
-        shell: bash -l {0}
-        run: |
-          python -m pip install dbt-bigquery pre-commit
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      # This action will output all the files that are being created and modified in our PR
-      - name: Get changed files
-        id: get_file_changes
-        uses: trilom/file-changes-action@v1.2.4
-        with:
-          output: ' '
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
 
-      - name: Set up keyfile for dbt
-        run: 'echo "$KEYFILE" > ./.gcloud/dbt-service-account.json'
-        shell: bash
-        env:
-          KEYFILE: ${{secrets.CREDENTIALS}}
+    - name: Install dependencies
+      run: pip install -r dbt-requirements.txt
 
-      # Transforming the output of get_file_changes to a string we can use for our next step
-      # We want to take in account both new files and files that have been modified
-      - name: Get changed .sql files in /models to lint
-        id: get_files_to_lint
-        shell: bash -l {0}
-        run: |
-          # Set the command in the $() brackets as an output to use in later steps
-          echo "::set-output name=files::$(
-          # Issue where grep regular expressions don't work as expected on the
-          # Github Actions shell, check dbt/models/ folder
-          echo \
-          $(echo ${{ steps.get_file_changes.outputs.files_modified }} |
-          tr -s ' ' '\n' |
-          grep -E '^models.*[.]sql$' |
-          tr -s '\n' ' ') \
-          $(echo ${{ steps.get_file_changes.outputs.files_added }} |
-          tr -s ' ' '\n' |
-          grep -E '^models.*[.]sql$' |
-          tr -s '\n' ' ')
-          )"
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0.4.3
+      with:
+        credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
 
-      # Finally run pre-commit
-      - name: Run pre-commit
-        shell: bash -l {0}
-        run: |
-          pre-commit run --files ${{ steps.get_files_to_lint.outputs.files }}
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
+
+    - name: Copy manifest.json from Google Cloud Storage
+      run: |
+        gsutil cp gs://${{ env.GCLOUD_STORAGE_PATH_MANIFEST }}/manifest.json ./ || echo "Manifest not found"
+    
+    - name: Get Schema ID
+      id: schema_id
+      run: echo "SCHEMA_ID=${{ github.event.pull_request.number }}__${{ github.sha }}" >> $GITHUB_ENV
+
+    - name: Run dbt debug
+      run: |
+        dbt debug --target pr --vars "schema_id: $SCHEMA_ID"
+
+    - name: Run dbt deps
+      run: |
+        dbt deps --target pr --vars "schema_id: $SCHEMA_ID"
+
+    - name: Run dbt build
+      run: |
+        if [ -f "./manifest.json" ]; then
+          dbt build -s 'state:modified+' --defer --state ./ --target pr --vars "schema_id: $SCHEMA_ID"
+        else
+          dbt build --target pr --vars "schema_id: $SCHEMA_ID"
+        fi

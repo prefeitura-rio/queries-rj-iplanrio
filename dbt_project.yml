@@ -19,6 +19,7 @@ clean-targets:
 vars:
   # Internal variables
   DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
+  HASH_SEED: "{{ env_var('HASH_SEED', 'hash_seed') }}"
 
 
 models:
@@ -27,12 +28,40 @@ models:
     columns: true
 
   queries:
+    mart:
+      gerenciamento:
+        custos:
+          +tags: ["daily", "custos"]
+      sme:
+        frequencia:
+          +materialized: table
+          +schema: educacao_basica_frequencia
+          +tags: ["daily", "sme"]
+          +project: rj-sme
+      smfp:
+        +project: rj-smfp
+        ergon_saude:
+          +materialized: table
+          +schema: recursos_humanos_ergon_saude
+          +tags: "daily"
+      setur:
+        +project: rj-setur
+        observatorio_do_turismo:
+          +materialized: table
+          +schema: turismo_fluxo_visitantes
+          +tags: "daily"
     raw:
       +tags: "raw"
       bcadastro:
         +materialized: table
         +schema: brutos_bcadastro
         +tags: "weekly"
+      gcp:
+        +tags: ["daily", "custos"]
+      taxirio:
+        +materialized: table
+        +schema: brutos_taxirio
+        +tags: "daily"
       unidades_administrativas:
         +materialized: table
         +schema: brutos_unidades_administrativas
@@ -41,3 +70,73 @@ models:
         +materialized: table
         +schema: brutos_sisbicho
         +tags: "daily"
+      sme:
+        +project: rj-sme
+        +tags: ["sme"]
+        gestao_escolar:
+          +materialized: table
+          +schema: brutos_gestao_escolar
+          +tags: ["daily"]
+        educacao_basica:
+          +materialized: table
+          +schema: educacao_basica_staging
+          +tags: "daily"
+      smfp:
+        +tags: "smfp"
+        +project: rj-smfp
+        recursos_humanos_ergon:
+          +materialized: table
+          +schema: recursos_humanos_ergon
+          +tags: "daily"
+        sigma:
+          +materialized: table
+          +schema: compras_materiais_servicos_sigma
+          +tags: "daily"
+      plus_codes:
+        +materialized: table
+        +schema: plus_codes
+        +tags: "daily"
+      eai_logs:
+        +materialized: table
+        +schema: eai_logs
+      smi:
+        +tags: "smi"
+        +project: rj-smi
+        infraestrutura_siscob_obras:
+          +materialized: table
+          +schema: infraestrutura_siscob_obras
+          +tags: "daily"        
+      smas:
+        cadunico:
+          +materialized: table
+          +project: rj-smas
+          +schema: brutos_data_metrica
+      cvl:
+        +tags: "cvl"
+        +project: rj-cvl
+        adm_contrato_gestao:
+          +materialized: table
+          +schema: adm_contrato_gestao
+          +tags: "daily"
+      segovi:
+        +tags: "segovi"
+        +project: rj-segovi
+        adm_central_atendimento_1746:
+          +materialized: table
+          +schema: adm_central_atendimento_1746
+          +tags: "daily"
+      setur:
+        +project: rj-setur
+        oferta_turistica:
+          +materialized: view
+          +schema: turismo_fluxo_visitantes_staging
+          +tags: "daily"
+        turismo_fluxo_visitantes:
+          +materialized: table
+          +schema: turismo_fluxo_visitantes_staging
+          +tags: "daily"
+      mais_valia:
+        +project: rj-iplanrio
+        +materialized: table
+        +schema: brutos_mais_valia
+        +tags: ["daily", "mais_valia"]

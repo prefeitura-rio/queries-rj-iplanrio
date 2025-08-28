@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__setor
+    description: "**Descrição**: Setores existentes tanto na administração direta como indireta da prefeitura do Rio de Janeiro.\r\nOs setores são os mesmos do SICI.\n**Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"      
+    columns:
+      - name: data_inicio
+        description: Data em que o setor foi colocado no presente organograma.
+        data_type: date
+      - name: data_fim
+        description: Data em que o setor saiu do organograma.
+        data_type: date
+      - name: id_setor_pai
+        description: Código, dado pelo SICI, do setor que está acima.
+        data_type: integer
+      - name: id_setor
+        description: Código, dado pelo SICI, do setor.
+        data_type: integer
+      - name: nome
+        description: Nome do setor, possivelmente abreviado pelo tamanho do atributo.
+        data_type: string
+        quote: true
+      - name: nome_completo
+        description: Nome completo setor.
+        data_type: string
+        quote: true
+      - name: sigla
+        description: Sigla do setor. Ex. FP/SUBGGC.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código, dado pelo SICI, da empresa onde está localizada o setor.
+        data_type: integer
+      - name: id_empresa_prevrio
+        description: Código da empresa na PREVRIO.
+        data_type: integer
+      - name: id_secretaria
+        description: Código, dado pelo SICI. da secretaria onde está o setor.
+        data_type: integer
+      - name: extinto
+        description: Booleano que indica que o setor foi extinto.
+        data_type: boolean

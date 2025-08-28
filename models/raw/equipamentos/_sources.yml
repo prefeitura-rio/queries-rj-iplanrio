@@ -1,9 +1,0 @@
-version: 2
-
-sources:
-  - name: brutos_equipamentos_staging
-    database: rj-iplanrio
-    schema: brutos_equipamentos_staging
-    tables:
-      - name: escolas
-      - name: culturais_datario
