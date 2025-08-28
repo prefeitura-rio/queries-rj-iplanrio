@@ -49,9 +49,9 @@ renamed as (
         {{ adapter.quote("Tot_Aluno") }},
         SAFE_CAST({{ adapter.quote("alu_id") }} AS STRING) AS {{ adapter.quote("alu_id") }},
         SAFE_CAST({{ adapter.quote("tur_id") }} AS STRING) AS {{ adapter.quote("tur_id") }},
-        {{adapter.quote("NOME_RESPONSAVEL")}},
-        {{adapter.quote("CPF_RESPONSAVEL")}},
-        {{adapter.quote("CONTATO_RESPONSAVEL")}}
+        {{adapter.quote("NOME_RESPONSAVEL")}} as Nome_Responsavel,
+        {{adapter.quote("CPF_RESPONSAVEL")}} as CPF_Responsavel,
+        {{adapter.quote("CONTATO_RESPONSAVEL")}} as Contato_Responsavel
 
     from source
 )
