@@ -66,6 +66,10 @@ models:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
+      sisbicho:
+        +materialized: table
+        +schema: brutos_sisbicho
+        +tags: "daily"
       sme:
         +project: rj-sme
         +tags: ["sme"]
