@@ -21,9 +21,6 @@ models:
           - unique:
               name: raw_mais_valia_parcelas_contrapartida__id_parcela__unique
               severity: error
-      - name: id_parcela
-        description: "Identificador único da parcela do cálculo de contrapartida."
-        data_type: string
       - name: origem
         description: "Código que identifica a versão do sistema onde o cálculo foi gerado. {1-Sistema novo / 10 - Sistema antigo} e serve para fazer join com a tabela raw_mais_valia_contrapartida_consolidado."
         data_type: int64
