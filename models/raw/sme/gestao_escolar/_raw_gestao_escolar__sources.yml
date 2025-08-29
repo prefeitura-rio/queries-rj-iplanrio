@@ -45,3 +45,4 @@ sources:
       - name: numeroDeAulasCte
       - name: CLS_AlunoAvaliacaoTurma
       - name: diasCoc
+      - name: turma
