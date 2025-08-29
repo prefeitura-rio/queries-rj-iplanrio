@@ -67,6 +67,7 @@ models:
         +schema: brutos_unidades_administrativas
         +tags: "daily"
       sisbicho:
+        +project: rj-iplanrio
         +materialized: table
         +schema: brutos_sisbicho
         +tags: "daily"

@@ -1,7 +1,6 @@
 {{
     config(
       alias="tipo_pessoa",
-      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") ,
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de Tipos de Pessoa do Sistema SisBicho"
