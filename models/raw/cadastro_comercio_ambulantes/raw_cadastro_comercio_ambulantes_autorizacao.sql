@@ -1,11 +1,14 @@
 {{
     config(
       alias="autorizacao",
+      project=("rj-seop" if target.name == "prod" else "rj-seop-dev") ,
+      materialized="table",
+      tags=["raw", "cadastro_comercio_ambulantes"],
       description="Dados do Titular da Autorização"
     )
 }}
 
-SELECT 
+select  
     safe_cast(id as integer) as id_autorizacao_titular,
     safe_cast(inscricaoMunicipal as string) as numero_inscricao_municipal,
     safe_cast(tipoPessoa as string) as tipo_pessoa,
