@@ -1,7 +1,6 @@
 {{
     config(
       alias="tipo_especie",
-      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") ,
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de Tipos de Espécies de Animais do Sistema SisBicho"
