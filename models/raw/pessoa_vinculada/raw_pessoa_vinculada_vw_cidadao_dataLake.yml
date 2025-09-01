@@ -1,0 +1,147 @@
+version: 2
+
+models:
+  - name: raw_pessoa_vinculada_vw_cidadao_dataLake
+    description: "Dados brutos de pessoas vinculadas ao sistema, contendo informações pessoais, funcionais e de lotação"
+    config:
+      alias: raw_pessoa_vinculada_vw_cidadao_dataLake
+      materialized: view
+    columns:
+      - name: identificador_pessoa_vinculada
+        description: "PK desta tabela - identificador único do registro de pessoa vinculada"
+        data_type: int64
+        meta:
+          nullable: false
+        #data_tests:
+          #- unique:
+          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__identificador_pessoa_vinculada__unique
+          #    severity: error
+          #- not_null:
+          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__identificador_pessoa_vinculada__not_null
+          #    severity: error
+
+      - name: observacao_registro
+        description: "observação sobre o registro"
+        data_type: string
+        quote: true
+
+      - name: status_vinculacao
+        description: "indica pessoa vinculada ATIVA ou INATIVA"
+        data_type: string
+        quote: true
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_be_in_set:
+        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__status_vinculacao__expect_column_values_to_be_in_set
+        #      value_set: ['ATIVA', 'INATIVA']
+        #      severity: warn
+
+      - name: matricula
+        description: "matrícula da pessoa"
+        data_type: string
+        quote: true
+
+      - name: nome
+        description: "nome da pessoa"
+        data_type: string
+        quote: true
+        meta:
+          sensitive: true
+        #data_tests:
+        #  - not_null:
+        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__nome__not_null
+        #      severity: warn
+
+      - name: cpf
+        description: "cpf da pessoa"
+        data_type: string
+        quote: true
+        meta:
+          sensitive: true
+          nullable: false
+        #data_tests:
+          #- dbt_expectations.expect_column_values_to_match_regex:
+          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__cpf__expect_column_values_to_match_regex
+          #    regex: '^\d{11}$'
+          #    severity: warn
+          #- not_null:
+          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__cpf__not_null
+          #    severity: error
+
+      - name: data_nascimento
+        description: "data de nascimento da pessoa"
+        data_type: date
+        meta:
+          sensitive: true
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_be_between:
+        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__data_nascimento__expect_column_values_to_be_between
+        #      min_value: '1900-01-01'
+        #      max_value: '{{ var("current_date", "2024-12-31") }}'
+        #      severity: warn
+
+      - name: data_inclusao
+        description: "data da inclusão do registro"
+        data_type: datetime
+
+      - name: data_atualizacao
+        description: "data da última atualização do registro"
+        data_type: datetime
+
+      - name: regime_juridico
+        description: "regime jurídico. Ex: CLT, Estagiário, Efetivo"
+        data_type: string
+        quote: true
+
+      - name: prefixo_matricula
+        description: "prefíxo da matricula, indica o código da função que o servidor está exercendo ou o seu cargo"
+        data_type: int64
+
+      - name: email_alternativo
+        description: "email alternativo da pessoa"
+        data_type: string
+        quote: true
+        meta:
+          sensitive: true
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_match_regex:
+        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__email_alternativo__expect_column_values_to_match_regex
+        #      regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        #      severity: warn
+
+      - name: email_institucional
+        description: "email institucional da pessoa"
+        data_type: string
+        quote: true
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_match_regex:
+        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__email_institucional__expect_column_values_to_match_regex
+        #      regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        #      severity: warn
+
+      - name: matricula_ficticia
+        description: "indica se a matrícula é ficticia. Caso dos terceirizados, por exemplo."
+        data_type: string
+        quote: true
+        #data_tests:
+        #  - dbt_expectations.expect_column_values_to_be_in_set:
+        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__matricula_ficticia__expect_column_values_to_be_in_set
+        #      value_set: ['S', 'N']
+        #      severity: warn
+
+      - name: cargo
+        description: "cargo da pessoa"
+        data_type: string
+        quote: true
+
+      - name: funcao
+        description: "função da pessoa"
+        data_type: string
+        quote: true
+
+      - name: data_funcao
+        description: "data início da função"
+        data_type: datetime
+
+      - name: identificador_lotacao
+        description: "código da lotação da pessoa"
+        data_type: int64
