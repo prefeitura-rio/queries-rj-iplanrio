@@ -75,6 +75,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -507,6 +508,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -951,6 +953,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -1395,6 +1398,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -1839,6 +1843,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -2283,6 +2288,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -2727,6 +2733,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -3171,6 +3178,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -3615,6 +3623,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -4059,6 +4068,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -4541,6 +4551,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
