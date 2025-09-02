@@ -1,6 +1,6 @@
 {{
     config(
-        alias="raw_pessoa_vinculada_vw_cidadao_dataLake",
+        alias="pessoa_vinculada",
         description="Dados brutos de pessoas vinculadas ao sistema, contendo informações pessoais, funcionais e de lotação",
             )
 }}
