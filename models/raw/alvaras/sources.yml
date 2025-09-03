@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: brutos_consulta_previa_eventos_staging
+    database: rj-smfp   # opcional se igual ao target
+    schema: brutos_consulta_previa_eventos_staging
+    tables:
+      - name: vw_Consulta_Previa_Eventos
+        description: "View de consulta prévia de eventos  "
+     

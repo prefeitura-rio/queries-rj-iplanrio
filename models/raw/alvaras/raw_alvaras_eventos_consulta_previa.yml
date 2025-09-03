@@ -1,0 +1,998 @@
+version: 2
+models:
+  - name: raw_alvaras_eventos_consulta_previa
+    description: "Alvarás de Eventos Emitidos e/ou Consulta Prévia." 
+    columns:
+      - name: codigo_consulta_previa_evento
+        description: "Identificador único dado pelo sistema ao alvará de evento e consulta prévia."
+        data_type: bigint
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_id_cpe_not_null
+              severity: error
+          - unique:
+              name: raw_alvaras_eventos_consulta_previa_id_cpe_unique 
+              severity: error
+        quote: true
+      - name: numero_consulta_previa_evento
+        description: "Número da consulta prévia e eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_numero_cpe_not_null
+              severity: error
+        quote: true
+      - name: nome_requerente
+        description: "Nome do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_nome_requerente_not_null
+              severity: error
+        quote: true
+      - name: telefone_requerente
+        description: "Telefone do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_telefone_requerente_not_null
+              severity: error
+        quote: true
+      - name: inscricao_municipal
+        description: "Inscrição municipal do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_inscricao_municipal_not_null
+              severity: error
+        quote: true
+      - name: cpf
+        description: "CPF do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_cpf_not_null
+              severity: error
+        quote: true
+      - name: cnpj
+        description: "CNPJ do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_cnpj_not_null
+              severity: error
+        quote: true
+      - name: rg
+        description: "RG do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_rg_not_null
+              severity: error
+        quote: true
+      - name: email
+        description: "Email do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_email_not_null
+              severity: error
+        quote: true
+      - name: cidade_requerente 
+        description: "Cidade do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_cidade_requerente_not_null
+              severity: error 
+        quote: true
+      - name: logradouro_requerente
+        description: "Logradouro do requerente."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_logradouro_requerente_not_null
+              severity: error
+        quote: true
+      - name: porta_requerente
+        description: "Porta do requerente."
+        data_type: bigint
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_porta_requerente_not_null
+              severity: error
+        quote: true
+      - name: nome_evento
+        description: "Nome do evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_nome_evento_not_null
+              severity: error
+        quote: true 
+      - name: ap
+        description: "Área de Planejamento do evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_ap_not_null
+              severity: error
+        quote: true
+      - name: local_evento
+        description: "Local do evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_local_evento_not_null
+              severity: error
+        quote: true 
+      - name: area_publica
+        description: "Campo para saber se utiliza área pública."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_area_publica_not_null
+              severity: error
+        quote: true 
+      - name: area_privada
+        description: "Campo para saber se utiliza área privada."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_area_privada_not_null
+              severity: error
+        quote: true 
+      - name: area_ocupada_m2
+        description: "Total da área ocupada em metros quadrados."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_area_ocupada_m2_not_null
+              severity: error
+        quote: true
+      - name: montagem_praia
+        description: "Campo para saber se montagem acontece na areia da praia."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_montagem_praia_not_null
+              severity: error
+        quote: true
+      - name: fechamento_rua
+        description: "Campo para saber se necessário fechamento de rua ou alteração temporária de tráfego."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_fechamento_rua_not_null
+              severity: error
+        quote: true
+      - name: descricao_alteracao
+        description: "Descreve a alteração, a via e o período de fechamento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_descricao_alteracao_not_null
+              severity: error
+        quote: true
+      - name: estimativa_publico
+        description: "Estimativa de público do evento."
+        data_type: bigint
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_estimativa_publico_not_null
+              severity: error
+        quote: true
+      - name: publicidade
+        description: "Campo para saber se haverá publicidade."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_publicidade_not_null
+              severity: error
+        quote: true
+      - name: fogos_artificio
+        description: "Campo para saber se haverá uso de fogos de artifício."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_fogos_artificio_not_null
+              severity: error
+        quote: true
+      - name: empresa_seguranca
+        description: "Campo para saber se haverá empresa de segurança contratada."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_empresa_seguranca_not_null
+              severity: error
+        quote: true
+      - name: aberto_publico
+        description: "Campo para saber se o evento é aberto ao público."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_aberto_publico_not_null
+              severity: error
+        quote: true
+      - name: cobranca_ingresso
+        description: "Campo para saber se haverá cobrança de ingressos/inscrições."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_cobranca_ingresso_not_null
+              severity: error
+        quote: true
+      - name: estrutura
+        description: "Campo para saber se haverá estrutura no evento."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_estrutura_not_null
+              severity: error
+        quote: true
+      - name: manipulacao_alimentos
+        description: "Campo para saber se haverá manipulação de alimentos."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_manipulacao_alimentos_not_null
+              severity: error
+        quote: true
+      - name: filmagem
+        description: "Campo para saber se é filmagem ou sessão fotográfica."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_filmagem_not_null
+              severity: error
+        quote: true
+      - name: reserva_vagas
+        description: "Campo para saber se será necessário reserva de vagas para estacionamento."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_reserva_vagas_not_null
+              severity: error
+        quote: true
+      - name: tipo_estrutura
+        description: "Tipo de estrutura utilizada no evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_tipo_estrutura_not_null
+              severity: error
+        quote: true
+      - name: descricao_evento
+        description: "Descrição do evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_descricao_evento_not_null
+              severity: error
+        quote: true
+      - name: data_evento_inicio
+        description: "Data de início do evento."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_evento_inicio_not_null
+              severity: error
+        quote: true
+      - name: data_evento_fim
+        description: "Data de término do evento."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_data_evento_fim_not_null
+              severity: error
+        quote: true
+      - name: datas_montagem_estrutura
+        description: "Data de início da montagem da estrutura."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_datas_montagem_estrutura_not_null
+              severity: error
+        quote: true
+      - name: datas_desmontagem_estrutura
+        description: "Data de término da desmontagem da estrutura."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_datas_desmontagem_estrutura_not_null
+              severity: error
+        quote: true
+      - name: data_abertura_cpe
+        description: "Data da solicitação de abertura da consulta prévia de eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_abertura_cpe_not_null
+              severity: error
+        quote: true
+      - name: aprovador
+        description: "Aprovador do evento e consulta prévia."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_aprovador_not_null
+              severity: error
+        quote: true
+      - name: decisao_aprovador
+        description: "Decisao do Aprovador para o evento e consulta prévia."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_decisao_aprovador_not_null
+              severity: error
+        quote: true
+      - name: codigo_decisao_aprovador
+        description: "Código da decisao do Aprovador para o evento e consulta prévia."
+        data_type: bigint 
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_decisao_aprovador_not_null
+              severity: error
+        quote: true  
+      - name: observação_aprovador
+        description: "Observação da decisao do Aprovador para o evento e consulta prévia."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_observação_aprovador_not_null
+              severity: error
+        quote: true    
+      - name: orgaos
+        description: "Órgao responsável para a realização do evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_orgao_not_null
+              severity: error
+        quote: true
+      - name: competencia
+        description: "Define de quem será a competência do evento, CLF ou subprefeitura."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_competencia_not_null
+              severity: error
+        quote: true
+      - name: porta_evento
+        description: "Porta do evento refere-se ao número da propriedade dentro do logradouro (rua, avenida, etc.). 
+        É o número que identifica a localização específica de uma casa, prédio ou estabelecimento dentro da via pública."
+        data_type: bigint
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_porta_evento_not_null
+              severity: error
+        quote: true
+      - name: logradouro_evento
+        description: "Endereço físico do local onde o evento acontece."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_logradouro_evento_not_null
+              severity: error
+        quote: true
+      - name: estimativa_publica
+        description: "Previsão ou projeção do número de pessoas que se espera que compareçam a um evento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_estimativa_publica_not_null
+              severity: error
+        quote: true
+      - name: declaracaoReferenteAVinculoDeRepresentacao
+        description: "É um documento que comprova a relação de representação entre uma pessoa ou grupo e um evento específico. 
+        Basicamente, ela atesta que alguém está autorizado a agir em nome de outra pessoa, empresa ou grupo, em relação a esse evento."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_declaracaoReferenteAVinculoDeRepresentacao_not_null
+              severity: error
+        quote: true
+      - name: certAprovBombeiro
+        description: "O certificado de aprovação do Corpo de Bombeiros para eventos, também conhecido como AVCB (Auto de Vistoria do Corpo de Bombeiros) 
+        para eventos temporários, é um documento que atesta que um evento está em conformidade com as normas de segurança contra incêndio e pânico estabelecidas 
+        pelo Corpo de Bombeiros."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_certAprovBombeiro_not_null
+              severity: error
+        quote: true
+      - name: plantaArea
+        description: "Refere-se a um desenho técnico, geralmente uma planta baixa, que representa o layout de um espaço de evento."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_plantaArea_not_null
+              severity: error
+        quote: true
+      - name: declaEntreDocVerdadeiro
+        description: "Refere-se à declaração, geralmente assinada, que atesta a veracidade das informações e documentos apresentados."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_declaEntreDocVerdadeiro_not_null
+              severity: error
+        quote: true
+      - name: decContratServLimpeza
+        description: "Declaração de contratação de serviço de limpeza."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_decContratServLimpeza_not_null
+              severity: error
+        quote: true
+      - name: decInstBanheirosQuimicos
+        description: "Declaração de instalação de banheiros químicos."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consult_aprevia_decInstBanheirosQuimicos_not_null
+              severity: error
+        quote: true
+      - name: declaracaoNormasEstaduaisSeguran
+        description: "Declaração de normas estaduais de segurança."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_declaracaoNormasEstaduaisSeguran_not_null
+              severity: error
+        quote: true
+      - name: contratoSeguranca
+        description: "Prestação de serviços de segurança durante o evento."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_contratoSeguranca_not_null
+              severity: error
+        quote: true
+      - name: declaResponsAmbiental
+        description: "Documento em que uma pessoa física ou jurídica se compromete a adotar práticas que visam minimizar o 
+        impacto ambiental de suas atividades e assumir a responsabilidade por eventuais danos ambientais causados."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_declaResponsAmbiental_not_null
+              severity: error
+        quote: true
+      - name: decRealizEventoSMF
+        description: "Declaração que deve ser preenchida por promotores de eventos para informar à Secretaria Municipal de Fazenda (SMF) 
+        sobre a realização de um evento."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_decRealizEventoSMF_not_null
+              severity: error
+        quote: true
+      - name: aprovSecSMTR
+        description: "Aprovação do evento pela Secretaria Municipal de Transportes (SMTR) significa que a prefeitura do 
+        Rio de Janeiro, através da SMTR, autorizou a realização do evento em relação aos aspectos de transporte e mobilidade urbana."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_aprovSecSMTR_not_null
+              severity: error
+        quote: true
+      - name: declaracaoReferenteAsNormasDeSeguranca
+        description: "Documento que atesta o cumprimento ou a conformidade com as regras e procedimentos estabelecidos para 
+        garantir a segurança e saúde no ambiente de trabalho. "
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_declaracaoReferenteAsNormasDeSeguranca_not_null
+              severity: error
+        quote: true
+      - name: IPHAN
+        description: "Documento do IPHAN em um evento da prefeitura indica que há uma preocupação com a preservação do patrimônio cultural 
+        da cidade e que o evento pode envolver ou impactar bens culturais protegidos pelo IPHAN. "
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_IPHAN_not_null
+              severity: error
+        quote: true
+      - name: nadaOporSub
+        description: "Nada a opor da subprefeitura."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_nadaOporSub_not_null
+              severity: error
+        quote: true
+      - name: vigilanciaSanitaria
+        description: "Documento de Vigilância Sanitária atesta que o estabelecimento ou atividade (como um serviço de alimentação em um evento) 
+        atende às normas de higiene e segurança para proteger a saúde pública."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_vigilanciaSanitaria_not_null
+              severity: error
+        quote: true
+      - name: nenhumDocNece
+        description: "Nenhum documento necessário."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_nenhumDocNece_not_null
+              severity: error
+        quote: true
+      - name: outros
+        description: "Outros documentos."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_outros_not_null
+              severity: error
+        quote: true
+      - name: numero_processo_alvara
+        description: "Número do processo do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_numero_processo_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_inicio_processo_alvara
+        description: "Data de início do processo do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_inicio_processo_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_fim_processo_alvara
+        description: "Data de fim do processo do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_fim_processo_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_inicio_processo_cpe
+        description: "Data de início do processo da CPE (Consulta Prévia de Eventos)."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_inicio_processo_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_fim_processo_cpe
+        description: "Data de fim do processo da CPE (Consulta Prévia de Eventos)."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_fim_processo_cpe_not_null
+              severity: error
+        quote: true
+      - name: Incide_TLE_cpe
+        description: "Indica se a Taxa de Licença de Eventos (TLE) é cobrada após a aprovação da Consulta Prévia de Eventos."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_Incide_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: Incide_TUAP_cpe
+        description: "Indica se a Taxa de Uso de Área Pública (TUAP) é cobrada após a aprovação da Consulta Prévia de Eventos."        
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_Incide_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: Incide_TLE_alvara
+        description: "Indica se a Taxa de Licença de Eventos (TLE) é cobrada após a aprovação do alvará."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_Incide_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: Incide_TUAP_alvara
+        description: "Indica se a Taxa de Uso de Área Pública (TUAP) é cobrada após a aprovação do alvará."
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_Incide_TUAP_alvara_not_null
+              severity: error
+        quote: true        
+      - name: codigo_TLE_cpe
+        description: "Código da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: titulo_TLE_cpe
+        description: "Título da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_titulo_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: codigo_receita_TLE_cpe
+        description: "Código de receita da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_receita_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_emissao_TLE_cpe
+        description: "Data de emissão da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_emissao_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: taxa_liberada_TLE_cpe
+        description: "Taxa liberada da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_taxa_liberada_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: valor_TLE_cpe
+        description: "Valor da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_valor_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: competencia_TLE_cpe
+        description: "Competência da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_competencia_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: numero_darm_TLE_cpe
+        description: "Número do DARM da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_numero_darm_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: inscricao_municipal_TLE_cpe
+        description: "Inscrição municipal da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_inscricao_municipal_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_pagamento_TLE_cpe
+        description: "Data de pagamento da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_pagamento_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_vencimento_TLE_cpe
+        description: "Data de vencimento da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_vencimento_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: status_TLE_cpe
+        description: "Status da Taxa de Licença de Eventos da Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_status_TLE_cpe_not_null
+              severity: error
+        quote: true
+      - name: codigo_TUAP_cpe
+        description: "Código da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: titulo_TUAP_cpe
+        description: "Título da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_titulo_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: codigo_receita_TUAP_cpe
+        description: "Código de receita da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_receita_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_emissao_TUAP_cpe
+        description: "Data de emissão da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_emissao_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: taxa_liberada_TUAP_cpe
+        description: "Taxa liberada da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_taxa_liberada_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: valor_TUAP_cpe
+        description: "Valor da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_valor_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: competencia_TUAP_cpe
+        description: "Competência da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_competencia_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: numero_darm_TUAP_cpe
+        description: "Número do DARM da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_numero_darm_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: inscricao_municipal_TUAP_cpe
+        description: "Inscrição municipal da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_inscricao_municipal_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_pagamento_TUAP_cpe
+        description: "Data de pagamento da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_pagamento_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: data_vencimento_TUAP_cpe
+        description: "Data de vencimento da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_vencimento_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: status_TUAP_cpe
+        description: "Status da Taxa de Uso de Área Pública de Consulta Prévia de Eventos."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_status_TUAP_cpe_not_null
+              severity: error
+        quote: true
+      - name: codigo_TLE_alvara
+        description: "Código da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: titulo_TLE_alvara
+        description: "Título da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_titulo_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: codigo_receita_TLE_alvara
+        description: "Código de receita da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_receita_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_emissao_TLE_alvara
+        description: "Data de emissão da Taxa de Licença de Eventos do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_data_emissao_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: taxa_liberada_TLE_alvara
+        description: "Taxa liberada da Taxa de Licença de Eventos do alvará."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_taxa_liberada_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: valor_TLE_alvara
+        description: "Valor da Taxa de Licença de Eventos do alvará."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_valor_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: competencia_TLE_alvara
+        description: "Competência da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_competencia_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: numero_darm_TLE_alvara
+        description: "Número do DARM da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_numero_darm_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: inscricao_municipal_TLE_alvara
+        description: "Inscrição municipal da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_inscricao_municipal_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_pagamento_TLE_alvara
+        description: "Data de pagamento da Taxa de Licença de Eventos do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_pagamento_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_vencimento_TLE_alvara
+        description: "Data de vencimento da Taxa de Licença de Eventos do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_data_vencimento_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: status_TLE_alvara
+        description: "Status da Taxa de Licença de Eventos do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_status_TLE_alvara_not_null
+              severity: error
+        quote: true
+      - name: codigo_TUAP_alvara
+        description: "Código da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: titulo_TUAP_alvara
+        description: "Título da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_titulo_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: codigo_receita_TUAP_alvara
+        description: "Código de receita da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_codigo_receita_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_emissao_TUAP_alvara
+        description: "Data de emissão da Taxa de Uso de Área Pública do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_emissao_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: taxa_liberada_TUAP_alvara
+        description: "Taxa liberada da Taxa de Uso de Área Pública do alvará."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_taxa_liberada_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: valor_TUAP_alvara
+        description: "Valor da Taxa de Uso de Área Pública do alvará."
+        data_type: numeric(19,2)
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_valor_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: competencia_TUAP_alvara
+        description: "Competência da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_competencia_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: numero_darm_TUAP_alvara
+        description: "Número do DARM da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_numero_darm_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: inscricao_municipal_TUAP_alvara
+        description: "Inscrição municipal da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consultaprevia_inscricao_municipal_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_pagamento_TUAP_alvara
+        description: "Data de pagamento da Taxa de Uso de Área Pública do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_pagamento_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: data_vencimento_TUAP_alvara
+        description: "Data de vencimento da Taxa de Uso de Área Pública do alvará."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_data_vencimento_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: status_TUAP_alvara
+        description: "Status da Taxa de Uso de Área Pública do alvará."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_alvaras_eventos_consulta_previa_status_TUAP_alvara_not_null
+              severity: error
+        quote: true
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do FUSION."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp        
+        
+        
+      
+      
+
+      
