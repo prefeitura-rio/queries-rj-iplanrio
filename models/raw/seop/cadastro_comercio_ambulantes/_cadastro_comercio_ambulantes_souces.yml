@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: brutos_cadastro_comercio_ambulantes_staging
-    database: rj-seop
+    database: rj-iplanrio
     schema: brutos_cadastro_comercio_ambulantes_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}

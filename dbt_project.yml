@@ -140,10 +140,11 @@ models:
         +materialized: table
         +schema: brutos_mais_valia
         +tags: ["daily", "mais_valia"]
-
-      cadastro_comercio_ambulantes:
-        +project: rj-seop
-        +materialized: table
-        +schema: brutos_cadastro_comercio_ambulantes
-        +tags: ["daily", "cadastro_comercio_ambulantes"]
+        
+      seop:
+        cadastro_comercio_ambulantes:
+          +project: rj-seop
+          +materialized: table
+          +schema: brutos_cadastro_comercio_ambulantes
+          +tags: ["daily", "cadastro_comercio_ambulantes"]
 

@@ -36,8 +36,6 @@ models:
       - name: data_concessao
         description: "Data que Autorização foi concedida"
         datatype: Datetime
-        tests:
-          - not_null
       - name: data_cancelamento
         description: "Data que Autorização foi cancelada"
         datatype: Datetime
@@ -68,8 +66,6 @@ models:
       - name: indicador_autorizacao_permanente
         description: "Autorização Permanente (S) ou Temporária (N) - Ex: Autorizações concedidas para trabalhar durante o Carnaval"
         datatype: String
-        tests:
-          - not_null
       - name: numero_processo_concessao
         description: "Número do Processo Administrativo que contém o deferimento para o Titular da autorização trabalhar no comércio ambulante"
         datatype: String
