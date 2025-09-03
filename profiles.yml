@@ -1,11 +1,11 @@
 iplan:
-  target: dev
+  target: smfp-prod
   outputs:
     dev:
       dataset: dbt
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /tmp/credentials.json
+      keyfile:  /home/atlimarj/credencial/rj-iplanrio-dbt-arnaldo-lima.json      
       location: US
       method: service-account
       priority: interactive
@@ -16,11 +16,22 @@ iplan:
       dataset: dbt
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: /tmp/credentials.json
+      keyfile: /home/atlimarj/credencial/rj-iplanrio-dbt-arnaldo-lima.json      
       location: US
       method: service-account
       priority: interactive
       project: rj-iplanrio
+      threads: 8
+      type: bigquery
+    smfp-prod:
+      dataset: dbt
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: /home/atlimarj/credencial/rj-iplanrio-dbt-arnaldo-lima.json      
+      location: US
+      method: service-account
+      priority: interactive
+      project: rj-smfp
       threads: 8
       type: bigquery
 
