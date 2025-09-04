@@ -3,4 +3,5 @@ models/raw/plus_codes/raw_grid_check.sql
 models/raw/plus_codes/raw_grid.sql
 models/raw/sme/educacao_basica_avaliacao/
 models/raw/sme/educacao_basica/educacao_basica__aluno_historico_2025.sql
-
+models/mart/setur/observatorio_do_turismo/mart_observatorio_do_turismo__rodoviarias.sql
+models/raw/setur/oferta_turistica/raw_oferta_turistica__novo_rio.sql
