@@ -1,0 +1,24 @@
+version: 2
+models:
+  - name: raw_taxirio_paymentmethods
+    columns:
+      - name: id_pagamento_associado
+        description: "Identificador do pagamento associado"
+        data_type: string
+        data_tests:   
+          - not_null:
+              name: raw_taxirio__id_pagamento_associado__not_null
+              severity: error
+          - unique:
+              name: raw_taxirio__id_pagamento_associado__unique
+              severity: error
+      - name: pindex  
+        description: "Identificador do pagamento"
+        data_type: int64
+      - name: nome
+        description: "Nome do pagamento"
+        data_type: string
+      - name: tipo
+        description: "Tipo de pagamento"
+        data_type: string
+     

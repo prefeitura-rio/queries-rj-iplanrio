@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: raw_taxirio_metricsdriverunoccupieds
+    columns:
+      - name: id_metricas_motoriasta_desocupado
+        description: Identificador da métrica de disponibilidade de motorista
+        data_type: string
+        data_tests:
+        - not_null:
+            name: raw_taxirio__id_metricas_motoriasta_desocupado__not_null
+            severity: error
+        - unique:
+            name: raw_taxirio__id_metricas_motoriasta_desocupado__unique
+            severity: error
+      - name: id_motorista
+        description: Identificador do motorista
+        data_type: string
+      - name: id_desconto_associado
+        description: Identificador do desconto associado
+        data_type: string
+
+
+    
