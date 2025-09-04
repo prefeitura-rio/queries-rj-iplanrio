@@ -1,0 +1,74 @@
+name: CI-DBT
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test-dbt-models:
+    if: github.actor != 'mergify[bot]'
+    runs-on: ubuntu-latest
+
+    env:
+
+      GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
+      GCLOUD_STORAGE_PATH_MANIFEST: ${{ secrets.GCLOUD_STORAGE_PATH_MANIFEST }}
+      DBT_ENV_SECRET_TYPE: ${{ secrets.DBT_ENV_SECRET_TYPE }} 
+      DBT_ENV_SECRET_PROJECT_ID: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
+      DBT_ENV_SECRET_PRIVATE_KEY_ID: ${{ secrets.DBT_ENV_SECRET_PRIVATE_KEY_ID }} 
+      DBT_ENV_SECRET_PRIVATE_KEY: ${{ secrets.DBT_ENV_SECRET_PRIVATE_KEY }}  
+      DBT_ENV_SECRET_CLIENT_EMAIL: ${{ secrets.DBT_ENV_SECRET_CLIENT_EMAIL }}
+      DBT_ENV_SECRET_CLIENT_ID: ${{ secrets.DBT_ENV_SECRET_CLIENT_ID }} 
+      DBT_ENV_SECRET_AUTH_URI: ${{ secrets.DBT_ENV_SECRET_AUTH_URI }}
+      DBT_ENV_SECRET_TOKEN_URI: ${{ secrets.DBT_ENV_SECRET_TOKEN_URI }}
+      DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL }} 
+      DBT_ENV_SECRET_CLIENT_X509_CERT_URL: ${{ secrets.DBT_ENV_SECRET_CLIENT_X509_CERT_URL }} 
+      HASH_SEED: ${{ secrets.SME_HASH_SEED }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: pip install -r dbt-requirements.txt
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0.4.3
+      with:
+        credentials_json: ${{ secrets.GCLOUD_SERVICE_KEY }}
+
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: ${{ secrets.DBT_ENV_SECRET_PROJECT_ID }}
+
+    - name: Copy manifest.json from Google Cloud Storage
+      run: |
+        gsutil cp gs://${{ env.GCLOUD_STORAGE_PATH_MANIFEST }}/manifest.json ./ || echo "Manifest not found"
+    
+    - name: Get Schema ID
+      id: schema_id
+      run: echo "SCHEMA_ID=${{ github.event.pull_request.number }}__${{ github.sha }}" >> $GITHUB_ENV
+
+    - name: Run dbt debug
+      run: |
+        dbt debug --target pr --vars "schema_id: $SCHEMA_ID"
+
+    - name: Run dbt deps
+      run: |
+        dbt deps --target pr --vars "schema_id: $SCHEMA_ID"
+
+    - name: Run dbt build
+      run: |
+        if [ -f "./manifest.json" ]; then
+          dbt build -s 'state:modified+' --defer --state ./ --target pr --vars "schema_id: $SCHEMA_ID"
+        else
+          dbt build --target pr --vars "schema_id: $SCHEMA_ID"
+        fi

@@ -1,0 +1,41 @@
+ version: 2
+
+models:
+  - name: raw_sisbicho_email
+    description: "Tabela contendo os emails cadastrados no sistema SisBicho"
+    columns:
+      - name: id_email
+        description: "Identificador único do e-mail"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_email__id_email__unique
+          - not_null:
+              name: raw_sisbicho_email__id_email__not_null
+      - name: identificacao_codigo
+        description: "Código de identificação do e-mail"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_email__identificacao_codigo__not_null
+      - name: texto_conteudo
+        description: "Conteúdo do e-mail"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_email__texto_conteudo__not_null
+      - name: assunto_nome
+        description: "Assunto do e-mail"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_email__assunto_nome__not_null
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
+         

@@ -1,0 +1,179 @@
+version: 2
+
+models:
+  - name: raw_mais_valia_contrapartida_consolidado
+    description: "Tabela que espelha a view vwCTP_consolidado_ctp que consiste nos dados básicos dos cálculos de contrapartida."
+    columns:
+      - name: id_calculo
+        description: "Identificador criado com a concatenação dos campos origem e codigo_calculo para montar a chave do cálculo de contrapartida."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_mais_valia_contrapartida_consolidado__id_calculo__not_null
+              severity: error
+          - unique:
+              name: raw_mais_valia_contrapartida_consolidado__id_calculo__unique
+              severity: error
+      - name: origem
+        description: "Código que identifica a versão do sistema onde o cálculo foi gerado. {1-Sistema novo / 10 - Sistema antigo}."
+        data_type: int64
+      - name: codigo_calculo
+        description: "Código do cálculo de contrapartida."
+        data_type: int64
+      - name: inscricao_iptu
+        description: "Inscrição imobiliária do imóvel relacionado ao cálculo de contrapartida. Essa inscrição está apresentada conforme foi preechida pelo requerente no formulário do sistema web."
+        data_type: string
+      - name: documentacao_ok
+        description: "Indicador booleano que informa se a documentação do imóvel está correta para a geração do processo administrativo referente ao cálculo de contrapartida. Só é preenchido para os cálculos originados no sistema novo e quando o processo ainda não tiver sido gerado. Caso contrário, estará nulo."
+        data_type: boolean
+      - name: darm_inicial_ok
+        description: "Indicador booleano que informa se o DARM inicial do cálculo de contrapartida foi pago. Só é preenchido para os cálculos originados no sistema novo e quando o processo ainda não tiver sido gerado. Caso contrário, estará nulo."
+        data_type: boolean
+      - name: lei_contrapartida
+        description: "Lei que regulamenta a contrapartida originada no sistema novo."
+        data_type: string
+      - name: assunto
+        description: "Lei que regulamenta a contrapartida originada no sistema antigo."
+        data_type: string
+      - name: mais_valia
+        description: "Booleano que indica se o cálculo foi feito após a realização da obra."
+        data_type: boolean
+      - name: mais_valera
+        description: "Booleano que indica se o cálculo foi feito antes da realização da obra."
+        data_type: boolean
+      - name: numero_processo
+        description: "Número do processo relacionado ao cálculo de contrapartida. O processo pode ter origem no SICOP, PROCESSO.RIO ou SEI."
+        data_type: string
+      - name: ano
+        description: "Ano de referência do cálculo de contrapartida."
+        data_type: int64
+      - name: codigo_requerimento
+        description: "Código do requerimento relacionado ao cálculo de contrapartida."
+        data_type: int64
+      - name: numero_requerimento
+        description: "Número do requerimento relacionado ao cálculo de contrapartida."
+        data_type: string
+      - name: ano_requerimento
+        description: "Ano do requerimento relacionado ao cálculo de contrapartida."
+        data_type: int64
+      - name: codigo_logradouro
+        description: "Código do logradouro onde está o imóvel relacionado ao cálculo de contrapartida, de acordo com o sistema da SMDU."
+        data_type: int64
+      - name: codigo_logradouro_smf
+        description: "Código do logradouro onde está o imóvel relacionado ao cálculo de contrapartida, de acordo com o sistema da SMF."
+        data_type: int64
+      - name: tipo_logradouro
+        description: "Tipo do logradouro onde está o imóvel relacionado ao cálculo de contrapartida. (rua, praça, avenida, etc. )"
+        data_type: string
+      - name: nobreza_logradouro
+        description: "Caso o nome do logradouro contenha informações adicionais em seu nome, como nome de autoridades, normalmente usa nome do título de nobreza da referida autoridade."
+        data_type: string
+      - name: preposicao_logradouro
+        description: "Preposição que antecede o nome do logradouro, como 'da', 'de', 'do', etc."
+        data_type: string
+      - name: nome_logradouro
+        description: "Nome do logradouro onde está o imóvel relacionado ao cálculo de contrapartida."
+        data_type: string
+      - name: numero_porta
+        description: "Número da porta do imóvel no logadrouro."
+        data_type: string
+      - name: complemento_porta
+        description: "Complemento do endereço do imóvel, como 'casa', 'apartamento', etc."
+        data_type: string
+      - name: unidade
+        description: "Denominação da unidade do cálculo da contrapartida, caso um mesmo processo seja referente a mais de um imóvel na mesma edificação, como prédio de apartamentos ou galeria comercial."
+        data_type: string
+      - name: numero_pal
+        description: "Número do PAL (Projeto Aprovado de Loteamento), referente a localidade onde fica o imóvel."
+        data_type: string
+      - name: lote
+        description: "Número do lote onde fica o imóvel."
+        data_type: string
+      - name: quadra 
+        description: "Número da quadra onde fica o imóvel."
+        data_type: string
+      - name: codigo_bairro
+        description: "Código do bairro onde fica o imóvel, de acordo com o sistema da SMDU."
+        data_type: int64
+      - name: bairro
+        description: "Nome do bairro onde fica o imóvel."
+        data_type: string
+      - name: area_planejamento
+        description: "Área de planejamento onde fica o imóvel."
+        data_type: int64
+      - name: regiao_administrativa
+        description: "Região administrativa onde fica o imóvel."
+        data_type: int64
+      - name: codigo_cepregiao_administrativa_romanos
+        description: "Código do CEP da região administrativa onde fica o imóvel com a designação em algarismos romanos."
+        data_type: string
+      - name: requerente
+        description: "Nome do requerente do processo para legalizar a alteração realizada ou a realizar no imóvel. Pode ser pessoa de natureza física ou jurídica e não caracteriza o proprietário do imóvel."
+        data_type: string
+      - name: telefone
+        description: "Número do telefone fixo do requerente do processo."
+        data_type: string
+      - name: celular
+        description: "Número do celular do requerente do processo."
+        data_type: string
+      - name: email
+        description: "Endereço de e-mail do requerente do processo."
+        data_type: string
+      - name: cpf_cnpj
+        description: "CPF ou CNPJ do requerente do processo."
+        data_type: string
+      - name: numero_laudo
+        description: "Número do laudo feito pelo fiscal de obras que baseou o cálculo de contrapartida."
+        data_type: string
+      - name: estado_laudo
+        description: "Estado atual do laudo feito pelo fiscal de obras que baseou o cálculo de contrapartida."
+        data_type: string
+      - name: valor
+        description: "Valor total original do cálculo de contrapartida. Só deve ser utilizado para somas de valores quando o status da contrapartida for 0 - pagamento não iniciado (quando as parcelas ainda não foram geradas) ou 4 - Com forma de pagamento cancelada (quando houve qualquer interrupção do pagamento e cancelamento das parcelas por qualquer que seja o motivo). Para os demais registros com status 1, 2, e 3 devem ser somadas os valores das parcelas associadas ao referido cálculo, relacionando através das colunas codigo_calculo e origem."
+        data_type: numeric
+      - name: quantidade_parcelas
+        description: "Quantidade de parcelas do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: int64
+      - name: quantidade_parcelas_pagas
+        description: "Total de parcelas pagas do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: int64
+      - name: valor_parcelas_pagas
+        description: "Valor total das parcelas pagas do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: numeric
+      - name: quantidade_parcelas_a_vencer
+        description: "Quantidade de parcelas a vencer do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: int64
+      - name: valor_parcelas_a_vencer
+        description: "Valor total das parcelas a vencer do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: numeric
+      - name: quantidade_parcelas_vencidas
+        description: "Quantidade de parcelas vencidas do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: int64
+      - name: valor_parcelas_vencidas
+        description: "Valor total das parcelas vencidas do cálculo de contrapartida. Essa informação é contabilizada no sistema de origem, sem ser que haja recontagem neste banco de dados do datalake."
+        data_type: numeric
+      - name: codigo_status
+        description: "Código do status do cálculo de contrapartida, que pode ser:
+          0 - pagamento não iniciado (quando as parcelas ainda não foram geradas);
+          1 - pontrapartida quitada (quando todas as parcelas foram pagas);
+          2 - pagamento em andamento (quando as parcelas foram geradas e não há parcelas em atraso);
+          3 - com pendência de pagamento (quando o há parcelas em atraso);
+          4 - Com forma de pagamento cancelada (quando houve qualquer interrupção do pagamento e cancelamento das parcelas por qualquer que seja o motivo)."
+        data_type: int64
+      - name: descricao_status
+        description: "Descrição do status do cálculo de contrapartida, que pode ser:
+          0 - pagamento não iniciado;
+          1 - pontrapartida quitada;
+          2 - pagamento em andamento;
+          3 - com pendência de pagamento;
+          4 - Com forma de pagamento cancelada"
+        data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do PCSM."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
+      
+
+

@@ -5,3 +5,14 @@ repos:
       - id: check-added-large-files # prevents adding large files
       - id: detect-private-key # detects private keys
       - id: fix-byte-order-marker # fixes BOM
+
+#  - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+#    rev: v2.0.7
+#    hooks:
+#      - id: dbt-parse
+#      - id: check-script-semicolon
+#      - id: check-script-has-no-table-name # check if the script has only source or ref to specific table
+#      - id: check-model-columns-have-desc
+#        files: ^models/mart
+#      - id: check-model-has-description
+#        files: ^models/mart

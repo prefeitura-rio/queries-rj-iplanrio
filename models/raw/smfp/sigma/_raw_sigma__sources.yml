@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: compras_materiais_servicos_sigma_staging
+    database: rj-smfp
+    schema: compras_materiais_servicos_sigma_staging
+    freshness: null # default freshness
+      #error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
+    tables:
+      - name: VW_CLASSE
+      - name: VW_DEVOLUCAO_MATERIAL
+      - name: VW_FECHAMENTO_ESTOQUE
+      - name: VW_FORNECEDOR
+      - name: VW_GRUPO
+      - name: VW_MATERIAL
+      - name: VW_MATERIAL_EM_TRANSITO
+      - name: VW_MATERIAL_REFERENCIA
+      - name: VW_MOVIMENTACAO
+      - name: VW_MOV_ESTOQUE
+      - name: VW_ORGAO
+      - name: VW_POSICAO_FECHADA_ESTOQUE
+      - name: VW_RAMO_ATIVIDADE
+      - name: VW_RESPONSAVEL_UNIDADE_ARMAZENADORA
+      - name: VW_SALDO_MENSAL_ESTOQUE
+      - name: VW_SANCAO_ADMINISTRATIVA
+      - name: VW_SERVICO
+      - name: VW_SUBCLASSE
+      - name: VW_UNIDADE
+      - name: VW_UNIDADE_ARMAZENADORA
+      - name: VW_UNIDADE_SERVICO
+      - name: VW_USUARIO_RESPONSAVEL_AUXILIAR
+      - name: VW_USUARIO_SISTEMA

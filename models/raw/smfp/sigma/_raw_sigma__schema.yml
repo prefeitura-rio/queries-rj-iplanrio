@@ -1,0 +1,796 @@
+version: 2
+
+models :
+  - name: raw_sigma_classe
+    description: "**Descrição**: Classes de Material da Lista de Classificação\n**Frequência
+      de atualização**: Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**:
+      SMFP\n**Publicado por**: Fabio Barbosa Baptista\n**Publicado por (email)**:
+      fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_grupo
+        description: Código do grupo onde está classificada a subclasse
+      - name: codigo_classe
+        description: Código da classe onde está classificada a subclasse
+      - name: descricao_classe
+        description: Descrição da classe
+      - name: status
+        description: Quais são os status disponíveis. 0 = Ativado e 2 = Desativado
+  - name: raw_sigma_servico
+    description: "**Descrição**: Código de Serviço\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_servico
+        description: Código do Serviço (Código com 06 caracteres)
+      - name: codigo_sequencia
+        description: Código da Sequência (Código com 04 caracteres)
+      - name: digito_verificador
+        description: Digito Verificador (Código com 02 caracteres)
+      - name: id_servico
+        description: Código do Serviço (concatenação de codigo_servico, codigo sequencia e digito verificador)
+      - name: descricao_servico
+        description: Descrição do Serviço (Composto por 05 campos com 78 caracteres
+          cada um)
+      - name: status_servico
+        description: Indica serviço Ativado ou Desativado
+      - name: codigo_compras_net
+        description: Código de serviço (Classificação Governo Federal)
+      - name: nome_padronizado
+        description: Nome Padronizado
+      - name: unidade_servico
+        description: Unidade de serviço
+      - name: responsavel_tecnico
+        description: Necessita responsável Técnico
+      - name: registro_preco
+        description: Se está no sistema de registro de Preço
+      - name: id_atividade_economica
+        description: Código de Atividade Econômica. Composto por grupo, subgrupo e
+          atividade
+      - name: codigo_grupo_cae
+        description: Grupo de Atividade Econômica. Faz parte do Código de Atividade
+          Econômica
+      - name: codigo_subgrupo_cae
+        description: Subgrupo de Atividade Econômica. Faz parte do Código de Atividade
+          Econômica
+      - name: codigo_atividade_economica
+        description: Atividade Econômica. Incluído no código da atividade econômica
+      - name: descricao_atividade_economica
+        description: Descrição da Atividade Econômica
+      - name: descricao_subgrupo_cae
+        description: Descrição do Subgrupo do Código de Atividade Econômica
+      - name: situacao_tabelado
+        description: Se o item é tabelado
+      - name: situacao_cadastro_fornecedor
+        description: Se o item é vinculado a tabela de fornecedor
+
+  - name: raw_sigma_usuario_responsavel_auxiliar
+    description: "**Descrição**: Cadastro de Responsáveis de UAM\n**Frequência de
+      atualização**: Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**:
+      SMFP\n**Publicado por**: Fabio Barbosa Baptista\n**Publicado por (email)**:
+      fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_orgao
+        description: CÓDIGO DO ÓRGÃO
+      - name: descricao_orgao
+        description: DESCRIÇÃO DO ÓRGÃO
+      - name: matricula_funcionario
+        description: MATRÍCULA DO FUNCIONÁRIO
+      - name: nome_funcionario
+        description: NOME DO FUNCIONÁRIO
+      - name: tipo_responsabilidade
+        description: TIPO DE RESPONSABILIDADE
+      - name: data_inicio
+        description: DATA DE INÍCIO
+      - name: data_termino
+        description: DATA DE TERMINO
+      - name: data_termo_responsabilidade
+        description: DATA DO TERMO DE RESPONSABILIDADE
+      - name: data_excepecionalidade
+        description: DATA DA EXCEPCIONALIDADE
+      - name: data_publicacao_designacao
+        description: DATA DA PUBLICAÇÃO DA DESIGNAÇÃO
+      - name: escolaridade
+        description: ESCOLARIDADE
+      - name: curso_gestao_material
+        description: STATUS DO CURSO DE GESTÃO
+
+  - name: raw_sigma_material
+    description: "**Descrição**: Cadastro de Material\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_material
+        description: Código do Material (Composição do Grupo + Classe + Subclasse
+          + Sequencial e dígitos de verificação)
+      - name: codigo_grupo
+        description: Código do Grupo
+      - name: codigo_classe
+        description: Código da Classe
+      - name: codigo_subclasse
+        description: Código da Subclasse
+      - name: codigo_sequencial
+        description: Código Sequencial
+      - name: digito_verificador_1
+        description: Dígito Verificador 1
+      - name: digito_verificador_2
+        description: Dígito Verificador 2
+      - name: nome_padronizado_material
+        description: Nome padronizado do material
+      - name: nome_complementar_material
+        description: Nome complementar do material
+      - name: unidade_consumo
+        description: Unidade de Consumo
+      - name: descricao_detalhada
+        description: Descrição detalhada do material (São 06 campos com 78 caracteres
+          cada um)
+      - name: data_desativacao
+        description: Data da Desativação
+      - name: status_material
+        description: Indica material Ativo ou Desativado
+      - name: tabela_remume
+        description: Se o material está vinculado a tabela REMUME
+      - name: acondicionamento
+        description: Acondicionamento (É um campo com 78 caracteres)
+      - name: genero_alimenticio
+        description: Gênero Alimentício
+      - name: codigo_material_substituto
+        description: Código do Material Substituto
+      - name: nome_fantasia
+        description: Nome Fantasia
+
+      - name: codigo_compras_net
+        description: Código do material (Classificação Governo Federal)
+      - name: tipo_material
+        description: Tipo de Material
+      - name: referencia
+        description: Se possui referência
+
+      - name: registro_preco
+        description: Se o produto é um item de registro de Preço
+      - name: medicamento_refrigerado
+        description: Se é um medicamento armazenado em ambiente refrigerado
+      - name: medicamento_controlado
+        description: Se é um medicamento controlado
+      - name: medicamento_padronizado
+        description: Se é um medicamento padronizado
+      - name: medicamento_uso_geral
+        description: Se é um medicamento de uso geral
+      - name: medicamento_continuado
+        description: Se é um medicamento continuado
+      - name: medicamento_tabelado
+        description: Se é um medicamento tabelado
+      - name: item_sustentavel
+        description: Se é um item sustentável
+      - name: observacao
+        description: Observação (É um campo com 78 caracteres)
+
+  - name: raw_sigma_usuario_sistema
+    description: "**Descrição**: Usuários do SIGMA\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: empresa_contratante
+        description: Nome da Empresa contratante do Colaborador
+      - name: cpf_colaborador
+        description: CPF do Colaborador
+      - name: matricula
+        description: Matrícula do Servidor ou Colaborador
+      - name: nome_servidor
+        description: Nome do Servidor ou Colaborador
+      - name: email_institucional
+        description: Email institucional
+      - name: email_alternativo
+        description: Email alternativo
+      - name: telefone_corporativo_1
+        description: Telefone Corporativo 1
+      - name: telefone_corporativo_2
+        description: Telefone Corporativo 2
+      - name: telefone_alternativo_1
+        description: Telefone Alternativo 1
+      - name: telefone_alternativo_2
+        description: Telefone Alternativo 2
+      - name: codigo_orgao_designacao
+        description: Código do órgão da designação
+      - name: descricao_orgao_designacao
+        description: Descrição do órgão da designação
+      - name: codigo_perfil
+        description: Código do Perfil
+      - name: descricao_perfil
+        description: Descrição do Perfil
+      - name: privilegio_almoxarifado
+        description: Privilégio de acesso
+      - name: hora_acesso_inicio
+        description: Hora do acesso Inicial
+      - name: minuto_acesso_inicio
+        description: Minuto do acesso Inicial
+      - name: hora_acesso_fim
+        description: Hora de acesso Fim
+      - name: minuto_acesso_fim
+        description: Minuto do acesso Fim
+      - name: data_inclusao
+        description: Data da Inclusão
+      - name: status
+        description: Status
+      - name: status_situacao
+        description: Status da Situação
+      - name: codigo_terminal
+        description: Código do Terminal
+      - name: data_ultima_sessao
+        description: Data da Última Sessão
+      - name: hora_ultima_sessao
+        description: Hora da Última Sessão
+
+  - name: raw_sigma_ramo_atividade
+    description: "**Descrição**: Cadastro do Ramo de Atividades\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_ramo
+        description: Número sequencial de 1 a 9, correspondente a cada tipo de ramo
+      - name: descricao_ramo
+        description: 'Descrição do Ramo: Indústria, Comércio, Prestação de Serviço,
+          Indústria e Comércio, Indústria e Prestação de Serviço, Comércio e Prestação
+          de Serviço, Indústria, Comércio e Prestação de Serviço, Empreiteiro, Organização
+          da Sociedade Civil - OSC'
+      - name: situacao_ramo
+        description: Indica se o cadastro está ativo
+
+  - name: raw_sigma_unidade
+    description: "**Descrição**: Unidade de Consumo\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: id_unidade
+        description: Código único dado, pela PCRJ, à unidade
+      - name: descricao_unidade
+        description: Descrição da unidade
+
+  - name: raw_sigma_grupo
+    description: "**Descrição**: Grupo da Lista de Classificação\n**Frequência de
+      atualização**: Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**:
+      SMFP\n**Publicado por**: Fabio Barbosa Baptista\n**Publicado por (email)**:
+      fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_grupo
+        description: Código do Grupo
+      - name: descricao_grupo
+        description: Descrição do Grupo
+      - name: status
+        description: Quais são os status existentes? E um caracter numérico. 0 = Ativado
+          e 1 = Desativado
+
+
+  - name: raw_sigma_fornecedor
+    description: "**Descrição**: Registro dos Fornecedores - cadastro do dados dos
+      fornecedores de bens e de serviços, submetidos ao processo formal de cadastramento,
+      estão distribuídos em funcionais específicas no Sistema de Informações Gerenciais
+      de Material\n**Frequência de atualização**: Diário\n**Cobertura temporal**:
+      1997\n**Órgão gestor dos dados**: SMFP\n**Publicado por**: Fabio Barbosa Baptista\n
+      **Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: cpf_cnpj
+        description: CPF/CNPJ do fornecedor.
+      - name: tipo_fornecedor
+        description: Caracter que indica se o documento do fornecedor é o CPF (F)
+          , CNPJ (J) ou Estrangeiro (E).
+      - name: inscricao_municipal
+        description: Inscrição municipal do fornecedor.
+      - name: inscricao_estadual
+        description: Inscrição estadual do fornecedor.
+      - name: razao_social
+        description: Razão social ou nome do fornecedor.
+
+
+      - name: nome_fantasia
+        description: Nome de fantasia do fornecedor caso seja uma Pessoa Jurídica.
+      - name: nome_contato
+        description: Nome da pessoa de contato no fornecedor.
+      - name: email
+        description: Correio eletrônico da empresa ou da pessoa física
+      - name: email_contato
+        description: Correio eletrônico da pessoa de contato no fornecedor
+      - name: fax_fornecedor
+        description: Fax do fornecedor.
+      - name: ddd
+        description: DDD do telefone do fornecedor
+      - name: ddi
+        description: DDI do telefone do fornecedor.
+      - name: ramal
+        description: Número do ramal do telefone do fornecedor
+      - name: telefone
+        description: Número de telefone do fornecedor
+      - name: logradouro
+        description: Código do logradouro do endereço do fornecedor
+      - name: numero_porta
+        description: Número de porta do endereço do fornecedor
+      - name: complemento_endereco
+        description: Complemento do endereço do fornecedor
+      - name: bairro
+        description: Bairro onde fica o endereço do fornecedor
+      - name: municipio
+        description: Município onde fica o endereço do fornecedor
+      - name: uf
+        description: Código da unidade da federação onde fica o endereço do fornecedor
+      - name: cep
+        description: CEP do endereço do fornecedor
+      - name: status_fornecedor
+        description: Indica que o fornecedor está ativo, inativo ou bloqueado
+      - name: codigo_natureza_juridica
+        description: Código da natureza jurídica do fornecedor, encontrado no CNPJ
+      - name: descricao_natureza_juridica
+        description: "Descrição da natureza jurídica do fornecedor. Quais são?\r\n
+          FIRMA INDIVIDUAL , SOCIEDADE LIMITADA , SOCIEDADE ANONIMA  COOPERATIVA,
+          SOCIEDADE EM NOME COLETIVO, SOCIEDADE EM COMANDITA SIMPLES, SOCIEDADE DE
+          CAPITAL E INDUSTRIAL, SOCIEDADE EM COMANDITA POR ACO, SOCIEDADE DE ECONOMIA
+          MISTA, FUNDACAO DE DIREITO PRIVADO, SOCIEDADE CIVIL, EMPRESA ESTRANGEIRA,
+          PESSOA FÍSICA, INSTITUICAO PUBLICA, ORGAO PUBLICO, SOCIEDADE CIVIL SEM FINS
+          LUCRATIVO,  ORGANIZACAO NAO GOVERNAMENTAL , SOCIEDADE EMPRESARIA LIMITADA,
+          SOCIEDADE EMPRESARIA EM COMANDO, SOCIEDADE SIMPLES, SOCIEDADE SIMPLES LIMITADA,
+          SOCIEDADE SIMPLES EM NOME COLETIVA, SOCIEDADE SIMPLES EM COMANDITA, EMPRESA
+          PUBLICA (MRJ), SOCIEDADE DE ECONOMIA MISTA (MRJ), FUNDACAO MUNICIPAL (MRJ),
+          AUTARQUIA MUNICIPAL (MRJ), ORGAO PUBL. PODER EXECUT. MUNI ,  ORGAO PUBLICO
+          AUTONOMO MUNICIPAL, PESSOA FISICA - AUTONOMO NAO LOCALIZADO, SERVICO SOCIAL
+          AUTONOMO , CONSORCIO DE SOCIEDADES, OUTRAS FORMAS DE ASSOCIACAO, ASSOCIACAO
+          PRIVADA , CONDOMINIO EDILICIO, AUTARQUIA FEDERAL, ORGANISMOS INTERNACIONAIS,\
+          \  FUNDACAO PUBLICA DE DIREITO PUBLICO,  MUNICIPIO (EXCETO MRJ), SERVIÇO
+          SOCIAL AUTONOMO \""
+      - name: codigo_ramo_atividade
+        description: Código do ramo de atividade do fornecedor.
+      - name: descricao_ramo_atividade
+        description: Descrição do ramo de atividade. Quais são? INDUSTRIA, COMERCIO,
+          PRESTACAO DE SERVICO, INDUSTRIA E COMERCIO, INDUSTRIA E PRESTACAO SERVICO,
+          COMERCIO E PRESTACAO SERVICO, IND.COM.E PRESTACAO DE SERVICO, EMPREITEIRO,
+          REGISTRO EMP. NAO CADASTRADA, RAMO INICIAL, FUNDACAO PRIVADA E ASSOCIACAO
+
+      - name: codigo_porte_fornecedor
+        description: "Código do porte do fornecedor como empresa. Quais são?\r\n01
+          - ME- MICROEMPRESA, 02 - EPP- EMPRESA DE PEQUENO PORTE, 03 - MEDIO, 04 -
+          GRANDE, 05 - MEI - MICROEMPREENDEDOR INDIVIDUAL"
+      - name: data_ultima_atualizacao
+        description: Data da última alteração do registro
+
+
+      - name: tipo_cadastro_fornecedor
+        description: "EVENTUAL - pessoa física ou jurídica que transaciona com a Municipalidade,
+          sem que tenha se submetido ao processo formal de cadastramento, mas que
+          para efeito de empenhamento e liquidação de despesa necessita constar do
+          cadastro de favorecidos do Sistema de Contabilidade e Execução Orçamentária.
+          \r\nFORMAL  - O cadastro da pessoa física ou jurídica passou pelo processo
+          formal de cadastramento e recebeu um certificado.\r\nSEM VINCULO - Fornecedores
+          que não possuem Inscrição Estadual nem Inscrição Municipal criados para
+          pagamento a restituição, indenização, carta de crédito, aquisição de imóvel
+          e desapropriação."
+
+
+
+  - name: raw_sigma_orgao
+    description: "**Descrição**: Cadastro de Órgão\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_orgao
+        description: Código do órgão
+      - name: tipo_orgao
+        description: Tipo do órgão
+      - name: descricao_tipo_orgao
+        description: Descrição do tipo do órgão
+      - name: codigo_orgao_pai
+        description: Código do órgão pai
+      - name: cd_secretaria_sdi
+        description: Código da Secretaria SDI
+      - name: descricao_orgao
+        description: Descrição do órgão
+      - name: endereco_orgao
+        description: Endereço do órgão
+      - name: complemento_endereco
+        description: Complemento do Endereço do órgão
+      - name: cep
+        description: Cep do endereço do órgão
+      - name: numero_porta
+        description: Número do endereço do órgão
+      - name: fax_1
+        description: Número do telefone do fax 1
+      - name: fax_2
+        description: Número do telefone do fax 2
+      - name: telefone_1
+        description: Número do telefone 1
+      - name: telefone_2
+        description: Número do telefone 2
+      - name: sigla_orgao
+        description: Sigla do órgão
+      - name: email_orgao
+        description: email do órgão
+      - name: tipo_unidade
+        description: Tipo de Unidade
+      - name: status_orgao
+        description: Status do órgão
+      - name: codigo_saude
+        description: Código Nacional do Estabelecimento de Saúde
+      - name: matricula_responsavel
+        description: Matrícula do responsável pelo Cadastro
+      - name: nome_responsavel
+        description: Nome do responsável pelo Cadastro
+      - name: data_cadastramento
+        description: Data do Cadastramento
+
+  - name: raw_sigma_movimentacao
+    description: "**Descrição**: Movimentação de Estoque\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_material
+        description: Código do Material
+      - name: cnpj_fornecedor
+        description: CNPJ do Fornecedor
+      - name: nota_fiscal
+        description: Número da Nota Fiscal
+      - name: serie_nota_fiscal
+        description: Número de Série da Nota Fiscal
+      - name: data_nota_fiscal
+        description: Data da Emissão da Nota Fiscal
+      - name: quantidade_item
+        description: Quantidade de Itens
+      - name: preco_item
+        description: Preço do item da nota fiscal.
+      - name: total_item
+        description: Total de Itens
+      - name: data_ultima_atualizacao
+        description: Data da Última atualização
+      - name: codigo_movimentcao
+        description: "Código da movimentação. O código identifica se é uma entrada
+          ou saída. Conforme tabela abaixo:\r\nNúmero para Entradas\t    Nome\r\n\
+          1\t\t                                Alienação\r\n2\t\t                \
+          \                Aquisição\r\n5\t\t                                Ajuste
+          Contábil\r\n6\t\t                                Incorporação\r\n14\t\t\
+          \                                Transferência\r\n\r\nNúmero para Saídas\t\
+          \t   Nome\r\n11\t\t                                Alienação\r\n12\t\t \
+          \                               Requisição\r\n13\t\t                   \
+          \             Devolução\r\n14\t\t                               Transferência\r\
+          \n15\t\t                               Ajuste Contábil\r\n17\t\t       \
+          \                        Desgaste\r\n19\t\t                            \
+          \   Baixa"
+
+      - name: tipo_movimentcao
+        description: Descrição do tipo de movimentação
+      - name: tipo_almoxarifado
+        description: Tipo de almoxarifado. Quais são os tipos de almoxarifado? Unidade
+          Armazenadora e Unidade Consumidora
+      - name: codigo_secretaria
+        description: Código da Secretaria (Os almoxarifados ficam vinculados a uma
+          determinada Secretaria)
+      - name: descricao_secretaria
+        description: Descrição da Secretaria
+      - name: id_almoxarifado_destino
+        description: Código do Almoxarifado Destino
+      - name: descricao_almoxarifado_destino
+        description: Descrição do Almoxarifado Destino
+      - name: id_almoxarifado_origem
+        description: Código do Almoxarifado Origem
+      - name: descricao_almoxarifado_origem
+        description: Descrição do Almoxarifado Origem
+      - name: codigo_organizacao_social
+        description: Código da Organização Social
+      - name: data_inicio_contrato
+        description: Data de Início do Contrato da Organização Social
+      - name: data_fim_contrato
+        description: Data do Fim do Contrato da Organização Social
+      - name: codigo_empenho
+        description: Número do Empenho
+      - name: cnpj_fabricante
+        description: CNPJ do Fabricante.
+
+  - name: raw_sigma_material_referencia
+    description: "**Descrição**: Referência de Material\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_material
+        description: Código do material
+      - name: codigo_grupo
+        description: Grupo do Material
+      - name: codigo_classe
+        description: Classe do Material
+      - name: codigo_subclasse
+        description: Subclasse do Material
+      - name: sequencial_material
+        description: Sequência do Material
+      - name: digito_verificador_1
+        description: Digito Verificador 1
+      - name: digito_verificador_2
+        description: Digito Verificador 2
+      - name: codigo_referencia
+        description: Código da Referência
+      - name: descricao_referencia
+        description: Descrição da Referência
+      - name: status
+        description: Status
+
+  - name: raw_sigma_unidade_armazenadora
+    description: "**Descrição**: Unidades Armazenadoras\n**Frequência de atualização**:
+      Diário\n**Cobertura temporal**: 1997\n**Órgão gestor dos dados**: SMFP\n**Publicado
+      por**: Fabio Barbosa Baptista\n**Publicado por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: id_unidade_armazenadora
+        description: CÓDIGO DA UNIDADE ARMAZENADORA
+      - name: descricao_unidade_armazenadora
+        description: DESCRIÇÃO DA UNIDADE ARMAZENADORA
+      - name: tipo_almoxarifado
+        description: TIPO DE ALMOXARIFADO
+      - name: id_unidade_administrativa
+        description: CÓDIGO DA UNIDADE ADMINISTRATIVA VINCULADA
+      - name: descricao_unidade_administrativa
+        description: DESCRIÇÃO DA UNIDADE ADMINISTRATIVA VINCULADA
+      - name: status_unidade_administrativa
+        description: STATUS DA UNIDADE ARMAZENADORA
+      - name: id_programa_trabalho
+        description: PROGRAMA DE TRABALHO
+      - name: id_cnes
+        description: CÓDIGO NACIONAL DE ESTABELECIMENTOS DE SAÚDE
+      - name: expressao_monetaria
+        description: EXPRESSÃO MONETÁRIA
+      - name: tipo_unidade_armazenadora
+        description: TIPO DE UNIDADE ARMAZENADORA
+      - name: matricula_responsavel
+        description: MATRÍCULA DO RESPONSÁVEL
+      - name: nome_responsavel
+        description: NOME DO RESPONSÁVEL
+      - name: data_inicio_responsavel
+        description: DATA DO INÍCIO
+      - name: matricula_substituto_1
+        description: MATRÍCULA DO SUBSTITUTO 1
+      - name: nome_substituto_1
+        description: NOME DO SUBSTITUTO 1
+      - name: data_inicio_substituto_1
+        description: DATA DO INÍCIO DO SUBSTITUTO 1
+      - name: matricula_substituto_2
+        description: MATRÍCULA DO SUBSTITUTO 2
+      - name: nome_substituto_2
+        description: NOME DO SUBSTITUTO 2
+      - name: data_inicio_substituto_2
+        description: DATA DO INÍCIO DO SUBSTITUTO 2
+
+  - name: raw_sigma_subclasse
+    description: "**Descrição**: Subclasse das Classes da Lista de Classificação\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n**Órgão
+      gestor dos dados**: SMFP\n**Publicado por**: Fabio Barbosa Baptista\n**Publicado
+      por (email)**: fabio.baptista@rio.rj.gov.br\n"
+    columns:
+      - name: codigo_grupo
+        description: Código do Grupo
+      - name: codigo_classe
+        description: Código da Classe
+      - name: codigo_subclasse
+        description: Código da Subclasse
+      - name: descricao_subclasse
+        description: Descrição da Subclasse
+      - name: status
+        description: Quais são os status disponíveis. 3 = Desativado e 0 = Ativado
+
+  - name: raw_sigma_sancao_fornecedor_compras
+    description: "**Descrição**: Sanções administrativas aplicadas por não cumprimento
+      de contrato a fornecedores contratados pelo município do Rio de Janeiro.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: A partir de 15/01/2007\n"
+    columns:
+      - name: cpf_cnpj
+        description: CPF/CNPJ do fornecedor que recebeu a sanção.
+      - name: razao_social
+        description: RAZÃO SOCIAL/NOME do fornecedor que recebeu a sanção.
+      - name: numero_ordem
+        description: Sequencial começado por 1 e é incrementado sempre que há uma nova sanção aplicada pelo mesmo órgão e com o mesmo número de processo administrativo descrito no atributo processo_fatura.
+      - name: numero_processo_origem
+        description: É o número do processo administrativo correspondente à licitação ou sua dispensa ou inexigibilidade relacionada a contratação do fornecedor.
+      - name: id_processo_instrutivo
+        description: É o número do processo administrativo relacionado à contratação do fornecedor por um órgão. Está sempre relacionado a um processo descrito no atributo em Processo_Origem.
+      - name: numero_processo_fatura
+        description: É o número do processo administrativo relacionado ao pagamento do serviço ou produto solicitado pelo processo instrutivo. Caso não haja um processo fatura é copiado o número do processo instrutivo para este atributo.
+      - name: codigo_sancao
+        description: Código do tipo da sanção aplicada ao fornecedor.
+      - name: descricao_sancao
+        description: Descrição do tipo da sanção aplicado ao fornecedor. Ex. Multa, suspensão, inidoneidade etc.
+      - name: data_sancao
+        description: Data de Início da sanção aplicada ao fornecedor. Ex. Data do início da suspensão, data da aplicação da multa etc.
+      - name: data_extincao_sancao
+        description: Data de extinção da sanção aplicada ao fornecedor Ex. Data do fim da suspensão, data da confirmação do pagamento da multa etc.
+
+  - name: raw_sigma_responsavel_unidade_armazenadora
+    description: "**Descrição**: Responsáveis pelas Unidades Armazenadoras.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_armazenadora
+        description: Código da unidade armazenadora.
+      - name: matricula_responsavel
+        description: Matrícula do responsável.
+      - name: nome_responsavel
+        description: Nome do responsável.
+      - name: data_inicio_responsavel
+        description: Data de início da responsabilidade.
+      - name: matricula_substituto_1
+        description: Matrícula do substituto 1.
+      - name: nome_substituto_1
+        description: Nome do substituto 1.
+      - name: data_inicio_substituto_1
+        description: Data de início do substituto 1.
+      - name: matricula_substituto_2
+        description: Matrícula do substituto 2.
+      - name: nome_substituto_2
+        description: Nome do substituto 2.
+      - name: data_inicio_substituto_2
+        description: Data de início do substituto 2.
+
+  - name: raw_sigma_movimento_estoque
+    description: "**Descrição**: Movimento do estoque.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_origem
+        description: Código da unidade armazenadora de origem.
+      - name: ano_mes_referencia
+        description: Ano e mês de referência no formato AAAAMM.
+      - name: id_material
+        description: Código do material.
+      - name: tipo_movimentacao
+        description: Tipo de movimentação.'E' para entrada, 'S' para saída, '*' para movimentação não identificada.
+      - name: data_movimento
+        description: Data da movimentação no formato AAAAMMDD.
+      - name: id_unidade_destino
+        description: Código da unidade armazenadora de destino.
+      - name: tipo_documento
+        description: Tipo de documento, podendo ser. 'DRA', 'DRD', 'DRM', 'EAJ', 'INC', 'DDM', 'DTM', 'DSD', 'RIM', 'SAJ', 'DSG', 'SBX' ou 'XXX' quando não identificado.
+      - name: nota_fiscal_fornecedor
+        description: Número da nota fiscal do fornecedor.
+      - name: cnpj_fornecedor
+        description: CNPJ do fornecedor.
+      - name: numero_documento_unidade_destino
+        description: Número do documento da unidade armazenadora de destino.
+      - name: numero_documento_unidade_origem
+        description: Número do documento da unidade armazenadora de origem.
+      - name: quantidade_material_movimentada
+        description: Quantidade de material movimentada.
+      - name: valor_unitario_material_movimentado
+        description: Valor unitário do material movimentado.
+      - name: valor_total_material_movimentado
+        description: Valor total do material movimentado (quantidade x valor unitário).
+      - name: valor_acerto_preco_medio_unitario
+        description: Valor de acerto do Preço Médio Unitário (PMU).
+
+  - name: raw_sigma_devolucao_material
+    description: "**Descrição**: Devolução de material.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_origem
+        description: Código da unidade armazenadora de origem.
+      - name: ano_mes_referencia
+        description: Ano e mês de referência no formato AAAAMM.
+      - name: id_material
+        description: Código do material.
+      - name: tipo_movimentacao
+        description: Tipo de movimentação. entrada = 'E', saída = 'S', não identificada = '*'.
+      - name: data_movimento
+        description: Data da movimentação no formato AAAAMMDD.
+      - name: id_unidade_destino
+        description: Código da unidade armazenadora de destino.
+      - name: tipo_documento
+        description: Tipos de documento. 'DRA', 'DRD', 'DRM', 'EAJ', 'INC', 'DDM', 'DTM', 'DSD', 'RIM', 'SAJ', 'DSG', 'SBX' ou 'XXX' quando não identificado.
+      - name: numero_documento_unidade_origem
+        description: Número do documento da unidade armazenadora de origem.
+      - name: quantidade_material_devolvida
+        description: Quantidade de material devolvida.
+      - name: valor_unitario_material_devolvido
+        description: Valor unitário do material devolvido.
+      - name: valor_total_material_devolvido
+        description: Valor total do material devolvido (quantidade x valor unitário).
+
+  - name: raw_sigma_saldo_mensal_estoque
+    description: "**Descrição**: Saldo mensal do estoque.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_armazenadora
+        description: Código da unidade armazenadora.
+      - name: ano_mes_referencia
+        description: Ano e mês de referência no formato AAAAMM.
+      - name: id_material
+        description: Código do material.
+      - name: saldo_valor_material
+        description: Saldo do valor do material para o ano-mês de referência na unidade armazenadora.
+      - name: quantidade_baixas_material
+        description: Quantidade de baixas do material para o ano-mês de referência na unidade armazenadora.
+      - name: saldo_quantidade_material
+        description: Saldo de quantidade do material para o ano-mês de referência na unidade armazenadora.
+      - name: quantidade_entrada_material
+        description: Quantidade de entradas do material para o ano-mês de referência na unidade armazenadora.
+      - name: quantidade_saida_material
+        description: Quantidade de saídas do material para o ano-mês de referência na unidade armazenadora.
+
+  - name: raw_sigma_posicao_fechada_estoque
+    description: "**Descrição**: Posicao fechada do estoque.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_armazenadora
+        description: Código da unidade armazenadora.
+      - name: ano_mes_referencia
+        description: Ano e mês de referência no formato AAAAMM.
+      - name: id_material
+        description: Código do material.
+      - name: quantidade_material_estoque_mes
+        description: Quantidade em estoque do material para a unidade armazenadora no ano-mês de referência.
+      - name: preco_medio_material
+        description: Preço médio do material.
+      - name: valor_total_material_estoque
+        description: Valor total do material em estoque (quantidade em estoque x preço médio).
+
+  - name: raw_sigma_fechamento_mensal_estoque
+    description: "**Descrição**: Fechamento mensal do estoque.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_armazenadora
+        description: Código da unidade armazenadora.
+      - name: ano_mes_referencia
+        description: Ano e mês de referência no formato AAAAMM.
+      - name: saldo_anterior
+        description: Saldo anterior ao mês-ano de referência para a unidade armazenadora.
+      - name: total_entrada_por_alienacao
+        description: Total das entradas por alienação no mês-ano de referência para a unidade armazenadora.
+      - name: total_entrada_por_compra
+        description: Total das entradas por compra no mês-ano de referência para a unidade armazenadora.
+      - name: total_entrada_por_devolucao
+        description: Total das entradas por devolução no mês-ano de referência para a unidade armazenadora.
+      - name: total_entrada_por_ajuste_contabil
+        description: Total das entradas por ajuste contábil no mês-ano de referência para a unidade armazenadora.
+      - name: total_entrada_por_incorporacao
+        description: Total das entradas por incorporação no mês-ano de referência para a unidade armazenadora.
+      - name: total_entrada_por_transferencia
+        description: Total das entradas por transferências no mês-ano de referência para a unidade armazenadora.
+      - name: total_saida_por_consumo
+        description: Total das saídas por consumo no mês-ano de referência para a unidade armazenadora.
+      - name: total_saida_por_transferencia
+        description: Total das saídas por transferência no mês-ano de referência para a unidade armazenadora.
+      - name: total_saida_por_ajuste_contabil
+        description: Total das saídas por ajuste contábil no mês-ano de referência para a unidade armazenadora.
+      - name: total_saida_por_degaste_natural
+        description: Total das saídas por desgaste natural no mês-ano de referência para a unidade armazenadora.
+      - name: total_saida_por_alienacao
+        description: Total das saídas por alienação no mês-ano de referência para a unidade armazenadora.
+      - name: total_saida_por_baixa
+        description: Total das saídas por baixa no mês-ano de referência para a unidade armazenadora.
+      - name: total_estorno
+        description: Total de estorno no mês-ano de referência para a unidade armazenadora.
+      - name: valor_acerto_preco_medio_unitario
+        description: Acerto por Preço Médio Unitário (PMU) no mês-ano de referência para a unidade armazenadora.
+      - name: residuo_contabil
+        description: Resíduo contábil no mês-ano de referência para a unidade armazenadora.
+      - name: salto_atual
+        description: Saldo atual no mês-ano de referência para a unidade armazenadora.
+
+
+  - name: raw_sigma_material_em_transito
+    description: "**Descrição**: Material em trânsito.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_origem
+        description: Código da unidade armazenadora de origem
+      - name: ano_mes_referencia
+        description: Ano e mês de referência no formato AAAAMM
+      - name: id_unidade_destino
+        description: Código da unidade armazenadora de destino
+      - name: tipo_documento
+        description: Tipos de documento. 'DDM', 'DTM' ou 'XXX' quando não identificado
+      - name: numero_documento_unidade_origem
+        description: Número do documento da unidade armazenadora de origem
+      - name: id_material
+        description: Código do material
+      - name: status_movimentacao
+        description: Status da movimentação. 'DOCTO EM ABERTO' ou 'DOCTO FECHADO, FV RESGATAR'
+      - name: quantidade_material_transito
+        description: Quantidade de material em trânsito
+      - name: valor_unitario_material_transito
+        description: Valor unitário do material em trânsito
+
+  - name: raw_sigma_unidade_servico
+    description: "**Descrição**: Unidade de Serviço.\n
+      **Frequência de atualização**: Diário\n**Cobertura temporal**: 1997\n"
+    columns:
+      - name: id_unidade_servico
+        description: Código único dado, pela PCRJ, à unidade de serviço
+      - name: descricao_unidade_servico
+        description: Descrição da unidade de serviço
+
+

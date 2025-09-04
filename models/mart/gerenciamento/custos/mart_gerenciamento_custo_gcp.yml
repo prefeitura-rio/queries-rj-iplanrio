@@ -1,0 +1,280 @@
+version: 2
+
+models:
+  - name: mart_gerenciamento_custo_gcp
+    description: "Tabela mart incremental que detalha os custos do Google Cloud Platform (GCP) por projeto, serviço, SKU e período de uso, incluindo descontos, agrupamentos e informações de localização. Cada linha representa um registro de uso e custo do GCP, facilitando análises financeiras, auditorias e otimização de recursos."
+
+    data_tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: export_time
+          interval: 1
+          name: mart_gerenciamento_custo_gcp__export_time__recency
+
+    columns:
+      - name: billing_account_id
+        description: "O ID da conta de faturamento do Cloud que o uso está associado."
+        data_type: string
+        quote: true
+
+      - name: service
+        description: "Informações sobre o serviço Google Cloud que gerou este item de uso."
+        data_type: struct
+
+      - name: service.id
+        description: "O ID do serviço Google Cloud que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: service.description
+        description: "O nome legível do serviço Google Cloud que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: sku
+        description: "Informações sobre o SKU (Stock Keeping Unit) de faturamento que gerou este item de uso."
+        data_type: struct
+
+      - name: sku.id
+        description: "O ID do SKU de faturamento que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: sku.description
+        description: "O nome legível do SKU de faturamento que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: subscription
+        description: "Informações sobre a assinatura ou contrato associado ao uso."
+        data_type: struct
+
+      - name: subscription.instance_id
+        description: "O ID da instância da assinatura ou contrato que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: usage
+        description: "Informações sobre a quantidade e unidades de uso do recurso durante o período especificado."
+        data_type: struct
+
+      - name: usage.amount
+        description: "A quantidade de uso que ocorreu durante o período especificado."
+        data_type: float
+
+      - name: usage.unit
+        description: "A unidade de base que define como o uso é medido."
+        data_type: string
+        quote: true
+
+      - name: usage.amount_in_pricing_units
+        description: "A quantidade de uso em unidades de precificação."
+        data_type: float
+
+      - name: usage.pricing_unit
+        description: "A unidade de medida usada para precificação."
+        data_type: string
+        quote: true
+
+      - name: usage_start_time
+        description: "O horário de início do período de uso. Todos os valores são em UTC com sub-segundos ignorados."
+        data_type: timestamp
+
+      - name: usage_end_time
+        description: "O horário de fim do período de uso. Todos os valores são em UTC com sub-segundos ignorados."
+        data_type: timestamp
+
+      - name: cost
+        description: "O custo do uso antes de aplicar créditos, em unidades da moeda da conta de faturamento."
+        data_type: float
+
+      - name: currency
+        description: "A moeda que os custos foram convertidos. Definida no nível da conta de faturamento."
+        data_type: string
+        quote: true
+
+      - name: currency_conversion_rate
+        description: "A taxa de câmbio da moeda local para USD no final do período de uso."
+        data_type: float
+
+      - name: cost_type
+        description: "Descreve como o custo foi calculado (regular, tax, adjustment, rounding error)."
+        data_type: string
+        quote: true
+
+      - name: transaction_type
+        description: "O tipo de transação que gerou este item de uso (ex: charge, refund, credit)."
+        data_type: string
+        quote: true
+
+      - name: seller_name
+        description: "O nome do vendedor ou provedor do serviço que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: consumption_model
+        description: "Informações sobre o modelo de consumo aplicado a este item de uso."
+        data_type: struct
+
+      - name: consumption_model.id
+        description: "O ID do modelo de consumo aplicado a este item de uso."
+        data_type: string
+        quote: true 
+
+      - name: consumption_model.description
+        description: "A descrição do modelo de consumo aplicado a este item de uso."
+        data_type: string
+        quote: true
+
+      - name: cost_at_effective_price_default
+        description: "O custo que seria cobrado se fossem aplicados os preços padrão efetivos para o período de uso."
+        data_type: float
+
+      - name: cost_at_list_consumption_model
+        description: "O custo que seria cobrado se fossem aplicados os preços de lista para o período de uso."
+        data_type: float
+
+      - name: project
+        description: "Informações sobre o projeto Google Cloud que gerou este item de uso."
+        data_type: struct
+
+      - name: project.id
+        description: "O ID do projeto que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: project.number
+        description: "O número único do projeto que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: project.name
+        description: "O nome amigável do projeto que gerou este item de uso."
+        data_type: string
+        quote: true
+
+      - name: project.labels
+        description: "Um mapa string-to-string de pares chave-valor de labels definidos pelo usuário para o projeto."
+        data_type: string
+        quote: true
+
+      - name: project.ancestry_numbers
+        description: "Uma lista de números de ancestrais de recursos do projeto na hierarquia do Cloud Resource Manager."
+        data_type: string
+        quote: true
+
+      - name: location
+        description: "Informações sobre a localização geográfica onde ocorreu o uso dos recursos."
+        data_type: struct
+
+      - name: location.location
+        description: "A localização geográfica onde ocorreu o uso dos recursos."
+        data_type: string
+        quote: true
+
+      - name: location.country
+        description: "O país onde ocorreu o uso dos recursos."
+        data_type: string
+        quote: true
+
+      - name: location.region
+        description: "A região onde ocorreu o uso dos recursos."
+        data_type: string
+        quote: true
+
+      - name: location.zone
+        description: "A zona onde ocorreu o uso dos recursos."
+        data_type: string
+        quote: true
+
+      - name: resource
+        description: "Informações sobre o recurso específico que gerou o uso (ex: instância de VM, disco)."
+        data_type: struct
+
+      - name: resource.name
+        description: "O nome do recurso que gerou o uso. Por exemplo, uma instância de VM."
+        data_type: string
+        quote: true
+
+      - name: resource.global_name
+        description: "O nome global do recurso que gerou o uso."
+        data_type: string
+        quote: true
+
+      - name: system_labels
+        description: "Um mapa string-to-string de pares chave-valor de labels de sistema definidos pelo Google Cloud."
+        data_type: string
+        quote: true
+
+      - name: adjustment_info
+        description: "Informações sobre ajustes aplicados ao faturamento (créditos, reembolsos, correções)."
+        data_type: struct
+
+      - name: adjustment_info.id
+        description: "Um identificador exclusivo para este ajuste."
+        data_type: string
+        quote: true
+
+      - name: adjustment_info.description
+        description: "Uma descrição legível deste ajuste."
+        data_type: string
+        quote: true
+
+      - name: adjustment_info.type
+        description: "O tipo de ajuste, por exemplo CREDIT ou REFUND."
+        data_type: string
+        quote: true
+
+      - name: adjustment_info.mode
+        description: "O modo como este ajuste foi aplicado. Atualmente não usado e está sempre vazio."
+        data_type: string
+        quote: true
+
+      - name: export_time
+        description: "A data e hora quando os dados de faturamento foram exportados para BigQuery."
+        data_type: timestamp
+
+      - name: labels
+        description: "Um mapa string-to-string de pares chave-valor de labels definidos pelo usuário no recurso."
+        data_type: string
+        quote: true
+
+      - name: tags
+        description: "Um mapa string-to-string de pares chave-valor de tags de rede definidos pelo usuário no recurso."
+        data_type: string
+        quote: true
+
+      - name: credits
+        description: "A lista de créditos aplicados ao uso. Cada crédito contém tipo, nome, quantia e moeda."
+        data_type: float
+
+      - name: invoice
+        description: "Informações sobre a fatura onde este item de uso aparece."
+        data_type: struct
+
+      - name: invoice.month
+        description: "O mês da fatura no formato YYYYMM onde este item de uso aparece."
+        data_type: string
+        quote: true
+
+      - name: cost_at_list
+        description: "O custo que seria cobrado pelos preços de lista públicos."
+        data_type: float
+
+      - name: price
+        description: "O preço de lista por unidade de uso."
+        data_type: float
+
+      - name: invoice_competencia_particao
+        description: "Campo de partição derivado do mês da fatura para otimização de consultas."
+        data_type: date
+        quote: true
+
+      - name: cost_with_credits
+        description: "O custo final após aplicação de todos os créditos disponíveis, em unidades da moeda da conta."
+        data_type: float
+
+      - name: orgao
+        description: "Órgão municipal classificado automaticamente com base no ID do projeto para fins de agrupamento e análise organizacional."
+        data_type: string
+        quote: true

@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: brutos_pessoa_vinculada_staging
+    database: rj-iplanrio 
+    schema: brutos_pessoa_vinculada_staging
+    tables:
+      - name: vw_cidadao_dataLake
+        description: "Source view vw_cidadao_dataLake for information" 
+        
