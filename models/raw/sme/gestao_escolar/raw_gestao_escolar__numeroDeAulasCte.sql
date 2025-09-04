@@ -11,6 +11,7 @@ with source as (
   renamed as (
       select
         {{ adapter.quote("alu_id") }},
+        {{ adapter.quote("mtu_id") }},
         {{ adapter.quote("tpc_id") }},
         CAST({{ adapter.quote("numeroAulas") }} AS INT64) AS numeroAulas,
 
