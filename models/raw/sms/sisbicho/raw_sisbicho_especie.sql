@@ -1,6 +1,7 @@
 {{
     config(
       alias="especie",
+      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") ,
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de espécies de animais"
