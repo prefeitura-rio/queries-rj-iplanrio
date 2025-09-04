@@ -2,8 +2,11 @@ version: 2
 
 sources:
   - name: brutos_consulta_previa_eventos_staging
-    database: rj-smfp   # opcional se igual ao target
+    database: rj-iplanrio   # opcional se igual ao target
     schema: brutos_consulta_previa_eventos_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
     tables:
       - name: vw_Consulta_Previa_Eventos
         description: "View de consulta prévia de eventos  "
