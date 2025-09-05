@@ -1,9 +1,6 @@
 {{
     config(
       alias="autorizacao",
-      project=("rj-seop" if target.name == "prod" else "rj-seop-dev") ,
-      materialized="table",
-      tags=["raw", "cadastro_comercio_ambulantes"],
       description="Dados do Titular da Autorização"
     )
 }}

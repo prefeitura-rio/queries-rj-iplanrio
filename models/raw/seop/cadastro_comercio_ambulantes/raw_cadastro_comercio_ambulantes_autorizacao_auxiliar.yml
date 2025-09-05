@@ -4,8 +4,7 @@ models:
   - name: raw_cadastro_comercio_ambulantes_autorizacao_auxiliar
     description: "Dados dos Auxiliares vinculados ao Titular da Autorização do comércio ambulante. Origem: dbo.vw_auxiliar_autorizacao."
     config:
-      alias: raw__cadastro_comercio_ambulantes__autorizacao_auxiliar
-      schema: raw
+      alias: cadastro_comercio_ambulantes__autorizacao_auxiliar
       materialized: view
     columns:
       - name: id_autorizacao_titular
