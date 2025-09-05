@@ -149,3 +149,10 @@ models:
           +schema: brutos_cadastro_comercio_ambulantes
           +tags: ["daily", "cadastro_comercio_ambulantes"]
 
+      
+      iplanrio:
+        +project: rj-iplanrio
+        pessoa_vinculada:         
+          +materialized: table
+          +schema: brutos_pessoa_vinculada
+          +tags: ["daily", "pessoa_vinculada"]
