@@ -1,6 +1,7 @@
 {{
     config(   
       alias="email",   
+      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") ,
       tags=["raw", "sisbicho"],
       description="Tabela de e-mails do sistema"
     )
