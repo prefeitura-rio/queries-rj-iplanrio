@@ -1,22 +1,12 @@
 {{ config(
         alias='mtr_matricula_turma',
-        schema='brutos_gestao_escolar',
-        materialized='incremental',
-        unique_key=['alu_id', 'mtu_id'],
-        incremental_strategy = 'insert_overwrite',
-        partition_by={
-            "field": "loaded_at",
-            "data_type": "timestamp",
-            "granularity": "day"
-        }
+        schema='brutos_gestao_escolar'
 
     )}}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'MTR_MatriculaTurma') }}
-    {% if is_incremental() %}
-        where _airbyte_extracted_at > (select max(loaded_at) from {{ this }})
-    {% endif %}
+    
 ),
 renamed as (
     select
