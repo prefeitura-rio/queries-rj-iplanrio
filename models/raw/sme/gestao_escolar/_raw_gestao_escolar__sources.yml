@@ -28,7 +28,7 @@ sources:
       - name: TUR_TurmaDisciplina
         config:
           freshness:
-            error_after: {count: 48, period: hour}
+            error_after: {count: 96, period: hour}
 
       - name: TUR_TurmaRelTurmaDisciplina
       - name: VW_BI_Aluno
