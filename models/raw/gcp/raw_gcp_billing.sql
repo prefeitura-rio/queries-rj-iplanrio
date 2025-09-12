@@ -26,9 +26,12 @@ with
     source as (select * from `dados-rio-billing.billing.gcp_billing_export_*`),
 
     final as (
-
         select
             *,
+            service.id as service_id,
+            service.description as service_description,
+            sku.id as sku_id,
+            sku.description as sku_description,
             safe_cast(
                 concat(
                     left(invoice.month, 4), '-', right(invoice.month, 2), '-01'

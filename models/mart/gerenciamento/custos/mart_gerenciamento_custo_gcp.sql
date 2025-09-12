@@ -3,85 +3,133 @@
         schema="gerenciamento_custos",
         alias="custo_gcp",
         materialized="incremental",
-        incremental_strategy="insert_overwrite",
+        unique_key=["billing_account_id", "service_id", "sku_id", "usage_start_time", "project_id"],
+        incremental_strategy="merge",
         partition_by={
-            "field": "invoice_competencia_particao",
-            "data_type": "date",
-            "granularity": "month",
+            "field": "usage_end_time",
+            "data_type": "timestamp",
+            "granularity": "month"
         },
-        cluster_by=["orgao"],
+        cluster_by=["orgao", "project_id", "service_id"],
+        tags=["custo_gcp", "incremental"]
     )
 }}
 
+{% set orgao_mapping = {
+    'crm-registry': 'IPLANRIO',
+    'rj-comunicacao-dev': 'IPLANRIO',
+    'rj-superapp': 'IPLANRIO',
+    'rj-vision-ai': 'IPLANRIO',
+    'dados-rio-billing': 'IPLANRIO',
+    'rj-chatbot': 'IPLANRIO',
+    'rj-chatbot-dev': 'IPLANRIO'
+} %}
 
--- Variaveis
-{% set previous_day = modules.datetime.date.today() - modules.datetime.timedelta(
-    days=1
-) %}
+with base_data as (
+    select
+        billing_account_id,
+        service.id as service_id,
+        service.description as service_description,
+        sku.id as sku_id,
+        sku.description as sku_description,
+        project.id as project_id,
+        project.number as project_number,
+        project.name as project_name,
+        usage_start_time,
+        usage_end_time,
+        cost,
+        cost_at_effective_price_default,
+        cost_at_list_consumption_model,
+        coalesce(
+            (select sum(c.amount) from unnest(credits) as c),
+            0
+        ) as desconto_em_reais,
+        location.location,
+        location.country,
+        location.region,
+        location.zone,
+        resource.name as resource_name,
+        resource.global_name as resource_global_name,
+        export_time,
+        labels,
+        tags,
+        price
 
-{% set partition_to_replace = modules.datetime.date(
-    previous_day.year, previous_day.month, 1
-) %}
+    from {{ ref('raw_gcp_billing') }}
+    {% if is_incremental() %}
+        where usage_end_time > (
+            select coalesce(max(usage_end_time), timestamp('1970-01-01'))
+            from {{ this }}
+        )
+    {% endif %}
+),
 
-{% set iplan = [
-    "dados-rio-billing",
-    "datario",
-    "datario-dev",
-    "hackathon-fgv-03-2024",
-    "rj-caio",
-    "rj-chatbot",
-    "rj-chatbot-dev",
-    "rj-crm-registry",
-    "rj-crm-registry-dev",
-    "rj-comunicacao",
-    "rj-comunicacao-dev",
-    "rj-datalab-sandbox",
-    "rj-escritorio",
-    "rj-escritorio-dev",
-    "rj-ia-desenvolvimento",
-    "rj-mapa-realizacoes",
-    "rj-mapa-realizacoes-dev",
-    "rj-precipitacao",
-    "rj-superapp",
-    "rj-superapp-staging",
-    "rj-vision-ai",
-] %}
+transformed_data as (
+    select
+        *,
+        cost + desconto_em_reais as custo_liquido,
+
+        -- Agrupamento otimizado de resource name
+        case
+            when resource_name like '%instances/%' and resource_name like '%-pool%'
+                then regexp_extract(resource_name, r'instances/([^/-]+(?:-[^/-]+)*-pool)')
+            when resource_name like '%gke-datario%'
+                then 'GKE-DATARIO'
+            when resource_name like '%gke-datalake%'
+                then 'GKE-DATALAKE'
+            when resource_name like '%gke-application%'
+                then 'GKE-APPLICATION'
+            when resource_name like '%job_%'
+                then 'JOB'
+            when resource_name like '%/secrets/%'
+                then 'SECRET MANAGER'
+            when resource_name like '%istio%ingress%istio%'
+                then 'ISTIO_INGRESS'
+            else resource_name
+        end as agrupamento_resource_name,
 
 
--- Queries
-with
-    source as (select * from {{ ref("raw_gcp_billing") }}),
+        case
+            when project_id is null then 'SND'
+            {% for project, orgao in orgao_mapping.items() %}
+            when project_id = '{{ project }}' then '{{ orgao }}'
+            {% endfor %}
+            when project_id like '%hackathon%' then 'IPLANRIO'
+            when project_id like '%datario%' then 'IPLANRIO'
+            when project_id like 'rj-rec%' then 'RECRIO'
+            when project_id like 'rj-%' then upper(regexp_extract(project_id, r'^rj-([^-\s]+)'))
+            else upper(project_id)
+        end as orgao
 
-    fixed_credits as (
-        select
-            * except (credits),
-            coalesce((select sum(c.amount) from unnest(credits) as c), 0) as credits
-        from source
-    ),
+    from base_data
+)
 
-    transformed_data as (
-        select
-            *,
-
-            cost + credits as cost_with_credits,
-
-            case
-                when project.id is null
-                then 'NÃO DEFINIDO'
-                when project.id in ('{{ iplan | join("', '") }}')
-                then 'IPLANRIO'
-                when project.id like 'rj-rec%'
-                then 'RECRIO'
-                when project.id like 'rj-%'
-                then upper(regexp_extract(project.id, r'^rj-([^-\s]+)'))
-                else upper(project.id)
-            end as orgao
-
-        from fixed_credits
-    )
-
-select *
+select
+    billing_account_id,
+    orgao,
+    project_id,
+    project_name,
+    project_number,
+    service_id,
+    service_description,
+    sku_id,
+    sku_description,
+    usage_start_time,
+    usage_end_time,
+    cost,
+    desconto_em_reais,
+    custo_liquido,
+    cost_at_effective_price_default,
+    cost_at_list_consumption_model,
+    location,
+    country,
+    region,
+    zone,
+    resource_name,
+    agrupamento_resource_name,
+    resource_global_name,
+    export_time,
+    labels,
+    tags,
+    price
 from transformed_data
-{% if is_incremental() %}
-    where invoice_competencia_particao = '{{ partition_to_replace }}'
-{% endif %}

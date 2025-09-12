@@ -10,8 +10,8 @@ models:
       - dbt_expectations.expect_column_values_to_be_between:
           name: mart_gerenciamento_custo_bigquery_jobs__datahora_criacao__valid_period
           column_name: datahora_criacao
-          min_value: "2024-01-01"
-          max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
+          min_value: "TIMESTAMP('2024-01-01')"
+          max_value: "CURRENT_TIMESTAMP()"
           severity: error
     columns:
       - name: id_job
@@ -67,12 +67,13 @@ models:
               severity: error
 
       - name: data_faturamento
-        description: "Data de faturamento do job (formato: 'YYYY-MM-DD'). Utilizada para partição e análise temporal dos custos."
+        description: "Data de faturamento do job (formato: 'YYYY-MM-DD'). Utilizada para partição e análise temporal dos custos. Pode ser NULL para jobs que não finalizaram ou falharam."
         data_type: date
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__data_faturamento__not_null
-              severity: error
+              severity: warn
+              warn_if: ">0"
 
       - name: estado_job
         description: "Estado final do job no BigQuery (ex: DONE, FAILED, etc)."

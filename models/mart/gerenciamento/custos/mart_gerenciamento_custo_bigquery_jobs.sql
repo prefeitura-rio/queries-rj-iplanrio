@@ -98,22 +98,21 @@ final as (
             projeto_destino_id as projeto_id,
             regexp_replace(
                 dataset_destino_id,
-                r'(dev_fantasma__|diego__|miloskimatheus__|pedro__|thiago__|vit__)',
+                r'(dev_fantasma__|diego__|miloskimatheus__|pedro__|thiago__|vit__)',  -- Correção aqui
                 ''
             ) as dataset_id,
             tabela_destino_id as tabela_id
         ) as destino,
         tib_processado as tib_processado_quantidade,
         resultado_erro,
-        data_faturamento,
+        coalesce(data_faturamento, extract(date from horario_criacao at time zone 'PST8PDT')) as data_faturamento,
         uso_estimado_tib as uso_estimado_tib_quantidade,
         custo_estimado_usd as custo_estimado_valor,
         job_faturavel,
 
-        -- Transformações adicionadas
         custo_estimado_usd * COALESCE(taxa_diaria.taxa, 1) as custo_estimado_reais,
         EXTRACT(YEAR FROM horario_criacao) AS ano,
-        REGEXP_EXTRACT(email_usuario, r'^([^@]+@[^.]+)') AS identificador_completo,
+        REGEXP_EXTRACT(email_usuario, r'^([^@]+)') AS identificador_completo,
         CASE
             WHEN REGEXP_CONTAINS(email_usuario, r'gserviceaccount')
             THEN 'SIM'
@@ -145,7 +144,7 @@ final as (
 
     from cost_added
     LEFT JOIN taxa_diaria
-        ON DATE(cost_added.horario_criacao) = taxa_diaria.dia
+        ON DATE(coalesce(data_faturamento, extract(date from horario_criacao at time zone 'PST8PDT'))) = taxa_diaria.dia
 )
 
 select *
