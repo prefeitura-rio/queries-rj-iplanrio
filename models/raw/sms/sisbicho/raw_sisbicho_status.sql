@@ -1,6 +1,7 @@
 {{
     config(
       alias="status",
+      project=("rj-iplanrio" if target.name == "prod" else "rj-iplanrio-dev") ,
       materialized="table",
       tags=["raw", "sisbicho"],
       description="Tabela de Status de Animais do Sistema SisBicho"
