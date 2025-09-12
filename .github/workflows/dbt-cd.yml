@@ -58,6 +58,9 @@ jobs:
     - name: Run dbt deps
       run: dbt deps --target pr_prod
 
+    - name: Run dbt snapshot
+      run: dbt snapshot --target pr_prod
+
     - name: Run dbt build
       run: |
         if [ -f "./manifest.json" ]; then
