@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_genero
+    description: "Gêneros documentais"
+    config:
+      alias: genero
+      
+      
+    columns:
+      - name: id_genero
+        description: "Identificador único do gênero"
+        data_type: integer
+        data_tests:
+          - unique:
+              name: raw_arquivo_virtual_genero__id_genero__unique
+              severity: error
+          - not_null:
+              name: raw_arquivo_virtual_genero__id_genero__not_null
+              severity: error
+      - name: nm_genero
+        description: "Nome do gênero"
+        data_type: string
+        quote: true
+      - name: nr_genero
+        description: "Número do gênero"
+        data_type: integer

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a3_conteudo_estrutura
+    description: "Conteúdo e estrutura dos conjuntos arquivísticos"
+    config:
+      alias: a3_conteudo_estrutura
+      
+    columns:
+      - name: ds_incorporacoes
+        description: "Descrição das incorporações"
+        data_type: string
+        quote: true
+      - name: ds_avalEliminaTemp
+        description: "Descrição da avaliação e eliminação temporária"
+        data_type: string
+        quote: true
+      - name: ds_ambitoConteudo
+        description: "Descrição do âmbito do conteúdo"
+        data_type: string
+        quote: true
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_arquivo_virtual_a3_conteudo_estrutura__id_conjuntoArquivo__not_null
+              severity: error
+      - name: ds_organizacao
+        description: "Descrição da organização"
+        data_type: string
+        quote: true
+      - name: id_estagioTratamento
+        description: "Identificador do estágio de tratamento"
+        data_type: integer

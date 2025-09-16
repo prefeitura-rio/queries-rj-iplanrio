@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_tipo_escala
+    description: "Tipos de escala"
+    config:
+      alias: tipo_escala
+      
+      
+    columns:
+      - name: id_tipoEscala
+        description: "Identificador único do tipo de escala"
+        data_type: integer
+        data_tests:
+          - unique:
+              name: raw_arquivo_virtual_tipo_escala__id_tipoEscala__unique
+              severity: error
+          - not_null:
+              name: raw_arquivo_virtual_tipo_escala__id_tipoEscala__not_null
+              severity: error
+      - name: ds_tipoEscala
+        description: "Descrição do tipo de escala"
+        data_type: string
+        quote: true

@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_conjunto_arquivo
+    description: "Conjuntos de arquivos do sistema de arquivo virtual"
+    config:
+      alias: conjunto_arquivo
+      
+      
+    columns:
+      - name: id_nivel
+        description: "Identificador do nível arquivístico"
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_arquivo_virtual_conjunto_arquivo__id_nivel__not_null
+              severity: error
+      - name: id_conjuntoArquivo
+        description: "Identificador único do conjunto arquivístico"
+        data_type: integer
+        data_tests:
+          - unique:
+              name: raw_arquivo_virtual_conjunto_arquivo__id_conjuntoArquivo__unique
+              severity: error
+          - not_null:
+              name: raw_arquivo_virtual_conjunto_arquivo__id_conjuntoArquivo__not_null
+              severity: error
+      - name: id_conjuntoArquivo_pai
+        description: "Identificador do conjunto arquivístico pai"
+        data_type: integer
+      - name: st_conjuntoArquivo
+        description: "Status do conjunto arquivístico"
+        data_type: string
+        quote: true
+      - name: st_conjuntoArquivo_pai
+        description: "Status do conjunto arquivístico pai"
+        data_type: string
+        quote: true

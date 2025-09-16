@@ -1,0 +1,66 @@
+version: 2
+
+sources:
+  - name: brutos_arquivo_virtual_staging
+    description: "Sistema de Arquivo Virtual - infraestrutura de dados arquivísticos"
+    tables:
+      - name: conjunto_arquivo
+        description: "Conjuntos de arquivos do sistema"
+      - name: a1_identificacao
+        description: "Identificação dos conjuntos arquivísticos"
+      - name: a2_contextualizacao
+        description: "Contextualização dos conjuntos arquivísticos"
+      - name: a3_conteudo_estrutura
+        description: "Conteúdo e estrutura dos conjuntos"
+      - name: a4_condicoes_acesso
+        description: "Condições de acesso aos conjuntos"
+      - name: a5_fontes_relacionada
+        description: "Fontes relacionadas aos conjuntos"
+      - name: a6_notas
+        description: "Notas sobre os conjuntos"
+      - name: a7_controle
+        description: "Controle dos conjuntos"
+      - name: condic_idioma
+        description: "Condições de idioma"
+      - name: condic_inst
+        description: "Condições institucionais"
+      - name: context_produtor
+        description: "Contexto do produtor"
+      - name: dimensao_suporte
+        description: "Dimensões e suporte dos arquivos"
+      - name: procedencia
+        description: "Procedência dos arquivos"
+      - name: capacidade_armazena
+        description: "Capacidade de armazenamento"
+      - name: especie
+        description: "Espécies documentais"
+      - name: estado_acervo
+        description: "Estados do acervo"
+      - name: estagio_tratamento
+        description: "Estágios de tratamento"
+      - name: forma_entrada
+        description: "Formas de entrada"
+      - name: formato
+        description: "Formatos documentais"
+      - name: genero
+        description: "Gêneros documentais"
+      - name: idioma
+        description: "Idiomas"
+      - name: instrumento_pesquisa
+        description: "Instrumentos de pesquisa"
+      - name: modalidade
+        description: "Modalidades"
+      - name: natureza_juridica
+        description: "Naturezas jurídicas"
+      - name: nivel
+        description: "Níveis arquivísticos"
+      - name: restricao
+        description: "Restrições"
+      - name: tipo_escala
+        description: "Tipos de escala"
+      - name: tipo_produtor
+        description: "Tipos de produtor"
+      - name: tipo_restricao
+        description: "Tipos de restrição"
+      - name: unidade_medida
+        description: "Unidades de medida"

@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_forma_entrada
+    description: "Formas de entrada"
+    config:
+      alias: forma_entrada
+      
+      
+    columns:
+      - name: id_formaEntrada
+        description: "Identificador único da forma de entrada"
+        data_type: integer
+        data_tests:
+          - unique:
+              name: raw_arquivo_virtual_forma_entrada__id_formaEntrada__unique
+              severity: error
+          - not_null:
+              name: raw_arquivo_virtual_forma_entrada__id_formaEntrada__not_null
+              severity: error
+      - name: ds_formaEntrada
+        description: "Descrição da forma de entrada"
+        data_type: string
+        quote: true

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a6_notas
+    description: "Notas sobre os conjuntos arquivísticos"
+    config:
+      alias: a6_notas
+    columns:
+      - name: ds_notaConservacao
+        description: "Descrição da nota de conservação"
+        data_type: string
+        quote: true
+      - name: id_estadoAcervo
+        description: "Identificador do estado do acervo"
+        data_type: integer
+      - name: ds_notasGerais
+        description: "Descrição das notas gerais"
+        data_type: string
+        quote: true
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_arquivo_virtual_a6_notas__id_conjuntoArquivo__not_null
+              severity: error

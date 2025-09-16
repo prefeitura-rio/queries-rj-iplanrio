@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a4_condicoes_acesso
+    description: "Condições de acesso aos conjuntos arquivísticos"
+    config:
+      alias: a4_condicoes_acesso
+      
+    columns:
+      - name: ds_condicoesReproducao
+        description: "Descrição das condições de reprodução"
+        data_type: string
+        quote: true
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_arquivo_virtual_a4_condicoes_acesso__id_conjuntoArquivo__not_null
+              severity: error
+      - name: obs_restricao
+        description: "Observações sobre restrições"
+        data_type: string
+        quote: true
+      - name: id_restricao
+        description: "Identificador da restrição"
+        data_type: integer
+      - name: id_tipoRestricao
+        description: "Identificador do tipo de restrição"
+        data_type: integer

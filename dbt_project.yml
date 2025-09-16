@@ -129,7 +129,7 @@ models:
       setur:
         +project: rj-setur
         oferta_turistica:
-          +materialized: view
+          +
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
         turismo_fluxo_visitantes:
@@ -149,6 +149,7 @@ models:
           +schema: brutos_cadastro_comercio_ambulantes
           +tags: ["daily", "cadastro_comercio_ambulantes"]
 
+
       
       iplanrio:
         +project: rj-iplanrio
@@ -156,3 +157,10 @@ models:
           +materialized: table
           +schema: brutos_pessoa_vinculada
           +tags: ["daily", "pessoa_vinculada"]
+
+      arquivo_virtual:
+        +project: rj-cvl
+        pessoa_vinculada:         
+          +materialized: table
+          +schema: brutos_arquivo_virtual
+          +tags: ["daily", "arquivo_virtual"]
