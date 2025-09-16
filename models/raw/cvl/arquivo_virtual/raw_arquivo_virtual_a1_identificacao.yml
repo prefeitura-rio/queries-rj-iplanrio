@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a1_identificacao
+    description: "Identificação dos conjuntos arquivísticos"
+    config:
+      alias: a1_identificacao
+    columns:
+      - name: cd_referencia
+        description: "Código de referência"
+        data_type: string
+        quote: true
+      - name: dt_fim
+        description: "Data de fim"
+        data_type: timestamp
+      - name: dt_iniModalidade
+        description: "Data de início da modalidade"
+        data_type: timestamp
+      - name: dt_pesquisa
+        description: "Data da pesquisa"
+        data_type: timestamp
+      - name: ds_titulo
+        description: "Descrição/título"
+        data_type: string
+        quote: true
+      - name: id_modalidade
+        description: "Identificador da modalidade"
+        data_type: integer
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_a1_identificacao__id_conjuntoArquivo__not_null
+        #       severity: error
+      - name: id_setor
+        description: "Identificador do setor"
+        data_type: integer

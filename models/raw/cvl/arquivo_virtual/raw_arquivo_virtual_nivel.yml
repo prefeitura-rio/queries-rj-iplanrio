@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_nivel
+    description: "Níveis arquivísticos"
+    config:
+      alias: nivel
+      
+      
+    columns:
+      - name: id_nivel
+        description: "Identificador único do nível"
+        data_type: integer
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_nivel__id_nivel__unique
+        #       severity: error
+          # - not_null:
+          #     name: raw_arquivo_virtual_nivel__id_nivel__not_null
+          #     severity: error
+      - name: ds_nivel
+        description: "Descrição do nível"
+        data_type: string
+        quote: true
+      - name: nr_nivel
+        description: "Número do nível"
+        data_type: integer

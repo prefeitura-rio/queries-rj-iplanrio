@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a7_controle
+    description: "Controle dos conjuntos arquivísticos"
+    config:
+      alias: a7_controle
+      
+      
+    columns:
+      - name: ds_datasDesc
+        description: "Descrição das datas de descrição"
+        data_type: string
+        quote: true
+      - name: ds_regrasConvencoes
+        description: "Descrição das regras e convenções"
+        data_type: string
+        quote: true
+      - name: ds_notaArquivistica
+        description: "Descrição da nota arquivística"
+        data_type: string
+        quote: true
+      - name: ds_unidadeCustodiadora
+        description: "Descrição da unidade custodiadora"
+        data_type: string
+        quote: true
+      - name: st_arquivoDigital
+        description: "Status do arquivo digital"
+        data_type: string
+        quote: true
+      - name: ds_responsavelDesc
+        description: "Descrição do responsável pela descrição"
+        data_type: string
+        quote: true
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_a7_controle__id_conjuntoArquivo__not_null
+        #       severity: error

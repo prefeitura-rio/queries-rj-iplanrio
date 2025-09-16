@@ -119,6 +119,12 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+
+        arquivo_virtual:         
+          +materialized: table
+          +schema: brutos_arquivo_virtual
+          +tags: ["daily", "arquivo_virtual"]
+
       segovi:
         +tags: "segovi"
         +project: rj-segovi
@@ -129,18 +135,17 @@ models:
       setur:
         +project: rj-setur
         oferta_turistica:
-          +
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
         turismo_fluxo_visitantes:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
-      mais_valia:
-        +project: rj-iplanrio
-        +materialized: table
-        +schema: brutos_mais_valia
-        +tags: ["daily", "mais_valia"]
+        mais_valia:
+          +project: rj-iplanrio
+          +materialized: table
+          +schema: brutos_mais_valia
+          +tags: ["daily", "mais_valia"]
         
       seop:
         cadastro_comercio_ambulantes:
@@ -158,9 +163,4 @@ models:
           +schema: brutos_pessoa_vinculada
           +tags: ["daily", "pessoa_vinculada"]
 
-      arquivo_virtual:
-        +project: rj-cvl
-        pessoa_vinculada:         
-          +materialized: table
-          +schema: brutos_arquivo_virtual
-          +tags: ["daily", "arquivo_virtual"]
+      

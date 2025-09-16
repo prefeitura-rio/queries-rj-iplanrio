@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_idioma
+    description: "Idiomas dos conjuntos arquivísticos"
+    config:
+      alias: idioma
+      
+      
+    columns:
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_idioma__id_conjuntoArquivo__not_null
+        #       severity: error
+      - name: id_idioma
+        description: "Identificador do idioma"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_idioma__id_idioma__not_null
+        #       severity: error
+      - name: nm_idioma
+        description: "Nome do idioma"
+        data_type: string
+        quote: true

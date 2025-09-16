@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_procedencia
+    description: "Procedência dos arquivos"
+    config:
+      alias: procedencia
+      
+      
+    columns:
+      - name: id_procedencia
+        description: "Identificador único da procedência"
+        data_type: integer
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_procedencia__id_procedencia__unique
+        #       severity: error
+        #   - not_null:
+        #       name: raw_arquivo_virtual_procedencia__id_procedencia__not_null
+        #       severity: error
+      - name: nr_geralEntradaProc
+        description: "Número geral de entrada da procedência"
+        data_type: string
+        quote: true
+      - name: nr_anoProc
+        description: "Número do ano da procedência"
+        data_type: string
+        quote: true
+      - name: nm_procedencia
+        description: "Nome da procedência"
+        data_type: string
+        quote: true
+      - name: id_formaEntrada
+        description: "Identificador da forma de entrada"
+        data_type: integer
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_procedencia__id_conjuntoArquivo__not_null
+        #       severity: error

@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_condic_inst
+    description: "Condições institucionais dos conjuntos arquivísticos"
+    config:
+      alias: condic_inst
+      
+      
+    columns:
+      - name: id_condicInst
+        description: "Identificador da condição institucional"
+        data_type: integer
+        # data_tests:
+          # - unique:
+          #     name: raw_arquivo_virtual_condic_inst__id_condicInst__unique
+          #     severity: error
+          # - not_null:
+          #     name: raw_arquivo_virtual_condic_inst__id_condicInst__not_null
+          #     severity: error
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_condic_inst__id_conjuntoArquivo__not_null
+        #       severity: error
+      - name: id_instPesquisa
+        description: "Identificador da instituição de pesquisa"
+        data_type: integer
+      - name: ds_condicInst
+        description: "Descrição da condição institucional"
+        data_type: string
+        quote: true

@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_modalidade
+    description: "Modalidades arquivísticas"
+    config:
+      alias: modalidade
+      
+      
+    columns:
+      - name: id_modalidade
+        description: "Identificador único da modalidade"
+        data_type: integer
+        # data_tests:
+          # - unique:
+          #     name: raw_arquivo_virtual_modalidade__id_modalidade__unique
+          #     severity: error
+          # - not_null:
+          #     name: raw_arquivo_virtual_modalidade__id_modalidade__not_null
+          #     severity: error
+      - name: ds_modalidade
+        description: "Descrição da modalidade"
+        data_type: string
+        quote: true

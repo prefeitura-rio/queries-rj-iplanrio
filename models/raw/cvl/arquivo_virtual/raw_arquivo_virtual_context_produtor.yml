@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_context_produtor
+    description: "Contexto do produtor dos conjuntos arquivísticos"
+    config:
+      alias: context_produtor
+      
+      
+    columns:
+      - name: id_produtor
+        description: "Identificador do produtor"
+        data_type: integer
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_context_produtor__id_produtor__unique
+        #       severity: error
+        #   - not_null:
+        #       name: raw_arquivo_virtual_context_produtor__id_produtor__not_null
+        #       severity: error
+      - name: nm_produtor
+        description: "Nome do produtor"
+        data_type: string
+        quote: true
+      - name: dt_morteExtincao
+        description: "Data de morte ou extinção"
+        data_type: timestamp
+      - name: dt_nascimentoCriacao
+        description: "Data de nascimento ou criação"
+        data_type: timestamp
+      - name: id_tipoProdutor
+        description: "Identificador do tipo de produtor"
+        data_type: integer
+      - name: id_conjuntoArquivo
+        description: "Identificador do conjunto arquivístico"
+        data_type: integer
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_context_produtor__id_conjuntoArquivo__not_null
+        #       severity: error

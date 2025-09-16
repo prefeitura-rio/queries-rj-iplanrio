@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_natureza_juridica
+    description: "Naturezas jurídicas"
+    config:
+      alias: natureza_juridica
+      
+      
+    columns:
+      - name: id_NaturezaJuridica
+        description: "Identificador único da natureza jurídica"
+        data_type: integer
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_natureza_juridica__id_NaturezaJuridica__unique
+        #       severity: error
+          # - not_null:
+          #     name: raw_arquivo_virtual_natureza_juridica__id_NaturezaJuridica__not_null
+          #     severity: error
+      - name: ds_natureza
+        description: "Descrição da natureza"
+        data_type: string
+        quote: true

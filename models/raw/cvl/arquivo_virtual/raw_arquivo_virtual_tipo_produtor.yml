@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_tipo_produtor
+    description: "Tipos de produtor"
+    config:
+      alias: tipo_produtor
+      
+      
+    columns:
+      - name: id_tipoProdutor
+        description: "Identificador único do tipo de produtor"
+        data_type: integer
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_tipo_produtor__id_tipoProdutor__unique
+        #       severity: error
+        #   - not_null:
+        #       name: raw_arquivo_virtual_tipo_produtor__id_tipoProdutor__not_null
+        #       severity: error
+      - name: ds_tipoProdutor
+        description: "Descrição do tipo de produtor"
+        data_type: string
+        quote: true
