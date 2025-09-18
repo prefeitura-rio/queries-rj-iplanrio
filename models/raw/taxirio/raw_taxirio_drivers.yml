@@ -6,17 +6,19 @@ models:
         description: "Identificador do Motorista"
         data_type: string
         data_tests:
-        - not_null: 
-            name: raw_taxirio__id_motorista__not_null
-            severity: error
-        - unique:
-            name: raw_taxirio__id_motorista__unique
-            severity: error
+          - not_null:
+              name: raw_taxirio__id_motorista__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_taxirio__id_motorista__unique
+              config:
+                severity: error
       - name: data_criacao
         description: "data da inclusão na tabela"
         data_type: datetime
       - name: id_usuario
-        description: "Identificador do usuário" 
+        description: "Identificador do usuário"
         data_type: string
       - name: id_motorista_taxi
         description: Identificador do Motorista  do Taxi
@@ -70,7 +72,7 @@ models:
         description: Identificador da corrida bloqueada
         data_type: string
       - name: id_municipio
-        description: Identificador do Município   
+        description: Identificador do Município
         data_type: string
       - name: taxa_servico
         description: Taxa de serviço do motorista
@@ -108,13 +110,13 @@ models:
       - name: ficha_wss_aleatorio
         description: Ficha WSS aleatória
         data_type: string
-      - name: ficha_envio       
+      - name: ficha_envio
         description: Ficha de envio
         data_type: string
       - name: corrida_origem_posicao_lng
         description: Longitude da origem da corrida
         data_type: float64
-      - name: corrida_origem_posicao_lat  
+      - name: corrida_origem_posicao_lat
         description: Latitude da origem da corrida
         data_type: float64
       - name: id_corrida

@@ -8,10 +8,12 @@ models:
         data_tests:
           - not_null:
               name: raw_taxirio__id_corrida__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_taxirio__id_corrida__unique
-              severity: error
+              config:
+                severity: error
         quote: true
       - name: data_criacao
         description: "Data que a corrida foi iniciada, quando o passageiro estava embarcado e o taxista começou a levá-lo para o destino."
@@ -105,7 +107,7 @@ models:
         description: "Valor total a pagar da corrida (c/ desconto e c/ pedágio, pode ser preço mínimo)"
         quote: true
       - name: valor_total_pedagio
-        data_type: float64  
+        data_type: float64
         description: "Valor da soma dos pedágios, se houver."
         quote: true
       - name: valor_total_com_desconto
@@ -133,7 +135,7 @@ models:
         description: "Valor total por km."
         quote: true
       - name: valor_minimo
-        data_type: float64  
+        data_type: float64
         description: "Valor mínimo da corrida."
         quote: true
       - name: propriedade_corporativa
@@ -145,10 +147,10 @@ models:
         description: "Ano da partição."
         quote: true
       - name: mes_particao
-        data_type: int64  
+        data_type: int64
         description: "Mês da partição."
         quote: true
       - name: dia_particao
-        data_type: int64  
-        description:  "Dia da partição."
+        data_type: int64
+        description: "Dia da partição."
         quote: true
