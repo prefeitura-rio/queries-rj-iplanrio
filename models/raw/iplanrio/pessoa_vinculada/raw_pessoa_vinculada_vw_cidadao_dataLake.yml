@@ -10,16 +10,9 @@ models:
       - name: identificador_pessoa_vinculada
         description: "PK desta tabela - identificador único do registro de pessoa vinculada"
         data_type: int64
-        meta:
-          nullable: false
-        #data_tests:
-          #- unique:
-          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__identificador_pessoa_vinculada__unique
-          #    severity: error
-          #- not_null:
-          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__identificador_pessoa_vinculada__not_null
-          #    severity: error
-
+        config:
+          meta:
+            nullable: false
       - name: observacao_registro
         description: "observação sobre o registro"
         data_type: string
@@ -44,41 +37,23 @@ models:
         description: "nome da pessoa"
         data_type: string
         quote: true
-        meta:
-          sensitive: true
-        #data_tests:
-        #  - not_null:
-        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__nome__not_null
-        #      severity: warn
-
+        config:
+          meta:
+            sensitive: true
       - name: cpf
         description: "cpf da pessoa"
         data_type: string
         quote: true
-        meta:
-          sensitive: true
-          nullable: false
-        #data_tests:
-          #- dbt_expectations.expect_column_values_to_match_regex:
-          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__cpf__expect_column_values_to_match_regex
-          #    regex: '^\d{11}$'
-          #    severity: warn
-          #- not_null:
-          #    name: raw_pessoa_vinculada_vw_cidadao_dataLake__cpf__not_null
-          #    severity: error
-
+        config:
+          meta:
+            sensitive: true
+            nullable: false
       - name: data_nascimento
         description: "data de nascimento da pessoa"
         data_type: date
-        meta:
-          sensitive: true
-        #data_tests:
-        #  - dbt_expectations.expect_column_values_to_be_between:
-        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__data_nascimento__expect_column_values_to_be_between
-        #      min_value: '1900-01-01'
-        #      max_value: '{{ var("current_date", "2024-12-31") }}'
-        #      severity: warn
-
+        config:
+          meta:
+            sensitive: true
       - name: data_inclusao
         description: "data da inclusão do registro"
         data_type: datetime
@@ -100,14 +75,9 @@ models:
         description: "email alternativo da pessoa"
         data_type: string
         quote: true
-        meta:
-          sensitive: true
-        #data_tests:
-        #  - dbt_expectations.expect_column_values_to_match_regex:
-        #      name: raw_pessoa_vinculada_vw_cidadao_dataLake__email_alternativo__expect_column_values_to_match_regex
-        #      regex: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-        #      severity: warn
-
+        config:
+          meta:
+            sensitive: true
       - name: email_institucional
         description: "email institucional da pessoa"
         data_type: string

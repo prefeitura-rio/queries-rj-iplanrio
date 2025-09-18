@@ -3,7 +3,6 @@ version: 2
 models:
   - name: raw_sisbicho_animal_proprietario
     description: "Tabela contendo os vínculos entre animais e seus proprietários no sistema SisBicho"
-    
     columns:
       - name: id_animal_proprietario
         description: "Identificador único do relacionamento animal-proprietário"
@@ -13,8 +12,8 @@ models:
               name: raw_sisbicho_animal_proprietario__id_animal_proprietario__not_null
           - unique:
               name: raw_sisbicho_animal_proprietario__id_animal_proprietario__unique
-              severity: error
-
+              config:
+                severity: error
       - name: id_animal
         description: "Identificador único de cada animal cadastrado no sistema"
         #datatype: integer
@@ -23,10 +22,11 @@ models:
               name: raw_sisbicho_animal_proprietario__id_animal__not_null
           - relationships:
               name: raw_sisbicho_animal_proprietario__id_animal__relationships
-              to: ref('raw_sisbicho_animal')
-              field: id_animal
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_animal')
+                field: id_animal
       - name: id_proprietario
         description: "Identificador único de cada proprietário cadastrado no sistema"
         #datatype: integer
@@ -35,19 +35,22 @@ models:
               name: raw_sisbicho_animal_proprietario__id_proprietario__not_null
           - relationships:
               name: raw_sisbicho_animal_proprietario__id_proprietario__relationships
-              to: ref('raw_sisbicho_proprietario')
-              field: id_proprietario
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_proprietario')
+                field: id_proprietario
       - name: id_tipo_aquisicao
         description: "Código numérico que identifica o tipo de aquisição do animal"
         #datatype: smallint
         data_tests:
           - relationships:
               name: raw_sisbicho_animal_proprietario__id_tipo_aquisicao__relationships
-              to: ref('raw_sisbicho_tipo_aquisicao')
-              field: id_tipo_aquisicao
-              severity: error
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_tipo_aquisicao')
+                field: id_tipo_aquisicao
           - not_null
 
       - name: inicio_datahora
@@ -56,8 +59,8 @@ models:
         data_tests:
           - not_null:
               name: raw_sisbicho_animal_proprietario__inicio_datahora__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: fim_datahora
         description: "Data de fim da posse do animal pelo proprietário atual"
         #datatype: datetime
@@ -77,5 +80,3 @@ models:
         data_type: timestamp
 
 
-
-         

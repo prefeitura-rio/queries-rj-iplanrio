@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_bcadastro_cpf 
+  - name: raw_bcadastro_cpf
     description: >
       Tabela contendo dados de pessoas físicas do Cadastro de Pessoas Físicas (CPF).
       Atualizada diariamente a partir do sistema BCadastro.
@@ -17,7 +17,7 @@ models:
           start: 0
           end: 100000000000
           interval: 34722222
-          
+
     columns:
       - name: cpf
         description: "Número de inscrição no Cadastro de Pessoas Físicas (CPF)"
@@ -25,12 +25,12 @@ models:
         data_tests:
           - unique:
               name: raw_bcadastro_cpf__cpf__unique
-              severity: error
+              config:
+                severity: error
           - not_null:
               name: raw_bcadastro_cpf__cpf__not_null
-              severity: error
-
-      # Dados pessoais
+              config:
+                severity: error
       - name: nome
         description: "Nome completo do contribuinte"
         data_type: string
@@ -227,4 +227,4 @@ models:
       # Campo de particionamento
       - name: cpf_particao
         description: "Campo usado para particionamento da tabela"
-        data_type: integer 
+        data_type: integer

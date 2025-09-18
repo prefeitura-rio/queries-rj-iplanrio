@@ -23,11 +23,9 @@ models:
       - name: cpf_numero
         description: "Número do CPF do proprietário"
         #datatype: string
-       
       - name: cnpj_numero
         description: "Número do CNPJ do proprietário"
         #datatype: string
-       
       - name: id_logradouro
         description: "Código numérico de identificação do logradouro"
         #datatype: integer
@@ -104,9 +102,9 @@ models:
         data_tests:
           - relationships:
               name: raw_sisbicho_proprietario__id_credenciada__relationships
-              to: ref('raw_sisbicho_credenciada')
-              field: id_credenciada
-
+              arguments:
+                to: ref('raw_sisbicho_credenciada')
+                field: id_credenciada
       - name: tutor_rua_indicador
         description: "Indicador se o tutor é de rua"
         #datatype: string
@@ -115,4 +113,4 @@ models:
         data_type: timestamp
       - name: transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp        
+        data_type: timestamp

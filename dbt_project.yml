@@ -106,7 +106,7 @@ models:
         infraestrutura_siscob_obras:
           +materialized: table
           +schema: infraestrutura_siscob_obras
-          +tags: "daily"        
+          +tags: "daily"
       smas:
         +project: rj-smas
         protecao_social_cadunico:
@@ -148,7 +148,9 @@ models:
       
       iplanrio:
         +project: rj-iplanrio
-        pessoa_vinculada:         
+        pessoa_vinculada:
           +materialized: table
           +schema: brutos_pessoa_vinculada
           +tags: ["daily", "pessoa_vinculada"]
+flags:
+  require_generic_test_arguments_property: true
