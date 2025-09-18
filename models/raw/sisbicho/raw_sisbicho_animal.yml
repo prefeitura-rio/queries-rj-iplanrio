@@ -10,11 +10,12 @@ models:
         data_tests:
           - unique:
               name: raw_sisbicho_animal__id_animal__unique
-              severity: error
+              config:
+                severity: error
           - not_null:
               name: raw_sisbicho_animal__id_animal__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: animal_nome
         description: "Nome do animal, como registrado pelo proprietário"
         #datatype: string
@@ -25,19 +26,19 @@ models:
         data_tests:
           - not_null:
               name: raw_sisbicho_animal__microchip_numero__not_null
-              severity: error
-          
-
+              config:
+                severity: error
       - name: id_especie
         description: "Identificador numérico da espécie do animal"
         #datatype: smallint
         data_tests:
           - relationships:
               name: raw_sisbicho_animal__id_especie__relationships
-              to: ref('raw_sisbicho_especie')
-              field: id_especie
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_especie')
+                field: id_especie
       - name: sexo_sigla
         description: "Sexo do animal (M/F)"
         #datatype: string
@@ -48,10 +49,11 @@ models:
         data_tests:
           - relationships:
               name: raw_sisbicho_animal__id_raca__relationships
-              to: ref('raw_sisbicho_raca')
-              field: id_raca
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_raca')
+                field: id_raca
       - name: nascimento_data
         description: "Data de nascimento do animal"
         #datatype: string
@@ -74,10 +76,11 @@ models:
         data_tests:
           - relationships:
               name: raw_sisbicho_animal__id_porte__relationships
-              to: ref('raw_sisbicho_porte')
-              field: id_porte
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_porte')
+                field: id_porte
       - name: usuario_login
         description: "Login do usuário que registrou o animal"
         #datatype: string
@@ -96,10 +99,11 @@ models:
         data_tests:
           - relationships:
               name: raw_sisbicho_animal__id_credenciada__relationships
-              to: ref('raw_sisbicho_credenciada')
-              field: id_credenciada
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_credenciada')
+                field: id_credenciada
       - name: motivo_nome
         description: "Motivo de inativação do registro"
         #datatype: string
@@ -107,7 +111,6 @@ models:
       - name: inativo_indicador
         description: "Indica se o registro do animal está inativo (S/N)"
         #datatype: string
-     
 
 
       - name: id_tipo_especie
@@ -116,10 +119,11 @@ models:
         data_tests:
           - relationships:
               name: raw_sisbicho_animal__id_tipo_especie__relationships
-              to: ref('raw_sisbicho_tipo_especie')
-              field: id_tipo_especie
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_sisbicho_tipo_especie')
+                field: id_tipo_especie
       - name: antirrabica_data
         description: "Data da última vacinação antirrábica"
         #datatype: datetime
@@ -150,7 +154,7 @@ models:
         #      severity: warn
 
       - name: foto_dados
-        description: "Foto do animal" 
+        description: "Foto do animal"
         #datatype: bytes
       - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
