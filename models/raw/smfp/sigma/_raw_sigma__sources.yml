@@ -4,9 +4,6 @@ sources:
   - name: compras_materiais_servicos_sigma_staging
     database: rj-smfp
     schema: compras_materiais_servicos_sigma_staging
-    freshness: null # default freshness
-      #error_after: {count: 24, period: hour}
-    loaded_at_field: _airbyte_extracted_at
     tables:
       - name: VW_CLASSE
       - name: VW_DEVOLUCAO_MATERIAL
@@ -31,3 +28,6 @@ sources:
       - name: VW_UNIDADE_SERVICO
       - name: VW_USUARIO_RESPONSAVEL_AUXILIAR
       - name: VW_USUARIO_SISTEMA
+    config:
+      freshness:
+      loaded_at_field: _airbyte_extracted_at

@@ -28,18 +28,18 @@ models:
               name: raw_sisbicho_raca__id_especie__not_null
           - relationships:
               name: raw_sisbicho_raca__id_especie__relationships
-              to: ref('raw_sisbicho_especie')
-              field: id_especie
-
+              arguments:
+                to: ref('raw_sisbicho_especie')
+                field: id_especie
       - name: id_tipo_especie
         description: "Identificador do tipo de espécie"
         #datatype: integer
         data_tests:
           - relationships:
               name: raw_sisbicho_raca__id_tipo_especie__relationships
-              to: ref('raw_sisbicho_tipo_especie')
-              field: id_tipo_especie 
-
+              arguments:
+                to: ref('raw_sisbicho_tipo_especie')
+                field: id_tipo_especie
       - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
         data_type: timestamp

@@ -5,9 +5,6 @@ sources:
     description: "Dados de recursos humanos do sistema ERGON da Prefeitura do Rio de Janeiro"
     database: rj-iplanrio
     schema: brutos_ergon_staging
-    freshness: # default freshness
-      error_after: {count: 24, period: hour}
-    loaded_at_field: _airbyte_extracted_at
     tables:
       - name: VW_SIMPA_SIRHU_AFASTAMENTO_GBP
         description: "Tabela de afastamentos antigos dos servidores"
@@ -23,13 +20,16 @@ sources:
         description: "Categorias existentes na administração"
       - name: FICHAS_FINANCEIRAS
         description: "Fichas financeiras dos funcionários da COMLURB"
-        freshness: null
+        config:
+          freshness:
       - name: IPL_PT_FICHAS
         description: "Fichas financeiras contábeis dos funcionários"
-        freshness: null
+        config:
+          freshness:
       - name: VW_DLK_ERG_FITA_BANCO
         description: "Fitas enviadas para o tesouro municipal"
-        freshness: null
+        config:
+          freshness:
       - name: VW_DLK_ERG_FORMAS_PROV_
         description: "Formas de provimentos possíveis"
       - name: FREQUENCIAS
@@ -68,11 +68,17 @@ sources:
         description: "Tipos de vínculos existentes"
       - name: TOTAL_CONTA
         description: "Resultado das contagens de tempo para benefícios"
-        freshness: null
+        config:
+          freshness:
       - name: VANTAGENS
         description: "Vantagens e atributos dos servidores"
-        freshness: null
+        config:
+          freshness:
       - name: VW_DLK_ERG_VINCULOS
         description: "Vínculos de pagamento dos funcionários"
       - name: VW_DLK_ERG_EMPRESAS
         description: "Empresas da administração direta ou indireta"
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at

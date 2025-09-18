@@ -2,32 +2,32 @@ version: 2
 models:
   - name: raw_taxirio_users
     columns:
-      
-      
       - name: id_usuario
         description: "Identificador do usuário"
         data_type: string
-        data_tests:       
+        data_tests:
           - not_null:
               name: raw_taxirio__id_usuario__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_taxirio__id_usuario__unique
-              severity: error
+              config:
+                severity: error
       - name: nome_exibicao
         description: "Nome de exibição do usuário"
         data_type: string
       - name: nome_completo
         description: "Nome completo do usuário"
         data_type: string
-      - name: email   
+      - name: email
         description: "Email do usuário"
         data_type: string
       - name: telefone
         description: "Telefone do usuário"
         data_type: string
       - name: cpf
-        description: "CPF do usuário" 
+        description: "CPF do usuário"
         data_type: string
       - name: data_criacao
         description: "Data de criação do usuário"
@@ -47,14 +47,13 @@ models:
       - name: data_morte_receita_federal
         description: "Data de morte da receita federal"
         data_type: datetime
-      - name: nome_mae_receita_federal  
+      - name: nome_mae_receita_federal
         description: "Nome da Mãe na receita Federal"
         data_type: string
       - name: ano_morte_receita_federal
         description: "Ano da Morte na receita Federal"
         data_type: datetime
-      - name: sexo_receita_federal  
+      - name: sexo_receita_federal
         description: "Sexo na receita Federal"
         data_type: string
-     
 
