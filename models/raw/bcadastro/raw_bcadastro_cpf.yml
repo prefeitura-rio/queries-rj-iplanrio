@@ -17,7 +17,7 @@ models:
           start: 0
           end: 100000000000
           interval: 34722222
-
+          
     columns:
       - name: cpf
         description: "Número de inscrição no Cadastro de Pessoas Físicas (CPF)"
