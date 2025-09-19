@@ -2,18 +2,18 @@ version: 2
 models:
   - name: raw_taxirio_passengers
     columns:
-      
-      
       - name: id_passageiro
         description: "Identificador do passageiro"
         data_type: string
         data_tests:
-          - not_null: 
+          - not_null:
               name: raw_taxirio__id_passageiro__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_taxirio__id_passageiro__unique
-              severity: error
+              config:
+                severity: error
       - name: id_usuario
         description: "Identificador do usuário"
         data_type: string
@@ -27,7 +27,7 @@ models:
       - name: senha
         description: "Senha do passageiro"
         data_type: string
-      - name: aleatorio 
+      - name: aleatorio
         description: "Valor aleatório para o login do passageiro"
         data_type: string
       - name: pode_usar_pagamento_app
@@ -50,7 +50,7 @@ models:
         data_type: string
       - name: versao_sistema_telefone
         description: "Versão do sistema do telefone"
-        data_type: string 
+        data_type: string
       - name: nome_sistema_telefone
         description: "Nome do sistema do telefone"
         data_type: string
@@ -71,4 +71,4 @@ models:
         data_type: int64
       - name: dia_particao
         description: "Parte da data de criação do passageiro (Dia)"
-        data_type: int64 
+        data_type: int64
