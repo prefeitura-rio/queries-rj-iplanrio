@@ -115,3 +115,7 @@ models:
       - name: identificador_lotacao
         description: "código da lotação da pessoa"
         data_type: int64
+
+      - name: nome_unidade_administrativa
+        description: "nome da Unidade Adminitrativa"
+        data_type: string
