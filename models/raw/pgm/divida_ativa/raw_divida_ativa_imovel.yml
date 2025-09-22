@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_imovel
+    description: "Tabela que guarda os registros dos imóveis vinculados às certidões de dívida ativa (CDA), nos casos de dívidas de IPTU ou Mais Valia."
+    columns:
+      - name: inscricao_imobiliaria
+        description: "Número de inscrição imobiliária do imóvel vinculado à certidão de dívida ativa"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_imovel__inscricao_imobiliaria__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_imovel__inscricao_imobiliaria__unique
+              severity: error
+      - name: endereco
+        description: "Estrutura com os dados de endereço do imóvel"
+        data_type: struct
+        columns:
+          - name: codigo_logradouro
+            description: "Código do logradouro do imóvel"
+            data_type: int64
+          - name: nome_logradouro
+            description: "Nome do logradouro do imóvel"
+            data_type: string
+          - name: numero_porta
+            description: "Número da porta do imóvel"
+            data_type: string
+          - name: complemento_endereco
+            description: "Complemento do endereço do imóvel"
+            data_type: string
+          - name: bairro
+            description: "Bairro do imóvel"
+            data_type: string
+          - name: cep
+            description: "CEP do imóvel"
+            data_type: string
+      - name: tipologia_imovel
+        description: "Estrutura com os dados de tipologia do imóvel"
+        data_type: struct
+        columns:
+          - name: id_tipologia_imovel
+            description: "Identificador da tipologia do imóvel"
+            data_type: int64
+          - name: nome_tipologia_imovel
+            description: "Nome da tipologia do imóvel"
+            data_type: string
+      - name: utilizacao_imovel
+        description: "Estrutura com os dados de utilização do imóvel"
+        data_type: struct
+        columns:
+          - name: id_utilizacao_imovel
+            description: "Identificador da utilização do imóvel"
+            data_type: int64
+          - name: nome_utilizacao_imovel
+            description: "Nome da utilização do imóvel"
+            data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

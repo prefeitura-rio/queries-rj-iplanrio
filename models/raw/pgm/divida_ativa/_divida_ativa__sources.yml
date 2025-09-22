@@ -1,0 +1,26 @@
+version: 2
+
+sources:
+  - name: brutos_divida_ativa_staging
+    database: rj-iplanrio
+    schema: brutos_divida_ativa_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
+    tables:
+      - name: SituacaoCDA
+      - name: NaturezaDivida
+      - name: Utilizacao_Imovel
+      - name: TipologiaImovel
+      - name: InscricaoImobiliaria
+      - name: SituacaoGuia
+      - name: Situacao_honorarios
+      - name: TextoGuia
+      - name: VWPESSOA
+      - name: CDA
+      - name: Honorarios
+      - name: GuiaPagamento
+      - name: GuiaPagamento_Honorarios
+      - name: GuiaPagamento_CDA
+      - name: CotaPagamento
+      - name: Cotas_Associadas
