@@ -7,4 +7,9 @@ sources:
     tables:
       - name: vw_cidadao_dataLake
         description: "Source view vw_cidadao_dataLake for information" 
+  - name: brutos_sici
+    schema: brutos_sici
+    tables:
+      - name: unidade_administrativa
+        description: "Tabela unidade_administrativa do schema brutos_sici" 
         
