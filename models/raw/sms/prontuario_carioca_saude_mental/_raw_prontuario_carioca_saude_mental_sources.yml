@@ -1,0 +1,54 @@
+version: 2
+
+sources:
+  - name: brutos_prontuario_carioca_saude_mental_staging
+    database: rj-sms
+    schema: brutos_prontuario_carioca_saude_mental_staging
+    tables:
+      - name: gh_acolhimento
+      - name: gh_articula
+      - name: gh_articula_paciente
+      - name: gh_atendimentos
+      - name: gh_ativgrp
+      - name: gh_cidadao_pac
+      - name: gh_clinfamil_equipes
+      - name: gh_comorbidades
+      - name: gh_comorbpacientes
+      - name: gh_drogas
+      - name: gh_drogaspacientes
+      - name: gh_encam_atend
+      - name: gh_equipe
+      - name: gh_local
+      - name: gh_matric
+      - name: gh_matric_paciente
+      - name: gh_pac_ciclos
+      - name: gh_pacientes_sm
+      - name: gh_srt
+      - name: gh_srtpacientes
+      - name: gh_tpatendimentos
+      - name: gh_tpatividades
+      - name: gh_tplocal
+      - name: gh_tpsaidaacolhe
+      - name: gh_us
+      - name: gh_us_tipo
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
+
+  - name: brutos_prontuario_carioca_saude_mental_prescricao_staging
+    database: rj-sms
+    schema: brutos_prontuario_carioca_saude_mental_prescricao_staging
+    tables:
+      - name: fa_atendimento
+      - name: fa_catalogmat
+      - name: fa_catalogmat_prescr
+      - name: fa_medicamento
+      - name: fa_medico
+      - name: fa_paciente
+      - name: fa_prescricao
+      - name: fa_us
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
