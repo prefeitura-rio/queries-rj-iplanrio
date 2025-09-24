@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: brutos_acolherio
+    database: rj-smas
+    schema: brutos_acolherio_staging
+    tables:
+      - name: gh_atend_familia
+      - name: gh_atendimentos
+      - name: gh_cbo
+      - name: gh_cidadao_pac
+      - name: gh_contas
+      - name: gh_contas_us
+      - name: gh_encam_atend
+      - name: gh_familias
+      - name: gh_familias_log
+      - name: gh_familias_membros
+      - name: gh_familias_motiv_saida
+      - name: gh_origens
+      - name: gh_pac_ciclos
+      - name: gh_pac_dados
+      - name: gh_pac_transf
+      - name: gh_pacientes_sm
+      - name: gh_prof
+      - name: gh_profocup
+      - name: gh_tpatendimentos
+      - name: gh_us
+      - name: gh_us_config
+      - name: gh_us_tipo
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
