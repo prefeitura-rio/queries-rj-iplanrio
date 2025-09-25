@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_tipo_especie
+    description: "Tabela contendo os registros de tipos de espécies de animais no sistema SisBicho"
+    columns:
+      - name: id_tipo_especie
+        description: "Identificador único do tipo de espécie"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_tipo_especie__id_tipo_especie__unique
+          - not_null:
+              name: raw_sisbicho_tipo_especie__id_tipo_especie__not_null
+
+      - name: tipo_especie_nome
+        description: "Nome do tipo de espécie"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_tipo_especie__tipo_especie_nome__not_null
+
+      - name: id_especie
+        description: "Identificador da espécie"
+        #datatype: integer
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_tipo_especie__id_especie__not_null
+          - relationships:
+              name: raw_sisbicho_tipo_especie__id_especie__relationships
+              arguments:
+                to: ref('raw_sisbicho_especie')
+                field: id_especie
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

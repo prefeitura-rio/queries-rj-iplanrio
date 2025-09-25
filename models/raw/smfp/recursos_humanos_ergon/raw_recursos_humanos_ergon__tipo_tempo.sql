@@ -15,4 +15,4 @@ SELECT
     SAFE_CAST(TRIM(dias_licesp) AS BOOLEAN) AS dias_de_licenca_especial,
     SAFE_CAST(TRIM(adictchefia) AS BOOLEAN) AS tempo_de_chefia,
     SAFE_CAST(TRIM(progressao) AS BOOLEAN) AS progressao,
-FROM {{ source('recursos_humanos_ergon', 'tipo_tempo') }} AS t
+FROM {{ source('brutos_ergon_staging', 'TIPO_TEMPO') }} AS t

@@ -1,3 +1,5 @@
+
+
 SELECT
   SAFE_CAST(
     REGEXP_REPLACE(cd_ua, r'\.0$', '') AS STRING

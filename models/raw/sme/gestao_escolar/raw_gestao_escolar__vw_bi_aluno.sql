@@ -10,6 +10,7 @@ renamed as (
         {{ adapter.quote("Ano") }},
         {{ adapter.quote("Matricula") }},
         {{ adapter.quote("Nome") }},
+        {{ adapter.quote("NomeSocial") }},
         {{ adapter.quote("Sexo") }},
         {{ adapter.quote("Endereco") }},
         {{ adapter.quote("Bairro") }},
@@ -47,7 +48,11 @@ renamed as (
         {{ adapter.quote("Ult_Movimentacao") }},
         {{ adapter.quote("Tot_Aluno") }},
         SAFE_CAST({{ adapter.quote("alu_id") }} AS STRING) AS {{ adapter.quote("alu_id") }},
-        SAFE_CAST({{ adapter.quote("tur_id") }} AS STRING) AS {{ adapter.quote("tur_id") }}
+        SAFE_CAST({{ adapter.quote("tur_id") }} AS STRING) AS {{ adapter.quote("tur_id") }},
+        {{adapter.quote("NOME_RESPONSAVEL")}} as Nome_Responsavel,
+        {{adapter.quote("CPF_RESPONSAVEL")}} as CPF_Responsavel,
+        {{adapter.quote("CONTATO_RESPONSAVEL")}} as Contato_Responsavel
+
     from source
 )
 

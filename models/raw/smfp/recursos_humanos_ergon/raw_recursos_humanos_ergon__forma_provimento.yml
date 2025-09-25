@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__forma_provimento
+    description: "**Descrição**: Formas de provimentos possíveis tanto na administração direta como indireta da prefeitura do Rio de Janeiro. O provimento é a investidura em um cargo público.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    columns:
+      - name: sigla
+        description: Sigla da forma de provimento. Ex. 01.
+        data_type: string
+        quote: true
+      - name: nome
+        description: Nome da forma de provimento. Ex. NOMEACAO OU PROVIMENTO (relativo a sigla 01).
+        data_type: string
+        quote: true
+      - name: inativo
+        description: Booleano que indica que a forma de provimento é válida para funcionários inativos.
+        data_type: boolean
+      - name: primeiro_provimento
+        description: Booleano que indica se a forma de provimento pode ser um primeiro tipo de provimento ( quando se entra na prefeitura ).
+        data_type: boolean
+      - name: ativo
+        description: Booleano que indica que a forma de provimento é válida para funcionários ativos.
+        data_type: boolean

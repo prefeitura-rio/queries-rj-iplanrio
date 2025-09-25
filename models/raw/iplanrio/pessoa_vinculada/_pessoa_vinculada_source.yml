@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: brutos_pessoa_vinculada_staging
+    database: rj-iplanrio 
+    schema: brutos_pessoa_vinculada_staging
+    tables:
+      - name: vw_cidadao_dataLake
+        description: "Source view vw_cidadao_dataLake for information" 
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
+        

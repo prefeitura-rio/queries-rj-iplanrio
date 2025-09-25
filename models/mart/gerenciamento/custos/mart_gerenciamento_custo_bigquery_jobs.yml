@@ -10,9 +10,11 @@ models:
       - dbt_expectations.expect_column_values_to_be_between:
           name: mart_gerenciamento_custo_bigquery_jobs__datahora_criacao__valid_period
           column_name: datahora_criacao
-          min_value: "2024-01-01"
-          max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
-          severity: error
+          config:
+            severity: error
+          arguments:
+            min_value: "2024-01-01"
+            max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
     columns:
       - name: id_job
         description: "Identificador único do job no BigQuery."
@@ -21,11 +23,12 @@ models:
         data_tests:
           - unique:
               name: mart_gerenciamento_custo_bigquery_jobs__id_job__unique
-              severity: error
+              config:
+                severity: error
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__id_job__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: projeto_id
         description: "ID do projeto GCP onde o job foi executado."
         data_type: string
@@ -33,8 +36,8 @@ models:
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__projeto_id__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: origem_projeto
         description: "Projeto GCP de origem da execução do job."
         data_type: string
@@ -42,8 +45,8 @@ models:
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__origem_projeto__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: orgao
         description: "Órgão extraído do ID do projeto, utilizado para agrupamento e análise de custos por órgão."
         data_type: string
@@ -64,16 +67,16 @@ models:
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__datahora_criacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: data_faturamento
         description: "Data de faturamento do job (formato: 'YYYY-MM-DD'). Utilizada para partição e análise temporal dos custos."
         data_type: date
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__data_faturamento__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: estado_job
         description: "Estado final do job no BigQuery (ex: DONE, FAILED, etc)."
         data_type: string
@@ -95,8 +98,8 @@ models:
         data_tests:
           - not_null:
               name: mart_gerenciamento_custo_bigquery_jobs__job_faturavel__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: eh_service_account
         description: "Indica se o job foi executado por uma service account (SIM/NÃO)."
         data_type: string
@@ -133,36 +136,40 @@ models:
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: mart_gerenciamento_custo_bigquery_jobs__tib_processado_quantidade__positive
-              min_value: 0
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                min_value: 0
       - name: uso_estimado_tib_quantidade
         description: "Quantidade estimada de TiB faturados pelo job."
         data_type: float
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: mart_gerenciamento_custo_bigquery_jobs__uso_estimado_tib_quantidade__positive
-              min_value: 0
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                min_value: 0
       - name: custo_estimado_valor
         description: "Custo estimado em dólares americanos (USD) do job, calculado com base no volume faturado e multiplicador de preço vigente."
         data_type: float
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: mart_gerenciamento_custo_bigquery_jobs__custo_estimado_valor__positive
-              min_value: 0
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                min_value: 0
       - name: custo_estimado_reais
         description: "Custo estimado do job convertido para reais (BRL), considerando a taxa de câmbio diária."
         data_type: float
         data_tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: mart_gerenciamento_custo_bigquery_jobs__custo_estimado_reais__positive
-              min_value: 0
-              severity: error
-
+              config:
+                severity: error
+              arguments:
+                min_value: 0
       - name: resultado_erro
         description: "Mensagem de erro retornada pelo BigQuery, caso o job tenha falhado."
         data_type: string

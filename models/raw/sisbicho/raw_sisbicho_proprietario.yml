@@ -1,0 +1,116 @@
+version: 2
+
+models:
+  - name: raw_sisbicho_proprietario
+    description: "Tabela contendo os registros de proprietários de animais no sistema SisBicho"
+    columns:
+      - name: id_proprietario
+        description: "Identificador único do proprietário"
+        #datatype: integer
+        data_tests:
+          - unique:
+              name: raw_sisbicho_proprietario__id_proprietario__unique
+          - not_null:
+              name: raw_sisbicho_proprietario__id_proprietario__not_null
+
+      - name: proprietario_nome
+        description: "Nome do proprietário"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_proprietario__proprietario_nome__not_null
+
+      - name: cpf_numero
+        description: "Número do CPF do proprietário"
+        #datatype: string
+      - name: cnpj_numero
+        description: "Número do CNPJ do proprietário"
+        #datatype: string
+      - name: id_logradouro
+        description: "Código numérico de identificação do logradouro"
+        #datatype: integer
+
+      - name: logradouro_nome
+        description: "Nome da rua, avenida, etc., onde o proprietário reside"
+        #datatype: string
+
+      - name: numero_porta
+        description: "Número da residência ou estabelecimento do proprietário"
+        #datatype: string
+
+      - name: complemento_nome
+        description: "Informações complementares sobre o endereço"
+        #datatype: string
+
+      - name: bairro_nome
+        description: "Nome do bairro onde o proprietário reside"
+        #datatype: string
+
+      - name: id_bairro
+        description: "Código numérico de identificação do bairro"
+        #datatype: integer
+
+      - name: cep_numero
+        description: "CEP do proprietário"
+        #datatype: string
+
+      - name: cidade_nome
+        description: "Nome da cidade onde o proprietário reside"
+        #datatype: string
+
+      - name: uf_sigla
+        description: "Sigla da UF do proprietário"
+        #datatype: string
+
+      - name: telefone_numero
+        description: "Número de telefone fixo do proprietário"
+        #datatype: string
+
+      - name: celular_numero
+        description: "Número de telefone celular do proprietário"
+        #datatype: string
+
+      - name: email_endereco
+        description: "Endereço de e-mail do proprietário"
+        #datatype: string
+
+      - name: tipo_pessoa_sigla
+        description: "Sigla do tipo de pessoa"
+        #datatype: string
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_proprietario__tipo_pessoa_sigla__not_null
+
+      - name: registro_datahora
+        description: "Data e hora do registro do proprietário"
+        #datatype: datetime
+        data_tests:
+          - not_null:
+              name: raw_sisbicho_proprietario__registro_datahora__not_null
+
+      - name: usuario_login
+        description: "Login do usuário que registrou o proprietário no sistema"
+        #datatype: string
+
+      - name: divulgar_contato_indicador
+        description: "Indicador se o proprietário deseja divulgar o contato"
+        #datatype: string
+
+      - name: id_credenciada
+        description: "Identificador da credenciada"
+        #datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_sisbicho_proprietario__id_credenciada__relationships
+              arguments:
+                to: ref('raw_sisbicho_credenciada')
+                field: id_credenciada
+      - name: tutor_rua_indicador
+        description: "Indicador se o tutor é de rua"
+        #datatype: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do SISBICHO."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

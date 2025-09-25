@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: raw_mais_valia_parcelas_contrapartida
+    description: "Tabela que espelha a view vwCTP_darm_ctp que consiste nos dados básicos das parcelas do cálculo de contrapartida, mesmo aquelas que ainda não tiveram o número de DARM gerado."
+    columns:
+      - name: id_calculo
+        description: "Identificador criado com a concatenação dos campos origem e codigo_calculo para montar a chave do cálculo de contrapartida para associação com os registros de parcelas."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_mais_valia_parcelas_contrapartida__id_calculo__not_null
+              config:
+                severity: error
+      - name: id_parcela
+        description: "Identificador único da parcela do cálculo de contrapartida."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_mais_valia_parcelas_contrapartida__id_parcela__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_mais_valia_parcelas_contrapartida__id_parcela__unique
+              config:
+                severity: error
+      - name: origem
+        description: "Código que identifica a versão do sistema onde o cálculo foi gerado. {1-Sistema novo / 10 - Sistema antigo} e serve para fazer join com a tabela raw_mais_valia_contrapartida_consolidado."
+        data_type: int64
+      - name: codigo_calculo
+        description: "Código do cálculo de contrapartida, que serve para fazer join com a tabela raw_mais_valia_contrapartida_consolidado."
+        data_type: int64
+      - name: codigo_parcela
+        description: "Código da parcela do cálculo de contrapartida."
+        data_type: int64
+      - name: numero_parcela
+        description: "Número da parcela do cálculo de contrapartida."
+        data_type: int64
+      - name: numero_darm
+        description: "Número do Documento de Arrecadação Municipal (DARM) gerado para a parcela do cálculo de contrapartida. Pode ser nulo caso o DARM ainda não tenha sido gerado."
+        data_type: int64
+      - name: darm_emitido
+        description: "Indicador booleano que informa se o DARM foi emitido para a parcela do cálculo de contrapartida."
+        data_type: boolean
+      - name: descricao_darm_emitido
+        description: "Descrição do indicador de emissão do DARM - Emitido ou Não emitido."
+        data_type: string
+      - name: lei_contrapartida
+        description: "Lei que regulamenta o cálculo de contrapartida que gerou a parcela."
+        data_type: string
+      - name: valor
+        description: "Valor monetário da parcela do cálculo de contrapartida."
+        data_type: numeric
+      - name: data_emissao
+        description: "Data de emissão do DARM para a parcela do cálculo de contrapartida. Pode ser nulo caso o DARM ainda não tenha sido gerado."
+        data_type: date
+      - name: data_vencimento
+        description: "Data de vencimento do DARM para a parcela do cálculo de contrapartida. Pode ser nulo caso o DARM ainda não tenha sido gerado."
+        data_type: date
+      - name: data_pagamento
+        description: "Data de pagamento do DARM para a parcela do cálculo de contrapartida. Pode ser nulo caso o DARM ainda não tenha sido pago."
+        data_type: date
+      - name: valor_pagamento
+        description: "Valor pago do DARM para a parcela do cálculo de contrapartida. Pode ser nulo caso o DARM ainda não tenha sido pago."
+        data_type: numeric
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do PCSM."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
+

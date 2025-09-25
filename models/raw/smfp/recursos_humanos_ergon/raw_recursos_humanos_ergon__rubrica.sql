@@ -1,8 +1,8 @@
 {{
     config(
-        alias='ergon_rubrica',
+        alias='rubrica_ergon',
     )
 }}
 
 SELECT *
-FROM {{ source('recursos_humanos_ergon', 'rubrica') }} AS t
+FROM {{ source('brutos_ergon_staging', 'RUBRICAS') }} AS t

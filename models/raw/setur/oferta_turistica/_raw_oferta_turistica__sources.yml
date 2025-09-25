@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: brutos_oferta_turistica_staging
+    database: rj-iplanrio
+    schema: brutos_oferta_turistica_staging
+    description: "Dados de oferta turística da Prefeitura do Rio de Janeiro extraídos da Planilha Sheets de controle"
+    tables:
+      - name: aquario
+        description: "Dados sobre o AquaRio - Aquário Marinho do Rio de Janeiro"
+      - name: bio_parque
+        description: "Dados sobre o BioParque - Parque Biológico do Rio de Janeiro"
+      - name: ccbb
+        description: "Dados sobre o CCBB - Centro Cultural Banco do Brasil"
+      - name: cristo_redentor
+        description: "Dados sobre o Cristo Redentor - Monumento e atração turística"
+      - name: empregos_turismo
+        description: "Dados sobre empregos no setor turístico do Rio de Janeiro"
+      - name: galeao
+        description: "Dados sobre o Aeroporto Internacional Tom Jobim - Galeão"
+      - name: iss
+        description: "Dados sobre o ISS - Imposto Sobre Serviços no setor turístico"
+      - name: museu_acude
+        description: "Dados sobre o Museu do Açude - Museu histórico e cultural"
+      - name: museu_chacara_do_ceu
+        description: "Dados sobre o Museu Chácara do Céu - Museu de arte moderna"
+      - name: museu_do_amanha
+        description: "Dados sobre o Museu do Amanhã - Museu de ciências e inovação"
+      - name: museu_nacional
+        description: "Dados sobre o Museu Nacional - Museu de história natural e antropologia"
+      - name: museu_republica
+        description: "Dados sobre o Museu da República - Museu histórico e político"
+      - name: museu_villa_lobos
+        description: "Dados sobre o Museu Villa-Lobos - Museu dedicado ao compositor"
+      - name: novo_rio
+        description: "Dados sobre o Terminal Rodoviário Novo Rio"
+      - name: pao_de_acucar
+        description: "Dados sobre o Pão de Açúcar - Atração turística e teleférico"
+      - name: rede_hoteleira_ocupacao_geral
+        description: "Dados sobre ocupação geral da rede hoteleira do Rio de Janeiro"
+      - name: rede_hoteleira_ocupacao_grandes_eventos
+        description: "Dados sobre ocupação da rede hoteleira durante grandes eventos"
+      - name: santos_dumont
+        description: "Dados sobre o Aeroporto Santos Dumont - Aeroporto doméstico"
