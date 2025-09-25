@@ -96,7 +96,7 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
       f.valor_desconto_sobre_principal
     )
   ) as cdas_associadas,
-  array_agg(
+/*  array_agg(
     struct(
       g.id_certidao_divida_ativa, 
       g.id_guia_pagamento,
@@ -108,7 +108,7 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
       g.valor_honorario_na_guia,
       g.percentual_desconto
     )
-  ) as honorarios_associados,
+  ) as honorarios_associados,*/
   a._airbyte_extracted_at as loaded_at,
   current_timestamp() as transformed_at  
 from {{ source('brutos_divida_ativa_staging', 'GuiaPagamento') }} a
@@ -117,7 +117,7 @@ left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on c.id_tipo_pagam
 left join {{ ref('raw_divida_ativa_pessoa') }} d on d.id_pessoa = a.idPessoa
 left join {{ ref('raw_divida_ativa_tipo_receita') }} e on e.codigo_receita = a.codReceita
 left join {{ ref('raw_divida_ativa_guia_pagamento_x_cda') }} f on f.id_guia_pagamento = a.numGuiaPagamento
-left join {{ ref('raw_divida_ativa_guia_pagamento_x_honorario') }} g on g.id_guia_pagamento = a.numGuiaPagamento
+--left join {{ ref('raw_divida_ativa_guia_pagamento_x_honorario') }} g on g.id_guia_pagamento = a.numGuiaPagamento
 group by a.numGuiaPagamento, 
 a.numSeqGuia,
 a.datCriacao,
