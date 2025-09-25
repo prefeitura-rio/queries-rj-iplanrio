@@ -28,7 +28,7 @@ select
     _airbyte_extracted_at as datalake_loaded_at, 
     current_timestamp() as datalake_transformed_at
 from {{ source("brutos_pessoa_vinculada_staging", "vw_cidadao_dataLake") }}  l
-left join {{ source("brutos_sici", "unidade_administrativa") }} ua on l.cd_lotacao = ua.id_unidade_administrativa and ua.ativa = 'S'
-left join {{ source("brutos_sici", "unidade_administrativa") }} ua2 on ua.id_unidade_administrativa_basica = ua2.id_unidade_administrativa and ua2.ativa = 'S'
+left join {{ ref("raw_unidade_administrativa") }} ua on l.cd_lotacao = ua.id_unidade_administrativa and ua.ativa = 'S'
+left join {{ ref("raw_unidade_administrativa") }} ua2 on ua.id_unidade_administrativa_basica = ua2.id_unidade_administrativa and ua2.ativa = 'S'
 
       
