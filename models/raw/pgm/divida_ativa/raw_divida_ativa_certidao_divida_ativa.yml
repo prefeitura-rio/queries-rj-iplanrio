@@ -151,7 +151,7 @@ models:
           - name: nome_entidade_credora
             description: "Nome da entidade credora."
             data_type: string
-        name: guias_associadas
+      - name: guias_associadas
         description: "Lista com os dados das guias de pagamento associadas à CDA."
         data_type: record[]
         columns:
