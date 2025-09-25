@@ -34,7 +34,7 @@ with
             nomeempresarial as razao_social,
             nomefantasia as nome_fantasia,
             capitalsocial as capital_social,
-            cnae as cnae_fiscal,
+            cnaefiscal as cnae_fiscal,
             cnaesecundarias as cnae_secundarias,
             nire as nire,
             cnpjsucedida as id_cnpj_sucedida,
