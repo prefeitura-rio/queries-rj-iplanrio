@@ -24,3 +24,4 @@ sources:
       - name: GuiaPagamento_CDA
       - name: CotaPagamento
       - name: Cotas_Associadas
+      - name: Receita

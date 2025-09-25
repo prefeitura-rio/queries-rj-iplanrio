@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_honorario
+    description: "Tabela que contém os registros de guias de honorários vinculados aos cálculos das certidões de dívida ativa (CDA)"
+    columns:
+      - name: id_certidao_divida_ativa
+        description: "Identificador da certidão de dívida ativa (CDA) a que se refere o honorário. Somente 1 registro de honorário por CDA."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_honorario__id_certidao_divida_ativa__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_honorario__id_certidao_divida_ativa__unique
+              severity: error
+      - name: valor_saldo_devido
+        description: "Valor do saldo devido."
+        data_type: numeric
+      - name: valor_multa_moratoria
+        description: "Valor da multa moratória."
+        data_type: numeric
+      - name: valor_juros_moratorios
+        description: "Valor dos juros moratórios."
+        data_type: numeric
+      - name: valor_correcao_monetaria
+        description: "Valor da correção monetária."
+        data_type: numeric
+      - name: valor_correcao_monetaria_sobre_acrescimos
+        description: "Valor da correção monetária sobre acréscimos."
+        data_type: numeric
+      - name: valor_pago
+        description: "Valor pago."
+        data_type: numeric
+      - name: percentual_honorarios
+        description: "Percentual de honorários aplicado."
+        data_type: numeric
+      - name: situacao_honorario
+        description: "Estrutura com os dados da situação do registro de honorários."
+        data_type: struct
+        columns:
+          - name: id_situacao_honorario
+            description: "Identificador da situação do registro de honorários."
+            data_type: int64
+          - name: nome_situacao_honorario
+            description: "Nome da situação do registro de honorários."
+            data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

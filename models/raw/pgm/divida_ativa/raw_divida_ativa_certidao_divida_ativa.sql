@@ -1,0 +1,128 @@
+{{
+    config(
+        schema="brutos_divida_ativa",
+        alias="certidao_divida_ativa",
+        materialized="table",
+        tags=["raw", "divida_ativa", "certidao_divida_ativa", "CDA"],
+        description="Tabela que contém os registros das Certidões Certidões de Dívida Ativa."
+    )
+}}
+
+select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
+  safe_cast(a.anoInscricao as int64) as ano_de_inscricao_na_divida,
+  safe_cast(a.seqCDA as int64) as sequencial_cda,
+  safe_cast(a.numNotaDebito as numeric) as numero_nota_debito,
+  struct(
+    safe_cast(a.codInscricaoImobiliaria as int64) as inscricao_imobiliaria,
+    struct(
+        c.endereco.codigo_logradouro as codigo_logradouro,
+        c.endereco.nome_logradouro as nome_logradouro,
+        c.endereco.numero_porta as numero_porta,
+        c.endereco.complemento_endereco as complemento_endereco,
+        c.endereco.bairro as bairro,
+        c.endereco.cep as cep
+    ) as endereco_imovel,
+    struct(
+        c.tipologia_imovel.id_tipologia_imovel as id_tipologia_imovel,
+        c.tipologia_imovel.nome_tipologia_imovel as nome_tipologia_imovel
+    ) as tipologia_imovel,
+    struct(
+        c.utilizacao_imovel.id_utilizacao_imovel as id_utilizacao_imovel,
+        c.utilizacao_imovel.nome_utilizacao_imovel as nome_utilizacao_imovel
+    ) as utilizacao_imovel
+  ) as imovel_associado_iptu,
+  struct(
+    safe_cast(a.codSituacaoCDA as int64) as id_situacao_cda,
+    b.descricao_situacao_cda
+  ) as situacao_cda,
+  struct(
+    safe_cast(a.idNaturezaDivida as int64) as id_natureza_divida,
+    e.nome_natureza_divida
+  ) as natureza_divida_ativa,
+  safe_cast(a.datCadastramento as date) as data_geracao_cda,
+  safe_cast(a.DatSituacao as date) as data_ultima_alteracao_situacao,
+  safe_cast(a.ProcessoAdm as string) as numero_processo_associado,
+  struct(
+    safe_cast(a.codFaseCobranca as int64) as codigo_fase_cobranca,
+    case safe_cast(a.codFaseCobranca as int64)
+      when 1 then 'Amigável'
+      when 2 then 'Judivcial'
+      when 3 then 'Amigável Protestado'
+      when 4 then 'Judicial Protestado'
+      else 'Não classificado'
+    end as nome_fase_cobranca
+  ) as fase_cobranca,
+  safe_cast(a.ValSaldo as numeric) as valor_saldo_devido,
+  safe_cast(a.ValMulta as numeric) as valor_multa_moratoria,
+  safe_cast(a.ValJuros as numeric) as valor_juros_moratorios,
+  safe_cast(a.ValMora as numeric) as valor_mora,
+  safe_cast(a.ValMoraJuros as numeric) as valor_juros_mora,
+  safe_cast(a.ValPagoPrinc as numeric) as valor_pago_principal,
+  safe_cast(a.ValHonorarios as numeric) as valor_honorarios,
+  safe_cast(a.valMoraOrigemSMF as numeric) as valor_mora_smf_iptu,
+  safe_cast(a.valSaldoInscritoDA as numeric) as valor_original_divida_ativa,
+  safe_cast(a.codReceita as string) as codigo_receita_cda,
+  struct(
+    safe_cast(a.idEntidadeCredora as int64) as id_entidade_credora,
+    case safe_cast(a.idEntidadeCredora as int64)
+      when 1 then 'PCRJ'
+      when 2 then 'PREVI-RIO'
+      when 3 then 'FUNPREVI'
+      else 'Não classificado'
+    end as nome_entidade_credora
+  ) as entidade_credora,
+  array_agg(
+    struct(
+      d.id_guia_pagamento, 
+      d.situacao_associacao,
+      d.descricao_situacao_associacao,
+      d.data_retirada_associacao,
+      d.valor_desconto_cda,
+      d.ano_referencia_ipcae,
+      d.valor_cda_na_guia,
+      d.percentual_desconto,
+      d.valor_desconto_sobre_principal
+    )
+  ) as guias_associadas,
+  a._airbyte_extracted_at as loaded_at,
+  current_timestamp() as transformed_at
+from {{ source('brutos_divida_ativa_staging', 'CDA') }} a
+left join {{ ref('raw_divida_ativa_situacao_certidao_divida_ativa') }} b on b.id_situacao_cda = a.codSituacaoCDA
+left join {{ ref('raw_divida_ativa_imovel') }} c on c.inscricao_imobiliaria = a.codInscricaoImobiliaria
+left join {{ ref('raw_divida_ativa_guia_pagamento_x_cda') }} d on d.id_certidao_divida_ativa = a.numCDA
+left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} e on e.id_natureza_divida = a.idNaturezaDivida
+group by a.numCDA, 
+a.anoInscricao, 
+a.seqCDA, 
+a.numNotaDebito, 
+a.codInscricaoImobiliaria, 
+c.endereco.codigo_logradouro, 
+c.endereco.nome_logradouro,
+c.endereco.numero_porta, 
+c.endereco.complemento_endereco, 
+c.endereco.bairro, 
+c.endereco.cep, 
+c.tipologia_imovel.id_tipologia_imovel, 
+c.tipologia_imovel.nome_tipologia_imovel,
+c.utilizacao_imovel.id_utilizacao_imovel,
+c.utilizacao_imovel.nome_utilizacao_imovel,
+a.codSituacaoCDA,
+b.descricao_situacao_cda,
+a.idNaturezaDivida, 
+e.nome_natureza_divida,
+a.datCadastramento,
+a.DatSituacao,
+a.ProcessoAdm,
+a.codFaseCobranca,
+a.ValSaldo,
+a.ValMulta,
+a.ValJuros,
+a.ValMora,
+a.ValMoraJuros,
+a.ValPagoPrinc,
+a.ValHonorarios,
+a.valMoraOrigemSMF,
+a.valSaldoInscritoDA,
+a.codReceita,
+a.idEntidadeCredora,
+a._airbyte_extracted_at

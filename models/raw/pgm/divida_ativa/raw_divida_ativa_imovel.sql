@@ -28,20 +28,14 @@ select safe_cast(a.codInscricaoImobiliaria as int64) as inscricao_imobiliaria,
     ) as endereco,
     struct(
         safe_cast(a.codTipologia as int64) as id_tipologia_imovel,
-        safe_cast(ifnull(b.descTipologia, 'NÃO IDENTIFICADO') as string) as nome_tipologia_imovel
+        ifnull(b.nome_tipologia_imovel, 'NÃO IDENTIFICADO') as nome_tipologia_imovel
     ) as tipologia_imovel,
     struct(
         safe_cast(a.CodUtilizacao as int64) as id_utilizacao_imovel,
-        safe_cast(ifnull(c.Descricao, 'NÃO IDENTIFICADO') as string) as nome_utilizacao_imovel
+        ifnull(c.nome_utilizacao_imovel, 'NÃO IDENTIFICADO') as nome_utilizacao_imovel
     ) as utilizacao_imovel,
     a._airbyte_extracted_at as loaded_at,
     current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging', 'InscricaoImobiliaria') }} a
-left join {{ source('brutos_divida_ativa_staging', 'TipologiaImovel') }} b on b.codTipologia = a.codTipologia
-left join {{ source('brutos_divida_ativa_staging', 'Utilizacao_Imovel') }} c on c.CodUtilizacao = a.CodUtilizacao
-
-/*
-from {{ source('brutos_divida_ativa_staging', 'InscricaoImobiliaria') }} imovel
-left join {{ ref('raw_divida_ativa_tipologia_imovel') }} tipologia on tipologia.codTipologia = imovel.codTipologia
-left join {{ ref('raw_divida_ativa_utilizacao_imovel') }} utilizacao on utilizacao.CodUtilizacao = imovel.CodUtilizacao
-*/
+left join {{ ref('raw_divida_ativa_tipologia_imovel') }} b on b.id_tipologia_imovel = a.codTipologia
+left join {{ ref('raw_divida_ativa_utilizacao_imovel') }} c on c.id_utilizacao_imovel = a.CodUtilizacao
