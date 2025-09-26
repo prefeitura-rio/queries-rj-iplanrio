@@ -62,4 +62,3 @@ iplan:
         token_uri: "{{ env_var('DBT_ENV_SECRET_TOKEN_URI') }}"
         auth_provider_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_AUTH_PROVIDER_X509_CERT_URL') }}"
         client_x509_cert_url: "{{ env_var('DBT_ENV_SECRET_CLIENT_X509_CERT_URL') }}"
-
