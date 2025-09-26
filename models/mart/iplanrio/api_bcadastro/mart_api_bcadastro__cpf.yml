@@ -1,0 +1,234 @@
+version: 2
+
+models:
+  - name: mart_api_bcadastro__cpf
+    description: >-
+      Modelo mart para dados de CPF da API BCadastro, expondo todas as colunas
+      da tabela raw com estrutura contratual definida para garantir estabilidade
+      e confiabilidade para consumidores downstream.
+    config:
+      contract:
+        enforced: true
+    columns:
+      # Identificador principal
+      - name: cpf
+        description: Número de inscrição no Cadastro de Pessoas Físicas (CPF)
+        data_type: string
+      
+      # Dados pessoais
+      - name: nome
+        description: Nome completo do contribuinte
+        data_type: string
+      
+      - name: nome_social
+        description: Nome social do contribuinte, quando aplicável
+        data_type: string
+      
+      - name: mae_nome
+        description: Nome completo da mãe do contribuinte
+        data_type: string
+      
+      # Datas importantes
+      - name: nascimento_data
+        description: Data de nascimento do contribuinte
+        data_type: date
+      
+      - name: inscricao_data
+        description: Data de inscrição no CPF
+        data_type: date
+      
+      - name: atualizacao_data
+        description: Data da última atualização do registro
+        data_type: timestamp
+      
+      # Status e demografia
+      - name: situacao_cadastral_tipo
+        description: Situação cadastral do CPF (ex: Regular, Suspenso, Cancelado, etc)
+        data_type: string
+      
+      - name: sexo
+        description: Sexo do contribuinte (masculino/feminino)
+        data_type: string
+      
+      - name: obito_ano
+        description: Ano do óbito, se aplicável
+        data_type: string
+      
+      - name: estrangeiro_indicador
+        description: Indica se o contribuinte é estrangeiro (true/false)
+        data_type: boolean
+      
+      - name: residente_exterior_indicador
+        description: Indica se o contribuinte é residente no exterior (true/false)
+        data_type: boolean
+      
+      # Informações de contato
+      - name: contato
+        description: Informações de contato do contribuinte como struct
+        data_type: record
+      
+      - name: contato_telefone
+        description: Informações de telefone do contribuinte como struct
+        data_type: record
+      
+      - name: contato_telefone_ddi
+        description: Código DDI do telefone do contribuinte
+        data_type: string
+      
+      - name: contato_telefone_ddd
+        description: Código DDD do telefone do contribuinte
+        data_type: string
+      
+      - name: contato_telefone_numero
+        description: Número do telefone do contribuinte
+        data_type: string
+      
+      - name: contato_email
+        description: Endereço de e-mail do contribuinte
+        data_type: string
+      
+      # Endereço completo
+      - name: endereco
+        description: Endereço completo do contribuinte como struct
+        data_type: record
+      
+      - name: endereco_cep
+        description: CEP do endereço do contribuinte
+        data_type: string
+      
+      - name: endereco_uf
+        description: Unidade Federativa do endereço do contribuinte
+        data_type: string
+      
+      - name: endereco_municipio
+        description: Município do endereço do contribuinte
+        data_type: string
+      
+      - name: endereco_bairro
+        description: Bairro do endereço do contribuinte
+        data_type: string
+      
+      - name: endereco_tipo_logradouro
+        description: Tipo do logradouro do endereço (ex: Rua, Avenida, etc)
+        data_type: string
+      
+      - name: endereco_logradouro
+        description: Nome do logradouro do endereço
+        data_type: string
+      
+      - name: endereco_numero
+        description: Número do endereço
+        data_type: string
+      
+      - name: endereco_complemento
+        description: Complemento do endereço
+        data_type: string
+      
+      # Local de nascimento
+      - name: nascimento_local
+        description: Informações do local de nascimento como struct
+        data_type: record
+      
+      - name: nascimento_uf
+        description: UF de nascimento do contribuinte
+        data_type: string
+      
+      - name: nascimento_municipio
+        description: Município de nascimento do contribuinte
+        data_type: string
+      
+      - name: nascimento_pais
+        description: País de nascimento do contribuinte
+        data_type: string
+      
+      - name: nascimento_id_municipio
+        description: ID do município de nascimento
+        data_type: string
+      
+      - name: nascimento_id_pais
+        description: ID do país de nascimento
+        data_type: string
+      
+      # Ocupação
+      - name: ocupacao
+        description: Informações de ocupação do contribuinte como struct
+        data_type: record
+      
+      - name: ocupacao_nome
+        description: Nome da ocupação do contribuinte
+        data_type: string
+      
+      - name: ocupacao_id
+        description: ID da ocupação
+        data_type: string
+      
+      - name: ocupacao_id_natureza
+        description: ID da natureza da ocupação
+        data_type: string
+      
+      - name: ocupacao_id_ua
+        description: ID da unidade administrativa
+        data_type: string
+      
+      # Metadados
+      - name: metadados
+        description: Metadados do registro como struct
+        data_type: record
+      
+      - name: metadados_ano_exercicio
+        description: Ano do exercício fiscal
+        data_type: integer
+      
+      - name: metadados_version
+        description: Versão do registro
+        data_type: string
+      
+      - name: metadados_tipo
+        description: Tipo do registro
+        data_type: string
+      
+      - name: metadados_timestamp
+        description: Timestamp do registro
+        data_type: string
+      
+      # Campos técnicos do Airbyte
+      - name: airbyte
+        description: Informações técnicas do Airbyte como struct
+        data_type: record
+      
+      - name: airbyte_seq
+        description: Sequência do registro no Airbyte
+        data_type: integer
+      
+      - name: airbyte_last_seq
+        description: Última sequência do registro no Airbyte
+        data_type: integer
+      
+      - name: airbyte_raw_id
+        description: ID do registro raw no Airbyte
+        data_type: string
+      
+      - name: airbyte_extracted_at
+        description: Data e hora da extração do registro pelo Airbyte
+        data_type: timestamp
+      
+      - name: airbyte_meta
+        description: Metadados do Airbyte como struct
+        data_type: record
+      
+      - name: airbyte_changes
+        description: Mudanças detectadas pelo Airbyte
+        data_type: string
+      
+      - name: airbyte_sync_id
+        description: ID da sincronização no Airbyte
+        data_type: string
+      
+      - name: airbyte_generation_id
+        description: ID da geração do registro no Airbyte
+        data_type: string
+      
+      # Campo de particionamento
+      - name: cpf_particao
+        description: Campo usado para particionamento da tabela
+        data_type: integer

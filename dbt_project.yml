@@ -50,6 +50,11 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes
           +tags: "daily"
+      iplanrio:
+        +project: rj-iplanrio
+        api_bcadastro:
+          +schema: api_bcadastro
+          +tags: "weekly"
     raw:
       +tags: "raw"
       bcadastro:
