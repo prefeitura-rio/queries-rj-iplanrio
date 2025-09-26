@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_situacao_certidao_divida_ativa
+    description: "Tabela que guarda a variação dos possíveis status de uma certidão de dívida ativa (CDA)."
+    columns:
+      - name: id_situacao_cda
+        description: "Identificador único da situação da certidão de dívida ativa (CDA)."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_situacao_certidao_divida_ativa__id_situacao_CDA__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_situacao_certidao_divida_ativa__id_situacao_CDA__unique
+              severity: error
+      - name: descricao_situacao_cda
+        description: "Descrição da situação da certidão de dívida ativa (CDA)."
+        data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

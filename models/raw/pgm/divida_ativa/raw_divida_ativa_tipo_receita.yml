@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_tipo_receita
+    description: "Tabela que descreve os possíveis códigos de receita que são usados para classificar as Guias de Pagamento."
+    columns:
+      - name: codigo_receita
+        description: "Código da receita utilizado para classificar a Guia de Pagamento."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_tipo_receita__codigo_receita__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_tipo_receita__codigo_receita__unique
+              severity: error
+      - name: nome_receita
+        description: "Nome ou descrição da receita."
+        data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

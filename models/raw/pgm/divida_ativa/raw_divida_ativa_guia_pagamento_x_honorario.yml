@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_guia_pagamento_x_honorario
+    description: "Tabela que contém os registros das associações entre os honorários e as guias de pagamento."
+    columns:
+      - name: id_certidao_divida_ativa
+        description: "Identificador da certidão de dívida ativa (CDA) associada."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_guia_pagamento_x_honorario__id_certidao_divida_ativa__not_null
+              severity: error
+      - name: id_guia_pagamento
+        description: "Identificador da guia de pagamento associada."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_guia_pagamento_x_honorario__id_guia_pagamento__not_null
+              severity: error
+      - name: situacao_associacao
+        description: "Situação da associação entre os honorários e a guia de pagamento (ativa ou inativa)."
+        data_type: boolean
+      - name: descricao_situacao_associacao
+        description: "Descrição da situação da associação (Associação ativa ou Associação inativa)."
+        data_type: string
+      - name: data_retirada_associacao
+        description: "Data de retirada da associação entre os honorários e a guia de pagamento."
+        data_type: date
+      - name: valor_desconto_honorario
+        description: "Valor do desconto aplicado aos honorários."
+        data_type: numeric
+      - name: ano_referencia_ipcae
+        description: "Ano de referência do IPCA-E utilizado."
+        data_type: int64
+      - name: valor_honorario_na_guia
+        description: "Valor dos honorários associados à guia de pagamento."
+        data_type: numeric
+      - name: percentual_desconto
+        description: "Percentual de desconto aplicado."
+        data_type: numeric
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp        

@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_pessoa
+    description: "Tabela que descreve os possíveis tipos de natureza de dívida das certidões de dívida ativa (CDA)."
+    columns:
+      - name: id_pessoa
+        description: "Identificador da pessoa que pode estar vinculada a uma dívida ativa."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_pessoa__id_pessoa__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_pessoa__id_pessoa__unique
+              severity: error
+      - name: cpf_cnpj
+        description: "CPF ou CNPJ da pessoa que pode estar vinculada a uma dívida ativa."
+        data_type: string
+      - name: nome
+        description: "Nome da pessoa que pode estar vinculada a uma dívida ativa."
+        data_type: string
+      - name: tipo_pessoa
+        description: "Tipo da pessoa: 1 para Pessoa Física, 2 para Pessoa Jurídica."
+        data_type: int64
+      - name: descricao_tipo_pessoa
+        description: "Descrição do tipo da pessoa (Pessoa Física, Pessoa Jurídica, Não Informado, Não classificado)."
+        data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

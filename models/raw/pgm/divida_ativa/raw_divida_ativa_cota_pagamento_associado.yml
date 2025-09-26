@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_cota_pagamento_associada
+    description: "Tabela que contém os registros das cotas de parcelamento das guias de pagamento que foram substituídas por outras cotas novas. A substituição de cotas ocorre principalmente quando há atraso de pagamento e uma nova guia é gerada para impedir o cancelamento do parcelamento."
+    columns:
+      - name: id_guia_pagamento
+        description: "Identificador da guia de pagamento original."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_cota_pagamento_associada__id_guia_pagamento__not_null
+              severity: error
+      - name: id_cota_guia_pagamento
+        description: "Identificador da cota (parcela) da guia de pagamento original."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_cota_pagamento_associada__id_cota_guia_pagamento__not_null
+              severity: error
+      - name: id_guia_pagamento_associada
+        description: "Identificador da nova guia de pagamento associada."
+        data_type: int64
+      - name: id_cota_guia_pagamento_associada
+        description: "Identificador da nova cota (parcela) da guia de pagamento associada, cota esta que foi substituída pela nova cota gerada."
+        data_type: int64
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
