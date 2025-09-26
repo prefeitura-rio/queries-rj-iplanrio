@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__itens_nota_fiscal
+    description: "**Descrição**: Tabela que armazena os itens associados a uma nota fiscal. Cada uma das linhas referentes aos itens constantes em uma nota fiscal, lançada em despesa.\r\nExemplo:\r\nÉ exemplo de um item de nota fiscal, na nota fiscal número 12549, série A, da compra de uma mesa de escritório, feita à empresa ACME SA, no valor de R$ 500,00, o item de nota fiscal seria:\r\n- Descrição: Mesa de compensado de 1,90 por 0,70.\r\n- Quantidade: 1.\r\n- Valor unitário: R$ 500,00.\r\n- Valor total: R$ 500,00.\r\n  Tabela preenchida pelo usuário, na operação do sistema. OBS: Com a implementação da nova arquitetura de contratos para todo sistema, Versão 3.2, os relacionamentos desta tabela mudam para os assinalados em Relacionamento (COM a implementação......).\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_item_nf
+        description: ID do item da nota fiscal. Auto incremental do próprio banco de dados.
+      - name: cod_item_nf
+        description: "Código do item da nota fiscal, no arquivo SIGMA. A tabela depende do valor do campo itnf_tipo.\r\n- Se o campo itnf_tipo desta tabela for M: contidos em osinfo_V2.tb_sigma_material\r\n- Se o campo itnf_tipo desta tabela for S: contidos em osinfo_V2.tb_sigma_servico"
+      - name: qtd_material
+        description: Quantidade do material ou serviço. 0,01 a 999999999999,99. Validado e formatado na interface.
+      - name: valor_unitario
+        description: Valor monetário de cada unidade de medida. 0,0001 a 999999999999,9999. Validado e formatado na interface.
+      - name: referencia_mes_nf
+        description: Mês a que se refere a nota fiscal original, de onde pertence o item. 1 a 12
+      - name: referencia_ano_nf
+        description: Ano a que se refere a nota fiscal original, de onde pertence o item. Não existem restrições.
+      - name: id_fornecedor
+        description: ID do fornecedor da nota fiscal original, de onde pertence o item. (FK) Contido na tabela osinfo_V2.si_fornecedor
+      - name: valor_total
+        description: Valor monetário total, da quantidade multiplicada pelo valor unitário. Não existem restrições.
+      - name: num_documento
+        description: Número da nota fiscal original, de onde pertence o item. (FK) Contido na tabela osinfo.documento, no campo num_documento, para a mesma organização e mesmo fornecedor.
+      - name: cod_instituicao
+        description: Código da organização à qual está ligada a nota fiscal original, de onde pertence o item. (FK) Contidos na tabela - depende da versão
+      - name: data_envio
+        description: Data em que o item foi gravado no banco de dados. Valor gerado pelo sistema.
+      - name: tipo_item
+        description: Se o tipo de lançamento do item se refere a um Serviço ou Material. S - serviço, M - material
+      - name: item
+        description: Descrição do item. A descrição do item constante na nota fiscal original, de onde pertence o item.
+      - name: unidade_medida
+        description: Unidade de medida da quantidade do item. Não existem restrições.
+      - name: observacao
+        description: Observações sobre o item de nota fiscal. Não existem restrições.

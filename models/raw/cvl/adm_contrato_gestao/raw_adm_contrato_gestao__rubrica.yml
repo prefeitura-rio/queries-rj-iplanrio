@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__rubrica
+    description: "**Descrição**: Tabela que armazena as possíveis rubricas. Tabela preenchida pelo usuário, na operação do sistema. As rubricas servem como classificação da execução orçamentária das despesas e estão definidas no contrato assinado entre a Prefeitura do Rio de Janeiro e a Instituição.\r\nExemplo:\r\nÉ exemplo de rubrica, de maneira resumida:\r\n  - Rubricas do contrato 016/2019 da organização social 264 – Viva Rio:\r\nOBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela financeiro.tb_rubrica.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_rubrica
+        description: ID da rubrica. Auto incremental do próprio banco de dados.
+      - name: rubrica
+        description: Descrição da rubrica. Não existem restrições.
+      - name: flg_ativo
+        description: Se a rubrica está ativa. S - ativo, N - inativo

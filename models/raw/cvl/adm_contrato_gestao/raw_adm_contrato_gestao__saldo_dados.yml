@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__saldo_dados
+    description: "**Descrição**: Tabela que armazena os dados dos saldos. Saldo é o valor disponível e está associado ao extrato de uma conta bancária específica do projeto.\r\nExemplo:\r\nÉ exemplo de um saldo de conta bancário, o valor de R$ 568.098,89, no Banco do Brasil, agência Centro, conta corrente 56780-9, conta de provisionamento, com mês/ano de referência 05/2019.\r\nTabela preenchida pelo usuário, na operação do sistema. OBS 1: um único saldo é lançado nesta tabela, em tantas linhas quantos diferente itens de saldos ativos existirem na tabela osinfo.saldo_item\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_saldo_dados
+        description: ID do saldo. Auto incremental do próprio banco de dados.
+      - name: id_saldo_item
+        description: ID do item de saldo ao qual se refere o lançamento. (FK) Contidos na tabela osinfo.saldo_item
+      - name: referencia_mes_receita
+        description: Mês de referência do saldo. 1 a 12
+      - name: referencia_ano_receita
+        description: Ano de referência do saldo. Não existem restrições.
+      - name: valor
+        description: Valor do item do saldo. Não existem restrições.
+      - name: flg_ativo
+        description: Se o lançamento do saldo está ativo. S - ativo, N - inativo
+      - name: id_instrumento_contratual
+        description: ID do contrato associado ao saldo. (FK) Contidos na tabela - depende da versão
+      - name: id_conta_bancaria
+        description: ID da conta bancária específica do projeto associada ao saldo. (FK) Contidos na tabela - depende da versão
+      - name: arq_img_ext
+        description: Nome do arquivo carregado na base de dados de documentos (MongoDB), que contém a digitalização do extrato. Não existem restrições.

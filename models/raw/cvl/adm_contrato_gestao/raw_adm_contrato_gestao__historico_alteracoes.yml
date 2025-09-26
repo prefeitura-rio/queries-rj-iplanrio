@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__historico_alteracoes
+    description: "**Descrição**: Tabela que deve armazenar todos os lançamentos e alterações de dados no sistema. Tabela preenchida pelo sistema. OBS 1: Esta tabela só é alimentada se houver inclusão ou alteração de registros, feitos depois que a data do relatório de entrega é alterada.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_historico_alteracoes
+        description: ID do relatório de entrega. Auto incremental do próprio banco de dados.
+      - name: id_tipo_arquivo
+        description: ID do tipo de arquivo que sofreu a alteração. (FK) Contido na tabela osinfo_V2.tb_tipo_arquivo
+      - name: cod_usuario
+        description: ID do usuário responsável pela alteração. (FK) Contido na tabela adm_osinfo.usuario
+      - name: cod_organizacao
+        description: Código da organização à qual o usuário é associado. (FK) Contidos na tabela - depende da versão
+      - name: data_modificacao
+        description: Data em que a modificação foi feita. Valor gerado pelo sistema.
+      - name: valor_anterior
+        description: Valor dos atributos do lançamento, antes da alteração. Não existe restrição.
+      - name: valor_novo
+        description: Valor dos atributos do lançamento, depois da alteração. Não existe restrição.
+      - name: mes_referencia
+        description: Mês a que se refere a alteração. 1 a 12
+      - name: ano_referencia
+        description: Ano a que se refere a alteração. Não existe restrição.
+      - name: id_registro
+        description: "ID, no banco de dados, do registro original que sofreu a alteração. Existir na tabela em que o registro original foi gravado.\r\nObs: Quando a operação é de importação, este valor é sempre 0."
+      - name: tipo_alteracao
+        description: Tipo de alteração efetuada no registro. Inclusão, alteração, exclusão ou importação, mais a descrição do tipo de registro, Despesa, Receita, Itens de Nota Fiscal, etc.

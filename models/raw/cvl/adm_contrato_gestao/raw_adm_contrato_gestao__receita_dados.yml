@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__receita_dados
+    description: "**Descrição**: Tabela que armazena os dados das receitas. Receitas são as entradas monetárias em uma conta específica do projeto gerido por Organização Social.\r\nExemplo:\r\nÉ exemplo de uma receita, o recebimento da 5ª parcela fixa do contrato 016/2019, no mês/ano de referência 04/2019, no banco do Brasil, agência Centro, número 99865-9.\r\nTabela preenchida pelo usuário, na operação do sistema. OBS 1: uma única receita é lançada nesta tabela, em tantas linhas quantos diferente itens de receitas ativos existirem na tabela osinfo.receita_item\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_receita_dados
+        description: ID da linha na qual se refere a receita. (FK) Contidos na tabela - depende da versão
+      - name: cod_unidade
+        description: ID da unidade à qual se refere a receita. (FK) Contidos na tabela - depende da versão
+      - name: id_item
+        description: ID do item de receita ao qual se refere o lançamento. (FK) Contidos na tabela osinfo.receita_item
+      - name: referencia_mes
+        description: Mês de referência da receita. 1 a 12
+      - name: referencia_ano
+        description: Ano de referência da receita. Não existem restrições.
+      - name: valor
+        description: Valor do item da receita. Não existem restrições.
+      - name: flg_ativo
+        description: Se o lançamento da receita está ativo. S - ativo, N - inativo
+      - name: id_instrumento_contratual
+        description: ID do contrato associado à receita. (FK) Contidos na tabela - depende da versão
+      - name: id_termo_aditivo
+        description: ID do termo aditivo associado à receita. (FK) Contidos na tabela - depende da versão
+      - name: id_conta_bancaria
+        description: ID da conta bancária associada à receita. (FK) Contidos na tabela - depende da versão

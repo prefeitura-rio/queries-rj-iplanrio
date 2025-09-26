@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__bem_patrimoniado_tipo
+    description: "**Descrição**: Tipos de bens patrimonializados cadastrados para os contratos.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL\n"
+    columns:
+      - name: id_bem_tipo
+        description: ID do tipo de bem patrimoniado. Auto incremental do próprio banco de dados
+      - name: bem_tipo
+        description: Descrição do tipo de bem. Não existem restrições

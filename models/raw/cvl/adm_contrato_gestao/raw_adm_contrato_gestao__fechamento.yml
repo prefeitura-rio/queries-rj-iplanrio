@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__fechamento
+    description: "**Descrição**: Tabela que armazena as informações relativas aos relatórios de entrega, que são os limites para inclusões ou modificação dos lançamentos no sistema. Tabela preenchida pelo sistema.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_fechamento
+        description: ID do relatório de entrega. Auto incremental do próprio banco de dados.
+      - name: mes_referencia
+        description: Mês de referência do relatório de entrega. 1 a 12.
+      - name: ano_referencia
+        description: Ano de referência do relatório de entrega. Não existem restrições.
+      - name: cod_usuario
+        description: ID do usuário responsável pela pela última alteração do relatório de entrega. (FK) Contido na tabela adm_osinfo.usuario
+      - name: data_inclusao
+        description: Data em que o relatório de entrega foi alterado pela última vez. Valor gerado pelo sistema.
+      - name: id_instrumento_contratual
+        description: ID do contrato ao qual está associado o relatório de entrega. Não existem restrições
+      - name: data_limite
+        description: Data até a qual, inclusive, os lançamentos podem ser feitos ou alterados. Não existem restrições.
+      - name: cod_instituicao
+        description: Código da organização à qual se refere o limite do relatório de entrega. (FK) Contidos na tabela - depende da versão
+      - name: cod_estado_entrega
+        description: Código do estado de entrega associado ao relatório de entrega. Valores associados na tabela auxiliar osinfo_V2.tb_estado_entrega
+      - name: cod_tipo_entrega
+        description: Código do tipo de entrega associado ao relatório de entrega. Valores associados na tabela auxiliar osinfo_V2.tb_tipo_entrega
