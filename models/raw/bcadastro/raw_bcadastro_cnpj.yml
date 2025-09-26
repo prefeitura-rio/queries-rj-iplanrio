@@ -14,8 +14,8 @@ models:
         data_type: int64
         range:
           start: 0
-          end: 100000000000
-          interval: 34722222
+          end: 99999999999999
+          interval: 25000000000
 
     columns:
       - name: cnpj
