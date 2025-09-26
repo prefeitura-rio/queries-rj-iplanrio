@@ -12,7 +12,7 @@ models:
     columns:
       # Identificador principal
       - name: cnpj
-        description: CNPJ (Cadastro Nacional da Pessoa Jurídica) - identificador único para empresas brasileiras
+        description: "CNPJ (Cadastro Nacional da Pessoa Jurídica) - identificador único para empresas brasileiras"
         data_type: string
         constraints:
           - type: not_null
@@ -20,374 +20,374 @@ models:
       
       # Dados básicos da empresa
       - name: razao_social
-        description: Nome empresarial (razão social) da empresa
+        description: "Nome empresarial (razão social) da empresa"
         data_type: string
       
       - name: nome_fantasia
-        description: Nome fantasia da empresa
+        description: "Nome fantasia da empresa"
         data_type: string
       
       - name: capital_social
-        description: Capital social da empresa em reais
+        description: "Capital social da empresa em reais"
         data_type: string
       
       - name: cnae_fiscal
-        description: Código CNAE (Classificação Nacional de Atividades Econômicas) principal da empresa
+        description: "Código CNAE (Classificação Nacional de Atividades Econômicas) principal da empresa"
         data_type: string
       
       - name: cnae_secundarias
-        description: Lista de códigos CNAE secundários da empresa
+        description: "Lista de códigos CNAE secundários da empresa"
         data_type: string
       
       - name: nire
-        description: NIRE (Número de Identificação do Registro de Empresas) da empresa
+        description: "NIRE (Número de Identificação do Registro de Empresas) da empresa"
         data_type: string
       
       # Natureza jurídica
       - name: natureza_juridica
-        description: Natureza jurídica da entidade como struct
+        description: "Natureza jurídica da entidade como struct"
         data_type: record
       
       - name: natureza_juridica_id
-        description: Identificador único da natureza jurídica
+        description: "Identificador único da natureza jurídica"
         data_type: string
       
       - name: natureza_juridica_descricao
-        description: Descrição da natureza jurídica
+        description: "Descrição da natureza jurídica"
         data_type: string
       
       # Porte da empresa
       - name: porte
-        description: Porte da empresa como struct
+        description: "Porte da empresa como struct"
         data_type: record
       
       - name: porte_id
-        description: Identificador único do porte
+        description: "Identificador único do porte"
         data_type: string
       
       - name: porte_descricao
-        description: Descrição do porte
+        description: "Descrição do porte"
         data_type: string
       
       # Matriz ou filial
       - name: matriz_filial
-        description: Indica se a empresa é matriz ou filial como struct
+        description: "Indica se a empresa é matriz ou filial como struct"
         data_type: record
       
       - name: matriz_filial_id
-        description: Identificador de matriz (1) ou filial (2)
+        description: "Identificador de matriz (1) ou filial (2)"
         data_type: string
       
       - name: matriz_filial_descricao
-        description: Descrição de matriz ou filial
+        description: "Descrição de matriz ou filial"
         data_type: string
       
       # Órgão de registro
       - name: orgao_registro
-        description: Autoridade de registro da entidade como struct
+        description: "Autoridade de registro da entidade como struct"
         data_type: record
       
       - name: orgao_registro_id
-        description: Identificador único do tipo de órgão de registro
+        description: "Identificador único do tipo de órgão de registro"
         data_type: string
       
       - name: orgao_registro_descricao
-        description: Descrição do tipo de órgão de registro
+        description: "Descrição do tipo de órgão de registro"
         data_type: string
       
       # Data de início das atividades
       - name: inicio_atividade_data
-        description: Data de início das atividades da empresa
+        description: "Data de início das atividades da empresa"
         data_type: date
       
       # Situação cadastral
       - name: situacao_cadastral
-        description: Status de registro da entidade como struct
+        description: "Status de registro da entidade como struct"
         data_type: record
       
       - name: situacao_cadastral_id
-        description: Identificador único da situação cadastral
+        description: "Identificador único da situação cadastral"
         data_type: string
       
       - name: situacao_cadastral_descricao
-        description: Descrição da situação cadastral
+        description: "Descrição da situação cadastral"
         data_type: string
       
       - name: situacao_cadastral_data
-        description: Data da situação cadastral
+        description: "Data da situação cadastral"
         data_type: date
       
       - name: situacao_cadastral_motivo_id
-        description: Identificador único do motivo da situação cadastral
+        description: "Identificador único do motivo da situação cadastral"
         data_type: string
       
       - name: situacao_cadastral_motivo_descricao
-        description: Descrição do motivo da situação cadastral
+        description: "Descrição do motivo da situação cadastral"
         data_type: string
       
       # Situação especial
       - name: situacao_especial
-        description: Situação especial da empresa como struct
+        description: "Situação especial da empresa como struct"
         data_type: record
       
       - name: situacao_especial_descricao
-        description: Descrição da situação especial
+        description: "Descrição da situação especial"
         data_type: string
       
       - name: situacao_especial_data
-        description: Data da situação especial
+        description: "Data da situação especial"
         data_type: date
       
       # Ente federativo
       - name: ente_federativo
-        description: Entidade federativa associada à empresa como struct
+        description: "Entidade federativa associada à empresa como struct"
         data_type: record
       
       - name: ente_federativo_id
-        description: Identificador do Ente Federativo Responsável
+        description: "Identificador do Ente Federativo Responsável"
         data_type: string
       
       - name: ente_federativo_tipo
-        description: Tipo do Ente Federativo Responsável
+        description: "Tipo do Ente Federativo Responsável"
         data_type: string
       
       # Informações de contato
       - name: contato
-        description: Informações de contato da empresa como struct
+        description: "Informações de contato da empresa como struct"
         data_type: record
       
       - name: contato_telefone
-        description: Lista de telefones da empresa com DDD e número
+        description: "Lista de telefones da empresa com DDD e número"
         data_type: string
       
       - name: contato_email
-        description: Endereço de e-mail da empresa
+        description: "Endereço de e-mail da empresa"
         data_type: string
       
       # Endereço completo
       - name: endereco
-        description: Endereço completo da empresa como struct
+        description: "Endereço completo da empresa como struct"
         data_type: record
       
       - name: endereco_cep
-        description: CEP do endereço da empresa
+        description: "CEP do endereço da empresa"
         data_type: string
       
       - name: endereco_id_pais
-        description: Identificador único do país onde a empresa está localizada
+        description: "Identificador único do país onde a empresa está localizada"
         data_type: string
       
       - name: endereco_uf
-        description: Estado (UF) do endereço
+        description: "Estado (UF) do endereço"
         data_type: string
       
       - name: endereco_id_municipio
-        description: Identificador único do município onde a empresa está localizada
+        description: "Identificador único do município onde a empresa está localizada"
         data_type: string
       
       - name: endereco_municipio_nome
-        description: Nome do município do endereço
+        description: "Nome do município do endereço"
         data_type: string
       
       - name: endereco_municipio_exterior_nome
-        description: Nome da cidade no exterior
+        description: "Nome da cidade no exterior"
         data_type: string
       
       - name: endereco_bairro
-        description: Bairro do endereço
+        description: "Bairro do endereço"
         data_type: string
       
       - name: endereco_tipo_logradouro
-        description: Tipo de logradouro do endereço
+        description: "Tipo de logradouro do endereço"
         data_type: string
       
       - name: endereco_logradouro
-        description: Logradouro do endereço
+        description: "Logradouro do endereço"
         data_type: string
       
       - name: endereco_numero
-        description: Número do endereço
+        description: "Número do endereço"
         data_type: string
       
       - name: endereco_complemento
-        description: Complemento do endereço
+        description: "Complemento do endereço"
         data_type: string
       
       # Informações do contador
       - name: contador
-        description: Informações do contador da empresa como struct
+        description: "Informações do contador da empresa como struct"
         data_type: record
       
       - name: contador_pf
-        description: Informações do contador pessoa física como struct
+        description: "Informações do contador pessoa física como struct"
         data_type: record
       
       - name: contador_pf_tipo_crc
-        description: Tipo do CRC do contador pessoa física
+        description: "Tipo do CRC do contador pessoa física"
         data_type: string
       
       - name: contador_pf_classificacao_crc
-        description: Classificação do CRC do contador pessoa física
+        description: "Classificação do CRC do contador pessoa física"
         data_type: string
       
       - name: contador_pf_sequencial_crc
-        description: Número sequencial do CRC do contador pessoa física
+        description: "Número sequencial do CRC do contador pessoa física"
         data_type: string
       
       - name: contador_pj
-        description: Informações do contador pessoa jurídica como struct
+        description: "Informações do contador pessoa jurídica como struct"
         data_type: record
       
       - name: contador_pf_id
-        description: CPF do contador pessoa física
+        description: "CPF do contador pessoa física"
         data_type: string
       
       - name: contador_pj_id
-        description: CNPJ do contador pessoa jurídica
+        description: "CNPJ do contador pessoa jurídica"
         data_type: string
       
       - name: contador_pj_tipo_crc
-        description: Tipo do CRC do contador pessoa jurídica
+        description: "Tipo do CRC do contador pessoa jurídica"
         data_type: string
       
       - name: contador_pj_classificacao_crc
-        description: Classificação do CRC do contador pessoa jurídica
+        description: "Classificação do CRC do contador pessoa jurídica"
         data_type: string
       
       - name: contador_pj_sequencial_crc
-        description: Número sequencial do CRC do contador pessoa jurídica
+        description: "Número sequencial do CRC do contador pessoa jurídica"
         data_type: string
       
       # Responsável
       - name: responsavel
-        description: Informações da pessoa responsável pela empresa como struct
+        description: "Informações da pessoa responsável pela empresa como struct"
         data_type: record
       
       - name: responsavel_cpf
-        description: CPF do responsável
+        description: "CPF do responsável"
         data_type: string
       
       - name: responsavel_qualificacao_id
-        description: Identificador único da qualificação do responsável
+        description: "Identificador único da qualificação do responsável"
         data_type: string
       
       - name: responsavel_qualificacao_descricao
-        description: Qualificação do responsável
+        description: "Qualificação do responsável"
         data_type: string
       
       - name: responsavel_inclusao_data
-        description: Data de inclusão do responsável
+        description: "Data de inclusão do responsável"
         data_type: date
       
       # Tipos e formas de atuação
       - name: tipos_unidade
-        description: Tipos de unidade da empresa
+        description: "Tipos de unidade da empresa"
         data_type: string
       
       - name: formas_atuacao
-        description: Formas de atuação da empresa
+        description: "Formas de atuação da empresa"
         data_type: string
       
       # Informações dos sócios
       - name: socios_quantidade
-        description: Quantidade de sócios
+        description: "Quantidade de sócios"
         data_type: integer
       
       - name: socios
-        description: Lista de sócios da empresa como struct
+        description: "Lista de sócios da empresa como struct"
         data_type: record
       
       - name: socios_codigo_pais
-        description: Código do país do sócio
+        description: "Código do país do sócio"
         data_type: string
       
       - name: socios_cpf_socio
-        description: CPF do sócio (quando pessoa física)
+        description: "CPF do sócio (quando pessoa física)"
         data_type: string
       
       - name: socios_cnpj_socio
-        description: CNPJ do sócio (quando pessoa jurídica)
+        description: "CNPJ do sócio (quando pessoa jurídica)"
         data_type: string
       
       - name: socios_cpf_representante_legal
-        description: CPF do representante legal do sócio
+        description: "CPF do representante legal do sócio"
         data_type: string
       
       - name: socios_data_situacao_especial
-        description: Data de entrada do sócio na empresa
+        description: "Data de entrada do sócio na empresa"
         data_type: date
       
       - name: socios_nome_socio_estrangeiro
-        description: Nome do sócio estrangeiro (quando aplicável)
+        description: "Nome do sócio estrangeiro (quando aplicável)"
         data_type: string
       
       - name: socios_qualificacao_representante_legal
-        description: Qualificação do representante legal do sócio
+        description: "Qualificação do representante legal do sócio"
         data_type: string
       
       - name: socios_qualificacao_socio
-        description: Qualificação do sócio
+        description: "Qualificação do sócio"
         data_type: string
       
       - name: socios_tipo
-        description: Tipo do sócio
+        description: "Tipo do sócio"
         data_type: string
       
       # Sucessões empresariais
       - name: sucessoes
-        description: Lista de sucessões empresariais como struct
+        description: "Lista de sucessões empresariais como struct"
         data_type: record
       
       - name: sucessoes_evento_sucedida
-        description: Descrição do evento de sucessão empresarial
+        description: "Descrição do evento de sucessão empresarial"
         data_type: string
       
       - name: sucessoes_data_evento_sucedida
-        description: Data do evento de sucessão empresarial
+        description: "Data do evento de sucessão empresarial"
         data_type: date
       
       - name: sucessoes_data_processamento
-        description: Data de processamento da sucessão
+        description: "Data de processamento da sucessão"
         data_type: date
       
       - name: sucessoes_sucessoras
-        description: Lista de empresas sucessoras
+        description: "Lista de empresas sucessoras"
         data_type: string
       
       # Metadados de extração
       - name: timestamp
-        description: Timestamp da extração dos dados
+        description: "Timestamp da extração dos dados"
         data_type: string
       
       - name: language
-        description: Código do idioma
+        description: "Código do idioma"
         data_type: string
       
       - name: airbyte
-        description: Sistema de controle de versão e sincronização do Airbyte como struct
+        description: "Sistema de controle de versão e sincronização do Airbyte como struct"
         data_type: record
       
       - name: airbyte_raw_id
-        description: ID bruto do Airbyte
+        description: "ID bruto do Airbyte"
         data_type: string
       
       - name: airbyte_extracted_at
-        description: Data e hora da extração pelo Airbyte
+        description: "Data e hora da extração pelo Airbyte"
         data_type: timestamp
       
       - name: airbyte_changes
-        description: Alterações detectadas pelo Airbyte
+        description: "Alterações detectadas pelo Airbyte"
         data_type: string
       
       - name: airbyte_sync_id
-        description: ID de sincronização do Airbyte
+        description: "ID de sincronização do Airbyte"
         data_type: string
       
       - name: airbyte_generation_id
-        description: ID de geração do Airbyte
+        description: "ID de geração do Airbyte"
         data_type: string
       
       # Coluna de partição
       - name: cnpj_particao
-        description: Partição do CNPJ para otimização de processamento e consulta
+        description: "Partição do CNPJ para otimização de processamento e consulta"
         data_type: integer

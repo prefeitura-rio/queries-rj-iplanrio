@@ -43,7 +43,7 @@ models:
       
       # Status e demografia
       - name: situacao_cadastral_tipo
-        description: Situação cadastral do CPF (ex: Regular, Suspenso, Cancelado, etc)
+        description: "Situação cadastral do CPF (ex: Regular, Suspenso, Cancelado, etc)"
         data_type: string
       
       - name: sexo
@@ -151,19 +151,19 @@ models:
       
       # Ocupação
       - name: ocupacao
-        description: Informações de ocupação do contribuinte como struct
+        description: "Informações de ocupação do contribuinte como struct"
         data_type: record
       
       - name: ocupacao_nome
-        description: Nome da ocupação do contribuinte
+        description: "Nome da ocupação do contribuinte"
         data_type: string
       
       - name: ocupacao_id
-        description: ID da ocupação
+        description: "ID da ocupação"
         data_type: string
       
       - name: ocupacao_id_natureza
-        description: ID da natureza da ocupação
+        description: "ID da natureza da ocupação"
         data_type: string
       
       - name: ocupacao_id_ua
@@ -180,7 +180,7 @@ models:
         data_type: integer
       
       - name: metadados_version
-        description: Versão do registro
+        description: "Versão do registro"
         data_type: string
       
       - name: metadados_tipo
@@ -209,7 +209,7 @@ models:
         data_type: string
       
       - name: airbyte_extracted_at
-        description: Data e hora da extração do registro pelo Airbyte
+        description: "Data e hora da extração do registro pelo Airbyte"
         data_type: timestamp
       
       - name: airbyte_meta
@@ -221,11 +221,11 @@ models:
         data_type: string
       
       - name: airbyte_sync_id
-        description: ID da sincronização no Airbyte
+        description: "ID da sincronização no Airbyte"
         data_type: string
       
       - name: airbyte_generation_id
-        description: ID da geração do registro no Airbyte
+        description: "ID da geração do registro no Airbyte"
         data_type: string
       
       # Campo de particionamento
