@@ -154,5 +154,8 @@ models:
           +materialized: table
           +schema: brutos_pessoa_vinculada
           +tags: ["daily", "pessoa_vinculada"]
+        unidade_administrativa:
+          +schema: brutos_sici
+          +tags: ["daily", "unidade_administrativa"]
 flags:
   require_generic_test_arguments_property: true
