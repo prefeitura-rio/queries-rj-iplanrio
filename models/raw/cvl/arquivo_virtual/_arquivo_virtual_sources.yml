@@ -1,7 +1,10 @@
 version: 2
 
 sources:
+  
   - name: brutos_arquivo_virtual_staging
+    database: rj-iplanrio   # opcional se igual ao target
+    schema: brutos_arquivo_virtual_staging
     description: "Sistema de Arquivo Virtual - infraestrutura de dados arquivísticos"
     tables:
       - name: conjunto_arquivo

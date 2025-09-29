@@ -14,6 +14,6 @@ SELECT
     safe_cast(id_modalidade as int64) as id_modalidade,
     safe_cast(id_conjuntoArquivo as int64) as id_conjuntoArquivo,
     safe_cast(id_setor as int64) as id_setor,
-    _airbyte_extracted_at as datalake_loaded_at, 
+    _prefect_extracted_at as datalake_loaded_at, 
     current_timestamp() as datalake_transformed_at
 FROM {{ source('brutos_arquivo_virtual_staging', 'a1_identificacao') }}
