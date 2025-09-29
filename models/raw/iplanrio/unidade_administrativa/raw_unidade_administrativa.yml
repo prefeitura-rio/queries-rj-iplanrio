@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: raw_unidade_administrativa
+    description: "Dados brutos de unidades administrativas do município do Rio de Janeiro, contendo informações sobre estrutura organizacional"
+    columns:
+      - name: id_unidade_administrativa
+        description: "PK desta tabela - código único da unidade administrativa"
+        data_type: int64
+        config:
+          meta:
+            nullable: false
+      - name: sigla_unidade_administrativa
+        description: "sigla da unidade administrativa"
+        data_type: string
+        quote: true
+      - name: nome_unidade_administrativa
+        description: "nome da unidade administrativa"
+        data_type: string
+        quote: true
+      - name: id_unidade_administrativa_basica
+        description: "código da unidade administrativa básica"
+        data_type: int64
+      - name: id_unidade_administrativa_pai
+        description: "código da unidade administrativa pai"
+        data_type: int64
+      - name: ativa_indicador
+        description: "indica se a unidade administrativa está ativa"
+        data_type: string
+        quote: true
+        config:
+          meta:
+            sensitive: true
+      - name: datalake_transformed_at
+        description: "timestamp de quando o registro foi transformado no datalake"
+        data_type: datetime
