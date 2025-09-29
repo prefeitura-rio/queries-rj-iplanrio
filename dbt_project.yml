@@ -162,6 +162,7 @@ models:
           +schema: brutos_pessoa_vinculada
           +tags: ["daily", "pessoa_vinculada"]
         unidade_administrativa:
+          +materialized: table
           +schema: brutos_sici
           +tags: ["daily", "unidade_administrativa"]
 flags:
