@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: brutos_sici_staging
+    database: rj-iplanrio 
+    schema: brutos_sici_staging
+    tables:     
+      - name: Vw_UA
+        description: "Tabela de unidades administrativas"
