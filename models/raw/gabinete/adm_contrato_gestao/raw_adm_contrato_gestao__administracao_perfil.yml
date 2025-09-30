@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__administracao_perfil
+    description: "Tabela que armazena os possíveis perfis dos usuários do sistema. DML executada direto no banco de dados."
+    columns:
+      - name: id_perfil
+        description: ID do perfil Auto incremental do próprio banco de dados
+      - name: nome_perfil
+        description: Nome do perfil. Não existem restrições.
