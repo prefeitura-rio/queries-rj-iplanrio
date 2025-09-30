@@ -36,9 +36,8 @@ with
                     nullif(json_value(doc, '$.classificacaoCrcContadorPJ'), '') as int64
                 ) as string
             ) as classificacaocrccontadorpj,
-            nullif(json_value(doc, '$.cnae'), '') as cnae,
             nullif(json_value(doc, '$.cnaeFiscal'), '') as cnaefiscal,
-            nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnaesecundarias,
+            json_extract_array(doc, '$.cnaeSecundarias') as cnaesecundarias,
             nullif(json_value(doc, '$.cnpj'), '') as cnpj,
             nullif(json_value(doc, '$.cnpjSucedida'), '') as cnpjsucedida,
             nullif(json_value(doc, '$.codMunDomic'), '') as codmundomic,
@@ -218,7 +217,6 @@ with
             coalesce(
                 est.classificacaocrccontadorpj, mat.classificacaocrccontadorpj
             ) as classificacaocrccontadorpj,
-            coalesce(est.cnae, mat.cnae) as cnae,
             coalesce(est.cnaefiscal, mat.cnaefiscal) as cnaefiscal,
             coalesce(est.cnaesecundarias, mat.cnaesecundarias) as cnaesecundarias,
             coalesce(est.cnpjsucedida, mat.cnpjsucedida) as cnpjsucedida,

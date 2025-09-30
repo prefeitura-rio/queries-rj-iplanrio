@@ -2,16 +2,18 @@ version: 2
 models:
   - name: raw_taxirio_cities
     columns:
-      - name: id_municipio  
-        description: "Identificador da cidade"  
+      - name: id_municipio
+        description: "Identificador da cidade"
         data_type: string
         data_tests:
           - not_null:
               name: raw_taxirio__id_municipio__not_null,
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_taxirio__id_municipio__unique,
-              severity: error
+              config:
+                severity: error
       - name: nome_municipio
         description: "Nome do Municipio"
         data_type: string

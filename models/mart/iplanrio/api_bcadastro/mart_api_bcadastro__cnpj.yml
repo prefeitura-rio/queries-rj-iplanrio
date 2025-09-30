@@ -1,0 +1,419 @@
+version: 2
+
+models:
+  - name: mart_api_bcadastro__cnpj
+    description: "Modelo mart para dados de CNPJ da API do BCadastro, contendo informações empresariais, contato, endereço, sócios e metadados"
+    config:
+      alias: cnpj
+      contract:
+        enforced: true
+    columns:
+      # Chave primária
+      - name: cnpj
+        description: "Número do CNPJ da empresa"
+        data_type: string
+        quote: true
+
+      # Atributos principais da entidade
+      - name: razao_social
+        description: "Razão social da empresa"
+        data_type: string
+        quote: true
+
+      - name: nome_fantasia
+        description: "Nome fantasia da empresa"
+        data_type: string
+        quote: true
+
+      - name: capital_social
+        description: "Capital social da empresa"
+        data_type: integer
+
+      - name: cnae_fiscal
+        description: "Código CNAE fiscal principal"
+        data_type: string
+        quote: true
+
+      - name: cnae_secundarias
+        description: "Códigos CNAE secundários da empresa"
+        data_type: array<string>
+        quote: true
+
+      - name: nire
+        description: "Número de Identificação do Registro de Empresas"
+        data_type: string
+        quote: true
+
+      # Estrutura de natureza jurídica
+      - name: natureza_juridica.id
+        description: "ID da natureza jurídica"
+        data_type: string
+        quote: true
+
+      - name: natureza_juridica.descricao
+        description: "Descrição da natureza jurídica"
+        data_type: string
+        quote: true
+
+      # Estrutura de porte
+      - name: porte.id
+        description: "ID do porte da empresa"
+        data_type: string
+        quote: true
+
+      - name: porte.descricao
+        description: "Descrição do porte da empresa"
+        data_type: string
+        quote: true
+
+      # Estrutura de matriz/filial
+      - name: matriz_filial.id
+        description: "ID do indicador matriz/filial"
+        data_type: string
+        quote: true
+
+      - name: matriz_filial.descricao
+        description: "Descrição do indicador matriz/filial"
+        data_type: string
+        quote: true
+
+      # Estrutura de órgão de registro
+      - name: orgao_registro.id
+        description: "ID do órgão de registro"
+        data_type: string
+        quote: true
+
+      - name: orgao_registro.descricao
+        description: "Descrição do órgão de registro"
+        data_type: string
+        quote: true
+
+      # Data de início de atividade
+      - name: inicio_atividade_data
+        description: "Data de início das atividades da empresa"
+        data_type: date
+
+      # Estrutura de situação cadastral
+      - name: situacao_cadastral.id
+        description: "ID da situação cadastral"
+        data_type: string
+        quote: true
+
+      - name: situacao_cadastral.descricao
+        description: "Descrição da situação cadastral"
+        data_type: string
+        quote: true
+
+      - name: situacao_cadastral.data
+        description: "Data da situação cadastral"
+        data_type: date
+
+      - name: situacao_cadastral.motivo_id
+        description: "ID do motivo da situação cadastral"
+        data_type: string
+        quote: true
+
+      - name: situacao_cadastral.motivo_descricao
+        description: "Descrição do motivo da situação cadastral"
+        data_type: string
+        quote: true
+
+      # Estrutura de situação especial
+      - name: situacao_especial.descricao
+        description: "Descrição da situação especial"
+        data_type: string
+        quote: true
+
+      - name: situacao_especial.data
+        description: "Data da situação especial"
+        data_type: date
+
+      # Estrutura de ente federativo
+      - name: ente_federativo.id
+        description: "ID do ente federativo"
+        data_type: string
+        quote: true
+
+      - name: ente_federativo.tipo
+        description: "Tipo do ente federativo"
+        data_type: string
+        quote: true
+
+      # Estrutura de contato
+      - name: contato.telefone.ddd
+        description: "DDD do telefone"
+        data_type: string
+        quote: true
+      
+      - name: contato.telefone.telefone
+        description: "Número do telefone"
+        data_type: string
+        quote: true
+
+      - name: contato.email
+        description: "Endereço de email da empresa"
+        data_type: string
+        quote: true
+
+      # Estrutura de endereço
+      - name: endereco.cep
+        description: "CEP do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.id_pais
+        description: "ID do país do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.uf
+        description: "Unidade Federativa do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.id_municipio
+        description: "ID do município do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.municipio_nome
+        description: "Nome do município do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.municipio_exterior_nome
+        description: "Nome do município exterior do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.bairro
+        description: "Bairro do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.tipo_logradouro
+        description: "Tipo do logradouro"
+        data_type: string
+        quote: true
+
+      - name: endereco.logradouro
+        description: "Nome do logradouro"
+        data_type: string
+        quote: true
+
+      - name: endereco.numero
+        description: "Número do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.complemento
+        description: "Complemento do endereço"
+        data_type: string
+        quote: true
+
+      # Estrutura de contador
+      - name: contador.pf.tipo_crc
+        description: "Tipo do CRC do contador PF"
+        data_type: string
+        quote: true
+
+      - name: contador.pf.classificacao_crc
+        description: "Classificação do CRC do contador PF"
+        data_type: string
+        quote: true
+
+      - name: contador.pf.sequencial_crc
+        description: "Sequencial do CRC do contador PF"
+        data_type: string
+        quote: true
+
+      - name: contador.pf.id
+        description: "ID do contador PF"
+        data_type: string
+        quote: true
+
+      - name: contador.pj.tipo_crc
+        description: "Tipo do CRC do contador PJ"
+        data_type: string
+        quote: true
+
+      - name: contador.pj.classificacao_crc
+        description: "Classificação do CRC do contador PJ"
+        data_type: string
+        quote: true
+
+      - name: contador.pj.sequencial_crc
+        description: "Sequencial do CRC do contador PJ"
+        data_type: string
+        quote: true
+
+      - name: contador.pj.id
+        description: "ID do contador PJ"
+        data_type: string
+        quote: true
+
+      # Estrutura de responsável
+      - name: responsavel.cpf
+        description: "CPF do responsável"
+        data_type: string
+        quote: true
+
+      - name: responsavel.qualificacao_id
+        description: "ID da qualificação do responsável"
+        data_type: string
+        quote: true
+
+      - name: responsavel.qualificacao_descricao
+        description: "Descrição da qualificação do responsável"
+        data_type: string
+        quote: true
+
+      - name: responsavel.inclusao_data
+        description: "Data de inclusão do responsável"
+        data_type: date
+
+      # Arrays de negócio
+      - name: tipos_unidade
+        description: "Tipos de unidade da empresa"
+        data_type: array<string>
+        quote: true
+
+      - name: formas_atuacao
+        description: "Formas de atuação da empresa"
+        data_type: array<string>
+        quote: true
+
+      - name: socios_quantidade
+        description: "Quantidade de sócios da empresa"
+        data_type: integer
+
+      - name: socios.codigo_pais
+        description: "Código do país do sócio"
+        data_type: string
+        quote: true
+
+      - name: socios.cpf_socio
+        description: "CPF do sócio"
+        data_type: string
+        quote: true
+
+      - name: socios.cnpj_socio
+        description: "CNPJ do sócio"
+        data_type: string
+        quote: true
+
+      - name: socios.cpf_representante_legal
+        description: "CPF do representante legal do sócio"
+        data_type: string
+        quote: true
+      
+      - name: socios.data_situacao_especial
+        description: "Data de entrada do sócio na empresa"
+        data_type: date
+        quote: true
+
+      - name: socios.nome_socio_estrangeiro
+        description: "Nome do sócio estrangeiro"
+        data_type: string
+        quote: true
+
+      - name: socios.qualificacao_representante_legal
+        description: "Qualificação do representante legal do sócio"
+        data_type: string
+        quote: true
+
+      - name: socios.qualificacao_socio
+        description: "Qualificação do sócio"
+        data_type: string
+        quote: true
+      
+      - name: socios.tipo
+        description: "Tipo do sócio"
+        data_type: string
+        quote: true
+
+      - name: sucessoes.evento_sucedida
+        description: "Evento de sucessão empresarial"
+        data_type: string
+        quote: true
+
+      - name: sucessoes.data_evento_sucedida
+        description: "Data do evento de sucessão empresarial"
+        data_type: date
+        quote: true
+
+      - name: sucessoes.data_processamento
+        description: "Data de processamento da sucessão"
+        data_type: date
+        quote: true
+
+      - name: sucessoes.sucessoras
+        description: "Empresas sucessoras"
+        data_type: string
+        quote: true
+
+      # Metadados
+      - name: timestamp
+        description: "Timestamp dos dados"
+        data_type: string
+
+      - name: language
+        description: "Idioma dos dados"
+        data_type: string
+        quote: true
+
+      # Estrutura do CouchDB
+      - name: couchdb.id
+        description: "ID do CouchDB"
+        data_type: string
+        quote: true
+
+      - name: couchdb.key
+        description: "Chave do CouchDB"
+        data_type: string
+        quote: true
+
+      - name: couchdb.rev
+        description: "Revisão do CouchDB"
+        data_type: string
+        quote: true
+
+      - name: couchdb.seq
+        description: "Sequência do CouchDB"
+        data_type: string
+        quote: true
+
+      - name: couchdb.last_seq
+        description: "Última sequência do CouchDB"
+        data_type: string
+        quote: true
+
+      # Estrutura do Airbyte
+      - name: airbyte.raw_id
+        description: "ID raw do Airbyte"
+        data_type: string
+        quote: true
+
+      - name: airbyte.extracted_at
+        description: "Data de extração do Airbyte"
+        data_type: timestamp
+
+      - name: airbyte.generation_id
+        description: "ID de geração do Airbyte"
+        data_type: integer
+
+      - name: airbyte.changes
+        description: "Mudanças registradas pelo Airbyte"
+        data_type: string
+        quote: true
+
+      - name: airbyte.sync_id
+        description: "ID de sincronização do Airbyte"
+        data_type: string
+        quote: true
+
+      # Coluna de particionamento
+      - name: cnpj_particao
+        description: "Coluna de particionamento baseada no CNPJ"
+        data_type: integer
+        quote: true

@@ -34,7 +34,7 @@ with
             nomeempresarial as razao_social,
             nomefantasia as nome_fantasia,
             capitalsocial as capital_social,
-            cnae as cnae_fiscal,
+            cnaefiscal as cnae_fiscal,
             cnaesecundarias as cnae_secundarias,
             nire as nire,
             cnpjsucedida as id_cnpj_sucedida,
@@ -99,15 +99,17 @@ with
         from cnpj_base
     ),
 
-    array_convert_tb as (
+        array_convert_tb as (
         select
             id_cnpj,
             array_agg(distinct tut.descricao) as tipos_unidade,
-            array_agg(distinct fat.descricao) as formas_atuacao
+            array_agg(distinct fat.descricao) as formas_atuacao,
+            array_agg(distinct json_value(cs)) as cnae_secundarias
         from
             cnpj_renomeada t,
             unnest(t.formas_atuacao) as fa,
-            unnest(t.tipos_unidade) as tu
+            unnest(t.tipos_unidade) as tu,
+            unnest(t.cnae_secundarias) as cs
         left join
             (
                 select id as tipos_unidade_id, descricao
@@ -434,7 +436,7 @@ with
             t.nome_fantasia,
             t.capital_social,
             t.cnae_fiscal,
-            t.cnae_secundarias,
+            actb.cnae_secundarias,
             t.nire,
 
             -- Dates

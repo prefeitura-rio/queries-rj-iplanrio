@@ -10,17 +10,20 @@ models:
         data_tests:
           - not_null:
               name: raw_mais_valia_parcelas_contrapartida__id_calculo__not_null
-              severity: error
+              config:
+                severity: error
       - name: id_parcela
         description: "Identificador único da parcela do cálculo de contrapartida."
         data_type: string
         data_tests:
           - not_null:
               name: raw_mais_valia_parcelas_contrapartida__id_parcela__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_mais_valia_parcelas_contrapartida__id_parcela__unique
-              severity: error
+              config:
+                severity: error
       - name: origem
         description: "Código que identifica a versão do sistema onde o cálculo foi gerado. {1-Sistema novo / 10 - Sistema antigo} e serve para fazer join com a tabela raw_mais_valia_contrapartida_consolidado."
         data_type: int64
@@ -65,7 +68,5 @@ models:
         data_type: timestamp
       - name: transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp      
+        data_type: timestamp
 
-
-      

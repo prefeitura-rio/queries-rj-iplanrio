@@ -8,14 +8,14 @@ models:
       alias: cnpj
       schema: brutos_bcadastro
       materialized: table
-      tags: [ 'raw', 'bcadastro', 'cnpj' ]
+      tags: ['raw', 'bcadastro', 'cnpj']
       partition_by:
         field: cnpj_particao
         data_type: int64
         range:
           start: 0
-          end: 100000000000
-          interval: 34722222
+          end: 99999999999999
+          interval: 25000000000
 
     columns:
       - name: cnpj
@@ -28,11 +28,12 @@ models:
         data_tests:
           - unique:
               name: raw_bcadastro_cnpj__cnpj__unique
-              severity: error
+              config:
+                severity: error
           - not_null:
               name: raw_bcadastro_cnpj__cnpj__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: razao_social
         description: Nome empresarial (razão social) da empresa.
         data_type: string

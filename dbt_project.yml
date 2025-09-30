@@ -50,6 +50,11 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes
           +tags: "daily"
+      iplanrio:
+        +project: rj-iplanrio
+        api_bcadastro:
+          +schema: api_bcadastro
+          +tags: ["daily", "bcadastro"]
     raw:
       +tags: "raw"
       bcadastro:
@@ -106,7 +111,7 @@ models:
         infraestrutura_siscob_obras:
           +materialized: table
           +schema: infraestrutura_siscob_obras
-          +tags: "daily"        
+          +tags: "daily"
       smas:
         cadunico:
           +materialized: table
@@ -158,9 +163,13 @@ models:
       
       iplanrio:
         +project: rj-iplanrio
-        pessoa_vinculada:         
+        pessoa_vinculada:
           +materialized: table
           +schema: brutos_pessoa_vinculada
           +tags: ["daily", "pessoa_vinculada"]
-
-      
+        unidade_administrativa:
+          +materialized: table
+          +schema: brutos_sici
+          +tags: ["daily", "unidade_administrativa"]
+flags:
+  require_generic_test_arguments_property: true

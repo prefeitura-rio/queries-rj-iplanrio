@@ -1,23 +1,25 @@
 version: 2
 models:
- - name: raw_taxirio_discounts
-   columns:
-    - name: id_desconto_associado
-      description: Identificador do Associado
-      data_type: string
-      data_tests:
-        - not_null:
-            name: raw_taxirio__id_desconto_associado__not_null
-            severity: error
-        - unique:
-            name: raw_taxirio__id_desconto_associad__unique
-            severity: error
-    - name: descricao
-      description: Descrição do Desconto
-      data_type: string
-    - name: desconto
-      description: Valor do Desconto
-      data_type: float64
-    - name: data_criacao
-      description: Data de criação do Desconto
-      data_type: datetime
+  - name: raw_taxirio_discounts
+    columns:
+      - name: id_desconto_associado
+        description: Identificador do Associado
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_taxirio__id_desconto_associado__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_taxirio__id_desconto_associad__unique
+              config:
+                severity: error
+      - name: descricao
+        description: Descrição do Desconto
+        data_type: string
+      - name: desconto
+        description: Valor do Desconto
+        data_type: float64
+      - name: data_criacao
+        description: Data de criação do Desconto
+        data_type: datetime
