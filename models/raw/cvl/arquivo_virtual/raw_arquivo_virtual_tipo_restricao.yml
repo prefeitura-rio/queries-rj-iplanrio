@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_tipo_restricao
-    description: "Tipos de restrição"
+    description: "Tabela auxiliar (dimensão) com os dados de tipos que detalham o motivo ou natureza da restrição de acesso aos documentos"
     config:
       alias: tipo_restricao
       
       
     columns:
-      - name: id_tipoRestricao
-        description: "Identificador único do tipo de restrição"
-        data_type: integer
+      - name: codigo_tipo_restricao
+        description: "PK desta tabela – Identificador único do tipo de restrição de acesso ao acervo (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_tipo_restricao__id_tipoRestricao__unique
@@ -18,7 +18,7 @@ models:
         #   - not_null:
         #       name: raw_arquivo_virtual_tipo_restricao__id_tipoRestricao__not_null
         #       severity: error
-      - name: ds_restricao
-        description: "Descrição da restrição"
+      - name: tipo_restricao
+        description: "Descrição do tipo de restrição (ex: LEGAIS/JUDICIAIS, ADMINISTRATIVAS/INTERNAS, SEM ESPECIFICAÇÃO)"
         data_type: string
         quote: true

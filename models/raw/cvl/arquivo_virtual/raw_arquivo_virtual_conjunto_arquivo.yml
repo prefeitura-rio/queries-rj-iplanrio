@@ -2,22 +2,22 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_conjunto_arquivo
-    description: "Conjuntos de arquivos do sistema de arquivo virtual"
+    description: "Tabela principal de referência aos dados dos arquivos"
     config:
       alias: conjunto_arquivo
       
       
     columns:
-      - name: id_nivel
-        description: "Identificador do nível arquivístico"
-        data_type: integer
+      - name: codigo_nivel
+        description: "FK de NIVEL - Identificador do nível hierárquico do conjunto de arquivos"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_conjunto_arquivo__id_nivel__not_null
         #       severity: error
-      - name: id_conjuntoArquivo
-        description: "Identificador único do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador único do conjunto de arquivos  que ira ser usado nas outras tabelas complementares (Campo AUTO INCREMENTAL)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_conjunto_arquivo__id_conjuntoArquivo__unique
@@ -25,14 +25,14 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_conjunto_arquivo__id_conjuntoArquivo__not_null
           #     severity: error
-      - name: id_conjuntoArquivo_pai
-        description: "Identificador do conjunto arquivístico pai"
-        data_type: integer
-      - name: st_conjuntoArquivo
-        description: "Status do conjunto arquivístico"
-        data_type: string
+      - name: codigo_conjunto_arquivo_pai
+        description: "Identificador do conjunto de arquivos pai (hierarquia entre conjuntos)"
+        data_type: int64
+      - name: status_conjunto_arquivo
+        description: "Status do conjunto de arquivos (ativo/inativo)"
+        data_type: int64
         quote: true
-      - name: st_conjuntoArquivo_pai
-        description: "Status do conjunto arquivístico pai"
-        data_type: string
+      - name: status_conjunto_arquivo_pai
+        description: "Status do conjunto de arquivos pai (ativo/inativo)"
+        data_type: int64
         quote: true

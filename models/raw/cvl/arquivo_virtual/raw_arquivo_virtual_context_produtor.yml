@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_context_produtor
-    description: "Contexto do produtor dos conjuntos arquivísticos"
+    description: "Tabela referente aos dados de contextos dos produtores dos arquivos"
     config:
-      alias: context_produtor
+      alias: contexto_produtor
       
       
     columns:
-      - name: id_produtor
-        description: "Identificador do produtor"
-        data_type: integer
+      - name: codigo_produtor
+        description: "PK desta tabela - Identificador único do produtor do arquivo "
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_context_produtor__id_produtor__unique
@@ -18,22 +18,22 @@ models:
         #   - not_null:
         #       name: raw_arquivo_virtual_context_produtor__id_produtor__not_null
         #       severity: error
-      - name: nm_produtor
-        description: "Nome do produtor"
+      - name: nome_produtor
+        description: "Nome do produtor do arquivo (órgão público ou pessoa física)"
         data_type: string
         quote: true
-      - name: dt_morteExtincao
-        description: "Data de morte ou extinção"
+      - name: data_morte_extincao
+        description: "Data de extinção (para órgãos) ou falecimento (para pessoas físicas)"
         data_type: timestamp
-      - name: dt_nascimentoCriacao
-        description: "Data de nascimento ou criação"
+      - name: data_nascimento_criacao
+        description: "Data de criação (para órgãos) ou nascimento (para pessoas físicas)"
         data_type: timestamp
-      - name: id_tipoProdutor
-        description: "Identificador do tipo de produtor"
-        data_type: integer
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_tipo_produtor
+        description: "FK de TIPO_PRODUTOR - Identificador do tipo de produtor (ex: órgão público, pessoa física)"
+        data_type: int64
+      - name: codigo_conjunto_arquivo
+        description: "FK de A2_CONTEXTUALIZACAO - Identificador único do conjunto de arquivos "
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_context_produtor__id_conjuntoArquivo__not_null

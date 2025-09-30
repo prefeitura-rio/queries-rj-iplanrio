@@ -4,37 +4,37 @@ models:
   - name: raw_arquivo_virtual_a7_controle
     description: "Controle dos conjuntos arquivísticos"
     config:
-      alias: a7_controle
+      alias: a7_controle_responsabilidade
       
       
     columns:
-      - name: ds_datasDesc
-        description: "Descrição das datas de descrição"
+      - name: datas_descricao
+        description: "Informações sobre datas relevantes para a descrição dos arquivos"
         data_type: string
         quote: true
-      - name: ds_regrasConvencoes
-        description: "Descrição das regras e convenções"
+      - name: regras_convencoes
+        description: "Regras e convenções utilizadas na descrição dos arquivos"
         data_type: string
         quote: true
-      - name: ds_notaArquivistica
-        description: "Descrição da nota arquivística"
+      - name: nota_arquivistica
+        description: "Anotações arquivísticas complementares sobre os arquivos"
         data_type: string
         quote: true
-      - name: ds_unidadeCustodiadora
-        description: "Descrição da unidade custodiadora"
+      - name: unidade_custodiadora
+        description: "Nome da unidade responsável pela custódia dos arquivos "
         data_type: string
         quote: true
-      - name: st_arquivoDigital
-        description: "Status do arquivo digital"
+      - name: status_arquivo_digital
+        description: "Indica se o arquivo foi digitalizado (1 = sim, 0 = não)"
+        data_type: boolean
+        quote: true
+      - name: responsavel_descricao
+        description: "Nome ou identificação do responsável pela descrição dos arquivos"
         data_type: string
         quote: true
-      - name: ds_responsavelDesc
-        description: "Descrição do responsável pela descrição"
-        data_type: string
-        quote: true
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_a7_controle__id_conjuntoArquivo__not_null

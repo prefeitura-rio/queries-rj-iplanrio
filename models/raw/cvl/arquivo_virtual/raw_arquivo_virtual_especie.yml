@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_especie
-    description: "Espécies documentais"
+    description: "Tabela auxiliar (dimensão) com os dados das diferentes espécies de arquivos"
     config:
-      alias: especie
+      alias: especie_arquivo
       
       
     columns:
-      - name: id_especie
-        description: "Identificador único da espécie"
-        data_type: integer
+      - name: codigo_especie
+        description: "PK Composta desta tabela - Identificador único da espécie do arquivo  (Campo INCREMENTAL)"
+        data_type: int64
         # data_tests:
           # - unique:
           #     name: raw_arquivo_virtual_especie__id_especie__unique
@@ -18,14 +18,14 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_especie__id_especie__not_null
           #     severity: error
-      - name: id_genero
-        description: "Identificador do gênero"
-        data_type: integer
+      - name: codigo_genero
+        description: "PK Composta desta tabela - Identificador do genero do arquivo (Bibliográfico; Cartográfico; Audiovisual; Textual; Sonoro etc.) - (FK de GENERO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_especie__id_genero__not_null
         #       severity: error
-      - name: nm_especie
-        description: "Nome da espécie"
+      - name: nome_especie
+        description: "Nome dado as espécies de arquivos (ex: folheto; livro; monografia; CD; cartuchos; disco, mapa etc.)"
         data_type: string
         quote: true

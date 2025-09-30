@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_formato
-    description: "Formatos documentais"
+    description: "Tabela auxiliar (dimensão) com os dados dos diferentes formatos físicos dos acervos"
     config:
-      alias: formato
+      alias: formato_fisico_acervo
       
       
     columns:
-      - name: id_formato
-        description: "Identificador único do formato"
-        data_type: integer
+      - name: codigo_formato
+        description: "PK desta tabela – Identificador único do tipo de formato do acervo (ex: BETCAM, VHS, DVD, etc.) (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_formato__id_formato__unique
@@ -18,14 +18,14 @@ models:
         #   - not_null:
         #       name: raw_arquivo_virtual_formato__id_formato__not_null
         #       severity: error
-      - name: id_genero
-        description: "Identificador do gênero"
-        data_type: integer
+      - name: codigo_genero
+        description: "FK de Genero - Identificador do gênero documental associado ao formato"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_formato__id_genero__not_null
         #       severity: error
-      - name: ds_formato
-        description: "Descrição do formato"
+      - name: formato
+        description: "Descrição do formato físico do acervo "
         data_type: string
         quote: true

@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_nivel
-    description: "Níveis arquivísticos"
+    description: "Tabela auxiliar (dimensão) com os dados dos possíveis níveis de hierarquia de descrição dos documentos dentro de um acervo"
     config:
-      alias: nivel
+      alias: nivel_hierarquia
       
       
     columns:
-      - name: id_nivel
-        description: "Identificador único do nível"
-        data_type: integer
+      - name: codigo_nivel
+        description: "PK desta tabela – Identificador único do nível de descrição documental (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_nivel__id_nivel__unique
@@ -18,10 +18,10 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_nivel__id_nivel__not_null
           #     severity: error
-      - name: ds_nivel
-        description: "Descrição do nível"
+      - name: nivel
+        description: "Nome do nível de descrição (ex: Fundo, Série, Dossiê, Item Documental etc.)"
         data_type: string
         quote: true
-      - name: nr_nivel
-        description: "Número do nível"
-        data_type: integer
+      - name: numero_nivel
+        description: "Número de ordenação hierárquica do nível (ex: 1 para Fundo, 2 para Série, etc.)"
+        data_type: numeric

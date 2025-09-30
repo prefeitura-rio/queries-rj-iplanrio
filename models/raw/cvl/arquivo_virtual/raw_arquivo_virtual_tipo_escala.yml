@@ -2,23 +2,17 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_tipo_escala
-    description: "Tipos de escala"
+    description: "Tabela auxiliar (dimensão) com os dados de tipos de escalas aplicadas aos documentos"
     config:
       alias: tipo_escala
       
       
     columns:
-      - name: id_tipoEscala
-        description: "Identificador único do tipo de escala"
-        data_type: integer
-        # data_tests:
-        #   - unique:
-        #       name: raw_arquivo_virtual_tipo_escala__id_tipoEscala__unique
-        #       severity: error
-          # - not_null:
-          #     name: raw_arquivo_virtual_tipo_escala__id_tipoEscala__not_null
-          #     severity: error
-      - name: ds_tipoEscala
-        description: "Descrição do tipo de escala"
+      - name: codigo_tipo_escala
+        description: "PK desta tabela – Identificador único do tipo de escala utilizada na representação documental (Campo auto incremental)"
+        data_type: int64
+        
+      - name: tipo_escala
+        description: "Descrição do tipo de escala (ex: Numérica, Gráfica)"
         data_type: string
         quote: true

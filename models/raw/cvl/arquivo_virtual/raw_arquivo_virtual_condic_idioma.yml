@@ -2,22 +2,22 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_condic_idioma
-    description: "Condições de idioma dos conjuntos arquivísticos"
+    description: "Tabela associativa usada para fazer os relacionamentos entre idiomas utilizados nos arquivos "
     config:
-      alias: condic_idioma
+      alias: condicao_arquivos_idiomas
       
       
     columns:
-      - name: id_idioma
-        description: "Identificador do idioma"
-        data_type: integer
+      - name: codigo_idioma
+        description: "PK Composta desta tabela - Identificador do idioma presente nos arquivos  (FK de IDIOMA)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_condic_idioma__id_idioma__not_null
         #       severity: error
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "PK Composta desta tabela - Identificador único do conjunto de arquivos  (FK de A4_CONDICOES_ACESSO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_condic_idioma__id_conjuntoArquivo__not_null

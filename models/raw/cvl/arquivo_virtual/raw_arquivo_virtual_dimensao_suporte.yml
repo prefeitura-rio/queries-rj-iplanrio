@@ -8,42 +8,42 @@ models:
       
       
     columns:
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "Tabela referente aos dados as dimensões e suportes dos arquivos "
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_dimensao_suporte__id_conjuntoArquivo__not_null
         #       severity: error
-      - name: id_genero
-        description: "Identificador do gênero"
-        data_type: integer
-      - name: id_especie
-        description: "Identificador da espécie"
-        data_type: integer
-      - name: id_capacidade
-        description: "Identificador da capacidade"
-        data_type: integer
-      - name: id_tipoEscala
-        description: "Identificador do tipo de escala"
-        data_type: integer
-      - name: id_formato
-        description: "Identificador do formato"
-        data_type: integer
-      - name: qt_unidade
-        description: "Quantidade de unidades"
+      - name: codigo_genero
+        description: "PK Composta desta tabela - Identificador do gênero documental do arquivo  (FK de GENERO)"
+        data_type: int64
+      - name: codigo_especie
+        description: "PK Composta desta tabela - Identificador da espécie documental do arquivo  (FK de ESPECIE)"
+        data_type: int64
+      - name: codigo_capacidade
+        description: "FK de CAPACIDADE_ARMAZENA - Identificador da capacidade física do suporte do arquivo"
+        data_type: int64
+      - name: codigo_tipo_escala
+        description: "FK de TIPO_ESCALA - Identificador do tipo de escala utilizada na representação do arquivo"
+        data_type: int64
+      - name: codigo_formato
+        description: "FK de FORMATO - Identificador do formato físico do arquivo "
+        data_type: int64
+      - name: quantidade_unidade
+        description: "Quantidade de unidades físicas do arquivo"
         data_type: numeric
-      - name: ds_escala
-        description: "Descrição da escala"
+      - name: escala
+        description: "Descrição da escala utilizada"
         data_type: string
         quote: true
-      - name: obs
-        description: "Observações"
+      - name: observacoes
+        description: "Observações adicionais sobre dimensões e suportes"
         data_type: string
         quote: true
-      - name: id_unidade
-        description: "Identificador da unidade"
-        data_type: integer
-      - name: qt_capacidade
-        description: "Quantidade de capacidade"
+      - name: codigo_unidade
+        description: "FK de UNIDADE_MEDIDA - Identificador da unidade de medida utilizada"
+        data_type: int64
+      - name: quantidade_capacidade
+        description: Quantidade de capacidade física do suporte"
         data_type: numeric

@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_forma_entrada
-    description: "Formas de entrada"
+    description: "Tabela auxiliar (dimensão) com os dados das diferentes formas de aquisição dos acervos"
     config:
-      alias: forma_entrada
+      alias: forma_aquisicao_acervo
       
       
     columns:
-      - name: id_formaEntrada
-        description: "Identificador único da forma de entrada"
-        data_type: integer
+      - name: codigo_forma_entrada
+        description: "PK desta tabela – Identificador único da forma de entrada do arquivo (ex: compra, doação, recolhimento) (Campo auto incremental)"
+        data_type: int64
         # data_tests:
           # - unique:
           #     name: raw_arquivo_virtual_forma_entrada__id_formaEntrada__unique
@@ -18,7 +18,7 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_forma_entrada__id_formaEntrada__not_null
           #     severity: error
-      - name: ds_formaEntrada
-        description: "Descrição da forma de entrada"
+      - name: forma_entrada
+        description: "Descrição da forma como o acervo foi adquirido"
         data_type: string
         quote: true

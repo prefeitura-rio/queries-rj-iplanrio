@@ -2,29 +2,28 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_a4_condicoes_acesso
-    description: "Condições de acesso aos conjuntos arquivísticos"
+    description: "Tabela refente aos dados de condições e acessos dos arquivos "
     config:
       alias: a4_condicoes_acesso
       
     columns:
-      - name: ds_condicoesReproducao
-        description: "Descrição das condições de reprodução"
+      - name: condicoes_reproducao
+        description: "Condições específicas para reprodução dos arquivos "
         data_type: string
         quote: true
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_a4_condicoes_acesso__id_conjuntoArquivo__not_null
         #       severity: error
-      - name: obs_restricao
-        description: "Observações sobre restrições"
+      - name: observacoes
         data_type: string
-        quote: true
-      - name: id_restricao
-        description: "Identificador da restrição"
-        data_type: integer
-      - name: id_tipoRestricao
-        description: "Identificador do tipo de restrição"
-        data_type: integer
+        description: "Observações adicionais sobre o acesso aos arquivos"
+      - name: codigo_restricao
+        description: "FK de RESTRICOES - Identificador da existência de restrição de acesso"
+        data_type: int64
+      - name: codigo_tipo_restricao
+        description: "FK de TIPO_RESTRICOES - Identificador do tipo de restrição aplicada ao acesso dos arquivos"
+        data_type: int64

@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_modalidade
-    description: "Modalidades arquivísticas"
+    description: "Tabela auxiliar (dimensão) com os dados dos diferentes tipos demodalidades de identificação dos acervos"
     config:
-      alias: modalidade
+      alias: modalidade_identificacao
       
       
     columns:
-      - name: id_modalidade
-        description: "Identificador único da modalidade"
-        data_type: integer
+      - name: codigo_modalidade
+        description: "PK desta tabela – Identificador único da modalidade de identificação documental (Campo auto incremental)"
+        data_type: int64
         # data_tests:
           # - unique:
           #     name: raw_arquivo_virtual_modalidade__id_modalidade__unique
@@ -18,7 +18,7 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_modalidade__id_modalidade__not_null
           #     severity: error
-      - name: ds_modalidade
-        description: "Descrição da modalidade"
+      - name: modalidade
+        description: "Nome da modalidade (ex: Produção, Acumulação, Data-Assunto, etc.)"
         data_type: string
         quote: true

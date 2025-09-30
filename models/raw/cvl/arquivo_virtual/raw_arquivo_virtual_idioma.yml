@@ -2,27 +2,16 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_idioma
-    description: "Idiomas dos conjuntos arquivísticos"
+    description: "Tabela auxiliar (dimensão) com os dados dos diferentes tipos de idiomas dos acervos"
     config:
       alias: idioma
       
       
     columns:
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
-        # data_tests:
-        #   - not_null:
-        #       name: raw_arquivo_virtual_idioma__id_conjuntoArquivo__not_null
-        #       severity: error
-      - name: id_idioma
-        description: "Identificador do idioma"
-        data_type: integer
-        # data_tests:
-        #   - not_null:
-        #       name: raw_arquivo_virtual_idioma__id_idioma__not_null
-        #       severity: error
-      - name: nm_idioma
-        description: "Nome do idioma"
+      - name: codigo_idioma
+        description: "PK desta tabela – Identificador único do idioma presente nos arquivos  (Campo auto incremental)"
+        data_type: int64
+      - name: nome_idioma
+        description: "Nome do idioma (ex: Português, Inglês, Espanhol, etc.)"
         data_type: string
         quote: true

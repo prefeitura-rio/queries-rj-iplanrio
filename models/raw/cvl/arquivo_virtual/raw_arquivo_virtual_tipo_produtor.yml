@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_tipo_produtor
-    description: "Tipos de produtor"
+    description: "Tabela auxiliar (dimensão) com os dados de tipos para classificar o agente responsável pela produção do documento"
     config:
       alias: tipo_produtor
       
       
     columns:
-      - name: id_tipoProdutor
-        description: "Identificador único do tipo de produtor"
-        data_type: integer
+      - name: codigo_tipo_produtor
+        description: "PK desta tabela – Identificador único do tipo de produtor documental (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_tipo_produtor__id_tipoProdutor__unique
@@ -19,6 +19,6 @@ models:
         #       name: raw_arquivo_virtual_tipo_produtor__id_tipoProdutor__not_null
         #       severity: error
       - name: ds_tipoProdutor
-        description: "Descrição do tipo de produtor"
+        description: "Descrição do tipo de produtor documental (ex: ENTIDADE COLETIVA, PESSOA, FAMÍLIA, NÃO INFORMADO)"
         data_type: string
         quote: true

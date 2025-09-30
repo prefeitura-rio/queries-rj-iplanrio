@@ -2,37 +2,35 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_a1_identificacao
-    description: "Identificação dos conjuntos arquivísticos"
+    description: "Tabela refente aos dados de identificação dos arquivos "
     config:
       alias: a1_identificacao
     columns:
-      - name: cd_referencia
-        description: "Código de referência"
+      - name: codigo_referencia
+        description: "Código único de referência do arquivo "
         data_type: string
-        quote: true
-      - name: dt_fim
-        description: "Data de fim"
-        data_type: timestamp
-      - name: dt_iniModalidade
-        description: "Data de início da modalidade"
-        data_type: timestamp
-      - name: dt_pesquisa
-        description: "Data da pesquisa"
-        data_type: timestamp
-      - name: ds_titulo
-        description: "Descrição/título"
+      - name: data_fim
+        description: "Data de encerramento ou finalização da validade do registro"
         data_type: string
-        quote: true
-      - name: id_modalidade
-        description: "Identificador da modalidade"
-        data_type: integer
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: data_inicio_modalidade
+        description: "Data de início da modalidade ou categoria de arquivamento"
+        data_type: string
+      - name: data_pesquisa
+        description: "Ano ou data de referência utilizada para fins de pesquisa"
+        data_type: string
+      - name: descricao_titulo
+        description: "Título ou descrição textual do conteúdo do arquivo"
+        data_type: string
+      - name: codigo_modalidade
+        description: "FK de MODALIDADE - Identificador numérico da modalidade ou categoria de arquivamento"
+        data_type: int64
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador numérico do conjunto de arquivos a que este registro pertence (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_a1_identificacao__id_conjuntoArquivo__not_null
         #       severity: error
-      - name: id_setor
-        description: "Identificador do setor"
-        data_type: integer
+      - name: codigo_setor
+        description: "FK de SETOR - Identificador numérico do setor ou departamento responsável pelo arquivo"
+        data_type: int64

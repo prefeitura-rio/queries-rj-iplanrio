@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_condic_inst
-    description: "Condições institucionais dos conjuntos arquivísticos"
+    description: "Tabela auxiliar (dimensão) com os dados dos diferentes tipos de instrumentos de pesquisas usados nos acervos"
     config:
-      alias: condic_inst
+      alias: condicao_instrumentos_pesquisa
       
       
     columns:
-      - name: id_condicInst
-        description: "Identificador da condição institucional"
-        data_type: integer
+      - name: codigo_condicao_instr
+        description: "PK desta tabela - Identificador único da associação entre conjunto de arquivos e instrumento de pesquisa"
+        data_type: int64
         # data_tests:
           # - unique:
           #     name: raw_arquivo_virtual_condic_inst__id_condicInst__unique
@@ -18,17 +18,18 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_condic_inst__id_condicInst__not_null
           #     severity: error
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "FK de A4_CONDICOES_ACESSO - Identificador único do conjunto de arquivos "
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_condic_inst__id_conjuntoArquivo__not_null
         #       severity: error
-      - name: id_instPesquisa
-        description: "Identificador da instituição de pesquisa"
+      - name: codigo_instrumento_pesquisa
+        description: "FK de INSTRUMENTO_PESQUISA - Identificador do instrumento de pesquisa associado ao conjunto de arquivos"
         data_type: integer
-      - name: ds_condicInst
-        description: "Descrição da condição institucional"
+      - name: condicao_instr
+        description: "FK de INSTRUMENTO_PESQUISA - Identificador do instrumento de pesquisa associado ao conjunto de arquivos
+Descrição ou condição específica da aplicação do instrumento de pesquisa"
         data_type: string
         quote: true

@@ -2,34 +2,34 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_a5_fontes_relacionada
-    description: "Fontes relacionadas aos conjuntos arquivísticos"
+    description: "Tabela referente aos dados de fontes relacionadas dos arquivos "
     config:
       alias: a5_fontes_relacionada
       
     columns:
-      - name: ds_existLocalOriginais
-        description: "Descrição da existência e local dos originais"
+      - name: existencia_local_originais
+        description: "Informações sobre a existência e localização dos documentos originais"
         data_type: string
         quote: true
-      - name: ds_notasPublicacao
-        description: "Descrição das notas de publicação"
+      - name: notas_publicacao
+        description: "Notas relacionadas à publicação dos documentos"
         data_type: string
         quote: true
-      - name: ds_unidDescRelacionadas
-        description: "Descrição das unidades de descrição relacionadas"
+      - name: unidades_descricao_relacionadas
+        description: "Unidades de descrição que possuem relação com os arquivos "
         data_type: string
         quote: true
-      - name: ds_outrosDetentores
-        description: "Descrição de outros detentores"
+      - name: outros_detentores
+        description: "Informações sobre outras instituições que detêm cópias dos documentos"
         data_type: string
         quote: true
-      - name: ds_copiasNaInstituicao
-        description: "Descrição das cópias na instituição"
+      - name: copias_na_instituicao
+        description: "Detalhes sobre cópias dos documentos disponíveis na própria instituição"
         data_type: string
         quote: true
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_a5_fontes_relacionada__id_conjuntoArquivo__not_null

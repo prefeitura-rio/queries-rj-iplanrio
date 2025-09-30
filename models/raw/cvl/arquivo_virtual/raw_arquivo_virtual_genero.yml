@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_genero
-    description: "Gêneros documentais"
+    description: "Tabela auxiliar (dimensão) com os dados dos diferentes tipos de generos dos acervos"
     config:
-      alias: genero
+      alias: genero_acervo
       
       
     columns:
-      - name: id_genero
-        description: "Identificador único do gênero"
-        data_type: integer
+      - name: codigo_genero
+        description: "PK desta tabela – Identificador único do gênero documental do acervo (ex: Bibliográfico, Cartográfico, etc.) (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_genero__id_genero__unique
@@ -18,10 +18,10 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_genero__id_genero__not_null
           #     severity: error
-      - name: nm_genero
-        description: "Nome do gênero"
+      - name: nome_genero
+        description: "Nome do gênero documental"
         data_type: string
         quote: true
-      - name: nr_genero
-        description: "Número do gênero"
-        data_type: integer
+      - name: numero_genero
+        description: "Número de ordenação ou código interno para o gênero"
+        data_type: int64

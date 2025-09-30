@@ -2,26 +2,20 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_instrumento_pesquisa
-    description: "Instrumentos de pesquisa dos conjuntos arquivísticos"
+    description: "Tabela auxiliar (dimensão) com os dados dos diferentes tipos de instrumentos de pesquisas usados nos acervos"
     config:
       alias: instrumento_pesquisa
       
       
     columns:
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_instrumento
+        description: "PK da tabela – Identificador único do tipo de instrumento de pesquisa utilizado (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_instrumento_pesquisa__id_conjuntoArquivo__not_null
         #       severity: error
-      - name: id_genero
-        description: "Identificador do gênero"
-        data_type: integer
-      - name: id_instPesquisa
-        description: "Identificador da instituição de pesquisa"
-        data_type: integer
-      - name: ds_instrumento
-        description: "Descrição do instrumento"
+      - name: nome_instrumento
+        description: "Nome do instrumento de pesquisa (ex: Inventário sumário, Repertório, Índice etc.)"
         data_type: string
         quote: true

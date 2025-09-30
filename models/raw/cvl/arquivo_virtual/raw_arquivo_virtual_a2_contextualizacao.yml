@@ -2,25 +2,25 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_a2_contextualizacao
-    description: "Contextualização dos conjuntos arquivísticos"
+    description: "Tabela refente aos dados de contextualização dos arquivos "
     config:
       alias: a2_contextualizacao
       
     columns:
-      - name: ds_historiaAdm
-        description: "Descrição da história administrativa"
+      - name: historia_administrativa
+        description: "Texto explicativo sobre a história administrativa do conjunto de arquivos"
         data_type: string
         quote: true
-      - name: ds_historiaArq
-        description: "Descrição da história arquivística"
+      - name: historia_arquivistica
+        description: "Texto explicativo sobre a história arquivística do conjunto de arquivos"
         data_type: string
         quote: true
-      - name: id_NaturezaJuridica
-        description: "Identificador da natureza jurídica"
-        data_type: integer
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_natureza_juridica
+        description: "FK de NATUREZA_JURIDICA - Identificador da natureza jurídica associada ao conjunto de arquivos"
+        data_type: int64
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_a2_contextualizacao__id_conjuntoArquivo__not_null

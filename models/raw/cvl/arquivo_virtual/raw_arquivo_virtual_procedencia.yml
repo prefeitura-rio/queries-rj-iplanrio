@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_procedencia
-    description: "Procedência dos arquivos"
+    description: "Tabela referente aos dados de procedências dos arquivos "
     config:
       alias: procedencia
       
       
     columns:
       - name: id_procedencia
-        description: "Identificador único da procedência"
-        data_type: integer
+        description: "PK desta tabela - Identificador único da procedência do arquivo "
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_procedencia__id_procedencia__unique
@@ -18,24 +18,24 @@ models:
         #   - not_null:
         #       name: raw_arquivo_virtual_procedencia__id_procedencia__not_null
         #       severity: error
-      - name: nr_geralEntradaProc
+      - name: numero_geral_entrada
         description: "Número geral de entrada da procedência"
         data_type: string
         quote: true
-      - name: nr_anoProc
-        description: "Número do ano da procedência"
+      - name: ano_procedencia
+        description: "Ano de entrada da procedência"
         data_type: string
         quote: true
-      - name: nm_procedencia
-        description: "Nome da procedência"
+      - name: nome_procedencia
+        description: "Nome da procedência (origem institucional ou pessoal do arquivo)"
         data_type: string
         quote: true
-      - name: id_formaEntrada
-        description: "Identificador da forma de entrada"
-        data_type: integer
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: id_forma_entrada
+        description: "FK de FORMA_ENTRADA - Identificador da forma de entrada do arquivo (ex: transferência, recolhimento)"
+        data_type: int64
+      - name: id_conjunto_arquivo
+        description: "FK de A2_CONTEXTUALIZACAO - Identificador único do conjunto de arquivos"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_procedencia__id_conjuntoArquivo__not_null

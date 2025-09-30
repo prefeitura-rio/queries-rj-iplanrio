@@ -7,29 +7,29 @@ models:
       alias: a3_conteudo_estrutura
       
     columns:
-      - name: ds_incorporacoes
-        description: "Descrição das incorporações"
+      - name: incorporacoes
+        description: "Informações sobre as incorporações realizadas nos arquivos"
         data_type: string
         quote: true
-      - name: ds_avalEliminaTemp
-        description: "Descrição da avaliação e eliminação temporária"
+      - name: avaliacao_eliminacao_temporal
+        description: "Avaliação sobre a eliminação ou temporalidade dos documentos"
         data_type: string
         quote: true
-      - name: ds_ambitoConteudo
-        description: "Descrição do âmbito do conteúdo"
+      - name: ambito_conteudo
+        description: "Descrição do âmbito e conteúdo dos arquivos"
         data_type: string
         quote: true
-      - name: id_conjuntoArquivo
-        description: "Identificador do conjunto arquivístico"
-        data_type: integer
+      - name: codigo_conjunto_arquivo
+        description: PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
         # data_tests:
         #   - not_null:
         #       name: raw_arquivo_virtual_a3_conteudo_estrutura__id_conjuntoArquivo__not_null
         #       severity: error
-      - name: ds_organizacao
-        description: "Descrição da organização"
+      - name: organizacao
+        description: "Informações sobre a organização física ou lógica dos arquivos"
         data_type: string
         quote: true
-      - name: id_estagioTratamento
-        description: "Identificador do estágio de tratamento"
-        data_type: integer
+      - name: codigo_estagio_tratamento
+        description: FK de ESTAGIO_TRATAMENTO - Identificador do estágio de tratamento arquivístico"
+        data_type: int64

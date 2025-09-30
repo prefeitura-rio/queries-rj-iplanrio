@@ -2,15 +2,15 @@ version: 2
 
 models:
   - name: raw_arquivo_virtual_natureza_juridica
-    description: "Naturezas jurídicas"
+    description: "Tabela auxiliar (dimensão) com os dados das possíveis naturezas jurídicas dos acervos"
     config:
       alias: natureza_juridica
       
       
     columns:
-      - name: id_NaturezaJuridica
-        description: "Identificador único da natureza jurídica"
-        data_type: integer
+      - name: codigo_natureza_juridica
+        description: "PK desta tabela – Identificador único da natureza jurídica do produtor (Campo auto incremental)"
+        data_type: int64
         # data_tests:
         #   - unique:
         #       name: raw_arquivo_virtual_natureza_juridica__id_NaturezaJuridica__unique
@@ -18,7 +18,7 @@ models:
           # - not_null:
           #     name: raw_arquivo_virtual_natureza_juridica__id_NaturezaJuridica__not_null
           #     severity: error
-      - name: ds_natureza
-        description: "Descrição da natureza"
+      - name: natureza_juridica
+        description: "Descrição da natureza jurídica (ex: empresa privada, pessoa física, mixta etc..)"
         data_type: string
         quote: true
