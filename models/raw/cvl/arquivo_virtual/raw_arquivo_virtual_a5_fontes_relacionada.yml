@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a5_fontes_relacionada
     description: "Tabela referente aos dados de fontes relacionadas dos arquivos "
     config:
-      alias: a5_fontes_relacionada
+      alias: fontes_relacionadas
       
     columns:
       - name: existencia_local_originais

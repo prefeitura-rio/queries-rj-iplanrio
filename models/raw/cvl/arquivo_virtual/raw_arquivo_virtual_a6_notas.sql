@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a6_notas_conservacao'
+        alias='notas_conservacao'
     )
 }}
 

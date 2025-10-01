@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a7_controle
     description: "Controle dos conjuntos arquivísticos"
     config:
-      alias: a7_controle_responsabilidade
+      alias: controle_responsabilidade
       
       
     columns:

@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a1_identificacao'
+        alias='identificacao'
     )
 }}
 

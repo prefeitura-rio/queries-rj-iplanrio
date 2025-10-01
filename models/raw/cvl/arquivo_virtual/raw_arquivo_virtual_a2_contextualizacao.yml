@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a2_contextualizacao
     description: "Tabela refente aos dados de contextualização dos arquivos "
     config:
-      alias: a2_contextualizacao
+      alias: contextualizacao
       
     columns:
       - name: historia_administrativa

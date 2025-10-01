@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a5_fontes_relacionada'        
+        alias='fontes_relacionadas'        
     )
 }}
 

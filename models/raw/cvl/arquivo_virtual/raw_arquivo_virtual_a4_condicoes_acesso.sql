@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a4_condicoes_acesso'
+        alias='condicoes_acesso'
     )
 }}
 

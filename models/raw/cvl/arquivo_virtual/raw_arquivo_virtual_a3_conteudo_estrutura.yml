@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a3_conteudo_estrutura
     description: "Conteúdo e estrutura dos conjuntos arquivísticos"
     config:
-      alias: a3_conteudo_estrutura
+      alias: conteudo_estrutura
       
     columns:
       - name: incorporacoes

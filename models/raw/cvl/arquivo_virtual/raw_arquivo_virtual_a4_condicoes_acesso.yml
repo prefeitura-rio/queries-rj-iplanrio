@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a4_condicoes_acesso
     description: "Tabela refente aos dados de condições e acessos dos arquivos "
     config:
-      alias: a4_condicoes_acesso
+      alias: condicoes_acesso
       
     columns:
       - name: condicoes_reproducao

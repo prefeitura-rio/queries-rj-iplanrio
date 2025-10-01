@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a3_conteudo_estrutura'
+        alias='conteudo_estrutura'
     )
 }}
 

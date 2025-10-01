@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a1_identificacao
     description: "Tabela refente aos dados de identificação dos arquivos "
     config:
-      alias: a1_identificacao
+      alias: identificacao
     columns:
       - name: codigo_referencia
         description: "Código único de referência do arquivo "

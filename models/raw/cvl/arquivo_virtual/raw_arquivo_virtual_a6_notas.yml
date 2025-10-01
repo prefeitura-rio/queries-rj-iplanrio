@@ -4,7 +4,7 @@ models:
   - name: raw_arquivo_virtual_a6_notas
     description: "Tabela referente aos dados de anotações de conservação e estado dos arquivos "
     config:
-      alias: a6_notas_conservacao
+      alias: notas_conservacao
     columns:
       - name: nota_conservacao
         description: "Anotações sobre o estado físico e condições de conservação dos arquivos"

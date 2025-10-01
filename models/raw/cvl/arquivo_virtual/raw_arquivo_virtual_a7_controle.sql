@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a7_controle_responsabilidade'
+        alias='controle_responsabilidade'
     )
 }}
 

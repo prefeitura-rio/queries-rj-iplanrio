@@ -1,6 +1,6 @@
 {{
     config(
-        alias='a2_contextualizacao'
+        alias='contextualizacao'
     )
 }}
 
