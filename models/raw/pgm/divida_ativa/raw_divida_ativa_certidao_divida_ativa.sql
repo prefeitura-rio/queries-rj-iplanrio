@@ -23,7 +23,7 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.codFaseCobranca as int64) as codigo_fase_cobranca,
   case safe_cast(a.codFaseCobranca as int64)
     when 1 then 'Amigável'
-    when 2 then 'Judivcial'
+    when 2 then 'Judicial'
     when 3 then 'Amigável Protestado'
     when 4 then 'Judicial Protestado'
     else 'Não classificado'
