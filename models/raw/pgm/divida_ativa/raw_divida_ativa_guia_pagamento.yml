@@ -14,254 +14,211 @@ models:
           - unique:
               name: raw_divida_ativa_guia_pagamento__id_guia_pagamento__unique
               severity: error
+
       - name: sequencial_guia
         description: "Número sequencial da guia."
         data_type: int64
+
       - name: data_criacao_guia
         description: "Data de criação da guia."
         data_type: datetime
-      - name: tipo_guia
-        description: "Estrutura com os dados do tipo da guia."
-        data_type: struct
-        columns:
-          - name: tipo_guia.id_tipo_guia
-            description: "Identificador do tipo da guia."
-            data_type: int64
-          - name: tipo_guia.nome_tipo_guia
-            description: "Nome do tipo da guia."
-            data_type: string
-      - name: receita
-        description: "Estrutura com os dados do tipo da receita associada à guia."
-        data_type: struct
-        columns:
-          - name: codigo_receita
-            description: "Código da receita."
-            data_type: string
-          - name: nome_receita
-            description: "Nome da receita."
-            data_type: string
+
+      - name: id_tipo_guia
+        description: "Identificador do tipo da guia."
+        data_type: int64
+
+      - name: nome_tipo_guia
+        description: "Nome do tipo da guia."
+        data_type: string
+
+      - name: codigo_receita
+        description: "Código da receita associada à guia."
+        data_type: string
+
+      - name: nome_receita
+        description: "Nome da receita associada à guia."
+        data_type: string
+
       - name: numero_processo_associado
         description: "Número do processo administrativo associado à guia."
         data_type: string
+
       - name: quantidade_parcelas_pagas
-        description: "Quantidade de parcelas pagas. Essa informação serve de atalho e é atualiza através de trigers no banco de dados de origem. Deve ser validada com base nas parcelas/cotas de pagamento assosiadas."
+        description: "Quantidade de parcelas pagas."
         data_type: int64
+
       - name: data_ultimo_pagamento
-        description: "Data do último pagamento realizado. Essa informação serve de atalho e é atualiza através de trigers no banco de dados de origem. Deve ser validada com base nas parcelas/cotas de pagamento assosiadas."
+        description: "Data do último pagamento realizado."
         data_type: date
+
       - name: valor_total_divida
-        description: "Valor total da dívida. Essa informação serve de atalho e é atualiza através de trigers no banco de dados de origem. Deve ser validada com base nas parcelas/cotas de pagamento assosiadas."
+        description: "Valor total da dívida."
         data_type: numeric
+
       - name: valor_total_pago
-        description: "Valor total pago. Essa informação serve de atalho e é atualiza através de trigers no banco de dados de origem. Deve ser validada com base nas parcelas/cotas de pagamento assosiadas."
+        description: "Valor total pago."
         data_type: numeric
+
       - name: quantidade_cdas_associadas
-        description: "Quantidade de CDAs associadas à guia. Essa informação serve de atalho e é atualiza através de trigers no banco de dados de origem. Deve ser validada com base na tabela GuiaPagamento_CDA."
+        description: "Quantidade de CDAs associadas à guia."
         data_type: int64
-      - name: requerente
-        description: "Estrutura com os dados do requerente da guia. Requerente não é o devedor, mas sim quem está solicitando o parcelamento."
-        data_type: struct
-        columns:
-          - name: nome_requerente
-            description: "Nome do requerente."
-            data_type: string
-          - name: documento_requerente
-            description: "Estrutura com os dados do documento do requerente."
-            data_type: struct
-            columns:
-              - name: numero_documento
-                description: "Número do documento do requerente."
-                data_type: string
-              - name: tipo_documento_requerente
-                description: "Tipo do documento do requerente."
-                data_type: int64
-              - name: nome_tipo_documento_requerente
-                description: "Nome do tipo do documento do requerente."
-                data_type: string
-          - name: telefone_requerente
-            description: "Telefone do requerente."
-            data_type: string
-          - name: email_requetente
-            description: "E-mail do requerente."
-            data_type: string
-      - name: envio_correspondencia
-        description: "Estrutura com os dados de envio de correspondência."
-        data_type: struct
-        columns:
-          - name: email_envio
-            description: "E-mail para envio da correspondência."
-            data_type: string
-          - name: endereco_envio
-            description: "Endereço para envio da correspondência."
-            data_type: string
-          - name: numero_porta_envio
-            description: "Número da porta do endereço de envio."
-            data_type: string
-          - name: complemento_endereco_envio
-            description: "Complemento do endereço de envio."
-            data_type: string
-          - name: bairro_envio
-            description: "Bairro do endereço de envio."
-            data_type: string
-          - name: cep_envio
-            description: "CEP do endereço de envio."
-            data_type: string
-          - name: municipio_envio
-            description: "Município do endereço de envio."
-            data_type: string
-          - name: uf_envio
-            description: "UF do endereço de envio."
-            data_type: string
-      - name: situacao_guia
-        description: "Estrutura com os dados da situação da guia de pagamento."
-        data_type: struct
-        columns:
-          - name: id_situacao_guia_pagamento
-            description: "Identificador da situação da guia de pagamento."
-            data_type: int64
-          - name: nome_situacao_guia_pagamento
-            description: "Nome da situação da guia de pagamento."
-            data_type: string
-      - name: tipo_pagamento
-        description: "Estrutura com os dados do tipo de pagamento da guia."
-        data_type: struct
-        columns:
-          - name: id_tipo_pagamento_guia
-            description: "Identificador do tipo de pagamento da guia."
-            data_type: int64
-          - name: texto_amigavel
-            description: "Texto amigável para o tipo de pagamento."
-            data_type: string
-          - name: texto_judicial
-            description: "Texto judicial para o tipo de pagamento."
-            data_type: string
-          - name: texto_amigavel_todas_parcelas
-            description: "Texto amigável para todas as parcelas."
-            data_type: string
-          - name: texto_judicial_todas_parcelas
-            description: "Texto judicial para todas as parcelas."
-            data_type: string
-          - name: texto_amigavel_primeiras_guias
-            description: "Texto amigável para as primeiras guias."
-            data_type: string
-          - name: texto_judicial_primeiras_guias
-            description: "Texto judicial para as primeiras guias."
-            data_type: string
-      - name: devedor_indicado
-        description: "Estrutura com os dados do devedor indicado na guia."
-        data_type: struct
-        columns:
-          - name: id_pessoa
-            description: "Identificador da pessoa devedora."
-            data_type: int64
-          - name: cpf_cnpj
-            description: "CPF ou CNPJ do devedor."
-            data_type: string
-          - name: nome
-            description: "Nome do devedor."
-            data_type: string
-          - name: tipo_pessoa
-            description: "Tipo da pessoa: 1 para Pessoa Física, 2 para Pessoa Jurídica."
-            data_type: int64
-          - name: descricao_tipo_pessoa
-            description: "Descrição do tipo da pessoa (Pessoa Física, Pessoa Jurídica, Não Informado, Não classificado)."
-            data_type: string
+
+      - name: nome_requerente
+        description: "Nome do requerente da guia."
+        data_type: string
+
+      - name: numero_documento
+        description: "Número do documento do requerente."
+        data_type: string
+
+      - name: tipo_documento_requerente
+        description: "Tipo do documento do requerente."
+        data_type: int64
+
+      - name: nome_tipo_documento_requerente
+        description: "Nome do tipo do documento do requerente."
+        data_type: string
+
+      - name: telefone_requerente
+        description: "Telefone do requerente."
+        data_type: string
+
+      - name: email_requetente
+        description: "E-mail do requerente."
+        data_type: string
+
+      - name: email_envio_correspondencia
+        description: "E-mail para envio da correspondência."
+        data_type: string
+
+      - name: endereco_envio_correspondencia
+        description: "Endereço para envio da correspondência."
+        data_type: string
+
+      - name: numero_porta_envio_correspondencia
+        description: "Número da porta do endereço de envio."
+        data_type: string
+
+      - name: complemento_endereco_envio_correspondencia
+        description: "Complemento do endereço de envio."
+        data_type: string
+
+      - name: bairro_envio_correspondencia
+        description: "Bairro do endereço de envio."
+        data_type: string
+
+      - name: cep_envio_correspondencia
+        description: "CEP do endereço de envio."
+        data_type: string
+
+      - name: municipio_envio_correspondencia
+        description: "Município do endereço de envio."
+        data_type: string
+
+      - name: uf_envio_correspondencia
+        description: "UF do endereço de envio."
+        data_type: string
+
+      - name: id_situacao_guia_pagamento
+        description: "Identificador da situação da guia de pagamento."
+        data_type: int64
+
+      - name: nome_situacao_guia_pagamento
+        description: "Nome da situação da guia de pagamento."
+        data_type: string
+
+      - name: id_tipo_pagamento_guia
+        description: "Identificador do tipo de pagamento da guia."
+        data_type: int64
+
+      - name: texto_amigavel
+        description: "Texto amigável para o tipo de pagamento."
+        data_type: string
+
+      - name: texto_judicial
+        description: "Texto judicial para o tipo de pagamento."
+        data_type: string
+
+      - name: texto_amigavel_todas_parcelas
+        description: "Texto amigável para todas as parcelas."
+        data_type: string
+
+      - name: texto_judicial_todas_parcelas
+        description: "Texto judicial para todas as parcelas."
+        data_type: string
+
+      - name: texto_amigavel_primeiras_guias
+        description: "Texto amigável para as primeiras guias."
+        data_type: string
+
+      - name: texto_judicial_primeiras_guias
+        description: "Texto judicial para as primeiras guias."
+        data_type: string
+
+      - name: id_pessoa
+        description: "Identificador da pessoa devedora."
+        data_type: int64
+
+      - name: cpf_cnpj
+        description: "CPF ou CNPJ do devedor."
+        data_type: string
+
+      - name: nome
+        description: "Nome do devedor."
+        data_type: string
+
+      - name: tipo_pessoa
+        description: "Tipo da pessoa: 1 para Pessoa Física, 2 para Pessoa Jurídica."
+        data_type: int64
+
+      - name: descricao_tipo_pessoa
+        description: "Descrição do tipo da pessoa (Pessoa Física, Pessoa Jurídica, Não Informado, Não classificado)."
+        data_type: string
+
       - name: valor_principal
         description: "Valor principal da guia."
         data_type: numeric
+
       - name: valor_honorarios
         description: "Valor dos honorários da guia."
         data_type: numeric
+
       - name: valor_grerj
         description: "Valor GRERJ da guia."
         data_type: numeric
+
       - name: valor_principal_pago
-        description: "Valor pago referente ao principal."
+        description: "Valor principal pago."
         data_type: numeric
+
       - name: valor_honorarios_pago
         description: "Valor dos honorários pagos."
         data_type: numeric
+
       - name: valor_grerj_pago
         description: "Valor GRERJ pago."
         data_type: numeric
+
       - name: quantidade_parcelas_honorarios
-        description: "Quantidade de parcelas referente aos débitos de honorários."
+        description: "Quantidade de parcelas de honorários."
         data_type: int64
+
       - name: quantidade_parcelas_honorarios_pagas
         description: "Quantidade de parcelas de honorários pagas."
         data_type: int64
+
       - name: quantidade_parcelas_grerj
-        description: "Quantidade de parcelas de GRERJ."
+        description: "Quantidade de parcelas GRERJ."
         data_type: int64
+
       - name: quantidade_parcelas_grerj_pagas
-        description: "Quantidade de parcelas de GRERJ pagas."
+        description: "Quantidade de parcelas GRERJ pagas."
         data_type: int64
-      - name: cdas_associadas
-        description: "Lista com os dados das CDAs associadas à guia de pagamento."
-        data_type: record[]
-        columns:
-          - name: id_certidao_divida_ativa
-            description: "Identificador da certidão de dívida ativa associada à guia de pagamento."
-            data_type: int64
-          - name: situacao_associacao
-            description: "Situação da associação entre a CDA e a guia de pagamento (ativa ou inativa)."
-            data_type: boolean
-          - name: descricao_situacao_associacao
-            description: "Descrição da situação da associação (Associação ativa ou Associação inativa)."
-            data_type: string
-          - name: data_retirada_associacao
-            description: "Data de retirada da associação entre a CDA e a guia de pagamento."
-            data_type: date
-          - name: valor_desconto_cda
-            description: "Valor do desconto aplicado à CDA."
-            data_type: numeric
-          - name: ano_referencia_ipcae
-            description: "Ano de referência do IPCA-E utilizado."
-            data_type: int64
-          - name: valor_cda_na_guia
-            description: "Valor da certidão de dívida ativa associada."
-            data_type: numeric
-          - name: percentual_desconto
-            description: "Percentual de desconto aplicado."
-            data_type: numeric
-          - name: valor_desconto_sobre_principal
-            description: "Valor do desconto aplicado sobre o principal."
-            data_type: numeric
-      # - name: honorarios_associados
-      #   description: "Lista com os dados dos honorários associados à guia de pagamento."
-      #   data_type: record[]
-      #   columns:
-      #     - name: id_certidao_divida_ativa
-          #   description: "Identificador da certidão de dívida ativa (CDA) associada."
-          #   data_type: int64
-          # - name: id_guia_pagamento
-          #   description: "Identificador da guia de pagamento associada."
-          #   data_type: int64
-          # - name: situacao_associacao
-          #   description: "Situação da associação entre os honorários e a guia de pagamento (ativa ou inativa)."
-          #   data_type: boolean
-          # - name: descricao_situacao_associacao
-          #   description: "Descrição da situação da associação (Associação ativa ou Associação inativa)."
-          #   data_type: string
-          # - name: data_retirada_associacao
-          #   description: "Data de retirada da associação entre os honorários e a guia de pagamento."
-          #   data_type: date
-          # - name: valor_desconto_honorario
-          #   description: "Valor do desconto aplicado aos honorários."
-          #   data_type: numeric
-          # - name: ano_referencia_ipcae
-          #   description: "Ano de referência do IPCA-E utilizado."
-          #   data_type: int64
-          # - name: valor_honorario_na_guia
-          #   description: "Valor dos honorários associados à guia de pagamento."
-          #   data_type: numeric
-          # - name: percentual_desconto
-          #   description: "Percentual de desconto aplicado."
-          #   data_type: numeric
+
       - name: loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
         data_type: timestamp
+
       - name: transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
         data_type: timestamp
-      

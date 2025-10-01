@@ -16,10 +16,8 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.valCMJ as numeric) as valor_correcao_monetaria_sobre_acrescimos,
   safe_cast(a.ValPago as numeric) as valor_pago, 
   safe_cast(a.percentualHonorarios as numeric) as percentual_honorarios,
-  struct(
-    safe_cast(a.numSituacao as int64) as id_situacao_honorario,
-    safe_cast(ifnull(nome_situacao_honorario, "Não classificado") as string) as nome_situacao_honorario
-  ) as situacao_honorario,
+  safe_cast(a.numSituacao as int64) as id_situacao_honorario,
+  safe_cast(ifnull(nome_situacao_honorario, "Não classificado") as string) as nome_situacao_honorario
   a._airbyte_extracted_at as loaded_at,
   current_timestamp() as transformed_at  
 from {{ source('brutos_divida_ativa_staging', 'Honorarios') }} a

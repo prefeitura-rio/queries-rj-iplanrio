@@ -18,8 +18,14 @@ models:
           - not_null:
               name: raw_divida_ativa_cota_pagamento__id_cota_guia_pagamento__not_null
               severity: error
+      - name: cota_paga
+        description: "Indica se a cota foi paga (true/false)."
+        data_type: boolean
       - name: cota_substituida
-        description: "Indica se a cota foi substituída por outra (true/false). No caso de sustituição, a cota original deve ser desconsiderada para efeito de cálculos."
+        description: "Indica se a cota foi substituída por outra (true/false)."
+        data_type: boolean
+      - name: substituta_de_outra
+        description: "Indica se esta cota é substituta de outra (true/false)."
         data_type: boolean
       - name: valor_cota_guia_pagamento
         description: "Valor total da cota da guia de pagamento."
@@ -27,12 +33,6 @@ models:
       - name: data_vencimento
         description: "Data de vencimento da cota."
         data_type: date
-      - name: situacao_pagamento_cota
-        description: "Código da situação do pagamento da cota."
-        data_type: int64
-      - name: descricao_situacao_pagamento_cota
-        description: "Descrição da situação do pagamento da cota (Em aberto, Paga, etc)."
-        data_type: string
       - name: valor_principal
         description: "Valor principal da cota."
         data_type: numeric
@@ -54,33 +54,6 @@ models:
       - name: observacoes
         description: "Observações sobre a cota."
         data_type: string
-      - name: data_emissao
-        description: "Data de emissão da cota."
-        data_type: date
-      - name: data_pagamento
-        description: "Data do pagamento da cota."
-        data_type: date
-      - name: valor_principal_pago
-        description: "Valor principal pago."
-        data_type: numeric
-      - name: valor_juros_pago
-        description: "Valor dos juros pagos."
-        data_type: numeric
-      - name: valor_honorarios_pago
-        description: "Valor dos honorários pagos."
-        data_type: numeric
-      - name: valor_grerj_pago
-        description: "Valor GRERJ pago."
-        data_type: numeric
-      - name: valor_juros_honorarios_pago
-        description: "Valor dos juros sobre honorários pagos."
-        data_type: numeric
-      - name: ano_ipcae
-        description: "Ano de referência do IPCA-E utilizado."
-        data_type: int64
-      - name: loaded_at
-        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
-        data_type: timestamp
       - name: transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
         data_type: timestamp

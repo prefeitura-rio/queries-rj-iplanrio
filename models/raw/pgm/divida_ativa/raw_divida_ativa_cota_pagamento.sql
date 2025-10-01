@@ -8,20 +8,43 @@
     )
 }}
 
+with 
+  cotas_substituidas as (
+    select 
+      numGuiaPagamentoAssoc,
+      numCotaPagamentoAssoc,
+      count(1) as vezes_substituida
+    from {{ ref('raw_divida_ativa_cota_pagamento_associado') }}
+    group by numGuiaPagamentoAssoc, numCotaPagamentoAssoc
+    having count(1) > 0
+    ),
+
+  cotas_substitutas as (
+    select 
+      numGuiaPagamento,
+      numCotaPagamento,
+      count(1) as vezes_que_substitui_outra
+    from {{ ref('raw_divida_ativa_cota_pagamento_associado') }}
+    group by numGuiaPagamento, numCotaPagamento
+    having count(1) > 0
+    )
+
 select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.numCotaPagamento as int64) as id_cota_guia_pagamento,
-  case 
-    when b.numCotaPagamentoAssoc is not null then true
+  case safe_cast(a.dtPagamento as date)
+    when null then false
+    else true
+  end as cota_paga,
+  case safe_cast(b.vezes_substituida as int64)
+    when not null then true
     else false
   end as cota_substituida,
+  case safe_cast(c.vezes_que_substitui_outra as int64)
+    when not null then true
+    else false
+  end as substituta_de_outra,
   safe_cast(a.valCotaPagamento as numeric) as valor_cota_guia_pagamento,
   safe_cast(a.dtVencimento as date) as data_vencimento,
-  safe_cast(a.stsCotaPagamento as int64) as situacao_pagamento_cota,
-  case safe_cast(stsCotaPagamento as int64)
-    when 1 then 'Em aberto'
-    when 4 then 'Paga'
-    else 'Situação não mapeada'
-  end as descricao_situacao_pagamento_cota,
   safe_cast(a.valPrincipal as numeric) as valor_principal,
   safe_cast(ValHonorarios as numeric) as valor_honorarios,
   safe_cast(a.ValJuros as numeric) as valor_juros,
@@ -40,5 +63,5 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   a._airbyte_extracted_at as loaded_at,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging', 'CotaPagamento') }} a
-left join {{ source('brutos_divida_ativa_staging', 'Cotas_Associadas') }} b 
-  on b.numGuiaPagamentoAssoc = a.numGuiaPagamento and b.numCotaPagamentoAssoc = a.numCotaPagamento
+left join cotas_substituidas b on b.numGuiaPagamentoAssoc = a.numGuiaPagamento and b.numCotaPagamentoAssoc = a.numCotaPagamento
+left join cotas_substitutas c on c.numGuiaPagamento = a.numGuiaPagamento and c.numCotaPagamento = a.numCotaPagamento
