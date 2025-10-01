@@ -1,0 +1,272 @@
+version: 2
+
+models:
+  - name: mart_api_bcadastro__cpf
+    description: "Modelo mart para dados de CPF da API do BCadastro, contendo informações pessoais, contato, endereço e metadados"
+    config:
+      alias: cpf
+      contract:
+        enforced: true
+    columns:
+      # Chave primária
+      - name: cpf
+        description: "Número do CPF do cidadão"
+        data_type: string
+        quote: true
+
+      # Atributos principais da entidade
+      - name: nome
+        description: "Nome completo do cidadão"
+        data_type: string
+        quote: true
+
+      - name: nome_social
+        description: "Nome social do cidadão"
+        data_type: string
+        quote: true
+
+      - name: mae_nome
+        description: "Nome da mãe do cidadão"
+        data_type: string
+        quote: true
+
+      - name: nascimento_data
+        description: "Data de nascimento do cidadão"
+        data_type: date
+
+      - name: inscricao_data
+        description: "Data de inscrição no CPF"
+        data_type: date
+
+      - name: atualizacao_data
+        description: "Data da última atualização do cadastro"
+        data_type: date
+
+      - name: situacao_cadastral_tipo
+        description: "Tipo de situação cadastral do CPF"
+        data_type: string
+        quote: true
+
+      - name: sexo
+        description: "Sexo do cidadão"
+        data_type: string
+        quote: true
+
+      - name: obito_ano
+        description: "Ano do óbito do cidadão"
+        data_type: string
+
+      - name: estrangeiro_indicador
+        description: "Indicador se o cidadão é estrangeiro"
+        data_type: boolean
+
+      - name: residente_exterior_indicador
+        description: "Indicador se o cidadão reside no exterior"
+        data_type: boolean
+
+      # Estrutura de contato
+      - name: contato
+        description: "Informações de contato do cidadão"
+        data_type: struct
+        quote: true
+
+      - name: contato.telefone
+        description: "Informações do telefone do cidadão"
+        data_type: struct
+        quote: true
+
+      - name: contato.telefone.ddi
+        description: "Código DDI do telefone"
+        data_type: string
+        quote: true
+
+      - name: contato.telefone.ddd
+        description: "Código DDD do telefone"
+        data_type: string
+        quote: true
+
+      - name: contato.telefone.numero
+        description: "Número do telefone"
+        data_type: string
+        quote: true
+
+      - name: contato.email
+        description: "Endereço de email do cidadão"
+        data_type: string
+        quote: true
+
+      # Estrutura de endereço
+      - name: endereco
+        description: "Informações de endereço do cidadão"
+        data_type: struct
+        quote: true
+
+      - name: endereco.cep
+        description: "CEP do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.uf
+        description: "Unidade Federativa do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.municipio
+        description: "Município do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.bairro
+        description: "Bairro do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.tipo_logradouro
+        description: "Tipo do logradouro"
+        data_type: string
+        quote: true
+
+      - name: endereco.logradouro
+        description: "Nome do logradouro"
+        data_type: string
+        quote: true
+
+      - name: endereco.numero
+        description: "Número do endereço"
+        data_type: string
+        quote: true
+
+      - name: endereco.complemento
+        description: "Complemento do endereço"
+        data_type: string
+        quote: true
+
+      # Estrutura de local de nascimento
+      - name: nascimento_local
+        description: "Informações do local de nascimento"
+        data_type: struct
+        quote: true
+
+      - name: nascimento_local.id_pais
+        description: "ID do país de nascimento"
+        data_type: string
+        quote: true
+
+      - name: nascimento_local.pais
+        description: "Nome do país de nascimento"
+        data_type: string
+        quote: true
+
+      - name: nascimento_local.uf
+        description: "UF de nascimento"
+        data_type: string
+        quote: true
+
+      - name: nascimento_local.id_municipio
+        description: "ID do município de nascimento"
+        data_type: string
+        quote: true
+
+      - name: nascimento_local.municipio
+        description: "Nome do município de nascimento"
+        data_type: string
+        quote: true
+
+      # Estrutura de ocupação
+      - name: ocupacao
+        description: "Informações de ocupação do cidadão"
+        data_type: struct
+        quote: true
+
+      - name: ocupacao.id
+        description: "ID da ocupação"
+        data_type: string
+        quote: true
+
+      - name: ocupacao.nome
+        description: "Nome da ocupação"
+        data_type: string
+        quote: true
+
+      - name: ocupacao.id_natureza
+        description: "ID da natureza da ocupação"
+        data_type: string
+        quote: true
+
+      - name: ocupacao.id_ua
+        description: "ID da unidade administrativa da ocupação"
+        data_type: string
+        quote: true
+
+      # Estrutura de metadados
+      - name: metadados
+        description: "Metadados do registro"
+        data_type: struct
+        quote: true
+
+      - name: metadados.ano_exercicio
+        description: "Ano de exercício dos dados"
+        data_type: integer
+
+      - name: metadados.version
+        description: "Versão dos dados"
+        data_type: string
+        quote: true
+
+      - name: metadados.tipo
+        description: "Tipo do registro"
+        data_type: string
+        quote: true
+
+      - name: metadados.timestamp
+        description: "Timestamp dos metadados"
+        data_type: string
+
+      # Estrutura do Airbyte
+      - name: airbyte
+        description: "Metadados de sincronização do Airbyte"
+        data_type: struct
+        quote: true
+
+      - name: airbyte.seq
+        description: "Sequência do Airbyte"
+        data_type: string
+
+      - name: airbyte.last_seq
+        description: "Última sequência do Airbyte"
+        data_type: string
+
+      - name: airbyte.airbyte_raw_id
+        description: "ID raw do Airbyte"
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_extracted_at
+        description: "Data de extração do Airbyte"
+        data_type: timestamp
+
+      - name: airbyte.airbyte_meta
+        description: "Metadados do Airbyte"
+        data_type: struct
+        quote: true
+
+      - name: airbyte.airbyte_meta.changes
+        description: "Mudanças registradas pelo Airbyte"
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_meta.sync_id
+        description: "ID de sincronização do Airbyte"
+        data_type: string
+        quote: true
+
+      - name: airbyte.airbyte_generation_id
+        description: "ID de geração do Airbyte"
+        data_type: integer
+        quote: true
+
+      # Coluna de particionamento
+      - name: cpf_particao
+        description: "Coluna de particionamento baseada no CPF"
+        data_type: integer
+        quote: true
