@@ -120,9 +120,9 @@ models:
         cadunico:
           +materialized: table
           +schema: brutos_data_metrica
-      gabinete:
-        +tags: "gabinete"
-        +project: rj-gabinete
+      cvl:
+        +tags: "cvl"
+        +project: rj-cvl
         adm_contrato_gestao:
           +materialized: table
           +schema: adm_contrato_gestao
