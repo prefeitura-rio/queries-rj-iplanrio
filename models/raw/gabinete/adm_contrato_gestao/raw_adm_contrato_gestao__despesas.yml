@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__despesas
+    description: "Tabela que armazena os dados das despesas das unidade. Tabela preenchida pelo usuário, na operação do sistema.	"
+    columns:
+      - name: id_documento
+        description: ID da Despesa. Auto incremental do próprio banco de dados
+      - name: cod_organizacao
+        description: ID da instituição à qual está associada a despesa. (FK) Contidos na tabela - depende da versão
+      - name: cod_unidade
+        description: ID da unidade à qual está associada à despesa. (FK) Contidos na tabela - depende da versão
+      - name: data_envio
+        description: Data em que a informação foi gravada no sistema. Não existem restrições. Informação incluída automaticamente pela aplicação.
+      - name: id_tipo_documento
+        description: ID do tipo de documento que comprova a despesa. (FK) Contidos na tabela osinfo.tipo_documento
+      - name: codigo_fiscal
+        description: Código fiscal que classifica a despesa. Não existem restrições.
+      - name: cnpj
+        description: Identificação da pessoa jurídica beneficiária do recurso de acordo com o referido no documento. CNPJ formatado (nn.nnn.nnn/nnnn-nn). Formatação e validação feitas na interface.
+      - name: razao
+        description: Razão social da da pessoa jurídica beneficiária do recurso de acordo com o referido no documento. Não existem restrições.
+      - name: cpf
+        description: CPF do beneficiário final do recurso, formatado (nnn.nnn.nnn-nn) Formatação e validação feitas na interface.
+      - name: nome
+        description: Nome do beneficiário final do recurso. Não existem restrições.
+      - name: num_documento
+        description: Número do documento comprobatório da despesa. Não existem restrições.
+      - name: serie
+        description: Série do documento comprobatório da despesa. Não existem restrições.
+      - name: descricao
+        description: Nome do arquivo carregado na base de dados de documentos (MongoDB), que contém a digitalização do documento comprovante da despesa. Não existem restrições.
+      - name: data_emissao
+        description: Data em que o documento foi emitido. Não existem restrições.
+      - name: data_vencimento
+        description: Data em que o documento vence. Não existem restrições.
+      - name: data_pagamento
+        description: Data em que o documento foi pago. Não existem restrições.
+      - name: data_apuracao
+        description: Data da apuração ou competência (contabilidade) do documento. Não existem restrições.
+      - name: valor_documento
+        description: Valor facial do documento. Valor facial do documento é o valor a ser pago para quitar o que é devido pelo serviço ou produto, incluindo os impostos agregados. Não estão incluídos neste valor encargos e multas decorrentes de atrasos no pagamento ou por qualquer outro motivo. Não existem restrições.
+      - name: valor_pago
+        description: Valor efetivamente pago. Não existem restrições.
+      - name: id_despesa
+        description: ID do item de despesa. (FK) Contidos na tabela - depende da versão
+      - name: id_rubrica
+        description: ID da rubrica. (FK) Contidos na tabela - depende da versão
+      - name: ID_CONTRATO
+        description: ID do contrato. (FK) Contidos na tabela - depende da versão
+      - name: id_conta_bancaria
+        description: ID da conta bancária. (FK) Contidos na tabela - depende da versão
+      - name: referencia_mes
+        description: Mês no qual a despesa foi paga. De 1 a 12.
+      - name: referencia_ano
+        description: Ano no qual a despesa foi paga. Não existem restrições.
+      - name: cod_bancario
+        description: Código bancário que referencia o pagamento. Não existem restrições.
+      - name: flg_justificativa
+        description: Se existe justificativa no documento comprobatório para a realização da despesa. S - existe, N - não existe
+      - name: parcela_mes
+        description: Número ordinal da parcela paga no mês. Menor do que o campo pmt_total.
+      - name: parcelamento_total
+        description: Número total de parcelas a serem pagas. Não existem restrições.
+      - name: id_imagem
+        description: Se o documento associado à despesas existe no banco de dados de imagem (MongoDB. 1 - existe, 0 - não existe. Informação incluída automaticamente pela aplicação.
+      - name: nf_validada_sigma
+        description: Informe se a Nota fiscal está validada no SIGMA. Pode contar os valores vazio, Sim, Não e Revalidado.
+      - name: data_validacao
+        description: Data da validação (este campo está sem conteúdo e com tipo Date)

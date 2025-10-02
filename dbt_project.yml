@@ -117,9 +117,9 @@ models:
           +materialized: table
           +project: rj-smas
           +schema: brutos_data_metrica
-      cvl:
-        +tags: "cvl"
-        +project: rj-cvl
+      gabinete:
+        +tags: "gabinete"
+        +project: rj-gabinete
         adm_contrato_gestao:
           +materialized: table
           +schema: adm_contrato_gestao
