@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: brutos_consulta_previa_eventos_staging
+    database: rj-iplanrio
+    schema: brutos_consulta_previa_eventos_staging
+    tables:
+      - name: vw_Consulta_Previa_Eventos
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
