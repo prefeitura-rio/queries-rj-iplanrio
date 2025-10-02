@@ -7,3 +7,8 @@ sources:
     tables:     
       - name: Vw_UA
         description: "Tabela de unidades administrativas"
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
