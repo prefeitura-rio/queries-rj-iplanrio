@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__tipo_documento
+    description: "Tabela que armazena os possíveis tipos de documentos comprobatórios de despesas das prestações de contas.
+Exemplo: Nota Fiscal - NF, DARF - DARF; Imposto de Renda - IRRF;
+Fundo de Garantia - FGTS; GPS - GPS; Folha de Pagamento - FOLHA
+Recibos Para Pessoa Física - RECIBO; Boleto Bancário - BOLETO
+Outros Tipos de Impostos - IMPOSTO
+Tabela preenchida pelo usuário, na operação do sistema."
+    columns:
+      - name: id_tipo_documento
+        description: ID do tipo de documento Auto incremental do próprio banco de dados
+      - name: tipo_documento
+        description: Acrônimo do tipo de documento. Não existem restrições.
+      - name: documento
+        description: Descrição do tipo de documento. Não existem restrições.
