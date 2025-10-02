@@ -124,7 +124,7 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
-      gebinete:
+      gabinete:
         +tags: "gebinete"
         +project: rj-gabinete
         arquivo_virtual:         
