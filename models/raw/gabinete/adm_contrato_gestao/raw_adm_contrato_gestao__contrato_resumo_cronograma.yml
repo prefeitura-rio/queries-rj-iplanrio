@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__contrato_resumo_cronograma
+    description: "Tabela que armazena informações relativas ao resumo do cronograma de desembolso do Contrato de Gestão ou Termo de Colaboração.	"
+    columns:
+      - name: id_contrato_mes
+        description: ID do mês de desembolso do contrato. Auto incremental do próprio banco de dados
+      - name: id_contrato
+        description: ID do contrato associado ao mês de desembolso. Contidos na tabela osinfo.contrato
+      - name: mes
+        description: Mês ordinal do contrato ao qual se refere o desembolso. Não existem restrições
+      - name: valor
+        description: Valor do desembolso. Não existem restrições

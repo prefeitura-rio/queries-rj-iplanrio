@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__estado_entrega
+    description: "Tabela que armazena informações relativas a descrição do resultado final de uma entrega.	"
+    columns:
+      - name: cod_estado
+        description: Código do estado da entrega.
+      - name: estado
+        description: Descrição do estado da entrega.
+      - name: etiqueta
+        description: Texto da etiqueta do estado de entrega.
+      - name: detalhe
+        description: Descrição detalhada do estado da entrega.
