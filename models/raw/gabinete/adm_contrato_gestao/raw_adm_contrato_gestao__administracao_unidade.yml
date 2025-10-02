@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__administracao_unidade
+    description: "Tabela que armazena as possíveis unidades do sistema. Associadas e geridas pela Organização Social, as unidades são as prestadoras finais dos serviços contratados pela Prefeitura do Rio de Janeiro.
+Exemplo:
+Seriam exemplos de unidades:
+Hospital Miguel Couto
+UPA de Copacabana
+Tabela preenchida pelo usuário, na operação do sistema. OBS: Com a implantação da nova arquitetura de contratos, Versão 2.14, está tabela deixa de ser usada, sendo substituída pelas tabelas contrato.tb_unidade e contrato.tb_organizacao.
+Também pode ser entendido como um Centro de Custo, noas casos de contratação de Projetos que não necessariamente são executados em equipamentos da PCRJ."
+    columns:
+      - name: cod_unidade
+        description: Código da unidade. Auto incremental do próprio banco de dados
+      - name: cnes
+        description: Código do Cadastro Nacional de Estabelecimentos de Saúde (CNES). Código existente na lista do CNES.
+      - name: nome_fantasia
+        description: Nome fantasia da unidade. Não existem restrições.
+      - name: sigla_tipo
+        description: Sigla do tipo de unidade. Lista de valores obtida na tabela adm_osinfo.adm_unidade_tipo
+      - name: sigla_perfil
+        description: Sigla do perfil da unidade. Lista de valores obtida na tabela adm_osinfo.adm_unidade_perfil
+      - name: sigla_gestao
+        description: Sigla da gestão da unidade. Lista de valores obtida na tabela adm_osinfo.adm_unidade_gestao
+      - name: sigla_tipo_gestao
+        description: Sigla do tipo de gestão da unidade. Lista de valores obtida na tabela adm_osinfo.adm_unidade_tipo_gestao
+      - name: razao_social
+        description: Razão social da unidade. Não existem restrições.
+      - name: nome_fantasia_original
+        description: Nome fantasia original da unidade. Não existem restrições.
+      - name: unidade_abreviado
+        description: Abreviação da unidade. Não existem restrições.
+      - name: sigla
+        description: Sigla da unidade. Não existem restrições.
+      - name: cnpj
+        description: Número do Cadastro Nacional de Pessoa Jurídica da unidade. Não existem restrições. Validado e formatado na interface.
+      - name: endereco
+        description: Endereço da unidade, sem o número e complemento. Não existem restrições.
+      - name: numero
+        description: Número do endereço da unidade. Não existem restrições.
+      - name: complemento
+        description: Complemento do endereço da unidade. Não existem restrições.
+      - name: bairro
+        description: Bairro do endereço
+      - name: municipio
+        description: Município do endereço
+      - name: cod_municipio
+        description: Código do município responsável pela gestão da unidade, segundo tabela do IBGE. Constantes na lista de municípios do IBGE.
+      - name: uf
+        description: Sigla da unidade federativa do endereço da unidade. Constantes na lista de municípios do IBGE.
+      - name: cep
+        description: Código de endereçamento postal (CEP) do endereço da unidade. Valores constantes da lista de CEPs dos correios. O sistema não valida este campo na interface nem no banco.
+      - name: referencia
+        description: Referência do endereço da unidade. Não existem restrições.
+      - name: telefone_ddd
+        description: DDD do telefone da unidade. Não existem restrições.
+      - name: telefone_1
+        description: Telefone principal da unidade. Não existem restrições.
+      - name: telefone_1_ramal
+        description: Ramal do telefone principal da unidade. Não existem restrições.
+      - name: telefone_2
+        description: Telefone alternativo da unidade, com DDD inclusive. Não existem restrições.
+      - name: telefone_2_ramal
+        description: Ramal do telefone alternativo da unidade. Não existem restrições.
+      - name: fax
+        description: Telefone do FAX da unidade, com DDD inclusive. Não existem restrições.
+      - name: telefone_sms_consulta
+        description: Telefone da unidade, com DDD, para marcação de consultas. Não existem restrições.
+      - name: telefone_sms_exame
+        description: Telefone da unidade, com DDD, para marcação de exames. Não existem restrições.
+      - name: email
+        description: Correio eletrônico da unidade. Não existem restrições. Validado e formatado na interface.
+      - name: data_ultima_atualizacao
+        description: Data da ultima atualização.
+      - name: data_avaliacao
+        description: Data em que a unidade foi alterada pela última vez. Não existem restrições.
