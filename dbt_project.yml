@@ -161,6 +161,13 @@ models:
           +schema: brutos_cadastro_comercio_ambulantes
           +tags: ["daily", "cadastro_comercio_ambulantes"]
 
+      pgm:
+        +tags: "pgm"
+        +project: rj-iplanrio
+        divida_ativa:
+          +materialized: table
+          +schema: brutos_divida_ativa
+          +tags: ["daily", "divida_ativa"]
 
       
       iplanrio:
