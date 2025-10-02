@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__contrato_terceiros
+    description: "Tabela que armazena os dados dos contratos das instituições parceiras com seus prestadores de serviço para fins de cumprimento do objeto da parceria. Tabela preenchida pelo usuário, na operação do sistema.	"
+    columns:
+      - name: id_contrato_terceiro
+        description: ID do contrato de terceiro. Auto incremental do próprio banco de dados.
+      - name: cod_organizacao
+        description: ID da organização associada ao contrato de terceiro. (FK) Contidos na tabela - depende da versão
+      - name: id_instrumento_contratual
+        description: ID do contrato associado ao contrato de terceiro. (FK) Contidos na tabela - depende da versão
+      - name: valor_mes
+        description: Valor mensal do contrato de terceiro. Não existem restrições.
+      - name: contrato_mes_inicio
+        description: Mês em que o contrato de terceiro começa. 1 a 12
+      - name: contrato_ano_inicio
+        description: Ano em que o contrato de terceiro começa. Não existem restrições.
+      - name: contrato_mes_fim
+        description: Mês em que o contrato de terceiro termina. 1 a 12
+      - name: contrato_ano_fim
+        description: Ano em que o contrato de terceiro termina. Não existem restrições.
+      - name: cod_unidade
+        description: Código da unidade associada ao contrato de terceiro. (FK) Contidos na tabela - depende da versão
+      - name: referencia_ano_ass_contrato
+        description: Ano de referência do lançamento da informação no Painel. Não existem restrições.
+      - name: vigencia
+        description: Vigência, em meses, do contrato de terceiro. Não existem restrições.
+      - name: cnpj
+        description: CNPJ formatado (nn.nnn.nnn/nnnn-nn). Formatação e validação feitas na interface.
+      - name: razao_social
+        description: Razão social da contratada pela instituição. Não existem restrições.
+      - name: servico
+        description: Serviço a ser prestado pelo terceiro. Não existem restrições.
+      - name: referencia_mes_receita
+        description: Mês de referência do lançamento da informação no Painel. 1 a 12
+      - name: flg_imagem
+        description: Este campo é usado para informar se o arquivo de imagem existe no banco de dados de imagens (MongoDB). 0 - não existe, 1 - existe
+      - name: imagem_contrato
+        description: Nome do arquivo carregado na base de dados de documentos (MongoDB), que contém a digitalização do contrato de terceiro. Não existem restrições.
