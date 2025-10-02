@@ -14,6 +14,7 @@ logs/
 dbt-env/
 venv/
 ENV/
+env/
 
 # IDE and editor specific
 .cursor/**/*.json

@@ -148,11 +148,11 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
-        mais_valia:
-          +project: rj-iplanrio
-          +materialized: table
-          +schema: brutos_mais_valia
-          +tags: ["daily", "mais_valia"]
+      mais_valia:
+        +project: rj-iplanrio
+        +materialized: table
+        +schema: brutos_mais_valia
+        +tags: ["daily", "mais_valia"]
         
       seop:
         cadastro_comercio_ambulantes:
