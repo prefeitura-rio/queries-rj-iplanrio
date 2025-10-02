@@ -146,6 +146,13 @@ models:
         +materialized: table
         +schema: brutos_mais_valia
         +tags: ["daily", "mais_valia"]
+      pgm:
+        +tags: "pgm"
+        +project: rj-iplanrio
+        divida_ativa:
+          +materialized: table
+          +schema: brutos_divida_ativa
+          +tags: ["daily", "divida_ativa"]
 
       
       iplanrio:

@@ -1,0 +1,124 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_certidao_divida_ativa
+    description: "Tabela que contém os registros das Certidões de Dívida Ativa (CDA)."
+    columns:
+      - name: id_certidao_divida_ativa
+        description: "Identificador da certidão de dívida ativa (CDA)."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_certidao_divida_ativa__id_certidao_divida_ativa__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_certidao_divida_ativa__id_certidao_divida_ativa__unique
+              severity: error
+
+      - name: ano_de_inscricao_na_divida
+        description: "Ano de inscrição na dívida ativa."
+        data_type: int64
+
+      - name: sequencial_cda
+        description: "Número sequencial da CDA."
+        data_type: int64
+
+      - name: numero_nota_debito
+        description: "Número da nota de débito."
+        data_type: numeric
+
+      - name: inscricao_imobiliaria_imovel_associado_iptu
+        description: "Número de inscrição imobiliária do imóvel."
+        data_type: int64
+
+      - name: id_situacao_cda
+        description: "Identificador da situação da CDA."
+        data_type: int64
+
+      - name: descricao_situacao_cda
+        description: "Descrição da situação da CDA."
+        data_type: string
+
+      - name: id_natureza_divida
+        description: "Identificador da natureza da dívida ativa."
+        data_type: int64
+
+      - name: nome_natureza_divida
+        description: "Nome da natureza da dívida ativa."
+        data_type: string
+
+      - name: data_geracao_cda
+        description: "Data de geração da CDA."
+        data_type: date
+
+      - name: data_ultima_alteracao_situacao
+        description: "Data da última alteração da situação da CDA."
+        data_type: date
+
+      - name: numero_processo_associado
+        description: "Número do processo administrativo associado à CDA."
+        data_type: string
+
+      - name: codigo_fase_cobranca
+        description: "Código da fase de cobrança."
+        data_type: int64
+
+      - name: nome_fase_cobranca
+        description: "Nome da fase de cobrança."
+        data_type: string
+
+      - name: valor_saldo_devido
+        description: "Valor do saldo devido."
+        data_type: numeric
+
+      - name: valor_multa_moratoria
+        description: "Valor da multa moratória."
+        data_type: numeric
+
+      - name: valor_juros_moratorios
+        description: "Valor dos juros moratórios."
+        data_type: numeric
+
+      - name: valor_mora
+        description: "Valor da mora."
+        data_type: numeric
+
+      - name: valor_juros_mora
+        description: "Valor dos juros de mora."
+        data_type: numeric
+
+      - name: valor_pago_principal
+        description: "Valor pago do principal."
+        data_type: numeric
+
+      - name: valor_honorarios
+        description: "Valor dos honorários."
+        data_type: numeric
+
+      - name: valor_mora_smf_iptu
+        description: "Valor da mora de origem na SMF caso a CDA seja IPTU."
+        data_type: numeric
+
+      - name: valor_original_divida_ativa
+        description: "Valor original da dívida ativa."
+        data_type: numeric
+
+      - name: codigo_receita_cda
+        description: "Código da receita da CDA."
+        data_type: string
+
+      - name: id_entidade_credora
+        description: "Identificador da entidade credora."
+        data_type: int64
+
+      - name: nome_entidade_credora
+        description: "Nome da entidade credora."
+        data_type: string
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
