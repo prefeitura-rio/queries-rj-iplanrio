@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__bem_patrimoniado_tipo
+    description: "Tabela que armazena informações relativas aos tipos de bens adquiridos para atender ao objeto de um Contrato de Gestão ou Termo de Colaboração.	"
+    columns:
+      - name: id_bem_tipo
+        description: ID do tipo de bem patrimoniado. Auto incremental do próprio banco de dados
+      - name: bem_tipo
+        description: Descrição do tipo de bem. Não existem restrições
