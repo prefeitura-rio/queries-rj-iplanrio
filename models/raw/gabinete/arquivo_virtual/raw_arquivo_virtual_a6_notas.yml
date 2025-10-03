@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a6_notas
+    description: "Tabela referente aos dados de anotações de conservação e estado dos arquivos "
+    config:
+      alias: notas_conservacao
+    columns:
+      - name: nota_conservacao
+        description: "Anotações sobre o estado físico e condições de conservação dos arquivos"
+        data_type: string
+        quote: true
+      - name: codigo_estado_acervo
+        description: "FK de ESTADO_ACERVO - Identificador do estado geral do acervo "
+        data_type: int64
+      - name: notas_gerais
+        description: Observações gerais sobre os arquivos "
+        data_type: string
+        quote: true
+      - name: codigo_conjunto_arquivo
+        description: "PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_a6_notas__id_conjuntoArquivo__not_null
+        #       severity: error

@@ -124,6 +124,14 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+      gabinete:
+        +tags: "gebinete"
+        +project: rj-gabinete
+        arquivo_virtual:         
+          +materialized: table
+          +schema: brutos_arquivo_virtual
+          +tags: ["daily", "arquivo_virtual"]
+
       segovi:
         +tags: "segovi"
         +project: rj-segovi
@@ -134,7 +142,6 @@ models:
       setur:
         +project: rj-setur
         oferta_turistica:
-          +materialized: view
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
         turismo_fluxo_visitantes:
@@ -146,6 +153,14 @@ models:
         +materialized: table
         +schema: brutos_mais_valia
         +tags: ["daily", "mais_valia"]
+        
+      seop:
+        cadastro_comercio_ambulantes:
+          +project: rj-seop
+          +materialized: table
+          +schema: brutos_cadastro_comercio_ambulantes
+          +tags: ["daily", "cadastro_comercio_ambulantes"]
+
       pgm:
         +tags: "pgm"
         +project: rj-iplanrio

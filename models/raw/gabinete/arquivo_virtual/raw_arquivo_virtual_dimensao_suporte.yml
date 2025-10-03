@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_dimensao_suporte
+    description: "Dimensões e suporte dos arquivos"
+    config:
+      alias: dimensao_suporte
+      
+      
+    columns:
+      - name: codigo_conjunto_arquivo
+        description: "Tabela referente aos dados as dimensões e suportes dos arquivos "
+        data_type: int64
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_dimensao_suporte__id_conjuntoArquivo__not_null
+        #       severity: error
+      - name: codigo_genero
+        description: "PK Composta desta tabela - Identificador do gênero documental do arquivo  (FK de GENERO)"
+        data_type: int64
+      - name: codigo_especie
+        description: "PK Composta desta tabela - Identificador da espécie documental do arquivo  (FK de ESPECIE)"
+        data_type: int64
+      - name: codigo_capacidade
+        description: "FK de CAPACIDADE_ARMAZENA - Identificador da capacidade física do suporte do arquivo"
+        data_type: int64
+      - name: codigo_tipo_escala
+        description: "FK de TIPO_ESCALA - Identificador do tipo de escala utilizada na representação do arquivo"
+        data_type: int64
+      - name: codigo_formato
+        description: "FK de FORMATO - Identificador do formato físico do arquivo "
+        data_type: int64
+      - name: quantidade_unidade
+        description: "Quantidade de unidades físicas do arquivo"
+        data_type: numeric
+      - name: escala
+        description: "Descrição da escala utilizada"
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: "Observações adicionais sobre dimensões e suportes"
+        data_type: string
+        quote: true
+      - name: codigo_unidade
+        description: "FK de UNIDADE_MEDIDA - Identificador da unidade de medida utilizada"
+        data_type: int64
+      - name: quantidade_capacidade
+        description: Quantidade de capacidade física do suporte"
+        data_type: numeric

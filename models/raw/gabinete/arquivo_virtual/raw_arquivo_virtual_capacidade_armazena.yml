@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_capacidade_armazena
+    description: "Tabela auxiliar (dimensão) com os dados de capacidades de armazenamentos"
+    config:
+      alias: capacidade_armazenamento
+      
+      
+    columns:
+      - name: codigo_capacidade
+        description: "PK desta tabela - Identificador único da procedência do arquivo  (Campo INCREMENTAL)"
+        data_type: int64
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_capacidade_armazena__Id_capacidade__unique
+        #       severity: error
+          # - not_null:
+          #     name: raw_arquivo_virtual_capacidade_armazena__Id_capacidade__not_null
+          #     severity: error
+      - name: descricao_capacidade_armazenamento
+        description: "Descrição do valor de capacidade de memória (BYTE; KILOBYTE;MEGABYTE;GYGABYTE; TERABYTE)"
+        data_type: string
+        quote: true

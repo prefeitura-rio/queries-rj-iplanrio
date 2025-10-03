@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_estado_acervo
+    description: "Tabela auxiliar (dimensão) com os dados das diferentes formas de estado de conservação dos acervos"
+    config:
+      alias: estado_acervo
+      
+      
+    columns:
+      - name: codigo_estado_acervo
+        description: "PK desta tabela - Identificador único do estado do acervo (Campo INCREMENTAL)"
+        data_type: int64
+        # data_tests:
+        #   - unique:
+        #       name: raw_arquivo_virtual_estado_acervo__id_estadoAcervo__unique
+        #       severity: error
+        #   - not_null:
+        #       name: raw_arquivo_virtual_estado_acervo__id_estadoAcervo__not_null
+        #       severity: error
+      - name: nome_estado_acervo
+        description: "Nome dado aos tipos de estado em que os acervos podem estar (Bom; Ruim; Péssimo; Regular)"
+        data_type: string
+        quote: true

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: raw_arquivo_virtual_a3_conteudo_estrutura
+    description: "Conteúdo e estrutura dos conjuntos arquivísticos"
+    config:
+      alias: conteudo_estrutura
+      
+    columns:
+      - name: incorporacoes
+        description: "Informações sobre as incorporações realizadas nos arquivos"
+        data_type: string
+        quote: true
+      - name: avaliacao_eliminacao_temporal
+        description: "Avaliação sobre a eliminação ou temporalidade dos documentos"
+        data_type: string
+        quote: true
+      - name: ambito_conteudo
+        description: "Descrição do âmbito e conteúdo dos arquivos"
+        data_type: string
+        quote: true
+      - name: codigo_conjunto_arquivo
+        description: PK desta tabela - Identificador único do conjunto de arquivos  (FK de CONJUNTO_ARQUIVO)"
+        data_type: int64
+        # data_tests:
+        #   - not_null:
+        #       name: raw_arquivo_virtual_a3_conteudo_estrutura__id_conjuntoArquivo__not_null
+        #       severity: error
+      - name: organizacao
+        description: "Informações sobre a organização física ou lógica dos arquivos"
+        data_type: string
+        quote: true
+      - name: codigo_estagio_tratamento
+        description: FK de ESTAGIO_TRATAMENTO - Identificador do estágio de tratamento arquivístico"
+        data_type: int64
