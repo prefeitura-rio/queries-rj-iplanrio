@@ -60,8 +60,8 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.ValGrerjPag as numeric) as valor_grerj_pago,
   safe_cast(a.valJurosPagoHon as numeric) as valor_juros_honorarios_pago,
   safe_cast(a.anoIPCAe as int64) as ano_ipcae,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
-from {{ source('brutos_divida_ativa_staging', 'CotaPagamento') }} a
-left join cotas_substituidas b on b.id_guia_pagamento_associada = a.numGuiaPagamento and b.id_cota_guia_pagamento_associada = a.numCotaPagamento
-left join cotas_substitutas c on c.id_guia_pagamento = a.numGuiaPagamento and c.id_cota_guia_pagamento = a.numCotaPagamento
+from {{ source('brutos_divida_ativa_staging_prefect', 'CotaPagamento') }} a
+left join cotas_substituidas b on CAST(b.id_guia_pagamento_associada as string) = a.numGuiaPagamento and CAST(b.id_cota_guia_pagamento_associada as string) = a.numCotaPagamento
+left join cotas_substitutas c on CAST(c.id_guia_pagamento as string) = a.numGuiaPagamento and CAST(c.id_cota_guia_pagamento as string) = CAST(a.numCotaPagamento as string)
