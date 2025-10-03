@@ -45,8 +45,8 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
     when 3 then 'FUNPREVI'
     else 'Não classificado'
   end as nome_entidade_credora,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
-from {{ source('brutos_divida_ativa_staging', 'CDA') }} a
-left join {{ ref('raw_divida_ativa_situacao_certidao_divida_ativa') }} b on b.id_situacao_cda = a.codSituacaoCDA
-left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} c on c.id_natureza_divida = a.idNaturezaDivida
+from {{ source('brutos_divida_ativa_staging_prefect', 'CDA') }} a
+left join {{ ref('raw_divida_ativa_situacao_certidao_divida_ativa') }} b on CAST(b.id_situacao_cda as string) = CAST(a.codSituacaoCDA as string)
+left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} c on CAST(c.id_natureza_divida as string) = a.idNaturezaDivida

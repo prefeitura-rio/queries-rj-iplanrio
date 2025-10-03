@@ -18,7 +18,7 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.percentualHonorarios as numeric) as percentual_honorarios,
   safe_cast(a.numSituacao as int64) as id_situacao_honorario,
   ifnull(safe_cast(nome_situacao_honorario as string), "Não classificado") as nome_situacao_honorario,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at  
-from {{ source('brutos_divida_ativa_staging', 'Honorarios') }} a
-left join {{ ref('raw_divida_ativa_situacao_honorario') }} b on b.id_situacao_honorario = a.numSituacao
+from {{ source('brutos_divida_ativa_staging_prefect', 'Honorarios') }} a
+left join {{ ref('raw_divida_ativa_situacao_honorario') }} b on CAST(b.id_situacao_honorario as string) = CAST(a.numSituacao as string)
