@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__conta_bancaria_tipo
+    description: "**Descrição**: Tabela que armazena os possíveis tipos de contas bancária. Tabela preenchida pelo usuário, na operação do sistema. OBS: Com a implementação da nova funcionalidade de contratos, Versão 2.14, está tabela deixa de ser usada.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_conta_bancaria_tipo
+        description: Identificação do tipo de conta bancária. Auto incremental do próprio banco de dados.
+      - name: tipo
+        description: Descrição do tipo de conta bancária. Não existem restrições.
+      - name: sigla
+        description: Sigla do tipo de conta bancária. Não existem restrições.

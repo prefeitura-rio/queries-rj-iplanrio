@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__despesas
+    description: "**Descrição**: Tabela que armazena os dados das despesas das unidade. Tabela preenchida pelo usuário, na operação do sistema.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_documento
+        description: ID da Despesa. Auto incremental do próprio banco de dados
+      - name: cod_organizacao
+        description: ID da instituição à qual está associada a despesa. (FK) Contidos na tabela - depende da versão
+      - name: cod_unidade
+        description: ID da unidade à qual está associada à despesa. (FK) Contidos na tabela - depende da versão
+      - name: data_envio
+        description: Data em que a informação foi gravada no sistema. Não existem restrições. Informação incluída automaticamente pela aplicação.
+      - name: id_tipo_documento
+        description: ID do tipo de documento que comprova a despesa. (FK) Contidos na tabela osinfo.tipo_documento
+      - name: codigo_fiscal
+        description: Código fiscal que classifica a despesa. Não existem restrições.
+      - name: cnpj
+        description: CNPJ formatado (nn.nnn.nnn/nnnn-nn). Formatação e validação feitas na interface.
+      - name: razao
+        description: Razão social da contratada pela instituição. Não existem restrições.
+      - name: cpf
+        description: CPF formatado (nnn.nnn.nnn-nn). Formatação e validação feitas na interface.
+      - name: nome
+        description: Nome da pessoa física contratada pela instituição. Não existem restrições.
+      - name: num_documento
+        description: Número do documento que comprova a despesa. Não existem restrições.
+      - name: serie
+        description: Série do documento que comprova a despesa. Não existem restrições.
+      - name: descricao
+        description: Descrição da despesa. Não existem restrições.
+      - name: data_emissao
+        description: Data de emissão do documento. Não existem restrições.
+      - name: data_vencimento
+        description: Data de vencimento do documento. Não existem restrições.
+      - name: data_pagamento
+        description: Data de pagamento do documento. Não existem restrições.
+      - name: data_apuracao
+        description: Data de apuração da despesa. Não existem restrições.
+      - name: valor_documento
+        description: Valor do documento que comprova a despesa. Não existem restrições.
+      - name: valor_pago
+        description: Valor pago da despesa. Não existem restrições.
+      - name: id_despesa
+        description: ID da despesa. (FK) Contidos na tabela osinfo.despesa
+      - name: id_rubrica
+        description: ID da rubrica associada à despesa. (FK) Contidos na tabela osinfo.rubrica
+      - name: id_instrumento_contratual
+        description: ID do contrato associado à despesa. (FK) Contidos na tabela - depende da versão
+      - name: id_conta_bancaria
+        description: ID da conta bancária associada à despesa. (FK) Contidos na tabela osinfo.conta_bancaria
+      - name: referencia_mes
+        description: Mês de referência da despesa. 1 a 12
+      - name: referencia_ano
+        description: Ano de referência da despesa. Não existem restrições.
+      - name: cod_bancario
+        description: Código bancário associado à despesa. Não existem restrições.
+      - name: flg_justificativa
+        description: Indicador de justificativa da despesa. S - possui justificativa, N - não possui justificativa
+      - name: parcela_mes
+        description: Mês de parcela da despesa. 1 a 12
+      - name: parcelamento_total
+        description: Total de parcelas da despesa. Não existem restrições.
+      - name: id_imagem
+        description: ID da imagem do documento que comprova a despesa. (FK) Contidos na tabela osinfo.imagem
+      - name: nf_validada_sigma
+        description: Indicador se a nota fiscal foi validada no sistema SIGMA. S - validada, N - não validada
+      - name: data_validacao
+        description: Data de validação da despesa. Não existem restrições.

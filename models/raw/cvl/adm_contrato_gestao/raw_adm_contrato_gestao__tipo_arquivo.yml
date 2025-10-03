@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__tipo_arquivo
+    description: "**Descrição**: Tabela que armazena os tipos de arquivos que podem ter importação de dados, e suas configurações. DML executada direto no banco de dados.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL e SMS\n**Publicado por**: Cosme Silveira\n**Publicado por (email)**: cosme.silveira@rio.rj.gov.br\n"
+    columns:
+      - name: id_tipo_arquivo
+        description: ID do tipo de arquivo de importação de dados. Auto incremental do próprio banco de dados.
+      - name: tipo_servico
+        description: Descrição do tipo de serviço. Não existem restrições.
+      - name: extensao
+        description: Extensão do arquivo de origem dos dados, usado na importação. Extensões existente.
+      - name: flg_atividade
+        description: Se a opção de importação está ativa ou inativa. A - ativo, I - inativo

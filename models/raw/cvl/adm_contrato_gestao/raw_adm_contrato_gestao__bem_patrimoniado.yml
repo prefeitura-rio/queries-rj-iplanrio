@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__bem_patrimoniado
+    description: "**Descrição**: Informações relativas aos bens adquiridos para atender aos contratos de gestão/termos de colaboração.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL\n"
+    columns:
+      - name: id_bem
+        description: ID do bem. Auto incremental do próprio banco de dados
+      - name: id_os
+        description: ID da organização à qual está associado o bem
+      - name: id_contrato
+        description: ID do contrato ao qual está associado o bem
+      - name: ref_mes
+        description: Mês de referência da aquisição do bem
+      - name: ref_ano
+        description: Ano de referência da aquisição do bem
+      - name: id_bem_tipo
+        description: ID do tipo de bem. Contidos na tabela osinfo.bem_tipo
+      - name: descricao
+        description: Descrição do bem. Não existem restrições
+      - name: quantidade
+        description: Quantidade do bem que foi adquirido. Não existem restrições
+      - name: nf
+        description: Número da nota fiscal de aquisição do bem. Não existem restrições
+      - name: data_aquisicao
+        description: Data em que o bem foi adquirido. Não existem restrições
+      - name: vida_util
+        description: Vida útil, em anos, que o bem dura. Não existem restrições
+      - name: valor
+        description: Valor total da aquisição do bem. Não existem restrições
+      - name: id_unidade
+        description: ID da unidade à qual está associado o bem
+      - name: vinculacao
+        description: Descrição da vinculação do bem. Não existem restrições
+      - name: fornecedor
+        description: Nome do fornecedor do bem. Não existem restrições
+      - name: cnpj
+        description: Número do CNPJ do fornecedor. Formatado e validado na interface
+      - name: imagem_nf
+        description: Nome do arquivo de imagem da nota fiscal de compra. Existir no banco de dados
+      - name: setor_destino
+        description: Nome do setor a que se destina o bem. Não existem restrições
+      - name: id_imagem
+        description: Campo usado para informar se o arquivo de imagem existe no banco de dados
