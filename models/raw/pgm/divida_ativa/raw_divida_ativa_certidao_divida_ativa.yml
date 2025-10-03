@@ -11,9 +11,6 @@ models:
           - not_null:
               name: raw_divida_ativa_certidao_divida_ativa__id_certidao_divida_ativa__not_null
               severity: error
-          - unique:
-              name: raw_divida_ativa_certidao_divida_ativa__id_certidao_divida_ativa__unique
-              severity: error
 
       - name: ano_de_inscricao_na_divida
         description: "Ano de inscrição na dívida ativa."

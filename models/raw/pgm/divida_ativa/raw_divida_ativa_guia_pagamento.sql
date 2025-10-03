@@ -67,10 +67,10 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.qtdParcelasHonPag as int64) as quantidade_parcelas_honorarios_pagas,
   safe_cast(a.qtdParcelasGrerj as int64) as quantidade_parcelas_grerj,
   safe_cast(a.qtdParcelasGrerjPag as int64) as quantidade_parcelas_grerj_pagas,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at  
-from {{ source('brutos_divida_ativa_staging', 'GuiaPagamento') }} a
-left join {{ ref('raw_divida_ativa_situacao_guia_pagamento') }} b on b.id_situacao_guia_pagamento = a.idSituacaoGuia
-left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on c.id_tipo_pagamento_guia = a.codTipoPagamento
-left join {{ ref('raw_divida_ativa_pessoa') }} d on d.id_pessoa = a.idPessoa
-left join {{ ref('raw_divida_ativa_tipo_receita') }} e on e.codigo_receita = a.codReceita
+from {{ source('brutos_divida_ativa_staging_prefect', 'GuiaPagamento') }} a
+left join {{ ref('raw_divida_ativa_situacao_guia_pagamento') }} b on CAST(b.id_situacao_guia_pagamento AS string) = a.idSituacaoGuia
+left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on CAST(c.id_tipo_pagamento_guia AS string) = a.codTipoPagamento
+left join {{ ref('raw_divida_ativa_pessoa') }} d on CAST(d.id_pessoa AS string) = a.idPessoa
+left join {{ ref('raw_divida_ativa_tipo_receita') }} e on CAST(e.codigo_receita AS string) = a.codReceita
