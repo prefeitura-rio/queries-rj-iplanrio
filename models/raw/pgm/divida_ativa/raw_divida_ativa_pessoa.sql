@@ -18,6 +18,6 @@ select safe_cast(idpessoa as int64) as id_pessoa,
             when null then 'Não Informado'
             else 'Não classificado'
        end as descricao_tipo_pessoa,
-       _airbyte_extracted_at as loaded_at,
+       _prefect_extracted_at as loaded_at,
        current_timestamp() as transformed_at
-from {{ source('brutos_divida_ativa_staging', 'VWPESSOA') }}
+from {{ source('brutos_divida_ativa_staging_prefect', 'VWPESSOA') }}

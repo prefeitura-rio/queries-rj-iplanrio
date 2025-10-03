@@ -24,6 +24,6 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.ValCDA as numeric) as valor_cda_na_guia,
   safe_cast(a.PercDesconto as numeric) as percentual_desconto,
   safe_cast(a.valDescontoSobrePrincipal as numeric) as valor_desconto_sobre_principal,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
-from {{ source('brutos_divida_ativa_staging', 'GuiaPagamento_CDA') }} a
+from {{ source('brutos_divida_ativa_staging_prefect', 'GuiaPagamento_CDA') }} a
