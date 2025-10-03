@@ -22,7 +22,7 @@ sources:
       - name: gh_pac_transf
         config:
           freshness:
-            error_after: {count: 48, period: hour}
+            
       - name: gh_pacientes_sm
       - name: gh_prof
       - name: gh_profocup
