@@ -12,6 +12,6 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.numCotaPagamento as int64) as id_cota_guia_pagamento,
   safe_cast(a.numGuiaPagamentoAssoc as int64) as id_guia_pagamento_associada,
   safe_cast(a.numCotaPagamentoAssoc as int64) as id_cota_guia_pagamento_associada,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
-from {{ source('brutos_divida_ativa_staging', 'Cotas_Associadas') }} a
+from {{ source('brutos_divida_ativa_staging_prefect', 'Cotas_Associadas') }} a
