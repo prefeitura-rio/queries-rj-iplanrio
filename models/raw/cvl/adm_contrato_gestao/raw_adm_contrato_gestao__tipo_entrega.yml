@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: raw_adm_contrato_gestao__tipo_entrega
+    description: "**Descrição**: Tabela auxiliar que lista os tipos de entrega possíveis no sistema OSINFO.\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: 2009 em diante\n**Órgão gestor dos dados**: CVL\n"
+    columns:
+      - name: id_tipo_entrega
+        description: "ID do tipo de entrega"
+      - name: descricao_tipo_entrega
+        description: "Descrição do tipo de entrega"
+      - name: tabela_tipo_entrega
+        description: "Tabela do tipo de entrega"
