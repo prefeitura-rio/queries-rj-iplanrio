@@ -16,12 +16,26 @@ sources:
       - name: SituacaoGuia
       - name: Situacao_honorarios
       - name: TextoGuia
+      - name: Receita
+  
+  - name: brutos_divida_ativa_staging_prefect
+    database: rj-iplanrio
+    schema: brutos_divida_ativa_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _prefect_extracted_at
+    tables:
+      - name: GuiaPagamento
+      - name: GuiaPagamento_CDA
+      - name: GuiaPagamento_Honorarios
+      - name: Cotas_Associadas
+      - name: CotaPagamento
+      - name: Honorarios
       - name: VWPESSOA
       - name: CDA
-      - name: Honorarios
-      - name: GuiaPagamento
-      - name: GuiaPagamento_Honorarios
-      - name: GuiaPagamento_CDA
-      - name: CotaPagamento
-      - name: Cotas_Associadas
-      - name: Receita
+
+
+
+
+
+
