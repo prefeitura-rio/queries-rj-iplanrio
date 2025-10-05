@@ -23,7 +23,7 @@ sources:
     schema: brutos_divida_ativa_staging
     freshness: # default freshness
       error_after: {count: 24, period: hour}
-    loaded_at_field: _prefect_extracted_at
+    loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
     tables:
       - name: GuiaPagamento
       - name: GuiaPagamento_CDA
