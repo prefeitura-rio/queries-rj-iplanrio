@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: brutos_cadastro_comercio_ambulantes_staging
-    database: rj-smas
+    database: rj-iplanrio
     schema: brutos_cadastro_comercio_ambulantes_staging
     tables:
       - name: vw_autorizacao_auxiliares_datalake
