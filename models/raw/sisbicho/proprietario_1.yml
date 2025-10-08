@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: proprietario_1
+    description: "Tabela contendo os vínculos entre animais e seus proprietários no sistema SisBicho"
+    data_tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: ref("raw_sisbicho_animal_proprietario")
