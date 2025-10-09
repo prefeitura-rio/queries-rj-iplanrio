@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: sicop
+    database: rj-iplanrio
+    schema: brutos_sicop_staging
+    tables:
+      - name: VW_PROCESSO_DLK
+        description: "View de processos do SICOP"
+      - name: VW_VEICULO_DLK
+        description: "View de veículos do SICOP"
+      - name: VW_PARTE_ENVOLVIDA_DLK
+        description: "View de partes envolvidas do SICOP"
+
+ 

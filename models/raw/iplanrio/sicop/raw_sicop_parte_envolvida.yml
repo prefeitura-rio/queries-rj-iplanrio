@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: raw_sicop_parte_envolvida 
+    description: "Dados brutos de partes envolvidas do SICOP (origem VW_PARTE_ENVOLVIDA_DLK)"
+    config:
+      alias: parte_envolvida
+      materialized: view
+    columns:
+      - name: id_processo
+        description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+        data_type: string
+        data_tests:
+          - not_null
+
+      - name: id_sequencial_parte
+        description: "Identificador único sequencial da parte dentro de um mesmo processo."
+        data_type: int64
+        data_tests:
+          - not_null
+
+      - name: nome_parte_envolvida
+        description: "Nome da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: endereco_parte_envolvida
+        description: "Endereço da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: numero_porta_parte_envolvida
+        description: "Numero de porta do endereço da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: complemento_parte_envolvida
+        description: "Complemento do endereço da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: bairro_parte_envolvida
+        description: "Bairro do endereço da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: cep_parte_envolvida
+        description: "CEP  do endereço da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: telefone
+        description: "Telefone da pessoa física ou jurídica que está vinculada ao processo como parte envolvida"
+        data_type: string
+        quote: true
+
+      - name: qualificacao
+        description: "Qualificam a parte envolvida num processo"
+        data_type: string
+        quote: true
+
+      - name: data_procuracao
+        description: "Data de emissão ou outorga da procuração que autoriza o representante a atuar em nome da parte envolvida no processo/protocolo."
+        data_type: date
+
+      - name: tipo_documento_parte_envolvida
+        description: "Tipos de Documentos usado para identificar a parte envolvida (pessoa física ou jurídica) dentro de um processo/protocolo."
+        data_type: string
+        quote: true
+
+      - name: documento_parte_envolvida
+        description: "Especifica o documento usado apartir do campo Tipo_documento_parte_envolvida"
+        data_type: string
+        quote: true
+
+      - name: matricula_responsavel
+        description: "Matrícula funcional do servidor responsável pelo registro, protocolo ou pelo andamento do processo/documento."
+        data_type: string
+        quote: true
