@@ -69,6 +69,10 @@ jobs:
       run: |
         dbt snapshot --target pr --vars "schema_id: $SCHEMA_ID"
 
+    - name: Run dbt compile
+      run: |
+        dbt compile -s 'raw_divida_ativa_cota_pagamento' --target pr --vars "schema_id: $SCHEMA_ID" 
+
     - name: Run dbt build
       run: |
         if [ -f "./manifest.json" ]; then
