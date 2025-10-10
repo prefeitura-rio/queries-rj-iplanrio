@@ -45,13 +45,8 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.SigUFEnvio as string) as uf_envio_correspondencia,
   safe_cast(a.idSituacaoGuia as int64) as id_situacao_guia_pagamento,
   ifnull(b.nome_situacao_guia_pagamento, 'Não identificado') as nome_situacao_guia_pagamento,
-  safe_cast(a.codTipoPagamento as int64) as id_tipo_pagamento_guia,
-  c.texto_amigavel,
-  c.texto_judicial,
-  c.texto_amigavel_todas_parcelas,
-  c.texto_judicial_todas_parcelas,
-  c.texto_amigavel_primeiras_guias,
-  c.texto_judicial_primeiras_guias,
+  safe_cast(a.codTipoPagamento as int64) as id_tipo_pagamento,
+  ifnull(c.nome_tipo_pagamento, 'Não identificado') as nome_tipo_pagamento,
   safe_cast(a.idpessoa as int64) as id_pessoa,
   d.cpf_cnpj,
   d.nome,
@@ -71,6 +66,6 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   current_timestamp() as transformed_at  
 from {{ source('brutos_divida_ativa_staging_prefect', 'GuiaPagamento') }} a
 left join {{ ref('raw_divida_ativa_situacao_guia_pagamento') }} b on CAST(b.id_situacao_guia_pagamento AS string) = a.idSituacaoGuia
-left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on CAST(c.id_tipo_pagamento_guia AS string) = a.codTipoPagamento
+left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on CAST(c.id_tipo_pagamento AS string) = a.codTipoPagamento
 left join {{ ref('raw_divida_ativa_pessoa') }} d on CAST(d.id_pessoa AS string) = a.idPessoa
 left join {{ ref('raw_divida_ativa_tipo_receita') }} e on CAST(e.codigo_receita AS string) = a.codReceita

@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_protesto_cda
+    description: "Tabela que contém os registros de protestos vinculados às certidões de dívida ativa (CDA), atualizados pelos cartórios."
+    columns:
+      - name: id_protesto
+        description: "Identificador do protesto."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_protesto_cda__id_protesto__not_null
+              severity: error
+      - name: id_certidao_divida_ativa
+        description: "Identificador da certidão de dívida ativa (CDA) vinculada ao protesto."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_protesto_cda__id_certidao_divida_ativa__not_null
+              severity: error
+      - name: numero_cartorio
+        description: "Número do cartório responsável pelo protesto."
+        data_type: string
+      - name: numero_protocolo
+        description: "Número do protocolo do protesto."
+        data_type: string
+      - name: data_protocolo
+        description: "Data do protocolo do protesto."
+        data_type: date
+      - name: numero_titulo
+        description: "Número do título protestado."
+        data_type: string
+      - name: codigo_tipo_ocorrencia
+        description: "Código do tipo de ocorrência do protesto."
+        data_type: string
+      - name: descricao_mensagem_protesto
+        description: "Descrição da mensagem de protesto."
+        data_type: string
+      - name: data_ocorrencia
+        description: "Data da ocorrência do protesto."
+        data_type: date
+      - name: data_emissao_cda
+        description: "Data de emissão da CDA protestada."
+        data_type: date
+      - name: data_vencimento_guia
+        description: "Data de vencimento da guia protestada."
+        data_type: date
+      - name: valor_cda
+        description: "Valor da CDA protestada."
+        data_type: numeric
+      - name: nome_devedor_protestado
+        description: "Nome do devedor protestado."
+        data_type: string
+      - name: tipo_documento_devedor
+        description: "Tipo do documento do devedor (1=CNPJ, 2=CPF)."
+        data_type: int64
+      - name: nome_tipo_documento_devedor
+        description: "Nome do tipo do documento do devedor."
+        data_type: string
+      - name: numero_documento_devedor
+        description: "Número do documento do devedor."
+        data_type: string
+      - name: endereco_devedor
+        description: "Endereço do devedor protestado."
+        data_type: string
+      - name: numero_porta_endereco
+        description: "Número da porta do endereço do devedor."
+        data_type: string
+      - name: complemento_endereco
+        description: "Complemento do endereço do devedor."
+        data_type: string
+      - name: bairro_devedor
+        description: "Bairro do devedor protestado."
+        data_type: string
+      - name: cep_devedor
+        description: "CEP do devedor protestado."
+        data_type: string
+      - name: cidade_devedor
+        description: "Cidade do devedor protestado."
+        data_type: string
+      - name: uf_devedor
+        description: "UF do devedor protestado."
+        data_type: string
+      - name: numero_guia_pagamento
+        description: "Número da guia de pagamento vinculada ao protesto."
+        data_type: numeric
+      - name: data_inclusao
+        description: "Data de inclusão do protesto."
+        data_type: date
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
