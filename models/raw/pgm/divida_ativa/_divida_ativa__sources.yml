@@ -15,8 +15,12 @@ sources:
       - name: InscricaoImobiliaria
       - name: SituacaoGuia
       - name: Situacao_honorarios
-      - name: TextoGuia
       - name: Receita
+      - name: DevedorCDA
+      - name: PagamentosCDA
+      - name: Enumerator
+      - name: ProtestosMensagens
+      - name: ProtestosCDAs
   
   - name: brutos_divida_ativa_staging_prefect
     database: rj-iplanrio
