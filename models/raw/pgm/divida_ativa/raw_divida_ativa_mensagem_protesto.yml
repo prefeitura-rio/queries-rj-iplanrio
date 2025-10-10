@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: raw_divida_ativa_mensagem_protesto
+    description: "Tabela que contém os tipos de situação dos protestos atualizados pelos cartórios."
+    columns:
+      - name: id_mensagem_protesto
+        description: "Código da mensagem de protesto."
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_divida_ativa_mensagem_protesto__codigo_mensagem_protesto__not_null
+              severity: error
+          - unique:
+              name: raw_divida_ativa_mensagem_protesto__codigo_mensagem_protesto__unique
+              severity: error
+      - name: codigo_mensagem_protesto
+        description: "Código da mensagem vinculado na tabela de protestos."
+        data_type: string
+      - name: descricao_mensagem_protesto
+        description: "Descrição da mensagem de protesto."
+        data_type: string
+      - name: tipo_servico
+        description: "Tipo de serviço do protesto."
+        data_type: string
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

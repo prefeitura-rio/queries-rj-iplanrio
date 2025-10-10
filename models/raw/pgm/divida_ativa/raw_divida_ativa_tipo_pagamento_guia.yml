@@ -4,7 +4,7 @@ models:
   - name: raw_divida_ativa_tipo_pagamento_guia
     description: "Tabela que descreve os tipos de pagamento das guias, com textos amigáveis e judiciais para diferentes situações."
     columns:
-      - name: id_tipo_pagamento_guia
+      - name: id_tipo_pagamento
         description: "Identificador do tipo de pagamento da guia."
         data_type: int64
         data_tests:
