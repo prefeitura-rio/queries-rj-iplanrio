@@ -1,12 +1,12 @@
 {{ config(alias='aluno_historico_completo', schema='brutos_gestao_escolar') }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'VW_BI_Aluno_Todos_Os_Anos') }}
+    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'VW_BI_Aluno_Todos_Os_Anos') }}
 ),
 
 renamed as (
     select
-        {{ adapter.quote("_airbyte_extracted_at") }} AS loaded_at,
+        {{ adapter.quote("_prefect_extracted_at") }} AS loaded_at,
         {{ adapter.quote('Ano') }},
         {{ adapter.quote('Matricula') }},
         {{ adapter.quote('Nome') }},
