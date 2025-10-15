@@ -4,7 +4,7 @@
         alias="protesto_cda",
         materialized="table",
         tags=["raw", "devedor_cda", "cda", "devedor"],
-        description="Tabela que contém os registros de protestos cartorias para cotas de guias de pagamento não pagas."
+        description="Tabela que contém os registros de protestos vinculados às certidões de dívida ativa (CDA), atualizados pelos cartórios."
     )
 }}
 

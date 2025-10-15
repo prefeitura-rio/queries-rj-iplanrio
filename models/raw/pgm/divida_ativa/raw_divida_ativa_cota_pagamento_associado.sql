@@ -4,7 +4,7 @@
         alias="cota_pagamento_associada",
         materialized="table",
         tags=["raw", "divida_ativa", "cota_pagamento", "cota", "pagamento"],
-        description="Tabela que contém os registros das cotas de parcelamento das guias de pagamento que foram substituídas por outras cotas novas. A substituição de cotas ocorre principalmente quando ocorre o atraso de pagamento e uma nova guia é gerada para impedir que o parcelamento total seja cancelado."
+        description="Tabela que contém os registros das cotas de parcelamento das guias de pagamento que foram substituídas por outras cotas novas. A substituição de cotas ocorre principalmente quando há atraso de pagamento e uma nova guia é gerada para impedir o cancelamento do parcelamento."
     )
 }}
 

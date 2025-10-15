@@ -4,7 +4,7 @@
         alias="utilizacao_imovel",
         materialized="table",
         tags=["raw", "divida_ativa", "utilização", "imovel"],
-        description="Tabela que descreve os possíveis tipos de utilização dos imóveis que estejam vinculados com certidões de dívida ativa (CDA), para os casos de dívidas de IPTU ou Mais Valia."
+        description="Tabela que guarda as descrições dos possíveis tipos de utilização de imóveis vinculados às certidões de dívida ativa (CDA)."
     )
 }}
 

@@ -4,7 +4,7 @@
         alias="pagamento_cda",
         materialized="table",
         tags=["raw", "divida_ativa", "tipo_pagamento", "pagamento", "guia"],
-        description="Tabela que dcontém o histórico de pagamento de cada cota de cada guia de pagamento vinculada a uma certidão de dívida ativa - CDA. Uma guia de pagamento pode conter mais de uma cota e cada cota pode estar vinculada a mais de uma CDA."
+        description="Tabela que contém o histórico de pagamento de cada cota de cada guia de pagamento vinculada a uma certidão de dívida ativa - CDA. Uma guia de pagamento pode conter mais de uma cota e cada cota pode estar vinculada a mais de uma CDA."
     )
 }}
 

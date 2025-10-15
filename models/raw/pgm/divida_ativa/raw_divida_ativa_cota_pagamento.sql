@@ -4,8 +4,8 @@
         alias="cota_pagamento",
         materialized="table",
         tags=["raw", "divida_ativa", "cota_pagamento", "cota", "pagamento"],
-        description="Tabela que contém os registros das cotas referentes às parcelas das guias de pagammentos geradas para parcelamento de dívidas. Uma guia de pagamento pode relacionar mais de uma CDA."
-    )
+        description="Tabela que contém os registros das cotas referentes às parcelas das guias de pagamentos geradas para parcelamento de dívidas. Uma guia de pagamento pode relacionar mais de uma CDA. Cotas de parcelamento que tenham sido substituídas por novas, devem ser desconsideradas em cálculos de totais e irão constar na tabela cota_pagamento_associado."
+)
 }}
 
 with 

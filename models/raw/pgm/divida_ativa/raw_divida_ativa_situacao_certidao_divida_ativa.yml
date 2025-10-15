@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: raw_divida_ativa_situacao_certidao_divida_ativa
-    description: "Tabela que guarda a variação dos possíveis status de uma certidão de dívida ativa (CDA)."
+    description: "Tabela que descreve os possíveis status de uma certidão de dívida ativa (CDA)."
     columns:
       - name: id_situacao_cda
         description: "Identificador único da situação da certidão de dívida ativa (CDA)."
