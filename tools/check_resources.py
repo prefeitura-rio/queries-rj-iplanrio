@@ -58,11 +58,13 @@ def check_resource_tags(data):
                     for subkey, subvalue in value.items():
                         if isinstance(subvalue, dict):
                             # Esta é uma chave de nível 2 - verifica se tem +resource_tags
-                            has_resource_tags = '+resource_tags' in subvalue
-                            
-                            if not has_resource_tags:
-                                full_path = f"{current_path}.{key}.{subkey}" if current_path else f"{key}.{subkey}"
-                                level2_keys_without_resource_tags.append(full_path)
+                            # Só verifica se a chave de nível 2 for "iplanrio"
+                            if subkey == "iplanrio":
+                                has_resource_tags = '+resource_tags' in subvalue
+                                
+                                if not has_resource_tags:
+                                    full_path = f"{current_path}.{key}.{subkey}" if current_path else f"{key}.{subkey}"
+                                    level2_keys_without_resource_tags.append(full_path)
                 
                 # Continua recursivamente
                 new_path = f"{current_path}.{key}" if current_path else key
@@ -89,8 +91,10 @@ if __name__ == "__main__":
         print(f"\n❌ Encontrado {len(missing_resource_tags)} projetos SEM Resource Tags:")
         for i, key in enumerate(missing_resource_tags, 1):
             print(f"  {i}. {key}")
+        print(f"\n💥 ERRO: Validação falhou! {len(missing_resource_tags)} projeto(s) sem Resource Tags encontrado(s).")
+        exit(1)  # Retorna erro para falhar o CI
     else:
-        print("\n✅ Todas os projetos possuem Resource Tags!")
+        print("\n✅ Todas os projetos de rj-iplanrio possuem Resource Tags!")
     
     # Mostra um resumo detalhado
     print(f"\n📊 RESUMO DETALHADO:")

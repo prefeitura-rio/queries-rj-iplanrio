@@ -61,7 +61,7 @@ jobs:
       run: |
         dbt debug --target pr --vars "schema_id: $SCHEMA_ID"
 
-    - name: Validate dbt project configuration
+    - name: Check iplanrio projects with missing resource tags
       run: |
         python3 tools/check_resources.py
 
