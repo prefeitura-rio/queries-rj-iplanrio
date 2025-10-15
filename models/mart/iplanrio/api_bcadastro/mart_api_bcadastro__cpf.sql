@@ -66,4 +66,4 @@ select
     ) as airbyte,
     cpf.cpf_particao
 
-from {{ ref("raw_bcadastro_cpf") }}
+from {{ ref("raw_bcadastro_cpf") }} as cpf

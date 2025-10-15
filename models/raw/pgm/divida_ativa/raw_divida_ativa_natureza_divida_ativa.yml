@@ -17,9 +17,6 @@ models:
       - name: nome_natureza_divida
         description: "Nome da natureza da dívida vinculada à CDA."
         data_type: string
-      - name: nome_natureza_divida
-        description: "Nome da natureza da dívida vinculada à CDA."
-        data_type: string
       - name: descricao_natureza_divida
         description: "Descrição da natureza da dívida vinculada à CDA."
         data_type: string
