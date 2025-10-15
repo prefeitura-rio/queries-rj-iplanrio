@@ -60,7 +60,7 @@ models:
           +tags: ["daily", "bcadastro"]
           +resource_tags:
             rj-iplanrio/dominio: bcadastro
-            845941190868/acesso": restrito
+            845941190868/acesso: restrito
     raw:
       +tags: "raw"
       bcadastro:
