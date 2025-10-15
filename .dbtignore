@@ -3,3 +3,4 @@ models/raw/plus_codes/raw_grid_check.sql
 models/raw/plus_codes/raw_grid.sql
 models/raw/sme/educacao_basica/educacao_basica__aluno_historico_2025.sql
 models/raw/sme/educacao_basica_avaliacao/
+models/mart/iplanrio/
