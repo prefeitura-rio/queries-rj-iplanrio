@@ -49,7 +49,7 @@ renamed as (
         SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_avaliacaoPosConselho") }}), r'\.0$', '') AS STRING) AS aat_avaliacaoPosConselho,
         SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_justificativaPosConselho") }}), r'\.0$', '') AS STRING) AS aat_justificativaPosConselho,
         SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_frequenciaFinalAjustada") }}), r'\.0$', '') AS STRING) AS aat_frequenciaFinalAjustada,
-        SAFE_CAST({{ adapter.quote("loaded_at") }} AS TIMESTAMP) AS loaded_at
+        SAFE_CAST({{ adapter.quote("_prefect_extracted_at") }} AS TIMESTAMP) AS loaded_at
     from source
 ), dedup AS (
     select *,

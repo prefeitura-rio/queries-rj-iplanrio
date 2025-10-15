@@ -16,7 +16,6 @@ sources:
       - name: SituacaoGuia
       - name: Situacao_honorarios
       - name: Receita
-      - name: DevedorCDA
       - name: PagamentosCDA
       - name: Enumerator
       - name: ProtestosMensagens
@@ -37,6 +36,8 @@ sources:
       - name: Honorarios
       - name: VWPESSOA
       - name: CDA
+      - name: DevedorCDA
+      
 
 
 
