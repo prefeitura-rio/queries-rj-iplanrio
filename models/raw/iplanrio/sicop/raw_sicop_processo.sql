@@ -5,68 +5,71 @@
     )
 }}
 
+
+
 -- Conversões e padronização de nomes conforme guia de estilo
 select
-  safe_cast(NUM_PROCESSO as string)                                    as id_processo,
-  safe_cast(DATA_PROCESSO as date)                                     as data_processo,
+  safe_cast(id_processo as string)                          as id_processo,
+  safe_cast(data_processo as date)                          as data_processo,
 
   -- Documento
-  safe_cast(TIPO_DOCUMENTO as string)                                  as documento,
-  safe_cast(DOCUMENTO as string)                                       as nome_documento,
-  safe_cast(ORGAO_DOCUMENTO as string)                                 as orgao_documento,
-  safe_cast(TIPO_DOCTO as int64)                                       as tipo_documento,
-  safe_cast(TIPO as string)                                            as nome_tipo_documento,
+  safe_cast(documento as string)                            as documento,
+  safe_cast(nome_documento as string)                       as nome_documento,
+  safe_cast(orgao_documento as string)                      as orgao_documento,
+  safe_cast(tipo_documento as int64)                        as tipo_documento,
+  safe_cast(nome_tipo_documento as string)                  as nome_tipo_documento,
 
   -- Assunto  
-  safe_cast(CODIGO_ASSUNTO as string)                                  as codigo_assunto,
-  safe_cast(DESCRICAO_ASSUNTO as string)                               as descricao_assunto,
+  safe_cast(codigo_assunto as string)                       as codigo_assunto,
+  safe_cast(descricao_assunto as string)                    as descricao_assunto,
 
   -- Requerente e endereço/contato  
-  safe_cast(REQUERENTE as string)                                      as requerente,
-  safe_cast(AUTO_INFRACAO as string)                                   as auto_infracao,
-  safe_cast(CODIGO_LOGRADOURO as string)                               as logradouro,
-  safe_cast(NUMERO_PORTA_REQUERENTE as int64)                          as numero_porta,
-  safe_cast(COMPLEMENTO_REQUERENTE as string)                          as complemento,
-  safe_cast(CEP as string)                                             as cep,
-  safe_cast(BAIRRO as string)                                          as bairro,
-  safe_cast(DDI as string)                                             as ddi,
-  safe_cast(DDD as string)                                             as ddd,
-  safe_cast(TELEFONE as string)                                        as telefone,
-  safe_cast(RAMAL as string)                                           as ramal,
-  safe_cast(EMAIL as string)                                           as email,
+  safe_cast(requerente as string)                           as requerente,
+  safe_cast(auto_infracao as string)                        as auto_infracao,
+  safe_cast(logradouro as string)                           as logradouro,
+  safe_cast(numero_porta as int64)                          as numero_porta,
+  safe_cast(complemento as string)                          as complemento,
+  safe_cast(cep as string)                                  as cep,
+  safe_cast(bairro as string)                               as bairro,
+  safe_cast(ddi as string)                                  as ddi,
+  safe_cast(ddd as string)                                  as ddd,
+  safe_cast(telefone as string)                             as telefone,
+  safe_cast(ramal as string)                                as ramal,
+  safe_cast(email as string)                                as email,
 
   -- Outros identificadores
-  safe_cast(NUM_PROCESSO_JUDICIAL as string)                           as numero_processo_judicial,
-  safe_cast(INS_IMOB_INICIAL as string)                                as inscricao_imobiliaria_inicial,
-  safe_cast(INS_IMOB_FINAL as string)                                  as inscricao_imobiliaria_final,
+  safe_cast(numero_processo_judicial as string)             as numero_processo_judicial,
+  safe_cast(inscricao_imobiliaria_inicial as string)        as inscricao_imobiliaria_inicial,
+  safe_cast(inscricao_imobiliaria_final as string)          as inscricao_imobiliaria_final,
 
   -- Status de documentação
-  safe_cast(DOC_ARQUIVADO as string)                                   as documento_arquivado,
-  safe_cast(DOC_MICROFILMADO as string)                                as documento_microfilmado,
-  safe_cast(DOC_ELIMINADO as string)                                   as documento_eliminado,
-  safe_cast(DOC_EXTRAVIADO as string)                                  as documento_extraviado,
-  safe_cast(DOC_DISTRIBUIDO as string)                                 as documento_distribuido,
+  safe_cast(documento_arquivado as string)                  as documento_arquivado,
+  safe_cast(documento_microfilmado as string)               as documento_microfilmado,
+  safe_cast(documento_eliminado as string)                  as documento_eliminado,
+  safe_cast(documento_extraviado as string)                 as documento_extraviado,
+  safe_cast(documento_distribuido as string)                as documento_distribuido,
 
   -- Status do registro
-  safe_cast(STA_REGISTRO as string)                                    as status_registro,
-  safe_cast(STA_DIG_REGISTRO as string)                                as status_digitacao_registro,
-  safe_cast(DOC_REMISSIVO as string)                                   as documento_remissivo,
-  safe_cast(ORG_ORIGEM as string)                                      as orgao_origem,
-  safe_cast(ORG_TRANSCRITOR as string)                                 as orgao_transcritor,
+  safe_cast(status_registro as string)                      as status_registro,
+  safe_cast(status_digitacao_registro as string)            as status_digitacao_registro,
+  safe_cast(documento_remissivo as string)                  as documento_remissivo,
+  safe_cast(orgao_origem as string)                         as orgao_origem,
+  safe_cast(orgao_transcritor as string)                    as orgao_transcritor,
 
   -- Metadados de arquivo/localização 
-  safe_cast(PASTA_DOCUMENTO as string)                                 as pasta_localizacao_documento,
-  safe_cast(MUDANCA_REGISTRO as string)                                as mudanca_registro,
+  safe_cast(pasta_localizacao_documento as string)          as pasta_localizacao_documento,
+  safe_cast(mudanca_registro as string)                     as mudanca_registro,
   
   -- Medidas/quantidades  
-  safe_cast(QTD_VOLUMES as int64)                                      as quantidade_volume,
-  safe_cast(NUM_VOLUME as int64)                                       as numero_volume,
+  safe_cast(quantidade_volume as int64)                     as quantidade_volume,
+  safe_cast(numero_volume as int64)                         as numero_volume,
 
   -- Auditoria de alteração 
-  safe_cast(DATA_ALTERACAO as date)                                    as data_alteracao,
-  safe_cast(HORA_ALTERACAO as time)                                    as hora_alteracao,
-  safe_cast(MAT_ALTERACAO as string)                                   as matricula_alteracao,
-  safe_cast(ORG_ALTERACAO as string)                                   as orgao_alteracao,
-  safe_cast(ORG_DESTINO as string)                                     as orgao_destino,
-  safe_cast(STA_PRINCIPAL as string)                                   as status_principal
-from {{ source('sicop', 'VW_PROCESSO_DLK') }}
+  safe_cast(data_alteracao as date)                         as data_alteracao,
+  safe_cast(hora_alteracao as time)                         as hora_alteracao,
+  safe_cast(matricula_alteracao as string)                  as matricula_alteracao,
+  safe_cast(orgao_alteracao as string)                      as orgao_alteracao,
+  safe_cast(orgao_destino as string)                        as orgao_destino,
+  safe_cast(status_principal as string)                     as status_principal,
+  safe_cast(_prefect_extracted_at as date)                  as datalake_transformed_at  
+from {{ source("sicop","processo") }}

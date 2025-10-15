@@ -165,5 +165,9 @@ models:
           +materialized: table
           +schema: brutos_sici
           +tags: ["daily", "unidade_administrativa"]
+        sicop:
+          +materialized: table
+          +schema: brutos_sicop
+          +tags: ["daily", "sicop"]
 flags:
   require_generic_test_arguments_property: true

@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: raw_sicop_tramitacao_processo
+    description: "Dados brutos de tramitação de processos do SICOP (origem VW_TRAMITACAO_PROCESSO_DLK)"
+    config:
+      alias: raw_sicop_tramitacao_processo
+     
+    columns:
+      - name: id_processo
+        description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+        data_type: string
+        quote: true
+
+      - name: sequencial
+        description: "Histórico de tramitações do processo"
+        data_type: int64
+
+      - name: numero_guia
+        description: "Número da guia de remessa que deu saída do processo"
+        data_type: int64
+
+      - name: matricula_despacho
+        description: "Matrícula do responsável pelo despacho do processo"
+        data_type: int64
+
+      - name: matricula_logado
+        description: "Matrícula de quem se loga no sistema, que acessa a estação de trabalho"
+        data_type: int64
+
+      - name: matricula_recebedor
+        description: "Matrícula do responsável pelo recebimento do processo no orgão de destino"
+        data_type: int64
+
+      - name: id_despacho
+        description: "Código de despacho identificado na tramitação do processo"
+        data_type: string
+        quote: true
+
+      - name: data_despacho
+        description: "Data do despacho do processo"
+        data_type: date
+
+      - name: data_saida
+        description: "Data de saída do despacho que consta no processo"
+        data_type: date
+
+      - name: orgao_origem
+        description: "Órgão de origem dos processos, ou seja, órgão autor da tramitação"
+        data_type: int64
+
+      - name: orgao_destino
+        description: "Órgão de destino dos processos"
+        data_type: int64
+
+      - name: orgao_transcritor
+        description: "Órgão do usuário responsável pela inclusão do registro"
+        data_type: int64
+
+

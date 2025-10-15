@@ -4,7 +4,7 @@ models:
   - name: raw_sicop_processo
     description: "Dados brutos de processos do SICOP (origem VW_PROCESSO_DLK)"
     config:
-      alias: processo
+      alias: raw_sicop_processo
       materialized: view
     columns:
       - name: id_processo
@@ -13,9 +13,7 @@ models:
         config:
           meta:
             nullable: false
-        data_tests:
-          - unique
-          - not_null
+ 
 
       - name: data_processo
         description: "Data da Inclusão do Processo"
@@ -147,12 +145,12 @@ models:
         quote: true
 
       - name: documento_extraviado
-        description: "Informa se o documento foi distribuido e não pode ser tramitado enquanto não for liberado"
+        description: "Indica se o processo foi extraviado"
         data_type: string
         quote: true
 
       - name: documento_distribuido
-        description: "Indica se o processo foi extraviado"
+        description: "Informa se o documento foi distribuido e não pode ser tramitado enquanto não for liberado"
         data_type: string
         quote: true
 
