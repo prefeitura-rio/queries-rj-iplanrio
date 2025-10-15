@@ -61,6 +61,10 @@ jobs:
       run: |
         dbt debug --target pr --vars "schema_id: $SCHEMA_ID"
 
+    - name: Validate dbt project configuration
+      run: |
+        python3 tools/check_resources.py
+
     - name: Run dbt deps
       run: |
         dbt deps --target pr --vars "schema_id: $SCHEMA_ID"
