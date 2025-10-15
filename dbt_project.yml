@@ -34,7 +34,7 @@ models:
           +tags: ["daily", "custos"]
           +resource_tags:
             rj-iplanrio/dominio: infraestrutura-ti
-            845941190868/acesso": restrito
+            845941190868/acesso: restrito
       sme:
         frequencia:
           +materialized: table
@@ -60,7 +60,7 @@ models:
           +tags: ["daily", "bcadastro"]
           +resource_tags:
             rj-iplanrio/dominio: bcadastro
-            845941190868/acesso": restrito
+            845941190868/acesso: restrito
     raw:
       +tags: "raw"
       bcadastro:
@@ -69,26 +69,26 @@ models:
         +tags: "weekly"
         +resource_tags:
           rj-iplanrio/dominio: bcadastro
-          845941190868/acesso": restrito
+          845941190868/acesso: restrito
       gcp:
         +tags: ["daily", "custos"]
         +resource_tags:
           rj-iplanrio/dominio: infraestrutura-ti
-          845941190868/acesso": restrito
+          845941190868/acesso: restrito
       taxirio:
         +materialized: table
         +schema: brutos_taxirio
         +tags: "daily"
         +resource_tags:
           rj-iplanrio/dominio: taxirio
-          845941190868/acesso": restrito
+          845941190868/acesso: restrito
       unidades_administrativas:
         +materialized: table
         +schema: brutos_unidades_administrativas
         +tags: "daily"
         +resource_tags:
           rj-iplanrio/dominio: administrativo
-          845941190868/acesso": interno
+          845941190868/acesso: interno
       sisbicho:
         +project: rj-iplanrio
         +materialized: table
@@ -96,7 +96,7 @@ models:
         +tags: "daily"
         +resource_tags:
           rj-iplanrio/dominio: sisbicho
-          845941190868/acesso": restrito
+          845941190868/acesso: restrito
       sme:
         +project: rj-sme
         +tags: ["sme"]
@@ -125,13 +125,13 @@ models:
         +tags: "daily"
         +resource_tags:
           rj-iplanrio/dominio: administrativo
-          845941190868/acesso": interno
+          845941190868/acesso: interno
       eai_logs:
         +materialized: table
         +schema: eai_logs
         +resource_tags:
           rj-iplanrio/dominio: whatsapp
-          845941190868/acesso": restrito
+          845941190868/acesso: restrito
       smi:
         +tags: "smi"
         +project: rj-smi
@@ -175,7 +175,7 @@ models:
         +tags: ["daily", "mais_valia"]
         +resource_tags:
           rj-iplanrio/dominio: tributos
-          845941190868/acesso": restrito
+          845941190868/acesso: restrito
       pgm:
         +tags: "pgm"
         +project: rj-iplanrio
@@ -185,7 +185,7 @@ models:
           +tags: ["daily", "divida_ativa"]
           +resource_tags:
             rj-iplanrio/dominio: tributos
-            845941190868/acesso": restrito
+            845941190868/acesso: restrito
       
       iplanrio:
         +project: rj-iplanrio
@@ -195,13 +195,13 @@ models:
           +tags: ["daily", "pessoa_vinculada"]
           +resource_tags:
             rj-iplanrio/dominio: administrativo
-            845941190868/acesso": restrito
+            845941190868/acesso: restrito
         unidade_administrativa:
           +materialized: table
           +schema: brutos_sici
           +tags: ["daily", "unidade_administrativa"]
           +resource_tags:
             rj-iplanrio/dominio: administrativo
-            845941190868/acesso": interno
+            845941190868/acesso: interno
 flags:
   require_generic_test_arguments_property: true

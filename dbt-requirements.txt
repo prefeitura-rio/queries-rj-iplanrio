@@ -1,2 +1,2 @@
-dbt-bigquery==1.10.1
+dbt-bigquery==1.11.0b1
 sqlfluff==3.0.6
