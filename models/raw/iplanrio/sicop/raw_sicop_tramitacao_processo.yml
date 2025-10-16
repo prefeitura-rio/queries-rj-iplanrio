@@ -3,8 +3,6 @@ version: 2
 models:
   - name: raw_sicop_tramitacao_processo
     description: "Dados brutos de tramitação de processos do SICOP (origem VW_TRAMITACAO_PROCESSO_DLK)"
-    config:
-      alias: raw_sicop_tramitacao_processo
      
     columns:
       - name: id_processo

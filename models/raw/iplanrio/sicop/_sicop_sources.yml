@@ -14,4 +14,7 @@ sources:
       - name: tramitacao_processo
         description: "View de tramitação de processos do SICOP (VW_TRAMITACAO_PROCESSO_DLK)"
 
- 
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)

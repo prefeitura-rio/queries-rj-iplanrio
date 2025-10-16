@@ -3,9 +3,7 @@ version: 2
 models:
   - name: raw_sicop_veiculo
     description: "Dados brutos de veículos do SICOP (origem VW_VEICULO_DLK)"
-    config:
-      alias: raw_sicop_veiculo
-      materialized: view
+
     columns:
       - name: id_processo
         description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
