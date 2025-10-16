@@ -141,6 +141,13 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: administrativo
             845941190868/acesso: interno
+
+        sicop:
+          +materialized: table
+          +schema: brutos_sicop
+          +tags: ["daily", "sicop"]
+          +resource_tags:
+            845941190868/acesso: restrito
         bcadastro:
           +materialized: table
           +schema: brutos_bcadastro

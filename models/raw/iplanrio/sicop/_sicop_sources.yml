@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: sicop
+    database: rj-iplanrio
+    schema: brutos_sicop_staging
+    tables:
+      - name: processo
+        description: "View de processos do SICOP"
+      - name: veiculo
+        description: "View de veículos do SICOP"
+      - name: parte_envolvida
+        description: "View de partes envolvidas do SICOP"
+      - name: tramitacao_processo
+        description: "View de tramitação de processos do SICOP (VW_TRAMITACAO_PROCESSO_DLK)"
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
