@@ -37,4 +37,7 @@ sources:
       - name: termo_aditivo
       - name: termo_aditivo_resumo_cronograma
       - name: tb_tipo_entrega
-      
+    config:
+      freshness:
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _prefect_extracted_at
