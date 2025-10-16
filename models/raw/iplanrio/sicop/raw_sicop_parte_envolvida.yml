@@ -4,6 +4,7 @@ models:
   - name: raw_sicop_parte_envolvida 
     description: "Dados brutos de partes envolvidas do SICOP (origem VW_PARTE_ENVOLVIDA_DLK)"
 
+
     columns:
       - name: id_processo
         description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
