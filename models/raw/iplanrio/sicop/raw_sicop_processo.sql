@@ -72,4 +72,4 @@ select
   safe_cast(orgao_destino as string)                        as orgao_destino,
   safe_cast(status_principal as string)                     as status_principal,
   safe_cast(_prefect_extracted_at as date)                  as datalake_transformed_at  
-from {{ source("sicop","processo") }}
+from {{ source("brutos_sicop_staging","processo") }}
