@@ -63,40 +63,6 @@ models:
             845941190868/acesso: restrito
     raw:
       +tags: "raw"
-      bcadastro:
-        +materialized: table
-        +schema: brutos_bcadastro
-        +tags: "weekly"
-        +resource_tags:
-          rj-iplanrio/dominio: bcadastro
-          845941190868/acesso: restrito
-      gcp:
-        +tags: ["daily", "custos"]
-        +resource_tags:
-          rj-iplanrio/dominio: infraestrutura-ti
-          845941190868/acesso: restrito
-      taxirio:
-        +materialized: table
-        +schema: brutos_taxirio
-        +tags: "daily"
-        +resource_tags:
-          rj-iplanrio/dominio: taxirio
-          845941190868/acesso: restrito
-      unidades_administrativas:
-        +materialized: table
-        +schema: brutos_unidades_administrativas
-        +tags: "daily"
-        +resource_tags:
-          rj-iplanrio/dominio: administrativo
-          845941190868/acesso: interno
-      sisbicho:
-        +project: rj-iplanrio
-        +materialized: table
-        +schema: brutos_sisbicho
-        +tags: "daily"
-        +resource_tags:
-          rj-iplanrio/dominio: sisbicho
-          845941190868/acesso: restrito
       sme:
         +project: rj-sme
         +tags: ["sme"]
@@ -119,19 +85,6 @@ models:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
           +tags: "daily"
-      plus_codes:
-        +materialized: table
-        +schema: plus_codes
-        +tags: "daily"
-        +resource_tags:
-          rj-iplanrio/dominio: administrativo
-          845941190868/acesso: interno
-      eai_logs:
-        +materialized: table
-        +schema: eai_logs
-        +resource_tags:
-          rj-iplanrio/dominio: whatsapp
-          845941190868/acesso: restrito
       smi:
         +tags: "smi"
         +project: rj-smi
@@ -171,24 +124,6 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
-      mais_valia:
-        +project: rj-iplanrio
-        +materialized: table
-        +schema: brutos_mais_valia
-        +tags: ["daily", "mais_valia"]
-        +resource_tags:
-          rj-iplanrio/dominio: tributos
-          845941190868/acesso: restrito
-      pgm:
-        +tags: "pgm"
-        +project: rj-iplanrio
-        divida_ativa:
-          +materialized: table
-          +schema: brutos_divida_ativa
-          +tags: ["daily", "divida_ativa"]
-          +resource_tags:
-            rj-iplanrio/dominio: tributos
-            845941190868/acesso: restrito
       
       iplanrio:
         +project: rj-iplanrio
@@ -206,5 +141,66 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: administrativo
             845941190868/acesso: interno
+        bcadastro:
+          +materialized: table
+          +schema: brutos_bcadastro
+          +tags: "weekly"
+          +resource_tags:
+            rj-iplanrio/dominio: bcadastro
+            845941190868/acesso: restrito
+        gcp:
+          +tags: ["daily", "custos"]
+          +resource_tags:
+            rj-iplanrio/dominio: infraestrutura-ti
+            845941190868/acesso: restrito
+        taxirio:
+          +materialized: table
+          +schema: brutos_taxirio
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: taxirio
+            845941190868/acesso: restrito
+        unidades_administrativas:
+          +materialized: table
+          +schema: brutos_unidades_administrativas
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: administrativo
+            845941190868/acesso: interno
+        plus_codes:
+          +materialized: table
+          +schema: plus_codes
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: administrativo
+            845941190868/acesso: interno
+        eai_logs:
+          +materialized: table
+          +schema: eai_logs
+          +resource_tags:
+            rj-iplanrio/dominio: whatsapp
+            845941190868/acesso: restrito
+
+        divida_ativa:
+          +materialized: table
+          +schema: brutos_divida_ativa
+          +tags: ["daily", "divida_ativa"]
+          +resource_tags:
+            rj-iplanrio/dominio: tributos
+            845941190868/acesso: restrito
+        mais_valia:
+          +materialized: table
+          +schema: brutos_mais_valia
+          +tags: ["daily", "mais_valia"]
+          +resource_tags:
+            rj-iplanrio/dominio: tributos
+            845941190868/acesso: restrito
+        sisbicho:
+          +materialized: table
+          +schema: brutos_sisbicho
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: sisbicho
+            845941190868/acesso: restrito
 flags:
   require_generic_test_arguments_property: true
