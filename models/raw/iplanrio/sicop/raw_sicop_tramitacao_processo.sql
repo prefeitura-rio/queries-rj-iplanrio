@@ -34,5 +34,5 @@ select
   safe_cast(org_destino as int64)                           as orgao_destino,
   safe_cast(org_transcritor as int64)                       as orgao_transcritor
 
-from {{ source("sicop","tramitacao_processo") }}
+from {{ source("brutos_sicop_staging","tramitacao_processo") }}
 

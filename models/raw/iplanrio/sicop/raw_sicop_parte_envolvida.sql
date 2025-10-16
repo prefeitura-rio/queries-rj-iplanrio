@@ -20,4 +20,4 @@ select
   safe_cast(tipo_documento_parte_envolvida as string) as tipo_documento_parte_envolvida,
   safe_cast(documento_parte_envolvida as string)      as documento_parte_envolvida,
   safe_cast(matricula_responsavel as int64)           as matricula_responsavel
-from {{ source("sicop","parte_envolvida") }}
+from {{ source("brutos_sicop_staging","parte_envolvida") }}

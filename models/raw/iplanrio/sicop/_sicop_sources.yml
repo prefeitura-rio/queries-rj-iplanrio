@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: sicop
+  - name: brutos_sicop_staging
     database: rj-iplanrio
     schema: brutos_sicop_staging
     tables:
