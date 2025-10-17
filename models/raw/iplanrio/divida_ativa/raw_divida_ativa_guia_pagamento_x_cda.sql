@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="guia_pagamento_x_cda",
         materialized="table",
         tags=["raw", "divida_ativa", "guia_pagamento", "certidao_divida_ativa", "CDA"],

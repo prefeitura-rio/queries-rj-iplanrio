@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="tipo_receita",
         materialized="table",
         tags=["raw", "divida_ativa", "divida", "receita"],

@@ -1,10 +1,9 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="tipologia_imovel",
         materialized="table",
         tags=["raw", "divida_ativa", "tipologia", "imovel"],
-        description="Tabela que descreve os possíveis tipologias de imóveis que estejam vinculados com certidões de dívida ativa (CDA), para os casos de dívidas de IPTU ou Mais Valia."
+        description="Tabela que guarda as descrições das possíveis tipologias dos imóveis vinculados às certidões de dívida ativa (CDA)."
     )
 }}
 
