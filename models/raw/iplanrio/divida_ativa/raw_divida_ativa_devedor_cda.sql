@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="devedor_certidao_divida_ativa",
         materialized="table",
         tags=["raw", "devedor_cda", "cda", "devedor"],

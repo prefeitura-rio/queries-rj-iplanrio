@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: raw_divida_ativa_tipo_pagamento_guia
-    description: "Tabela que descreve os tipos de pagamento das guias, com textos amigáveis e judiciais para diferentes situações."
+    description: "Tabela que descreve os tipos de pagamentos possíveis para uma Guia de Pagamento, como Parcelamento, Liquidação, Antecipação, Regularização, entre outros."
     columns:
       - name: id_tipo_pagamento
         description: "Identificador do tipo de pagamento da guia."

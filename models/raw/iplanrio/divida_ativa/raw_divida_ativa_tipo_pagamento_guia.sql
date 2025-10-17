@@ -1,10 +1,9 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="tipo_pagamento_guia",
         materialized="table",
         tags=["raw", "divida_ativa", "tipo_pagamento", "pagamento", "guia"],
-        description="Tabela que descreve os tipos de pagamentos possíveis para uma Guia de Pagamento, como Parcelamento, Liquidação, Antecipação, entre outros."
+        description="Tabela que descreve os tipos de pagamentos possíveis para uma Guia de Pagamento, como Parcelamento, Liquidação, Antecipação, Regularização, entre outros."
     )
 }}
 

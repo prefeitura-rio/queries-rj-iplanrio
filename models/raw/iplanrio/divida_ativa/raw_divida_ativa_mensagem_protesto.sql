@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="mensagem_protesto",
         materialized="table",
         tags=["raw", "divida_ativa", "protestos", "cda"],
