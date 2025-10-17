@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="guia_pagamento",
         materialized="table",
         tags=["raw", "divida_ativa", "guia_pagamento", "guia", "pagamento"],

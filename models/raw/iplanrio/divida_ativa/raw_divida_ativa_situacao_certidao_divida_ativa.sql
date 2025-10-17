@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="situacao_certidao_divida_ativa",
         materialized="table",
         tags=["raw", "divida_ativa", "divida", "ativa", "situacao"],

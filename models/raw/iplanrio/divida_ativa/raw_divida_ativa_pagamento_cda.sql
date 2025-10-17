@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="pagamento_cda",
         materialized="table",
         tags=["raw", "divida_ativa", "tipo_pagamento", "pagamento", "guia"],
@@ -25,5 +24,5 @@ select safe_cast(IDPagamentosCDA as int64) as id_pagamento_cda,
   safe_cast(ValJurosGuiaPG as numeric) as valor_juros_guia_pago,
   a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
-from {{ source('brutos_divida_ativa_staging', 'PagamentosCDA') }} a
+from {{ source('brutos_divida_ativa_staging_prefect', 'PagamentosCDA') }} a
 left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} b on b.id_tipo_pagamento = cast(a.codTipoPagamento as int64)

@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="protesto_cda",
         materialized="table",
         tags=["raw", "devedor_cda", "cda", "devedor"],

@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="utilizacao_imovel",
         materialized="table",
         tags=["raw", "divida_ativa", "utilização", "imovel"],
