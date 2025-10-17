@@ -23,7 +23,7 @@ select safe_cast(IDPagamentosCDA as int64) as id_pagamento_cda,
   ifnull(b.nome_tipo_pagamento, 'Não identificado') as nome_tipo_pagamento,
   safe_cast(ValTotalPG as numeric) as valor_total_pago,
   safe_cast(ValJurosGuiaPG as numeric) as valor_juros_guia_pago,
-  a._airbyte_extracted_at as loaded_at,
+  a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging', 'PagamentosCDA') }} a
-left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} b on b.id_tipo_pagamento = a.codTipoPagamento
+left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} b on b.id_tipo_pagamento = cast(a.codTipoPagamento as int64)
