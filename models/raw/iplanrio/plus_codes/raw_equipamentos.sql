@@ -229,6 +229,34 @@ with
         from {{ ref("raw_equipamentos_cultura") }}
     ),
 
+    assistencia_social as (
+        select
+            plus8,
+            geometry,
+            plus11,
+            id_equipamento,
+            secretaria_responsavel,
+            tipo_equipamento,
+            nome_oficial,
+            nome_popular,
+            plus10,
+            plus6,
+            latitude,
+            longitude,
+            endereco,
+            bairro,
+            contato,
+            ativo,
+            aberto_ao_publico,
+            horario_funcionamento,
+            fonte,
+            vigencia_inicio,
+            vigencia_fim,
+            metadata,
+            updated_at
+        from {{ ref("raw_equipamentos_assistencia_social") }}
+    ),
+
     equipamentos as (
         select *
         from saude
@@ -244,6 +272,9 @@ with
         union all
         select *
         from cultura
+        union all
+        select *
+        from assistencia_social
     ),
 
     equipamentos_categorias as (
