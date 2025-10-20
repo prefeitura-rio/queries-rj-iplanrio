@@ -29,6 +29,7 @@ iplan:
       project: rj-iplanrio-dev
       dataset: "pr_{{ var('schema_id') }}"
       threads: 16
+      location: US
 
       # These fields come from the service account json keyfile
       keyfile_json:
@@ -49,7 +50,8 @@ iplan:
       project: rj-iplanrio
       dataset: dbt_ci
       threads: 16
-
+      location: US
+      
       # These fields come from the service account json keyfile
       keyfile_json:
         type: "{{ env_var('DBT_ENV_SECRET_TYPE') }}"

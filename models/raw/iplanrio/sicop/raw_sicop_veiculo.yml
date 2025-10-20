@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: raw_sicop_veiculo
+    description: "Dados brutos de veículos do SICOP (origem VW_VEICULO_DLK)"
+
+    columns:
+      - name: id_processo
+        description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+        data_type: string
+
+      - name: id_placa
+        description: "Identificação do veículo vinculado ao processo."
+        data_type: string
+

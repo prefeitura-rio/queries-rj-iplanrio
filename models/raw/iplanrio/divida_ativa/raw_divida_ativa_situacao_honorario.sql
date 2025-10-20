@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="situacao_honorario",
         materialized="table",
         tags=["raw", "divida_ativa", "tipo_honorario", "honorário"],

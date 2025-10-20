@@ -1,6 +1,5 @@
 {{
     config(
-        schema="brutos_divida_ativa",
         alias="cota_pagamento_associada",
         materialized="table",
         tags=["raw", "divida_ativa", "cota_pagamento", "cota", "pagamento"],
