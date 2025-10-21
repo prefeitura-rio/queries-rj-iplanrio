@@ -34,12 +34,12 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
     when null then false
     else true
   end as cota_paga,
-  case safe_cast(b.vezes_substituida as int64)
-    when null then false
+  case safe_cast(ifnull(b.vezes_substituida, 0) as int64)
+    when 0 then false
     else true
   end as cota_substituida,
-  case safe_cast(c.vezes_que_substitui_outra as int64)
-    when null then false
+  case safe_cast(ifnull(c.vezes_que_substitui_outra, 0) as int64)
+    when 0 then false
     else true
   end as substituta_de_outra,
   safe_cast(a.valCotaPagamento as numeric) as valor_cota_guia_pagamento,
