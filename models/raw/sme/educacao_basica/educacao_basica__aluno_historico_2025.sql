@@ -74,7 +74,7 @@ SELECT cte.*,
        ahc.Matricula AS matricula_real,
        ahc.telefone
 FROM cte
-join {{ ref('brutos_gestao_escolar__aluno_historico_completo') }} as ahc
+join {{ ref('raw_gestao_escolar__aluno_historico_completo') }} as ahc
     on CAST(ahc.alu_id AS STRING) = id_aluno_original
-    AND ahc.Ano = cte.ano
+    AND ahc.Ano = CAST(cte.ano AS STRING)
     AND ahc.Cod_Ult_Mov = id_ultima_movimentacao
