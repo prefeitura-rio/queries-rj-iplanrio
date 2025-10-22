@@ -1,0 +1,35 @@
+version: 2
+
+
+sources:
+  - name: brutos_compras_materiais_servicos_sigma_staging
+    database: rj-iplanrio 
+    schema: brutos_compras_materiais_servicos_sigma_staging
+    tables:
+      - name: classe
+      - name: devolucao_material
+      - name: fechamento_estoque
+      - name: fornecedor
+      - name: grupo
+      - name: material
+      - name: material_em_transito
+      - name: material_referencia
+      - name: movimentacao
+      - name: movimento_estoque
+      - name: orgao
+      - name: posicao_fechada_estoque
+      - name: ramo_atividade
+      - name: responsavel_unidade_armazenadora
+      - name: saldo_mensal_estoque
+      - name: sancao_fornecedor
+      - name: servico
+      - name: subclasse
+      - name: unidade
+      - name: unidade_armazenadora
+      - name: unidade_servico
+      - name: usuario_responsavel_auxiliar
+      - name: usuario_sistema
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at

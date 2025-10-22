@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: raw_sigma_posicao_fechada_estoque
+    description: "Posição fechada do estoque."
+    config:
+      alias: posicao_fechada_estoque
+      materialized: view
+    columns:
+      - name: id_unidade_armazenadora
+        description: "código da unidade armazenadora"
+        data_type: numeric
+      - name: ano_mes_referencia
+        description: "ano e mês de referência no formato AAAAMM"
+        data_type: string
+        quote: true
+      - name: id_material
+        description: "Código do Material"
+        data_type: string
+        quote: true
+      - name: quantidade_material_estoque_mes
+        description: "Quantidade em estoque do material para a unidade armazenadora no ano-mês de referência"
+        data_type: numeric
+      - name: preco_medio_material
+        description: "Preço médio do material"
+        data_type: numeric
+      - name: valor_total_material_estoque
+        description: "Valor total do material em estoque. (quantidade em estoque x preço médio)"
+        data_type: numeric
+
+

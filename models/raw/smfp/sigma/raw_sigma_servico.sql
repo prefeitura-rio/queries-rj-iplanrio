@@ -1,7 +1,7 @@
 {{
     config(
         alias='servico',
-        schema='compras_materiais_servicos_sigma'
+        description="Cadastro de Serviços do SIGMA"
     )
 }}
 
@@ -25,4 +25,4 @@ SELECT
   SAFE_CAST(DS_SUBGRUPO_CAE AS STRING) AS descricao_subgrupo_cae,
   SAFE_CAST(ST_TABELADO AS STRING) AS situacao_tabelado,
   SAFE_CAST(ST_CADASTRO_FORNECEDOR AS STRING) AS situacao_cadastro_fornecedor
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_SERVICO')}}
+from {{ source('brutos_compras_materiais_servicos_sigma_staging', 'servico')}}

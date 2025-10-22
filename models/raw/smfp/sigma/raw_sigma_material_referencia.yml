@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: raw_sigma_material_referencia
+    description: "Referência de Material."
+    config:
+      alias: material_referencia
+      materialized: view
+    columns:
+      - name: codigo_material
+        description: "Código"
+        data_type: string
+        quote: true
+        # data_tests:
+        #   - relationships:
+        #       name: raw_sigma_material_referencia__codigo_material__relationships
+        #       to: ref('raw_sigma_material')
+        #       field: codigo_material
+      - name: codigo_grupo
+        description: "Grupo do Material"
+        data_type: string
+        quote: true
+        # data_tests:
+        #   - relationships:
+        #       name: raw_sigma_material_referencia__codigo_grupo__relationships
+        #       to: ref('raw_sigma_grupo')
+        #       field: codigo_grupo
+      - name: codigo_classe
+        description: "Classe do Material"
+        data_type: string
+        quote: true
+        # data_tests:
+        #   - relationships:
+        #       name: raw_sigma_material_referencia__codigo_classe__relationships
+        #       to: ref('raw_sigma_classe')
+        #       field: codigo_classe
+      - name: codigo_subclasse
+        description: "Subclasse do Material"
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: raw_sigma_material_referencia__codigo_subclasse__relationships
+              to: ref('raw_sigma_subclasse')
+              field: codigo_subclasse
+      - name: sequencial_material
+        description: "Sequência doMaterial"
+        data_type: string
+        quote: true
+      - name: digito_verificador_1
+        description: "Digito Verificador 1"
+        data_type: string
+        quote: true
+      - name: digito_verificador_2
+        description: "Digito Verificador 2"
+        data_type: string
+        quote: true
+      - name: codigo_referencia
+        description: "Código da Referência"
+        data_type: numeric
+      - name: descricao_referencia
+        description: "Descrição da Referência"
+        data_type: string
+        quote: true
+      - name: status
+        description: "Status"
+        data_type: string
+        quote: true
+
+

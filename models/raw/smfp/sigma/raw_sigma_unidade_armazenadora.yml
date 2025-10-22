@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: raw_sigma_unidade_armazenadora
+    description: "Unidades Armazenadoras."
+    config:
+      alias: unidade_armazenadora
+      materialized: view
+    columns:
+      - name: id_unidade_armazenadora
+        description: "Código da unidade armazenadora"
+        data_type: string
+        quote: true
+      - name: descricao_unidade_armazenadora
+        description: "Descrição da unidade armazenadora"
+        data_type: string
+        quote: true
+      - name: tipo_almoxarifado
+        description: "Tipo de almoxarifado"
+        data_type: string
+        quote: true
+      - name: id_unidade_administrativa
+        description: "Código da unidade administrativa vinculada"
+        data_type: string
+        quote: true
+      - name: descricao_unidade_administrativa
+        description: "Descrição da unidade administrativa vinculada"
+        data_type: string
+        quote: true
+      - name: status_unidade_administrativa
+        description: "Status da unidade armazenadora"
+        data_type: string
+        quote: true
+      - name: id_programa_trabalho
+        description: "Programa de trabalho"
+        data_type: string
+        quote: true
+      - name: id_cnes
+        description: "Código Nacional de Estabelecimentos de Saúde"
+        data_type: string
+        quote: true
+      - name: expressao_monetaria
+        description: "Expressão monetária"
+        data_type: string
+        quote: true
+      - name: tipo_unidade_armazenadora
+        description: "Tipo de unidade armazenadora"
+        data_type: string
+        quote: true
+
+

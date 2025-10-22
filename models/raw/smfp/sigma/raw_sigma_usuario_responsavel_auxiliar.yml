@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: raw_sigma_usuario_responsavel_auxiliar
+    description: "Cadastro de Responsáveis de UAM."
+    config:
+      alias: usuario_responsavel_auxiliar
+      materialized: view
+    columns:
+      - name: codigo_orgao
+        description: "Código do órgão"
+        data_type: string
+        quote: true
+      - name: descricao_orgao
+        description: "Descrição do órgão"
+        data_type: string
+        quote: true
+      - name: matricula_funcionario
+        description: "Matrícula do funcionário"
+        data_type: string
+        quote: true
+      - name: nome_funcionario
+        description: "Nome do funcionário"
+        data_type: string
+        quote: true
+      - name: tipo_responsabilidade
+        description: "Tipo de responsabilidade"
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: "Data de início"
+        data_type: string
+        quote: true
+      - name: data_termino
+        description: "Data de término"
+        data_type: string
+        quote: true
+      - name: data_termo_responsabilidade
+        description: "Data do termo de responsabilidade"
+        data_type: string
+        quote: true
+      - name: data_excepecionalidade
+        description: "Data da excepcionalidade"
+        data_type: string
+        quote: true
+      - name: data_publicacao_designacao
+        description: "Data da publicação da designação"
+        data_type: string
+        quote: true
+      - name: escolaridade
+        description: "Escolaridade"
+        data_type: string
+        quote: true
+      - name: curso_gestao_material
+        description: "Status do curso de gestão"
+        data_type: string
+        quote: true
+
+

@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: raw_sigma_ramo_atividade
+    description: "Cadastro do Ramo de Atividades."
+    config:
+      alias: ramo_atividade
+      materialized: view
+    columns:
+      - name: codigo_ramo
+        description: "Número sequencial de 1 a 9, correspondente a cada tipo de ramo."
+        data_type: numeric
+      - name: descricao_ramo
+        description: "Indústria, Comércio, Prestação de Serviço, Indústria e Comércio, Indústria e Prestação de Serviço, Comércio e Prestação de Serviço, Indústria, Comércio e Prestação de Serviço, Empreiteiro, Organização da Sociedade Civil - OSC"
+        data_type: string
+        quote: true
+      - name: situacao_ramo
+        description: "Indica se o cadastro está ativo."
+        data_type: string
+        quote: true
+
+

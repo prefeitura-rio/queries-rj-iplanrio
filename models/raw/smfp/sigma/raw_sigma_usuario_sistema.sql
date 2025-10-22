@@ -1,7 +1,7 @@
 {{
     config(
         alias='raw_sigma_usuario_sistema',
-        schema='compras_materiais_servicos_sigma'
+        description="Usuários do SIGMA."
     )
 }}
 
@@ -31,4 +31,4 @@ SELECT
     SAFE_CAST(tel_alternativo2 AS STRING) AS telefone_alternativo_2,
     SAFE_CAST(tel_corporativo1 AS STRING) AS telefone_corporativo_1,
     SAFE_CAST(tel_corporativo2 AS STRING) AS telefone_corporativo_2,
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_USUARIO_SISTEMA')}}
+from {{ source('brutos_compras_materiais_servicos_sigma_staging', 'usuario_sistema')}}

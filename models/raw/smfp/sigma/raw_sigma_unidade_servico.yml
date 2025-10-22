@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: raw_sigma_unidade_servico
+    description: "Unidade de Serviço."
+    config:
+      alias: unidade_servico
+      materialized: view
+    columns:
+      - name: id_unidade_servico
+        description: "Código único dado, pela PCRJ, à unidade de serviço"
+        data_type: int64
+      - name: descricao_unidade_servico
+        description: "Descrição da unidade de serviço"
+        data_type: string
+        quote: true
+
+

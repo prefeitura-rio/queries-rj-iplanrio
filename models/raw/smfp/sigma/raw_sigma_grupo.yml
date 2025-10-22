@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: raw_sigma_grupo
+    description: "Grupo da Lista de Classificação."
+    config:
+      alias: grupo
+      materialized: view
+    columns:
+      - name: codigo_grupo
+        description: "Código do Grupo"
+        data_type: string
+        quote: true
+      - name: descricao_grupo
+        description: "Descrição do Grupo"
+        data_type: string
+        quote: true
+      - name: status
+        description: "Quais são os status existentes? E um caracter numérico. 0 = Ativado e 1 = Desativado"
+        data_type: numeric
+
+
