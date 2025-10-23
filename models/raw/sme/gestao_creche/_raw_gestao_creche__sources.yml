@@ -12,11 +12,4 @@ sources:
     - name: ICH_InscricaoCrianca
     - name: ICH_InscricaoPolo
     - name: ICH_InscricaoResponsavel
-    - name: ICH_InscricaoEndereco
-
-  - name: brutos_gestao_creche_staging_prefect
-    database: rj-iplanrio
-    schema: brutos_gestao_creche_staging
-    freshness: # default freshness
-      error_after: {count: 24, period: hour}
-    loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+    - name: ICH_ResponsavelEndereco

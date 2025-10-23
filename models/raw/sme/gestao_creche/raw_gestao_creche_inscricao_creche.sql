@@ -38,6 +38,7 @@ SELECT safe_cast(ich_id as int64) as identificador_inscricao_creche,
     safe_cast(ich_TipoJustificativaAlocacaoOutraListaDeEspera as int64) as tipo_justificativa_alocacao_outra_lista_espera,
     safe_cast(ich_JustificativaAlocacaoOutraListaDeEspera as string) as justificativa_alocacao_outra_lista_espera,
     safe_cast(ich_dataSaida as date) as data_saida,
-    _prefect_extracted_at as loaded_at,
+    --_prefect_extracted_at as loaded_at,
+    _airbyte_extracted_at as loaded_at, 
     current_timestamp() as transformed_at
 FROM {{ source('brutos_gestao_creche_staging', 'ICH_InscricaoCreche') }}

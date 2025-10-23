@@ -20,6 +20,7 @@ SELECT safe_cast(ire_id as int64) as identificador_responsavel,
     safe_cast(ire_situacao as int64) as situacao,
     safe_cast(ire_dataCriacao as datetime) as data_criacao,
     safe_cast(ire_dataAlteracao as datetime) as data_alteracao,
-    _prefect_extracted_at as loaded_at,
+    --_prefect_extracted_at as loaded_at,
+    _airbyte_extracted_at as loaded_at, 
     current_timestamp() as transformed_at
 FROM {{ source('brutos_gestao_creche_staging', 'ICH_InscricaoResponsavel') }}

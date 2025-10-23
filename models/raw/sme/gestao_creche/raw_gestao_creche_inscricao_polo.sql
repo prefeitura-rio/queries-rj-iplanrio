@@ -25,6 +25,7 @@ SELECT safe_cast(ipl_id as int64) as identificador_inscricao_polo,
     safe_cast(ipl_dataAlteracao as datetime) as data_alteracao,
     safe_cast(ipl_participarPIC as boolean) as participar_pic,
     safe_cast(ipl_grup_Saida_Parceira as string) as grupo_saida_parceira,  
-    _prefect_extracted_at as loaded_at,
+    --_prefect_extracted_at as loaded_at,
+    _airbyte_extracted_at as loaded_at, 
     current_timestamp() as transformed_at
 FROM {{ source('brutos_gestao_creche_staging', 'ICH_InscricaoPolo') }}

@@ -21,6 +21,7 @@ SELECT safe_cast(prm_id as int64) as identificador_processo_matricula,
     safe_cast(icr_gemeoID as int64) as gemeo_id,
     safe_cast(icr_NIS as string) as nis,
     safe_cast(icr_CPF as string) as cpf,    
-    _prefect_extracted_at as loaded_at,
+    --_prefect_extracted_at as loaded_at,
+    _airbyte_extracted_at as loaded_at, 
     current_timestamp() as transformed_at
 FROM {{ source('brutos_gestao_creche_staging', 'ICH_InscricaoCrianca') }}

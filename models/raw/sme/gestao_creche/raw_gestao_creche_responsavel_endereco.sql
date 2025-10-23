@@ -20,8 +20,9 @@ SELECT safe_cast(prm_id as int64) as identificador_processo_matricula,
     safe_cast(ren_telefoneCelular as string) as telefone_celular,
     safe_cast(ren_telefoneRecado as string) as telefone_recado,
     safe_cast(ren_situacao as int64) as situacao,
-    safe_cast(ire_dataCriacao as datetime) as data_criacao,
-    safe_cast(ire_dataAlteracao as datetime) as data_alteracao,
-    _prefect_extracted_at as loaded_at,
+    safe_cast(ren_dataCriacao as datetime) as data_criacao,
+    safe_cast(ren_dataAlteracao as datetime) as data_alteracao,
+    --_prefect_extracted_at as loaded_at,
+    _airbyte_extracted_at as loaded_at, 
     current_timestamp() as transformed_at
 FROM {{ source('brutos_gestao_creche_staging', 'ICH_ResponsavelEndereco') }}
