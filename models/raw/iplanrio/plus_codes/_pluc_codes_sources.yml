@@ -28,3 +28,9 @@ sources:
     tables:
       - name: escolas
       - name: culturais
+  - name: smas_equipamentos
+    database: rj-smas-dev
+    schema: equipamentos
+    tables:
+      - name: poligonos_rmi
+      - name: poligonos_rmi_enderecos_2

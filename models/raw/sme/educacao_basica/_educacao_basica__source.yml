@@ -2,12 +2,12 @@ version: 2
 
 sources:
   - name: educacao_basica_staging
-    database: rj-sme
-    schema: educacao_basica_staging
+    database: rj-iplanrio
+    schema: brutos_educacao_basica_staging
     tables:
-      - name: aluno_turma
-      - name: aluno_historico
       - name: aluno
+      - name: aluno_historico
+      - name: aluno_turma
       - name: avaliacao
       - name: coc
       - name: dependencia
@@ -15,3 +15,8 @@ sources:
       - name: frequencia
       - name: movimentacao
 
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
