@@ -30,8 +30,8 @@ with
 
 select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.numCotaPagamento as int64) as id_cota_guia_pagamento,
-  case safe_cast(a.dtPagamento as date)
-    when null then false
+  case 
+    when a.dtPagamento is null then false
     else true
   end as cota_paga,
   case safe_cast(ifnull(b.vezes_substituida, 0) as int64)
