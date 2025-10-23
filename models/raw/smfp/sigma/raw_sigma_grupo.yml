@@ -5,7 +5,6 @@ models:
     description: "Grupo da Lista de Classificação."
     config:
       alias: grupo
-      materialized: view
     columns:
       - name: codigo_grupo
         description: "Código do Grupo"

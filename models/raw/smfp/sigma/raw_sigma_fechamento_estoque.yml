@@ -5,7 +5,6 @@ models:
     description: "Fechamento mensal do estoque."
     config:
       alias: fechamento_mensal_estoque
-      materialized: view
     columns:
       - name: id_unidade_armazenadora
         description: "código da unidade armazenadora"

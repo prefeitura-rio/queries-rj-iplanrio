@@ -5,7 +5,6 @@ models:
     description: "Material em trânsito."
     config:
       alias: material_em_transito
-      materialized: view
     columns:
       - name: id_unidade_origem
         description: "código da unidade armazenadora de origem"

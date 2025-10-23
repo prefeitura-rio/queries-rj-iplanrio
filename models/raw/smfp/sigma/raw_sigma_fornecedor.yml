@@ -5,7 +5,6 @@ models:
     description: "Cadastro de Fornecedores de bens e serviços."
     config:
       alias: fornecedor
-      materialized: view
     columns:
       - name: cpf_cnpj
         description: "CPF/CNPJ do fornecedor."

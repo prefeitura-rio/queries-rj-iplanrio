@@ -5,7 +5,6 @@ models:
     description: "Devolução de material."
     config:
       alias: devolucao_material
-      materialized: view
     columns:
       - name: id_unidade_origem
         description: "Código da unidade armazenadora de origem"

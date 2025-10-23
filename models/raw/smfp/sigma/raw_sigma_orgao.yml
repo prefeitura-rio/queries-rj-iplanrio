@@ -5,7 +5,6 @@ models:
     description: "Cadastro de Órgãos do SIGMA."
     config:
       alias: orgao
-      materialized: view
     columns:
       - name: codigo_orgao
         description: "Código do órgão"

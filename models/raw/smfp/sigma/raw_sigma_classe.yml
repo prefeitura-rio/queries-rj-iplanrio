@@ -5,7 +5,6 @@ models:
     description: "Classes de Material da Lista de Classificação"
     config:
       alias: classe
-      materialized: view
     columns:
       - name: codigo_grupo
         description: "Código do grupo onde está classificada a subclasse."

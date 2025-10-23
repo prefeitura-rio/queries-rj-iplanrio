@@ -5,7 +5,6 @@ models:
     description: "Cadastro de Responsáveis de UAM."
     config:
       alias: usuario_responsavel_auxiliar
-      materialized: view
     columns:
       - name: codigo_orgao
         description: "Código do órgão"

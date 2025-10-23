@@ -5,7 +5,6 @@ models:
     description: "Usuários do SIGMA."
     config:
       alias: usuario_sistema
-      materialized: view
     columns:
       - name: empresa_contratante
         description: "Nome da empresa contratante do colaborador"

@@ -5,7 +5,6 @@ models:
     description: "Saldo mensal do estoque."
     config:
       alias: saldo_mensal_estoque
-      materialized: view
     columns:
       - name: id_unidade_armazenadora
         description: "Código da unidade armazenadora"

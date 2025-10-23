@@ -5,7 +5,6 @@ models:
     description: "Posição fechada do estoque."
     config:
       alias: posicao_fechada_estoque
-      materialized: view
     columns:
       - name: id_unidade_armazenadora
         description: "código da unidade armazenadora"

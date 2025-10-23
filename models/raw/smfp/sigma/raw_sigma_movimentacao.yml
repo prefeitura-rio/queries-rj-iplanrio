@@ -5,7 +5,6 @@ models:
     description: "Movimentações de estoque."
     config:
       alias: movimentacao
-      materialized: view
     columns:
       - name: codigo_material
         description: "Código do Material"

@@ -5,7 +5,6 @@ models:
     description: "Unidade de Consumo."
     config:
       alias: unidade
-      materialized: view
     columns:
       - name: id_unidade
         description: "Código único dado, pela PCRJ, à unidade"

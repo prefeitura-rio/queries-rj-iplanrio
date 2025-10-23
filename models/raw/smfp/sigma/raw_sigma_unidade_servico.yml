@@ -5,7 +5,6 @@ models:
     description: "Unidade de Serviço."
     config:
       alias: unidade_servico
-      materialized: view
     columns:
       - name: id_unidade_servico
         description: "Código único dado, pela PCRJ, à unidade de serviço"

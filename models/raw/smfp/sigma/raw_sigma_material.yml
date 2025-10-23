@@ -5,7 +5,6 @@ models:
     description: "Cadastro de Material."
     config:
       alias: material
-      materialized: view
     columns:
       - name: codigo_material
         description: "Código do Material (Composição do Grupo + Classe + Subclasse + Sequencial e digitos de verificação)"

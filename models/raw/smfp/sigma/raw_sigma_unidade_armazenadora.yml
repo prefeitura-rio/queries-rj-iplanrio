@@ -5,7 +5,6 @@ models:
     description: "Unidades Armazenadoras."
     config:
       alias: unidade_armazenadora
-      materialized: view
     columns:
       - name: id_unidade_armazenadora
         description: "Código da unidade armazenadora"

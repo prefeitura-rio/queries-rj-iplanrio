@@ -5,7 +5,6 @@ models:
     description: "Movimento do estoque."
     config:
       alias: movimento_estoque
-      materialized: view
     columns:
       - name: id_unidade_origem
         description: "código da unidade armazenadora de origem"

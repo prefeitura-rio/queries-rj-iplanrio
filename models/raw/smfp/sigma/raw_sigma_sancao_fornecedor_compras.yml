@@ -5,7 +5,6 @@ models:
     description: "Sanções administrativas aplicadas a fornecedores contratados pelo Município do Rio de Janeiro."
     config:
       alias: sancao_fornecedor_compras
-      materialized: view
     columns:
       - name: cpf_cnpj
         description: "CPF/CNPJ do fornecedor que recebeu a sanção."

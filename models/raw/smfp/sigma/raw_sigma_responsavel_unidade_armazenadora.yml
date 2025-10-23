@@ -5,7 +5,6 @@ models:
     description: "Responsáveis pelas Unidades Armazenadoras."
     config:
       alias: responsavel_unidade_armazenadora
-      materialized: view
     columns:
       - name: id_unidade_armazenadora
         description: "Código da unidade armazenadora"
