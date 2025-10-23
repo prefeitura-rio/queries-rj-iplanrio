@@ -66,10 +66,10 @@ models:
 
       - name: numero_sorteio
         description: Número recebido para participar do sorteio
-        data_type: int64
+        data_type: string
         data_tests:
           - not_null
-              #name: raw_gestao_creche_inscricao_polo__numero_sorteio__not_null
+              #name: raw_gestao_creche_inscricao_polo__numero_sorteio_not_null
               #severity: error
 
       - name: classificacao_polo
