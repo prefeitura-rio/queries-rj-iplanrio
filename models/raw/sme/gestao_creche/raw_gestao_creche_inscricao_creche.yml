@@ -13,7 +13,7 @@ models:
               severity: error
 
       - name: identificador_processo_matricula
-        description: FK da tabela inscricao_polo - (Parte da chave composta)
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
@@ -21,7 +21,7 @@ models:
               severity: error        
 
       - name: identificador_polo_matricula
-        description: FK da tabela inscricao_polo - (Parte da chave composta)
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
@@ -29,7 +29,7 @@ models:
               severity: error        
 
       - name: identificador_inscricao_polo
-        description: FK da tabela inscricao_polo - (Parte da chave composta)
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
@@ -37,7 +37,7 @@ models:
               severity: error        
 
       - name: identificador_escola
-        description: Id da escola
+        description: "Id da escola"
         data_type: int64
         data_tests:
           - not_null:
@@ -45,7 +45,7 @@ models:
               severity: error
 
       - name: identificador_unidade_escolar
-        description: Id da Unidade Escolar
+        description: "Id da Unidade Escolar"
         data_type: int64
         data_tests:
           - not_null:
@@ -53,7 +53,7 @@ models:
               severity: error
 
       - name: preferencia_creche
-        description: Ordem de preferência da creche dentre as 5 que podem ser consultadas
+        description: "Ordem de preferência da creche dentre as 5 que podem ser consultadas"
         data_type: int64
         data_tests:
           - not_null:
@@ -61,23 +61,23 @@ models:
               severity: error
 
       - name: pic_ano_anterior
-        description: Pic do ano anterior
+        description: "Pic do ano anterior"
         data_type: int64
 
       - name: lista_ano_anterior
-        description: Em que posição a creche estava dentre as escolhidas no ano anterior
+        description: "Em que posição a creche estava dentre as escolhidas no ano anterior"
         data_type: int64
 
       - name: data_convocacao
-        description: Data em que a criança foi convocada
+        description: "Data em que a criança foi convocada"
         data_type: date
 
       - name: observacao
-        description: Observações sobre
+        description: "Observações sobre"
         data_type: string
 
       - name: situacao
-        description: Situação
+        description: "Situação"
         data_type: int64
         data_tests:
           - not_null:
@@ -85,7 +85,7 @@ models:
               severity: error
 
       - name: data_criacao
-        description: Data de criação da inscrição
+        description: "Data de criação da inscrição"
         data_type: datetime
         data_tests:
           - not_null:
@@ -93,7 +93,7 @@ models:
               severity: error
 
       - name: data_alteracao
-        description: Data de alteração da inscrição
+        description: "Data de alteração da inscrição"
         data_type: datetime
         data_tests:
           - not_null:
@@ -101,67 +101,67 @@ models:
               severity: error
 
       - name: justificativa_convocacao_excepcional
-        description: Justificativa para a convocação excepcional
+        description: "Justificativa para a convocação excepcional"
         data_type: string
 
       - name: status_convocacao_excepcional
-        description: Status da convocação excepcional
+        description: "Status da convocação excepcional"
         data_type: int64
 
       - name: data_convocacao_excepcional
-        description: Data da convocação excepcional
+        description: "Data da convocação excepcional"
         data_type: datetime
 
       - name: data_cancelamento_convocacao_excepcional
-        description: Data de cancelamento da convocação excepcional
+        description: "Data de cancelamento da convocação excepcional"
         data_type: datetime
 
       - name: horario_integral
-        description: Carga horária integral desejada? Se sim igual a 1.
+        description: "Carga horária integral desejada? Se sim igual a 1."
         data_type: boolean
 
       - name: horario_parcial
-        description: Carga horária parcial desejada? Se sim igual a 1.
+        description: "Carga horária parcial desejada? Se sim igual a 1."
         data_type: boolean
 
       - name: situacao_integral
-        description: Situação da carga horária integral desejada. Se a carga integral foi aceita igual a 1.
+        description: "Situação da carga horária integral desejada. Se a carga integral foi aceita igual a 1."
         data_type: int64
 
       - name: situacao_parcial
-        description: Situação da carga horária parcial desejada. Se a carga parcial foi aceita igual a 1.
+        description: "Situação da carga horária parcial desejada. Se a carga parcial foi aceita igual a 1."
         data_type: int64
 
       - name: data_convocacao2
-        description: Segunda data de convocação
+        description: "Segunda data de convocação"
         data_type: datetime
 
       - name: data_limite_convocacao
-        description: Data limite para convocação
+        description: "Data limite para convocação"
         data_type: datetime
 
       - name: comprovante_convocacao_arq
-        description: Identificação do arquivo (varbiary) com o comprovante de inscrição na creche
+        description: "Identificação do arquivo (varbiary) com o comprovante de inscrição na creche"
         data_type: bytes
 
       - name: comprovante_convocacao_nome
-        description: Nome do arquivo de comprovação de inscrição
+        description: "Nome do arquivo de comprovação de inscrição"
         data_type: string
 
       - name: escola_anterior_id
-        description: Identificador da escola anterior onde a criança estudava (origem tabela?)
+        description: "Identificador da escola anterior onde a criança estudava (origem tabela?)"
         data_type: int64
 
       - name: tipo_justificativa_alocacao_outra_lista_espera
-        description: Tipo de justificativa para inclusão na lista de espera (origem tabela?)
+        description: "Tipo de justificativa para inclusão na lista de espera (origem tabela?)"
         data_type: int64
 
       - name: justificativa_alocacao_outra_lista_espera
-        description: Justificativa para alocação em lista de espera
+        description: "Justificativa para alocação em lista de espera"
         data_type: string
 
       - name: data_saida
-        description: Data de saída
+        description: "Data de saída"
         data_type: date
 
       - name: loaded_at

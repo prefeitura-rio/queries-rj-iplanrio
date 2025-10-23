@@ -5,7 +5,7 @@ models:
     description: Apresenta as informações relativas às inscrições realizadas em pólos disponiblizados.
     columns:
       - name: identificador_inscricao_polo
-        description: PK desta tabela - (Parte da chave composta)
+        description: "PK desta tabela - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null
@@ -21,7 +21,7 @@ models:
               #severity: error        
 
       - name: identificador_polo_matricula
-        description: FK da tabela polo_processo_matricula - (Parte da chave composta)
+        description: "FK da tabela polo_processo_matricula - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null
@@ -53,11 +53,11 @@ models:
               #severity: error
 
       - name: codigo_ficha
-        description: Codigo da ficha de inscrição no pólo
+        description: "Codigo da ficha de inscrição no pólo"
         data_type: string
 
       - name: grau_vulnerabilidade
-        description: Grau de Vulnerabilidade da criança
+        description: "Grau de Vulnerabilidade da criança"
         data_type: int64
         data_tests:
           - not_null
@@ -65,7 +65,7 @@ models:
               #severity: error
 
       - name: numero_sorteio
-        description: Número recebido para participar do sorteio
+        description: "Número recebido para participar do sorteio"
         data_type: string
         data_tests:
           - not_null
@@ -73,7 +73,7 @@ models:
               #severity: error
 
       - name: classificacao_polo
-        description: Classificação no polo
+        description: "Classificação no polo"
         data_type: int64
 
       - name: esc_id
@@ -93,7 +93,7 @@ models:
               #severity: error
 
       - name: situacao
-        description: Situação da inscrição no polo
+        description: "Situação da inscrição no polo"
         data_type: int64
         data_tests:
           - not_null
@@ -101,7 +101,7 @@ models:
               #severity: error
 
       - name: data_criacao
-        description: Data de criação da inscrição no polo
+        description: "Data de criação da inscrição no polo"
         data_type: datetime
         data_tests:
           - not_null
@@ -109,7 +109,7 @@ models:
               #severity: error
 
       - name: data_alteracao
-        description: Data de alteração da inscrição no polo
+        description: "Data de alteração da inscrição no polo"
         data_type: datetime
         data_tests:
           - not_null
@@ -117,11 +117,11 @@ models:
               #severity: error
 
       - name: participar_pic
-        description: Vai participar do PIC (Primeira Infância Carioca)? True or False
+        description: "Vai participar do PIC (Primeira Infância Carioca)? True or False"
         data_type: boolean
 
       - name: grupo_saida_parceira
-        description: Atualmente esse campo é sempre nulo
+        description: "Atualmente esse campo é sempre nulo"
         data_type: string
 
       - name: loaded_at

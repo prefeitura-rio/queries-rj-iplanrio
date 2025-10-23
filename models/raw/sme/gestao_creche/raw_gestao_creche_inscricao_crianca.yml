@@ -5,7 +5,7 @@ models:
     description: "Relaciona as informações de uma inscrição em creche à criança solicitante."
     columns:      
       - name: identificador_processo_matricula
-        description: Identificador do processo de matrícula
+        description: "Identificador do processo de matrícula"
         data_type: int64
         data_tests:
           - not_null:
@@ -13,7 +13,7 @@ models:
               severity: error        
 
       - name: identificador_polo_matricula
-        description: FK da tabela inscricao_polo - (Parte da chave composta)
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
@@ -21,7 +21,7 @@ models:
               severity: error        
 
       - name: identificador_inscricao_polo
-        description: FK da tabela inscricao_polo - (Parte da chave composta)
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
@@ -29,7 +29,7 @@ models:
               severity: error
 
       - name: nome
-        description: Nome da criança
+        description: "Nome da criança"
         data_type: string
         data_tests:
           - not_null:
@@ -37,11 +37,11 @@ models:
               severity: error  
 
       - name: dnv
-        description: Número da declaração de nascido vivo
+        description: "Número da declaração de nascido vivo"
         data_type: string
 
       - name: data_nascimento
-        description: Data de Nascimento (AAAA-MM-DD)
+        description: "Data de Nascimento (AAAA-MM-DD)"
         data_type: date
         data_tests:
           - not_null:
@@ -49,7 +49,7 @@ models:
               severity: error  
 
       - name: sexo
-        description: Sexo da criança (F ou M)
+        description: "Sexo da criança (F ou M)"
         data_type: string
         data_tests:
           - not_null:
@@ -57,7 +57,7 @@ models:
               severity: error  
 
       - name: situacao
-        description: Situação da criança
+        description: "Situação da criança"
         data_type: int64
         data_tests:
           - not_null:
@@ -65,7 +65,7 @@ models:
               severity: error  
 
       - name: data_criacao
-        description: Data de criação do registro na base de dados
+        description: "Data de criação do registro na base de dados"
         data_type: date
         data_tests:
           - not_null:
@@ -73,7 +73,7 @@ models:
               severity: error
 
       - name: data_alteracao
-        description: Data de alteração do registro na base de dados
+        description: "Data de alteração do registro na base de dados"
         data_type: date
         data_tests:
           - not_null:
@@ -81,15 +81,15 @@ models:
               severity: error
 
       - name: gemeo_id
-        description: Identificador de irmao gêmeo, caso exista
+        description: "Identificador de irmao gêmeo, caso exista"
         data_type: int64
 
       - name: nis
-        description: NIS da criança
+        description: "NIS da criança"
         data_type: string
 
       - name: cpf
-        description: CPF da criança
+        description: "CPF da criança"
         data_type: string
 
       - name: loaded_at

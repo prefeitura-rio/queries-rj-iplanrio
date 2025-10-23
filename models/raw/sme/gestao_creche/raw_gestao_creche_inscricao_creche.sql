@@ -1,6 +1,6 @@
 {{
     config(
-        schema="brutos_gestao_creche",
+        --schema="brutos_gestao_creche",
         alias="inscricao_creche",
         materialized="table",
         tags=["raw", "gestao_creche", "inscricao_creche", "ICH_InscricaoCreche"],
