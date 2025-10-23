@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_frequencia__turma_disciplina_rel
+    description: "**Descrição**: Disciplina de determinada turma de escolas municipais do município do Rio de Janeiro.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_disciplina
+        description: Identificador de disciplina da turma
+      - name: id_turma
+        description: Identificador de turma

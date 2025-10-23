@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__vw_bi_aluno
+    description: "**Descrição**: Visão de business intelligence dos alunos.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: Ano
+        description: Ano letivo
+      - name: Matricula
+        description: Número da matrícula do aluno
+      - name: Nome
+        description: Nome do aluno
+      - name: NomeSocial
+        description: Nome social do aluno
+      - name: Sexo
+        description: Sexo do aluno
+      - name: Endereco
+        description: Endereço do aluno
+      - name: Bairro
+        description: Bairro do aluno
+      - name: CEP
+        description: CEP do endereço do aluno
+      - name: Filiacao_1
+        description: Primeira filiação do aluno
+      - name: Filiacao_2
+        description: Segunda filiação do aluno
+      - name: Mora_com_Filiacao
+        description: Se o aluno mora com a filiação
+      - name: CPF
+        description: CPF do aluno
+      - name: NIS_Aluno
+        description: NIS do aluno
+      - name: NIS_Resp
+        description: NIS do responsável
+      - name: Raca_Cor
+        description: Raça/cor do aluno
+      - name: Cod_def
+        description: Código da deficiência
+      - name: Deficiencia
+        description: Descrição da deficiência
+      - name: Tipo_Transporte
+        description: Tipo de transporte utilizado
+      - name: Bolsa_Familia
+        description: Se recebe Bolsa Família
+      - name: CFC
+        description: CFC do aluno
+      - name: Territorios_Sociais
+        description: Territórios sociais
+      - name: Clube_Escolar
+        description: Clube escolar
+      - name: Nucleo_Artes
+        description: Núcleo de artes
+      - name: Mais_Educacao
+        description: Mais Educação
+      - name: DataNascimento
+        description: Data de nascimento do aluno
+      - name: Idade_Atual
+        description: Idade atual do aluno
+      - name: Idade_3112
+        description: Idade em 31/12
+      - name: Grupamento
+        description: Grupamento do aluno
+      - name: Turma
+        description: Turma do aluno
+      - name: UP_Aval
+        description: UP de avaliação
+      - name: telefone
+        description: Telefone do aluno
+      - name: telefone_casa
+        description: Telefone da casa
+      - name: telefone_recado
+        description: Telefone para recado
+      - name: telefone_trab
+        description: Telefone do trabalho
+      - name: celular_1
+        description: Primeiro celular
+      - name: celular_2
+        description: Segundo celular
+      - name: Situacao
+        description: Situação do aluno
+      - name: Cod_Ult_Mov
+        description: Código da última movimentação
+      - name: Ult_Movimentacao
+        description: Descrição da última movimentação
+      - name: Tot_Aluno
+        description: Total de alunos
+      - name: alu_id
+        description: Identificador do aluno
+      - name: tur_id
+        description: Identificador da turma
+      - name: Nome_Responsavel
+        description: Nome do responsável
+      - name: CPF_Responsavel
+        description: CPF do responsável
+      - name: Contato_Responsavel
+        description: Contato do responsável

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: educacao_basica__aluno_turma
+    description: "**Descrição**: Relacionamento entre alunos e turmas.\n**Frequência
+      de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão
+      gestor dos dados**: Secretaria Municipal de Educação\n**Publicado por**: Nuno
+      Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
+    columns:
+      - name: ano
+        description: Ano da turma associado ao id da turma.
+      - name: id_turma
+        description: Identificador da turma, criado anualmente.
+      - name: id_aluno
+        description: Identificador do aluno.

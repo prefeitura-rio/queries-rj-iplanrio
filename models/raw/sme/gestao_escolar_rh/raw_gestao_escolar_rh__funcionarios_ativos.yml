@@ -1,0 +1,47 @@
+version: 2
+models :
+  - name: raw_gestao_escolar_rh__funcionarios_ativos
+    description: "Tabela sobre funcionários ativos"
+    columns:
+    - name: cpf_servidor
+      description: "Nº de CPF dos servidores ativos"
+    - name: nome_servidor
+      description: "Nome dos servidores ativos"
+    - name: email_servidor
+      description: "Email dos servidores ativos"
+    - name: primeira_matricula_servidor
+      description: "Primeira matrícula dos servidores ativos"
+    - name: prefixo_matricula_a
+      description: "Prefixo da matrícula A"
+    - name: segunda_matricula_servidor
+      description: "Segunda matrícula dos servidores ativos"
+    - name: prefixo_matricula_b
+      description: "Prefixo da matrícula B"
+    - name: cargo_primeira_matricula_servidor
+      description: "Cargo relacionado a primeira matrícula dos servidores ativos"
+    - name: cargo_segunda_matricula_servidor
+      description: "Cargo relacionado a segunda matrícula dos servidores ativos"
+    - name: disciplina_primeira_matricula_servidor
+      description: "Disciplina que o professor ministra relacionado a primeira matrícula"
+    - name: disciplina_segunda_matricula_servidor
+      description: "Disciplina que o professor ministra relacionado a segunda matrícula"
+    - name: carga_horaria_primeira_matricula_servidor
+      description: "Carga horária do servidor relacionado a primeira matrícula"
+    - name: carga_horaria_segunda_matricula_servidor
+      description: "Carga horária do servidor relacionado a segunda matrícula"
+    - name: funcao_primeira_matricula_servidor
+      description: "Função exercida pelo servidor relacionada a primeira matrícula"
+    - name: funcao_segunda_matricula_servidor
+      description: "Função exercida pelo servidor relacionada a segunda matrícula"
+    - name: cre_primeira_matricula_servidor
+      description: "Coordenadoria Regional de Educação onde a primeira matrícula do servidor está alocada"
+    - name: cre_segunda_matricula_servidor
+      description: "Coordenadoria Regional de Educação onde a segunda matrícula do servidor está alocada"
+    - name: sigla_lotacao_primeira_matricula_servidor
+      description: "Sigla da unidade administrativa onde o servidor está alocado relacionado a primeira matrícula"
+    - name: nome_lotacao_primeira_matricula_servidor
+      description: "Nome da unidade administrativa onde o servidor está alocado relacionado a primeira matrícula"
+    - name: sigla_lotacao_segunda_matricula_servidor
+      description: "Sigla da unidade administrativa onde o servidor está alocado relacionado a segunda matrícula"
+    - name: nome_lotacao_segunda_matricula_servidor
+      description: "Nome da unidade administrativa onde o servidor está alocado relacionado a segunda matrícula"

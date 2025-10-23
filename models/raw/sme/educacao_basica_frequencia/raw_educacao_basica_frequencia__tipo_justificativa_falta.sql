@@ -1,7 +1,7 @@
-{{ config(alias='tipo_justificativa_falta', schema='brutos_gestao_escolar') }}
+{{ config(alias='tipo_justificativa_falta') }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_TipoJustificativaFalta') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_airbyte', 'ACA_TipoJustificativaFalta') }}
 ),
 
 renamed as (

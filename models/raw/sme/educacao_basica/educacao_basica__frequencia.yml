@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: educacao_basica__frequencia
+    description: "**Descrição**: Frequência dos alunos matriculados ou que já tenham
+      sido matriculados em uma escola da prefeitura do Rio de Janeiro desde 2012.
+      A frequência do aluno leva em consideração o periodo (em geral de um mês) e
+      a disciplina feita.\n**Frequência de atualização**: Anual\n**Cobertura temporal**:
+      Desde 2012 Até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal
+      de Educação\n**Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**:
+      nuno.silva@rioeduca.net\n"
+    columns:
+      - name: id_escola
+        description: Identificador da escola, onde o aluno estuda, na base de dados.
+      - name: id_turma
+        description: Identificador da turma do aluno na base de dados.
+      - name: turma
+        description: Turma do aluno. Deve respeitar o atributo id_turma.
+      - name: id_aluno
+        description: Identificador do aluno, para o qual está sendo calculado a frequência,
+          na base de dados.
+      - name: id_coc
+        description: "Coc do bimestre que contém o período onde está sendo calculada
+          a frequência. \r\nNúmero do conselho de classe.\r\nÉ único por período letivo.
+          Conselho de classe é uma reunião de professores que ocorre no final do bimestre."
+      - name: data_inicio
+        description: "Data do início do período em que vai ser calculada a frequência.
+          \r\nUm período, em geral, de um mês, podendo começar e acabar no meio do
+          mês."
+      - name: data_fim
+        description: Data do fim do período.
+      - name: dias_letivos
+        description: "Número de dias letivos no período. Um dia letivo é um dia que
+          teve aula.\r\nO somatório de todos os períodos em um ano deve dar no mínimo
+          200 dias."
+      - name: tempos_letivos
+        description: "Número de tempos letivos da disciplina no período.\r\nTempo
+          letivo é um tempo de aula, como uma aula de geografia, história etc. \r\n
+          Quando é fundamental 1 fica igual a dias letivos."
+      - name: faltas_global
+        description: "Número de tempos letivos em que o aluno faltou em todas as disciplinas.
+          \r\nÉ o somatório dos valores do atributo faltas_disciplina. \r\nQuando
+          é fundamental 2 fica em branco."
+      - name: id_disciplina
+        description: "Identificador da disciplina,  em que está sendo calculada a
+          frequência, na base de dados. \r\nQuando é fundamental 1 fica em branco."
+      - name: id_disciplina_ano
+        description: "Código da disciplina em que está sendo calculada a frequência.\r
+          \nÉ único por ano. \r\nQuando é fundamental 1 fica em branco."
+      - name: disciplina
+        description: "Nome da disciplina em que está sendo calculada a frequência.\r
+          \nEm geral mantém uma constância, podendo durar o nome indefinidamente.
+          deve respeitar o atributo id_disciplina_ano.\r\nQuando é fundamental 1 fica
+          em branco."
+      - name: faltas_disciplina
+        description: "Número de faltas em tempos letivos do aluno na disciplina. \r
+          \nQuando é fundamental 1 fica zerado."
+      - name: carga_horaria_semanal
+        description: "Carga horária semanal na disciplina.\r\nQuando é fundamental
+          1 fica zerado."

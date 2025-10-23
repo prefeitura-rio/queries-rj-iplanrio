@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__esc_escola
+    description: "**Descrição**: Escolas do sistema de gestão escolar.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_cid
+        description: Identificador da cidade
+      - name: id_ent
+        description: Identificador da entidade
+      - name: id_esc
+        description: Identificador da escola
+      - name: id_tre
+        description: Identificador da região
+      - name: id_uad
+        description: Identificador da unidade administrativa
+      - name: esc_nome
+        description: Nome da escola
+      - name: esc_codigo
+        description: Código da escola
+      - name: esc_situacao
+        description: Situação da escola
+      - name: esc_atoCriacao
+        description: Ato de criação da escola
+      - name: esc_autorizada
+        description: Se a escola é autorizada
+      - name: esc_codigoInep
+        description: Código INEP da escola
+      - name: esc_fundoVerso
+        description: Fundo verso da escola
+      - name: esc_dataCriacao
+        description: Data/hora de criação do registro
+      - name: esc_dataAlteracao
+        description: Data/hora da última alteração
+      - name: esc_microareaCampo
+        description: Microárea campo da escola
+      - name: esc_controleSistema
+        description: Controle do sistema
+      - name: esc_funcionamentoFim
+        description: Data de fim do funcionamento
+      - name: id_uadSuperiorGestao
+        description: Identificador da unidade administrativa superior de gestão
+      - name: esc_funcionamentoInicio
+        description: Data de início do funcionamento
+      - name: esc_codigoNumeroMatricula
+        description: Código número da matrícula
+      - name: esc_dataPublicacaoDiarioOficial
+        description: Data de publicação no diário oficial

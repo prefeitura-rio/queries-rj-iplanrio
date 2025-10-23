@@ -1,5 +1,5 @@
         {{ config(
-            alias='frequencia'
+            alias='frequencia_mensal'
         ) }}
 
         with Turmas as (
@@ -19,11 +19,11 @@
                 tcr.id_curso,
                 fav.tipo_frequencia_apurada
             FROM {{ ref('raw_gestao_escolar__tur_turma') }} tur
-            INNER JOIN {{ ref('raw_gestao_escolar__turma_disciplina_rel') }} rtd
+            INNER JOIN {{ ref('raw_educacao_basica_frequencia__turma_disciplina_rel') }} rtd
                 ON rtd.id_turma = tur.tur_id AND tur_situacao = 1
             INNER JOIN {{ ref('raw_gestao_escolar__turma_disciplina') }} tud
                 ON tud.id_disciplina_turma = rtd.id_disciplina AND id_situacao = '1'
-            INNER JOIN {{ ref('raw_gestao_escolar__formato_avaliacao') }} fav
+            INNER JOIN {{ ref('raw_educacao_basica_frequencia__formato_avaliacao') }} fav
                 ON fav.id_formato_avaliacao = tur.fav_id AND situacao_registro <> 3
             INNER JOIN {{ ref('raw_gestao_escolar__turno') }} trn
                 ON tur.trn_id = trn.id_turno AND situacao = 1
@@ -73,7 +73,7 @@
             INNER JOIN {{ ref('raw_gestao_escolar__turma_aula') }} tau
                 ON tau.id_disciplina = tur.id_disciplina_turma
                 AND EXTRACT(YEAR FROM tau.data_aula) = 2025  -- TODO: Verificar se o ano é fixo
-            INNER JOIN {{ ref('raw_gestao_escolar__turma_aula_aluno') }} taa
+            INNER JOIN {{ ref('raw_educacao_basica_frequencia__turma_aula_aluno') }} taa
                 ON taa.id_disciplina_turma = tau.id_disciplina
                 AND taa.id_aula_disciplina = CAST(tau.id_aula_disciplina AS STRING)
                 AND CAST(taa.data_alteracao AS DATETIME) >= '2025-01-01'

@@ -2,7 +2,6 @@
 {{
     config(
         alias='turma_aula_aluno',
-        schema='brutos_gestao_escolar',
         materialized='incremental',
         incremental_strategy='merge',
         partition_by={
@@ -16,7 +15,7 @@
 }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'CLS_TurmaAulaAluno') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_prefect', 'CLS_TurmaAulaAluno') }}
     {% if is_incremental() %}
       where data_particao in (CAST(current_date AS STRING), CAST(date_sub(current_date, interval 1 day) AS STRING))
     {% endif %}

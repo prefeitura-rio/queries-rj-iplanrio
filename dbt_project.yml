@@ -38,7 +38,7 @@ models:
       sme:
         frequencia:
           +materialized: table
-          +schema: educacao_basica_frequencia
+          +schema: educacao_basica_frequencia_new
           +tags: ["daily", "sme"]
           +project: rj-sme
       smfp:
@@ -66,14 +66,31 @@ models:
       sme:
         +project: rj-sme
         +tags: ["sme"]
-        gestao_escolar:
-          +materialized: table
-          +schema: brutos_gestao_escolar
-          +tags: ["daily"]
         educacao_basica:
           +materialized: table
-          +schema: educacao_basica_staging
+          +schema: brutos_educacao_basica_new
           +tags: "daily"
+        educacao_basica_alocacao:
+          +materialized: table
+          +schema: brutos_educacao_basica_alocacao_new
+          +tags: ["daily"]
+        educacao_basica_avaliacao:
+          +materialized: table
+          +schema: brutos_educacao_basica_avaliacao_new
+          +tags: ["daily"]
+        educacao_basica_frequencia:
+          +materialized: table
+          +schema: brutos_educacao_basica_frequencia_new
+          +tags: ["daily"]
+        gestao_escolar:
+          +materialized: table
+          +schema: brutos_gestao_escolar_new
+          +tags: ["daily"]
+        gestao_escolar_rh:
+          +materialized: table
+          +schema: brutos_gestao_escolar_rh_new
+          +tags: ["daily"]
+
       smfp:
         +tags: "smfp"
         +project: rj-smfp

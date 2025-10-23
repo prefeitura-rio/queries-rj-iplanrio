@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__aca_avaliacao
+    description: "**Descrição**: Avaliações dos alunos.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: fav_id
+        description: Identificador do formato de avaliação
+      - name: ava_id
+        description: Identificador da avaliação
+      - name: ava_nome
+        description: Nome da avaliação
+      - name: ava_tipo
+        description: Tipo da avaliação
+      - name: tpc_id
+        description: Identificador do tipo de período
+      - name: ava_ordemPeriodo
+        description: Ordem do período da avaliação
+      - name: ava_apareceBoletim
+        description: Se aparece no boletim
+      - name: ava_situacao
+        description: Situação da avaliação
+      - name: ava_dataCriacao
+        description: Data/hora de criação do registro
+      - name: ava_dataAlteracao
+        description: Data/hora da última alteração
+      - name: ava_conceitoGlobalObrigatorio
+        description: Conceito global obrigatório
+      - name: ava_baseadaConceitoGlobal
+        description: Baseada em conceito global
+      - name: ava_baseadaNotaDisciplina
+        description: Baseada em nota de disciplina
+      - name: ava_baseadaAvaliacaoAdicional
+        description: Baseada em avaliação adicional
+      - name: ava_mostraBoletimConceitoGlobalNota
+        description: Mostra no boletim conceito global nota
+      - name: ava_mostraBoletimConceitoGlobalFrequencia
+        description: Mostra no boletim conceito global frequência
+      - name: ava_mostraBoletimConceitoGlobalAvaliacaoAdicional
+        description: Mostra no boletim conceito global avaliação adicional
+      - name: ava_mostraBoletimDisciplinaNota
+        description: Mostra no boletim disciplina nota
+      - name: ava_mostraBoletimDisciplinaFrequencia
+        description: Mostra no boletim disciplina frequência
+      - name: ava_recFinalConceitoMaximoAprovacao
+        description: Recuperação final conceito máximo aprovação
+      - name: ava_recFinalConceitoGlobalMinimoNaoAtingido
+        description: Recuperação final conceito global mínimo não atingido
+      - name: ava_recFinalFrequenciaMinimaFinalNaoAtingida
+        description: Recuperação final frequência mínima final não atingida
+      - name: ava_recFinalNotaDisciplinaApenasConceitoGlobalNaoAtingido
+        description: Recuperação final nota disciplina apenas conceito global não atingido
+      - name: ava_disciplinaObrigatoria
+        description: Disciplina obrigatória
+      - name: ava_exibeNaoAvaliados
+        description: Exibe não avaliados
+      - name: ava_exibeSemProfessor
+        description: Exibe sem professor
+      - name: ava_exibeObservacaoDisciplina
+        description: Exibe observação disciplina
+      - name: ava_exibeObservacaoConselhoPedagogico
+        description: Exibe observação conselho pedagógico
+      - name: ava_exibeFrequencia
+        description: Exibe frequência
+      - name: ava_exibeNotaPosConselho
+        description: Exibe nota pós conselho
+      - name: ava_conceitoGlobalObrigatorioFrequencia
+        description: Conceito global obrigatório frequência

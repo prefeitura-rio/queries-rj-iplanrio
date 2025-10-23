@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: educacao_basica__coc
+    description: "**Descrição**: COCs fechados (não leva em conta o atual ) das turmas
+      de escolas da prefeitura do Rio de Janeiro, com informações desde 2014. \r\n
+      Estas informações são levantadas para, entre outras coisas, comparar a variação
+      entre um COC e outro.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**:
+      Até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal de Educação\n
+      **Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
+    columns:
+      - name: id_cre
+        description: "Número da CRE que administra a unidade escolar onde o COC ocorreu.
+          \r\nCRE é a sigla para coordenadoria regional."
+      - name: id_turma
+        description: Identificador da turma na base de dados.
+      - name: id_turma_escola
+        description: "Identificador da turma. É dado pela escola. É único em determinada
+          escola e determinado ano. \r\nHá uma padronização, ex. 1601 é para o sexto
+          ano."
+      - name: ano
+        description: Ano do COC. Uma turma é identificada pela unidade escolar onde
+          ela esta, pelo seu número e por seu ano.
+      - name: id_unidade
+        description: Número da unidade escolar, dado pela SME, relativa ao COC. Contém
+          7 digitos.
+      - name: grupamento
+        description: Ano da turma. Ex. primeiro ano, segundo ano etc.
+      - name: turno
+        description: "Turno da turma. Pode ser Manhã, Tarde, Noite ou Integral. \r
+          \nPode ser primeiro turno ou segundo turno em turmas mais antigas."
+      - name: id_coc
+        description: "Número do conselho de classe.\r\nÉ único por período letivo.\r
+          \nConselho de classe é um conjunto de reuniões de professores que ocorre
+          no final do bimestre. \r\nNo COC é dado um conceito final para o aluno,
+          diferente das notas por matérias."
+      - name: alunos
+        description: Número total de alunos do COC, na turma, no ano.
+      - name: masculino
+        description: Número total de alunos do sexo masculino, do COC, na turma, no
+          ano.
+      - name: feminino
+        description: Número total de alunos do sexo feminino, do COC, na turma, no
+          ano.
+      - name: deficiente
+        description: Número total de alunos deficientes, do COC, na turma, no ano.
+      - name: masculino_deficiente
+        description: Número total de alunos do sexo masculino deficientes, do COC,
+          na turma, no ano.
+      - name: feminino_deficiente
+        description: Número total de alunos do sexo feminino deficientes, do COC,
+          na turma, no ano.
+      - name: masculino_nao_deficiente
+        description: Número total de alunos do sexo masculino não deficientes, do
+          COC, na turma, no ano.
+      - name: feminino_nao_deficiente
+        description: Número total de alunos do sexo feminino não deficientes, do COC,
+          na turma, no ano.
+      - name: vagas
+        description: Capacidade menos o total de alunos em determinado COC.
+      - name: capacidade
+        description: "Capacidade da turma no ano, de acordo com o tamanho da sala.
+          \r\nA capacidade da turma pode ser no máximo a constante em resolução da
+          SME, independente do tamanho da sala. \r\nA capacidade pode, eventualmente,
+          ser menor do que a resolução da SME \r\n\r\n(vai ser verificada esta definição
+          )."

@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__turno
+    description: "**Descrição**: Turnos das escolas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_turno
+        description: Identificador, seqüencial do turno
+      - name: id_entidade
+        description: Identificador de entidade
+      - name: descricao_turno
+        description: Descrição do turno
+      - name: turno_padrao
+        description: Verificador se o turno é padrão
+      - name: situacao
+        description: 'Situação do registro: 1 – Ativo; 2 – Bloqueado; 3 – Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: controle_tempo
+        description: 'Controle de tempo:  1 – Tempo de aula; 2 – Horas'
+      - name: hora_inicio
+        description: Horário inicial do turno
+      - name: hora_fim
+        description: Horário final do turno
+      - name: id_tipo_turno
+        description: Identificador de tipo de turno

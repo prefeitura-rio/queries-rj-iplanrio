@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_alocacao__disciplinas_sem_professor
+    description: "Tabela sobre disciplinas sem professor alocado"

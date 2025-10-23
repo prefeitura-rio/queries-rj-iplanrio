@@ -1,4 +1,4 @@
-{{ config(alias='turno', schema='brutos_gestao_escolar') }}
+{{ config(alias='turno') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_Turno') }}

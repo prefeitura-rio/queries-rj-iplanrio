@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_frequencia__calendario_anual
+    description: "**Descrição**: Calendário anual das escolas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: cal_id
+        description: Identificador do calendário
+      - name: ent_id
+        description: Identificador da entidade
+      - name: cal_padrao
+        description: Se é calendário padrão
+      - name: cal_ano
+        description: Ano do calendário
+      - name: cal_descricao
+        description: Descrição do calendário
+      - name: cal_dataInicio
+        description: Data de início do calendário
+      - name: cal_dataFim
+        description: Data de fim do calendário
+      - name: cal_situacao
+        description: Situação do calendário
+      - name: cal_dataCriacao
+        description: Data/hora de criação do registro
+      - name: cal_dataAlteracao
+        description: Data/hora da última alteração

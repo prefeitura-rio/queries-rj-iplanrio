@@ -1,7 +1,6 @@
 {{
     config(
         alias='avaliacao_bimestral_2021_a_2025',
-        schema='educacao_basica_avaliacao',
         materialized='table'
     )
 }}
@@ -43,7 +42,7 @@ SELECT
   SAFE_CAST(NULL AS STRING) AS habilidades_avaliadas_nome,
   SAFE_CAST(NULL AS STRING) AS habilidades_avaliadas_acertos,
   SAFE_CAST(NULL AS STRING) AS habilidades_avaliadas_total
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2021`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2021') }}
 ),
 
 d2022 as (
@@ -82,7 +81,7 @@ SELECT
   SAFE_CAST(nm_habilidade AS STRING) as habilidades_avaliadas_nome,
   SAFE_CAST(dc_habilidade_acerto AS STRING) as habilidades_avaliadas_acertos,
   SAFE_CAST(dc_habilidade_total AS STRING) as habilidades_avaliadas_total
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2022`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2022') }}
 ),
 
 d2023 as (
@@ -121,7 +120,7 @@ SELECT
   SAFE_CAST(nm_habilidade AS STRING) as habilidades_avaliadas_nome,
   SAFE_CAST(dc_habilidade_acerto AS STRING) as habilidades_avaliadas_acertos,
   SAFE_CAST(dc_habilidade_total AS STRING) as habilidades_avaliadas_total
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2023`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2023') }}
 ),
 
 d2024 as (
@@ -160,7 +159,7 @@ SELECT
   SAFE_CAST(nm_habilidade AS STRING) as habilidades_avaliadas_nome,
   SAFE_CAST(dc_habilidade_acerto AS STRING) as habilidades_avaliadas_acertos,
   SAFE_CAST(dc_habilidade_total AS STRING) as habilidades_avaliadas_total
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2024`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2024') }}
 ),
 
 d2025 as (
@@ -199,7 +198,7 @@ SELECT
   SAFE_CAST(nm_habilidade AS STRING) as habilidades_avaliadas_nome,
   SAFE_CAST(dc_habilidade_acerto AS STRING) as habilidades_avaliadas_acertos,
   SAFE_CAST(dc_habilidade_total AS STRING) as habilidades_avaliadas_total
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2025`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2025') }}
 )
 
 SELECT * FROM d2021

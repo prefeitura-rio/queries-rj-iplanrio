@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: educacao_basica__dependencia
+    description: "**Descrição**: Dependências pertencentes à prefeitura do Rio de
+      Janeiro. Dependência em uma unidade escolar pertencente a prefeitura do Rio
+      de Janeiro. . Ex.: Sala de Aula, Auditório, Laboratório de Informática, despensa,
+      rampa de acesso etc.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**:
+      Até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal de Educação\n
+      **Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
+    columns:
+      - name: id_escola
+        description: Identificador da escola, onde está a dependência, na base de
+          dados.
+      - name: id_dependencia
+        description: Identificador que é a concatenação do identificador da escola
+          (id_escola) onde fica a dependência com o identificador da dependência (número
+          que identifica unicamente cada dependência na escola) na base de dados.
+      - name: nome
+        description: Nome da dependência.
+      - name: tipo
+        description: 'Tipo da dependência. Ex.: Sala de Aula, Auditório, Laboratório
+          de Informática, despensa, rampa de acesso etc.'
+      - name: aloca_turma
+        description: Indica se a dependência pode ser usada para alocar turma ou não.
+      - name: util_como
+        description: "Utilização atual da dependência. Ex. os mesmos do tipo de depêndencia.
+          \r\nPode diferir do tipo de dependência, pois o tipo de dependência é tipo
+          oficial da dependência, que pode ser diferente da utilização real."
+      - name: aloca_turma_e_util_como
+        description: "Booleano que indica se a dependência tem uma turma alocada a
+          ela. \r\nSim, não ou emergencial."
+      - name: capacidade
+        description: "Número máximo de alunos que a dependência comporta. \r\nEm geral
+          é calculado em um m2 por aluno."
+      - name: area
+        description: Área, em metros quadrados, da dependência

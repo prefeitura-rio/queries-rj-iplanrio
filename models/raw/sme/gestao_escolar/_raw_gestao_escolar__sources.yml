@@ -6,13 +6,7 @@ sources:
     schema: brutos_gestao_escolar_staging
     tables:
       - name: ACA_AlunoCurriculo
-      - name: ACA_AlunoJustificativaFalta
       - name: ACA_Avaliacao
-      - name: ACA_CalendarioAnual
-      - name: ACA_CalendarioPeriodo
-      - name: ACA_CurriculoPeriodo
-      - name: ACA_FormatoAvaliacao
-      - name: ACA_TipoJustificativaFalta
       - name: ACA_TipoTurno
       - name: ACA_Turno
       - name: ACA_TurnoHorario
@@ -26,7 +20,6 @@ sources:
         config:
           freshness:
             error_after: {count: 96, period: hour}
-
       - name: VW_BI_Aluno
 
     config:
@@ -38,14 +31,8 @@ sources:
     database: rj-iplanrio
     schema: brutos_gestao_escolar_staging
     tables:
-      - name: turma
-      - name: TUR_TurmaRelTurmaDisciplina
       - name: VW_BI_Aluno_Todos_Os_Anos
-      - name: CLS_TurmaAulaAluno
-      - name: numeroDeAulasCte
-      - name: diasCoc
       - name: CLS_AlunoAvaliacaoTurma
-
 
     config:
       freshness: # default freshness

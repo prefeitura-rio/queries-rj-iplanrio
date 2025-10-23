@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__turno_horario
+    description: "**Descrição**: Horários dos turnos das escolas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: trn_id
+        description: Identificador do turno
+      - name: trh_id
+        description: Identificador do horário do turno
+      - name: trh_diaSemana
+        description: Dia da semana do horário
+      - name: trh_horaInicio
+        description: Horário de início
+      - name: trh_horaFim
+        description: Horário de fim
+      - name: trh_tipo
+        description: Tipo do horário
+      - name: trh_situacao
+        description: Situação do registro
+      - name: trh_dataCriacao
+        description: Data/hora de criação do registro
+      - name: trh_dataAlteracao
+        description: Data/hora da última alteração

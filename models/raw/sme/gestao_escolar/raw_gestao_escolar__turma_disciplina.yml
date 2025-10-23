@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__turma_disciplina
+    description: "**Descrição**: Disciplina de determinada turma de escolas municipais do município do Rio de Janeiro. A turma associada deve ser vista na tabela turma_disciplina_rel.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: multiseriado
+        description: Verificador se a disciplina da turma é multiseriada
+      - name: numero_vagas
+        description: Número de vagas da disciplina da turma
+      - name: minimo_matriculados
+        description: Número mínimo de matriculados na disciplina da turma
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: id_modo
+        description: 'Modo: 1 – Normal; 2 – Regime Especial; 3 – Excepcional'
+      - name: id_disciplina
+        description: Código da disciplina da turma
+      - name: nome_disciplina
+        description: Nome da disciplina da turma
+      - name: data_inicio
+        description: Data inicial da disciplina da turma
+      - name: data_fim
+        description: Data final da disciplina da turma
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo; 3 – Excluído; 4 – Cancelada; 5 – Encerrada'
+      - name: global
+        description: Verificador se a disciplina da turma é global
+      - name: disciplina_especial
+        description: Indicar se a turma/disciplina
+      - name: id_disciplina_turma
+        description: Identificador sequencial da disciplina da turma
+      - name: aula_fora_periodo_normal
+        description: Verificador se existe aulas fora do período normal
+      - name: carga_hora_semanal
+        description: Carga horária semanal da disciplina da turma
+      - name: id_duracao
+        description: 'Duração: 1 – Anual; 2 – Semestral; 3 – Condensada; 4 – Livre'
+      - name: id_tipo
+        description: '"Tipo: 1 – Obrigatória; 2 – Estágio; 3 – Optativa; 4 – Eletiva'

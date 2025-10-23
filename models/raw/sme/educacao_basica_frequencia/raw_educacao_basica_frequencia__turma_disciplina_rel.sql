@@ -1,12 +1,11 @@
 {{ config(
         alias='turma_disciplina_rel',
-        schema='brutos_gestao_escolar',
         materialized='incremental',
         unique_key=['id_disciplina', 'id_turma'])
     }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'TUR_TurmaRelTurmaDisciplina') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_prefect', 'TUR_TurmaRelTurmaDisciplina') }}
     {% if is_incremental() %}
       where _prefect_extracted_at > (select max(loaded_at) from {{ this }})
     {% endif %}

@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: sme_brutos_educacao_basica_alocacao_staging
+    database: rj-sme
+    schema: educacao_basica_alocacao_staging
+    tables:
+      - name: disciplinas_sem_professor

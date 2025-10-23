@@ -1,7 +1,6 @@
 {{
     config(
         alias='avaliacao',
-        schema='educacao_basica',
         partition_by={
             "field": "data_particao",
             "data_type": "date",

@@ -1,12 +1,11 @@
 {{ config(
     alias='numeroDeAulasCte',
-    schema='brutos_gestao_escolar',
     materialized='ephemeral',
 ) }}
 
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'numeroDeAulasCte') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_prefect', 'numeroDeAulasCte') }}
   ),
   renamed as (
       select

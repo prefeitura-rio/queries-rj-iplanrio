@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: sme_brutos_educacao_basica_avaliacao_staging
+    database: rj-sme
+    schema: educacao_basica_avaliacao_staging
+    tables:
+      - name: bimestral_2012
+      - name: bimestral_2013
+      - name: bimestral_2014
+      - name: bimestral_2015
+      - name: bimestral_2016
+      - name: bimestral_2017
+      - name: bimestral_2018
+      - name: bimestral_2019
+      - name: bimestral_2021
+      - name: bimestral_2022
+      - name: bimestral_2023
+      - name: bimestral_2024
+      - name: bimestral_2025

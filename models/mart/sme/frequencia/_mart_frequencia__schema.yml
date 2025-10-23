@@ -58,7 +58,7 @@ models :
       - name: frequencia_percentual
         description: Percentual de frequência do aluno calculado pela fórmula (100 - (total_faltas / total_aulas) * 100)
 
-  - name: mart_frequencia__frq_frequencia
+  - name: mart_frequencia__frequencia_mensal
     description: "**Descrição**: Frequencia diária dos alunos no ano letivo corrente\n**Frequência de atualização**: Diariamente / À noite\n**Cobertura temporal**: Ano Corrente\n**Órgão gestor dos dados**: Secretaria Municipal de Educação\n"
     config:
       materialized: table

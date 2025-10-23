@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_frequencia__curriculo_periodo
+    description: "**Descrição**: Grupamentos das etapas. Grupamento - berçario, maternal I e maternal II e pré-escola I e II, 1º ao 9º. Etapa, o mesmo que curso: um subtipo de segmento. Exemplos: fundamental I bilingue, Fundamental ( 1 ao 9 ) bilingue. Segmento - educação infantil, ensino fundamental I ( 1º ano, 2º ano etc ... ), fundamental II.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_periodo_curriculo
+        description: Identificador do período do currículo, sequencial (manual) com base no curso e no currículo
+      - name: ordem_periodo
+        description: Ordem do período do currículo
+      - name: descricao_periodo
+        description: Descrição do período do currículo
+      - name: ano_idade_inicio
+        description: Ano da idade ideal inicial
+      - name: mes_idade_inicio
+        description: Mês da idade ideal inicial
+      - name: ano_idade_final
+        description: Ano da idade ideal final
+      - name: mes_idade_final
+        description: Mês da idade ideal final
+      - name: id_situacao
+        description: 'Situação do registro: 1–Ativo; 3–Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: controle_tempo
+        description: 'Controle de tempo: 1–Tempo de aula; 2-Horas'
+      - name: aulas_semana
+        description: Quantidade de aulas por semana
+      - name: tempos_semana
+        description: Quantidade de tempos de aula por semana
+      - name: horas_dia
+        description: Quantidade de horas por dia
+      - name: minutos_dia
+        description: Quantidade de minutos por dia
+      - name: id_coc
+        description: Número do Conselho de Classe (coc) que subdivide o ano escolar em período de 2 meses e meio. Valores posíveis (1,2,3,4,5, NULL). Sempre NULL
+      - name: id_curriculo
+        description: Identificador de currículo, sequencial (manual) com base no curso, sempre 1
+      - name: id_etapa_mec_inep
+        description: Identificador de etapa do MEC/INEP. Sempre NULL
+      - name: id_curso
+        description: Identificador de curso, sequencia. Etapa???

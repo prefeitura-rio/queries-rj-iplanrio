@@ -1,7 +1,6 @@
 {{
     config(
         alias='dependencia',
-        schema='educacao_basica'
     )
 }}
 

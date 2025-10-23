@@ -68,7 +68,7 @@ with frqtrn as (
             diasCoc * temposDia as total_tempos,
             sum(IFNULL(faltas_disciplina_dia,0)) as total_faltas
 
-        from {{ ref('mart_frequencia__frq_frequencia') }} frq
+        from {{ ref('mart_frequencia__frequencia_mensal') }} frq
 
         inner join {{ ref('raw_gestao_escolar__aluno_curriculo') }} alc
             on alc.alu_id = frq.id_aluno
@@ -79,7 +79,7 @@ with frqtrn as (
         inner join frqtrn trn
             on trn.trn_id = frq.id_turno
 
-        inner join {{ ref('raw_gestao_escolar__diasCoc')}} dia
+        inner join {{ ref('raw_educacao_basica_frequencia__diasCoc')}} dia
             on dia.cal_id = frq.id_ano_calendario and dia.tpc_id = frq.id_tipo_calendario
 
         where frq.efetivado = TRUE

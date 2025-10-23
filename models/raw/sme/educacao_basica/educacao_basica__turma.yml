@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: educacao_basica__turma
+    description: "Tabela sobre turmas das escolas da prefeitura do Rio de Janeiro"
+    columns:
+      - name: ano
+        description: "Ano da turma"
+        data_type: integer
+      - name: area_sala
+        description: "Área da sala em metros quadrados"
+        data_type: float
+      - name: capacidade_sala
+        description: "Capacidade da sala em número de alunos"
+        data_type: integer
+      - name: curso
+        description: "Nome do curso da turma"
+        data_type: string
+        quote: true
+      - name: id_dependencia
+        description: "Identificador da dependência onde a turma está alocada"
+        data_type: string
+        quote: true
+      - name: id_escola
+        description: "Identificador da escola onde a turma está localizada"
+        data_type: string
+        quote: true
+      - name: grupamento
+        description: "Grupamento da turma (ex: primeiro ano, segundo ano)"
+        data_type: string
+        quote: true
+      - name: modalidade
+        description: "Modalidade de ensino da turma"
+        data_type: string
+        quote: true
+      - name: nivel_ensino
+        description: "Nível de ensino da turma"
+        data_type: string
+        quote: true
+      - name: sala
+        description: "Identificação da sala"
+        data_type: string
+        quote: true
+      - name: sala_util_como
+        description: "Como a sala está sendo utilizada"
+        data_type: string
+        quote: true
+      - name: tipo_sala
+        description: "Tipo da sala"
+        data_type: string
+        quote: true
+      - name: id_turma
+        description: "Identificador único da turma"
+        data_type: string
+        quote: true
+      - name: id_turma_escola
+        description: "Identificador da turma na escola"
+        data_type: string
+        quote: true
+      - name: turno
+        description: "Turno da turma (manhã, tarde, noite, integral)"
+        data_type: string
+        quote: true

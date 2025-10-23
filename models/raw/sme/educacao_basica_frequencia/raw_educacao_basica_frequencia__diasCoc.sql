@@ -1,12 +1,11 @@
 {{ config(
     alias='diasCoc',
-    schema='brutos_gestao_escolar',
     materialized='view',
 ) }}
 
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'diasCoc') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_prefect', 'diasCoc') }}
   ),
   renamed as (
       select

@@ -20,7 +20,7 @@ with alunos_aulas as (
         end as numeroAulas,                        -- número de aulas ou tempos de aula
         fav.tipo_frequencia_apurada,         -- parametro que indica se numeroAulas 1-será o tempo da aula ou 2-se será o dia de aula
         coalesce(tjf.tjf_abonaFalta, FALSE) as abonaFalta -- informa que houve abono no dia
-    from {{ ref('raw_gestao_escolar__turma_aula_aluno') }} as taa
+    from {{ ref('raw_educacao_basica_frequencia__turma_aula_aluno') }} as taa
     inner join {{ ref('raw_gestao_escolar__turma_aula') }} as tau
         on taa.id_disciplina_turma = tau.id_disciplina
         and taa.id_aula_disciplina = tau.id_aula_disciplina       -- identificador da aula em uma dada turma discilina - sequencial que compoe a chave da TurmaAula
@@ -36,15 +36,15 @@ with alunos_aulas as (
         and tau.data_aula < coalesce(mtu.mtu_dataSaida, current_date())  -- apuração da frequencia desconsidera o dia de saida da turma na movimentacao
     inner join {{ ref('raw_gestao_escolar__tur_turma') }} as tur
         on mtu.tur_id = tur.tur_id
-    inner join {{ ref('raw_gestao_escolar__formato_avaliacao') }} as fav
+    inner join {{ ref('raw_educacao_basica_frequencia__formato_avaliacao') }} as fav
         on tur.fav_id = fav.id_formato_avaliacao   -- para obter o parametro fav_tipoApuracaoFrequencia
     -- para verificar a justificativa que abona as faltas no dia
-    left join {{ ref('raw_gestao_escolar__aluno_justificativa_falta') }} as afj
+    left join {{ ref('raw_educacao_basica_frequencia__aluno_justificativa_falta') }} as afj
         on afj.alu_id = taa.id_aluno
         and afj.afj_situacao <> 3       -- situação diferente de registro excluído
         and tau.data_aula >= afj.afj_dataInicio
         and (afj.afj_dataFim is null or tau.data_aula <= afj.afj_dataFim)
-    left join {{ ref('raw_gestao_escolar__tipo_justificativa_falta') }} as tjf
+    left join {{ ref('raw_educacao_basica_frequencia__tipo_justificativa_falta') }} as tjf
         on tjf.tjf_id = afj.tjf_id
         and tjf.tjf_situacao <> 3       -- situação diferente de registro excluído
     -- para excluír os dias de feriado

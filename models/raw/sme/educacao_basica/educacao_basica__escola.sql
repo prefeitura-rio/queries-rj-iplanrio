@@ -1,7 +1,5 @@
 {{ config(
-    alias='escola',
-    schema='educacao_basica'
-    )
+    alias='escola'    )
 }}
 
 with source as (

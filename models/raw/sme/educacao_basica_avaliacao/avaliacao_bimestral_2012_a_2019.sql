@@ -7,7 +7,7 @@ WITH d2012_a_2019 AS (
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2012`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2012') }}
 
 UNION ALL
 
@@ -19,7 +19,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2013`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2013') }}
 
 UNION ALL
 
@@ -31,7 +31,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2014`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2014') }}
 
 UNION ALL
 
@@ -43,7 +43,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2015`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2015') }}
 
 UNION ALL
 
@@ -55,7 +55,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2016`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2016') }}
 
 UNION ALL
 
@@ -67,7 +67,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2017`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2017') }}
 
 UNION ALL
 
@@ -79,7 +79,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2018`
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2018') }}
 
 UNION ALL
 
@@ -91,7 +91,7 @@ SELECT
   SAFE_CAST(coc as INT64) as bimestre,
   SAFE_CAST(disciplina as STRING) as disciplina,
   SAFE_CAST(REPLACE(nota, ",", ".") as FLOAT64) as nota
-FROM `rj-sme.educacao_basica_avaliacao_staging.bimestral_2019`)
+FROM {{ source('sme_brutos_educacao_basica_avaliacao_staging', 'bimestral_2019') }})
 )
 
 SELECT

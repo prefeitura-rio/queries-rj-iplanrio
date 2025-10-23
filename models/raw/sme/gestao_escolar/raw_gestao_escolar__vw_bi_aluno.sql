@@ -1,4 +1,4 @@
-{{ config(alias='vw_bi_aluno', schema='brutos_gestao_escolar') }}
+{{ config(alias='vw_bi_aluno') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'VW_BI_Aluno') }}

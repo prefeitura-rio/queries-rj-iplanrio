@@ -1,7 +1,7 @@
-{{ config(alias='formato_avaliacao', schema='brutos_gestao_escolar') }}
+{{ config(alias='formato_avaliacao') }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_FormatoAvaliacao') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_airbyte', 'ACA_FormatoAvaliacao') }}
 ),
 renamed as (
     select

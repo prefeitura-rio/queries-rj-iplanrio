@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_frequencia__turma_aula_aluno
+    description: "**Descrição**: Falta de um aluno em plano de aula de determinado tipo de determinada disciplina em um dado dia. Uma disciplina pode ter vários tempos em um mesmo dia. Para saber o dia da frequencia do aluno deve-se acessar a tabela turma-aula. Pode haver vários planos de aula de uma mesma disciplina em um dia, um para cada tipo de aula. Por exemplo um plano de aula para prova e outra para aulas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: faltas_disciplina_dia
+        description: Quantidade de faltas do aluno no dia
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: anotacao
+        description: Anotação sobre o aluno na aula
+      - name: frequencia_tempo
+        description: Frequencia do tempo
+      - name: usuario_alteracao
+        description: Identificador do usuário que realizou a última alteração no registro
+      - name: id_matricula_disciplina
+        description: Identificador de matricula do aluno para determinada disciplina em uma turma
+      - name: id_disciplina_turma
+        description: Identificador de disciplina para cada turma
+      - name: id_aluno
+        description: Identificador do aluno
+      - name: id_matricula_turma
+        description: Identificador de matrícula do aluno na turma
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo; 3 – Excluído. É excluído quando foram inseridos dados incorretamente'
+      - name: id_aula_disciplina
+        description: Identificador das aulas da disciplina da turma em determinado dia. Uma aula corresponde a um tempo da disciplina. Este identificador pode corresponder a várias aulas, desde que estejam no mesmo dia

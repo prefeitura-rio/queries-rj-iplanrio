@@ -1,7 +1,6 @@
 {{
     config(
         alias='aluno_avaliacao_turma',
-        schema='brutos_gestao_escolar',
         materialized='incremental',
         incremental_strategy='merge',
         partition_by={

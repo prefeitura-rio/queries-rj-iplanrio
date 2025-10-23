@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_frequencia__calendario_periodo
+    description: "**Descrição**: Períodos do calendário escolar.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: cal_id
+        description: Identificador do calendário
+      - name: cap_id
+        description: Identificador do período do calendário
+      - name: cap_descricao
+        description: Descrição do período do calendário
+      - name: tpc_id
+        description: Identificador do tipo de período
+      - name: cap_dataInicio
+        description: Data de início do período
+      - name: cap_dataFim
+        description: Data de fim do período
+      - name: cap_situacao
+        description: Situação do período
+      - name: cap_dataCriacao
+        description: Data/hora de criação do registro
+      - name: cap_dataAlteracao
+        description: Data/hora da última alteração

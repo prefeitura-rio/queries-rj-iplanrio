@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__turma_aula
+    description: "**Descrição**: Plano de aula de determinado tipo de aula. Um plano de aula contém o conteúdo ( e dinâmica ) dado nos tempos de uma determinada disciplina em determinado dia. Dinâmica indica a forma de alcançar os objetivos pedagógicos pré-estabelecidos. Pode haver vários planos de aula de uma mesma disciplina em um dia, um para cada tipo de aula. Por exemplo um plano de aula para prova e outra para aulas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_aula_disciplina
+        description: Parte do identificador do plano de aula, que é composto também por tud_id.
+      - name: sequencia_aula
+        description: Número da ordem do tempo no plano de aula.
+      - name: data_aula
+        description: Data do plano de aula.
+      - name: numero_aula
+        description: Número de tempo da disciplina no plano de aula de determinado tipo.
+      - name: plano_aula
+        description: Descrição do plano de aula. Contém o conteúdo a ser dado e a dinâmica.
+      - name: diario_classe
+        description: Diário de classe da disciplina da turma. Eventos que aconteceram na turma.
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Aula prevista; 3 – Excluído; 4 – Aula dada; 6 – Aula cancelada'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: conteudo
+        description: Conteúdo efetivamente dado nas aulas e a sua dinâmica.
+      - name: efetivado
+        description: Indica que o professor realizou o plano de aula. Isto ocorre mesmo que somente um tempo tenha sido dado.
+      - name: posicao_docente
+        description: Indica se o docente que ministrou o plano de aula foi o titular ou o substituto.
+      - name: id_usuario_criacao
+        description: Usuário do sistema que criou o registro.
+      - name: id_usuario_alteracao
+        description: Usuário do sistema que realizou a ultima alteração do registro.
+      - name: status_anotacoes
+        description: Status que indica a existência ou não de anotações
+      - name: status_plano_aula
+        description: Status que indica a existência ou não de plano de aula.
+      - name: id_tipo_calendario
+        description: Identificador do COC onde o plano de aula foi realizado.
+      - name: id_disciplina
+        description: Identificador de disciplina
+      - name: recursos_utilizados
+        description: lnforme dos recursos utilizados na aula
+      - name: atividade_casa
+        description: Assunto da atividade indicada para os alunos da turma realizarem em casa.

@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__tur_turma
+    description: "**Descrição**: Turmas das escolas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: cal_id
+        description: Identificador do calendário
+      - name: dep_id
+        description: Identificador do departamento
+      - name: esc_id
+        description: Identificador da escola
+      - name: fav_id
+        description: Identificador do formato de avaliação
+      - name: prd_id
+        description: Identificador do período
+      - name: trn_id
+        description: Identificador do turno
+      - name: tur_id
+        description: Identificador da turma
+      - name: uni_id
+        description: Identificador da unidade
+      - name: tur_tipo
+        description: Tipo da turma
+      - name: tur_vagas
+        description: Número de vagas da turma
+      - name: tur_codigo
+        description: Código da turma
+      - name: tur_duracao
+        description: Duração da turma
+      - name: tur_situacao
+        description: Situação da turma
+      - name: tur_descricao
+        description: Descrição da turma
+      - name: tur_codigoInep
+        description: Código INEP da turma
+      - name: tur_observacao
+        description: Observação da turma
+      - name: tur_seqChamada
+        description: Sequência de chamada da turma
+      - name: tur_dataCriacao
+        description: Data/hora de criação do registro
+      - name: tur_dataAlteracao
+        description: Data/hora da última alteração
+      - name: tur_dataEncerramento
+        description: Data de encerramento da turma
+      - name: tur_participaRodizio
+        description: Se participa do rodízio
+      - name: tur_flag_tem_acrescimo
+        description: Flag se tem acréscimo
+      - name: tur_minimoMatriculados
+        description: Mínimo de matriculados
+      - name: tur_docenteEspecialista
+        description: Docente especialista

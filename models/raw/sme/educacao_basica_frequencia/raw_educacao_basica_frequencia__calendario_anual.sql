@@ -1,7 +1,7 @@
-{{ config(alias='calendario_anual', schema='brutos_gestao_escolar') }}
+{{ config(alias='calendario_anual') }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_CalendarioAnual') }}
+    select * from {{ source('sme_brutos_educacao_basica_frequencia_staging_airbyte', 'ACA_CalendarioAnual') }}
 ),
 
 renamed as (

@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: educacao_basica__escola
+    description: "**Descrição**: Unidade escolar pertencente a, ou de interesse, da
+      prefeitura do Rio de Janeiro onde podem ser alocadas turmas. As unidades escolares
+      de interesse da PCRJ são creche parceiras onde estão matriculados alunos da
+      prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Mensal\n**Cobertura
+      temporal**: Até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal
+      de Educação\n**Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**:
+      nuno.silva@rioeduca.net\n"
+    columns:
+      - name: id_inep
+        description: Identificador, dado pelo INEP - Instituto Nacional de Estudos
+          e Pesquisas Educacionais, para a unidade escolar, O identificador é único
+          para cada unidade escolar do país.
+      - name: id_escola
+        description: Identificador da unidade escolar na base de dados.
+      - name: nome
+        description: Nome da unidade escolar. Depende do atributo id_designacao.
+      - name: tipo
+        description: "\"Tipo da unidade escolar, Pode ser creche, escola, CIEP ou
+          EDI. EDI é a sigla para Espaço de\r\n Desenvolvimento Infantil, unidade
+          escolar especializada na educação para a primeira infância.\""
+      - name: id_designacao
+        description: Código de identificação da unidade escolar, constituido pelo
+          código da CRE, Código da micro-área, um sequencial e o tipo da unidade escolar
+          pertencente a PCRJ ou de interesse desta.
+      - name: endereco
+        description: Endereço da unidade escolar
+      - name: bairro
+        description: Bairro do endereço da unidade escolar
+      - name: cep
+        description: CEP do endereço da unidade escolar
+      - name: email
+        description: E-mail da unidade escolar
+      - name: telefone
+        description: Telefone da unidade escolar
+      - name: direcao
+        description: Nome do(a) diretor(a) da unidade escolar
+      - name: cre
+        description: "Número da CRE que administra a unidade escolar. CRE é a sigla
+          para coordenadoria regional\r\nde educação. Uma CRE reúne unidades escolares
+          da prefeitura em uma determinada região.\""
+      - name: polo
+        description: "Polo onde esta a unidade escolar.\r\nUm polo é um lugar que
+          atende prioritariamente a alunos matriculados na Unidade Escolar de determinada
+          área, oferecendo oficinas tendo o trabalho como princípio educativo. \r\n
+          Ele pode, eventualmente, atender a alunos de áreas de outros polos."
+      - name: micro_area
+        description: "Micro área onde está a unidade escolar.\r\nUma micro área é
+          uma área geográfica do município do Rio de Janeiro, definida pelo Instituto
+          Pereira Passos (IPP) para facilitar a administração escolar, independente
+          de bairros e outras divisões territoriais feitas pela prefeitura."
+      - name: id_institucional_pcrj
+        description: "Identificador, dado pela prefeitura do Rio de Janeiro, para
+          a unidade escolar. \r\nSICI é o sistema de codificação institucional."
+      - name: numero_salas_recurso
+        description: Total de salas de recurso na unidade. Sala de recurso é uma dependência
+          com professor especializado e recursos especiais para determinada atividade.
+      - name: numero_salas_aula
+        description: Número total de salas de aula da unidade escolar.
+      - name: numero_salas_utilizadas
+        description: Número de salas de aula, na unidade escolar, efetivamente usadas
+          por turmas.

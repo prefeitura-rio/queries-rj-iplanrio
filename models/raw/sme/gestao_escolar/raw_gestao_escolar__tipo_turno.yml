@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__tipo_turno
+    description: "**Descrição**: Tipos de turno possíveis.  Ex. integral, manhã, noite e tarde.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_tipo_turno
+        description: Identificador, seqüencial do tipo de turno
+      - name: tipo_turno
+        description: Nome do tipo de turno.
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo; 2 – Bloqueado; 3 – Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração

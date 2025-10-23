@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: educacao_basica__movimentacao
+    description: "**Descrição**: Movimentações feitas de alunos de interesse da prefeitura
+      do Rio de Janeiro ( algumas informações desde 1973, são mais completas a partir
+      de 2012 ).\r\nMovimentação é a saída do aluno de uma turma, potencialmente para
+      entrada em outra turma da mesma unidade escolar ou para outra unidade escolar,
+      do município ou não.\n**Frequência de atualização**: Anual\n**Cobertura temporal**:
+      Desde 1973 até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal
+      de Educação\n**Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**:
+      nuno.silva@rioeduca.net\n"
+    columns:
+      - name: ano
+        description: Ano da movimentação.
+      - name: id_cre
+        description: "Número da CRE que administra a unidade escolar onde a movimentação
+          foi registrada. \r\nNo caso de saída de uma unidade escolar ela é registrada
+          nesta unidade. \r\nCRE é a sigla para coordenadoria regional de educação.
+          \r\nUma CRE reúne unidades escolares da prefeitura em uma determinada região."
+      - name: id_coc
+        description: "COC cujo período onde o aluno sofreu movimentação. Número do
+          conselho de classe.\r\nÉ único por período letivo. \r\nConselho de classe
+          é um conjunto de reuniões de professores que ocorre no final do bimestre."
+      - name: id_unidade
+        description: "Número da unidade escolar dado pela SME onde foi registrada
+          a movimentação.\r\nContém 7 dígitos."
+      - name: id_turma_escola
+        description: "Identificador da turma da unidade escolar que registrou a movimentação.\r
+          \nÉ dado pela unidade escolar.\r\nÉ único em determinada escola e determinado
+          ano.\r\nHá uma padronização, ex. 1601 é para o sexto ano."
+      - name: grupamento
+        description: "Ano da turma da unidade escolar que registrou a movimentação.\r
+          \nEx. primeiro ano, segundo ano etc."
+      - name: id_aluno
+        description: Identificador do aluno na base de dados.
+      - name: matricula
+        description: Matricula do aluno que fez a movimentação. Campo anonimizado.
+      - name: genero
+        description: Sexo do aluno, pode ser masculino ou feminino
+      - name: id_deficiencia
+        description: "Código da deficiência do aluno.\r\n00 caso não tenha nenhuma
+          deficiência."
+      - name: deficiencia
+        description: Tipo da deficiência do aluno, caso ele tenha.
+      - name: data_nascimento
+        description: Data de nascimento do aluno.
+      - name: idade_atual
+        description: Idade atual do aluno.
+      - name: idade_final_ano
+        description: Idade do aluno no final do ano.
+      - name: data_movimentacao
+        description: Data em que ocorreu a movimentação.
+      - name: id_movimentacao
+        description: Identificador do tipo da movimentação na base de dados.
+      - name: movimentacao
+        description: "Nome do tipo da movimentação.\r\nEx. Transferência da rede particular,
+          transferência para a rede particular, Abandono etc."
+      - name: ordem
+        description: Ordem da movimentação de determinado aluno durante a sua vida
+          escolar no município do Rio de Janeiro.
+      - name: tipo
+        description: Indica se a movimentação é de entrada ou saída, mesmo dentro
+          da mesma unidade escolar. Tem sempre o valor 'Entrada' quando a transferência
+          é entre turmas dentro da mesma unidade escolar.

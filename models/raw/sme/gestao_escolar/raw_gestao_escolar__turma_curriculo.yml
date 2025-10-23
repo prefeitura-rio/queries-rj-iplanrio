@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: raw_gestao_escolar__turma_curriculo
+    description: "**Descrição**: Grupamento de determinada turma.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: prioridade_curriculo
+        description: Número de prioridade do currículo da turma
+      - name: id_situacao
+        description: 'Situação do registro: 1 – Ativo; 3 – Excluído'
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_alteracao
+        description: Data/hora da última alteração
+      - name: id_periodo_curriculo
+        description: Identificador do período do currículo, sequencial (manual) com base no curso e no currículo
+      - name: id_curriculo
+        description: Identificador de currículo, sequencial (manual) com base no curso
+      - name: id_curso
+        description: Identificador de curso, sequencial
+      - name: id_turma
+        description: Identificador de turma

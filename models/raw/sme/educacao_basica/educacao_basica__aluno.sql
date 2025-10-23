@@ -1,8 +1,6 @@
 {{
     config(
-        alias='aluno',
-        schema='educacao_basica'
-    )
+        alias='aluno'    )
 }}
 
 

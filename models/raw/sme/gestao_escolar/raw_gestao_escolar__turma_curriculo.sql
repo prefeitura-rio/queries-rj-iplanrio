@@ -1,4 +1,4 @@
-{{ config(alias='turma_curriculo', schema='brutos_gestao_escolar') }}
+{{ config(alias='turma_curriculo') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'TUR_TurmaCurriculo') }}

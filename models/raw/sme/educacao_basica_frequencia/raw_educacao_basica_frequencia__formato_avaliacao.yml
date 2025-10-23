@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: raw_educacao_basica_frequencia__formato_avaliacao
+    description: "**Descrição**: Formato de avaliação dos grupamentos. Este formato pode ter impacto na contagem de frequencia e avaliação das notas. Por exemplo a avalição pode ser por nota ou conceito, a frequência mínima pode ser 60% ou 75%.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_formato_avaliacao
+        description: Identificador sequencial de formato de avaliação
+      - name: id_entidade
+        description: Identificador de entidade
+      - name: id_escola
+        description: 'FK: Identificador de escola'
+      - name: id_unidade_escola
+        description: 'FK: Identificador de unidade da escola'
+      - name: formato_avaliacao
+        description: Verificador se o formato de avaliação é padrão
+      - name: nome_avaliacao
+        description: Nome do formato de avaliação
+      - name: tipo_avaliacao
+        description: "Tipo do formato de avaliação:\r\n · 1 – Conceito global\r\n · 2 – Por disciplina\r\n · 3 – Conceito global e por disciplina"
+      - name: tipo_frequencia
+        description: "Tipo de lançamento de frequência:\r\n · 1 – Aulas planejadas\r\n · 2 – Período"
+      - name: conceito_global
+        description: 'FK: Identificador de escala de avaliação'
+      - name: valor_aprovacao_global
+        description: Valor mínimo para aprovação do conceito global
+      - name: valor_aprovacao_disciplina
+        description: Valor mínimo para aprovação por disciplina
+      - name: percentual_frequencia
+        description: Percentual mínimo de frequência para aprovação
+      - name: tipo_progressao
+        description: "Tipo de progressão parcial:\r\n · 1 – Período de matrícula seguinte\r\n · 2 – Anterior ao período de matrícula seguinte\r\n · 3 - Sem progressão parcial"
+      - name: valor_progressao
+        description: Valor mínimo de progressão parcial por disciplina
+      - name: maximo_progressao
+        description: Quantidade máxima de progressão parcial
+      - name: situacao_registro
+        description: "Situação do registro:\r\n · 1 – Ativo\r\n · 2 – Bloqueado\r\n · 3 – Excluído"
+      - name: data_criacao
+        description: Data/hora de criação do registro
+      - name: data_altercao
+        description: Data/hora da última alteração
+      - name: tipo_frequencia_apurada
+        description: "Define se a frequencia será apurada por dia ou por tempos\r\n 1 - Tempos de Aula\r\n2 - Dias"

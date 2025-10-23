@@ -1,4 +1,4 @@
-{{ config(alias='esc_escola', schema='brutos_gestao_escolar') }}
+{{ config(alias='esc_escola') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ESC_Escola') }}

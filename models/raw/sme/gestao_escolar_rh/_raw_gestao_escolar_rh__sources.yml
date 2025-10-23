@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: brutos_gestao_escolar_rh_staging
+    database: rj-iplanrio
+    schema: brutos_gestao_escolar_rh_staging
+    tables:
+      - name: RHU_FUNCIONARIOSATIVOS
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at

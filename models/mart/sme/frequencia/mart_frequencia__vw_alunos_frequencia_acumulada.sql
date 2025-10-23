@@ -20,7 +20,7 @@ WITH frequencia_acumulada as (
         and vaa.id_matricula_turma = mtu.mtu_id
     inner join {{ ref('raw_gestao_escolar__tur_turma') }} tur
         on mtu.tur_id = tur.tur_id
-    inner join {{ ref('raw_gestao_escolar__calendario_anual') }} cal
+    inner join {{ ref('raw_educacao_basica_frequencia__calendario_anual') }} cal
         on tur.cal_id = cal.cal_id
         and cal.cal_ano = EXTRACT(YEAR FROM CURRENT_DATE() )   -- limita a busca ao ano corrente
     where vaa.data_aula >= cal.cal_dataInicio

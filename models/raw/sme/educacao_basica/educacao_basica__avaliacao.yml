@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: educacao_basica__avaliacao
+    description: "**Descrição**: Avaliações de alunos dadas no COC.\r\nAs notas de
+      disciplinas (ou a global) estão preenchidas (de 0,0 a 10) ou com a anotação
+      'sem informação' caso não haja nota para ela. \r\nDependendo do tipo de turma
+      (Infantil, Fundamental 1, Fundamental 2, EJA, Classes especiais exclusivas,
+      Turmas de correção de fluxo, etc) algumas notas são preenchidas sempre com a
+      anotação 'sem informação'.\n**Frequência de atualização**: Anual\n**Cobertura
+      temporal**: Até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal
+      de Educação\n**Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**:
+      nuno.silva@rioeduca.net\n"
+    columns:
+      - name: ano
+        description: Ano do COC
+      - name: id_turma
+        description: Identificador da turma na base de dados
+      - name: id_aluno
+        description: Identificador do aluno na base de dados
+      - name: id_matricula_turma
+        description: Identificador que associa matricula do aluno a turma.
+      - name: id_curriculo
+        description: "Identificador de etapa na base de dados. \r\nEx. Educação infantil
+          - creche turno único, 2019 - ensino fundamental I - bilíngue ing-tu"
+      - name: id_curriculo_periodo
+        description: Identificador da associação entre currículo (conjunto de disciplinas)
+          e período (de um ano).
+      - name: id_coc
+        description: "Identificador único do COC na base de dados. \r\nConselho de
+          classe é um conjunto de reuniões de professores que ocorre no final do bimestre.
+          \r\nNo COC é dado um conceito final para o aluno, diferente das notas por
+          matérias."
+      - name: coc
+        description: Nome do COC. Ex. 1º COC, 2º COC etc.
+      - name: id_turma_escola
+        description: "Identificador da turma. \r\nÉ dado pela escola.\r\nÉ único em
+          determinada escola e determinado ano.\r\nHá uma padronização, ex. 1601 é
+          para o sexto ano."
+      - name: frequencia
+        description: Percentagem de dias que o aluno frequentou em relação ao número
+          total de dias letivos.
+      - name: conceito
+        description: Conceito dado ao aluno em um COC.
+      - name: nota_fundamental_1
+        description: "Nota dada pelo professor do fundamental 1.\r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito.\r\nEm
+          geral é preenchido para o fundamental 1."
+      - name: matematica
+        description: "Conceito dado em matemática ao aluno em um COC. \r\nFica com
+          'sem informação' caso a criança não tenha sido avaliada neste conceito.
+          \r\nEm geral é preenchido para o fundamental 2."
+      - name: portugues
+        description: Conceito dado em português ao aluno neste COC. Fica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. Em geral
+          é prenchido para o fundamental 2.
+      - name: ciencias
+        description: "Conceito dado em ciências ao aluno em um COC.\r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. \r\n
+          Em geral é preenchido para o fundamental 2."
+      - name: geografia
+        description: "Conceito dado em geografia ao aluno em um COC. \r\nFica com
+          'sem informação' caso a criança não tenha sido avaliada neste conceito.
+          \r\nEm geral é preenchido para o fundamental 2."
+      - name: historia
+        description: "Conceito dado em história ao aluno em um COC. \r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. \r\n
+          Em geral é preenchido para o fundamental 2."
+      - name: educacao_fisica
+        description: Conceito dado em educação física ao aluno neste COC. Fica com
+          'sem informação' caso a criança não tenha sido avaliada neste conceito.
+          Em geral é prenchido para o fundamental 2.
+      - name: ingles
+        description: "Conceito dado em inglês ao aluno em um COC.\r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. \r\n
+          Em geral é preenchido para o fundamental 2."
+      - name: espanhol
+        description: "Conceito dado em espanhol ao aluno em um COC. \r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. \r\n
+          Em geral é preenchido para o fundamental 2."
+      - name: frances
+        description: "Conceito dado em francês ao aluno em um COC. \r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. \r\n
+          Em geral é preenchido para o fundamental 2."
+      - name: alemao
+        description: "Conceito dado em alemão ao aluno em um COC.\r\nFica com 'sem
+          informação' caso a criança não tenha sido avaliada neste conceito. \r\n
+          Em geral é preenchido para o fundamental 2."
+      - name: artes_visuais
+        description: "Conceito dado em artes visuais ao aluno em um COC. \r\nFica
+          com 'sem informação' caso a criança não tenha sido avaliada neste conceito.
+          \r\nEm geral é preenchido para o fundamental 2."
+      - name: artes_plasticas
+        description: "Conceito dado em artes plásticas ao aluno em um COC. \r\nFica
+          com 'sem informação' caso a criança não tenha sido avaliada neste conceito.
+          \r\nEm geral é preenchido para o fundamental 2."
+      - name: artes_cenicas
+        description: "Conceito dado em artes cênicas ao aluno em um COC.\r\nFica com
+          'sem informação' caso a criança não tenha sido avaliada neste conceito.
+          \r\nEm geral é preenchido para o fundamental 2."
+      - name: teatro
+        description: Conceito dado em teatro ao aluno em um COC. Fica com 'sem informação'
+          caso a criança não tenha sido avaliada neste conceito. Em geral é preenchido
+          para o fundamental 2.
+      - name: musica
+        description: Conceito dado em música ao aluno em um COC. Fica com 'sem informação'
+          caso a criança não tenha sido avaliada neste conceito. Em geral é preenchido
+          para o fundamental 2.
+      - name: reuniao_pais
+        description: Indica se teve reunião dos pais

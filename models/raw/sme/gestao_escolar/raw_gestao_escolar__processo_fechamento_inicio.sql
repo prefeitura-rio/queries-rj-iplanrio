@@ -1,4 +1,4 @@
-{{ config(alias='processo_fechamento_inicio', schema='brutos_gestao_escolar') }}
+{{ config(alias='processo_fechamento_inicio') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'MTR_ProcessoFechamentoInicio') }}
