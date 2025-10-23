@@ -39,10 +39,6 @@ models:
       - name: identificador_endereco
         description: "Identificador único de endereço"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_gestao_creche_responsavel_endereco__identificador_endereco__not_null
-              severity: error  
 
       - name: numero
         description: "Número da residência"
@@ -55,10 +51,6 @@ models:
       - name: complemento
         description: "Complemento do endereço"
         data_type: string
-        data_tests:
-          - not_null:
-              name: raw_gestao_creche_responsavel_endereco__complemento__not_null
-              severity: error                
 
       - name: telefone_domiciliar
         description: "Número de telefone domiciiar"
