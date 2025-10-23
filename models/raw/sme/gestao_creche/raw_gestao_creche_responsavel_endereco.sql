@@ -1,6 +1,5 @@
 {{
-    config(
-        --schema="brutos_gestao_creche",
+    config(        
         alias="responsavel_endereco",
         materialized="table",
         tags=["raw", "gestao_creche", "responsavel_endereco", "ICH_ResponsavelEndereco"],
