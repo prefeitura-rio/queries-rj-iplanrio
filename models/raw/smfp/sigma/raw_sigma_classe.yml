@@ -25,6 +25,6 @@ models:
         quote: true
       - name: status
         description: "Quais são os status disponíveis. 0 = Ativado e 2 = Desativado"
-        data_type: DECIMAL
+        data_type: decimal
 
 
