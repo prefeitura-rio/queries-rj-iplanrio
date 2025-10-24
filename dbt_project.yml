@@ -74,6 +74,10 @@ models:
           +materialized: table
           +schema: educacao_basica_staging
           +tags: "daily"
+        gestao_creche:
+          +materialized: table
+          +schema: brutos_gestao_creche
+          +tags: ["daily"]  
       smfp:
         +tags: "smfp"
         +project: rj-smfp
