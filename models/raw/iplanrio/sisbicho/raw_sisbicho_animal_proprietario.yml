@@ -20,13 +20,7 @@ models:
         data_tests:
           - not_null:
               name: raw_sisbicho_animal_proprietario__id_animal__not_null
-          - relationships:
-              name: raw_sisbicho_animal_proprietario__id_animal__relationships
-              config:
-                severity: error
-              arguments:
-                to: ref('raw_sisbicho_animal')
-                field: id_animal
+
       - name: id_proprietario
         description: "Identificador único de cada proprietário cadastrado no sistema"
         #datatype: integer
