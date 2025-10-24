@@ -31,6 +31,8 @@ sources:
       - name: usuario
       - name: usuario_sistema
       - name: contrato_processo_instrutivo
+        config:
+          freshness:
       - name: bem_patrimoniado
         config:
           freshness:
