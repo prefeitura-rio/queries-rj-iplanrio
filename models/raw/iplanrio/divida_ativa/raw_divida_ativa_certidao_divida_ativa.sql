@@ -44,6 +44,7 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
     when 3 then 'FUNPREVI'
     else 'Não classificado'
   end as nome_entidade_credora,
+  safe_cast(descDadosComplementares as string) as dados_complementares,
   a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging_prefect', 'CDA') }} a
