@@ -21,7 +21,7 @@ SELECT safe_cast(idProtesto as int64) as id_protesto,
     safe_cast(valorTitulo as numeric) as valor_cda,
     safe_cast(nomeDevedor as string) as nome_devedor_protestado,
     safe_cast(tipoDocumentoDevedor as int64) as tipo_documento_devedor,
-    case safe_cast(ifnull(tipoDocumentoDevedor, 0) as int64)
+    case safe_cast(ifnull(tipoDocumentoDevedor, '0') as int64)
         when 1 then 'CNPJ'
         when 2 then 'CPF'
         when 0 then 'Não informado'
