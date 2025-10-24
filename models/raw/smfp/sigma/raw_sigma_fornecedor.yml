@@ -30,7 +30,7 @@ models:
         quote: true
       - name: inscricao_estadual
         description: "Inscrição estadual do fornecedor."
-        data_type: numeric
+        data_type: bigdecimal
       - name: razao_social
         description: "Razão social ou nome do fornecedor."
         data_type: string
@@ -57,19 +57,19 @@ models:
         quote: true
       - name: fax_fornecedor
         description: "Fax do fornecedor."
-        data_type: numeric
+        data_type: bigdecimal
       - name: ddd
         description: "DDD do telefone do fornecedor."
-        data_type: numeric
+        data_type: DECIMAL
       - name: ddi
         description: "DDI do telefone do fornecedor."
-        data_type: numeric
+        data_type: DECIMAL
       - name: ramal
         description: "Número do ramal do telefone do fornecedor."
-        data_type: numeric
+        data_type: DECIMAL
       - name: telefone
         description: "Número de telefone do fornecedor."
-        data_type: numeric
+        data_type: bigdecimal
       - name: logradouro
         description: "Código do logradouro do endereço do fornecedor."
         data_type: string
@@ -95,14 +95,14 @@ models:
         quote: true
       - name: cep
         description: "CEP do endereço do fornecedor."
-        data_type: numeric
+        data_type: DECIMAL
       - name: status_fornecedor
         description: "Status do fornecedor (ativo/inativo/bloqueado)"
         data_type: string
         quote: true
       - name: codigo_natureza_juridica
         description: "Código da natureza jurídica do fornecedor, encontrado no CNPJ"
-        data_type: numeric
+        data_type: DECIMAL
       - name: descricao_natureza_juridica
         description: "Descrição da natureza jurídica do fornecedor. Quais são???
                      FIRMA INDIVIDUAL, SOC LIMITADA, SOC ANONIMA  COOPERATIVA, SOC EM NOME COLETIVO, 
@@ -121,7 +121,7 @@ models:
         quote: true
       - name: codigo_ramo_atividade
         description: "Código do ramo de atividade do fornecedor."
-        data_type: numeric
+        data_type: DECIMAL
       - name: descricao_ramo_atividade
         description: "Descrição do ramo de atividade. Quais são? INDUSTRIA, COMERCIO, PRESTACAO DE SERVICO, INDUSTRIA E COMERCIO, INDUSTRIA E 
         PRESTACAO SERVICO, COMERCIO E PRESTACAO SERVICO, IND.COM.E PRESTACAO DE SERVICO, EMPREITEIRO, REGISTRO EMP. NAO CADASTRADA, RAMO INICIAL, 
@@ -130,14 +130,14 @@ models:
         quote: true
       - name: codigo_porte_fornecedor
         description: "Código do porte do fornecedor como empresa. Valido apenas para fornecedor com TIPO_CPF_CNPJ = 'J'. Quais são?? 01 – MICROEMPRESA,03 - EMPRESA DE PEQUENO PORTE e 05 - DEMAIS"
-        data_type: numeric
+        data_type: DECIMAL
       - name: descricao_porte_fornecedor
         description: "Descrição do porte do fornecedor. Valido apenas para fornecedor com TIPO_CPF_CNPJ = 'J'"
         data_type: string
         quote: true
       - name: data_ultima_atualizacao
         description: "Data da última alteração do registro"
-        data_type: numeric
+        data_type: DECIMAL
       - name: tipo_cadastro_fornecedor
         description: "EVENTUAL – pessoa física ou jurídica que transaciona com a Municipalidade, sem que tenha se submetido ao processo formal de cadastramento, mas que para efeito de empenhamento e liquidação de despesa necessita constar do cadastro de favorecidos do Sistema de Contabilidade e Execução Orçamentária. FORMAL - O cadastro da pessoa física ou jurídica passou pelo processo formal de cadastramento e recebeu um certificado. SEM VINCULO - Fornecedores que não possuem Inscrição Estadual nem Inscrição Municipal criados para pagamento a restituição, indenização, carta de crédito, aquisição de imóvel e desapropriação."
         data_type: string
