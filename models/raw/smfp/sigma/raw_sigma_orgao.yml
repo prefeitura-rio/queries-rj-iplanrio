@@ -8,7 +8,7 @@ models:
     columns:
       - name: codigo_orgao
         description: "Código do órgão"
-        data_type: numeric
+        data_type: decimal
         data_tests:
           - not_null:
               name: raw_sigma_orgao__codigo_orgao__not_null
@@ -16,17 +16,17 @@ models:
           #     name: raw_sigma_orgao__codigo_orgao__unique
       - name: tipo_orgao
         description: "Tipo do órgão"
-        data_type: numeric
+        data_type: decimal
       - name: descricao_tipo_orgao
         description: "Descrição do tipo do órgão"
         data_type: string
         quote: true
       - name: codigo_orgao_pai
         description: "Código do órgão pai"
-        data_type: numeric
+        data_type: decimal
       - name: cd_secretaria_sdi
         description: "Código da Secretaria SDI"
-        data_type: numeric
+        data_type: decimal
       - name: descricao_orgao
         description: "Descrição do órgão"
         data_type: string
@@ -41,22 +41,22 @@ models:
         quote: true
       - name: cep
         description: "Cep do endereço do órgão"
-        data_type: numeric
+        data_type: decimal
       - name: numero_porta
         description: "Número do endereço do órgão"
-        data_type: numeric
+        data_type: decimal
       - name: fax_1
         description: "Número do telefone do fax 1"
-        data_type: numeric
+        data_type: bigdecimal
       - name: fax_2
         description: "Número do telefone do fax 2"
-        data_type: numeric
+        data_type: bigdecimal
       - name: telefone_1
         description: "Número do telefone 1"
-        data_type: numeric
+        data_type: bigdecimal
       - name: telefone_2
         description: "Número do telefone 2"
-        data_type: numeric
+        data_type: bigdecimal
       - name: sigla_orgao
         description: "Sigla do órgão"
         data_type: string
@@ -79,16 +79,16 @@ models:
         quote: true
       - name: codigo_saude
         description: "Código Nacional do Estabelecimento de Saúde"
-        data_type: numeric
+        data_type: bigdecimal
       - name: matricula_responsavel
         description: "Matrícula do responsável pelo Cadastro"
-        data_type: numeric
+        data_type: decimal
       - name: nome_responsavel
         description: "Nome do responsável pelo Cadastro"
         data_type: string
         quote: true
       - name: data_cadastramento
         description: "Data do Cadastramento"
-        data_type: numeric
+        data_type: decimal
 
 

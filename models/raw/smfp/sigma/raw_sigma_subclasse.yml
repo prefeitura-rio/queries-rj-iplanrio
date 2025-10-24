@@ -34,7 +34,7 @@ models:
         quote: true
       - name: id_status
         description: "Status da Subclasse"
-        data_type: string
+        data_type: decimal
         quote: true
 
 

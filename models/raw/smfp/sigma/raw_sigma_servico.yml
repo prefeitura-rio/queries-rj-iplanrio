@@ -8,7 +8,7 @@ models:
     columns:
       - name: codigo_servico
         description: "Código do serviço (06 caracteres)"
-        data_type: string
+        data_type: decimal
         quote: true
         # data_tests:
         #   - dbt_expectations.expect_column_value_lengths_to_equal:
@@ -16,7 +16,7 @@ models:
         #       value: 6
       - name: codigo_sequencia
         description: "Código da sequência (04 caracteres)"
-        data_type: string
+        data_type: decimal
         quote: true
         # data_tests:
         #   - dbt_expectations.expect_column_value_lengths_to_equal:
@@ -24,7 +24,7 @@ models:
         #       value: 4
       - name: digito_verificador
         description: "Dígito verificador (02 caracteres)"
-        data_type: string
+        data_type: decimal
         quote: true
       - name: id_servico
         description: "Identificador do serviço (concatenação dos códigos)"
@@ -45,7 +45,7 @@ models:
         quote: true
       - name: codigo_compras_net
         description: "Código de serviço (Classificação Governo Federal)"
-        data_type: string
+        data_type: bigdecimal
         quote: true
       - name: nome_padronizado
         description: "Nome padronizado"

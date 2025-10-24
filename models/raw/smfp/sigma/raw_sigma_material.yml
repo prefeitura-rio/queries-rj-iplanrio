@@ -72,7 +72,7 @@ models:
         quote: true
       - name: data_desativacao
         description: "Data da Desativação"
-        data_type: numeric
+        data_type: decimal
       - name: status_material
         description: "Indica material Ativo ou Desativado"
         data_type: string
@@ -91,14 +91,14 @@ models:
         quote: true
       - name: codigo_material_substituto
         description: "Código do Material Substituto"
-        data_type: numeric
+        data_type: bigdecimal
       - name: nome_fantasia
         description: "Nome Fantasia"
         data_type: string
         quote: true
       - name: codigo_compras_net
         description: "Código do material (Classificação Governo Federal)."
-        data_type: numeric
+        data_type: bigdecimal
       - name: tipo_material
         description: "Tipo de Material"
         data_type: string
