@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: raw_gestao_creche_inscricao_crianca
+    description: "Relaciona as informações de uma inscrição em creche à criança solicitante."
+    columns:      
+      - name: identificador_processo_matricula
+        description: "Identificador do processo de matrícula"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__identificador_processo_matricula__not_null
+              severity: error        
+
+      - name: identificador_polo_matricula
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__identificador_polo_matricula__not_null
+              severity: error        
+
+      - name: identificador_inscricao_polo
+        description: "FK da tabela inscricao_polo - (Parte da chave composta)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__identificador_inscricao_polo__not_null
+              severity: error
+
+      - name: nome
+        description: "Nome da criança"
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__nome__not_null
+              severity: error  
+
+      - name: dnv
+        description: "Número da declaração de nascido vivo"
+        data_type: string
+
+      - name: data_nascimento
+        description: "Data de Nascimento (AAAA-MM-DD)"
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__data_nascimento__not_null
+              severity: error  
+
+      - name: sexo
+        description: "Sexo da criança (F ou M)"
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__sexo__not_null
+              severity: error  
+
+      - name: situacao
+        description: "Situação da criança"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__situacao__not_null
+              severity: error  
+
+      - name: data_criacao
+        description: "Data de criação do registro na base de dados"
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__data_criacao__not_null
+              severity: error
+
+      - name: data_alteracao
+        description: "Data de alteração do registro na base de dados"
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_gestao_creche_inscricao_crianca__data_alteracao__not_null
+              severity: error
+
+      - name: gemeo_id
+        description: "Identificador de irmao gêmeo, caso exista"
+        data_type: int64
+
+      - name: nis
+        description: "NIS da criança"
+        data_type: string
+
+      - name: cpf
+        description: "CPF da criança"
+        data_type: string
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
