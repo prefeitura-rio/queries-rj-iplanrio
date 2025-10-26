@@ -34,15 +34,15 @@ models:
         quote: true
       - name: telefone_corporativo_1
         description: "Telefone corporativo 1"
-        data_type: string
+        data_type: bigdecimal
         quote: true
       - name: telefone_corporativo_2
         description: "Telefone corporativo 2"
-        data_type: string
+        data_type: bigdecimal
         quote: true
       - name: telefone_alternativo_1
         description: "Telefone alternativo 1"
-        data_type: string
+        data_type: bigdecimal
         quote: true
       - name: telefone_alternativo_2
         description: "Telefone alternativo 2"
@@ -50,7 +50,7 @@ models:
         quote: true
       - name: codigo_orgao_designacao
         description: "Código do órgão da designação"
-        data_type: string
+        data_type: decimal
         quote: true
       - name: descricao_orgao_designacao
         description: "Descrição do órgão da designação"
@@ -86,7 +86,7 @@ models:
         quote: true
       - name: data_inclusao
         description: "Data da inclusão"
-        data_type: string
+        data_type: decimal
         quote: true
       - name: status
         description: "Status"
