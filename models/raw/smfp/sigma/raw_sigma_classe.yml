@@ -6,7 +6,7 @@ models:
     config:
       alias: classe
       schema: compras_materiais_servicos_sigma
-      materialized: table
+      materialized: view
     columns:
       - name: codigo_grupo
         description: "Código do grupo onde está classificada a subclasse."

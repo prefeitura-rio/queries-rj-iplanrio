@@ -15,8 +15,10 @@ models:
         data_tests:
           - not_null:
               name: raw_sigma_material__codigo_material__not_null
+              severity: error
           - unique:
               name: raw_sigma_material__codigo_material__unique
+              severity: error
       - name: codigo_grupo
         description: "Código do Grupo"
         data_type: string
@@ -93,14 +95,14 @@ models:
         quote: true
       - name: codigo_material_substituto
         description: "Código do Material Substituto"
-        data_type: bigdecimal
+        data_type: integer
       - name: nome_fantasia
         description: "Nome Fantasia"
         data_type: string
         quote: true
       - name: codigo_compras_net
         description: "Código do material (Classificação Governo Federal)."
-        data_type: bigdecimal
+        data_type: integer
       - name: tipo_material
         description: "Tipo de Material"
         data_type: string

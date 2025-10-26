@@ -12,16 +12,6 @@ models:
         description: "CPF/CNPJ do fornecedor."
         data_type: string
         quote: true
-        # data_tests:
-        #   - not_null:
-        #       name: raw_sigma_fornecedor__cpf_cnpj__not_null
-        #   - unique:
-        #       name: raw_sigma_fornecedor__cpf_cnpj__unique
-          # - dbt_expectations.expect_column_values_to_match_regex_list:
-          #     name: raw_sigma_fornecedor__cpf_cnpj__matches_cpf_or_cnpj
-          #     regex_list:
-          #       - '^[0-9]{11}$'
-          #       - '^[0-9]{14}$'
       - name: tipo_fornecedor
         description: "Caracter que indica se o documento do fornecedor é o CPF (F) , CNPJ (J) ou Estrangeiro (E)."
         data_type: string
@@ -49,10 +39,6 @@ models:
         description: "Correio eletrônico da empresa ou da pessoa física"
         data_type: string
         quote: true
-        # data_tests:
-        #   - dbt_expectations.expect_column_values_to_match_regex:
-        #       name: raw_sigma_fornecedor__email__valid_format
-        #       regex: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
       - name: email_contato
         description: "Correio eletrônico da pessoa de contato no fornecedor."
         data_type: string

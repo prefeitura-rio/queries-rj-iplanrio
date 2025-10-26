@@ -6,7 +6,7 @@ models:
     config:
       alias: orgao
       schema: compras_materiais_servicos_sigma
-      materialized: table
+      materialized: view
     columns:
       - name: codigo_orgao
         description: "Código do órgão"

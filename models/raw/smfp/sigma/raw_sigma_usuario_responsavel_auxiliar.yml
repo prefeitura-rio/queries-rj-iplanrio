@@ -30,23 +30,23 @@ models:
         quote: true
       - name: data_inicio
         description: "Data de início"
-        data_type: decimal
+        data_type: string
         quote: true
       - name: data_termino
         description: "Data de término"
-        data_type: decimal
+        data_type: string
         quote: true
       - name: data_termo_responsabilidade
         description: "Data do termo de responsabilidade"
-        data_type: decimal
+        data_type: string
         quote: true
       - name: data_excepcionalidade
         description: "Data da excepcionalidade"
-        data_type: decimal
+        data_type: string
         quote: true
       - name: data_publicacao_designacao
         description: "Data da publicação da designação"
-        data_type: decimal
+        data_type: string
         quote: true
       - name: escolaridade
         description: "Escolaridade"

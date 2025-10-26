@@ -6,7 +6,7 @@ models:
     config:
       alias: subclasse
       schema: compras_materiais_servicos_sigma
-      materialized: table
+      materialized: view
     columns:
       - name: codigo_grupo
         description: "Código do Grupo"
@@ -36,7 +36,7 @@ models:
         quote: true
       - name: id_status
         description: "Status da Subclasse"
-        data_type: decimal
+        data_type: integer
         quote: true
 
 

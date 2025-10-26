@@ -6,7 +6,7 @@ models:
     config:
       alias: usuario_sistema
       schema: compras_materiais_servicos_sigma
-      materialized: table
+      materialized: view
     columns:
       - name: empresa_contratante
         description: "Nome da empresa contratante do colaborador"
@@ -34,15 +34,15 @@ models:
         quote: true
       - name: telefone_corporativo_1
         description: "Telefone corporativo 1"
-        data_type: bigdecimal
+        data_type: string
         quote: true
       - name: telefone_corporativo_2
         description: "Telefone corporativo 2"
-        data_type: bigdecimal
+        data_type: string
         quote: true
       - name: telefone_alternativo_1
         description: "Telefone alternativo 1"
-        data_type: bigdecimal
+        data_type: string
         quote: true
       - name: telefone_alternativo_2
         description: "Telefone alternativo 2"
@@ -86,8 +86,7 @@ models:
         quote: true
       - name: data_inclusao
         description: "Data da inclusão"
-        data_type: decimal
-        quote: true
+        data_type: date
       - name: status
         description: "Status"
         data_type: string
@@ -102,8 +101,7 @@ models:
         quote: true
       - name: data_ultima_sessao
         description: "Data da última sessão"
-        data_type: string
-        quote: true
+        data_type: date
       - name: hora_ultima_sessao
         description: "Hora da última sessão"
         data_type: string
