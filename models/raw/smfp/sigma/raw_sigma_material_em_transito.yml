@@ -5,6 +5,8 @@ models:
     description: "Material em trânsito."
     config:
       alias: material_em_transito
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade_origem
         description: "código da unidade armazenadora de origem"

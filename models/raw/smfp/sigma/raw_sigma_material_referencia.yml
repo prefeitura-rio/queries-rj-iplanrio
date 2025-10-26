@@ -5,6 +5,8 @@ models:
     description: "Referência de Material."
     config:
       alias: material_referencia
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_material
         description: "Código"

@@ -5,10 +5,19 @@ models:
     description: "Devolução de material."
     config:
       alias: devolucao_material
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade_origem
         description: "Código da unidade armazenadora de origem"
-        data_type: decimal
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_sigma_devolucao_material__id_unidade_origem__not_null
+              severity: error
+          # - unique:
+          #     name: raw_sigma_devolucao_material__id_unidade_origem__unique
+          #     severity: error
       - name: ano_mes_referencia
         description: "Ano e mês de referência (AAAAMM)"
         data_type: string
@@ -27,22 +36,27 @@ models:
         quote: true
       - name: id_unidade_destino
         description: "Código da unidade armazenadora de destino"
-        data_type: decimal
+        data_type: string
+        quote: true
       - name: tipo_documento
         description: "Tipo de documento ('DRA','DRD','DRM','EAJ','INC','DDM','DTM','DSD','RIM','SAJ','DSG','SBX','XXX')"
         data_type: string
         quote: true
       - name: numero_documento_unidade_origem
         description: "Número do documento da unidade armazenadora de origem"
-        data_type: decimal
+        data_type: string
+        quote: true
       - name: quantidade_material_devolvida
         description: "Quantidade de material devolvida"
-        data_type: decimal
+        data_type: string
+        quote: true
       - name: valor_unitario_material_devolvido
         description: "Valor unitário do material devolvido"
-        data_type: decimal
+        data_type: string
+        quote: true
       - name: valor_total_material_devolvido
         description: "Valor total do material devolvido (quantidade x valor unitário)"
-        data_type: decimal
+        data_type: string
+        quote: true
 
 

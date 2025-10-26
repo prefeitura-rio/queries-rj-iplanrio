@@ -5,6 +5,8 @@ models:
     description: "Cadastro de Fornecedores de bens e serviços."
     config:
       alias: fornecedor
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: cpf_cnpj
         description: "CPF/CNPJ do fornecedor."

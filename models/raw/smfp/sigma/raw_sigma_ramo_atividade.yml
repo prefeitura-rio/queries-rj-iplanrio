@@ -5,6 +5,8 @@ models:
     description: "Cadastro do Ramo de Atividades."
     config:
       alias: ramo_atividade
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_ramo
         description: "Número sequencial de 1 a 9, correspondente a cada tipo de ramo."

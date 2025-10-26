@@ -5,6 +5,8 @@ models:
     description: "Cadastro de Serviços do SIGMA."
     config:
       alias: servico
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_servico
         description: "Código do serviço (06 caracteres)"

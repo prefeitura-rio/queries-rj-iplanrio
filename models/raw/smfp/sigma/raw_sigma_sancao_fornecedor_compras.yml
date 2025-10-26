@@ -4,7 +4,9 @@ models:
   - name: raw_sigma_sancao_fornecedor_compras
     description: "Sanções administrativas aplicadas a fornecedores contratados pelo Município do Rio de Janeiro."
     config:
-      alias: sancao_fornecedor_compras
+      alias: sancao_fornecedor_compras  
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: cpf_cnpj
         description: "CPF/CNPJ do fornecedor que recebeu a sanção."

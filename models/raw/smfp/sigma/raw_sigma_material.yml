@@ -5,6 +5,8 @@ models:
     description: "Cadastro de Material."
     config:
       alias: material
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_material
         description: "Código do Material (Composição do Grupo + Classe + Subclasse + Sequencial e digitos de verificação)"

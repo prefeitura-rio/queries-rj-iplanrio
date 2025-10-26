@@ -15,7 +15,7 @@ models:
         data_type: string
         quote: true
       - name: status
-        description: "Quais são os status existentes? E um caracter numérico. 0 = Ativado e 1 = Desativado"
-        data_type: numeric
+        description: "Status de ativação do grupo (0 = Ativado, 1 = Desativado). Valores válidos: 0, 1"
+        data_type: integer
 
 

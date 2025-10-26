@@ -5,6 +5,8 @@ models:
     description: "Movimento do estoque."
     config:
       alias: movimento_estoque
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade_origem
         description: "código da unidade armazenadora de origem"

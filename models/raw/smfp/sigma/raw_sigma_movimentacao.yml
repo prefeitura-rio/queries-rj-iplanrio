@@ -5,6 +5,8 @@ models:
     description: "Movimentações de estoque."
     config:
       alias: movimentacao
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_material
         description: "Código do Material"

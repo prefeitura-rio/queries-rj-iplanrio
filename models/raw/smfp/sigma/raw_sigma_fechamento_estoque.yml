@@ -4,7 +4,9 @@ models:
   - name: raw_sigma_fechamento_estoque
     description: "Fechamento mensal do estoque."
     config:
-      alias: fechamento_mensal_estoque
+      alias: fechamento_mensal_estoque  
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade_armazenadora
         description: "código da unidade armazenadora"

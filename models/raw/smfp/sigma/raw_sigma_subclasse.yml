@@ -5,6 +5,8 @@ models:
     description: "Subclasse das Classes da Lista de Classificação."
     config:
       alias: subclasse
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_grupo
         description: "Código do Grupo"

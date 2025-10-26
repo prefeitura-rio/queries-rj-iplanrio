@@ -5,6 +5,8 @@ models:
     description: "Unidades Armazenadoras."
     config:
       alias: unidade_armazenadora
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade_armazenadora
         description: "Código da unidade armazenadora"

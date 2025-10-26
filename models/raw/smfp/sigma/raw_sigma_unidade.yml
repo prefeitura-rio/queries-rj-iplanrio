@@ -5,16 +5,18 @@ models:
     description: "Unidade de Consumo."
     config:
       alias: unidade
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade
         description: "Código único dado, pela PCRJ, à unidade"
         data_type: string
         quote: true
-        # data_tests:
-        #   - not_null:
-        #       name: raw_sigma_unidade__id_unidade__not_null
-        #   - unique:
-        #       name: raw_sigma_unidade__id_unidade__unique
+        data_tests:
+           - not_null:
+               name: raw_sigma_unidade__id_unidade__not_null
+           - unique:
+               name: raw_sigma_unidade__id_unidade__unique
       - name: descricao_unidade
         description: "Descrição da unidade"
         data_type: string

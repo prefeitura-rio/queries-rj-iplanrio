@@ -5,6 +5,8 @@ models:
     description: "Posição fechada do estoque."
     config:
       alias: posicao_fechada_estoque
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: id_unidade_armazenadora
         description: "código da unidade armazenadora"

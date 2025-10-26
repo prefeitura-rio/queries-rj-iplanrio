@@ -5,6 +5,8 @@ models:
     description: "Cadastro de Responsáveis de UAM."
     config:
       alias: usuario_responsavel_auxiliar
+      schema: compras_materiais_servicos_sigma
+      materialized: table
     columns:
       - name: codigo_orgao
         description: "Código do órgão"
@@ -38,7 +40,7 @@ models:
         description: "Data do termo de responsabilidade"
         data_type: string
         quote: true
-      - name: data_excepecionalidade
+      - name: data_excepcionalidade
         description: "Data da excepcionalidade"
         data_type: string
         quote: true

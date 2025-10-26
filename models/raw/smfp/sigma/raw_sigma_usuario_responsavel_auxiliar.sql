@@ -8,7 +8,7 @@
 SELECT
     SAFE_CAST(cd_orgao AS STRING) AS codigo_orgao,
     SAFE_CAST(ds_orgao AS STRING) AS descricao_orgao,
-    SAFE_CAST(dt_excepcionalidade AS STRING) AS data_excepecionalidade,
+    SAFE_CAST(dt_excepcionalidade AS STRING) AS data_excepcionalidade,
     SAFE_CAST(dt_inicio AS STRING) AS data_inicio,
     SAFE_CAST(dt_publicacao_designacao AS STRING) AS data_publicacao_designacao,
     SAFE_CAST(dt_termino AS STRING) AS data_termino,
