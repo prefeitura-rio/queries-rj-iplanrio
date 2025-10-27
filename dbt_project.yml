@@ -180,7 +180,8 @@ models:
             845941190868/acesso: interno
         eai_logs:
           +materialized: table
-          +schema: eai_logs
+          +schema: brutos_eai_logs
+          +tags: "daily"
           +resource_tags:
             rj-iplanrio/dominio: whatsapp
             845941190868/acesso: restrito

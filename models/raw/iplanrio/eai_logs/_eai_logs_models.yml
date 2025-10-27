@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: eai_dashboard_history
+    description: "Dashboard de histórico do EAI com classificação de usuários"
+    config:
+      materialized: table
+      schema: brutos_eai_logs
+      tags: ['eai', 'dashboard', 'daily']
+    meta:
+      dagster:
+        schedule:
+          cron_schedule: "0 */12 * * *"  # A cada 12 horas (00:00 e 12:00)
+          timezone: "America/Sao_Paulo"
+    columns:
+      - name: user_id
+        description: "ID do usuário"
+      - name: session_id
+        description: "ID da sessão"
+      - name: message_timestamp
+        description: "Timestamp da mensagem"
+      - name: categoria_usuario
+        description: "Classificação do usuário (novo_usuario, usuario_de_retorno, usuario_recorrente, outro)"
+
+  - name: eai_dashboard_detailed_cost
+    description: "Dashboard detalhado de custos do EAI"
+    config:
+      materialized: table
+      schema: brutos_eai_logs
+      tags: ['eai', 'dashboard', 'cost', 'daily']
+    meta:
+      dagster:
+        schedule:
+          cron_schedule: "0 */12 * * *"  # A cada 12 horas (00:00 e 12:00)
+          timezone: "America/Sao_Paulo"
+    columns:
+      - name: dia
+        description: "Data do custo"
+      - name: tipo_custo
+        description: "Tipo do custo (compartilhado, exclusivo, nao_categorizado)"
+      - name: servico
+        description: "Serviço GCP"
+      - name: custo_brl
+        description: "Custo em BRL"
