@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: raw_sigma_orgao
+    description: "Cadastro de Órgãos do SIGMA."
+    config:
+      alias: orgao
+      schema: compras_materiais_servicos_sigma
+      materialized: view
+    columns:
+      - name: codigo_orgao
+        description: "Código do órgão"
+        data_type: decimal
+        data_tests:
+          - not_null:
+              name: raw_sigma_orgao__codigo_orgao__not_null
+          # - unique:
+          #     name: raw_sigma_orgao__codigo_orgao__unique
+      - name: tipo_orgao
+        description: "Tipo do órgão"
+        data_type: decimal
+      - name: descricao_tipo_orgao
+        description: "Descrição do tipo do órgão"
+        data_type: string
+        quote: true
+      - name: codigo_orgao_pai
+        description: "Código do órgão pai"
+        data_type: decimal
+      - name: cd_secretaria_sdi
+        description: "Código da Secretaria SDI"
+        data_type: decimal
+      - name: descricao_orgao
+        description: "Descrição do órgão"
+        data_type: string
+        quote: true
+      - name: endereco_orgao
+        description: "Endereço do órgão"
+        data_type: string
+        quote: true
+      - name: complemento_endereco
+        description: "Complemento do Endereço do órgão"
+        data_type: string
+        quote: true
+      - name: cep
+        description: "Cep do endereço do órgão"
+        data_type: decimal
+      - name: numero_porta
+        description: "Número do endereço do órgão"
+        data_type: decimal
+      - name: fax_1
+        description: "Número do telefone do fax 1"
+        data_type: bigdecimal
+      - name: fax_2
+        description: "Número do telefone do fax 2"
+        data_type: bigdecimal
+      - name: telefone_1
+        description: "Número do telefone 1"
+        data_type: bigdecimal
+      - name: telefone_2
+        description: "Número do telefone 2"
+        data_type: bigdecimal
+      - name: sigla_orgao
+        description: "Sigla do órgão"
+        data_type: string
+        quote: true
+      - name: email_orgao
+        description: "email do órgão"
+        data_type: string
+        quote: true
+        # data_tests:
+        #   - dbt_expectations.expect_column_values_to_match_regex:
+        #       name: raw_sigma_orgao__email_orgao__valid_format
+        #       regex: '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$'
+      - name: tipo_unidade
+        description: "Tipo de Unidade"
+        data_type: string
+        quote: true
+      - name: status_orgao
+        description: "Status do órgão"
+        data_type: string
+        quote: true
+      - name: codigo_saude
+        description: "Código Nacional do Estabelecimento de Saúde"
+        data_type: bigdecimal
+      - name: matricula_responsavel
+        description: "Matrícula do responsável pelo Cadastro"
+        data_type: decimal
+      - name: nome_responsavel
+        description: "Nome do responsável pelo Cadastro"
+        data_type: string
+        quote: true
+      - name: data_cadastramento
+        description: "Data do Cadastramento"
+        data_type: decimal
+
+
