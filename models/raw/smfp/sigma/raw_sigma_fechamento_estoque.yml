@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: raw_sigma_fechamento_estoque
+    description: "Fechamento mensal do estoque."
+    config:
+      alias: fechamento_estoque  
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: id_unidade_armazenadora
+        description: "código da unidade armazenadora"
+        data_type: decimal
+      - name: ano_mes_referencia
+        description: "ano e mês de referência no formato AAAAMM"
+        data_type: string
+        quote: true
+      - name: saldo_anterior
+        description: "Saldo anterior ao mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_entrada_por_alienacao
+        description: "Total das entradas por alienação no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_entrada_por_compra
+        description: "Total das entradas por compra no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_entrada_por_devolucao
+        description: "Total das entradas por devolução no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_entrada_por_ajuste_contabil
+        description: "Total das entradas por ajuste contábil no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_entrada_por_incorporacao
+        description: "Total das entradas por incorporação no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_entrada_por_transferencia
+        description: "Total das entradas por transferências no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_saida_por_consumo
+        description: "Total das saídas por consumo no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_saida_por_transferencia
+        description: "Total das saídas por transferência no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_saida_por_ajuste_contabil
+        description: "Total das saídas por ajuste contábil no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_saida_por_degaste_natural
+        description: "Total das saídas por desgaste natural no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_saida_por_alienacao
+        description: "Total das saídas por alienação no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_saida_por_baixa
+        description: "Total das saídas por baixa no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: total_estorno
+        description: "Total de estorno no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: valor_acerto_preco_medio_unitario
+        description: "Acerto por Preço Médio Unitário (P.M.U.) no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: residuo_contabil
+        description: "Resíduo contábil no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+      - name: saldo_atual
+        description: "Saldo atual no mês-ano de referência para a unidade armazenadora"
+        data_type: decimal
+
+

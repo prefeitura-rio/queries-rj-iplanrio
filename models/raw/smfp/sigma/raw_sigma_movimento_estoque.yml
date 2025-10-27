@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: raw_sigma_movimento_estoque
+    description: "Movimento do estoque."
+    config:
+      alias: movimento_estoque
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: id_unidade_origem
+        description: "código da unidade armazenadora de origem"
+        data_type: numeric
+      - name: ano_mes_referencia
+        description: "ano e mês de referência no formato AAAAMM"
+        data_type: string
+        quote: true
+      - name: id_material
+        description: "Código do Material"
+        data_type: string
+        quote: true
+      - name: tipo_movimentacao
+        description: "movimentação de entrada = 'E', movimentação de saída = 'S', movimentação não identificada = '*'"
+        data_type: string
+        quote: true
+      - name: data_movimento
+        description: "data da movimentação no formato AAAAMMDD"
+        data_type: string
+        quote: true
+      - name: id_unidade_destino
+        description: "código da unidade armazenadora de destino"
+        data_type: numeric
+      - name: tipo_documento
+        description: "tipos de documento: 'DRA', 'DRD', 'DRM', 'EAJ', 'INC', 'DDM', 'DTM', 'DSD', 'RIM', 'SAJ', 'DSG', 'SBX' ou 'XXX' quando não identificado"
+        data_type: string
+        quote: true
+      - name: nota_fiscal_fornecedor
+        description: "número da nota fiscal do fornecedor"
+        data_type: numeric
+      - name: cnpj_fornecedor
+        description: "CNPJ do fornecedor"
+        data_type: string
+        quote: true
+      - name: numero_documento_unidade_destino
+        description: "número do documento da unidade armazenadora de destino"
+        data_type: numeric
+      - name: numero_documento_unidade_origem
+        description: "número do documento da unidade armazenadora de origem"
+        data_type: numeric
+      - name: quantidade_material_movimentada
+        description: "quantidade de material movimentada"
+        data_type: numeric
+      - name: valor_unitario_material_movimentado
+        description: "valor unitário do material movimentado"
+        data_type: numeric
+      - name: valor_total_material_movimentado
+        description: "valor total do material movimentado (quantidade x valor unitário)"
+        data_type: numeric
+      - name: valor_acerto_preco_medio_unitario
+        description: "valor de acerto do Preço Médio Unitário (PMU)"
+        data_type: numeric
+
+

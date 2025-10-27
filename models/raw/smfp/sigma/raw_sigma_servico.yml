@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: raw_sigma_servico
+    description: "Cadastro de Serviços do SIGMA."
+    config:
+      alias: servico
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: codigo_servico
+        description: "Código do serviço (06 caracteres)"
+        data_type: decimal
+        quote: true
+        # data_tests:
+        #   - dbt_expectations.expect_column_value_lengths_to_equal:
+        #       name: raw_sigma_servico__codigo_servico__len_6
+        #       value: 6
+      - name: codigo_sequencia
+        description: "Código da sequência (04 caracteres)"
+        data_type: decimal
+        quote: true
+        # data_tests:
+        #   - dbt_expectations.expect_column_value_lengths_to_equal:
+        #       name: raw_sigma_servico__codigo_sequencia__len_4
+        #       value: 4
+      - name: digito_verificador
+        description: "Dígito verificador (02 caracteres)"
+        data_type: decimal
+        quote: true
+      - name: id_servico
+        description: "Identificador do serviço (concatenação dos códigos)"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_sigma_servico__id_servico__not_null
+          - unique:
+              name: raw_sigma_servico__id_servico__unique
+      - name: descricao_servico
+        description: "Descrição do serviço"
+        data_type: string
+        quote: true
+      - name: status_servico
+        description: "Indica serviço ativado ou desativado"
+        data_type: string
+        quote: true
+      - name: codigo_compras_net
+        description: "Código de serviço (Classificação Governo Federal)"
+        data_type: bigdecimal
+        quote: true
+      - name: nome_padronizado
+        description: "Nome padronizado"
+        data_type: string
+        quote: true
+      - name: unidade_servico
+        description: "Unidade de serviço"
+        data_type: string
+        quote: true
+      - name: responsavel_tecnico
+        description: "Necessita responsável técnico"
+        data_type: string
+        quote: true
+      - name: registro_preco
+        description: "No sistema de registro de preço"
+        data_type: string
+        quote: true
+      - name: id_atividade_economica
+        description: "Código de Atividade Econômica (Grupo/Subgrupo/Atividade)"
+        data_type: string
+        quote: true
+      - name: codigo_grupo_cae
+        description: "Grupo da Atividade Econômica"
+        data_type: string
+        quote: true
+      - name: codigo_subgrupo_cae
+        description: "Subgrupo da Atividade Econômica"
+        data_type: string
+        quote: true
+      - name: codigo_atividade_economica
+        description: "Atividade Econômica"
+        data_type: string
+        quote: true
+      - name: descricao_atividade_economica
+        description: "Descrição da Atividade Econômica"
+        data_type: string
+        quote: true
+      - name: descricao_subgrupo_cae
+        description: "Descrição do Subgrupo do Código de Atividade Econômica"
+        data_type: string
+        quote: true
+      - name: situacao_tabelado
+        description: "Se o item é tabelado"
+        data_type: string
+        quote: true
+      - name: situacao_cadastro_fornecedor
+        description: "Se o item é vinculado à tabela de fornecedor"
+        data_type: string
+        quote: true
+
+

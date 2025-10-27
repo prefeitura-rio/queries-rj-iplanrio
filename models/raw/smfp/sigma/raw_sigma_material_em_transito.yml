@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: raw_sigma_material_em_transito
+    description: "Material em trânsito."
+    config:
+      alias: material_em_transito
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: id_unidade_origem
+        description: "código da unidade armazenadora de origem"
+        data_type: numeric
+      - name: ano_mes_referencia
+        description: "ano e mês de referência no formato AAAAMM"
+        data_type: string
+        quote: true
+      - name: id_unidade_destino
+        description: "código da unidade armazenadora de destino"
+        data_type: numeric
+      - name: tipo_documento
+        description: "tipos de documento: 'DDM', 'DTM' ou 'XXX' quando não identificado"
+        data_type: string
+        quote: true
+      - name: numero_documento_unidade_origem
+        description: "número do documento da unidade armazenadora de origem"
+        data_type: numeric
+      - name: id_material
+        description: "Código do Material"
+        data_type: string
+        quote: true
+      - name: status_movimentacao
+        description: "Status da movimentação: 'DOCTO EM ABERTO' ou 'DOCTO FECHADO, FV RESGATAR'"
+        data_type: string
+        quote: true
+      - name: quantidade_material_transito
+        description: "Quantidade de material em trânsito"
+        data_type: numeric
+      - name: valor_unitario_material_transito
+        description: "Valor unitário do material em trânsito"
+        data_type: numeric

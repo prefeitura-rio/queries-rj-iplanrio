@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: raw_sigma_responsavel_unidade_armazenadora
+    description: "Responsáveis pelas Unidades Armazenadoras."
+    config:
+      alias: responsavel_unidade_armazenadora
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: id_unidade_armazenadora
+        description: "Código da unidade armazenadora"
+        data_type: int64
+      - name: matricula_responsavel
+        description: "Matrícula do responsável"
+        data_type: int64
+      - name: nome_responsavel
+        description: "Nome do responsável"
+        data_type: string
+        quote: true
+      - name: data_inicio_responsavel
+        description: "Data de início da responsabilidade"
+        data_type: string
+        quote: true
+      - name: matricula_substituto_1
+        description: "Matrícula do substituto 1"
+        data_type: int64
+      - name: nome_substituto_1
+        description: "Nome do substituto 1"
+        data_type: string
+        quote: true
+      - name: data_inicio_substituto_1
+        description: "Data de início do substituto 1"
+        data_type: string
+        quote: true
+      - name: matricula_substituto_2
+        description: "Matrícula do substituto 2"
+        data_type: int64
+      - name: nome_substituto_2
+        description: "Nome do substituto 2"
+        data_type: string
+        quote: true
+      - name: data_inicio_substituto_2
+        description: "Data de início do substituto 2"
+        data_type: string
+        quote: true
+
+
