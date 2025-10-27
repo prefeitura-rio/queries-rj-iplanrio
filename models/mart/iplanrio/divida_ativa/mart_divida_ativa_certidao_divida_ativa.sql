@@ -101,7 +101,6 @@ select a.id_certidao_divida_ativa,
   a.valor_juros_mora, 
   a.valor_pago_principal, 
   a.valor_honorarios, 
-  a.valor_original_divida_ativa, 
   a.valor_mora_smf_iptu,
   struct(
     a.codigo_receita_cda,
