@@ -3,15 +3,6 @@ version: 2
 models:
   - name: eai_dashboard_history
     description: "Dashboard de histórico do EAI com classificação de usuários"
-    config:
-      materialized: table
-      schema: brutos_eai_logs
-      tags: ['eai', 'dashboard', 'daily']
-    meta:
-      dagster:
-        schedule:
-          cron_schedule: "0 */12 * * *"  # A cada 12 horas (00:00 e 12:00)
-          timezone: "America/Sao_Paulo"
     columns:
       - name: user_id
         description: "ID do usuário"
@@ -24,15 +15,6 @@ models:
 
   - name: eai_dashboard_detailed_cost
     description: "Dashboard detalhado de custos do EAI"
-    config:
-      materialized: table
-      schema: brutos_eai_logs
-      tags: ['eai', 'dashboard', 'cost', 'daily']
-    meta:
-      dagster:
-        schedule:
-          cron_schedule: "0 */12 * * *"  # A cada 12 horas (00:00 e 12:00)
-          timezone: "America/Sao_Paulo"
     columns:
       - name: dia
         description: "Data do custo"
