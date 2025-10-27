@@ -175,6 +175,7 @@ reviews:
       instructions: |
         "ALWAYS review dbt SQL model files THOROUGHLY with the following criteria:
         - Alias MUST be defined in the model configuration (using {{ config() }} macro).
+        - DO NOT define 'schema' in the model SQL (use dbt_project.yml for schema configuration only).
         - Every raw or staged model MUST have a loaded_at field using either '_prefect_extracted_at' or '_airbyte_extracted_at'.
         - NEVER use hardcoded/raw database paths - ALWAYS use ref() for models or source() for source data.
         - All CTEs and columns should have clear, descriptive names following naming conventions.
