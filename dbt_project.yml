@@ -61,6 +61,20 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: bcadastro
             845941190868/acesso: restrito
+      iplanrio:
+        +project: rj-iplanrio
+        api_bcadastro:
+          +schema: api_bcadastro
+          +tags: ["daily", "bcadastro"]
+          +resource_tags:
+            rj-iplanrio/dominio: bcadastro
+            845941190868/acesso: restrito
+        divida_ativa:
+          +schema: divida_ativa
+          +tags: ["daily", "divida_ativa"]
+          +resource_tags:
+            rj-iplanrio/dominio: divida_ativa
+            845941190868/acesso: restrito
     raw:
       +tags: "raw"
       sme:
