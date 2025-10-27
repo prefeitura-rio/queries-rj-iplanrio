@@ -30,8 +30,8 @@ WITH tb AS (
     h.tool_name,
     h.tool_call_arguments_json,
     h.tool_return_payload,
-  FROM `rj-iplanrio.brutos_eai_logs.history` h
-  JOIN `rj-iplanrio.brutos_eai_logs.whitelist_beta` w
+  FROM {{ source('brutos_eai_logs', 'history') }} h
+  JOIN {{ source('brutos_eai_logs', 'whitelist_beta') }} w
       ON h.user_id = w.user_id 
   WHERE message_timestamp IS NOT NULL 
     AND environment = 'prod'
@@ -72,7 +72,7 @@ marked AS (
     tb.*,
     EXISTS (
       SELECT 1
-      FROM `rj-iplanrio.brutos_eai_logs.feedback` f
+      FROM {{ source('brutos_eai_logs', 'feedback') }} f
       WHERE f.user_id = tb.user_id
         AND f.environment = 'production'
         AND f.feedback = tb.message_content
@@ -113,5 +113,5 @@ SELECT
 FROM propagated p
 -- JUNÇÃO (JOIN): Conecta os dados da query com a classificação pelo user_id
 JOIN classificacao_usuarios c ON p.user_id = c.user_id
-WHERE message_day >= '2025-08-19'
+WHERE message_day >= '{{ var("CHATBOT_START_DATE") }}'
 ORDER BY user_id, message_timestamp

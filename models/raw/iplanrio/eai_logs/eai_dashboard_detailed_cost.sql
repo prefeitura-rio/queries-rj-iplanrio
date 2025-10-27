@@ -29,8 +29,8 @@ WITH history AS (
     h.tool_name,
     h.tool_call_arguments_json,
     h.tool_return_payload,
-  FROM `rj-iplanrio.brutos_eai_logs.history` h
-  JOIN `rj-iplanrio.brutos_eai_logs.whitelist_beta` w
+  FROM {{ source('brutos_eai_logs', 'history') }} h
+  JOIN {{ source('brutos_eai_logs', 'whitelist_beta') }} w
       ON h.user_id = w.user_id 
   WHERE message_timestamp IS NOT NULL 
     AND environment = 'prod'
@@ -46,13 +46,13 @@ custos AS (
       END as tipo_custo,
       service.description as servico,
       SUM(cost) as custo_brl
-    FROM `dados-rio-billing.billing.gcp_billing_export_resource_v1_017DB4_593D94_BEEC50`
+    FROM {{ source('dados_rio_billing', 'gcp_billing_export_resource_v1_017DB4_593D94_BEEC50') }}
     WHERE project.id = "rj-superapp"
-      AND usage_start_time >= '2025-08-19'
+      AND usage_start_time >= '{{ var("CHATBOT_START_DATE") }}'
       -- Modificação: Pega os dados ANTES do dia da virada.
       AND usage_start_time < '2025-08-26 17:00:00 UTC'
-      AND _PARTITIONTIME >= '2025-08-18' -- Data um pouquinho antes
-      AND _PARTITIONTIME < '2025-08-27'  -- Data um pouquinho depois
+      AND _PARTITIONTIME >= DATE_SUB(DATE('{{ var("CHATBOT_START_DATE") }}'), INTERVAL 1 DAY)
+      AND _PARTITIONTIME < '2025-08-27'
     GROUP BY 1,2,3
   )
 
@@ -67,7 +67,7 @@ custos AS (
       END as tipo_custo,
       service.description as servico,
       SUM(cost) as custo_brl
-    FROM `iplan-437215.billing.gcp_billing_export_resource_v1_01F105_3E298A_65D256`
+    FROM {{ source('iplan_billing', 'gcp_billing_export_resource_v1_01F105_3E298A_65D256') }}
     WHERE project.id = "rj-superapp"
       -- Modificação: Pega os dados A PARTIR do dia da virada (inclusive).
       AND usage_start_time >= '2025-08-26 17:00:00 UTC'
@@ -109,7 +109,7 @@ user_per_day AS (
 ),
 
 
-model_cals_per_day AS (
+model_calls_per_day AS (
   SELECT
     message_day,
     COUNT(message_day) as model_calls,
@@ -156,7 +156,7 @@ final_tb AS (
     END as sessions_gemini,
     
   FROM custos c
-  LEFT JOIN model_cals_per_day mc
+  LEFT JOIN model_calls_per_day mc
     on c.dia = mc.message_day
   LEFT JOIN google_search_activated gs
     on c.dia = gs.message_day
