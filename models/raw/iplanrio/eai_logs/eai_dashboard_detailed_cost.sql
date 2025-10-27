@@ -177,5 +177,6 @@ SELECT
   sessions_vertex,
   model_calls_gemini,
   sessions_gemini,
+  CURRENT_TIMESTAMP() AS loaded_at
 FROM final_tb
 ORDER BY 1, 2,3

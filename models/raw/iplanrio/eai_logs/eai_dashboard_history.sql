@@ -108,7 +108,8 @@ propagated AS (
 -- Seleção Final: Juntamos os resultados da sua query com a nova tabela de classificação
 SELECT 
   p.*, -- Seleciona todas as colunas da sua query original
-  c.categoria_usuario -- Adiciona a nova coluna de categoria
+  c.categoria_usuario, -- Adiciona a nova coluna de categoria
+  CURRENT_TIMESTAMP() AS loaded_at
 FROM propagated p
 -- JUNÇÃO (JOIN): Conecta os dados da query com a classificação pelo user_id
 JOIN classificacao_usuarios c ON p.user_id = c.user_id
