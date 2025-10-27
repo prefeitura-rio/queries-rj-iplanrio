@@ -6,7 +6,7 @@ models:
     config:
       alias: usuario_sistema
       schema: compras_materiais_servicos_sigma
-      materialized: view
+      materialized: table
     columns:
       - name: empresa_contratante
         description: "Nome da empresa contratante do colaborador"
