@@ -272,7 +272,7 @@ reviews:
       # Mode - Determines how strictly the docstring coverage check is enforced. Warning will only generate a warning and does not require the user to resolve the check. Error requires the user to resolve issues before merging the pull request. If set to error and the request changes workflow is enabled, the pull request will be blocked until the issues are resolved.
       # Options: off, warning, error
       # Default: "warning"
-      mode: "warning"
+      mode: "off"
 
       # Percentage threshold for docstring coverage check.
       # Default: 80
