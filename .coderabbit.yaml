@@ -60,7 +60,16 @@ reviews:
 
   # Auto Title Instructions - Custom instructions for auto-generating the PR/MR title.
   # Default: ""
-  auto_title_instructions: ""
+  auto_title_instructions: |
+    "Generate PR titles following these guidelines:
+    - Use conventional commit format: type(scope): description
+    - Types: feat (new models/features), fix (bug fixes), refactor (code improvements), docs (documentation), test (tests)
+    - Scope: dataset name (e.g., divida_ativa, sigma, acolherio) or 'models', 'dbt_project'
+    - Description: concise summary in Portuguese (max 70 characters)
+    - Examples: 'feat(divida_ativa): adiciona modelo de certidão de dívida', 'fix(sigma): corrige campo loaded_at', 'refactor(models): renomeia coluna'
+    - Keep titles descriptive but brief, avoiding generic descriptions like 'atualização' or 'mudanças'
+    - If adding multiple models, mention the main dataset or 'models: adiciona N modelos de [dataset]'
+    "
 
   # Post review details on each review. Additionally, post a review status when a review is skipped in certain cases.
   # Default: true
