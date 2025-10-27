@@ -6,6 +6,7 @@
     )
 }}
 
+
 WITH tb AS (
   SELECT
     h.environment,
