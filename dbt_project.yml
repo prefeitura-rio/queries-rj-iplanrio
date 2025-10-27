@@ -22,6 +22,8 @@ vars:
   HASH_SEED: "{{ env_var('HASH_SEED', 'hash_seed') }}"
   # EAI chatbot start date
   CHATBOT_START_DATE: "2025-08-19"
+  # EAI billing cutover date
+  BILLING_CUTOVER_DATE: "2025-08-26"
 
 
 models:
