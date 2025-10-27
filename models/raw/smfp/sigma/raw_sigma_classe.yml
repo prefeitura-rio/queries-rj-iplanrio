@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: raw_sigma_classe
+    description: "Classes de Material da Lista de Classificação"
+    config:
+      alias: classe
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: codigo_grupo
+        description: "Código do grupo onde está classificada a subclasse."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_sigma_classe__codigo_classe__not_null
+              severity: error
+          # - unique:
+          #     name: raw_sigma_classe__codigo_classe__unique
+          #     severity: error
+          - relationships:                          
+              name: raw_sigma_classe__codigo_grupo__relationships
+              to: ref('raw_sigma_grupo')
+              field: codigo_grupo
+      - name: codigo_classe
+        description: "Código da classe onde está classificada a subclasse."
+        data_type: string
+        quote: true
+      - name: descricao_classe
+        description: "Descrição da classe."
+        data_type: string
+        quote: true
+      - name: status
+        description: "Quais são os status disponíveis. 0 = Ativado e 2 = Desativado"
+        data_type: integer
+
+

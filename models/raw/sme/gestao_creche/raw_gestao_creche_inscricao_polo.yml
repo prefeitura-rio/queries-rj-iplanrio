@@ -1,0 +1,133 @@
+version: 2
+
+models:
+  - name: raw_gestao_creche_inscricao_polo
+    description: Apresenta as informações relativas às inscrições realizadas em pólos disponiblizados.
+    columns:
+      - name: identificador_inscricao_polo
+        description: "PK desta tabela - (Parte da chave composta)"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__identificador_inscricao_polo__not_null
+              #severity: error        
+
+      - name: identificador_processo_matricula
+        description: "FK da tabela polo_processo_matricula - (Parte da chave composta)"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__identificador_processo_matricula__not_null
+              #severity: error        
+
+      - name: identificador_polo_matricula
+        description: "FK da tabela polo_processo_matricula - (Parte da chave composta)"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__identificador_polo_matricula__not_null
+              #severity: error  
+
+      - name: identificador_curriculo
+        description: "Identificador do currículo (Tabelas de origem: creche_curriculo_periodo e curriculo)"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__identificador_curriculo__not_null
+              #severity: error          
+
+      - name: identificador_requisito_curriculo
+        description: "Identificador de requisito do currículo (Tabelas de origem: creche_curriculo_periodo e curriculo_requisito)"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__identificador_requisito_curriculo__not_null
+              #severity: error  
+
+      - name: identificador_curriculo_periodo
+        description: "Identifcador do período do currículo (Tabelas de origem: creche_curriculo_periodo e curriculo_periodo)"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__identificador_curriculo_periodo__not_null
+              #severity: error
+
+      - name: codigo_ficha
+        description: "Codigo da ficha de inscrição no pólo"
+        data_type: string
+
+      - name: grau_vulnerabilidade
+        description: "Grau de Vulnerabilidade da criança"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__grau_vulnerabilidade__not_null
+              #severity: error
+
+      - name: numero_sorteio
+        description: "Número recebido para participar do sorteio"
+        data_type: string
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__numero_sorteio_not_null
+              #severity: error
+
+      - name: classificacao_polo
+        description: "Classificação no polo"
+        data_type: int64
+
+      - name: esc_id
+        description: "Identificador da escola (tabela escola). Obs.: Não confundir com o código da unidade escolar"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__esc_id__not_null
+              #severity: error
+
+      - name: uni_id
+        description: "Identificador da unidade escola (tabela escola). Obs.: Não confundir com o código da unidade escolar"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__uni_id__not_null
+              #severity: error
+
+      - name: situacao
+        description: "Situação da inscrição no polo"
+        data_type: int64
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__situacao__not_null
+              #severity: error
+
+      - name: data_criacao
+        description: "Data de criação da inscrição no polo"
+        data_type: datetime
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__data_criacao__not_null
+              #severity: error
+
+      - name: data_alteracao
+        description: "Data de alteração da inscrição no polo"
+        data_type: datetime
+        data_tests:
+          - not_null
+              #name: raw_gestao_creche_inscricao_polo__data_alteracao__not_null
+              #severity: error
+
+      - name: participar_pic
+        description: "Vai participar do PIC (Primeira Infância Carioca)? True or False"
+        data_type: boolean
+
+      - name: grupo_saida_parceira
+        description: "Atualmente esse campo é sempre nulo"
+        data_type: string
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp   

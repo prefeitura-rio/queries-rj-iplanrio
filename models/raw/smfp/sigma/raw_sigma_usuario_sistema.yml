@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: raw_sigma_usuario_sistema
+    description: "Usuários do SIGMA."
+    config:
+      alias: usuario_sistema
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: empresa_contratante
+        description: "Nome da empresa contratante do colaborador"
+        data_type: string
+        quote: true
+      - name: cpf_colaborador
+        description: "CPF do colaborador"
+        data_type: string
+        quote: true
+      - name: matricula
+        description: "Matrícula do servidor ou colaborador"
+        data_type: string
+        quote: true
+      - name: nome_servidor
+        description: "Nome do servidor ou colaborador"
+        data_type: string
+        quote: true
+      - name: email_institucional
+        description: "Email institucional"
+        data_type: string
+        quote: true
+      - name: email_alternativo
+        description: "Email alternativo"
+        data_type: string
+        quote: true
+      - name: telefone_corporativo_1
+        description: "Telefone corporativo 1"
+        data_type: string
+        quote: true
+      - name: telefone_corporativo_2
+        description: "Telefone corporativo 2"
+        data_type: string
+        quote: true
+      - name: telefone_alternativo_1
+        description: "Telefone alternativo 1"
+        data_type: string
+        quote: true
+      - name: telefone_alternativo_2
+        description: "Telefone alternativo 2"
+        data_type: string
+        quote: true
+      - name: codigo_orgao_designacao
+        description: "Código do órgão da designação"
+        data_type: decimal
+        quote: true
+      - name: descricao_orgao_designacao
+        description: "Descrição do órgão da designação"
+        data_type: string
+        quote: true
+      - name: codigo_perfil
+        description: "Código do perfil"
+        data_type: string
+        quote: true
+      - name: descricao_perfil
+        description: "Descrição do perfil"
+        data_type: string
+        quote: true
+      - name: privilegio_almoxarifado
+        description: "Privilégio de acesso"
+        data_type: string
+        quote: true
+      - name: hora_acesso_inicio
+        description: "Hora do acesso inicial"
+        data_type: string
+        quote: true
+      - name: minuto_acesso_inicio
+        description: "Minuto do acesso inicial"
+        data_type: string
+        quote: true
+      - name: hora_acesso_fim
+        description: "Hora de acesso fim"
+        data_type: string
+        quote: true
+      - name: minuto_acesso_fim
+        description: "Minuto de acesso fim"
+        data_type: string
+        quote: true
+      - name: data_inclusao
+        description: "Data da inclusão"
+        data_type: date
+      - name: status
+        description: "Status"
+        data_type: string
+        quote: true
+      - name: status_situacao
+        description: "Status da situação"
+        data_type: string
+        quote: true
+      - name: codigo_terminal
+        description: "Código do terminal"
+        data_type: string
+        quote: true
+      - name: data_ultima_sessao
+        description: "Data da última sessão"
+        data_type: date
+      - name: hora_ultima_sessao
+        description: "Hora da última sessão"
+        data_type: string
+        quote: true
+
+

@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: raw_sigma_subclasse
+    description: "Subclasse das Classes da Lista de Classificação."
+    config:
+      alias: subclasse
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: codigo_grupo
+        description: "Código do Grupo"
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: raw_sigma_subclasse__codigo_grupo__relationships
+              to: ref('raw_sigma_grupo')
+              field: codigo_grupo
+      - name: codigo_classe
+        description: "Código da Classe"
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: raw_sigma_subclasse__codigo_classe__relationships
+              to: ref('raw_sigma_classe')
+              field: codigo_classe
+      - name: codigo_subclasse
+        description: "Código da Subclasse"
+        data_type: string
+        quote: true
+      - name: descricao_subclasse
+        description: "Descrição da Subclasse"
+        data_type: string
+        quote: true
+      - name: id_status
+        description: "Status da Subclasse"
+        data_type: integer
+        quote: true
+
+
