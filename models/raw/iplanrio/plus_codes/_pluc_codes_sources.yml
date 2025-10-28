@@ -1,6 +1,5 @@
 version: 2
 
-
 sources:
   - name: br_geobr_mapas
     database: basedosdados
