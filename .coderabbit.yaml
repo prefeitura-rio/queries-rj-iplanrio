@@ -156,6 +156,12 @@ reviews:
         - Verify that all referenced models in the project actually exist.
         - Check for consistency in naming conventions across all models.
         - Ensure no duplicate model names exist in the configuration.
+        - For ALL models with tag 'rj-iplanrio' (+project: rj-iplanrio), MANDATORY resource_tags configuration:
+          +resource_tags:
+            rj-iplanrio/dominio: [administrativo, educacao, infraestrutura-ti, bcadastro, atendimento, processos, assistencia-social, localizacao, whatsapp, tributos, taxirio, sisbicho]
+            845941190868/acesso: [publico, interno, restrito]
+          The rj-iplanrio/dominio MUST match one of the allowed values: administrativo, educacao, infraestrutura-ti, bcadastro, atendimento, processos, assistencia-social, localizacao, whatsapp, tributos, taxirio, sisbicho
+          The 845941190868/acesso MUST be one of: publico, interno, restrito
         "
     
     - path: "**/models/**/*.yml"
