@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: brutos_eai_logs
+    database: rj-iplanrio
+    schema: brutos_eai_logs
+    tables:
+      - name: history
+        description: "Histórico de interações do EAI"
+      - name: whitelist_beta
+        description: "Lista de usuários autorizados para o EAI beta"
+      - name: feedback
+        description: "Feedback dos usuários do EAI"
+
+  - name: dados_rio_billing
+    database: dados-rio-billing
+    schema: billing
+    tables:
+      - name: gcp_billing_export_resource_v1_017DB4_593D94_BEEC50
+        description: "Dados de billing do GCP - dados-rio"
+
+  - name: iplan_billing
+    database: iplan-437215
+    schema: billing
+    tables:
+      - name: gcp_billing_export_resource_v1_01F105_3E298A_65D256
+        description: "Dados de billing do GCP - iplan"
