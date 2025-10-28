@@ -1,6 +1,7 @@
 {{
     config(
-        alias='cpf'    )
+        alias='cpf'
+)
 }}
 
 select

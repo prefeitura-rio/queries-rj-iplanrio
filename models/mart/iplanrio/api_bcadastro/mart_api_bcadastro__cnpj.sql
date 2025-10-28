@@ -1,6 +1,7 @@
 {{
     config(
-        alias='cnpj' 
+        alias='cnpj',
+        materialized='table'
     )
 }}
 
