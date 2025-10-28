@@ -50,9 +50,9 @@ custos AS (
     WHERE project.id = "rj-superapp"
       AND usage_start_time >= '{{ var("CHATBOT_START_DATE") }}'
       -- Modificação: Pega os dados ANTES do dia da virada.
-      AND usage_start_time < '{{ var("BILLING_CUTOVER_DATE") }} 17:00:00 UTC'
-      AND _PARTITIONTIME >= DATE_SUB(DATE('{{ var("CHATBOT_START_DATE") }}'), INTERVAL 1 DAY)
-      AND _PARTITIONTIME < DATE_ADD(DATE('{{ var("BILLING_CUTOVER_DATE") }}'), INTERVAL 1 DAY)
+      AND usage_start_time < TIMESTAMP('{{ var("BILLING_CUTOVER_DATE") }} 17:00:00 UTC')
+      AND _PARTITIONTIME >= TIMESTAMP(DATE_SUB(DATE('{{ var("CHATBOT_START_DATE") }}'), INTERVAL 1 DAY))
+      AND _PARTITIONTIME < TIMESTAMP(DATE_ADD(DATE('{{ var("BILLING_CUTOVER_DATE") }}'), INTERVAL 1 DAY))
     GROUP BY 1,2,3
   )
 
@@ -70,8 +70,8 @@ custos AS (
     FROM {{ source('iplan_billing', 'gcp_billing_export_resource_v1_01F105_3E298A_65D256') }}
     WHERE project.id = "rj-superapp"
       -- Modificação: Pega os dados A PARTIR do dia da virada (inclusive).
-      AND usage_start_time >= '{{ var("BILLING_CUTOVER_DATE") }} 17:00:00 UTC'
-      AND _PARTITIONTIME >= DATE('{{ var("BILLING_CUTOVER_DATE") }}')
+      AND usage_start_time >= TIMESTAMP('{{ var("BILLING_CUTOVER_DATE") }} 17:00:00 UTC')
+      AND _PARTITIONTIME >= TIMESTAMP(DATE('{{ var("BILLING_CUTOVER_DATE") }}'))
     GROUP BY 1,2,3
   )
 ),
