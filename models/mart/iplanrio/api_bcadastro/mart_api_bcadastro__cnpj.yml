@@ -5,6 +5,13 @@ models:
     description: "Modelo mart para dados de CNPJ da API do BCadastro, contendo informações empresariais, contato, endereço, sócios e metadados"
     config:
       alias: cnpj
+      partition_by:
+        field: cnpj_particao
+        data_type: int64
+        range:
+          start: 0
+          end: 99999999999999
+          interval: 25000000000
       contract:
         enforced: true
     columns:
@@ -140,14 +147,9 @@ models:
         quote: true
 
       # Estrutura de contato
-      - name: contato.telefone.ddd
-        description: "DDD do telefone"
-        data_type: string
-        quote: true
-      
-      - name: contato.telefone.telefone
-        description: "Número do telefone"
-        data_type: string
+      - name: contato.telefone
+        description: "Array de telefones da empresa"
+        data_type: array<struct<ddd string, telefone string>>
         quote: true
 
       - name: contato.email
@@ -287,74 +289,14 @@ models:
         description: "Quantidade de sócios da empresa"
         data_type: integer
 
-      - name: socios.codigo_pais
-        description: "Código do país do sócio"
-        data_type: string
+      - name: socios
+        description: "Array de sócios da empresa"
+        data_type: array<struct<codigo_pais string, cpf_socio string, nome_socio string, cnpj_socio string, cpf_representante_legal string, data_situacao_especial date, nome_socio_estrangeiro string, qualificacao_representante_legal string, qualificacao_socio string, tipo string>>
         quote: true
 
-      - name: socios.cpf_socio
-        description: "CPF do sócio"
-        data_type: string
-        quote: true
-
-      - name: socios.cnpj_socio
-        description: "CNPJ do sócio"
-        data_type: string
-        quote: true
-
-      - name: socios.cpf_representante_legal
-        description: "CPF do representante legal do sócio"
-        data_type: string
-        quote: true
-      
-      - name: socios.data_situacao_especial
-        description: "Data de entrada do sócio na empresa"
-        data_type: date
-        quote: true
-
-      - name: socios.nome_socio_estrangeiro
-        description: "Nome do sócio estrangeiro"
-        data_type: string
-        quote: true
-
-      - name: socios.qualificacao_representante_legal
-        description: "Qualificação do representante legal do sócio"
-        data_type: string
-        quote: true
-
-      - name: socios.qualificacao_socio
-        description: "Qualificação do sócio"
-        data_type: string
-        quote: true
-      
-      - name: socios.tipo
-        description: "Tipo do sócio"
-        data_type: string
-        quote: true
-
-      - name: socios.nome_socio
-        description: "Nome do sócio"
-        data_type: string
-        quote: true
-
-      - name: sucessoes.evento_sucedida
-        description: "Evento de sucessão empresarial"
-        data_type: string
-        quote: true
-
-      - name: sucessoes.data_evento_sucedida
-        description: "Data do evento de sucessão empresarial"
-        data_type: date
-        quote: true
-
-      - name: sucessoes.data_processamento
-        description: "Data de processamento da sucessão"
-        data_type: date
-        quote: true
-
-      - name: sucessoes.sucessoras
-        description: "Empresas sucessoras"
-        data_type: string
+      - name: sucessoes
+        description: "Array de sucessões empresariais"
+        data_type: array<struct<evento_sucedida string, data_evento_sucedida date, data_processamento date, sucessoras string>>
         quote: true
 
       # Metadados
