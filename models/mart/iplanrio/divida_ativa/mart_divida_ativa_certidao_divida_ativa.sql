@@ -1,6 +1,7 @@
 {{
     config(
-        alias='certidao_divida_ativa' 
+        alias='certidao_divida_ativa',
+        materialized="table" 
     )
 }}
 

@@ -6,8 +6,8 @@ models:
 
     config:
       alias: certidao_divida_ativa
-      contract:
-        enforced: true
+      #contract:
+      #  enforced: true
 
     columns:
       # Chave primária
