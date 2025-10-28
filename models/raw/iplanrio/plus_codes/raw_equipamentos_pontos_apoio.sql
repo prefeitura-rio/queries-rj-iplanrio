@@ -6,6 +6,7 @@
     )
 }}
 
+
 with
     base_columbia as (
         select * from {{ source("plus_codes_dev", "equipamentos_columbia") }}
