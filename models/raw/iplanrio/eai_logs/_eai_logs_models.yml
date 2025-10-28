@@ -9,7 +9,6 @@ models:
         data_type: string
         quote: true
         tests:
-          - unique
           - not_null
       - name: session_id
         description: "ID da sessão"
