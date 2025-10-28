@@ -257,6 +257,34 @@ with
         from {{ ref("raw_equipamentos_assistencia_social") }}
     ),
 
+    pontos_apoio as (
+        select
+            plus8,
+            geometry,
+            plus11,
+            id_equipamento,
+            secretaria_responsavel,
+            tipo_equipamento,
+            nome_oficial,
+            nome_popular,
+            plus10,
+            plus6,
+            latitude,
+            longitude,
+            endereco,
+            bairro,
+            contato,
+            ativo,
+            aberto_ao_publico,
+            horario_funcionamento,
+            fonte,
+            vigencia_inicio,
+            vigencia_fim,
+            metadata,
+            updated_at
+        from {{ ref("raw_equipamentos_pontos_apoio") }}
+    ),
+
     equipamentos as (
         select *
         from saude
@@ -275,6 +303,9 @@ with
         union all
         select *
         from assistencia_social
+        union all
+        select *
+        from pontos_apoio
     ),
 
     equipamentos_categorias as (

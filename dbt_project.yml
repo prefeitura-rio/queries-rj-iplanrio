@@ -20,6 +20,10 @@ vars:
   # Internal variables
   DBT_USER: "{{ env_var('DBT_USER', 'dev_fantasma') }}"
   HASH_SEED: "{{ env_var('HASH_SEED', 'hash_seed') }}"
+  # EAI chatbot start date
+  CHATBOT_START_DATE: "2025-08-19"
+  # EAI billing cutover date
+  BILLING_CUTOVER_DATE: "2025-08-26"
 
 
 models:
@@ -188,7 +192,8 @@ models:
             845941190868/acesso: interno
         eai_logs:
           +materialized: table
-          +schema: eai_logs
+          +schema: brutos_eai_logs
+          +tags: "daily"
           +resource_tags:
             rj-iplanrio/dominio: whatsapp
             845941190868/acesso: restrito
