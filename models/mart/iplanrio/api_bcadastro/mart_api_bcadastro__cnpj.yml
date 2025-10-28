@@ -332,6 +332,11 @@ models:
         data_type: string
         quote: true
 
+      - name: socios.nome_socio
+        description: "Nome do sócio"
+        data_type: string
+        quote: true
+
       - name: sucessoes.evento_sucedida
         description: "Evento de sucessão empresarial"
         data_type: string
