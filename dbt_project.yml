@@ -62,6 +62,7 @@ models:
         api_bcadastro:
           +schema: api_bcadastro
           +tags: ["daily", "bcadastro"]
+          +materialized: table
           +resource_tags:
             rj-iplanrio/dominio: bcadastro
             845941190868/acesso: restrito
