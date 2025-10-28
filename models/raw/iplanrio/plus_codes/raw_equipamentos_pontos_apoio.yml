@@ -1,0 +1,134 @@
+version: 2
+
+models:
+  - name: raw_equipamentos_pontos_apoio
+    description: "Modelo que processa dados de pontos de apoio do projeto de Columbia University do Rio de Janeiro, convertendo coordenadas para plus codes e estruturando informações de equipamentos urbanos para integração com o sistema de plus codes da cidade."
+    config:
+      alias: "equipamentos_pontos_apoio"
+      schema: "plus_codes"
+      materialized: "table"
+    columns:
+      - name: plus11
+        description: "Código plus com 11 dígitos de precisão para localização específica"
+        data_type: string
+        tests:
+          - not_null
+      - name: id_equipamento
+        description: "Identificador único do equipamento gerado por hash MD5 do nome + logradouro"
+        data_type: string
+        tests:
+          - unique
+          - not_null
+      - name: secretaria_responsavel
+        description: "Órgão responsável pelo equipamento (sempre COR para pontos de apoio)"
+        data_type: string
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['COR']
+      - name: tipo_equipamento
+        description: "Tipo específico do equipamento (sempre PONTOS_DE_APOIO)"
+        data_type: string
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['PONTOS_DE_APOIO']
+      - name: nome_oficial
+        description: "Nome oficial do ponto de apoio"
+        data_type: string
+        tests:
+          - not_null
+      - name: nome_popular
+        description: "Nome popular do ponto de apoio (igual ao nome oficial)"
+        data_type: string
+        tests:
+          - not_null
+      - name: plus10
+        description: "Código plus com 10 dígitos de precisão"
+        data_type: string
+        tests:
+          - not_null
+      - name: plus8
+        description: "Código plus com 8 dígitos de precisão"
+        data_type: string
+        tests:
+          - not_null
+      - name: plus6
+        description: "Código plus com 6 dígitos de precisão"
+        data_type: string
+        tests:
+          - not_null
+      - name: latitude
+        description: "Coordenada de latitude em graus decimais (convertida de formato inteiro)"
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: -90
+                max_value: 90
+      - name: longitude
+        description: "Coordenada de longitude em graus decimais (convertida de formato inteiro)"
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: -180
+                max_value: 180
+      - name: geometry
+        description: "Geometria espacial do ponto de apoio como ponto geográfico"
+        data_type: geography
+        tests:
+          - not_null
+      - name: endereco
+        description: "Estrutura com informações completas do endereço"
+        data_type: "struct<logradouro string, numero string, complemento string, bairro string, cep string>"
+      - name: bairro
+        description: "Estrutura com informações administrativas do bairro via join espacial"
+        data_type: "struct<id_bairro string, bairro string, regiao_planejamento string, regiao_administrativa string, subprefeitura string>"
+      - name: contato
+        description: "Estrutura com informações de contato (telefones, email, site, redes sociais)"
+        data_type: "struct<telefones array<string>, email string, site string, redes_social struct<facebook string, instagram string, twitter string>>"
+      - name: ativo
+        description: "Indica se o equipamento está ativo (sempre true para pontos de apoio)"
+        data_type: boolean
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true]
+      - name: aberto_ao_publico
+        description: "Indica se o equipamento está aberto ao público (sempre true)"
+        data_type: boolean
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true]
+      - name: horario_funcionamento
+        description: "Array com horários de funcionamento por dia da semana"
+        data_type: "array<struct<dia string, abre time, fecha time>>"
+      - name: fonte
+        description: "Fonte dos dados originais (tabela Columbia)"
+        data_type: string
+        tests:
+          - not_null
+      - name: vigencia_inicio
+        description: "Data de início da vigência dos dados (null para pontos de apoio)"
+        data_type: date
+      - name: vigencia_fim
+        description: "Data de fim da vigência dos dados (null para pontos de apoio)"
+        data_type: date
+      - name: metadata
+        description: "Metadados em JSON com informações originais e de processamento"
+        data_type: json
+        tests:
+          - not_null
+      - name: updated_at
+        description: "Timestamp da última atualização dos dados"
+        data_type: timestamp
+        tests:
+          - not_null
