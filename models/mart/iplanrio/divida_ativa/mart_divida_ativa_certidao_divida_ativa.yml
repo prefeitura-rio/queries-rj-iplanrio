@@ -70,33 +70,43 @@ models:
         data_type: numeric
 
       # Estrutura que descreve o código de receita da CDA
+      - name: tipo_receita
+        description: "Estrutura que descreve o tipo de receita da CDA."
+        data_type: struct
       - name: tipo_receita.codigo_receita_cda
         description: "Código da receita da CDA."
         data_type: string
-
       - name: tipo_receita.nome_receita
         description: "Nome da receita da CDA."
         data_type: string
 
       # Estrutura que descreve a entidade credora
+      - name: entidade_credora
+        description: "Estrutura que descreve a entidade credora."
+        data_type: struct
       - name: entidade_credora.id_entidade_credora
         description: "Identificador da entidade credora."
         data_type: int64
-
       - name: entidade_credora.nome_entidade_credora
         description: "Nome da entidade credora."
         data_type: string
 
       # Estrutura que descreve a fase de cobrança da CDA
+      - name: fase_cobranca
+        description: "Estrutura que descreve a fase de cobrança da CDA."
+        data_type: struct
       - name: fase_cobranca.codigo_fase_cobranca
         description: "Código da fase de cobrança."
         data_type: int64
-
       - name: fase_cobranca.nome_fase_cobranca
         description: "Nome da fase de cobrança."
         data_type: string
 
       # Estrutura que descreve a situação da CDA
+      - name: situacao_cda
+        description: "Estrutura que descreve a situação da CDA."
+        data_type: struct
+
       - name: situacao_cda.id_situacao_cda
         description: "Identificador da situação da CDA."
         data_type: int64
@@ -106,6 +116,10 @@ models:
         data_type: string
 
       # Estrutura que descreve a natureza da dívida ativa
+      - name: natureza_divida_ativa
+        description: "Estrutura que descreve a natureza da dívida ativa."
+        data_type: struct
+
       - name: natureza_divida_ativa.id_natureza_divida
         description: "Identificador da natureza da dívida."
         data_type: int64
@@ -123,6 +137,10 @@ models:
         data_type: int64
 
       # Lista de devedores principais associados à CDA. Normalmente deveria haver apenas um, mas o sistema permite múltiplos principais.
+      - name: devedores_vinculados_cda
+        description: "Lista de devedores principais associados à CDA. Normalmente deveria haver apenas um, mas o sistema permite múltiplos principais."
+        data_type: struct
+
       - name: devedores_vinculados_cda.id_pessoa
         description: "Identificador da pessoa devedora."
         data_type: int64
@@ -149,6 +167,10 @@ models:
         data_type: boolean
 
       # Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja.
+      - name: imovel_associado
+        description: "Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja."
+        data_type: struct
+
       - name: imovel_associado.endereco.codigo_logradouro
         description: "Código do logradouro."
         data_type: int64
@@ -195,6 +217,10 @@ models:
         data_type: int64
 
       # Lista de guias de pagamento associadas à CDA. Pode haver mais de uma Guia de Pagamento vinculada à CDA, dependendo do seu fluxo de pagamento.
+      - name: guias_pagamento_associadas
+        description: "Lista de guias de pagamento associadas à CDA. Pode haver mais de uma Guia de Pagamento vinculada à CDA, dependendo do seu fluxo de pagamento."
+        data_type: struct
+
       - name: guias_pagamento_associadas.id_guia_pagamento
         description: "Identificador da guia de pagamento."
         data_type: int64
@@ -242,7 +268,7 @@ models:
       - name: guias_pagamento_associadas.valor_cda_na_guia
         description: "Valor da CDA alocado na guia."
         data_type: numeric
-
+        
       - name: guias_pagamento_associadas.valor_desconto_cda
         description: "Valor do desconto aplicado à CDA nessa guia."
         data_type: numeric
