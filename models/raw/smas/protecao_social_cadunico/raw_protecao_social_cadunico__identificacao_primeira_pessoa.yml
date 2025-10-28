@@ -4,165 +4,165 @@ models :
     description: Table identificacao_primeira_pessoa from number 04
     columns:
       - name: id_pessoa
-        description: 'Chave natural atual da Pessoa  | version: 0624'
+        description: 'Chave natural atual da Pessoa  | version: 0625'
       - name: id_original_pessoa
-        description: 'Chave natural original da Pessoa  | version: 0624'
+        description: 'Chave natural original da Pessoa  | version: 0625'
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0624'
+        description: 'Chave única de identificação da Família | version: 0625'
       - name: id_certidao_registrada_cartorio
         description: 'Pessoa registrada em cartório: campo numérico de 1 posição variando
-          de 1 a 4, dependendo da opção marcada no formulário | version: 0624'
+          de 1 a 4, dependendo da opção marcada no formulário | version: 0625'
       - name: certidao_registrada_cartorio
         description: 'Pessoa registrada em cartório: campo numérico de 1 posição variando
-          de 1 a 4, dependendo da opção marcada no formulário | version: 0624'
+          de 1 a 4, dependendo da opção marcada no formulário | version: 0625'
       - name: id_estado_cadastral
         description: 'Estado cadastral da família: 1- EM CADASTRAMENTO 2- SEM REGISTRO
           CIVIL 3- CADASTRADO 4- EXCLUIDO 5- AGUARDANDO ATRIBUIÇÃO NIS 6- AGUARDANDO
-          ALTERAÇÃO DE CARACTERIZAÇÃO 7- AGUARDANDO CPF | version: 0624'
+          ALTERAÇÃO DE CARACTERIZAÇÃO 7-AGUARDANDO CPF | version: 0625'
       - name: estado_cadastral
         description: 'Estado cadastral da família: 1- EM CADASTRAMENTO 2- SEM REGISTRO
           CIVIL 3- CADASTRADO 4- EXCLUIDO 5- AGUARDANDO ATRIBUIÇÃO NIS 6- AGUARDANDO
-          ALTERAÇÃO DE CARACTERIZAÇÃO 7- AGUARDANDO CPF | version: 0624'
+          ALTERAÇÃO DE CARACTERIZAÇÃO 7-AGUARDANDO CPF | version: 0625'
       - name: id_familia
-        description: 'Código Familiar | version: 0624'
+        description: 'Código Familiar | version: 0625'
       - name: id_municipio_nascimento
         description: 'Código IBGE do Município de nascimento da Pessoa | version:
-          0624'
+          0625'
       - name: id_local_nascimento
         description: 'Local de nascimento: 1-Neste município, 2-Em outro município,
-          3-Em outro país | version: 0624'
+          3-Em outro país | version: 0625'
       - name: local_nascimento
         description: 'Local de nascimento: 1-Neste município, 2-Em outro município,
-          3-Em outro país | version: 0624'
+          3-Em outro país | version: 0625'
       - name: id_familia_origem
         description: 'CÓDIGO DA FAMÍLIA DE ORIGEM ANTES DA TRANFERÊNCIA  | version:
-          0624'
+          0625'
       - name: id_prefeitura_origem
         description: 'CÓDIGO DA PREFEITURA DE ORIGEM ANTES DA TRANFERÊNCIA  | version:
-          0624'
+          0625'
       - name: id_pais_origem
         description: "Código do País de nascimento da Pessoa\nCampo numérico de 4
-          posições formato NNNN | version: 0624"
+          posições formato NNNN | version: 0625"
       - name: id_parentesco_responsavel_familia
         description: 'Relaçao de parentesco com o RF: campo numérico de 2 posições
           variando de 1 a 11, dependendo da opção marcada no formulário | version:
-          0624'
+          0625'
       - name: parentesco_responsavel_familia
         description: 'Relaçao de parentesco com o RF: campo numérico de 2 posições
           variando de 1 a 11, dependendo da opção marcada no formulário | version:
-          0624'
+          0625'
       - name: id_raca_cor
         description: "Cor ou raça: campo numérico de 1 posição variando de 1 a 5,
           1-Branca\n2 – Preta\n3 – Amarela\n4 – Parda\n5 – Indígena\ndependendo da
-          opção marcada no formulário | version: 0624"
+          opção marcada no formulário | version: 0625"
       - name: raca_cor
         description: "Cor ou raça: campo numérico de 1 posição variando de 1 a 5,
           1-Branca\n2 – Preta\n3 – Amarela\n4 – Parda\n5 – Indígena\ndependendo da
-          opção marcada no formulário | version: 0624"
+          opção marcada no formulário | version: 0625"
       - name: id_sexo
-        description: 'Sexo: 1-Masculino, 2-Feminino | version: 0624'
+        description: 'Sexo: 1-Masculino, 2-Feminino | version: 0625'
       - name: sexo
-        description: 'Sexo: 1-Masculino, 2-Feminino | version: 0624'
+        description: 'Sexo: 1-Masculino, 2-Feminino | version: 0625'
       - name: data_ultima_atualizacao
         description: 'Data de última atualização dos dados sociais da pessoa no formato
-          DDMMAAAA | version: 0624'
+          DDMMAAAA | version: 0625'
       - name: data_cadastro
         description: 'Data de cadastramento da Pessoa no CadÚnico formato DDMMAAAA
-          | version: 0624'
+          | version: 0625'
       - name: data_nascimento
         description: 'Data de nascimento da pessoa no formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: filiacao_1_nom_completo_mae_pessoa
-        description: 'Filiação 1 ou Nome da mãe | version: 0624'
+        description: 'Filiação 1 ou Nome da mãe | version: 0625'
       - name: filiacao_2
-        description: 'Filiação 2 | version: 0624'
+        description: 'Filiação 2 | version: 0625'
       - name: id_filiacao_1nom_completo_mae_pessoa
         description: 'Não sabe Filiação 1 ou nome da mãe: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: id_filiacao_2
         description: 'Não sabe: 0-Opção não marcada no formulário, 1-Opção marcada
-          no formulário | version: 0624'
+          no formulário | version: 0625'
       - name: sabe_id_municipio_nascimento
         description: 'Sabe o município de nascimento da pessoa: 1-Opção não marcada
-          no formulário, 2-Opção marcada no formulário. | version: 0624'
+          no formulário, 2-Opção marcada no formulário. | version: 0625'
       - name: id_identidade_genero
         description: '“4.16-Deseja informar o gênero de (nome)?” Valores possíveis:
-          1 – Sim, 2 – Não. | version: 0624'
+          1 – Sim, 2 – Não. | version: 0625'
       - name: identidade_genero
         description: '“4.16-Deseja informar o gênero de (nome)?” Valores possíveis:
-          1 – Sim, 2 – Não. | version: 0624'
+          1 – Sim, 2 – Não. | version: 0625'
       - name: nao_sabe_nome_mae
         description: 'Não sabe nome da mãe: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: nao_sabe_nome_pai
         description: 'Não sabe nome do pai: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: id_sabe_pais_nascimento
         description: 'Sabe o País de nascimento da pessoa: 1-Opção não marcada no
-          formulário, 2-Opção marcada no formulário. | version: 0624'
+          formulário, 2-Opção marcada no formulário. | version: 0625'
       - name: sabe_pais_nascimento
         description: 'Sabe o País de nascimento da pessoa: 1-Opção não marcada no
-          formulário, 2-Opção marcada no formulário. | version: 0624'
+          formulário, 2-Opção marcada no formulário. | version: 0625'
       - name: id_trabalho_infantil
-        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0624'
+        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0625'
       - name: trabalho_infantil
-        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0624'
+        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0625'
       - name: foi_transferido
-        description: 'INDICADOR DE TRANSFERÊNCIA: T – TRANSFERIDO | version: 0624'
+        description: 'INDICADOR DE TRANSFERÊNCIA: T – TRANSFERIDO | version: 0625'
       - name: id_transgenero
         description: '“4.17-(nome) é pessoa trans ou travesti?” Valores possíveis:
-          1-Sim, a pessoa é trans, 2-Sim, a pessoa é travesti e 3-Não | version: 0624'
+          1-Sim, a pessoa é trans, 2-Sim, a pessoa é travesti e 3-Não | version: 0625'
       - name: transgenero
         description: '“4.17-(nome) é pessoa trans ou travesti?” Valores possíveis:
-          1-Sim, a pessoa é trans, 2-Sim, a pessoa é travesti e 3-Não | version: 0624'
+          1-Sim, a pessoa é trans, 2-Sim, a pessoa é travesti e 3-Não | version: 0625'
       - name: sabe_uf_nascimento
         description: 'Sabe a UF de nascimento da pessoa: 1-Opção não marcada no formulário,
-          2-Opção marcada no formulário. | version: 0624'
+          2-Opção marcada no formulário. | version: 0625'
       - name: apelido
-        description: 'Apelido da pessoa | version: 0624'
+        description: 'Apelido da pessoa | version: 0625'
       - name: nome_mae
-        description: 'Nome da mãe | version: 0624'
+        description: 'Nome da mãe | version: 0625'
       - name: nome_pai
-        description: 'Nome do pai | version: 0624'
+        description: 'Nome do pai | version: 0625'
       - name: municipio_nascimento
-        description: 'Nome do Município de nascimento da Pessoa | version: 0624'
+        description: 'Nome do Município de nascimento da Pessoa | version: 0625'
       - name: origem_alteracao
         description: 'DESCREVE A ORIGEM DA ALTERAÇÃO (CADÚNICO, DATASUS, PIS ONLINE...)
-          *  | version: 0624'
+          *  | version: 0625'
       - name: pais_nascimento
         description: "Nome do país de nascimento da Pessoa\nQuando o campo 4.14-COD-PAIS-ORIGEM-PESSOA
-          for igual a 10 (Brasil) preencher com espaços. | version: 0624"
+          for igual a 10 (Brasil) preencher com espaços. | version: 0625"
       - name: nome
-        description: 'Nome da pessoa | version: 0624'
+        description: 'Nome da pessoa | version: 0625'
       - name: nome_social_pessoa
-        description: 'Nome Social da pessoa | version: 0624'
+        description: 'Nome Social da pessoa | version: 0625'
       - name: nis_original
         description: "Número de NIS localizado ou atribuído à pessoa no momento de
           sua inclusão no Cadastro Único\nO número de NIS original do membro nunca
-          será alterado. | version: 0624"
+          será alterado. | version: 0625"
       - name: id_origem_cadastro_pessoa
         description: "Valor contendo o domínio da origem.Atualmente temos as origens:
-          01 – Online\n02 – APP | version: 0624"
+          01 – Online\n02 – APP | version: 0625"
       - name: origem_cadastro_pessoa
         description: "Valor contendo o domínio da origem.Atualmente temos as origens:
-          01 – Online\n02 – APP | version: 0624"
+          01 – Online\n02 – APP | version: 0625"
       - name: id_tipo_identidade_genero
         description: "4.18-Qual é o gênero/identidade de gênero de (nome)? (termo
           relativo à identidade da pessoa) Valores possíveis: 001 – Feminina\n002
-          – Masculina e 003 – Não binário/a | version: 0624"
+          – Masculina e 003 – Não binário/a | version: 0625"
       - name: tipo_identidade_genero
         description: "4.18-Qual é o gênero/identidade de gênero de (nome)? (termo
           relativo à identidade da pessoa) Valores possíveis: 001 – Feminina\n002
-          – Masculina e 003 – Não binário/a | version: 0624"
+          – Masculina e 003 – Não binário/a | version: 0625"
       - name: id_membro_familia
-        description: 'Número do membro da Família  | version: 0624'
+        description: 'Número do membro da Família  | version: 0625'
       - name: nis
         description: 'NIS atual da pessoa, campo numérico de 11 posições formato NNNNNNNNNNN
-          | version: 0624'
+          | version: 0625'
       - name: id_numero_ordem
         description: 'Número de ordem, campo numérico de 2 posições no formato NN
-          | version: 0624'
+          | version: 0625'
       - name: numero_registro_arquivo
-        description: '04 | version: 0624'
+        description: '04 | version: 0625'
       - name: sigla_uf_municipio_nascimento
-        description: 'UF de nascimento da Pessoa | version: 0624'
+        description: 'UF de nascimento da Pessoa | version: 0625'

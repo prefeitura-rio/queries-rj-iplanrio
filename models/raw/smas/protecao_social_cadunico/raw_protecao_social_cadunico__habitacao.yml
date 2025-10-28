@@ -4,18 +4,18 @@ models :
     description: Table habitacao from number 15
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0624'
+        description: 'Chave única de identificação da Família | version: 0625'
       - name: contrato_pro_habitacao
-        description: 'Número do contrato do programa | version: 0624'
+        description: 'Número do contrato do programa | version: 0625'
       - name: id_familia
-        description: 'Código Familiar | version: 0624'
+        description: 'Código Familiar | version: 0625'
       - name: natureza_pro_habitacao
-        description: 'Natureza do benefício do programa | version: 0624'
+        description: 'Natureza do benefício do programa | version: 0625'
       - name: programa_pro_habitacao
         description: 'Programa Ministério das Cidades: campo numérico de 1 posição
           variando de 1 a 8, dependendo da opção marcada no formulário | version:
-          0624'
+          0625'
       - name: id_membro_familia
-        description: 'Número do membro da Família  | version: 0624'
+        description: 'Número do membro da Família  | version: 0625'
       - name: numero_registro_arquivo
-        description: '11 | version: 0624'
+        description: '11 | version: 0625'

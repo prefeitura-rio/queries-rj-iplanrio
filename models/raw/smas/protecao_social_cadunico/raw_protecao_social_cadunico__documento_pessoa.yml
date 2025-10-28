@@ -4,64 +4,64 @@ models :
     description: Table documento_pessoa from number 05
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0624'
+        description: 'Chave única de identificação da Família | version: 0625'
       - name: id_cartorio_certidao
-        description: 'Código do cartório da certidão | version: 0624'
+        description: 'Código do cartório da certidão | version: 0625'
       - name: id_certidao_civil
         description: "Tipo de Certidão: 1-Nascimento, 2-Casamento, 3 – RANI, 4 – Óbito\n\
           OBS: A regra de prevalência do tipo de certidão enviado neste arquivo é
-          a mesma da exibição do campo no On-Line\n | version: 0624"
+          a mesma da exibição do campo no On-Line\n | version: 0625"
       - name: certidao_civil
         description: "Tipo de Certidão: 1-Nascimento, 2-Casamento, 3 – RANI, 4 – Óbito\n\
           OBS: A regra de prevalência do tipo de certidão enviado neste arquivo é
-          a mesma da exibição do campo no On-Line\n | version: 0624"
+          a mesma da exibição do campo no On-Line\n | version: 0625"
       - name: id_complemento_rg
-        description: 'Complemento do número da CI da Pessoa | version: 0624'
+        description: 'Complemento do número da CI da Pessoa | version: 0625'
       - name: id_familia
-        description: 'Código Familiar | version: 0624'
+        description: 'Código Familiar | version: 0625'
       - name: folha_certidao
-        description: 'Folha da certidão | version: 0624'
+        description: 'Folha da certidão | version: 0625'
       - name: id_municipio_certidao
-        description: 'Código IBGE do município da certidão | version: 0624'
+        description: 'Código IBGE do município da certidão | version: 0625'
       - name: livro_certidao_obito_excluido
-        description: 'Livro da certidão | version: 0624'
+        description: 'Livro da certidão | version: 0625'
       - name: id_termi_matricula_certidao
-        description: "Número do Termo / Matrícula.da Certidão\n | version: 0624"
+        description: "Número do Termo / Matrícula.da Certidão\n | version: 0625"
       - name: data_emissao_carteira_trabalho
         description: 'Data de emissão da CTPS da Pessoa, formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: data_emissao_certidao
-        description: 'Data de emissão da da certidão formato DDMMAAAA | version: 0624'
+        description: 'Data de emissão da da certidão formato DDMMAAAA | version: 0625'
       - name: data_emissao_rg
         description: 'Data de emissão da CI da Pessoa, formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: cartorio_certidao
-        description: 'Nome do cartório da certidão | version: 0624'
+        description: 'Nome do cartório da certidão | version: 0625'
       - name: municipio_certidao
-        description: 'Nome do município da certidão | version: 0624'
+        description: 'Nome do município da certidão | version: 0625'
       - name: id_carteira_trabalho
-        description: 'Número da CTPS da Pessoa | version: 0624'
+        description: 'Número da CTPS da Pessoa | version: 0625'
       - name: cpf
-        description: 'CPF da Pessoa, formato NNNNNNNNNNN | version: 0624'
+        description: 'CPF da Pessoa, formato NNNNNNNNNNN | version: 0625'
       - name: rg
-        description: 'Número da CI da Pessoa | version: 0624'
+        description: 'Número da CI da Pessoa | version: 0625'
       - name: id_membro_familia
-        description: 'Número do membro da Família | version: 0624'
+        description: 'Número do membro da Família | version: 0625'
       - name: numero_registro_arquivo
-        description: '05 | version: 0624'
+        description: '05 | version: 0625'
       - name: id_secao_titulo_eleitor
-        description: 'Seção do Título de Eleitor da Pessoa | version: 0624'
+        description: 'Seção do Título de Eleitor da Pessoa | version: 0625'
       - name: id_serie_carteira_trabalho
-        description: 'Série da CTPS da Pessoa | version: 0624'
+        description: 'Série da CTPS da Pessoa | version: 0625'
       - name: id_titulo_eleitor
-        description: 'Número do Título de Eleitor da Pessoa | version: 0624'
+        description: 'Número do Título de Eleitor da Pessoa | version: 0625'
       - name: id_zona_titulo_eleitor
-        description: 'Zona do Título de Eleitor da Pessoa | version: 0624'
+        description: 'Zona do Título de Eleitor da Pessoa | version: 0625'
       - name: orgao_emissor_rg
-        description: 'Órgão Emissor da CI da Pessoa | version: 0624'
+        description: 'Órgão Emissor da CI da Pessoa | version: 0625'
       - name: sigla_uf_carteira_trabalho
-        description: 'UF da CTPS da Pessoa | version: 0624'
+        description: 'UF da CTPS da Pessoa | version: 0625'
       - name: sigla_uf_certidao
-        description: 'UF da Certidão | version: 0624'
+        description: 'UF da Certidão | version: 0625'
       - name: sigla_uf_rg
-        description: 'UF da CI da Pessoa | version: 0624'
+        description: 'UF da CI da Pessoa | version: 0625'

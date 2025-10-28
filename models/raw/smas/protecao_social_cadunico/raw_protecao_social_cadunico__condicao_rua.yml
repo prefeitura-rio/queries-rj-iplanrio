@@ -4,147 +4,147 @@ models :
     description: Table condicao_rua from number 12
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0624'
+        description: 'Chave única de identificação da Família | version: 0625'
       - name: id_carteira_assinada
         description: 'Teve emprego com carteira assinada: 1-Sim, 2-Não, 3-Não sabe
-          | version: 0624'
+          | version: 0625'
       - name: condicao_rua_contato_parente
         description: 'Tem contato com parente fora da condição de rua: campo numérico
           de 1 posição variando de 1 a 6, dependendo da opção marcada no formulário
-          | version: 0624'
+          | version: 0625'
       - name: id_familia
-        description: 'Código Familiar | version: 0624'
+        description: 'Código Familiar | version: 0625'
       - name: id_tempo_municipio
         description: 'Tempo em que mora na cidade: campo numérico de 1 posição variando
-          de 1 a 6, dependendo da opção marcada no formulário | version: 0624'
+          de 1 a 6, dependendo da opção marcada no formulário | version: 0625'
       - name: id_tempo_rua
         description: 'Tempo em que vive na rua: campo numérico de 1 posição variando
-          de 1 a 6, dependendo da opção marcada no formulário | version: 0624'
+          de 1 a 6, dependendo da opção marcada no formulário | version: 0625'
       - name: condicao_rua_vive_familia
-        description: 'Vive com sua família na rua: 1-Sim, 2-Não | version: 0624'
+        description: 'Vive com sua família na rua: 1-Sim, 2-Não | version: 0625'
       - name: atendido_crentro_referencia_populacao_rua
         description: 'Atendido por Centro Ref Pop Rua: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: atendido_cras
         description: 'Atendido por CRAS: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: atendido_creas
         description: 'Atendido por CREAS: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: atendido_hospital_geral
         description: 'Atendido por Hospital Geral: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: atendido_instituicao_governamental
         description: 'Atendido por Instituição Governamental: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: atendido_instituicao_nao_governamental
         description: 'Atendido por Instituição não Governamental: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: atendido_nenhum
         description: 'Não foi atendido por nenhum local: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: atividade_comunitaria_associacao
         description: 'Atividade comunitária em ASSOCIAÇÃO: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: atividade_comunitaria_cooperativa
         description: 'Atividade comunitária em COOPERATIVA: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: atividade_comunitaria_escola
         description: 'Atividade comunitária em ESCOLA: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: atibidade_comunitaria_movimento_social
         description: 'Atividade comunitária em Movimento social: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: atividade_comunitaria_nao_respondeu
         description: 'Não respondeu se frequentou atividade comunitária: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: atividade_comunitaria_nao_sabe
         description: 'Não sabe se frequentou atividade comunitária: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_carregador
         description: 'Ganha dinheiro como carregador: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_catador
         description: 'Ganha dinheiro como catador: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_construcao_civil
         description: 'Ganha dinheiro com construção civil: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_flanelinha
         description: 'Ganha dinheiro como guardador de carro: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_nao_respondeu
         description: 'Não respondeu como ganha dinheiro: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_outro
         description: 'Ganha dinheiro de outra forma: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_pedinte
         description: 'Ganha dinheiro como pedinte: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_sevicos_gerais
         description: 'Ganha dinheiro com serviços gerais: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: ganha_dinheiro_vendas
         description: 'Ganha dinheiro com vendas: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: dorme_albergue
         description: 'Dorme em albergue: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: dorme_domicilio_particular
         description: 'Dorme em domicílio particular: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: dorme_rua
         description: 'Dorme na rua: 0-Opção não marcada no formulário, 1-Opção marcada
-          no formulário | version: 0624'
+          no formulário | version: 0625'
       - name: condicao_rua_alcool
         description: 'Motivo da condição de rua por alcoolismo: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_ameaca
         description: 'Motivo da condição de rua por ameaça: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_desemprego
         description: 'Motivo da condição de rua por desemprego: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_nao_respondeu
         description: 'Não respondeu o motivo da condição de rua: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_nao_sabe
         description: 'Não o motivo da condição de rua: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_outro
         description: 'Motivo da condição de rua por outro motivo: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_perda_moradia
         description: 'Motivo da condição de rua por perda de moradia: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_preferencia
         description: 'Motivo da condição de rua por preferência: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_problemas_familiares
         description: 'Motivo da condição de rua por problemas familiares: 0-Opção
-          não marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          não marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_saude
         description: 'Motivo da condição de rua por tratamento de saúde: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: condicao_rua_trabalho
         description: 'Motivo da condição de rua por trabalho: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: dorme_outro
         description: 'Dorme de outra forma: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: id_membro_familia
-        description: 'Número do membro da Família | version: 0624'
+        description: 'Número do membro da Família | version: 0625'
       - name: numero_registro_arquivo
-        description: '12 | version: 0624'
+        description: '12 | version: 0625'
       - name: dorme_albergue_vezes_semana
         description: 'Quantidade de vezes por semana que dorme em albergue | version:
-          0624'
+          0625'
       - name: dorme_domicilio_particular_vezes_semana
         description: 'Quantidade de vezes por semana que dorme em domicílio particular
-          | version: 0624'
+          | version: 0625'
       - name: dorme_rua_vezes_semana
-        description: 'Quantidade de vezes por semana que dorme na rua | version: 0624'
+        description: 'Quantidade de vezes por semana que dorme na rua | version: 0625'
       - name: dorme_outro_vezes_semana
         description: 'Quantidade de vezes por semana que dorme de outra forma | version:
-          0624'
+          0625'

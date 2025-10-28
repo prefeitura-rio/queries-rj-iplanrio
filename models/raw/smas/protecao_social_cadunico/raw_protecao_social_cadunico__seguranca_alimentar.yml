@@ -4,36 +4,36 @@ models :
     description: Table seguranca_alimentar from number 11
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0624'
+        description: 'Chave única de identificação da Família | version: 0625'
       - name: id_conta_energia_numero_ordem
         description: "Número de ordem do membro da família associado a conta de energia
           elétrica do domicílio\nQuando não houver membro da família associado, o
           valor extraído na base municipal será \"99\"\nCampo numérico de 2 posições
-          no formato NN. | version: 0624"
+          no formato NN. | version: 0625"
       - name: id_conta_energia_unidade_consumidora
         description: 'Código da unidade consumidora associado a conta de energia eletrica
-          do domicílio. | version: 0624'
+          do domicílio. | version: 0625'
       - name: id_trabalho_escravo
         description: 'Algum membro da família é ou foi beneficiário do seguro desemprego
           especial para pessoas resgatadas do trabalho análogo ao de escravo. | version:
-          0624'
+          0625'
       - name: id_familia
-        description: 'Código Familiar | version: 0624'
+        description: 'Código Familiar | version: 0625'
       - name: enegia_doacao
         description: 'Recebeu de sua distribuidora de energia elétrica doação de lâmpadas
           ou outros equipamentos para reduzir o consumo de energia: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: nao_pagou_instalacao_energia
         description: 'Não pagou pela instalação de energia na entrada de sua residência:
           0-Opção não marcada no formulário, 1-Opção marcada no formulário | version:
-          0624'
+          0625'
       - name: energia_nenhum
         description: 'Família não é beneficiada progs Minist Energia: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: energia_tarifa_social
         description: 'Recebe sua conta de energia elétrica faturada como Tarifa Social:
           0-Opção não marcada no formulário, 1-Opção marcada no formulário | version:
-          0624'
+          0625'
       - name: id_ind_parc_mds_fam
         description: '101 Família Cigana 201 Família Extrativista 202 Família de Pescadores
           Artesanais 203 Família pertencente a Comunidade de Terreiro 204 Família
@@ -42,7 +42,7 @@ models :
           Fundiário 303 Família Acampada 304 Família Atingida por Empreendimentos
           de Infraestrutura 305 Família de Preso do Sistema Carcerário 306 Família
           de Catadores de Material Reciclável 401 Desalojados ou desabrigados 000
-          Nenhuma | version: 0624'
+          Nenhuma | version: 0625'
       - name: ind_parc_mds_fam
         description: '101 Família Cigana 201 Família Extrativista 202 Família de Pescadores
           Artesanais 203 Família pertencente a Comunidade de Terreiro 204 Família
@@ -51,135 +51,135 @@ models :
           Fundiário 303 Família Acampada 304 Família Atingida por Empreendimentos
           de Infraestrutura 305 Família de Preso do Sistema Carcerário 306 Família
           de Catadores de Material Reciclável 401 Desalojados ou desabrigados 000
-          Nenhuma | version: 0624'
+          Nenhuma | version: 0625'
       - name: nao_beneficiaria_programa_ministerio_cidades
         description: 'Família não é beneficiária de programas do Ministério das Cidade:
           0 – Opção não marcada no formulário, 1 – Opção marcada no formulário | version:
-          0624'
+          0625'
       - name: sesan_capitacao_agua_chuva_producao_alimentos
         description: 'Recebeu infra estrutura de captação de água da chuva para produzir
           alimentos: 0-Opção não marcada no formulário, 1-Opção marcada no formulário
-          | version: 0624'
+          | version: 0625'
       - name: sesan_cisterna
         description: 'Recebeu cisterna para armazenamento de água da chuva: 0-Opção
-          não marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          não marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: sesan_vende_feira_popular_mds
         description: 'Vende alimentos em feira livre popular financiada pelo MDS:
           0-Opção não marcada no formulário, 1-Opção marcada no formulário | version:
-          0624'
+          0625'
       - name: sesan_horta_comunitaria
         description: 'Participa de projetos de produção de alimentos (horta comunitária,
           criação de pequenos animais, viveiro e pomares): 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: sesan_nenhum
         description: 'A família não é beneficiada por programas SESAN: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: sesan_participou_curso_alimentacao_nutricao
         description: 'Participou de curso em alimentação e nutrição: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: sesan_projeto_carteira_indigena
         description: 'Participa de projeto da carteira indígena (Parceria MMA/MDS):
           0-Opção não marcada no formulário, 1-Opção marcada no formulário | version:
-          0624'
+          0625'
       - name: sesan_recebe_alimento_paa
         description: 'Recebe alimentos PAA: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: sesan_recebe_cesta_basica
         description: 'Recebe cesta básica: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: sesan_recebe_leite
         description: 'Recebe leite programa do leite: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: sesan_refeicao_cozinha_comunitaria
         description: 'Faz refeição em cozinha comunitária: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: sesan_refeicao_restaurante_popular
         description: 'Faz refeição em restaurante popular: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: sesan_vende_alimento_paa
         description: 'Vende alimentos PAA: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: sesan_vende_leite
         description: 'Vende leite programa do leite: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: snas_abrigo_adultos
         description: 'Abrigo/albergue para adultos e famílias: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_abrigo_crianca_adolescente
         description: 'Abrigo para crianças e adolescentes: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_abrigo_idoso
         description: 'Abrigo para pessoas idosas: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: snas_abrigo_mulher_vitima_violencia
         description: 'Abrigo para mulheres vítimas de violência: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_abrigo_populacao_adulta
         description: 'Abrigo/albergue para população adulta em situação de rua: 0-Opção
-          não marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          não marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_adolescente_liberdade_servico_comunitario
         description: 'Serviço de acompanhamento social a adolescentes em medida socio
           educativa de prestação de serviços à comunidade: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0624'
+          formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_adolescente_liberdade_assistida
         description: 'Serviço de acompanhamento social a adolescentes em medida socio
           educativa de liberdade assistida: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: snas_atendimento_domiciliar_idoso_deficiente
         description: 'Serviço de atendimento no domicílio de pessoas idosas e pessoas
           com deficiência: 0-Opção não marcada no formulário, 1-Opção marcada no formulário
-          | version: 0624'
+          | version: 0625'
       - name: snas_bpc_deficiente
         description: 'Família beneficiária do BPC deficiente: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_bpc_idoso
         description: 'Família beneficiária do BPC idoso: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: snas_centro_dia_idoso
         description: 'Serviço de Centro-Dia (atendimento à pessoa idosa com deficiência):
           0-Opção não marcada no formulário, 1-Opção marcada no formulário | version:
-          0624'
+          0625'
       - name: snas_crianca_0_6_anos
         description: 'Família com crianças 0-6 ações sócio educativas: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_enfrenta_violencia_crianca
         description: 'Serviço de enfrentamento à violência, abuso e exploração sexual
           contra crianças, adolescentes e suas famílias: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: snas_gtupos_idosos
         description: 'Família beneficiária do grupo conv para idosos: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_habilitacao_reabilitacao_deficiencia
         description: 'Serviço de referência e apoio à habilitação e reabilitação de
           pessoas com deficiência: 0-Opção não marcada no formulário, 1-Opção marcada
-          no formulário | version: 0624'
+          no formulário | version: 0625'
       - name: snas_inclusao_produtiva
         description: 'Projetos de inclusão produtiva: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0624'
+          1-Opção marcada no formulário | version: 0625'
       - name: snas_nunhum
         description: 'Família não é beneficiária de programa do SNAS: 0-Opção não
-          marcada no formulário, 1-Opção marcada no formulário | version: 0624'
+          marcada no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_orientacao_especial_crianca_adolescente
         description: 'Serviço de orientação e apoio especializado a crianças, adolescentes
           e famílias: 0-Opção não marcada no formulário, 1-Opção marcada no formulário
-          | version: 0624'
+          | version: 0625'
       - name: snas_programa_atencao_integram_familia
         description: 'Programa de Atenção Integral à Família-PAIF: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_programa_erradicacao_trabalho_infantil
         description: 'Programa de Erradicação do Trabalho Infantil: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0624'
+          no formulário, 1-Opção marcada no formulário | version: 0625'
       - name: snas_projovem_adolescente
         description: 'ProJovem Adolescente: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: snas_projovem_campo
         description: 'ProJovem Campo: 0-Opção não marcada no formulário, 1-Opção marcada
-          no formulário | version: 0624'
+          no formulário | version: 0625'
       - name: snas_projovem_trabalhador
         description: 'ProJovem Trabalhador: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: snas_projovem_urbano
         description: 'ProJovem Urbano: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0624'
+          marcada no formulário | version: 0625'
       - name: numero_registro_arquivo
-        description: '11 | version: 0624'
+        description: '11 | version: 0625'

@@ -4,343 +4,343 @@ models :
     description: Table status_familia from number 13
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Prefeitura | version: 0624'
+        description: 'Chave única de identificação da Prefeitura | version: 0625'
       - name: id_familia
-        description: 'Código Familiar | version: 0624'
+        description: 'Código Familiar | version: 0625'
       - name: data_oaud_fam_sem_upload_doc
         description: 'Data de inclusão da pendência no formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: data_paud_cpo_obr_prin_fam
         description: 'Data de inclusão da pendência no formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: data_paud_cpo_obr_sup1_fam
         description: 'Data de inclusão da pendência no formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: data_paud_fam_sem_upload_doc
         description: 'Data de inclusão da pendência no formato DDMMAAAA | version:
-          0624'
+          0625'
       - name: id_exclusao_pessoa_cpf_nulo
         description: 'Existência da ocorrência “Exclusão de pessoa com CPF nulo na
-          base da Receita Federal” 0- Não Existe 1- Existe NULO | version: 0624'
+          base da Receita Federal” 0- Não Existe 1- Existe NULO | version: 0625'
       - name: exclusao_pessoa_cpf_nulo
         description: 'Existência da ocorrência “Exclusão de pessoa com CPF nulo na
-          base da Receita Federal” 0- Não Existe 1- Existe NULO | version: 0624'
+          base da Receita Federal” 0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_oaud_sem_upload_arquivo
         description: "Existência de ocorrência \"FAMÍLIA UNIPESSOAL SEM UPLOAD DE
           DOCUMENTOS\" para Famílias Unipessoais sem Upload de Documentos\n0- Não
-          Existe\n1- Existe\nNULO | version: 0624"
+          Existe\n1- Existe\nNULO | version: 0625"
       - name: oaud_sem_upload_arquivo
         description: "Existência de ocorrência \"FAMÍLIA UNIPESSOAL SEM UPLOAD DE
           DOCUMENTOS\" para Famílias Unipessoais sem Upload de Documentos\n0- Não
-          Existe\n1- Existe\nNULO | version: 0624"
+          Existe\n1- Existe\nNULO | version: 0625"
       - name: id_sem_unidade_territorial
         description: "Existência de Ocorrência \"Família sem unidade territorial local
           (pendência somente para prefeituras que optarem por utilizar esse campo)\n\
-          \" para a família 0- Não Existe 1- Existe NULO | version: 0624"
+          \" para a família 0- Não Existe 1- Existe NULO | version: 0625"
       - name: sem_unidade_territorial
         description: "Existência de Ocorrência \"Família sem unidade territorial local
           (pendência somente para prefeituras que optarem por utilizar esse campo)\n\
-          \" para a família 0- Não Existe 1- Existe NULO | version: 0624"
+          \" para a família 0- Não Existe 1- Existe NULO | version: 0625"
       - name: id_transferida_este_municipio_familia_existente
         description: 'Existência de Ocorrência "• Família transferida para este município
           em família existente" para a família 0- Não Existe 1- Existe NULO | version:
-          0624'
+          0625'
       - name: transferida_este_municipio_familia_existente
         description: 'Existência de Ocorrência "• Família transferida para este município
           em família existente" para a família 0- Não Existe 1- Existe NULO | version:
-          0624'
+          0625'
       - name: id_transferida_este_municipio_nova_familia
         description: 'Existência de Ocorrência " Família transferida para este município
           em uma nova família" para a família 0- Não Existe 1- Existe NULO | version:
-          0624'
+          0625'
       - name: transferida_este_municipio_nova_familia
         description: 'Existência de Ocorrência " Família transferida para este município
           em uma nova família" para a família 0- Não Existe 1- Existe NULO | version:
-          0624'
+          0625'
       - name: id_transferida_outra_familia_mesmo_municipio
         description: 'Existência de Ocorrência "Família transferida para outra família
           no mesmo município" para a família 0- Não Existe 1- Existe NULO | version:
-          0624'
+          0625'
       - name: transferida_outra_familia_mesmo_municipio
         description: 'Existência de Ocorrência "Família transferida para outra família
           no mesmo município" para a família 0- Não Existe 1- Existe NULO | version:
-          0624'
+          0625'
       - name: id_transferida_outro_municipio
         description: 'Existência de Ocorrência " Família transferida para outro município"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: transferida_outro_municipio
         description: 'Existência de Ocorrência " Família transferida para outro município"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_patl_dados_desatualizados
         description: 'Existência de pendência "Famílias com dados desatualizados há
           mais de 24 meses (Família que não sofreu nenhuma atualização nos campos
           sensíveis há mais de 24 meses.)" para a família 0- Não Existe 1- Existe
-          NULO | version: 0624'
+          NULO | version: 0625'
       - name: patl_dados_desatualizados
         description: 'Existência de pendência "Famílias com dados desatualizados há
           mais de 24 meses (Família que não sofreu nenhuma atualização nos campos
           sensíveis há mais de 24 meses.)" para a família 0- Não Existe 1- Existe
-          NULO | version: 0624'
+          NULO | version: 0625'
       - name: id_paud_campo_obrigatorio_nao_preenchido_formulario_principal
         description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário principal" para a família 0-
-          Não Existe 1- Existe NULO | version: 0624'
+          Não Existe 1- Existe NULO | version: 0625'
       - name: paud_campo_obrigatorio_nao_preenchido_formulario_principal
         description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário principal" para a família 0-
-          Não Existe 1- Existe NULO | version: 0624'
+          Não Existe 1- Existe NULO | version: 0625'
       - name: id_paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1
         description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário suplementar 1" para a família
-          0- Não Existe 1- Existe NULO | version: 0624'
+          0- Não Existe 1- Existe NULO | version: 0625'
       - name: paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1
         description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário suplementar 1" para a família
-          0- Não Existe 1- Existe NULO | version: 0624'
+          0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_paud_sem_upload_arquivo
         description: "Existência de pendência \"FAMÍLIA UNIPESSOAL SEM UPLOAD DE DOCUMENTOS\"\
           \ para Famílias Unipessoais sem Upload de Documentos\n0- Não Existe\n1-
-          Existe\nNULO | version: 0624"
+          Existe\nNULO | version: 0625"
       - name: paud_sem_upload_arquivo
         description: "Existência de pendência \"FAMÍLIA UNIPESSOAL SEM UPLOAD DE DOCUMENTOS\"\
           \ para Famílias Unipessoais sem Upload de Documentos\n0- Não Existe\n1-
-          Existe\nNULO | version: 0624"
+          Existe\nNULO | version: 0625"
       - name: id_paud_sem_responsavel_cadastrado
         description: "Existência de pendência • \"Família sem Responsável Familiar
           cadastrado\" para a famílias atualizadas na V7\n0- Não Existe 1- Existe
-          NULO | version: 0624"
+          NULO | version: 0625"
       - name: paud_sem_responsavel_cadastrado
         description: "Existência de pendência • \"Família sem Responsável Familiar
           cadastrado\" para a famílias atualizadas na V7\n0- Não Existe 1- Existe
-          NULO | version: 0624"
+          NULO | version: 0625"
       - name: id_pmds_pendencia_01
         description: "Existência da pendência batch parametrizável 01\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_01
         description: "Existência da pendência batch parametrizável 01\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_02
         description: "Existência da pendência batch parametrizável 02\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_02
         description: "Existência da pendência batch parametrizável 02\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_03
         description: "Existência da pendência batch parametrizável 03\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_03
         description: "Existência da pendência batch parametrizável 03\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_04
         description: "Existência da pendência batch parametrizável 04\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_04
         description: "Existência da pendência batch parametrizável 04\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_05
         description: "Existência da pendência batch parametrizável 05\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_05
         description: "Existência da pendência batch parametrizável 05\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_06
         description: "Existência da pendência batch parametrizável 06\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_06
         description: "Existência da pendência batch parametrizável 06\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_07
         description: "Existência da pendência batch parametrizável 07\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_07
         description: "Existência da pendência batch parametrizável 07\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_08
         description: "Existência da pendência batch parametrizável 08\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_08
         description: "Existência da pendência batch parametrizável 08\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_09
         description: "Existência da pendência batch parametrizável 09\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_09
         description: "Existência da pendência batch parametrizável 09\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_10
         description: "Existência da pendência batch parametrizável 10\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_10
         description: "Existência da pendência batch parametrizável 10\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_11
         description: "Existência da pendência batch parametrizável 11\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_11
         description: "Existência da pendência batch parametrizável 11\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_12
         description: "Existência da pendência batch parametrizável 12\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_12
         description: "Existência da pendência batch parametrizável 12\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_13
         description: "Existência da pendência batch parametrizável 13\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_13
         description: "Existência da pendência batch parametrizável 13\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_14
         description: "Existência da pendência batch parametrizável 14\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_14
         description: "Existência da pendência batch parametrizável 14\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_15
         description: "Existência da pendência batch parametrizável 15\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_15
         description: "Existência da pendência batch parametrizável 15\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_16
         description: "Existência da pendência batch parametrizável 16\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_16
         description: "Existência da pendência batch parametrizável 16\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_17
         description: "Existência da pendência batch parametrizável 17\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_17
         description: "Existência da pendência batch parametrizável 17\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_18
         description: "Existência da pendência batch parametrizável 18\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_18
         description: "Existência da pendência batch parametrizável 18\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_19
         description: "Existência da pendência batch parametrizável 19\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_19
         description: "Existência da pendência batch parametrizável 19\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_20
         description: "Existência da pendência batch parametrizável 20\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_20
         description: "Existência da pendência batch parametrizável 20\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_21
         description: "Existência da pendência batch parametrizável 21\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_21
         description: "Existência da pendência batch parametrizável 21\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_22
         description: "Existência da pendência batch parametrizável 22\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_22
         description: "Existência da pendência batch parametrizável 22\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_23
         description: "Existência da pendência batch parametrizável 23\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_23
         description: "Existência da pendência batch parametrizável 23\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_24
         description: "Existência da pendência batch parametrizável 24\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_24
         description: "Existência da pendência batch parametrizável 24\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_25
         description: "Existência da pendência batch parametrizável 25\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_25
         description: "Existência da pendência batch parametrizável 25\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_26
         description: "Existência da pendência batch parametrizável 26\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_26
         description: "Existência da pendência batch parametrizável 26\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_27
         description: "Existência da pendência batch parametrizável 27\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_27
         description: "Existência da pendência batch parametrizável 27\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_28
         description: "Existência da pendência batch parametrizável 28\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_28
         description: "Existência da pendência batch parametrizável 28\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_29
         description: "Existência da pendência batch parametrizável 29\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_29
         description: "Existência da pendência batch parametrizável 29\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmds_pendencia_30
         description: "Existência da pendência batch parametrizável 30\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: pmds_pendencia_30
         description: "Existência da pendência batch parametrizável 30\n0- Sem Pendência
-          1- Pendente 2- Atualizada NULO | version: 0624"
+          1- Pendente 2- Atualizada NULO | version: 0625"
       - name: id_pmig_campos_obrigatorios_nao_preenchidos
         description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário principal" para a família 0-
-          Não Existe 1- Existe NULO | version: 0624'
+          Não Existe 1- Existe NULO | version: 0625'
       - name: pmig_campos_obrigatorios_nao_preenchidos
         description: 'Existência de pendência " Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário principal" para a família 0-
-          Não Existe 1- Existe NULO | version: 0624'
+          Não Existe 1- Existe NULO | version: 0625'
       - name: id_pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1
         description: 'Existência de pendência • "• Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário suplementar 1" para a família
-          0- Não Existe 1- Existe NULO | version: 0624'
+          0- Não Existe 1- Existe NULO | version: 0625'
       - name: pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1
         description: 'Existência de pendência • "• Campos Obrigatórios ou Obrigatórios
           Condicionados Não Preenchidos do formulário suplementar 1" para a família
-          0- Não Existe 1- Existe NULO | version: 0624'
+          0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_pmig_sem_responsavel_familiar_cadastrado
         description: 'Existência de pendência • "Família sem Responsável Familiar
-          cadastrado" para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          cadastrado" para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: pmig_sem_responsavel_familiar_cadastrado
         description: 'Existência de pendência • "Família sem Responsável Familiar
-          cadastrado" para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          cadastrado" para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_ptab_desativacao_cras_creas
         description: 'Existência de pendência • "Desativação de CRAS E CREAS" para
-          a família 0- Não Existe 1- Existe NULO | version: 0624'
+          a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: ptab_desativacao_cras_creas
         description: 'Existência de pendência • "Desativação de CRAS E CREAS" para
-          a família 0- Não Existe 1- Existe NULO | version: 0624'
+          a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_ptab_desativacao_eas
         description: 'Existência de pendência • "Desativação de EAS" para a família
-          0- Não Existe 1- Existe NULO | version: 0624'
+          0- Não Existe 1- Existe NULO | version: 0625'
       - name: ptab_desativacao_eas
         description: 'Existência de pendência • "Desativação de EAS" para a família
-          0- Não Existe 1- Existe NULO | version: 0624'
+          0- Não Existe 1- Existe NULO | version: 0625'
       - name: ptab_desativacao_comunidades_quilombolas
         description: 'Existência de pendência • "Desativação de Comunidades Quilombolas"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_ptab_desativacao_terras_indigenas
         description: 'Existência de pendência • "Desativação de Terras Indígenas"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: ptab_desativacao_terras_indigenas
         description: 'Existência de pendência • "Desativação de Terras Indígenas"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: id_ptrn_sem_responsavel_familiar_cadastrado
         description: 'Existência de pendência "Família sem Responsável Familiar Cadastrado"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: ptrn_sem_responsavel_familiar_cadastrado
         description: 'Existência de pendência "Família sem Responsável Familiar Cadastrado"
-          para a família 0- Não Existe 1- Existe NULO | version: 0624'
+          para a família 0- Não Existe 1- Existe NULO | version: 0625'
       - name: numero_registro_arquivo
-        description: '13 | version: 0624'
+        description: '13 | version: 0625'
