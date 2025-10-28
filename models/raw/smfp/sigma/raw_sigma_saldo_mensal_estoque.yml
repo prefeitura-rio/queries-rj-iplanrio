@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: raw_sigma_saldo_mensal_estoque
+    description: "Saldo mensal do estoque."
+    config:
+      alias: saldo_mensal_estoque
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: id_unidade_armazenadora
+        description: "Código da unidade armazenadora"
+        data_type: int64
+      - name: ano_mes_referencia
+        description: "Ano e mês de referência (AAAAMM)"
+        data_type: string
+        quote: true
+      - name: id_material
+        description: "Código do material"
+        data_type: string
+        quote: true
+      - name: saldo_valor_material
+        description: "Saldo do valor do material para o ano-mês de referência"
+        data_type: float64
+      - name: quantidade_baixas_material
+        description: "Quantidade de baixas do material para o ano-mês de referência"
+        data_type: float64
+      - name: saldo_quantidade_material
+        description: "Saldo de quantidade do material para o ano-mês de referência"
+        data_type: float64
+      - name: quantidade_entrada_material
+        description: "Quantidade de entradas do material para o ano-mês de referência"
+        data_type: float64
+      - name: quantidade_saida_material
+        description: "Quantidade de saídas do material para o ano-mês de referência"
+        data_type: float64
+
+

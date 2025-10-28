@@ -1,7 +1,7 @@
 {{
     config(
         alias='unidade_armazenadora',
-        schema='compras_materiais_servicos_sigma'
+        description="Unidades Armazenadoras"
     )
 }}
 
@@ -16,4 +16,4 @@ SELECT
     SAFE_CAST(st_status AS STRING) AS status_unidade_administrativa,
     SAFE_CAST(tp_almoxarifado AS STRING) AS tipo_almoxarifado,
     SAFE_CAST(tp_unidade_armazenadora AS STRING) AS tipo_unidade_armazenadora,
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_UNIDADE_ARMAZENADORA')}}
+from {{ source('brutos_compras_materiais_servicos_sigma_staging', 'unidade_armazenadora')}}
