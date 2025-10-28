@@ -153,8 +153,7 @@ final_tb AS (
     CASE
       WHEN c.servico IN ('Gemini API') THEN gs.sessions
       ELSE CAST(NULL AS INT64) 
-    END as sessions_gemini,
-    
+    END as sessions_gemini
   FROM custos c
   LEFT JOIN model_calls_per_day mc
     on c.dia = mc.message_day
