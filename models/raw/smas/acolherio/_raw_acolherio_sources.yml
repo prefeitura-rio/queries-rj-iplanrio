@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: brutos_acolherio
-    database: rj-iplanrio
+    database: rj-smas
     schema: brutos_acolherio_staging
     tables:
       - name: gh_atend_familia
