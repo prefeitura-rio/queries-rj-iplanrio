@@ -70,7 +70,7 @@ models:
           +schema: divida_ativa
           +tags: ["daily", "divida_ativa"]
           +resource_tags:
-            rj-iplanrio/dominio: divida_ativa
+            rj-iplanrio/dominio: tributos
             845941190868/acesso: restrito
     raw:
       +tags: "raw"
