@@ -10,7 +10,7 @@ sources:
       - name: itens_medicao
       - name: itens_medidos_finalizados
       - name: localizacao_obra
-      - name: enderecos_geolocalizados
+   #   - name: enderecos_geolocalizados
       - name: medicao
       - name: obra
       - name: obras_suspensas
