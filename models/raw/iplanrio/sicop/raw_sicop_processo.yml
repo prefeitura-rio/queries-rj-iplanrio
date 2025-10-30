@@ -226,3 +226,7 @@ models:
         description: "Status do processo principal. Informa quando o documento foi juntado ao processo. Ex.: 7- juntado"
         data_type: string
         quote: true
+
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date

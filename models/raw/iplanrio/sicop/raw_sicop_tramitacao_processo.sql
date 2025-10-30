@@ -34,5 +34,7 @@ select
   safe_cast(org_destino as int64)                           as orgao_destino,
   safe_cast(org_transcritor as int64)                       as orgao_transcritor
 
+  safe_cast(_prefect_extracted_at as date)                  as datalake_transformed_at 
+
 from {{ source("brutos_sicop_staging","tramitacao_processo") }}
 

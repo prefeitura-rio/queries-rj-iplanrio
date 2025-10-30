@@ -13,6 +13,8 @@ sources:
         description: "View de partes envolvidas do SICOP"
       - name: tramitacao_processo
         description: "View de tramitação de processos do SICOP (VW_TRAMITACAO_PROCESSO_DLK)"
+      - name: localiza_processo
+        description: "View de localização de processos do SICOP (VW_LOCALIZA_PROCESSO_DLK)"
 
     config:
       freshness: # default freshness
