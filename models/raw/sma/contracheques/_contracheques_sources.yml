@@ -31,7 +31,7 @@ sources:
         description: "Tabela de provimentos e eventuais do sistema de contracheques ERGON"
       - name:  DEPENDENTES
         description: "Tabela de dependentes do sistema de contracheques ERGON"
-      - name:  FATORES_RUBRICA
+      - name:  FATORES_RUBRICAS
         description: "Tabela de fatores de rubrica do sistema de contracheques ERGON"
       - name: HSETOR_
         description: "Tabela de setores do sistema HADES"
