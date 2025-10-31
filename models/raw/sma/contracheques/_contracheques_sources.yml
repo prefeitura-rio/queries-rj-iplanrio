@@ -1,43 +1,43 @@
 version: 2
 
 sources:
-  - name: brutos_contracheques_staging
+  - name: brutos_contracheque_staging
     database: rj-iplanrio   # opcional se igual ao target
-    schema: brutos_contracheques_staging
+    schema: brutos_contracheque_staging
     tables:
-      - name:  FOLHAS_EMP
+      - name:  folhas_emp
         description: "Tabela de folhas de pagamento do sistema de contracheques ERGON"
-      - name:  FICHAS_VINCULOS
+      - name:  fichas_vinculos
         description: "Tabela de fichas de vínculos do sistema de contracheques ERGON"
-      - name:  FICHAS_RUBRICAS
+      - name:  fichas_rubricas
         description: "Tabela de fichas de rubricas do sistema de contracheques ERGON"
-      - name:  FITABANCO
+      - name:  fitabanco
         description: "Tabela de informações bancárias das fichas do sistema de contracheques ERGON"
-      - name:  VINCULOS
+      - name:  vinculos
         description: "Tabela de vínculos funcionais do sistema de contracheques ERGON"
-      - name:  FUNCIONARIOS
+      - name:  funcionarios
         description: "Tabela de funcionários do sistema de contracheques ERGON"
-      - name:  PENSIONISTAS
+      - name:  pensionistas
         description: "Tabela de pensionistas do sistema de contracheques ERGON"
-      - name:  RUBRICAS
+      - name:  rubricas
         description: "Tabela de rubricas do sistema de contracheques ERGON"
-      - name:  DEPENDENCIAS
+      - name:  dependencias
         description: "Tabela de dependências funcionais do sistema de contracheques ERGON"
-      - name:  HIST_DEPEN
+      - name:  hist_depen
         description: "Tabela de histórico de dependências do sistema de contracheques ERGON"
-      - name:  CARGOS_
+      - name:  cargos_
         description: "Tabela de cargos do sistema de contracheques ERGON"
-      - name:  PROVIMENTOS_EV
+      - name:  provimentos_ev
         description: "Tabela de provimentos e eventuais do sistema de contracheques ERGON"
-      - name:  DEPENDENTES
+      - name:  dependentes
         description: "Tabela de dependentes do sistema de contracheques ERGON"
-      - name:  FATORES_RUBRICAS
+      - name:  fatores_rubricas
         description: "Tabela de fatores de rubrica do sistema de contracheques ERGON"
-      - name: HSETOR_
+      - name: hsetor_
         description: "Tabela de setores do sistema HADES"
       - name:  ipl_msg_setcarg
         description: "Tabela de mensagens de setor e cargo do sistema de contracheques ERGON"
-      - name:  IPL_PREFIXOS
+      - name:  ipl_prefixos
         description: "Tabela de prefixos do sistema de contracheques ERGON"
       - name:  ipl_msg_prefixo
         description: "Tabela de mensagens de prefixo do sistema de contracheques ERGON"
