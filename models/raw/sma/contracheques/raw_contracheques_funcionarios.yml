@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_contracheques_funcionarios
+    description: "Tabela contendo os registros de FUNCIONARIOS do sistema de contracheques"
+    columns:
+      - name: numero
+        description: "NUMERO"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_funcionarios__numero__not_null
+
+      - name: nome
+        description: "NOME"
+
+      - name: cpf
+        description: "CPF"
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

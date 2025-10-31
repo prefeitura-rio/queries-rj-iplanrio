@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_contracheques_folhas_emp
+    description: "Tabela contendo os registros de FOLHAS_EMP do sistema de contracheques"
+    columns:
+      - name: numero
+        description: "NUMERO"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_folhas_emp__numero__not_null
+
+      - name: mes_ano
+        description: "MES_ANO"
+
+      - name: tipo_folha
+        description: "TIPO_FOLHA"
+
+      - name: emp_codigo
+        description: "EMP_CODIGO"
+
+      - name: data_consol
+        description: "DATA_CONSOL"
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: raw_contracheques_hsetor_
+    description: "Tabela contendo os registros de HSETOR_ do sistema de contracheques"
+    columns:
+      - name: setor
+        description: "SETOR"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_hsetor___setor__not_null
+
+      - name: emp_codigo
+        description: "EMP_CODIGO"
+
+      - name: dataini
+        description: "DATAINI"
+
+      - name: datafim
+        description: "DATAFIM"
+
+      - name: flex_campo_01
+        description: "FLEX_CAMPO_01"
+
+      - name: flex_campo_05
+        description: "FLEX_CAMPO_05"
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: brutos_contracheques_staging
+    database: rj-iplanrio   # opcional se igual ao target
+    schema: brutos_contracheques_staging
+    tables:
+      - name: ERGON.FOLHAS_EMP
+        description: "Tabela de folhas de pagamento do sistema de contracheques ERGON"
+      - name: ERGON.FICHAS_VINCULOS
+        description: "Tabela de fichas de vínculos do sistema de contracheques ERGON"
+      - name: ERGON.FICHAS_RUBRICAS
+        description: "Tabela de fichas de rubricas do sistema de contracheques ERGON"
+      - name: ERGON.FITABANCO
+        description: "Tabela de informações bancárias das fichas do sistema de contracheques ERGON"
+      - name: ERGON.VINCULOS
+        description: "Tabela de vínculos funcionais do sistema de contracheques ERGON"
+      - name: ERGON.FUNCIONARIOS
+        description: "Tabela de funcionários do sistema de contracheques ERGON"
+      - name: ERGON.PENSIONISTAS
+        description: "Tabela de pensionistas do sistema de contracheques ERGON"
+      - name: ERGON.RUBRICAS
+        description: "Tabela de rubricas do sistema de contracheques ERGON"
+      - name: ERGON.DEPENDENCIAS
+        description: "Tabela de dependências funcionais do sistema de contracheques ERGON"
+      - name: ERGON.HIST_DEPEN
+        description: "Tabela de histórico de dependências do sistema de contracheques ERGON"
+      - name: ERGON.CARGOS_
+        description: "Tabela de cargos do sistema de contracheques ERGON"
+      - name: ERGON.PROVIMENTOS_EV
+        description: "Tabela de provimentos e eventuais do sistema de contracheques ERGON"
+      - name: ERGON.DEPENDENTES
+        description: "Tabela de dependentes do sistema de contracheques ERGON"
+      - name: ERGON.FATORES_RUBRICA
+        description: "Tabela de fatores de rubrica do sistema de contracheques ERGON"
+      - name: HADES.HSETOR_
+        description: "Tabela de setores do sistema HADES"
+      - name: C_ERGON.ipl_msg_setcarg
+        description: "Tabela de mensagens de setor e cargo do sistema de contracheques ERGON"
+      - name: C_ERGON.IPL_PREFIXOS
+        description: "Tabela de prefixos do sistema de contracheques ERGON"
+      - name: C_ERGON.ipl_msg_prefixo
+        description: "Tabela de mensagens de prefixo do sistema de contracheques ERGON"
+      - name: C_ERGON.ipl_msg_ext
+        description: "Tabela de mensagens extras do sistema de contracheques ERGON"
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)

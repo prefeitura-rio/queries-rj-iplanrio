@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_contracheques_fatores_rubrica
+    description: "Tabela contendo os registros de FATORES_RUBRICA do sistema de contracheques"
+    columns:
+      - name: fator
+        description: "FATOR"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_fatores_rubrica__fator__not_null
+
+      - name: rubrica
+        description: "RUBRICA"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_fatores_rubrica__rubrica__not_null
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

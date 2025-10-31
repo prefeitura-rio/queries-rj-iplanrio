@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: raw_contracheques_ipl_msg_setcarg
+    description: "Tabela contendo os registros de ipl_msg_setcarg do sistema de contracheques"
+    columns:
+      - name: mes_ano_folha
+        description: "MES_ANO_FOLHA"
+
+      - name: num_folha
+        description: "NUM_FOLHA"
+
+      - name: cargo
+        description: "CARGO"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_ipl_msg_setcarg__cargo__not_null
+
+      - name: setor
+        description: "SETOR"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_ipl_msg_setcarg__setor__not_null
+
+      - name: linha1
+        description: "LINHA1"
+
+      - name: linha2
+        description: "LINHA2"
+
+      - name: linha3
+        description: "LINHA3"
+
+      - name: linha4
+        description: "LINHA4"
+
+      - name: linha5
+        description: "LINHA5"
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
