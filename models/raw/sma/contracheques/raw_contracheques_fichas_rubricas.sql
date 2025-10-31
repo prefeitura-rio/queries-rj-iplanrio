@@ -15,4 +15,4 @@ select
     safe_cast(MES_ANO_DIREITO as string) as mes_ano_direito,
     safe_cast(INFO as string) as info,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'FICHAS_RUBRICAS') }}
+FROM {{ source('brutos_contracheque_staging', 'fichas_rubricas') }}

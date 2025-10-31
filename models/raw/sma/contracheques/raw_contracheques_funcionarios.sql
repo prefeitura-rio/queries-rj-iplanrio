@@ -10,4 +10,4 @@ select
     safe_cast(NOME as string) as nome,
     safe_cast(CPF as string) as cpf,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'FUNCIONARIOS') }}
+FROM {{ source('brutos_contracheque_staging', 'funcionarios') }}

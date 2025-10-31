@@ -14,4 +14,4 @@ select
     safe_cast(SETOR as integer) as setor,
     safe_cast(JORNADA as string) as jornada,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'PROVIMENTOS_EV') }}
+FROM {{ source('brutos_contracheque_staging', 'provimentos_ev') }}
