@@ -216,5 +216,11 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: sisbicho
             845941190868/acesso: restrito
+      sma:
+        contracheques:
+          +materialized: table
+          +schema: brutos_contracheques_staging
+          +tags: "daily"
+          
 flags:
   require_generic_test_arguments_property: true

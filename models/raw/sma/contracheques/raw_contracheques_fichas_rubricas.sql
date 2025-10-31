@@ -1,8 +1,6 @@
 {{
     config(
       alias="fichas_rubricas",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de FICHAS_RUBRICAS"
     )
 }}
@@ -17,4 +15,4 @@ select
     safe_cast(MES_ANO_DIREITO as string) as mes_ano_direito,
     safe_cast(INFO as string) as info,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.FICHAS_RUBRICAS') }}
+FROM {{ source('brutos_contracheques_staging', 'FICHAS_RUBRICAS') }}

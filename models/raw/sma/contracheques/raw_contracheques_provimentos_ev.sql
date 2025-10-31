@@ -1,8 +1,6 @@
 {{
     config(
       alias="provimentos_ev",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de PROVIMENTOS_EV"
     )
 }}
@@ -16,4 +14,4 @@ select
     safe_cast(SETOR as integer) as setor,
     safe_cast(JORNADA as string) as jornada,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.PROVIMENTOS_EV') }}
+FROM {{ source('brutos_contracheques_staging', 'PROVIMENTOS_EV') }}

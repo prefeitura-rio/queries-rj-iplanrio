@@ -1,8 +1,6 @@
 {{
     config(
       alias="vinculos",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de VINCULOS"
     )
 }}
@@ -17,4 +15,4 @@ select
     safe_cast(REGIMEJUR as string) as regimejur,
     safe_cast(DTVAC as datetime) as dtvac,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.VINCULOS') }}
+FROM {{ source('brutos_contracheques_staging', 'VINCULOS') }}

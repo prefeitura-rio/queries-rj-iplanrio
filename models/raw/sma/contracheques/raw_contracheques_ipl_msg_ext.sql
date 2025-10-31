@@ -1,8 +1,6 @@
 {{
     config(
       alias="ipl_msg_ext",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de ipl_msg_ext"
     )
 }}
@@ -16,4 +14,4 @@ select
     safe_cast(LINHA4 as integer) as linha4,
     safe_cast(LINHA5 as integer) as linha5,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'C_ERGON.ipl_msg_ext') }}
+FROM {{ source('brutos_contracheques_staging', 'ipl_msg_ext') }}

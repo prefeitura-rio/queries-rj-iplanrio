@@ -1,8 +1,6 @@
 {{
     config(
       alias="fichas_vinculos",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de FICHAS_VINCULOS"
     )
 }}
@@ -16,4 +14,4 @@ select
     safe_cast(FICHA as integer) as ficha,
     safe_cast(NUMPENS as integer) as numpens,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.FICHAS_VINCULOS') }}
+FROM {{ source('brutos_contracheques_staging', 'FICHAS_VINCULOS') }}

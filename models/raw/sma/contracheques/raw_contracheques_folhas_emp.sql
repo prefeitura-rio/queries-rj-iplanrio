@@ -1,8 +1,6 @@
 {{
     config(
       alias="folhas_emp",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de FOLHAS_EMP"
     )
 }}
@@ -14,4 +12,4 @@ select
     safe_cast(EMP_CODIGO as integer) as emp_codigo,
     safe_cast(DATA_CONSOL as datetime) as data_consol,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.FOLHAS_EMP') }}
+  FROM {{ source('brutos_contracheques_staging', 'FOLHAS_EMP') }}

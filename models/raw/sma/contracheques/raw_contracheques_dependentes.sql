@@ -1,8 +1,6 @@
 {{
     config(
       alias="dependentes",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de DEPENDENTES"
     )
 }}
@@ -13,4 +11,4 @@ select
     safe_cast(CPF as string) as cpf,
     safe_cast(NOME as string) as nome,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.DEPENDENTES') }}
+FROM {{ source('brutos_contracheques_staging', 'DEPENDENTES') }}

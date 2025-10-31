@@ -1,8 +1,6 @@
 {{
     config(
       alias="pensionistas",
-      materialized="table",
-      tags=["raw", "contracheques"],
       description="Tabela de PENSIONISTAS"
     )
 }}
@@ -13,4 +11,4 @@ select
     safe_cast(NUMVINC as integer) as numvinc,
     safe_cast(EMP_CODIGO as integer) as emp_codigo,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheques_staging', 'ERGON.PENSIONISTAS') }}
+FROM {{ source('brutos_contracheques_staging', 'PENSIONISTAS') }}
