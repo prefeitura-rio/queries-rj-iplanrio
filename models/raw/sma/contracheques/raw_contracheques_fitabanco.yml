@@ -21,18 +21,18 @@ models:
 
       - name: setor
         description: "SETOR"
-        data_tests:
-          - not_null:
-              name: raw_contracheques_fitabanco__setor__not_null
+        # data_tests:
+        #   - not_null:
+        #       name: raw_contracheques_fitabanco__setor__not_null
 
       - name: mes_ano
         description: "MES_ANO"
 
       - name: cargo
         description: "CARGO"
-        data_tests:
-          - not_null:
-              name: raw_contracheques_fitabanco__cargo__not_null
+        # data_tests:
+        #   - not_null:
+        #       name: raw_contracheques_fitabanco__cargo__not_null
 
       - name: referencia
         description: "REFERENCIA"

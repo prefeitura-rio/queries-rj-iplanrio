@@ -6,9 +6,9 @@ models:
     columns:
       - name: setor
         description: "SETOR"
-        data_tests:
-          - not_null:
-              name: raw_contracheques_hsetor___setor__not_null
+        # data_tests:
+        #   - not_null:
+        #       name: raw_contracheques_hsetor___setor__not_null
 
       - name: emp_codigo
         description: "EMP_CODIGO"

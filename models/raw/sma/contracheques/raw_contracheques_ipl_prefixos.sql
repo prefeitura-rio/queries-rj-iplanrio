@@ -1,6 +1,6 @@
 {{
     config(
-      alias="ipl_prefixos",
+      alias="iplanrio_registro_prefixos",
       description="Tabela de IPL_PREFIXOS"
     )
 }}
@@ -11,4 +11,4 @@ select
     safe_cast(MESANO as string) as mesano,
     safe_cast(PREFIXO as integer) as prefixo,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheque_staging', 'ipl_prefixos') }}
+from {{ source('brutos_contracheque_staging', 'iplanrio_registro_prefixo') }}

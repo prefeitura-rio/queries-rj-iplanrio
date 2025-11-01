@@ -23,9 +23,9 @@ sources:
         description: "Tabela de rubricas do sistema de contracheques ERGON"
       - name:  dependencias
         description: "Tabela de dependências funcionais do sistema de contracheques ERGON"
-      - name:  hist_depen
+      - name:  historico_dependentes
         description: "Tabela de histórico de dependências do sistema de contracheques ERGON"
-      - name:  cargos_
+      - name:  cargos
         description: "Tabela de cargos do sistema de contracheques ERGON"
       - name:  provimentos_ev
         description: "Tabela de provimentos e eventuais do sistema de contracheques ERGON"
@@ -33,15 +33,15 @@ sources:
         description: "Tabela de dependentes do sistema de contracheques ERGON"
       - name:  fatores_rubricas
         description: "Tabela de fatores de rubrica do sistema de contracheques ERGON"
-      - name: hsetor_
+      - name: hsetor
         description: "Tabela de setores do sistema HADES"
-      - name:  ipl_msg_setcarg
+      - name:  iplanrio_mensagem_setor_cargo
         description: "Tabela de mensagens de setor e cargo do sistema de contracheques ERGON"
-      - name:  ipl_prefixos
+      - name:  iplanrio_registro_prefixo
         description: "Tabela de prefixos do sistema de contracheques ERGON"
-      - name:  ipl_msg_prefixo
+      - name:  iplanrio_mensagem_prefixo
         description: "Tabela de mensagens de prefixo do sistema de contracheques ERGON"
-      - name:  ipl_msg_ext
+      - name:  iplanrio_mensagem_externo
         description: "Tabela de mensagens extras do sistema de contracheques ERGON"
 
     config:

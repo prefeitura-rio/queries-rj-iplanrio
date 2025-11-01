@@ -14,4 +14,4 @@ select
     safe_cast(LINHA4 as integer) as linha4,
     safe_cast(LINHA5 as integer) as linha5,
     safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
-FROM {{ source('brutos_contracheque_staging', 'ipl_msg_ext') }}
+from {{ source('brutos_contracheque_staging', 'iplanrio_mensagem_externo') }}

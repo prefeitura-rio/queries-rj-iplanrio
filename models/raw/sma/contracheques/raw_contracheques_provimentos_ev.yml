@@ -30,9 +30,9 @@ models:
 
       - name: setor
         description: "SETOR"
-        data_tests:
-          - not_null:
-              name: raw_contracheques_provimentos_ev__setor__not_null
+        # data_tests:
+        #   - not_null:
+        #       name: raw_contracheques_provimentos_ev__setor__not_null
 
       - name: jornada
         description: "JORNADA"

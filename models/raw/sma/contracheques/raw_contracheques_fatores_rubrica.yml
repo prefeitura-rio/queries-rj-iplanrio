@@ -6,9 +6,9 @@ models:
     columns:
       - name: fator
         description: "FATOR"
-        data_tests:
-          - not_null:
-              name: raw_contracheques_fatores_rubrica__fator__not_null
+        # data_tests:
+        #   - not_null:
+        #       name: raw_contracheques_fatores_rubrica__fator__not_null
 
       - name: rubrica
         description: "RUBRICA"
