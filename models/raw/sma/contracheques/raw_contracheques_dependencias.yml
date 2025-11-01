@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: raw_contracheques_dependencias
+    description: "Tabela contendo os registros de DEPENDENCIAS do sistema de contracheques"
+    columns:
+      - name: numfunc
+        description: "NUMFUNC"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_dependencias__numfunc__not_null
+
+      - name: tipodepen
+        description: "TIPODEPEN"
+
+      - name: dtini
+        description: "DTINI"
+
+      - name: dtfim
+        description: "DTFIM"
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
