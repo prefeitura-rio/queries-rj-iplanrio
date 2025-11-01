@@ -219,7 +219,7 @@ models:
       sma:
         contracheques:
           +materialized: table
-          +schema: brutos_contracheques_staging
+          +schema: brutos_contracheques
           +tags: "daily"
           
 flags:
