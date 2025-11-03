@@ -18,5 +18,5 @@ select
     safe_cast(DataCadastro as datetime) as cadastro_datahora,
     _airbyte_extracted_at as datalake_loaded_at, 
     current_timestamp() as datalake_transformed_at,
-    current_timestamp() as updated_at2
+    current_timestamp() as updated_at3
 FROM {{ source('brutos_sisbicho_staging', 'AnimalProprietario') }}
