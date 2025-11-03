@@ -2,7 +2,7 @@
 
 {{
     config(
-        alias="chcnpj_bcadastros_parsed_cnpj_new_airbyte",
+        alias="chcnpj_bcadastros_parsed",
         schema="brutos_bcadastro_staging",
         materialized="table",
     )
