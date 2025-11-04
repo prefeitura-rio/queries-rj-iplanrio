@@ -9,3 +9,4 @@ sources:
       - name: chamado_cpf
       - name: origem_ocorrencia
       - name: pessoa
+      - name: ViewDatalake
