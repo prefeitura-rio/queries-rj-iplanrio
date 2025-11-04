@@ -55,7 +55,7 @@ WITH chamados AS (
             * EXCEPT(numero_logradouro),
             CASE WHEN REGEXP_CONTAINS(CAST(numero_logradouro AS STRING), ",") THEN SPLIT(CAST(numero_logradouro AS STRING), ',')[SAFE_OFFSET(0)] ELSE numero_logradouro END AS numero_logradouro,
             row_number() OVER (PARTITION BY id_chamado ORDER BY data_fim DESC, data_inicio DESC) AS ranking
-        FROM {{ source('brutos_1746_staging', 'ViewDatalake') }} AS t
+        FROM {{ source('brutos_1746_staging_airbyte', 'ViewDatalake') }} AS t
     )
     WHERE ranking=1
 ),
