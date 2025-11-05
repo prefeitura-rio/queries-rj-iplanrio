@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: brutos_adm_licenca_urbanismo_staging
+    database: rj-iplanrio
+    schema: brutos_adm_licenca_urbanismo_staging
+    tables:
+      - name: vwLic_LicencasPorPeriodo
+        description: "View de licenças por período do SICOP (vwLic_LicencasPorPeriodo no banco SMU_PRD)"
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
