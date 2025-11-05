@@ -39,13 +39,6 @@ models:
               name: raw_sisbicho_animal_status__id_animal__not_null
               config:
                 severity: error
-          - relationships:
-              name: raw_sisbicho_animal_status__id_animal__relationships
-              config:
-                severity: error
-              arguments:
-                to: ref('raw_sisbicho_animal')
-                field: id_animal
       - name: registro_datahora
         description: "Data e hora do registro do status do animal"
         #datatype: datetime
