@@ -187,7 +187,7 @@ models:
               severity: error
 
       - name: total_unidades_edificacao
-        description: "Total de Unidades da Edifição"
+        description: "Total de Unidades da Edificação"
         data_type: int64
         data_tests:
           - not_null:
