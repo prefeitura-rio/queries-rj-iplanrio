@@ -50,6 +50,6 @@ select
   safe_cast(total_salas as int64) as total_unidade_sala,
   
   -- Auditoria de alteração
-  safe_cast(_prefect_extracted_at as timestamp) as datalake_transformed_at
+  safe_cast(_airbyte_extracted_at as timestamp) as datalake_transformed_at
 from {{ source("brutos_adm_licenca_urbanismo_staging", "vwLic_LicencasPorPeriodo") }}
 

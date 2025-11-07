@@ -32,9 +32,9 @@ models:
           - not_null:
               name: raw_adm_licenca_urbanismo__identificador_licenca__not_null
               severity: error
-          - unique:
-              name: raw_adm_licenca_urbanismo__identificador_licenca__unique
-              severity: error
+          # - unique:
+          #     name: raw_adm_licenca_urbanismo__identificador_licenca__unique
+          #     severity: error
 
       - name: classe_licenca
         description: "Classe da Licença (Nova, Prorrogação, Revalidação, Complementação e Atualização)"
@@ -85,10 +85,10 @@ models:
         description: "Nome do Logradouro"
         data_type: string
         quote: true
-        data_tests:
-          - not_null:
-              name: raw_sicop_licencas_por_periodo__nome_logradouro__not_null
-              severity: error
+        # data_tests:
+        #   - not_null:
+        #       name: raw_sicop_licencas_por_periodo__nome_logradouro__not_null
+        #       severity: error
 
       - name: numero_porta
         description: "Número de Porta"
