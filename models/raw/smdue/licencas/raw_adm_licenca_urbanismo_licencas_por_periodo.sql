@@ -1,7 +1,7 @@
 {{
     config(
-        alias="licencas_por_periodo",
-        description="Dados brutos de licenças por período do SICOP (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
+        alias="view_lic_licencas_por_periodo",
+        description="Dados brutos de licenças por período (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
     )
 }}
 
