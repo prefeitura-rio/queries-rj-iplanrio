@@ -4,8 +4,6 @@ models:
   - name: raw_adm_licenca_urbanismo_licencas_por_periodo
     description: "Dados brutos de licenças por período do SICOP (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
     config:
-      alias: licencas_por_periodo
-      schema: brutos_adm_licenca_urbanismo
       materialized: view
 
     columns:
