@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: raw_unidades_administrativas_orgaos_superapp
+    description: "**Descrição**: Retorna todas as Unidades de Gestão associadas ao tipo Unidade Administrativa do SuperApp, com o relacionamento entre elas, informando o código da unidade pai, para a composição da árvore de UAs da PCRJ.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: GBP/CGGI\n**Publicado por**: Sandra Regina Fonseca da Costa\n**Publicado por (email)**: sandracostasmu@gmail.com\n"
+    config:
+      materialized: table
+    columns:
+      - name: cd_ua
+        description: Código da Unidade Administrativa da PCRJ, é uma Unidade de Gestão que possui existência física e é ocupada por objetos e/ou pessoas e consome material de escritório, de limpeza, etc
+        data_type: string
+      - name: sigla_ua
+        description: Sigla da Unidade Administrativa da PCRJ
+        data_type: string
+      - name: nome_ua
+        description: Nome da Unidade Administrativa da PCRJ
+        data_type: string
+      - name: cd_ua_pai
+        description: Código da Unidade Administrativa imediatamente acima na árvore hierárquica
+        data_type: string
+      - name: nivel
+        description: Nível hierárquico na árvore das Unidades Administrativas
+        data_type: string
+      - name: ordem_ua_basica
+        description: A ordem da UA básica é uma numeração para ordenar as unidades do segundo nível da PCRJ. Todos os demais níveis terão a mesma ordem da UA básica para aquela UA
+        data_type: string
+      - name: ordem_absoluta
+        description: Ordem absoluta é a posição da Unidade Administrativa em relação a sua Unidade Básica. Será 1, quando a UA é a própria UA básica e sequencialmente todas as UAs filhas
+        data_type: string
+      - name: ordem_relativa
+        description: Ordem relativa é a posição da Unidade Administrativa em relação a sua Unidade Administrativa Pai
+        data_type: string
+      - name: msg
+        description: Mensagem associada ao registro
+        data_type: string
+      - name: updated_at
+        description: Data e hora da última atualização do registro
+        data_type: datetime
+
