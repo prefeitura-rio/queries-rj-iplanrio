@@ -19,5 +19,6 @@ select
   safe_cast(data_procuracao as date)                  as data_procuracao,
   safe_cast(tipo_documento_parte_envolvida as string) as tipo_documento_parte_envolvida,
   safe_cast(documento_parte_envolvida as string)      as documento_parte_envolvida,
-  safe_cast(matricula_responsavel as int64)           as matricula_responsavel
+  safe_cast(matricula_responsavel as int64)           as matricula_responsavel,
+  safe_cast(_prefect_extracted_at as date)            as datalake_transformed_at 
 from {{ source("brutos_sicop_staging","parte_envolvida") }}

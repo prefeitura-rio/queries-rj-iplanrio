@@ -9,3 +9,14 @@ sources:
       - name: chamado_cpf
       - name: origem_ocorrencia
       - name: pessoa
+  
+  - name: brutos_1746_staging_airbyte
+    database: rj-iplanrio
+    schema: brutos_1746_staging
+    tables:
+      - name: ViewDatalake
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at

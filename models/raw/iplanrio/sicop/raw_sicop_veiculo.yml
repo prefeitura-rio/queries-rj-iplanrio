@@ -13,3 +13,6 @@ models:
         description: "Identificação do veículo vinculado ao processo."
         data_type: string
 
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date

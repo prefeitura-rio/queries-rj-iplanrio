@@ -1,0 +1,224 @@
+version: 2
+
+models:
+  - name: raw_adm_licenca_urbanismo_licencas_por_periodo
+    description: "Dados brutos de licenças por período do SICOP (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
+    config:
+      materialized: view
+
+    columns:
+      - name: requerente
+        description: "Nome do Requerente"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo_licencas_por_periodo__requerente__not_null
+              severity: error
+        config:
+          meta:
+            is_sensitive: true
+
+      - name: data_emissao
+        description: "Data de Emissão da Licença"
+        data_type: date
+
+      - name: identificador_licenca
+        description: "Identificador da Licença"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__identificador_licenca__not_null
+              severity: error
+          # - unique:
+          #     name: raw_adm_licenca_urbanismo__identificador_licenca__unique
+          #     severity: error
+
+      - name: classe_licenca
+        description: "Classe da Licença (Nova, Prorrogação, Revalidação, Complementação e Atualização)"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_sicop_licencas_por_periodo__classe_licenca__not_null
+              severity: error
+
+      - name: endereco
+        description: "Endereço da Edificação"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__endereco__not_null
+              severity: error
+
+      - name: codigo_logradouro
+        description: "Código do Logradouro"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__codigo_logradouro__not_null
+              severity: error
+
+      - name: tipo_logradouro
+        description: "Tipo do Logradouro"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__tipo_logradouro__not_null
+              severity: error
+
+      - name: nobreza
+        description: "Nobreza (General, Dom, Coronel, Jornalista...)"
+        data_type: string
+        quote: true
+
+      - name: preposicao
+        description: "Preposição"
+        data_type: string
+        quote: true
+
+      - name: nome_logradouro
+        description: "Nome do Logradouro"
+        data_type: string
+        quote: true
+        # data_tests:
+        #   - not_null:
+        #       name: raw_sicop_licencas_por_periodo__nome_logradouro__not_null
+        #       severity: error
+
+      - name: numero_porta
+        description: "Número de Porta"
+        data_type: string
+        quote: true
+
+      - name: complemento_endereco
+        description: "Complemento do Endereço"
+        data_type: string
+        quote: true
+
+      - name: projeto_alinhamento
+        description: "PAL (número do projeto de Alinhamento)"
+        data_type: string
+        quote: true
+
+      - name: quadra
+        description: "Quadra"
+        data_type: string
+        quote: true
+
+      - name: lote
+        description: "Lote"
+        data_type: string
+        quote: true
+
+      - name: codigo_ap
+        description: "AP"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__codigo_ap__not_null
+              severity: error
+
+      - name: nome_bairro
+        description: "Nome do Bairro"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__nome_bairro__not_null
+              severity: error
+
+      - name: licenca_gratis
+        description: "Indicador de Licença Gratuita"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__licenca_gratis__not_null
+              severity: error
+
+      - name: numero_licenca
+        description: "Número da Licença"
+        data_type: string
+        quote: true
+
+      - name: numero_processo
+        description: "Número do Processo"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__numero_processo__not_null
+              severity: error
+
+      - name: area_total_edificada
+        description: "Área Total da Edificação"
+        data_type: float64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__area_total_edificada__not_null
+              severity: error
+
+      - name: tipologia_edificacao
+        description: "Tipologia da Edificação"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__tipologia_edificacao__not_null
+              severity: error
+
+      - name: uso_edificacao
+        description: "Uso da Edificação"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__uso_edificacao__not_null
+              severity: error
+
+      - name: quantidade_edificaoes_licen
+        description: "Quantidade de Edificações da Licença"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__quantidade_edificaoes_licen__not_null
+              severity: error
+
+      - name: total_unidades_edificacao
+        description: "Total de Unidades da Edificação"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__total_unidades_edificacao__not_null
+              severity: error
+
+      - name: total_unidades_residencial
+        description: "Total de Unidades Residencial"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__total_unidades_residencial__not_null
+              severity: error
+
+      - name: total_unidades_loja
+        description: "Total de Lojas"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__total_unidades_loja__not_null
+              severity: error
+
+      - name: total_unidade_sala
+        description: "Total de Salas"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_adm_licenca_urbanismo__total_unidade_sala__not_null
+              severity: error
+
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: timestamp
+
