@@ -116,6 +116,9 @@ with
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
+            -- Esfera (city, state, or federal level)
+            t.esfera as esfera,
+
             -- Metadata as JSON (including all unused columns)
             to_json_string(
                 struct(
@@ -181,6 +184,7 @@ select
     fonte,
     vigencia_inicio,
     vigencia_fim,
+    esfera,
     metadata,
     updated_at
 from

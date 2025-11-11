@@ -68,6 +68,7 @@ with
                         e.fonte,
                         e.vigencia_inicio,
                         e.vigencia_fim,
+                        e.esfera,
                         e.metadata,
                         e.updated_at,
                         st_distance(e.geometry, g.centro_geometry) as distancia_metros
