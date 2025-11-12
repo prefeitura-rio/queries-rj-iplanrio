@@ -51,6 +51,7 @@ pair_territorio as (
                     e.contato,
                     e.ativo,
                     e.aberto_ao_publico,
+                    e.esfera,
                     e.horario_funcionamento,
                     e.fonte,
                     e.vigencia_inicio,

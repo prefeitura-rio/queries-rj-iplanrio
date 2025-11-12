@@ -6,6 +6,15 @@
     )
 }}
 
+WITH
+  estabelecimento_esfera AS (
+    SELECT
+      id_cnes,
+      esfera
+    FROM
+      {{ source("saude_dados_mestres", "estabelecimento") }}
+  )
+
 SELECT
   -- Plus Codes (não podem ser gerados sem coordenadas de ponto)
   CAST(NULL AS STRING) AS plus11,
@@ -13,9 +22,9 @@ SELECT
   -- Identificação principal
   id_equipe AS id_equipamento,
   'SMS' AS secretaria_responsavel,
-  TRIM(categoria) AS tipo_equipamento,
-  nome_area AS nome_oficial,
-  CONCAT('MEDICOS:\n', TRIM(medicos), '\n\nENFERMEIROS:\n', TRIM(enfermeiros)) AS nome_popular,
+  TRIM(t.categoria) AS tipo_equipamento,
+  t.nome_area AS nome_oficial,
+  CONCAT('MEDICOS:\n', TRIM(t.medicos), '\n\nENFERMEIROS:\n', TRIM(t.enfermeiros)) AS nome_popular,
   
   -- Mais Plus Codes (nulos)
   CAST(NULL AS STRING) AS plus10,
@@ -25,7 +34,7 @@ SELECT
   -- Detalhes de localização (coordenadas de ponto não disponíveis nesta etapa)
   CAST(NULL AS FLOAT64) AS latitude,
   CAST(NULL AS FLOAT64) AS longitude,
-  geometry, -- Mantém a coluna de polígono original
+  t.geometry, -- Mantém a coluna de polígono original
 
   -- Endereço estruturado (informações não disponíveis na origem)
   STRUCT(
@@ -40,14 +49,14 @@ SELECT
   STRUCT(
     CAST(NULL AS STRING) AS id_bairro,
     CAST(NULL AS STRING) AS bairro,
-    area_planejamento AS regiao_planejamento,
+    t.area_planejamento AS regiao_planejamento,
     CAST(NULL AS STRING) AS regiao_administrativa,
     CAST(NULL AS STRING) AS subprefeitura
   ) AS bairro,
   
   -- Informações de contato
   STRUCT(
-    SPLIT(REPLACE(telefone, ' ', ''), '/') AS telefones,
+    SPLIT(REPLACE(t.telefone, ' ', ''), '/') AS telefones,
     CAST(NULL AS STRING) AS email,
     CAST(NULL AS STRING) AS site,
     STRUCT(
@@ -71,19 +80,26 @@ SELECT
   CAST(NULL AS DATE) AS vigencia_inicio,
   CAST(NULL AS DATE) AS vigencia_fim,
   
+  -- Esfera (city, state, or federal level) from estabelecimento join
+  e.esfera AS esfera,
+  
   -- Metadados (colunas da origem não utilizadas diretamente)
   TO_JSON_STRING(
     STRUCT(
-      area_planejamento,
-      nome_area,
-      id_ine,
-      tipo_equipe,
-      medicos,
-      enfermeiros
+      t.area_planejamento,
+      t.nome_area,
+      t.id_ine,
+      t.tipo_equipe,
+      t.medicos,
+      t.enfermeiros
     )
   ) AS metadata,
   
   -- Timestamp da atualização
   CURRENT_TIMESTAMP() AS updated_at
 FROM
-  {{ ref("raw_equipamentos_saude_equipes_arcgis") }}
+  {{ ref("raw_equipamentos_saude_equipes_arcgis") }} AS t
+LEFT JOIN
+  estabelecimento_esfera AS e
+ON
+  t.cnes = e.id_cnes
