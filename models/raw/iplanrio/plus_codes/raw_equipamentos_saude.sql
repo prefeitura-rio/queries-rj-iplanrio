@@ -8,6 +8,44 @@
 
 {# CREATE OR REPLACE TABLE `rj-iplanrio.plus_codes.equipamentos_saude` AS ( #}
 with
+    tipo_mapping as (
+        select tipo, tipo_sms_equivalente
+        from unnest([
+            -- Direct matches
+            struct('CENTRAL DE ABASTECIMENTO' as tipo, 'CENTRAL DE ABASTECIMENTO' as tipo_sms_equivalente),
+            struct('CENTRAL DE GESTAO EM SAUDE', 'CENTRAL DE GESTAO EM SAUDE'),
+            struct('CENTRAL DE REGULACAO DO ACESSO', 'CENTRAL DE REGULACAO DO ACESSO'),
+            struct('CENTRAL DE REGULACAO MEDICA DAS URGENCIAS', 'CENTRAL DE REGULACAO DO ACESSO'),
+            struct('CENTRO DE ATENCAO PSICOSSOCIAL', 'CENTRO DE ATENCAO PSICOSSOCIAL'),
+            struct('CENTRO DE IMUNIZACAO', 'CENTRO DE IMUNIZACAO'),
+            struct('CENTRO DE SAUDE/UNIDADE BASICA', 'CENTRO MUNICIPAL DE SAUDE'),
+            struct('CLINICA/CENTRO DE ESPECIALIDADE', 'CLINICA/CENTRO DE ESPECIALIDADE'),
+            struct('LABORATORIO DE SAUDE PUBLICA', 'LABORATORIO DE SAUDE PUBLICA'),
+            struct('POLICLINICA', 'POLICLINICA'),
+            struct('POLO DE PREVENCAO DE DOENCAS E AGRAVOS E PROMOCAO DA SAUDE', 'POLO DE PREVENCAO DE DOENCAS E AGRAVOS E PROMOCAO DA SAUDE'),
+            struct('UNIDADE DE APOIO DIAGNOSE E TERAPIA (SADT ISOLADO)', 'UNIDADE DE APOIO DIAGNOSE E TERAPIA'),
+            struct('UNIDADE DE VIGILANCIA EM SAUDE', 'UNIDADE DE VIGILANCIA EM SAUDE'),
+            -- Hospital-related
+            struct('HOSPITAL ESPECIALIZADO', 'HOSPITAL'),
+            struct('HOSPITAL GERAL', 'HOSPITAL'),
+            struct('HOSPITAL/DIA - ISOLADO', 'HOSPITAL'),
+            -- Urgency/Emergency
+            struct('PRONTO ATENDIMENTO', 'UNIDADE DE PRONTO ATENDIMENTO'),
+            struct('PRONTO SOCORRO GERAL', 'UNIDADE DE PRONTO ATENDIMENTO'),
+            struct('UNIDADE MOVEL DE NIVEL PRE-HOSPITALAR NA AREA DE URGENCIA', 'UNIDADE DE PRONTO ATENDIMENTO'),
+            struct('UNIDADE MOVEL TERRESTRE', 'UNIDADE DE PRONTO ATENDIMENTO'),
+            -- Maternity
+            struct('CENTRO DE PARTO NORMAL - ISOLADO', 'MATERNIDADE'),
+            -- Others
+            struct('CENTRAL DE NOTIFICACAO,CAPTACAO E DISTRIB DE ORGAOS ESTADUAL', 'OUTROS'),
+            struct('CONSULTORIO ISOLADO', 'OUTROS'),
+            struct('FARMACIA', 'OUTROS'),
+            struct('OFICINA ORTOPEDICA', 'OUTROS'),
+            struct('TELESSAUDE', 'OUTROS'),
+            struct('UNIDADE MISTA', 'OUTROS')
+        ])
+    ),
+
     tb as (
         select
             -- Pluscodes (computed and ordered as specified)
@@ -18,7 +56,11 @@ with
             -- Core identification
             t.id_cnes as id_equipamento,
             'SMS' as secretaria_responsavel,
-            t.tipo_sms as tipo_equipamento,
+            coalesce(
+                nullif(trim(t.tipo_sms), ''),
+                m.tipo_sms_equivalente,
+                'OUTROS'
+            ) as tipo_equipamento,
             t.nome_fantasia as nome_oficial,
             t.nome_limpo as nome_popular,
 
@@ -74,7 +116,15 @@ with
 
             -- Status flags
             (lower(t.ativa) = 'sim') as ativo,
-            (lower(t.ativa) = 'sim') as aberto_ao_publico,
+            case
+                when coalesce(
+                    nullif(trim(t.tipo_sms), ''),
+                    m.tipo_sms_equivalente,
+                    'OUTROS'
+                ) = "HOSPITAL" and lower(t.aberto_sempre) = 'n' then false
+                    else
+                (lower(t.ativa) = 'sim') 
+            end as aberto_ao_publico,
 
             case
                 when
@@ -116,6 +166,9 @@ with
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
+            -- Esfera (city, state, or federal level)
+            t.esfera as esfera,
+
             -- Metadata as JSON (including all unused columns)
             to_json_string(
                 struct(
@@ -153,6 +206,9 @@ with
             current_timestamp() as updated_at
         from {{ source("saude_dados_mestres", "estabelecimento") }} as t
         left join
+            tipo_mapping as m
+            on trim(t.tipo) = m.tipo
+        left join
             {{ source("dados_mestres", "bairro") }} as b
             on st_contains(
                 b.geometry, st_geogpoint(t.endereco_longitude, t.endereco_latitude)
@@ -181,9 +237,11 @@ select
     fonte,
     vigencia_inicio,
     vigencia_fim,
+    esfera,
     metadata,
     updated_at
 from
     tb
+where aberto_ao_publico = true
     {# ) #}
     
