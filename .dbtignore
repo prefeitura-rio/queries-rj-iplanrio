@@ -2,3 +2,5 @@ models/raw/iplanrio/eai_logs/raw_eai_logs_alternative_history.sql
 models/raw/iplanrio/plus_codes/raw_grid_check.sql
 models/raw/iplanrio/plus_codes/raw_grid.sql
 models/raw/sme/educacao_basica_avaliacao/
+models/raw/iplanrio/bcadastro/base/raw_base_bcadastro_chcnpj.sql
+models/raw/iplanrio/bcadastro/raw_bcadastro_cnpj.sql
