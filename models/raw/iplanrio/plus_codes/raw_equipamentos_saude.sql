@@ -116,9 +116,14 @@ with
 
             -- Status flags
             (lower(t.ativa) = 'sim') as ativo,
-            (lower(t.ativa) = 'sim') as aberto_ao_publico,
-
             case
+                when coalesce(
+                    nullif(trim(t.tipo_sms), ''),
+                    m.tipo_sms_equivalente,
+                    'OUTROS'
+                ) = "HOSPITAL" and lower(t.aberto_sempre) = 'n' then false
+                else (lower(t.ativa) = 'sim') 
+            end as aberto_ao_publico,       case
                 when
                     t.turno_atendimento
                     = 'ATENDIMENTO CONTINUO DE 24 HORAS/DIA (PLANTAO:INCLUI SABADOS, DOMINGOS E FERIADOS)'
