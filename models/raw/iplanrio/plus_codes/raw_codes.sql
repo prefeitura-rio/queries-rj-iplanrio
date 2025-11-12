@@ -29,8 +29,8 @@ with
         from equipamentos
         where fonte not in (
             '{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', 
-            '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}',
-            '{{ source("smas_equipamentos", "poligonos_rmi") }}'
+            '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}'
+            -- '{{ source("smas_equipamentos", "poligonos_rmi") }}'
         )
     ),
     
@@ -96,7 +96,7 @@ with
         from pairs_proximidade
     )
 
--- 4) Agrega os 3 mais próximos
+-- 4) Agrega os n=1 mais próximos
 select
     plus8,
     trim(secretaria_responsavel) as secretaria_responsavel,

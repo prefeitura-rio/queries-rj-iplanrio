@@ -122,8 +122,11 @@ with
                     m.tipo_sms_equivalente,
                     'OUTROS'
                 ) = "HOSPITAL" and lower(t.aberto_sempre) = 'n' then false
-                else (lower(t.ativa) = 'sim') 
-            end as aberto_ao_publico,       case
+                    else
+                (lower(t.ativa) = 'sim') 
+            end as aberto_ao_publico,
+
+            case
                 when
                     t.turno_atendimento
                     = 'ATENDIMENTO CONTINUO DE 24 HORAS/DIA (PLANTAO:INCLUI SABADOS, DOMINGOS E FERIADOS)'
@@ -239,5 +242,6 @@ select
     updated_at
 from
     tb
+where aberto_ao_publico = true
     {# ) #}
     
