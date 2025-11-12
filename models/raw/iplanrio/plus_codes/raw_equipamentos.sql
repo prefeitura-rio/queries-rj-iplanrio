@@ -111,6 +111,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_saude") }}
@@ -139,6 +140,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_saude_unidades") }}
@@ -168,6 +170,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_saude_equipe_familia") }}
@@ -196,6 +199,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_educacao") }}
@@ -224,6 +228,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_cultura") }}
@@ -252,6 +257,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_assistencia_social") }}
@@ -280,6 +286,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_pontos_apoio") }}
@@ -332,6 +339,7 @@ with
             eq.fonte,
             eq.vigencia_inicio,
             eq.vigencia_fim,
+            eq.esfera,
             eq.metadata,
             eq.updated_at,
             ST_ASTEXT(eq.geometry) as geometry_text
@@ -374,6 +382,7 @@ select
     eq.fonte,
     eq.vigencia_inicio,
     eq.vigencia_fim,
+    eq.esfera,
     eq.metadata,
     eq.updated_at
 from equipamentos_categorias eq

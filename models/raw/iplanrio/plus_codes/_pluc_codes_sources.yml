@@ -8,7 +8,7 @@ sources:
       - name: municipio
   - name: saude_dados_mestres
     database: rj-sms
-    schema: saude_dados_mestres
+    schema: projeto_whatsapp
     tables:
       - name: estabelecimento
   - name: dados_mestres
