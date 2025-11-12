@@ -57,6 +57,7 @@ SELECT
   medicos,
   enfermeiros,
   telefone_equipe as telefone,
+  cnes,
   geometry
 FROM base
 
