@@ -1,0 +1,274 @@
+version: 2
+
+models:
+  - name: mart_divida_ativa_certidao_divida_ativa
+    description: "Tabela mart contendo informações essenciais das Certidões de Dívida Ativa (CDA), mostrando dados dos devedores principais, imóvel associado (caso seja CDA de IPTU) e guias de pagamento associadas."
+
+    config:
+      alias: certidao_divida_ativa
+      #contract:
+      #  enforced: true
+
+    columns:
+      # Chave primária
+      - name: id_certidao_divida_ativa
+        description: "Identificador da certidão de dívida ativa (CDA)."
+        data_type: int64
+
+      # Atributos principais da entidade
+      - name: ano_de_inscricao_na_divida
+        description: "Ano de inscrição na dívida ativa."
+        data_type: int64
+
+      - name: data_geracao_cda
+        description: "Data de geração da CDA."
+        data_type: datetime
+
+      - name: data_ultima_alteracao_situacao
+        description: "Data da última alteração da situação da CDA."
+        data_type: datetime
+
+      - name: numero_processo_associado
+        description: "Número do processo administrativo associado à CDA."
+        data_type: string
+        quote: true
+
+      - name: valor_original_divida_ativa
+        description: "Valor original da dívida ativa."
+        data_type: numeric
+
+      - name: valor_saldo_devido
+        description: "Valor do saldo devido atualmente."
+        data_type: numeric
+
+      - name: valor_multa_moratoria
+        description: "Valor da multa moratória aplicada."
+        data_type: numeric
+
+      - name: valor_juros_moratorios
+        description: "Valor dos juros moratórios."
+        data_type: numeric
+
+      - name: valor_mora
+        description: "Valor da mora."
+        data_type: numeric
+
+      - name: valor_juros_mora
+        description: "Valor dos juros de mora."
+        data_type: numeric
+
+      - name: valor_pago_principal
+        description: "Valor pago referente ao principal."
+        data_type: numeric
+
+      - name: valor_honorarios
+        description: "Valor relativo a honorários."
+        data_type: numeric
+
+      - name: valor_mora_smf_iptu
+        description: "Valor da mora SMF IPTU, quando aplicável."
+        data_type: numeric
+
+      # Estrutura que descreve o código de receita da CDA
+      - name: tipo_receita
+        description: "Estrutura que descreve o tipo de receita da CDA."
+        data_type: struct
+      - name: tipo_receita.codigo_receita_cda
+        description: "Código da receita da CDA."
+        data_type: string
+      - name: tipo_receita.nome_receita
+        description: "Nome da receita da CDA."
+        data_type: string
+
+      # Estrutura que descreve a entidade credora
+      - name: entidade_credora
+        description: "Estrutura que descreve a entidade credora."
+        data_type: struct
+      - name: entidade_credora.id_entidade_credora
+        description: "Identificador da entidade credora."
+        data_type: int64
+      - name: entidade_credora.nome_entidade_credora
+        description: "Nome da entidade credora."
+        data_type: string
+
+      # Estrutura que descreve a fase de cobrança da CDA
+      - name: fase_cobranca
+        description: "Estrutura que descreve a fase de cobrança da CDA."
+        data_type: struct
+      - name: fase_cobranca.codigo_fase_cobranca
+        description: "Código da fase de cobrança."
+        data_type: int64
+      - name: fase_cobranca.nome_fase_cobranca
+        description: "Nome da fase de cobrança."
+        data_type: string
+
+      # Estrutura que descreve a situação da CDA
+      - name: situacao_cda
+        description: "Estrutura que descreve a situação da CDA."
+        data_type: struct
+
+      - name: situacao_cda.id_situacao_cda
+        description: "Identificador da situação da CDA."
+        data_type: int64
+
+      - name: situacao_cda.descricao_situacao_cda
+        description: "Descrição da situação da CDA."
+        data_type: string
+
+      # Estrutura que descreve a natureza da dívida ativa
+      - name: natureza_divida_ativa
+        description: "Estrutura que descreve a natureza da dívida ativa."
+        data_type: struct
+
+      - name: natureza_divida_ativa.id_natureza_divida
+        description: "Identificador da natureza da dívida."
+        data_type: int64
+
+      - name: natureza_divida_ativa.nome_natureza_divida
+        description: "Nome/descrição da natureza da dívida."
+        data_type: string
+
+      - name: dados_complementares
+        description: "Dados complementares da CDA (texto / JSON conforme origem)."
+        data_type: string
+
+      - name: quantidade_devedores_cda
+        description: "Quantidade de devedores vinculados (tipo 'P' - principal)."
+        data_type: int64
+
+      # Lista de devedores principais associados à CDA. Normalmente deveria haver apenas um, mas o sistema permite múltiplos principais.
+      - name: devedores_vinculados_cda
+        description: "Lista de devedores principais associados à CDA. Normalmente deveria haver apenas um, mas o sistema permite múltiplos principais."
+        data_type: struct
+
+      - name: devedores_vinculados_cda.id_pessoa
+        description: "Identificador da pessoa devedora."
+        data_type: int64
+
+      - name: devedores_vinculados_cda.cpf_cnpj
+        description: "CPF ou CNPJ do devedor."
+        data_type: string
+
+      - name: devedores_vinculados_cda.tipo_pessoa
+        description: "Tipo da pessoa (1=PF, 2=PJ)."
+        data_type: int64
+
+      - name: devedores_vinculados_cda.descricao_tipo_pessoa
+        description: "Descrição do tipo de pessoa."
+        data_type: string
+
+      - name: devedores_vinculados_cda.nome
+        description: "Nome do devedor."
+        data_type: string
+
+      # Flag boolean indicando se existe imóvel associado à CDA (IPTU)
+      - name: possui_imovel_associado
+        description: "Indica se existe imóvel associado à CDA (IPTU)."
+        data_type: boolean
+
+      # Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja.
+      - name: imovel_associado
+        description: "Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja."
+        data_type: struct
+
+      - name: imovel_associado.endereco.codigo_logradouro
+        description: "Código do logradouro."
+        data_type: int64
+
+      - name: imovel_associado.endereco.nome_logradouro
+        description: "Nome do logradouro."
+        data_type: string
+
+      - name: imovel_associado.endereco.numero_porta
+        description: "Número da porta."
+        data_type: string
+
+      - name: imovel_associado.endereco.complemento_endereco
+        description: "Complemento do endereço."
+        data_type: string
+
+      - name: imovel_associado.endereco.bairro
+        description: "Bairro."
+        data_type: string
+
+      - name: imovel_associado.endereco.cep
+        description: "CEP."
+        data_type: string
+
+      - name: imovel_associado.tipologia_imovel.id_tipologia_imovel
+        description: "ID da tipologia do imóvel."
+        data_type: int64
+
+      - name: imovel_associado.tipologia_imovel.nome_tipologia_imovel
+        description: "Nome da tipologia."
+        data_type: string
+
+      - name: imovel_associado.utilizacao_imovel.id_utilizacao_imovel
+        description: "ID da utilização do imóvel."
+        data_type: int64
+
+      - name: imovel_associado.utilizacao_imovel.nome_utilizacao_imovel
+        description: "Nome da utilização."
+        data_type: string
+
+      # Informa a quantidade de guias de pagamento válidas (não canceladas e com associação ativa com a CDA) vinculadas com a CDA.
+      - name: quantidade_guias_associadas
+        description: "Informa a quantidade de guias de pagamento válidas (não canceladas e com associação ativa com a CDA) vinculadas com a CDA."
+        data_type: int64
+
+      # Lista de guias de pagamento associadas à CDA. Pode haver mais de uma Guia de Pagamento vinculada à CDA, dependendo do seu fluxo de pagamento.
+      - name: guias_pagamento_associadas
+        description: "Lista de guias de pagamento associadas à CDA. Pode haver mais de uma Guia de Pagamento vinculada à CDA, dependendo do seu fluxo de pagamento."
+        data_type: struct
+
+      - name: guias_pagamento_associadas.id_guia_pagamento
+        description: "Identificador da guia de pagamento."
+        data_type: int64
+
+      - name: guias_pagamento_associadas.data_criacao_guia
+        description: "Data de criação da guia."
+        data_type: datetime
+
+      - name: guias_pagamento_associadas.numero_processo_associado
+        description: "Processo administrativo associado à guia."
+        data_type: string
+
+      - name: guias_pagamento_associadas.tipo_guia.id_tipo_guia
+        description: "ID do tipo de guia."
+        data_type: int64
+
+      - name: guias_pagamento_associadas.tipo_guia.nome_tipo_guia
+        description: "Nome do tipo de guia."
+        data_type: string
+
+      - name: guias_pagamento_associadas.tipo_pagamento.id_tipo_pagamento
+        description: "ID do tipo de pagamento."
+        data_type: int64
+
+      - name: guias_pagamento_associadas.tipo_pagamento.nome_tipo_pagamento
+        description: "Nome do tipo de pagamento."
+        data_type: string
+
+      - name: guias_pagamento_associadas.tipo_receita.codigo_receita
+        description: "Código da receita."
+        data_type: string
+
+      - name: guias_pagamento_associadas.tipo_receita.nome_receita
+        description: "Nome da receita."
+        data_type: string
+
+      - name: guias_pagamento_associadas.situacao.id_situacao_guia_pagamento
+        description: "ID da situação da guia."
+        data_type: int64
+
+      - name: guias_pagamento_associadas.situacao.nome_situacao_guia_pagamento
+        description: "Nome da situação da guia."
+        data_type: string
+
+      - name: guias_pagamento_associadas.valor_cda_na_guia
+        description: "Valor da CDA alocado na guia."
+        data_type: numeric
+        
+      - name: guias_pagamento_associadas.valor_desconto_cda
+        description: "Valor do desconto aplicado à CDA nessa guia."
+        data_type: numeric

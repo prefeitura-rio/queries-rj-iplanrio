@@ -37,6 +37,7 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.valMoraOrigemSMF as numeric) as valor_mora_smf_iptu,
   safe_cast(a.valSaldoInscritoDA as numeric) as valor_original_divida_ativa,
   safe_cast(a.codReceita as string) as codigo_receita_cda,
+  d.nome_receita,
   safe_cast(a.idEntidadeCredora as int64) as id_entidade_credora,
   case safe_cast(a.idEntidadeCredora as int64)
     when 1 then 'PCRJ'
@@ -50,3 +51,4 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
 from {{ source('brutos_divida_ativa_staging_prefect', 'CDA') }} a
 left join {{ ref('raw_divida_ativa_situacao_certidao_divida_ativa') }} b on CAST(b.id_situacao_cda as string) = CAST(a.codSituacaoCDA as string)
 left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} c on CAST(c.id_natureza_divida as string) = a.idNaturezaDivida
+left join {{ ref('raw_divida_ativa_tipo_receita') }} d on CAST(d.codigo_receita AS string) = a.codReceita
