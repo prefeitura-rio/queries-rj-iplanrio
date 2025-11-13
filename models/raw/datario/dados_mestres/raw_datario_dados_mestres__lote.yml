@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__lote
+    description: Dados de lotes do município do Rio de Janeiro
+    columns:
+      - name: id_lote
+        description: Identificador do lote
+      - name: observacao
+        description: Observações sobre o lote
+      - name: id_quadra
+        description: Identificador da quadra
+      - name: id_numero_porta
+        description: Identificador do número de porta
+      - name: id_trecho
+        description: Identificador do trecho
+      - name: area
+        description: Área do lote em metros quadrados
+      - name: perimetro
+        description: Perímetro do lote em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial do lote
