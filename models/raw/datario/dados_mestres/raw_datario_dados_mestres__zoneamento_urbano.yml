@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__zoneamento_urbano
+    description: Dados de Zoneamento Urbano do município do Rio de Janeiro
+    columns:
+      - name: legislacao
+        description: Legislação aplicável
+      - name: nome_zona
+        description: Nome da zona
+      - name: nome_subzona
+        description: Nome da subzona
+      - name: sigla
+        description: Sigla da zona
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento
+      - name: coeficiente_aproveitamento_basico
+        description: Coeficiente de aproveitamento básico
+      - name: observacao_coeficiente_aproveitamento_basico
+        description: Observações sobre o coeficiente de aproveitamento básico
+      - name: coeficiente_aproveitamento_maximo
+        description: Coeficiente de aproveitamento máximo
+      - name: observacao_coeficiente_aproveitamento_maximo
+        description: Observações sobre o coeficiente de aproveitamento máximo
+      - name: taxa_ocupacao
+        description: Taxa de ocupação
+      - name: observacao_taxa_ocupacao
+        description: Observações sobre a taxa de ocupação
+      - name: lote_minimo
+        description: Lote mínimo permitido
+      - name: observacao_lote_minimo
+        description: Observações sobre o lote mínimo
+      - name: testada_minima
+        description: Testada mínima do lote
+      - name: observacao_testada_minima
+        description: Observações sobre a testada mínima
+      - name: gabarito_afastamento
+        description: Gabarito com afastamento
+      - name: observacao_gabarito_afastamento
+        description: Observações sobre o gabarito com afastamento
+      - name: gabarito_nao_afastamento
+        description: Gabarito sem afastamento
+      - name: observacao_gabarito_nao_afastamento
+        description: Observações sobre o gabarito sem afastamento
+      - name: afastamento_frontal
+        description: Afastamento frontal exigido
+      - name: observacao_afastamento_frontal
+        description: Observações sobre o afastamento frontal
+      - name: indice_cobertura_solo
+        description: Índice de cobertura do solo
+      - name: observacao_indice_cobertura_solo
+        description: Observações sobre o índice de cobertura do solo
+      - name: observacao_regiao_interesse_urbanistico
+        description: Observações sobre a região de interesse urbanístico
+      - name: observacao
+        description: Observações gerais
+      - name: usuario_criacao
+        description: Usuário que criou o registro
+      - name: data_criacao
+        description: Data de criação do registro
+      - name: usuario_ultima_edicao
+        description: Usuário que fez a última edição
+      - name: data_ultima_edicao
+        description: Data da última edição
+      - name: area
+        description: Área em metros quadrados
+      - name: perimetro
+        description: Perímetro em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da zona

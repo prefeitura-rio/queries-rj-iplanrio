@@ -74,6 +74,13 @@ models:
             845941190868/acesso: restrito
     raw:
       +tags: "raw"
+      datario:
+        +project: datario
+        +tags: ["datario"]
+        dados_mestres:
+          +materialized: table
+          +schema: dados_mestres
+          +tags: ["daily"]
       sme:
         +project: rj-sme
         +tags: ["sme"]

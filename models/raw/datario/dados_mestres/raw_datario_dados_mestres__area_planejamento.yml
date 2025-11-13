@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__area_planejamento
+    description: Dados de Áreas de Planejamento (AP) do município do Rio de Janeiro
+    columns:
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento (código)
+      - name: id_area_planejamento_numerico
+        description: Identificador numérico da área de planejamento
+      - name: area
+        description: Área em metros quadrados
+      - name: perimetro
+        description: Perímetro em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da área de planejamento
