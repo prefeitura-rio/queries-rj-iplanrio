@@ -80,6 +80,14 @@ models :
         description: Identificador único do chamado no banco de dados.
       - name: cpf
         description: CPF do cidadão que fez o chamado.
+      - name: id_pessoa
+        description: Identificador do cidadão que fez o chamado.
+      - name: id_protocolo
+        description: Identificador do protocolo.
+      - name: id_protocolo_chamado
+        description: Identificador do protocolo/chamado.
+      - name: ic_motivo
+        description: Indicador motivo.
       - name: extracted_at
         description: Data e hora em que o registro foi extraído pelo Airbyte.
       - name: data_particao
