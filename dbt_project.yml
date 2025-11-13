@@ -80,6 +80,10 @@ models:
         dados_mestres:
           +materialized: table
           +schema: dados_mestres
+          +tags: ["weekly"]
+        adm_central_atendimento_1746:
+          +materialized: table
+          +schema: adm_central_atendimento_1746
           +tags: ["daily"]
       sme:
         +project: rj-sme
@@ -203,7 +207,7 @@ models:
         dados_mestres:
           +materialized: table
           +schema: brutos_dados_mestres
-          +tags: "daily"
+          +tags: "weekly"
           +resource_tags:
             rj-iplanrio/dominio: administrativo
             845941190868/acesso: interno
