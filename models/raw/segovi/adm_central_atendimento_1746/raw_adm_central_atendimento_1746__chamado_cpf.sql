@@ -23,6 +23,8 @@ tb_protocolo_chamado AS (
         _airbyte_extracted_at,
         CAST(id_chamado_fk AS STRING) AS id_chamado,
         CAST(id_protocolo_fk AS STRING) AS id_protocolo,
+        CAST(id_protocolo_chamado AS STRING) AS id_protocolo_chamado,
+        CAST(ic_motivo AS STRING) AS ic_motivo,
         CAST(dt_insercao AS STRING) AS dt_insercao
     FROM {{ source('brutos_1746_staging_airbyte', 'tb_protocolo_chamado') }} AS t
 ),
@@ -44,6 +46,10 @@ source_data AS (
                 '-', ''), '.', ''), '/', ''), '(', ''), ')', ''), ' ', ''), ',', ''), '+', ''), ';', '') 
         ELSE NULL 
         END AS cpf,
+        pr.id_pessoa,
+        pc.id_protocolo,
+        pc.id_protocolo_chamado,
+        pc.ic_motivo,
         pc._airbyte_extracted_at AS extracted_at,
         SAFE_CAST(DATE_TRUNC(DATE(pr.dt_inicio), month) AS DATE) data_particao
     FROM tb_protocolo_chamado pc
@@ -56,6 +62,16 @@ SELECT
         REGEXP_REPLACE(id_chamado, r'\.0$', '') AS STRING
     ) id_chamado,
     cpf, 
+    SAFE_CAST(
+        REGEXP_REPLACE(id_pessoa, r'\.0$', '') AS STRING
+    ) id_pessoa,
+    SAFE_CAST(
+        REGEXP_REPLACE(id_protocolo, r'\.0$', '') AS STRING
+    ) id_protocolo,
+    SAFE_CAST(
+        REGEXP_REPLACE(id_protocolo_chamado, r'\.0$', '') AS STRING
+    ) id_protocolo_chamado,
+    ic_motivo,
     extracted_at,
     data_particao
 FROM source_data AS t
