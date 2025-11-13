@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__aeis
+    description: Dados de Áreas de Especial Interesse Social (AEIS) do município do Rio de Janeiro
+    columns:
+      - name: id_aeis
+        description: Identificador da AEIS
+      - name: nome_aeis
+        description: Nome da AEIS
+      - name: tipologia
+        description: Tipologia da AEIS
+      - name: item
+        description: Item da AEIS
+      - name: nome_setor
+        description: Nome do setor
+      - name: nome_sigla
+        description: Sigla da AEIS
+      - name: nome_ar
+        description: Nome da área de regularização
+      - name: planta_cadastral
+        description: Planta cadastral
+      - name: nome_regiao_administrativa
+        description: Nome da região administrativa
+      - name: projeto_loteamento
+        description: Projeto de loteamento
+      - name: referencia
+        description: Referência
+      - name: data_cadastro
+        description: Data de cadastro
+      - name: legislacao
+        description: Legislação aplicável
+      - name: limite_pavimentos_permitido
+        description: Limite de pavimentos permitido
+      - name: taxa_ocupacao
+        description: Taxa de ocupação
+      - name: indice_aproveitamento_terreno
+        description: Índice de aproveitamento do terreno
+      - name: coeficiente_adensamento
+        description: Coeficiente de adensamento
+      - name: afastamento
+        description: Afastamento
+      - name: area
+        description: Área em metros quadrados
+      - name: comprimento
+        description: Comprimento em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da AEIS

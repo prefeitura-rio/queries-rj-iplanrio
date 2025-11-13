@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__zoneamento_macro_zonas
+    description: Dados de Macro Zonas de Zoneamento do município do Rio de Janeiro
+    columns:
+      - name: nome_macrozona
+        description: Nome da macro zona
+      - name: area
+        description: Área em metros quadrados
+      - name: perimetro
+        description: Perímetro em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da macro zona
