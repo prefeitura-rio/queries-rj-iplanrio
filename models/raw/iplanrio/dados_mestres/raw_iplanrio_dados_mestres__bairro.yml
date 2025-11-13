@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_iplanrio_dados_mestres__bairro
+    description: Dados de bairros do município do Rio de Janeiro
+    columns:
+      - name: id_bairro
+        description: Identificador único do bairro
+      - name: nome
+        description: Nome do bairro
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento
+      - name: id_regiao_planejamento
+        description: Identificador da região de planejamento
+      - name: nome_regiao_planejamento
+        description: Nome da região de planejamento
+      - name: id_regiao_administrativa
+        description: Identificador da região administrativa
+      - name: nome_regiao_administrativa
+        description: Nome da região administrativa
+      - name: subprefeitura
+        description: Nome da subprefeitura
+      - name: area
+        description: Área do bairro em metros quadrados
+      - name: perimetro
+        description: Perímetro do bairro em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial do bairro

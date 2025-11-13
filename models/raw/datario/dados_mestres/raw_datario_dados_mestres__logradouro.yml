@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__logradouro
+    description: Dados de logradouros (ruas) do município do Rio de Janeiro
+    columns:
+      - name: id_trecho
+        description: Identificador do trecho
+      - name: id_logradouro
+        description: Identificador do logradouro
+      - name: inicio_numero_porta_par
+        description: Número inicial de porta par
+      - name: final_numero_porta_par
+        description: Número final de porta par
+      - name: inicio_numero_porta_impar
+        description: Número inicial de porta ímpar
+      - name: final_numero_porta_impar
+        description: Número final de porta ímpar
+      - name: id_tipo_logradouro
+        description: Identificador do tipo de logradouro
+      - name: tipo_logradouro_abreviado
+        description: Tipo de logradouro abreviado
+      - name: tipo_logradouro_extenso
+        description: Tipo de logradouro extenso
+      - name: id_nobreza
+        description: Identificador de nobreza
+      - name: nobreza
+        description: Nobreza do logradouro
+      - name: preposicao
+        description: Preposição do nome do logradouro
+      - name: nome_parcial
+        description: Nome parcial do logradouro
+      - name: nome_completo
+        description: Nome completo do logradouro
+      - name: nome_mapa
+        description: Nome do logradouro para exibição em mapa
+      - name: id_bairro
+        description: Identificador do bairro
+      - name: nome_bairro
+        description: Nome do bairro
+      - name: hierarquia
+        description: Hierarquia do logradouro
+      - name: sentido_unico
+        description: Indicador de sentido único (oneway)
+      - name: velocidade_regulamentada
+        description: Velocidade regulamentada
+      - name: tipo_trecho
+        description: Tipo de trecho
+      - name: data_ultima_edicao
+        description: Data da última edição
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial do logradouro
