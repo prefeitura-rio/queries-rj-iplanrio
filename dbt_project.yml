@@ -193,6 +193,13 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: administrativo
             845941190868/acesso: interno
+        dados_mestres:
+          +materialized: table
+          +schema: brutos_dados_mestres
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: administrativo
+            845941190868/acesso: interno
         eai_logs:
           +materialized: table
           +schema: brutos_eai_logs
