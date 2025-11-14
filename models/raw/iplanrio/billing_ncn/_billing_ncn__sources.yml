@@ -7,6 +7,7 @@ sources:
     tables:
       - name: gcp_billing_export_v1_01E886_BEEF88_126F35
 
+
   - name: billing_dados_rio
     database: dados-rio-billing
     schema: billing
