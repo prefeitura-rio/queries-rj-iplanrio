@@ -1,20 +1,16 @@
 version: 2
 
 sources:
-  - name: brutos_1746_staging
-    database: rj-iplanrio
-    schema: brutos_1746_staging
-    tables:
-      - name: chamado
-      - name: chamado_cpf
-      - name: origem_ocorrencia
-      - name: pessoa
-  
   - name: brutos_1746_staging_airbyte
     database: rj-iplanrio
     schema: brutos_1746_staging
     tables:
       - name: ViewDatalake
+      - name: tb_origem_ocorrencia
+      - name: tb_pessoa
+      - name: tb_protocolo_chamado
+      - name: tb_protocolo
+
 
     config:
       freshness: # default freshness
