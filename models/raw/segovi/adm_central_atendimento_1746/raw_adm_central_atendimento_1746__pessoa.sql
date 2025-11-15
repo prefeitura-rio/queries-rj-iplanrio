@@ -38,7 +38,6 @@ WITH source_data AS (
     CAST(id_pais_ddi_fk AS STRING) AS id_pais_ddi_fk,
     CAST(ds_endereco_cep AS STRING) AS ds_endereco_cep,
     CAST(fl_recebe_email AS STRING) AS fl_recebe_email,
-    CAST(fl_alterou_senha AS STRING) AS fl_alterou_senha,
     CAST(id_tratamento_fk AS STRING) AS id_tratamento_fk,
     CAST(ds_endereco_numero AS STRING) AS ds_endereco_numero,
     CAST(id_escolaridade_fk AS STRING) AS id_escolaridade_fk,
@@ -169,9 +168,6 @@ SELECT
     SAFE_CAST(
         REGEXP_REPLACE(fl_recebe_email, r'\.0$', '') AS STRING
     ) flag_recebe_email,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_alterou_senha, r'\.0$', '') AS STRING
-    ) flag_alterou_senha,
     SAFE_CAST(
         REGEXP_REPLACE(fl_reintegracao_sms, r'\.0$', '') AS STRING
     ) flag_reintegracao_sms,
