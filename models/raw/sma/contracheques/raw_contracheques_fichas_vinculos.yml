@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: raw_contracheques_fichas_vinculos
+    description: "Tabela contendo os registros de FICHAS_VINCULOS do sistema de contracheques"
+    columns:
+      - name: numfunc
+        description: "NUMFUNC"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_fichas_vinculos__numfunc__not_null
+
+      - name: numvinc
+        description: "NUMVINC"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_fichas_vinculos__numvinc__not_null
+
+      - name: mes_ano_folha
+        description: "MES_ANO_FOLHA"
+
+      - name: num_folha
+        description: "NUM_FOLHA"
+
+      - name: emp_codigo
+        description: "EMP_CODIGO"
+
+      - name: ficha
+        description: "FICHA"
+
+      - name: numpens
+        description: "NUMPENS"
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
