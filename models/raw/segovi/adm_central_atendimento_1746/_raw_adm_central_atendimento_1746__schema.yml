@@ -176,8 +176,6 @@ models :
         description: Flag que indica se a pessoa deseja receber SMS.
       - name: flag_recebe_email
         description: Flag que indica se a pessoa deseja receber email.
-      - name: flag_alterou_senha
-        description: Flag que indica se a pessoa já alterou a senha inicial.
       - name: flag_reintegracao_sms
         description: Flag que indica se a pessoa autoriza reintegração por SMS.
       - name: flag_reintegracao_email
