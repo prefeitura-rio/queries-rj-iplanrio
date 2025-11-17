@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_imovel__inscricao_imobiliaria__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_imovel__inscricao_imobiliaria__unique
-              severity: error
+              config:
+                severity: error
       - name: codigo_logradouro
         description: "Código do logradouro do imóvel"
         data_type: int64
@@ -49,7 +51,7 @@ models:
       - name: id_utilizacao_imovel
         description: "Identificador da utilização do imóvel"
         data_type: int64
-        
+
       - name: nome_utilizacao_imovel
         description: "Nome da utilização do imóvel"
         data_type: string

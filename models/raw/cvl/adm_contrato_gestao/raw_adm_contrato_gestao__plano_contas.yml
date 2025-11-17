@@ -6,7 +6,7 @@ models:
 Exemplo:
 É exemplo de uma despesa, a nota fiscal número 12549, série A, da compra de uma mesa de escritório, feita à empresa ACME SA, no valor de R$ 500,00, no mês/ano de referência 02/2019, do contrato 016/2019, da unidade 999, da Organização Social 111.
  
-OBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela financeiro.item_despesa."	
+OBS: com a implementação da nova arquitetura de contratos, Versão 2.14, esta tabela deixa de ser usada, sendo substituída pela tabela financeiro.item_despesa."  
     columns:
       - name: id_item_plano_de_contas
         description: Id do item de despesa. Auto incremental do próprio banco de dados.

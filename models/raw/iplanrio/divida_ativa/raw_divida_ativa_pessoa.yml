@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_pessoa__id_pessoa__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_pessoa__id_pessoa__unique
-              severity: error
+              config:
+                severity: error
       - name: cpf_cnpj
         description: "CPF ou CNPJ da pessoa que pode estar vinculada a uma dívida ativa."
         data_type: string
