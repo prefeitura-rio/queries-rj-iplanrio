@@ -7,6 +7,8 @@ sources:
     tables:     
       - name: Vw_UA
         description: "Tabela de unidades administrativas"
+      - name: vw_DataLake
+        description: "View combinando tabelas sici.t_ug_atual, sici.ug_tipo_ug, estrutura_batch, tipo_equipamento, horario, endereco e comunicacao para formar a tupla a ser utilizada pelo DataLake"
 
     config:
       freshness: # default freshness
