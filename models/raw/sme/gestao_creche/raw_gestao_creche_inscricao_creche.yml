@@ -10,56 +10,56 @@ models:
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__identificador_inscricao_creche__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: identificador_processo_matricula
         description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__identificador_processo_matricula__not_null
-              severity: error        
-
+              config:
+                severity: error
       - name: identificador_polo_matricula
         description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__identificador_polo_matricula__not_null
-              severity: error        
-
+              config:
+                severity: error
       - name: identificador_inscricao_polo
         description: "FK da tabela inscricao_polo - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__identificador_inscricao_polo__not_null
-              severity: error        
-
+              config:
+                severity: error
       - name: identificador_escola
         description: "Id da escola"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__identificador_escola__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: identificador_unidade_escolar
         description: "Id da Unidade Escolar"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__identificador_unidade_escolar__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: preferencia_creche
         description: "Ordem de preferência da creche dentre as 5 que podem ser consultadas"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__preferencia_creche__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: pic_ano_anterior
         description: "Pic do ano anterior"
         data_type: int64
@@ -82,24 +82,24 @@ models:
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__situacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: data_criacao
         description: "Data de criação da inscrição"
         data_type: datetime
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__data_criacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: data_alteracao
         description: "Data de alteração da inscrição"
         data_type: datetime
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_creche__data_alteracao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: justificativa_convocacao_excepcional
         description: "Justificativa para a convocação excepcional"
         data_type: string

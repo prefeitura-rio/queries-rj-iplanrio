@@ -39,7 +39,8 @@ models:
         tests:
           - not_null
           - accepted_values:
-              values: ['compartilhado', 'exclusivo', 'nao_categorizado']
+              arguments:
+                values: ['compartilhado', 'exclusivo', 'nao_categorizado']
       - name: servico
         description: "Serviço GCP"
         data_type: string

@@ -5,7 +5,7 @@ models:
     description: "Tabela que armazena os dados dos saldos. Saldo é o valor disponível e está associado a o extrato de uma conta bancária específica do projeto.
 Exemplo:
 É exemplo de um saldo de conta bancário, o valor de R$ 568.098,89, no Banco do Brasil, agência Centro, conta corrente 56780-9, conta de provisionamento, com mês/ano de referência 05/2019.
-Tabela preenchida pelo usuário, na operação do sistema. OBS 1: um único saldo é lançado nesta tabela, em tantas linhas quantos diferente itens de saldos ativos existirem na tabela osinfo.saldo_item"	
+Tabela preenchida pelo usuário, na operação do sistema. OBS 1: um único saldo é lançado nesta tabela, em tantas linhas quantos diferente itens de saldos ativos existirem na tabela osinfo.saldo_item"  
     columns:
       - name: id_saldo_dados
         description: ID do saldo. Auto incremental do próprio banco de dados.
