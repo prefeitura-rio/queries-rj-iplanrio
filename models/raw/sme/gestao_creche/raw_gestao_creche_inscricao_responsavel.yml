@@ -3,50 +3,50 @@ version: 2
 models:
   - name: raw_gestao_creche_inscricao_responsavel
     description: "Relaciona as informações de uma inscrição em creche aos responsáveis pela criança."
-    columns:      
+    columns:
       - name: identificador_responsavel
         description: "PK desta tabela - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__identificador_responsavel__not_null
-              severity: error        
-
+              config:
+                severity: error
       - name: identificador_processo_matricula
         description: "FK tabela inscricao_crianca - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__identificador_processo_matricula__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: identificador_polo_matricula
         description: "FK tabela inscricao_crianca - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__identificador_polo_matricula__not_null
-              severity: error        
-
+              config:
+                severity: error
       - name: identificador_inscricao_polo
         description: "FK tabela inscricao_crianca - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__identificador_inscricao_polo__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: nome
         description: "Nome do responsável pela criança"
         data_type: string
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__nome__not_null
-              severity: error  
-
+              config:
+                severity: error
       - name: data_nascimento
         description: "Data de nascimento do responsável pela criança"
-        data_type: date        
+        data_type: date
 
       - name: nis
         description: "NIS do responsável pela criança"
@@ -62,32 +62,32 @@ models:
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__responsavel__not_null
-              severity: error                
-
+              config:
+                severity: error
       - name: situacao
         description: "Situação do responsável"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__situacao__not_null
-              severity: error  
-
+              config:
+                severity: error
       - name: data_criacao
         description: "Data de criação do registro na base de dados"
         data_type: datetime
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__data_criacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: data_alteracao
         description: "Data de alteração do registro na base de dados"
         data_type: datetime
         data_tests:
           - not_null:
               name: raw_gestao_creche_inscricao_responsavel__data_alteracao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
         data_type: timestamp

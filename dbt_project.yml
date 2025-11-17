@@ -174,7 +174,7 @@ models:
         bcadastro:
           +materialized: table
           +schema: brutos_bcadastro
-          #+tags: "weekly"
+          +tags: "weekly"
           +resource_tags:
             rj-iplanrio/dominio: bcadastro
             845941190868/acesso: restrito

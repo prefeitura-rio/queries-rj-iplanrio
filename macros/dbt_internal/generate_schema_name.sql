@@ -5,9 +5,9 @@
         {%- set default_schema = target.schema -%}
         {%- if custom_schema_name is none -%}
 
-            {{ var("DBT_USER") }}__{{ default_schema }}
+            {{ var("DBT_USER") }}__{{ node.config.database | replace("-", "_") }}__{{ default_schema }}
 
-        {%- else -%} {{ var("DBT_USER") }}__{{ custom_schema_name | trim }}
+        {%- else -%} {{ var("DBT_USER") }}__{{ node.config.database | replace("-", "_") }}__{{ custom_schema_name | trim }}
 
         {%- endif -%}
 

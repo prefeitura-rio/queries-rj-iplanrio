@@ -15,7 +15,8 @@ models:
         data_tests:
           - not_null:
               name: raw_sigma_movimentacao__codigo_material__not_null
-              severity: error
+              config:
+                severity: error
       - name: cnpj_fornecedor
         description: "CNPJ do Fornecedor"
         data_type: string
@@ -91,5 +92,4 @@ models:
         description: "CNPJ do Fabricante."
         data_type: string
         quote: true
-
 
