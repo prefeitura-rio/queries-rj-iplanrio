@@ -10,14 +10,16 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_cota_pagamento__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: id_cota_guia_pagamento
         description: "Identificador da cota (parcela) da guia de pagamento."
         data_type: int64
         data_tests:
           - not_null:
               name: raw_divida_ativa_cota_pagamento__id_cota_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: cota_paga
         description: "Indica se a cota foi paga (true/false)."
         data_type: boolean

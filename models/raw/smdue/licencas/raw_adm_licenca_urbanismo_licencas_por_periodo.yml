@@ -14,7 +14,8 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo_licencas_por_periodo__requerente__not_null
-              severity: error
+              config:
+                severity: error
         config:
           meta:
             is_sensitive: true
@@ -29,11 +30,8 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__identificador_licenca__not_null
-              severity: error
-          # - unique:
-          #     name: raw_adm_licenca_urbanismo__identificador_licenca__unique
-          #     severity: error
-
+              config:
+                severity: error
       - name: classe_licenca
         description: "Classe da Licença (Nova, Prorrogação, Revalidação, Complementação e Atualização)"
         data_type: string
@@ -41,8 +39,8 @@ models:
         data_tests:
           - not_null:
               name: raw_sicop_licencas_por_periodo__classe_licenca__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: endereco
         description: "Endereço da Edificação"
         data_type: string
@@ -50,16 +48,16 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__endereco__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: codigo_logradouro
         description: "Código do Logradouro"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__codigo_logradouro__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: tipo_logradouro
         description: "Tipo do Logradouro"
         data_type: string
@@ -67,8 +65,8 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__tipo_logradouro__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: nobreza
         description: "Nobreza (General, Dom, Coronel, Jornalista...)"
         data_type: string
@@ -119,8 +117,8 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__codigo_ap__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: nome_bairro
         description: "Nome do Bairro"
         data_type: string
@@ -128,16 +126,16 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__nome_bairro__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: licenca_gratis
         description: "Indicador de Licença Gratuita"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__licenca_gratis__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: numero_licenca
         description: "Número da Licença"
         data_type: string
@@ -150,16 +148,16 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__numero_processo__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: area_total_edificada
         description: "Área Total da Edificação"
         data_type: float64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__area_total_edificada__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: tipologia_edificacao
         description: "Tipologia da Edificação"
         data_type: string
@@ -167,8 +165,8 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__tipologia_edificacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: uso_edificacao
         description: "Uso da Edificação"
         data_type: string
@@ -176,49 +174,48 @@ models:
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__uso_edificacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: quantidade_edificaoes_licen
         description: "Quantidade de Edificações da Licença"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__quantidade_edificaoes_licen__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: total_unidades_edificacao
         description: "Total de Unidades da Edificação"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__total_unidades_edificacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: total_unidades_residencial
         description: "Total de Unidades Residencial"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__total_unidades_residencial__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: total_unidades_loja
         description: "Total de Lojas"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__total_unidades_loja__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: total_unidade_sala
         description: "Total de Salas"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_adm_licenca_urbanismo__total_unidade_sala__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: datalake_transformed_at
         description: "Data de transformação do dado"
         data_type: timestamp
-
