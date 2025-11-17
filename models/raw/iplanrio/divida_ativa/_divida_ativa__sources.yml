@@ -4,9 +4,6 @@ sources:
   - name: brutos_divida_ativa_staging
     database: rj-iplanrio
     schema: brutos_divida_ativa_staging
-    freshness: # default freshness
-      error_after: {count: 24, period: hour}
-    loaded_at_field: _airbyte_extracted_at
     tables:
       - name: SituacaoCDA
       - name: NaturezaDivida
@@ -19,13 +16,14 @@ sources:
       - name: Enumerator
       - name: ProtestosMensagens
       - name: ProtestosCDAs
-  
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
   - name: brutos_divida_ativa_staging_prefect
     database: rj-iplanrio
     schema: brutos_divida_ativa_staging
-    freshness: # default freshness
-      error_after: {count: 24, period: hour}
-    loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
     tables:
       - name: GuiaPagamento
       - name: GuiaPagamento_CDA
@@ -38,9 +36,13 @@ sources:
       - name: DevedorCDA
       - name: PagamentosCDA
 
-      
 
 
 
 
 
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)

@@ -10,11 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_honorario__id_certidao_divida_ativa__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_honorario__id_certidao_divida_ativa__unique
-              severity: error
-
+              config:
+                severity: error
       - name: valor_saldo_devido
         description: "Valor do saldo devido."
         data_type: numeric

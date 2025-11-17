@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_utilizacao_imovel__id_utilizacao_imovel__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_utilizacao_imovel__id_utilizacao_imovel__unique
-              severity: error
+              config:
+                severity: error
       - name: nome_utilizacao_imovel
         description: "Nome do tipo de utilização do imóvel vinculada à CDA."
         data_type: string

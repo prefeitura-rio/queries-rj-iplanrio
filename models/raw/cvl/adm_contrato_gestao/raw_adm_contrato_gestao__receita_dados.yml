@@ -5,7 +5,7 @@ models:
     description: "Tabela que armazena os dados das receitas. Receitas são as entradas monetárias em uma conta específica do projeto gerido por Organização Social.
 Exemplo:
 É exemplo de uma receita, o recebimento da 5ª parcela fixa do contrato 016/2019, no mês/ano de referência 04/2019, no banco do Brasil, agência Centro, número 99865-9.
-Tabela preenchida pelo usuário, na operação do sistema. OBS 1: uma única receita é lançada nesta tabela, em tantas linhas quantos diferente itens de receitas ativos existirem na tabela osinfo.receita_item"	
+Tabela preenchida pelo usuário, na operação do sistema. OBS 1: uma única receita é lançada nesta tabela, em tantas linhas quantos diferente itens de receitas ativos existirem na tabela osinfo.receita_item"  
     columns:
       - name: id_receita_dados
         description: ID da linha na qual se refere a receita. (FK) Contidos na tabela - depende da versão

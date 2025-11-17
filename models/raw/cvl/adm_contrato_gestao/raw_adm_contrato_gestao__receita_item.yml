@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: raw_adm_contrato_gestao__receita_item
-    description: "Tabela que armazena os possíveis itens de receitas. DML executada direto no banco de dados."	
+    description: "Tabela que armazena os possíveis itens de receitas. DML executada direto no banco de dados."  
     columns:
       - name: id_receita_item
         description: ID do item de receita. Auto incremental do próprio banco de dados.
