@@ -38,7 +38,7 @@ models:
 
       - name: equipamento_endereco
         description: "Endereço do equipamento"
-        data_type: string
+        data_type: json
         quote: true
 
       - name: equipamento_tipo
@@ -52,7 +52,7 @@ models:
 
       - name: contato
         description: "Informações de contato do equipamento"
-        data_type: string
+        data_type: json
         quote: true
 
       - name: ativo
