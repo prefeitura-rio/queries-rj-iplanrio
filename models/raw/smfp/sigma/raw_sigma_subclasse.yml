@@ -15,8 +15,9 @@ models:
         data_tests:
           - relationships:
               name: raw_sigma_subclasse__codigo_grupo__relationships
-              to: ref('raw_sigma_grupo')
-              field: codigo_grupo
+              arguments:
+                to: ref('raw_sigma_grupo')
+                field: codigo_grupo
       - name: codigo_classe
         description: "Código da Classe"
         data_type: string
@@ -24,8 +25,9 @@ models:
         data_tests:
           - relationships:
               name: raw_sigma_subclasse__codigo_classe__relationships
-              to: ref('raw_sigma_classe')
-              field: codigo_classe
+              arguments:
+                to: ref('raw_sigma_classe')
+                field: codigo_classe
       - name: codigo_subclasse
         description: "Código da Subclasse"
         data_type: string
@@ -38,5 +40,4 @@ models:
         description: "Status da Subclasse"
         data_type: integer
         quote: true
-
 

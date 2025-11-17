@@ -10,14 +10,16 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_cota_pagamento_associado__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: id_cota_guia_pagamento
         description: "Identificador da nova cota (parcela) da guia de pagamento substituta."
         data_type: int64
         data_tests:
           - not_null:
               name: raw_divida_ativa_cota_pagamento_associado__id_cota_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: id_guia_pagamento_associada
         description: "Identificador da guia de pagamento original substituída."
         data_type: int64

@@ -14,10 +14,8 @@ models:
         data_tests:
           - not_null:
               name: raw_sigma_devolucao_material__id_unidade_origem__not_null
-              severity: error
-          # - unique:
-          #     name: raw_sigma_devolucao_material__id_unidade_origem__unique
-          #     severity: error
+              config:
+                severity: error
       - name: ano_mes_referencia
         description: "Ano e mês de referência (AAAAMM)"
         data_type: string
@@ -58,5 +56,4 @@ models:
         description: "Valor total do material devolvido (quantidade x valor unitário)"
         data_type: string
         quote: true
-
 

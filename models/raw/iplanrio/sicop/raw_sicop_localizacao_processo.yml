@@ -12,11 +12,8 @@ models:
         data_tests:
           - not_null:
               name: raw_sicop_localizacao_processo__id_processo__not_null
-              severity: error
-          # - unique:
-          #     name: raw_sicop_localizacao_processo__id_processo__unique
-          #     severity: error
-
+              config:
+                severity: error
       - name: localizacao_processo
         description: "Local onde o processo está arquivado fisicamente. Ex.: Estante 1, prateleira 1"
         data_type: string
@@ -25,4 +22,4 @@ models:
 
       - name: datalake_transformed_at
         description: "Data de transformação do dado"
-        data_type: date  
+        data_type: date

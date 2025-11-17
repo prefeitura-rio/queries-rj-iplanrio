@@ -98,14 +98,16 @@ models:
         tests:
           - not_null
           - dbt_utils.expression_is_true:
-              expression: "= true"
+              arguments:
+                expression: "= true"
       - name: aberto_ao_publico
         description: "Indica se o equipamento está aberto ao público (sempre true)"
         data_type: boolean
         tests:
           - not_null
           - dbt_utils.expression_is_true:
-              expression: "= true"
+              arguments:
+                expression: "= true"
       - name: horario_funcionamento
         description: "Array com horários de funcionamento por dia da semana"
         data_type: "array<struct<dia string, abre time, fecha time>>"
