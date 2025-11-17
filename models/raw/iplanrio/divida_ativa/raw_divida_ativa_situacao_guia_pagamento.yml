@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_situacao_guia_pagamento__id_situacao_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_situacao_guia_pagamento__id_situacao_guia_pagamento__unique
-              severity: error
+              config:
+                severity: error
       - name: nome_situacao_guia_pagamento
         description: "Nome ou descrição da situação da guia de pagamento."
         data_type: string
