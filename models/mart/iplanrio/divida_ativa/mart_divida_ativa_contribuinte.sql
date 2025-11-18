@@ -1,11 +1,20 @@
+{{
+    config(
+        alias='contribuinte',
+        materialized="table" 
+    )
+}}
+
 with
 
 contribuintes as 
 (
   select distinct b.id_pessoa, 
-    b.cpf_cnpj, 
-    b.tipo_pessoa, 
-    b.descricao_tipo_pessoa, 
+    b.cpf_cnpj,
+    struct( 
+        b.tipo_pessoa, 
+        b.descricao_tipo_pessoa
+    ) as tipo_pessoa,
     b.nome
   from {{ ref('mart_divida_ativa_certidao_divida_ativa') }} a, --`rj-iplanrio.divida_ativa.certidao_divida_ativa`
   unnest(devedores_vinculados_cda) b
@@ -44,7 +53,7 @@ cdas_contribuinte as
         a.imovel_associado
       ) order by a.id_certidao_divida_ativa
     ) as cdas_associadas,
-  from {{ ref('mart_divida_ativa_certidao_divida_ativa') }} a -- `rj-iplanrio.divida_ativa.certidao_divida_ativa`
+  from {{ ref('mart_divida_ativa_certidao_divida_ativa') }} a, -- `rj-iplanrio.divida_ativa.certidao_divida_ativa`
   unnest(devedores_vinculados_cda) b
   group by b.id_pessoa
 ),
@@ -52,7 +61,7 @@ cdas_contribuinte as
 contribuintes_vs_guias as
 (
   select distinct c.id_pessoa, b.id_guia_pagamento
-  from {{ ref('mart_divida_ativa_certidao_divida_ativa') }} a -- `rj-iplanrio.divida_ativa.certidao_divida_ativa`
+  from {{ ref('mart_divida_ativa_certidao_divida_ativa') }} a, -- `rj-iplanrio.divida_ativa.certidao_divida_ativa`
   unnest(a.guias_pagamento_associadas) b,
   unnest(a.devedores_vinculados_cda) c
 ),
@@ -95,4 +104,4 @@ left join cdas_contribuinte b
   on b.id_pessoa = a.id_pessoa
 left join guias_contribuinte c 
   on c.id_pessoa = a.id_pessoa
---where a.id_pessoa in (3076125)
+

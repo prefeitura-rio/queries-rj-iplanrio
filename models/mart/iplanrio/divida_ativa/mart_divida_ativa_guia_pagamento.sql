@@ -87,7 +87,7 @@ cotas_por_guia as
         a.ano_ipcae
       ) order by a.data_vencimento
     ) as cotas
-  from cotas_validas a 
+  from cotas_validas a --rj-iplanrio.brutos_divida_ativa.guia_pagamento
   group by a.id_guia_pagamento
 ),
 
