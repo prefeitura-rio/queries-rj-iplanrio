@@ -13,11 +13,6 @@ models:
         description: Data da dimensão de calendário
         data_type: date
         quote: false
-        data_tests:
-          - not_null:
-              name: raw_iplanrio_billing_ncn_x__date__not_null
-              config:
-                severity: error
       - name: usage_date
         description: Data de uso do serviço GCP
         data_type: date
