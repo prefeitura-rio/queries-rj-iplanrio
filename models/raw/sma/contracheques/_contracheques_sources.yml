@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: brutos_contracheque_staging
+    database: rj-iplanrio   # opcional se igual ao target
+    schema: brutos_contracheque_staging
+    tables:
+      - name:  folhas_emp
+        description: "Tabela de folhas de pagamento do sistema de contracheques ERGON"
+      - name:  fichas_vinculos
+        description: "Tabela de fichas de vínculos do sistema de contracheques ERGON"
+      - name:  fichas_rubricas
+        description: "Tabela de fichas de rubricas do sistema de contracheques ERGON"
+      - name:  fitabanco
+        description: "Tabela de informações bancárias das fichas do sistema de contracheques ERGON"
+      - name:  vinculos
+        description: "Tabela de vínculos funcionais do sistema de contracheques ERGON"
+      - name:  funcionarios
+        description: "Tabela de funcionários do sistema de contracheques ERGON"
+      - name:  pensionistas
+        description: "Tabela de pensionistas do sistema de contracheques ERGON"
+      - name:  rubricas
+        description: "Tabela de rubricas do sistema de contracheques ERGON"
+      - name:  dependencias
+        description: "Tabela de dependências funcionais do sistema de contracheques ERGON"
+      - name:  historico_dependentes
+        description: "Tabela de histórico de dependências do sistema de contracheques ERGON"
+      - name:  cargos
+        description: "Tabela de cargos do sistema de contracheques ERGON"
+      - name:  provimentos_ev
+        description: "Tabela de provimentos e eventuais do sistema de contracheques ERGON"
+      - name:  dependentes
+        description: "Tabela de dependentes do sistema de contracheques ERGON"
+      - name:  fatores_rubricas
+        description: "Tabela de fatores de rubrica do sistema de contracheques ERGON"
+      - name: hsetor
+        description: "Tabela de setores do sistema HADES"
+      - name:  iplanrio_mensagem_setor_cargo
+        description: "Tabela de mensagens de setor e cargo do sistema de contracheques ERGON"
+      - name:  iplanrio_registro_prefixo
+        description: "Tabela de prefixos do sistema de contracheques ERGON"
+      - name:  iplanrio_mensagem_prefixo
+        description: "Tabela de mensagens de prefixo do sistema de contracheques ERGON"
+      - name:  iplanrio_mensagem_externo
+        description: "Tabela de mensagens extras do sistema de contracheques ERGON"
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)

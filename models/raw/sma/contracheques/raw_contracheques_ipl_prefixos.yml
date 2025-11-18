@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: raw_contracheques_ipl_prefixos
+    description: "Tabela contendo os registros de IPL_PREFIXOS do sistema de contracheques"
+    columns:
+      - name: numfunc
+        description: "NUMFUNC"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_ipl_prefixos__numfunc__not_null
+
+      - name: numvinc
+        description: "NUMVINC"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_ipl_prefixos__numvinc__not_null
+
+      - name: mesano
+        description: "MESANO"
+
+      - name: prefixo
+        description: "PREFIXO"
+        data_tests:
+          - not_null:
+              name: raw_contracheques_ipl_prefixos__prefixo__not_null
+
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
