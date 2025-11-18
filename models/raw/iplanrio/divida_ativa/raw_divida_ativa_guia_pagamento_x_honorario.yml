@@ -10,14 +10,16 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_guia_pagamento_x_honorario__id_certidao_divida_ativa__not_null
-              severity: error
+              config:
+                severity: error
       - name: id_guia_pagamento
         description: "Identificador da guia de pagamento associada."
         data_type: int64
         data_tests:
           - not_null:
               name: raw_divida_ativa_guia_pagamento_x_honorario__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: situacao_associacao
         description: "Situação da associação entre os honorários e a guia de pagamento (ativa ou inativa)."
         data_type: boolean
@@ -44,4 +46,4 @@ models:
         data_type: timestamp
       - name: transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp        
+        data_type: timestamp

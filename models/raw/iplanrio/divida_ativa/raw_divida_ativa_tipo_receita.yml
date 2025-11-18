@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_tipo_receita__codigo_receita__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_tipo_receita__codigo_receita__unique
-              severity: error
+              config:
+                severity: error
       - name: nome_receita
         description: "Nome ou descrição da receita."
         data_type: string

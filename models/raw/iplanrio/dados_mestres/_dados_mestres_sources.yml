@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: brutos_dados_mestres_staging
+    database: rj-iplanrio
+    schema: brutos_dados_mestres_staging
+    tables:
+      - name: subprefeitura
+        description: Tabela fonte de subprefeituras
+      - name: rio_janeiro
+        description: Tabela fonte do município do Rio de Janeiro
+      - name: zoneamento_macro_zonas
+        description: Tabela fonte de macro zonas de zoneamento
+      - name: numero_porta
+        description: Tabela fonte de números de porta (endere�os)
+      - name: area_planejamento
+        description: Tabela fonte de áreas de planejamento
+      - name: zoneamento_urbano
+        description: Tabela fonte de zoneamento urbano
+      - name: lote
+        description: Tabela fonte de lotes
+      - name: regiao_planejamento
+        description: Tabela fonte de regi�es de planejamento
+      - name: aeis
+        description: Tabela fonte de áreas de Especial Interesse Social (AEIS)
+      - name: bairro
+        description: Tabela fonte de bairros
+      - name: aeis_bairro_maravilha
+        description: Tabela fonte de AEIS de Bairro Maravilha
+      - name: regiao_administrativa
+        description: Tabela fonte de regiões administrativas
+      - name: logradouro
+        description: Tabela fonte de logradouros (ruas)

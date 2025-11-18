@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: raw_iplanrio_dados_mestres__rio_janeiro
+    description: Dados do município do Rio de Janeiro
+    columns:
+      - name: nome_municipio
+        description: Nome do município
+      - name: area
+        description: Área do município em metros quadrados
+      - name: perimetro
+        description: Perímetro do município em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial do município

@@ -10,44 +10,44 @@ models:
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__identificador_processo_matricula__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: identificador_polo_matricula
         description: "FK da tabela inscricao_responsavel - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__identificador_polo_matricula__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: identificador_inscricao_polo
         description: "FK da tabela inscricao_responsavel - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__identificador_inscricao_polo__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: identificador_responsavel
         description: "FK da tabela inscricao_responsavel - (Parte da chave composta)"
         data_type: int64
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__identificador_responsavel__not_null
-              severity: error        
-
+              config:
+                severity: error
       - name: identificador_endereco
         description: "Identificador único de endereço"
         data_type: int64
 
       - name: numero
         description: "Número da residência"
-        data_type: string     
+        data_type: string
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__numero__not_null
-              severity: error             
-
+              config:
+                severity: error
       - name: complemento
         description: "Complemento do endereço"
         data_type: string
@@ -66,7 +66,7 @@ models:
 
       - name: telefone_recado
         description: "Número de telefone de recado"
-        data_type: string        
+        data_type: string
 
       - name: situacao
         description: "Situação do endereço"
@@ -74,24 +74,24 @@ models:
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__situacao__not_null
-              severity: error  
-
+              config:
+                severity: error
       - name: data_criacao
         description: "Data de criação do registro na base de dados"
         data_type: datetime
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__data_criacao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: data_alteracao
         description: "Data de alteração do registro na base de dados"
         data_type: datetime
         data_tests:
           - not_null:
               name: raw_gestao_creche_responsavel_endereco__data_alteracao__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
         data_type: timestamp

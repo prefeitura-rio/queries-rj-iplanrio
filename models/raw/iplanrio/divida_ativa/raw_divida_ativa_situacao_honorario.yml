@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_situacao_honorario__id_situacao_honorario__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_situacao_honorario__id_situacao_honorario__unique
-              severity: error
+              config:
+                severity: error
       - name: nome_situacao_honorario
         description: "Nome descritivo da situação de honorário."
         data_type: string

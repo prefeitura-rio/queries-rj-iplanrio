@@ -42,8 +42,9 @@ models:
         data_tests:
           - relationships:
               name: raw_sigma_material_referencia__codigo_subclasse__relationships
-              to: ref('raw_sigma_subclasse')
-              field: codigo_subclasse
+              arguments:
+                to: ref('raw_sigma_subclasse')
+                field: codigo_subclasse
       - name: sequencial_material
         description: "Sequência doMaterial"
         data_type: string
@@ -67,5 +68,4 @@ models:
         description: "Status"
         data_type: string
         quote: true
-
 

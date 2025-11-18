@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: raw_iplanrio_dados_mestres__subprefeitura
+    description: Dados de subprefeituras do município do Rio de Janeiro
+    columns:
+      - name: subprefeitura
+        description: Nome da subprefeitura
+      - name: area
+        description: Área da subprefeitura em metros quadrados
+      - name: perimetro
+        description: Perímetro da subprefeitura em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometria
+        description: Geometria espacial da subprefeitura

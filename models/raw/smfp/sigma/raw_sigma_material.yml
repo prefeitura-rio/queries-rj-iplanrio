@@ -15,10 +15,12 @@ models:
         data_tests:
           - not_null:
               name: raw_sigma_material__codigo_material__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_sigma_material__codigo_material__unique
-              severity: error
+              config:
+                severity: error
       - name: codigo_grupo
         description: "Código do Grupo"
         data_type: string
@@ -26,8 +28,9 @@ models:
         data_tests:
           - relationships:
               name: raw_sigma_material__codigo_grupo__relationships
-              to: ref('raw_sigma_grupo')
-              field: codigo_grupo
+              arguments:
+                to: ref('raw_sigma_grupo')
+                field: codigo_grupo
       - name: codigo_classe
         description: "Código da Classe"
         data_type: string
@@ -44,8 +47,9 @@ models:
         data_tests:
           - relationships:
               name: raw_sigma_material__codigo_subclasse__relationships
-              to: ref('raw_sigma_subclasse')
-              field: codigo_subclasse
+              arguments:
+                to: ref('raw_sigma_subclasse')
+                field: codigo_subclasse
       - name: codigo_sequencial
         description: "Código Sequencial"
         data_type: string
@@ -147,5 +151,4 @@ models:
         description: "Observação (É um campo com 78 caracteres)"
         data_type: string
         quote: true
-
 

@@ -139,7 +139,7 @@ SELECT DISTINCT
     SAFE_CAST(ch.descricao AS STRING) descricao,
     _airbyte_extracted_at as extracted_at,
     dt_atualizacao as updated_at,
-    SAFE_CAST(DATE_TRUNC(DATE(ch.data_inicio), month) AS DATE) data_particao,
+    SAFE_CAST(DATE_TRUNC(DATE(ch.data_inicio), day) AS DATE) data_particao,
     FROM chamados ch
     LEFT JOIN enderecos_geolocalizados geo
         ON SAFE_CAST(ch.id_logradouro AS FLOAT64) = CAST(geo.id_logradouro AS FLOAT64)
