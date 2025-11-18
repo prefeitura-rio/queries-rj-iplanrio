@@ -10,11 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_guia_pagamento__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_guia_pagamento__id_guia_pagamento__unique
-              severity: error
-
+              config:
+                severity: error
       - name: sequencial_guia
         description: "Número sequencial da guia."
         data_type: int64

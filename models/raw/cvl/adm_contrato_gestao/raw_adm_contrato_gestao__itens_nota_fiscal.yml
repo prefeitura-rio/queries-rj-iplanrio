@@ -9,7 +9,7 @@ Exemplo:
 - Quantidade: 1.
 - Valor unitário: R$ 500,00.
 - Valor total: R$ 500,00.
-  Tabela preenchida pelo usuário, na operação do sistema. OBS: Com a implementação da nova arquitetura de contratos para todo sistema, Versão 3.2, os relacionamentos desta tabela mudam para os assinalados em Relacionamento (COM a implementação......)."	
+  Tabela preenchida pelo usuário, na operação do sistema. OBS: Com a implementação da nova arquitetura de contratos para todo sistema, Versão 3.2, os relacionamentos desta tabela mudam para os assinalados em Relacionamento (COM a implementação......)."  
     columns:
       - name: id_item_nf
         description: ID do item da nota fiscal. Auto incremental do próprio banco de dados.
