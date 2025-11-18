@@ -92,7 +92,6 @@ guias_contribuinte as
 select a.id_pessoa, 
     a.cpf_cnpj, 
     a.tipo_pessoa, 
-    a.descricao_tipo_pessoa, 
     a.nome,
     b.quantidade_cdas,
     b.saldo_devido_cdas,
