@@ -51,7 +51,7 @@ source_data AS (
         pc.id_protocolo_chamado,
         pc.ic_motivo,
         pc._airbyte_extracted_at AS extracted_at,
-        SAFE_CAST(DATE_TRUNC(DATE(pr.dt_inicio), month) AS DATE) data_particao
+        SAFE_CAST(DATE_TRUNC(DATE(pr.dt_inicio), day) AS DATE) data_particao
     FROM tb_protocolo_chamado pc
     LEFT JOIN tb_protocolo pr ON pc.id_protocolo = pr.id_protocolo
     LEFT JOIN tb_pessoa p ON pr.id_pessoa = p.id_pessoa
