@@ -165,16 +165,6 @@ WITH
 
    */
       ),
-    base AS (
-    SELECT
-      string_field_3 AS billing_account,
-      string_field_5 AS project_number_2,
-      string_field_1 AS client_name,
-      string_field_7 AS owner,
-      string_field_8 AS project_description,
-      string_field_9 AS adj_name
-    FROM
-      {{ source('billing_iplan', 'controle_projetos') }}),
 
     dt as (select * from {{ source('billing_iplan', 'Date') }})
 
@@ -182,7 +172,4 @@ WITH
    *
   FROM
     dt left join GCP on dt.date = GCP.usage_date
-  LEFT JOIN
-    base
-  ON
-    gcp.Project_number = base.project_number_2
+  

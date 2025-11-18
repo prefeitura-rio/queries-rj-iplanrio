@@ -16,9 +16,8 @@ models:
         data_tests:
           - not_null:
               name: raw_iplanrio_billing_ncn_x__date__not_null
-              severity: error
-
-      # Colunas do billing GCP (gcp)
+              config:
+                severity: error
       - name: usage_date
         description: Data de uso do serviço GCP
         data_type: date
@@ -104,4 +103,3 @@ models:
         description: Nome ajustado do projeto
         data_type: string
         quote: true
-
