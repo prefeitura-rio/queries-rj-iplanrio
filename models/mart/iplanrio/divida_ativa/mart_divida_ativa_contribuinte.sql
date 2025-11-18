@@ -103,4 +103,3 @@ left join cdas_contribuinte b
   on b.id_pessoa = a.id_pessoa
 left join guias_contribuinte c 
   on c.id_pessoa = a.id_pessoa
-
