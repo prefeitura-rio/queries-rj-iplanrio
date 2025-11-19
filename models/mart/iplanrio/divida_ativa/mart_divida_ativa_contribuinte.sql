@@ -81,7 +81,7 @@ guias_contribuinte as
         b.situacao,
         b.quantidade_cotas,
         b.cotas
-      ) order by data_criacao_guia
+      ) order by b.data_criacao_guia
     ) as guias_pagamento
   from contribuintes_vs_guias a
   inner join {{ ref('mart_divida_ativa_guia_pagamento') }} b --`rj-iplanrio.divida_ativa.guia_pagamento`
