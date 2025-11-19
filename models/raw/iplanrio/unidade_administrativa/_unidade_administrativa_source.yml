@@ -7,6 +7,7 @@ sources:
     tables:     
       - name: Vw_UA
         description: "Tabela de unidades administrativas"
+      - name: vw_DataLake
 
     config:
       freshness: # default freshness
