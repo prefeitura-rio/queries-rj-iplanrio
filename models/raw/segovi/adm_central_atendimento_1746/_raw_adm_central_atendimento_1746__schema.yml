@@ -86,6 +86,8 @@ models :
         description: Identificador do protocolo.
       - name: id_protocolo_chamado
         description: Identificador do protocolo/chamado.
+      - name: numero_protocolo
+        description: Número do protocolo informado ao cidadão.
       - name: ic_motivo
         description: Indicador motivo.
       - name: extracted_at

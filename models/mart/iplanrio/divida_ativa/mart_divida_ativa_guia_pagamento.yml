@@ -10,11 +10,12 @@ models:
         data_tests:
           - not_null:
               name: mart_divida_ativa_guia_pagamento__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: mart_divida_ativa_guia_pagamento__id_guia_pagamento__unique
-              severity: error
-
+              config:
+                severity: error
       - name: data_criacao_guia
         description: "Data de criação da guia."
         data_type: datetime
@@ -206,7 +207,7 @@ models:
       - name: cdas_associadas.devedores_vinculados_cda
         description: "Array com os devedores vinculados à CDA."
         data_type: struct
-      
+
       # informações sobre imóvel associado à CDA
       - name: cdas_associadas.possui_imovel_associado
         description: "Indica se a CDA possui imóvel associado."

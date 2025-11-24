@@ -33,7 +33,8 @@ tb_protocolo AS (
     SELECT
         CAST(id_protocolo AS STRING) AS id_protocolo,
         CAST(id_pessoa_fk AS STRING) AS id_pessoa,
-        CAST(dt_inicio AS STRING) as dt_inicio
+        CAST(dt_inicio AS STRING) as dt_inicio,
+        CAST(ds_codigo_fk AS STRING) as ds_codigo_fk,
     FROM {{ source('brutos_1746_staging_airbyte', 'tb_protocolo') }} AS t
 ),
 
@@ -49,6 +50,7 @@ source_data AS (
         pr.id_pessoa,
         pc.id_protocolo,
         pc.id_protocolo_chamado,
+        pr.ds_codigo_fk as numero_protocolo,
         pc.ic_motivo,
         pc._airbyte_extracted_at AS extracted_at,
         SAFE_CAST(DATE_TRUNC(DATE(pr.dt_inicio), day) AS DATE) data_particao
@@ -71,6 +73,9 @@ SELECT
     SAFE_CAST(
         REGEXP_REPLACE(id_protocolo_chamado, r'\.0$', '') AS STRING
     ) id_protocolo_chamado,
+    SAFE_CAST(
+        REGEXP_REPLACE(numero_protocolo, r'\.0$', '') AS STRING
+    ) numero_protocolo,
     ic_motivo,
     extracted_at,
     data_particao
