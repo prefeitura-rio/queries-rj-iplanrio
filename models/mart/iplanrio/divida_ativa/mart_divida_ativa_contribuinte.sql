@@ -69,7 +69,49 @@ contribuintes_vs_guias as
 guias_contribuinte as
  (
   select a.id_pessoa, 
-    count(b.id_guia_pagamento) as quantidade_guias,
+    count(distinct b.id_guia_pagamento) as quantidade_guias,
+    sum(
+      case 
+        when cotas.data_pagamento is null and cotas.data_vencimento >= current_date("America/Sao_Paulo")
+        then cotas.valor_cota_guia_pagamento
+        else 0
+      end 
+    ) as valor_cotas_devidas_a_vencer,
+    sum(
+      case 
+        when cotas.data_pagamento is null and cotas.data_vencimento >= current_date("America/Sao_Paulo")
+        then 1
+        else 0
+      end 
+    ) as quantidade_cotas_devidas_a_vencer,
+    sum(
+      case 
+        when cotas.data_pagamento is null and cotas.data_vencimento < current_date("America/Sao_Paulo")
+        then cotas.valor_cota_guia_pagamento
+        else 0
+      end 
+    ) as valor_cotas_devidas_vencidas,
+    sum(
+      case 
+        when cotas.data_pagamento is null and cotas.data_vencimento < current_date("America/Sao_Paulo")
+        then 1
+        else 0
+      end 
+    ) as quantidade_cotas_devidas_vencidas,
+    sum(
+      case 
+        when cotas.data_pagamento is not null
+        then cotas.valor_cota_guia_pagamento
+        else 0
+      end 
+    ) as valor_cotas_pagas,
+    sum(
+      case 
+        when cotas.data_pagamento is not null
+        then 1
+        else 0
+      end 
+    ) as quantidade_cotas_pagas,
     array_agg(
       struct(
         b.id_guia_pagamento, 
@@ -97,6 +139,12 @@ select a.id_pessoa,
     b.saldo_devido_cdas,
     b.cdas_associadas,
     c.quantidade_guias,
+    c.valor_cotas_devidas_a_vencer,
+    c.quantidade_cotas_devidas_a_vencer,
+    c.valor_cotas_devidas_vencidas,
+    c.quantidade_cotas_devidas_vencidas,
+    c.valor_cotas_pagas,
+    c.quantidade_cotas_pagas,
     c.guias_pagamento
 from contribuintes a
 left join cdas_contribuinte b 
