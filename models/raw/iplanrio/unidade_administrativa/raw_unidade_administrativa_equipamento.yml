@@ -1,5 +1,6 @@
 version: 2
 
+
 models:
   - name: raw_unidade_administrativa_equipamento
     description: "Combinação das tabelas sici.t_ug_atual, sici.ug_tipo_ug, estrutura_batch, tipo_equipamento, horario, endereco e comunicacao para formar a tupla a ser utilizada pelo DataLake	"
