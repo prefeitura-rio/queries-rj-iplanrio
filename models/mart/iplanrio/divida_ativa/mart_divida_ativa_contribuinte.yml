@@ -248,9 +248,33 @@ models:
         data_type: string
       #--------
 
-      # Quantidade guias de pagamento associadas às CDA's das quais o contribuinte é devedor
+      # Informações das guias de pagamento associadas às CDA's das quais o contribuinte é devedor
       - name: quantidade_guias
         description: "Quantidade de guias de pagamento associadas ao contribuinte."
+        data_type: int64
+      
+      - name: valor_cotas_devidas_a_vencer
+        description: "Soma do valor das cotas devidas a vencer nas guias de pagamento associadas ao contribuinte."
+        data_type: numeric
+
+      - name: quantidade_cotas_devidas_a_vencer
+        description: "Quantidade de cotas devidas a vencer nas guias de pagamento associadas ao contribuinte."
+        data_type: int64
+
+      - name: valor_cotas_devidas_vencidas
+        description: "Soma do valor das cotas devidas vencidas nas guias de pagamento associadas ao contribuinte."
+        data_type: numeric
+
+      - name: quantidade_cotas_devidas_vencidas
+        description: "Quantidade de cotas devidas vencidas nas guias de pagamento associadas ao contribuinte."
+        data_type: int64
+
+      - name: valor_cotas_pagas
+        description: "Soma do valor das cotas pagas nas guias de pagamento associadas ao contribuinte."
+        data_type: numeric
+
+      - name: quantidade_cotas_pagas
+        description: "Quantidade de cotas pagas nas guias de pagamento associadas ao contribuinte."
         data_type: int64
 
       # Lista de guias de pagamento associadas às CDA's das quais o contribuinte é devedor. Uma CDA pode ter mais de uma guia vinculada, dependendo do seu fluxo de pagamento.
