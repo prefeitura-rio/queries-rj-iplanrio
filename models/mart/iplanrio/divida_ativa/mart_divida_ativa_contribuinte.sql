@@ -127,7 +127,8 @@ guias_contribuinte as
     ) as guias_pagamento
   from contribuintes_vs_guias a
   inner join {{ ref('mart_divida_ativa_guia_pagamento') }} b --`rj-iplanrio.divida_ativa.guia_pagamento`
-    on b.id_guia_pagamento = a.id_guia_pagamento
+    on b.id_guia_pagamento = a.id_guia_pagamento,
+    unnest(b.cotas) as cotas
   group by a.id_pessoa
  )
 
