@@ -16,8 +16,8 @@ with
         from source 
         where project_id in (
             'rj-sms',
-            'rj-sms-dev'
-            'rj-sms-sandbox'
+            'rj-sms-dev',
+            'rj-sms-sandbox',
             'rj-ivisa'
         )
     )
