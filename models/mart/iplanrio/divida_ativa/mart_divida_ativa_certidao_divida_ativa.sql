@@ -52,7 +52,7 @@ imovel_associado as
 
 guias_pagamento_x_cda as 
 (
-  select a.id_certidao_divida_ativa,
+  select b.id_certidao_divida_ativa,
     count(b.id_guia_pagamento) as quantidade_guias_associadas, 
     array_agg(
       struct(
@@ -79,14 +79,12 @@ guias_pagamento_x_cda as
         b.valor_desconto_cda
       ) order by c.data_criacao_guia
     ) as guias_pagamento_associadas
-  from {{ ref('raw_divida_ativa_certidao_divida_ativa') }} a
-  left join {{ ref('raw_divida_ativa_guia_pagamento_x_cda') }} b 
-    on b.id_certidao_divida_ativa = a.id_certidao_divida_ativa
-    and b.situacao_associacao = true -- apenas vínculo ativo entre guia de pagamento e CDA
-  left join {{ ref('raw_divida_ativa_guia_pagamento') }} c 
+  from {{ ref('raw_divida_ativa_guia_pagamento_x_cda') }} b 
+  inner join {{ ref('raw_divida_ativa_guia_pagamento') }} c 
     on c.id_guia_pagamento = b.id_guia_pagamento
     and c.id_situacao_guia_pagamento != 1 -- excluindo guias de pagamento canceladas
-  group by a.id_certidao_divida_ativa
+  where b.situacao_associacao = true -- apenas vínculo ativo entre guia de pagamento e CDA
+  group by b.id_certidao_divida_ativa
 )
 
 select a.id_certidao_divida_ativa,
