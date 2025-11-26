@@ -106,11 +106,9 @@ models:
       - name: situacao_cda
         description: "Estrutura que descreve a situação da CDA."
         data_type: struct
-
       - name: situacao_cda.id_situacao_cda
         description: "Identificador da situação da CDA."
         data_type: int64
-
       - name: situacao_cda.descricao_situacao_cda
         description: "Descrição da situação da CDA."
         data_type: string
@@ -119,11 +117,9 @@ models:
       - name: natureza_divida_ativa
         description: "Estrutura que descreve a natureza da dívida ativa."
         data_type: struct
-
       - name: natureza_divida_ativa.id_natureza_divida
         description: "Identificador da natureza da dívida."
         data_type: int64
-
       - name: natureza_divida_ativa.nome_natureza_divida
         description: "Nome/descrição da natureza da dívida."
         data_type: string
@@ -171,42 +167,47 @@ models:
         description: "Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja."
         data_type: struct
 
+      # Estrutura de dados para o endereço do imóvel.
+      - name: imovel_associado.endereco
+        description: "Estrutura de dados para o endereço do imóvel."
+        data_type: struct
       - name: imovel_associado.endereco.codigo_logradouro
         description: "Código do logradouro."
         data_type: int64
-
       - name: imovel_associado.endereco.nome_logradouro
         description: "Nome do logradouro."
         data_type: string
-
       - name: imovel_associado.endereco.numero_porta
         description: "Número da porta."
         data_type: string
-
       - name: imovel_associado.endereco.complemento_endereco
         description: "Complemento do endereço."
         data_type: string
-
       - name: imovel_associado.endereco.bairro
         description: "Bairro."
         data_type: string
-
       - name: imovel_associado.endereco.cep
         description: "CEP."
         data_type: string
 
+      # Estrutura da tipologia do imóvel.
+      - name: imovel_associado.tipologia_imovel
+        description: "Estrutura da tipologia do imóvel."
+        data_type: struct
       - name: imovel_associado.tipologia_imovel.id_tipologia_imovel
         description: "ID da tipologia do imóvel."
         data_type: int64
-
       - name: imovel_associado.tipologia_imovel.nome_tipologia_imovel
         description: "Nome da tipologia."
         data_type: string
 
+      # Estrutura da utilização do imóvel.
+      - name: imovel_associado.utilizacao_imovel
+        description: "Estrutura da utilização do imóvel."
+        data_type: struct
       - name: imovel_associado.utilizacao_imovel.id_utilizacao_imovel
         description: "ID da utilização do imóvel."
         data_type: int64
-
       - name: imovel_associado.utilizacao_imovel.nome_utilizacao_imovel
         description: "Nome da utilização."
         data_type: string
@@ -233,34 +234,46 @@ models:
         description: "Processo administrativo associado à guia."
         data_type: string
 
+      # Estrutura de dados do tipo de guia
+      - name: guias_pagamento_associadas.tipo_guia
+        description: "Estrutura de dados do tipo de guia."
+        data_type: struct
       - name: guias_pagamento_associadas.tipo_guia.id_tipo_guia
         description: "ID do tipo de guia."
         data_type: int64
-
       - name: guias_pagamento_associadas.tipo_guia.nome_tipo_guia
         description: "Nome do tipo de guia."
         data_type: string
 
+      # Estrutura de dados do tipo de pagamento
+      - name: guias_pagamento_associadas.tipo_pagamento
+        description: "Estrutura de dados do tipo de pagamento."
+        data_type: struct
       - name: guias_pagamento_associadas.tipo_pagamento.id_tipo_pagamento
         description: "ID do tipo de pagamento."
         data_type: int64
-
       - name: guias_pagamento_associadas.tipo_pagamento.nome_tipo_pagamento
         description: "Nome do tipo de pagamento."
         data_type: string
 
+      # Estrutura de dados do tipo de receita da guia
+      - name: guias_pagamento_associadas.tipo_receita
+        description: "Estrutura de dados do tipo de receita da guia."
+        data_type: struct
       - name: guias_pagamento_associadas.tipo_receita.codigo_receita
         description: "Código da receita."
         data_type: string
-
       - name: guias_pagamento_associadas.tipo_receita.nome_receita
         description: "Nome da receita."
         data_type: string
 
+      # Estrutura de dados da situação da guia
+      - name: guias_pagamento_associadas.situacao
+        description: "Estrutura de dados da situação da guia."
+        data_type: struct
       - name: guias_pagamento_associadas.situacao.id_situacao_guia_pagamento
         description: "ID da situação da guia."
         data_type: int64
-
       - name: guias_pagamento_associadas.situacao.nome_situacao_guia_pagamento
         description: "Nome da situação da guia."
         data_type: string
