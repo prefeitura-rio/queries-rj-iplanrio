@@ -10,11 +10,12 @@ models:
         data_tests:
           - not_null:
               name: mart_divida_ativa_guia_pagamento__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: mart_divida_ativa_guia_pagamento__id_guia_pagamento__unique
-              severity: error
-
+              config:
+                severity: error
       - name: data_criacao_guia
         description: "Data de criação da guia."
         data_type: datetime

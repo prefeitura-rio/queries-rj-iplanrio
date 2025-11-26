@@ -45,8 +45,8 @@ models:
           +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
-      smfp:
-        +project: rj-smfp
+      sma:
+        +project: rj-sma
         ergon_saude:
           +materialized: table
           +schema: recursos_humanos_ergon_saude
@@ -103,13 +103,16 @@ models:
       smfp:
         +tags: "smfp"
         +project: rj-smfp
-        recursos_humanos_ergon:
-          +materialized: table
-          +schema: recursos_humanos_ergon
-          +tags: "daily"
         sigma:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
+          +tags: "daily"
+      sma:
+        +tags: "sma"
+        +project: rj-sma
+        recursos_humanos_ergon:
+          +materialized: table
+          +schema: recursos_humanos_ergon
           +tags: "daily"
       smi:
         +tags: "smi"
@@ -239,6 +242,13 @@ models:
           +tags: "daily"
           +resource_tags:
             rj-iplanrio/dominio: sisbicho
+            845941190868/acesso: restrito
+        billing_ncn:
+          +materialized: table
+          +schema: brutos_billing_externo_staging
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: infraestrutura-ti
             845941190868/acesso: restrito
 flags:
   require_generic_test_arguments_property: true
