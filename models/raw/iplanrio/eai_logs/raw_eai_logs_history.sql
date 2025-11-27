@@ -21,7 +21,6 @@ with
         from
             `rj-iplanrio.brutos_eai_logs_staging.history`,
             unnest(json_extract_array(messages)) as message
-        WHERE environment = 'staging' and user_id = 'asd123asd123asd5454534'
     ),
 
     parsed_logs as (
