@@ -78,6 +78,13 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: tributos
             845941190868/acesso: restrito
+      cvl:
+        +project: rj-cvl
+        +tags: ["cvl"]
+        dashboard_cvl:
+          +materialized: table
+          +schema: dashboard_cvl
+          +tags: ["daily", "dashboard_cvl"]
     raw:
       +tags: "raw"
       datario:

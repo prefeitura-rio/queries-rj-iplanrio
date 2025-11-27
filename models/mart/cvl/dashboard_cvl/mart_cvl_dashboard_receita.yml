@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: mart_cvl_dashboard_receita
+    description: "MART: Dados de receita do sistema de gestão de contratos CVL, agregando informações de receitas com dados de unidades administrativas, itens de receita, contas bancárias, contratos e secretarias para análise de dashboard."
+
