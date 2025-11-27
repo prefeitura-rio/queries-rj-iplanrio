@@ -1,0 +1,88 @@
+version: 2
+
+
+models:
+  - name: raw_unidade_administrativa_equipamento
+    description: "Combinação das tabelas sici.t_ug_atual, sici.ug_tipo_ug, estrutura_batch, tipo_equipamento, horario, endereco e comunicacao para formar a tupla a ser utilizada pelo DataLake	"
+    columns:
+      - name: id_equipamento
+        description: "PK desta tabela - Código SICI da Unidade Administrativa"
+        data_type: int64
+        data_tests:
+          - unique:
+              name: raw_unidade_administrativa_equipamento__id_equipamento__unique
+          - not_null:
+              name: raw_unidade_administrativa_equipamento__id_equipamento__not_null
+        config:
+          meta:
+            nullable: false
+
+      - name: secretaria_nome
+        description: "Nome atual, na base do SICI, da Unidade Administrativa BÁSICA"
+        data_type: string
+        quote: true
+
+      - name: tipo_equipamento
+        description: "Tipo do equipamento"
+        data_type: string
+        quote: true
+
+      - name: unidade_governamental_nome_oficial
+        description: "Nome oficial da unidade governamental"
+        data_type: string
+        quote: true
+
+      - name: equipamento_nome_popular
+        description: "Nome popular do equipamento"
+        data_type: string
+        quote: true
+
+      - name: equipamento_endereco
+        description: "Endereço do equipamento"
+        data_type: json
+        quote: true
+
+      - name: equipamento_tipo
+        description: "Descrição do tipo de equipamento"
+        data_type: string
+        quote: true
+
+      - name: equipamento_horario_atendimento
+        description: "Horários de atendimento em formato JSON"
+        data_type: json
+
+      - name: contato
+        description: "Informações de contato do equipamento"
+        data_type: json
+        quote: true
+
+      - name: ativo
+        description: "Indica se o equipamento está ativo"
+        data_type: string
+        quote: true
+
+      - name: aberto_publico
+        description: "Indica se o equipamento está aberto ao público"
+        data_type: string
+        quote: true
+
+      - name: ultima_atualizacao
+        description: "Data da última atualização do registro"
+        data_type: date
+
+      - name: unidade_governamental_criacao
+        description: "Data de criação da unidade governamental"
+        data_type: date
+
+      - name: unidade_governamental_ativacao
+        description: "Data de última ativação da unidade governamental"
+        data_type: date
+
+      - name: unidade_governamental_fim_vigencia
+        description: "Data de fim de vigência da unidade governamental"
+        data_type: date
+
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o registro foi transformado no datalake"
+        data_type: datetime
+
