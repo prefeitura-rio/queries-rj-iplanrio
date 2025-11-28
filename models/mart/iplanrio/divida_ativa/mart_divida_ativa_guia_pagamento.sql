@@ -84,7 +84,10 @@ cotas_por_guia as
         a.valor_honorarios_pago,
         a.valor_grerj_pago,
         a.valor_juros_honorarios_pago,
-        a.ano_ipcae
+        a.ano_ipcae,
+        a.codigo_barras,
+        a.id_pix,
+        a.codigo_qr_pix
       ) order by a.data_vencimento
     ) as cotas
   from cotas_validas a --rj-iplanrio.brutos_divida_ativa.guia_pagamento
