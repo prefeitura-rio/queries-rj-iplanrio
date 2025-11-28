@@ -147,6 +147,15 @@ models:
       - name: cotas.ano_ipcae
         description: "Ano de referência do IPCA-E utilizado na cota."
         data_type: int64
+      - name: cotas.codigo_barras
+        description: "Código de barras para pagamento da cota."
+        data_type: string
+      - name: cotas.id_pix
+        description: "Identificador do Pix para pagamento da cota."
+        data_type: string
+      - name: cotas.codigo_qr_pix
+        description: "Código QR do Pix para pagamento da cota."
+        data_type: string
 
       # Informações sobre as certidões de dívida ativa (CDA) associadas à guia de pagamento
       - name: quantidade_cdas

@@ -77,6 +77,14 @@ models:
       - name: valor_juros_honorarios_pago
         description: "Valor dos juros sobre honorários pagos."
         data_type: numeric
+      - name: codigo_barras
+        description: "Código de barras para pagamento da cota."
+        data_type: string
+      - name: id_pix
+        description: "Identificador do Pix para pagamento da cota."
+        data_type: string
+      - name: codigo_qr_pix
+        description: "Código QR do Pix para pagamento da cota."
       - name: ano_ipcae
         description: "Ano de referência do IPCA-E utilizado."
         data_type: int64
