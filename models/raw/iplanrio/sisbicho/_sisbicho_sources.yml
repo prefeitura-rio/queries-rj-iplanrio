@@ -5,8 +5,8 @@ sources:
     database: rj-iplanrio   # opcional se igual ao target
     schema: brutos_sisbicho_staging
     tables:
-      - name: Animal
-        description: "Tabela de animal do sistema Sisbicho"
+      #- name: Animal
+      #  description: "Tabela de animal do sistema Sisbicho"
       - name: AnimalProprietario
         description: "Tabela de proprietários dos animais do sistema Sisbicho"
       - name: AnimalStatus

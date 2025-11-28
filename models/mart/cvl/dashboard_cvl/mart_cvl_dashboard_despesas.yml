@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: mart_cvl_dashboard_despesas
+    description: "MART: Dados de despesas do sistema de gestão de contratos CVL, agregando informações de despesas com dados de contratos, secretarias, plano de contas, unidades administrativas e contas bancárias para análise de dashboard."
+
