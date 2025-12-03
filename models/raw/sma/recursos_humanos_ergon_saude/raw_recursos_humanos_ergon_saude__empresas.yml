@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_saude__empresas
+    description: "**Descrição**: Empresas da administração direta ou indireta da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    columns:
+      - name: id_empresa
+        description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
+        data_type: integer
+      - name: nome_empresa
+        description: Nome da empresa.
+        data_type: string
+        quote: true
+      - name: sigla
+        description: Sigla da empresa.
+        data_type: string
+        quote: true
+      - name: tipo
+        description: Tipo da empresa.
+        data_type: string
+        quote: true
+      - name: cnpj
+        description: CNPJ da empresa.
+        data_type: string
+        quote: true
+      - name: endereco
+        description: Endereço da empresa.
+        data_type: string
+        quote: true
+      - name: telefone
+        description: Telefone da empresa.
+        data_type: string
+        quote: true
+      - name: email
+        description: Email da empresa.
+        data_type: string
+        quote: true
+      - name: responsavel
+        description: Responsável pela empresa.
+        data_type: string
+        quote: true
+      - name: ativo
+        description: Indica se a empresa está ativa.
+        data_type: boolean
+

@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__setor
+    description: "**Descrição**: Setores existentes na COMLURB. São setores existentes no SICI.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_setor
+        description: Código dado pela Comlurb ao setor.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data da criação do setor.
+        data_type: date
+      - name: data_fim
+        description: Data da extinção do setor.
+        data_type: date
+      - name: tipo
+        description: Tipo do setor. Sempre tem o valor 'Normal'.
+        data_type: string
+        quote: true
+      - name: tipo_acesso
+        description: Tipo do acesso. Sempre tem o valor 'Normal'.
+        data_type: string
+        quote: true
+      - name: cep
+        description: Cep do endereço do setor.
+        data_type: string
+        quote: true
+      - name: id_logradouro
+        description: Código do logradouro do endereço do setor.
+        data_type: string
+        quote: true
+      - name: id_setor_sici
+        description: Código do setor no SICI.
+        data_type: string
+        quote: true
+      - name: id_empresa_setor
+        description: Código da empresa onde está localizado o setor. Sempre tem o valor 1, Comlurb.
+        data_type: string
+        quote: true
+

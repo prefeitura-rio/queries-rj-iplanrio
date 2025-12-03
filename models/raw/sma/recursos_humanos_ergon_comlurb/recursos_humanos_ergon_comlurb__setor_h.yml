@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__setor_h
+    description: "**Descrição**: Setores hierárquicos existentes na COMLURB no SICI.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: data_inicio
+        description: Data em que o setor foi colocado no presente organograma.
+        data_type: date
+      - name: id_setor_sici
+        description: Código, dado pelo SICI, do setor.
+        data_type: string
+        quote: true
+      - name: nome
+        description: Nome do setor, possivelmente abreviado pelo tamanho do atributo.
+        data_type: string
+        quote: true
+      - name: id_setor_pai_sici
+        description: Código, dado pelo SICI, do setor que está acima.
+        data_type: string
+        quote: true
+      - name: data_fim
+        description: Data em que o setor saiu do organograma.
+        data_type: date
+      - name: id_empresa_sici
+        description: Código, dado pelo SICI, da empresa onde está localizada o setor.
+        data_type: string
+        quote: true
+      - name: sigla
+        description: Sigla do setor. Ex. FP/SUBGGC.
+        data_type: string
+        quote: true
+      - name: id_empresa_prevrio
+        description: Código da empresa na PREVRIO.
+        data_type: string
+        quote: true
+      - name: id_secretaria_sici
+        description: Código, dado pelo SICI. da secretaria onde está o setor.
+        data_type: string
+        quote: true
+      - name: extinto
+        description: Booleano que indica que o setor foi extinto.
+        data_type: string
+        quote: true
+      - name: nome_completo
+        description: Nome completo setor.
+        data_type: string
+        quote: true
+

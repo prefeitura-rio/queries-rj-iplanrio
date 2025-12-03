@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__funcionario_evento
+    description: "**Descrição**: Eventos relacionados a situação funcional do funcionário da Comlurb. Ex. Contratação, progressão, designação em cargo de comissão, etc;\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+      - name: id_evento
+        description: Número gerado pelo sistema único para cada registro da tabela.
+        data_type: string
+        quote: true
+      - name: referencia
+        description: Referência da progressão do funcionário no cargo.
+        data_type: string
+        quote: true
+      - name: horas_jornada
+        description: Jornada em horas de trabalho do funcionário.
+        data_type: string
+        quote: true
+      - name: id_horario_trabalho
+        description: Código do horário de trabalho do funcionário.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa onde o funcionário trabalha. Sempre vai ser o código da Comlurb. O Código é 1.
+        data_type: string
+        quote: true
+      - name: id_registro
+        description: Número sequencial dado pelo sistema para cada registro criado.
+        data_type: string
+        quote: true
+      - name: id_vinculo
+        description: Número do vínculo do funcionário da Comlurb. Um funcionário pode ter vários vínculos caso seja desligado e recontratado pela Comlurb.
+        data_type: string
+        quote: true
+      - name: tipo_evento
+        description: Tipo de evento funcional do funcionário. Ex. Provimento, designação.
+        data_type: string
+        quote: true
+      - name: forma_provimento
+        description: Forma de provimento do funcionário. Ex. Contratação, demissão, progressão, relocação, remoção etc
+        data_type: string
+        quote: true
+      - name: data_inicio_situacao_funcional
+        description: Data do início da situação funcional iniciada pelo evento.
+        data_type: date
+      - name: data_fim_situacao_funcional
+        description: Data do fim da situação funcional iniciada pelo evento.
+        data_type: date
+      - name: data_inicio_evento_funcional
+        description: Data do início da situação funcional iniciada pelo evento, caso o evento seja progressão. Caso não seja progressão fica em branco. Caso não fique em branco tem sempre o valor do atributo DTINI.
+        data_type: date
+      - name: data_fim_evento_funcional
+        description: Data do fim da situação funcional iniciada pelo evento, caso o evento seja progressão. Caso não seja progressão fica em branco. Caso não fique em branco tem sempre o valor do atributo DTFIM.
+        data_type: date
+      - name: id_cargo
+        description: Código numérico do cargo do funcionário.
+        data_type: string
+        quote: true
+      - name: id_setor
+        description: Código do setor onde o funcionário trabalha.
+        data_type: string
+        quote: true
+

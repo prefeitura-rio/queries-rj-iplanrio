@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__licenca_afastamento
+    description: "**Descrição**: Licenças e afastamentos dos funcionários da COMLURB.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa, sempre será o código da COMLURB.
+        data_type: string
+        quote: true
+      - name: id_registro
+        description: Número sequencial dado pelo sistema para cada registro criado.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data início do afastamento.
+        data_type: date
+      - name: data_fim
+        description: Data final do afastamento.
+        data_type: date
+      - name: tipo_frequencia
+        description: Tipo da frequência/afastamento.
+        data_type: string
+        quote: true
+      - name: id_frequencia
+        description: Código da frequência/afastamento.
+        data_type: string
+        quote: true
+      - name: motivo
+        description: Motivo do afastamento.
+        data_type: string
+        quote: true
+      - name: data_previsao_fim
+        description: Data prevista para o fim do afastamento.
+        data_type: date
+      - name: reqlicafast
+        description: Requisição de licença/afastamento.
+        data_type: string
+        quote: true
+      - name: resultpront
+        description: Resultado do prontuário relacionado ao afastamento.
+        data_type: string
+        quote: true
+      - name: publicacao_diario_oficial
+        description: Publicação no diário oficial relacionada ao afastamento.
+        data_type: string
+        quote: true
+      - name: pontpubl
+        description: Pontuação pública relacionada ao afastamento.
+        data_type: string
+        quote: true
+      - name: pontproc
+        description: Pontuação de processo relacionada ao afastamento.
+        data_type: string
+        quote: true
+

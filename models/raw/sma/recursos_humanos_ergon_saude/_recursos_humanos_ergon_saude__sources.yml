@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: brutos_ergon_saude_staging
+    description: "Dados de recursos humanos do sistema ERGON da Prefeitura do Rio de Janeiro - Saúde"
+    database: rj-iplanrio
+    schema: brutos_ergon_saude_staging
+    tables:
+      - name: VW_SIMPA_SIRHU_AFASTAMENTO_GBP
+        description: "Tabela de afastamentos antigos dos servidores"
+      - name: SIRHU_DBTABELAS_AFASTAMENTO
+        description: "Nomes dos tipos de afastamentos antigos"
+      - name: AVERBACOES_CONTA
+        description: "Tabela de averbações de tempo de serviço"
+      - name: AVERB_OQUE_CONTA
+        description: "Contagem de averbações por finalidade"
+      - name: VW_DLK_ERG_CARGOS_
+        description: "Tipos de cargos existentes na administração"
+      - name: VW_DLK_ERG_CATEGORIAS_
+        description: "Categorias existentes na administração"
+      - name: FICHAS_FINANCEIRAS
+        description: "Fichas financeiras dos funcionários da COMLURB"
+        config:
+          freshness:
+      - name: IPL_PT_FICHAS
+        description: "Fichas financeiras contábeis dos funcionários"
+        config:
+          freshness:
+      - name: VW_DLK_ERG_FITA_BANCO
+        description: "Fitas enviadas para o tesouro municipal"
+        config:
+          freshness:
+      - name: VW_DLK_ERG_FORMAS_PROV_
+        description: "Formas de provimentos possíveis"
+      - name: FREQUENCIAS
+        description: "Ocorrências de frequência do servidor municipal"
+      - name: VW_SIMPA_SIRHU_FREQUENCIA_GBP
+        description: "Frequência de servidores em sistemas antigos"
+      - name: VW_DLK_ERG_FUNCIONARIOS
+        description: "Pessoas físicas cadastradas no sistema"
+      - name: VW_DLK_ERG_HORARIO_TRAB_
+        description: "Horários possíveis para funcionários"
+      - name: VW_DLK_ERG_JORNADAS_
+        description: "Tipos de jornadas existentes"
+      - name: LIC_AFAST
+        description: "Licenças e afastamentos dos servidores"
+      - name: VW_DLK_ERG_ERG_MATRICULAS
+        description: "Matrículas dos funcionários"
+      - name: VW_DLK_ERG_ORGAOS_EXTERNOS
+        description: "Órgãos de outros entes federativos"
+      - name: VW_DLK_ERG_ORGAOS_REGIMES_JUR_
+        description: "Regimes jurídicos aceitos para contratação"
+      - name: PRE_CONTA
+        description: "Contagens anteriores ao sistema"
+      - name: VW_DLK_ERG_PROVIMENTOS_EV
+        description: "Eventos relacionados aos vínculos funcionais"
+      - name: VW_DLK_ERG_REGIMES_JUR_
+        description: "Tipos de regimes jurídicos existentes"
+      - name: RUBRICAS
+        description: "Rubricas de pagamento"
+      - name: VW_DLK_ERG_HSETOR_
+        description: "Setores existentes na administração"
+      - name: VW_DLK_ERG_TIPO_ORGAO
+        description: "Tipos de órgãos da administração"
+      - name: TIPO_TEMPO
+        description: "Tipos de tempo para contagem de benefícios"
+      - name: VW_DLK_ERG_TIPO_VINC_
+        description: "Tipos de vínculos existentes"
+      - name: TOTAL_CONTA
+        description: "Resultado das contagens de tempo para benefícios"
+        config:
+          freshness:
+      - name: VANTAGENS
+        description: "Vantagens e atributos dos servidores"
+        config:
+          freshness:
+      - name: VW_DLK_ERG_VINCULOS
+        description: "Vínculos de pagamento dos funcionários"
+      - name: VW_DLK_ERG_EMPRESAS
+        description: "Empresas da administração direta ou indireta"
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
+

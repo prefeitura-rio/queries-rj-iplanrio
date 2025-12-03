@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_saude__regime_juridico
+    description: "**Descrição**: Tipos de regimes jurídicos existentes entre os vínculos de funcionários e a administração direta ou indireta da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    columns:
+      - name: sigla
+        description: Sigla do regime jurídico. Ex. CLT, EFETIVO etc
+        data_type: string
+        quote: true
+      - name: nome
+        description: Nome do regime jurídico. Ex. Celetista, estatutário.
+        data_type: string
+        quote: true

@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__frequencia
+    description: "**Descrição**: Ocorrências de frequência dos funcionários da COMLURB.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa, sempre será o código da COMLURB.
+        data_type: string
+        quote: true
+      - name: id_registro
+        description: Número sequencial dado pelo sistema para cada registro criado.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data início da ocorrência de frequência.
+        data_type: date
+      - name: data_fim
+        description: Data final da ocorrência de frequência.
+        data_type: date
+      - name: tipo_frequencia
+        description: Tipo da frequência.
+        data_type: string
+        quote: true
+      - name: id_frequencia
+        description: Código da frequência.
+        data_type: string
+        quote: true
+      - name: quantidade
+        description: Quantidade relacionada à frequência.
+        data_type: integer
+      - name: observacoes
+        description: Observações referentes à frequência do servidor.
+        data_type: string
+        quote: true
+      - name: publicacao_diario_oficial
+        description: Publicação no diário oficial relacionada à frequência.
+        data_type: string
+        quote: true
+      - name: pontpubl
+        description: Pontuação pública relacionada à frequência.
+        data_type: string
+        quote: true
+      - name: pontproc
+        description: Pontuação de processo relacionada à frequência.
+        data_type: string
+        quote: true
+      - name: hora_entrada
+        description: Hora de entrada relacionada à frequência.
+        data_type: string
+        quote: true
+      - name: hora_saida
+        description: Hora de saída relacionada à frequência.
+        data_type: string
+        quote: true
+

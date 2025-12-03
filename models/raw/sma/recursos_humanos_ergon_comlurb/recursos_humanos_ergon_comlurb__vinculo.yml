@@ -1,0 +1,145 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__vinculo
+    description: "**Descrição**: Vínculos de pagamento ( em geral empregatícios ), tanto antigos como atuais, da COMLURB. Um vínculo, em geral, está associado a uma matrícula.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: data_inicio_cessao
+        description: Data de início da cessão, quanto o servidor é cedido. Quando o servidor não é cedido o atributo fica em branco. Cessão é o empréstimo de funcionário de órgão externo à COMLURB para a COMLURB.
+        data_type: date
+      - name: data_fim_cessao
+        description: Data do fim da cessão, quanto o servidor é cedido. Quando o servidor não é cedido ou não foi devolvido fica em branco.
+        data_type: date
+      - name: id_funcionario
+        description: Número do funcionário, pode estar repetido nesta visão, caso o funcionário tenha ou tenha tido outros vínculos. Existe um para cada pessoa, independente do número de vínculos.
+        data_type: string
+        quote: true
+      - name: numero_vinculo
+        description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa pode se demitir da COMLURB e depois voltar, criando assim um segundo vínculo.
+        data_type: integer
+      - name: data_nomeacao
+        description: Data de nomeação do funcionário relativa ao vínculo.
+        data_type: date
+      - name: tipo_regime_juridico
+        description: 'Detalhamento do regime jurídico. Exemplo: CLT - Contrato indeterminado, CLT - Contrato determinado.'
+        data_type: string
+        quote: true
+      - name: categoria
+        description: 'Categoria do vínculo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
+        data_type: string
+        quote: true
+      - name: desconta_ir
+        description: Booleano indicando se o vínculo desconta IR ou não. Valores N ou S.
+        data_type: string
+        quote: true
+      - name: descricao_provimento
+        description: Descrição do provimento. Campo livre.
+        data_type: string
+        quote: true
+      - name: classificacao_concurso
+        description: Classificação no concurso relativo a este vínculo, caso tenha sido feito concurso. Em branco caso não tenha feito.
+        data_type: string
+        quote: true
+      - name: data_concurso
+        description: Data do concurso relativo ao vínculo. Caso não tenha havido concurso fica em branco.
+        data_type: date
+      - name: data_opcao_fgts
+        description: Data em que o funcionário optou pelo FGTS, caso o funcionário seja celetista. Caso não fica em branco.
+        data_type: date
+      - name: data_inicio_contrato
+        description: Data de início do contrato por tempo determinado, caso o vínculo esteja relacionado a um contrato. Caso não fica em branco.
+        data_type: date
+      - name: data_fim_contrato
+        description: Data de fim do contrato por tempo determinado, caso o vínculo esteja relacionado a um contrato. Caso não fica em branco.
+        data_type: date
+      - name: data_prorrogacao_contrato
+        description: Data da prorrogação do contrato relacionado ao vínculo, caso tenha sido assinado um contrato por tempo determinado. Caso não fica em branco
+        data_type: date
+      - name: data_aposentadoria
+        description: Data de aposentadoria relacionada ao vínculo. Caso não tenha havido ainda aposentadoria fica em branco.
+        data_type: date
+      - name: tipo_aposentadoria
+        description: 'Tipo da aposentadoria relativa ao vínculo. Exemplo: 47 - integral art 3'
+        data_type: string
+        quote: true
+      - name: data_vacancia
+        description: Data de vacância relativa ao vínculo. A vacância ocorre quando se encerra o vínculo.
+        data_type: date
+      - name: id_vacancia
+        description: Código de vacância relativa ao vínculo.
+        data_type: string
+        quote: true
+      - name: numero_vinculo_anterior
+        description: Número do vínculo anterior, caso haja algum. Se não fica em branco.
+        data_type: string
+        quote: true
+      - name: numero_vinculo_posterior
+        description: Número do vínculo posterior, caso haja algum. Se não fica em branco.
+        data_type: string
+        quote: true
+      - name: tipo_orgao_origem
+        description: 'Tipo do órgão da origem do funcionário ( em caso do funcionário ser cedido para a COMLURB). Exemplo: DIR.EST. (Direta estatual)'
+        data_type: string
+        quote: true
+      - name: funcao_orgao_origem
+        description: Função, na origem, da pessoa requisitada. Atributo de preenchimento livre. Em branco caso não tenha havido requisição.
+        data_type: string
+        quote: true
+      - name: telefone_orgao_destino
+        description: Número do telefone de onde o funcionário foi requisitado. Em branco caso não tenha havido requisição.
+        data_type: string
+        quote: true
+      - name: motivo_vacancia
+        description: Motivo da vacância. O que encerrou o vínculo, caso ele tenha sido encerrado. Caso não o atributo está em branco. Campo livre para preenchimento.
+        data_type: string
+        quote: true
+      - name: orgao_origem
+        description: Órgão de origem do funcionário que foi requisitado. Caso a pessoa associada ao vínculo tenha sido requisitada pela prefeitura. Caso não tenha sido requisitado fica em branco.
+        data_type: string
+        quote: true
+      - name: tipo_onus_requisicao
+        description: 'Tipo de ônus da requisição. Exemplo: Com ônus, sem ônus, não se aplica.'
+        data_type: string
+        quote: true
+      - name: tipo_ressarcimento_requisicao
+        description: Tipo de ressarcimento da requisição. Exemplo Sim ou não. Está associado ao atributo TIPO_ONUS_REQ.
+        data_type: string
+        quote: true
+      - name: tipo_requisicao
+        description: 'Tipo da requisição. Exemplo: Externo, interna, permuta.'
+        data_type: string
+        quote: true
+      - name: tipo_origem
+        description: Origem do servidor cedido. Ex direta estadual, indireta estatual.
+        data_type: string
+        quote: true
+      - name: id_processo
+        description: Número do processo, na COMLURB, que deu origem da vaga associada ao vínculo.
+        data_type: string
+        quote: true
+      - name: contrato_empregado_cedido_suspenso
+        description: Booleana que indica se o contrato do empregado público cedido encontra-se suspenso.
+        data_type: string
+        quote: true
+      - name: preenchido_cota
+        description: Indica se o vínculo foi preenchido por cota. Em branco, não entrou por cota. Caso esteja preenchido o vínculo foi preenchido por cota.  Valores possíveis Lei 2.111/1994 para DEFICIENTE, LEi 5.401/2012 para Raça, lei 5.695/2014 para Raça.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa, sempre o código da COMLURB.
+        data_type: string
+        quote: true
+      - name: data_posse
+        description: Data da posse do funcionário relativo a este vínculo.
+        data_type: date
+      - name: data_inicio_exercicio
+        description: Data do início do exercício do funcionário relativo a este vínculo.
+        data_type: date
+      - name: regime_juridico
+        description: 'Regime jurídico do vínculo. Ex.: Estatutário, celetista, aposentado etc'
+        data_type: string
+        quote: true
+      - name: data_pagamento_recisao
+        description: Data de pagamento da rescisão do vínculo, caso tenha havido rescisão.
+        data_type: date
+

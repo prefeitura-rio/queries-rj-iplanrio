@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_saude__averbacoes_contagem
+    description: "**Descrição**: Nesta tabela são armazenadas informações referentes sobre finalidade de contagem e total do tempo de contagem referentes a períodos averbados pelos servidores.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: integer
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: integer
+      - name: id_averbacao
+        description: Chave gerada pelo banco para registro de averbação.
+        data_type: integer
+      - name: finalidade
+        description: Tipo da finalidade da averbação.
+        data_type: string
+        quote: true
+      - name: dias
+        description: Total de dias averbados para determinada finalidade.
+        data_type: integer

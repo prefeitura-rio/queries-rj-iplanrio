@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_saude__afastamento_antigo
+    description: "**Descrição**: Nesta tabela são armazenadas informações referentes a afastamentos dos servidores da Prefeitura da Cidade do Rio de Janeiro cadastrados em sistemas de recursos humanos antigos.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    columns:
+      - name: id_matricula_vinculo
+        description: Matrícula do servidor.
+        data_type: integer
+      - name: data_inicio
+        description: Data incial do afastamento.
+        data_type: date
+      - name: data_previsao_retorno
+        description: Data de previsão do retorno do afastamento.
+        data_type: date
+      - name: data_fim
+        description: Data final do afastamento, representa o efetivo retorno do servidor à atividade.
+        data_type: date
+

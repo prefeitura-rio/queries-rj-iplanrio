@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_saude__ficha_financeira_contabil
+    description: "**Descrição**: Valores de rubricas de fichas financeiras dos funcionários da Prefeitura da Cidade do Rio de Janeiro. Constam fichas desde o início do ERGON. Uma ficha financeira é um resumo do contracheque do servidor. Nesta tabela estão incluídas informações sobre a natureza da despesa e o plano trabalho.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: data_folha
+        description: Mês e ano da folha da ficha financeira.
+        data_type: date
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: integer
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: integer
+      - name: numero_pensionista
+        description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
+        data_type: integer
+      - name: numero_folha
+        description: Número da folha da ficha financeira.
+        data_type: integer
+      - name: id_setor
+        description: Não informado
+        data_type: integer
+      - name: secretaria
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: tipo_funcionario
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: detalhamento
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: rubrica
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: tipo_rubrica
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: competencia_direito
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: descricao_vantagem
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: valor
+        description: Não informado
+        data_type: numeric
+      - name: complemento
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: tipo_classificacao
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: classificacao
+        description: Não informado
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Não informado
+        data_type: integer

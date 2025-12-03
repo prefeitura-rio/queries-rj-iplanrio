@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: recursos_humanos_ergon_pericia_medica_staging
+    description: "Dados de perícia médica do sistema ERGON da Prefeitura do Rio de Janeiro"
+    database: rj-smfp
+    schema: recursos_humanos_ergon_pericia_medica_staging
+    tables:
+      - name: cid
+        description: "Tabela de códigos CID (Classificação Internacional de Doenças)"
+      - name: designacoes_ev
+        description: "Designações de eventos"
+      - name: erg_pm_cid10_capitulo
+        description: "Capítulos do CID-10"
+      - name: erg_pm_decisao
+        description: "Decisões de perícia médica"
+      - name: erg_pm_grupoexame
+        description: "Grupos de exames médicos"
+      - name: erg_pm_pront_med
+        description: "Prontuários médicos"
+      - name: erg_pm_resultpront
+        description: "Resultados de prontuários médicos"
+      - name: exames
+        description: "Exames médicos realizados"
+      - name: funcoes_ev
+        description: "Funções de eventos"
+      - name: medicos
+        description: "Cadastro de médicos"
+      - name: prontuario
+        description: "Prontuários de pacientes"
+      - name: tpmrj_pm_juntas
+        description: "Juntas médicas"
+      - name: tpmrj_pm_periciasjunta
+        description: "Perícias realizadas por juntas"
+      - name: tpmrj_pm_resultjunta
+        description: "Resultados de perícias de juntas"
+      - name: tpmrj_pm_vwbim
+        description: "View de benefícios por incapacidade médica"
+      - name: tpmrj_pm_vwtpconclper
+        description: "View de tipos de conclusão de perícia"
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
+

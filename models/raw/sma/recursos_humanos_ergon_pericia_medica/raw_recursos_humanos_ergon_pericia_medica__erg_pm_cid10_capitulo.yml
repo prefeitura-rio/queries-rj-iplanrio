@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_cid10_capitulo
+    description: "**Descrição**: Capítulos do CID-10 (Classificação Internacional de Doenças, 10ª revisão).\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+
