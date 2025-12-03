@@ -24,15 +24,19 @@ select
   
   -- Código de despacho
   safe_cast(cod_despacho as string)                         as id_despacho,
-  
+
   -- Datas da tramitação
-  safe_cast(data_despacho as date)                          as data_despacho,
-  safe_cast(data_saida as date)                             as data_saida,
+  --safe_cast(data_despacho as date)                          as data_despacho,
+  safe_cast(CONCAT( SUBSTR(data_despacho,7,4),'-', SUBSTR(data_despacho,4,2) ,'-', SUBSTR(data_despacho,1,2) ) as date)         as data_despacho,
+  --safe_cast(data_saida as date)                             as data_saida,
+  safe_cast(CONCAT( SUBSTR(data_saida,7,4),'-', SUBSTR(data_saida,4,2) ,'-', SUBSTR(data_saida,1,2) ) as date)         as data_saida,
   
   -- Órgãos envolvidos na tramitação
   safe_cast(org_origem as int64)                            as orgao_origem,
   safe_cast(org_destino as int64)                           as orgao_destino,
-  safe_cast(org_transcritor as int64)                       as orgao_transcritor
+  safe_cast(org_transcritor as int64)                       as orgao_transcritor,
+
+  safe_cast(_prefect_extracted_at as date)                  as datalake_transformed_at 
 
 from {{ source("brutos_sicop_staging","tramitacao_processo") }}
 

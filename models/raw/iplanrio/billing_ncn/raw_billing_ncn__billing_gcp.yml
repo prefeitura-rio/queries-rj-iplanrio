@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: raw_billing_ncn__billing_gcp
+    description: |
+      Consolidação de dados de billing do GCP de múltiplas fontes (MAPS, Dados.Rio, IPLAN, IPLAN_OLD, SEI) 
+      com informações de controle de projetos e dimensão de data. Este modelo une dados de uso e custos 
+      do Google Cloud Platform de diferentes projetos e organizações, enriquecendo com informações de 
+      controle de projetos e garantindo uma dimensão de data completa.
+    columns:
+      # Colunas da dimensão de data (dt)
+      - name: date
+        description: Data da dimensão de calendário
+        data_type: date
+        quote: false
+      - name: usage_date
+        description: Data de uso do serviço GCP
+        data_type: date
+        quote: false
+
+      - name: project_id
+        description: Identificador único do projeto GCP
+        data_type: string
+        quote: true
+
+      - name: project_number
+        description: Número do projeto GCP
+        data_type: string
+        quote: true
+
+      - name: project_name
+        description: Nome do projeto GCP
+        data_type: string
+        quote: true
+
+      - name: project_labels
+        description: Labels associados ao projeto GCP
+        data_type: string
+        quote: true
+
+      - name: service_id
+        description: Identificador do serviço GCP utilizado
+        data_type: string
+        quote: true
+
+      - name: service_description
+        description: Descrição do serviço GCP utilizado
+        data_type: string
+        quote: true
+
+      - name: sku_id
+        description: Identificador da SKU (Stock Keeping Unit) do serviço
+        data_type: string
+        quote: true
+
+      - name: sku_description
+        description: Descrição da SKU do serviço
+        data_type: string
+        quote: true
+
+      - name: cost
+        description: Custo do uso do serviço em dólares
+        data_type: float64
+        quote: false
+
+      - name: total_credit
+        description: Total de créditos aplicados ao custo
+        data_type: float64
+        quote: false
+
+      # Colunas do controle de projetos (base)
+      - name: billing_account
+        description: Conta de billing associada ao projeto
+        data_type: string
+        quote: true
+
+      - name: project_number_2
+        description: Número do projeto (usado para join com dados GCP)
+        data_type: string
+        quote: true
+
+      - name: client_name
+        description: Nome do cliente do projeto
+        data_type: string
+        quote: true
+
+      - name: owner
+        description: Responsável pelo projeto
+        data_type: string
+        quote: true
+
+      - name: project_description
+        description: Descrição do projeto
+        data_type: string
+        quote: true
+
+      - name: adj_name
+        description: Nome ajustado do projeto
+        data_type: string
+        quote: true

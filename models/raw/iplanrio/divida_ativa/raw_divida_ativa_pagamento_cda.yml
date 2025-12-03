@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_pagamento_cda__id_pagamento_cda__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_pagamento_cda__id_pagamento_cda__unique
-              severity: error
+              config:
+                severity: error
       - name: id_certidao_divida_ativa
         description: "Identificador da certidão de dívida ativa (CDA) vinculada ao pagamento."
         data_type: int64

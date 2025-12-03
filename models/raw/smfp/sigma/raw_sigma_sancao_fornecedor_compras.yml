@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: raw_sigma_sancao_fornecedor_compras
+    description: "Sanções administrativas aplicadas a fornecedores contratados pelo Município do Rio de Janeiro."
+    config:
+      alias: sancao_fornecedor_compras  
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: cpf_cnpj
+        description: "CPF/CNPJ do fornecedor que recebeu a sanção."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_sigma_sancao_fornecedor_compras__cpf_cnpj__not_null
+      - name: razao_social
+        description: "RAZÃO SOCIAL/NOME do fornecedor que recebeu a sanção."
+        data_type: string
+        quote: true
+      - name: numero_ordem
+        description: "Sequencial começado por 1 e incrementado para cada nova sanção aplicada pelo mesmo órgão e processo."
+        data_type: int64
+      - name: numero_processo_origem
+        description: "Número do processo administrativo da licitação ou sua dispensa/inexigibilidade relacionada à contratação."
+        data_type: int64
+      - name: id_processo_instrutivo
+        description: "Número do processo administrativo relacionado à contratação do fornecedor por um órgão."
+        data_type: int64
+      - name: numero_processo_fatura
+        description: "Número do processo administrativo relacionado ao pagamento do serviço/produto; se ausente, copia-se do instrutivo."
+        data_type: int64
+      - name: codigo_sancao
+        description: "Código do tipo da sanção aplicada ao fornecedor."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_sigma_sancao_fornecedor_compras__codigo_sancao__not_null
+      - name: descricao_sancao
+        description: "Descrição do tipo da sanção aplicada (ex.: multa, suspensão, inidoneidade)."
+        data_type: string
+        quote: true
+      - name: data_sancao
+        description: "Data de início da sanção aplicada ao fornecedor."
+        data_type: string
+        quote: true
+      - name: data_extincao_sancao
+        description: "Data de extinção da sanção aplicada ao fornecedor."
+        data_type: string
+        quote: true
+
+

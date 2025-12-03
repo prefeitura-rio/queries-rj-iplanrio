@@ -111,6 +111,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_saude") }}
@@ -139,6 +140,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_saude_unidades") }}
@@ -168,6 +170,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_saude_equipe_familia") }}
@@ -196,6 +199,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_educacao") }}
@@ -224,6 +228,7 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_cultura") }}
@@ -252,9 +257,39 @@ with
             fonte,
             vigencia_inicio,
             vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
             metadata,
             updated_at
         from {{ ref("raw_equipamentos_assistencia_social") }}
+    ),
+
+    pontos_apoio as (
+        select
+            plus8,
+            geometry,
+            plus11,
+            id_equipamento,
+            secretaria_responsavel,
+            tipo_equipamento,
+            nome_oficial,
+            nome_popular,
+            plus10,
+            plus6,
+            latitude,
+            longitude,
+            endereco,
+            bairro,
+            contato,
+            ativo,
+            aberto_ao_publico,
+            horario_funcionamento,
+            fonte,
+            vigencia_inicio,
+            vigencia_fim,
+            CAST(NULL AS STRING) AS esfera,
+            metadata,
+            updated_at
+        from {{ ref("raw_equipamentos_pontos_apoio") }}
     ),
 
     equipamentos as (
@@ -275,6 +310,9 @@ with
         union all
         select *
         from assistencia_social
+        union all
+        select *
+        from pontos_apoio
     ),
 
     equipamentos_categorias as (
@@ -301,6 +339,7 @@ with
             eq.fonte,
             eq.vigencia_inicio,
             eq.vigencia_fim,
+            eq.esfera,
             eq.metadata,
             eq.updated_at,
             ST_ASTEXT(eq.geometry) as geometry_text
@@ -343,6 +382,7 @@ select
     eq.fonte,
     eq.vigencia_inicio,
     eq.vigencia_fim,
+    eq.esfera,
     eq.metadata,
     eq.updated_at
 from equipamentos_categorias eq

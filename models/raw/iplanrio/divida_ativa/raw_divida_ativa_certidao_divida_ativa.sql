@@ -16,8 +16,8 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   b.descricao_situacao_cda,
   safe_cast(a.idNaturezaDivida as int64) as id_natureza_divida,
   c.nome_natureza_divida,
-  safe_cast(a.datCadastramento as date) as data_geracao_cda,
-  safe_cast(a.DatSituacao as date) as data_ultima_alteracao_situacao,
+  safe_cast(a.datCadastramento as datetime) as data_geracao_cda,
+  safe_cast(a.DatSituacao as datetime) as data_ultima_alteracao_situacao,
   safe_cast(a.ProcessoAdm as string) as numero_processo_associado,
   safe_cast(a.codFaseCobranca as int64) as codigo_fase_cobranca,
   case safe_cast(a.codFaseCobranca as int64)
@@ -37,6 +37,7 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.valMoraOrigemSMF as numeric) as valor_mora_smf_iptu,
   safe_cast(a.valSaldoInscritoDA as numeric) as valor_original_divida_ativa,
   safe_cast(a.codReceita as string) as codigo_receita_cda,
+  d.nome_receita,
   safe_cast(a.idEntidadeCredora as int64) as id_entidade_credora,
   case safe_cast(a.idEntidadeCredora as int64)
     when 1 then 'PCRJ'
@@ -44,8 +45,10 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
     when 3 then 'FUNPREVI'
     else 'Não classificado'
   end as nome_entidade_credora,
+  safe_cast(descDadosComplementares as string) as dados_complementares,
   a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging_prefect', 'CDA') }} a
 left join {{ ref('raw_divida_ativa_situacao_certidao_divida_ativa') }} b on CAST(b.id_situacao_cda as string) = CAST(a.codSituacaoCDA as string)
 left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} c on CAST(c.id_natureza_divida as string) = a.idNaturezaDivida
+left join {{ ref('raw_divida_ativa_tipo_receita') }} d on CAST(d.codigo_receita AS string) = a.codReceita

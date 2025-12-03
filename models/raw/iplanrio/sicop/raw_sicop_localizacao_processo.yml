@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: raw_sicop_localizacao_processo
+    description: "Dados brutos de localização física de processos do SICOP (origem VW_LOCALIZA_PROCESSO_DLK)"
+
+    columns:
+      - name: id_processo
+        description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_sicop_localizacao_processo__id_processo__not_null
+              config:
+                severity: error
+      - name: localizacao_processo
+        description: "Local onde o processo está arquivado fisicamente. Ex.: Estante 1, prateleira 1"
+        data_type: string
+        quote: true
+
+
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date

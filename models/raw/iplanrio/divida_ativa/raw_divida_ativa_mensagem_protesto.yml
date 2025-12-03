@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_mensagem_protesto__codigo_mensagem_protesto__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_mensagem_protesto__codigo_mensagem_protesto__unique
-              severity: error
+              config:
+                severity: error
       - name: codigo_mensagem_protesto
         description: "Código da mensagem vinculado na tabela de protestos."
         data_type: string
