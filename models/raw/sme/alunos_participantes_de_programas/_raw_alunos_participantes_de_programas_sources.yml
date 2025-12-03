@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: brutos_gestao_escolar_staging
+    description: "Banco de origem com dados de gestão escolar"
+    database: rj-iplanrio
+    schema: brutos_gestao_escolar_staging
+    freshness: # default freshness
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: ACA_Aluno
+        description: "Tabela que contém informações complementares aos dados pessoais do aluno"
+      - name: ACA_Religiao
+        description: "Tabela que apresenta a lista de religiões"
+      - name: ACA_CalendarioAnual
+        description: "Tabela que apresenta a lista dos calendários"  
+      - name: ESC_UnidadeEscola
+        description: "Tabela que contém informações das escolas"  
+      - name: PPE_ProjetoPrograma
+        description: "Tabela que traz as informações dos programas educacionais existentes"
+      - name: PPE_TipoExtensividade
+        description: "Tabela que apresenta os tipos de extensividade dos programas"
+      - name: PPE_AlunoProjetoPrograma
+        description: "Tabela que associa o aluno aos Programas dos Projetos que ele participa"

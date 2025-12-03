@@ -78,6 +78,10 @@ models:
           +materialized: table
           +schema: brutos_gestao_creche
           +tags: ["daily"]  
+        alunos_participantes_de_programas:
+          +materialized: table
+          +schema: brutos_gestao_escolar
+          +tags: ["daily"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp

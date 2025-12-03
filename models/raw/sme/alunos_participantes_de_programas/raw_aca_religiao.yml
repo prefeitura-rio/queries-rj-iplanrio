@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: aca_religiao
+    description: "Tabela que apresenta a lista de religiões."
+    columns:
+      - name: identificador_religiao
+        description: "PK desta tabela"
+        tests:
+          - not_null:
+              arguments: {}
+          - unique
+      - name: nome_religiao
+        description: "Nome da religião"
+        tests:
+          - not_null:
+              arguments: {}
+      - name: situacao_religiao
+        description: "Situação da religião"
+        tests:
+          - not_null:
+              arguments: {}

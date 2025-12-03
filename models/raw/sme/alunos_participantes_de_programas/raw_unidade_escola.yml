@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: unidade_escola
+    description: "Informações complementares sobre as unidades escolares."
+    columns:
+      - name: identificador_escola
+        description: "FK da tabela escola"
+        tests:
+          - not_null:
+              arguments: {}
+
+      - name: identificador_unidade_escolar
+        description: "PK desta tabela"
+        tests:
+          - not_null:
+              arguments: {}
+          - unique
+
+      - name: codigo_unidade_escolar
+        description: "Código da Unidade Escolar"
+        tests:
+          - accepted_values:
+              values: []  # pode ser preenchido se houver lista de códigos válidos
+
+      - name: descricao
+        description: "Sempre nulo. (não é utilizado)"
+
+      - name: principal
+        description: "Sempre igual a 1."
+        tests:
+          - not_null:
+              arguments: {}
+          - accepted_values:
+              values: [true]
+
+      - name: zona
+        description: "Sempre nulo. (não é utilizado)"
+
+      - name: funcionamento_inicio
+        description: "Início de funcionamento da unidade escolar."
+
+      - name: funcionamento_fim
+        description: "Término do funcionamento da unidade escolar."
+
+      - name: ceps_proximos
+        description: "Ceps próximos à unidade escolar"
+
+      - name: data_criacao
+        description: "Data de criação do registro da unidade escolar na base"
+        tests:
+          - not_null:
+              arguments: {}
+
+      - name: data_alteracao
+        description: "Data de alteração do registro da unidade escolar na base"
+        tests:
+          - not_null:
+              arguments: {}
+
+      - name: situacao
+        description: "Situação"
+        tests:
+          - not_null:
+              arguments: {}
+
+      - name: observacao
+        description: "Observação"
+
+      - name: alimentacao_escolar
+        description: "Preenchido com 0 ou nulo (campo não utilizado)"
+
+      - name: proposta_formacao_alternancia
+        description: "Preenchido com 0 ou nulo (campo não utilizado)"
