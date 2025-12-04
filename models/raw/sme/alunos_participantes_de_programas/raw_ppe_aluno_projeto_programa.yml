@@ -59,7 +59,8 @@ models:
 
     tests:
       - unique_combination_of_columns:
-          combination_of_columns:
-            - identificador_aluno
-            - identificador_projeto_programa
-            - identificador_aluno_projeto
+          arguments:
+            combination_of_columns:
+              - identificador_aluno
+              - identificador_projeto_programa
+              - identificador_aluno_projeto
