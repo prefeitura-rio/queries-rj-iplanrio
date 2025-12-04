@@ -1,7 +1,7 @@
 {{
     config(
         alias='subclasse',
-        schema='compras_materiais_servicos_sigma'
+        description="Subclasse das Classes da Lista de Classificação"
     )
 }}
 
@@ -11,4 +11,4 @@ SELECT
     SAFE_CAST(cd_subclasse AS STRING) AS codigo_subclasse,
     SAFE_CAST(ds_subclasse AS STRING) AS descricao_subclasse,
     SAFE_CAST(st_status AS STRING) AS id_status,
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_SUBCLASSE')}}
+from {{ source('brutos_compras_materiais_servicos_sigma_staging', 'subclasse')}}

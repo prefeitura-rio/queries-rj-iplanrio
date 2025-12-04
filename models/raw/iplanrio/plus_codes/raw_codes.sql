@@ -27,7 +27,11 @@ with
     equipamentos_proximidade as (
         select *
         from equipamentos
-        where fonte not in ('{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}')
+        where fonte not in (
+            '{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', 
+            '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}'
+            -- '{{ source("smas_equipamentos", "poligonos_rmi") }}'
+        )
     ),
     
     -- 2) Pares grid × equipamento dentro do raio
@@ -64,6 +68,7 @@ with
                         e.fonte,
                         e.vigencia_inicio,
                         e.vigencia_fim,
+                        e.esfera,
                         e.metadata,
                         e.updated_at,
                         st_distance(e.geometry, g.centro_geometry) as distancia_metros
@@ -91,7 +96,7 @@ with
         from pairs_proximidade
     )
 
--- 4) Agrega os 3 mais próximos
+-- 4) Agrega os n=1 mais próximos
 select
     plus8,
     trim(secretaria_responsavel) as secretaria_responsavel,

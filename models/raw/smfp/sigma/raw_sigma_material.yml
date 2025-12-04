@@ -1,0 +1,154 @@
+version: 2
+
+models:
+  - name: raw_sigma_material
+    description: "Cadastro de Material."
+    config:
+      alias: material
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: codigo_material
+        description: "Código do Material (Composição do Grupo + Classe + Subclasse + Sequencial e digitos de verificação)"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_sigma_material__codigo_material__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_sigma_material__codigo_material__unique
+              config:
+                severity: error
+      - name: codigo_grupo
+        description: "Código do Grupo"
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: raw_sigma_material__codigo_grupo__relationships
+              arguments:
+                to: ref('raw_sigma_grupo')
+                field: codigo_grupo
+      - name: codigo_classe
+        description: "Código da Classe"
+        data_type: string
+        quote: true
+        # data_tests:
+        #   - relationships:
+        #       name: raw_sigma_material__codigo_classe__relationships
+        #       to: ref('raw_sigma_classe')
+        #       field: codigo_classe
+      - name: codigo_subclasse
+        description: "Código da Subclasse"
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: raw_sigma_material__codigo_subclasse__relationships
+              arguments:
+                to: ref('raw_sigma_subclasse')
+                field: codigo_subclasse
+      - name: codigo_sequencial
+        description: "Código Sequencial"
+        data_type: string
+        quote: true
+      - name: digito_verificador_1
+        description: "Dígito Verificador 1"
+        data_type: string
+        quote: true
+      - name: digito_verificador_2
+        description: "Dígito Verificador 2"
+        data_type: string
+        quote: true
+      - name: nome_padronizado_material
+        description: "Nome padronizado do material"
+        data_type: string
+        quote: true
+      - name: nome_complementar_material
+        description: "Nome complementar do material"
+        data_type: string
+        quote: true
+      - name: unidade_consumo
+        description: "Unidade de Consumo"
+        data_type: string
+        quote: true
+      - name: descricao_detalhada
+        description: "Descrição detalhada (São 06 campos com 78 caracteres cada um)"
+        data_type: string
+        quote: true
+      - name: data_desativacao
+        description: "Data da Desativação"
+        data_type: decimal
+      - name: status_material
+        description: "Indica material Ativo ou Desativado"
+        data_type: string
+        quote: true
+      - name: tabela_remume
+        description: "Se o material esta vinculado a tabela REMUME"
+        data_type: string
+        quote: true
+      - name: acondicionamento
+        description: "Acondicionamento (É um campo com 78 caracteres)"
+        data_type: string
+        quote: true
+      - name: genero_alimenticio
+        description: "Genero Alimentício"
+        data_type: string
+        quote: true
+      - name: codigo_material_substituto
+        description: "Código do Material Substituto"
+        data_type: integer
+      - name: nome_fantasia
+        description: "Nome Fantasia"
+        data_type: string
+        quote: true
+      - name: codigo_compras_net
+        description: "Código do material (Classificação Governo Federal)."
+        data_type: integer
+      - name: tipo_material
+        description: "Tipo de Material"
+        data_type: string
+        quote: true
+      - name: referencia
+        description: "Se possui referência"
+        data_type: string
+        quote: true
+      - name: registro_preco
+        description: "Se o produto é um item de registro de Preço"
+        data_type: string
+        quote: true
+      - name: medicamento_refrigerado
+        description: "Se é um medicamento armazenado em ambiente refrigerado"
+        data_type: string
+        quote: true
+      - name: medicamento_controlado
+        description: "Se é um medicamento controlado"
+        data_type: string
+        quote: true
+      - name: medicamento_padronizado
+        description: "Se é um medicamento padronizado"
+        data_type: string
+        quote: true
+      - name: medicamento_uso_geral
+        description: "Se é um medicamento de uso geral"
+        data_type: string
+        quote: true
+      - name: medicamento_continuado
+        description: "Se é um medicamento continuado"
+        data_type: string
+        quote: true
+      - name: medicamento_tabelado
+        description: "Se é um medicamento tabelado"
+        data_type: string
+        quote: true
+      - name: item_sustentavel
+        description: "Sé um item sustentável"
+        data_type: string
+        quote: true
+      - name: observacao
+        description: "Observação (É um campo com 78 caracteres)"
+        data_type: string
+        quote: true
+

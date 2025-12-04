@@ -59,6 +59,9 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   safe_cast(a.ValGrerjPag as numeric) as valor_grerj_pago,
   safe_cast(a.valJurosPagoHon as numeric) as valor_juros_honorarios_pago,
   safe_cast(a.anoIPCAe as int64) as ano_ipcae,
+  safe_cast(codigoDeBarras as string) as codigo_barras,
+  safe_cast(a.txtIdPix as string) as id_pix,
+  safe_cast(a.codigoQrEMVPix as string) as codigo_qr_pix,
   a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging_prefect', 'CotaPagamento') }} a

@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: aca_religiao
+  - name: raw_alunos_participantes_de_programas__aca_religiao
     description: "Tabela que apresenta a lista de religiões."
     columns:
       - name: identificador_religiao

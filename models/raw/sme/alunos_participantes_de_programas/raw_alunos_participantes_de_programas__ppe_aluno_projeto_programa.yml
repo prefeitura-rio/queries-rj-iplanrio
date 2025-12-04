@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: ppe_aluno_projeto_programa
+  - name: raw_alunos_participantes_de_programas__ppe_aluno_projeto_programa
     description: "Tabela que associa o aluno aos Programas dos Projetos que ele participa."
     columns:
       - name: identificador_aluno
@@ -59,7 +59,8 @@ models:
 
     tests:
       - unique_combination_of_columns:
-          combination_of_columns:
-            - identificador_aluno
-            - identificador_projeto_programa
-            - identificador_aluno_projeto
+          arguments:
+            combination_of_columns:
+              - identificador_aluno
+              - identificador_projeto_programa
+              - identificador_aluno_projeto

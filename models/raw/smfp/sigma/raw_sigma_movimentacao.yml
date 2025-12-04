@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: raw_sigma_movimentacao
+    description: "Movimentações de estoque."
+    config:
+      alias: movimentacao
+      schema: compras_materiais_servicos_sigma
+      materialized: table
+    columns:
+      - name: codigo_material
+        description: "Código do Material"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_sigma_movimentacao__codigo_material__not_null
+              config:
+                severity: error
+      - name: cnpj_fornecedor
+        description: "CNPJ do Fornecedor"
+        data_type: string
+        quote: true
+      - name: nota_fiscal
+        description: "Número da Nota Fiscal"
+        data_type: integer
+      - name: serie_nota_fiscal
+        description: "Número de Série da Nota Fiscal"
+        data_type: string
+        quote: true
+      - name: data_nota_fiscal
+        description: "Data da Emissão da Nota Fiscal"
+        data_type: date
+      - name: quantidade_item
+        description: "Quantidade de Itens"
+        data_type: integer
+      - name: preco_item
+        description: "Preço do item da nota fiscal."
+        data_type: integer
+      - name: total_item
+        description: "Total de Itens"
+        data_type: integer
+      - name: data_ultima_atualizacao
+        description: "Data da Última atualização"
+        data_type: timestamp
+      - name: codigo_movimentacao
+        description: "Código da movimentação. O que é uma movimentação? o código identifica se é uma entrada ou saída ver tabela 1 abaixo"
+        data_type: integer
+      - name: tipo_movimentacao
+        description: "Descrição do tipo de movimentação"
+        data_type: string
+        quote: true
+      - name: tipo_almoxarifado
+        description: "Tipo de almoxarifado. Quais são os tipos de almoxarifado? Unidade Armazenadora e Unidade Consumidora"
+        data_type: string
+        quote: true
+      - name: codigo_secretaria
+        description: "Código da Secretaria (Os almoxarifados ficam vinculados a uma determinada Secretaria)"
+        data_type: integer
+      - name: descricao_secretaria
+        description: "Descrição da Secretaria"
+        data_type: string
+        quote: true
+      - name: id_almoxarifado_destino
+        description: "Código do Almoxarifado Destino"
+        data_type: integer
+      - name: descricao_almoxarifado_destino
+        description: "Descrição do Almoxarifado Destino"
+        data_type: string
+        quote: true
+      - name: id_almoxarifado_origem
+        description: "Código do Almoxarifado Origem"
+        data_type: integer
+      - name: descricao_almoxarifado_origem
+        description: "Descrição do Almoxarifado Origem"
+        data_type: string
+        quote: true
+      - name: codigo_organizacao_social
+        description: "Código da Organização Social"
+        data_type: string
+        quote: true
+      - name: data_inicio_contrato
+        description: "Data de Início do Contrato da Organização Social"
+        data_type: date
+      - name: data_fim_contrato
+        description: "Data do Fim do Contrato da Organização Social"
+        data_type: date
+      - name: codigo_empenho
+        description: "Número do Empenho"
+        data_type: integer
+      - name: cnpj_fabricante
+        description: "CNPJ do Fabricante."
+        data_type: string
+        quote: true
+

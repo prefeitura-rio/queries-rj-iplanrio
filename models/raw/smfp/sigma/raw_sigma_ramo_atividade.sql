@@ -1,13 +1,12 @@
 {{
     config(
         alias='ramo_atividade',
-        schema='compras_materiais_servicos_sigma'
+        description="Cadastro do Ramo de Atividades"
     )
 }}
 
 SELECT
-    SAFE_CAST(cd_ramo AS STRING) AS codigo_ramo,
-    SAFE_CAST(ds_ramo AS STRING) AS descricao_ramo,
-    SAFE_CAST(st_ramo AS STRING) AS situacao_ramo,
-
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_RAMO_ATIVIDADE')}}
+    SAFE_CAST(CD_RAMO AS NUMERIC) AS codigo_ramo,
+    SAFE_CAST(DS_RAMO AS STRING) AS descricao_ramo,
+    SAFE_CAST(ST_RAMO AS STRING) AS situacao_ramo
+FROM {{ source('brutos_compras_materiais_servicos_sigma_staging', 'ramo_atividade') }}

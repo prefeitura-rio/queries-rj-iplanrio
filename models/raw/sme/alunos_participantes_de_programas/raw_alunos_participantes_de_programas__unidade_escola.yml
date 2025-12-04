@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: unidade_escola
+  - name: raw_alunos_participantes_de_programas__unidade_escola
     description: "Informações complementares sobre as unidades escolares."
     columns:
       - name: identificador_escola
@@ -21,7 +21,8 @@ models:
         description: "Código da Unidade Escolar"
         tests:
           - accepted_values:
-              values: []  # pode ser preenchido se houver lista de códigos válidos
+              arguments:
+                values: [] # pode ser preenchido se houver lista de códigos válidos
 
       - name: descricao
         description: "Sempre nulo. (não é utilizado)"
@@ -32,7 +33,8 @@ models:
           - not_null:
               arguments: {}
           - accepted_values:
-              values: [true]
+              arguments:
+                values: [true]
 
       - name: zona
         description: "Sempre nulo. (não é utilizado)"

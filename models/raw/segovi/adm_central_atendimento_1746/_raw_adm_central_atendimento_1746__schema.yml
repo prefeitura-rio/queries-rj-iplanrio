@@ -66,10 +66,13 @@ models :
       - name: descricao
         description: Descrição do chamado.
       - name: data_particao
-        description: Data de partição dos dados.
+        description: Data de partição dos dados. Trunc(data_inicio)
       - name: id_origem_ocorrencia
         description: Identificador da origem da ocorrência.
-
+      - name: updated_at
+        description: Data da ultima atualização
+      - name: extracted_at
+        description: Data e hora em que o registro foi extraído pelo Airbyte.
   - name: raw_adm_central_atendimento_1746__chamado_cpf
     description: "**Descrição**: CPF associado aos chamados do 1746.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Março de  2011\n**Órgão gestor dos dados**: SEGOVI\n**Publicado por**: Patricia Catandi\n**Publicado por (email)**: patriciabcatandi@gmail.com\n"
     columns:
@@ -77,7 +80,20 @@ models :
         description: Identificador único do chamado no banco de dados.
       - name: cpf
         description: CPF do cidadão que fez o chamado.
-
+      - name: id_pessoa
+        description: Identificador do cidadão que fez o chamado.
+      - name: id_protocolo
+        description: Identificador do protocolo.
+      - name: id_protocolo_chamado
+        description: Identificador do protocolo/chamado.
+      - name: numero_protocolo
+        description: Número do protocolo informado ao cidadão.
+      - name: ic_motivo
+        description: Indicador motivo.
+      - name: extracted_at
+        description: Data e hora em que o registro foi extraído pelo Airbyte.
+      - name: data_particao
+        description: Data de partição dos dados. Trunc(data_inicio da tb_protocolo)
   - name: raw_adm_central_atendimento_1746__origem_ocorrencia
     description: "**Descrição**: Origem da ocorrência dos chamados do 1746.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Março de  2011\n**Órgão gestor dos dados**: SEGOVI\n**Publicado por**: Patricia Catandi\n**Publicado por (email)**: patriciabcatandi@gmail.com\n"
     columns:
@@ -85,7 +101,12 @@ models :
         description: Identificador único da origem da ocorrência.
       - name: no_origem_ocorrencia
         description: Nome da origem da ocorrência.
-
+      - name: id_origem_ocorrencia_categoria_fk
+        description: Identificador da categoria da ocorrencia
+      - name: fl_ativo
+        description: Flag que indica se a origem da ocorrencia está ativa
+      - name: extracted_at
+        description: Data e hora em que o registro foi extraído pelo Airbyte.
   - name: raw_adm_central_atendimento_1746__pessoa
     description: "**Descrição**: Dados pessoais dos cidadãos que fazem chamados ao 1746.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Março de  2011\n**Órgão gestor dos dados**: SEGOVI\n**Publicado por**: Patricia Catandi\n**Publicado por (email)**: patriciabcatandi@gmail.com\n"
     columns:
@@ -95,8 +116,42 @@ models :
         description: CPF da pessoa.
       - name: nome
         description: Nome da pessoa.
+      - name: documento_identidade
+        description: Documento de identidade da pessoa.
+      - name: numero_matricula
+        description: Número de matrícula da pessoa.
+      - name: nome_mae
+        description: Nome da mãe da pessoa.
+      - name: data_nascimento
+        description: Data de nascimento da pessoa.
+      - name: sexo
+        description: Sexo da pessoa.
+      - name: atividade_profissional
+        description: Atividade profissional da pessoa.
+      - name: id_cargo
+        description: Chave estrangeira que identifica o cargo da pessoa.
+      - name: id_idioma
+        description: Chave estrangeira que identifica o idioma de preferência da pessoa.
+      - name: id_pais_ddi
+        description: Chave estrangeira que identifica o DDI do país do telefone.
+      - name: id_tratamento
+        description: Chave estrangeira que identifica o pronome de tratamento da pessoa.
+      - name: id_escolaridade
+        description: Chave estrangeira que identifica a escolaridade da pessoa.
+      - name: id_tipo_endereco
+        description: Chave estrangeira que identifica o tipo do endereço (ex residencial, comercial)
+      - name: id_bairro_logradouro
+        description: Chave estrangeira que identifica o bairro do logradouro.
+      - name: id_unidade_organizacional
+        description: Chave estrangeira que identifica a unidade organizacional da pessoa.
       - name: email
         description: Email da pessoa.
+      - name: telefone_1
+        description: Telefone principal da pessoa.
+      - name: telefone_2
+        description: Telefone secundário da pessoa.
+      - name: telefone_3
+        description: Telefone terciário da pessoa.
       - name: endereco
         description: Endereço da pessoa.
       - name: endereco_numero
@@ -107,25 +162,37 @@ models :
         description: Complemento do endereço da pessoa.
       - name: endereco_referencia
         description: Referência do endereço da pessoa.
-      - name: telefone_1
-        description: Telefone principal da pessoa.
-      - name: telefone_2
-        description: Telefone secundário da pessoa.
-      - name: telefone_3
-        description: Telefone terciário da pessoa.
-      - name: data_nascimento
-        description: Data de nascimento da pessoa.
-      - name: sexo
-        description: Sexo da pessoa.
-      - name: documento_identidade
-        description: Documento de identidade da pessoa.
+      - name: coordenada_x
+        description: Coordenada geográfica X (longitude) do endereço.
+      - name: coordenada_y
+        description: Coordenada geográfica Y (latitude) do endereço.
+      - name: flag_ativo
+        description: Flag que indica se o registro da pessoa está ativo.
+      - name: flag_auditor
+        description: Flag que indica se a pessoa é um auditor.
+      - name: flag_sms
+        description: Flag geral para envio de SMS.
+      - name: flag_email
+        description: Flag geral para envio de email.
+      - name: flag_recebe_sms
+        description: Flag que indica se a pessoa deseja receber SMS.
+      - name: flag_recebe_email
+        description: Flag que indica se a pessoa deseja receber email.
+      - name: flag_reintegracao_sms
+        description: Flag que indica se a pessoa autoriza reintegração por SMS.
+      - name: flag_reintegracao_email
+        description: Flag que indica se a pessoa autoriza reintegração por email.
+      - name: flag_nao_reside_no_municipio
+        description: Flag que indica se a pessoa não reside no município.
+      - name: flag_recebe_notificacao_generica
+        description: Flag que indica se a pessoa deseja receber notificações genéricas.
+      - name: flag_recebe_notificacao_alerta_rio
+        description: Flag que indica se a pessoa deseja receber notificações do Alerta Rio.
+      - name: flag_recebe_notificacao_andamento_chamado
+        description: Flag que indica se a pessoa deseja receber notificações sobre o andamento de seus chamados.
       - name: data_insercao
         description: Data de inserção do registro no banco de dados.
       - name: data_atualizacao
         description: Data de atualização do registro no banco de dados.
-      - name: nome_mae
-        description: Nome da mãe da pessoa.
-      - name: id_escolaridade
-        description: Identificador da escolaridade da pessoa.
-      - name: atividade_profissional
-        description: Atividade profissional da pessoa.
+      - name: extracted_at
+        description: Data e hora em que o registro foi extraído pelo Airbyte.

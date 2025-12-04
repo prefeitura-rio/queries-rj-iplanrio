@@ -10,10 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_natureza_divida__id_natureza_divida__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: aw_divida_ativa_natureza_divida__id_natureza_divida__unique
-              severity: error
+              config:
+                severity: error
       - name: nome_natureza_divida
         description: "Nome da natureza da dívida vinculada à CDA."
         data_type: string
@@ -25,4 +27,4 @@ models:
         data_type: timestamp
       - name: transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp        
+        data_type: timestamp

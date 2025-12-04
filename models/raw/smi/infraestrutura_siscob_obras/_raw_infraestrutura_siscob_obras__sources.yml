@@ -10,7 +10,7 @@ sources:
       - name: itens_medicao
       - name: itens_medidos_finalizados
       - name: localizacao_obra
-      - name: enderecos_geolocalizados
+   #   - name: enderecos_geolocalizados
       - name: medicao
       - name: obra
       - name: obras_suspensas
@@ -18,3 +18,8 @@ sources:
       - name: programa_fonte
       - name: termo_aditivo
       - name: fiscal
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)

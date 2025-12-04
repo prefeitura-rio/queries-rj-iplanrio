@@ -10,8 +10,8 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_certidao_divida_ativa__id_certidao_divida_ativa__not_null
-              severity: error
-
+              config:
+                severity: error
       - name: ano_de_inscricao_na_divida
         description: "Ano de inscrição na dívida ativa."
         data_type: int64
@@ -104,12 +104,20 @@ models:
         description: "Código da receita da CDA."
         data_type: string
 
+      - name: nome_receita
+        description: "Nome do código de receita associada à CDA."
+        data_type: string
+
       - name: id_entidade_credora
         description: "Identificador da entidade credora."
         data_type: int64
 
       - name: nome_entidade_credora
         description: "Nome da entidade credora."
+        data_type: string
+
+      - name: dados_complementares
+        description: "Dados complementares da CDA."
         data_type: string
 
       - name: loaded_at

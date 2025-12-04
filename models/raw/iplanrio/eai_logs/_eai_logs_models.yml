@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: eai_dashboard_history
+    description: "Dashboard de histórico do EAI com classificação de usuários"
+    columns:
+      - name: user_id
+        description: "ID do usuário"
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+      - name: session_id
+        description: "ID da sessão"
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+      - name: message_timestamp
+        description: "Timestamp da mensagem"
+        data_type: timestamp
+      - name: categoria_usuario
+        description: "Classificação do usuário (novo_usuario, usuario_de_retorno, usuario_recorrente, outro)"
+        data_type: string
+        quote: true
+
+  - name: eai_dashboard_detailed_cost
+    description: "Dashboard detalhado de custos do EAI"
+    columns:
+      - name: dia
+        description: "Data do custo"
+        data_type: date
+        tests:
+          - not_null
+      - name: tipo_custo
+        description: "Tipo do custo (compartilhado, exclusivo, nao_categorizado)"
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['compartilhado', 'exclusivo', 'nao_categorizado']
+      - name: servico
+        description: "Serviço GCP"
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+      - name: custo_brl
+        description: "Custo em BRL"
+        data_type: numeric
+        tests:
+          - not_null

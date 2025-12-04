@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: aca_aluno
+  - name: raw_alunos_participantes_de_programas__aca_aluno
     description: "Tabela que contém informações complementares aos dados pessoais do aluno."
     columns:
       - name: identificador_aluno

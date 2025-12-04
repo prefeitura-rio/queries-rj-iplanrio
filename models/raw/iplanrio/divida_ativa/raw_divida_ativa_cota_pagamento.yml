@@ -10,14 +10,16 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_cota_pagamento__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: id_cota_guia_pagamento
         description: "Identificador da cota (parcela) da guia de pagamento."
         data_type: int64
         data_tests:
           - not_null:
               name: raw_divida_ativa_cota_pagamento__id_cota_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
       - name: cota_paga
         description: "Indica se a cota foi paga (true/false)."
         data_type: boolean
@@ -75,6 +77,14 @@ models:
       - name: valor_juros_honorarios_pago
         description: "Valor dos juros sobre honorários pagos."
         data_type: numeric
+      - name: codigo_barras
+        description: "Código de barras para pagamento da cota."
+        data_type: string
+      - name: id_pix
+        description: "Identificador do Pix para pagamento da cota."
+        data_type: string
+      - name: codigo_qr_pix
+        description: "Código QR do Pix para pagamento da cota."
       - name: ano_ipcae
         description: "Ano de referência do IPCA-E utilizado."
         data_type: int64

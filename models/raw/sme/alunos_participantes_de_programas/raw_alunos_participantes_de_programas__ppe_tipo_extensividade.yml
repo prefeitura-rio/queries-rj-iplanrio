@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: ppe_tipo_extensividade
+  - name: raw_alunos_participantes_de_programas__ppe_tipo_extensividade
     description: "Tabela que apresenta os tipos de extensividade dos programas."
     columns:
       - name: identificador_tipo_extensividade

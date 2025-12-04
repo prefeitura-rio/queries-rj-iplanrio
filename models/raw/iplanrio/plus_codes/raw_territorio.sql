@@ -20,7 +20,11 @@ with
     equipamentos_territorio as (
         select *
         from equipamentos e
-        where fonte in ('{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}')
+        where fonte in (
+            '{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', 
+            '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}',
+            '{{ source("smas_equipamentos", "poligonos_rmi") }}'
+        )
     ),
 pair_territorio as (
         select 
@@ -47,6 +51,7 @@ pair_territorio as (
                     e.contato,
                     e.ativo,
                     e.aberto_ao_publico,
+                    e.esfera,
                     e.horario_funcionamento,
                     e.fonte,
                     e.vigencia_inicio,

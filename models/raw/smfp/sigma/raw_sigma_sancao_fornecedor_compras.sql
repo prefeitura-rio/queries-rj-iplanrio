@@ -1,7 +1,7 @@
 {{
     config(
         alias='sancao_fornecedor_compras',
-        schema='compras_materiais_servicos_sigma'
+        description="Sancão de Fornecedor de Compras"
     )
 }}
 
@@ -17,4 +17,4 @@ SELECT
   SAFE_CAST(DT_SANCAO AS STRING) AS data_sancao,
   SAFE_CAST(DT_EXTINCAO_SANCAO AS STRING) AS data_extincao_sancao
 
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_SANCAO_ADMINISTRATIVA')}}
+from {{ source('brutos_compras_materiais_servicos_sigma_staging', 'sancao_fornecedor')}}

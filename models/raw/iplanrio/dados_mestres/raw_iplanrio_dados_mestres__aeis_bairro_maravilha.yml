@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: raw_iplanrio_dados_mestres__aeis_bairro_maravilha
+    description: Dados de Áreas de Especial Interesse Social (AEIS) de Bairro Maravilha do município do Rio de Janeiro
+    columns:
+      - name: nome
+        description: Nome da AEIS
+      - name: caminho_pasta
+        description: Caminho da pasta no sistema
+      - name: id_simbolo
+        description: Identificador do símbolo
+      - name: modo_altitude
+        description: Modo de altitude
+      - name: base
+        description: Base
+      - name: fixado
+        description: Indicador se está fixado
+      - name: extrudado
+        description: Indicador se está extrudado
+      - name: trecho
+        description: Trecho
+      - name: informacao_popup
+        description: Informação para popup
+      - name: nome_bairro
+        description: Nome do bairro
+      - name: sequencia
+        description: Sequência
+      - name: nome_aeis
+        description: Nome da AEIS
+      - name: legislacao
+        description: Legislação aplicável
+      - name: id_aeis_bairro_maravilha
+        description: Identificador da AEIS Bairro Maravilha
+      - name: tipo
+        description: Tipo de AEIS
+      - name: comprimento
+        description: Comprimento em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da AEIS

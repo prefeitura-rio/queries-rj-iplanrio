@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: ppe_projeto_programa
+  - name: raw_alunos_participantes_de_programas__ppe_projeto_programa
     description: "Tabela que traz as informações dos programas educacionais existentes."
     columns:
       - name: identificador_projeto_programa

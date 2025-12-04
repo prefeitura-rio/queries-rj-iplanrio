@@ -1,8 +1,28 @@
 {{
     config(
-        alias='cnpj' 
+        alias='cnpj',
+        materialized='table'
     )
 }}
+
+with cpf_table as (
+   select cpf, nome from {{ ref("raw_bcadastro_cpf") }} as t
+), 
+
+socios_achatados as (
+    SELECT 
+        t.cnpj,
+        STRUCT(socio.codigo_pais, socio.cpf_socio, pf.nome as nome_socio, socio.cnpj_socio, socio.cpf_representante_legal, socio.data_situacao_especial, socio.nome_socio_estrangeiro, socio.qualificacao_representante_legal, socio.qualificacao_socio, socio.tipo) AS socio_com_nome
+    FROM {{ ref("raw_bcadastro_cnpj") }} as t, unnest(socios) as socio
+    LEFT JOIN cpf_table AS pf 
+        ON socio.cpf_socio = pf.cpf
+), socios_enriquecidos as (
+    SELECT 
+        cnpj,
+        ARRAY_AGG(socio_com_nome) AS socios
+    FROM socios_achatados
+    GROUP BY cnpj
+)
 
 select
     cnpj.cnpj,
@@ -84,7 +104,7 @@ select
     cnpj.tipos_unidade,
     cnpj.formas_atuacao,
     cnpj.socios_quantidade,
-    cnpj.socios,
+    socios_enriquecidos.socios,
     cnpj.sucessoes,
     cnpj.timestamp,
     cnpj.language,
@@ -105,3 +125,4 @@ select
     cnpj.cnpj_particao
 
 from {{ ref("raw_bcadastro_cnpj") }} as cnpj
+left join socios_enriquecidos on cnpj.cnpj = socios_enriquecidos.cnpj

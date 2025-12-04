@@ -1,7 +1,7 @@
 {{
     config(
         alias='raw_sigma_usuario_sistema',
-        schema='compras_materiais_servicos_sigma'
+        description="Usuários do SIGMA."
     )
 }}
 
@@ -12,8 +12,8 @@ SELECT
     SAFE_CAST(cpf AS STRING) AS cpf_colaborador,
     SAFE_CAST(ds_orgao_designacao AS STRING) AS descricao_orgao_designacao,
     SAFE_CAST(ds_perfil AS STRING) AS descricao_perfil,
-    SAFE_CAST(dt_inclusao AS STRING) AS data_inclusao,
-    SAFE_CAST(dt_ultima_sessao AS STRING) AS data_ultima_sessao,
+    SAFE_CAST(dt_inclusao AS DATE) AS data_inclusao,
+    SAFE_CAST(dt_ultima_sessao AS DATE) AS data_ultima_sessao,
     SAFE_CAST(email_alternativo AS STRING) AS email_alternativo,
     SAFE_CAST(email_institucional AS STRING) AS email_institucional,
     SAFE_CAST(hora_acesso_fim AS STRING) AS hora_acesso_fim,
@@ -31,4 +31,4 @@ SELECT
     SAFE_CAST(tel_alternativo2 AS STRING) AS telefone_alternativo_2,
     SAFE_CAST(tel_corporativo1 AS STRING) AS telefone_corporativo_1,
     SAFE_CAST(tel_corporativo2 AS STRING) AS telefone_corporativo_2,
-from {{ source('compras_materiais_servicos_sigma_staging', 'VW_USUARIO_SISTEMA')}}
+from {{ source('brutos_compras_materiais_servicos_sigma_staging', 'usuario_sistema')}}

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__regiao_administrativa
+    description: Dados de Regiões Administrativas (RA) do município do Rio de Janeiro
+    columns:
+      - name: id_regiao_administrativa
+        description: Identificador da região administrativa
+      - name: nome
+        description: Nome da região administrativa
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento
+      - name: id_area_planejamento_numerico
+        description: Identificador numérico da área de planejamento
+      - name: id_area_planejamento_sms
+        description: Identificador da área de planejamento do SMS
+      - name: area_total
+        description: Área total em metros quadrados
+      - name: area
+        description: Área em metros quadrados
+      - name: perimetro
+        description: Perímetro em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da região administrativa

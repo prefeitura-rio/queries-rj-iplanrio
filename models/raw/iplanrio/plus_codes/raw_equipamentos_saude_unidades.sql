@@ -36,6 +36,13 @@ WITH
     FROM
       {{ ref("raw_equipamentos_saude_unidades_arcgis") }}
   ),
+  estabelecimento_esfera AS (
+    SELECT
+      id_cnes,
+      esfera
+    FROM
+      {{ source("saude_dados_mestres", "estabelecimento") }}
+  ),
   tb AS (
     SELECT
       -- Pluscodes
@@ -110,6 +117,8 @@ WITH
       '{{ref("raw_equipamentos_saude_unidades_arcgis")}}' AS fonte,
       CAST(NULL AS DATE) AS vigencia_inicio,
       CAST(NULL AS DATE) AS vigencia_fim,
+      -- Esfera (city, state, or federal level) from estabelecimento join
+      e.esfera AS esfera,
       -- Metadata as JSON
       TO_JSON_STRING(STRUCT(
         t.area_planejamento,
@@ -123,6 +132,10 @@ WITH
        {{ source("dados_mestres", "bairro") }} as b
     ON 
       ST_CONTAINS(b.geometry, ST_GEOGPOINT(SAFE_CAST(t.longitude_unidade AS FLOAT64), SAFE_CAST(t.latitude_unidade AS FLOAT64)))
+    LEFT JOIN
+      estabelecimento_esfera AS e
+    ON
+      t.cnes = e.id_cnes
   )
 SELECT
   plus11,
@@ -146,6 +159,7 @@ SELECT
   fonte,
   vigencia_inicio,
   vigencia_fim,
+  esfera,
   metadata,
   updated_at
 FROM
