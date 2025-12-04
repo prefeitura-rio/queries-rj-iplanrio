@@ -3,8 +3,8 @@ version: 2
 sources:
   - name: recursos_humanos_ergon_pericia_medica_staging
     description: "Dados de perícia médica do sistema ERGON da Prefeitura do Rio de Janeiro"
-    database: rj-smfp
-    schema: recursos_humanos_ergon_pericia_medica_staging
+    database: rj-iplanrio
+    schema: brutos_recursos_humanos_ergon_pericia_medica_staging
     tables:
       - name: cid
         description: "Tabela de códigos CID (Classificação Internacional de Doenças)"
@@ -34,9 +34,9 @@ sources:
         description: "Perícias realizadas por juntas"
       - name: tpmrj_pm_resultjunta
         description: "Resultados de perícias de juntas"
-      - name: tpmrj_pm_vwbim
+      - name: 'tpmrj_pm_vwbim '
         description: "View de benefícios por incapacidade médica"
-      - name: tpmrj_pm_vwtpconclper
+      - name: 'tpmrj_pm_vwtpconclper '
         description: "View de tipos de conclusão de perícia"
     config:
       freshness: # default freshness

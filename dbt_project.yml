@@ -127,6 +127,11 @@ models:
           +materialized: table
           +schema: recursos_humanos_ergon
           +tags: "daily"
+        ergon_comlurb:
+          +materialized: table
+          +schema: brutos_ergon_comlurb_staging
+          +tags: "daily"
+
       smi:
         +tags: "smi"
         +project: rj-smi

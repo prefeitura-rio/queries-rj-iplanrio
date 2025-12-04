@@ -3,10 +3,10 @@ version: 2
 sources:
   - name: recursos_humanos_ergon_comlurb_staging
     description: "Dados de recursos humanos do sistema ERGON da COMLURB"
-    database: rj-smfp
+    database: rj-iplanrio 
     schema: recursos_humanos_ergon_comlurb_staging
     tables:
-      - name: cargo
+      - name: cargos
         description: "Tipos de cargos existentes na COMLURB"
       - name: dependente
         description: "Dependentes dos funcionários da COMLURB"
@@ -14,12 +14,7 @@ sources:
         description: "Eventos funcionais dos funcionários da COMLURB"
       - name: ficha_financeira
         description: "Fichas financeiras dos funcionários da COMLURB"
-        config:
-          freshness:
       - name: fita_banco
-        description: "Fitas enviadas para o tesouro municipal da COMLURB"
-        config:
-          freshness:
       - name: frequencia
         description: "Ocorrências de frequência dos funcionários da COMLURB"
       - name: funcionario
@@ -32,8 +27,6 @@ sources:
         description: "Setores da COMLURB"
       - name: vantagens
         description: "Vantagens e atributos dos funcionários da COMLURB"
-        config:
-          freshness:
       - name: vinculo
         description: "Vínculos de pagamento dos funcionários da COMLURB"
     config:

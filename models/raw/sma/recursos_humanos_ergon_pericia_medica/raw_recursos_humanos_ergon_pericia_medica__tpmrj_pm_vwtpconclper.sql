@@ -7,5 +7,5 @@
 
 SELECT
     *
-FROM {{ source('recursos_humanos_ergon_pericia_medica_staging', 'tpmrj_pm_vwtpconclper') }}
+FROM {{ source('recursos_humanos_ergon_pericia_medica_staging', 'tpmrj_pm_vwtpconclper ') }}
 
