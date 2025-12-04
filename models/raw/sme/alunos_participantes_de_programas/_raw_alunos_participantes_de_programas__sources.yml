@@ -12,8 +12,6 @@ sources:
         description: "Tabela que contém informações complementares aos dados pessoais do aluno"
       - name: ACA_Religiao
         description: "Tabela que apresenta a lista de religiões"
-      - name: ACA_CalendarioAnual
-        description: "Tabela que apresenta a lista dos calendários"  
       - name: ESC_UnidadeEscola
         description: "Tabela que contém informações das escolas"  
       - name: PPE_ProjetoPrograma

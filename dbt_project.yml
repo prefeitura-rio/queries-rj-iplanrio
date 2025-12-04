@@ -80,7 +80,7 @@ models:
           +tags: ["daily"]  
         alunos_participantes_de_programas:
           +materialized: table
-          +schema: brutos_gestao_escolar
+          +schema: brutos_gestao_escolar_staging
           +tags: ["daily"]
       smfp:
         +tags: "smfp"
