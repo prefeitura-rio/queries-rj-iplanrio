@@ -1,0 +1,149 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__vantagens
+    description: "**Descrição**: Vantagens e atributos dos funcionários da COMLURB.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa, sempre será o código da COMLURB.
+        data_type: string
+        quote: true
+      - name: id_registro
+        description: Número sequencial dado pelo sistema para cada registro criado.
+        data_type: string
+        quote: true
+      - name: id_vantagem
+        description: Código da vantagem.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data início da vantagem.
+        data_type: date
+      - name: data_fim
+        description: Data final da vantagem.
+        data_type: date
+      - name: publicacao_diario_oficial
+        description: Publicação no diário oficial relacionada à vantagem.
+        data_type: string
+        quote: true
+      - name: pontpubl
+        description: Pontuação pública relacionada à vantagem.
+        data_type: string
+        quote: true
+      - name: pontproc
+        description: Pontuação de processo relacionada à vantagem.
+        data_type: string
+        quote: true
+      - name: nome_vantagem
+        description: Nome da vantagem.
+        data_type: string
+        quote: true
+      - name: valor_vantagem
+        description: Valor da vantagem.
+        data_type: string
+        quote: true
+      - name: informacao_atributo
+        description: Informação adicional sobre o atributo.
+        data_type: string
+        quote: true
+      - name: tipo_incorporacao_cargo_fiducia
+        description: Tipo de incorporação do cargo/fidúcia.
+        data_type: string
+        quote: true
+      - name: percentual_incorporacao_cargo_fiducia
+        description: Percentual de incorporação do cargo/fidúcia.
+        data_type: string
+        quote: true
+      - name: incide_tabela_vencimentos
+        description: Indica se incide na tabela de vencimentos.
+        data_type: string
+        quote: true
+      - name: incide_tabela_simbolo
+        description: Indica se incide na tabela de símbolo.
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: Observações sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: valor_complementar
+        description: Valor complementar da vantagem.
+        data_type: string
+        quote: true
+      - name: informacao_complementar
+        description: Informação complementar sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: valor_complementar_2
+        description: Segundo valor complementar da vantagem.
+        data_type: string
+        quote: true
+      - name: informacao_complementar_2
+        description: Segunda informação complementar sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: valor_coplementar_3
+        description: Terceiro valor complementar da vantagem.
+        data_type: string
+        quote: true
+      - name: informacao_complementar_3
+        description: Terceira informação complementar sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: valor_complementar_4
+        description: Quarto valor complementar da vantagem.
+        data_type: string
+        quote: true
+      - name: informacao_complementar_4
+        description: Quarta informação complementar sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: valor_complementar_5
+        description: Quinto valor complementar da vantagem.
+        data_type: string
+        quote: true
+      - name: informacao_complementar_5
+        description: Quinta informação complementar sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: perc_inc_grat_funcao
+        description: Percentual de incorporação de gratificação de função.
+        data_type: string
+        quote: true
+      - name: inc_grat_tabvenc
+        description: Indica se incide gratificação na tabela de vencimentos.
+        data_type: string
+        quote: true
+      - name: inc_grat_referencia
+        description: Indica se incide gratificação na referência.
+        data_type: string
+        quote: true
+      - name: incorp_extra_tipofreq_1
+        description: Tipo de frequência extra 1 para incorporação.
+        data_type: string
+        quote: true
+      - name: quant_extra_1
+        description: Quantidade extra 1.
+        data_type: string
+        quote: true
+      - name: incorp_extra_tipofreq_2
+        description: Tipo de frequência extra 2 para incorporação.
+        data_type: string
+        quote: true
+      - name: quant_extra_2
+        description: Quantidade extra 2.
+        data_type: string
+        quote: true
+      - name: id_proc_pes
+        description: Identificador de processo de pessoal.
+        data_type: string
+        quote: true
+

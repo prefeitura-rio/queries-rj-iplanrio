@@ -1,0 +1,158 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__funcoes_ev
+    description: "**Descrição**: Funções de eventos.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: funcoes_ev
+      materialized: view
+    columns:
+      - name: nome
+        description: Nome da função de evento.
+        data_type: string
+        quote: true
+      - name: funcao
+        description: Código da função de evento.
+        data_type: string
+        quote: true
+      - name: id_reg
+        description: Identificador do registro da função de evento.
+        data_type: string
+        quote: true
+      - name: ponto_publicado
+        description: Ponto publicado relacionado à função de evento.
+        data_type: string
+        quote: true
+      - name: controle_vaga
+        description: Tipo de controle de vaga da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_01
+        description: Campo flexível 01 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_11
+        description: Campo flexível 11 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_12
+        description: Campo flexível 12 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_13
+        description: Campo flexível 13 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_14
+        description: Campo flexível 14 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_15
+        description: Campo flexível 15 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_16
+        description: Campo flexível 16 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_17
+        description: Campo flexível 17 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_18
+        description: Campo flexível 18 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_19
+        description: Campo flexível 19 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_20
+        description: Campo flexível 20 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_21
+        description: Campo flexível 21 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_22
+        description: Campo flexível 22 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_23
+        description: Campo flexível 23 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_24
+        description: Campo flexível 24 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_25
+        description: Campo flexível 25 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_26
+        description: Campo flexível 26 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_27
+        description: Campo flexível 27 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_28
+        description: Campo flexível 28 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_29
+        description: Campo flexível 29 da função de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_30
+        description: Campo flexível 30 da função de evento.
+        data_type: string
+        quote: true
+      - name: dt_inicio_contr_vaga
+        description: Data de início do controle de vaga da função de evento.
+        data_type: date
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp

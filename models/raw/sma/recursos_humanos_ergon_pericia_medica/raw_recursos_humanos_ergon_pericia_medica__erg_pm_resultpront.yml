@@ -1,0 +1,130 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_resultpront
+    description: "**Descrição**: Resultados de prontuários médicos.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: erg_pm_resultpront
+      materialized: view
+    columns:
+      - name: nexo
+        description: Indica se há nexo causal no resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: data_fim
+        description: Data de fim do resultado do prontuário.
+        data_type: date
+      - name: data_inicio
+        description: Data de início do resultado do prontuário.
+        data_type: date
+      - name: prazo
+        description: Prazo do resultado do prontuário em dias.
+        data_type: integer
+      - name: id_frequencia
+        description: Identificador da frequência do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: id_decisao
+        description: Identificador da decisão do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: data_conclusao
+        description: Data de conclusão do resultado do prontuário.
+        data_type: date
+      - name: num_dias
+        description: Número de dias do resultado do prontuário.
+        data_type: integer
+      - name: id_vinculo
+        description: Identificador do vínculo do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: juridico
+        description: Indica se há aspecto jurídico no resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: ponto_publicacao
+        description: Ponto de publicação do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: tipo_frequencia
+        description: Tipo de frequência do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: erro_conclusao
+        description: Indica se há erro na conclusão do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: chave_prontuario
+        description: Chave única identificadora do prontuário médico.
+        data_type: string
+        quote: true
+      - name: motivo_publicacao
+        description: Motivo da publicação do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: versao_publicacao
+        description: Versão da publicação do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: resultado_prontuario
+        description: Código do resultado do prontuário médico.
+        data_type: string
+        quote: true
+      - name: resultado_retificado
+        description: Código do resultado retificado do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_01
+        description: Campo flexível 01 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_11
+        description: Campo flexível 11 do resultado do prontuário.
+        data_type: string
+        quote: true
+      - name: justificativa
+        description: Justificativa do resultado do prontuário médico.
+        data_type: string
+        quote: true
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp

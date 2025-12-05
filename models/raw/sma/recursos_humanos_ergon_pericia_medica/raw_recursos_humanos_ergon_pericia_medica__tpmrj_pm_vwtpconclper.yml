@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper
+    description: "**Descrição**: View de tipos de conclusão de perícia.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: tpmrj_pm_vwtpconclper
+      materialized: view
+    columns:
+      - name: chave
+        description: Chave única identificadora do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper__chave__unique
+              severity: error
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper__chave__not_null
+              severity: error
+      - name: decisao
+        description: Código da decisão do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: dt_atendimento
+        description: Data de atendimento do tipo de conclusão de perícia.
+        data_type: date
+      - name: matricula
+        description: Matrícula do servidor relacionado ao tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: nome_grupo
+        description: Nome do grupo do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: grupo_exame
+        description: Grupo do exame do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: sigla_exame
+        description: Sigla do exame do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: dt_conclusao
+        description: Data de conclusão do tipo de conclusão de perícia.
+        data_type: date
+      - name: sigla_exame2
+        description: Segunda sigla do exame do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: nome_servidor
+        description: Nome do servidor relacionado ao tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: sigla_decisao
+        description: Sigla da decisão do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: sigla_decisao2
+        description: Segunda sigla da decisão do tipo de conclusão de perícia.
+        data_type: string
+        quote: true
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp
