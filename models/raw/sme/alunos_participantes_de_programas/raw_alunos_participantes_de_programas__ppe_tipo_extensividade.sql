@@ -1,3 +1,6 @@
+-- Alunos Participantes de Programas - PPE_TipoExtensividade
+-- Tabela que contém informações sobre os tipos de extensividade dos programas.
+
 {{ config(
     alias='ppe_tipo_extensividade',
     materialized='table'

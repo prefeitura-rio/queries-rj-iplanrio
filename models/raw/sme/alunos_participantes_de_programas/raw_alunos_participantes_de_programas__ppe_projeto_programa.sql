@@ -1,3 +1,6 @@
+-- Alunos Participantes de Programas - PPE_ProjetoPrograma
+-- Tabela que contém informações sobre os projetos e programas disponíveis para os alunos.  
+
 {{ config(
     alias='ppe_projeto_programa',
     materialized='table'

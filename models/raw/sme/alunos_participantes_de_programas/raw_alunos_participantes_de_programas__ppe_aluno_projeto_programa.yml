@@ -5,54 +5,54 @@ models:
     description: "Tabela que associa o aluno aos Programas dos Projetos que ele participa."
     columns:
       - name: identificador_aluno
-        description: "FK da tabela aca_aluno (Parte da PK composta)"
+        description: "FK da tabela aca_aluno (Parte da PK composta)."
         tests:
           - not_null:
               arguments: {}
       - name: identificador_projeto_programa
-        description: "FK da tabela ppe_projeto_programa (Parte da PK composta)"
+        description: "FK da tabela ppe_projeto_programa (Parte da PK composta)."
         tests:
           - not_null:
               arguments: {}
       - name: identificador_aluno_projeto
-        description: "PK desta tabela (Parte da PK composta)"
+        description: "PK desta tabela (Parte da PK composta)."
         tests:
           - not_null:
               arguments: {}
       - name: identificador_calendario_anual
-        description: "FK da tabela ACA_CalendarioAnual"
+        description: "FK da tabela ACA_CalendarioAnual."
         tests:
           - not_null:
               arguments: {}
       - name: identificador_escola
-        description: "FK da unidade_escola"
+        description: "FK da escola."
         tests:
           - not_null:
               arguments: {}
       - name: identificador_unidade_escolar
-        description: "FK da unidade_escola"
+        description: "FK da unidade_escola."
         tests:
           - not_null:
               arguments: {}
       - name: data_entrada_programa
-        description: "Data de entrada do aluno no programa"
+        description: "Data de entrada do aluno no programa."
         tests:
           - not_null:
               arguments: {}
       - name: data_saida_programa
-        description: "Data de saída do aluno no programa"
+        description: "Data de saída do aluno no programa."
       - name: situacao_aluno_projeto
-        description: "Situação do aluno no projeto (1 - Ativo, 2 - Inativo, 3 - Excluído)"
+        description: "Situação do aluno no projeto (1 - Ativo, 2 - Inativo, 3 - Excluído)."
         tests:
           - not_null:
               arguments: {}
       - name: data_criacao_registro_base
-        description: "Data da criação do registro na base"
+        description: "Data da criação do registro na base."
         tests:
           - not_null:
               arguments: {}
       - name: data_alteracao_registro_base
-        description: "Data de alteração do registro na base"
+        description: "Data de alteração do registro na base."
         tests:
           - not_null:
               arguments: {}

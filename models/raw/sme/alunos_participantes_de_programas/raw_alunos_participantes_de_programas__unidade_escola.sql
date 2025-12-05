@@ -1,3 +1,6 @@
+-- Alunos Participantes de Programas - Unidade Escola
+-- Tabela que contém informações complementares sobre as unidades escolares.
+
 {{ config(
     alias='unidade_escola',
     materialized='table'

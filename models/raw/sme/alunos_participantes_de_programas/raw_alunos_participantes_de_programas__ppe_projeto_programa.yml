@@ -5,39 +5,39 @@ models:
     description: "Tabela que traz as informações dos programas educacionais existentes."
     columns:
       - name: identificador_projeto_programa
-        description: "PK desta tabela"
+        description: "PK desta tabela."
         tests:
           - not_null:
               arguments: {}
           - unique
       - name: nome_projeto_programa
-        description: "Nome do Projeto Programa"
+        description: "Nome do Projeto Programa."
       - name: expectativa_minima_projeto_programa
-        description: "Expectativa mínima de duração"
+        description: "Expectativa mínima de duração."
         tests:
           - not_null:
               arguments: {}
       - name: objetivo_projeto_programa
-        description: "Objetivo do programa"
+        description: "Objetivo do programa."
         tests:
           - not_null:
               arguments: {}
       - name: extensividade_projeto_programa
-        description: "Programa é extensivo? 1=Sim; 0=Não"
+        description: "Programa é extensivo? 1=Sim; 0=Não."
       - name: identificador_tipo_extensividade
-        description: "FK da tabela ppe_tipo_extensividade"
+        description: "FK da tabela ppe_tipo_extensividade."
       - name: situacao_projeto_programa
-        description: "Situação do Programa"
+        description: "Situação do Programa."
         tests:
           - not_null:
               arguments: {}
       - name: data_criacao_registro_projeto_programa
-        description: "Data da criação do registro"
+        description: "Data da criação do registro."
         tests:
           - not_null:
               arguments: {}
       - name: data_alteracao_registro_projeto_programa
-        description: "Data de alteração do registro"
+        description: "Data de alteração do registro."
         tests:
           - not_null:
               arguments: {}

@@ -1,3 +1,5 @@
+-- Alunos Participantes de Programas - ACA_Aluno
+-- Tabela que contém informações complementares aos dados pessoais do aluno.
 
 {{ config(
     alias='aca_aluno',

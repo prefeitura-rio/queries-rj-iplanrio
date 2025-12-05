@@ -1,3 +1,6 @@
+-- Alunos Participantes de Programas - ACA_Religiao
+-- Tabela que contém informações sobre as religiões cadastradas.
+
 {{ config(
     alias='aca_religiao',
     materialized='table'
