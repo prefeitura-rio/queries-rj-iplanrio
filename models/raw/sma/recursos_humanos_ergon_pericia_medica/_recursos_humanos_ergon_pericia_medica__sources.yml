@@ -1,45 +1,46 @@
 version: 2
 
 sources:
-  - name: recursos_humanos_ergon_pericia_medica_staging
-    description: "Dados de perícia médica do sistema ERGON da Prefeitura do Rio de Janeiro"
-    database: rj-iplanrio
+  - name: brutos_recursos_humanos_ergon_pericia_medica_staging
+    project: rj-iplanrio
     schema: brutos_recursos_humanos_ergon_pericia_medica_staging
-    tables:
-      - name: cid
-        description: "Tabela de códigos CID (Classificação Internacional de Doenças)"
-      - name: designacoes_ev
-        description: "Designações de eventos"
-      - name: erg_pm_cid10_capitulo
-        description: "Capítulos do CID-10"
-      - name: erg_pm_decisao
-        description: "Decisões de perícia médica"
-      - name: erg_pm_grupoexame
-        description: "Grupos de exames médicos"
-      - name: erg_pm_pront_med
-        description: "Prontuários médicos"
-      - name: erg_pm_resultpront
-        description: "Resultados de prontuários médicos"
-      - name: exames
-        description: "Exames médicos realizados"
-      - name: funcoes_ev
-        description: "Funções de eventos"
-      - name: medicos
-        description: "Cadastro de médicos"
-      - name: prontuario
-        description: "Prontuários de pacientes"
-      - name: tpmrj_pm_juntas
-        description: "Juntas médicas"
-      - name: tpmrj_pm_periciasjunta
-        description: "Perícias realizadas por juntas"
-      - name: tpmrj_pm_resultjunta
-        description: "Resultados de perícias de juntas"
-      - name: 'tpmrj_pm_vwbim '
-        description: "View de benefícios por incapacidade médica"
-      - name: 'tpmrj_pm_vwtpconclper '
-        description: "View de tipos de conclusão de perícia"
-    config:
-      freshness: # default freshness
-        error_after: {count: 24, period: hour}
-      loaded_at_field: _airbyte_extracted_at
 
+    tables:
+      - name: ERG_PM_CID10_CAPITULO
+        description: "CID10 - Capítulos"
+      - name: ERG_PM_DECISAO
+        description: "Decisões de prontuários médicos"
+      - name: ERG_PM_GRUPOEXAME
+        description: "Grupos de exames médicos"
+      - name: ERG_PM_RESULTPRONT
+        description: "Resultados de prontuários médicos"
+      - name: ERG_PM_PRONT_MED
+        description: "Prontuários médicos"
+      - name: MEDICOS
+        description: "Cadastro de médicos"
+      - name: PRONTUARIO
+        description: "Prontuários de pacientes"
+      - name: TPMRJ_PM_VWBIM
+        description: "View de benefícios por incapacidade médica"
+      - name: TPMRJ_PM_VWTPCONCLPER
+        description: "View de tipos de conclusão de perícia"
+      - name: TPMRJ_PM_PERICIASJUNTA
+        description: "Perícias de juntas de prontuários médicos"
+      - name: TPMRJ_PM_RESULTJUNTA
+        description: "Resultados de juntas de prontuários médicos"
+      - name: TPMRJ_PM_JUNTAS
+        description: "Juntas de prontuários médicos"
+      - name: EXAMES
+        description: "Exames de prontuários médicos"
+      - name: FUNCOES_EV_
+        description: "Funções de eventos"
+      - name: DESIGNACOES_EV
+        description: "Designações de eventos"
+      - name: CID
+        description: "CID10"
+      - name: CID10_CAPITULO
+        description: "CID10 - Capítulos"
+      - name: CID10_CATEGORIA
+        description: "CID10 - Categorias"
+      - name: CID10_SUBCATEGORIA
+        description: "CID10 - Subcategorias"

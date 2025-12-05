@@ -125,11 +125,15 @@ models:
         +project: rj-sma
         recursos_humanos_ergon:
           +materialized: table
-          +schema: recursos_humanos_ergon
+          +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
-        ergon_comlurb:
+        recursos_humanos_ergon_comlurb:
           +materialized: table
-          +schema: brutos_ergon_comlurb_staging
+          +schema: brutos_recursos_humanos_ergon_comlurb
+          +tags: "daily"
+        recursos_humanos_ergon_pericia_medica:
+          +materialized: table
+          +schema: brutos_recursos_humanos_ergon_pericia_medica
           +tags: "daily"
 
       smi:
