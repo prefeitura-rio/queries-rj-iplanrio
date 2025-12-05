@@ -10,11 +10,12 @@ models:
         data_tests:
           - not_null:
               name: mart_divida_ativa_contribuinte__id_pessoa__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: mart_divida_ativa_contribuinte__id_pessoa__unique
-              severity: error
-
+              config:
+                severity: error
       - name: cpf_cnpj
         description: "CPF ou CNPJ do contribuinte."
         data_type: string
@@ -252,7 +253,7 @@ models:
       - name: quantidade_guias
         description: "Quantidade de guias de pagamento associadas ao contribuinte."
         data_type: int64
-      
+
       - name: valor_cotas_devidas_a_vencer
         description: "Soma do valor das cotas devidas a vencer nas guias de pagamento associadas ao contribuinte."
         data_type: numeric
@@ -341,7 +342,7 @@ models:
       - name: guias_pagamento.valor_cda_na_guia
         description: "Valor da CDA alocado na guia."
         data_type: numeric
-        
+
       - name: guias_pagamento.valor_desconto_cda
         description: "Valor do desconto aplicado à CDA nessa guia."
         data_type: numeric
@@ -350,7 +351,7 @@ models:
       - name: guias_pagamento.quantidade_cotas
         description: "Quantidade de cotas válidas da guia."
         data_type: int64
-      
+
       # Lista de cotas (parcelas) da guia de pagamento
       - name: guias_pagamento.cotas
         description: "Array com as cotas (parcelas) da guia."

@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: raw_alunos_participantes_de_programas__aca_aluno
+    description: "Tabela que contém informações complementares aos dados pessoais do aluno."
+    columns:
+      - name: identificador_aluno
+        description: "PK desta tabela."
+        data_type: integer
+        
+      - name: identificador_pessoa
+        description: "Identificador da pessoa."
+        data_type: integer
+
+      - name: identificador_entidade
+        description: "Identificador da entidade."
+        data_type: integer
+
+      - name: aluno_observacao
+        description: "Observação sobre o aluno."
+        data_type: integer
+
+      - name: aluno_data_criacao_registro
+        description: "Data da criação do registro."
+        data_type: date
+
+      - name: aluno_data_alteracao_registro
+        description: "Data de alteração do registro."
+        data_type: date
+
+      - name: aluno_situacao
+        description: "Situação do aluno."
+        data_type: integer
+
+      - name: aluno_dados_incompletos
+        description: "Dados do aluno estão incompletos? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_historico_escolar_incompleto
+        description: "Histórico escolar do aluno incompleto? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: identificador_religiao
+        description: "FK da tabela aca_religiao."
+        data_type: integer
+
+      - name: aluno_meio_transporte
+        description: "Meio de transporte que o aluno utiliza no deslocamento casa escola"
+        data_type: integer
+
+      - name: aluno_tempo_deslocamento
+        description: "Tempo de deslocamento de casa para escola."
+        data_type: integer
+
+      - name: aluno_regressa_sozinho
+        description: "Aluno volta pra casa sozinho? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_data_cadastro_fisico
+        description: "Data do cadastro físico do aluno."
+        data_type: boolean
+
+      - name: aluno_responsavel_informacao
+        description: "Informações sobre o responsável do aluno."
+        data_type: string
+
+      - name: aluno_responsavel_informacao_documento
+        description: "Informações sobre o documento do responsável do aluno."
+        data_type: string
+
+      - name: aluno_responsavel_informacao_orgao_emissor
+        description: "Informações sobre o órgão emissor do documento do responsável"
+        data_type: string
+
+      - name: aluno_aula_religiao
+        description: "Aluno participa de aula de religião? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_gemeo
+        description: "Tem irmão gêmeo? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_possui_email
+        description: "Possui e-mail? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: identificador_endereco
+        description: "Identificador único do endereço do aluno."
+        data_type: integer
+
+      - name: aluno_observacao_situacao
+        description: "Situação das observações sobre o aluno."
+        data_type: string
+
+      - name: aluno_participa_mais_educacao
+        description: "Participa do Programa Mais Educação? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_participa_aluno_presente
+        description: "Participa do Programa Aluno Presente? 1=Sim; 0=Não."
+        data_type: boolean
