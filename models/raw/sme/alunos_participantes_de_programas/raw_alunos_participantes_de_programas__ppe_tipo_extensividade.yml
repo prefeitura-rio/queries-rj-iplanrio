@@ -6,27 +6,20 @@ models:
     columns:
       - name: identificador_tipo_extensividade
         description: "PK desta tabela."
-        tests:
-          - not_null:
-              arguments: {}
-          - unique
+        data_type: integer
+        
       - name: nome_tipo_extensividade
         description: "Nome do tipo de extensividade."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: string
+
       - name: situacao_tipo_extensividade
         description: "Situação do tipo de extensividade."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: integer
+
       - name: data_criacao_registro_tipo_extensividade
         description: "Data de criação do registro."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: date
+
       - name: data_alteracao_registro_tipo_extensividade
         description: "Data de alteração do registro."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: date        

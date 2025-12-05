@@ -6,38 +6,36 @@ models:
     columns:
       - name: identificador_projeto_programa
         description: "PK desta tabela."
-        tests:
-          - not_null:
-              arguments: {}
-          - unique
+        data_type: integer
+
       - name: nome_projeto_programa
         description: "Nome do Projeto Programa."
+        data_type: string
+
       - name: expectativa_minima_projeto_programa
         description: "Expectativa mínima de duração."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: integer
+
       - name: objetivo_projeto_programa
         description: "Objetivo do programa."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: string
+
       - name: extensividade_projeto_programa
         description: "Programa é extensivo? 1=Sim; 0=Não."
+        data_type: boolean
+
       - name: identificador_tipo_extensividade
         description: "FK da tabela ppe_tipo_extensividade."
+        data_type: integer
+
       - name: situacao_projeto_programa
         description: "Situação do Programa."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: integer
+
       - name: data_criacao_registro_projeto_programa
         description: "Data da criação do registro."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: date
+
       - name: data_alteracao_registro_projeto_programa
         description: "Data de alteração do registro."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: date

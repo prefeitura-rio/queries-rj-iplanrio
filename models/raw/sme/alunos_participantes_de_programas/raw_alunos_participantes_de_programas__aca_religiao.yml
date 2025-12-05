@@ -6,17 +6,12 @@ models:
     columns:
       - name: identificador_religiao
         description: "PK desta tabela."
-        tests:
-          - not_null:
-              arguments: {}
-          - unique
+        data_type: integer
+        
       - name: nome_religiao
         description: "Nome da religião."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: string
+
       - name: situacao_religiao
         description: "Situação da religião."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: integer

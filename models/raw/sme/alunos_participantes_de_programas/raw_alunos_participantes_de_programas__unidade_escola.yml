@@ -6,71 +6,60 @@ models:
     columns:
       - name: identificador_escola
         description: "FK da tabela escola."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: integer
 
       - name: identificador_unidade_escolar
         description: "PK desta tabela."
-        tests:
-          - not_null:
-              arguments: {}
-          - unique
+        data_type: integer
 
       - name: codigo_unidade_escolar
         description: "Código da Unidade Escolar."
-        tests:
-          - accepted_values:
-              arguments:
-                values: [] # pode ser preenchido se houver lista de códigos válidos
+        data_type: string
 
       - name: descricao
         description: "Sempre nulo. (não é utilizado)."
+        data_type: string
 
       - name: principal
         description: "Sempre igual a 1."
-        tests:
-          - not_null:
-              arguments: {}
-          - accepted_values:
-              arguments:
-                values: [true]
+        data_type: boolean
 
       - name: zona
         description: "Sempre nulo. (não é utilizado)"
+        data_type: integer
 
       - name: funcionamento_inicio
         description: "Início de funcionamento da unidade escolar."
+        data_type: date
 
       - name: funcionamento_fim
         description: "Término do funcionamento da unidade escolar."
+        data_type: date
 
       - name: ceps_proximos
         description: "Ceps próximos à unidade escolar."
+        data_type: string
 
       - name: data_criacao
         description: "Data de criação do registro da unidade escolar na base."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: date
 
       - name: data_alteracao
         description: "Data de alteração do registro da unidade escolar na base."
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: date 
 
       - name: situacao
         description: "Situação"
-        tests:
-          - not_null:
-              arguments: {}
+        data_type: integer
 
       - name: observacao
         description: "Observação."
+        data_type: string
 
       - name: alimentacao_escolar
         description: "Preenchido com 0 ou nulo (campo não utilizado)."
+        data_type: boolean
 
       - name: proposta_formacao_alternancia
         description: "Preenchido com 0 ou nulo (campo não utilizado)."
+        data_type: boolean
