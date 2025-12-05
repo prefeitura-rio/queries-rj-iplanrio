@@ -1,7 +1,6 @@
 {{
     config(
-        alias='tpmrj_pm_resultjunta',
-        
+        alias='tpmrj_pm_resultjunta'
     )
 }}
 
@@ -22,5 +21,8 @@ safe_cast(JUSTIF_RETIF AS STRING) AS justificativa_retificada,
 safe_cast(PROFISSIONAL AS STRING) AS profissional, 
 safe_cast(ID_RESULTJUNTA AS STRING) AS id_resultado_junta, 
 safe_cast(COMPL_DECISAO_PUBL AS STRING) AS compl_decisao_publicada, 
-safe_cast(ID_RESULTJUNTARETIF AS STRING) AS id_resultado_junta_retificada FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'TPMRJ_PM_RESULTJUNTA') }}
+safe_cast(ID_RESULTJUNTARETIF AS STRING) AS id_resultado_junta_retificada,
+_airbyte_extracted_at as datalake_loaded_at, 
+current_timestamp() as datalake_transformed_at  
+FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'TPMRJ_PM_RESULTJUNTA') }}
 

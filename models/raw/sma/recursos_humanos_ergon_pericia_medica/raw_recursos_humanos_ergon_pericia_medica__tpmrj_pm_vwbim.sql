@@ -1,7 +1,6 @@
 {{
     config(
-        alias='tpmrj_pm_vwbim',
-        
+        alias='tpmrj_pm_vwbim'
     )
 }}
 
@@ -37,6 +36,8 @@ SELECT  safe_cast(rowid_reg AS STRING) AS rowid_reg,
     safe_cast(observacao_rh AS STRING) AS observacao_rh,
     safe_cast(motivo_rejeicao AS STRING) AS motivo_rejeicao,
     safe_cast(artigo AS STRING) AS artigo,
-    safe_cast(dias_dif_agendamento AS STRING) AS dias_dif_agendamento 
+    safe_cast(dias_dif_agendamento AS STRING) AS dias_dif_agendamento,
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at  
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'TPMRJ_PM_VWBIM') }}
 

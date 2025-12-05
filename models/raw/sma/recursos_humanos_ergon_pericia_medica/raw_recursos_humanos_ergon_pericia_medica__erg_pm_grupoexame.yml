@@ -2,5 +2,49 @@ version: 2
 
 models:
   - name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_grupoexame
-    description: "**Descrição**: Grupos de exames médicos.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
-
+    description: "**Descrição**: Grupos de exames de perícia médica.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: erg_pm_grupoexame
+      materialized: view
+    columns:
+      - name: nome
+        description: Nome do grupo de exame.
+        data_type: string
+        quote: true
+      - name: grupoexame
+        description: Código do grupo de exame.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_grupoexame__grupoexame__unique
+              severity: error
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_grupoexame__grupoexame__not_null
+              severity: error
+      - name: flex_campo_01
+        description: Campo flexível 01 do grupo de exame.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02 do grupo de exame.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03 do grupo de exame.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04 do grupo de exame.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05 do grupo de exame.
+        data_type: string
+        quote: true
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp

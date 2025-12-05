@@ -1,7 +1,6 @@
 {{
     config(
-        alias='tpmrj_pm_vwtpconclper',
-       
+        alias='tpmrj_pm_vwtpconclper'
     )
 }}
 
@@ -16,6 +15,8 @@ SELECT safe_cast(CHAVE AS STRING) AS chave,
     safe_cast(SIGLAEXAME2 AS STRING) AS sigla_exame2,
     safe_cast(NOMESERVIDOR AS STRING) AS nome_servidor,
     safe_cast(SIGLA_DECISAO AS STRING) AS sigla_decisao,
-    safe_cast(SIGLA_DECISAO2 AS STRING) AS sigla_decisao2 
+    safe_cast(SIGLA_DECISAO2 AS STRING) AS sigla_decisao2,
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at  
 FROM{{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'TPMRJ_PM_VWTPCONCLPER') }}
 

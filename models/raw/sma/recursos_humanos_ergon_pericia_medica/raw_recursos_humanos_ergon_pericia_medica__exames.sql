@@ -1,10 +1,56 @@
 {{
     config(
-        alias='exames',
-            )
+        alias='exames'
+    )
 }}
 
-SELECT
-    *
+SELECT safe_cast(NOME AS STRING) AS nome, 
+    safe_cast(SIGLA AS STRING) AS sigla, 
+    safe_cast(INGRESSO AS STRING) AS ingresso, 
+    safe_cast(LEMBRETE AS STRING) AS lembrete, 
+    safe_cast(QUANTMED AS INT64) AS quantmed, 
+    safe_cast(OBRIG_CAT AS STRING) AS obrig_cat, 
+    safe_cast(TITULO_01 AS STRING) AS titulo_01, 
+    safe_cast(TITULO_02 AS STRING) AS titulo_02, 
+    safe_cast(TITULO_03 AS STRING) AS titulo_03, 
+    safe_cast(GRUPOEXAME AS STRING) AS grupo_exame, 
+    safe_cast(INSTRUCOES AS STRING) AS instrucoes, 
+    safe_cast(OBRIG_PENS AS STRING) AS obrig_pens, 
+    safe_cast(TIPOEQUIPE AS STRING) AS tipo_equipe, 
+    safe_cast(GRUPO2EXAME AS STRING) AS grupo_2_exame, 
+    safe_cast(OBRIG_DEPEN AS STRING) AS obrig_dependente, 
+    safe_cast(OBRIG_ESPEC AS STRING) AS obrig_espec, 
+    safe_cast(PRORROG_LIC AS STRING) AS prorrog_lic, 
+    safe_cast(VAGASAGENDA AS STRING) AS vagas_agenda, 
+    safe_cast(EXAMERECURSO AS STRING) AS exame_recurso, 
+    safe_cast(FICHA_VACINA AS STRING) AS ficha_vacina, 
+    safe_cast(TIPO_PERICIA AS STRING) AS tipo_pericia, 
+    safe_cast(FLEX_CAMPO_01 AS STRING) AS flex_campo_01, 
+    safe_cast(FLEX_CAMPO_02 AS STRING) AS flex_campo_02, 
+    safe_cast(FLEX_CAMPO_03 AS STRING) AS flex_campo_03, 
+    safe_cast(FLEX_CAMPO_04 AS STRING) AS flex_campo_04, 
+    safe_cast(FLEX_CAMPO_05 AS STRING) AS flex_campo_05, 
+    safe_cast(FLEX_CAMPO_06 AS STRING) AS flex_campo_06, 
+    safe_cast(FLEX_CAMPO_07 AS STRING) AS flex_campo_07, 
+    safe_cast(FLEX_CAMPO_08 AS STRING) AS flex_campo_08, 
+    safe_cast(FLEX_CAMPO_09 AS STRING) AS flex_campo_09, 
+    safe_cast(FLEX_CAMPO_10 AS STRING) AS flex_campo_10, 
+    safe_cast(FLEX_CAMPO_11 AS STRING) AS flex_campo_11, 
+    safe_cast(FLEX_CAMPO_12 AS STRING) AS flex_campo_12, 
+    safe_cast(FLEX_CAMPO_13 AS STRING) AS flex_campo_13, 
+    safe_cast(FLEX_CAMPO_14 AS STRING) AS flex_campo_14, 
+    safe_cast(FLEX_CAMPO_15 AS STRING) AS flex_campo_15, 
+    safe_cast(FLEX_CAMPO_16 AS STRING) AS flex_campo_16, 
+    safe_cast(FLEX_CAMPO_17 AS STRING) AS flex_campo_17, 
+    safe_cast(FLEX_CAMPO_18 AS STRING) AS flex_campo_18, 
+    safe_cast(FLEX_CAMPO_19 AS STRING) AS flex_campo_19, 
+    safe_cast(FLEX_CAMPO_20 AS STRING) AS flex_campo_20,  
+    safe_cast(OBRIG_PROCESSO AS STRING) AS obrig_processo,
+    safe_cast(OBRIG_ULTATEND AS STRING) AS obrig_ultatend,
+    safe_cast(CONSULTAS_AFAST AS STRING) AS consultas_afast,
+    safe_cast(DISPONIVEL_UNID AS STRING) AS disponivel_unid,
+    safe_cast(PERICIA_EXTERNA AS STRING) AS pericia_externa,
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at  
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'EXAMES') }}
 

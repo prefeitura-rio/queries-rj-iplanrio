@@ -1,7 +1,6 @@
 {{
     config(
         alias='erg_pm_decisao'
-        
     )
 }}
 
@@ -33,5 +32,7 @@ SELECT safe_cast(SIGLA AS STRING) AS sigla,
     safe_cast(FLEX_CAMPO_12 AS STRING) AS flex_campo_12, 
     safe_cast(FLEX_CAMPO_13 AS STRING) AS flex_campo_13, 
     safe_cast(FLEX_CAMPO_14 AS STRING) AS flex_campo_14, 
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at 
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'ERG_PM_DECISAO') }}
 

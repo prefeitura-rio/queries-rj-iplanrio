@@ -1,7 +1,6 @@
 {{
     config(
         alias='cid'
-        
     )
 }}
 
@@ -32,6 +31,8 @@ safe_cast(FLEX_CAMPO_12 AS STRING) AS flex_campo_12,
 safe_cast(FLEX_CAMPO_13 AS STRING) AS flex_campo_13,
 safe_cast(FLEX_CAMPO_14 AS STRING) AS flex_campo_14,
 safe_cast(FLEX_CAMPO_15 AS STRING) AS flex_campo_15,
-safe_cast(DESCRICAO_ABREV AS STRING) AS descricao_abrev 
+safe_cast(DESCRICAO_ABREV AS STRING) AS descricao_abrev,
+_airbyte_extracted_at as datalake_loaded_at, 
+current_timestamp() as datalake_transformed_at 
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'CID') }}
 

@@ -33,5 +33,7 @@ SELECT safe_cast(NEXO AS STRING) AS nexo,
     safe_cast(FLEX_CAMPO_09 AS STRING) AS flex_campo_09,
     safe_cast(FLEX_CAMPO_10 AS STRING) AS flex_campo_10,
     safe_cast(FLEX_CAMPO_11 AS STRING) AS flex_campo_11,
-    safe_cast(JUSTIFICATIVA AS STRING) AS justificativa
+    safe_cast(JUSTIFICATIVA AS STRING) AS justificativa,
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at 
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'ERG_PM_RESULTPRONT') }}

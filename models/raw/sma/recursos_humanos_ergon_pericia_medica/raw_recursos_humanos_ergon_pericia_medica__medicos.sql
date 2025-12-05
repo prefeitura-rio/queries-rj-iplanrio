@@ -1,7 +1,6 @@
 {{
     config(
-        alias='medicos',
-       
+        alias='medicos'
     )
 }}
 
@@ -23,7 +22,9 @@ safe_cast(FLEX_CAMPO_10 AS STRING) AS flex_campo_10,
 safe_cast(FLEX_CAMPO_11 AS STRING) AS flex_campo_11,
 safe_cast(FLEX_CAMPO_12 AS STRING) AS flex_campo_12,
 safe_cast(FLEX_CAMPO_13 AS STRING) AS flex_campo_13,
-safe_cast(FLEX_CAMPO_14 AS STRING) AS flex_campo_14,
-safe_cast(FLEX_CAMPO_15 AS STRING) AS flex_campo_15 
+safe_cast(FLEX_CAMPO_14 AS STRING) AS flex_campo_14,    
+safe_cast(FLEX_CAMPO_15 AS STRING) AS flex_campo_15,
+_airbyte_extracted_at as datalake_loaded_at, 
+current_timestamp() as datalake_transformed_at 
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'MEDICOS') }}
 

@@ -1,7 +1,6 @@
 {{
     config(
-        alias='funcoes_ev',
-       
+        alias='funcoes_ev'
     )
 }}
 
@@ -40,6 +39,8 @@ safe_cast(FLEX_CAMPO_27 AS STRING) AS flex_campo_27,
 safe_cast(FLEX_CAMPO_28 AS STRING) AS flex_campo_28,
 safe_cast(FLEX_CAMPO_29 AS STRING) AS flex_campo_29,
 safe_cast(FLEX_CAMPO_30 AS STRING) AS flex_campo_30,
-safe_cast(DT_INICIO_CONTR_VAGA AS DATE) AS dt_inicio_contr_vaga 
+safe_cast(DT_INICIO_CONTR_VAGA AS DATE) AS dt_inicio_contr_vaga,
+_airbyte_extracted_at as datalake_loaded_at, 
+current_timestamp() as datalake_transformed_at  
 FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'FUNCOES_EV_') }}
 

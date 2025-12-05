@@ -1,7 +1,6 @@
 {{
     config(
-        alias='prontuario',
-        
+        alias='prontuario'
     )
 }}
 
@@ -50,6 +49,8 @@ safe_cast(FLEX_CAMPO_03 AS STRING) AS flex_campo_03,
 safe_cast(FLEX_CAMPO_04 AS STRING) AS flex_campo_04, 
 safe_cast(FLEX_CAMPO_05 AS STRING) AS flex_campo_05,
 safe_cast(FLEX_CAMPO_06 AS STRING) AS flex_campo_06, 
-safe_cast(FLEX_CAMPO_07 AS STRING) AS flex_campo_07  
+safe_cast(FLEX_CAMPO_07 AS STRING) AS flex_campo_07,    
+_airbyte_extracted_at as datalake_loaded_at, 
+current_timestamp() as datalake_transformed_at   
 FROM  {{ source('brutos_recursos_humanos_ergon_pericia_medica_staging', 'PRONTUARIO') }}
 

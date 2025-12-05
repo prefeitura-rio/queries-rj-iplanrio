@@ -3,4 +3,196 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon_pericia_medica__prontuario
     description: "**Descrição**: Prontuários de pacientes.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
-
+    config:
+      alias: prontuario
+      materialized: view
+    columns:
+      - name: us
+        description: Unidade de saúde do prontuário.
+        data_type: string
+        quote: true
+      - name: cat
+        description: CAT (Comunicação de Acidente de Trabalho) do prontuário.
+        data_type: string
+        quote: true
+      - name: apto
+        description: Indica se o paciente está apto.
+        data_type: string
+        quote: true
+      - name: chave
+        description: Chave única identificadora do prontuário.
+        data_type: string
+        quote: true
+        data_tests:
+           - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__prontuario__chave__not_null
+              severity: error
+      - name: dt_fim
+        description: Data de fim do prontuário.
+        data_type: date
+      - name: dt_ini
+        description: Data de início do prontuário.
+        data_type: date
+      - name: sigla
+        description: Sigla do prontuário.
+        data_type: string
+        quote: true
+      - name: id_reg
+        description: Identificador do registro do prontuário.
+        data_type: string
+        quote: true
+      - name: numdep
+        description: Número do dependente do prontuário.
+        data_type: string
+        quote: true
+      - name: dt_atend
+        description: Data de atendimento do prontuário.
+        data_type: date
+      - name: numfunc
+        description: Número do funcionário do prontuário.
+        data_type: string
+        quote: true
+      - name: numpens
+        description: Número do pensionista do prontuário.
+        data_type: string
+        quote: true
+      - name: numproc
+        description: Número do processo do prontuário.
+        data_type: string
+        quote: true
+      - name: tp_cid1
+        description: Tipo do CID 1 do prontuário.
+        data_type: string
+        quote: true
+      - name: tp_cid2
+        description: Tipo do CID 2 do prontuário.
+        data_type: string
+        quote: true
+      - name: tp_cid3
+        description: Tipo do CID 3 do prontuário.
+        data_type: string
+        quote: true
+      - name: anamnese
+        description: Anamnese do prontuário.
+        data_type: string
+        quote: true
+      - name: chaveant
+        description: Chave anterior do prontuário.
+        data_type: string
+        quote: true
+      - name: cod_cid1
+        description: Código do CID 1 do prontuário.
+        data_type: string
+        quote: true
+      - name: cod_cid2
+        description: Código do CID 2 do prontuário.
+        data_type: string
+        quote: true
+      - name: cod_cid3
+        description: Código do CID 3 do prontuário.
+        data_type: string
+        quote: true
+      - name: dt_homol
+        description: Data de homologação do prontuário.
+        data_type: date
+      - name: inscrito
+        description: Indica se o paciente está inscrito.
+        data_type: string
+        quote: true
+      - name: ponto_publicado
+        description: Ponto publicado do prontuário.
+        data_type: string
+        quote: true
+      - name: tipo_lic
+        description: Tipo de licença do prontuário.
+        data_type: string
+        quote: true
+      - name: crm_atest
+        description: CRM do médico que atestou o prontuário.
+        data_type: string
+        quote: true
+      - name: crm_homol
+        description: CRM do médico que homologou o prontuário.
+        data_type: string
+        quote: true
+      - name: exameadic
+        description: Exame adicional do prontuário.
+        data_type: string
+        quote: true
+      - name: exam_text
+        description: Texto do exame do prontuário.
+        data_type: string
+        quote: true
+      - name: horaatend
+        description: Hora de atendimento do prontuário.
+        data_type: string
+        quote: true
+      - name: texto_aut
+        description: Texto de autorização do prontuário.
+        data_type: string
+        quote: true
+      - name: atest_publicado
+        description: Indica se o atestado foi publicado.
+        data_type: string
+        quote: true
+      - name: chaveatend
+        description: Chave do atendimento do prontuário.
+        data_type: string
+        quote: true
+      - name: reqpericia
+        description: Requerimento de perícia do prontuário.
+        data_type: string
+        quote: true
+      - name: dtconclusao
+        description: Data de conclusão do prontuário.
+        data_type: date
+      - name: nomeparente
+        description: Nome do parente relacionado ao prontuário.
+        data_type: string
+        quote: true
+      - name: cod_acidente
+        description: Código do acidente do prontuário.
+        data_type: string
+        quote: true
+      - name: numvinc_pens
+        description: Número do vínculo do pensionista do prontuário.
+        data_type: string
+        quote: true
+      - name: texto_medico
+        description: Texto do médico do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_01
+        description: Campo flexível 01 do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02 do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03 do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04 do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05 do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06 do prontuário.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07 do prontuário.
+        data_type: string
+        quote: true
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp

@@ -3,4 +3,32 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_periciasjunta
     description: "**Descrição**: Perícias realizadas por juntas.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
-
+    config:
+      alias: tpmrj_pm_periciasjunta
+      materialized: view
+    columns:
+      - name: id_junta
+        description: Identificador da junta médica.
+        data_type: string
+        quote: true
+      - name: chave_prontuario
+        description: Chave única identificadora do prontuário médico.
+        data_type: string
+        quote: true
+      - name: id_pericia_junta
+        description: Identificador único da perícia da junta.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_periciasjunta__id_pericia_junta__unique
+              severity: error
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_periciasjunta__id_pericia_junta__not_null
+              severity: error
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp

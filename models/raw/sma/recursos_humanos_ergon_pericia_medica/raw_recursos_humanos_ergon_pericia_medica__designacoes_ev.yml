@@ -3,4 +3,95 @@ version: 2
 models:
   - name: raw_recursos_humanos_ergon_pericia_medica__designacoes_ev
     description: "**Descrição**: Designações de eventos.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
-
+    config:
+      alias: designacoes_ev
+      materialized: view
+    columns:
+      - name: obs
+        description: Observações sobre a designação de evento.
+        data_type: string
+        quote: true
+      - name: dt_fim
+        description: Data de fim da designação de evento.
+        data_type: date
+      - name: dt_inicio
+        description: Data de início da designação de evento.
+        data_type: date
+      - name: setor
+        description: Setor da designação de evento.
+        data_type: string
+        quote: true
+      - name: funcao
+        description: Função da designação de evento.
+        data_type: string
+        quote: true
+      - name: id_reg
+        description: Identificador do registro da designação de evento.
+        data_type: string
+        quote: true
+      - name: num_func
+        description: Número do funcionário na designação de evento.
+        data_type: string
+        quote: true
+      - name: num_vinc
+        description: Número do vínculo na designação de evento.
+        data_type: string
+        quote: true
+      - name: ponto_lei
+        description: Ponto da lei relacionado à designação de evento.
+        data_type: string
+        quote: true
+      - name: ponto_publicado
+        description: Ponto publicado relacionado à designação de evento.
+        data_type: string
+        quote: true
+      - name: emp_codigo
+        description: Código da empresa na designação de evento.
+        data_type: string
+        quote: true
+      - name: numero_vaga
+        description: Número da vaga na designação de evento.
+        data_type: string
+        quote: true
+      - name: num_func_subs1
+        description: Número do funcionário substituto 1 na designação de evento.
+        data_type: string
+        quote: true
+      - name: num_func_subs2
+        description: Número do funcionário substituto 2 na designação de evento.
+        data_type: string
+        quote: true
+      - name: num_vinc_subs1
+        description: Número do vínculo substituto 1 na designação de evento.
+        data_type: string
+        quote: true
+      - name: num_vinc_subs2
+        description: Número do vínculo substituto 2 na designação de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_01
+        description: Campo flexível 01 da designação de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02 da designação de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03 da designação de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04 da designação de evento.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05 da designação de evento.
+        data_type: string
+        quote: true
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp
