@@ -21,7 +21,7 @@ models:
         data_type: string
 
       - name: extensividade_projeto_programa
-        description: "Programa é extensivo? 1=Sim; 0=Não."
+        description: "Indicador se o programa é extensivo. Valores válidos: 1 (Sim), 0 (Não). Origem: sistema brutos_gestao_escolar_staging."
         data_type: boolean
 
       - name: identificador_tipo_extensividade
@@ -29,7 +29,7 @@ models:
         data_type: integer
 
       - name: situacao_projeto_programa
-        description: "Situação do Programa."
+        description: "Situação/status do programa educacional. Consultada com valores válidos na tabela de domínio. Origem: sistema brutos_gestao_escolar_staging."
         data_type: integer
 
       - name: data_criacao_registro_projeto_programa

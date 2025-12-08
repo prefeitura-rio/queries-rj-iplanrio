@@ -7,6 +7,7 @@ models:
       - name: identificador_tipo_extensividade
         description: "PK desta tabela."
         data_type: integer
+        quote: true
         
       - name: nome_tipo_extensividade
         description: "Nome do tipo de extensividade."

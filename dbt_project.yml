@@ -115,7 +115,7 @@ models:
           +tags: ["daily"]  
         alunos_participantes_de_programas:
           +materialized: table
-          +schema: brutos_gestao_escolar_staging
+          +schema: brutos_gestao_escolar
           +tags: ["daily"]
       smfp:
         +tags: "smfp"
