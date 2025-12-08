@@ -19,6 +19,9 @@ sources:
       - name: CLS_TurmaAula
       - name: ESC_Escola
       - name: MTR_MatriculaTurma
+        config:
+          freshness:
+            error_after: {count: 72, period: hour}
       - name: MTR_ProcessoFechamentoInicio
       - name: TUR_Turma
       - name: TUR_TurmaCurriculo
