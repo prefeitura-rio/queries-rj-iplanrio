@@ -39,7 +39,7 @@ SELECT
     SAFE_CAST(TRIM(subcategoria) AS STRING) AS subcategoria_cargo,
     SAFE_CAST(REGEXP_REPLACE(TRIM(cpf), r'\.0$', '') AS STRING) AS id_cpf,
     SAFE_CAST(data_particao AS DATE) data_particao,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.fita_banco AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'fita_banco') }}
 WHERE
     SAFE_CAST(data_particao AS DATE) < CURRENT_DATE('America/Sao_Paulo')
 

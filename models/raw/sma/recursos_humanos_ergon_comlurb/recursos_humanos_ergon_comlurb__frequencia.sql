@@ -68,7 +68,7 @@ SELECT
     SAFE_CAST(TRIM(flex_campo_48) AS STRING) AS flex_campo_48,
     SAFE_CAST(TRIM(flex_campo_49) AS STRING) AS flex_campo_49,
     SAFE_CAST(TRIM(flex_campo_50) AS STRING) AS flex_campo_50,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.frequencia AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'frequencia') }}
 LIMIT 100
 
 

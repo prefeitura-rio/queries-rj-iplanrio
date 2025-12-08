@@ -18,4 +18,4 @@ SELECT
     SAFE_CAST(DATE(dtfimrem) AS DATE) AS data_fim_evento_funcional,
     SAFE_CAST(REGEXP_REPLACE(TRIM(cargo), r'\.0$', '') AS STRING) AS id_cargo,
     SAFE_CAST(REGEXP_REPLACE(TRIM(setor), r'\.0$', '') AS STRING) AS id_setor,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.funcionario_evento AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'funcionario_evento') }}

@@ -1,4 +1,0 @@
-version: 2
-models :
-  - name: mart_ergon_saude_funcionarios
-    description: "**Descrição**: Tabela consolidada de funcionarios ativos e inativos da SMS"

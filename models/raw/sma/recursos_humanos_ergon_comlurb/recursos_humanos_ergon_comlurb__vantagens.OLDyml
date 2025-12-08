@@ -38,10 +38,6 @@ models:
         description: Pontuação pública relacionada à vantagem.
         data_type: string
         quote: true
-      - name: pontproc
-        description: Pontuação de processo relacionada à vantagem.
-        data_type: string
-        quote: true
       - name: nome_vantagem
         description: Nome da vantagem.
         data_type: string

@@ -14,4 +14,4 @@ SELECT
     SAFE_CAST(REGEXP_REPLACE(valor, r',', '.') AS FLOAT64) AS valor_rubrica,    SAFE_CAST(REGEXP_REPLACE(correcao, r',', '.') AS FLOAT64) AS correcao,    SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'\.0$', '') AS STRING) AS id_empresa,
     SAFE_CAST(DATE(mes_ano_folha) AS DATE) AS data_folha,
     SAFE_CAST(REGEXP_REPLACE(TRIM(num_folha), r'\.0$', '') AS INT64) AS numero_folha,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.ficha_financeira AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'ficha_financeira') }}

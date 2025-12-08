@@ -13,4 +13,4 @@ SELECT
     SAFE_CAST(REGEXP_REPLACE(TRIM(flex_campo_05), r'\.0$', '') AS STRING) AS id_secretaria_sici,
     SAFE_CAST(TRIM(extinto) AS STRING) AS extinto,
     SAFE_CAST(TRIM(nomesetorlongo) AS STRING) AS nome_completo,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.setor_h AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'setor_h') }}

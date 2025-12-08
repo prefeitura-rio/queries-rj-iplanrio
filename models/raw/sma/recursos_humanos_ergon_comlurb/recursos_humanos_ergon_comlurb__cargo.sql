@@ -9,4 +9,4 @@ SELECT
     SAFE_CAST(TRIM(controle_vaga) AS STRING) AS controle_vaga,
     SAFE_CAST(TRIM(e_aglutinador) AS STRING) AS e_aglutinador,
     SAFE_CAST(TRIM(escolaridade) AS STRING) AS escolaridade,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.cargo AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'cargos') }} 

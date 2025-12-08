@@ -48,4 +48,4 @@ SELECT
     SAFE_CAST(TRIM(telefone) AS STRING) AS telefone,
     SAFE_CAST(TRIM(banco) AS STRING) AS banco,
     SAFE_CAST(TRIM(agencia) AS STRING) AS agencia,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.dependente AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'dependente') }}

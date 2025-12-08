@@ -42,7 +42,7 @@ SELECT
     safe_cast(REGEXP_REPLACE(TRIM(chegbrasil), r'\.0$', '') AS INT64) AS ano_chegada_brasil,
     safe_cast(TRIM(ufempant) AS STRING) AS sigla_uf_emprego_anterior,
     safe_cast(REGEXP_REPLACE(TRIM(anoprimemp), r'\.0$', '') AS INT64) AS ano_primeiro_emprego,
-    safe_cast(REGEXP_REPLACE(TRIM(identprof), r'\.0$', '')
+    safe_cast(REGEXP_REPLACE(TRIM(identprof), r'\.0$', '') AS STRING) AS id_profissional,
     safe_cast(REGEXP_REPLACE(TRIM(flex_campo_06), r'\.0$', '') AS STRING) AS id_ric,
     safe_cast(TRIM(flex_campo_07) AS STRING) AS orgao_ric,
     safe_cast(PARSE_DATE("%d/%m/%Y",REGEXP_REPLACE(flex_campo_08, "//", "/")) AS DATE) AS data_ric,
@@ -68,7 +68,7 @@ SELECT
     safe_cast(TRIM(flex_campo_59) AS STRING) AS sexo_posse,
     safe_cast(PARSE_DATE("%d/%m/%Y",REGEXP_REPLACE(flex_campo_60, "//", "/")) AS DATE) AS data_alteracao_sexo,
     safe_cast(TRIM(flex_campo_69) AS STRING) AS pais_nascimento,
-    safe_cast(PARSE_DATE("%d/%m/%Y",REGEXP_REPLACE(flex_campo_70
+    safe_cast(PARSE_DATE("%d/%m/%Y",REGEXP_REPLACE(flex_campo_70, "//", "/")) AS DATE) AS data_alteracao,
     safe_cast(REGEXP_REPLACE(TRIM(cpf), r'\.0$', '') AS STRING) AS id_cpf,
     safe_cast(REGEXP_REPLACE(TRIM(numcartpro), r'\.0$', '') AS STRING) AS id_ctps,
     safe_cast(TRIM(sercartpro) AS STRING) AS serie_ctps,
@@ -203,4 +203,4 @@ SELECT
 
 
 
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.funcionario AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'funcionario') }}

@@ -83,7 +83,7 @@ SELECT
     SAFE_CAST(TRIM(flex_campo_63) AS STRING) AS flex_campo_63,
     SAFE_CAST(TRIM(flex_campo_64) AS STRING) AS flex_campo_64,
     SAFE_CAST(TRIM(flex_campo_65) AS STRING) AS flex_campo_65,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.licenca_afastamento AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'licenca_afastamento') }}
 
 
 

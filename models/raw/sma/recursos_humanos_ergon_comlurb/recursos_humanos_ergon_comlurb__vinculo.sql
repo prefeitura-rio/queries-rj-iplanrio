@@ -40,4 +40,4 @@ SELECT
     SAFE_CAST(DATE(dtexerc) AS DATE) AS data_inicio_exercicio,
     SAFE_CAST(TRIM(regimejur) AS STRING) AS regime_juridico,
     SAFE_CAST(DATE(dt_pgto_ate) AS DATE) AS data_pagamento_recisao,
-FROM rj-smfp.recursos_humanos_ergon_comlurb_staging.vinculo AS t
+FROM {{ source('recursos_humanos_ergon_comlurb_staging', 'vinculo') }}
