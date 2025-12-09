@@ -21,8 +21,8 @@ models:
               config:
                 severity: error
       - name: data_criacao_registro
-        description: "Data da situação do vínculo do devedor com a CDA."
-        data_type: date
+        description: "Data hora da situação do vínculo do devedor com a CDA."
+        data_type: datetime
       - name: codigo_tipo_vinculo
         description: "Código do tipo de vínculo do devedor com a CDA ('P' para Principal, 'D' para Destinatário de correspondências, outros para demais vínculos)."
         data_type: string
