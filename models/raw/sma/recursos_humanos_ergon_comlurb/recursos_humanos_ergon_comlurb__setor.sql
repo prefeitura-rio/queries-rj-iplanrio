@@ -3,7 +3,7 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(TRIM(setor), r'\.0$', '') AS STRING) AS id_setor,
+    SAFE_CAST(REGEXP_REPLACE(TRIM(setor.setor), r'\.0$', '') AS STRING) AS id_setor,
     SAFE_CAST(DATE(dtini) AS DATE) AS data_inicio,
     SAFE_CAST(DATE(dtfim) AS DATE) AS data_fim,
     SAFE_CAST(TRIM(tiposetor) AS STRING) AS tipo,
