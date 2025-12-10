@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_pront_med
+    description: "**Descrição**: Tabela de prontuários médicos do sistema de perícia médica.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    config:
+      alias: erg_pm_pront_med
+      materialized: view
+    columns:
+      - name: ok
+        description: Campo OK do prontuário médico.
+        data_type: string
+        quote: true
+      - name: crm
+        description: Número do CRM (Conselho Regional de Medicina) do profissional.
+        data_type: string
+        quote: true
+      - name: nok
+        description: Campo NOK do prontuário médico.
+        data_type: string
+        quote: true
+      - name: data_atualizacao
+        description: Data de atualização do prontuário médico.
+        data_type: date
+      - name: senha
+        description: Senha do prontuário médico.
+        data_type: string
+        quote: true
+      - name: chave_prontuario
+        description: Chave única identificadora do prontuário médico.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_pront_med__chave_prontuario__not_null
+              severity: error
+      - name: ordem_homolog
+        description: Ordem de homologação do prontuário médico.
+        data_type: string
+        quote: true
+      - name: profis_prontuario
+        description: Código do profissional no prontuário médico.
+        data_type: string
+        quote: true
+      - name: profissional
+        description: Nome ou identificação do profissional responsável pelo prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_01
+        description: Campo flexível 01 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10 do prontuário médico.
+        data_type: string
+        quote: true
+      - name: justificativa
+        description: Justificativa relacionada ao prontuário médico.
+        data_type: string
+        quote: true
+      - name: datalake_loaded_at
+        description: Data e hora em que os dados foram carregados no datalake.
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: Data e hora em que os dados foram transformados no datalake.
+        data_type: timestamp
