@@ -131,6 +131,10 @@ models:
           +materialized: table
           +schema: recursos_humanos_ergon
           +tags: "daily"
+        recursos_humanos_ergon_pericia_medica:
+          +materialized: table
+          +schema: recursos_humanos_ergon_pericia_medica
+          +tags: "daily"
       smi:
         +tags: "smi"
         +project: rj-smi
