@@ -57,11 +57,11 @@ models:
         description: "Observações sobre a cota."
         data_type: string
       - name: data_emissao
-        description: "Data de emissão da cota."
-        data_type: date
+        description: "Data hora de emissão da cota."
+        data_type: datetime
       - name: data_pagamento
-        description: "Data do pagamento da cota."
-        data_type: date
+        description: "Data hora do pagamento da cota."
+        data_type: datetime
       - name: valor_principal_pago
         description: "Valor principal pago."
         data_type: numeric
