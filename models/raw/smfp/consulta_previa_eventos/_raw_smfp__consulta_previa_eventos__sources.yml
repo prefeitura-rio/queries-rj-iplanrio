@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: brutos_consulta_previa_eventos_staging
-    database: rj-smfp
+    database: rj-iplanrio
     schema: brutos_consulta_previa_eventos_staging
     tables:
       - name: vw_Consulta_Previa_Eventos

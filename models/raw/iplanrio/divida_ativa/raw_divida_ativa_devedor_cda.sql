@@ -9,7 +9,7 @@
 
 select safe_cast(numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(idpessoa as int64) as id_pessoa,
-  safe_cast(datsituacao as date) as data_criacao_registro,
+  safe_cast(datsituacao as datetime) as data_criacao_registro,
   safe_cast(tipvinculo as string) as codigo_tipo_vinculo,
   case safe_cast(tipvinculo as string)
     when 'P' then 'Principal'

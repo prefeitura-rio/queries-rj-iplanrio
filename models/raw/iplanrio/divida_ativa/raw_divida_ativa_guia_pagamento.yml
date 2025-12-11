@@ -10,11 +10,12 @@ models:
         data_tests:
           - not_null:
               name: raw_divida_ativa_guia_pagamento__id_guia_pagamento__not_null
-              severity: error
+              config:
+                severity: error
           - unique:
               name: raw_divida_ativa_guia_pagamento__id_guia_pagamento__unique
-              severity: error
-
+              config:
+                severity: error
       - name: sequencial_guia
         description: "Número sequencial da guia."
         data_type: int64
@@ -48,8 +49,8 @@ models:
         data_type: int64
 
       - name: data_ultimo_pagamento
-        description: "Data do último pagamento realizado."
-        data_type: date
+        description: "Data hora do último pagamento realizado."
+        data_type: datetime
 
       - name: valor_total_divida
         description: "Valor total da dívida."

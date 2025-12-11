@@ -15,14 +15,13 @@ models:
         data_tests:
           - not_null:
               name: raw_sigma_classe__codigo_classe__not_null
-              severity: error
-          # - unique:
-          #     name: raw_sigma_classe__codigo_classe__unique
-          #     severity: error
-          - relationships:                          
+              config:
+                severity: error
+          - relationships:
               name: raw_sigma_classe__codigo_grupo__relationships
-              to: ref('raw_sigma_grupo')
-              field: codigo_grupo
+              arguments:
+                to: ref('raw_sigma_grupo')
+                field: codigo_grupo
       - name: codigo_classe
         description: "Código da classe onde está classificada a subclasse."
         data_type: string
@@ -34,5 +33,4 @@ models:
       - name: status
         description: "Quais são os status disponíveis. 0 = Ativado e 2 = Desativado"
         data_type: integer
-
 

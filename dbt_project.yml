@@ -45,12 +45,18 @@ models:
           +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
-      smfp:
-        +project: rj-smfp
+      sma:
+        +project: rj-sma
         ergon_saude:
           +materialized: table
           +schema: recursos_humanos_ergon_saude
           +tags: "daily"
+      sms:
+        +project: rj-sms
+        billing:
+          +materialized: table
+          +schema: billing_gcp
+          +tags: ["daily", "sms"]
       setur:
         +project: rj-setur
         observatorio_do_turismo:
@@ -66,8 +72,32 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: bcadastro
             845941190868/acesso: restrito
+        divida_ativa:
+          +schema: divida_ativa
+          +tags: ["daily", "divida_ativa"]
+          +resource_tags:
+            rj-iplanrio/dominio: tributos
+            845941190868/acesso: restrito
+      cvl:
+        +project: rj-cvl
+        +tags: ["cvl"]
+        dashboard_cvl:
+          +materialized: table
+          +schema: dashboard_cvl
+          +tags: ["daily", "dashboard_cvl"]
     raw:
       +tags: "raw"
+      datario:
+        +project: datario
+        +tags: ["datario"]
+        dados_mestres:
+          +materialized: table
+          +schema: dados_mestres
+          +tags: ["weekly"]
+        adm_central_atendimento_1746:
+          +materialized: table
+          +schema: adm_central_atendimento_1746
+          +tags: ["daily"]
       sme:
         +project: rj-sme
         +tags: ["sme"]
@@ -83,16 +113,23 @@ models:
           +materialized: table
           +schema: brutos_gestao_creche
           +tags: ["daily"]  
+        alunos_participantes_de_programas:
+          +materialized: table
+          +schema: brutos_gestao_escolar
+          +tags: ["daily"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp
-        recursos_humanos_ergon:
-          +materialized: table
-          +schema: recursos_humanos_ergon
-          +tags: "daily"
         sigma:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
+          +tags: "daily"
+      sma:
+        +tags: "sma"
+        +project: rj-sma
+        recursos_humanos_ergon:
+          +materialized: table
+          +schema: recursos_humanos_ergon
           +tags: "daily"
       smi:
         +tags: "smi"
@@ -187,6 +224,13 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: administrativo
             845941190868/acesso: interno
+        dados_mestres:
+          +materialized: table
+          +schema: brutos_dados_mestres
+          +tags: "weekly"
+          +resource_tags:
+            rj-iplanrio/dominio: administrativo
+            845941190868/acesso: interno
         eai_logs:
           +materialized: table
           +schema: brutos_eai_logs
@@ -215,6 +259,13 @@ models:
           +tags: "daily"
           +resource_tags:
             rj-iplanrio/dominio: sisbicho
+            845941190868/acesso: restrito
+        billing_ncn:
+          +materialized: table
+          +schema: brutos_billing_externo_staging
+          +tags: "daily"
+          +resource_tags:
+            rj-iplanrio/dominio: infraestrutura-ti
             845941190868/acesso: restrito
 flags:
   require_generic_test_arguments_property: true

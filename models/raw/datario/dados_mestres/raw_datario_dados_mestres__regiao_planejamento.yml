@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: raw_datario_dados_mestres__regiao_planejamento
+    description: Dados de Regiões de Planejamento (RP) do município do Rio de Janeiro
+    columns:
+      - name: id_regiao_planejamento
+        description: Identificador da região de planejamento
+      - name: nome
+        description: Nome da região de planejamento
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento
+      - name: area
+        description: Área em metros quadrados
+      - name: perimetro
+        description: Perímetro em metros
+      - name: geometry_wkt
+        description: Representação da geometria em formato WKT
+      - name: geometry
+        description: Geometria espacial da região de planejamento
