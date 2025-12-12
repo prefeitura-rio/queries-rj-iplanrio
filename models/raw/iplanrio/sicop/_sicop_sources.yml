@@ -15,6 +15,16 @@ sources:
         description: "View de tramitação de processos do SICOP (VW_TRAMITACAO_PROCESSO_DLK)"
       - name: localiza_processo
         description: "View de localização de processos do SICOP (VW_LOCALIZA_PROCESSO_DLK)"
+      - name: despacho
+        description: "View de despachos do SICOP (VW_DESPACHO_DLK)"
+      - name: ultima_tramitacao_processo
+        description: "View de última tramitação de processos do SICOP (VW_ULTIMA_TRAM_PROCESSO_DLK)"
+      - name: documento
+        description: "View de documentos do SICOP"
+      - name: assunto
+        description: "View de assuntos do SICOP (VW_ASSUNTO_DLK)"
+      - name: orgao
+        description: "View de órgãos do SICOP (VW_ORGAO_DLK)"
 
     config:
       freshness: # default freshness

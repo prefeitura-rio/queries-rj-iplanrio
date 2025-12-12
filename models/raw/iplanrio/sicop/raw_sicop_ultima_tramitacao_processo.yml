@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: raw_sicop_ultima_tramitacao_processo
+    description: "Dados brutos da última tramitação de processos do SICOP (origem VW_ULTIMA_TRAM_PROCESSO_DLK)"
+
+    columns:
+      - name: codigo_processo
+        description: "Código do processo"
+        data_type: string
+        quote: true
+      - name: ra_processo
+        description: "RA do processo"
+        data_type: string
+        quote: true
+      - name: sequencia_processo
+        description: "Sequência do processo"
+        data_type: int64
+      - name: secao_processo
+        description: "Seção do processo"
+        data_type: string
+        quote: true
+      - name: ano_processo
+        description: "Ano do processo"
+        data_type: int64
+      - name: sequencia_maxima
+        description: "Sequência máxima"
+        data_type: int64
+      - name: id_orgao_origem
+        description: "Identificador do órgão de origem"
+        data_type: string
+        quote: true
+      - name: id_orgao_destino
+        description: "Identificador do órgão de destino"
+        data_type: string
+        quote: true
+      - name: codigo_despacho
+        description: "Código do despacho"
+        data_type: string
+        quote: true
+      - name: matricula_transcritor
+        description: "Matrícula do transcritor"
+        data_type: string
+        quote: true
+      - name: numero_guia
+        description: "Número da guia"
+        data_type: string
+        quote: true
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date
+
