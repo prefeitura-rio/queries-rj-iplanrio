@@ -12,8 +12,8 @@ WITH tb AS (
     h.environment,
     h.last_update,
     h.user_id,
-    w.nome,
-    w.group as grupo,
+    IFNULL(w.nome, '') as nome,
+    IFNULL(w.group, 'Fora da planilha') as grupo,
     h.session_id,
     h.message_timestamp,
     DATE(message_timestamp) AS message_day,
@@ -31,7 +31,7 @@ WITH tb AS (
     h.tool_call_arguments_json,
     h.tool_return_payload,
   FROM {{ source('brutos_eai_logs', 'history') }} h
-  JOIN {{ source('brutos_eai_logs', 'whitelist_beta') }} w
+  LEFT JOIN {{ source('brutos_eai_logs', 'whitelist_beta') }} w
       ON h.user_id = w.user_id 
   WHERE message_timestamp IS NOT NULL 
     AND environment = 'prod'
