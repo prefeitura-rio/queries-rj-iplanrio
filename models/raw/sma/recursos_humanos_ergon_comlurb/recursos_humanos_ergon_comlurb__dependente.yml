@@ -1,0 +1,186 @@
+version: 2
+
+models:
+  - name: recursos_humanos_ergon_comlurb__dependente
+    description: "**Descrição**: Dependentes dos empregados da Comlurb.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: SUBGGC\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    columns:
+      - name: id_certidao_nascimento_casamento
+        description: Número da certidão de nascimento ou casamento do dependente.
+        data_type: string
+        quote: true
+      - name: numero_livro_nascimento_casamento
+        description: Número do livro da certidão de nascimento ou casamento do dependente.
+        data_type: string
+        quote: true
+      - name: numero_folha_nascimento_casamento
+        description: Número da folha da certidão de nascimento ou casamento do dependente.
+        data_type: string
+        quote: true
+      - name: numero_cartorio_nascimento_casamento
+        description: Número do cartório que emitiu a certidão de nascimento ou casamento do dependente.
+        data_type: string
+        quote: true
+      - name: estado_civil
+        description: Estado civil do dependente.
+        data_type: string
+        quote: true
+      - name: nome_mae
+        description: Nome da mãe do dependente.
+        data_type: string
+        quote: true
+      - name: sigla_uf_cartorio
+        description: Unidade da federação onde fica o cartório que emitiu a certidão de nascimento ou de casamento do dependente.
+        data_type: string
+        quote: true
+      - name: municipio_cartorio
+        description: Município onde fica o cartório que emitiu a certidão de nascimento ou de casamento do dependente.
+        data_type: string
+        quote: true
+      - name: tipo_certidao
+        description: Pode ser certidão de nascimento ou de casamento.
+        data_type: string
+        quote: true
+      - name: id_rg
+        description: Número do documento apresentado do dependente.
+        data_type: string
+        quote: true
+      - name: tipo_rg
+        description: Tipo do documento apresentado. Ex. Outros, RG., documento militar, registro profissional.
+        data_type: string
+        quote: true
+      - name: orgao_rg
+        description: Órgão que emitiu o documento apresentado.
+        data_type: string
+        quote: true
+      - name: sigla_uf_rg
+        description: Unidade da federação onde foi emitido o documento do dependente apresentado.
+        data_type: string
+        quote: true
+      - name: tipo_certidao_fim
+        description: Tipo de certidão que justifica o cancelamento da condição de dependente. Certidão de óbito ou certidão de desaparecimento.
+        data_type: string
+        quote: true
+      - name: data_certidao_fim
+        description: Data indicada na certidão para o óbito ou desaparecimento.
+        data_type: date
+      - name: numero_certidao_fim
+        description: Número da certidão de óbito ou desaparecimento.
+        data_type: string
+        quote: true
+      - name: numero_livro_certidao_fim
+        description: Número do livro da certidão de óbito ou desaparecimento.
+        data_type: string
+        quote: true
+      - name: numero_folha_certidao_fim
+        description: Número da folha da certidão de óbito ou desaparecimento.
+        data_type: string
+        quote: true
+      - name: numero_cartorio_certidao_fim
+        description: Número do cartório que emitiu a certidão de óbito ou desaparecimento.
+        data_type: string
+        quote: true
+      - name: sigla_uf_cartorio_fim
+        description: Unidade da federação onde fica o cartório que emitiu a certidão de óbito ou de desaparecimento.
+        data_type: string
+        quote: true
+      - name: municipio_cartorio_certidao_fim
+        description: Município onde fica o cartório que emitiu a certidão de óbito ou de desaparecimento.
+        data_type: string
+        quote: true
+      - name: data_expedicao_rg
+        description: Data de expedição do documento apresentado do dependente.
+        data_type: date
+      - name: matricula_certidao
+        description: Número da matrícula da certidão de nascimento ou casamento.
+        data_type: string
+        quote: true
+      - name: matricula_certidao_fim
+        description: Número da matrícula da certidão de óbito ou desaparecimento.
+        data_type: string
+        quote: true
+      - name: tipo_dependente
+        description: Sempre tem o valor DEPENFUNC. Indica que é dependente do funcionário.
+        data_type: string
+        quote: true
+      - name: id_dependente
+        description: Número sequencial dado pelo sistema para cada registro criado.
+        data_type: string
+        quote: true
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+      - name: numero_dependente
+        description: Número do dependente.
+        data_type: integer
+      - name: nome
+        description: Nome do dependente.
+        data_type: string
+        quote: true
+      - name: sexo
+        description: Sexo do dependente.
+        data_type: string
+        quote: true
+      - name: data_nascimento
+        description: Data de nascimento do dependente.
+        data_type: date
+      - name: parentesco
+        description: Parentesco do dependente em relação ao funcionário.
+        data_type: string
+        quote: true
+      - name: id_cpf
+        description: CPF do dependente.
+        data_type: string
+        quote: true
+      - name: tipo_logradouro
+        description: Tipo do logradouro do endereço do dependente. Ex. Rua, avenida, etc.
+        data_type: string
+        quote: true
+      - name: logradouro
+        description: Nome do logradouro do endereço do dependente.
+        data_type: string
+        quote: true
+      - name: numero_porta
+        description: Número de porta do endereço do dependente.
+        data_type: integer
+      - name: complemento_numero_porta
+        description: 'Complemento ao número de porta do endereço de dependente. Por exemplo: apt 1004.'
+        data_type: string
+        quote: true
+      - name: bairro
+        description: Bairro do endereço do dependente.
+        data_type: string
+        quote: true
+      - name: cep
+        description: CEP do endereço do dependente.
+        data_type: string
+        quote: true
+      - name: conta
+        description: Número da conta corrente para recebimento de pagamentos da Comlurb.
+        data_type: string
+        quote: true
+      - name: tipo_pagamento
+        description: Forma em que é efetuado o pagamento. Depósito em conta-corrente, em poupança ou em espécie.
+        data_type: string
+        quote: true
+      - name: municipio
+        description: Cidade do endereço do dependente.
+        data_type: string
+        quote: true
+      - name: sigla_uf
+        description: Unidade da federação do endereço do dependente.
+        data_type: string
+        quote: true
+      - name: telefone
+        description: Número do telefone do dependente.
+        data_type: string
+        quote: true
+      - name: banco
+        description: Código do banco para recebimento de pagamentos da Comlurb. Ex. Pagamento de pensão alimentícia retirada diretamente do salário do funcionário.
+        data_type: string
+        quote: true
+      - name: agencia
+        description: Número da agência onde está a conta corrente para recebimento de pagamentos da Comlurb.
+        data_type: string
+        quote: true
+
