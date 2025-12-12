@@ -19,5 +19,5 @@ SELECT
     SAFE_CAST(I22004_MAT_TRANSC AS STRING) AS matricula_transcritor,
     SAFE_CAST(I22004_NUM_GUIA AS STRING) AS numero_guia,
     SAFE_CAST(_prefect_extracted_at AS DATE) AS datalake_transformed_at
-FROM {{ source('brutos_sicop_staging', 'ultima_tramitacao_processo') }}
+FROM {{ source('brutos_sicop_staging', 'ultima_tram_processo') }}
 

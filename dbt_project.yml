@@ -189,6 +189,7 @@ models:
           +materialized: table
           +schema: brutos_sicop
           +tags: ["daily", "sicop"]
+          +models_paths: ["models/raw/iplanrio/sicop"]
           +resource_tags:
             845941190868/acesso: restrito
         bcadastro:
