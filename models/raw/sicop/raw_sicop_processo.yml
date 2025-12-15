@@ -1,0 +1,232 @@
+version: 2
+
+models:
+  - name: raw_sicop_processo
+    description: "Dados brutos de processos do SICOP (origem VW_PROCESSO_DLK)"
+ 
+    columns:
+      - name: id_processo
+        description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+        data_type: string
+        config:
+          meta:
+            nullable: false
+ 
+
+      - name: data_processo
+        description: "Data da Inclusão do Processo"
+        data_type: date
+
+      - name: documento
+        description: "Pode ter 11 tipos de documentos diferentes:  Ex.: 1- CPF; 2- CGC; 3- INSCR. IMOBILIARIA; 4-INSCR. MUNICIPAL; 5-MATRICULA; 6-NUMERO DO CASS; 7-NOTIFICACAO (MULTA DE TRANSITO)'; 8-NUMERO CADASTRAL DO IMOVEL;9-IDENTIDADE; 10-ORGAO DA ADMINISTRACAO PUBLICA/REQUERENTE SEM DOCUMENTO; 11- NOTIFICACAO (MULTA DE TRANSPORTE URBANO)"
+        data_type: string
+        quote: true
+
+      - name: nome_documento
+        description: "Nome do Tipo do documento do processo relacionado ao campo tipo_documento"
+        data_type: string
+        quote: true
+
+      - name: orgao_documento
+        description: "Órgão expedidor do documento de identificação da parte envolvida."
+        data_type: int64
+        quote: true
+
+      - name: tipo_documento
+        description: "Tipo do Documento. Ex.: 2- Requerimento; 3- Memorando; 4- Ofício"
+        data_type: int64
+        quote: true
+
+      - name: nome_tipo_documento
+        description: "Nome do tipo de documento relacionado ao campo tipo_docto"
+        data_type: string
+        quote: true
+
+      - name: codigo_assunto
+        description: "Código do Assunto. Ex.: 0- Administração Geral; 1- Assunto Jurídico; 2-Assunto Fazendário"
+        data_type: string
+        quote: true
+
+      - name: descricao_assunto
+        description: "Descrição do Assunto do processo"
+        data_type: string
+        quote: true
+
+      - name: requerente
+        description: "Nome do Requerente"
+        data_type: string
+        quote: true
+
+      - name: auto_infracao
+        description: "Registro formal de uma infração cometida, lavrado por autoridade competente, que passa a tramitar dentro do sistema como um processo/protocolo."
+        data_type: string
+        quote: true
+
+      - name: logradouro
+        description: "Identifica de forma padronizada o endereço (rua, avenida, travessa, etc.) associado à parte envolvida ou ao processo."
+        data_type: string
+        quote: true
+
+      - name: numero_porta
+        description: "Número de porta do logradouro do requerente"
+        data_type: string
+        quote: true
+
+      - name: complemento
+        description: "Complemento do logradouro do requerente"
+        data_type: string
+        quote: true
+
+      - name: cep
+        description: "cep do requerente"
+        data_type: string
+        quote: true
+
+      - name: bairro
+        description: "Bairro do requerente"
+        data_type: string
+        quote: true
+
+      - name: ddi
+        description: "ddi do requerente"
+        data_type: string
+        quote: true
+
+      - name: ddd
+        description: "ddd do requerente"
+        data_type: string
+        quote: true
+
+      - name: telefone
+        description: "Telefone do requerente "
+        data_type: string
+        quote: true
+
+      - name: ramal
+        description: "Ramal do requerente"
+        data_type: string
+        quote: true
+
+      - name: email
+        description: "email do requerente"
+        data_type: string
+        quote: true
+
+      - name: numero_processo_judicial
+        description: "Número do processo judicial."
+        data_type: string
+        quote: true
+
+      - name: inscricao_imobiliaria_inicial
+        description: "Inscrição imobiliária inicial"
+        data_type: string
+        quote: true
+
+      - name: inscricao_imobiliaria_final
+        description: "Inscrição imobiliária final"
+        data_type: string
+        quote: true
+
+      - name: documento_arquivado
+        description: "Indica se o processo foi arquivado"
+        data_type: string
+        quote: true
+
+      - name: documento_microfilmado
+        description: "Indica se o Processo foi microfilmado"
+        data_type: string
+        quote: true
+
+      - name: documento_eliminado
+        description: "Indca se o processo foi eliminado"
+        data_type: string
+        quote: true
+
+      - name: documento_extraviado
+        description: "Indica se o processo foi extraviado"
+        data_type: string
+        quote: true
+
+      - name: documento_distribuido
+        description: "Informa se o documento foi distribuido e não pode ser tramitado enquanto não for liberado"
+        data_type: string
+        quote: true
+
+      - name: status_registro
+        description: "Indica a Situação do processo. Ex.: 1- Apensado; 2 - Desapensado; 3 - Anexado"
+        data_type: string
+        quote: true
+
+      - name: status_digitacao_registro
+        description: "Indica o Status da digitação do processo. Ex.: 0- digitado por outros sistemas; 6-  referente a assuntos gerais e digitados pelo Sicop; 9- referente a multa de trânsito e digitado pelo Sicop. "
+        data_type: string
+        quote: true
+
+      - name: documento_remissivo
+        description: "Código que se refere ao processo. Indica se o processo é remissivo"
+        data_type: string
+        quote: true
+
+      - name: orgao_origem
+        description: "Orgão de origem do processo."
+        data_type: string
+        quote: true
+
+      - name: orgao_transcritor
+        description: "Orgão transcritor do processo. Órgão do usuário responsável pela inclusão do registro"
+        data_type: string
+        quote: true
+
+      - name: pasta_localizacao_documento
+        description: "Pasta onde o documento está localizado. Pasta de acentação de servidor referente a Secretaria de Educação"
+        data_type: string
+        quote: true
+
+      - name: mudanca_registro
+        description: "Indica se houve mudança no registro. Mudança de categoria do servidor da Secretaria de Educação"
+        data_type: string
+        quote: true
+
+      - name: quantidade_volume
+        description: "Identifica a quantidade de volumes referente ao processo"
+        data_type: int64
+
+      - name: numero_volume
+        description: "Identifica a quantidade de volumes referente ao processo"
+        data_type: int64
+
+      - name: volume_numero
+        description: "Número do volume"
+        data_type: int64
+
+      - name: data_alteracao
+        description: "Data da alteração do registro"
+        data_type: date
+
+      - name: hora_alteracao
+        description: "Hora da Alteração do registro"
+        data_type: time
+
+      - name: matricula_alteracao
+        description: "Matrícula do usuário responsável pela alteração do registro."
+        data_type: string
+        quote: true
+
+      - name: orgao_alteracao
+        description: "Orgão do usuário responsável pela alteração do registro"
+        data_type: string
+        quote: true
+
+      - name: orgao_destino
+        description: "Orgão de destino do processo"
+        data_type: string
+        quote: true
+
+      - name: status_principal
+        description: "Status do processo principal. Informa quando o documento foi juntado ao processo. Ex.: 7- juntado"
+        data_type: string
+        quote: true
+
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date

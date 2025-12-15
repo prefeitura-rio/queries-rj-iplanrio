@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: raw_sicop_despacho
+    description: "Dados brutos de despachos do SICOP (origem VW_DESPACHO_DLK)"
+
+    columns:
+      - name: id_despacho
+        description: "Identificador único do despacho"
+        data_type: string
+        quote: true
+      - name: sequencia_remissao
+        description: "Sequência de remissão do despacho"
+        data_type: int64
+      - name: sequencia
+        description: "Sequência do despacho"
+        data_type: int64
+      - name: descricao
+        description: "Descrição do despacho"
+        data_type: string
+        quote: true
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date
+

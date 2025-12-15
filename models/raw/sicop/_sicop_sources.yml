@@ -1,0 +1,32 @@
+version: 2
+
+sources:
+  - name: brutos_sicop_staging
+    database: rj-iplanrio
+    schema: brutos_sicop_staging
+    tables:
+      - name: processo
+        description: "View de processos do SICOP"
+      - name: veiculo
+        description: "View de veículos do SICOP"
+      - name: parte_envolvida
+        description: "View de partes envolvidas do SICOP"
+      - name: tramitacao_processo
+        description: "View de tramitação de processos do SICOP (VW_TRAMITACAO_PROCESSO_DLK)"
+      - name: localiza_processo
+        description: "View de localização de processos do SICOP (VW_LOCALIZA_PROCESSO_DLK)"
+      - name: despacho
+        description: "View de despachos do SICOP (VW_DESPACHO_DLK)"
+      - name: ultima_tram_processo
+        description: "View de última tramitação de processos do SICOP (VW_ULTIMA_TRAM_PROCESSO_DLK)"
+      - name: documento
+        description: "View de documentos do SICOP"
+      - name: assunto
+        description: "View de assuntos do SICOP (VW_ASSUNTO_DLK)"
+      - name: orgao
+        description: "View de órgãos do SICOP (VW_ORGAO_DLK)"
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
