@@ -1,6 +1,6 @@
 {{
     config(
-        alias="view_lic_licencas_por_periodo",
+        alias="licencas_por_periodo",
         description="Dados brutos de licenças por período (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
     )
 }}
