@@ -127,7 +127,7 @@
 -- ESTRUTURA DOS CAMPOS DE SESSÃO NO OUTPUT
 -- =============================================================================
 --
--- session_id_original      → ID original do sistema (vem do JSON)
+-- session_id               → ID original do sistema (vem do JSON 1h movel)
 -- session_start_1h         → Timestamp do início da sessão (1h móvel)
 -- session_id_1h_movel      → Hash MD5 truncado (16 chars) identificador único
 -- session_start_24h_movel  → Timestamp do início da sessão (24h móvel)
@@ -510,7 +510,7 @@ with
             s.message_timestamp,
 
             -- Session IDs (agrupados)
-            s.session_id as session_id_original,
+            s.session_id as session_id,
             -- 1h móvel
             s.session_start_1h,
             substr(to_hex(md5(concat(
