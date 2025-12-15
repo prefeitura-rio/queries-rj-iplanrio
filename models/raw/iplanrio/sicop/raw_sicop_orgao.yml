@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: raw_sicop_orgao
+    description: "Dados brutos de órgãos do SICOP (origem VW_ORGAO_DLK)"
+
+    columns:
+      - name: id_orgao_sicop
+        description: "Identificador do órgão no SICOP"
+        data_type: string
+        quote: true
+      - name: sigla_orgao
+        description: "Sigla do órgão"
+        data_type: string
+        quote: true
+      - name: descricao_orgao
+        description: "Descrição/nome do órgão"
+        data_type: string
+        quote: true
+      - name: endereco_orgao
+        description: "Endereço do órgão"
+        data_type: string
+        quote: true
+      - name: telefone_orgao
+        description: "Telefone do órgão"
+        data_type: string
+        quote: true
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date
+
