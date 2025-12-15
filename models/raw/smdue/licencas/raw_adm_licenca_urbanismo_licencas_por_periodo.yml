@@ -41,15 +41,6 @@ models:
               name: raw_sicop_licencas_por_periodo__classe_licenca__not_null
               config:
                 severity: error
-      - name: endereco
-        description: "Endereço da Edificação"
-        data_type: string
-        quote: true
-        data_tests:
-          - not_null:
-              name: raw_adm_licenca_urbanismo__endereco__not_null
-              config:
-                severity: error
       - name: codigo_logradouro
         description: "Código do Logradouro"
         data_type: int64
