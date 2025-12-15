@@ -4,7 +4,7 @@ models:
   - name: raw_adm_licenca_urbanismo_licencas_por_periodo
     description: "Dados brutos de licenças por período do SICOP (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
     config:
-      materialized: view
+      materialized: table
 
     columns:
       - name: requerente
@@ -39,15 +39,6 @@ models:
         data_tests:
           - not_null:
               name: raw_sicop_licencas_por_periodo__classe_licenca__not_null
-              config:
-                severity: error
-      - name: endereco
-        description: "Endereço da Edificação"
-        data_type: string
-        quote: true
-        data_tests:
-          - not_null:
-              name: raw_adm_licenca_urbanismo__endereco__not_null
               config:
                 severity: error
       - name: codigo_logradouro
