@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: raw_sicop_documento
+    description: "Dados brutos de documentos do SICOP"
+
+    columns:
+      - name: tipo_documento
+        description: "Tipo do documento"
+        data_type: string
+        quote: true
+      - name: numero_documento
+        description: "Número do documento"
+        data_type: string
+        quote: true
+      - name: id_orgao_responsavel
+        description: "Identificador do órgão responsável pelo documento"
+        data_type: string
+        quote: true
+      - name: data_documento
+        description: "Data do documento"
+        data_type: date
+      - name: prazo_documento
+        description: "Prazo do documento (em dias)"
+        data_type: int64
+      - name: processo_judicial_documento
+        description: "Processo judicial relacionado ao documento"
+        data_type: string
+        quote: true
+      - name: numero_externo
+        description: "Número externo do documento"
+        data_type: string
+        quote: true
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date
+
