@@ -21,8 +21,8 @@ with
         select *
         from equipamentos e
         where fonte in (
-            '{{ ref("raw_equipamentos_saude_unidades_arcgis") }}', 
-            '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}',
+            '{{ ref("raw_brutos_equipamentos_saude_unidades_arcgis") }}', 
+            '{{ ref("raw_brutos_equipamentos_saude_equipes_arcgis") }}',
             '{{ source("smas_equipamentos", "poligonos_rmi") }}'
         )
     ),

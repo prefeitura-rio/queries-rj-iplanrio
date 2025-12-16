@@ -83,7 +83,7 @@ with
             ) as horario_funcionamento,
 
             -- Fonte dos dados (usando a sintaxe de source do dbt)
-            '{{ ref("raw_equipamentos_escolas") }}' as fonte,
+            '{{ ref("raw_brutos_equipamentos_escolas") }}' as fonte,
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
@@ -97,7 +97,7 @@ with
             -- Timestamp da última atualização
             current_timestamp() as updated_at
 
-        from {{ ref("raw_equipamentos_escolas") }} as t
+        from {{ ref("raw_brutos_equipamentos_escolas") }} as t
         left join
             {{ source("dados_mestres", "bairro") }} as b
             -- O join é feito pela geometria da escola contida na geometria do bairro
