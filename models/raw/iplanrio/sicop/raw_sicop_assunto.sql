@@ -12,6 +12,6 @@ SELECT
     SAFE_CAST(SEQ AS INT64) AS sequencia,
     SAFE_CAST(CHAVE_IDENT_COD_SEQ AS STRING) AS chave_ident_cod_seq,
     SAFE_CAST(DESC_ASSUNTO AS STRING) AS descricao_assunto,
-    SAFE_CAST(_prefect_extracted_at AS DATE) AS datalake_transformed_at
+    SAFE_CAST(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at
 FROM {{ source('brutos_sicop_staging', 'assunto') }}
 

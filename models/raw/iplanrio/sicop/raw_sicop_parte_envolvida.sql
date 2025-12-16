@@ -16,9 +16,9 @@ select
   safe_cast(cep_parte_envolvida as int64)             as cep_parte_envolvida,
   safe_cast(telefone as string)                       as telefone,
   safe_cast(qualificacao as string)                   as qualificacao,
-  safe_cast(data_procuracao as date)                  as data_procuracao,
+  safe_cast(CONCAT( SUBSTR(data_procuracao,7,4),'-', SUBSTR(data_procuracao,4,2) ,'-', SUBSTR(data_procuracao,1,2) ) as date)   as data_procuracao,
   safe_cast(tipo_documento_parte_envolvida as string) as tipo_documento_parte_envolvida,
   safe_cast(documento_parte_envolvida as string)      as documento_parte_envolvida,
   safe_cast(matricula_responsavel as int64)           as matricula_responsavel,
-  safe_cast(_prefect_extracted_at as date)            as datalake_transformed_at 
+  safe_cast(SUBSTR(_prefect_extracted_at,1,10) as date)            as datalake_transformed_at 
 from {{ source("brutos_sicop_staging","parte_envolvida") }}
