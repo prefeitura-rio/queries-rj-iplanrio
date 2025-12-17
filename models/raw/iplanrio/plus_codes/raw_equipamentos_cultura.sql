@@ -12,7 +12,7 @@ with
         select
             -- Pluscodes (calculados e ordenados como no exemplo)
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 11), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 11), ''
             ) as plus11,
 
             -- Identificação principal do equipamento
@@ -24,17 +24,17 @@ with
 
             -- Mais Pluscodes
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 10), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 10), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 8), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 8), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 6), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 6), ''
             ) as plus6,
 
             -- Detalhes de localização
-            t.latituasdasdde as latitude,
+            t.latitude as latitude,
             t.longitude as longitude,
             t.geometry,
 

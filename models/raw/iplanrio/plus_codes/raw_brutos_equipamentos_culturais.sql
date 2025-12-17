@@ -139,7 +139,7 @@ select
     upper({{ proper_br("complemento") }}) as complemento,
     upper({{ proper_br("bairro") }}) as bairro,
     cep,
-    cast(latitude as float64) as latituasdasdde,
+    cast(latitude as float64) as latitude,
     cast(longitude as float64) as longitude,
     st_geogpoint(cast(longitude as float64), cast(latitude as float64)) as geometry
 from parsed_address
