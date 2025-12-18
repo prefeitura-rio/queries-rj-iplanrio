@@ -12,6 +12,6 @@ SELECT
     SAFE_CAST(DESC_ORGAO AS STRING) AS descricao_orgao,
     SAFE_CAST(END_ORGAO AS STRING) AS endereco_orgao,
     SAFE_CAST(TEL_ORGAO AS STRING) AS telefone_orgao,
-    SAFE_CAST(_prefect_extracted_at AS DATE) AS datalake_transformed_at
+    SAFE_CAST(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at
 FROM {{ source('brutos_sicop_staging', 'orgao') }}
 
