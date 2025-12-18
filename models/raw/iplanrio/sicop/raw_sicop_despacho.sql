@@ -11,6 +11,6 @@ SELECT
     SAFE_CAST(SEQ_REM AS INT64) AS sequencia_remissao,
     SAFE_CAST(SEQ AS INT64) AS sequencia,
     SAFE_CAST(DESCRICAO AS STRING) AS descricao,
-    SAFE_CAST(_prefect_extracted_at AS DATE) AS datalake_transformed_at
+    SAFE_CAST(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at
 FROM {{ source('brutos_sicop_staging', 'despacho') }}
 
