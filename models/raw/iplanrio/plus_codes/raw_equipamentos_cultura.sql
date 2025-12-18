@@ -12,7 +12,7 @@ with
         select
             -- Pluscodes (calculados e ordenados como no exemplo)
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 11), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 11), ''
             ) as plus11,
 
             -- Identificação principal do equipamento
@@ -24,17 +24,17 @@ with
 
             -- Mais Pluscodes
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 10), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 10), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 8), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 8), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 6), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 6), ''
             ) as plus6,
 
             -- Detalhes de localização
-            t.latituasdasdde as latitude,
+            t.latitude as latitude,
             t.longitude as longitude,
             t.geometry,
 
@@ -79,7 +79,7 @@ with
             ) as horario_funcionamento,
 
             -- Fonte dos dados (ajuste o nome da tabela 'cultura' se necessário)
-            '{{ ref("raw_equipamentos_culturais") }}' as fonte,
+            '{{ ref("raw_brutos_equipamentos_culturais") }}' as fonte,
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
@@ -89,7 +89,7 @@ with
             -- Timestamp da última atualização
             current_timestamp() as updated_at
 
-        from {{ ref("raw_equipamentos_culturais") }} as t
+        from {{ ref("raw_brutos_equipamentos_culturais") }} as t
         left join
             {{ source("dados_mestres", "bairro") }} as b
             -- O join é feito pela geometria do equipamento contida na geometria do

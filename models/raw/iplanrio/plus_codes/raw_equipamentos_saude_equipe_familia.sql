@@ -74,7 +74,7 @@ SELECT
   CAST([] AS ARRAY<STRUCT<dia STRING, abre TIME, fecha TIME>>) AS horario_funcionamento,
   
   -- Fonte dos dados
-  '{{ ref("raw_equipamentos_saude_equipes_arcgis") }}' AS fonte,
+  '{{ ref("raw_brutos_equipamentos_saude_equipes_arcgis") }}' AS fonte,
   
   -- Vigência (informação não disponível na origem)
   CAST(NULL AS DATE) AS vigencia_inicio,
@@ -98,7 +98,7 @@ SELECT
   -- Timestamp da atualização
   CURRENT_TIMESTAMP() AS updated_at
 FROM
-  {{ ref("raw_equipamentos_saude_equipes_arcgis") }} AS t
+  {{ ref("raw_brutos_equipamentos_saude_equipes_arcgis") }} AS t
 LEFT JOIN
   estabelecimento_esfera AS e
 ON
