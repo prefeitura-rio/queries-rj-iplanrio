@@ -31,6 +31,34 @@ models:
         description: "Número externo do documento"
         data_type: string
         quote: true
+      - name: numero_processo
+        description: "Número do processo relacionado ao documento"
+        data_type: string
+        quote: true
+      - name: requerente
+        description: "Requerente do documento"
+        data_type: string
+        quote: true
+      - name: codigo_assunto
+        description: "Código do assunto do documento"
+        data_type: string
+        quote: true
+      - name: assunto_completo
+        description: "Assunto completo do documento"
+        data_type: string
+        quote: true
+      - name: tipo_documento_informado
+        description: "Tipo do documento informado"
+        data_type: string
+        quote: true
+      - name: numero_documento_informado
+        description: "Número do documento informado"
+        data_type: string
+        quote: true
+      - name: id_orgao_responsavel_informado
+        description: "Identificador do órgão responsável informado"
+        data_type: string
+        quote: true
       - name: datalake_transformed_at
         description: "Data de transformação do dado"
         data_type: date

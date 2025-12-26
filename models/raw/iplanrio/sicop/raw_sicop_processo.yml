@@ -29,7 +29,7 @@ models:
 
       - name: orgao_documento
         description: "Órgão expedidor do documento de identificação da parte envolvida."
-        data_type: int64
+        data_type: string
         quote: true
 
       - name: tipo_documento
@@ -138,7 +138,7 @@ models:
         quote: true
 
       - name: documento_eliminado
-        description: "Indca se o processo foi eliminado"
+        description: "Indica se o processo foi eliminado"
         data_type: string
         quote: true
 
@@ -154,17 +154,17 @@ models:
 
       - name: status_registro
         description: "Indica a Situação do processo. Ex.: 1- Apensado; 2 - Desapensado; 3 - Anexado"
-        data_type: string
+        data_type: numeric
         quote: true
 
       - name: status_digitacao_registro
         description: "Indica o Status da digitação do processo. Ex.: 0- digitado por outros sistemas; 6-  referente a assuntos gerais e digitados pelo Sicop; 9- referente a multa de trânsito e digitado pelo Sicop. "
-        data_type: string
+        data_type: numeric
         quote: true
 
       - name: documento_remissivo
         description: "Código que se refere ao processo. Indica se o processo é remissivo"
-        data_type: string
+        data_type: numeric
         quote: true
 
       - name: orgao_origem
@@ -179,7 +179,7 @@ models:
 
       - name: pasta_localizacao_documento
         description: "Pasta onde o documento está localizado. Pasta de acentação de servidor referente a Secretaria de Educação"
-        data_type: string
+        data_type: numeric
         quote: true
 
       - name: mudanca_registro
@@ -192,12 +192,8 @@ models:
         data_type: int64
 
       - name: numero_volume
-        description: "Identifica a quantidade de volumes referente ao processo"
-        data_type: int64
-
-      - name: volume_numero
-        description: "Número do volume"
-        data_type: int64
+        description: "Identifica o número do volume referente ao processo"
+        data_type: numeric
 
       - name: data_alteracao
         description: "Data da alteração do registro"
@@ -205,7 +201,7 @@ models:
 
       - name: hora_alteracao
         description: "Hora da Alteração do registro"
-        data_type: time
+        data_type: numeric
 
       - name: matricula_alteracao
         description: "Matrícula do usuário responsável pela alteração do registro."
@@ -224,7 +220,7 @@ models:
 
       - name: status_principal
         description: "Status do processo principal. Informa quando o documento foi juntado ao processo. Ex.: 7- juntado"
-        data_type: string
+        data_type: numeric
         quote: true
 
       - name: datalake_transformed_at
