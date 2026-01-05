@@ -152,6 +152,7 @@ with
             environment,
             cast(last_update as timestamp) as last_update,
             user_id,
+            checkpoint_id,
             message
         from
             `rj-iplanrio.brutos_eai_logs_staging.history`,
@@ -177,6 +178,7 @@ with
             environment,
             last_update,
             user_id,
+            checkpoint_id,
             json_extract_scalar(message, '$.id') as message_id,
             cast(
                 json_extract_scalar(message, '$.date') as timestamp
@@ -222,6 +224,7 @@ with
             c.environment,
             c.last_update,
             c.user_id,
+            c.checkpoint_id,
             c.message_id,
             c.message_timestamp,
             c.session_id,
@@ -257,6 +260,7 @@ with
             environment,
             last_update,
             user_id,
+            checkpoint_id,
             message_id,
             message_timestamp,
             session_id,
@@ -312,6 +316,7 @@ with
             environment,
             last_update,
             user_id,
+            checkpoint_id,
             message_id,
             message_timestamp,
             session_id,
@@ -349,6 +354,7 @@ with
             environment,
             last_update,
             user_id,
+            checkpoint_id,
             message_id,
             message_timestamp,
             session_id,
@@ -413,6 +419,7 @@ with
             environment,
             last_update,
             user_id,
+            checkpoint_id,
             message_id,
             message_timestamp,
             session_id,
@@ -519,6 +526,7 @@ with
             s.environment,
             s.last_update,
             s.user_id,
+            s.checkpoint_id,
             s.message_id,
             s.message_timestamp,
 
