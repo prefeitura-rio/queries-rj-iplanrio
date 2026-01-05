@@ -158,6 +158,19 @@ with
             unnest(json_extract_array(messages)) as message
     ),
 
+    deduped_messages AS (
+        SELECT *
+        FROM unpacked_logs
+        WHERE json_extract_scalar(message, '$.id') IS NOT NULL
+        -- A MÁGICA: Se a mensagem ID '123' apareceu em 5 dumps diferentes,
+        -- pegamos apenas a versão dela que veio no dump mais recente.
+        -- Se ela sumiu do dump mais recente (poda), a versão antiga ainda estará aqui.
+        QUALIFY ROW_NUMBER() OVER (
+            PARTITION BY environment, user_id, json_extract_scalar(message, '$.id') 
+            ORDER BY last_update DESC
+        ) = 1
+    ),
+
     parsed_logs as (
         -- CTE 2: Parseia cada linha de JSON.
         select
@@ -200,7 +213,7 @@ with
             json_extract(message, '$.tool_call.arguments') as tool_call_arguments_json,
             json_extract(message, '$.tool_return') as tool_return_payload,
             json_extract_scalar(message, '$.stderr') as tool_stderr
-        from unpacked_logs
+        from deduped_messages
     ),
 
     tool_executions as (
