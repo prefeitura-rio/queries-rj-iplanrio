@@ -2,7 +2,7 @@
     config(
         alias='atributo',
         schema='adm_central_atendimento_1746',
-        materialized='view',
+        materialized='table',
     )
 }}
 
