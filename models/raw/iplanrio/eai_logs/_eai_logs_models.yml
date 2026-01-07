@@ -52,3 +52,50 @@ models:
         data_type: numeric
         tests:
           - not_null
+
+  - name: raw_eai_gateway_incidents
+    description: "Incidentes brutos do BetterStack tratados e desaninhados."
+    columns:
+      - name: id
+        description: "ID único do incidente gerado pelo BetterStack"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nome do monitor que gerou o incidente (ex: eAí Gateway)"
+      - name: status
+        description: "Status atual do incidente (ex: Resolved, Acknowledged)"
+      - name: cause
+        description: "Causa detectada para o incidente"
+      - name: url
+        description: "URL que está sendo monitorada"
+      - name: team_name
+        description: "Nome da equipe responsável pelo monitor"
+      - name: started_at
+        description: "Timestamp de início do incidente (UTC)"
+      - name: resolved_at
+        description: "Timestamp de resolução do incidente (UTC)"
+      - name: acknowledged_at
+        description: "Timestamp de quando a equipe visualizou/aceitou o incidente (UTC)"
+      - name: response_code
+        description: "Código de resposta HTTP retornado durante o incidente"
+      - name: monitor_id
+        description: "ID interno do monitor no BetterStack"
+      - name: ano_particao
+        description: "Ano para fins de partição"
+      - name: mes_particao
+        description: "Mês para fins de partição"
+      - name: data_particao
+        description: "Data para fins de partição"
+
+  - name: raw_eai_gateway_uptime_kpi
+    description: "KPI mensal de disponibilidade (Uptime %) do EAI Gateway."
+    columns:
+      - name: mes
+        description: "Mês de referência (formato YYYY-MM, Horário de Brasília)"
+      - name: total_downtime_minutes
+        description: "Total de minutos em que o serviço ficou indisponível no mês"
+      - name: total_minutes_in_month
+        description: "Quantidade total de minutos passíveis no mês (denominador)"
+      - name: disponibilidade_percentual
+        description: "Percentual final de disponibilidade calculado (Uptime)"
