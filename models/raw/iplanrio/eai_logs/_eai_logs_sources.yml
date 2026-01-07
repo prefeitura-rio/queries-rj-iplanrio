@@ -25,3 +25,10 @@ sources:
     tables:
       - name: gcp_billing_export_resource_v1_01F105_3E298A_65D256
         description: "Dados de billing do GCP - iplan"
+
+  - name: brutos_betterstack_staging
+    database: rj-iplanrio
+    schema: brutos_betterstack_staging
+    tables:
+      - name: eai_gateway_incidents
+        description: "Incidentes do BetterStack brutos"
