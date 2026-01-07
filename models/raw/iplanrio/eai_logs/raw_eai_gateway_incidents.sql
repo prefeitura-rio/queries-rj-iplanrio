@@ -23,32 +23,41 @@ WITH source AS (
     SELECT * FROM {{ source('brutos_betterstack_staging', 'eai_gateway_incidents') }}
 ),
 
+processed AS (
+    SELECT
+        *,
+        -- Transformando o dicionário stringivied do Python em JSON válido (aspas duplas, null, true, false)
+        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(attributes, "'", '"'), 'None', 'null'), 'True', 'true'), 'False', 'false'), '"{', '{') AS attributes_json,
+        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(relationships, "'", '"'), 'None', 'null'), 'True', 'true'), 'False', 'false'), '"{', '{') AS relationships_json
+    FROM source
+),
+
 unnested AS (
     SELECT
         SAFE_CAST(id AS STRING) as id,
-        -- Extraindo campos usando Regex (mais robusto para o formato stringified Python dict no BigQuery)
-        REGEXP_EXTRACT(attributes, r"['\"]name['\"]\s*:\s*['\"]([^'\"]+)['\"]") as name,
-        REGEXP_EXTRACT(attributes, r"['\"]status['\"]\s*:\s*['\"]([^'\"]+)['\"]") as status,
-        REGEXP_EXTRACT(attributes, r"['\"]cause['\"]\s*:\s*['\"]([^'\"]+)['\"]") as cause,
-        REGEXP_EXTRACT(attributes, r"['\"]url['\"]\s*:\s*['\"]([^'\"]+)['\"]") as url,
-        REGEXP_EXTRACT(attributes, r"['\"]team_name['\"]\s*:\s*['\"]([^'\"]+)['\"]") as team_name,
+        -- Extraindo campos usando JSON_EXTRACT_SCALAR (agora robusto após a conversão)
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.name') AS STRING) as name,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.status') AS STRING) as status,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.cause') AS STRING) as cause,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.url') AS STRING) as url,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.team_name') AS STRING) as team_name,
         
-        -- Timestamps (SAFE_CAST handles ISO8601 strings like '2026-01-02T20:23:09.291Z' naturally)
-        SAFE_CAST(REGEXP_EXTRACT(attributes, r"['\"]started_at['\"]\s*:\s*['\"]([^'\"]+)['\"]") AS TIMESTAMP) as started_at,
-        SAFE_CAST(REGEXP_EXTRACT(attributes, r"['\"]resolved_at['\"]\s*:\s*['\"]([^'\"]+)['\"]") AS TIMESTAMP) as resolved_at,
-        SAFE_CAST(REGEXP_EXTRACT(attributes, r"['\"]acknowledged_at['\"]\s*:\s*['\"]([^'\"]+)['\"]") AS TIMESTAMP) as acknowledged_at,
+        -- Timestamps
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.started_at') AS TIMESTAMP) as started_at,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.resolved_at') AS TIMESTAMP) as resolved_at,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.acknowledged_at') AS TIMESTAMP) as acknowledged_at,
         
-        -- Extraindo response_code de dentro do response_options
-        SAFE_CAST(REGEXP_EXTRACT(attributes, r"['\"]response_code['\"]\s*:\s*(\d+)") AS INT64) as response_code,
+        -- Extraindo response_code de dentro do response_options (que já deve ser um JSON válido após o processamento)
+        SAFE_CAST(JSON_EXTRACT_SCALAR(attributes_json, '$.response_options.response_code') AS INT64) as response_code,
         
         -- Extraindo monitor_id das relationships
-        REGEXP_EXTRACT(relationships, r"['\"]id['\"]\s*:\s*['\"]([^'\"]+)['\"]") as monitor_id,
+        SAFE_CAST(JSON_EXTRACT_SCALAR(relationships_json, '$.monitor.data.id') AS STRING) as monitor_id,
         
         -- Metadados de partição
         SAFE_CAST(ano_particao AS STRING) as ano_particao,
         SAFE_CAST(mes_particao AS STRING) as mes_particao,
         SAFE_CAST(data_particao AS DATE) as data_particao
-    FROM source
+    FROM processed
 )
 
 SELECT * FROM unnested
