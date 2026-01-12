@@ -1,6 +1,6 @@
 {{
     config(
-        enabled=false,
+        enabled=true,
         schema="brutos_gcp",
         alias="gcp_bigquery_jobs",
         materialized="incremental",
@@ -38,7 +38,7 @@
     "rj-cetrio",
     "rj-cetrio-dev",
     "rj-chatbot",
-    "" "rj-chatbot-dev",
+    "rj-chatbot-dev",
     "rj-civitas",
     "rj-civitas-dev",
     "rj-cmp",
@@ -51,6 +51,7 @@
     "rj-cvl",
     "rj-cvl-dev",
     "rj-datalab-sandbox",
+    "rj-ia-desenvolvimento",
     "rj-escritorio",
     "rj-escritorio-dev",
     "rj-iplanrio",
@@ -82,7 +83,6 @@
     "rj-smac-dev",
     "rj-smas",
     "rj-smas-dev",
-    "rj-smas-dev-432320",
     "rj-smdue",
     "rj-sme",
     "rj-sme-dev",
@@ -97,8 +97,6 @@
     "rj-smtr",
     "rj-smtr-dev",
     "rj-smtr-staging",
-    "rj-vision-ai",
-    "rj-vision-ai-dev",
 ] %}
 
 {% set all_queries = [] %}
