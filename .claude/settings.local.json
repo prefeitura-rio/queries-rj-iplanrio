@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(bq query --use_legacy_sql=false \"\nUPDATE \\\\`rj-iplanrio.brutos_gcp.gcp_bigquery_jobs\\\\`\nSET data_faturamento = EXTRACT\\(DATE FROM creation_time AT TIME ZONE ''PST8PDT''\\)\nWHERE data_faturamento IS NULL\n\")"
-    ]
-  }
-}

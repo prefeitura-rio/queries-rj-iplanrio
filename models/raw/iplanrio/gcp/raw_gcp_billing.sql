@@ -1,8 +1,6 @@
 {{
     config(
-        schema="brutos_gcp",
         alias="gcp_billing",
-        materialized="incremental",
         incremental_strategy="insert_overwrite",
         partition_by={
             "field": "invoice_competencia_particao",

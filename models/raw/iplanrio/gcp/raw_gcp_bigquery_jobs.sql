@@ -1,9 +1,7 @@
 {{
     config(
         enabled=true,
-        schema="brutos_gcp",
         alias="gcp_bigquery_jobs",
-        materialized="incremental",
         full_refresh=false,
         unique_key=["project_id", "job_id"],
         partition_by={
