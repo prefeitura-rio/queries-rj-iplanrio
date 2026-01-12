@@ -119,7 +119,7 @@
             statement_type,
             total_bytes_processed,
             total_bytes_billed,
-            extract(date from end_time at time zone 'PST8PDT') as data_faturamento
+            extract(date from coalesce(end_time, creation_time) at time zone 'PST8PDT') as data_faturamento
         from `{{ projeto }}`.`region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
         where DATE(creation_time) > DATE('{{ start_date }}')
     {% endset %}

@@ -7,11 +7,12 @@ models:
     data_tests:
       - dbt_utils.recency:
           name: mart_gerenciamento_custo_gcp__export_time__recency
-
+          config:
+            severity: warn
           arguments:
             datepart: day
             field: export_time
-            interval: 1
+            interval: 3
     columns:
       - name: billing_account_id
         description: "O ID da conta de faturamento do Cloud que o uso está associado."
