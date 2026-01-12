@@ -1,9 +1,7 @@
 {{
     config(
-        enabled=false,
-        schema="brutos_gcp",
+        enabled=true,
         alias="gcp_bigquery_jobs",
-        materialized="incremental",
         full_refresh=false,
         unique_key=["project_id", "job_id"],
         partition_by={
@@ -38,7 +36,7 @@
     "rj-cetrio",
     "rj-cetrio-dev",
     "rj-chatbot",
-    "" "rj-chatbot-dev",
+    "rj-chatbot-dev",
     "rj-civitas",
     "rj-civitas-dev",
     "rj-cmp",
@@ -51,6 +49,7 @@
     "rj-cvl",
     "rj-cvl-dev",
     "rj-datalab-sandbox",
+    "rj-ia-desenvolvimento",
     "rj-escritorio",
     "rj-escritorio-dev",
     "rj-iplanrio",
@@ -82,7 +81,6 @@
     "rj-smac-dev",
     "rj-smas",
     "rj-smas-dev",
-    "rj-smas-dev-432320",
     "rj-smdue",
     "rj-sme",
     "rj-sme-dev",
@@ -97,8 +95,6 @@
     "rj-smtr",
     "rj-smtr-dev",
     "rj-smtr-staging",
-    "rj-vision-ai",
-    "rj-vision-ai-dev",
 ] %}
 
 {% set all_queries = [] %}
@@ -121,7 +117,7 @@
             statement_type,
             total_bytes_processed,
             total_bytes_billed,
-            extract(date from end_time at time zone 'PST8PDT') as data_faturamento
+            extract(date from coalesce(end_time, creation_time) at time zone 'PST8PDT') as data_faturamento
         from `{{ projeto }}`.`region-us`.INFORMATION_SCHEMA.JOBS_BY_PROJECT
         where DATE(creation_time) > DATE('{{ start_date }}')
     {% endset %}

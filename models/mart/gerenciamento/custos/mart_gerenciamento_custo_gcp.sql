@@ -1,3 +1,6 @@
+-- Custos do GCP por projeto, serviço e SKU
+-- Baseado na tabela de billing exportada do GCP
+
 {{
     config(
         schema="gerenciamento_custos",

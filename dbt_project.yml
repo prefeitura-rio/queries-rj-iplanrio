@@ -206,6 +206,8 @@ models:
             rj-iplanrio/dominio: bcadastro
             845941190868/acesso: restrito
         gcp:
+          +materialized: incremental
+          +schema: brutos_gcp
           +tags: ["daily", "custos"]
           +resource_tags:
             rj-iplanrio/dominio: infraestrutura-ti
