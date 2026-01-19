@@ -1,0 +1,68 @@
+version: 2
+models :
+  - name: raw_protecao_social_cadunico__contato
+    description: Table contato from number 09
+    columns:
+      - name: id_prefeitura
+        description: 'Chave única de identificação da Família | version: 0626'
+      - name: id_familia
+        description: 'Código Familiar | version: 0626'
+      - name: cpf_operador_responsavel
+        description: 'CPF do operador que carregou os arquivos | version: 0626'
+      - name: data_arquivos_carregados
+        description: 'Data de carregamento do arquivo no formato DDMMAAAA | version:
+          0626'
+      - name: email
+        description: "E-mail de contato da família\nCaso o campo “IC-TIPO-EMAIL” seja
+          preenchido com os valores “N-NÃO TEM” ou “D-NÃO DECLARADO”deverá ser preenchido
+          com: 0@0.aa | version: 0626"
+      - name: arquivos_carregados
+        description: '1 quando houver arquivos carregados para a família e 2 quando
+          não houver | version: 0626'
+      - name: autoriza_envio_email
+        description: "Indicador de autorização de envio de e-mail\nS-Sim\nN-Não\n\
+          Caso este campo esteja nulo deverá ficar em branco\nCaso o campo “IC-TIPO-EMAIL”
+          esteja marcado com os valores “N-Não Tem” ou “D-Não Declarado” este campo
+          deve ser preenchido com “0” (Zero) | version: 0626"
+      - name: contato_envio_sms
+        description: '1º envio SMS do telefone de contato da família | version: 0626'
+      - name: contato_2_envio_sms
+        description: '2º envio SMS do telefone de contato da família | version: 0626'
+      - name: id_contato_tipo
+        description: "1º tipo de telefone de contato da família L– Celular\nC– Trabalho\n\
+          R– Residencial\nO-Recado\nS – Sem coleta de dados (família não alterada/atualizada
+          após a obrigatoriedade do campo “Telefone”)\n | version: 0626"
+      - name: contato_tipo
+        description: "1º tipo de telefone de contato da família L– Celular\nC– Trabalho\n\
+          R– Residencial\nO-Recado\nS – Sem coleta de dados (família não alterada/atualizada
+          após a obrigatoriedade do campo “Telefone”)\n | version: 0626"
+      - name: id_contato_2_tipo
+        description: "2º tipo de telefone de contato da família L– Celular\nC– Trabalho\n\
+          R– Residencial\nO-Recado\nN- Não tem\nD- Não declarado\nS – Sem coleta de
+          dados (família não alterada/atualizada após a obrigatoriedade do campo “Telefone”)\n\
+          \ | version: 0626"
+      - name: contato_2_tipo
+        description: "2º tipo de telefone de contato da família L– Celular\nC– Trabalho\n\
+          R– Residencial\nO-Recado\nN- Não tem\nD- Não declarado\nS – Sem coleta de
+          dados (família não alterada/atualizada após a obrigatoriedade do campo “Telefone”)\n\
+          \ | version: 0626"
+      - name: id_email_tipo
+        description: "Indicador do tipo de e-mail da família, sendo: P-E-mail Pessoal\n\
+          R- E-Mail de Recado\nN- Não tem\nD- Não declarado\nS – Sem coleta de dados
+          (família não alterada/atualizada após a criação do campo “E-mail”)\n | version:
+          0626"
+      - name: email_tipo
+        description: "Indicador do tipo de e-mail da família, sendo: P-E-mail Pessoal\n\
+          R- E-Mail de Recado\nN- Não tem\nD- Não declarado\nS – Sem coleta de dados
+          (família não alterada/atualizada após a criação do campo “E-mail”)\n | version:
+          0626"
+      - name: contato_ddd
+        description: '1º DDD do telefone de contato da família | version: 0626'
+      - name: contato_2_ddd
+        description: '2º DDD do telefone de contato da família | version: 0626'
+      - name: numero_registro_arquivo
+        description: '09 | version: 0626'
+      - name: contato_telefone
+        description: '1º telefone de contato da família | version: 0626'
+      - name: contato_2_telefone
+        description: '2º telefone de contato da família | version: 0626'
