@@ -5,25 +5,25 @@ models :
     columns:
       - name: id_prefeitura_exclusao
         description: 'Chave única de identificação da Prefeitura da família excluída
-          | version: 0625'
+          | version: 0626'
       - name: id_familia_exclusao
         description: 'Código Familiar único de identificação da Família excluída |
-          version: 0625'
+          version: 0626'
       - name: cpf_operador_exclusao
         description: "CPF do Operador que realizou a exclusão da família\nCaso a exclusão
           tenha sido efetuada pelo sistema este campo apresentará o conteúdo “99999999999”
-          | version: 0625"
+          | version: 0626"
       - name: cpf_servidor_parecer_gestao_municipal_cadunico
         description: 'CPF do Servidor Público do Parecer da Gestão Municipal do Cadastro
-          Único | version: 0625'
+          Único | version: 0626'
       - name: data_emissao_parecer_gestao_municipal_cadunico
         description: 'Data da Emissão do Parecer da Gestão Municipal do Cadastro Único
-          | version: 0625'
+          | version: 0626'
       - name: data_exclusao
         description: 'Data da exclusão da família, no formato dd/mm/aaaa | version:
-          0625'
+          0626'
       - name: descricao_cotivo_exclusao
-        description: 'Descrição do complemento do Motivo de Exclusão | version: 0625'
+        description: 'Descrição do complemento do Motivo de Exclusão | version: 0626'
       - name: id_motivo_exclusao
         description: "Código identificador do motivo de exclusão da família\nPodendo
           ser: 01-Falecimento de toda a família\n02-Recusa da família em prestar informações\n\
@@ -56,15 +56,15 @@ models :
           com renda per capita acima de meio salário mínimo e que não este"
       - name: id_municipio_parecer_gestao_municipal_cadunico
         description: 'Código IBGE do Município do Parecer da Gestão Municipal do Cadastro
-          Único | version: 0625'
+          Único | version: 0626'
       - name: servidor_parecer_gestao_municipal_cadunico
         description: 'Nome do Servidor Público do Parecer da Gestão Municipal do Cadastro
-          Único | version: 0625'
+          Único | version: 0626'
       - name: numero_parecer_gestao_municipal_cadunico
         description: 'Número do Parecer da Gestão Municipal do Cadastro Único | version:
-          0625'
+          0626'
       - name: numero_registro_arquivo
-        description: '18 | version: 0625'
+        description: '18 | version: 0626'
       - name: sigla_uf_parecer_gestao_municipal_cadunico
         description: 'UF do Parecer da Gestão Municipal do Cadastro Único | version:
-          0625'
+          0626'

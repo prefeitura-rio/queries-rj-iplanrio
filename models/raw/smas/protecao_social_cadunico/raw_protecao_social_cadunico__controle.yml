@@ -4,12 +4,12 @@ models :
     description: Table controle from number 00
     columns:
       - name: versao_layout_arquivo
-        description: "FORMATO '99.99' | version: 0625"
+        description: "FORMATO '99.99' | version: 0626"
       - name: data_extracao_dados
-        description: 'Data da extração no formato DDMMAAAA | version: 0625'
+        description: 'Data da extração no formato DDMMAAAA | version: 0626'
       - name: data_posicao_cadastro
-        description: 'Posição cadastral extraída no formato DDMMAAAA | version: 0625'
+        description: 'Posição cadastral extraída no formato DDMMAAAA | version: 0626'
       - name: nome_arquivo
-        description: 'ESPELHO CADUNICO 7 MUNICIPAL | version: 0625'
+        description: 'ESPELHO CADUNICO 7 MUNICIPAL | version: 0626'
       - name: numero_registro_arquivo
-        description: '0 | version: 0625'
+        description: '0 | version: 0626'

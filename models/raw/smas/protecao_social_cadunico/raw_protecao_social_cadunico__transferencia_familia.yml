@@ -5,28 +5,28 @@ models :
     columns:
       - name: id_prefeitura_antes_transferencia
         description: 'Chave única de identificação da Prefeitura de origem antes da
-          transferência | version: 0625'
+          transferência | version: 0626'
       - name: id_familia_destino
-        description: 'CÓDIGO DA FAMÍLIA DE DESTINO APÓS TRANFERÊNCIA | version: 0625'
+        description: 'CÓDIGO DA FAMÍLIA DE DESTINO APÓS TRANFERÊNCIA | version: 0626'
       - name: id_prefeitura_destino
         description: 'CÓDIGO DA PREFEITURA DE DESTINO APÓS TRANFERÊNCIA | version:
-          0625'
+          0626'
       - name: id_estado_cadastro_transferencia
         description: 'Estado cadastral da família: 1- EM CADASTRAMENTO 2- SEM REGISTRO
-          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0625'
+          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0626'
       - name: estado_cadastro_transferencia
         description: 'Estado cadastral da família: 1- EM CADASTRAMENTO 2- SEM REGISTRO
-          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0625'
+          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0626'
       - name: id_familia_antes_transferencia
         description: 'Código Familiar único de identificação da Família de origem
-          antes da transferência | version: 0625'
+          antes da transferência | version: 0626'
       - name: id_uf_transferencia
         description: 'Primeira parte do código IBGE DE ORIGEM: numérico de dois algarismos
-          descrevendo sua UF | version: 0625'
+          descrevendo sua UF | version: 0626'
       - name: id_municipio_transferencia
-        description: 'Segunda parte do código IBGE DE ORIGEM | version: 0625'
+        description: 'Segunda parte do código IBGE DE ORIGEM | version: 0626'
       - name: data_transferencia
         description: 'Data Da transferência da Família, formato DDMMAAAA | version:
-          0625'
+          0626'
       - name: numero_registro_transferencia
-        description: '16 | version: 0625'
+        description: '16 | version: 0626'

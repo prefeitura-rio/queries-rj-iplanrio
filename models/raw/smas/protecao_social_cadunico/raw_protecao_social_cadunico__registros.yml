@@ -4,76 +4,76 @@ models :
     description: Table registros from number 99
     columns:
       - name: numero_registro_arquivo
-        description: '99 | version: 0625'
+        description: '99 | version: 0626'
       - name: registros_tipo_00
         description: 'Quantidade de registros do tipo 00, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_01
         description: 'Quantidade de registros do tipo 01, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_02
         description: 'Quantidade de registros do tipo 02, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_03
         description: 'Quantidade de registros do tipo 03, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_04
         description: 'Quantidade de registros do tipo 04, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_05
         description: 'Quantidade de registros do tipo 05, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_06
         description: 'Quantidade de registros do tipo 06, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_07
         description: 'Quantidade de registros do tipo 07, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_08
         description: 'Quantidade de registros do tipo 08, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_09
         description: 'Quantidade de registros do tipo 09, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_10
         description: 'Quantidade de registros do tipo 10, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_11
         description: 'Quantidade de registros do tipo 11, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_12
         description: 'Quantidade de registros do tipo 12, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_13
         description: 'Quantidade de registros do tipo 13, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_14
         description: 'Quantidade de registros do tipo 14, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_15
         description: 'Quantidade de registros do tipo 15, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_16
         description: 'Quantidade de registros do tipo 16, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_17
         description: 'Quantidade de registros do tipo 17, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_18
         description: 'Quantidade de registros do tipo 18, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_19
         description: 'Quantidade de registros do tipo 19, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_20
         description: 'Quantidade de registros do tipo 20, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_21
         description: 'Quantidade de registros do tipo 21, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_98
         description: 'Quantidade de registros do tipo 98, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'
       - name: registros_tipo_99
         description: 'Quantidade de registros do tipo 99, campo numérico de 9 posições,
-          formato 999999999 | version: 0625'
+          formato 999999999 | version: 0626'

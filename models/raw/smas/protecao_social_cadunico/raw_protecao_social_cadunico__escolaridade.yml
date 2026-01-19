@@ -4,72 +4,72 @@ models :
     description: Table escolaridade from number 07
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0625'
+        description: 'Chave única de identificação da Família | version: 0626'
       - name: id_ano_serie_frequenta
         description: 'Ano e série que a pessoa frequenta: campo numérico de 2 posições
           variando de 1 a 10, dependendo da opção marcada no formulário | version:
-          0625'
+          0626'
       - name: ano_serie_frequenta
         description: 'Ano e série que a pessoa frequenta: campo numérico de 2 posições
           variando de 1 a 10, dependendo da opção marcada no formulário | version:
-          0625'
+          0626'
       - name: id_ultimo_ano_serie_frequentou
         description: 'Último ano e série frequentado pela pessoa: campo numérico de
           2 posições variando de 1 a 10, dependendo da opção marcada no formulário
-          | version: 0625'
+          | version: 0626'
       - name: ultimo_ano_serie_frequentou
         description: 'Último ano e série frequentado pela pessoa: campo numérico de
           2 posições variando de 1 a 10, dependendo da opção marcada no formulário
-          | version: 0625'
+          | version: 0626'
       - name: id_inep_escola
         description: 'Código INEP da escola da pessoa, campo numérico de 8 posições,
-          formato NNNNNNNN | version: 0625'
+          formato NNNNNNNN | version: 0626'
       - name: id_concluiu_curso_frequentado
         description: 'A pessoa concluiu o curso frequentado: 1-Sim, 2-Não | version:
-          0625'
+          0626'
       - name: id_curso_frequenta
         description: 'Curso que a pessoa frequenta: campo numérico de 2 posições variando
-          de 1 a 14, dependendo da opção marcada no formulário | version: 0625'
+          de 1 a 14, dependendo da opção marcada no formulário | version: 0626'
       - name: curso_frequenta
         description: 'Curso que a pessoa frequenta: campo numérico de 2 posições variando
-          de 1 a 14, dependendo da opção marcada no formulário | version: 0625'
+          de 1 a 14, dependendo da opção marcada no formulário | version: 0626'
       - name: id_curso_mais_elevado_frequentou
         description: 'Curso mais elevado que a pessoa frequentou: campo numérico de
           2 posições variando de 1 a 15, dependendo da opção marcada no formulário
-          | version: 0625'
+          | version: 0626'
       - name: curso_mais_elevado_frequentou
         description: 'Curso mais elevado que a pessoa frequentou: campo numérico de
           2 posições variando de 1 a 15, dependendo da opção marcada no formulário
-          | version: 0625'
+          | version: 0626'
       - name: id_escola_localizada_municipio
-        description: 'Escola localizada no município: 1-Sim, 2-Não | version: 0625'
+        description: 'Escola localizada no município: 1-Sim, 2-Não | version: 0626'
       - name: id_familia
-        description: 'Código Familiar | version: 0625'
+        description: 'Código Familiar | version: 0626'
       - name: id_municipio_escola
-        description: 'Código do IBGE do Município da escola da pessoa | version: 0625'
+        description: 'Código do IBGE do Município da escola da pessoa | version: 0626'
       - name: id_origem_dados_escolaridade
-        description: '1 – Origem Autodeclarado,2 – Origem Presença | version: 0625'
+        description: '1 – Origem Autodeclarado,2 – Origem Presença | version: 0626'
       - name: origem_dados_escolaridade
-        description: '1 – Origem Autodeclarado,2 – Origem Presença | version: 0625'
+        description: '1 – Origem Autodeclarado,2 – Origem Presença | version: 0626'
       - name: id_sabe_ler_escrever
-        description: 'Pessoa sabe ler e escrever: 1-Sim, 2-Não | version: 0625'
+        description: 'Pessoa sabe ler e escrever: 1-Sim, 2-Não | version: 0626'
       - name: sabe_ler_escrever
-        description: 'Pessoa sabe ler e escrever: 1-Sim, 2-Não | version: 0625'
+        description: 'Pessoa sabe ler e escrever: 1-Sim, 2-Não | version: 0626'
       - name: data_integracao_escolaridade_membro
-        description: 'Data de integração com o sistema Presença | version: 0625'
+        description: 'Data de integração com o sistema Presença | version: 0626'
       - name: escola_nao_tem_inep
         description: 'A escola não tem INEP: 1-Opção não marcada no formulário, 2-Opção
-          marcada no formulário (Aceita Nulo = Sim) | version: 0625'
+          marcada no formulário (Aceita Nulo = Sim) | version: 0626'
       - name: frequenta_escola
         description: 'Pessoa frequenta escola: campo numérico de 1 posição variando
-          de 1 a 4, dependendo da opção marcada no formulário | version: 0625'
+          de 1 a 4, dependendo da opção marcada no formulário | version: 0626'
       - name: escola
-        description: 'Nome da escola da pessoa | version: 0625'
+        description: 'Nome da escola da pessoa | version: 0626'
       - name: municipio_escola
-        description: 'Nome do Município da Escola da Pessoa | version: 0625'
+        description: 'Nome do Município da Escola da Pessoa | version: 0626'
       - name: id_membro_familia
-        description: 'Número do membro da Família  | version: 0625'
+        description: 'Número do membro da Família  | version: 0626'
       - name: numero_registro_arquivo
-        description: '07 | version: 0625'
+        description: '07 | version: 0626'
       - name: sigla_uf_escola
-        description: 'UF da Escola da Pessoa | version: 0625'
+        description: 'UF da Escola da Pessoa | version: 0626'

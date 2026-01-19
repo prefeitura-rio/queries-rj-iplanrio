@@ -4,55 +4,55 @@ models :
     description: Table trabalho_remuneracao from number 08
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0625'
+        description: 'Chave única de identificação da Família | version: 0626'
       - name: id_afastado_semana_passada
-        description: 'Pessoa afastada na semana passada: 1-Sim, 2-Não | version: 0625'
+        description: 'Pessoa afastada na semana passada: 1-Sim, 2-Não | version: 0626'
       - name: id_atividade_extravista
-        description: 'É atividade extrativista: 1-Sim, 2-Não | version: 0625'
+        description: 'É atividade extrativista: 1-Sim, 2-Não | version: 0626'
       - name: id_familia
-        description: 'Código Familiar | version: 0625'
+        description: 'Código Familiar | version: 0626'
       - name: id_origem_valor_outra_fonte
         description: "Flag indicadora da origem do valor do campo VAL-OUTRAS-RENDAS-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_outra_fonte
         description: "Flag indicadora da origem do valor do campo VAL-OUTRAS-RENDAS-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_origem_valor_pensao_alimenticia
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-PENSAO-ALIMEN-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_pensao_alimenticia
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-PENSAO-ALIMEN-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_origem_valor_rendimento_bruto
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-BRUTA-12-MESES-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_rendimento_bruto
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-BRUTA-12-MESES-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_origem_valor_rendimento_mes_passado
         description: "Flag indicadora da origem do valor do campo VAL-REMUNER-EMPREGO-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_rendimento_mes_passado
         description: "Flag indicadora da origem do valor do campo VAL-REMUNER-EMPREGO-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_origem_valor_seguro_desemprego
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-SEGURO-DESEMP-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_seguro_desemprego
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-SEGURO-DESEMP-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_origem_valor_ajuda_doacao
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-DOACAO-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_ajuda_doacao
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-DOACAO-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_origem_valor_aposentadoria
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-APOSENT-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: origem_valor_aposentadoria
         description: "Flag indicadora da origem do valor do campo VAL-RENDA-APOSENT-MEMB\n\
-          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0625"
+          Origem da renda:1 – Auto declarada\n2 – CNIS\n | version: 0626"
       - name: id_funcao_principal_trabalho
         description: "Função principal: campo numérico de 2 posições variando de 1
           a 11\n1-TRABALHADOR POR CONTA PROPRIA (BICO, AUTONOMO) 2-TRABALHADOR TEMPORARIO
@@ -60,7 +60,7 @@ models :
           COM CARTEIRA DE TRABALHO ASSINADA 5-TRABALHADOR DOMESTICO SEM CARTEIRA DE
           TRABALHO ASSINADA 6-TRABALHADOR DOMESTICO COM CARTEIRA DE TRABALHO ASSINADA
           7-TRABALHADOR NAO-REMUNERADO 8-MILITAR OU SERVIDOR PUBLICO 9-EMPREGADOR
-          10-ESTAGIARIO 11-APRENDIZ | version: 0625"
+          10-ESTAGIARIO 11-APRENDIZ | version: 0626"
       - name: funcao_principal_trabalho
         description: "Função principal: campo numérico de 2 posições variando de 1
           a 11\n1-TRABALHADOR POR CONTA PROPRIA (BICO, AUTONOMO) 2-TRABALHADOR TEMPORARIO
@@ -68,93 +68,93 @@ models :
           COM CARTEIRA DE TRABALHO ASSINADA 5-TRABALHADOR DOMESTICO SEM CARTEIRA DE
           TRABALHO ASSINADA 6-TRABALHADOR DOMESTICO COM CARTEIRA DE TRABALHO ASSINADA
           7-TRABALHADOR NAO-REMUNERADO 8-MILITAR OU SERVIDOR PUBLICO 9-EMPREGADOR
-          10-ESTAGIARIO 11-APRENDIZ | version: 0625"
+          10-ESTAGIARIO 11-APRENDIZ | version: 0626"
       - name: id_trabalho_remunerado_ultimos_12_meses
         description: 'Pessoa com trabalho remunerado 12 meses: 1-Sim, 2-Não | version:
-          0625'
+          0626'
       - name: id_trabalho_semana_passada
         description: 'Pessoa trabalhou na semana passada: 1-Sim, 2-Não | version:
-          0625'
+          0626'
       - name: data_integracao_aposentadoria
         description: 'Data de integração referente ao campo VAL-RENDA-APOSENT-MEMB
           conforme data de processamento de arquivo de renda origem CNIS no formato
-          DDMMAAAA | version: 0625'
+          DDMMAAAA | version: 0626'
       - name: data_integracao_outras_fonte
         description: 'Data de integração referente ao campo VAL-OUTRAS-RENDAS-MEMB
           conforme data de processamento de arquivo de renda origem CNIS no formato
-          DDMMAAAA | version: 0625'
+          DDMMAAAA | version: 0626'
       - name: data_integracao_renda_bruta_12_meses
         description: 'Data de integração referente ao campo VAL-RENDA-BRUTA-12-MESES-MEMB
           conforme data de processamento de arquivo de renda origem CNIS no formato
-          DDMMAAAA | version: 0625'
+          DDMMAAAA | version: 0626'
       - name: data_integracao_emprego_ultimo_mes
         description: 'Data de integração referente ao campo VAL-REMUNER-EMPREGO-MEMB
           conforme data de processamento de arquivo de renda origem CNIS no formato
-          DDMMAAAA | version: 0625'
+          DDMMAAAA | version: 0626'
       - name: nao_recebe_outras_fontes
         description: 'Não recebe de outras fontes: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_recebe_remuneracao
         description: 'Não recebeu remuneração de trabalho: 0-Opção não marcada no
-          formulário, 1-Opção marcada no formulário | version: 0625'
+          formulário, 1-Opção marcada no formulário | version: 0626'
       - name: nao_recebe_aposentadoria
         description: 'Não recebe aposentadoria: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_recebe_doacao
         description: 'Não recebe doação: 0-Opção não marcada no formulário, 1-Opção
-          marcada no formulário | version: 0625'
+          marcada no formulário | version: 0626'
       - name: nao_recebe_pensao_alimenticia
         description: 'Não recebe pensão alimentícia: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_recebe_seguro_desemprego
         description: 'Não recebe seguro desemprego: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: id_membro_familia
-        description: 'Número do membro da Família  | version: 0625'
+        description: 'Número do membro da Família  | version: 0626'
       - name: numero_registro_arquivo
-        description: '08 | version: 0625'
+        description: '08 | version: 0626'
       - name: meses_trabalhados_nos_ultimos_12
         description: 'Quantidade de meses trabalhados nos últimos 12, campo numérico
-          de 2 posições, formato NN | version: 0625'
+          de 2 posições, formato NN | version: 0626'
       - name: outras_fontes
         description: "Valor recebido de outras fontes\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: outras_fontes_original
         description: "Valor recebido de outras fontes\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: remuneracao
         description: "Valor de remuneração\nCampo numérico de 6 posições formato NNNNNN
-          (sem casas decimais) | version: 0625"
+          (sem casas decimais) | version: 0626"
       - name: remuneracao_original
         description: "Valor de remuneração\nCampo numérico de 6 posições formato NNNNNN
-          (sem casas decimais) | version: 0625"
+          (sem casas decimais) | version: 0626"
       - name: aposentadoria
         description: "Valor recebido de aposentadoria\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: aposentadoria_original
         description: "Valor recebido de aposentadoria\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: remuneracao_bruta_original
         description: "Valor de remuneração bruta\nCampo numérico de 6 posições formato
-          NNNNNN (sem casas decimais) | version: 0625"
+          NNNNNN (sem casas decimais) | version: 0626"
       - name: remuneracao_bruta
         description: "Valor de remuneração bruta\nCampo numérico de 6 posições formato
-          NNNNNN (sem casas decimais) | version: 0625"
+          NNNNNN (sem casas decimais) | version: 0626"
       - name: doacoes_original
         description: "Valor recebido de doação\nCampo numérico de 6 posições formato
-          NNNNNN (sem casas decimais) | version: 0625"
+          NNNNNN (sem casas decimais) | version: 0626"
       - name: doacoes
         description: "Valor recebido de doação\nCampo numérico de 6 posições formato
-          NNNNNN (sem casas decimais) | version: 0625"
+          NNNNNN (sem casas decimais) | version: 0626"
       - name: pensao_alimenticia
         description: "Valor recebido de pensão alimentícia\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: pensao_alimenticia_original
         description: "Valor recebido de pensão alimentícia\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: seguro_desemprego
         description: "Valor recebido de seguro desemprego\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"
       - name: seguro_desemprego_original
         description: "Valor recebido de seguro desemprego\nCampo numérico de 6 posições
-          formato NNNNNN (sem casas decimais) | version: 0625"
+          formato NNNNNN (sem casas decimais) | version: 0626"

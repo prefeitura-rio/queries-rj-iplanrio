@@ -4,154 +4,154 @@ models :
     description: Table familia from number 03
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Família | version: 0625'
+        description: 'Chave única de identificação da Família | version: 0626'
       - name: id_cras_creas
-        description: 'Código do CRAS/CREAS | version: 0625'
+        description: 'Código do CRAS/CREAS | version: 0626'
       - name: id_comunidade_quilombola
         description: 'Código da comunidade quilombola, campo numérico de 4 posições
-          no formato NNNN | version: 0625'
+          no formato NNNN | version: 0626'
       - name: id_familia_indigena
-        description: 'Família indígena: 1-Sim, 2-Não | version: 0625'
+        description: 'Família indígena: 1-Sim, 2-Não | version: 0626'
       - name: familia_indigena
-        description: 'Família indígena: 1-Sim, 2-Não | version: 0625'
+        description: 'Família indígena: 1-Sim, 2-Não | version: 0626'
       - name: id_familia
-        description: 'Código Familiar | version: 0625'
+        description: 'Código Familiar | version: 0626'
       - name: id_indigena_residente
-        description: '1-Sim 2-Não | version: 0625'
+        description: '1-Sim 2-Não | version: 0626'
       - name: indigena_residente
-        description: '1-Sim 2-Não | version: 0625'
+        description: '1-Sim 2-Não | version: 0626'
       - name: id_povo_indigena
         description: 'Código de povo indígena, campo numérico de 4 posições formato
-          NNNN | version: 0625'
+          NNNN | version: 0626'
       - name: id_reserva_indigena
         description: 'Código da reserva indígena, campo numérico de 4 posições no
-          formato NNNN | version: 0625'
+          formato NNNN | version: 0626'
       - name: data_risco_inseguranca_alimentar
         description: 'Data de integração referente ao campo IND-RISCO-SCL-INSEG-ALIM
-          conforme data de processamento de arquivo | version: 0625'
+          conforme data de processamento de arquivo | version: 0626'
       - name: data_risco_violacao_direitos
         description: 'Data de integração referente ao campo IND-RISCO-SCL-VLCO-DRTS
-          conforme data de processamento de arquivo | version: 0625'
+          conforme data de processamento de arquivo | version: 0626'
       - name: nao_sabe_comunidade_quilombola
         description: "'Não sabe(comunidade quilombola da família)': 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0625"
+          no formulário, 1-Opção marcada no formulário | version: 0626"
       - name: nao_tem_despesa_agua_esgoto
         description: 'Não tem despesa com água: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_despesa_alimentacao
         description: 'Não tem despesa com alimentação: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_despesa_aluguel
         description: 'Não tem despesa com aluguel: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_despesa_energia
         description: 'Não tem despesa com energia: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_despesa_gas
         description: 'Não tem despesa com gás: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_despesa_medicamentos
         description: 'Não tem despesa com medicamento: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_despesa_transporte
         description: 'Não tem despesa com transporte: 0-Opção não marcada no formulário,
-          1-Opção marcada no formulário | version: 0625'
+          1-Opção marcada no formulário | version: 0626'
       - name: id_familia_quilombola
-        description: 'Família quilombola: 1-Sim, 2-Não | version: 0625'
+        description: 'Família quilombola: 1-Sim, 2-Não | version: 0626'
       - name: familia_quilombola
-        description: 'Família quilombola: 1-Sim, 2-Não | version: 0625'
+        description: 'Família quilombola: 1-Sim, 2-Não | version: 0626'
       - name: nao_tem_pessoas_internadas_0_17_anos
         description: 'Não tem pessoas internadas faixa 0-17 anos: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0625'
+          no formulário, 1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_pessoas_internadas_18_59_anos
         description: 'Não tem pessoas internadas faixa 18-59 anos: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0625'
+          no formulário, 1-Opção marcada no formulário | version: 0626'
       - name: nao_tem_pessoas_internadas_mais_60_anos
         description: 'Não tem pessoas internadas faixa >= 60 anos: 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0625'
+          no formulário, 1-Opção marcada no formulário | version: 0626'
       - name: nao_sabe_reserva_indigena
         description: "'Não sabe(reserva indígena da família)': 0-Opção não marcada
-          no formulário, 1-Opção marcada no formulário | version: 0625"
+          no formulário, 1-Opção marcada no formulário | version: 0626"
       - name: id_risco_inseguranca_alimentar
         description: "Indicador de família associada à risco de insegurança alimentar\n\
-          1-SIM\n2-NÃO | version: 0625"
+          1-SIM\n2-NÃO | version: 0626"
       - name: risco_inseguranca_alimentar
         description: "Indicador de família associada à risco de insegurança alimentar\n\
-          1-SIM\n2-NÃO | version: 0625"
+          1-SIM\n2-NÃO | version: 0626"
       - name: id_risco_violacao_direitos
         description: "Indicador de família associada à risco de violação de direitos\n\
-          1-SIM\n2-NÃO | version: 0625"
+          1-SIM\n2-NÃO | version: 0626"
       - name: risco_violacao_direitos
         description: "Indicador de família associada à risco de violação de direitos\n\
-          1-SIM\n2-NÃO | version: 0625"
+          1-SIM\n2-NÃO | version: 0626"
       - name: cras_creas
-        description: 'Nome do CRAS/CREAS | version: 0625'
+        description: 'Nome do CRAS/CREAS | version: 0626'
       - name: comunidade_quilombola
-        description: 'Nome da comunidade quilombola | version: 0625'
+        description: 'Nome da comunidade quilombola | version: 0626'
       - name: estabelecimento_saude
-        description: 'Nome do estabelecimento EAS/MS | version: 0625'
+        description: 'Nome do estabelecimento EAS/MS | version: 0626'
       - name: povo_indigena
-        description: 'Nome do povo indígena | version: 0625'
+        description: 'Nome do povo indígena | version: 0626'
       - name: reserva_indigena
-        description: 'Nome da reserva indígena | version: 0625'
+        description: 'Nome da reserva indígena | version: 0626'
       - name: id_estabelecimento_saude
-        description: 'Código do estabelecimento EAS/MS | version: 0625'
+        description: 'Código do estabelecimento EAS/MS | version: 0626'
       - name: numero_registro_arquivo
-        description: '03 | version: 0625'
+        description: '03 | version: 0626'
       - name: familias_domicilio
         description: 'Quantidade de famílias no domicílio, campo numérico de 2 posições,
-          formato NN | version: 0625'
+          formato NN | version: 0626'
       - name: pessoas_internadas_0_17_anos
         description: 'Quantidade de pessoas internadas faixa 0-17 anos, campo numérico
-          de 2 posições, formato NN | version: 0625'
+          de 2 posições, formato NN | version: 0626'
       - name: pessoas_internadas_18_59_anos
         description: 'Quantidade de pessoas internadas faixa 18-59 anos, campo numérico
-          de 2 posições, formato NN | version: 0625'
+          de 2 posições, formato NN | version: 0626'
       - name: pessoas_internadas_mais_60_anos
         description: 'Quantidade de pessoas internadas faixa >= 60 anos, campo numérico
-          de 2 posições, formato NN | version: 0625'
+          de 2 posições, formato NN | version: 0626'
       - name: pessoas_domicilio
         description: 'Quantidade de pessoas no domicílio, campo numérico de 2 posições,
-          formato NN | version: 0625'
+          formato NN | version: 0626'
       - name: despesa_agua_esgoto_original
         description: "Valor de despesas com água\nCampo numérico de 5 posições formato
-          NNNNN (não existem casas decimais) | version: 0625"
+          NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_agua_esgoto
         description: "Valor de despesas com água\nCampo numérico de 5 posições formato
-          NNNNN (não existem casas decimais) | version: 0625"
+          NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_alimentacao
         description: "Valor de despesas com alimentação\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_alimentacao_original
         description: "Valor de despesas com alimentação\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_aluguel
         description: "Valor de despesas com aluguel\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_aluguel_original
         description: "Valor de despesas com aluguel\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_energia
         description: "Valor de despesas com energia\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_energia_original
         description: "Valor de despesas com energia\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_gas_original
         description: "Valor de despesas com gás\nCampo numérico de 5 posições formato
-          NNNNN (não existem casas decimais) | version: 0625"
+          NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_gas
         description: "Valor de despesas com gás\nCampo numérico de 5 posições formato
-          NNNNN (não existem casas decimais) | version: 0625"
+          NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_medicamentos_original
         description: "Valor de despesas com medicamentos\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_medicamentos
         description: "Valor de despesas com medicamentos\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_transporte
         description: "Valor de despesas com transportes\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
       - name: despesa_transporte_original
         description: "Valor de despesas com transportes\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0625"
+          formato NNNNN (não existem casas decimais) | version: 0626"
