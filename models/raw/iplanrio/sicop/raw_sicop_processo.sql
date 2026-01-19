@@ -10,7 +10,7 @@
 -- Conversões e padronização de nomes conforme guia de estilo
 select
   safe_cast(id_processo as string)                          as id_processo,
-  safe_cast(data_processo as date)                          as data_processo,
+  safe_cast(CONCAT( SUBSTR(data_processo,7,4),'-', SUBSTR(data_processo,4,2) ,'-', SUBSTR(data_processo,1,2) ) as date)         as data_processo,
 
   -- Documento
   safe_cast(documento as string)                            as documento,
@@ -65,11 +65,12 @@ select
   safe_cast(numero_volume as int64)                         as numero_volume,
 
   -- Auditoria de alteração 
-  safe_cast(data_alteracao as date)                         as data_alteracao,
-  safe_cast(hora_alteracao as time)                         as hora_alteracao,
+  safe_cast(CONCAT( SUBSTR(data_alteracao,7,4),'-', SUBSTR(data_alteracao,4,2) ,'-', SUBSTR(data_alteracao,1,2) ) as date)         as data_alteracao,
+  PARSE_TIME("%H:%M", hora_alteracao) as hora_alteracao,
+  --safe_cast(hora_alteracao as time)                         as hora_alteracao,
   safe_cast(matricula_alteracao as string)                  as matricula_alteracao,
   safe_cast(orgao_alteracao as string)                      as orgao_alteracao,
   safe_cast(orgao_destino as string)                        as orgao_destino,
   safe_cast(status_principal as string)                     as status_principal,
-  safe_cast(_prefect_extracted_at as date)                  as datalake_transformed_at  
+  safe_cast(SUBSTR(_prefect_extracted_at,1,10) as date)      as datalake_transformed_at  
 from {{ source("brutos_sicop_staging","processo") }}

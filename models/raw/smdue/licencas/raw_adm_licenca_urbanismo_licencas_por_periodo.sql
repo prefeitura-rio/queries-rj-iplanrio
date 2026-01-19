@@ -1,6 +1,6 @@
 {{
     config(
-        alias="view_lic_licencas_por_periodo",
+        alias="licencas_por_periodo",
         description="Dados brutos de licenças por período (origem vwLic_LicencasPorPeriodo no banco SMU_PRD)"
     )
 }}
@@ -20,7 +20,7 @@ select
   safe_cast(num_proc as string) as numero_processo,
   
   -- Endereço
-  safe_cast(endereco as string) as endereco,
+  -- safe_cast(endereco as string) as endereco,
   safe_cast(codlogra as int64) as codigo_logradouro,
   safe_cast(tipo as string) as tipo_logradouro,
   safe_cast(nobreza as string) as nobreza,

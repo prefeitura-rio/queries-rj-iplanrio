@@ -26,13 +26,13 @@ models:
 
       # Estrutura que descreve o tipo da Guia de Pagamento
       - name: tipo_guia
-        description: "Estrutura com o tipo da guia."
+        description: "Estrutura com o tipo da guia de pagamento."
         data_type: struct
       - name: tipo_guia.id_tipo_guia
-        description: "Identificador do tipo de guia."
+        description: "Identificador do tipo de guia de pagamento."
         data_type: int64
       - name: tipo_guia.nome_tipo_guia
-        description: "Nome do tipo de guia."
+        description: "Nome do tipo de guia de pagamento."
         data_type: string
       #--------
 
@@ -50,7 +50,7 @@ models:
 
       # Estrutura que descreve o tipo de receita da pagamento da Guia de Pagamento
       - name: tipo_receita
-        description: "Estrutura com código e nome da receita da guia."
+        description: "Estrutura com código e nome da receita da guia de pagamento."
         data_type: struct
       - name: tipo_receita.codigo_receita
         description: "Código da receita."
@@ -62,159 +62,15 @@ models:
 
       # Estrutura que descreve a situação da Guia de Pagamento
       - name: situacao
-        description: "Estrutura com a situação da guia."
+        description: "Estrutura com a situação da guia de pagamento."
         data_type: struct
       - name: situacao.id_situacao_guia_pagamento
-        description: "Identificador da situação da guia."
+        description: "Identificador da situação da guia de pagamento."
         data_type: int64
       - name: situacao.nome_situacao_guia_pagamento
-        description: "Nome da situação da guia."
+        description: "Nome da situação da guia de pagamento."
         data_type: string
       #--------
-
-      - name: quantidade_cdas
-        description: "Quantidade de CDAs associadas à guia (vínculos ativos)."
-        data_type: int64
-
-      # Estrutura de lista de registros de certidões de dívida ativa (CDA) associadas à guia de pagamento
-      - name: cdas_associadas
-        description: "Array com as CDAs associadas à guia e seus detalhes."
-        data_type: struct
-      - name: cdas_associadas.id_certidao_divida_ativa
-        description: "Identificador da CDA."
-        data_type: int64
-      - name: cdas_associadas.ano_de_inscricao_na_divida
-        description: "Ano de inscrição na dívida ativa."
-        data_type: int64
-      - name: cdas_associadas.data_geracao_cda
-        description: "Data de geração da CDA."
-        data_type: date
-      #--------
-
-      - name: cdas_associadas.data_ultima_alteracao_situacao
-        description: "Data da última alteração da situação da CDA."
-        data_type: date
-
-      - name: cdas_associadas.numero_processo_associado
-        description: "Processo administrativo associado à CDA."
-        data_type: string
-
-      - name: cdas_associadas.valor_original_divida_ativa
-        description: "Valor original da dívida ativa da CDA."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_saldo_devido
-        description: "Saldo devido da CDA."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_multa_moratoria
-        description: "Multa moratória da CDA."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_juros_moratorios
-        description: "Juros moratórios da CDA."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_mora
-        description: "Valor da mora."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_juros_mora
-        description: "Juros de mora."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_pago_principal
-        description: "Valor pago referente ao principal."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_honorarios
-        description: "Valor de honorários da CDA."
-        data_type: numeric
-
-      - name: cdas_associadas.valor_mora_smf_iptu
-        description: "Valor da mora SMF IPTU."
-        data_type: numeric
-
-      # Estrutura que descreve o tipo de receita da certidão de dívida ativa (CDA) associada à guia de pagamento
-      - name: cdas_associadas.tipo_receita
-        description: "Estrutura com código e nome da receita da CDA."
-        data_type: struct
-      - name: cdas_associadas.tipo_receita.codigo_receita
-        description: "Código da receita."
-        data_type: string
-      - name: cdas_associadas.tipo_receita.nome_receita
-        description: "Nome da receita."
-        data_type: string
-      #--------
-
-      # Estrutura que descreve entidade credora da certidão de dívida ativa (CDA) associada à guia de pagamento
-      - name: cdas_associadas.entidade_credora
-        description: "Estrutura com os dados da entidade credora."
-        data_type: struct
-      - name: cdas_associadas.entidade_credora.id_entidade_credora
-        description: "Identificador da entidade credora."
-        data_type: int64
-      - name: cdas_associadas.entidade_credora.nome_entidade_credora
-        description: "Nome da entidade credora."
-        data_type: string
-      #--------
-
-      # Estrutura que descreve fase de cobrança da certidão de dívida ativa (CDA) associada à guia de pagamento
-      - name: cdas_associadas.fase_cobranca
-        description: "Estrutura com a fase de cobrança da CDA."
-        data_type: struct
-      - name: cdas_associadas.fase_cobranca.codigo_fase_cobranca
-        description: "Código da fase de cobrança."
-        data_type: int64
-      - name: cdas_associadas.fase_cobranca.nome_fase_cobranca
-        description: "Nome da fase de cobrança."
-        data_type: string
-      #--------
-
-      # Estrutura que descreve a situação da certidão de dívida ativa (CDA) associada à guia de pagamento
-      - name: cdas_associadas.situacao_cda
-        description: "Estrutura com a situação da CDA."
-        data_type: struct
-      - name: cdas_associadas.situacao_cda.id_situacao_cda
-        description: "ID da situação da CDA."
-        data_type: int64
-      - name: cdas_associadas.situacao_cda.descricao_situacao_cda
-        description: "Descrição da situação da CDA."
-        data_type: string
-      #--------
-
-      # Estrutura que descreve a natureza da dívida da certidão de dívida ativa (CDA) associada à guia de pagamento
-      - name: cdas_associadas.natureza_divida_ativa
-        description: "Estrutura com a natureza da dívida ativa."
-        data_type: struct
-      - name: cdas_associadas.natureza_divida_ativa.id_natureza_divida
-        description: "ID da natureza da dívida."
-        data_type: int64
-      - name: cdas_associadas.natureza_divida_ativa.nome_natureza_divida
-        description: "Nome da natureza da dívida."
-        data_type: string
-      #--------
-
-      - name: cdas_associadas.dados_complementares
-        description: "Dados complementares da CDA."
-        data_type: string
-
-      - name: cdas_associadas.quantidade_devedores_cda
-        description: "Quantidade de devedores vinculados à CDA."
-        data_type: int64
-
-      # Estrutura de lista de devedores principais da certidão de dívida ativa (CDA) associada à guia de pagamento
-      - name: cdas_associadas.devedores_vinculados_cda
-        description: "Array com os devedores vinculados à CDA."
-        data_type: struct
-
-      # informações sobre imóvel associado à CDA
-      - name: cdas_associadas.possui_imovel_associado
-        description: "Indica se a CDA possui imóvel associado."
-        data_type: boolean
-      - name: cdas_associadas.imovel_associado
-        description: "Estrutura com dados do imóvel associado."
-        data_type: struct
 
       # Informações sobre as cotas (parcelas) da guia de pagamento
       - name: quantidade_cotas
@@ -223,7 +79,7 @@ models:
 
       # Estrutura de lista das cotas da guia de pagamento
       - name: cotas
-        description: "Array com as cotas válidas (parcela) da guia e seus detalhes."
+        description: "Array com as cotas válidas (parcela) da guia de pagamento e seus detalhes."
         data_type: struct
       - name: cotas.id_guia_pagamento
         description: "Identificador da guia da cota."
@@ -291,3 +147,226 @@ models:
       - name: cotas.ano_ipcae
         description: "Ano de referência do IPCA-E utilizado na cota."
         data_type: int64
+      - name: cotas.codigo_barras
+        description: "Código de barras para pagamento da cota."
+        data_type: string
+      - name: cotas.id_pix
+        description: "Identificador do Pix para pagamento da cota."
+        data_type: string
+      - name: cotas.codigo_qr_pix
+        description: "Código QR do Pix para pagamento da cota."
+        data_type: string
+
+      # Informações sobre as certidões de dívida ativa (CDA) associadas à guia de pagamento
+      - name: quantidade_cdas
+        description: "Quantidade de CDAs associadas à guia de pagamento (vínculos ativos)."
+        data_type: int64
+
+      # Estrutura de lista de registros de certidões de dívida ativa (CDA) associadas à guia de pagamento
+      - name: cdas_associadas
+        description: "Array com as CDAs associadas à guia e seus detalhes."
+        data_type: struct
+
+      - name: cdas_associadas.id_certidao_divida_ativa
+        description: "Identificador da CDA."
+        data_type: int64
+
+      - name: cdas_associadas.ano_de_inscricao_na_divida
+        description: "Ano de inscrição na dívida ativa."
+        data_type: int64
+
+      - name: cdas_associadas.data_geracao_cda
+        description: "Data de geração da CDA."
+        data_type: date
+
+      - name: cdas_associadas.data_ultima_alteracao_situacao
+        description: "Data da última alteração da situação da CDA."
+        data_type: date
+
+      - name: cdas_associadas.numero_processo_associado
+        description: "Processo administrativo associado à CDA."
+        data_type: string
+
+      - name: cdas_associadas.valor_original_divida_ativa
+        description: "Valor original da dívida ativa da CDA."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_saldo_devido
+        description: "Saldo devido da CDA."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_multa_moratoria
+        description: "Multa moratória da CDA."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_juros_moratorios
+        description: "Juros moratórios da CDA."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_mora
+        description: "Valor da mora."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_juros_mora
+        description: "Juros de mora."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_pago_principal
+        description: "Valor pago referente ao principal."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_honorarios
+        description: "Valor de honorários da CDA."
+        data_type: numeric
+
+      - name: cdas_associadas.valor_mora_smf_iptu
+        description: "Valor da mora SMF IPTU."
+        data_type: numeric
+
+      # Estrutura que descreve o tipo de receita da certidão de dívida ativa (CDA) associada à guia de pagamento
+      - name: cdas_associadas.tipo_receita
+        description: "Estrutura com código e nome da receita da CDA."
+        data_type: struct
+      - name: cdas_associadas.tipo_receita.codigo_receita_cda
+        description: "Código da receita."
+        data_type: string
+      - name: cdas_associadas.tipo_receita.nome_receita
+        description: "Nome da receita."
+        data_type: string
+      #--------
+
+      # Estrutura que descreve entidade credora da certidão de dívida ativa (CDA) associada à guia de pagamento
+      - name: cdas_associadas.entidade_credora
+        description: "Estrutura com os dados da entidade credora."
+        data_type: struct
+      - name: cdas_associadas.entidade_credora.id_entidade_credora
+        description: "Identificador da entidade credora."
+        data_type: int64
+      - name: cdas_associadas.entidade_credora.nome_entidade_credora
+        description: "Nome da entidade credora."
+        data_type: string
+      #--------
+
+      # Estrutura que descreve fase de cobrança da certidão de dívida ativa (CDA) associada à guia de pagamento
+      - name: cdas_associadas.fase_cobranca
+        description: "Estrutura com a fase de cobrança da CDA."
+        data_type: struct
+      - name: cdas_associadas.fase_cobranca.codigo_fase_cobranca
+        description: "Código da fase de cobrança."
+        data_type: int64
+      - name: cdas_associadas.fase_cobranca.nome_fase_cobranca
+        description: "Nome da fase de cobrança."
+        data_type: string
+      #--------
+
+      # Estrutura que descreve a situação da certidão de dívida ativa (CDA) associada à guia de pagamento
+      - name: cdas_associadas.situacao_cda
+        description: "Estrutura com a situação da CDA."
+        data_type: struct
+      - name: cdas_associadas.situacao_cda.id_situacao_cda
+        description: "ID da situação da CDA."
+        data_type: int64
+      - name: cdas_associadas.situacao_cda.descricao_situacao_cda
+        description: "Descrição da situação da CDA."
+        data_type: string
+      #--------
+
+      # Estrutura que descreve a natureza da dívida da certidão de dívida ativa (CDA) associada à guia de pagamento
+      - name: cdas_associadas.natureza_divida_ativa
+        description: "Estrutura com a natureza da dívida ativa."
+        data_type: struct
+      - name: cdas_associadas.natureza_divida_ativa.id_natureza_divida
+        description: "ID da natureza da dívida."
+        data_type: int64
+      - name: cdas_associadas.natureza_divida_ativa.nome_natureza_divida
+        description: "Nome da natureza da dívida."
+        data_type: string
+      #--------
+
+      - name: cdas_associadas.dados_complementares
+        description: "Dados complementares da CDA."
+        data_type: string
+
+      - name: cdas_associadas.quantidade_devedores_cda
+        description: "Quantidade de devedores vinculados à CDA."
+        data_type: int64
+
+      # Estrutura da lista de devedores principais associados à CDA. Normalmente deveria haver apenas um, mas o sistema permite múltiplos principais.
+      - name: cdas_associadas.devedores_vinculados_cda
+        description: "Lista de devedores principais associados à CDA. Normalmente deveria haver apenas um, mas o sistema permite múltiplos principais."
+        data_type: struct
+
+      - name: cdas_associadas.devedores_vinculados_cda.id_pessoa
+        description: "Identificador da pessoa devedora."
+        data_type: int64
+
+      - name: cdas_associadas.devedores_vinculados_cda.cpf_cnpj
+        description: "CPF ou CNPJ do devedor."
+        data_type: string
+
+      - name: cdas_associadas.devedores_vinculados_cda.tipo_pessoa
+        description: "Tipo da pessoa (1=PF, 2=PJ)."
+        data_type: int64
+
+      - name: cdas_associadas.devedores_vinculados_cda.descricao_tipo_pessoa
+        description: "Descrição do tipo de pessoa."
+        data_type: string
+
+      - name: cdas_associadas.devedores_vinculados_cda.nome
+        description: "Nome do devedor."
+        data_type: string
+
+      # informações sobre imóvel associado à CDA
+      - name: cdas_associadas.possui_imovel_associado
+        description: "Indica se a CDA possui imóvel associado."
+        data_type: boolean
+
+      # Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja.
+      - name: cdas_associadas.imovel_associado
+        description: "Informações do imóvel associado à CDA, quando for CDA de IPTU, caso haja."
+        data_type: struct
+
+      # Estrutura de dados para o endereço do imóvel.
+      - name: cdas_associadas.imovel_associado.endereco
+        description: "Estrutura de dados para o endereço do imóvel."
+        data_type: struct
+      - name: cdas_associadas.imovel_associado.endereco.codigo_logradouro
+        description: "Código do logradouro."
+        data_type: int64
+      - name: cdas_associadas.imovel_associado.endereco.nome_logradouro
+        description: "Nome do logradouro."
+        data_type: string
+      - name: cdas_associadas.imovel_associado.endereco.numero_porta
+        description: "Número da porta."
+        data_type: string
+      - name: cdas_associadas.imovel_associado.endereco.complemento_endereco
+        description: "Complemento do endereço."
+        data_type: string
+      - name: cdas_associadas.imovel_associado.endereco.bairro
+        description: "Bairro."
+        data_type: string
+      - name: cdas_associadas.imovel_associado.endereco.cep
+        description: "CEP."
+        data_type: string
+
+      # Estrutura da tipologia do imóvel.
+      - name: cdas_associadas.imovel_associado.tipologia_imovel
+        description: "Estrutura da tipologia do imóvel."
+        data_type: struct
+      - name: cdas_associadas.imovel_associado.tipologia_imovel.id_tipologia_imovel
+        description: "ID da tipologia do imóvel."
+        data_type: int64
+      - name: cdas_associadas.imovel_associado.tipologia_imovel.nome_tipologia_imovel
+        description: "Nome da tipologia."
+        data_type: string
+
+      # Estrutura da utilização do imóvel.
+      - name: cdas_associadas.imovel_associado.utilizacao_imovel
+        description: "Estrutura da utilização do imóvel."
+        data_type: struct
+      - name: cdas_associadas.imovel_associado.utilizacao_imovel.id_utilizacao_imovel
+        description: "ID da utilização do imóvel."
+        data_type: int64
+      - name: cdas_associadas.imovel_associado.utilizacao_imovel.nome_utilizacao_imovel
+        description: "Nome da utilização."
+        data_type: string

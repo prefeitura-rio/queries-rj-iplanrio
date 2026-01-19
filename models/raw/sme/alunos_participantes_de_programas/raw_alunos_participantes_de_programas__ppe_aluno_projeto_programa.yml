@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: raw_alunos_participantes_de_programas__ppe_aluno_projeto_programa
+    description: "Tabela que associa o aluno aos Programas dos Projetos que ele participa."
+    columns:
+      - name: identificador_aluno
+        description: "FK da tabela aca_aluno (Parte da PK composta)."
+        data_type: integer
+
+      - name: identificador_projeto_programa
+        description: "FK da tabela ppe_projeto_programa (Parte da PK composta)."
+        data_type: integer
+
+      - name: identificador_aluno_projeto
+        description: "PK desta tabela (Parte da PK composta)."
+        data_type: integer
+        
+      - name: identificador_calendario_anual
+        description: "FK da tabela ACA_CalendarioAnual."
+        data_type: integer
+
+      - name: identificador_escola
+        description: "FK da escola."
+        data_type: integer
+
+      - name: identificador_unidade_escolar
+        description: "FK da unidade_escola."
+        data_type: integer
+
+      - name: data_entrada_programa
+        description: "Data de entrada do aluno no programa."
+        data_type: date
+
+      - name: data_saida_programa
+        description: "Data de saída do aluno no programa."
+        data_type: date
+
+      - name: situacao_aluno_projeto
+        description: "Situação do aluno no projeto (1 - Ativo, 2 - Inativo, 3 - Excluído)."
+        data_type: integer
+
+      - name: data_criacao_registro_base
+        description: "Data da criação do registro na base."
+        data_type: date
+
+      - name: data_alteracao_registro_base
+        description: "Data de alteração do registro na base."
+        data_type: date

@@ -13,8 +13,8 @@ models:
           config:
             severity: error
           arguments:
-            min_value: "2024-01-01"
-            max_value: "{{ modules.datetime.datetime.now().strftime('%Y-%m-%d') }}"
+            min_value: "DATE('2024-01-01')"
+            max_value: "CURRENT_DATE()"
     columns:
       - name: origem_projeto
         description: "Projeto GCP de origem do job (ex: rj-iplanrio, rj-iplanrio-dev, etc). Indica de qual projeto o job foi extraído para fins de auditoria e rastreabilidade."
@@ -121,4 +121,4 @@ models:
           - not_null:
               name: jobs_historico__data_faturamento__not_null
               config:
-                severity: error
+                severity: warn

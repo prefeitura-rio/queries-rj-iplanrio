@@ -34,7 +34,7 @@ WITH
       longitude_unidade,
       geometry
     FROM
-      {{ ref("raw_equipamentos_saude_unidades_arcgis") }}
+      {{ ref("raw_brutos_equipamentos_saude_unidades_arcgis") }}
   ),
   estabelecimento_esfera AS (
     SELECT
@@ -114,7 +114,7 @@ WITH
             END
           )
       END AS horario_funcionamento,
-      '{{ref("raw_equipamentos_saude_unidades_arcgis")}}' AS fonte,
+      '{{ref("raw_brutos_equipamentos_saude_unidades_arcgis")}}' AS fonte,
       CAST(NULL AS DATE) AS vigencia_inicio,
       CAST(NULL AS DATE) AS vigencia_fim,
       -- Esfera (city, state, or federal level) from estabelecimento join

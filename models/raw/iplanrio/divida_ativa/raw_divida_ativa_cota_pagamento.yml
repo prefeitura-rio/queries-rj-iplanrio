@@ -57,11 +57,11 @@ models:
         description: "Observações sobre a cota."
         data_type: string
       - name: data_emissao
-        description: "Data de emissão da cota."
-        data_type: date
+        description: "Data hora de emissão da cota."
+        data_type: datetime
       - name: data_pagamento
-        description: "Data do pagamento da cota."
-        data_type: date
+        description: "Data hora do pagamento da cota."
+        data_type: datetime
       - name: valor_principal_pago
         description: "Valor principal pago."
         data_type: numeric
@@ -77,6 +77,14 @@ models:
       - name: valor_juros_honorarios_pago
         description: "Valor dos juros sobre honorários pagos."
         data_type: numeric
+      - name: codigo_barras
+        description: "Código de barras para pagamento da cota."
+        data_type: string
+      - name: id_pix
+        description: "Identificador do Pix para pagamento da cota."
+        data_type: string
+      - name: codigo_qr_pix
+        description: "Código QR do Pix para pagamento da cota."
       - name: ano_ipcae
         description: "Ano de referência do IPCA-E utilizado."
         data_type: int64

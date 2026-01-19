@@ -12,7 +12,7 @@ with
         select
             -- Pluscodes (calculados e ordenados como no exemplo)
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 11), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 11), ''
             ) as plus11,
 
             -- Identificação principal do equipamento
@@ -25,24 +25,24 @@ with
 
             -- Mais Pluscodes
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 10), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 10), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 8), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 8), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(t.latituasdasdde, t.longitude, 6), ''
+                tools.encode_pluscode(t.latitude, t.longitude, 6), ''
             ) as plus6,
 
             -- Detalhes de localização
-            t.latituasdasdde as latitude,
+            t.latitude as latitude,
             t.longitude as longitude,
             -- Utilizando a geometria existente na tabela de origem, que é mais
             -- confiável.
             -- Caso a coluna t.geometry não seja confiável, pode-se usar a linha
             -- comentada abaixo.
             t.geometry,
-            -- ST_GEOGPOINT(t.longitude, t.latituasdasdde) as geometry,
+            -- ST_GEOGPOINT(t.longitude, t.latitude) as geometry,
             -- Endereço estruturado
             struct(
                 upper(t.logradouro) as logradouro,
@@ -83,7 +83,7 @@ with
             ) as horario_funcionamento,
 
             -- Fonte dos dados (usando a sintaxe de source do dbt)
-            '{{ ref("raw_equipamentos_escolas") }}' as fonte,
+            '{{ ref("raw_brutos_equipamentos_escolas") }}' as fonte,
             cast(null as date) as vigencia_inicio,
             cast(null as date) as vigencia_fim,
 
@@ -97,7 +97,7 @@ with
             -- Timestamp da última atualização
             current_timestamp() as updated_at
 
-        from {{ ref("raw_equipamentos_escolas") }} as t
+        from {{ ref("raw_brutos_equipamentos_escolas") }} as t
         left join
             {{ source("dados_mestres", "bairro") }} as b
             -- O join é feito pela geometria da escola contida na geometria do bairro

@@ -49,7 +49,7 @@ cotas_originais_substituidas_nao_pagas as
   and not a.cota_paga
 ),
 
-cotas as 
+cotas_validas as 
 (
   select * from cotas_jamais_substituidas
   union distinct 
@@ -58,27 +58,45 @@ cotas as
   select * from cotas_originais_substituidas_nao_pagas
 ),
 
-guias as 
+cotas_por_guia as 
 (
   select a.id_guia_pagamento, 
-    a.data_criacao_guia, 
-    a.numero_processo_associado,
-    struct(
-      a.id_tipo_guia, 
-      a.nome_tipo_guia
-    ) as tipo_guia,
-    struct(
-      a.id_tipo_pagamento, 
-      a.nome_tipo_pagamento
-    ) as tipo_pagamento,
-    struct(
-      a.codigo_receita,
-      a.nome_receita
-    ) as tipo_receita,
-    struct(
-      a.id_situacao_guia_pagamento,
-      a.nome_situacao_guia_pagamento
-    ) as situacao,
+    count(a.id_cota_guia_pagamento) as quantidade_cotas,
+    array_agg(
+      struct(
+        a.id_cota_guia_pagamento,
+        a.cota_paga,
+        a.cota_substituida,
+        a.substituta_de_outra,
+        a.valor_cota_guia_pagamento,
+        a.data_emissao,
+        a.data_vencimento,
+        a.data_pagamento,
+        a.valor_principal,
+        a.valor_honorarios,
+        a.valor_juros,
+        a.valor_grerj,
+        a.valor_juros_principal,
+        a.valor_juros_honorarios,
+        a.observacoes,
+        a.valor_principal_pago,
+        a.valor_juros_pago,
+        a.valor_honorarios_pago,
+        a.valor_grerj_pago,
+        a.valor_juros_honorarios_pago,
+        a.ano_ipcae,
+        a.codigo_barras,
+        a.id_pix,
+        a.codigo_qr_pix
+      ) order by a.data_vencimento
+    ) as cotas
+  from cotas_validas a --rj-iplanrio.brutos_divida_ativa.guia_pagamento
+  group by a.id_guia_pagamento
+),
+
+cdas_por_guia as 
+(
+  select a.id_guia_pagamento, 
     count(c.id_certidao_divida_ativa) as quantidade_cdas,
     array_agg(
       struct(
@@ -107,34 +125,7 @@ guias as
         c.possui_imovel_associado,
         c.imovel_associado
       ) order by c.id_certidao_divida_ativa
-    ) as cdas_associadas,
-    count(d.id_cota_guia_pagamento) as quantidade_cotas,
-    array_agg(
-      struct(
-        d.id_guia_pagamento,
-        d.id_cota_guia_pagamento,
-        d.cota_paga,
-        d.cota_substituida,
-        d.substituta_de_outra,
-        d.valor_cota_guia_pagamento,
-        d.data_emissao,
-        d.data_vencimento,
-        d.data_pagamento,
-        d.valor_principal,
-        d.valor_honorarios,
-        d.valor_juros,
-        d.valor_grerj,
-        d.valor_juros_principal,
-        d.valor_juros_honorarios,
-        d.observacoes,
-        d.valor_principal_pago,
-        d.valor_juros_pago,
-        d.valor_honorarios_pago,
-        d.valor_grerj_pago,
-        d.valor_juros_honorarios_pago,
-        d.ano_ipcae
-      ) order by d.data_vencimento
-    ) as cotas
+    ) as cdas_associadas
   from {{ ref('raw_divida_ativa_guia_pagamento') }} a --rj-iplanrio.brutos_divida_ativa.guia_pagamento
   inner join {{ ref('raw_divida_ativa_guia_pagamento_x_cda') }} b --rj-iplanrio.brutos_divida_ativa.guia_pagamento_x_cda
     on b.id_guia_pagamento = a.id_guia_pagamento
@@ -142,20 +133,40 @@ guias as
   inner join {{ ref('mart_divida_ativa_certidao_divida_ativa') }} c --rj-iplanrio.divida_ativa.certidao_divida_ativa
     on c.id_certidao_divida_ativa = b.id_certidao_divida_ativa
    and c.situacao_cda.id_situacao_cda not in (2, 98)
-  inner join cotas d on d.id_guia_pagamento = a.id_guia_pagamento
   where a.id_situacao_guia_pagamento <> 1
-  group by a.id_guia_pagamento, 
+  group by a.id_guia_pagamento
+),
+
+guias as (
+  select a.id_guia_pagamento, 
     a.data_criacao_guia, 
     a.numero_processo_associado,
-    a.id_tipo_guia, 
-    a.nome_tipo_guia,
-    a.id_tipo_pagamento, 
-    a.nome_tipo_pagamento,
-    a.codigo_receita,
-    a.nome_receita,
-    a.id_situacao_guia_pagamento,
-    a.nome_situacao_guia_pagamento
+    struct(
+      a.id_tipo_guia, 
+      a.nome_tipo_guia
+    ) as tipo_guia,
+    struct(
+      a.id_tipo_pagamento, 
+      a.nome_tipo_pagamento
+    ) as tipo_pagamento,
+    struct(
+      a.codigo_receita,
+      a.nome_receita
+    ) as tipo_receita,
+    struct(
+      a.id_situacao_guia_pagamento,
+      a.nome_situacao_guia_pagamento
+    ) as situacao,
+    b.quantidade_cotas,
+    b.cotas,
+    c.quantidade_cdas,
+    c.cdas_associadas
+  from {{ ref('raw_divida_ativa_guia_pagamento') }} a --rj-iplanrio.brutos_divida_ativa.guia_pagamento
+  left join cotas_por_guia b
+    on b.id_guia_pagamento = a.id_guia_pagamento
+  left join cdas_por_guia c
+    on c.id_guia_pagamento = a.id_guia_pagamento
+  where a.id_situacao_guia_pagamento <> 1
 )
 
 select * from guias
-

@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_sicop_assunto
+    description: "Dados brutos de assuntos do SICOP (origem VW_ASSUNTO_DLK)"
+
+    columns:
+      - name: id_assunto
+        description: "Identificador único do assunto"
+        data_type: string
+        quote: true
+      - name: codigo_assunto
+        description: "Código do assunto"
+        data_type: string
+        quote: true
+      - name: sequencia
+        description: "Sequência do assunto"
+        data_type: int64
+      - name: chave_ident_cod_seq
+        description: "Chave composta por identificador, código e sequência"
+        data_type: string
+        quote: true
+      - name: descricao_assunto
+        description: "Descrição do assunto"
+        data_type: string
+        quote: true
+      - name: datalake_transformed_at
+        description: "Data de transformação do dado"
+        data_type: date
+

@@ -3,7 +3,6 @@
 
 {{
     config(
-        enabled=false,
         schema="gerenciamento_custos",
         alias="custo_bigquery_jobs",
         materialized="incremental",
@@ -72,13 +71,13 @@ cost_added as (
     from all_usage_with_multiplier
 ),
 
--- CTE para taxa de câmbio diária
+-- CTE para taxa de câmbio diária (usando ref para manter linhagem)
 taxa_diaria as (
     SELECT
         CAST(usage_end_time AS DATE) AS dia,
         AVG(currency_conversion_rate) AS taxa
     FROM
-        `dados-rio-billing.billing.gcp_billing_export_*`
+        {{ ref('raw_gcp_billing') }}
     GROUP BY
         dia
 ),

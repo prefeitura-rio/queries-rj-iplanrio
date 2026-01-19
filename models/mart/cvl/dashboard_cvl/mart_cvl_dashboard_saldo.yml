@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: mart_cvl_dashboard_saldo
+    description: "MART: Dados de saldo do sistema de gestão de contratos CVL, agregando informações de saldos com dados de itens de saldo, contas bancárias, contratos, secretarias, unidades administrativas e informações bancárias para análise de dashboard."
+

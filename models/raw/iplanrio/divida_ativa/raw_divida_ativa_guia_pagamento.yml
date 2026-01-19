@@ -49,8 +49,8 @@ models:
         data_type: int64
 
       - name: data_ultimo_pagamento
-        description: "Data do último pagamento realizado."
-        data_type: date
+        description: "Data hora do último pagamento realizado."
+        data_type: datetime
 
       - name: valor_total_divida
         description: "Valor total da dívida."
