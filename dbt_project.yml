@@ -143,14 +143,6 @@ models:
           +materialized: table
           +project: rj-smas
           +schema: brutos_data_metrica
-      os_info_rh:
-        +materialized: table
-        +project: rj-iplanrio
-        +schema: os_info_rh
-        +tags: ["daily", "os_info_rh"]
-        +resource_tags:
-          rj-iplanrio/dominio: recursos_humanos
-          845941190868/acesso: restrito
       smdue:
         +tags: "smdue"
         +project: rj-smdue
@@ -165,6 +157,14 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+        os_info_rh:
+          +tags: "os_info_rh"
+          +project: rj-cvl
+          +schema: os_info_rh
+          +tags: ["daily", "os_info_rh"]
+          +resource_tags:
+            rj-iplanrio/dominio: recursos_humanos
+            845941190868/acesso: restrito
       segovi:
         +tags: "segovi"
         +project: rj-segovi
