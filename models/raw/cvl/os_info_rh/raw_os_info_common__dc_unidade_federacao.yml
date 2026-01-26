@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: raw_os_info_common__dc_unidade_federacao
+    description: "Tabela que armazena as possíveis unidades federativas no preenchimento de um endereço. DML executada direto no banco de dados."
+    config:
+      schema: os_info_common
+    columns:
+      - name: UF_CD_IBGE
+        description: "Código IBGE da unidade federativa"
+      - name: UF_SG_SIGLA
+        description: "Sigla da unidade federativa"
+      - name: UF_DS_DESCRICAO
+        description: "Descrição/nome da unidade federativa"
+    meta:
+      orgão_gestor_dos_dados: "Controladoria Geral do Município do Rio de Janeiro / CGM-Rio"
+      publicado_por_nome: "Matheus Christian Marques El Honais Silva"
+      publicado_por_email: "matheus.honais@prefeitura.rio"
+      sgbd_ou_outra_fonte_de_dados: "MySql"
+      banco_de_origem: "rh e common"

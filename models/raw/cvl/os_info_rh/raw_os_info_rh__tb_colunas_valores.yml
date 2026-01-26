@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: raw_os_info_rh__tb_colunas_valores
+    description: "Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica."
+    config:
+      schema: os_info_rh
+    meta:
+      orgão_gestor_dos_dados: "Controladoria Geral do Município do Rio de Janeiro / CGM-Rio"
+      publicado_por_nome: "Wagner Silva dos Santos"
+      publicado_por_email: "wagner.ssantos@prefeitura.rio"
+      sgbd_ou_outra_fonte_de_dados: "MySql"
+      banco_de_origem: "rh e common"

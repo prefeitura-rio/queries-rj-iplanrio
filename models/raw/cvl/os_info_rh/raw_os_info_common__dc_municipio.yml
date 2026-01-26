@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: raw_os_info_common__dc_municipio
+    description: "Tabela que armazena os possíveis municípios no preenchimento de um endereço. DML executada direto no banco de dados."
+    config:
+      schema: os_info_common
+    columns:
+      - name: MUNI_CD_IBGE
+        description: "Código IBGE do município"
+      - name: UF_CD_IBGE
+        description: "Código IBGE da unidade federativa (UF) do município"
+      - name: MUNI_DS_NOME
+        description: "Nome do município"
+    meta:
+      orgão_gestor_dos_dados: "Controladoria Geral do Município do Rio de Janeiro / CGM-Rio"
+      publicado_por_nome: "Matheus Christian Marques El Honais Silva"
+      publicado_por_email: "matheus.honais@prefeitura.rio"
+      sgbd_ou_outra_fonte_de_dados: "MySql"
+      banco_de_origem: "rh e common"

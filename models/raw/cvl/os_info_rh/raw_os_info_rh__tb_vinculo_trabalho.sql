@@ -1,0 +1,29 @@
+{{
+    config(
+        alias='tb_vinculo_trabalho',
+        schema='os_info_rh'
+    )
+}}
+
+SELECT
+    `VINC_CD_VINCULO`,
+    `FUNC_CD_CPF`,
+    `VINC_IN_ATIVO`,
+    `COD_OS`,
+    `VINC_NR_CNPJ_OS`,
+    `CBO_CD_CBO`,
+    `VINC_NR_REGISTRO_PROFISSIONAL`,
+    `CONS_SG_CONSELHO`,
+    `UF_CD_IBGE_CONSELHO`,
+    `IDCATEGORIA`,
+    `VINC_SETOR`,
+    `CD_TIPO_VINCULACAO`,
+    `VINC_VL_CARGA_HORARIA`,
+    `VINC_DT_INICIO`,
+    `VINC_DT_ENCERRAMENTO`,
+    `ENDE_CD_ENDERECO`,
+    `VINC_DS_EMAIL`,
+    `VINC_CD_CNES`,
+    `VINC_DS_CARGO`,
+    `VINC_NR_TELEFONE`
+FROM {{ source('os_info_rh', 'tb_vinculo_trabalho') }}

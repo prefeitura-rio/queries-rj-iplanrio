@@ -1,0 +1,56 @@
+version: 2
+
+sources:
+  - name: os_info_rh
+    description: "Dados de recursos humanos do sistema OSINFO da Controladoria Geral do Município do Rio de Janeiro (CGM-Rio)"
+    database: rj-iplanrio
+    schema: os_info_rh
+    tables:
+      - name: dc_conselho
+        description: "Conselhos profissionais de classe utilizados para registro e validação das qualificações de funcionários."
+      - name: dc_grau_instrucao
+        description: "Graus de instrução que classificam os níveis de escolaridade de indivíduos para fins de cadastro."
+      - name: dc_raca_cor
+        description: "Classificações de raça ou cor utilizadas para fins de censo e registros governamentais."
+      - name: dc_sexo
+        description: "Sexos definidos para o cadastro de pessoas conforme padrões de sistemas de recursos humanos."
+      - name: dc_tipo_vinculacao
+        description: "Tipos de vinculação empregatícia que classificam as diferentes formas de contrato de trabalho."
+      - name: tb_cbo
+        description: "Ocupações da Classificação Brasileira de Ocupações (CBO) com seus códigos e descrições oficiais."
+      - name: tb_cbo_bkp
+        description: "Ocupações da Classificação Brasileira de Ocupações (CBO) provenientes de uma cópia de segurança."
+      - name: tb_colunas_valores
+        description: "Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica."
+      - name: tb_folha_pagamento
+        description: "Folhas de pagamento consolidadas de funcionários para um determinado período de competência."
+      - name: tb_funcionario
+        description: "Funcionários com suas informações cadastrais, pessoais e profissionais, para gestão de recursos humanos."
+      - name: tb_grupo
+        description: "Grupos de usuários ou funcionários definidos para fins de controle de acesso ou alocação."
+      - name: tb_provisionamento
+        description: "Provisionamentos de verbas trabalhistas de funcionários para um período, garantindo a reserva contábil."
+      - name: tb_valores_folha_pagamento
+        description: "Valores de eventos (rubricas) detalhados na folha de pagamento de um funcionário para um período."
+      - name: tb_valores_provisionamento
+        description: "Valores detalhados de verbas provisionadas mensalmente para cada funcionário."
+      - name: tb_vinculo_trabalho
+        description: "Vínculos de trabalho de funcionários, detalhando seus contratos, como admissão, cargo e jornada."
+    config:
+      freshness:
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
+
+  - name: os_info_common
+    description: "Dados comuns do sistema OSINFO da Controladoria Geral do Município do Rio de Janeiro (CGM-Rio)"
+    database: rj-iplanrio
+    schema: os_info_common
+    tables:
+      - name: dc_unidade_federacao
+        description: "Tabela que armazena as possíveis unidades federativas no preenchimento de um endereço. DML executada direto no banco de dados."
+      - name: dc_municipio
+        description: "Tabela que armazena os possíveis municípios no preenchimento de um endereço. DML executada direto no banco de dados."
+    config:
+      freshness:
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: raw_os_info_rh__tb_funcionario
+    description: "Funcionários com suas informações cadastrais, pessoais e profissionais, para gestão de recursos humanos."
+    config:
+      schema: os_info_rh
+    columns:
+      - name: FUNC_CD_CPF
+        description: "CPF do funcionário"
+      - name: FUNC_DS_NOME
+        description: "Nome do funcionário"
+      - name: FUNC_DS_NOME_SOCIAL
+        description: "Nome social do funcionário"
+      - name: FUNC_DT_NASCIMENTO
+        description: "Data de nascimento do funcionário"
+      - name: FUNC_DS_NOME_MAE
+        description: "Nome da mãe do funcionário"
+      - name: FUNC_DS_NOME_PAI
+        description: "Nome do pai do funcionário"
+      - name: FUNC_CD_NACIONALIDADE
+        description: "Código da nacionalidade"
+      - name: FUNC_DS_NACIONALIDADE
+        description: "Descrição da nacionalidade"
+      - name: SEX_CD_SEXO
+        description: "Código do sexo"
+      - name: GINS_CD_GRAU_INSTRUCAO
+        description: "Código do grau de instrução"
+      - name: MUNI_CD_IBGE_NASCIMENTO
+        description: "Código IBGE do município de nascimento"
+      - name: RACO_CD_RACA_COR
+        description: "Código de raça/cor"
+      - name: FUNC_NR_RG
+        description: "Número do RG"
+      - name: FUNC_DS_ORGAO_EXPEDIDOR_RG
+        description: "Órgão expedidor do RG"
+      - name: FUNC_DT_EMISSAO
+        description: "Data de emissão do RG"
+      - name: COD_OS
+        description: "Código da OS (Organização Social)"
+    meta:
+      orgão_gestor_dos_dados: "Controladoria Geral do Município do Rio de Janeiro / CGM-Rio"
+      publicado_por_nome: "Wagner Silva dos Santos"
+      publicado_por_email: "wagner.ssantos@prefeitura.rio"
+      sgbd_ou_outra_fonte_de_dados: "MySql"
+      banco_de_origem: "rh e common"
