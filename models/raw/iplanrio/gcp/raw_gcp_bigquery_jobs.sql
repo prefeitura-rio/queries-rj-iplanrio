@@ -77,6 +77,8 @@
     "rj-setur",
     "rj-setur-dev",
     "rj-siurb",
+    "rj-ssm",
+    "rj-ssm-dev",
     "rj-smac",
     "rj-smac-dev",
     "rj-smas",
