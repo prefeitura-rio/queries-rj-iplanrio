@@ -165,13 +165,6 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
-        os_info_rh:
-          +materialized: table
-          +schema: os_info_rh
-          +tags: ["daily", "os_info_rh"]
-          +resource_tags:
-            rj-iplanrio/dominio: recursos_humanos
-            845941190868/acesso: restrito
       segovi:
         +tags: "segovi"
         +project: rj-segovi

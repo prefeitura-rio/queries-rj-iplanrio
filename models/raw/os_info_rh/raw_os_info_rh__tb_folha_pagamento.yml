@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: raw_os_info_rh__tb_folha_pagamento
+    description: "Folhas de pagamento consolidadas de funcionários para um determinado período de competência."
+    columns:
+      - name: folha_codigo
+        description: "Código da folha de pagamento"
+        #datatype: integer
+      - name: vinculo_codigo
+        description: "Código do vínculo"
+        #datatype: integer
+      - name: mes_referencia
+        description: "Mês de referência"
+        #datatype: integer
+      - name: ano_referencia
+        description: "Ano de referência"
+        #datatype: integer
+      - name: mes_competencia
+        description: "Mês de competência"
+        #datatype: integer
+      - name: ano_competencia
+        description: "Ano de competência"
+        #datatype: integer
+      - name: contrato_id
+        description: "ID do contrato"
+        #datatype: integer
+      - name: unidade_codigo
+        description: "Código da unidade"
+        #datatype: string
+      - name: carga_horaria_efetiva
+        description: "Carga horária efetiva"
+        #datatype: float64
+      - name: percentual_rateio
+        description: "Percentual de rateio"
+        #datatype: float64
+      - name: licenca_inicio_data
+        description: "Data de início da licença"
+        #datatype: date
+      - name: licenca_fim_data
+        description: "Data de fim da licença"
+        #datatype: date
+      - name: observacao
+        description: "Observação"
+        #datatype: string
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

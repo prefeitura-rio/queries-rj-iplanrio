@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: raw_os_info_rh__dc_conselho
+    description: "Conselhos profissionais de classe utilizados para registro e validação das qualificações de funcionários."
+    columns:
+      - name: conselho_sigla
+        description: "Sigla do conselho profissional"
+        #datatype: string
+      - name: conselho_descricao
+        description: "Descrição do conselho profissional"
+        #datatype: string
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
