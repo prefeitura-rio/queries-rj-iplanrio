@@ -22,5 +22,6 @@ select
     safe_cast(FUNC_DS_ORGAO_EXPEDIDOR_RG as string) as rg_orgao_expedidor,
     safe_cast(FUNC_DT_EMISSAO as date) as rg_emissao_data,
     safe_cast(COD_OS as string) as organizacao_social_codigo,
-    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at
+    safe_cast(_prefect_extracted_at AS datetime) AS datalake_loaded_at,
+    safe_cast(current_timestamp() AS datetime) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_funcionario') }}

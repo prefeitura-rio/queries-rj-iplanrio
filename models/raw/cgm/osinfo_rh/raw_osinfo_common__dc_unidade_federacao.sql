@@ -9,5 +9,6 @@ select
     safe_cast(`UF_CD_IBGE` as decimal) as uf_ibge_codigo,
     safe_cast(`UF_SG_SIGLA` as string) as uf_sigla,
     safe_cast(`UF_DS_DESCRICAO` as string) as uf_descricao,
-    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at
+    safe_cast(_prefect_extracted_at AS datetime) AS datalake_loaded_at,
+    safe_cast(current_timestamp() AS datetime) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'dc_unidade_federacao') }}
