@@ -1,6 +1,6 @@
 {{
     config(
-      alias="tb_provisionamento",
+      alias="provisionamento",
       description="Provisionamentos de verbas trabalhistas de funcionários para um período, garantindo a reserva contábil."
     )
 }}

@@ -1,6 +1,6 @@
 {{
     config(
-      alias="tb_colunas_valores",
+      alias="colunas_valores",
       description="Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica."
     )
 }}

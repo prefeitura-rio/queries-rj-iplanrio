@@ -1,6 +1,6 @@
 {{
     config(
-      alias="tb_folha_pagamento",
+      alias="folha_pagamento",
       description="Folhas de pagamento consolidadas de funcionários para um determinado período de competência."
     )
 }}

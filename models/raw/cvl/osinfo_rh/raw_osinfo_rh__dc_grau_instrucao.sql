@@ -1,6 +1,6 @@
 {{
     config(
-      alias="dc_grau_instrucao",
+      alias="grau_instrucao",
       description="Graus de instrução que classificam os níveis de escolaridade de indivíduos para fins de cadastro."
     )
 }}

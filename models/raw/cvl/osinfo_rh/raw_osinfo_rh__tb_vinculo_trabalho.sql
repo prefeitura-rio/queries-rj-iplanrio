@@ -1,6 +1,6 @@
 {{
     config(
-      alias="tb_vinculo_trabalho",
+      alias="vinculo_trabalho",
       description="Vínculos de trabalho de funcionários, detalhando seus contratos, como admissão, cargo e jornada."
     )
 }}

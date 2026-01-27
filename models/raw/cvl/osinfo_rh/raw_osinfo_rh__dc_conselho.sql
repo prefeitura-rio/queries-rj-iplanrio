@@ -1,6 +1,6 @@
 {{
     config(
-      alias="dc_conselho",
+      alias="conselho",
       description="Conselhos profissionais de classe utilizados para registro e validação das qualificações de funcionários."
     )
 }}

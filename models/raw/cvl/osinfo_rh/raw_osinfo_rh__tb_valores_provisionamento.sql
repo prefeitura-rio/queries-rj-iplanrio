@@ -1,6 +1,6 @@
 {{
     config(
-      alias="tb_valores_provisionamento",
+      alias="valores_provisionamento",
       description="Valores detalhados de verbas provisionadas mensalmente para cada funcionário."
     )
 }}

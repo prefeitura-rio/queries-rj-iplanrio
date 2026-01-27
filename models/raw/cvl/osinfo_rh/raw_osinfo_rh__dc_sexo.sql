@@ -1,6 +1,6 @@
 {{
     config(
-      alias="dc_sexo",
+      alias="sexo",
       description="Sexos definidos para o cadastro de pessoas conforme padrões de sistemas de recursos humanos."
     )
 }}

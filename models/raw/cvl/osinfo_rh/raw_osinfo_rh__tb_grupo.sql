@@ -1,6 +1,6 @@
 {{
     config(
-      alias="tb_grupo",
+      alias="grupo",
       description="Grupos de usuários ou funcionários definidos para fins de controle de acesso ou alocação."
     )
 }}

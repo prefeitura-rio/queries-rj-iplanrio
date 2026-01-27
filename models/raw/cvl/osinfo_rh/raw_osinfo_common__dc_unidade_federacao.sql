@@ -1,6 +1,6 @@
 {{
     config(
-      alias="dc_unidade_federacao",
+      alias="unidade_federacao",
       description="Tabela que armazena as possíveis unidades federativas no preenchimento de um endereço. DML executada direto no banco de dados."
     )
 }}
