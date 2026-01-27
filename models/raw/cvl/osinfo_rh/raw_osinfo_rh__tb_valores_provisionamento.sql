@@ -7,7 +7,7 @@
 
 select
     safe_cast(`PROV_CD_PROVISIONAMENTO` as integer) as provisionamento_codigo,
-    safe_cast(`RHCO_COD_COLUNA` as integer) as coluna_codigo,
+    safe_cast(`RHCO_COD_COLUNA` as string) as coluna_codigo,
     safe_cast(`VLPR_VL_VALOR` as float64) as valor,
     _prefect_extracted_at as datalake_loaded_at, 
     current_timestamp() as datalake_transformed_at

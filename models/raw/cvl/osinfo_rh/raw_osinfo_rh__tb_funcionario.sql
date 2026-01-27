@@ -6,7 +6,7 @@
 }}
 
 select
-    safe_cast(FUNC_CD_CPF as string) as funcionario_cpf,
+    safe_cast(FUNC_CD_CPF as decimal) as funcionario_cpf,
     safe_cast(FUNC_DS_NOME as string) as funcionario_nome,
     safe_cast(FUNC_DS_NOME_SOCIAL as string) as funcionario_nome_social,
     safe_cast(FUNC_DT_NASCIMENTO as date) as nascimento_data,
@@ -16,7 +16,7 @@ select
     safe_cast(FUNC_DS_NACIONALIDADE as string) as nacionalidade_descricao,
     safe_cast(SEX_CD_SEXO as integer) as sexo_codigo,
     safe_cast(GINS_CD_GRAU_INSTRUCAO as integer) as grau_instrucao_codigo,
-    safe_cast(MUNI_CD_IBGE_NASCIMENTO as string) as municipio_nascimento_ibge,
+    safe_cast(MUNI_CD_IBGE_NASCIMENTO as decimal) as municipio_nascimento_ibge,
     safe_cast(RACO_CD_RACA_COR as integer) as raca_cor_codigo,
     safe_cast(FUNC_NR_RG as string) as rg_numero,
     safe_cast(FUNC_DS_ORGAO_EXPEDIDOR_RG as string) as rg_orgao_expedidor,
