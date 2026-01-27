@@ -42,6 +42,8 @@ sources:
         description: "Tabela que armazena os possíveis municípios no preenchimento de um endereço. DML executada direto no banco de dados."
     config:
       freshness:
+    config:
+      freshness:
         error_after: {count: 24, period: hour}
-      loaded_at_field: _airbyte_extracted_at
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
 

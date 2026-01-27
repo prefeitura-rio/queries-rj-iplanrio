@@ -9,7 +9,7 @@ models:
         #datatype: integer
       - name: coluna_codigo
         description: "Código da coluna"
-        #datatype: integer
+        quote: true
       - name: valor
         description: "Valor provisionado"
         #datatype: float64

@@ -15,6 +15,5 @@ select
     safe_cast(`ID_CONTRATO` as integer) as contrato_id,
     safe_cast(`COD_UNIDADE` as string) as unidade_codigo,
     safe_cast(`PROV_OBSERVACAO` as string) as observacao,
-    _prefect_extracted_at as datalake_loaded_at, 
-    current_timestamp() as datalake_transformed_at
+    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_provisionamento') }}

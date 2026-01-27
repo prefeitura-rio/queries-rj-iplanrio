@@ -161,8 +161,8 @@ models:
         osinfo_rh:
           +materialized: table
           +project: rj-cvl
-          +schema: os_info_rh
-          +tags: ["daily", "os_info_rh"]
+          +schema: osinfo_rh
+          +tags: ["daily", "osinfo_rh"]
 
       segovi:
         +tags: "segovi"
