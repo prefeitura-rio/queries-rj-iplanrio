@@ -157,8 +157,9 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+
         os_info_rh:
-          +tags: "os_info_rh"
+          +materialized: table
           +project: rj-cvl
           +schema: os_info_rh
           +tags: ["daily", "os_info_rh"]
