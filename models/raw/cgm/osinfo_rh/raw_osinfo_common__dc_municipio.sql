@@ -2,7 +2,7 @@
     config(
       alias="municipio",
       description="Tabela que armazena os possíveis municípios no preenchimento de um endereço. DML executada direto no banco de dados.",
-      materialized='table'
+      materialized='view'
     )
 }}
 
