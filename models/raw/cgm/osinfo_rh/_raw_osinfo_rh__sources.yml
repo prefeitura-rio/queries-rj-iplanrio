@@ -40,6 +40,8 @@ sources:
         description: "Tabela que armazena as possíveis unidades federativas no preenchimento de um endereço. DML executada direto no banco de dados."
       - name: dc_municipio
         description: "Tabela que armazena os possíveis municípios no preenchimento de um endereço. DML executada direto no banco de dados."
+      - name: categoria
+        description: "Tabela que armazena as possíveis categorias."
     config:
       freshness:
         error_after: {count: 24, period: hour}
