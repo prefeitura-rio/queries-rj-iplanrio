@@ -1,7 +1,8 @@
 {{
     config(
       alias="grau_instrucao",
-      description="Graus de instrução que classificam os níveis de escolaridade de indivíduos para fins de cadastro."
+      description="Graus de instrução que classificam os níveis de escolaridade de indivíduos para fins de cadastro.",
+      materialized='table'
     )
 }}
 

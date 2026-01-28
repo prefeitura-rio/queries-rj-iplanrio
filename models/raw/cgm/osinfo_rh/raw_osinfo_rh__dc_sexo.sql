@@ -1,7 +1,8 @@
 {{
     config(
       alias="sexo",
-      description="Sexos definidos para o cadastro de pessoas conforme padrões de sistemas de recursos humanos."
+      description="Sexos definidos para o cadastro de pessoas conforme padrões de sistemas de recursos humanos.",
+      materialized='table'
     )
 }}
 

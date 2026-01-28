@@ -1,7 +1,8 @@
 {{
     config(
       alias="raca_cor",
-      description="Classificações de raça ou cor utilizadas para fins de censo e registros governamentais."
+      description="Classificações de raça ou cor utilizadas para fins de censo e registros governamentais.",
+      materialized='table'
     )
 }}
 

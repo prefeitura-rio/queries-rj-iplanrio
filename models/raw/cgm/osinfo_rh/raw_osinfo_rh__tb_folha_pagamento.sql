@@ -1,7 +1,8 @@
 {{
     config(
       alias="folha_pagamento",
-      description="Folhas de pagamento consolidadas de funcionários para um determinado período de competência."
+      description="Folhas de pagamento consolidadas de funcionários para um determinado período de competência.",
+      materialized='table'
     )
 }}
 

@@ -1,7 +1,8 @@
 {{
     config(
       alias="tb_cbo_bkp",
-      description="Ocupações da Classificação Brasileira de Ocupações (CBO) provenientes de uma cópia de segurança."
+      description="Ocupações da Classificação Brasileira de Ocupações (CBO) provenientes de uma cópia de segurança.",
+      materialized='table'
     )
 }}
 

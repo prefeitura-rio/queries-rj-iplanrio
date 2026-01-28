@@ -1,7 +1,8 @@
 {{
     config(
       alias="conselho",
-      description="Conselhos profissionais de classe utilizados para registro e validação das qualificações de funcionários."
+      description="Conselhos profissionais de classe utilizados para registro e validação das qualificações de funcionários.",
+      materialized='table'
     )
 }}
 

@@ -1,7 +1,8 @@
 {{
     config(
       alias="valores_provisionamento",
-      description="Valores detalhados de verbas provisionadas mensalmente para cada funcionário."
+      description="Valores detalhados de verbas provisionadas mensalmente para cada funcionário.",
+      materialized='table'
     )
 }}
 

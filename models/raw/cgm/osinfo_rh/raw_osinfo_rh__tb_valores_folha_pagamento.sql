@@ -1,7 +1,7 @@
 {{
     config(
       alias="valores_folha_pagamento",
-      description="Valores de eventos (rubricas) detalhados na folha de pagamento de um funcionário para um período."
+      description="Valores de eventos (rubricas) detalhados na folha de pagamento de um funcionário para um período.",  
     )
 }}
 

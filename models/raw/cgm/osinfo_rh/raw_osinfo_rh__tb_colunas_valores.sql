@@ -1,7 +1,8 @@
 {{
     config(
       alias="colunas_valores",
-      description="Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica."
+      description="Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica.",
+      materialized='table'
     )
 }}
 

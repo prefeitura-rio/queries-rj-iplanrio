@@ -1,7 +1,8 @@
 {{
     config(
       alias="funcionario",
-      description="Funcionários com suas informações cadastrais, pessoais e profissionais, para gestão de recursos humanos."
+      description="Funcionários com suas informações cadastrais, pessoais e profissionais, para gestão de recursos humanos.",
+      materialized='table'
     )
 }}
 

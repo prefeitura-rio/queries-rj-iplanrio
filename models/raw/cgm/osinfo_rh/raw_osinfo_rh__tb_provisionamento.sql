@@ -1,7 +1,8 @@
 {{
     config(
       alias="provisionamento",
-      description="Provisionamentos de verbas trabalhistas de funcionários para um período, garantindo a reserva contábil."
+      description="Provisionamentos de verbas trabalhistas de funcionários para um período, garantindo a reserva contábil.",
+      materialized='table'  
     )
 }}
 

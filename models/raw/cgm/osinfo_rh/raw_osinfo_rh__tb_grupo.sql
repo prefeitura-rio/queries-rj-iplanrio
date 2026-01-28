@@ -1,7 +1,7 @@
 {{
     config(
       alias="grupo",
-      description="Grupos de usuários ou funcionários definidos para fins de controle de acesso ou alocação."
+      description="Grupos de usuários ou funcionários definidos para fins de controle de acesso ou alocação.",  
     )
 }}
 
