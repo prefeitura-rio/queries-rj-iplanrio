@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: raw_osinfo_rh__tb_colunas_valores
+    description: "Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica."
+    columns:
+      - name: coluna_codigo
+        description: "Código da coluna"
+        #datatype: integer
+      - name: coluna_nome
+        description: "Nome da coluna"
+        #datatype: string
+      - name: grupo_codigo
+        description: "Código do grupo"
+        #datatype: integer
+      - name: grupo_tipo
+        description: "Tipo do grupo"
+        #datatype: string
+      - name: coluna_percentual
+        description: "Percentual da coluna"
+        #datatype: float64
+      - name: mes_vigencia_inicio
+        description: "Mês de início da vigência"
+        #datatype: integer
+      - name: mes_vigencia_fim
+        description: "Mês de fim da vigência"
+        #datatype: integer
+      - name: ano_vigencia_inicio
+        description: "Ano de início da vigência"
+        #datatype: integer
+      - name: ano_vigencia_fim
+        description: "Ano de fim da vigência"
+        #datatype: integer
+      - name: ordem
+        description: "Ordem"
+        #datatype: integer
+      - name: i18n_label
+        description: "Label i18n"
+        #datatype: string
+      - name: campo_obrigatorio
+        description: "Indicador de campo obrigatório"
+        #datatype: string
+      - name: datalake_loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: timestamp
+      - name: datalake_transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
