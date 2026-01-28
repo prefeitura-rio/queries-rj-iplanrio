@@ -36,7 +36,7 @@ models:
         datatype: boolean
       - name: datalake_loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
-        data_type: timestamp
+        data_type: datetime
       - name: datalake_transformed_at
         description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp
+        data_type: datetime

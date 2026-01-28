@@ -14,6 +14,6 @@ select
     safe_cast(`DT_ULTIMA_ATUALIZ` as datetime) as data_ultima_atualizacao,
     safe_cast(`FLG_ATIVO` as boolean) as flag_ativo,
     safe_cast(`CNES_OBRIGATORIO` as boolean) as flag_cnes_obrigatorio,
-    safe_cast(_prefect_extracted_at AS datetime) AS datalake_loaded_at,
-    safe_cast(current_timestamp() AS datetime) AS datalake_transformed_at
+    DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,
+    DATETIME(current_timestamp(), "America/Sao_Paulo") AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'categoria') }}

@@ -19,6 +19,6 @@ select
     safe_cast(`RHCO_NR_ORDEM` as decimal) as ordem,
     safe_cast(`RHCO_I18N_LABEL` as string) as i18n_label,
     safe_cast(`RHCO_CAMPO_OBRIGATORIO` as string) as campo_obrigatorio,
-    safe_cast(_prefect_extracted_at AS datetime) AS datalake_loaded_at,
-    safe_cast(current_timestamp() AS datetime) AS datalake_transformed_at
+    DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,
+    DATETIME(current_timestamp(), "America/Sao_Paulo") AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_colunas_valores') }}
