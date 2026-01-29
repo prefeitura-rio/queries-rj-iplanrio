@@ -27,6 +27,6 @@ select
     safe_cast(`VINC_CD_CNES` as decimal) as cnes_codigo,
     safe_cast(`VINC_DS_CARGO` as string) as cargo_descricao,
     safe_cast(`VINC_NR_TELEFONE` as string) as telefone_numero,
-    DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,
-    DATETIME(current_timestamp(), "America/Sao_Paulo") AS datalake_transformed_at
+    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS datetime) AS datalake_loaded_at,
+    safe_cast(current_timestamp()as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_vinculo_trabalho') }}

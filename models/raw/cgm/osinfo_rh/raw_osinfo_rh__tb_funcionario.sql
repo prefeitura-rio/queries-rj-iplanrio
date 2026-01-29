@@ -23,6 +23,6 @@ select
     safe_cast(FUNC_DS_ORGAO_EXPEDIDOR_RG as string) as rg_orgao_expedidor,
     safe_cast(FUNC_DT_EMISSAO as date) as rg_emissao_data,
     safe_cast(COD_OS as int64) as organizacao_social_codigo,
-    DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,
-    DATETIME(current_timestamp(), "America/Sao_Paulo") AS datalake_transformed_at
+    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS datetime) AS datalake_loaded_at,
+    safe_cast(current_timestamp()as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_funcionario') }}

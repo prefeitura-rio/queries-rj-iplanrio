@@ -11,8 +11,8 @@ models:
         description: "Descrição do conselho profissional"
         datatype: string
       - name: datalake_loaded_at
-        description: "timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        description: "Data de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: datetime
       - name: datalake_transformed_at
-        description: "timestamp de quando o dado foi transformado no dbt."
+        description: "Data de quando o dado foi transformado no dbt."
         data_type: datetime
