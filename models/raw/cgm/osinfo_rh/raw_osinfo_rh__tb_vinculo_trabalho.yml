@@ -9,7 +9,7 @@ models:
         datatype: integer
       - name: funcionario_cpf
         description: "CPF do funcionário"
-        datatype: string
+        datatype: int64
       - name: vinculo_ativo
         description: "Indicador de vínculo ativo"
         datatype: string

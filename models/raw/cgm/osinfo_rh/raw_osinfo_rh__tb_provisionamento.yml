@@ -6,28 +6,28 @@ models:
     columns:
       - name: provisionamento_codigo
         description: "Código do provisionamento"
-        datatype: integer
+        datatype: int64
       - name: vinculo_codigo
         description: "Código do vínculo"
-        datatype: integer
+        datatype: int64
       - name: mes_referencia
         description: "Mês de referência"
-        datatype: integer
+        datatype: int64
       - name: ano_referencia
         description: "Ano de referência"
-        datatype: integer
+        datatype: int64
       - name: mes_competencia
         description: "Mês de competência"
-        datatype: integer
+        datatype: int64
       - name: ano_competencia
         description: "Ano de competência"
-        datatype: integer
+        datatype: int64
       - name: contrato_id
         description: "ID do contrato"
-        datatype: integer
+        datatype: int64
       - name: unidade_codigo
         description: "Código da unidade"
-        datatype: string
+        datatype: int64
       - name: observacao
         description: "Observação"
         datatype: string

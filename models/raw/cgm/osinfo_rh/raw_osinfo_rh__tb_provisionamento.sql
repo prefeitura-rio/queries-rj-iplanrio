@@ -7,13 +7,13 @@
 }}
 
 select
-    safe_cast(`PROV_CD_PROVISIONAMENTO` as integer) as provisionamento_codigo,
-    safe_cast(`VINC_CD_VINCULO` as integer) as vinculo_codigo,
-    safe_cast(`PROV_NR_MES_REFERENCIA` as integer) as mes_referencia,
-    safe_cast(`PROV_NR_ANO_REFERENCIA` as integer) as ano_referencia,
-    safe_cast(`PROV_NR_MES_COMPETENCIA` as integer) as mes_competencia,
-    safe_cast(`PROV_NR_ANO_COMPETENCIA` as integer) as ano_competencia,
-    safe_cast(`ID_CONTRATO` as integer) as contrato_id,
+    safe_cast(`PROV_CD_PROVISIONAMENTO` as int64) as provisionamento_codigo,
+    safe_cast(`VINC_CD_VINCULO` as int64) as vinculo_codigo,
+    safe_cast(`PROV_NR_MES_REFERENCIA` as int64) as mes_referencia,
+    safe_cast(`PROV_NR_ANO_REFERENCIA` as int64) as ano_referencia,
+    safe_cast(`PROV_NR_MES_COMPETENCIA` as int64) as mes_competencia,
+    safe_cast(`PROV_NR_ANO_COMPETENCIA` as int64) as ano_competencia,
+    safe_cast(`ID_CONTRATO` as int64) as contrato_id,
     safe_cast(`COD_UNIDADE` as string) as unidade_codigo,
     safe_cast(`PROV_OBSERVACAO` as string) as observacao,
     DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,

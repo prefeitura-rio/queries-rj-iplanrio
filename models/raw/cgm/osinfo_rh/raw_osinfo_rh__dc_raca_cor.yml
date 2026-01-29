@@ -6,10 +6,10 @@ models:
     columns:
       - name: raca_cor_codigo
         description: "Código da raça ou cor"
-        #datatype: integer
+        datatype: int64
       - name: raca_cor_descricao
         description: "Descrição da raça ou cor"
-        #datatype: string
+        datatype: string
       - name: datalake_loaded_at
         description: "dateatime de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: dateatime

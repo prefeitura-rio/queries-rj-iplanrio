@@ -6,13 +6,13 @@ models:
     columns:
       - name: coluna_codigo
         description: "Código da coluna"
-        datatype: integer
+        datatype: string
       - name: coluna_nome
         description: "Nome da coluna"
         datatype: string
       - name: grupo_codigo
         description: "Código do grupo"
-        datatype: integer
+        datatype: string
       - name: grupo_tipo
         description: "Tipo do grupo"
         datatype: string
@@ -21,19 +21,19 @@ models:
         datatype: float64
       - name: mes_vigencia_inicio
         description: "Mês de início da vigência"
-        datatype: integer
+        datatype: decimal
       - name: mes_vigencia_fim
         description: "Mês de fim da vigência"
-        datatype: integer
+        datatype: decimal
       - name: ano_vigencia_inicio
         description: "Ano de início da vigência"
-        datatype: integer
+        datatype: decimal
       - name: ano_vigencia_fim
         description: "Ano de fim da vigência"
-        datatype: integer
+        datatype: decimal
       - name: ordem
         description: "Ordem"
-        datatype: integer
+        datatype: decimal
       - name: i18n_label
         description: "Label i18n"
         datatype: string

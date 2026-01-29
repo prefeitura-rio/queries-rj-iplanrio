@@ -6,13 +6,13 @@ models:
     columns:
       - name: grau_instrucao_codigo
         description: "Código do grau de instrução"
-        #datatype: integer
+        datatype: int64
       - name: grau_instrucao_descricao
         description: "Descrição do grau de instrução"
-        #datatype: string
+        datatype: string
       - name: grau_instrucao_ordem
         description: "Ordem do grau de instrução"
-        #datatype: integer
+        datatype: int64
       - name: datalake_loaded_at
         description: "dateatime de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: dateatime

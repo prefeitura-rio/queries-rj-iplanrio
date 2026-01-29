@@ -8,7 +8,7 @@
 
 select
     safe_cast(`VINC_CD_VINCULO` as integer) as vinculo_codigo,
-    safe_cast(`FUNC_CD_CPF` as numeric) as funcionario_cpf,
+    safe_cast(`FUNC_CD_CPF` as int64) as funcionario_cpf,
     safe_cast(`VINC_IN_ATIVO` as int64) as vinculo_ativo,
     safe_cast(`COD_OS` as int64) as organizacao_social_codigo,
     safe_cast(`VINC_NR_CNPJ_OS` as string) as organizacao_social_cnpj,

@@ -6,9 +6,9 @@
 }}
 
 select
-    safe_cast(`FPTO_CD_FOLHA` as integer) as folha_codigo,
+    safe_cast(`FPTO_CD_FOLHA` as int64) as folha_codigo,
     safe_cast(`RHCO_COD_COLUNA` as string) as coluna_codigo,
-    safe_cast(`VLFP_VL_VALOR` as float64) as valor,
+    safe_cast(`VLFP_VL_VALOR` as numeric) as valor,
     DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,
     DATETIME(current_timestamp(), "America/Sao_Paulo") AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_valores_folha_pagamento') }}
