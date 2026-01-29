@@ -11,5 +11,5 @@ select
     safe_cast(`UF_CD_IBGE` as decimal) as uf_ibge_codigo,
     safe_cast(`MUNI_DS_NOME` as string) as municipio_nome,
     SAFE_CAST(SUBSTR(_prefect_extracted_at,1,10) AS DATE) AS datalake_transformed_at,
-    SAFE_CAST(SUBSTR(current_timestamp(),1,10) AS DATE) AS datalake_transformed_at
+    SAFE_CAST(current_timestamp()) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'dc_municipio') }}

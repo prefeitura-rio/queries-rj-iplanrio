@@ -15,7 +15,7 @@ models:
         datatype: string
       - name: datalake_loaded_at
         description: "timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
-        data_type: date 
+        data_type: string 
       - name: datalake_transformed_at
         description: "timestamp de quando o dado foi transformado no dbt."
-        data_type: date
+        data_type: timestamp
