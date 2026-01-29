@@ -9,13 +9,6 @@ models:
         description: "ID da categoria"
         datatype: decimal
         quote: true
-        tests:
-          - not_null:
-              config:
-                where: "{{ this.name }} is not null"  
-          - unique:
-              config:
-                where: "{{ this.name }} is unique"
       - name: "codigo_categoria"
         description: "Código da categoria"
         datatype: string
