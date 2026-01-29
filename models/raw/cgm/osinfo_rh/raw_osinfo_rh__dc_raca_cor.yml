@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: raw_osinfo_rh__dc_raca_cor
+    description: "Classificações de raça ou cor utilizadas para fins de censo e registros governamentais."
+    columns:
+      - name: raca_cor_codigo
+        description: "Código da raça ou cor"
+        datatype: int64
+      - name: raca_cor_descricao
+        description: "Descrição da raça ou cor"
+        datatype: string
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: datetime
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt."
+        data_type: datetime

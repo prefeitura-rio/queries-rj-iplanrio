@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: raw_osinfo_rh__tb_funcionario
+    description: "Funcionários com suas informações cadastrais, pessoais e profissionais, para gestão de recursos humanos."
+    columns:
+      - name: funcionario_cpf
+        description: "CPF do funcionário"
+        datatype: numeric
+      - name: funcionario_nome
+        description: "Nome do funcionário"
+        datatype: string
+      - name: funcionario_nome_social
+        description: "Nome social do funcionário"
+        datatype: string
+      - name: nascimento_data
+        description: "Data de nascimento do funcionário"
+        datatype: date
+      - name: nome_mae
+        description: "Nome da mãe do funcionário"
+        datatype: string
+      - name: nome_pai
+        description: "Nome do pai do funcionário"
+        datatype: string
+      - name: nacionalidade_codigo
+        description: "Código da nacionalidade"
+        datatype: int64
+      - name: nacionalidade_descricao
+        description: "Descrição da nacionalidade"
+        data_type: string
+      - name: sexo_codigo
+        description: "Código do sexo"
+        datatype: int64
+      - name: grau_instrucao_codigo
+        description: "Código do grau de instrução"
+        datatype: int64
+      - name: municipio_nascimento_ibge
+        description: "Código IBGE do município de nascimento"
+        datatype: numeric
+      - name: raca_cor_codigo
+        description: "Código de raça/cor"
+        datatype: int64
+      - name: rg_numero
+        description: "Número do RG"
+        data_type: string
+      - name: rg_orgao_expedidor
+        description: "Órgão expedidor do RG"
+        data_type: string
+      - name: rg_emissao_data
+        description: "Data de emissão do RG"
+        datatype: date
+      - name: organizacao_social_codigo
+        description: "Código da OS (Organização Social)"
+        datatype: int64
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: datetime
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt."
+        data_type: datetime

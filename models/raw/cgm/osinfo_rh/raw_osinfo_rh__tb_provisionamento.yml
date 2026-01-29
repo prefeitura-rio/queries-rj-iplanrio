@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: raw_osinfo_rh__tb_provisionamento
+    description: "Provisionamentos de verbas trabalhistas de funcionários para um período, garantindo a reserva contábil."
+    columns:
+      - name: provisionamento_codigo
+        description: "Código do provisionamento"
+        datatype: int64
+      - name: vinculo_codigo
+        description: "Código do vínculo"
+        datatype: int64
+      - name: mes_referencia
+        description: "Mês de referência"
+        datatype: int64
+      - name: ano_referencia
+        description: "Ano de referência"
+        datatype: int64
+      - name: mes_competencia
+        description: "Mês de competência"
+        datatype: int64
+      - name: ano_competencia
+        description: "Ano de competência"
+        datatype: int64
+      - name: contrato_id
+        description: "ID do contrato"
+        datatype: int64
+      - name: unidade_codigo
+        description: "Código da unidade"
+        datatype: int64
+      - name: observacao
+        description: "Observação"
+        datatype: string
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: datetime 
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt."
+        data_type: datetime
