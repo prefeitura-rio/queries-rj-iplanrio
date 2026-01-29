@@ -150,6 +150,13 @@ models:
           +materialized: table
           +schema: brutos_adm_licenca_urbanismo
           +tags: "daily"
+      cgm:
+        osinfo_rh:
+          +materialized: table
+          +project: rj-cgm
+          +schema: brutos_osinfo_modulo_recursos_humanos
+          +tags: ["daily", "osinfo_rh"]
+
       cvl:
         +tags: "cvl"
         +project: rj-cvl
@@ -157,6 +164,8 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+
+
       segovi:
         +tags: "segovi"
         +project: rj-segovi
