@@ -8,7 +8,7 @@
 
 select
     safe_cast(`MUNI_CD_IBGE` as decimal) as municipio_ibge_codigo,
-    safe_cast(`UF_CD_IBGE` as string) as uf_ibge_codigo,
+    safe_cast(`UF_CD_IBGE` as decimal) as uf_ibge_codigo,
     safe_cast(`MUNI_DS_NOME` as string) as municipio_nome,
     DATETIME(_prefect_extracted_at, "America/Sao_Paulo") AS datalake_loaded_at,
     DATETIME(current_timestamp(), "America/Sao_Paulo") AS datalake_transformed_at
