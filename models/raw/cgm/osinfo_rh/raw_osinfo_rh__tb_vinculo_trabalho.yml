@@ -6,67 +6,67 @@ models:
     columns:
       - name: vinculo_codigo
         description: "Código do vínculo de trabalho"
-        #datatype: integer
+        datatype: integer
       - name: funcionario_cpf
         description: "CPF do funcionário"
-        #datatype: string
+        datatype: string
       - name: vinculo_ativo
         description: "Indicador de vínculo ativo"
-        #datatype: string
+        datatype: string
       - name: organizacao_social_codigo
         description: "Código da organização social"
-        #datatype: string
+        datatype: string
       - name: organizacao_social_cnpj
         description: "CNPJ da organização social"
-        #datatype: string
+        datatype: string
       - name: cbo_codigo
         description: "Código CBO"
-        #datatype: string
+        datatype: string
       - name: registro_profissional_numero
         description: "Número do registro profissional"
-        #datatype: string
+        datatype: string
       - name: conselho_sigla
         description: "Sigla do conselho profissional"
-        #datatype: string
+        datatype: string
       - name: conselho_uf_ibge
         description: "Código IBGE da UF do conselho"
-        #datatype: string
+        datatype: string
       - name: categoria_id
         description: "ID da categoria"
-        #datatype: integer
+        datatype: integer
       - name: vinculo_setor
         description: "Setor do vínculo"
-        #datatype: string
+        datatype: string
       - name: tipo_vinculacao_codigo
         description: "Código do tipo de vinculação"
-        #datatype: integer
+        datatype: integer
       - name: carga_horaria
         description: "Carga horária"
-        #datatype: float64
+        datatype: float64
       - name: vinculo_inicio_data
         description: "Data de início do vínculo"
-        #datatype: date
+        datatype: date
       - name: vinculo_encerramento_data
         description: "Data de encerramento do vínculo"
-        #datatype: date
+        datatype: date
       - name: endereco_codigo
         description: "Código do endereço"
-        #datatype: integer
+        datatype: integer
       - name: email
         description: "Email do funcionário"
-        #datatype: string
+        datatype: string
       - name: cnes_codigo
         description: "Código CNES"
-        #datatype: string
+        datatype: string
       - name: cargo_descricao
         description: "Descrição do cargo"
-        #datatype: string
+        datatype: string
       - name: telefone_numero
         description: "Número do telefone"
-        #datatype: string
+        datatype: string
       - name: datalake_loaded_at
-        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
-        data_type: timestamp
+        description: "Datetime de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        data_type: datetime
       - name: datalake_transformed_at
-        description: "Timestamp de quando o dado foi transformado no dbt."
-        data_type: timestamp
+        description: "Datetime de quando o dado foi transformado no dbt."
+        data_type: datetime

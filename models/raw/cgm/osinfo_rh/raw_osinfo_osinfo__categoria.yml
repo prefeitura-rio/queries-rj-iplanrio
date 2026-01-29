@@ -28,8 +28,8 @@ models:
         description: "Flag de obrigatoriedade do CNES"
         datatype: boolean
       - name: datalake_loaded_at
-        description: "Timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
+        description: "dateatime de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: datetime
       - name: datalake_transformed_at
-        description: "Timestamp de quando o dado foi transformado no dbt."
+        description: "dateatime de quando o dado foi transformado no dbt."
         data_type: datetime
