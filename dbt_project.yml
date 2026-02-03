@@ -183,7 +183,12 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
-      
+      ssm:
+        vigia_urbano:
+          +project: rj-ssm
+          +tags: ["hour", "vigia_urbano"]
+          +schema: brutos_vigia_urbano
+          +materialized: table 
       iplanrio:
         +project: rj-iplanrio
         pessoa_vinculada:

@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__vw_resposta_ocorrencia
+    description: "Respostas de ocorrências do sistema Vigia Urbano, contendo informações sobre ocorrências registradas e suas respostas."
+    columns:
+      - name: id_resposta_ocorrencia
+        description: "Identificador único da resposta de ocorrência"
+        datatype: int64
+      - name: cpf_usuario
+        description: "CPF do usuário que registrou a resposta"
+        datatype: string
+      - name: nome_usuario
+        description: "Nome do usuário que registrou a resposta"
+        datatype: string
+      - name: data_hora_registro
+        description: "Data e hora do registro da resposta"
+        datatype: datetime
+      - name: logradouro
+        description: "Logradouro onde a ocorrência foi registrada"
+        datatype: string
+      - name: numero_porta
+        description: "Número da porta do endereço"
+        datatype: string
+      - name: id_bairro
+        description: "Identificador do bairro"
+        datatype: int64
+      - name: referencia
+        description: "Referência do local da ocorrência"
+        datatype: string
+      - name: coordenada_x
+        description: "Coordenada X (longitude) do local da ocorrência"
+        datatype: float64
+      - name: coordenada_y
+        description: "Coordenada Y (latitude) do local da ocorrência"
+        datatype: float64
+      - name: coordenada_x_dispositivo
+        description: "Coordenada X (longitude) capturada pelo dispositivo"
+        datatype: float64
+      - name: coordenada_y_dispositivo
+        description: "Coordenada Y (latitude) capturada pelo dispositivo"
+        datatype: float64
+      - name: observacao
+        description: "Observações sobre a ocorrência"
+        datatype: string
+      - name: tipo_foco_ocupacao_descricao
+        description: "Descrição do tipo de foco de ocupação"
+        datatype: string
+      - name: excluido
+        description: "Indica se o registro foi excluído"
+        datatype: bool
+      - name: endereco_informado
+        description: "Endereço informado pelo usuário"
+        datatype: string
+      - name: caminho_imagem
+        description: "Caminho da imagem associada à ocorrência"
+        datatype: string
+      - name: id_ocorrencia
+        description: "Identificador da ocorrência relacionada"
+        datatype: int64
+      - name: bairro_nome
+        description: "Nome do bairro"
+        datatype: string
+      - name: ocorrencia_descricao
+        description: "Descrição da ocorrência"
+        datatype: string
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt."
+        datatype: datetime

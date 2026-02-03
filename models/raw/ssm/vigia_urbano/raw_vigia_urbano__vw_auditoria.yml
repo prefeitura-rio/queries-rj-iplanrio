@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__vw_auditoria
+    description: "Registros de auditoria do sistema Vigia Urbano, contendo informações sobre ações realizadas pelos usuários no sistema."
+    columns:
+      - name: id_auditoria
+        description: "Identificador único do registro de auditoria"
+        datatype: int64
+      - name: id_usuario
+        description: "Identificador do usuário que realizou a ação"
+        datatype: int64
+      - name: data_hora
+        description: "Data e hora em que a ação foi registrada"
+        datatype: datetime
+      - name: dados_json
+        description: "Dados adicionais da ação em formato JSON"
+        datatype: string
+      - name: evento_descricao
+        description: "Descrição do evento ou ação realizada"
+        datatype: string
+      - name: tela_descricao
+        description: "Descrição da tela ou módulo onde a ação foi realizada"
+        datatype: string
+      - name: usuario_nome
+        description: "Nome do usuário que realizou a ação"
+        datatype: string
+      - name: usuario_matricula
+        description: "Matrícula do usuário que realizou a ação"
+        datatype: string
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt."
+        datatype: datetime
