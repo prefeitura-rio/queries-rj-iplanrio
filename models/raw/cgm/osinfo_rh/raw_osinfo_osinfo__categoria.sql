@@ -2,8 +2,7 @@
     config(
       alias="categoria",
       description="Tabela que armazena os possíveis categorias.",
-      materialized='table'
-    )
+          )
 }}
 
 select
