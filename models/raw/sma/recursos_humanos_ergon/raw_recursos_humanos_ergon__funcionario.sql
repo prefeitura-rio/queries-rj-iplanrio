@@ -1,7 +1,9 @@
 {{
     config(
         alias='funcionario',
-        schema='brutos_ergon_staging'
+        materialized="table",
+        tags=["raw", "ergon", "funcionario"],
+        description="Tabela que contém os registros dos funcionários da administração direta ou indireta da prefeitura do Rio de Janeiro."
     )
 }}
 

@@ -1,7 +1,9 @@
 {{
     config(
         alias='cargo',
-        schema='brutos_ergon_staging'
+        materialized="table",
+        tags=["raw", "ergon", "cargo"],
+        description="Tabela que contém os registros dos cargos para os quais os funcionários são nomeados em seus provimentos."
     )
 }}
 SELECT
