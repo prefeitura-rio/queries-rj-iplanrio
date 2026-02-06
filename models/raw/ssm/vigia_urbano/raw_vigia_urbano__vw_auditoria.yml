@@ -7,50 +7,50 @@ models:
       - name: id_auditoria
         description: "Identificador único do registro de auditoria"
         data_type: int64
-      - name: data_hora
-        description: "Data e hora em que a ação foi registrada"
+      - name: data_hora_auditoria
+        description: "Data e hora em que a auditoria foi registrada"
         data_type: datetime
-      - name: dados_json
-        description: "Dados adicionais da ação em formato JSON"
+      - name: dados_json_auditoria
+        description: "Dados adicionais da auditoria em formato JSON"
         data_type: string 
       - name: tela_enum
-        description: "Código enum da tela ou módulo onde a ação foi realizada"
+        description: "Código enum da tela ou módulo onde a ocorrência foi realizada"
         data_type: int64
       - name: tela_descricao
-        description: "Descrição da tela ou módulo onde a ação foi realizada"
+        description: "Descrição da tela ou módulo onde a ocorrência foi realizada"
         data_type: string
       - name: evento
-        description: "Código do evento ou ação realizada"
+        description: "Código do evento ou ocorrência realizada"
         data_type: string
       - name: evento_descricao
-        description: "Descrição do evento ou ação realizada"
+        description: "Descrição do evento ou ocorrência realizada"
         data_type: string
       - name: id_usuario
-        description: "Identificador do usuário que realizou a ação"
+        description: "Identificador do usuário que realizou a ocorrência"
         data_type: int64
       - name: usuario_nome
-        description: "Nome do usuário que realizou a ação"
+        description: "Nome do usuário que realizou a ocorrência"
         data_type: string
       - name: usuario_cpf
-        description: "CPF do usuário que realizou a ação"
+        description: "CPF do usuário que realizou a ocorrência"
         data_type: string
       - name: usuario_matricula
-        description: "Matrícula do usuário que realizou a ação"
+        description: "Matrícula do usuário que realizou a ocorrência"
         data_type: string
       - name: usuario_email
-        description: "Email do usuário que realizou a ação"
+        description: "Email do usuário que realizou a ocorrência"
         data_type: string
       - name: usuario_ativo
         description: "Indica se o usuário está ativo"
         data_type: bool
       - name: usuario_perfis
-        description: "Perfis do usuário que realizou a ação"
+        description: "Perfis do usuário que realizou a ocorrência"
         data_type: string
       - name: usuario_orgao_nome
-        description: "Nome do órgão do usuário que realizou a ação"
+        description: "Nome do órgão do usuário que realizou a ocorrência"
         data_type: string
       - name: usuario_orgao_codigo
-        description: "Código do órgão do usuário que realizou a ação"
+        description: "Código do órgão do usuário que realizou a ocorrência"
         data_type: string
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano."

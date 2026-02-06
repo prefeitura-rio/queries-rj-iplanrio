@@ -1,15 +1,14 @@
 {{
     config(
         alias="auditoria",
-        materialized='table',
-        description="Registros de auditoria do sistema Vigia Urbano, contendo informações sobre ações realizadas pelos usuários no sistema.",
+        description="Registros de auditoria do sistema Vigia Urbano, contendo informocorrências sobre ocorrências realizadas pelos usuários no sistema.",
     )
 }}
 
 SELECT
     safe_cast(auditoriaID AS int64) AS id_auditoria,
-    safe_cast(dataHora AS datetime) AS data_hora,
-    safe_cast(dadosJson AS string) AS dados_json,
+    safe_cast(dataHora AS datetime) AS data_hora_auditoria,
+    safe_cast(dadosJson AS string) AS dados_json_auditoria,
     safe_cast(telaEnum AS int64) AS tela_enum,
     safe_cast(TRIM(telaDescricao) AS string) AS tela_descricao,
     safe_cast(TRIM(evento) AS string) AS evento,

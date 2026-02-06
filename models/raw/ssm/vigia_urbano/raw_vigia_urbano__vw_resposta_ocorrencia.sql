@@ -1,7 +1,6 @@
 {{
     config(
         alias="resposta_ocorrencia",
-        materialized='table',
         description="Respostas de ocorrências do sistema Vigia Urbano, contendo informações sobre ocorrências registradas e suas respostas.",
     )
 }}
