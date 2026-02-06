@@ -2,7 +2,6 @@
     config(
       alias="tipo_vinculacao",
       description="Tipos de vinculação empregatícia que classificam as diferentes formas de contrato de trabalho.",
-      materialized='table'
     )
 }}
 
