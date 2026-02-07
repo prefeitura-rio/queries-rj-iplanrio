@@ -11,7 +11,7 @@ SELECT
     safe_cast(dadosJson AS string) AS dados_json_auditoria,
     safe_cast(telaEnum AS int64) AS tela_enum,
     safe_cast(TRIM(telaDescricao) AS string) AS tela_descricao,
-    safe_cast(TRIM(evento) AS string) AS evento,
+    safe_cast(evento AS int64) AS id_evento,
     safe_cast(TRIM(eventoDescricao) AS string) AS evento_descricao,
     safe_cast(usuarioID AS int64) AS id_usuario,
     safe_cast(TRIM(usuarioNome) AS string) AS usuario_nome,

@@ -2,91 +2,91 @@ version: 2
 
 models:
   - name:  raw_vigia_urbano__vw_resposta_ocorrencia
-    description: "Respostas de ocorrências do sistema Vigia Urbano, contendo informações sobre ocorrências registradas e suas respostas."
+    description: "Respostas de ocorrências do sistema Vigia Urbano contendo informações sobre ocorrências registradas e suas respostas."
     columns:
       - name: id_resposta_ocorrencia
         description: "Identificador único da resposta de ocorrência"
         data_type: int64
       - name: data_hora_registro
-        description: "Data e hora do registro da resposta"
+        description: "Data e hora do registro da ocorrência"
         data_type: datetime
       - name: logradouro
         description: "Logradouro onde a ocorrência foi registrada"
         data_type: string
       - name: numero_porta
-        description: "Número da porta do endereço"
+        description: "Número da porta do endereço da ocorrência"
         data_type: string
       - name: referencia
         description: "Referência do local da ocorrência"
         data_type: string
       - name: coordenada_x
-        description: "Coordenada X (longitude) do local da ocorrência"
-        data_type: float64
+        description: "Coordenada X (longitude) do local da ocorrência (geolocalização)"
+        data_type: string
       - name: coordenada_y
-        description: "Coordenada Y (latitude) do local da ocorrência"
-        data_type: float64
+        description: "Coordenada Y (latitude) do local da ocorrência (geolocalização)"
+        data_type: string
       - name: coordenada_x_dispositivo
-        description: "Coordenada X (longitude) capturada pelo dispositivo"
-        data_type: float64
+        description: "Coordenada X (longitude) capturada pelo dispositivo (geolocalização)"
+        data_type: string
       - name: coordenada_y_dispositivo
-        description: "Coordenada Y (latitude) capturada pelo dispositivo"
-        data_type: float64
+        description: "Coordenada Y (latitude) capturada pelo dispositivo (geolocalização)"
+        data_type: string
       - name: observacao
         description: "Observações sobre a ocorrência"
         data_type: string
       - name: excluido
-        description: "Indica se o registro foi excluído"
+        description: "Flag que Indica se o registro foi excluído (False=0 / True=1)"
         data_type: bool
       - name: endereco_informado
-        description: "Endereço informado pelo usuário"
-        data_type: string
+        description: "Endereço informado pelo usuário da ocorrência (False=0 / True=1)"
+        data_type: bool
       - name: caminho_imagem
         description: "Caminho da imagem associada à ocorrência"
         data_type: string
       - name: id_bairro
-        description: "Identificador do bairro"
+        description: "Identificador do bairro da ocorrência"
         data_type: int64
       - name: bairro_nome
-        description: "Nome do bairro"
+        description: "Nome do bairro da ocorrência"
         data_type: string
-      - name: tipo_pessoa
-        description: "Código do tipo de pessoa"
+      - name: id_tipo_pessoa
+        description: "Identificador tipo de pessoa (1 = adulto ........)"
         data_type: int64
       - name: tipo_pessoa_descricao
-        description: "Descrição do tipo de pessoa"
+        description: "Descrição do tipo de perfil etario da pessoa."
         data_type: string
-      - name: ocupacao_pessoa
-        description: "Código da ocupação da pessoa"
+      - name: id_ocupacao_pessoa
+        description: "Identificador do modo de ocupação do espaço pela pessoa."
         data_type: int64
       - name: ocupacao_pessoa_descricao
-        description: "Descrição da ocupação da pessoa"
+        description: "Descrição do modo de ocupação do espaço pela pessoa"
         data_type: string
-      - name: tipo_frequencia
-        description: "Código do tipo de frequência"
+      - name: id_tipo_frequencia
+        description: "Identificador do tipo de frequência"
         data_type: int64
       - name: tipo_frequencia_descricao
-        description: "Descrição do tipo de frequência"
+        description: "Descrição do tipo de frequência do espaço por pessoas em cena de uso."
         data_type: string
       - name: ocupacao_drogas
-        description: "Código da ocupação relacionada a drogas"
+        description: "Identificador da ocupação relacionada a drogas"
         data_type: int64
       - name: ocupacao_drogas_descricao
         description: "Descrição da ocupação relacionada a drogas"
         data_type: string
-      - name: item_praca
-        description: "Código do item de praça"
+      - name: id_item_praca
+        description: "Identificador do item de praça "
         data_type: int64
       - name: item_praca_descricao
         description: "Descrição do item de praça"
         data_type: string
-      - name: id_ocorrencia
-        description: "Identificador da ocorrência relacionada"
+      - name: id_tipo_ocorrencia
+        description: "Identificador do tipo da ocorrência"
         data_type: int64
       - name: ocorrencia_descricao
-        description: "Descrição da ocorrência"
+        description: "Descrição do tipo da ocorrência"
         data_type: string
       - name: ocorrencia_ativo
-        description: "Indica se a ocorrência está ativa"
+        description: "Flag se a ocorrencia esta ativa (False=0 / True=1)"
         data_type: bool
       - name: orgao_responsavel
         description: "Órgão responsável pela ocorrência"
@@ -96,58 +96,58 @@ models:
         data_type: string
       - name: servico_1746
         description: "Indica se é serviço 1746"
-        data_type: bool
+        data_type: string
       - name: ocorrencia_informacao
         description: "Informações adicionais sobre a ocorrência"
         data_type: string
-      - name: id_ocorrencia_orgao
+      - name: id_orgao_ocorrencia
         description: "Identificador do órgão da ocorrência"
         data_type: int64
       - name: ocorrencia_orgao_nome
-        description: "Nome do órgão da ocorrência"
+        description: "Nome do órgão vinculado a ocorrência"
         data_type: string
-      - name: ocorrencia_orgao_codigo
-        description: "Código do órgão da ocorrência"
-        data_type: string
+      - name: codigo_ocorrencia_orgao
+        description: "Código do órgão vinculado a ocorrência"
+        data_type: int64
       - name: id_categoria
-        description: "Identificador da categoria"
+        description: "Identificador da categoria da ocorrência"
         data_type: int64
       - name: categoria_nome
-        description: "Nome da categoria"
+        description: "Nome da categoria da ocorrência"
         data_type: string
       - name: categoria_ativo
-        description: "Indica se a categoria está ativa"
+        description: "Flag que Indica se a categoria está ativa (False=0 / True=1)"
         data_type: bool
       - name: id_usuario
-        description: "Identificador do usuário"
+        description: "Identificador do usuário que registrou a ocorrência"
         data_type: int64
       - name: usuario_nome
-        description: "Nome do usuário"
+        description: "Nome do usuário que registrou a ocorrência"
         data_type: string
       - name: usuario_cpf
-        description: "CPF do usuário"
+        description: "CPF do usuário que registrou a ocorrência"
         data_type: string
       - name: usuario_email
-        description: "Email do usuário"
+        description: "Email do usuário que registrou a ocorrência"
         data_type: string
       - name: usuario_matricula
-        description: "Matrícula do usuário"
+        description: "Matrícula do usuário que registrou a ocorrência"
         data_type: string
       - name: usuario_ativo
-        description: "Indica se o usuário está ativo"
+        description: "Flag que Indica se o usuário está ativo (False=0 / True=1)"
         data_type: bool
       - name: usuario_perfis
-        description: "Perfis do usuário"
+        description: "Perfis do usuário que registrou a ocorrência"
         data_type: string
       - name: usuario_orgao_nome
-        description: "Nome do órgão do usuário"
+        description: "Nome do órgão do usuário que registrou a ocorrência"
         data_type: string
-      - name: usuario_orgao_codigo
-        description: "Código do órgão do usuário"
+      - name: id_orgao_usuario
+        description: "Identificador do órgão do usuário que registrou a ocorrência"
         data_type: string
       - name: datalake_loaded_at
-        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano."
+        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: date
       - name: datalake_transformed_at
-        description: "Data de quando o dado foi transformado no dbt."
+        description: "Data de quando o dado foi transformado no dbt"
         data_type: datetime

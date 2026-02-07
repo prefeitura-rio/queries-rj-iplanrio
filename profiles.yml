@@ -1,5 +1,5 @@
 iplan:
-  target: dev
+  target: prod
   outputs:
     dev:
       dataset: dbt
@@ -20,13 +20,13 @@ iplan:
       location: US
       method: service-account
       priority: interactive
-      project: rj-iplanrio
+      project:  rj-ssm #rj-iplanrio
       threads: 8
       type: bigquery
     pr:
       type: bigquery
       method: service-account-json
-      project: rj-iplanrio-dev
+      project: rj-ssm # rj-iplanrio-dev
       dataset: "pr_{{ var('schema_id') }}"
       threads: 16
       location: US

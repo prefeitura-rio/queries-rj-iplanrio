@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: raw_vigia_urbano__vw_auditoria
-    description: "Registros de auditoria do sistema Vigia Urbano, contendo informações sobre ações realizadas pelos usuários no sistema."
+    description: "Registros de auditoria do sistema Vigia Urbano contendo informações sobre ocorrências realizadas pelos usuários no sistema."
     columns:
       - name: id_auditoria
         description: "Identificador único do registro de auditoria"
@@ -14,47 +14,47 @@ models:
         description: "Dados adicionais da auditoria em formato JSON"
         data_type: string 
       - name: tela_enum
-        description: "Código enum da tela ou módulo onde a ocorrência foi realizada"
+        description: "Identificador da tela onde a ocorrência foi realizada"
         data_type: int64
       - name: tela_descricao
-        description: "Descrição da tela ou módulo onde a ocorrência foi realizada"
+        description: "Descrição da tela onde a ocorrência foi realizada"
         data_type: string
-      - name: evento
-        description: "Código do evento ou ocorrência realizada"
-        data_type: string
+      - name: id_evento
+        description: "Identificador do evento realizado"
+        data_type: int64
       - name: evento_descricao
-        description: "Descrição do evento ou ocorrência realizada"
+        description: "Descrição do evento realizado"
         data_type: string
       - name: id_usuario
-        description: "Identificador do usuário que realizou a ocorrência"
+        description: "Identificador do usuário que realizou evento"
         data_type: int64
       - name: usuario_nome
-        description: "Nome do usuário que realizou a ocorrência"
+        description: "Nome do usuário que realizou o evento"
         data_type: string
       - name: usuario_cpf
-        description: "CPF do usuário que realizou a ocorrência"
+        description: "CPF do usuário que realizou o evento"
         data_type: string
       - name: usuario_matricula
-        description: "Matrícula do usuário que realizou a ocorrência"
+        description: "Matrícula do usuário que realizou o evento"
         data_type: string
       - name: usuario_email
-        description: "Email do usuário que realizou a ocorrência"
+        description: "Email do usuário que realizou o evento"
         data_type: string
       - name: usuario_ativo
         description: "Indica se o usuário está ativo"
         data_type: bool
       - name: usuario_perfis
-        description: "Perfis do usuário que realizou a ocorrência"
+        description: "Perfis do usuário que realizou o evento"
         data_type: string
       - name: usuario_orgao_nome
-        description: "Nome do órgão do usuário que realizou a ocorrência"
+        description: "Nome do órgão do usuário que realizou o evento"
         data_type: string
       - name: usuario_orgao_codigo
-        description: "Código do órgão do usuário que realizou a ocorrência"
+        description: "Código do órgão do usuário que realizou o evento"
         data_type: string
       - name: datalake_loaded_at
-        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano."
+        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: date
       - name: datalake_transformed_at
-        description: "Data de quando o dado foi transformado no dbt."
+        description: "Data de quando o dado foi transformado no dbt"
         data_type: datetime
