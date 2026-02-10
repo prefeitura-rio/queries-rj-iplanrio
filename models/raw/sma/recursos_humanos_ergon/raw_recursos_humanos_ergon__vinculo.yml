@@ -4,6 +4,9 @@ models:
   - name: raw_recursos_humanos_ergon__vinculo
     description: "**Descrição**: Vínculos de pagamento ( em geral empregatícios ), tanto antigos como atuais, da administração direta e indireta da prefeitura do Rio de Janeiro. Um vínculo, em geral, está associado a uma matrícula. Uma pessoa pode ter vários vínculos com a prefeitura.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
     columns:
+      - name: id_funcionario
+        description: Identificador do funcionário, que pode estar repetido no caso do funcionário possua ou tenha possuído mais de 1 vínculo funcional com a PCRJ.
+        data_type: integer
       - name: id_vinculo
         description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa que é professora, e funcionária do IPLANRIO, tem dois vínculos.
         data_type: integer
@@ -135,9 +138,6 @@ models:
       - name: data_homologacao_aposentadoria
         description: Data da homologação da aposentadoria. A homologação é feita pelo TCM, para verificar a legalidade da aposentadoria.
         data_type: date
-      - name: id_funcionario
-        description: Número do funcionário, pode estar repetido nesta visão, caso o funcionário tenha ou tenha tido outros vínculos. Existe um para cada pessoa, independente do número de vínculos.
-        data_type: integer
       - name: id_vacancia
         description: Código de vacância relativa ao vínculo.
         data_type: integer

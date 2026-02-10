@@ -1,7 +1,9 @@
 {{
     config(
         alias='setor',
-        schema='brutos_ergon_staging'
+        materialized="table",
+        tags=["raw", "ergon", "setor"],
+        description="Tabela que contém os registros dos setores da administração direta ou indireta da prefeitura do Rio de Janeiro."
     )
 }}
 SELECT

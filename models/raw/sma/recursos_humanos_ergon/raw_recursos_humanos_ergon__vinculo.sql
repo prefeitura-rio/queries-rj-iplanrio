@@ -1,7 +1,9 @@
 {{
     config(
         alias='vinculo',
-        schema='brutos_ergon_staging'
+        materialized="table",
+        tags=["raw", "ergon", "vinculo"],
+        description="Tabela que contém os registros dos vínculos funcionais da administração direta ou indireta da prefeitura do Rio de Janeiro."
     )
 }}
 

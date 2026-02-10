@@ -1,7 +1,9 @@
 {{
     config(
         alias='provimento',
-        schema='brutos_ergon_staging'
+        materialized="table",
+        tags=["raw", "ergon", "provimento"],
+        description="Eventos relacionados aos vínculos funcionais tanto com a administração direta como indireta da prefeitura do Rio de Janeiro."
     )
 }}
 
