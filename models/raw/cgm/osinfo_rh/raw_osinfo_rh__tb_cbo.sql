@@ -2,7 +2,7 @@
     config(
       alias="cbo",
       description="Ocupações da Classificação Brasileira de Ocupações (CBO) com seus códigos e descrições oficiais.",
-      materialized='view'
+      materialized='table'
     )
 }}
 
