@@ -8,7 +8,6 @@
 
 WITH
     gcp AS (
-
       -- MAPS
     SELECT
       CAST(t.usage_end_time AS date) AS usage_date,
@@ -29,8 +28,8 @@ WITH
     FROM
       {{ source('billing_maps', 'gcp_billing_export_v1_01E886_BEEF88_126F35') }} AS t
 
+      UNION ALL
       -- Dados.Rio
-    UNION ALL
     SELECT
       CAST(t.usage_end_time AS date) AS usage_date,
       t.project.id AS project_id,
@@ -70,7 +69,7 @@ WITH
         UNNEST(t.credits) AS c) AS total_credit
     FROM
       {{ source('billing_iplan', 'gcp_billing_export_v1_01F105_3E298A_65D256') }} AS t
-    UNION ALL
+    {# UNION ALL
 
     -- IPLAN_OLD
     SELECT
@@ -91,10 +90,10 @@ WITH
         UNNEST(t.credits) AS c) AS total_credit
     FROM
       {{ source('billing_iplan_old', 'gcp_billing_export_v1_01B087_0E43DD_2F1D01') }} AS t
-  
+  #}
     UNION ALL
 
-    -- SEI 
+    -- SEI
     SELECT
       CAST(t.usage_end_time AS date) AS usage_date,
       t.project.id AS project_id,
@@ -114,8 +113,7 @@ WITH
         UNNEST(t.credits) AS c) AS total_credit
     FROM
       {{ source('billing_iplan_sei', 'gcp_billing_export_v1_01E7FF_E3D5BA_3EF20C') }} AS t
-      
-     /* 
+     /*
       UNION ALL
 
     -- SMTR 
@@ -164,12 +162,10 @@ WITH
 
 
    */
-      ),
-
-    dt as (select * from {{ source('billing_iplan', 'Date') }})
+      )
 
   SELECT
    *
   FROM
-    dt left join GCP on dt.date = GCP.usage_date
+    GCP
   
