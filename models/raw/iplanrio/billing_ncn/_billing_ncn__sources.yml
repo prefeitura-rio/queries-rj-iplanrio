@@ -22,11 +22,11 @@ sources:
       - name: controle_projetos
       - name: Date
 
-  - name: billing_iplan_old
-    database: iplanrio-324115
-    schema: TaxiCosts
-    tables:
-      - name: gcp_billing_export_v1_01B087_0E43DD_2F1D01
+  # - name: billing_iplan_old
+  #   database: iplanrio-324115
+  #   schema: TaxiCosts
+  #   tables:
+  #     - name: gcp_billing_export_v1_01B087_0E43DD_2F1D01
 
   - name: billing_iplan_sei
     database: iplan-rio-sei
