@@ -1,0 +1,93 @@
+version: 2
+models :
+  - name: raw_protecao_social_cadunico__exclusao_membro
+    description: Table exclusao_membro from number 19
+    columns:
+      - name: id_prefeitura_membro_excluido
+        description: 'Chave única de identificação da Prefeitura da família a qual
+          o membro excluído pertence | version: 0626'
+      - name: id_familia_membro_excluido
+        description: 'Código Familiar único de identificação da Família na qual o
+          membro excluído pertence | version: 0626'
+      - name: folha_ceritao_obito_excluido
+        description: 'Folha da certidão de óbito da pessoa excluída | version: 0626'
+      - name: id_municipio_certidao_obito_excluido
+        description: 'Código IBGE do município da certidão de óbito da pessoa excluída
+          | version: 0626'
+      - name: livro_certidao_obito_excluido
+        description: 'Livro da certidão de óbito da pessoa excluída  | version: 0626'
+      - name: numero_termo_matricula_certidao_excluido
+        description: 'Número do Termo / Matrícula da Certidão. | version: 0626'
+      - name: cpf_operador_exclusao_membro
+        description: "CPF do Operador que realizou a exclusão da pessoa\nCaso a exclusão
+          tenha sido efetuada pelo sistema este campo apresentará o conteúdo “99999999999”.
+          | version: 0626"
+      - name: cpf_servidor_parecer_gestao_municipal_cadunico_membro
+        description: 'CPF do Servidor Público do Parecer da Gestão Municipal do Cadastro
+          Único do Membro Excluído | version: 0626'
+      - name: data_emissao_parecer_gestao_municipal_cadunico_membro
+        description: 'Data da Emissão do Parecer da Gestão Municipal do Cadastro Único
+          do Membro Excluído | version: 0626'
+      - name: data_exclusao_membro
+        description: 'Data da exclusão da família, no formato dd/mm/aaaa | version:
+          0626'
+      - name: descricao_cotivo_exclusao
+        description: 'Descrição do complemento do Motivo de Exclusão da pessoa | version:
+          0626'
+      - name: data_emissao_certidao_obito_excluido
+        description: 'Data de emissão da da certidão de óbito da pessoa excluída,
+          formato DDMMAAAA | version: 0626'
+      - name: id_motivo_exclusao_membro
+        description: "Código identificador do motivo de exclusão da pessoa\nPodendo
+          ser: 01-Falecimento da pessoa\n02-Desligamento da pessoa da Família em que
+          está cadastrada\n03-Solicitação da pessoa\n04-Decisão judicial\n05-Decurso
+          de prazo no estado cadastral “Em cadastramento”\n06-Mudança de endereço
+          ocorrido anteriormente a V7\n07-Cadastramento incorreto ocorrido anteriormente
+          a V7\n08-Pessoa Transferida\n09-Cadastro desatualizado há mais de 48 meses\n\
+          10-Averiguação Cadastral\n11-Multiplicidade\n12-NIS cancelado no Cadastro
+          NIS\n13-Averiguação-Suspeita de fraude\n14-Pessoa excluída por decurso de
+          prazo na situação \"Atribuindo NIS\"\n15-Averiguação-Suspeita de fraude
+          identificada pelo município\n16 – Pessoa excluída por possuir CPF nulo\n\
+          17-Membro excluído por ter sido incluído pelo próprio operador/Entrevistador
+          da família\n18-Identificação de cadastros incluídos ou alterados indevidamente
+          por agente público por má fé\n19-Indicativo de óbito há mais de 12 meses-exclusão
+          batch 20-Confirmação de óbito pelo RF via aplicativo 21-Indicativo de ób"
+      - name: motivo_exclusao_membro
+        description: "Código identificador do motivo de exclusão da pessoa\nPodendo
+          ser: 01-Falecimento da pessoa\n02-Desligamento da pessoa da Família em que
+          está cadastrada\n03-Solicitação da pessoa\n04-Decisão judicial\n05-Decurso
+          de prazo no estado cadastral “Em cadastramento”\n06-Mudança de endereço
+          ocorrido anteriormente a V7\n07-Cadastramento incorreto ocorrido anteriormente
+          a V7\n08-Pessoa Transferida\n09-Cadastro desatualizado há mais de 48 meses\n\
+          10-Averiguação Cadastral\n11-Multiplicidade\n12-NIS cancelado no Cadastro
+          NIS\n13-Averiguação-Suspeita de fraude\n14-Pessoa excluída por decurso de
+          prazo na situação \"Atribuindo NIS\"\n15-Averiguação-Suspeita de fraude
+          identificada pelo município\n16 – Pessoa excluída por possuir CPF nulo\n\
+          17-Membro excluído por ter sido incluído pelo próprio operador/Entrevistador
+          da família\n18-Identificação de cadastros incluídos ou alterados indevidamente
+          por agente público por má fé\n19-Indicativo de óbito há mais de 12 meses-exclusão
+          batch 20-Confirmação de óbito pelo RF via aplicativo 21-Indicativo de ób"
+      - name: id_municipio_parecer_gestao_municipal_cadunico_membro
+        description: 'Código IBGE do Município do Parecer da Gestão Municipal do Cadastro
+          Único do Membro Excluído | version: 0626'
+      - name: cartorio_certidao_obito_excluido
+        description: 'Nome do cartório da certidão de óbito da pessoa excluída | version:
+          0626'
+      - name: municipio_certidao_obito_excluido
+        description: 'Nome do município da certidão de óbito da pessoa excluída |
+          version: 0626'
+      - name: servidor_parecer_gestao_municipal_cadunico_membro
+        description: 'Nome do Servidor Público do Parecer da Gestão Municipal do Cadastro
+          Único do Membro Excluído | version: 0626'
+      - name: id_membro_excluido
+        description: 'Número do membro da Família excluído | version: 0626'
+      - name: numero_parecer_gestao_municipal_cadunico_membro
+        description: 'Número do Parecer da Gestão Municipal do Cadastro Único do Membro
+          Excluído | version: 0626'
+      - name: numero_registro_arquivo
+        description: '19 | version: 0626'
+      - name: sigla_uf_certidao_obito_excluido
+        description: 'UF da Certidão de óbito da pessoa excluída | version: 0626'
+      - name: sigla_uf_parecer_gestao_municipal_cadunico_membro
+        description: 'UF do Parecer da Gestão Municipal do Cadastro Único do Membro
+          Excluído | version: 0626'

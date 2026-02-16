@@ -1,0 +1,70 @@
+version: 2
+models :
+  - name: raw_protecao_social_cadunico__exclusao_servidor
+    description: Table exclusao_servidor from number 18
+    columns:
+      - name: id_prefeitura_exclusao
+        description: 'Chave única de identificação da Prefeitura da família excluída
+          | version: 0626'
+      - name: id_familia_exclusao
+        description: 'Código Familiar único de identificação da Família excluída |
+          version: 0626'
+      - name: cpf_operador_exclusao
+        description: "CPF do Operador que realizou a exclusão da família\nCaso a exclusão
+          tenha sido efetuada pelo sistema este campo apresentará o conteúdo “99999999999”
+          | version: 0626"
+      - name: cpf_servidor_parecer_gestao_municipal_cadunico
+        description: 'CPF do Servidor Público do Parecer da Gestão Municipal do Cadastro
+          Único | version: 0626'
+      - name: data_emissao_parecer_gestao_municipal_cadunico
+        description: 'Data da Emissão do Parecer da Gestão Municipal do Cadastro Único
+          | version: 0626'
+      - name: data_exclusao
+        description: 'Data da exclusão da família, no formato dd/mm/aaaa | version:
+          0626'
+      - name: descricao_cotivo_exclusao
+        description: 'Descrição do complemento do Motivo de Exclusão | version: 0626'
+      - name: id_motivo_exclusao
+        description: "Código identificador do motivo de exclusão da família\nPodendo
+          ser: 01-Falecimento de toda a família\n02-Recusa da família em prestar informações\n\
+          03-Omissão ou prestação de informações inverídicas pela família, por comprovada
+          má fé\n04-Solicitação do RUF\n05-Decisão judicial\n06-Cadastros desatualizados
+          cuja inclusão ou última atualização ocorreu há 48 (quarenta e oito) meses
+          ou mais\n07-Decurso de prazo no estado cadastral “Em Cadastramento”\n08
+          -Exclusão/Inativação ocorrida antes da versão 7\n09-Família transferida\n\
+          10-Família com renda per capita acima de ½ salário mínimo e renda familiar
+          acima de 3 salários mínimos e que não esteja vinculada a nenhum programa
+          social\n11-Cadastro desatualizado há mais de 48 meses\n12-Averiguação Cadastral
+          13-Exclusão de todos os integrantes da família\n14-Exclusão/Transferência
+          de todos os integrantes da família\n15-Averiguação-Suspeita de fraude\n\
+          16-Averiguação-Suspeita de fraude identificada pelo município\n17-Família
+          com renda per capita acima de meio salário mínimo e que não este"
+      - name: motivo_exclusao
+        description: "Código identificador do motivo de exclusão da família\nPodendo
+          ser: 01-Falecimento de toda a família\n02-Recusa da família em prestar informações\n\
+          03-Omissão ou prestação de informações inverídicas pela família, por comprovada
+          má fé\n04-Solicitação do RUF\n05-Decisão judicial\n06-Cadastros desatualizados
+          cuja inclusão ou última atualização ocorreu há 48 (quarenta e oito) meses
+          ou mais\n07-Decurso de prazo no estado cadastral “Em Cadastramento”\n08
+          -Exclusão/Inativação ocorrida antes da versão 7\n09-Família transferida\n\
+          10-Família com renda per capita acima de ½ salário mínimo e renda familiar
+          acima de 3 salários mínimos e que não esteja vinculada a nenhum programa
+          social\n11-Cadastro desatualizado há mais de 48 meses\n12-Averiguação Cadastral
+          13-Exclusão de todos os integrantes da família\n14-Exclusão/Transferência
+          de todos os integrantes da família\n15-Averiguação-Suspeita de fraude\n\
+          16-Averiguação-Suspeita de fraude identificada pelo município\n17-Família
+          com renda per capita acima de meio salário mínimo e que não este"
+      - name: id_municipio_parecer_gestao_municipal_cadunico
+        description: 'Código IBGE do Município do Parecer da Gestão Municipal do Cadastro
+          Único | version: 0626'
+      - name: servidor_parecer_gestao_municipal_cadunico
+        description: 'Nome do Servidor Público do Parecer da Gestão Municipal do Cadastro
+          Único | version: 0626'
+      - name: numero_parecer_gestao_municipal_cadunico
+        description: 'Número do Parecer da Gestão Municipal do Cadastro Único | version:
+          0626'
+      - name: numero_registro_arquivo
+        description: '18 | version: 0626'
+      - name: sigla_uf_parecer_gestao_municipal_cadunico
+        description: 'UF do Parecer da Gestão Municipal do Cadastro Único | version:
+          0626'

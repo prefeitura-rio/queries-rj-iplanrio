@@ -139,9 +139,12 @@ models:
           +schema: infraestrutura_siscob_obras
           +tags: "daily"
       smas:
+        +project: rj-smas
+        protecao_social_cadunico:
+          +materialized: table
+          +schema: protecao_social_cadunico
         cadunico:
           +materialized: table
-          +project: rj-smas
           +schema: brutos_data_metrica
       smdue:
         +tags: "smdue"

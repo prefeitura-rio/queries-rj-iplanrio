@@ -1,0 +1,83 @@
+version: 2
+models :
+  - name: raw_protecao_social_cadunico__domicilio
+    description: Table domicilio from number 02
+    columns:
+      - name: id_prefeitura
+        description: 'Chave única de identificação da Família | version: 0626'
+      - name: id_forma_abatecimento_agua_domicilio
+        description: 'Forma de abastecimento de água: campo numérico de 1 posição
+          variando de 1 a 4, dependendo da opção marcada no formulário | version:
+          0626'
+      - name: forma_abatecimento_agua_domicilio
+        description: 'Forma de abastecimento de água: campo numérico de 1 posição
+          variando de 1 a 4, dependendo da opção marcada no formulário | version:
+          0626'
+      - name: id_possui_agua_encanada_domicilio
+        description: 'Se o domicílio tem água encanada: 1-Sim, 2-Não | version: 0626'
+      - name: possui_agua_encanada_domicilio
+        description: 'Se o domicílio tem água encanada: 1-Sim, 2-Não | version: 0626'
+      - name: id_possui_banheiro_domicilio
+        description: 'Existência de banheiro: 1-Sim, 2-Não | version: 0626'
+      - name: possui_banheiro_domicilio
+        description: 'Existência de banheiro: 1-Sim, 2-Não | version: 0626'
+      - name: id_calcamento_domicilio
+        description: 'Calçamento: 1-Total, 2-Parcial, 3-Não Existe | version: 0626'
+      - name: calcamento_domicilio
+        description: 'Calçamento: 1-Total, 2-Parcial, 3-Não Existe | version: 0626'
+      - name: id_destino_lixo_domicilio
+        description: 'Forma de coleta do lixo: campo numérico de 1 posição variando
+          de 1 a 6, dependendo da opção marcada no formulário | version: 0626'
+      - name: destino_lixo_domicilio
+        description: 'Forma de coleta do lixo: campo numérico de 1 posição variando
+          de 1 a 6, dependendo da opção marcada no formulário | version: 0626'
+      - name: id_escoamento_sanitario_domicilio
+        description: 'Forma de escoamento sanitário: campo numérico de 1 posição variando
+          de 1 a 6, dependendo da opção marcada no formulário | version: 0626'
+      - name: escoamento_sanitario_domicilio
+        description: 'Forma de escoamento sanitário: campo numérico de 1 posição variando
+          de 1 a 6, dependendo da opção marcada no formulário | version: 0626'
+      - name: id_especie_domicilio
+        description: 'Espécie do domicílio: 1-Particular Permanente, 2-Particular
+          improvisado, 3-Coletivo | version: 0626'
+      - name: especie_domicilio
+        description: 'Espécie do domicílio: 1-Particular Permanente, 2-Particular
+          improvisado, 3-Coletivo | version: 0626'
+      - name: id_familia
+        description: 'Código Familiar | version: 0626'
+      - name: id_iluminacao_domicilio
+        description: 'Iluminação: campo numérico de 1 posição variando de 1 a 6, dependendo
+          da opção marcada no formulário | version: 0626'
+      - name: iluminacao_domicilio
+        description: 'Iluminação: campo numérico de 1 posição variando de 1 a 6, dependendo
+          da opção marcada no formulário | version: 0626'
+      - name: id_local_domicilio
+        description: 'Características do local onde está situado o domicílio: 1-Urbanas,
+          2-Rurais | version: 0626'
+      - name: local_domicilio
+        description: 'Características do local onde está situado o domicílio: 1-Urbanas,
+          2-Rurais | version: 0626'
+      - name: id_material_domicilio
+        description: 'Material predominante nas paredes externas do domicílio, campo
+          numérico de 1 posição variando de 1 a 8 dependendo da opção marcada no formulário
+          | version: 0626'
+      - name: material_domicilio
+        description: 'Material predominante nas paredes externas do domicílio, campo
+          numérico de 1 posição variando de 1 a 8 dependendo da opção marcada no formulário
+          | version: 0626'
+      - name: id_material_piso_domicilio
+        description: 'Material predominante no piso do domicílio, campo numérico de
+          1 posição variando de 1 a 7 dependendo da opção marcada no formulário |
+          version: 0626'
+      - name: material_piso_domicilio
+        description: 'Material predominante no piso do domicílio, campo numérico de
+          1 posição variando de 1 a 7 dependendo da opção marcada no formulário |
+          version: 0626'
+      - name: numero_registro_arquivo
+        description: '02 | version: 0626'
+      - name: quantidade_comodos_domicilio
+        description: 'Qtd de comodos do domicilio, campo numérico de 2 posições |
+          version: 0626'
+      - name: quantidade_comodos_dormitorio
+        description: 'Qtd de comodo servindo como dormitório do domicilio, campo numérico
+          de 2 posições | version: 0626'
