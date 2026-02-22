@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: agg_gcp_cost_by_orgao
+    description: >
+      View agregada por órgão para dashboard (Tabela Top Órgãos).
+      Consolida custos mensais por órgão com MoM e % do total.
+      Otimizada para tabelas do Looker Studio.
+    config:
+      schema: dashboard_gcp
+      alias: agg_gcp_cost_by_orgao
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_dashboard_gcp_agg_gcp_cost_by_orgao__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - orgao
+          config:
+            severity: error
+
+    columns:
+      - name: invoice_month_date
+        description: Mês de referência
+        data_type: date
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_agg_gcp_cost_by_orgao__invoice_month_date__not_null
+              config:
+                severity: error
+
+      - name: orgao
+        description: Órgão ou secretaria
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_agg_gcp_cost_by_orgao__orgao__not_null
+              config:
+                severity: error
+
+      - name: cost_net
+        description: Custo total do órgão no mês (todos os serviços)
+        data_type: float64
+
+      - name: bigquery_cost_net
+        description: Custo BigQuery do órgão no mês
+        data_type: float64
+
+      - name: previous_month_cost
+        description: Custo total do órgão no mês anterior
+        data_type: float64
+
+      - name: percent_of_total
+        description: >
+          Percentual do custo total da organização.
+          Fórmula: (cost_net / total_month_cost) × 100.
+        data_type: float64
+
+      - name: mom_pct
+        description: >
+          Variação percentual MoM.
+          Fórmula: ((atual - anterior) / anterior) × 100.
+        data_type: float64
+
+      - name: trend_direction
+        description: Direção da tendência (UP/DOWN/STABLE)
+        data_type: string
+        quote: true
+
+      - name: is_current_month
+        description: Flag indicando se é o mês atual
+        data_type: boolean

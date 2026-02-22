@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: dim_time
+    description: >
+      Dimensão temporal para dashboard de custos GCP.
+      Gera calendário mensal desde o primeiro mês de billing até 6 meses no futuro.
+      Inclui flags úteis (mês atual, anterior, passado, futuro) e formatações.
+    config:
+      schema: dashboard_gcp
+      alias: dim_time
+
+    columns:
+      - name: invoice_month_date
+        description: >
+          Primeiro dia do mês (chave primária).
+          Formato: YYYY-MM-01.
+        data_type: date
+        tests:
+          - unique:
+              name: mart_dashboard_gcp_dim_time__invoice_month_date__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_dashboard_gcp_dim_time__invoice_month_date__not_null
+              config:
+                severity: error
+
+      - name: year
+        description: Ano (YYYY)
+        data_type: int64
+
+      - name: month
+        description: Mês (1-12)
+        data_type: int64
+
+      - name: quarter
+        description: Trimestre (1-4)
+        data_type: int64
+
+      - name: year_month_name
+        description: >
+          Nome do ano-mês formatado.
+          Formato: "2024-01".
+        data_type: string
+        quote: true
+
+      - name: month_name_full
+        description: >
+          Nome completo do mês com ano.
+          Formato: "January 2024".
+        data_type: string
+        quote: true
+
+      - name: month_name_short
+        description: >
+          Nome abreviado do mês com ano.
+          Formato: "Jan 2024".
+        data_type: string
+        quote: true
+
+      - name: is_current_month
+        description: >
+          Flag indicando se é o mês atual (TRUE/FALSE).
+        data_type: boolean
+
+      - name: is_previous_month
+        description: >
+          Flag indicando se é o mês anterior (TRUE/FALSE).
+        data_type: boolean
+
+      - name: is_past_month
+        description: >
+          Flag indicando se é um mês passado (TRUE/FALSE).
+        data_type: boolean
+
+      - name: is_future_month
+        description: >
+          Flag indicando se é um mês futuro (TRUE/FALSE).
+        data_type: boolean
+
+      - name: month_sequence
+        description: >
+          Número sequencial do mês (1, 2, 3, ...).
+          Útil para ordenação.
+        data_type: int64

@@ -1,0 +1,161 @@
+version: 2
+
+models:
+  - name: fact_gcp_bigquery_jobs_detail
+    description: >
+      View detalhada de jobs BigQuery individuais para drill-down no dashboard.
+      Permite análise técnica por job, usuário, tabela.
+      IMPORTANTE: Sempre usar com filtros de invoice_month_date no Looker Studio
+      para evitar scan completo (custo alto).
+    config:
+      schema: dashboard_gcp
+      alias: fact_gcp_bigquery_jobs_detail
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_dashboard_gcp_fact_gcp_bigquery_jobs_detail__table__unique_combination
+          combination_of_columns:
+            - project_id
+            - job_id
+          config:
+            severity: error
+
+    columns:
+      - name: project_id
+        description: ID do projeto GCP
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_bigquery_jobs_detail__project_id__not_null
+              config:
+                severity: error
+
+      - name: job_id
+        description: ID único do job BigQuery
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_bigquery_jobs_detail__job_id__not_null
+              config:
+                severity: error
+
+      - name: orgao
+        description: Órgão/secretaria responsável
+        data_type: string
+        quote: true
+
+      - name: ambiente
+        description: Ambiente (prod/dev/sandbox)
+        data_type: string
+        quote: true
+
+      - name: projeto_base
+        description: Nome base do projeto
+        data_type: string
+        quote: true
+
+      - name: principal_email
+        description: Email do principal (lowercase)
+        data_type: string
+        quote: true
+
+      - name: principal_type
+        description: Tipo de principal (human/service_account/compute_engine/google_apis/unknown)
+        data_type: string
+        quote: true
+
+      - name: is_service_account
+        description: Flag se é service account
+        data_type: boolean
+
+      - name: user_email
+        description: Email original do usuário
+        data_type: string
+        quote: true
+
+      - name: job_type
+        description: Tipo do job (QUERY/LOAD/EXPORT/etc)
+        data_type: string
+        quote: true
+
+      - name: statement_type
+        description: Tipo de statement SQL (SELECT/INSERT/UPDATE/DML/DDL/etc)
+        data_type: string
+        quote: true
+
+      - name: destination_table_full_name
+        description: >
+          Nome completo da tabela de destino (project.dataset.table).
+          NULL se job não tem destino.
+        data_type: string
+        quote: true
+
+      - name: creation_time
+        description: Timestamp de criação do job (UTC)
+        data_type: timestamp
+
+      - name: end_time
+        description: Timestamp de término do job (UTC)
+        data_type: timestamp
+
+      - name: job_date_utc
+        description: Data do job em UTC
+        data_type: date
+
+      - name: job_month_utc
+        description: Mês do job em UTC (primeiro dia)
+        data_type: date
+
+      - name: invoice_month_date
+        description: Mês da invoice/faturamento (primeiro dia)
+        data_type: date
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_bigquery_jobs_detail__invoice_month_date__not_null
+              config:
+                severity: error
+
+      - name: total_bytes_billed
+        description: Bytes faturados pelo job
+        data_type: int64
+
+      - name: total_bytes_project_month
+        description: Total de bytes do projeto no mês (para proporção)
+        data_type: int64
+
+      - name: tib_billed
+        description: >
+          TiB faturados pelo job (total_bytes_billed / 1024^4).
+          Formato decimal com 4 casas.
+        data_type: float64
+
+      - name: bigquery_cost_gross
+        description: Custo bruto BigQuery do projeto/mês
+        data_type: float64
+
+      - name: bigquery_credits
+        description: Créditos BigQuery do projeto/mês
+        data_type: float64
+
+      - name: bigquery_cost_net
+        description: Custo líquido BigQuery do projeto/mês
+        data_type: float64
+
+      - name: allocated_cost_job
+        description: >
+          Custo alocado para este job específico (USD).
+          Alocação proporcional: (bytes_job / bytes_total_mês) × cost_net.
+        data_type: float64
+
+      - name: job_cost_proportion
+        description: >
+          Proporção do job no total do projeto/mês (0 a 1).
+          Formula: total_bytes_billed / total_bytes_project_month.
+        data_type: float64
+
+      - name: cost_per_tib
+        description: >
+          Custo por TiB deste job (USD/TiB).
+          Formula: allocated_cost_job / tib_billed.
+        data_type: float64

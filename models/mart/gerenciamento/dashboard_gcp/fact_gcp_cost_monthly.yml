@@ -1,0 +1,141 @@
+version: 2
+
+models:
+  - name: fact_gcp_cost_monthly
+    description: >
+      Tabela fato agregada mensal para dashboard de custos GCP.
+      Consolida custos de todos os serviços GCP por projeto/órgão/mês com stats de BigQuery.
+      Reduz volume de dados em ~99% para dashboards responsivos no Looker Studio.
+      Métrica primária: cost_net (cost_gross + credits = valor faturado real).
+    config:
+      schema: dashboard_gcp
+      alias: fact_gcp_cost_monthly
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_dashboard_gcp_fact_gcp_cost_monthly__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - project_id
+            - service_description
+          config:
+            severity: error
+
+    columns:
+      - name: invoice_month_date
+        description: >
+          Mês de referência da fatura (primeiro dia do mês).
+          Campo de particionamento. Baseado em invoice.month do billing.
+        data_type: date
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__invoice_month_date__not_null
+              config:
+                severity: error
+
+      - name: project_id
+        description: >
+          ID do projeto GCP.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__project_id__not_null
+              config:
+                severity: error
+
+      - name: orgao
+        description: >
+          Órgão ou secretaria responsável pelo projeto.
+          Derivado via join com raw_dim_gcp_project.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__orgao__not_null
+              config:
+                severity: error
+
+      - name: ambiente
+        description: >
+          Ambiente do projeto: prod, dev, sandbox.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__ambiente__not_null
+              config:
+                severity: error
+          - accepted_values:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__ambiente__accepted_values
+              values: ['prod', 'dev', 'sandbox']
+              config:
+                severity: warn
+
+      - name: service_description
+        description: >
+          Descrição do serviço GCP (ex: BigQuery, Compute Engine, Cloud Storage).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__service_description__not_null
+              config:
+                severity: error
+
+      - name: cost_gross
+        description: >
+          Custo bruto antes de aplicar créditos.
+          Agregação de SUM(cost) do billing.
+        data_type: float64
+
+      - name: credits
+        description: >
+          Total de créditos aplicados (valores negativos).
+          Inclui SUDs, promotional credits, committed use discounts.
+        data_type: float64
+
+      - name: cost_net
+        description: >
+          Custo líquido após créditos (MÉTRICA PRIMÁRIA).
+          Fórmula: cost_gross + credits.
+          Representa o valor efetivamente faturado.
+        data_type: float64
+        tests:
+          - not_null:
+              name: mart_dashboard_gcp_fact_gcp_cost_monthly__cost_net__not_null
+              config:
+                severity: error
+
+      - name: usage_amount
+        description: >
+          Quantidade de uso agregada (quando aplicável).
+          Unidade varia por serviço.
+        data_type: float64
+
+      - name: active_users_count
+        description: >
+          Usuários únicos ativos no mês (apenas BigQuery).
+          COUNT(DISTINCT principal_email WHERE principal_type = 'human').
+          NULL para outros serviços.
+        data_type: int64
+
+      - name: active_service_accounts_count
+        description: >
+          Service accounts únicas ativas no mês (apenas BigQuery).
+          COUNT(DISTINCT principal_email WHERE is_service_account = TRUE).
+          NULL para outros serviços.
+        data_type: int64
+
+      - name: jobs_count
+        description: >
+          Total de jobs executados no mês (apenas BigQuery).
+          COUNT(DISTINCT job_id).
+          NULL para outros serviços.
+        data_type: int64
+
+      - name: total_bytes_billed
+        description: >
+          Total de bytes faturados no mês (apenas BigQuery).
+          SUM(total_bytes_billed).
+          NULL para outros serviços.
+        data_type: int64

@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_service
+    description: >
+      Dimensão de serviços GCP com categorização.
+      Lista todos os serviços únicos do billing com categoria e ícone.
+      Útil para agrupamentos e filtros no dashboard.
+    config:
+      schema: dashboard_gcp
+      alias: dim_service
+
+    columns:
+      - name: service_description
+        description: >
+          Descrição completa do serviço GCP (chave primária).
+          Ex: "BigQuery", "Compute Engine", "Cloud Storage".
+        data_type: string
+        quote: true
+        tests:
+          - unique:
+              name: mart_dashboard_gcp_dim_service__service_description__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_dashboard_gcp_dim_service__service_description__not_null
+              config:
+                severity: error
+
+      - name: service_category
+        description: >
+          Categoria do serviço para agrupamento.
+          Valores: Data Analytics, AI & ML, Compute, Storage,
+          Database, Networking, Security, Observability, Other.
+        data_type: string
+        quote: true
+
+      - name: service_icon
+        description: >
+          Emoji/ícone representativo do serviço.
+          Útil para visualização no Looker Studio.
+        data_type: string
+        quote: true

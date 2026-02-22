@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: kpi_gcp_cost_summary
+    description: >
+      View de KPIs calculados para o dashboard (Overview Executivo).
+      Pré-calcula métricas complexas: total cost, MoM, forecast, tendência.
+      Otimizada para scorecards do Looker Studio (evita cálculos on-demand).
+    config:
+      schema: dashboard_gcp
+      alias: kpi_gcp_cost_summary
+
+    columns:
+      - name: invoice_month_date
+        description: Mês de referência (primeiro dia)
+        data_type: date
+        tests:
+          - unique:
+              name: mart_dashboard_gcp_kpi_gcp_cost_summary__invoice_month_date__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_dashboard_gcp_kpi_gcp_cost_summary__invoice_month_date__not_null
+              config:
+                severity: error
+
+      - name: total_cost_net
+        description: Custo total da organização no mês (todos os serviços GCP)
+        data_type: float64
+
+      - name: bigquery_cost_net
+        description: Custo BigQuery no mês
+        data_type: float64
+
+      - name: previous_month_total_cost
+        description: Custo total do mês anterior
+        data_type: float64
+
+      - name: previous_month_bigquery_cost
+        description: Custo BigQuery do mês anterior
+        data_type: float64
+
+      - name: total_active_users
+        description: Total de usuários ativos no BigQuery
+        data_type: int64
+
+      - name: previous_month_users
+        description: Total de usuários ativos no mês anterior
+        data_type: int64
+
+      - name: total_jobs
+        description: Total de jobs BigQuery executados
+        data_type: int64
+
+      - name: mom_pct_total
+        description: >
+          Variação percentual MoM do custo total.
+          Fórmula: ((atual - anterior) / anterior) × 100.
+          Positivo = aumento, Negativo = redução.
+        data_type: float64
+
+      - name: mom_pct_bigquery
+        description: Variação percentual MoM do custo BigQuery
+        data_type: float64
+
+      - name: mom_pct_users
+        description: Variação percentual MoM de usuários ativos
+        data_type: float64
+
+      - name: trend_direction
+        description: >
+          Direção da tendência: UP (aumento >5%), DOWN (redução >5%), STABLE (±5%).
+        data_type: string
+        quote: true
+
+      - name: forecast_next_month_total
+        description: >
+          Previsão do custo total para o próximo mês.
+          Baseado em média móvel 3 meses.
+        data_type: float64
+
+      - name: forecast_next_month_bigquery
+        description: >
+          Previsão do custo BigQuery para o próximo mês.
+          Baseado em média móvel 3 meses.
+        data_type: float64
+
+      - name: cost_per_user
+        description: >
+          Custo BigQuery por usuário ativo.
+          Fórmula: bigquery_cost_net / total_active_users.
+        data_type: float64
+
+      - name: is_current_month
+        description: Flag indicando se é o mês atual
+        data_type: boolean
+
+      - name: is_previous_month
+        description: Flag indicando se é o mês anterior
+        data_type: boolean
