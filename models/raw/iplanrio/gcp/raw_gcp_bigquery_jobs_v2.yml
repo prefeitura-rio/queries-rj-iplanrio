@@ -8,9 +8,6 @@ models:
       classificação de principal (user/service_account), e join com dimensão de projetos.
       Permite auditoria, rastreio, análise de uso e persistência de dados além do
       retention de 180 dias do BigQuery.
-    config:
-      schema: brutos_gcp
-      alias: gcp_bigquery_jobs_v2
     tests:
       - dbt_utils.unique_combination_of_columns:
           name: raw_brutos_gcp_gcp_bigquery_jobs_v2__table__unique_combination

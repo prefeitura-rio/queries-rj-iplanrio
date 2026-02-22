@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        schema='brutos_gcp',
         alias='dim_gcp_project'
     )
 }}
@@ -34,8 +33,8 @@
 ] %}
 
 WITH all_projects AS (
-    -- Projetos da lista explícita de INFORMATION_SCHEMA.JOBS_BY_PROJECT
-    SELECT DISTINCT '{{ projetos | join("' AS project_id UNION ALL SELECT '") }}' AS project_id
+    -- Projetos listados manualmente (INFORMATION_SCHEMA + projetos adicionais do IPLANRIO)
+    SELECT DISTINCT project_id
     FROM (
         SELECT
             'rj-cetrio' AS project_id UNION ALL SELECT 'rj-cetrio-dev' UNION ALL
@@ -87,21 +86,9 @@ projects_with_classification AS (
 
         -- Derivação de orgao
         CASE
-            -- Lista específica do IPLANRIO (baseado em mart_gerenciamento_custo_gcp.sql)
+            -- Lista específica do IPLANRIO (reutilizando variável Jinja projetos_iplanrio)
             WHEN project_id IN (
-                'dados-rio-billing', 'datario', 'datario-dev',
-                'hackathon-fgv-03-2024',
-                'rj-caio',
-                'rj-chatbot', 'rj-chatbot-dev',
-                'rj-comunicacao', 'rj-comunicacao-dev',
-                'rj-crm-registry', 'rj-crm-registry-dev',
-                'rj-datalab-sandbox',
-                'rj-escritorio', 'rj-escritorio-dev',
-                'rj-ia-desenvolvimento',
-                'rj-mapa-realizacoes', 'rj-mapa-realizacoes-dev',
-                'rj-precipitacao',
-                'rj-superapp', 'rj-superapp-staging',
-                'rj-vision-ai'
+                {% for p in projetos_iplanrio %}'{{ p }}'{% if not loop.last %}, {% endif %}{% endfor %}
             ) THEN 'IPLANRIO'
 
             -- Hackathon e similares
