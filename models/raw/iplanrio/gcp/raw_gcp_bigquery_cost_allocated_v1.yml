@@ -16,6 +16,7 @@ models:
         description: >
           ID do projeto GCP onde o job foi executado.
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -26,6 +27,7 @@ models:
           Identificador do job no BigQuery.
           Único em combinação com project_id (unique_key no modelo).
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -35,11 +37,13 @@ models:
         description: >
           Email do principal normalizado (lowercase).
         data_type: string
+        quote: true
 
       - name: principal_type
         description: >
           Tipo de principal: human, service_account, compute_engine, google_apis, unknown.
         data_type: string
+        quote: true
 
       - name: is_service_account
         description: >
@@ -50,31 +54,37 @@ models:
         description: >
           Órgão ou secretaria responsável pelo projeto.
         data_type: string
+        quote: true
 
       - name: ambiente
         description: >
           Ambiente do projeto: prod, dev, sandbox.
         data_type: string
+        quote: true
 
       - name: projeto_base
         description: >
           Nome base do projeto sem sufixos de ambiente.
         data_type: string
+        quote: true
 
       - name: user_email
         description: >
           Email original do usuário ou service account.
         data_type: string
+        quote: true
 
       - name: job_type
         description: >
           Tipo do job: QUERY, LOAD, EXPORT, etc.
         data_type: string
+        quote: true
 
       - name: statement_type
         description: >
           Tipo de statement SQL: SELECT, INSERT, UPDATE, DML, DDL, etc.
         data_type: string
+        quote: true
 
       - name: creation_time
         description: >

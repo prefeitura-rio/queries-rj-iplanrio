@@ -86,6 +86,10 @@
     "rj-smtr-staging",
 ] %}
 
+-- Nota: Projetos removidos por falta de permissão de acesso:
+-- dados-rio-billing, datario, datario-dev, hackathon-fgv-03-2024,
+-- rj-caio, rj-superapp, rj-superapp-staging, rj-vision-ai
+
 -- Filtro de data para incremental
 {% if is_incremental() %}
     {% set date_filter = "DATE(creation_time) >= DATE_SUB(CURRENT_DATE(), INTERVAL " ~ lookback_days ~ " DAY)" %}
@@ -168,15 +172,19 @@ WITH
 
             REGEXP_CONTAINS(user_email, r'gserviceaccount\.com$') AS is_service_account,
 
+            -- IMPORTANTE: Ordem do CASE do mais específico para o mais genérico
             CASE
                 WHEN user_email IS NULL THEN 'unknown'
-                WHEN REGEXP_CONTAINS(user_email, r'@iam\.gserviceaccount\.com$') THEN 'service_account'
-                WHEN REGEXP_CONTAINS(user_email, r'gserviceaccount\.com$') THEN 'service_account'
-                WHEN REGEXP_CONTAINS(user_email, r'@.*\.iam\.gserviceaccount\.com$') THEN 'service_account'
+                -- Padrões específicos primeiro
                 WHEN REGEXP_CONTAINS(user_email, r'^[0-9]+-compute@developer\.gserviceaccount\.com$') THEN 'compute_engine'
                 WHEN REGEXP_CONTAINS(user_email, r'@cloudservices\.gserviceaccount\.com$') THEN 'google_apis'
                 WHEN REGEXP_CONTAINS(user_email, r'\.google\.com$') THEN 'google_apis'
+                -- Padrões genéricos de service account depois
+                WHEN REGEXP_CONTAINS(user_email, r'@iam\.gserviceaccount\.com$') THEN 'service_account'
+                WHEN REGEXP_CONTAINS(user_email, r'@.*\.iam\.gserviceaccount\.com$') THEN 'service_account'
+                WHEN REGEXP_CONTAINS(user_email, r'gserviceaccount\.com$') THEN 'service_account'
                 WHEN REGEXP_CONTAINS(user_email, r'@.*\.gserviceaccount\.com$') THEN 'service_account'
+                -- Default: humano
                 ELSE 'human'
             END AS principal_type
 
