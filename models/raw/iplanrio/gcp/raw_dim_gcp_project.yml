@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: raw_dim_gcp_project
+    description: >
+      Dimensão de projetos GCP com classificação centralizada de órgão e ambiente.
+      Centraliza a lógica de derivação de orgao/ambiente/projeto_base para evitar
+      duplicação em modelos downstream. Inclui todos os projetos do INFORMATION_SCHEMA
+      mais projetos adicionais do billing.
+    config:
+      schema: brutos_gcp
+      alias: dim_gcp_project
+
+    columns:
+      - name: project_id
+        description: >
+          ID único do projeto GCP. Chave primária da dimensão.
+        data_type: string
+        quote: true
+        tests:
+          - unique:
+              config:
+                severity: error
+          - not_null:
+              config:
+                severity: error
+
+      - name: orgao
+        description: >
+          Órgão ou secretaria responsável pelo projeto. Derivado do project_id
+          usando regras específicas (ex: rj-sme → SME, rj-rec-rio → RECRIO).
+          Projetos específicos são mapeados manualmente para IPLANRIO.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              config:
+                severity: error
+
+      - name: ambiente
+        description: >
+          Ambiente do projeto: prod (produção), dev (desenvolvimento), ou sandbox (testes).
+          Derivado dos sufixos do project_id (-dev, -sandbox, -staging).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              config:
+                severity: error
+          - accepted_values:
+              values: ['prod', 'dev', 'sandbox']
+              config:
+                severity: error
+
+      - name: projeto_base
+        description: >
+          Nome base do projeto sem sufixos de ambiente. Por exemplo,
+          'rj-sme-dev' → 'rj-sme'. Útil para agrupar todos os ambientes
+          de um mesmo projeto.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              config:
+                severity: error
