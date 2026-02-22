@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: fact_gcp_bigquery_jobs_detail
+    description: |
+      View detalhada de jobs BigQuery para drill-down técnico.
+
+      **Propósito**: Permitir análise granular de jobs individuais no BigQuery.
+      Usado para identificar jobs/usuários/tabelas mais caros.
+
+      **Granularidade**:
+      - job_id (individual) - ~7.8M+ jobs
+
+      **⚠️ ATENÇÃO - PERFORMANCE**:
+      Esta view acessa milhões de linhas. No Looker Studio, SEMPRE usar com:
+      - Filtro de invoice_month_date (últimos 1-3 meses)
+      - Limite de linhas (max 100-1000)
+      - Paginação ativada
+
+      **Uso no Looker Studio**:
+      - Tabela Top 20 Usuários por custo
+      - Tabela Top 100 Jobs mais caros
+      - Drill-down de custos específicos
+      - Análise por tipo de job e statement
+
+      **Fonte de Dados**:
+      - raw_gcp_bigquery_cost_allocated_v1
+
+    config:
+      schema: dashboard_gcp
+      alias: fact_gcp_bigquery_jobs_detail
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - bigquery
+        - detail
+
+    columns:
+      - name: project_id
+        description: "ID do projeto GCP onde o job foi executado."
+        data_type: string
+        tests:
+          - not_null
+
+      - name: job_id
+        description: "ID único do job BigQuery."
+        data_type: string
+        tests:
+          - not_null
+
+      - name: principal_email
+        description: "Email do principal que executou o job (usuário ou service account), em lowercase."
+        data_type: string
+
+      - name: user_email
+        description: "Email original do usuário (antes da normalização)."
+        data_type: string
+
+      - name: principal_type
+        description: "Tipo do principal: user (humano), service_account, compute_engine, google_apis, etc."
+        data_type: string
+
+      - name: is_service_account
+        description: "Flag indicando se o principal é uma service account (TRUE/FALSE)."
+        data_type: boolean
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto."
+        data_type: string
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox."
+        data_type: string
+
+      - name: projeto_base
+        description: "Nome base do projeto (sem sufixos -dev, -staging, -sandbox)."
+        data_type: string
+
+      - name: job_type
+        description: "Tipo do job BigQuery (QUERY, LOAD, EXTRACT, COPY)."
+        data_type: string
+
+      - name: statement_type
+        description: "Tipo de statement SQL (SELECT, INSERT, UPDATE, CREATE_TABLE, etc.)."
+        data_type: string
+
+      - name: creation_time
+        description: "Timestamp de criação do job (UTC)."
+        data_type: timestamp
+
+      - name: end_time
+        description: "Timestamp de término do job (UTC)."
+        data_type: timestamp
+
+      - name: job_date_utc
+        description: "Data do job em UTC (DATE da creation_time)."
+        data_type: date
+
+      - name: job_month_utc
+        description: "Mês do job em UTC (primeiro dia do mês)."
+        data_type: date
+
+      - name: invoice_month_date
+        description: "Mês de faturamento (primeiro dia do mês). Usado para particionamento de filtros."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: total_bytes_billed
+        description: "Total de bytes faturados pelo job."
+        data_type: int64
+
+      - name: tib_billed
+        description: "Total de TiB (tebibytes) faturados pelo job. Calculado: total_bytes_billed / 1024^4."
+        data_type: float64
+
+      - name: total_bytes_project_month
+        description: "Total de bytes faturados do projeto no mês (para cálculo de proporção)."
+        data_type: int64
+
+      - name: allocated_cost_job
+        description: "Custo alocado para este job específico (proporcional aos bytes faturados)."
+        data_type: float64
+
+      - name: job_cost_proportion
+        description: "Proporção do custo deste job em relação ao total do projeto/mês (0-1)."
+        data_type: float64
+
+      - name: cost_per_tib
+        description: "Custo por TiB processado ($/TiB). Métrica de eficiência."
+        data_type: float64
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - project_id
+            - job_id

@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: dim_service
+    description: |
+      Dimensão de serviços GCP com categorização.
+
+      **Propósito**: Fornecer lista de serviços GCP únicos com classificação por categoria.
+      Facilita agrupamentos e filtros por tipo de serviço no dashboard.
+
+      **Granularidade**:
+      - service_description (único)
+
+      **Categorias**:
+      - Data Analytics (BigQuery, Dataflow, Pub/Sub, etc.)
+      - Compute (Compute Engine, Kubernetes, App Engine, etc.)
+      - Storage (Cloud Storage, Filestore, etc.)
+      - Database (Cloud SQL, Firestore, Bigtable, etc.)
+      - Networking (VPC, Load Balancing, CDN, etc.)
+      - AI & ML (Vertex AI, Vision, etc.)
+      - Security (Cloud Armor, Secret Manager, etc.)
+      - Observability (Logging, Monitoring, etc.)
+      - Other (demais serviços)
+
+      **Uso no Looker Studio**:
+      - Filtro por categoria de serviço
+      - Agrupamento em gráficos (ex: custo por categoria)
+      - Ícones visuais (service_icon)
+
+    config:
+      schema: dashboard_gcp
+      alias: dim_service
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - dimension
+        - service
+
+    columns:
+      - name: service_description
+        description: "Nome do serviço GCP (ex: 'BigQuery', 'Compute Engine'). Chave primária."
+        data_type: string
+        tests:
+          - not_null
+          - unique
+
+      - name: service_category
+        description: |
+          Categoria do serviço GCP. Valores possíveis:
+          - Data Analytics
+          - Compute
+          - Storage
+          - Database
+          - Networking
+          - AI & ML
+          - Security
+          - Observability
+          - Other
+        data_type: string
+
+      - name: service_icon
+        description: "Ícone emoji representando a categoria do serviço (para visualização no Looker)."
+        data_type: string

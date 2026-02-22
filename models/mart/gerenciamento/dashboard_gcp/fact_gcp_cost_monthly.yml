@@ -1,0 +1,119 @@
+version: 2
+
+models:
+  - name: fact_gcp_cost_monthly
+    description: |
+      Tabela fato agregada mensal de custos GCP por projeto, órgão e serviço.
+
+      **Propósito**: Tabela principal do dashboard de custos GCP no Looker Studio.
+      Reduz volume de dados em ~99% para performance otimizada.
+
+      **Granularidade**:
+      - project_id + orgao + invoice_month_date + service_description
+
+      **Atualização**:
+      - Incremental diário com lookback de 3 meses
+      - Estratégia: insert_overwrite (reprocessa partições modificadas)
+
+      **Particionamento**:
+      - Campo: invoice_month_date (mês)
+      - Clustering: orgao, service_description
+
+      **Fonte de Dados**:
+      - raw_gcp_billing (custos reais de faturamento)
+      - raw_gcp_bigquery_cost_allocated_v1 (estatísticas de jobs BigQuery)
+      - raw_dim_gcp_project (classificação de órgãos)
+
+    config:
+      schema: dashboard_gcp
+      alias: fact_gcp_cost_monthly
+      materialized: incremental
+      incremental_strategy: insert_overwrite
+      partition_by:
+        field: invoice_month_date
+        data_type: date
+        granularity: month
+      cluster_by:
+        - orgao
+        - service_description
+      tags:
+        - dashboard
+        - gcp
+        - cost
+        - monthly
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês de faturamento (primeiro dia do mês). Derivado de invoice.month (YYYYMM)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: project_id
+        description: "ID único do projeto GCP. Excluídos registros sem project_id (custos organization-level)."
+        data_type: string
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto. Derivado de raw_dim_gcp_project."
+        data_type: string
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox. Derivado de raw_dim_gcp_project."
+        data_type: string
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['prod', 'dev', 'sandbox']
+
+      - name: service_description
+        description: "Nome do serviço GCP (ex: BigQuery, Compute Engine, Cloud Storage)."
+        data_type: string
+        tests:
+          - not_null
+
+      - name: cost_gross
+        description: "Custo bruto antes de créditos (SUM de cost do billing)."
+        data_type: float64
+
+      - name: credits
+        description: "Soma de créditos aplicados (valores negativos). Inclui SUDs, promotional credits, etc."
+        data_type: float64
+
+      - name: cost_net
+        description: |
+          **Métrica primária**: Custo líquido após créditos (cost_gross + credits).
+          Este é o valor efetivamente faturado e deve ser usado para todas as análises.
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: usage_amount
+        description: "Quantidade de uso agregada do mês (quando aplicável ao serviço)."
+        data_type: float64
+
+      - name: active_users_count
+        description: "Número de usuários humanos únicos ativos no BigQuery no mês. NULL para outros serviços."
+        data_type: int64
+
+      - name: active_service_accounts_count
+        description: "Número de service accounts únicas ativas no BigQuery no mês. NULL para outros serviços."
+        data_type: int64
+
+      - name: jobs_count
+        description: "Total de jobs executados no BigQuery no mês. NULL para outros serviços."
+        data_type: int64
+
+      - name: total_bytes_billed
+        description: "Total de bytes faturados no BigQuery no mês. NULL para outros serviços."
+        data_type: int64
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - invoice_month_date
+            - project_id
+            - service_description
