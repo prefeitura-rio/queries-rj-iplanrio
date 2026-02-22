@@ -19,9 +19,11 @@ models:
         quote: true
         tests:
           - unique:
+              name: raw_brutos_gcp_dim_gcp_project__project_id__unique
               config:
                 severity: error
           - not_null:
+              name: raw_brutos_gcp_dim_gcp_project__project_id__not_null
               config:
                 severity: error
 
@@ -34,6 +36,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_dim_gcp_project__orgao__not_null
               config:
                 severity: error
 
@@ -45,9 +48,11 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_dim_gcp_project__ambiente__not_null
               config:
                 severity: error
           - accepted_values:
+              name: raw_brutos_gcp_dim_gcp_project__ambiente__accepted_values
               values: ['prod', 'dev', 'sandbox']
               config:
                 severity: error
@@ -61,5 +66,6 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_dim_gcp_project__projeto_base__not_null
               config:
                 severity: error
