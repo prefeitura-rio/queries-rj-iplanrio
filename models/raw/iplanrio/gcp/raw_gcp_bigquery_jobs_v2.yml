@@ -11,6 +11,13 @@ models:
     config:
       schema: brutos_gcp
       alias: gcp_bigquery_jobs_v2
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - project_id
+            - job_id
+          config:
+            severity: error
 
     columns:
       - name: origem_projeto
@@ -18,6 +25,7 @@ models:
           Projeto GCP de origem do job (ex: rj-iplanrio, rj-iplanrio-dev).
           Indica de qual projeto o job foi extraído via INFORMATION_SCHEMA.
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -27,6 +35,7 @@ models:
         description: >
           ID do projeto GCP onde o job foi executado.
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -34,12 +43,11 @@ models:
 
       - name: job_id
         description: >
-          Identificador único do job no BigQuery.
+          Identificador do job no BigQuery.
+          Único em combinação com project_id (ver teste dbt_utils.unique_combination_of_columns).
         data_type: string
+        quote: true
         tests:
-          - unique:
-              config:
-                severity: error
           - not_null:
               config:
                 severity: error
@@ -48,11 +56,13 @@ models:
         description: >
           E-mail do usuário ou conta de serviço responsável pela execução do job.
         data_type: string
+        quote: true
 
       - name: principal_email
         description: >
           Email do principal normalizado (lowercase) para facilitar joins e agrupamentos.
         data_type: string
+        quote: true
 
       - name: is_service_account
         description: >
@@ -70,6 +80,7 @@ models:
           service_account (conta de serviço), compute_engine (Compute Engine default SA),
           google_apis (Google APIs service account), unknown (não identificado).
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -83,6 +94,7 @@ models:
         description: >
           Tipo do job executado (ex: QUERY, LOAD, EXPORT).
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -92,11 +104,13 @@ models:
         description: >
           Consulta SQL executada pelo job, quando aplicável.
         data_type: string
+        quote: true
 
       - name: state
         description: >
           Status final do job (ex: DONE, PENDING, RUNNING, FAILED).
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -106,21 +120,25 @@ models:
         description: >
           ID do projeto de destino dos resultados do job.
         data_type: string
+        quote: true
 
       - name: destination_dataset_id
         description: >
           Dataset de destino dos resultados do job.
         data_type: string
+        quote: true
 
       - name: destination_table_id
         description: >
           Tabela de destino dos resultados do job.
         data_type: string
+        quote: true
 
       - name: error_result
         description: >
           Informação sobre erro do job, quando houver. Nulo se bem-sucedido.
         data_type: string
+        quote: true
 
       - name: creation_time
         description: >
@@ -140,6 +158,7 @@ models:
         description: >
           Tipo de statement SQL executado (ex: SELECT, INSERT, UPDATE, DML, DDL).
         data_type: string
+        quote: true
 
       - name: total_bytes_processed
         description: >
@@ -176,6 +195,7 @@ models:
           Órgão ou secretaria responsável pelo projeto, obtido via join com
           raw_dim_gcp_project.
         data_type: string
+        quote: true
         tests:
           - not_null:
               config:
@@ -186,6 +206,7 @@ models:
           Ambiente do projeto (prod, dev, sandbox), obtido via join com
           raw_dim_gcp_project.
         data_type: string
+        quote: true
         tests:
           - accepted_values:
               values: ['prod', 'dev', 'sandbox']
@@ -197,3 +218,4 @@ models:
           Nome base do projeto sem sufixos de ambiente, obtido via join com
           raw_dim_gcp_project.
         data_type: string
+        quote: true
