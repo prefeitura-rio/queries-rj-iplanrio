@@ -38,6 +38,7 @@ WITH
 
         FROM {{ ref('raw_gcp_billing') }}
         WHERE cost_type = 'regular'
+            AND project.id IS NOT NULL  -- Excluir custos sem projeto (organization-level)
 
         {% if is_incremental() %}
             AND invoice_competencia_particao >= DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months }} MONTH), MONTH)
