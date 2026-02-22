@@ -13,6 +13,7 @@ models:
       alias: gcp_bigquery_jobs_v2
     tests:
       - dbt_utils.unique_combination_of_columns:
+          name: raw_brutos_gcp_gcp_bigquery_jobs_v2__table__unique_combination
           combination_of_columns:
             - project_id
             - job_id
@@ -28,6 +29,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__origem_projeto__not_null
               config:
                 severity: error
 
@@ -38,6 +40,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__project_id__not_null
               config:
                 severity: error
 
@@ -49,6 +52,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_id__not_null
               config:
                 severity: error
 
@@ -71,6 +75,7 @@ models:
         data_type: boolean
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__is_service_account__not_null
               config:
                 severity: error
 
@@ -83,9 +88,11 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__principal_type__not_null
               config:
                 severity: error
           - accepted_values:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__principal_type__accepted_values
               values: ['human', 'service_account', 'compute_engine', 'google_apis', 'unknown']
               config:
                 severity: error
@@ -97,6 +104,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_type__not_null
               config:
                 severity: error
 
@@ -113,6 +121,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__state__not_null
               config:
                 severity: error
 
@@ -137,6 +146,7 @@ models:
       - name: error_result
         description: >
           Informação sobre erro do job, quando houver. Nulo se bem-sucedido.
+          Serializado como JSON string do STRUCT original.
         data_type: string
         quote: true
 
@@ -146,6 +156,7 @@ models:
         data_type: timestamp
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__creation_time__not_null
               config:
                 severity: error
 
@@ -177,6 +188,7 @@ models:
         data_type: date
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_date_utc__not_null
               config:
                 severity: error
 
@@ -187,6 +199,7 @@ models:
         data_type: date
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_month_utc__not_null
               config:
                 severity: error
 
@@ -198,6 +211,7 @@ models:
         quote: true
         tests:
           - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__orgao__not_null
               config:
                 severity: warn  # warn porque depende do join
 
@@ -209,6 +223,7 @@ models:
         quote: true
         tests:
           - accepted_values:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__ambiente__accepted_values
               values: ['prod', 'dev', 'sandbox']
               config:
                 severity: warn  # warn porque depende do join

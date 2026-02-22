@@ -112,7 +112,7 @@
             destination_table.project_id AS destination_project_id,
             destination_table.dataset_id AS destination_dataset_id,
             destination_table.table_id AS destination_table_id,
-            error_result,
+            TO_JSON_STRING(error_result) AS error_result,
             creation_time,
             end_time,
             statement_type,
@@ -170,7 +170,8 @@ WITH
             -- Principal classification
             LOWER(user_email) AS principal_email,
 
-            REGEXP_CONTAINS(user_email, r'gserviceaccount\.com$') AS is_service_account,
+            -- COALESCE garante FALSE em vez de NULL quando user_email é NULL
+            COALESCE(REGEXP_CONTAINS(user_email, r'gserviceaccount\.com$'), FALSE) AS is_service_account,
 
             -- IMPORTANTE: Ordem do CASE do mais específico para o mais genérico
             CASE
@@ -183,7 +184,6 @@ WITH
                 WHEN REGEXP_CONTAINS(user_email, r'@iam\.gserviceaccount\.com$') THEN 'service_account'
                 WHEN REGEXP_CONTAINS(user_email, r'@.*\.iam\.gserviceaccount\.com$') THEN 'service_account'
                 WHEN REGEXP_CONTAINS(user_email, r'gserviceaccount\.com$') THEN 'service_account'
-                WHEN REGEXP_CONTAINS(user_email, r'@.*\.gserviceaccount\.com$') THEN 'service_account'
                 -- Default: humano
                 ELSE 'human'
             END AS principal_type
