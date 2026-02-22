@@ -7,9 +7,6 @@ models:
       Centraliza a lógica de derivação de orgao/ambiente/projeto_base para evitar
       duplicação em modelos downstream. Inclui todos os projetos do INFORMATION_SCHEMA
       mais projetos adicionais do billing.
-    config:
-      schema: brutos_gcp
-      alias: dim_gcp_project
 
     columns:
       - name: project_id

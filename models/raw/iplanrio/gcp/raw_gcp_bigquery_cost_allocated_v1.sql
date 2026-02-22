@@ -2,9 +2,7 @@
     config(
         materialized='incremental',
         incremental_strategy='insert_overwrite',
-        schema='brutos_gcp',
         alias='gcp_bigquery_cost_allocated_v1',
-        unique_key=['project_id', 'job_id'],
         partition_by={
             "field": "invoice_month_date",
             "data_type": "date",

@@ -7,9 +7,6 @@ models:
       Une o custo real do billing GCP com os jobs do BigQuery para alocar
       proporcionalmente o custo baseado em bytes faturados. Permite rastreabilidade
       completa: quanto do custo do billing foi consumido por cada job.
-    config:
-      schema: brutos_gcp
-      alias: gcp_bigquery_cost_allocated_v1
     tests:
       - dbt_utils.unique_combination_of_columns:
           name: raw_brutos_gcp_gcp_bigquery_cost_allocated_v1__table__unique_combination
