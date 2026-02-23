@@ -46,6 +46,10 @@ models:
         data_type: date
         tests:
           - not_null
+          - relationships:
+              name: fact_gcp_cost_monthly__invoice_month_date__relationships
+              to: ref('dim_time')
+              field: invoice_month_date
 
       - name: project_id
         description: "ID único do projeto GCP. Excluídos registros sem project_id (custos organization-level)."
@@ -67,8 +71,10 @@ models:
         quote: true
         tests:
           - not_null
-          - accepted_values:
-              values: ['prod', 'dev', 'sandbox']
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: fact_gcp_cost_monthly__ambiente__expect_column_values_to_be_in_set
+              value_set: ['prod', 'dev', 'sandbox']
+              severity: error
 
       - name: service_description
         description: "Nome do serviço GCP (ex: BigQuery, Compute Engine, Cloud Storage)."
@@ -76,41 +82,46 @@ models:
         quote: true
         tests:
           - not_null
+          - relationships:
+              name: fact_gcp_cost_monthly__service_description__relationships
+              to: ref('dim_service')
+              field: service_description
 
       - name: cost_gross
-        description: "Custo bruto antes de créditos (SUM de cost do billing)."
+        description: "Custo bruto antes de créditos (SUM de cost do billing). Valores em USD, faixa: >= 0. Fonte: raw_gcp_billing.cost."
         data_type: float64
 
       - name: credits
-        description: "Soma de créditos aplicados (valores negativos). Inclui SUDs, promotional credits, etc."
+        description: "Soma de créditos aplicados (valores negativos ou zero). Inclui SUDs, promotional credits, etc. Valores em USD, faixa: <= 0. Fonte: raw_gcp_billing.credits."
         data_type: float64
 
       - name: cost_net
         description: |
           **Métrica primária**: Custo líquido após créditos (cost_gross + credits).
           Este é o valor efetivamente faturado e deve ser usado para todas as análises.
+          Valores em USD, faixa: qualquer valor (pode ser negativo se créditos excederem custos). Fonte: calculado (cost_gross + credits).
         data_type: float64
         tests:
           - not_null
 
       - name: usage_amount
-        description: "Quantidade de uso agregada do mês (quando aplicável ao serviço)."
+        description: "Quantidade de uso agregada do mês (quando aplicável ao serviço). Unidade varia por serviço (GB, horas, requisições, etc). Faixa: >= 0. Fonte: raw_gcp_billing.usage.amount."
         data_type: float64
 
       - name: active_users_count
-        description: "Número de usuários humanos únicos ativos no BigQuery no mês. NULL para outros serviços."
+        description: "Número de usuários humanos únicos ativos no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1 (principal_type = 'user')."
         data_type: int64
 
       - name: active_service_accounts_count
-        description: "Número de service accounts únicas ativas no BigQuery no mês. NULL para outros serviços."
+        description: "Número de service accounts únicas ativas no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1 (is_service_account = true)."
         data_type: int64
 
       - name: jobs_count
-        description: "Total de jobs executados no BigQuery no mês. NULL para outros serviços."
+        description: "Total de jobs executados no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1.job_id (COUNT DISTINCT)."
         data_type: int64
 
       - name: total_bytes_billed
-        description: "Total de bytes faturados no BigQuery no mês. NULL para outros serviços."
+        description: "Total de bytes faturados no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1.total_bytes_billed (SUM)."
         data_type: int64
 
     tests:

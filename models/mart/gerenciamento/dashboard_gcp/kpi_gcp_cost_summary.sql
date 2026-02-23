@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='view',
+        materialized='table',
         alias='kpi_gcp_cost_summary',
         tags=['dashboard', 'gcp', 'kpi', 'summary'],
     )
@@ -104,5 +104,25 @@ with_metrics AS (
     FROM with_lag
 )
 
-SELECT * FROM with_metrics
+SELECT
+    invoice_month_date,
+    total_cost_net,
+    bigquery_cost_net,
+    total_active_users,
+    total_service_accounts,
+    total_jobs,
+    previous_month_total_cost,
+    previous_month_bigquery_cost,
+    previous_month_users,
+    previous_month_service_accounts,
+    mom_pct_total,
+    mom_pct_bigquery,
+    mom_pct_users,
+    forecast_next_month_total,
+    forecast_next_month_bigquery,
+    trend_direction,
+    cost_per_user,
+    is_current_month,
+    is_previous_month
+FROM with_metrics
 ORDER BY invoice_month_date DESC
