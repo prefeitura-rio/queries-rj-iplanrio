@@ -15,12 +15,36 @@ WITH monthly_costs AS (
     SELECT
         invoice_month_date,
         SUM(cost_net) AS total_cost_net,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN COALESCE(active_users_count, 0) ELSE 0 END) AS total_active_users,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN COALESCE(active_service_accounts_count, 0) ELSE 0 END) AS total_service_accounts,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN COALESCE(jobs_count, 0) ELSE 0 END) AS total_jobs
+        SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net
     FROM {{ ref('fact_gcp_cost_monthly') }}
     GROUP BY invoice_month_date
+),
+
+bigquery_monthly_stats AS (
+    -- Estatísticas BigQuery mensais únicas (sem duplicação por projeto)
+    -- COUNT DISTINCT direto da fonte raw para evitar duplicação de usuários entre projetos
+    SELECT
+        invoice_month_date,
+        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS total_active_users,
+        COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS total_service_accounts,
+        COUNT(DISTINCT job_id) AS total_jobs
+    FROM {{ ref('raw_gcp_bigquery_cost_allocated_v1') }}
+    WHERE allocated_cost_job > 0
+    GROUP BY invoice_month_date
+),
+
+monthly_combined AS (
+    -- Combinar custos e estatísticas BigQuery
+    SELECT
+        c.invoice_month_date,
+        c.total_cost_net,
+        c.bigquery_cost_net,
+        COALESCE(b.total_active_users, 0) AS total_active_users,
+        COALESCE(b.total_service_accounts, 0) AS total_service_accounts,
+        COALESCE(b.total_jobs, 0) AS total_jobs
+    FROM monthly_costs c
+    LEFT JOIN bigquery_monthly_stats b
+        ON c.invoice_month_date = b.invoice_month_date
 ),
 
 with_lag AS (
@@ -50,7 +74,7 @@ with_lag AS (
             ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
         ) AS moving_avg_3m_bigquery
 
-    FROM monthly_costs
+    FROM monthly_combined
 ),
 
 with_metrics AS (
