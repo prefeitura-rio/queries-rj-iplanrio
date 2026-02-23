@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: agg_gcp_cost_by_orgao
+    description: |
+      View de agregação de custos por órgão e mês.
+
+      **Propósito**: Pré-agregar custos por órgão com cálculo de % do total e MoM.
+      Otimizada para a Tabela Top Órgãos do dashboard.
+
+      **Granularidade**:
+      - orgao + invoice_month_date
+
+      **Métricas Calculadas**:
+      - cost_net (total do órgão)
+      - percent_of_total (% do órgão no total do mês)
+      - mom_pct (variação MoM)
+      - trend_direction (UP/DOWN/STABLE)
+
+      **Uso no Looker Studio**:
+      - Tabela Top 10 Órgãos (filtrar is_current_month = TRUE)
+      - Gráfico de pizza por órgão
+      - Time series de custo por órgão
+
+    config:
+      schema: dashboard_gcp
+      alias: agg_gcp_cost_by_orgao
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - aggregation
+        - orgao
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês (primeiro dia do mês)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável."
+        data_type: string
+        tests:
+          - not_null
+
+      - name: cost_net
+        description: "Custo líquido total do órgão no mês (todos os serviços GCP)."
+        data_type: float64
+
+      - name: bigquery_cost_net
+        description: "Custo líquido BigQuery do órgão no mês."
+        data_type: float64
+
+      - name: percent_of_total
+        description: "Percentual do custo do órgão em relação ao total da organização no mês. Fórmula: (cost_net / total_month_cost) × 100."
+        data_type: float64
+
+      - name: previous_month_cost
+        description: "Custo do órgão no mês anterior (para comparação MoM)."
+        data_type: float64
+
+      - name: mom_pct
+        description: "Variação percentual MoM do custo do órgão. Fórmula: ((atual - anterior) / anterior) × 100."
+        data_type: float64
+
+      - name: trend_direction
+        description: |
+          Direção da tendência de custo do órgão:
+          - 'UP': aumento > 5%
+          - 'DOWN': redução > 5%
+          - 'STABLE': variação entre -5% e +5%
+        data_type: string
+
+      - name: is_current_month
+        description: "Flag indicando se é o mês atual (TRUE/FALSE)."
+        data_type: boolean
+
+      - name: is_previous_month
+        description: "Flag indicando se é o mês anterior (TRUE/FALSE)."
+        data_type: boolean
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - invoice_month_date
+            - orgao

@@ -29,16 +29,7 @@
     "rj-precipitacao",
     "rj-superapp",
     "rj-superapp-staging",
-    "rj-vision-ai",
-    "rj-vision-ai-dev",
-    "rj-iplanrio-dia",
-    "rj-iplanrio-infra",
-    "rj-iplanrio-terraform",
-    "rj-teste-terraform",
-    "rj-pic-dev",
-    "tmp-subtd",
-    "gen-lang-client-0287175976",
-    "gen-lang-client-0035784078"
+    "rj-vision-ai"
 ] %}
 
 WITH all_projects AS (
@@ -85,37 +76,7 @@ WITH all_projects AS (
             SELECT 'hackathon-fgv-03-2024' UNION ALL
             SELECT 'rj-caio' UNION ALL
             SELECT 'rj-superapp' UNION ALL SELECT 'rj-superapp-staging' UNION ALL
-            SELECT 'rj-vision-ai' UNION ALL
-            -- ⬇️ NOVOS PROJETOS ADICIONADOS (2026-02-23):
-            -- IPLANRIO
-            SELECT 'rj-vision-ai-dev' UNION ALL
-            SELECT 'rj-iplanrio-dia' UNION ALL
-            SELECT 'rj-iplanrio-infra' UNION ALL
-            SELECT 'rj-iplanrio-terraform' UNION ALL
-            SELECT 'rj-teste-terraform' UNION ALL
-            SELECT 'rj-pic-dev' UNION ALL
-            SELECT 'tmp-subtd' UNION ALL
-            SELECT 'gen-lang-client-0287175976' UNION ALL
-            SELECT 'gen-lang-client-0035784078' UNION ALL
-            -- SME
-            SELECT 'rj-sme-danfe-ai' UNION ALL
-            SELECT 'rj-sme-danfe-ai-staging' UNION ALL
-            SELECT 'rj-sme-danfe-ai-dev' UNION ALL
-            -- SMF (Fazenda)
-            SELECT 'rj-nf-agent' UNION ALL
-            -- Gabinete
-            SELECT 'rj-gabinete' UNION ALL
-            -- SMAS
-            SELECT 'rj-smas-dev-432320' UNION ALL
-            -- SMA
-            SELECT 'rj-sma' UNION ALL
-            -- SMS (Vigilância Sanitária)
-            SELECT 'rj-ivisa' UNION ALL
-            -- SSM
-            SELECT 'rj-ssm' UNION ALL
-            SELECT 'rj-ssm-dev' UNION ALL
-            -- Externo/Hexagon (MAIOR CUSTO - $661k)
-            SELECT 'softwareintegracao-hexagon'
+            SELECT 'rj-vision-ai'
     )
 ),
 
@@ -133,32 +94,14 @@ projects_with_classification AS (
             -- Hackathon e similares
             WHEN REGEXP_CONTAINS(project_id, r'hackathon') THEN 'IPLANRIO'
 
-            -- ⬇️ REGRAS ESPECIAIS PARA PROJETOS QUE NÃO SEGUEM PADRÃO rj-xxx
-
-            -- SMF (Secretaria Municipal de Fazenda)
-            WHEN project_id IN ('rj-nf-agent') THEN 'SMF'
-
-            -- Gabinete do Prefeito
-            WHEN project_id IN ('rj-gabinete') THEN 'GABINETE'
-
-            -- SMA (Secretaria Municipal de Meio Ambiente)
-            WHEN project_id IN ('rj-sma') THEN 'SMA'
-
-            -- SMS - Vigilância Sanitária
-            WHEN project_id IN ('rj-ivisa') THEN 'SMS'
-
-            -- Hexagon (Software Integração) - MAIOR CUSTO ($661k)
-            -- Órgão próprio para rastreamento de custos
-            WHEN project_id = 'softwareintegracao-hexagon' THEN 'SOFTWAREINTEGRACAO-HEXAGON'
-
             -- RecRio
             WHEN REGEXP_CONTAINS(project_id, r'^rj-rec') THEN 'RECRIO'
 
-            -- Padrão rj-xxx (extrai segundo componente como órgão)
+            -- Padrão rj-xxx
             WHEN REGEXP_CONTAINS(project_id, r'^rj-') THEN
                 UPPER(REGEXP_EXTRACT(project_id, r'^rj-([^-\s]+)'))
 
-            -- Sem prefixo rj- (usa nome completo como órgão)
+            -- Sem prefixo rj-
             WHEN project_id IS NOT NULL THEN UPPER(project_id)
 
             ELSE 'NÃO DEFINIDO'
