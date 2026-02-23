@@ -28,8 +28,6 @@ models:
       - Ícones visuais (service_icon)
 
     config:
-      schema: dashboard_gcp
-      alias: dim_service
       materialized: view
       tags:
         - dashboard
@@ -41,6 +39,7 @@ models:
       - name: service_description
         description: "Nome do serviço GCP (ex: 'BigQuery', 'Compute Engine'). Chave primária."
         data_type: string
+        quote: true
         tests:
           - not_null
           - unique
@@ -58,7 +57,9 @@ models:
           - Observability
           - Other
         data_type: string
+        quote: true
 
       - name: service_icon
         description: "Ícone emoji representando a categoria do serviço (para visualização no Looker)."
         data_type: string
+        quote: true

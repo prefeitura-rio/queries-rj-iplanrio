@@ -21,8 +21,6 @@ models:
       - Agrupamentos (quarter, year)
 
     config:
-      schema: dashboard_gcp
-      alias: dim_time
       materialized: view
       tags:
         - dashboard
@@ -53,14 +51,17 @@ models:
       - name: year_month_name
         description: "Ano-mês formatado (ex: '2024-01')."
         data_type: string
+        quote: true
 
       - name: month_name_full
         description: "Nome completo do mês e ano (ex: 'January 2024')."
         data_type: string
+        quote: true
 
       - name: month_name_short
         description: "Nome abreviado do mês e ano (ex: 'Jan 2024'). Recomendado para filtros no Looker."
         data_type: string
+        quote: true
 
       - name: is_current_month
         description: "Flag indicando se é o mês atual (TRUE/FALSE)."

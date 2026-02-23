@@ -17,9 +17,9 @@ WITH monthly_costs AS (
         invoice_month_date,
         SUM(cost_net) AS total_cost_net,
         SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN active_users_count ELSE 0 END) AS total_active_users,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN active_service_accounts_count ELSE 0 END) AS total_service_accounts,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN jobs_count ELSE 0 END) AS total_jobs
+        SUM(CASE WHEN service_description = 'BigQuery' THEN COALESCE(active_users_count, 0) ELSE 0 END) AS total_active_users,
+        SUM(CASE WHEN service_description = 'BigQuery' THEN COALESCE(active_service_accounts_count, 0) ELSE 0 END) AS total_service_accounts,
+        SUM(CASE WHEN service_description = 'BigQuery' THEN COALESCE(jobs_count, 0) ELSE 0 END) AS total_jobs
     FROM {{ ref('fact_gcp_cost_monthly') }}
     GROUP BY invoice_month_date
 ),

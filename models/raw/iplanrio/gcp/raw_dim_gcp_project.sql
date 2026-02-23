@@ -166,6 +166,9 @@ projects_with_classification AS (
 
         -- Derivação de ambiente
         CASE
+            -- Casos especiais com sufixo numérico
+            WHEN project_id = 'rj-smas-dev-432320' THEN 'dev'
+            -- Padrões normais
             WHEN REGEXP_CONTAINS(project_id, r'-dev$') THEN 'dev'
             WHEN REGEXP_CONTAINS(project_id, r'-sandbox$') THEN 'sandbox'
             WHEN REGEXP_CONTAINS(project_id, r'-staging$') THEN 'dev'

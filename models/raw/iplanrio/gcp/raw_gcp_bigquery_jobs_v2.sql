@@ -172,20 +172,15 @@ WITH
             -- Usar LOWER() para consistência (case-insensitive)
             COALESCE(REGEXP_CONTAINS(LOWER(user_email), r'gserviceaccount\.com$'), FALSE) AS is_service_account,
 
-            -- IMPORTANTE: Ordem do CASE do mais específico para o mais genérico
-            -- Usar LOWER() para garantir case-insensitive matching
             CASE
                 WHEN user_email IS NULL THEN 'unknown'
-                -- Padrões específicos primeiro
                 WHEN REGEXP_CONTAINS(LOWER(user_email), r'^[0-9]+-compute@developer\.gserviceaccount\.com$') THEN 'compute_engine'
                 WHEN REGEXP_CONTAINS(LOWER(user_email), r'@cloudservices\.gserviceaccount\.com$') THEN 'google_apis'
                 WHEN REGEXP_CONTAINS(LOWER(user_email), r'\.google\.com$') THEN 'google_apis'
-                -- Padrões genéricos de service account depois
                 WHEN REGEXP_CONTAINS(LOWER(user_email), r'@iam\.gserviceaccount\.com$') THEN 'service_account'
                 WHEN REGEXP_CONTAINS(LOWER(user_email), r'@.*\.iam\.gserviceaccount\.com$') THEN 'service_account'
                 WHEN REGEXP_CONTAINS(LOWER(user_email), r'gserviceaccount\.com$') THEN 'service_account'
-                -- Default: humano
-                ELSE 'human'
+                ELSE 'user'
             END AS principal_type
 
         FROM deduped_jobs

@@ -23,8 +23,6 @@ models:
       - Time series de custo por órgão
 
     config:
-      schema: dashboard_gcp
-      alias: agg_gcp_cost_by_orgao
       materialized: view
       tags:
         - dashboard
@@ -42,6 +40,7 @@ models:
       - name: orgao
         description: "Órgão/secretaria responsável."
         data_type: string
+        quote: true
         tests:
           - not_null
 
@@ -83,6 +82,7 @@ models:
 
     tests:
       - dbt_utils.unique_combination_of_columns:
+          name: agg_gcp_cost_by_orgao__table__unique_combination
           combination_of_columns:
             - invoice_month_date
             - orgao

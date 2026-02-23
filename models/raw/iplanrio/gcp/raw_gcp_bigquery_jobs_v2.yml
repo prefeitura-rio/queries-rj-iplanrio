@@ -78,7 +78,7 @@ models:
 
       - name: principal_type
         description: >
-          Tipo de principal que executou o job. Valores: human (usuário humano),
+          Tipo de principal que executou o job. Valores: user (usuário),
           service_account (conta de serviço), compute_engine (Compute Engine default SA),
           google_apis (Google APIs service account), unknown (não identificado).
         data_type: string
@@ -90,7 +90,7 @@ models:
                 severity: error
           - accepted_values:
               name: raw_brutos_gcp_gcp_bigquery_jobs_v2__principal_type__accepted_values
-              values: ['human', 'service_account', 'compute_engine', 'google_apis', 'unknown']
+              values: ['user', 'service_account', 'compute_engine', 'google_apis', 'unknown']
               config:
                 severity: error
 

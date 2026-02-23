@@ -52,18 +52,21 @@ models:
       - name: project_id
         description: "ID único do projeto GCP. Excluídos registros sem project_id (custos organization-level)."
         data_type: string
+        quote: true
         tests:
           - not_null
 
       - name: orgao
         description: "Órgão/secretaria responsável pelo projeto. Derivado de raw_dim_gcp_project."
         data_type: string
+        quote: true
         tests:
           - not_null
 
       - name: ambiente
         description: "Ambiente do projeto: prod, dev ou sandbox. Derivado de raw_dim_gcp_project."
         data_type: string
+        quote: true
         tests:
           - not_null
           - accepted_values:
@@ -72,6 +75,7 @@ models:
       - name: service_description
         description: "Nome do serviço GCP (ex: BigQuery, Compute Engine, Cloud Storage)."
         data_type: string
+        quote: true
         tests:
           - not_null
 
@@ -113,6 +117,7 @@ models:
 
     tests:
       - dbt_utils.unique_combination_of_columns:
+          name: fact_gcp_cost_monthly__table__unique_combination
           combination_of_columns:
             - invoice_month_date
             - project_id

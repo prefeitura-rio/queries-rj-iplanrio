@@ -12,7 +12,6 @@
 -- ⚠️ IMPORTANTE: Sempre usar com filtro de invoice_month_date no Looker Studio
 
 SELECT
-    -- Identificação
     project_id,
     job_id,
     principal_email,

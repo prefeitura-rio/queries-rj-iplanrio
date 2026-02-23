@@ -14,31 +14,21 @@
     )
 }}
 
--- Tabela fato agregada mensal para dashboard de custos GCP
--- Reduz volume de dados em ~99% para performance otimizada no Looker Studio
--- Atualização: Incremental diário com lookback de 3 meses
-
 {% set lookback_months = 3 %}
 
-WITH
-    -- Billing consolidado mensal por projeto/serviço
-    billing_monthly AS (
+WITH billing_monthly AS (
         SELECT
             project.id AS project_id,
             DATE(CONCAT(LEFT(invoice.month, 4), '-', RIGHT(invoice.month, 2), '-01')) AS invoice_month_date,
             service.description AS service_description,
-
-            -- Custos agregados
             SUM(cost) AS cost_gross,
             SUM(COALESCE((SELECT SUM(c.amount) FROM UNNEST(credits) AS c), 0)) AS credits,
             SUM(cost) + SUM(COALESCE((SELECT SUM(c.amount) FROM UNNEST(credits) AS c), 0)) AS cost_net,
-
-            -- Uso agregado
             SUM(usage.amount) AS usage_amount
 
         FROM {{ ref('raw_gcp_billing') }}
         WHERE cost_type = 'regular'
-            AND project.id IS NOT NULL  -- Excluir custos sem projeto (organization-level)
+            AND project.id IS NOT NULL
 
         {% if is_incremental() %}
             AND invoice_competencia_particao >= DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months }} MONTH), MONTH)
@@ -47,13 +37,12 @@ WITH
         GROUP BY project_id, invoice_month_date, service_description
     ),
 
-    -- Stats BigQuery mensal (usuários, jobs, bytes)
-    bigquery_stats AS (
+bigquery_stats AS (
         SELECT
             project_id,
             invoice_month_date,
 
-            COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS active_users_count,
+            COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users_count,
             COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts_count,
             COUNT(DISTINCT job_id) AS jobs_count,
             SUM(total_bytes_billed) AS total_bytes_billed
@@ -68,8 +57,7 @@ WITH
         GROUP BY project_id, invoice_month_date
     ),
 
-    -- Join com dimensão de projetos e stats BigQuery
-    final AS (
+final AS (
         SELECT
             b.invoice_month_date,
             b.project_id,
@@ -80,8 +68,6 @@ WITH
             b.credits,
             b.cost_net,
             b.usage_amount,
-
-            -- Stats BigQuery (NULL se não for BigQuery)
             CASE WHEN b.service_description = 'BigQuery' THEN s.active_users_count END AS active_users_count,
             CASE WHEN b.service_description = 'BigQuery' THEN s.active_service_accounts_count END AS active_service_accounts_count,
             CASE WHEN b.service_description = 'BigQuery' THEN s.jobs_count END AS jobs_count,

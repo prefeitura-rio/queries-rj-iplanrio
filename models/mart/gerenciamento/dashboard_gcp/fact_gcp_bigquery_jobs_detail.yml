@@ -58,8 +58,9 @@ models:
         data_type: string
 
       - name: principal_type
-        description: "Tipo do principal: user (humano), service_account, compute_engine, google_apis, etc."
+        description: "Tipo do principal: user, service_account, compute_engine, google_apis, unknown."
         data_type: string
+        quote: true
 
       - name: is_service_account
         description: "Flag indicando se o principal é uma service account (TRUE/FALSE)."
