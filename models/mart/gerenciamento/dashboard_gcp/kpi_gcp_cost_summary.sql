@@ -1,7 +1,6 @@
 {{
     config(
         materialized='view',
-        schema='dashboard_gcp',
         alias='kpi_gcp_cost_summary',
         tags=['dashboard', 'gcp', 'kpi', 'summary'],
     )

@@ -2,7 +2,6 @@
     config(
         materialized='incremental',
         incremental_strategy='insert_overwrite',
-        schema='dashboard_gcp',
         alias='fact_gcp_cost_monthly',
         partition_by={
             "field": "invoice_month_date",
