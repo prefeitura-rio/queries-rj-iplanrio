@@ -1,0 +1,117 @@
+version: 2
+
+models:
+  - name: kpi_gcp_cost_summary
+    description: |
+      View de KPIs pré-calculados para scorecards do dashboard.
+
+      **Propósito**: Pré-calcular métricas complexas (MoM, forecast, tendências)
+      para evitar cálculos on-demand no Looker Studio.
+
+      **Granularidade**:
+      - invoice_month_date (um registro por mês)
+
+      **Métricas Principais**:
+      - Total cost e BigQuery cost (net)
+      - MoM % (Month-over-Month variation)
+      - Forecast (média móvel 3 meses)
+      - Tendência (UP/DOWN/STABLE)
+      - Cost per user (eficiência)
+
+      **Uso no Looker Studio**:
+      - Scorecards da página Overview Executivo
+      - Filtrar por is_current_month = TRUE para mês atual
+
+    config:
+      schema: dashboard_gcp
+      alias: kpi_gcp_cost_summary
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - kpi
+        - summary
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês (primeiro dia do mês)."
+        data_type: date
+        tests:
+          - not_null
+          - unique
+
+      - name: total_cost_net
+        description: "Custo total líquido da organização no mês (todos os serviços GCP)."
+        data_type: float64
+
+      - name: bigquery_cost_net
+        description: "Custo total líquido do BigQuery no mês."
+        data_type: float64
+
+      - name: total_active_users
+        description: "Total de usuários humanos ativos no BigQuery no mês."
+        data_type: int64
+
+      - name: total_service_accounts
+        description: "Total de service accounts ativas no BigQuery no mês."
+        data_type: int64
+
+      - name: total_jobs
+        description: "Total de jobs executados no BigQuery no mês."
+        data_type: int64
+
+      - name: previous_month_total_cost
+        description: "Custo total do mês anterior (para comparação MoM)."
+        data_type: float64
+
+      - name: previous_month_bigquery_cost
+        description: "Custo BigQuery do mês anterior (para comparação MoM)."
+        data_type: float64
+
+      - name: previous_month_users
+        description: "Usuários ativos do mês anterior (para comparação MoM)."
+        data_type: int64
+
+      - name: previous_month_service_accounts
+        description: "Service accounts ativas do mês anterior (para comparação MoM)."
+        data_type: int64
+
+      - name: mom_pct_total
+        description: "Variação percentual MoM do custo total. Fórmula: ((atual - anterior) / anterior) × 100."
+        data_type: float64
+
+      - name: mom_pct_bigquery
+        description: "Variação percentual MoM do custo BigQuery."
+        data_type: float64
+
+      - name: mom_pct_users
+        description: "Variação percentual MoM de usuários ativos BigQuery."
+        data_type: float64
+
+      - name: forecast_next_month_total
+        description: "Previsão de custo total para o próximo mês (média móvel 3 meses)."
+        data_type: float64
+
+      - name: forecast_next_month_bigquery
+        description: "Previsão de custo BigQuery para o próximo mês (média móvel 3 meses)."
+        data_type: float64
+
+      - name: trend_direction
+        description: |
+          Direção da tendência de custo:
+          - 'UP': aumento > 5%
+          - 'DOWN': redução > 5%
+          - 'STABLE': variação entre -5% e +5%
+        data_type: string
+
+      - name: cost_per_user
+        description: "Custo BigQuery por usuário ativo (métrica de eficiência). Fórmula: bigquery_cost_net / total_active_users."
+        data_type: float64
+
+      - name: is_current_month
+        description: "Flag indicando se é o mês atual (TRUE/FALSE)."
+        data_type: boolean
+
+      - name: is_previous_month
+        description: "Flag indicando se é o mês anterior (TRUE/FALSE)."
+        data_type: boolean

@@ -40,4 +40,4 @@ README_BRUNO.md
 *.temp
 .qodo
 dbt_internal_packages/
-.claude
+.claude/
