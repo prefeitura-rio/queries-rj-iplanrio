@@ -38,6 +38,7 @@ with_lag AS (
         LAG(total_cost_net) OVER (ORDER BY invoice_month_date) AS previous_month_total_cost,
         LAG(bigquery_cost_net) OVER (ORDER BY invoice_month_date) AS previous_month_bigquery_cost,
         LAG(total_active_users) OVER (ORDER BY invoice_month_date) AS previous_month_users,
+        LAG(total_service_accounts) OVER (ORDER BY invoice_month_date) AS previous_month_service_accounts,
 
         -- Média móvel 3 meses para forecast
         AVG(total_cost_net) OVER (
@@ -65,6 +66,7 @@ with_metrics AS (
         previous_month_total_cost,
         previous_month_bigquery_cost,
         previous_month_users,
+        previous_month_service_accounts,
 
         -- MoM (Month-over-Month) percentual
         SAFE_DIVIDE(

@@ -72,6 +72,10 @@ models:
         description: "Usuários ativos do mês anterior (para comparação MoM)."
         data_type: int64
 
+      - name: previous_month_service_accounts
+        description: "Service accounts ativas do mês anterior (para comparação MoM)."
+        data_type: int64
+
       - name: mom_pct_total
         description: "Variação percentual MoM do custo total. Fórmula: ((atual - anterior) / anterior) × 100."
         data_type: float64
