@@ -1,0 +1,233 @@
+version: 2
+
+models:
+  - name: raw_gcp_bigquery_jobs_v2
+    description: >
+      Tabela histórica incremental de jobs do BigQuery (V2 com calendário UTC).
+      Versão melhorada do raw_gcp_bigquery_jobs com calendário UTC puro (sem PST8PDT),
+      classificação de principal (user/service_account), e join com dimensão de projetos.
+      Permite auditoria, rastreio, análise de uso e persistência de dados além do
+      retention de 180 dias do BigQuery.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_brutos_gcp_gcp_bigquery_jobs_v2__table__unique_combination
+          combination_of_columns:
+            - project_id
+            - job_id
+          config:
+            severity: error
+
+    columns:
+      - name: origem_projeto
+        description: >
+          Projeto GCP de origem do job (ex: rj-iplanrio, rj-iplanrio-dev).
+          Indica de qual projeto o job foi extraído via INFORMATION_SCHEMA.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__origem_projeto__not_null
+              config:
+                severity: error
+
+      - name: project_id
+        description: >
+          ID do projeto GCP onde o job foi executado.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__project_id__not_null
+              config:
+                severity: error
+
+      - name: job_id
+        description: >
+          Identificador do job no BigQuery.
+          Único em combinação com project_id (ver teste dbt_utils.unique_combination_of_columns).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_id__not_null
+              config:
+                severity: error
+
+      - name: user_email
+        description: >
+          E-mail do usuário ou conta de serviço responsável pela execução do job.
+        data_type: string
+        quote: true
+
+      - name: principal_email
+        description: >
+          Email do principal normalizado (lowercase) para facilitar joins e agrupamentos.
+        data_type: string
+        quote: true
+
+      - name: is_service_account
+        description: >
+          Flag booleana indicando se o principal é uma service account
+          (email termina com gserviceaccount.com).
+        data_type: boolean
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__is_service_account__not_null
+              config:
+                severity: error
+
+      - name: principal_type
+        description: >
+          Tipo de principal que executou o job. Valores: human (usuário humano),
+          service_account (conta de serviço), compute_engine (Compute Engine default SA),
+          google_apis (Google APIs service account), unknown (não identificado).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__principal_type__not_null
+              config:
+                severity: error
+          - accepted_values:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__principal_type__accepted_values
+              values: ['human', 'service_account', 'compute_engine', 'google_apis', 'unknown']
+              config:
+                severity: error
+
+      - name: job_type
+        description: >
+          Tipo do job executado (ex: QUERY, LOAD, EXPORT).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_type__not_null
+              config:
+                severity: error
+
+      - name: query
+        description: >
+          Consulta SQL executada pelo job, quando aplicável.
+        data_type: string
+        quote: true
+
+      - name: state
+        description: >
+          Status final do job (ex: DONE, PENDING, RUNNING, FAILED).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__state__not_null
+              config:
+                severity: error
+
+      - name: destination_project_id
+        description: >
+          ID do projeto de destino dos resultados do job.
+        data_type: string
+        quote: true
+
+      - name: destination_dataset_id
+        description: >
+          Dataset de destino dos resultados do job.
+        data_type: string
+        quote: true
+
+      - name: destination_table_id
+        description: >
+          Tabela de destino dos resultados do job.
+        data_type: string
+        quote: true
+
+      - name: error_result
+        description: >
+          Informação sobre erro do job, quando houver. Nulo se bem-sucedido.
+          Serializado como JSON string do STRUCT original.
+        data_type: string
+        quote: true
+
+      - name: creation_time
+        description: >
+          Data e hora de criação do job (horário UTC).
+        data_type: timestamp
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__creation_time__not_null
+              config:
+                severity: error
+
+      - name: end_time
+        description: >
+          Data e hora de término do job (horário UTC).
+        data_type: timestamp
+
+      - name: statement_type
+        description: >
+          Tipo de statement SQL executado (ex: SELECT, INSERT, UPDATE, DML, DDL).
+        data_type: string
+        quote: true
+
+      - name: total_bytes_processed
+        description: >
+          Total de bytes processados pelo job.
+        data_type: int64
+
+      - name: total_bytes_billed
+        description: >
+          Total de bytes faturados pelo job.
+        data_type: int64
+
+      - name: job_date_utc
+        description: >
+          Data do job em UTC, derivada de DATE(creation_time).
+          Diferente da v1 que usava PST8PDT.
+        data_type: date
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_date_utc__not_null
+              config:
+                severity: error
+
+      - name: job_month_utc
+        description: >
+          Mês do job em UTC (primeiro dia do mês), usado para particionamento.
+          Derivado de DATE_TRUNC(DATE(creation_time), MONTH).
+        data_type: date
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__job_month_utc__not_null
+              config:
+                severity: error
+
+      - name: orgao
+        description: >
+          Órgão ou secretaria responsável pelo projeto, obtido via join com
+          raw_dim_gcp_project.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__orgao__not_null
+              config:
+                severity: warn  # warn porque depende do join
+
+      - name: ambiente
+        description: >
+          Ambiente do projeto (prod, dev, sandbox), obtido via join com
+          raw_dim_gcp_project.
+        data_type: string
+        quote: true
+        tests:
+          - accepted_values:
+              name: raw_brutos_gcp_gcp_bigquery_jobs_v2__ambiente__accepted_values
+              values: ['prod', 'dev', 'sandbox']
+              config:
+                severity: warn  # warn porque depende do join
+
+      - name: projeto_base
+        description: >
+          Nome base do projeto sem sufixos de ambiente, obtido via join com
+          raw_dim_gcp_project.
+        data_type: string
+        quote: true
