@@ -72,11 +72,11 @@
             FROM Turmas tur
             INNER JOIN {{ ref('raw_gestao_escolar__turma_aula') }} tau
                 ON tau.id_disciplina = tur.id_disciplina_turma
-                AND EXTRACT(YEAR FROM tau.data_aula) = 2025  -- TODO: Verificar se o ano é fixo
+                AND EXTRACT(YEAR FROM tau.data_aula) = 2026
             INNER JOIN {{ ref('raw_gestao_escolar__turma_aula_aluno') }} taa
                 ON taa.id_disciplina_turma = tau.id_disciplina
                 AND taa.id_aula_disciplina = CAST(tau.id_aula_disciplina AS STRING)
-                AND CAST(taa.data_alteracao AS DATETIME) >= '2025-01-01'
+                AND CAST(taa.data_alteracao AS DATETIME) >= '2026-01-01'
             INNER JOIN {{ ref('raw_gestao_escolar__mtr_matricula_turma') }} mtu
                 ON CAST(mtu.mtu_id AS STRING) = taa.id_matricula_turma
                 AND CAST(mtu.alu_id AS STRING) = taa.id_aluno
