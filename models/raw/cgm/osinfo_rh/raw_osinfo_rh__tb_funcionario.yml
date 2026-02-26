@@ -59,5 +59,12 @@ models:
         description: "Data de quando o dado foi transformado no dbt."
         data_type: datetime
       - name: uf_codigo_ibge
-        description: "Código IBGE da unidade federativa (UF) do município de nascimento"
+        description: "Código IBGE da unidade federativa (UF) do município de nascimento. Deve ser um número de 2 dígitos."
         data_type: string
+        quote: true
+        data_tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_osinfo_rh__tb_funcionario__uf_codigo_ibge__formato
+              regex: '^\\d{2}$'
+              config:
+                severity: error
