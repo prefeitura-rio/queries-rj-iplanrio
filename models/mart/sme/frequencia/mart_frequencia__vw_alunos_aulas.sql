@@ -12,7 +12,15 @@ with alunos_aulas as (
         taa.id_disciplina_turma,    -- identificador único da disciplina na turma
         tau.id_tipo_calendario,    -- identificador único do conselho de classe (COC)
         tau.data_aula,  -- data na qual houve aula realizada e com frequencia efetivada pelo professor
-        SAFE_CAST(coalesce(taa.faltas_disciplina_dia, 0) AS INT64) as falta,   -- número de faltas no dia (tau_data), nunca maior que o numeroAulas
+        case fav.tipo_frequencia_apurada -- se a frequência for apurada por aula planejada, respeita a quantidade de faltas registradas. Se a frequência estiver sendo apurada por período, considera 1 falta para os casos que tiver falta registrada > 1
+            when 1 then SAFE_CAST(coalesce(taa.faltas_disciplina_dia, 0) AS INT64)
+            else
+                case when coalesce(taa.faltas_disciplina_dia, 0) > 1
+                    THEN 1
+                    ELSE 0
+                END
+        end as falta,   -- número de faltas no dia (tau_data), nunca maior que o numeroAulas
+--        SAFE_CAST(coalesce(taa.faltas_disciplina_dia, 0) AS INT64) as falta,   -- número de faltas no dia (tau_data), nunca maior que o numeroAulas
         SAFE_CAST(coalesce(taa.frequencia_tempo, '0') AS INT64) as taa_frequenciaBitMap, -- string com o registro de presença e falta (1-falta; 0-presença)
         case fav.tipo_frequencia_apurada
             when 1 then LENGTH(taa.frequencia_tempo)
