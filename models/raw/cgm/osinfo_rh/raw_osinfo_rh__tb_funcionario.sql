@@ -23,6 +23,9 @@ select
     safe_cast(FUNC_DS_ORGAO_EXPEDIDOR_RG as string) as rg_orgao_expedidor,
     safe_cast(FUNC_DT_EMISSAO as date) as rg_emissao_data,
     safe_cast(COD_OS as int64) as organizacao_social_codigo,
-    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS datetime) AS datalake_loaded_at,
-    safe_cast(current_timestamp()as datetime) AS datalake_transformed_at
-FROM {{ source('brutos_osinfo_rh_staging', 'tb_funcionario') }}
+    safe_cast(m.uf_cd_ibge as string) as uf_codigo_ibge,
+    safe_cast(SUBSTR(f._prefect_extracted_at,1,10) AS datetime) AS datalake_loaded_at,
+    safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
+FROM {{ source('brutos_osinfo_rh_staging', 'tb_funcionario') }} f
+INNER JOIN {{ source('brutos_osinfo_rh_staging', 'dc_municipio') }} m 
+    ON f.MUNI_CD_IBGE_NASCIMENTO = m.MUNI_CD_IBGE
