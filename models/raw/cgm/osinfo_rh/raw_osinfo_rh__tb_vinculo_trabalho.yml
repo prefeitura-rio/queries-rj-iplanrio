@@ -34,6 +34,12 @@ models:
       - name: id_categoria
         description: "ID da categoria" 
         datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_osinfo_rh__tb_vinculo_trabalho__id_categoria__relationships
+              arguments:
+                to: ref('raw_osinfo_osinfo__categoria')
+                field: id_categoria
       - name: vinculo_setor
         description: "Setor do vínculo"
         datatype: string

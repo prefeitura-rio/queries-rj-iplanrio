@@ -25,6 +25,12 @@ models:
       - name: id_contrato 
         description: "ID do contrato"
         datatype: int64
+        data_tests:
+          - relationships:
+              name: relationships__raw_osinfo_rh__tb_provisionamento__id_contrato__to__raw_adm_contrato_gestao__contrato
+              arguments:
+                to: ref('raw_adm_contrato_gestao__contrato')
+                field: id_contrato
       - name: unidade_codigo
         description: "Código da unidade"
         datatype: int64
