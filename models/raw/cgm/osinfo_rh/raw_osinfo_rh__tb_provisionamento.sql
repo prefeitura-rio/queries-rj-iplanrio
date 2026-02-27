@@ -13,7 +13,7 @@ select
     safe_cast(`PROV_NR_ANO_REFERENCIA` as int64) as ano_referencia,
     safe_cast(`PROV_NR_MES_COMPETENCIA` as int64) as mes_competencia,
     safe_cast(`PROV_NR_ANO_COMPETENCIA` as int64) as ano_competencia,
-    safe_cast(`ID_CONTRATO` as int64) as contrato_id,
+    safe_cast(`ID_CONTRATO` as int64) as id_contrato, 
     safe_cast(`COD_UNIDADE` as string) as unidade_codigo,
     safe_cast(`PROV_OBSERVACAO` as string) as observacao,
     safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS datetime) AS datalake_loaded_at,

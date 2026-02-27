@@ -13,7 +13,7 @@ select
     safe_cast(`FPTO_NR_ANO_REFERENCIA` as int64) as ano_referencia,
     safe_cast(`FPTO_NR_MES_COMPETENCIA` as int64) as mes_competencia,
     safe_cast(`FPTO_NR_ANO_COMPETENCIA` as int64) as ano_competencia,
-    safe_cast(`ID_CONTRATO` as int64) as contrato_id,
+    safe_cast(`ID_CONTRATO` as int64) as id_contrato,
     safe_cast(`COD_UNIDADE` as int64) as unidade_codigo,
     safe_cast(`FPTO_VL_CARGA_HORARIA_EFETIVA` as numeric) as carga_horaria_efetiva,
     safe_cast(`FPTO_PERC_RATEIO` as numeric) as percentual_rateio,

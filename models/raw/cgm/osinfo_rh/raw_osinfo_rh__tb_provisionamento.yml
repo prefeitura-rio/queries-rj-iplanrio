@@ -22,7 +22,7 @@ models:
       - name: ano_competencia
         description: "Ano de competência"
         datatype: int64
-      - name: contrato_id
+      - name: id_contrato 
         description: "ID do contrato"
         datatype: int64
       - name: unidade_codigo
