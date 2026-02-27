@@ -31,7 +31,7 @@ models:
       - name: conselho_uf_ibge
         description: "Código IBGE da UF do conselho"
         datatype: string
-      - name: categoria_id
+      - name: id_categoria
         description: "ID da categoria"
         datatype: integer
       - name: vinculo_setor
