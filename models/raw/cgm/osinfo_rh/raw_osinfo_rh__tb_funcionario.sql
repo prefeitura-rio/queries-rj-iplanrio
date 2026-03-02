@@ -23,7 +23,7 @@ select
     safe_cast(FUNC_DS_ORGAO_EXPEDIDOR_RG as string) as rg_orgao_expedidor,
     safe_cast(FUNC_DT_EMISSAO as date) as rg_emissao_data,
     safe_cast(COD_OS as int64) as organizacao_social_codigo,
-    safe_cast(m.uf_cd_ibge as string) as uf_codigo_ibge,
+    safe_cast(m.uf_cd_ibge as string) as uf_ibge_codigo,
     SAFE.PARSE_DATETIME('%Y-%m-%d %H:%M:%E*S', f._prefect_extracted_at) as datalake_loaded_at,
     safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_osinfo_rh_staging', 'tb_funcionario') }} f
