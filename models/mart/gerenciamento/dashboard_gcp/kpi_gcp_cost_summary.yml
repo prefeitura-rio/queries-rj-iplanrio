@@ -68,6 +68,7 @@ models:
               name: kpi_gcp_cost_summary__total_negotiated_savings__expect_column_values_to_be_between
               min_value: 0
               severity: warn
+              row_condition: "total_negotiated_savings IS NOT NULL"
 
       - name: total_cud_savings
         description: "Total de economia obtida via CUD no mês (diferença entre effective price e cost)."
@@ -77,6 +78,7 @@ models:
               name: kpi_gcp_cost_summary__total_cud_savings__expect_column_values_to_be_between
               min_value: 0
               severity: warn
+              row_condition: "total_cud_savings IS NOT NULL"
 
       - name: total_cud_fee_cost
         description: "Total de custos de taxas de CUD (SKUs específicos) no mês."
