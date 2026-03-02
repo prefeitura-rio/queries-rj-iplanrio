@@ -1,7 +1,6 @@
 {{
     config(
         materialized='view',
-        schema='dashboard_gcp',
         alias='fact_gcp_bigquery_jobs_detail',
         tags=['dashboard', 'gcp', 'bigquery', 'detail'],
     )

@@ -112,11 +112,11 @@ models:
         data_type: float64
 
       - name: negotiated_savings
-        description: "Economia obtida via negociações comerciais (diferença entre effective price e list price). Valores em USD, pode ser positivo (economia) ou negativo. Fonte: calculado (cost_at_effective_price - cost_at_list)."
+        description: "Economia obtida via negociações comerciais (diferença entre list price e effective price). Valores positivos indicam economia real. Valores em USD, faixa: >= 0. Fonte: calculado (cost_at_list - cost_at_effective_price)."
         data_type: float64
 
       - name: cud_savings
-        description: "Economia obtida via CUD (diferença entre cost e effective price). Valores em USD, pode ser positivo (economia) ou negativo. Fonte: calculado (cost - cost_at_effective_price)."
+        description: "Economia obtida via CUD (diferença entre effective price e cost final). Valores positivos indicam economia real. Valores em USD, faixa: >= 0. Fonte: calculado (cost_at_effective_price - cost)."
         data_type: float64
 
       - name: cud_fee_cost

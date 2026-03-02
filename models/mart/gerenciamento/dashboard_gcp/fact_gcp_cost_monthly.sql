@@ -2,7 +2,6 @@
     config(
         materialized='incremental',
         incremental_strategy='insert_overwrite',
-        alias='fact_gcp_cost_monthly',
         partition_by={
             "field": "invoice_month_date",
             "data_type": "date",
@@ -43,11 +42,14 @@ WITH billing_monthly AS (
             SUM(COALESCE((SELECT SUM(c.amount) FROM UNNEST(credits) AS c), 0)) AS credits,
 
             -- CUD Fee (SKUs específicos conforme console GCP)
+            -- SKU IDs validados em 2026-03: representam taxas de CUD no billing export
             SUM(IF(sku.id IN ('5515-81A8-03A2', '7424-6E54-5CD0'), cost, 0)) AS cud_fee_cost,
 
-            -- Economias calculadas
-            SUM(IFNULL(cost_at_effective_price_default, cost) - cost_at_list) AS negotiated_savings,
-            SUM(cost - IFNULL(cost_at_effective_price_default, cost)) AS cud_savings,
+            -- Economias calculadas (valores positivos = economia real)
+            -- negotiated_savings: diferença entre preço de tabela e preço negociado
+            SUM(cost_at_list - IFNULL(cost_at_effective_price_default, cost)) AS negotiated_savings,
+            -- cud_savings: diferença entre preço negociado e custo final após CUD
+            SUM(IFNULL(cost_at_effective_price_default, cost) - cost) AS cud_savings,
 
             -- Custo líquido (cost + todos os créditos)
             SUM(cost) + SUM(COALESCE((SELECT SUM(c.amount) FROM UNNEST(credits) AS c), 0)) AS cost_net,

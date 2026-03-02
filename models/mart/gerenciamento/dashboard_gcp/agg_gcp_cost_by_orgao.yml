@@ -99,6 +99,7 @@ models:
           - 'DOWN': redução > 5%
           - 'STABLE': variação entre -5% e +5%
         data_type: string
+        quote: true
 
       - name: is_current_month
         description: "Flag indicando se é o mês atual (TRUE/FALSE)."

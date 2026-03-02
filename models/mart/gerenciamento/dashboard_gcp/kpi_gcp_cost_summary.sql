@@ -1,7 +1,6 @@
 {{
     config(
         materialized='table',
-        alias='kpi_gcp_cost_summary',
         tags=['dashboard', 'gcp', 'kpi', 'summary'],
     )
 }}
@@ -120,6 +119,8 @@ with_metrics AS (
         previous_month_service_accounts,
 
         -- Total de economias (conforme console GCP)
+        -- Nota: créditos são valores negativos, savings são positivos
+        -- O resultado representa a economia líquida total (pode ser negativo se houver mais savings que créditos)
         total_cud_credits + total_other_credits + total_negotiated_savings + total_cud_savings AS total_savings,
 
         -- MoM (Month-over-Month) percentual

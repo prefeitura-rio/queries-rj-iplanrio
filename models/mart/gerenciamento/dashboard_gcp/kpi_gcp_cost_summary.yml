@@ -23,8 +23,6 @@ models:
       - Filtrar por is_current_month = TRUE para mês atual
 
     config:
-      schema: dashboard_gcp
-      alias: kpi_gcp_cost_summary
       materialized: view
       tags:
         - dashboard
@@ -131,6 +129,7 @@ models:
           - 'DOWN': redução > 5%
           - 'STABLE': variação entre -5% e +5%
         data_type: string
+        quote: true
 
       - name: cost_per_user
         description: "Custo BigQuery por usuário ativo (métrica de eficiência). Fórmula: bigquery_cost_net / total_active_users."

@@ -1,7 +1,6 @@
 {{
     config(
         materialized='view',
-        schema='dashboard_gcp',
         alias='agg_gcp_cost_by_orgao',
         tags=['dashboard', 'gcp', 'aggregation', 'orgao'],
     )
@@ -81,6 +80,8 @@ with_metrics AS (
         previous_month_cost,
 
         -- Total de economias (conforme console GCP)
+        -- Nota: créditos são valores negativos, savings são positivos
+        -- O resultado representa a economia líquida total
         cud_credits + other_credits + negotiated_savings + cud_savings AS total_savings,
 
         -- MoM percentual
