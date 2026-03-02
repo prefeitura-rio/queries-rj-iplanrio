@@ -24,7 +24,7 @@ models:
         datatype: int64
       - name: contrato_id
         description: "ID do contrato"
-        datatype: int64
+        datatype: string
       - name: unidade_codigo
         description: "Código da unidade"
         datatype: int64

@@ -31,9 +31,15 @@ models:
       - name: conselho_uf_ibge
         description: "Código IBGE da UF do conselho"
         datatype: string
-      - name: categoria_id
+      - name: id_categoria
         description: "ID da categoria"
         datatype: integer
+        data_tests:
+          - relationships:
+              name: raw_osinfo_rh__tb_vinculo_trabalho__id_categoria__relationships
+              to: ref('raw_osinfo_osinfo__categoria')
+              field: id_categoria
+              severity: error
       - name: vinculo_setor
         description: "Setor do vínculo"
         datatype: string

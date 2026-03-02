@@ -16,7 +16,7 @@ select
     safe_cast(`VINC_NR_REGISTRO_PROFISSIONAL` as string) as registro_profissional_numero,
     safe_cast(`CONS_SG_CONSELHO` as string) as conselho_sigla,
     safe_cast(`UF_CD_IBGE_CONSELHO` as decimal) as conselho_uf_ibge,
-    safe_cast(`IDCATEGORIA` as integer) as categoria_id,
+    safe_cast(`IDCATEGORIA` as integer) as id_categoria,
     safe_cast(`VINC_SETOR` as string) as vinculo_setor,
     safe_cast(`CD_TIPO_VINCULACAO` as string) as tipo_vinculacao_codigo,
     safe_cast(`VINC_VL_CARGA_HORARIA` as float64) as carga_horaria,
