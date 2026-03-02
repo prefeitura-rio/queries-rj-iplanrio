@@ -58,7 +58,7 @@ models:
       - name: datalake_transformed_at
         description: "Data de quando o dado foi transformado no dbt."
         data_type: datetime
-      - name: uf_codigo_ibge
+      - name: uf_ibge_codigo
         description: "Código IBGE da unidade federativa (UF) do município de nascimento. Deve ser um número de 2 dígitos."
         data_type: string
         quote: true
