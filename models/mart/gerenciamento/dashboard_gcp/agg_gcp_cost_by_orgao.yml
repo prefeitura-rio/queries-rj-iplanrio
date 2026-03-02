@@ -52,6 +52,34 @@ models:
         description: "Custo líquido BigQuery do órgão no mês."
         data_type: float64
 
+      - name: cost_at_list
+        description: "Custo de tabela/lista do órgão no mês (preço cheio sem negociações)."
+        data_type: float64
+
+      - name: cud_credits
+        description: "Créditos CUD (Committed Use Discounts) aplicados ao órgão no mês - valores negativos."
+        data_type: float64
+
+      - name: other_credits
+        description: "Outros créditos não-CUD aplicados ao órgão no mês (promocionais, SUDs, etc) - valores negativos."
+        data_type: float64
+
+      - name: negotiated_savings
+        description: "Economia obtida via negociações comerciais pelo órgão no mês (diferença entre effective price e list price)."
+        data_type: float64
+
+      - name: cud_savings
+        description: "Economia obtida via CUD pelo órgão no mês (diferença entre cost e effective price)."
+        data_type: float64
+
+      - name: cud_fee_cost
+        description: "Custos de taxas de CUD (SKUs específicos) do órgão no mês."
+        data_type: float64
+
+      - name: total_savings
+        description: "Total de economias consolidado do órgão (soma de CUD credits + other credits + negotiated savings + CUD savings)."
+        data_type: float64
+
       - name: percent_of_total
         description: "Percentual do custo do órgão em relação ao total da organização no mês. Fórmula: (cost_net / total_month_cost) × 100."
         data_type: float64

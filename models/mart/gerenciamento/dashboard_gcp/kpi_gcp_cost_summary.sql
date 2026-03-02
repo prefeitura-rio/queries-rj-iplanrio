@@ -15,7 +15,17 @@ WITH monthly_costs AS (
     SELECT
         invoice_month_date,
         SUM(cost_net) AS total_cost_net,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net
+        SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net,
+
+        -- Economias (conforme console GCP)
+        SUM(cud_credits) AS total_cud_credits,
+        SUM(other_credits) AS total_other_credits,
+        SUM(negotiated_savings) AS total_negotiated_savings,
+        SUM(cud_savings) AS total_cud_savings,
+        SUM(cud_fee_cost) AS total_cud_fee_cost,
+
+        -- Custo base para comparação
+        SUM(cost_at_list) AS total_cost_at_list
     FROM {{ ref('fact_gcp_cost_monthly') }}
     GROUP BY invoice_month_date
 ),
@@ -39,6 +49,12 @@ monthly_combined AS (
         c.invoice_month_date,
         c.total_cost_net,
         c.bigquery_cost_net,
+        c.total_cud_credits,
+        c.total_other_credits,
+        c.total_negotiated_savings,
+        c.total_cud_savings,
+        c.total_cud_fee_cost,
+        c.total_cost_at_list,
         COALESCE(b.total_active_users, 0) AS total_active_users,
         COALESCE(b.total_service_accounts, 0) AS total_service_accounts,
         COALESCE(b.total_jobs, 0) AS total_jobs
@@ -53,6 +69,12 @@ with_lag AS (
         invoice_month_date,
         total_cost_net,
         bigquery_cost_net,
+        total_cud_credits,
+        total_other_credits,
+        total_negotiated_savings,
+        total_cud_savings,
+        total_cud_fee_cost,
+        total_cost_at_list,
         total_active_users,
         total_service_accounts,
         total_jobs,
@@ -83,6 +105,12 @@ with_metrics AS (
         invoice_month_date,
         total_cost_net,
         bigquery_cost_net,
+        total_cud_credits,
+        total_other_credits,
+        total_negotiated_savings,
+        total_cud_savings,
+        total_cud_fee_cost,
+        total_cost_at_list,
         total_active_users,
         total_service_accounts,
         total_jobs,
@@ -90,6 +118,9 @@ with_metrics AS (
         previous_month_bigquery_cost,
         previous_month_users,
         previous_month_service_accounts,
+
+        -- Total de economias (conforme console GCP)
+        total_cud_credits + total_other_credits + total_negotiated_savings + total_cud_savings AS total_savings,
 
         -- MoM (Month-over-Month) percentual
         SAFE_DIVIDE(
@@ -130,22 +161,45 @@ with_metrics AS (
 
 SELECT
     invoice_month_date,
+
+    -- Custos
     total_cost_net,
     bigquery_cost_net,
+    total_cost_at_list,
+
+    -- Economias (conforme console GCP)
+    total_cud_credits,
+    total_other_credits,
+    total_negotiated_savings,
+    total_cud_savings,
+    total_cud_fee_cost,
+    total_savings,
+
+    -- Estatísticas
     total_active_users,
     total_service_accounts,
     total_jobs,
+
+    -- Comparações com mês anterior
     previous_month_total_cost,
     previous_month_bigquery_cost,
     previous_month_users,
     previous_month_service_accounts,
+
+    -- MoM (Month-over-Month)
     mom_pct_total,
     mom_pct_bigquery,
     mom_pct_users,
+
+    -- Forecast
     forecast_next_month_total,
     forecast_next_month_bigquery,
+
+    -- Tendências e métricas
     trend_direction,
     cost_per_user,
+
+    -- Flags
     is_current_month,
     is_previous_month
 FROM with_metrics

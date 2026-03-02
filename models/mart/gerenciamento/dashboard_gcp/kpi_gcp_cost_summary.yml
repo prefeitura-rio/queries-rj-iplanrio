@@ -48,6 +48,34 @@ models:
         description: "Custo total líquido do BigQuery no mês."
         data_type: float64
 
+      - name: total_cost_at_list
+        description: "Custo total de tabela/lista (preço cheio sem negociações) no mês."
+        data_type: float64
+
+      - name: total_cud_credits
+        description: "Total de créditos CUD (Committed Use Discounts) aplicados no mês - valores negativos."
+        data_type: float64
+
+      - name: total_other_credits
+        description: "Total de outros créditos não-CUD aplicados no mês (promocionais, SUDs, etc) - valores negativos."
+        data_type: float64
+
+      - name: total_negotiated_savings
+        description: "Total de economia obtida via negociações comerciais no mês (diferença entre effective price e list price)."
+        data_type: float64
+
+      - name: total_cud_savings
+        description: "Total de economia obtida via CUD no mês (diferença entre cost e effective price)."
+        data_type: float64
+
+      - name: total_cud_fee_cost
+        description: "Total de custos de taxas de CUD (SKUs específicos) no mês."
+        data_type: float64
+
+      - name: total_savings
+        description: "Total de economias consolidado (soma de CUD credits + other credits + negotiated savings + CUD savings)."
+        data_type: float64
+
       - name: total_active_users
         description: "Total de usuários humanos ativos no BigQuery no mês."
         data_type: int64

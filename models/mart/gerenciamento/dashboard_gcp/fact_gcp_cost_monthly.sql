@@ -20,14 +20,42 @@ WITH billing_monthly AS (
             project.id AS project_id,
             DATE(CONCAT(LEFT(invoice.month, 4), '-', RIGHT(invoice.month, 2), '-01')) AS invoice_month_date,
             service.description AS service_description,
+
+            -- Custos base
             SUM(cost) AS cost_gross,
+            SUM(cost_at_list) AS cost_at_list,
+            SUM(IFNULL(cost_at_effective_price_default, cost)) AS cost_at_effective_price,
+
+            -- Créditos separados por categoria (conforme console GCP)
+            SUM(IFNULL((
+                SELECT SUM(CAST(c.amount AS NUMERIC))
+                FROM UNNEST(credits) c
+                WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'COMMITTED_USAGE_DISCOUNT_DOLLAR_BASE', 'FEE_UTILIZATION_OFFSET')
+            ), 0)) AS cud_credits,
+
+            SUM(IFNULL((
+                SELECT SUM(CAST(c.amount AS NUMERIC))
+                FROM UNNEST(credits) c
+                WHERE c.type IN ('CREDIT_TYPE_UNSPECIFIED', 'PROMOTION', 'SUSTAINED_USAGE_DISCOUNT', 'DISCOUNT', 'FREE_TIER', 'SUBSCRIPTION_BENEFIT', 'RESELLER_MARGIN')
+            ), 0)) AS other_credits,
+
+            -- Total de créditos (para compatibilidade)
             SUM(COALESCE((SELECT SUM(c.amount) FROM UNNEST(credits) AS c), 0)) AS credits,
+
+            -- CUD Fee (SKUs específicos conforme console GCP)
+            SUM(IF(sku.id IN ('5515-81A8-03A2', '7424-6E54-5CD0'), cost, 0)) AS cud_fee_cost,
+
+            -- Economias calculadas
+            SUM(IFNULL(cost_at_effective_price_default, cost) - cost_at_list) AS negotiated_savings,
+            SUM(cost - IFNULL(cost_at_effective_price_default, cost)) AS cud_savings,
+
+            -- Custo líquido (cost + todos os créditos)
             SUM(cost) + SUM(COALESCE((SELECT SUM(c.amount) FROM UNNEST(credits) AS c), 0)) AS cost_net,
+
             SUM(usage.amount) AS usage_amount
 
         FROM {{ ref('raw_gcp_billing') }}
-        WHERE cost_type = 'regular'
-            AND project.id IS NOT NULL
+        WHERE project.id IS NOT NULL
 
         {% if is_incremental() %}
             AND invoice_competencia_particao >= DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months }} MONTH), MONTH)
@@ -63,10 +91,28 @@ final AS (
             COALESCE(d.orgao, 'NÃO DEFINIDO') AS orgao,
             COALESCE(d.ambiente, 'prod') AS ambiente,
             b.service_description,
+
+            -- Custos base
             b.cost_gross,
+            b.cost_at_list,
+            b.cost_at_effective_price,
+
+            -- Créditos
             b.credits,
+            b.cud_credits,
+            b.other_credits,
+
+            -- Economias
+            b.negotiated_savings,
+            b.cud_savings,
+            b.cud_fee_cost,
+
+            -- Custo líquido
             b.cost_net,
+
             b.usage_amount,
+
+            -- Estatísticas BigQuery
             CASE WHEN b.service_description = 'BigQuery' THEN s.active_users_count END AS active_users_count,
             CASE WHEN b.service_description = 'BigQuery' THEN s.active_service_accounts_count END AS active_service_accounts_count,
             CASE WHEN b.service_description = 'BigQuery' THEN s.jobs_count END AS jobs_count,
@@ -87,10 +133,28 @@ SELECT
     orgao,
     ambiente,
     service_description,
+
+    -- Custos base
     cost_gross,
+    cost_at_list,
+    cost_at_effective_price,
+
+    -- Créditos
     credits,
+    cud_credits,
+    other_credits,
+
+    -- Economias
+    negotiated_savings,
+    cud_savings,
+    cud_fee_cost,
+
+    -- Custo líquido
     cost_net,
+
     usage_amount,
+
+    -- Estatísticas BigQuery
     active_users_count,
     active_service_accounts_count,
     jobs_count,
