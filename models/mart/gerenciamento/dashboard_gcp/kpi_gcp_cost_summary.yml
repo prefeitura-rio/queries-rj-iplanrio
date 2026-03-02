@@ -41,6 +41,8 @@ models:
       - name: total_cost_net
         description: "Custo total líquido da organização no mês (todos os serviços GCP)."
         data_type: float64
+        tests:
+          - not_null
 
       - name: bigquery_cost_net
         description: "Custo total líquido do BigQuery no mês."
@@ -59,20 +61,32 @@ models:
         data_type: float64
 
       - name: total_negotiated_savings
-        description: "Total de economia obtida via negociações comerciais no mês (diferença entre effective price e list price)."
+        description: "Total de economia obtida via negociações comerciais no mês (diferença entre list price e effective price)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_cost_summary__total_negotiated_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: total_cud_savings
-        description: "Total de economia obtida via CUD no mês (diferença entre cost e effective price)."
+        description: "Total de economia obtida via CUD no mês (diferença entre effective price e cost)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_cost_summary__total_cud_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: total_cud_fee_cost
         description: "Total de custos de taxas de CUD (SKUs específicos) no mês."
         data_type: float64
 
       - name: total_savings
-        description: "Total de economias consolidado (soma de CUD credits + other credits + negotiated savings + CUD savings)."
+        description: "Total de economias consolidado (soma de CUD credits + other credits + negotiated savings + CUD savings). Usa COALESCE para evitar NULL."
         data_type: float64
+        tests:
+          - not_null
 
       - name: total_active_users
         description: "Total de usuários humanos ativos no BigQuery no mês."

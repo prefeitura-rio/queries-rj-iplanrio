@@ -82,7 +82,7 @@ with_metrics AS (
         -- Total de economias (conforme console GCP)
         -- Nota: créditos são valores negativos, savings são positivos
         -- O resultado representa a economia líquida total
-        cud_credits + other_credits + negotiated_savings + cud_savings AS total_savings,
+        COALESCE(cud_credits, 0) + COALESCE(other_credits, 0) + COALESCE(negotiated_savings, 0) + COALESCE(cud_savings, 0) AS total_savings,
 
         -- MoM percentual
         SAFE_DIVIDE(

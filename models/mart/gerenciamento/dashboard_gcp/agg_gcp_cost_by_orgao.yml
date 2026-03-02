@@ -47,6 +47,8 @@ models:
       - name: cost_net
         description: "Custo líquido total do órgão no mês (todos os serviços GCP)."
         data_type: float64
+        tests:
+          - not_null
 
       - name: bigquery_cost_net
         description: "Custo líquido BigQuery do órgão no mês."
@@ -65,20 +67,32 @@ models:
         data_type: float64
 
       - name: negotiated_savings
-        description: "Economia obtida via negociações comerciais pelo órgão no mês (diferença entre effective price e list price)."
+        description: "Economia obtida via negociações comerciais pelo órgão no mês (diferença entre list price e effective price)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_cost_by_orgao__negotiated_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: cud_savings
-        description: "Economia obtida via CUD pelo órgão no mês (diferença entre cost e effective price)."
+        description: "Economia obtida via CUD pelo órgão no mês (diferença entre effective price e cost)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_cost_by_orgao__cud_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: cud_fee_cost
         description: "Custos de taxas de CUD (SKUs específicos) do órgão no mês."
         data_type: float64
 
       - name: total_savings
-        description: "Total de economias consolidado do órgão (soma de CUD credits + other credits + negotiated savings + CUD savings)."
+        description: "Total de economias consolidado do órgão (soma de CUD credits + other credits + negotiated savings + CUD savings). Usa COALESCE para evitar NULL."
         data_type: float64
+        tests:
+          - not_null
 
       - name: percent_of_total
         description: "Percentual do custo do órgão em relação ao total da organização no mês. Fórmula: (cost_net / total_month_cost) × 100."

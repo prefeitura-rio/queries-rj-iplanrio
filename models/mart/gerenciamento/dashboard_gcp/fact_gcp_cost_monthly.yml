@@ -90,38 +90,83 @@ models:
       - name: cost_gross
         description: "Custo bruto antes de créditos (SUM de cost do billing). Valores em USD, faixa: >= 0. Fonte: raw_gcp_billing.cost."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cost_gross__expect_column_values_to_be_between
+              min_value: 0
+              severity: error
 
       - name: cost_at_list
         description: "Custo de tabela/lista antes de descontos (SUM de cost_at_list). Preço cheio sem negociações. Valores em USD, faixa: >= 0. Fonte: raw_gcp_billing.cost_at_list."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cost_at_list__expect_column_values_to_be_between
+              min_value: 0
+              severity: error
 
       - name: cost_at_effective_price
         description: "Custo com preço efetivo após negociações mas antes de CUD (SUM de cost_at_effective_price_default). Valores em USD, faixa: >= 0. Fonte: raw_gcp_billing.cost_at_effective_price_default."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cost_at_effective_price__expect_column_values_to_be_between
+              min_value: 0
+              severity: error
 
       - name: credits
         description: "Soma de TODOS os créditos aplicados (valores negativos ou zero). Inclui CUD, SUDs, promotional credits, etc. Valores em USD, faixa: <= 0. Fonte: raw_gcp_billing.credits."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__credits__expect_column_values_to_be_between
+              max_value: 0
+              severity: warn
 
       - name: cud_credits
         description: "Créditos de Committed Use Discounts (CUD) - valores negativos. Inclui: COMMITTED_USAGE_DISCOUNT, COMMITTED_USAGE_DISCOUNT_DOLLAR_BASE, FEE_UTILIZATION_OFFSET. Valores em USD, faixa: <= 0. Fonte: raw_gcp_billing.credits (filtrado por tipo)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cud_credits__expect_column_values_to_be_between
+              max_value: 0
+              severity: warn
 
       - name: other_credits
-        description: "Outros créditos não-CUD - valores negativos. Inclui: PROMOTION, SUSTAINED_USAGE_DISCOUNT, DISCOUNT, FREE_TIER, SUBSCRIPTION_BENEFIT, RESELLER_MARGIN. Valores em USD, faixa: <= 0. Fonte: raw_gcp_billing.credits (filtrado por tipo)."
+        description: "Outros créditos não-CUD - valores negativos. Inclui: CREDIT_TYPE_UNSPECIFIED, PROMOTION, SUSTAINED_USAGE_DISCOUNT, DISCOUNT, FREE_TIER, SUBSCRIPTION_BENEFIT, RESELLER_MARGIN. Valores em USD, faixa: <= 0. Fonte: raw_gcp_billing.credits (filtrado por tipo)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__other_credits__expect_column_values_to_be_between
+              max_value: 0
+              severity: warn
 
       - name: negotiated_savings
         description: "Economia obtida via negociações comerciais (diferença entre list price e effective price). Valores positivos indicam economia real. Valores em USD, faixa: >= 0. Fonte: calculado (cost_at_list - cost_at_effective_price)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__negotiated_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: cud_savings
         description: "Economia obtida via CUD (diferença entre effective price e cost final). Valores positivos indicam economia real. Valores em USD, faixa: >= 0. Fonte: calculado (cost_at_effective_price - cost)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cud_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: cud_fee_cost
         description: "Custo de taxas de CUD (SKUs específicos: 5515-81A8-03A2, 7424-6E54-5CD0). Valores em USD, faixa: >= 0. Fonte: raw_gcp_billing.cost (filtrado por sku.id)."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cud_fee_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
 
       - name: cost_net
         description: |

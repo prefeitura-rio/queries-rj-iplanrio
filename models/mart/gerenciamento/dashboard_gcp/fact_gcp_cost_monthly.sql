@@ -22,7 +22,7 @@ WITH billing_monthly AS (
 
             -- Custos base
             SUM(cost) AS cost_gross,
-            SUM(cost_at_list) AS cost_at_list,
+            SUM(IFNULL(cost_at_list, cost)) AS cost_at_list,
             SUM(IFNULL(cost_at_effective_price_default, cost)) AS cost_at_effective_price,
 
             -- Créditos separados por categoria (conforme console GCP)
@@ -47,7 +47,7 @@ WITH billing_monthly AS (
 
             -- Economias calculadas (valores positivos = economia real)
             -- negotiated_savings: diferença entre preço de tabela e preço negociado
-            SUM(cost_at_list - IFNULL(cost_at_effective_price_default, cost)) AS negotiated_savings,
+            SUM(IFNULL(cost_at_list, cost) - IFNULL(cost_at_effective_price_default, cost)) AS negotiated_savings,
             -- cud_savings: diferença entre preço negociado e custo final após CUD
             SUM(IFNULL(cost_at_effective_price_default, cost) - cost) AS cud_savings,
 
