@@ -17,7 +17,7 @@ WITH latest_snapshot AS (
 ),
 
 storage_by_orgao AS (
-    -- Agregação por órgão no snapshot mais recente
+    -- Agregação por órgão (todos os snapshots para calcular LAG corretamente)
     SELECT
         s.snapshot_date,
         s.orgao,
@@ -43,8 +43,6 @@ storage_by_orgao AS (
         SUM(s.growth_gb) AS growth_gb
 
     FROM {{ ref('fact_gcp_bigquery_storage') }} s
-    INNER JOIN latest_snapshot ls
-        ON s.snapshot_date = ls.max_date
     GROUP BY s.snapshot_date, s.orgao
 ),
 
@@ -112,9 +110,17 @@ with_metrics AS (
         END AS trend_direction,
 
         -- Flags
-        snapshot_date = CURRENT_DATE() AS is_current_snapshot
+        snapshot_date = (SELECT max_date FROM latest_snapshot) AS is_current_snapshot
 
     FROM with_previous
+),
+
+latest_only AS (
+    -- Filtrar apenas o snapshot mais recente APÓS calcular LAG
+    SELECT m.*
+    FROM with_metrics m
+    INNER JOIN latest_snapshot ls
+        ON m.snapshot_date = ls.max_date
 )
 
 SELECT
@@ -147,5 +153,5 @@ SELECT
     -- Flags
     is_current_snapshot
 
-FROM with_metrics
+FROM latest_only
 ORDER BY total_tb DESC

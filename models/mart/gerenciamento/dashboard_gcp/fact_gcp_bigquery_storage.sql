@@ -56,7 +56,11 @@ WITH storage_billing AS (
         AND LOWER(sku.description) NOT LIKE '%insert%'
 
     {% if is_incremental() %}
-        AND invoice_competencia_particao >= DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months }} MONTH), MONTH)
+        -- Lookback de +1 mês para garantir que temos o mês anterior disponível para LAG
+        AND invoice_competencia_particao >= DATE_TRUNC(
+            DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months + 1 }} MONTH),
+            MONTH
+        )
     {% endif %}
 
     GROUP BY
@@ -90,10 +94,16 @@ storage_classified AS (
             WHEN LOWER(pricing_unit) LIKE '%gibibyte%' OR LOWER(unit) LIKE '%gibibyte%'
                 THEN usage_amount_pricing_units * POWER(1024, 3)
 
-            -- Se unidade é byte-seconds, converter para bytes
+            -- Se unidade é byte-seconds, converter para bytes usando dias reais do mês
             -- (byte-seconds / seconds_in_month = average bytes)
             WHEN LOWER(pricing_unit) LIKE '%byte%second%' OR LOWER(unit) LIKE '%byte%second%'
-                THEN usage_amount / (30 * 24 * 60 * 60)  -- Aproximação de 30 dias
+                THEN usage_amount / (
+                    DATE_DIFF(
+                        DATE_ADD(snapshot_date, INTERVAL 1 MONTH),
+                        snapshot_date,
+                        DAY
+                    ) * 24 * 60 * 60
+                )
 
             -- Se já está em bytes
             WHEN LOWER(pricing_unit) LIKE '%byte%' OR LOWER(unit) LIKE '%byte%'

@@ -63,6 +63,12 @@ models:
         quote: true
         tests:
           - not_null
+          - relationships:
+              name: fact_gcp_bigquery_storage__project_id__relationships
+              arguments:
+                to: ref('raw_dim_gcp_project')
+                field: project_id
+              severity: warn
 
       - name: orgao
         description: "Órgão/secretaria responsável pelo projeto. Derivado de raw_dim_gcp_project."
@@ -204,4 +210,4 @@ models:
           combination_of_columns:
             - snapshot_date
             - project_id
-          severity: warn
+          severity: error

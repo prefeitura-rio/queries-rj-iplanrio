@@ -158,3 +158,11 @@ models:
         data_type: bool
         tests:
           - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: agg_gcp_storage_by_orgao__table__unique_combination
+          combination_of_columns:
+            - snapshot_date
+            - orgao
+          severity: error
