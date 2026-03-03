@@ -1,0 +1,207 @@
+version: 2
+
+models:
+  - name: fact_gcp_bigquery_storage
+    description: |
+      Tabela fato de armazenamento do BigQuery por projeto e órgão.
+
+      **Propósito**: Monitorar crescimento de dados no BigQuery ao longo do tempo
+      para análise de custos de storage e planejamento de capacidade.
+
+      **Granularidade**: project_id + snapshot_date (mensal)
+
+      **Atualização**:
+      - Incremental mensal com lookback de 3 meses
+      - Estratégia: insert_overwrite (reprocessa partições modificadas)
+
+      **Particionamento**:
+      - Campo: snapshot_date (mês)
+      - Clustering: orgao, project_id
+
+      **Fonte de Dados**:
+      - raw_gcp_billing (SKUs de storage do BigQuery)
+      - raw_dim_gcp_project (classificação de órgãos)
+
+      **Abordagem - Baseada em Billing**:
+      - Usa dados de faturamento (billing export) para calcular armazenamento
+      - Identifica SKUs de "Active Storage" e "Long-term Storage"
+      - Converte unidades de billing (GiB-month ou byte-seconds) para bytes
+      - Volume em TB é calculado a partir do uso faturado (não medição direta via INFORMATION_SCHEMA)
+      - Inclui custos de storage por tipo (active vs long-term)
+
+      **Limitações**:
+      - Time Travel e Fail-safe bytes: não disponíveis via billing (definidos como 0)
+      - Dataset/Table count: não disponíveis via billing (definidos como NULL)
+      - Granularidade mensal (billing é agregado por mês)
+      - Depende de SKUs estarem corretamente classificados no billing export
+
+      **Tipos de Storage**:
+      - Active: dados acessados nos últimos 90 dias
+      - Long-term: dados não acessados por 90+ dias (custo reduzido)
+      - Time Travel: dados históricos (até 7 dias)
+      - Fail-safe: backup de recuperação (7 dias adicionais)
+
+    config:
+      materialized: incremental
+      incremental_strategy: insert_overwrite
+      tags:
+        - dashboard
+        - gcp
+        - bigquery
+        - storage
+
+    columns:
+      - name: snapshot_date
+        description: "Data do snapshot de armazenamento (primeiro dia do mês de faturamento). Derivado de invoice.month."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: project_id
+        description: "ID único do projeto GCP."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto. Derivado de raw_dim_gcp_project."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox. Derivado de raw_dim_gcp_project."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: projeto_base
+        description: "Nome base do projeto sem sufixo de ambiente."
+        data_type: string
+        quote: true
+
+      - name: total_logical_bytes
+        description: "Total de bytes armazenados logicamente (soma de active + long-term storage). Calculado a partir de SKUs de storage no billing. Unidade: bytes."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_bigquery_storage__total_logical_bytes__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: active_logical_bytes
+        description: "Bytes em armazenamento ativo (tabelas acessadas nos últimos 90 dias). Custo padrão de storage. Unidade: bytes."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_bigquery_storage__active_logical_bytes__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: long_term_logical_bytes
+        description: "Bytes em armazenamento de longo prazo (tabelas não acessadas por 90+ dias). Custo reduzido (~50% do active). Unidade: bytes."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_bigquery_storage__long_term_logical_bytes__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: time_travel_physical_bytes
+        description: "Bytes físicos de time travel. **LIMITAÇÃO**: Não disponível via billing - sempre 0. Use INFORMATION_SCHEMA para dados reais."
+        data_type: int64
+
+      - name: fail_safe_physical_bytes
+        description: "Bytes físicos de fail-safe. **LIMITAÇÃO**: Não disponível via billing - sempre 0. Use INFORMATION_SCHEMA para dados reais."
+        data_type: int64
+
+      - name: total_gb
+        description: "Total de armazenamento em Gigabytes (GB). Conversão: bytes / 1024^3."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: total_tb
+        description: "Total de armazenamento em Terabytes (TB). Conversão: bytes / 1024^4. **Métrica principal para visualização**."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: active_gb
+        description: "Armazenamento ativo em Gigabytes (GB). Conversão: active_logical_bytes / 1024^3."
+        data_type: float64
+
+      - name: active_tb
+        description: "Armazenamento ativo em Terabytes (TB). Conversão: active_logical_bytes / 1024^4."
+        data_type: float64
+
+      - name: long_term_gb
+        description: "Armazenamento de longo prazo em Gigabytes (GB). Conversão: long_term_logical_bytes / 1024^3."
+        data_type: float64
+
+      - name: long_term_tb
+        description: "Armazenamento de longo prazo em Terabytes (TB). Conversão: long_term_logical_bytes / 1024^4."
+        data_type: float64
+
+      - name: dataset_count
+        description: "Número de datasets únicos no projeto. **LIMITAÇÃO**: Não disponível via billing - sempre NULL. Use INFORMATION_SCHEMA para dados reais."
+        data_type: int64
+
+      - name: table_count
+        description: "Número total de tabelas no projeto. **LIMITAÇÃO**: Não disponível via billing - sempre NULL. Use INFORMATION_SCHEMA para dados reais."
+        data_type: int64
+
+      - name: total_storage_cost
+        description: "Custo total de storage do BigQuery no mês (BRL). Soma de active_storage_cost + long_term_storage_cost."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_bigquery_storage__total_storage_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: active_storage_cost
+        description: "Custo de Active Storage no mês (BRL). Fonte: SKUs de 'Active Storage' no billing."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_bigquery_storage__active_storage_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: long_term_storage_cost
+        description: "Custo de Long-term Storage no mês (BRL). Fonte: SKUs de 'Long Term Storage' no billing."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_bigquery_storage__long_term_storage_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: previous_total_bytes
+        description: "Total de bytes do snapshot anterior (mesmo projeto). Usado para cálculo de crescimento."
+        data_type: int64
+
+      - name: growth_bytes
+        description: "Crescimento absoluto em bytes desde o snapshot anterior. Valores negativos indicam redução de armazenamento."
+        data_type: int64
+
+      - name: growth_gb
+        description: "Crescimento absoluto em GB desde o snapshot anterior. Conversão: growth_bytes / 1024^3."
+        data_type: float64
+
+      - name: growth_rate_pct
+        description: "Taxa de crescimento percentual desde o snapshot anterior. Exemplo: 5.5 = crescimento de 5.5%."
+        data_type: float64
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: fact_gcp_bigquery_storage__table__unique_combination
+          combination_of_columns:
+            - snapshot_date
+            - project_id
+          severity: warn
