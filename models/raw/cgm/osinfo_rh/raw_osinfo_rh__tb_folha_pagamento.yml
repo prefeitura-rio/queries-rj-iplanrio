@@ -44,17 +44,51 @@ models:
         description: "Observação"
         datatype: string
       - name: rem_bruta
-        description: "Remuneração bruta"
-        datatype: numeric
+        description: "Remuneração bruta do funcionário para o período de competência. Representa a soma de todas as verbas de natureza provisória (P) e remuneratória (R) antes dos descontos. Valores esperados: >= 0, tipicamente entre R$ 0,00 e R$ 100.000,00 para a maioria dos casos, podendo ser maior para cargos de alta hierarquia."
+        data_type: numeric
+        data_tests:
+          - not_null:
+              name: raw_osinfo_rh__tb_folha_pagamento__rem_bruta__not_null
+              config:
+                severity: error
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: raw_osinfo_rh__tb_folha_pagamento__rem_bruta__non_negative
+              config:
+                severity: warn
+              arguments:
+                min_value: 0
       - name: descontos
-        description: "Descontos"
-        datatype: numeric
+        description: "Total de descontos aplicados sobre a remuneração bruta. Inclui descontos obrigatórios (INSS, IRRF) e facultativos (consignações, empréstimos). Valores esperados: >= 0, tipicamente entre 0% e 30% da remuneração bruta, podendo ser maior em casos específicos."
+        data_type: numeric
+        data_tests:
+          - not_null:
+              name: raw_osinfo_rh__tb_folha_pagamento__descontos__not_null
+              config:
+                severity: error
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: raw_osinfo_rh__tb_folha_pagamento__descontos__non_negative
+              config:
+                severity: warn
+              arguments:
+                min_value: 0
       - name: rem_liquida
-        description: "Remuneração líquida"
-        datatype: numeric
+        description: "Remuneração líquida do funcionário após a dedução dos descontos. Calculada como rem_bruta - descontos. Representa o valor efetivamente depositado na conta do funcionário. Valores esperados: >= 0, tipicamente entre 70% e 100% da remuneração bruta, sendo igual a rem_bruta quando não há descontos."
+        data_type: numeric
+        data_tests:
+          - not_null:
+              name: raw_osinfo_rh__tb_folha_pagamento__rem_liquida__not_null
+              config:
+                severity: error
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: datetime
       - name: datalake_transformed_at
         description: "Data de quando o dado foi transformado no dbt."
         data_type: datetime
+    tests:
+      - dbt_utils.expression_is_true:
+          name: raw_osinfo_rh__tb_folha_pagamento__rem_liquida_consistency
+          config:
+            severity: error
+          arguments:
+            expression: "abs(rem_liquida - (rem_bruta - descontos)) < 0.01"
