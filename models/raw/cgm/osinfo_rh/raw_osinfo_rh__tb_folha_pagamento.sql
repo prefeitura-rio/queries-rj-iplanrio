@@ -6,9 +6,11 @@
     )
 }}
 
-with valores_folha_pagamento_with_competencia as (
+with valores_folha_pagamento_com_competencia as (
     select
-        tvfp.*,
+        tvfp.fpto_cd_folha,
+        tvfp.rhco_cod_coluna,
+        tvfp.vlfp_vl_valor,
         tfp.FPTO_NR_MES_COMPETENCIA as mes_competencia,
         tfp.FPTO_NR_ANO_COMPETENCIA as ano_competencia
     from {{ source('brutos_osinfo_rh_staging','tb_valores_folha_pagamento') }} tvfp
@@ -16,7 +18,7 @@ with valores_folha_pagamento_with_competencia as (
         on tvfp.fpto_cd_folha = tfp.fpto_cd_folha
 ),
 
-colunas_valores_with_rn as (
+colunas_valores_com_numero_linha as (
     select
         tcv.rhco_cod_coluna,
         tvfp.mes_competencia,
@@ -31,7 +33,7 @@ colunas_valores_with_rn as (
                 tcv.rhco_nr_ano_vigencia_inicio desc,
                 tcv.rhco_nr_mes_vigencia_inicio desc
         ) as rn
-    from valores_folha_pagamento_with_competencia tvfp
+    from valores_folha_pagamento_com_competencia tvfp
     left join {{ source('brutos_osinfo_rh_staging','tb_colunas_valores') }} tcv 
         on tvfp.rhco_cod_coluna = tcv.rhco_cod_coluna
         and (
@@ -54,7 +56,7 @@ colunas_valores_deduplica as (
         mes_competencia,
         ano_competencia,
         rhgr_cd_codigo
-    from colunas_valores_with_rn
+    from colunas_valores_com_numero_linha
     where rn = 1
 )
 
