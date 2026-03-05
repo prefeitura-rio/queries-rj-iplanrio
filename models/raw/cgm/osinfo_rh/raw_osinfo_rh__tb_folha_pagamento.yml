@@ -87,7 +87,7 @@ models:
         data_type: datetime
     tests:
       - dbt_utils.expression_is_true:
-          name: raw_osinfo_rh__tb_folha_pagamento__rem_liquida_consistency
+          name: raw_osinfo_rh__tb_folha_pagamento__table__rem_liquida_consistency
           config:
             severity: error
           arguments:
