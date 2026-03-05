@@ -1,0 +1,168 @@
+version: 2
+
+models:
+  - name: agg_gcp_storage_by_orgao
+    description: |
+      View de agregação de armazenamento BigQuery por órgão.
+
+      **Propósito**: Fornecer visão consolidada de armazenamento por órgão/secretaria
+      para análise no dashboard de custos GCP. Mostra distribuição, crescimento e tendências.
+
+      **Granularidade**: orgao + snapshot_date (snapshot mais recente)
+
+      **Atualização**: View (sempre atualizada com dados da fact_gcp_bigquery_storage)
+
+    config:
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - aggregation
+        - storage
+        - orgao
+
+    columns:
+      - name: snapshot_date
+        description: "Data do snapshot (snapshot mais recente disponível)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelos projetos."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: total_tb
+        description: "**Métrica principal**: Total de armazenamento em Terabytes (TB) para o órgão."
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__total_tb__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: total_gb
+        description: "Total de armazenamento em Gigabytes (GB) para o órgão."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: total_logical_bytes
+        description: "Total de bytes armazenados logicamente para o órgão."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: active_tb
+        description: "Armazenamento ativo em TB (dados acessados nos últimos 90 dias). Custo padrão."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__active_tb__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: long_term_tb
+        description: "Armazenamento de longo prazo em TB (dados não acessados por 90+ dias). Custo reduzido."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__long_term_tb__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: active_pct
+        description: "Percentual do armazenamento que é Active Storage. Valores altos indicam dados frequentemente acessados."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__active_pct__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: long_term_pct
+        description: "Percentual do armazenamento que é Long-term Storage. Valores altos indicam oportunidade de economia (dados arquivados)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__long_term_pct__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: total_datasets
+        description: "Número total de datasets do órgão (soma de todos os projetos)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__total_datasets__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: total_tables
+        description: "Número total de tabelas do órgão (soma de todos os projetos)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__total_tables__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: project_count
+        description: "Número de projetos únicos do órgão."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__project_count__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: percent_of_total
+        description: "Percentual do armazenamento total da organização que pertence a este órgão. Usado para visualização de distribuição."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_by_orgao__percent_of_total__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: growth_bytes
+        description: "Crescimento absoluto em bytes desde o snapshot anterior. Valores negativos indicam redução."
+        data_type: int64
+
+      - name: growth_gb
+        description: "Crescimento absoluto em GB desde o snapshot anterior."
+        data_type: float64
+
+      - name: growth_rate_pct
+        description: "Taxa de crescimento percentual desde o snapshot anterior. Exemplo: 5.5 = crescimento de 5.5%."
+        data_type: float64
+
+      - name: trend_direction
+        description: "Direção da tendência de crescimento: 'UP' (crescimento >5%), 'DOWN' (redução >5%), 'STABLE' (variação ≤5%)."
+        data_type: string
+        quote: true
+        tests:
+          - accepted_values:
+              name: agg_gcp_storage_by_orgao__trend_direction__accepted_values
+              values: ['UP', 'DOWN', 'STABLE']
+
+      - name: is_current_snapshot
+        description: "Flag indicando se este é o snapshot mais recente (TRUE/FALSE)."
+        data_type: bool
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: agg_gcp_storage_by_orgao__table__unique_combination
+          combination_of_columns:
+            - snapshot_date
+            - orgao
+          severity: error
