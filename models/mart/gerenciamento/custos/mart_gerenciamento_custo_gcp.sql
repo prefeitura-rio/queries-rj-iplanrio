@@ -58,6 +58,20 @@ with
     fixed_credits as (
         select
             * except (credits),
+            -- Separar créditos por categoria (conforme console GCP)
+            IFNULL((
+                SELECT SUM(CAST(c.amount AS NUMERIC))
+                FROM UNNEST(credits) c
+                WHERE c.type IN ('COMMITTED_USAGE_DISCOUNT', 'COMMITTED_USAGE_DISCOUNT_DOLLAR_BASE', 'FEE_UTILIZATION_OFFSET')
+            ), 0) AS cud_credits,
+
+            IFNULL((
+                SELECT SUM(CAST(c.amount AS NUMERIC))
+                FROM UNNEST(credits) c
+                WHERE c.type IN ('CREDIT_TYPE_UNSPECIFIED', 'PROMOTION', 'SUSTAINED_USAGE_DISCOUNT', 'DISCOUNT', 'FREE_TIER', 'SUBSCRIPTION_BENEFIT', 'RESELLER_MARGIN')
+            ), 0) AS other_credits,
+
+            -- Total de créditos (manter para compatibilidade)
             coalesce((select sum(c.amount) from unnest(credits) as c), 0) as credits
         from source
     ),

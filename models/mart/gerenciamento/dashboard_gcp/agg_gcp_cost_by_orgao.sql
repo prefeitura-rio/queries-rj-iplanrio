@@ -1,7 +1,6 @@
 {{
     config(
         materialized='view',
-        schema='dashboard_gcp',
         alias='agg_gcp_cost_by_orgao',
         tags=['dashboard', 'gcp', 'aggregation', 'orgao'],
     )
@@ -17,7 +16,17 @@ WITH orgao_monthly AS (
         invoice_month_date,
         orgao,
         SUM(cost_net) AS cost_net,
-        SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net
+        SUM(CASE WHEN service_description = 'BigQuery' THEN cost_net ELSE 0 END) AS bigquery_cost_net,
+
+        -- Economias (conforme console GCP)
+        SUM(cud_credits) AS cud_credits,
+        SUM(other_credits) AS other_credits,
+        SUM(negotiated_savings) AS negotiated_savings,
+        SUM(cud_savings) AS cud_savings,
+        SUM(cud_fee_cost) AS cud_fee_cost,
+
+        -- Custo base
+        SUM(cost_at_list) AS cost_at_list
     FROM {{ ref('fact_gcp_cost_monthly') }}
     GROUP BY invoice_month_date, orgao
 ),
@@ -37,6 +46,12 @@ with_lag AS (
         orgao,
         cost_net,
         bigquery_cost_net,
+        cud_credits,
+        other_credits,
+        negotiated_savings,
+        cud_savings,
+        cud_fee_cost,
+        cost_at_list,
         total_month_cost,
 
         -- % do total
@@ -55,8 +70,19 @@ with_metrics AS (
         orgao,
         cost_net,
         bigquery_cost_net,
+        cud_credits,
+        other_credits,
+        negotiated_savings,
+        cud_savings,
+        cud_fee_cost,
+        cost_at_list,
         percent_of_total,
         previous_month_cost,
+
+        -- Total de economias (conforme console GCP)
+        -- Nota: créditos são valores negativos, savings são positivos
+        -- O resultado representa a economia líquida total
+        COALESCE(cud_credits, 0) + COALESCE(other_credits, 0) + COALESCE(negotiated_savings, 0) + COALESCE(cud_savings, 0) AS total_savings,
 
         -- MoM percentual
         SAFE_DIVIDE(
@@ -78,5 +104,32 @@ with_metrics AS (
     FROM with_lag
 )
 
-SELECT * FROM with_metrics
+SELECT
+    invoice_month_date,
+    orgao,
+
+    -- Custos
+    cost_net,
+    bigquery_cost_net,
+    cost_at_list,
+
+    -- Economias (conforme console GCP)
+    cud_credits,
+    other_credits,
+    negotiated_savings,
+    cud_savings,
+    cud_fee_cost,
+    total_savings,
+
+    -- Métricas
+    percent_of_total,
+    previous_month_cost,
+    mom_pct,
+    trend_direction,
+
+    -- Flags
+    is_current_month,
+    is_previous_month
+
+FROM with_metrics
 ORDER BY invoice_month_date DESC, cost_net DESC
