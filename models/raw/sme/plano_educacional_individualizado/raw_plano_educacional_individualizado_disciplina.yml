@@ -20,6 +20,7 @@ models:
       - name: nome_disciplina
         description: "Nome da Disciplina"
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_plano_educacional_individualizado_disciplina__nome_disciplina__not_null
@@ -34,6 +35,13 @@ models:
               name: raw_plano_educacional_individualizado_disciplina__id_nivel__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_disciplina__id_nivel__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('modelo_nivel')
+                field: id
 
       - name: id_modalidade
         description: "Modalidade (FK)"
@@ -43,13 +51,20 @@ models:
               name: raw_plano_educacional_individualizado_disciplina__id_modalidade__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_disciplina__id_modalidade__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('modelo_modalidade')
+                field: id
 
-      - name: flag_discilina_plano_educacional
+      - name: flag_disciplina_plano_educacional
         description: "É PEI? Sim (1) ou Não (0)"
         data_type: boolean
         data_tests:
           - not_null:
-              name: raw_plano_educacional_individualizado_disciplina__flag_discilina_plano_educacional__not_null
+              name: raw_plano_educacional_individualizado_disciplina__flag_disciplina_plano_educacional__not_null
               config:
                 severity: error
 

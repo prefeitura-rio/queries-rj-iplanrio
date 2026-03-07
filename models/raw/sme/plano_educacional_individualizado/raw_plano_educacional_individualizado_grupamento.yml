@@ -12,6 +12,10 @@ models:
               name: raw_plano_educacional_individualizado_grupamento__id_grupamento__not_null
               config:
                 severity: error
+          - unique:
+              name: raw_plano_educacional_individualizado_grupamento__id_grupamento__unique
+              config:
+                severity: error
 
       - name: numero_grupamento
         description: "Número do grupamento"
@@ -25,13 +29,14 @@ models:
       - name: descricao_grupamento
         description: "Descrição do grupamento"
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_plano_educacional_individualizado_grupamento__descricao_grupamento__not_null
               config:
                 severity: error
 
-      - name: idade_Ideal_Inicio_grupamento
+      - name: idade_ideal_inicio_grupamento
         description: "Idade ideal de início do grupamento"
         data_type: int64
 

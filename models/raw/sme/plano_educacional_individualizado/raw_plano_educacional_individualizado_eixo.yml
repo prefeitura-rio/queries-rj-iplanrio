@@ -12,6 +12,13 @@ models:
               name: raw_plano_educacional_individualizado_eixo__id_grupamento__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_eixo__id_grupamento__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_grupamento')
+                field: id_grupamento
 
       - name: id_disciplina
         description: "Identificador da disciplina"
@@ -21,6 +28,13 @@ models:
               name: raw_plano_educacional_individualizado_eixo__id_disciplina__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_eixo__id_disciplina__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_disciplina')
+                field: id_disciplina
 
       - name: id_eixo
         description: "Identificador do eixo"
@@ -28,6 +42,10 @@ models:
         data_tests:
           - not_null:
               name: raw_plano_educacional_individualizado_eixo__id_eixo__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_plano_educacional_individualizado_eixo__id_eixo__unique
               config:
                 severity: error
 

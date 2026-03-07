@@ -26,12 +26,12 @@ models:
               config:
                 severity: error
 
-      - name: id_sigla_disciplina
-        description: "Id da Disciplina no SGA (FK)"
+      - name: sigla_disciplina_sga
+        description: "Sigla da Disciplina no SGA"
         data_type: int64
         data_tests:
           - not_null:
-              name: raw_plano_educacional_individualizado__id_sigla_disciplina__not_null
+              name: raw_plano_educacional_individualizado__sigla_disciplina_sga__not_null
               config:
                 severity: error
 
@@ -82,9 +82,17 @@ models:
         description: "Data de inclusão do registro na base"
         data_type: datetime
 
-      - name: disciplina_plano_educacional_individualizado
-        description: "Id do PEI da disciplina (FK da tabela PEIDisciplina)"
+      - name: id_disciplina_pei
+        description: "Id da disciplina no PEI (FK da tabela PEIDisciplina)"
         data_type: int64
+        data_tests:
+          - relationships:
+              name: raw_plano_educacional_individualizado__id_disciplina_pei__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_disciplina')
+                field: id_disciplina
 
       - name: id_curriculo
         description: "Id do currículo (FK)"

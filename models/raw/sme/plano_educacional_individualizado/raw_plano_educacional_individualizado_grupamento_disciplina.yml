@@ -3,6 +3,14 @@ version: 2
 models:
   - name: raw_plano_educacional_individualizado_grupamento_disciplina
     description: "Grupamentos da Disciplina"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_plano_educacional_individualizado_grupamento_disciplina__unique_id_grupamento_id_disciplina
+          combination_of_columns:
+            - id_grupamento
+            - id_disciplina
+          config:
+            severity: error
     columns:
       - name: id_grupamento
         description: "Identificador do grupamento"
@@ -12,6 +20,13 @@ models:
               name: raw_plano_educacional_individualizado_grupamento_disciplina__id_grupamento__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_grupamento_disciplina__id_grupamento__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_grupamento')
+                field: id_grupamento
 
       - name: id_disciplina
         description: "Identificador da disciplina"
@@ -21,6 +36,13 @@ models:
               name: raw_plano_educacional_individualizado_grupamento_disciplina__id_disciplina__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_grupamento_disciplina__id_disciplina__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_disciplina')
+                field: id_disciplina
 
       - name: loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem."

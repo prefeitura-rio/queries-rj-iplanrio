@@ -12,6 +12,10 @@ models:
               name: raw_plano_educacional_individualizado_habilidade__id_habilidade__not_null
               config:
                 severity: error
+          - unique:
+              name: raw_plano_educacional_individualizado_habilidade__id_habilidade__unique
+              config:
+                severity: error
 
       - name: id_grupamento
         description: "Identificador do grupamento"
@@ -21,6 +25,13 @@ models:
               name: raw_plano_educacional_individualizado_habilidade__id_grupamento__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_habilidade__id_grupamento__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_grupamento')
+                field: id_grupamento
 
       - name: id_disciplina
         description: "Identificador da disciplina"
@@ -30,6 +41,13 @@ models:
               name: raw_plano_educacional_individualizado_habilidade__id_disciplina__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_habilidade__id_disciplina__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_disciplina')
+                field: id_disciplina
 
       - name: id_eixo
         description: "Identificador do eixo"
@@ -39,6 +57,13 @@ models:
               name: raw_plano_educacional_individualizado_habilidade__id_eixo__not_null
               config:
                 severity: error
+          - relationships:
+              name: raw_plano_educacional_individualizado_habilidade__id_eixo__relationships
+              config:
+                severity: error
+              arguments:
+                to: ref('raw_plano_educacional_individualizado_eixo')
+                field: id_eixo
 
       - name: descricao_habilidade
         description: "Descrição da habilidade"
@@ -49,12 +74,12 @@ models:
               config:
                 severity: error
 
-      - name: nr_bimentre_habilidade
+      - name: nr_bimestre_habilidade
         description: "Número do bimestre da habilidade"
         data_type: int64
         data_tests:
           - not_null:
-              name: raw_plano_educacional_individualizado_habilidade__nr_bimentre_habilidade__not_null
+              name: raw_plano_educacional_individualizado_habilidade__nr_bimestre_habilidade__not_null
               config:
                 severity: error
 

@@ -18,7 +18,6 @@ sources:
         description: "Tabela principal contendo os detalhes dos Planos Educacionais Individualizados, incluindo estratégias, recursos e resultados esperados."
       - name: PEI_Disciplina
         description: "Disciplinas disponíveis para uso no Plano Educacional Individualizado, com suas configurações e modalidades."
-    config:
-      freshness:
-        error_after: {count: 24, period: hour}
-      loaded_at_field: _airbyte_extracted_at
+    freshness:
+      error_after: {count: 24, period: hour}
+    loaded_at_field: _airbyte_extracted_at
