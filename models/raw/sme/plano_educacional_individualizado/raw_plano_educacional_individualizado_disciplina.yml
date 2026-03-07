@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: raw_plano_educacional_individualizado_disciplina
+    description: "Disciplinas a serem usadas no PEI"
+    columns:
+      - name: id_disciplina
+        description: "Id da Disciplina"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_disciplina__id_disciplina__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_plano_educacional_individualizado_disciplina__id_disciplina__unique
+              config:
+                severity: error
+
+      - name: nome_disciplina
+        description: "Nome da Disciplina"
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_disciplina__nome_disciplina__not_null
+              config:
+                severity: error
+
+      - name: id_nivel
+        description: "Nível (FK)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_disciplina__id_nivel__not_null
+              config:
+                severity: error
+
+      - name: id_modalidade
+        description: "Modalidade (FK)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_disciplina__id_modalidade__not_null
+              config:
+                severity: error
+
+      - name: flag_discilina_plano_educacional
+        description: "É PEI? Sim (1) ou Não (0)"
+        data_type: boolean
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_disciplina__flag_discilina_plano_educacional__not_null
+              config:
+                severity: error
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

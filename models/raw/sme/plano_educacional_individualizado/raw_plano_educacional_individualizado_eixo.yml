@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: raw_plano_educacional_individualizado_eixo
+    description: "Eixos educacionais do PEI"
+    columns:
+      - name: id_grupamento
+        description: "Identificador do grupamento"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_eixo__id_grupamento__not_null
+              config:
+                severity: error
+
+      - name: id_disciplina
+        description: "Identificador da disciplina"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_eixo__id_disciplina__not_null
+              config:
+                severity: error
+
+      - name: id_eixo
+        description: "Identificador do eixo"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_eixo__id_eixo__not_null
+              config:
+                severity: error
+
+      - name: nome_eixo
+        description: "Nome do eixo"
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_eixo__nome_eixo__not_null
+              config:
+                severity: error
+
+      - name: objetivo_conhecimento_eixo
+        description: "Objetivos de conhecimento do eixo"
+        data_type: string
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp

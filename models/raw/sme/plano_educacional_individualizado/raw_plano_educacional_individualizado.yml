@@ -1,0 +1,119 @@
+version: 2
+
+models:
+  - name: raw_plano_educacional_individualizado
+    description: "Contém os detalhes do Plano Educacional Individualizado"
+    columns:
+      - name: id_plano_educacional_individualizado
+        description: "Id do PEI (PK)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado__id_plano_educacional_individualizado__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_plano_educacional_individualizado__id_plano_educacional_individualizado__unique
+              config:
+                severity: error
+
+      - name: id_aluno
+        description: "Id do aluno (FK)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado__id_aluno__not_null
+              config:
+                severity: error
+
+      - name: id_sigla_disciplina
+        description: "Id da Disciplina no SGA (FK)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado__id_sigla_disciplina__not_null
+              config:
+                severity: error
+
+      - name: conselho_classe_plano_educacional_individualizado
+        description: "COC do PEI"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado__conselho_classe_plano_educacional_individualizado__not_null
+              config:
+                severity: error
+
+      - name: ano_plano_educacional_individualizado
+        description: "Ano do PEI"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado__ano_plano_educacional_individualizado__not_null
+              config:
+                severity: error
+
+      - name: descricao_estrategia_plano_educacional_individualizado
+        description: "Descrição da Estratégia adotada"
+        data_type: string
+
+      - name: descricao_recursos_especifico_plano_educacional_individualizado
+        description: "Descrição de Recursos Específicos"
+        data_type: string
+
+      - name: descricao_resultado_especifico_plano_educacional_individualizado
+        description: "Descrição do Resultado Esperado"
+        data_type: string
+
+      - name: id_atual_turma
+        description: "Id da turma atual (FK)"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado__id_atual_turma__not_null
+              config:
+                severity: error
+
+      - name: objetivo_plano_educacional_individualizado
+        description: "Objetivo do PEI"
+        data_type: string
+
+      - name: data_inclusao_registro
+        description: "Data de inclusão do registro na base"
+        data_type: datetime
+
+      - name: disciplina_plano_educacional_individualizado
+        description: "Id do PEI da disciplina (FK da tabela PEIDisciplina)"
+        data_type: int64
+
+      - name: id_curriculo
+        description: "Id do currículo (FK)"
+        data_type: int64
+
+      - name: id_crr
+        description: "Id CRR (FK)"
+        data_type: int64
+
+      - name: id_crp
+        description: "Id CRP (FK)"
+        data_type: int64
+
+      - name: relatorio_avaliacao_plano_educacional_individualizado
+        description: "Relatório de Avaliação do PEI"
+        data_type: string
+
+      - name: login_usuario_avaliador
+        description: "Login do usuário avaliador"
+        data_type: string
+
+      - name: data_avaliacao_plano_educacional_individualizado
+        description: "Data da Avaliação do PEI"
+        data_type: datetime
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
