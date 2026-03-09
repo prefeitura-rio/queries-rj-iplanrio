@@ -98,12 +98,12 @@ models:
         description: "Id do currículo (FK)"
         data_type: int64
 
-      - name: id_crr
-        description: "Id CRR (FK)"
+      - name: id_requisito_curriculo
+        description: "Id do requisito do currículo (PK, FK da tabela ACA_CurriculoPeriodo)"
         data_type: int64
 
-      - name: id_crp
-        description: "Id CRP (FK)"
+      - name: id_período_currículo
+        description: "Id do período do currículo (PK, FK da tabela ACA_CurriculoPeriodo)"
         data_type: int64
 
       - name: relatorio_avaliacao_plano_educacional_individualizado
