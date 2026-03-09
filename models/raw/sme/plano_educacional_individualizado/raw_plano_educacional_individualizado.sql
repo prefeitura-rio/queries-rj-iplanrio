@@ -25,6 +25,6 @@ SELECT safe_cast(pei_id as int64) as id_plano_educacional_individualizado,
     safe_cast(pei_relDeAvaliacao as string) as relatorio_avaliacao_plano_educacional_individualizado,
     safe_cast(usu_LoginAvaliador as string) as login_usuario_avaliador,
     safe_cast(pei_DataAvaliacao as datetime) as data_avaliacao_plano_educacional_individualizado,
-    _airbyte_extracted_at as loaded_at, s
+    _airbyte_extracted_at as loaded_at, 
     current_timestamp() as transformed_at
 FROM {{ source('brutos_plano_educacional_individualizado_staging', 'PEI') }}
