@@ -10,7 +10,7 @@ models:
       métricas de eficiência (custo/TiB, custo/job) e evolução temporal (MoM).
 
       **Granularidade**:
-      - invoice_month_date + orgao + principal_category
+      - invoice_month_date + orgao + ambiente + principal_category
       - principal_category: 'User', 'Service Account', 'Other'
 
       **Fonte de Dados**:
@@ -104,3 +104,12 @@ models:
       - name: mom_pct_principals
         description: "Variação percentual de quantidade de principals em relação ao mês anterior. Fonte: calculado."
         data_type: float64
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: agg_gcp_cost_by_user_type__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - orgao
+            - ambiente
+            - principal_category

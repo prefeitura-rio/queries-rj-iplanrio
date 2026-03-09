@@ -43,7 +43,7 @@ current_period_users_by_orgao AS (
 ),
 
 previous_period_users_by_orgao AS (
-    -- Usuários ativos no período anterior (31-61 dias atrás) por órgão
+    -- Usuários ativos no período anterior (30 dias: 31-61 dias atrás) por órgão
     SELECT
         COALESCE(p.orgao, 'NÃO DEFINIDO') AS orgao,
         COALESCE(p.ambiente, 'prod') AS ambiente,
@@ -59,7 +59,7 @@ previous_period_users_by_orgao AS (
     LEFT JOIN {{ ref('raw_dim_gcp_project') }} p
         ON j.project_id = p.project_id
     WHERE DATE(j.creation_time) >= d.previous_period_start
-        AND DATE(j.creation_time) <= d.previous_period_end
+        AND DATE(j.creation_time) < d.previous_period_end
     GROUP BY orgao, ambiente
 ),
 

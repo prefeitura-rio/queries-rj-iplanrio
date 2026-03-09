@@ -180,10 +180,22 @@ models:
       - name: active_users_count
         description: "Número de usuários humanos únicos ativos no BigQuery no mês (executaram >= 1 job, independente de custo). NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1 (principal_type = 'user')."
         data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__active_users_count__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "active_users_count IS NOT NULL"
 
       - name: active_service_accounts_count
         description: "Número de service accounts únicas ativas no BigQuery no mês (executaram >= 1 job, independente de custo). NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1 (is_service_account = true)."
         data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__active_service_accounts_count__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "active_service_accounts_count IS NOT NULL"
 
       - name: jobs_count
         description: "Total de jobs executados no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1.job_id (COUNT DISTINCT)."

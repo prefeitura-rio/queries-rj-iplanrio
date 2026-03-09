@@ -68,12 +68,12 @@ with_lag AS (
     SELECT
         *,
         LAG(total_cost) OVER (
-            PARTITION BY orgao, principal_category
+            PARTITION BY orgao, ambiente, principal_category
             ORDER BY invoice_month_date
         ) AS previous_month_cost,
 
         LAG(principals_count) OVER (
-            PARTITION BY orgao, principal_category
+            PARTITION BY orgao, ambiente, principal_category
             ORDER BY invoice_month_date
         ) AS previous_month_principals_count
 

@@ -36,7 +36,7 @@ current_period_users AS (
 ),
 
 previous_period_users AS (
-    -- Usuários ativos no período anterior (31-61 dias atrás)
+    -- Usuários ativos no período anterior (30 dias: 31-61 dias atrás)
     SELECT
         COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts,
@@ -46,7 +46,7 @@ previous_period_users AS (
     FROM {{ ref('raw_gcp_bigquery_cost_allocated_v1') }} j
     CROSS JOIN date_ranges d
     WHERE DATE(j.creation_time) >= d.previous_period_start
-        AND DATE(j.creation_time) <= d.previous_period_end
+        AND DATE(j.creation_time) < d.previous_period_end
 ),
 
 comparison AS (

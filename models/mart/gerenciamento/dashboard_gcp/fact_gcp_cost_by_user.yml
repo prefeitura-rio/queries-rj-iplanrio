@@ -175,12 +175,12 @@ models:
         data_type: timestamp
 
       - name: active_days_in_month
-        description: "Número de dias ativos no mês (diferença entre primeiro e último job). Faixa: >= 0 (pode ser 0 se todos os jobs foram no mesmo dia). Fonte: calculado (DATE_DIFF)."
+        description: "Número de dias distintos com atividade no mês (COUNT DISTINCT de datas). Faixa: >= 1 (mínimo 1 dia já que há pelo menos 1 job). Fonte: calculado (COUNT DISTINCT DATE(creation_time))."
         data_type: int64
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
               name: fact_gcp_cost_by_user__active_days_in_month__expect_column_values_to_be_between
-              min_value: 0
+              min_value: 1
               max_value: 31
               severity: warn
 

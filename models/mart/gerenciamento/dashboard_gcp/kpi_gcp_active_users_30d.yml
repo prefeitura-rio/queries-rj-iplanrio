@@ -26,6 +26,7 @@ models:
         data_type: date
         tests:
           - not_null
+          - unique
 
       - name: period_start
         description: "Data de início do período atual (hoje - 30 dias)."

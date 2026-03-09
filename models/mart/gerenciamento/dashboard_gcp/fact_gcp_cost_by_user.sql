@@ -46,7 +46,10 @@ WITH user_costs AS (
 
         -- Primeira e última execução no mês
         MIN(creation_time) AS first_job_date,
-        MAX(creation_time) AS last_job_date
+        MAX(creation_time) AS last_job_date,
+
+        -- Dias distintos com atividade no mês
+        COUNT(DISTINCT DATE(creation_time)) AS active_days_in_month
 
     FROM {{ ref('raw_gcp_bigquery_cost_allocated_v1') }}
     WHERE allocated_cost_job > 0
@@ -66,7 +69,20 @@ WITH user_costs AS (
 
 with_project_info AS (
     SELECT
-        u.*,
+        u.invoice_month_date,
+        u.project_id,
+        u.principal_email,
+        u.principal_type,
+        u.is_service_account,
+        u.total_cost,
+        u.jobs_count,
+        u.total_bytes_billed,
+        u.total_tib_billed,
+        u.avg_cost_per_job,
+        u.usage_tier,
+        u.first_job_date,
+        u.last_job_date,
+        u.active_days_in_month,
         COALESCE(p.orgao, 'NÃO DEFINIDO') AS orgao,
         COALESCE(p.ambiente, 'prod') AS ambiente,
         COALESCE(p.projeto_base, u.project_id) AS projeto_base
@@ -124,7 +140,7 @@ SELECT
     -- Atividade temporal
     first_job_date,
     last_job_date,
-    DATE_DIFF(last_job_date, first_job_date, DAY) AS active_days_in_month,
+    active_days_in_month,
 
     -- Flags úteis
     principal_type = 'user' AS is_user,
