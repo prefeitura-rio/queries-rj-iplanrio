@@ -26,7 +26,7 @@ models:
               config:
                 severity: error
 
-      - name: sigla_disciplina_sga
+      - name: id_sigla_disciplina_sga
         description: "Sigla da Disciplina no SGA"
         data_type: int64
         data_tests:
@@ -82,7 +82,7 @@ models:
         description: "Data de inclusão do registro na base"
         data_type: datetime
 
-      - name: id_disciplina_pei
+      - name: id_disciplina_plano_educacional_individualizado
         description: "Id da disciplina no PEI (FK da tabela PEIDisciplina)"
         data_type: int64
         data_tests:
