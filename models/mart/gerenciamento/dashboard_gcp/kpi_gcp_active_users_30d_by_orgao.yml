@@ -1,0 +1,226 @@
+version: 2
+
+models:
+  - name: kpi_gcp_active_users_30d_by_orgao
+    description: |
+      KPI de usuários ativos BigQuery nos últimos 30 dias agregado POR ÓRGÃO com comparação ao período anterior.
+
+      **Propósito**: Análise comparativa de engajamento de usuários entre órgãos.
+      Permite identificar órgãos com maior crescimento, queda ou estabilidade de usuários ativos.
+
+      **Definição de Usuário Ativo**: Qualquer principal (usuário ou service account) que executou
+      pelo menos 1 job BigQuery nos últimos 30 dias, independente de custo (inclui queries em cache).
+
+      **Granularidade**: orgao + ambiente (uma linha por órgão)
+
+      **Períodos**:
+      - Período atual: últimos 30 dias (hoje - 30 dias até ontem)
+      - Período anterior: 31-61 dias atrás (para comparação equivalente)
+
+      **Rankings disponíveis**:
+      - growth_rank_absolute: ranking por crescimento absoluto de usuários
+      - growth_rank_percentage: ranking por crescimento percentual de usuários
+      - users_rank: ranking por quantidade de usuários ativos
+
+      **Atualização**: Table materializada, reprocessada diariamente
+
+      **Fonte de Dados**:
+      - raw_gcp_bigquery_cost_allocated_v1 (todos os jobs BigQuery)
+      - raw_dim_gcp_project (mapeamento de órgãos)
+
+    columns:
+      - name: orgao
+        description: "Órgão/secretaria responsável pelos projetos. Valor padrão: 'NÃO DEFINIDO' quando não mapeado."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente dos projetos: prod, dev ou sandbox. Valor padrão: 'prod' quando não definido."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: kpi_gcp_active_users_30d_by_orgao__ambiente__expect_column_values_to_be_in_set
+              value_set: ['prod', 'dev', 'sandbox']
+              severity: warn
+
+      - name: reference_date
+        description: "Data de referência da consulta (CURRENT_DATE). Data base para cálculo dos períodos."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: period_start
+        description: "Data de início do período atual (hoje - 30 dias)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: period_end
+        description: "Data de fim do período atual (ontem)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: period_days
+        description: "Duração do período em dias (fixo: 30)."
+        data_type: int64
+
+      - name: current_active_users
+        description: "Quantidade de usuários humanos únicos ativos do órgão nos últimos 30 dias. COUNT DISTINCT de principal_email onde principal_type = 'user' e executou >= 1 job (independente de custo, inclui cache). Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_active_users_30d_by_orgao__current_active_users__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: current_active_service_accounts
+        description: "Quantidade de service accounts únicas ativas do órgão nos últimos 30 dias. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: current_total_principals
+        description: "Total de principals únicos (usuários + service accounts) do órgão nos últimos 30 dias. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: current_total_jobs
+        description: "Total de jobs BigQuery executados pelo órgão nos últimos 30 dias. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: current_total_cost
+        description: "Custo total BigQuery do órgão nos últimos 30 dias (BRL). Faixa: >= 0."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: current_first_activity
+        description: "Timestamp da primeira atividade (job) do órgão no período atual."
+        data_type: timestamp
+
+      - name: current_last_activity
+        description: "Timestamp da última atividade (job) do órgão no período atual."
+        data_type: timestamp
+
+      - name: previous_active_users
+        description: "Quantidade de usuários humanos únicos ativos do órgão no período anterior (31-61 dias atrás). Para comparação. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: previous_active_service_accounts
+        description: "Quantidade de service accounts únicas ativas do órgão no período anterior. Para comparação. Faixa: >= 0."
+        data_type: int64
+
+      - name: previous_total_principals
+        description: "Total de principals únicos do órgão no período anterior. Para comparação. Faixa: >= 0."
+        data_type: int64
+
+      - name: previous_total_jobs
+        description: "Total de jobs do órgão no período anterior. Para comparação. Faixa: >= 0."
+        data_type: int64
+
+      - name: previous_total_cost
+        description: "Custo total do órgão no período anterior (BRL). Para comparação. Faixa: >= 0."
+        data_type: float64
+
+      - name: users_change
+        description: "Variação absoluta de usuários ativos do órgão (atual - anterior). Valores positivos = crescimento, negativos = redução."
+        data_type: int64
+
+      - name: service_accounts_change
+        description: "Variação absoluta de service accounts ativas do órgão (atual - anterior)."
+        data_type: int64
+
+      - name: jobs_change
+        description: "Variação absoluta de jobs executados pelo órgão (atual - anterior)."
+        data_type: int64
+
+      - name: cost_change
+        description: "Variação absoluta de custo do órgão (BRL) (atual - anterior)."
+        data_type: float64
+
+      - name: users_change_pct
+        description: "Variação percentual de usuários ativos do órgão. Fórmula: ((atual - anterior) / anterior) * 100. Valores positivos = crescimento %. Use para ranking de crescimento."
+        data_type: float64
+
+      - name: service_accounts_change_pct
+        description: "Variação percentual de service accounts ativas do órgão."
+        data_type: float64
+
+      - name: jobs_change_pct
+        description: "Variação percentual de jobs executados pelo órgão."
+        data_type: float64
+
+      - name: cost_change_pct
+        description: "Variação percentual de custo do órgão."
+        data_type: float64
+
+      - name: cost_per_user
+        description: "Custo médio por usuário ativo do órgão no período atual (BRL). Fórmula: current_total_cost / current_active_users."
+        data_type: float64
+
+      - name: jobs_per_user
+        description: "Média de jobs por usuário ativo do órgão no período atual. Fórmula: current_total_jobs / current_active_users."
+        data_type: float64
+
+      - name: previous_cost_per_user
+        description: "Custo médio por usuário ativo do órgão no período anterior (BRL). Para comparação de eficiência."
+        data_type: float64
+
+      - name: trend
+        description: "Tendência de usuários ativos do órgão: 'UP' (crescimento > 5%), 'DOWN' (queda > 5%), 'STABLE' (variação entre -5% e +5%), 'NEW' (órgão sem atividade no período anterior)."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: kpi_gcp_active_users_30d_by_orgao__trend__expect_column_values_to_be_in_set
+              value_set: ['UP', 'DOWN', 'STABLE', 'NEW']
+              severity: warn
+
+      - name: growth_rank_absolute
+        description: "Ranking de crescimento absoluto de usuários (1 = maior crescimento absoluto). Ordena por users_change DESC. Use para identificar órgãos que ganharam mais usuários."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_active_users_30d_by_orgao__growth_rank_absolute__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: growth_rank_percentage
+        description: "Ranking de crescimento percentual de usuários (1 = maior crescimento %). Ordena por users_change_pct DESC. Use para identificar órgãos com maior aceleração proporcional."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_active_users_30d_by_orgao__growth_rank_percentage__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: users_rank
+        description: "Ranking por quantidade de usuários ativos (1 = órgão com mais usuários). Ordena por current_active_users DESC. Use para identificar órgãos maiores."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_active_users_30d_by_orgao__users_rank__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: is_high_growth
+        description: "Flag booleana indicando se o órgão teve alto crescimento (users_change_pct >= 20%). TRUE = crescimento >= 20%, FALSE = outros. Use para destacar órgãos em rápida expansão."
+        data_type: boolean
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: kpi_gcp_active_users_30d_by_orgao__table__unique_combination
+          combination_of_columns:
+            - orgao
+            - ambiente

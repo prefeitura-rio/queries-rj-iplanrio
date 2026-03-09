@@ -1,0 +1,106 @@
+version: 2
+
+models:
+  - name: agg_gcp_cost_by_user_type
+    description: |
+      View de agregação de custos BigQuery separando usuários humanos de service accounts.
+
+      **Propósito**: Comparação entre custos de automação (service accounts) vs uso humano direto.
+      Permite entender a divisão de custos entre trabalho manual e processos automatizados, incluindo
+      métricas de eficiência (custo/TiB, custo/job) e evolução temporal (MoM).
+
+      **Granularidade**:
+      - invoice_month_date + orgao + principal_category
+      - principal_category: 'User', 'Service Account', 'Other'
+
+      **Fonte de Dados**:
+      - fact_gcp_cost_by_user (agregação sobre tabela de fatos)
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês de faturamento (primeiro dia do mês)."
+        data_type: date
+
+      - name: orgao
+        description: "Órgão/secretaria responsável."
+        data_type: string
+        quote: true
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox."
+        data_type: string
+        quote: true
+
+      - name: principal_category
+        description: "Categoria do principal: 'User' (principal_type = user), 'Service Account' (is_service_account = true), ou 'Other'. CHAVE para separar análises."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: agg_gcp_cost_by_user_type__principal_category__expect_column_values_to_be_in_set
+              value_set: ['User', 'Service Account', 'Other']
+              severity: error
+
+      - name: total_cost
+        description: "Custo total da categoria no mês (BRL). Soma de todos os principals da categoria. Faixa: >= 0. Fonte: fact_gcp_cost_by_user.total_cost (SUM)."
+        data_type: float64
+
+      - name: avg_cost_per_principal
+        description: "Custo médio por principal na categoria (BRL). total_cost / principals_count. Útil para identificar se automações custam mais que humanos. Faixa: >= 0. Fonte: calculado."
+        data_type: float64
+
+      - name: max_cost_single_principal
+        description: "Maior custo individual de um principal na categoria (BRL). Identifica outliers. Faixa: >= 0. Fonte: fact_gcp_cost_by_user.total_cost (MAX)."
+        data_type: float64
+
+      - name: principals_count
+        description: "Quantidade de principals únicos na categoria. Faixa: >= 1. Fonte: fact_gcp_cost_by_user.principal_email (COUNT DISTINCT)."
+        data_type: int64
+
+      - name: total_jobs
+        description: "Total de jobs executados pela categoria. Faixa: >= 0. Fonte: fact_gcp_cost_by_user.jobs_count (SUM)."
+        data_type: int64
+
+      - name: avg_jobs_per_principal
+        description: "Média de jobs por principal na categoria. Fonte: calculado (total_jobs / principals_count)."
+        data_type: float64
+
+      - name: total_tib_billed
+        description: "Total de TiB processados pela categoria. Faixa: >= 0. Fonte: fact_gcp_cost_by_user.total_tib_billed (SUM)."
+        data_type: float64
+
+      - name: cost_per_tib
+        description: "Custo por TiB processado (BRL/TiB). Métrica de eficiência. Quanto menor, mais eficiente. Faixa: >= 0. Fonte: calculado (total_cost / total_tib_billed)."
+        data_type: float64
+
+      - name: cost_per_job
+        description: "Custo médio por job (BRL). Métrica de eficiência operacional. Faixa: >= 0. Fonte: calculado (total_cost / total_jobs)."
+        data_type: float64
+
+      - name: high_users_count
+        description: "Quantidade de principals com custo >= R$ 1.000 (tier Alto). Identifica power users. Faixa: >= 0. Fonte: calculado."
+        data_type: int64
+
+      - name: top_10_percent_count
+        description: "Quantidade de principals no top 10% de custo. Faixa: >= 0. Fonte: calculado."
+        data_type: int64
+
+      - name: pct_of_orgao_cost
+        description: "Percentual do custo total do órgão representado por esta categoria (0-100). Mostra divisão entre humanos e automações. Faixa: 0-100. Fonte: calculado."
+        data_type: float64
+
+      - name: previous_month_cost
+        description: "Custo total da categoria no mês anterior (BRL). Para comparação MoM. Fonte: calculado (LAG)."
+        data_type: float64
+
+      - name: previous_month_principals_count
+        description: "Quantidade de principals da categoria no mês anterior. Para comparação MoM. Fonte: calculado (LAG)."
+        data_type: int64
+
+      - name: mom_pct_cost
+        description: "Variação percentual de custo em relação ao mês anterior. Positivo = aumento, negativo = redução. Fonte: calculado."
+        data_type: float64
+
+      - name: mom_pct_principals
+        description: "Variação percentual de quantidade de principals em relação ao mês anterior. Fonte: calculado."
+        data_type: float64

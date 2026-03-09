@@ -1,0 +1,205 @@
+version: 2
+
+models:
+  - name: fact_gcp_cost_by_user
+    description: |
+      Tabela de fatos agregada por usuário/service account para análise detalhada de custos BigQuery.
+
+      **Propósito**: Análise granular de custos BigQuery por principal individual (usuário ou service account).
+      Permite identificação de top spenders, benchmarking de eficiência e detecção de anomalias.
+
+      **Granularidade**:
+      - principal_email + project_id + invoice_month_date
+      - Separação clara entre usuários humanos e service accounts
+
+      **Atualização**:
+      - Incremental diário com lookback de 3 meses
+      - Estratégia: insert_overwrite (reprocessa partições modificadas)
+
+      **Particionamento**:
+      - Campo: invoice_month_date (mês)
+      - Clustering: orgao, principal_email
+
+      **Fonte de Dados**:
+      - raw_gcp_bigquery_cost_allocated_v1 (custos alocados por job e principal)
+      - raw_dim_gcp_project (classificação de órgãos)
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês de faturamento (primeiro dia do mês). Derivado de raw_gcp_bigquery_cost_allocated_v1.invoice_month_date."
+        data_type: date
+        tests:
+          - not_null
+          - relationships:
+              name: fact_gcp_cost_by_user__invoice_month_date__relationships
+              to: ref('dim_time')
+              field: invoice_month_date
+
+      - name: project_id
+        description: "ID único do projeto GCP onde os jobs foram executados. Fonte: raw_gcp_bigquery_cost_allocated_v1.project_id."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto. Derivado de raw_dim_gcp_project. Valor padrão: 'NÃO DEFINIDO' quando não mapeado."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox. Derivado de raw_dim_gcp_project. Valor padrão: 'prod' quando não definido."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: fact_gcp_cost_by_user__ambiente__expect_column_values_to_be_in_set
+              value_set: ['prod', 'dev', 'sandbox']
+              severity: warn
+
+      - name: projeto_base
+        description: "Nome base/raiz do projeto. Derivado de raw_dim_gcp_project. Valor padrão: project_id quando não definido."
+        data_type: string
+        quote: true
+
+      - name: principal_email
+        description: "Email do usuário humano ou service account que executou os jobs. CRÍTICO: use com is_user/principal_type para separar tipos. Fonte: raw_gcp_bigquery_cost_allocated_v1.principal_email."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: principal_type
+        description: "Tipo de principal conforme GCP: 'user' (humano), 'serviceAccount' (automação), etc. Use para segregar análises. Fonte: raw_gcp_bigquery_cost_allocated_v1.principal_type."
+        data_type: string
+        quote: true
+
+      - name: is_service_account
+        description: "Flag booleana indicando se o principal é uma service account (automação). TRUE = service account, FALSE = usuário humano. Fonte: raw_gcp_bigquery_cost_allocated_v1.is_service_account."
+        data_type: boolean
+
+      - name: total_cost
+        description: "Custo total alocado ao principal no mês (BRL). Soma de allocated_cost_job de todos os jobs executados. Valores em BRL (Reais), faixa: >= 0. Fonte: raw_gcp_bigquery_cost_allocated_v1.allocated_cost_job (SUM)."
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__total_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: error
+
+      - name: jobs_count
+        description: "Quantidade de jobs executados pelo principal no mês. Faixa: >= 1 (mínimo 1 pois agregamos apenas jobs com custo). Fonte: raw_gcp_bigquery_cost_allocated_v1.job_id (COUNT DISTINCT)."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__jobs_count__expect_column_values_to_be_between
+              min_value: 1
+              severity: error
+
+      - name: total_bytes_billed
+        description: "Total de bytes cobrados (processados) no mês. Bytes brutos somados de todos os jobs. Faixa: >= 0. Fonte: raw_gcp_bigquery_cost_allocated_v1.total_bytes_billed (SUM)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__total_bytes_billed__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: total_tib_billed
+        description: "Total de TiB (Tebibytes) cobrados no mês. Calculado como total_bytes_billed / 1024^4. Faixa: >= 0. Fonte: calculado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__total_tib_billed__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: avg_cost_per_job
+        description: "Custo médio por job executado (BRL). Calculado como total_cost / jobs_count. Útil para identificar jobs caros. Faixa: >= 0. Fonte: calculado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__avg_cost_per_job__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: usage_tier
+        description: "Classificação de volume de uso baseada em custo total: 'Alto (>= R$ 1.000)', 'Médio (R$ 100-1.000)', 'Baixo (R$ 10-100)', 'Muito Baixo (< R$ 10)'. Fonte: calculado."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: fact_gcp_cost_by_user__usage_tier__expect_column_values_to_be_in_set
+              value_set: ['Alto (>= R$ 1.000)', 'Médio (R$ 100-1.000)', 'Baixo (R$ 10-100)', 'Muito Baixo (< R$ 10)']
+              severity: error
+
+      - name: cost_rank_monthly
+        description: "Ranking de custo no mês entre TODOS os principals (1 = maior custo geral). Útil para identificar top spenders globais. Faixa: >= 1. Fonte: calculado (ROW_NUMBER)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__cost_rank_monthly__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: cost_rank_by_orgao
+        description: "Ranking de custo dentro do órgão no mês (1 = maior custo do órgão). Útil para benchmarking interno. Faixa: >= 1. Fonte: calculado (ROW_NUMBER)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__cost_rank_by_orgao__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: cost_percentile
+        description: "Percentil de custo no mês (0-100, onde 100 = top 1% de maior custo). Calculado via PERCENT_RANK. Faixa: 0-100. Fonte: calculado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__cost_percentile__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: first_job_date
+        description: "Timestamp UTC do primeiro job executado no mês. Útil para análise de padrões temporais. Fonte: raw_gcp_bigquery_cost_allocated_v1.creation_time (MIN)."
+        data_type: timestamp
+
+      - name: last_job_date
+        description: "Timestamp UTC do último job executado no mês. Útil para análise de padrões temporais. Fonte: raw_gcp_bigquery_cost_allocated_v1.creation_time (MAX)."
+        data_type: timestamp
+
+      - name: active_days_in_month
+        description: "Número de dias ativos no mês (diferença entre primeiro e último job). Faixa: >= 0 (pode ser 0 se todos os jobs foram no mesmo dia). Fonte: calculado (DATE_DIFF)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_user__active_days_in_month__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 31
+              severity: warn
+
+      - name: is_user
+        description: "Flag booleana indicando se é usuário humano (principal_type = 'user'). TRUE = humano, FALSE = service account ou outro. Use para filtrar apenas humanos no Looker. Fonte: calculado."
+        data_type: boolean
+
+      - name: is_top_10_spender
+        description: "Flag booleana indicando se está entre os top 10 maiores custos do mês (cost_rank_monthly <= 10). TRUE = top 10, FALSE = outros. Fonte: calculado."
+        data_type: boolean
+
+      - name: is_top_10_percent
+        description: "Flag booleana indicando se está no top 10% de custo (cost_percentile >= 90). TRUE = top 10%, FALSE = outros. Fonte: calculado."
+        data_type: boolean
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: fact_gcp_cost_by_user__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - project_id
+            - principal_email
