@@ -21,10 +21,10 @@ SELECT safe_cast(pei_id as int64) as id_plano_educacional_individualizado,
     safe_cast(dis_idPEI as int64) as id_disciplina_pei,
     safe_cast(cur_id as int64) as id_curriculo,
     safe_cast(crr_id as int64) as id_requisito_curriculo,
-    safe_cast(crp_id as int64) as id_período_currículo,
+    safe_cast(crp_id as int64) as id_periodo_curriculo,
     safe_cast(pei_relDeAvaliacao as string) as relatorio_avaliacao_plano_educacional_individualizado,
     safe_cast(usu_LoginAvaliador as string) as login_usuario_avaliador,
     safe_cast(pei_DataAvaliacao as datetime) as data_avaliacao_plano_educacional_individualizado,
-    _airbyte_extracted_at as loaded_at, 
+    _airbyte_extracted_at as loaded_at, s
     current_timestamp() as transformed_at
 FROM {{ source('brutos_plano_educacional_individualizado_staging', 'PEI') }}
