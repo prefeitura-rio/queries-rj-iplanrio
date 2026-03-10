@@ -123,6 +123,10 @@ models:
           +materialized: table
           +schema: brutos_gestao_escolar
           +tags: ["daily"]
+        plano_educacional_individualizado:
+          +materialized: table
+          +schema: brutos_plano_educacional_individualizado
+          +tags: ["daily"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp

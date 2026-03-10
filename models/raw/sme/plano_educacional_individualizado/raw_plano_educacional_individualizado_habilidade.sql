@@ -1,7 +1,6 @@
 {{
     config(        
         alias="habilidade",
-        materialized="view",
         tags=["raw", "plano_educacional_individualizado", "habilidade", "PEI_Habilidade"],
         description="Habilidades Avaliadas no PEI"
     )
