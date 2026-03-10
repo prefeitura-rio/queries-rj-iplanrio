@@ -1,7 +1,6 @@
 {{
     config(        
         alias="disciplina",
-        materialized="view",
         tags=["raw", "plano_educacional_individualizado", "disciplina", "PEIDisciplina"],
         description="Disciplinas a serem usadas no PEI"
     )

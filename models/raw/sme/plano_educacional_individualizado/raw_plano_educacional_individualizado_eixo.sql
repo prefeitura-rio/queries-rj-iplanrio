@@ -1,7 +1,6 @@
 {{
     config(        
         alias="eixo",
-        materialized="view",
         tags=["raw", "plano_educacional_individualizado", "eixo", "PEI_Eixo"],
         description="Eixos educacionais do PEI"
     )
