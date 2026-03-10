@@ -4,17 +4,17 @@ models :
     description: Table prefeitura from number 98
     columns:
       - name: id_prefeitura
-        description: 'Chave de identificação da Prefeitura | version: 0626'
+        description: 'Chave de identificação da Prefeitura | version: 0627'
       - name: sigla_uf
         description: 'Primeira parte do código IBGE: numérico de dois algarismos descrevendo
-          sua UF | version: 0626'
+          sua UF | version: 0627'
       - name: if_municipio
-        description: 'Segunda parte do código IBGE | version: 0626'
+        description: 'Segunda parte do código IBGE | version: 0627'
       - name: id_migracao
-        description: '1 se a Prefeitura migrou, senão 0 | version: 0626'
+        description: '1 se a Prefeitura migrou, senão 0 | version: 0627'
       - name: migracao
-        description: '1 se a Prefeitura migrou, senão 0 | version: 0626'
+        description: '1 se a Prefeitura migrou, senão 0 | version: 0627'
       - name: prefeitura
-        description: 'Nome da Prefeitura | version: 0626'
+        description: 'Nome da Prefeitura | version: 0627'
       - name: numero_registro_arquivo
-        description: '98 | version: 0626'
+        description: '98 | version: 0627'
