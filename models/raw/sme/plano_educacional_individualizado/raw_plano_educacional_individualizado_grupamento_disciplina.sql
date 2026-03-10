@@ -1,7 +1,6 @@
 {{
     config(        
         alias="grupamento_disciplina",
-        materialized="view",
         tags=["raw", "plano_educacional_individualizado", "grupamento_disciplina", "GrupamentoDisciplina"],
         description="Grupamentos da Disciplina"
     )

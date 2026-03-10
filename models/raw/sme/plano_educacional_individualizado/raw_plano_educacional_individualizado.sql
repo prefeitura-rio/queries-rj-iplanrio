@@ -1,7 +1,6 @@
 {{
     config(        
         alias="plano_educacional_individualizado",
-        materialized="view",
         tags=["raw", "plano_educacional_individualizado", "PEI"],
         description="Contém os detalhes do Plano Educacional Individualizado"
     )
