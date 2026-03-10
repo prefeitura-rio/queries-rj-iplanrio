@@ -160,6 +160,13 @@ models:
           +materialized: table
           +schema: brutos_adm_licenca_urbanismo
           +tags: "daily"
+      ssm:
+        +tags: "ssm"
+        +project: rj-ssm
+        vigia_urbano:
+          +materialized: table
+          +schema: brutos_formulario_ocorrencia
+          +tags: "daily"
       cgm:
         osinfo_rh:
           +materialized: table

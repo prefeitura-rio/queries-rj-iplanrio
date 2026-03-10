@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__perfil_usuario
+    description: "Tabela de Perfis dos Usuários do sistema Vigia Urbano."
+    columns:
+      - name: id_perfil_usuario
+        description: "Identificador único do registro de perfil de usuário"
+        data_type: int64
+      - name: id_perfil_enum
+        description: "identificador do perfil enum"
+        data_type: int64
+      - name: id_usuario
+        description: "identificador do usuário"
+        data_type: int64
+      - name: id_usuario_registro
+        description: "Identificador do usuário registrado"
+        data_type: int64
+      - name: data_registro
+        description: "data do registro"
+        data_type: datetime
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
+        data_type: date
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt"
+        data_type: datetime

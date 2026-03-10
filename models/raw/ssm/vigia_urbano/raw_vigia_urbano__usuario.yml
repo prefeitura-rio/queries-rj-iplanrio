@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__usuario
+    description: "Tabela de Usuários do sistema Vigia Urbano."
+    columns:
+      - name: id_usuario
+        description: "Identificador único do registro de usuarios"
+        data_type: int64
+      - name: nome_usuario
+        description: "nome do usuário"
+        data_type: string
+      - name: cpf_usuario
+        description: "cpf do usuário"
+        data_type: string
+      - name: email_usuario
+        description: "email do usuário"
+        data_type: string
+      - name: matricula_usuario
+        description: "matrícula do usuário"
+        data_type: string
+      - name: senha_usuario
+        description: "senha do usuário"
+        data_type: string
+      - name: flag_alterar_senha
+        description: "flag indicador de alteração de senha do usuário"
+        data_type: int64
+      - name: flag_usuario_ativo
+        description: "flag que indica se o usuário está ativo"
+        data_type: int64
+      - name: flag_termo_responsabilidade
+        description: "flag indicador do termo do usuário"
+        data_type: int64
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
+        data_type: date
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt"
+        data_type: datetime

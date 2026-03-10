@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: brutos_formulario_ocorrencia_staging
+    schema: brutos_formulario_ocorrencia_staging
+    database: rj-iplanrio
+    tables:
+      - name: vw_RespostaOcorrencia
+      - name: vw_Auditoria
+      - name: OrgaoUsuario
+      - name: Orgao
+      - name: PerfilUsuario
+      - name: Usuario
+
+    config:
+      freshness:
+        error_after: {count: 10, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)

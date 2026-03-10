@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__orgao_usuario
+    description: "Tabela de Relacionamento entre Orgãos e Usuários do sistema Vigia Urbano."
+    columns:
+      - name: id_orgao_usuario
+        description: "Identificador único do registro de orgão do Usuário"
+        data_type: int64
+      - name: id_orgao
+        description: "Identificador do órgão relacionado ao usuário"
+        data_type: int64
+      - name: id_usuario
+        description: "Identificador do usuário"
+        data_type: int64
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
+        data_type: date
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt"
+        data_type: datetime
