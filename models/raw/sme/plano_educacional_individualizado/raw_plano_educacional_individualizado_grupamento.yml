@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: raw_plano_educacional_individualizado_grupamento
+    description: "Tabela de grupamentos do PEI"
+    columns:
+      - name: id_grupamento
+        description: "Identificador do grupamento"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_grupamento__id_grupamento__not_null
+              config:
+                severity: error
+          - unique:
+              name: raw_plano_educacional_individualizado_grupamento__id_grupamento__unique
+              config:
+                severity: error
+
+      - name: numero_grupamento
+        description: "Número do grupamento"
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_grupamento__numero_grupamento__not_null
+              config:
+                severity: error
+
+      - name: descricao_grupamento
+        description: "Descrição do grupamento"
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_plano_educacional_individualizado_grupamento__descricao_grupamento__not_null
+              config:
+                severity: error
+
+      - name: idade_ideal_inicio_grupamento
+        description: "Idade ideal de início do grupamento"
+        data_type: int64
+
+      - name: loaded_at
+        description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
+        data_type: timestamp
+
+      - name: transformed_at
+        description: "Timestamp de quando o dado foi transformado no dbt."
+        data_type: timestamp
