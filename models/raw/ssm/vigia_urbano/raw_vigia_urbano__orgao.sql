@@ -2,12 +2,13 @@
     config(
         alias="orgao",
         description="Tabela de Orgãos do sistema Vigia Urbano.",
+        
     )
 }}
 
 SELECT
     safe_cast(orgaoID AS int64) AS id_orgao,
-    safe_cast(TRIM(orgaoID) AS string) AS nome_orgao,
+    safe_cast(TRIM(orgaoNome) AS string) AS nome_orgao,
     safe_cast(codigo AS int64) AS codigo_orgao,
     safe_cast(subPrefeitura AS int64) AS id_subprefeitura,
     safe_cast(TRIM(subPrefJson) AS string) AS subprefeitura_json,

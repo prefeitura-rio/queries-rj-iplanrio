@@ -7,12 +7,23 @@ models:
       - name: id_orgao_usuario
         description: "Identificador único do registro de orgão do Usuário"
         data_type: int64
+        tests:
+          - unique
+          - not_null
       - name: id_orgao
         description: "Identificador do órgão relacionado ao usuário"
         data_type: int64
+        tests:
+          - relationships:
+              to: ref('raw_vigia_urbano__orgao')
+              field: id_orgao
       - name: id_usuario
         description: "Identificador do usuário"
         data_type: int64
+        tests:
+          - relationships:
+              to: ref('raw_vigia_urbano__usuario')
+              field: id_usuario
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: date

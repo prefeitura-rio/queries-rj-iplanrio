@@ -52,7 +52,7 @@ SELECT
     safe_cast(usuarioAtivo AS bool) AS usuario_ativo,
     safe_cast(TRIM(usuarioPerfis) AS string) AS usuario_perfis,
     safe_cast(TRIM(usuarioOrgaoNome) AS string) AS usuario_orgao_nome,
-    safe_cast(TRIM(usuarioOrgaoCodigo) AS string) AS id_orgao_usuario,
+    safe_cast(TRIM(usuarioOrgaoCodigo) AS string) AS codigo_orgao_usuario,
     safe.parse_datetime('%Y-%m-%d %H:%M:%E*S', _prefect_extracted_at) as datalake_loaded_at,
     safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_formulario_ocorrencia_staging', 'vw_RespostaOcorrencia') }}

@@ -166,7 +166,7 @@ models:
         vigia_urbano:
           +materialized: table
           +schema: brutos_formulario_ocorrencia
-          +tags: "daily"
+          +tags: ["daily", "vigia_urbano"]
       cgm:
         osinfo_rh:
           +materialized: table

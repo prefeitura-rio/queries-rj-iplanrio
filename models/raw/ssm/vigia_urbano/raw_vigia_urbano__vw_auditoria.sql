@@ -1,7 +1,7 @@
 {{
     config(
         alias="auditoria",
-        description="Registros de auditoria do sistema Vigia Urbano, contendo informocorrências sobre ocorrências realizadas pelos usuários no sistema.",
+        description="Registros de auditoria do sistema Vigia Urbano, contendo informações sobre ocorrências realizadas pelos usuários no sistema.",
     )
 }}
 
@@ -25,6 +25,3 @@ SELECT
     safe.parse_datetime('%Y-%m-%d %H:%M:%E*S', _prefect_extracted_at) as datalake_loaded_at,
     safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_formulario_ocorrencia_staging', 'vw_Auditoria') }}
-
-
-

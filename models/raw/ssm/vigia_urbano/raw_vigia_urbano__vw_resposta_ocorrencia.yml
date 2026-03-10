@@ -7,9 +7,18 @@ models:
       - name: id_resposta_ocorrencia
         description: "Identificador único da resposta de ocorrência"
         data_type: int64
+        tests:
+          - unique
+          - not_null
       - name: data_hora_registro
         description: "Data e hora do registro da ocorrência"
         data_type: datetime
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "2000-01-01"
+              max_value: "{{ var('max_future_date', '2099-12-31') }}"
+              parse_strings_as_datetimes: true
       - name: logradouro
         description: "Logradouro onde a ocorrência foi registrada"
         data_type: string
@@ -46,6 +55,10 @@ models:
       - name: id_bairro
         description: "Identificador do bairro da ocorrência"
         data_type: int64
+        tests:
+          - not_null:
+              config:
+                where: "id_bairro IS NOT NULL"
       - name: bairro_nome
         description: "Nome do bairro da ocorrência"
         data_type: string
@@ -82,10 +95,12 @@ models:
       - name: id_tipo_ocorrencia
         description: "Identificador do tipo da ocorrência"
         data_type: int64
-      - name: ocorrencia_descricao
+        tests:
+          - not_null
+      - name: tipo_ocorrencia_descricao
         description: "Descrição do tipo da ocorrência"
         data_type: string
-      - name: ocorrencia_ativo
+      - name: tipo_ocorrencia_ativo
         description: "Flag se a ocorrencia esta ativa (False=0 / True=1)"
         data_type: bool
       - name: orgao_responsavel
@@ -103,15 +118,23 @@ models:
       - name: id_orgao_ocorrencia
         description: "Identificador do órgão da ocorrência"
         data_type: int64
+        tests:
+          - not_null:
+              config:
+                where: "id_orgao_ocorrencia IS NOT NULL"
       - name: ocorrencia_orgao_nome
         description: "Nome do órgão vinculado a ocorrência"
         data_type: string
       - name: codigo_ocorrencia_orgao
         description: "Código do órgão vinculado a ocorrência"
-        data_type: int64
+        data_type: string
       - name: id_categoria
         description: "Identificador da categoria da ocorrência"
         data_type: int64
+        tests:
+          - not_null:
+              config:
+                where: "id_categoria IS NOT NULL"
       - name: categoria_nome
         description: "Nome da categoria da ocorrência"
         data_type: string
@@ -121,15 +144,27 @@ models:
       - name: id_usuario
         description: "Identificador do usuário que registrou a ocorrência"
         data_type: int64
+        tests:
+          - not_null
       - name: usuario_nome
         description: "Nome do usuário que registrou a ocorrência"
         data_type: string
       - name: usuario_cpf
         description: "CPF do usuário que registrou a ocorrência"
         data_type: string
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{11}$"
+              config:
+                where: "usuario_cpf IS NOT NULL"
       - name: usuario_email
         description: "Email do usuário que registrou a ocorrência"
         data_type: string
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+              config:
+                where: "usuario_email IS NOT NULL AND usuario_email != ''"
       - name: usuario_matricula
         description: "Matrícula do usuário que registrou a ocorrência"
         data_type: string
@@ -142,12 +177,24 @@ models:
       - name: usuario_orgao_nome
         description: "Nome do órgão do usuário que registrou a ocorrência"
         data_type: string
-      - name: id_orgao_usuario
-        description: "Identificador do órgão do usuário que registrou a ocorrência"
+      - name: codigo_orgao_usuario
+        description: "Código do órgão do usuário que registrou a ocorrência"
         data_type: string
       - name: datalake_loaded_at
-        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
-        data_type: date
+        description: "Data e hora de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
+        data_type: datetime
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "2000-01-01"
+              max_value: "{{ var('max_future_date', '2099-12-31') }}"
+              parse_strings_as_datetimes: true
       - name: datalake_transformed_at
         description: "Data de quando o dado foi transformado no dbt"
         data_type: datetime
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "2000-01-01"
+              max_value: "{{ var('max_future_date', '2099-12-31') }}"
+              parse_strings_as_datetimes: true

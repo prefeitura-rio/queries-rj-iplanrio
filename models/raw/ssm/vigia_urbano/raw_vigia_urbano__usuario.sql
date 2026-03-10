@@ -11,10 +11,9 @@ SELECT
     safe_cast(TRIM(cpf) AS string) AS cpf_usuario,
     safe_cast(TRIM(email) AS string) AS email_usuario,
     safe_cast(TRIM(matricula) AS string) AS matricula_usuario,
-    safe_cast(TRIM(senha) AS string) AS senha_usuario,
-    safe_cast(alterarSenha AS int64) AS flag_alterar_senha,
-    safe_cast(ativo AS int64) AS flag_usuario_ativo,
-    safe_cast(termoResponsabilidade AS int64) AS flag_termo_responsabilidade,
+    safe_cast(alterarSenha AS bool) AS flag_alterar_senha,
+    safe_cast(ativo AS bool) AS flag_usuario_ativo,
+    safe_cast(termoResponsabilidade AS bool) AS flag_termo_responsabilidade,
     safe.parse_datetime('%Y-%m-%d %H:%M:%E*S', _prefect_extracted_at) as datalake_loaded_at,
     safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_formulario_ocorrencia_staging', 'Usuario') }}

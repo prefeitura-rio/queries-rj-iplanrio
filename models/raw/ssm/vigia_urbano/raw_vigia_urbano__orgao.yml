@@ -5,20 +5,25 @@ models:
     description: "Tabela de Orgãos do sistema Vigia Urbano."
     columns:
       - name: id_orgao
-        description: "Identificador único do registro de orgao"
+        description: "Identificador único do registro de órgão"
         data_type: int64
+        tests:
+          - unique
+          - not_null
       - name: nome_orgao
-        description: "nome do órgão"
+        description: "Nome do órgão"
         data_type: string
+        quote: true
       - name: codigo_orgao
-        description: "código do órgão"
+        description: "Código do órgão"
         data_type: int64
       - name: id_subprefeitura
-        description: "identificador da subprefeitura"
+        description: "Identificador da subprefeitura"
         data_type: int64
       - name: subprefeitura_json
-        description: "registros da subprefeitura"
+        description: "Registros da subprefeitura"
         data_type: string
+        quote: true
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: date
