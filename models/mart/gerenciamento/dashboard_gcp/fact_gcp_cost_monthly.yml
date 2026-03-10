@@ -1,0 +1,215 @@
+version: 2
+
+models:
+  - name: fact_gcp_cost_monthly
+    description: |
+      Tabela fato agregada mensal de custos GCP por projeto, órgão e serviço.
+
+      **Propósito**: Tabela principal do dashboard de custos GCP no Looker Studio.
+      Reduz volume de dados em ~99% para performance otimizada.
+
+      **Granularidade**:
+      - project_id + orgao + invoice_month_date + service_description
+
+      **Atualização**:
+      - Incremental diário com lookback de 3 meses
+      - Estratégia: insert_overwrite (reprocessa partições modificadas)
+
+      **Particionamento**:
+      - Campo: invoice_month_date (mês)
+      - Clustering: orgao, service_description
+
+      **Fonte de Dados**:
+      - raw_gcp_billing (custos reais de faturamento)
+      - raw_gcp_bigquery_cost_allocated_v1 (estatísticas de jobs BigQuery)
+      - raw_dim_gcp_project (classificação de órgãos)
+
+    config:
+      materialized: incremental
+      incremental_strategy: insert_overwrite
+      partition_by:
+        field: invoice_month_date
+        data_type: date
+        granularity: month
+      cluster_by:
+        - orgao
+        - service_description
+      tags:
+        - dashboard
+        - gcp
+        - cost
+        - monthly
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês de faturamento (primeiro dia do mês). Derivado de invoice.month (YYYYMM)."
+        data_type: date
+        tests:
+          - not_null
+          - relationships:
+              name: fact_gcp_cost_monthly__invoice_month_date__relationships
+              to: ref('dim_time')
+              field: invoice_month_date
+
+      - name: project_id
+        description: "ID único do projeto GCP. Excluídos registros sem project_id (custos organization-level)."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto. Derivado de raw_dim_gcp_project."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox. Derivado de raw_dim_gcp_project."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: fact_gcp_cost_monthly__ambiente__expect_column_values_to_be_in_set
+              value_set: ['prod', 'dev', 'sandbox']
+              severity: error
+
+      - name: service_description
+        description: "Nome do serviço GCP (ex: BigQuery, Compute Engine, Cloud Storage)."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - relationships:
+              name: fact_gcp_cost_monthly__service_description__relationships
+              to: ref('dim_service')
+              field: service_description
+
+      - name: cost_gross
+        description: "Custo bruto antes de créditos (SUM de cost do billing). Valores em BRL (Reais), geralmente >= 0 (valores negativos indicam ajustes/refunds). Fonte: raw_gcp_billing.cost."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cost_gross__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "cost_gross IS NOT NULL"
+
+      - name: cost_at_list
+        description: "Custo de tabela/lista antes de descontos (SUM de cost_at_list). Preço cheio sem negociações. Valores em BRL (Reais), geralmente >= 0 (valores negativos indicam ajustes/refunds). Fonte: raw_gcp_billing.cost_at_list."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cost_at_list__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "cost_at_list IS NOT NULL"
+
+      - name: cost_at_effective_price
+        description: "Custo com preço efetivo após negociações mas antes de CUD (SUM de cost_at_effective_price_default). Valores em BRL (Reais), geralmente >= 0 (valores negativos indicam ajustes/refunds). Fonte: raw_gcp_billing.cost_at_effective_price_default."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cost_at_effective_price__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "cost_at_effective_price IS NOT NULL"
+
+      - name: credits
+        description: "Soma de TODOS os créditos aplicados (valores negativos ou zero). Inclui CUD, SUDs, promotional credits, etc. Valores em BRL (Reais), geralmente <= 0 (valores positivos podem ocorrer em ajustes de arredondamento). Fonte: raw_gcp_billing.credits."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__credits__expect_column_values_to_be_between
+              max_value: 0
+              severity: warn
+              row_condition: "credits IS NOT NULL"
+
+      - name: cud_credits
+        description: "Créditos de Committed Use Discounts (CUD) - valores negativos. Inclui: COMMITTED_USAGE_DISCOUNT, COMMITTED_USAGE_DISCOUNT_DOLLAR_BASE, FEE_UTILIZATION_OFFSET. Valores em BRL (Reais), geralmente <= 0. Fonte: raw_gcp_billing.credits (filtrado por tipo)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cud_credits__expect_column_values_to_be_between
+              max_value: 0
+              severity: warn
+              row_condition: "cud_credits IS NOT NULL"
+
+      - name: other_credits
+        description: "Outros créditos não-CUD - valores negativos. Inclui: CREDIT_TYPE_UNSPECIFIED, PROMOTION, SUSTAINED_USAGE_DISCOUNT, DISCOUNT, FREE_TIER, SUBSCRIPTION_BENEFIT, RESELLER_MARGIN. Valores em BRL (Reais), geralmente <= 0 (valores positivos podem ocorrer em ajustes de arredondamento). Fonte: raw_gcp_billing.credits (filtrado por tipo)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__other_credits__expect_column_values_to_be_between
+              max_value: 0
+              severity: warn
+              row_condition: "other_credits IS NOT NULL"
+
+      - name: negotiated_savings
+        description: "Economia obtida via negociações comerciais (diferença entre list price e effective price). Valores positivos indicam economia real. Valores em BRL (Reais), geralmente >= 0. Fonte: calculado (cost_at_list - cost_at_effective_price)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__negotiated_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "negotiated_savings IS NOT NULL"
+
+      - name: cud_savings
+        description: "Economia obtida via CUD (diferença entre effective price e cost final). Valores positivos indicam economia real. Valores em BRL (Reais), geralmente >= 0. Fonte: calculado (cost_at_effective_price - cost)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cud_savings__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "cud_savings IS NOT NULL"
+
+      - name: cud_fee_cost
+        description: "Custo de taxas de CUD (SKUs específicos: 5515-81A8-03A2, 7424-6E54-5CD0). Valores em BRL (Reais), geralmente >= 0. Fonte: raw_gcp_billing.cost (filtrado por sku.id)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_monthly__cud_fee_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+              row_condition: "cud_fee_cost IS NOT NULL"
+
+      - name: cost_net
+        description: |
+          **Métrica primária**: Custo líquido após TODOS os créditos (cost_gross + credits).
+          Este é o valor efetivamente faturado e deve ser usado para todas as análises.
+          Valores em BRL (Reais), faixa: qualquer valor (pode ser negativo se créditos excederem custos). Fonte: calculado (cost_gross + credits).
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: usage_amount
+        description: "Quantidade de uso agregada do mês (quando aplicável ao serviço). Unidade varia por serviço (GB, horas, requisições, etc). Faixa: >= 0. Fonte: raw_gcp_billing.usage.amount."
+        data_type: float64
+
+      - name: active_users_count
+        description: "Número de usuários humanos únicos ativos no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1 (principal_type = 'user')."
+        data_type: int64
+
+      - name: active_service_accounts_count
+        description: "Número de service accounts únicas ativas no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1 (is_service_account = true)."
+        data_type: int64
+
+      - name: jobs_count
+        description: "Total de jobs executados no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1.job_id (COUNT DISTINCT)."
+        data_type: int64
+
+      - name: total_bytes_billed
+        description: "Total de bytes faturados no BigQuery no mês. NULL para outros serviços. Faixa: >= 0 ou NULL. Fonte: raw_gcp_bigquery_cost_allocated_v1.total_bytes_billed (SUM)."
+        data_type: int64
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: fact_gcp_cost_monthly__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - project_id
+            - service_description

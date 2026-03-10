@@ -1,0 +1,177 @@
+version: 2
+
+models:
+  - name: agg_gcp_storage_monthly
+    description: |
+      View de agregação mensal de armazenamento BigQuery por órgão.
+
+      **Propósito**: Mostrar evolução temporal do armazenamento no BigQuery para
+      análise de crescimento mês-a-mês (MoM) no dashboard de custos GCP.
+
+      **Granularidade**: orgao + storage_month (mensal)
+
+      **Atualização**: View (sempre atualizada com dados da fact_gcp_bigquery_storage)
+
+      **Metodologia**:
+      - Usa o último snapshot de cada mês para representar o mês completo
+      - Crescimento MoM calculado comparando com último snapshot do mês anterior
+
+    config:
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - aggregation
+        - storage
+        - monthly
+
+    columns:
+      - name: storage_month
+        description: "Mês de referência do armazenamento (primeiro dia do mês)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelos projetos."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: total_tb
+        description: "**Métrica principal**: Total de armazenamento em Terabytes (TB) no final do mês."
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__total_tb__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: total_gb
+        description: "Total de armazenamento em Gigabytes (GB) no final do mês."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: total_logical_bytes
+        description: "Total de bytes armazenados logicamente no final do mês."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: active_tb
+        description: "Armazenamento ativo em TB no final do mês (dados acessados nos últimos 90 dias)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__active_tb__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: long_term_tb
+        description: "Armazenamento de longo prazo em TB no final do mês (dados não acessados por 90+ dias)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__long_term_tb__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: active_pct
+        description: "Percentual do armazenamento que é Active Storage no final do mês."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__active_pct__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: long_term_pct
+        description: "Percentual do armazenamento que é Long-term Storage no final do mês."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__long_term_pct__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: total_datasets
+        description: "Número total de datasets do órgão no final do mês."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__total_datasets__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: total_tables
+        description: "Número total de tabelas do órgão no final do mês."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__total_tables__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: project_count
+        description: "Número de projetos únicos do órgão no mês."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__project_count__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: percent_of_total
+        description: "Percentual do armazenamento total mensal que pertence a este órgão."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_storage_monthly__percent_of_total__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: mom_growth_tb
+        description: "Crescimento absoluto em TB desde o mês anterior (Month-over-Month). Valores negativos indicam redução."
+        data_type: float64
+
+      - name: mom_growth_gb
+        description: "Crescimento absoluto em GB desde o mês anterior (Month-over-Month)."
+        data_type: float64
+
+      - name: mom_growth_pct
+        description: "Taxa de crescimento percentual MoM (Month-over-Month). Exemplo: 5.5 = crescimento de 5.5% em relação ao mês anterior."
+        data_type: float64
+
+      - name: trend_direction
+        description: "Direção da tendência MoM: 'UP' (crescimento >5%), 'DOWN' (redução >5%), 'STABLE' (variação ≤5%)."
+        data_type: string
+        quote: true
+        tests:
+          - accepted_values:
+              name: agg_gcp_storage_monthly__trend_direction__accepted_values
+              values: ['UP', 'DOWN', 'STABLE']
+
+      - name: is_current_month
+        description: "Flag indicando se este é o mês atual (TRUE/FALSE)."
+        data_type: bool
+        tests:
+          - not_null
+
+      - name: is_previous_month
+        description: "Flag indicando se este é o mês anterior (TRUE/FALSE)."
+        data_type: bool
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: agg_gcp_storage_monthly__table__unique_combination
+          combination_of_columns:
+            - storage_month
+            - orgao

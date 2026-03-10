@@ -39,6 +39,12 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: infraestrutura-ti
             845941190868/acesso: restrito
+        dashboard_gcp:
+          +tags: ["daily", "dashboard", "custos"]
+          +schema: dashboard_gcp
+          +resource_tags:
+            rj-iplanrio/dominio: infraestrutura-ti
+            845941190868/acesso: restrito
       sme:
         frequencia:
           +materialized: table
@@ -117,6 +123,10 @@ models:
           +materialized: table
           +schema: brutos_gestao_escolar
           +tags: ["daily"]
+        plano_educacional_individualizado:
+          +materialized: table
+          +schema: brutos_plano_educacional_individualizado
+          +tags: ["daily"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp
@@ -153,6 +163,13 @@ models:
           +materialized: table
           +schema: brutos_adm_licenca_urbanismo
           +tags: "daily"
+      cgm:
+        osinfo_rh:
+          +materialized: table
+          +project: rj-cgm
+          +schema: brutos_osinfo_modulo_recursos_humanos
+          +tags: ["daily", "osinfo_rh"]
+
       cvl:
         +tags: "cvl"
         +project: rj-cvl
@@ -160,6 +177,8 @@ models:
           +materialized: table
           +schema: adm_contrato_gestao
           +tags: "daily"
+
+
       segovi:
         +tags: "segovi"
         +project: rj-segovi

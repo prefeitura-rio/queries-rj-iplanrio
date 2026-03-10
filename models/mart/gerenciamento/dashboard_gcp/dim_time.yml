@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: dim_time
+    description: |
+      Dimensão temporal mensal para filtros e agrupamentos no dashboard.
+
+      **Propósito**: Fornecer calendário mensal com componentes de data e flags úteis.
+
+      **Range**:
+      - Início: Primeiro mês com billing no raw_gcp_billing
+      - Fim: 6 meses no futuro (para planejamento)
+
+      **Granularidade**:
+      - Mensal (primeiro dia de cada mês)
+
+      **Uso no Looker Studio**:
+      - Filtros de período (dropdown com month_name_short)
+      - Controles de data (is_current_month, is_past_month)
+      - Eixo temporal em gráficos (ordenar por month_sequence)
+      - Agrupamentos (quarter, year)
+
+    config:
+      materialized: view
+      tags:
+        - dashboard
+        - gcp
+        - dimension
+        - time
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês (primeiro dia do mês). Chave primária."
+        data_type: date
+        tests:
+          - not_null
+          - unique
+
+      - name: year
+        description: "Ano (ex: 2024)."
+        data_type: int64
+
+      - name: month
+        description: "Mês numérico (1-12)."
+        data_type: int64
+
+      - name: quarter
+        description: "Trimestre (1-4)."
+        data_type: int64
+
+      - name: year_month_name
+        description: "Ano-mês formatado (ex: '2024-01')."
+        data_type: string
+        quote: true
+
+      - name: month_name_full
+        description: "Nome completo do mês e ano (ex: 'January 2024')."
+        data_type: string
+        quote: true
+
+      - name: month_name_short
+        description: "Nome abreviado do mês e ano (ex: 'Jan 2024'). Recomendado para filtros no Looker."
+        data_type: string
+        quote: true
+
+      - name: is_current_month
+        description: "Flag indicando se é o mês atual (TRUE/FALSE)."
+        data_type: boolean
+
+      - name: is_previous_month
+        description: "Flag indicando se é o mês anterior (TRUE/FALSE)."
+        data_type: boolean
+
+      - name: is_past_month
+        description: "Flag indicando se é um mês passado (< mês atual)."
+        data_type: boolean
+
+      - name: is_future_month
+        description: "Flag indicando se é um mês futuro (> mês atual)."
+        data_type: boolean
+
+      - name: month_sequence
+        description: "Sequência numérica para ordenação (1, 2, 3, ...). Útil para ordenar gráficos temporais."
+        data_type: int64

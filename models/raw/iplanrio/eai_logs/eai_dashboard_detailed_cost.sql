@@ -40,7 +40,7 @@ custos AS (
   (SELECT 
       CAST(usage_start_time AS DATE) as dia,
       CASE 
-        WHEN service.description IN ('BigQuery', 'Cloud Logging', 'Cloud Monitoring', 'Cloud SQL', 'Cloud Storage', 'Compute Engine', 'Kubernetes Engine', 'Networking', 'Geocoding API', 'Security Command Center') THEN "compartilhado"
+        WHEN service.description IN ('BigQuery', 'Cloud Logging', 'Cloud Monitoring', 'Cloud SQL', 'Cloud Storage', 'Compute Engine', 'Kubernetes Engine', 'Networking', 'Geocoding API', 'Security Command Center', 'Places API') THEN "compartilhado"
         WHEN service.description IN ('Vertex AI', 'Gemini API', 'Cloud Speech API') THEN "exclusivo"
         ELSE "nao_categorizado" 
       END as tipo_custo,
@@ -61,7 +61,7 @@ custos AS (
   (SELECT 
       CAST(usage_start_time AS DATE) as dia,
       CASE 
-        WHEN service.description IN ('BigQuery', 'Cloud Logging', 'Cloud Monitoring', 'Cloud SQL', 'Cloud Storage', 'Compute Engine', 'Kubernetes Engine', 'Networking', 'Geocoding API', 'Security Command Center') THEN "compartilhado"
+        WHEN service.description IN ('BigQuery', 'Cloud Logging', 'Cloud Monitoring', 'Cloud SQL', 'Cloud Storage', 'Compute Engine', 'Kubernetes Engine', 'Networking', 'Geocoding API', 'Security Command Center', 'Places API') THEN "compartilhado"
         WHEN service.description IN ('Vertex AI', 'Gemini API', 'Cloud Speech API') THEN "exclusivo"
         ELSE "nao_categorizado" 
       END as tipo_custo,

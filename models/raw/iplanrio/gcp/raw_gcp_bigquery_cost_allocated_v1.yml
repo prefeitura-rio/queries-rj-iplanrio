@@ -1,0 +1,183 @@
+version: 2
+
+models:
+  - name: raw_gcp_bigquery_cost_allocated_v1
+    description: >
+      Alocação de custo real do BigQuery por job individual.
+      Une o custo real do billing GCP com os jobs do BigQuery para alocar
+      proporcionalmente o custo baseado em bytes faturados. Permite rastreabilidade
+      completa: quanto do custo do billing foi consumido por cada job.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_brutos_gcp_gcp_bigquery_cost_allocated_v1__table__unique_combination
+          combination_of_columns:
+            - project_id
+            - job_id
+          config:
+            severity: error
+
+    columns:
+      - name: project_id
+        description: >
+          ID do projeto GCP onde o job foi executado.
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_cost_allocated_v1__project_id__not_null
+              config:
+                severity: error
+
+      - name: job_id
+        description: >
+          Identificador do job no BigQuery.
+          Único em combinação com project_id (unique_key no modelo).
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_cost_allocated_v1__job_id__not_null
+              config:
+                severity: error
+
+      - name: principal_email
+        description: >
+          Email do principal normalizado (lowercase).
+        data_type: string
+        quote: true
+
+      - name: principal_type
+        description: >
+          Tipo de principal: human, service_account, compute_engine, google_apis, unknown.
+        data_type: string
+        quote: true
+
+      - name: is_service_account
+        description: >
+          Flag booleana indicando se o principal é uma service account.
+        data_type: boolean
+
+      - name: orgao
+        description: >
+          Órgão ou secretaria responsável pelo projeto.
+        data_type: string
+        quote: true
+
+      - name: ambiente
+        description: >
+          Ambiente do projeto: prod, dev, sandbox.
+        data_type: string
+        quote: true
+
+      - name: projeto_base
+        description: >
+          Nome base do projeto sem sufixos de ambiente.
+        data_type: string
+        quote: true
+
+      - name: user_email
+        description: >
+          Email original do usuário ou service account.
+        data_type: string
+        quote: true
+
+      - name: job_type
+        description: >
+          Tipo do job: QUERY, LOAD, EXPORT, etc.
+        data_type: string
+        quote: true
+
+      - name: statement_type
+        description: >
+          Tipo de statement SQL: SELECT, INSERT, UPDATE, DML, DDL, etc.
+        data_type: string
+        quote: true
+
+      - name: creation_time
+        description: >
+          Data e hora de criação do job (UTC).
+        data_type: timestamp
+
+      - name: end_time
+        description: >
+          Data e hora de término do job (UTC).
+        data_type: timestamp
+
+      - name: job_date_utc
+        description: >
+          Data do job em UTC (DATE(creation_time)).
+        data_type: date
+
+      - name: job_month_utc
+        description: >
+          Mês do job em UTC (primeiro dia do mês).
+        data_type: date
+
+      - name: invoice_month_date
+        description: >
+          Mês de referência para faturamento (primeiro dia do mês).
+          Sempre presente, derivado de job_month_utc.
+          Usado como campo de particionamento.
+        data_type: date
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_cost_allocated_v1__invoice_month_date__not_null
+              config:
+                severity: error
+
+      - name: billing_invoice_month_date
+        description: >
+          Mês da invoice do billing quando há match (primeiro dia do mês).
+          Derivado de invoice.month (YYYYMM) do billing.
+          Pode ser NULL se não houver billing para este projeto/mês.
+        data_type: date
+
+      - name: total_bytes_billed
+        description: >
+          Total de bytes faturados por este job específico.
+        data_type: int64
+
+      - name: total_bytes_project_month
+        description: >
+          Total de bytes faturados por todos os jobs do projeto neste mês.
+          Usado como denominador na alocação proporcional.
+        data_type: int64
+
+      - name: bigquery_cost_gross
+        description: >
+          Custo bruto do BigQuery para o projeto/mês (antes de créditos).
+          Agregação de cost do billing para service.description = 'BigQuery'.
+        data_type: float64
+
+      - name: bigquery_credits
+        description: >
+          Total de créditos aplicados ao BigQuery para o projeto/mês.
+          Soma de credits.amount (valores negativos representam descontos).
+        data_type: float64
+
+      - name: bigquery_cost_net
+        description: >
+          Custo líquido do BigQuery para o projeto/mês (após créditos).
+          Calculado como: bigquery_cost_gross + bigquery_credits.
+          Este é o valor que foi efetivamente faturado.
+        data_type: float64
+
+      - name: allocated_cost_job
+        description: >
+          Custo alocado para este job específico (em USD).
+          Calculado proporcionalmente aos bytes faturados:
+          (total_bytes_billed / total_bytes_project_month) * bigquery_cost_net.
+          A soma de allocated_cost_job por projeto/mês deve ser ≈ bigquery_cost_net.
+        data_type: float64
+        tests:
+          - not_null:
+              name: raw_brutos_gcp_gcp_bigquery_cost_allocated_v1__allocated_cost_job__not_null
+              config:
+                severity: warn  # warn porque pode ser NULL se sem match no billing
+
+      - name: job_cost_proportion
+        description: >
+          Proporção do job no total do projeto/mês (valor entre 0 e 1).
+          Calculado como: total_bytes_billed / total_bytes_project_month.
+          Útil para análise de concentração de custo.
+        data_type: float64
