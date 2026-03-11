@@ -39,7 +39,7 @@ models:
               severity: error
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_vigia_urbano__usuario__email_usuario__expect_email_format
-              regex: '^[^@\s]+@[^@\s]+\.[^@\s]+$'
+              regex: '^[^@]+@[^@]+\\.[^@]+$'
               severity: error
       - name: matricula_usuario
         description: "matrícula do usuário"
