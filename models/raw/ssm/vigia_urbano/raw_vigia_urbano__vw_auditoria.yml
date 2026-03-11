@@ -45,6 +45,8 @@ models:
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: "^[0-9]{11}$"
+              config:
+                where: "usuario_cpf IS NOT NULL"
       - name: usuario_matricula
         description: "Matrícula do usuário que realizou o evento"
         data_type: string

@@ -52,9 +52,7 @@ models:
         description: "Identificador do bairro da ocorrência"
         data_type: int64
         tests:
-          - not_null:
-              config:
-                where: "id_bairro IS NOT NULL"
+          - not_null
       - name: bairro_nome
         description: "Nome do bairro da ocorrência"
         data_type: string
@@ -115,9 +113,7 @@ models:
         description: "Identificador do órgão da ocorrência"
         data_type: int64
         tests:
-          - not_null:
-              config:
-                where: "id_orgao_ocorrencia IS NOT NULL"
+          - not_null
       - name: ocorrencia_orgao_nome
         description: "Nome do órgão vinculado a ocorrência"
         data_type: string
@@ -128,9 +124,7 @@ models:
         description: "Identificador da categoria da ocorrência"
         data_type: int64
         tests:
-          - not_null:
-              config:
-                where: "id_categoria IS NOT NULL"
+          - not_null
       - name: categoria_nome
         description: "Nome da categoria da ocorrência"
         data_type: string

@@ -26,7 +26,7 @@ models:
               field: id_usuario
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
-        data_type: date
+        data_type: datetime
       - name: datalake_transformed_at
         description: "Data de quando o dado foi transformado no dbt"
         data_type: datetime
