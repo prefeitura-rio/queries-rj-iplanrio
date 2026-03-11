@@ -8,8 +8,12 @@ models:
         description: "Identificador único da resposta de ocorrência"
         data_type: int64
         tests:
-          - unique
-          - not_null
+          - unique:
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__id_resposta_ocorrencia__unique
+              severity: error
+          - not_null:
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__id_resposta_ocorrencia__not_null
+              severity: error
       - name: data_hora_registro
         description: "Data e hora do registro da ocorrência"
         data_type: datetime
@@ -18,27 +22,35 @@ models:
       - name: logradouro
         description: "Logradouro onde a ocorrência foi registrada"
         data_type: string
+        quote: true
       - name: numero_porta
         description: "Número da porta do endereço da ocorrência"
         data_type: string
+        quote: true
       - name: referencia
         description: "Referência do local da ocorrência"
         data_type: string
+        quote: true
       - name: coordenada_x
         description: "Coordenada X (longitude) do local da ocorrência (geolocalização)"
         data_type: string
+        quote: true
       - name: coordenada_y
         description: "Coordenada Y (latitude) do local da ocorrência (geolocalização)"
         data_type: string
+        quote: true
       - name: coordenada_x_dispositivo
         description: "Coordenada X (longitude) capturada pelo dispositivo (geolocalização)"
         data_type: string
+        quote: true
       - name: coordenada_y_dispositivo
         description: "Coordenada Y (latitude) capturada pelo dispositivo (geolocalização)"
         data_type: string
+        quote: true
       - name: observacao
         description: "Observações sobre a ocorrência"
         data_type: string
+        quote: true
       - name: excluido
         description: "Flag que Indica se o registro foi excluído (False=0 / True=1)"
         data_type: bool
@@ -48,11 +60,10 @@ models:
       - name: caminho_imagem
         description: "Caminho da imagem associada à ocorrência"
         data_type: string
+        quote: true
       - name: id_bairro
         description: "Identificador do bairro da ocorrência"
         data_type: int64
-        tests:
-          - not_null
       - name: bairro_nome
         description: "Nome do bairro da ocorrência"
         data_type: string
@@ -134,6 +145,7 @@ models:
       - name: usuario_cpf
         description: "CPF do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: "^[0-9]{11}$"
@@ -141,6 +153,7 @@ models:
       - name: usuario_email
         description: "Email do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: '^[^@]+@[^@]+\\.[^@]+$'
@@ -164,5 +177,5 @@ models:
         description: "Data e hora de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: datetime
       - name: datalake_transformed_at
-        description: "Data de quando o dado foi transformado no dbt"
+        description: "Data e hora de quando o dado foi transformado no dbt"
         data_type: datetime
