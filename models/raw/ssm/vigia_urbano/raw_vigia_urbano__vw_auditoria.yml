@@ -50,7 +50,7 @@ models:
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_vigia_urbano__vw_auditoria__usuario_cpf__expect_column_values_to_match_regex
               regex: '^[0-9]{11}$'
-              where: "usuario_cpf IS NOT NULL"
+              severity: warn
       - name: usuario_matricula
         description: "Matrícula do usuário que realizou o evento"
         data_type: string

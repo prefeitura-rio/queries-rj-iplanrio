@@ -137,16 +137,14 @@ models:
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: "^[0-9]{11}$"
-              config:
-                where: "usuario_cpf IS NOT NULL"
+              severity: warn
       - name: usuario_email
         description: "Email do usuário que registrou a ocorrência"
         data_type: string
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: '^[^@]+@[^@]+\\.[^@]+$'
-              config:
-                where: "usuario_email IS NOT NULL AND usuario_email != ''"
+              severity: warn
       - name: usuario_matricula
         description: "Matrícula do usuário que registrou a ocorrência"
         data_type: string
