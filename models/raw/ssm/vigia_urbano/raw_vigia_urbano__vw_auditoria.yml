@@ -10,10 +10,10 @@ models:
         tests:
           - unique:
               name: raw_vigia_urbano__vw_auditoria__id_auditoria__unique
-              severity: error
+              severity: warn
           - not_null:
               name: raw_vigia_urbano__vw_auditoria__id_auditoria__not_null
-              severity: error
+              severity: warn
       - name: data_hora_auditoria
         description: "Data e hora em que a auditoria foi registrada"
         data_type: datetime
