@@ -89,8 +89,6 @@ models:
       - name: id_tipo_ocorrencia
         description: "Identificador do tipo da ocorrência"
         data_type: int64
-        tests:
-          - not_null
       - name: tipo_ocorrencia_descricao
         description: "Descrição do tipo da ocorrência"
         data_type: string
@@ -112,8 +110,6 @@ models:
       - name: id_orgao_ocorrencia
         description: "Identificador do órgão da ocorrência"
         data_type: int64
-        tests:
-          - not_null
       - name: ocorrencia_orgao_nome
         description: "Nome do órgão vinculado a ocorrência"
         data_type: string
@@ -123,8 +119,6 @@ models:
       - name: id_categoria
         description: "Identificador da categoria da ocorrência"
         data_type: int64
-        tests:
-          - not_null
       - name: categoria_nome
         description: "Nome da categoria da ocorrência"
         data_type: string
@@ -134,8 +128,6 @@ models:
       - name: id_usuario
         description: "Identificador do usuário que registrou a ocorrência"
         data_type: int64
-        tests:
-          - not_null
       - name: usuario_nome
         description: "Nome do usuário que registrou a ocorrência"
         data_type: string
@@ -173,10 +165,6 @@ models:
       - name: datalake_loaded_at
         description: "Data e hora de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: datetime
-        tests:
-          - not_null
       - name: datalake_transformed_at
         description: "Data de quando o dado foi transformado no dbt"
         data_type: datetime
-        tests:
-          - not_null

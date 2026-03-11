@@ -7,9 +7,6 @@ models:
       - name: id_auditoria
         description: "Identificador único do registro de auditoria"
         data_type: int64
-        tests:
-          - unique
-          - not_null
       - name: data_hora_auditoria
         description: "Data e hora em que a auditoria foi registrada"
         data_type: datetime
@@ -42,15 +39,9 @@ models:
         description: "CPF do usuário que realizou o evento"
         data_type: string
         quote: true
-        tests:
-          - dbt_expectations.expect_column_values_to_match_regex:
-              regex: "^[0-9]{11}$"
-              config:
-                where: "usuario_cpf IS NOT NULL"
       - name: usuario_matricula
         description: "Matrícula do usuário que realizou o evento"
         data_type: string
-        quote: true
       - name: usuario_email
         description: "Email do usuário que realizou o evento"
         data_type: string

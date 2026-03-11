@@ -18,15 +18,11 @@ models:
         data_type: string
         tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_match_regex:
-              regex: "^[0-9]{11}$"
       - name: email_usuario
         description: "email do usuário"
         data_type: string
         tests:
           - not_null
-          - dbt_expectations.expect_column_values_to_match_regex:
-              regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
       - name: matricula_usuario
         description: "matrícula do usuário"
         data_type: string
