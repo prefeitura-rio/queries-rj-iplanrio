@@ -7,15 +7,27 @@ models:
       - name: id_funcionario
         description: Identificador do funcionário, que pode estar repetido no caso do funcionário possua ou tenha possuído mais de 1 vínculo funcional com a PCRJ.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__vinculo__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
         description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa que é professora, e funcionária do IPLANRIO, tem dois vínculos.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__vinculo__id_vinculo__not_null
+              config:
+                severity: error
       - name: id_matricula_vinculo
         description: Matricula do funcionário relativa a este vínculo.
         data_type: string
+        quote: true
       - name: tipo
         description: 'Detalhamento do regime jurídico. Exemplo: CLT - Contrato indeterminado, CLT - Contrato determinado.'
         data_type: string
+        quote: true
       - name: data_nomeacao
         description: Data de nomeação do funcionário relativa ao vínculo.
         data_type: date
@@ -28,18 +40,22 @@ models:
       - name: regime_juridico
         description: 'Regime jurídico do vínculo. Ex.: Estatutário, celetista, aposentado etc'
         data_type: string
+        quote: true
       - name: categoria
         description: 'Categoria do vínculo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
         data_type: string
+        quote: true
       - name: desconta_ir
         description: Booleano indicando se o vínculo desconta IR ou não. Valores N ou S.
         data_type: boolean
       - name: descricao_provimento
         description: Descrição do provimento. Campo livre.
         data_type: string
+        quote: true
       - name: classificacao_concurso
         description: Classificação no concurso relativo a este vínculo, caso tenha sido feito concurso. Em branco caso não tenha feito.
         data_type: string
+        quote: true
       - name: data_inicio_cessao
         description: Data de inicio da cessão, quanto o servidor é cedido. Quando o servidor não é cedido o atributo fica em branco. Cessão é o emprestimo de funcionário de órgão externo à prefeitura (ou da administração indireta) para a administração direta da prefeitura do Rio de Janeiro.
         data_type: date
@@ -67,6 +83,7 @@ models:
       - name: tipo_aposentadoria
         description: 'Tipo da aposentadoria relativa ao vínculo. Exemplo: 47 - integral art 3'
         data_type: string
+        quote: true
       - name: data_vacancia
         description: Data de vacância relativa ao vínculo. A vacância ocorre quando se encerra o vínculo.
         data_type: date
@@ -76,6 +93,7 @@ models:
       - name: motivo_vacancia
         description: Motivo da vacância. O que encerrou o vínculo, caso ele tenha sido encerrado. Caso não o atributo está em branco. Campo livre para preenchimento.
         data_type: string
+        quote: true
       - name: id_vinculo_anterior
         description: Número do vínculo anterior, caso haja algum. Se não fica em branco.
         data_type: integer
@@ -85,45 +103,56 @@ models:
       - name: tipo_orgao_origem
         description: 'Tipo do órgão da origem do funcionário ( em caso do funcionário ser cedido para a prefeitura do Rio de Janeiro). Exemplo: DIR.EST. (Direta estatual)'
         data_type: string
+        quote: true
       - name: funcao_origem_requisicao
         description: Função, na origem, da pessoa requisitada. Atributo de preenchimento livre. Em branco caso não tenha havido requisição.
         data_type: string
+        quote: true
       - name: telefone_requisicao
         description: Telefone de onde o funcionário foi requisitado. Em branco caso não tenha havido requisição.
         data_type: string
+        quote: true
       - name: id_matricula_vinculo
         description: Matricula do funcionário relativa a este vínculo.
         data_type: integer
       - name: orgao_origem_requisicao
         description: Órgão de origem do funcionário que foi requisitado. Caso a pessoa associada ao vínculo tenha sido requisitada pela prefeitura. Caso não tenha sido requisitado fica em branco.
         data_type: string
+        quote: true
       - name: tipo_onus_requisicao
         description: 'Tipo de ônus da requisição. Exemplo: Com ônus, sem ônus, não se aplica.'
         data_type: string
+        quote: true
       - name: tipo_ressarcimento_requisicao
         description: Tipo de ressarcimento da requisição. Exemplo Sim ou não. Está associado ao atributo TIPO_ONUS_REQ.
         data_type: string
+        quote: true
       - name: tipo_requisicao
         description: 'Tipo da requisição. Exemplo: Externo, interna, permuta.'
         data_type: string
+        quote: true
       - name: data_pagamento_requisicao
         description: Data de pagamento da rescisão do vínculo, caso tenha havido rescisão.
         data_type: date
       - name: origem_servidor_cedido
         description: Origem do servidor cedido. Ex direta estadual, indireta estatual.
         data_type: string
+        quote: true
       - name: id_processo_origem
         description: Número do processo que deu origem da vaga associada ao vínculo.
         data_type: string
+        quote: true
       - name: contrato_suspenso
         description: Booleana que indica se o contrato do empregado público cedido encontra-se suspenso.
         data_type: boolean
       - name: professor
         description: Caso o vínculo seja de professor contém a disciplina que ele leciona. Caso não seja professor fica em branco.
         data_type: string
+        quote: true
       - name: cota
         description: Indica se o vínculo foi preenchido por cota. Em branco, não entrou por cota. Caso esteja preenchido o vínculo foi preenchido por cota. Valores possíveis Lei 2.111/1994 para DEFICIENTE, LEi 5.401/2012 para Raça, lei 5.695/2014 para Raça.
         data_type: string
+        quote: true
       - name: id_empresa
         description: Codigo da empresa onde se tem o vínculo, caso o vínculo seja associado a uma empresa. Caso não fica em branco.
         data_type: integer

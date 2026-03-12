@@ -10,9 +10,11 @@ models:
       - name: descricao
         description: Descrição do horário. Neste atributo deve constar o horário de entrada, de almoço e de saída relativos a todos os dias da semana.
         data_type: string
+        quote: true
       - name: publicacao_diario_oficial
         description: Publicação em diário oficial autorizando o horário.
         data_type: string
+        quote: true
       - name: carga_horaria_mes
         description: Carga mensal em horas do horário.
         data_type: integer

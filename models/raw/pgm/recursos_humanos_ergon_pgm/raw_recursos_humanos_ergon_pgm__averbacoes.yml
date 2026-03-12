@@ -7,9 +7,19 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__averbacoes__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__averbacoes__id_vinculo__not_null
+              config:
+                severity: error
       - name: id_averbacao
         description: Chave gerada pelo banco para registro de averbação.
         data_type: integer
@@ -22,9 +32,11 @@ models:
       - name: instituicao
         description: Instituição a qual o servidor prestou serviço referente ao tempo averbado.
         data_type: string
+        quote: true
       - name: id_tipo_tempo
         description: Coluna que armazena o código numérico referente ao tipo de tempo.
         data_type: string
+        quote: true
       - name: data_validade
         description: Data de validade da averbação.
         data_type: date
@@ -34,6 +46,7 @@ models:
       - name: motivo
         description: Campo para cadastrar o motivo, geralmente ligado à desaverbação de tempo.
         data_type: string
+        quote: true
       - name: sobrepoe
         description: Booleano que indica se o período averbado permite concomitância com outro período averbado.
         data_type: boolean
@@ -43,6 +56,8 @@ models:
       - name: obs
         description: Coluna de observações, campo de texto livre.
         data_type: string
+        quote: true
       - name: regime_previdenciario
         description: Coluna que informa o regime previdenciário ao qual pertencia o tempo averbado.
         data_type: string
+        quote: true

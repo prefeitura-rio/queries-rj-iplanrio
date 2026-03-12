@@ -7,6 +7,12 @@ models:
       - name: id_funcionario
         description: Número do funcionário. Número dado a pessoa que ganhou sua primeira matrícula da prefeitura do Rio de Janeiro.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__matricula__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_matricula
         description: Número da matrícula.
         data_type: string
+        quote: true

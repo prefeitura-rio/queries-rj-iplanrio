@@ -13,3 +13,4 @@ models:
       - name: nome_afastamento
         description: Nome do afastamento.
         data_type: string
+        quote: true

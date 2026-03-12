@@ -10,9 +10,19 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_vinculo__not_null
+              config:
+                severity: error
       - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
         data_type: integer
@@ -28,14 +38,13 @@ models:
       - name: tipo_funcionario
         description: Tipo do funcionário (ex: servidor, terceirizado).
         data_type: string
+        quote: true
       - name: detalhamento
         description: Descrição da coluna não disponível e sem documentação associada. Varia entre 0, 1, 2 e 3.
         data_type: integer
-        quote: true
       - name: id_rubrica
         description: Código da rubrica, que é um código numérico que identifica a natureza do pagamento ou desconto.
         data_type: integer
-        quote: true
       - name: tipo_rubrica
         description: Informação não descrita na documentação disponível. Varia entre 1,2,3 e 4.
         data_type: string
@@ -43,11 +52,9 @@ models:
       - name: mes_ano_direito
         description: Mês e ano a que se refere o direito do pagamento ou desconto registrado na ficha financeira.
         data_type: date
-        quote: true
       - name: desconto_vantagem
         description: Define se o registro da ficha financeira é um desconto (2) ou uma vantagem (1)
         data_type: integer
-        quote: true
       - name: valor
         description: Valor do lançamento na ficha financeira.
         data_type: numeric
@@ -62,7 +69,6 @@ models:
       - name: classificacao
         description: Código numérico sem informação de significado disponível na documentação.
         data_type: integer
-        quote: true
       - name: id_empresa
         description: Identificador da empresa a qual a folha de pagamento pertence.
         data_type: integer
