@@ -1,18 +1,21 @@
 {{
     config(
         alias='tipo_tempo',
+        materialized="table",
+        tags=["raw", "ergon", "tipo", "tipo_tempo"],
+        description="Tabela armazena os tipos de tempo utilizados para contagem de benefícios categorizados como finalidades."
     )
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(TRIM(sigla), r'\.0$', '') AS string) AS id_tipo_tempo,
-    SAFE_CAST(TRIM(nome) AS STRING) AS nome_tipo_tempo,
-    SAFE_CAST(TRIM(aposentadoria) AS BOOLEAN) AS aposentadoria,
-    SAFE_CAST(TRIM(ferias) AS BOOLEAN) AS ferias,
-    SAFE_CAST(TRIM(dias_fer) AS BOOLEAN) AS dias_de_ferias,
-    SAFE_CAST(TRIM(adictserv) AS BOOLEAN) AS trienio,
-    SAFE_CAST(TRIM(licesp) AS BOOLEAN) AS licenca_especial,
-    SAFE_CAST(TRIM(dias_licesp) AS BOOLEAN) AS dias_de_licenca_especial,
-    SAFE_CAST(TRIM(adictchefia) AS BOOLEAN) AS tempo_de_chefia,
-    SAFE_CAST(TRIM(progressao) AS BOOLEAN) AS progressao,
+    safe_cast(sigla as int64) as id_tipo_tempo,
+    SAFE_CAST(nome AS STRING) AS nome_tipo_tempo,
+    safe_cast(aposentadoria as string) as aposentadoria,
+    SAFE_CAST(ferias AS string) AS ferias,
+    SAFE_CAST(dias_fer AS string) AS dias_de_ferias,
+    SAFE_CAST(adictserv AS string) AS trienio,
+    SAFE_CAST(licesp AS string) AS licenca_especial,
+    SAFE_CAST(dias_licesp AS string) AS dias_de_licenca_especial,
+    SAFE_CAST(adictchefia AS string) AS tempo_de_chefia,
+    SAFE_CAST(progressao AS string) AS progressao
 FROM {{ source('brutos_ergon_staging', 'TIPO_TEMPO') }} AS t

@@ -7,8 +7,6 @@ models:
       - name: sigla
         description: Sigla do regime jurídico. Ex. CLT, EFETIVO etc
         data_type: string
-        quote: true
       - name: nome
         description: Nome do regime jurídico. Ex. Celetista, estatutário.
         data_type: string
-        quote: true

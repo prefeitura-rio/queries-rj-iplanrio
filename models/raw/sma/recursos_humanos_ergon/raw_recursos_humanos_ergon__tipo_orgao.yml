@@ -7,8 +7,6 @@ models:
       - name: tipo
         description: Sigla do tipo do órgão. Ex. DIR.EST.
         data_type: string
-        quote: true
       - name: descricao
         description: Descrição do tipo do órgão. Ex. ADMINISTRACAO DIRETA ESTADUAL.
         data_type: string
-        quote: true

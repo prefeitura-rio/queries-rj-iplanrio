@@ -19,14 +19,12 @@ models:
       - name: tipo_frequencia
         description: Tipo da frequência.
         data_type: string
-        quote: true
       - name: id_frequencia
         description: Código da frequência.
         data_type: integer
       - name: observacoes
         description: Observções referentes à frequência do servidor.
         data_type: string
-        quote: true
       - name: id_empresa
         description: Código da empresa.
         data_type: integer

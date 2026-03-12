@@ -1,6 +1,9 @@
 {{
     config(
         alias='jornada',
+        materialized="table",
+        tags=["raw", "ergon", "jornada"],
+        description="Tipos de jornadas existentes tanto na administração direta como indireta da prefeitura do Rio de Janeiro. Jornada é a carga horária semanal."
     )
 }}
 

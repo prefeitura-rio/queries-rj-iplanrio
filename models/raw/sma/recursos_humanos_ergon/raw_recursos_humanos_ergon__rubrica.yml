@@ -7,14 +7,18 @@ models:
       - name: id_rubrica
         description: Identificador único da rubrica.
         data_type: integer
-      - name: nome_rubrica
-        description: Nome da rubrica.
-        data_type: string
-        quote: true
       - name: tipo_rubrica
         description: Tipo da rubrica.
         data_type: string
-        quote: true
-      - name: ativo
-        description: Indica se a rubrica está ativa.
-        data_type: boolean
+      - name: nome
+        description: Nome da rubrica.
+        data_type: string
+      - name: nome_abreviado
+        description: Nome abreviado da rubrica.
+        data_type: string
+      - name: fator
+        description: Fator de multiplicação do valor a ser pago ao funcionário (1) ou descontado (-1) no lançamento da rubrica.
+        data_type: integer
+      - name: observacoes
+        description: Observações sobre a rubrica.
+        data_type: string

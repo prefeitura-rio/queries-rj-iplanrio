@@ -7,38 +7,75 @@ models:
       - name: id_empresa
         description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
         data_type: integer
+      - name: tipo_empresa
+        description: Tipo da empresa, se é uma empresa pública, privada ou uma organização social.
+        data_type: string
       - name: nome_empresa
         description: Nome da empresa.
         data_type: string
-        quote: true
       - name: sigla
         description: Sigla da empresa.
         data_type: string
-        quote: true
-      - name: tipo
-        description: Tipo da empresa.
+      - name: razao_social
+        description: Razão social da empresa.
         data_type: string
-        quote: true
       - name: cnpj
         description: CNPJ da empresa.
         data_type: string
-        quote: true
-      - name: endereco
-        description: Endereço da empresa.
+      - name: atividade_economica
+        description: Atividade econômica da empresa.
         data_type: string
-        quote: true
+      - name: cep
+        description: CEP da empresa.
+        data_type: string
+      - name: cnae
+        description: CNAE (código nacional de atividade econômica) da empresa.
+        data_type: string
       - name: telefone
         description: Telefone da empresa.
         data_type: string
-        quote: true
       - name: email
         description: Email da empresa.
         data_type: string
-        quote: true
+      - name: website
+        description: Website da empresa.
+        data_type: string
+      - name: natureza_juridica
+        description: Natureza jurídica da empresa.
+        data_type: string
+      - name: cpf_resp
+        description: CPF do responsável pela empresa.
+        data_type: string
       - name: responsavel
         description: Responsável pela empresa.
         data_type: string
-        quote: true
-      - name: ativo
-        description: Indica se a empresa está ativa.
-        data_type: boolean
+      - name: codigo_logradouro
+        description: Código do logradouro da empresa.
+        data_type: string
+      - name: nome_logradouro
+        description: Nome do logradouro da empresa.
+        data_type: string
+      - name: tipo_logradouro
+        description: Tipo do logradouro da empresa.
+        data_type: string
+      - name: numero_endereco
+        description: Número do endereço da empresa.
+        data_type: string
+      - name: complemento
+        description: Complemento do endereço da empresa.
+        data_type: string
+      - name: bairro
+        description: Bairro onde a empresa está localizada.
+        data_type: string
+      - name: municipio_codigo
+        description: Código IBGE do município onde a empresa está localizada.
+        data_type: string
+      - name: municipio_sede
+        description: Nome do município onde a empresa tem sede.
+        data_type: string
+      - name: uf_sigla
+        description: Sigla da unidade federativa onde a empresa está localizada.
+        data_type: string
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

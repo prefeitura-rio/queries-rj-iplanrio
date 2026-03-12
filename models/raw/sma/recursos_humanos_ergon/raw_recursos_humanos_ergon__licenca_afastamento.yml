@@ -5,42 +5,39 @@ models:
     description: "**Descrição**: Tabela contendo o início e fim dos afastamentos, seu motivo e o tipo de afastamento.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
     columns:
       - name: id_funcionario
-        description: Não informado
+        description: Identificador único do funcionário na PCRJ, sistema Ergon
         data_type: integer
       - name: id_vinculo
-        description: Não informado
+        description: Identificador do vínculo do referido funcionário para o qual aponta a ocorrência de afastamento
         data_type: integer
       - name: data_inicio
-        description: Não informado
+        description: Data de início do afastamento
         data_type: date
       - name: data_final
-        description: Não informado
+        description: Data de fim do afastamento
         data_type: date
       - name: tipo_afastamento
-        description: Não informado
+        description: Tipo do afastamento que pode ser dividido em Normal e Especial
         data_type: string
-        quote: true
       - name: id_afastamento
-        description: Não informado
+        description: Código do tipo de afastamento cadastrado no sistema Ergon
         data_type: integer
       - name: motivo
-        description: Não informado
+        description: Campo de texto livre para descrição do motivo do afastamento
         data_type: string
-        quote: true
       - name: data_previsao_retorno
-        description: Não informado
+        description: Data prevista para o retorno do funcionário ao trabalho
         data_type: date
       - name: parecer
-        description: Não informado
+        description: Registro do parecer do afastamento a ser registrado em caso de afastamentos médicos
         data_type: string
-        quote: true
       - name: data_atendimento
-        description: Não informado
+        description: Data do atendimento realizado pela Perícia Médica. Somente utilizado em casos de afastamento médico. Mantido como string, pois a coluna de origem é varchar(2000) , permitindo preenchimento de forma inconsistente.
         data_type: date
       - name: id_empresa
-        description: Não informado
+        description: Empresa do servidor após o provimento. Sempre é a mesma empresa do vínculo.
         data_type: integer
       - name: crm
-        description: Não informado
+        description: CRM do médico. Preenchido somente em casos de afastamento médico.
         data_type: string
-        quote: true
+

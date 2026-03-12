@@ -10,24 +10,30 @@ models:
       - name: nome
         description: Nome do tipo de cargo. Ex. Analista de Sistemas.
         data_type: string
-        quote: true
       - name: categoria
         description: 'Categoria do tipo de cargo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
         data_type: string
-        quote: true
       - name: subcategoria
         description: Subcategoria do tipo de cargo. É uma subdivisão da categoria. Ex. Apoio, Geral, lotados na saúde.
         data_type: string
-        quote: true
       - name: tipo_controle_vaga
         description: 'Tipo de controle de vaga: Livre (não existe controle de vagas no ERGON), Quadro (O ERGON controla o número máximo de vagas no cargo) ou Numerada.'
         data_type: string
-        quote: true
       - name: escolaridade
         description: Escolaridade minima exigida para o tipo de cargo.
         data_type: string
-        quote: true
       - name: aglutinador
         description: Todos cadastrados com N.
         data_type: string
-        quote: true
+      - name: tipo_cargo 
+        description: Tipo do cargo, se é um cargo em comissão ou um cargo efetivo.
+        data_type: string
+      - name: dt_extincao
+        description: Data de extinção do tipo de cargo, caso exista.
+        data_type: date
+      - name: cargo_funcao
+        description: Indica se o tipo de cargo é um cargo (C) ou uma função (F).
+        data_type: string
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

@@ -4,7 +4,7 @@ models:
   - name: raw_recursos_humanos_ergon__ficha_financeira
     description: "**Descrição**: Valores de rubricas de fichas financeiras dos funcionários da COMLURB. Constam fichas desde o início do ERGON COMLURB. Uma ficha financeira é um resumo do contracheque do servidor.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: nao.informado@gmail.com\n"
     columns:
-      - name: data_folha
+      - name: mes_ano_folha
         description: Mês e ano da folha da ficha financeira.
         data_type: date
       - name: numero_folha
@@ -16,28 +16,25 @@ models:
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
-      - name: numero_pensionista
+      - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
         data_type: integer
-      - name: data_pagamento
+      - name: mes_ano_direito
         description: Mês e ano trabalhado relativo ao pagamento.
         data_type: date
-      - name: rubrica
+      - name: id_rubrica
         description: Rubrica da despesa. Caso o funcionário receba em rubricas diferentes haverá mais de um registro nesta visão.
-        data_type: string
-        quote: true
+        data_type: integer
       - name: tipo_rubrica
         description: Tipo de rubrica. Ex, Auxiliar, consignatária, desconto ou vantagem.
         data_type: string
-        quote: true
-      - name: desconto
+      - name: desconto_vantagem
         description: Booleana que indica se a rubrica é de desconto ou não. 1 quando tem desconto e 2 quando não tem desconto.
         data_type: boolean
-      - name: complemento_rubrica
+      - name: observacao
         description: Informações adicionais para descrever a rubrica.
         data_type: string
-        quote: true
-      - name: valor_rubrica
+      - name: valor
         description: Valor referente à rubrica.
         data_type: numeric
       - name: correcao
@@ -46,3 +43,6 @@ models:
       - name: id_empresa
         description: Código da empresa.
         data_type: integer
+      - name: data_particao
+        description: Data da partição dos dados.
+        data_type: date
