@@ -1,0 +1,171 @@
+version: 2
+
+models:
+  - name: kpi_gcp_active_users_30d
+    description: |
+      KPI de usuários ativos BigQuery nos últimos 30 dias com comparação ao período anterior (31-61 dias atrás).
+
+      **Propósito**: Métrica em tempo real de usuários ativos para cards de dashboard.
+      Atualizado diariamente, fornece visão atual de engajamento e permite comparação com período anterior.
+
+      **Definição de Usuário Ativo**: Qualquer principal (usuário ou service account) que executou
+      pelo menos 1 job BigQuery nos últimos 30 dias, independente de custo (inclui queries em cache).
+
+      **Períodos**:
+      - Período atual: últimos 30 dias (hoje - 30 dias até ontem)
+      - Período anterior: 31-61 dias atrás (para comparação equivalente)
+
+      **Atualização**: Table materializada, reprocessada diariamente
+
+      **Fonte de Dados**:
+      - raw_gcp_bigquery_cost_allocated_v1 (todos os jobs BigQuery)
+
+    columns:
+      - name: reference_date
+        description: "Data de referência da consulta (CURRENT_DATE). Data base para cálculo dos períodos."
+        data_type: date
+        tests:
+          - not_null
+          - unique
+
+      - name: period_start
+        description: "Data de início do período atual (hoje - 30 dias)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: period_end
+        description: "Data de fim do período atual (ontem)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: period_days
+        description: "Duração do período em dias (fixo: 30)."
+        data_type: int64
+
+      - name: previous_period_start
+        description: "Data de início do período anterior (hoje - 61 dias)."
+        data_type: date
+
+      - name: previous_period_end
+        description: "Data de fim do período anterior (hoje - 31 dias)."
+        data_type: date
+
+      - name: current_active_users
+        description: "Quantidade de usuários humanos únicos ativos nos últimos 30 dias. COUNT DISTINCT de principal_email onde principal_type = 'user' e executou >= 1 job (independente de custo, inclui cache). Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: kpi_gcp_active_users_30d__current_active_users__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: current_active_service_accounts
+        description: "Quantidade de service accounts únicas ativas nos últimos 30 dias. COUNT DISTINCT de principal_email onde is_service_account = true. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: current_total_principals
+        description: "Total de principals únicos (usuários + service accounts) ativos nos últimos 30 dias. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: current_total_jobs
+        description: "Total de jobs BigQuery executados nos últimos 30 dias. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: current_total_cost
+        description: "Custo total BigQuery nos últimos 30 dias (BRL). Faixa: >= 0."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: current_first_activity
+        description: "Timestamp da primeira atividade (job) no período atual."
+        data_type: timestamp
+
+      - name: current_last_activity
+        description: "Timestamp da última atividade (job) no período atual."
+        data_type: timestamp
+
+      - name: previous_active_users
+        description: "Quantidade de usuários humanos únicos ativos no período anterior (31-61 dias atrás). Para comparação. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: previous_active_service_accounts
+        description: "Quantidade de service accounts únicas ativas no período anterior. Para comparação. Faixa: >= 0."
+        data_type: int64
+
+      - name: previous_total_principals
+        description: "Total de principals únicos no período anterior. Para comparação. Faixa: >= 0."
+        data_type: int64
+
+      - name: previous_total_jobs
+        description: "Total de jobs no período anterior. Para comparação. Faixa: >= 0."
+        data_type: int64
+
+      - name: previous_total_cost
+        description: "Custo total no período anterior (BRL). Para comparação. Faixa: >= 0."
+        data_type: float64
+
+      - name: users_change
+        description: "Variação absoluta de usuários ativos (atual - anterior). Valores positivos = crescimento, negativos = redução."
+        data_type: int64
+
+      - name: service_accounts_change
+        description: "Variação absoluta de service accounts ativas (atual - anterior)."
+        data_type: int64
+
+      - name: jobs_change
+        description: "Variação absoluta de jobs executados (atual - anterior)."
+        data_type: int64
+
+      - name: cost_change
+        description: "Variação absoluta de custo (BRL) (atual - anterior)."
+        data_type: float64
+
+      - name: users_change_pct
+        description: "Variação percentual de usuários ativos. Fórmula: ((atual - anterior) / anterior) * 100. Valores positivos = crescimento %."
+        data_type: float64
+
+      - name: service_accounts_change_pct
+        description: "Variação percentual de service accounts ativas."
+        data_type: float64
+
+      - name: jobs_change_pct
+        description: "Variação percentual de jobs executados."
+        data_type: float64
+
+      - name: cost_change_pct
+        description: "Variação percentual de custo."
+        data_type: float64
+
+      - name: cost_per_user
+        description: "Custo médio por usuário ativo no período atual (BRL). Fórmula: current_total_cost / current_active_users."
+        data_type: float64
+
+      - name: jobs_per_user
+        description: "Média de jobs por usuário ativo no período atual. Fórmula: current_total_jobs / current_active_users."
+        data_type: float64
+
+      - name: previous_cost_per_user
+        description: "Custo médio por usuário ativo no período anterior (BRL). Para comparação de eficiência."
+        data_type: float64
+
+      - name: trend
+        description: "Tendência de usuários ativos: 'UP' (crescimento > 5%), 'DOWN' (queda > 5%), 'STABLE' (variação entre -5% e +5%)."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: kpi_gcp_active_users_30d__trend__expect_column_values_to_be_in_set
+              value_set: ['UP', 'DOWN', 'STABLE']
+              severity: warn
