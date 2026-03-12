@@ -7,7 +7,7 @@
             "data_type": "date",
             "granularity": "month",
         },
-        cluster_by=["project_id", "dataset_id"],
+        cluster_by=["job_project_id", "dataset_id"],
         alias='fact_gcp_cost_by_table',
         tags=['dashboard', 'gcp', 'cost', 'table', 'dataset'],
     )
@@ -64,16 +64,16 @@ WITH cost_allocated AS (
 {% for projeto in projetos %}
     {% set q %}
         SELECT
-            project_id,
-            job_id,
+            jobs.project_id,
+            jobs.job_id,
             ref_table.project_id AS ref_project_id,
             ref_table.dataset_id AS ref_dataset_id,
             ref_table.table_id AS ref_table_id
-        FROM `{{ projeto }}`.`{{ region }}`.INFORMATION_SCHEMA.JOBS_BY_PROJECT,
+        FROM `{{ projeto }}`.`{{ region }}`.INFORMATION_SCHEMA.JOBS_BY_PROJECT AS jobs,
             UNNEST(referenced_tables) AS ref_table
-        WHERE DATE(creation_time) >= DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)
-            AND state = 'DONE'
-            AND total_bytes_billed > 0
+        WHERE DATE(jobs.creation_time) >= DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)
+            AND jobs.state = 'DONE'
+            AND jobs.total_bytes_billed > 0
     {% endset %}
     {% do all_ref_tables.append(q) %}
 {% endfor %}
@@ -282,5 +282,3 @@ FROM with_rankings
 {% if is_incremental() %}
 WHERE invoice_month_date >= DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months }} MONTH), MONTH)
 {% endif %}
-
-ORDER BY invoice_month_date DESC, total_cost DESC
