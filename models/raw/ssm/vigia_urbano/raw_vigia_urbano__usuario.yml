@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__usuario
+    description: "Tabela de Usuários do sistema Vigia Urbano."
+    columns:
+      - name: id_usuario
+        description: "Identificador único do registro de usuarios"
+        data_type: int64
+        tests:
+          - unique:
+              name: raw_vigia_urbano__usuario__id_usuario__unique
+              severity: warn
+          - not_null:
+              name: raw_vigia_urbano__usuario__id_usuario__not_null
+              severity: warn
+      - name: nome_usuario
+        description: "nome do usuário"
+        data_type: string
+        quote: true
+      - name: cpf_usuario
+        description: "cpf do usuário"
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_vigia_urbano__usuario__cpf_usuario__not_null
+              severity: warn
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_vigia_urbano__usuario__cpf_usuario__expect_column_values_to_match_regex
+              regex: '^[0-9]{11}$'
+              severity: warn
+      - name: email_usuario
+        description: "email do usuário"
+        data_type: string
+        quote: true
+        tests:
+          - not_null:
+              name: raw_vigia_urbano__usuario__email_usuario__not_null
+              severity: warn
+          - dbt_expectations.expect_column_values_to_match_regex:
+              name: raw_vigia_urbano__usuario__email_usuario__expect_email_format
+              regex: '^[^@]+@[^@]+\\.[^@]+$'
+              severity: warn
+      - name: matricula_usuario
+        description: "matrícula do usuário"
+        data_type: string
+        quote: true
+      - name: flag_alterar_senha
+        description: "flag indicador de alteração de senha do usuário"
+        data_type: bool
+      - name: flag_usuario_ativo
+        description: "flag que indica se o usuário está ativo"
+        data_type: bool
+      - name: flag_termo_responsabilidade
+        description: "flag indicador do termo do usuário"
+        data_type: bool
+      - name: datalake_loaded_at
+        description: "Data e hora de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
+        data_type: datetime
+      - name: datalake_transformed_at
+        description: "Data e hora de quando o dado foi transformado no dbt"
+        data_type: datetime
