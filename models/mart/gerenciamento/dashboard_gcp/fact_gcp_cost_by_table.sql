@@ -172,7 +172,7 @@ aggregated_by_table AS (
         SUM(allocated_cost_table) AS total_cost,
         COUNT(DISTINCT job_id) AS jobs_count,
         COUNT(DISTINCT principal_email) AS unique_users_count,
-        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS unique_human_users_count,
+        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS unique_human_users_count,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS unique_service_accounts_count,
         SUM(allocated_bytes_table) AS total_bytes_read,
 

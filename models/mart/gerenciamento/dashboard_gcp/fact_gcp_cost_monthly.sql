@@ -72,7 +72,7 @@ bigquery_stats AS (
             project_id,
             invoice_month_date,
 
-            COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS active_users_count,
+            COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users_count,
             COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts_count,
             COUNT(DISTINCT job_id) AS jobs_count,
             SUM(total_bytes_billed) AS total_bytes_billed

@@ -20,22 +20,29 @@ models:
       - name: invoice_month_date
         description: "Data de referência do mês de faturamento (primeiro dia do mês)."
         data_type: date
+        tests:
+          - not_null
 
       - name: orgao
         description: "Órgão/secretaria responsável."
         data_type: string
         quote: true
+        tests:
+          - not_null
 
       - name: ambiente
         description: "Ambiente do projeto: prod, dev ou sandbox."
         data_type: string
         quote: true
+        tests:
+          - not_null
 
       - name: principal_category
-        description: "Categoria do principal: 'User' (principal_type = 'human'), 'Service Account' (is_service_account = true), ou 'Other'. CHAVE para separar análises."
+        description: "Categoria do principal: 'User' (principal_type = 'user'), 'Service Account' (is_service_account = true), ou 'Other'. CHAVE para separar análises."
         data_type: string
         quote: true
         tests:
+          - not_null
           - dbt_expectations.expect_column_values_to_be_in_set:
               name: agg_gcp_cost_by_user_type__principal_category__expect_column_values_to_be_in_set
               value_set: ['User', 'Service Account', 'Other']

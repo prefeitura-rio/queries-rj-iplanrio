@@ -25,7 +25,7 @@ current_period_users_by_orgao AS (
         COALESCE(p.orgao, 'NÃO DEFINIDO') AS orgao,
         COALESCE(p.ambiente, 'prod') AS ambiente,
 
-        COUNT(DISTINCT CASE WHEN j.principal_type = 'human' THEN j.principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN j.principal_type = 'user' THEN j.principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN j.is_service_account THEN j.principal_email END) AS active_service_accounts,
         COUNT(DISTINCT j.principal_email) AS total_principals,
         COUNT(DISTINCT j.job_id) AS total_jobs,
@@ -48,7 +48,7 @@ previous_period_users_by_orgao AS (
         COALESCE(p.orgao, 'NÃO DEFINIDO') AS orgao,
         COALESCE(p.ambiente, 'prod') AS ambiente,
 
-        COUNT(DISTINCT CASE WHEN j.principal_type = 'human' THEN j.principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN j.principal_type = 'user' THEN j.principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN j.is_service_account THEN j.principal_email END) AS active_service_accounts,
         COUNT(DISTINCT j.principal_email) AS total_principals,
         COUNT(DISTINCT j.job_id) AS total_jobs,

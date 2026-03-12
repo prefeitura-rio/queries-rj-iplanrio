@@ -48,7 +48,7 @@ models:
 
       - name: principal_type
         description: >
-          Tipo de principal: human, service_account, compute_engine, google_apis, unknown.
+          Tipo de principal: user, service_account, compute_engine, google_apis, unknown.
         data_type: string
         quote: true
 

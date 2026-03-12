@@ -82,7 +82,7 @@ models:
           - not_null
 
       - name: principal_type
-        description: "Tipo de principal conforme GCP: 'human' (humano), 'service_account' (automação), 'compute_engine', 'google_apis', 'unknown'. Use para segregar análises. Fonte: raw_gcp_bigquery_cost_allocated_v1.principal_type."
+        description: "Tipo de principal conforme GCP: 'user' (usuário humano), 'service_account' (automação), 'compute_engine', 'google_apis', 'unknown'. Use para segregar análises. Fonte: raw_gcp_bigquery_cost_allocated_v1.principal_type."
         data_type: string
         quote: true
 
@@ -194,7 +194,7 @@ models:
               severity: warn
 
       - name: is_user
-        description: "Flag booleana indicando se é usuário humano (principal_type = 'human'). TRUE = humano, FALSE = service account ou outro. Use para filtrar apenas humanos no Looker. Fonte: calculado."
+        description: "Flag booleana indicando se é usuário humano (principal_type = 'user'). TRUE = humano, FALSE = service account ou outro. Use para filtrar apenas humanos no Looker. Fonte: calculado."
         data_type: boolean
 
       - name: is_top_10_spender

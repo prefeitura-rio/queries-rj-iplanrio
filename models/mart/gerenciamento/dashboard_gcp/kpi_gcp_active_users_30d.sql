@@ -22,7 +22,7 @@ WITH date_ranges AS (
 current_period_users AS (
     -- Usuários ativos nos últimos 30 dias (período atual)
     SELECT
-        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts,
         COUNT(DISTINCT principal_email) AS total_principals,
         COUNT(DISTINCT job_id) AS total_jobs,
@@ -38,7 +38,7 @@ current_period_users AS (
 previous_period_users AS (
     -- Usuários ativos no período anterior (30 dias: 31-61 dias atrás)
     SELECT
-        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts,
         COUNT(DISTINCT principal_email) AS total_principals,
         COUNT(DISTINCT job_id) AS total_jobs,

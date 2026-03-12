@@ -23,7 +23,7 @@ models:
 
       **Particionamento**:
       - Campo: invoice_month_date (mês)
-      - Clustering: project_id, dataset_id
+      - Clustering: job_project_id, dataset_id
 
       **Fonte de Dados**:
       - raw_gcp_bigquery_cost_allocated_v1 (custos por job)
@@ -130,7 +130,7 @@ models:
               severity: warn
 
       - name: unique_human_users_count
-        description: "Quantidade de usuários humanos únicos que acessaram esta tabela. Faixa: >= 0. Fonte: COUNT DISTINCT principal_email WHERE principal_type = 'human'."
+        description: "Quantidade de usuários humanos únicos que acessaram esta tabela. Faixa: >= 0. Fonte: COUNT DISTINCT principal_email WHERE principal_type = 'user'."
         data_type: int64
         tests:
           - not_null

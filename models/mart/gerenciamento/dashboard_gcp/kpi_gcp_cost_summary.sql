@@ -35,7 +35,7 @@ bigquery_monthly_stats AS (
     -- COUNT DISTINCT direto da fonte raw para evitar duplicação de usuários entre projetos
     SELECT
         invoice_month_date,
-        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS total_active_users,
+        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS total_active_users,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS total_service_accounts,
         COUNT(DISTINCT job_id) AS total_jobs
     FROM {{ ref('raw_gcp_bigquery_cost_allocated_v1') }}

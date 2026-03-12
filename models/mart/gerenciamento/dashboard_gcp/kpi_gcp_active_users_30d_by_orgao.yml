@@ -70,7 +70,7 @@ models:
         data_type: int64
 
       - name: current_active_users
-        description: "Quantidade de usuários humanos únicos ativos do órgão nos últimos 30 dias. COUNT DISTINCT de principal_email onde principal_type = 'human' e executou >= 1 job (independente de custo, inclui cache). Faixa: >= 0."
+        description: "Quantidade de usuários humanos únicos ativos do órgão nos últimos 30 dias. COUNT DISTINCT de principal_email onde principal_type = 'user' e executou >= 1 job (independente de custo, inclui cache). Faixa: >= 0."
         data_type: int64
         tests:
           - not_null
@@ -178,13 +178,13 @@ models:
         data_type: float64
 
       - name: trend
-        description: "Tendência de usuários ativos do órgão: 'UP' (crescimento > 5%), 'DOWN' (queda > 5%), 'STABLE' (variação entre -5% e +5%), 'NEW' (órgão sem atividade no período anterior)."
+        description: "Tendência de usuários ativos do órgão: 'UP' (crescimento > 5%), 'DOWN' (queda > 5%), 'STABLE' (variação entre -5% e +5%), 'NEW' (órgão sem atividade no período anterior), 'INACTIVE' (órgão tinha atividade antes mas não tem mais no período atual)."
         data_type: string
         quote: true
         tests:
           - dbt_expectations.expect_column_values_to_be_in_set:
               name: kpi_gcp_active_users_30d_by_orgao__trend__expect_column_values_to_be_in_set
-              value_set: ['UP', 'DOWN', 'STABLE', 'NEW']
+              value_set: ['UP', 'DOWN', 'STABLE', 'NEW', 'INACTIVE']
               severity: warn
 
       - name: growth_rank_absolute
