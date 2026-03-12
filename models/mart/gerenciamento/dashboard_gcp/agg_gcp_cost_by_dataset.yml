@@ -1,0 +1,161 @@
+version: 2
+
+models:
+  - name: agg_gcp_cost_by_dataset
+    description: |
+      View de agregação de custos BigQuery por dataset (sem granularidade de tabela).
+
+      **Propósito**: Análise mais macro de custos por dataset, permitindo identificar datasets caros
+      e entender distribuição de custo entre tabelas dentro de cada dataset.
+
+      **Granularidade**:
+      - invoice_month_date + job_project_id + table_project_id + dataset_id
+
+      **Fonte de Dados**:
+      - fact_gcp_cost_by_table (agregação)
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês de faturamento (primeiro dia do mês)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: job_project_id
+        description: "ID do projeto GCP onde os jobs foram executados."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: table_project_id
+        description: "ID do projeto GCP onde o dataset está armazenado."
+        data_type: string
+        quote: true
+
+      - name: dataset_id
+        description: "ID do dataset BigQuery."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto que executou os jobs."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: projeto_base
+        description: "Nome base/raiz do projeto."
+        data_type: string
+        quote: true
+
+      - name: total_cost
+        description: "Custo total do dataset no mês (BRL). Soma de todas as tabelas do dataset. Faixa: >= 0."
+        data_type: float64
+        tests:
+          - not_null
+
+      - name: avg_cost_per_tib
+        description: "Custo médio por TiB das tabelas do dataset (BRL/TiB). Faixa: >= 0."
+        data_type: float64
+
+      - name: total_jobs
+        description: "Total de jobs que acessaram este dataset. Faixa: >= 1."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: total_unique_users
+        description: "Total de usuários/service accounts únicos que acessaram o dataset. Faixa: >= 1."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: total_unique_human_users
+        description: "Total de usuários humanos únicos. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: total_unique_service_accounts
+        description: "Total de service accounts únicas. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: total_bytes_read
+        description: "Total de bytes lidos do dataset. Faixa: >= 0."
+        data_type: float64
+
+      - name: total_tib_read
+        description: "Total de TiB lidos do dataset. Faixa: >= 0."
+        data_type: float64
+
+      - name: tables_count
+        description: "Quantidade de tabelas distintas acessadas no dataset. Faixa: >= 1."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: agg_gcp_cost_by_dataset__tables_count__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: first_access_time
+        description: "Timestamp UTC do primeiro acesso ao dataset no mês."
+        data_type: timestamp
+
+      - name: last_access_time
+        description: "Timestamp UTC do último acesso ao dataset no mês."
+        data_type: timestamp
+
+      - name: max_active_days_in_month
+        description: "Máximo de dias ativos entre todas as tabelas do dataset. Indica frequência de acesso. Faixa: 1-31."
+        data_type: int64
+
+      - name: min_table_cost
+        description: "Custo da tabela mais barata do dataset (BRL). Faixa: >= 0."
+        data_type: float64
+
+      - name: max_table_cost
+        description: "Custo da tabela mais cara do dataset (BRL). Faixa: >= 0."
+        data_type: float64
+
+      - name: avg_table_cost
+        description: "Custo médio por tabela no dataset (BRL). Faixa: >= 0."
+        data_type: float64
+
+      - name: stddev_table_cost
+        description: "Desvio padrão do custo entre tabelas. Alto = custo concentrado em poucas tabelas. Faixa: >= 0."
+        data_type: float64
+
+      - name: hot_tables_count
+        description: "Quantidade de hot tables (top 10 mais caras do projeto) neste dataset. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: frequently_accessed_tables_count
+        description: "Quantidade de tabelas frequentemente acessadas (>= 20 dias/mês) neste dataset. Faixa: >= 0."
+        data_type: int64
+        tests:
+          - not_null
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: agg_gcp_cost_by_dataset__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - job_project_id
+            - table_project_id
+            - dataset_id

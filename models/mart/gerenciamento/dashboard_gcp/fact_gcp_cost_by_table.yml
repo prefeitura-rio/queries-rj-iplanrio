@@ -1,0 +1,247 @@
+version: 2
+
+models:
+  - name: fact_gcp_cost_by_table
+    description: |
+      Tabela de fatos de custo BigQuery por dataset e tabela.
+
+      **Propósito**: Identificar quais tabelas/datasets geram mais custo de processamento no BigQuery.
+      Permite análise de "hot tables" (muito acessadas), custo por dataset, e otimização de queries.
+
+      **Granularidade**:
+      - invoice_month_date + job_project_id + table_project_id + dataset_id + table_id
+
+      **Método de Alocação de Custo**:
+      - Cada job tem um custo alocado (de raw_gcp_bigquery_cost_allocated_v1)
+      - O job pode referenciar múltiplas tabelas (via INFORMATION_SCHEMA.JOBS.referenced_tables)
+      - O custo é dividido IGUALMENTE entre todas as tabelas referenciadas no job
+      - Exemplo: Job de R$ 10 que lê 5 tabelas → cada tabela recebe R$ 2
+
+      **Atualização**:
+      - Incremental diário com lookback de 3 meses
+      - Estratégia: insert_overwrite (reprocessa partições modificadas)
+
+      **Particionamento**:
+      - Campo: invoice_month_date (mês)
+      - Clustering: project_id, dataset_id
+
+      **Fonte de Dados**:
+      - raw_gcp_bigquery_cost_allocated_v1 (custos por job)
+      - INFORMATION_SCHEMA.JOBS_BY_PROJECT (tabelas referenciadas)
+
+      **Limitações**:
+      - Jobs que não referenciam tabelas explicitamente (ex: SELECT 1) não aparecem
+      - Tabelas temporárias podem não estar bem rastreadas
+      - Custo é dividido igualmente mesmo que uma tabela seja "principal" e outras "secundárias"
+
+    columns:
+      - name: invoice_month_date
+        description: "Data de referência do mês de faturamento (primeiro dia do mês)."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: job_project_id
+        description: "ID do projeto GCP onde o job foi executado (origem do custo)."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: table_project_id
+        description: "ID do projeto GCP onde a tabela está armazenada (pode ser diferente do job_project_id em cross-project queries)."
+        data_type: string
+        quote: true
+
+      - name: dataset_id
+        description: "ID do dataset BigQuery onde a tabela está."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: table_id
+        description: "ID da tabela BigQuery acessada."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: orgao
+        description: "Órgão/secretaria responsável pelo projeto que executou o job. Derivado de raw_dim_gcp_project via job_project_id."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: ambiente
+        description: "Ambiente do projeto: prod, dev ou sandbox. Derivado de raw_dim_gcp_project via job_project_id."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_set:
+              name: fact_gcp_cost_by_table__ambiente__expect_column_values_to_be_in_set
+              value_set: ['prod', 'dev', 'sandbox']
+              severity: warn
+
+      - name: projeto_base
+        description: "Nome base/raiz do projeto que executou o job."
+        data_type: string
+        quote: true
+
+      - name: total_cost
+        description: "Custo total alocado a esta tabela no mês (BRL). Soma de allocated_cost_table de todos os jobs que leram esta tabela. Valores em BRL (Reais), faixa: > 0 (apenas jobs com custo). Fonte: calculado (custo do job / número de tabelas referenciadas)."
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__total_cost__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: cost_per_tib
+        description: "Custo médio por TiB lido desta tabela (BRL/TiB). Métrica de eficiência. Faixa: >= 0. Fonte: calculado (total_cost / total_tib_read)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__cost_per_tib__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: jobs_count
+        description: "Quantidade de jobs que leram esta tabela no mês. Faixa: >= 1. Fonte: COUNT DISTINCT job_id."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__jobs_count__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: unique_users_count
+        description: "Quantidade de usuários/service accounts únicos que acessaram esta tabela. Faixa: >= 1. Fonte: COUNT DISTINCT principal_email."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__unique_users_count__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: unique_human_users_count
+        description: "Quantidade de usuários humanos únicos que acessaram esta tabela. Faixa: >= 0. Fonte: COUNT DISTINCT principal_email WHERE principal_type = 'user'."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: unique_service_accounts_count
+        description: "Quantidade de service accounts únicas que acessaram esta tabela. Faixa: >= 0. Fonte: COUNT DISTINCT principal_email WHERE is_service_account."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: total_bytes_read
+        description: "Total de bytes lidos desta tabela no mês (alocados proporcionalmente). Faixa: >= 0. Fonte: calculado (bytes do job / número de tabelas referenciadas)."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__total_bytes_read__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: total_tib_read
+        description: "Total de TiB (Tebibytes) lidos desta tabela no mês. Calculado como total_bytes_read / 1024^4. Faixa: >= 0. Fonte: calculado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__total_tib_read__expect_column_values_to_be_between
+              min_value: 0
+              severity: warn
+
+      - name: first_access_time
+        description: "Timestamp UTC do primeiro acesso à tabela no mês. Fonte: MIN(creation_time) dos jobs."
+        data_type: timestamp
+
+      - name: last_access_time
+        description: "Timestamp UTC do último acesso à tabela no mês. Fonte: MAX(creation_time) dos jobs."
+        data_type: timestamp
+
+      - name: active_days_in_month
+        description: "Número de dias distintos em que a tabela foi acessada no mês. Faixa: >= 1. Fonte: COUNT DISTINCT DATE(creation_time)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__active_days_in_month__expect_column_values_to_be_between
+              min_value: 1
+              max_value: 31
+              severity: warn
+
+      - name: cost_rank_global
+        description: "Ranking global de custo no mês (1 = tabela mais cara de todos os projetos). Faixa: >= 1. Fonte: calculado (ROW_NUMBER)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__cost_rank_global__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: cost_rank_by_orgao
+        description: "Ranking de custo dentro do órgão no mês (1 = tabela mais cara do órgão). Faixa: >= 1. Fonte: calculado (ROW_NUMBER)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__cost_rank_by_orgao__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: cost_rank_by_project
+        description: "Ranking de custo dentro do projeto no mês (1 = tabela mais cara do projeto). Faixa: >= 1. Fonte: calculado (ROW_NUMBER)."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__cost_rank_by_project__expect_column_values_to_be_between
+              min_value: 1
+              severity: warn
+
+      - name: pct_of_orgao_cost
+        description: "Percentual do custo total BigQuery do órgão representado por esta tabela (0-100). Faixa: 0-100. Fonte: calculado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__pct_of_orgao_cost__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: pct_of_project_cost
+        description: "Percentual do custo total BigQuery do projeto representado por esta tabela (0-100). Faixa: 0-100. Fonte: calculado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: fact_gcp_cost_by_table__pct_of_project_cost__expect_column_values_to_be_between
+              min_value: 0
+              max_value: 100
+              severity: warn
+
+      - name: is_top_100_expensive_table
+        description: "Flag indicando se está entre as 100 tabelas mais caras do mês globalmente. TRUE = top 100, FALSE = outras. Fonte: calculado (cost_rank_global <= 100)."
+        data_type: boolean
+
+      - name: is_top_10_in_project
+        description: "Flag indicando se está entre as 10 tabelas mais caras do projeto. TRUE = top 10, FALSE = outras. Fonte: calculado (cost_rank_by_project <= 10)."
+        data_type: boolean
+
+      - name: is_frequently_accessed
+        description: "Flag indicando se é uma tabela frequentemente acessada (>= 20 dias ativos no mês). TRUE = frequente, FALSE = ocasional. Fonte: calculado (active_days_in_month >= 20)."
+        data_type: boolean
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: fact_gcp_cost_by_table__table__unique_combination
+          combination_of_columns:
+            - invoice_month_date
+            - job_project_id
+            - table_project_id
+            - dataset_id
+            - table_id
