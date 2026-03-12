@@ -13,9 +13,19 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__ficha_financeira__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__ficha_financeira__id_vinculo__not_null
+              config:
+                severity: error
       - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
         data_type: integer
@@ -28,12 +38,14 @@ models:
       - name: tipo_rubrica
         description: Tipo de rubrica. Ex, Auxiliar, consignatária, desconto ou vantagem.
         data_type: string
+        quote: true
       - name: desconto_vantagem
         description: Booleana que indica se a rubrica é de desconto ou não. 1 quando tem desconto e 2 quando não tem desconto.
         data_type: boolean
       - name: observacao
         description: Informações adicionais para descrever a rubrica.
         data_type: string
+        quote: true
       - name: valor
         description: Valor referente à rubrica.
         data_type: numeric

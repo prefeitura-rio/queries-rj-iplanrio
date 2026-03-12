@@ -10,12 +10,15 @@ models:
       - name: tipo_rubrica
         description: Tipo da rubrica.
         data_type: string
+        quote: true
       - name: nome
         description: Nome da rubrica.
         data_type: string
+        quote: true
       - name: nome_abreviado
         description: Nome abreviado da rubrica.
         data_type: string
+        quote: true
       - name: fator
         description: Fator de multiplicação do valor a ser pago ao funcionário (1) ou descontado (-1) no lançamento da rubrica.
         data_type: integer

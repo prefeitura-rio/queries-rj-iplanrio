@@ -10,27 +10,35 @@ models:
       - name: nome_tipo_tempo
         description: Campo que armazena o nome do tipo de tempo.
         data_type: string
+        quote: true
       - name: aposentadoria
         description: Informa se aquele tempo é computado para fins de aposentadoria.
         data_type: string
+        quote: true
       - name: ferias
         description: Informa se aquele tempo é computado para fins de contagem de período aquisitivo de férias.
         data_type: string
+        quote: true
       - name: dias_de_ferias
         description: Informa se aquele tempo é computado para fins de contagem para o saldo de dias de férias.
         data_type: string
+        quote: true
       - name: trienio
         description: Informa se aquele tempo é computado para fins de contagem para a contagem de períodos de triênio.
         data_type: string
+        quote: true
       - name: licenca_especial
         description: Informa se aquele tempo é computado para fins de contagem para a contagem de períodos de licença especial.
         data_type: string
+        quote: true
       - name: dias_de_licenca_especial
         description: Informa se aquele tempo é computado para fins de contagem para o saldo de licença especial.
         data_type: string
+        quote: true
       - name: tempo_de_chefia
         description: Informa se aquele tempo é computado para fins de contagem para a contagem de incorporação de cargo em fidúcia.
         data_type: string
+        quote: true
       - name: progressao
         description: Informa se aquele tempo é computado para fins de contagem para a contagem de progressão no cargo.
         data_type: string

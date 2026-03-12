@@ -10,12 +10,15 @@ models:
       - name: nome
         description: Nome da forma de provimento. Ex. NOMEACAO OU PROVIMENTO (relativo a sigla 01).
         data_type: string
+        quote: true
       - name: inativo
         description: Indica que a forma de provimento é válida para funcionários inativos (S/N).
         data_type: string
+        quote: true
       - name: primeiro_provimento
         description: Indica se a forma de provimento pode ser um primeiro provimento (S/N) ( quando se entra na prefeitura ).
         data_type: string
+        quote: true
       - name: ativo
         description: Indica que a forma de provimento é válida para funcionários ativos (S/N).
         data_type: string

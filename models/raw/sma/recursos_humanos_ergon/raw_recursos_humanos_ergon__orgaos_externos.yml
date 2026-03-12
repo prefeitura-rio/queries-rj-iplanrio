@@ -7,9 +7,11 @@ models:
       - name: nome
         description: Nome do órgão. Ex. GE ACRE (Governo do estado do Acre),PR NITEROI (Prefeitura de Niteroi)
         data_type: string
+        quote: true
       - name: nome_completo
         description: Nome por extenso do órgão. Ex. Prefeitura da cidade de Niteroi.
         data_type: string
+        quote: true
       - name: tipo
         description: Tipo do órgão. Ex. OUT.GOV. (outro governo estadual, que não o do Rio de Janeiro), OUT.PREF. (outra prefeitura que não a do Rio de Janeiro)
         data_type: string

@@ -38,7 +38,7 @@ models:
         description: Data do início do exercício do funcionário relativo a este vínculo.
         data_type: date
       - name: regime_juridico
-        description: 'Regime jurídico do vínculo. Ex.: Estatutário, celetista, aposentado etc'
+        description: 'Regime jurídico do vínculo. Exemplo  Estatutário, celetista, aposentado etc'
         data_type: string
         quote: true
       - name: categoria

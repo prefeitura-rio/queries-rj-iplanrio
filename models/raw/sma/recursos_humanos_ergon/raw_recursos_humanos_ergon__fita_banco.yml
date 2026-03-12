@@ -25,9 +25,19 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__fita_banco__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa que vai receber o pagamento.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__fita_banco__id_vinculo__not_null
+              config:
+                severity: error
       - name: numero_folha
         description: Número da Folha
         data_type: integer
@@ -61,18 +71,22 @@ models:
       - name: conta_banco
         description: Número da conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
         data_type: string
+        quote: true
       - name: id_cargo
         description: Cargo do funcionário associado ao pagamento.
         data_type: integer
       - name: referencia
         description: Código do nível/posicionamento após o provimento. Ex PROFESSOR II, MM1, MM2, MM3, MM4, MM5, MM6, MM7, 999990 - ESPECIAL o valor do vencimento é zero.
         data_type: string
+        quote: true
       - name: funcao
         description: Função do funcionário que vai receber o pagamento, caso seja um funcionário. Caso a pessoa não tenha funcão, fica em branco
         data_type: string
+        quote: true
       - name: nome_funcionario
         description: Nome do funcionário que vai receber o pagamento.
         data_type: string
+        quote: true
       - name: id_empresa
         description: Código da empresa onde trabalha a pessoa que vai receber o pagamento.
         data_type: integer
@@ -82,27 +96,34 @@ models:
       - name: regime_juridico
         description: Nome do regime jurídico da pessoa que vai receber o pagamento. Ex. Celetista, estatutário.
         data_type: string
+        quote: true
       - name: tipo_vinculo
         description: 'Detalhamento do regime jurídico. Exemplo: CLT - Contrato indeterminado, CLT - Contrato determinado.'
         data_type: string
+        quote: true
       - name: categoria
         description: 'Categoria do vínculo. Exemplo: Educação, saúde etc. Categoria é um conjunto de cargos.'
         data_type: string
+        quote: true
       - name: subcategoria
         description: Subcategoria do cargo. É uma subdivisão da categoria. Ex. Apoio, Geral, lotados na saúde.
         data_type: string
+        quote: true
       - name: cpf_funcionario
         description: CPF da pessoa que vai receber o pagamento.
         data_type: string
+        quote: true
       - name: id_lotacao
         description: Órgão de Lotação. Código Numérico que indica a Secretaria em que o servidor está lotado. 1800 - SMS, 1600 - SME, etc. Ver tabela hsetor_.
         data_type: integer
       - name: agencia_banco
         description: Número da agência onde está a conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
         data_type: string
+        quote: true
       - name: jornada
         description: Jornada semanal do cargo/emprego associado ao vínculo.
         data_type: string
+        quote: true
       - name: data_particao
         description: Data da partição dos dados.
         data_type: date
