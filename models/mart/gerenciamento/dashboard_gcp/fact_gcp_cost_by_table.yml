@@ -130,7 +130,7 @@ models:
               severity: warn
 
       - name: unique_human_users_count
-        description: "Quantidade de usuários humanos únicos que acessaram esta tabela. Faixa: >= 0. Fonte: COUNT DISTINCT principal_email WHERE principal_type = 'user'."
+        description: "Quantidade de usuários humanos únicos que acessaram esta tabela. Faixa: >= 0. Fonte: COUNT DISTINCT principal_email WHERE principal_type = 'human'."
         data_type: int64
         tests:
           - not_null

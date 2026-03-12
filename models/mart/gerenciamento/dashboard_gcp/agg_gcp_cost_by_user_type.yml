@@ -32,7 +32,7 @@ models:
         quote: true
 
       - name: principal_category
-        description: "Categoria do principal: 'User' (principal_type = user), 'Service Account' (is_service_account = true), ou 'Other'. CHAVE para separar análises."
+        description: "Categoria do principal: 'User' (principal_type = 'human'), 'Service Account' (is_service_account = true), ou 'Other'. CHAVE para separar análises."
         data_type: string
         quote: true
         tests:

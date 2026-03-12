@@ -14,6 +14,9 @@
 }}
 
 {% set lookback_months = 3 %}
+{% set lookback_days = lookback_months * 30 + 30 %}  -- 3 meses + buffer de 30 dias = 120 dias
+-- Buffer adicional garante que todos os jobs dos últimos 3 meses sejam capturados,
+-- considerando variação de dias por mês e possíveis delays no INFORMATION_SCHEMA
 
 -- Modelo de custo BigQuery por dataset e tabela
 -- Granularidade: invoice_month_date + project_id + dataset_id + table_id
@@ -71,7 +74,7 @@ WITH cost_allocated AS (
             ref_table.table_id AS ref_table_id
         FROM `{{ projeto }}`.`{{ region }}`.INFORMATION_SCHEMA.JOBS_BY_PROJECT AS jobs,
             UNNEST(referenced_tables) AS ref_table
-        WHERE DATE(jobs.creation_time) >= DATE_SUB(CURRENT_DATE(), INTERVAL 120 DAY)
+        WHERE DATE(jobs.creation_time) >= DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_days }} DAY)
             AND jobs.state = 'DONE'
             AND jobs.total_bytes_billed > 0
     {% endset %}
@@ -169,7 +172,7 @@ aggregated_by_table AS (
         SUM(allocated_cost_table) AS total_cost,
         COUNT(DISTINCT job_id) AS jobs_count,
         COUNT(DISTINCT principal_email) AS unique_users_count,
-        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS unique_human_users_count,
+        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS unique_human_users_count,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS unique_service_accounts_count,
         SUM(allocated_bytes_table) AS total_bytes_read,
 

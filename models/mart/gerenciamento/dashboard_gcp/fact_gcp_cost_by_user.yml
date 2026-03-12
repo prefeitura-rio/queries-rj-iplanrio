@@ -20,6 +20,15 @@ models:
       - Campo: invoice_month_date (mês)
       - Clustering: orgao, principal_email
 
+      **Filtros Aplicados**:
+      - Apenas jobs com custo > 0 (exclui queries em cache sem custo)
+      - Apenas principals com email definido
+
+      **Nota sobre Usuários Ativos**:
+      - Este modelo conta apenas usuários que GERARAM CUSTO no mês
+      - Para contagem total de usuários ativos (incluindo cache), use fact_gcp_cost_monthly.active_users_count
+      - A divergência é intencional: este foco é análise de custos, não de uso geral
+
       **Fonte de Dados**:
       - raw_gcp_bigquery_cost_allocated_v1 (custos alocados por job e principal)
       - raw_dim_gcp_project (classificação de órgãos)
@@ -73,7 +82,7 @@ models:
           - not_null
 
       - name: principal_type
-        description: "Tipo de principal conforme GCP: 'user' (humano), 'serviceAccount' (automação), etc. Use para segregar análises. Fonte: raw_gcp_bigquery_cost_allocated_v1.principal_type."
+        description: "Tipo de principal conforme GCP: 'human' (humano), 'service_account' (automação), 'compute_engine', 'google_apis', 'unknown'. Use para segregar análises. Fonte: raw_gcp_bigquery_cost_allocated_v1.principal_type."
         data_type: string
         quote: true
 
@@ -185,7 +194,7 @@ models:
               severity: warn
 
       - name: is_user
-        description: "Flag booleana indicando se é usuário humano (principal_type = 'user'). TRUE = humano, FALSE = service account ou outro. Use para filtrar apenas humanos no Looker. Fonte: calculado."
+        description: "Flag booleana indicando se é usuário humano (principal_type = 'human'). TRUE = humano, FALSE = service account ou outro. Use para filtrar apenas humanos no Looker. Fonte: calculado."
         data_type: boolean
 
       - name: is_top_10_spender

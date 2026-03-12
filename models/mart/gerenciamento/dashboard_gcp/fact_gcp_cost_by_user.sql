@@ -143,7 +143,7 @@ SELECT
     active_days_in_month,
 
     -- Flags úteis
-    principal_type = 'user' AS is_user,
+    principal_type = 'human' AS is_user,
     cost_rank_monthly <= 10 AS is_top_10_spender,
     cost_percentile >= 90 AS is_top_10_percent
 

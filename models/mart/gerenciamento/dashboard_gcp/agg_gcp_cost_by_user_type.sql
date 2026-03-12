@@ -16,7 +16,7 @@ WITH user_costs_aggregated AS (
         orgao,
         ambiente,
         CASE
-            WHEN principal_type = 'user' THEN 'User'
+            WHEN principal_type = 'human' THEN 'User'
             WHEN is_service_account THEN 'Service Account'
             ELSE 'Other'
         END AS principal_category,

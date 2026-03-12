@@ -22,7 +22,7 @@ WITH date_ranges AS (
 current_period_users AS (
     -- Usuários ativos nos últimos 30 dias (período atual)
     SELECT
-        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts,
         COUNT(DISTINCT principal_email) AS total_principals,
         COUNT(DISTINCT job_id) AS total_jobs,
@@ -38,7 +38,7 @@ current_period_users AS (
 previous_period_users AS (
     -- Usuários ativos no período anterior (30 dias: 31-61 dias atrás)
     SELECT
-        COUNT(DISTINCT CASE WHEN principal_type = 'user' THEN principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN principal_type = 'human' THEN principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS active_service_accounts,
         COUNT(DISTINCT principal_email) AS total_principals,
         COUNT(DISTINCT job_id) AS total_jobs,
@@ -109,6 +109,8 @@ comparison AS (
 
         -- Tendência (UP/DOWN/STABLE com threshold de ±5%)
         CASE
+            WHEN p.active_users = 0 AND c.active_users > 0 THEN 'UP'  -- Crescimento a partir de zero
+            WHEN c.active_users = 0 AND p.active_users > 0 THEN 'DOWN'  -- Queda para zero
             WHEN SAFE_DIVIDE(CAST(c.active_users - p.active_users AS FLOAT64), CAST(p.active_users AS FLOAT64)) > 0.05 THEN 'UP'
             WHEN SAFE_DIVIDE(CAST(c.active_users - p.active_users AS FLOAT64), CAST(p.active_users AS FLOAT64)) < -0.05 THEN 'DOWN'
             ELSE 'STABLE'

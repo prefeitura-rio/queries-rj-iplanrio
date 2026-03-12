@@ -53,7 +53,7 @@ models:
         data_type: date
 
       - name: current_active_users
-        description: "Quantidade de usuários humanos únicos ativos nos últimos 30 dias. COUNT DISTINCT de principal_email onde principal_type = 'user' e executou >= 1 job (independente de custo, inclui cache). Faixa: >= 0."
+        description: "Quantidade de usuários humanos únicos ativos nos últimos 30 dias. COUNT DISTINCT de principal_email onde principal_type = 'human' e executou >= 1 job (independente de custo, inclui cache). Faixa: >= 0."
         data_type: int64
         tests:
           - not_null

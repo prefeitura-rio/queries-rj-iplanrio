@@ -8,7 +8,7 @@
 
 -- View de agregação de custos por dataset (sem granularidade de tabela)
 -- Propósito: Análise mais macro de custos por dataset
--- Granularidade: invoice_month_date + job_project_id + dataset_id
+-- Granularidade: invoice_month_date + job_project_id + table_project_id + dataset_id
 
 SELECT
     invoice_month_date,
@@ -23,9 +23,9 @@ SELECT
     SUM(total_cost) AS total_cost,
     AVG(cost_per_tib) AS avg_cost_per_tib,
     SUM(jobs_count) AS total_jobs,
-    SUM(unique_users_count) AS total_unique_users,
-    SUM(unique_human_users_count) AS total_unique_human_users,
-    SUM(unique_service_accounts_count) AS total_unique_service_accounts,
+    SUM(unique_users_count) AS sum_table_user_counts,  -- NOTA: soma de contagens por tabela, não contagem única no dataset
+    SUM(unique_human_users_count) AS sum_table_human_user_counts,  -- NOTA: usuários que acessaram múltiplas tabelas são contados múltiplas vezes
+    SUM(unique_service_accounts_count) AS sum_table_service_account_counts,  -- NOTA: service accounts que acessaram múltiplas tabelas são contados múltiplas vezes
     SUM(total_bytes_read) AS total_bytes_read,
     SUM(total_tib_read) AS total_tib_read,
 

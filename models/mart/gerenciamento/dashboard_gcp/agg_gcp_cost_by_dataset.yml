@@ -75,20 +75,20 @@ models:
         tests:
           - not_null
 
-      - name: total_unique_users
-        description: "Total de usuários/service accounts únicos que acessaram o dataset. Faixa: >= 1."
+      - name: sum_table_user_counts
+        description: "Soma das contagens de usuários únicos por tabela. NOTA: usuários que acessaram múltiplas tabelas no dataset são contados múltiplas vezes. Para análise de usuários únicos no dataset, use contagem distinta direta. Faixa: >= 1."
         data_type: int64
         tests:
           - not_null
 
-      - name: total_unique_human_users
-        description: "Total de usuários humanos únicos. Faixa: >= 0."
+      - name: sum_table_human_user_counts
+        description: "Soma das contagens de usuários humanos únicos por tabela. NOTA: usuários humanos que acessaram múltiplas tabelas no dataset são contados múltiplas vezes. Faixa: >= 0."
         data_type: int64
         tests:
           - not_null
 
-      - name: total_unique_service_accounts
-        description: "Total de service accounts únicas. Faixa: >= 0."
+      - name: sum_table_service_account_counts
+        description: "Soma das contagens de service accounts únicas por tabela. NOTA: service accounts que acessaram múltiplas tabelas no dataset são contados múltiplas vezes. Faixa: >= 0."
         data_type: int64
         tests:
           - not_null

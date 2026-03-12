@@ -25,7 +25,7 @@ current_period_users_by_orgao AS (
         COALESCE(p.orgao, 'NÃO DEFINIDO') AS orgao,
         COALESCE(p.ambiente, 'prod') AS ambiente,
 
-        COUNT(DISTINCT CASE WHEN j.principal_type = 'user' THEN j.principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN j.principal_type = 'human' THEN j.principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN j.is_service_account THEN j.principal_email END) AS active_service_accounts,
         COUNT(DISTINCT j.principal_email) AS total_principals,
         COUNT(DISTINCT j.job_id) AS total_jobs,
@@ -48,7 +48,7 @@ previous_period_users_by_orgao AS (
         COALESCE(p.orgao, 'NÃO DEFINIDO') AS orgao,
         COALESCE(p.ambiente, 'prod') AS ambiente,
 
-        COUNT(DISTINCT CASE WHEN j.principal_type = 'user' THEN j.principal_email END) AS active_users,
+        COUNT(DISTINCT CASE WHEN j.principal_type = 'human' THEN j.principal_email END) AS active_users,
         COUNT(DISTINCT CASE WHEN j.is_service_account THEN j.principal_email END) AS active_service_accounts,
         COUNT(DISTINCT j.principal_email) AS total_principals,
         COUNT(DISTINCT j.job_id) AS total_jobs,
@@ -66,9 +66,9 @@ previous_period_users_by_orgao AS (
 comparison AS (
     -- Combinar períodos e calcular diferenças por órgão
     SELECT
-        -- Identificação
-        c.orgao,
-        c.ambiente,
+        -- Identificação (usa COALESCE para capturar órgãos de ambos os períodos)
+        COALESCE(c.orgao, p.orgao) AS orgao,
+        COALESCE(c.ambiente, p.ambiente) AS ambiente,
 
         -- Período de referência
         (SELECT current_date FROM date_ranges) AS reference_date,
@@ -76,12 +76,12 @@ comparison AS (
         (SELECT current_date FROM date_ranges) AS period_end,
         30 AS period_days,
 
-        -- Métricas do período atual
-        c.active_users AS current_active_users,
-        c.active_service_accounts AS current_active_service_accounts,
-        c.total_principals AS current_total_principals,
-        c.total_jobs AS current_total_jobs,
-        c.total_cost AS current_total_cost,
+        -- Métricas do período atual (COALESCE para órgãos que só existem no anterior)
+        COALESCE(c.active_users, 0) AS current_active_users,
+        COALESCE(c.active_service_accounts, 0) AS current_active_service_accounts,
+        COALESCE(c.total_principals, 0) AS current_total_principals,
+        COALESCE(c.total_jobs, 0) AS current_total_jobs,
+        COALESCE(c.total_cost, 0) AS current_total_cost,
         c.first_activity AS current_first_activity,
         c.last_activity AS current_last_activity,
 
@@ -93,47 +93,48 @@ comparison AS (
         COALESCE(p.total_cost, 0) AS previous_total_cost,
 
         -- Variações absolutas
-        c.active_users - COALESCE(p.active_users, 0) AS users_change,
-        c.active_service_accounts - COALESCE(p.active_service_accounts, 0) AS service_accounts_change,
-        c.total_jobs - COALESCE(p.total_jobs, 0) AS jobs_change,
-        c.total_cost - COALESCE(p.total_cost, 0) AS cost_change,
+        COALESCE(c.active_users, 0) - COALESCE(p.active_users, 0) AS users_change,
+        COALESCE(c.active_service_accounts, 0) - COALESCE(p.active_service_accounts, 0) AS service_accounts_change,
+        COALESCE(c.total_jobs, 0) - COALESCE(p.total_jobs, 0) AS jobs_change,
+        COALESCE(c.total_cost, 0) - COALESCE(p.total_cost, 0) AS cost_change,
 
         -- Variações percentuais
         SAFE_DIVIDE(
-            CAST(c.active_users - COALESCE(p.active_users, 0) AS FLOAT64),
+            CAST(COALESCE(c.active_users, 0) - COALESCE(p.active_users, 0) AS FLOAT64),
             CAST(NULLIF(p.active_users, 0) AS FLOAT64)
         ) * 100 AS users_change_pct,
 
         SAFE_DIVIDE(
-            CAST(c.active_service_accounts - COALESCE(p.active_service_accounts, 0) AS FLOAT64),
+            CAST(COALESCE(c.active_service_accounts, 0) - COALESCE(p.active_service_accounts, 0) AS FLOAT64),
             CAST(NULLIF(p.active_service_accounts, 0) AS FLOAT64)
         ) * 100 AS service_accounts_change_pct,
 
         SAFE_DIVIDE(
-            CAST(c.total_jobs - COALESCE(p.total_jobs, 0) AS FLOAT64),
+            CAST(COALESCE(c.total_jobs, 0) - COALESCE(p.total_jobs, 0) AS FLOAT64),
             CAST(NULLIF(p.total_jobs, 0) AS FLOAT64)
         ) * 100 AS jobs_change_pct,
 
         SAFE_DIVIDE(
-            c.total_cost - COALESCE(p.total_cost, 0),
+            COALESCE(c.total_cost, 0) - COALESCE(p.total_cost, 0),
             NULLIF(p.total_cost, 0)
         ) * 100 AS cost_change_pct,
 
         -- Métricas derivadas
-        SAFE_DIVIDE(c.total_cost, NULLIF(c.active_users, 0)) AS cost_per_user,
-        SAFE_DIVIDE(CAST(c.total_jobs AS FLOAT64), CAST(NULLIF(c.active_users, 0) AS FLOAT64)) AS jobs_per_user,
+        SAFE_DIVIDE(COALESCE(c.total_cost, 0), NULLIF(c.active_users, 0)) AS cost_per_user,
+        SAFE_DIVIDE(CAST(COALESCE(c.total_jobs, 0) AS FLOAT64), CAST(NULLIF(c.active_users, 0) AS FLOAT64)) AS jobs_per_user,
         SAFE_DIVIDE(COALESCE(p.total_cost, 0), NULLIF(p.active_users, 0)) AS previous_cost_per_user,
 
-        -- Tendência (UP/DOWN/STABLE/NEW com threshold de ±5%)
+        -- Tendência (UP/DOWN/STABLE/NEW/INACTIVE com threshold de ±5%)
         CASE
-            WHEN p.active_users IS NULL OR p.active_users = 0 THEN 'NEW'
+            WHEN c.active_users IS NULL OR c.active_users = 0 THEN 'INACTIVE'  -- Tinha usuários antes, não tem mais
+            WHEN p.active_users IS NULL OR p.active_users = 0 THEN 'NEW'       -- Não tinha antes, tem agora
             WHEN SAFE_DIVIDE(CAST(c.active_users - p.active_users AS FLOAT64), CAST(p.active_users AS FLOAT64)) > 0.05 THEN 'UP'
             WHEN SAFE_DIVIDE(CAST(c.active_users - p.active_users AS FLOAT64), CAST(p.active_users AS FLOAT64)) < -0.05 THEN 'DOWN'
             ELSE 'STABLE'
         END AS trend
 
     FROM current_period_users_by_orgao c
-    LEFT JOIN previous_period_users_by_orgao p
+    FULL OUTER JOIN previous_period_users_by_orgao p
         ON c.orgao = p.orgao
         AND c.ambiente = p.ambiente
 ),
