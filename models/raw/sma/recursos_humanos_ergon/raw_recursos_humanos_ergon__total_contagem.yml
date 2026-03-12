@@ -14,7 +14,7 @@ models:
         description: Chave de identificação do cadastro da averbação realizada 
         data_type: integer
       - name: finalidade
-        description: Registro da finalidade da averbação que aceita múltiplas finalidades para um mesmo registro de averbação. Ex.: Adic Tempo Serv, Aposentadoria, Progressão
+        description: Registro da finalidade da averbação que aceita múltiplas finalidades para um mesmo registro de averbação. Exemplo Adic Tempo Serv, Aposentadoria, Progressão
         data_type: string
       - name: total_dias
         description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo total_dias é o resultado da contagem de tempo para determinada finalidade, expressa em dias. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
