@@ -45,7 +45,7 @@ models:
         data_type: string
         quote: true
       - name: data_atendimento
-        description: Data do atendimento realizado pela Perícia Médica. Somente utilizado em casos de afastamento médico. Mantido como string, pois a coluna de origem é varchar(2000) , permitindo preenchimento de forma inconsistente.
+        description: Data do atendimento realizado pela Perícia Médica. Somente utilizado em casos de afastamento médico.
         data_type: date
       - name: id_empresa
         description: Empresa do servidor após o provimento. Sempre é a mesma empresa do vínculo.
