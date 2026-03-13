@@ -30,7 +30,7 @@ SELECT
     safe_cast(info2 AS string) AS informacao_complementar_1,
     safe_cast(valor3 AS numeric) AS valor_complementar_2,
     safe_cast(info3 AS string) AS informacao_complementar_2,
-    safe_cast(valor4 AS numeric) AS valor_coplementar_3,
+    safe_cast(valor4 AS numeric) AS valor_complementar_3,
     safe_cast(info4 AS string) AS informacao_complementar_3,
     safe_cast(valor5 AS numeric) AS valor_complementar_4,
     safe_cast(info5 AS string) AS informacao_complementar_4,

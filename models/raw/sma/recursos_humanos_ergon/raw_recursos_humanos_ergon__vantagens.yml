@@ -70,7 +70,7 @@ models:
         description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
-      - name: valor_coplementar_3
+      - name: valor_complementar_3
         description: Valor adicional referente à vantagem, uma informação adicional que compõe a cantagem, pode ser um percentual, um valor financeiro, ou alguma informação categórica. Geralmente o campo possui lista de valores tabulados.
         data_type: numeric
       - name: informacao_complementar_3
