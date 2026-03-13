@@ -18,9 +18,9 @@ models:
         description: "Data e hora do registro da ocorrência"
         data_type: datetime
         tests:
-          - name: raw_vigia_urbano__vw_resposta_ocorrencia__data_hora_registro__not_null
-            severity: error
-            test: not_null
+          - not_null:
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__data_hora_registro__not_null
+              severity: error
       - name: logradouro
         description: "Logradouro onde a ocorrência foi registrada"
         data_type: string
