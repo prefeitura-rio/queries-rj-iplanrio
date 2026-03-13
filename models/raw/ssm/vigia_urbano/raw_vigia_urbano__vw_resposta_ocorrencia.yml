@@ -18,7 +18,9 @@ models:
         description: "Data e hora do registro da ocorrência"
         data_type: datetime
         tests:
-          - not_null
+          - name: raw_vigia_urbano__vw_resposta_ocorrencia__data_hora_registro__not_null
+            severity: error
+            test: not_null
       - name: logradouro
         description: "Logradouro onde a ocorrência foi registrada"
         data_type: string
@@ -69,7 +71,7 @@ models:
         data_type: string
         quote: true
       - name: id_tipo_pessoa
-        description: "Identificador tipo de pessoa (1 = adulto ........)"
+        description: "Identificador do tipo de pessoa associado à ocorrência no sistema Vigia Urbano, utilizado para classificar a faixa etária ou perfil etário do indivíduo em cena de uso. Tipicamente, os valores seguem um mapeamento de códigos como, por exemplo: 1 = adulto, 2 = adolescente, 3 = criança (ou outro mapa oficial definido pelo sistema Vigia Urbano). Esse campo é populado diretamente a partir da base transacional do Vigia Urbano e é utilizado para análises de perfil populacional e recortes etários nas ocorrências registradas."
         data_type: int64
       - name: tipo_pessoa_descricao
         description: "Descrição do tipo de perfil etario da pessoa."
@@ -132,6 +134,11 @@ models:
       - name: id_orgao_ocorrencia
         description: "Identificador do órgão da ocorrência"
         data_type: int64
+        tests:
+          - relationships:
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__id_orgao_ocorrencia__relationships
+              to: ref('raw_vigia_urbano__orgao')
+              field: id_orgao
       - name: ocorrencia_orgao_nome
         description: "Nome do órgão vinculado a ocorrência"
         data_type: string
@@ -171,8 +178,7 @@ models:
               name: raw_vigia_urbano__vw_resposta_ocorrencia__usuario_cpf__expect_column_values_to_match_regex
               config:
                 severity: warn
-              arguments:
-                regex: "^[0-9]{11}$"
+              regex: "^[0-9]{11}$"
       - name: usuario_email
         description: "Email do usuário que registrou a ocorrência"
         data_type: string
@@ -182,8 +188,7 @@ models:
               name: raw_vigia_urbano__vw_resposta_ocorrencia__usuario_email__expect_email_format
               config:
                 severity: warn
-              arguments:
-                regex: '^[^@]+@[^@]+\\.[^@]+$'
+              regex: "^[^@]+@[^@]+\\.[^@]+$"
       - name: usuario_matricula
         description: "Matrícula do usuário que registrou a ocorrência"
         data_type: string
