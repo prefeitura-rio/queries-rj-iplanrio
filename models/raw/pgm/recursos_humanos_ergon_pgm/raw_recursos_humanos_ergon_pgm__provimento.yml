@@ -43,18 +43,18 @@ models:
       - name: id_forma_provimento
         description: Código numérico definido pelo gestor do Sistema que identifica a forma de provimento. Ex. 10 (EM EXERCÍCIO - CC/FG, ocorre quando a pessoa entra exercício em cargo em comissão).
         data_type: int64
-      - name: observacoes
-        description: Observação - texto livre. Ex. NOMEADA C/ VAL. 30/03/20 P/ C.C COORDENADOR TECNICO, 074842 CVL/SUBSC/CGRH/CTNRH, PCCS - LEI 6.739/2020 etc
+      - name: regime_horas
+        description: Regime de horas do cargo/emprego associado ao vínculo. Ex. 20H, 40H, 24H, 12H, 30H, 36H, 60H, 10H, 16H, 18H, 14H, 8H etc. O regime de horas é modificado pelos provimentos quando há mudança de cargo/emprego.
         data_type: string
         quote: true
-      - name: regime_horas
-        description: Regime de horas após o provimento. Ex. Plantonista ou Rotina. Utilizado pela RIOSAUDE.
+      - name: observacoes
+        description: Observação - texto livre. Ex. NOMEADA C/ VAL. 30/03/20 P/ C.C COORDENADOR TECNICO, 074842 CVL/SUBSC/CGRH/CTNRH, PCCS - LEI 6.739/2020 etc
         data_type: string
         quote: true
       - name: id_empresa
         description: Empresa do servidor após o provimento. Sempre é a mesma empresa do vínculo.
         data_type: string
         quote: true
-      - name: updated_at
+      - name: data_atualizacao
         description: Data da última atualização do registro.
         data_type: timestamp

@@ -17,6 +17,7 @@ SELECT
     a.id_referencia,
     a.id_jornada,
     a.id_forma_provimento,
+    a.regime_horas,
     a.observacoes,
     a.id_empresa,
     a.updated_at as data_atualizacao
