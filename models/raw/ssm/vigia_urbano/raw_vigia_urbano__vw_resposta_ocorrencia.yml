@@ -156,7 +156,7 @@ models:
         tests:
           - relationships:
               name: raw_vigia_urbano__vw_resposta_ocorrencia__id_usuario__relationships
-              to: ref('raw_vigia_urbano__perfil_usuario')
+              to: ref('raw_vigia_urbano__usuario')
               field: id_usuario
       - name: usuario_nome
         description: "Nome do usuário que registrou a ocorrência"
