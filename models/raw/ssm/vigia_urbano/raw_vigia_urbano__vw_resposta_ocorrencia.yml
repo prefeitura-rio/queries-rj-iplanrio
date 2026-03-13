@@ -161,10 +161,12 @@ models:
         description: "Identificador do usuário que registrou a ocorrência"
         data_type: int64
         tests:
-          - relationships:
-              name: raw_vigia_urbano__vw_resposta_ocorrencia__id_usuario__relationships
-              to: ref('raw_vigia_urbano__usuario')
-              field: id_usuario
+      - relationships:
+          name: raw_vigia_urbano__vw_resposta_ocorrencia__id_usuario__relationships
+          to: ref('raw_vigia_urbano__usuario')
+          field: id_usuario
+          where: "id_usuario IS NOT NULL"
+
       - name: usuario_nome
         description: "Nome do usuário que registrou a ocorrência"
         data_type: string
@@ -188,7 +190,7 @@ models:
               name: raw_vigia_urbano__vw_resposta_ocorrencia__usuario_email__expect_email_format
               config:
                 severity: warn
-              regex: "^[^@]+@[^@]+\\.[^@]+$"
+              regex: "^[^@]+@[^@]+\\\\.[^@]+$"
       - name: usuario_matricula
         description: "Matrícula do usuário que registrou a ocorrência"
         data_type: string
