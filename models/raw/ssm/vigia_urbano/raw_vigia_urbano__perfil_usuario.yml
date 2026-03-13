@@ -8,16 +8,21 @@ models:
         description: "Identificador único do registro de perfil de usuário"
         data_type: int64
         tests:
-          - unique
-          - not_null
+          - unique:
+              name: raw_vigia_urbano__perfil_usuario__id_perfil_usuario__unique
+              severity: error
+          - not_null:
+              name: raw_vigia_urbano__perfil_usuario__id_perfil_usuario__not_null
+              severity: error
       - name: id_perfil_enum
-        description: "identificador do perfil enum"
+        description: "Identificador do perfil enum"
         data_type: int64
       - name: id_usuario
-        description: "identificador do usuário"
+        description: "Identificador do usuário"
         data_type: int64
         tests:
           - relationships:
+              name: raw_vigia_urbano__perfil_usuario__id_usuario__relationships
               to: ref('raw_vigia_urbano__usuario')
               field: id_usuario
       - name: id_usuario_registro
@@ -25,10 +30,11 @@ models:
         data_type: int64
         tests:
           - relationships:
+              name: raw_vigia_urbano__perfil_usuario__id_usuario_registro__relationships
               to: ref('raw_vigia_urbano__usuario')
               field: id_usuario
       - name: data_registro
-        description: "data do registro"
+        description: "Data do registro"
         data_type: datetime
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"

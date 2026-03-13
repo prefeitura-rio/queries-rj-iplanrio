@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name:  raw_vigia_urbano__vw_resposta_ocorrencia
+  - name: raw_vigia_urbano__vw_resposta_ocorrencia
     description: "Respostas de ocorrências do sistema Vigia Urbano contendo informações sobre ocorrências registradas e suas respostas."
     columns:
       - name: id_resposta_ocorrencia
@@ -67,112 +67,142 @@ models:
       - name: bairro_nome
         description: "Nome do bairro da ocorrência"
         data_type: string
+        quote: true
       - name: id_tipo_pessoa
         description: "Identificador tipo de pessoa (1 = adulto ........)"
         data_type: int64
       - name: tipo_pessoa_descricao
         description: "Descrição do tipo de perfil etario da pessoa."
         data_type: string
+        quote: true
       - name: id_ocupacao_pessoa
         description: "Identificador do modo de ocupação do espaço pela pessoa."
         data_type: int64
       - name: ocupacao_pessoa_descricao
         description: "Descrição do modo de ocupação do espaço pela pessoa"
         data_type: string
+        quote: true
       - name: id_tipo_frequencia
         description: "Identificador do tipo de frequência"
         data_type: int64
       - name: tipo_frequencia_descricao
         description: "Descrição do tipo de frequência do espaço por pessoas em cena de uso."
         data_type: string
+        quote: true
       - name: ocupacao_drogas
         description: "Identificador da ocupação relacionada a drogas"
         data_type: int64
       - name: ocupacao_drogas_descricao
         description: "Descrição da ocupação relacionada a drogas"
         data_type: string
+        quote: true
       - name: id_item_praca
         description: "Identificador do item de praça "
         data_type: int64
       - name: item_praca_descricao
         description: "Descrição do item de praça"
         data_type: string
+        quote: true
       - name: id_tipo_ocorrencia
         description: "Identificador do tipo da ocorrência"
         data_type: int64
       - name: tipo_ocorrencia_descricao
         description: "Descrição do tipo da ocorrência"
         data_type: string
+        quote: true
       - name: tipo_ocorrencia_ativo
         description: "Flag se a ocorrencia esta ativa (False=0 / True=1)"
         data_type: bool
       - name: orgao_responsavel
         description: "Órgão responsável pela ocorrência"
         data_type: string
+        quote: true
       - name: quem_opera
         description: "Informação sobre quem opera a ocorrência"
         data_type: string
+        quote: true
       - name: servico_1746
         description: "Indica se é serviço 1746"
         data_type: string
+        quote: true
       - name: ocorrencia_informacao
         description: "Informações adicionais sobre a ocorrência"
         data_type: string
+        quote: true
       - name: id_orgao_ocorrencia
         description: "Identificador do órgão da ocorrência"
         data_type: int64
       - name: ocorrencia_orgao_nome
         description: "Nome do órgão vinculado a ocorrência"
         data_type: string
+        quote: true
       - name: codigo_ocorrencia_orgao
         description: "Código do órgão vinculado a ocorrência"
         data_type: string
+        quote: true
       - name: id_categoria
         description: "Identificador da categoria da ocorrência"
         data_type: int64
       - name: categoria_nome
         description: "Nome da categoria da ocorrência"
         data_type: string
+        quote: true
       - name: categoria_ativo
         description: "Flag que Indica se a categoria está ativa (False=0 / True=1)"
         data_type: bool
       - name: id_usuario
         description: "Identificador do usuário que registrou a ocorrência"
         data_type: int64
+        tests:
+          - relationships:
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__id_usuario__relationships
+              to: ref('raw_vigia_urbano__perfil_usuario')
+              field: id_usuario
       - name: usuario_nome
         description: "Nome do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
       - name: usuario_cpf
         description: "CPF do usuário que registrou a ocorrência"
         data_type: string
         quote: true
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
-              regex: "^[0-9]{11}$"
-              severity: warn
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__usuario_cpf__expect_column_values_to_match_regex
+              config:
+                severity: warn
+              arguments:
+                regex: "^[0-9]{11}$"
       - name: usuario_email
         description: "Email do usuário que registrou a ocorrência"
         data_type: string
         quote: true
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
-              regex: '^[^@]+@[^@]+\\.[^@]+$'
-              severity: warn
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__usuario_email__expect_email_format
+              config:
+                severity: warn
+              arguments:
+                regex: '^[^@]+@[^@]+\\.[^@]+$'
       - name: usuario_matricula
         description: "Matrícula do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
       - name: usuario_ativo
         description: "Flag que Indica se o usuário está ativo (False=0 / True=1)"
         data_type: bool
       - name: usuario_perfis
         description: "Perfis do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
       - name: usuario_orgao_nome
         description: "Nome do órgão do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
       - name: codigo_orgao_usuario
         description: "Código do órgão do usuário que registrou a ocorrência"
         data_type: string
+        quote: true
       - name: datalake_loaded_at
         description: "Data e hora de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
         data_type: datetime

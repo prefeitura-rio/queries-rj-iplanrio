@@ -10,10 +10,10 @@ models:
         tests:
           - unique:
               name: raw_vigia_urbano__usuario__id_usuario__unique
-              severity: warn
+              severity: error
           - not_null:
               name: raw_vigia_urbano__usuario__id_usuario__not_null
-              severity: warn
+              severity: error
       - name: nome_usuario
         description: "nome do usuário"
         data_type: string
@@ -28,8 +28,10 @@ models:
               severity: warn
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_vigia_urbano__usuario__cpf_usuario__expect_column_values_to_match_regex
-              regex: '^[0-9]{11}$'
-              severity: warn
+              config:
+                severity: warn
+              arguments:
+                regex: '^[0-9]{11}$'
       - name: email_usuario
         description: "email do usuário"
         data_type: string
@@ -40,8 +42,10 @@ models:
               severity: warn
           - dbt_expectations.expect_column_values_to_match_regex:
               name: raw_vigia_urbano__usuario__email_usuario__expect_email_format
-              regex: '^[^@]+@[^@]+\\.[^@]+$'
-              severity: warn
+              config:
+                severity: warn
+              arguments:
+                regex: '^[^@]+@[^@]+\\.[^@]+$'
       - name: matricula_usuario
         description: "matrícula do usuário"
         data_type: string

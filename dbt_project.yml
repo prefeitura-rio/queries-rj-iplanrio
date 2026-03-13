@@ -198,7 +198,7 @@ models:
         +project: rj-ssm
         vigia_urbano:
           +materialized: table
-          +schema: brutos_formulario_ocorencia
+          +schema: brutos_formulario_ocorrencia
           +tags: ["hourly", "ssm"]      
       iplanrio:
         +project: rj-iplanrio

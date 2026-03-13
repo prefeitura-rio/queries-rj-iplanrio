@@ -8,8 +8,12 @@ models:
         description: "Identificador único do registro de órgão"
         data_type: int64
         tests:
-          - unique
-          - not_null
+          - unique:
+              name: raw_vigia_urbano__orgao__id_orgao__unique
+              severity: error
+          - not_null:
+              name: raw_vigia_urbano__orgao__id_orgao__not_null
+              severity: error
       - name: nome_orgao
         description: "Nome do órgão"
         data_type: string
