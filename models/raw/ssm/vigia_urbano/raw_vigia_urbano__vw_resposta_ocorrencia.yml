@@ -158,15 +158,14 @@ models:
         description: "Flag que Indica se a categoria está ativa (False=0 / True=1)"
         data_type: bool
       - name: id_usuario
-        description: "Identificador do usuário que registrou a ocorrência"
+        description: "Identificador do usuário que registrou a ocorrência no sistema Vigia Urbano"
         data_type: int64
-        tests: None
-      - relationships:
-          name: raw_vigia_urbano__vw_resposta_ocorrencia__id_usuario__relationships
-          to: ref('raw_vigia_urbano__usuario')
-          field: id_usuario
-          where: "id_usuario IS NOT NULL"
-
+        tests:
+          - relationships:
+              name: raw_vigia_urbano__vw_resposta_ocorrencia__id_usuario__relationships
+              to: ref('raw_vigia_urbano__usuario')
+              field: id_usuario
+              where: "id_usuario IS NOT NULL"
       - name: usuario_nome
         description: "Nome do usuário que registrou a ocorrência"
         data_type: string
