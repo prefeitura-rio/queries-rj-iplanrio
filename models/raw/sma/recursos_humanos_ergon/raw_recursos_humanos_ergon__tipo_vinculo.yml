@@ -11,3 +11,4 @@ models:
       - name: nome
         description: Nome do tipo de vínculo. Ex. A DISPOSICAO DA PREFEITURA-CLT.
         data_type: string
+        quote: true

@@ -36,11 +36,11 @@ models:
         description: Identificador da secretaria onde o funcionário está lotado no período da folha.
         data_type: integer
       - name: tipo_funcionario
-        description: Tipo do funcionário (ex: servidor, terceirizado).
+        description: Tipo do funcionário (servidor, terceirizado, etc).
         data_type: string
         quote: true
       - name: detalhamento
-        description: Descrição da coluna não disponível e sem documentação associada. Varia entre 0, 1, 2 e 3.
+        description: "Descrição da coluna não disponível e sem documentação associada. Varia entre 0, 1, 2 e 3."
         data_type: integer
       - name: id_rubrica
         description: Código da rubrica, que é um código numérico que identifica a natureza do pagamento ou desconto.

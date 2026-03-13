@@ -53,4 +53,5 @@ models:
       - name: crm
         description: CRM do médico. Preenchido somente em casos de afastamento médico.
         data_type: string
+        quote: true
 

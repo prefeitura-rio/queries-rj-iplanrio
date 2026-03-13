@@ -11,3 +11,4 @@ models:
       - name: nome
         description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
         data_type: string
+        quote: true

@@ -30,7 +30,7 @@ SELECT
     t.informacao_complementar_1,
     t.valor_complementar_2,
     t.informacao_complementar_2,
-    t.valor_coplementar_3,
+    t.valor_complementar_3,
     t.informacao_complementar_3,
     t.valor_complementar_4,
     t.informacao_complementar_4,

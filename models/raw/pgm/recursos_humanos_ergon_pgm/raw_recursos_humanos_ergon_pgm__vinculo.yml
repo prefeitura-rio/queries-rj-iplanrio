@@ -112,9 +112,6 @@ models:
         description: Telefone de onde o funcionário foi requisitado. Em branco caso não tenha havido requisição.
         data_type: string
         quote: true
-      - name: id_matricula_vinculo
-        description: Matricula do funcionário relativa a este vínculo.
-        data_type: integer
       - name: orgao_origem_requisicao
         description: Órgão de origem do funcionário que foi requisitado. Caso a pessoa associada ao vínculo tenha sido requisitada pela prefeitura. Caso não tenha sido requisitado fica em branco.
         data_type: string

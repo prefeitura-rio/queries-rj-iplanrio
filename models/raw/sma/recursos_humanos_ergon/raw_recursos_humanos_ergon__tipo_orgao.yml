@@ -11,3 +11,4 @@ models:
       - name: descricao
         description: Descrição do tipo do órgão. Ex. ADMINISTRACAO DIRETA ESTADUAL.
         data_type: string
+        quote: true

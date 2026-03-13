@@ -60,3 +60,4 @@ models:
       - name: regime_previdenciario
         description: Coluna que informa o regime previdenciário ao qual pertencia o tempo averbado.
         data_type: string
+        quote: true
