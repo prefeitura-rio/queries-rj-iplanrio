@@ -7,9 +7,19 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__averbacoes__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__averbacoes__id_vinculo__not_null
+              config:
+                severity: error
       - name: id_averbacao
         description: Chave gerada pelo banco para registro de averbação.
         data_type: integer
@@ -25,7 +35,8 @@ models:
         quote: true
       - name: id_tipo_tempo
         description: Coluna que armazena o código numérico referente ao tipo de tempo.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: data_validade
         description: Data de validade da averbação.
         data_type: date

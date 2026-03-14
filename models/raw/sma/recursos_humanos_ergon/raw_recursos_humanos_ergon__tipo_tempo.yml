@@ -12,29 +12,33 @@ models:
         data_type: string
         quote: true
       - name: aposentadoria
-        description: Booleano que informa se aquele tempo é computado para fins de aposentadoria.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de aposentadoria.
+        data_type: string
+        quote: true
       - name: ferias
-        description: Booleano que informa se aquele tempo é computado para fins de contagem de período aquisitivo de férias.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem de período aquisitivo de férias.
+        data_type: string
+        quote: true
       - name: dias_de_ferias
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para o saldo de dias de férias.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem para o saldo de dias de férias.
+        data_type: string
+        quote: true
       - name: trienio
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de períodos de triênio.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem para a contagem de períodos de triênio.
+        data_type: string
+        quote: true
       - name: licenca_especial
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de períodos de licença especial.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem para a contagem de períodos de licença especial.
+        data_type: string
+        quote: true
       - name: dias_de_licenca_especial
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para o saldo de licença especial.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem para o saldo de licença especial.
+        data_type: string
+        quote: true
       - name: tempo_de_chefia
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de incorporação de cargo em fidúcia.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem para a contagem de incorporação de cargo em fidúcia.
+        data_type: string
+        quote: true
       - name: progressao
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de progressão no cargo.
-        data_type: boolean
-      - name: avaliacao
-        description: Booleano que informa se aquele tempo é computado para fins de contagem para a contagem de avalição em estágio probatório.
-        data_type: boolean
+        description: Informa se aquele tempo é computado para fins de contagem para a contagem de progressão no cargo.
+        data_type: string
