@@ -1,0 +1,228 @@
+version: 2
+
+sources:
+  - name: brutos_formulario_ocorrencia_staging
+    schema: brutos_formulario_ocorrencia_staging
+    database: rj-iplanrio
+    tables:
+      - name: vw_RespostaOcorrencia
+        description: "View contendo respostas de ocorrências do sistema Vigia Urbano"
+        config:
+          freshness:
+            error_after: {count: 10, period: hour}
+          loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+        columns:
+          - name: Id
+            description: "Identificador único da resposta de ocorrência"
+          - name: dataHoraRegistro
+            description: "Data e hora do registro da ocorrência no sistema de origem"
+          - name: logradouro
+            description: "Logradouro informado para o registro da ocorrência"
+          - name: numeroPorta
+            description: "Número da porta do endereço informado para a ocorrência"
+          - name: referencia
+            description: "Referência adicional do local da ocorrência"
+          - name: coordenadaX
+            description: "Coordenada X (longitude) do local da ocorrência"
+          - name: coordenadaY
+            description: "Coordenada Y (latitude) do local da ocorrência"
+          - name: coordenadaXDispositivo
+            description: "Coordenada X (longitude) capturada pelo dispositivo"
+          - name: coordenadaYDispositivo
+            description: "Coordenada Y (latitude) capturada pelo dispositivo"
+          - name: observacao
+            description: "Observações registradas sobre a ocorrência"
+          - name: excluido
+            description: "Indicador de exclusão do registro de ocorrência"
+          - name: enderecoInformado
+            description: "Indicador se o endereço foi informado manualmente pelo usuário"
+          - name: caminhoImagem
+            description: "Caminho do arquivo de imagem associado à ocorrência"
+          - name: bairroID
+            description: "Identificador do bairro associado à ocorrência"
+          - name: bairroNome
+            description: "Nome do bairro associado à ocorrência"
+          - name: tipoPessoa
+            description: "Identificador do tipo de pessoa relacionada à ocorrência"
+          - name: tipoPessoaDescricao
+            description: "Descrição do tipo de pessoa relacionada à ocorrência"
+          - name: ocupacaoPessoa
+            description: "Identificador do tipo de ocupação da pessoa no espaço"
+          - name: ocupacaoPessoaDescricao
+            description: "Descrição do tipo de ocupação da pessoa no espaço"
+          - name: tipoFrequencia
+            description: "Identificador do tipo de frequência de uso do espaço"
+          - name: tipoFrequenciaDescricao
+            description: "Descrição do tipo de frequência de uso do espaço"
+          - name: ocupacaoDrogas
+            description: "Identificador da ocupação relacionada a drogas"
+          - name: ocupacaoDrogasDescricao
+            description: "Descrição da ocupação relacionada a drogas"
+          - name: itemPraca
+            description: "Identificador do item de praça relacionado à ocorrência"
+          - name: itemPracaDescricao
+            description: "Descrição do item de praça relacionado à ocorrência"
+          - name: ocorrenciaID
+            description: "Identificador da ocorrência no sistema de origem"
+          - name: ocorrenciaDescricao
+            description: "Descrição da ocorrência no sistema de origem"
+          - name: ocorrenciaAtivo
+            description: "Indicador se o tipo de ocorrência está ativo"
+          - name: orgaoResponsavel
+            description: "Órgão responsável pelo atendimento da ocorrência"
+          - name: quemOpera
+            description: "Informação sobre quem opera o atendimento da ocorrência"
+          - name: servico1746
+            description: "Indicador ou código do serviço 1746 associado à ocorrência"
+          - name: ocorrenciaInformacao
+            description: "Informações adicionais sobre a ocorrência"
+          - name: ocorrenciaOrgaoID
+            description: "Identificador do órgão da ocorrência"
+          - name: ocorrenciaOrgaoNome
+            description: "Nome do órgão associado à ocorrência"
+          - name: ocorrenciaOrgaoCodigo
+            description: "Código do órgão associado à ocorrência"
+          - name: categoriaID
+            description: "Identificador da categoria da ocorrência"
+          - name: categoriaNome
+            description: "Nome da categoria da ocorrência"
+          - name: categoriaAtivo
+            description: "Indicador se a categoria da ocorrência está ativa"
+          - name: usuarioID
+            description: "Identificador do usuário que registrou a ocorrência"
+          - name: usuarioNome
+            description: "Nome do usuário que registrou a ocorrência"
+          - name: usuarioCpf
+            description: "CPF do usuário que registrou a ocorrência"
+          - name: usuarioEmail
+            description: "Email do usuário que registrou a ocorrência"
+          - name: usuarioMatricula
+            description: "Matrícula do usuário que registrou a ocorrência"
+          - name: usuarioAtivo
+            description: "Indicador se o usuário está ativo"
+          - name: usuarioPerfis
+            description: "Perfis do usuário que registrou a ocorrência"
+          - name: usuarioOrgaoNome
+            description: "Nome do órgão do usuário que registrou a ocorrência"
+          - name: usuarioOrgaoCodigo
+            description: "Código do órgão do usuário que registrou a ocorrência"
+
+      - name: vw_Auditoria
+        description: "View contendo registros de auditoria do sistema Vigia Urbano"
+        config:
+          freshness:
+            error_after: {count: 10, period: hour}
+          loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+        columns:
+          - name: IdAuditoria
+            description: "Identificador único do registro de auditoria na fonte"
+          - name: DataHora
+            description: "Data e hora em que a auditoria foi registrada na fonte"
+          - name: DadosJson
+            description: "Conteúdo adicional da auditoria em formato JSON"
+          - name: TelaEnum
+            description: "Código identificador da tela onde o evento ocorreu"
+          - name: TelaDescricao
+            description: "Descrição da tela onde o evento ocorreu"
+          - name: IdEvento
+            description: "Identificador do evento registrado na auditoria"
+          - name: EventoDescricao
+            description: "Descrição do evento registrado na auditoria"
+          - name: IdUsuario
+            description: "Identificador do usuário que realizou o evento"
+          - name: UsuarioNome
+            description: "Nome do usuário que realizou o evento"
+          - name: UsuarioCpf
+            description: "CPF do usuário que realizou o evento"
+          - name: UsuarioMatricula
+            description: "Matrícula do usuário que realizou o evento"
+          - name: UsuarioEmail
+            description: "Email do usuário que realizou o evento"
+          - name: UsuarioAtivo
+            description: "Indicador se o usuário estava ativo no momento do evento"
+          - name: UsuarioPerfis
+            description: "Perfis associados ao usuário no momento do evento"
+          - name: UsuarioOrgaoNome
+            description: "Nome do órgão do usuário que realizou o evento"
+          - name: UsuarioOrgaoCodigo
+            description: "Código do órgão do usuário que realizou o evento"
+
+      - name: OrgaoUsuario
+        description: "Tabela de relacionamento entre órgãos e usuários do sistema Vigia Urbano"
+        config:
+          freshness:
+            error_after: {count: 10, period: hour}
+          loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+        columns:
+          - name: IdOrgaoUsuario
+            description: "Identificador único do relacionamento órgão-usuário na fonte"
+          - name: IdOrgao
+            description: "Identificador do órgão relacionado ao usuário na fonte"
+          - name: IdUsuario
+            description: "Identificador do usuário relacionado ao órgão na fonte"
+
+      - name: Orgao
+        description: "Tabela de órgãos do sistema Vigia Urbano"
+        config:
+          freshness:
+            error_after: {count: 10, period: hour}
+          loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+        columns:
+          - name: IdOrgao
+            description: "Identificador único do órgão na fonte"
+          - name: NomeOrgao
+            description: "Nome do órgão na fonte"
+          - name: CodigoOrgao
+            description: "Código do órgão na fonte"
+          - name: IdSubprefeitura
+            description: "Identificador da subprefeitura associada ao órgão"
+          - name: SubprefeituraJson
+            description: "Estrutura em JSON com dados da subprefeitura associada"
+
+      - name: PerfilUsuario
+        description: "Tabela de perfis dos usuários do sistema Vigia Urbano"
+        config:
+          freshness:
+            error_after: {count: 10, period: hour}
+          loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+        columns:
+          - name: IdPerfilUsuario
+            description: "Identificador único do registro de perfil de usuário na fonte"
+          - name: IdPerfilEnum
+            description: "Identificador do perfil (enum) atribuído ao usuário"
+          - name: IdUsuario
+            description: "Identificador do usuário ao qual o perfil está associado"
+          - name: IdUsuarioRegistro
+            description: "Identificador do usuário que registrou a associação de perfil"
+          - name: DataRegistro
+            description: "Data e hora do registro do perfil do usuário na fonte"
+
+      - name: Usuario
+        description: "Tabela de usuários do sistema Vigia Urbano"
+        config:
+          freshness:
+            error_after: {count: 10, period: hour}
+          loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
+        columns:
+          - name: IdUsuario
+            description: "Identificador único do usuário na fonte"
+          - name: NomeUsuario
+            description: "Nome do usuário na fonte"
+          - name: CpfUsuario
+            description: "CPF do usuário na fonte"
+          - name: EmailUsuario
+            description: "Email do usuário na fonte"
+          - name: MatriculaUsuario
+            description: "Matrícula do usuário na fonte"
+          - name: FlagAlterarSenha
+            description: "Indicador de obrigatoriedade de alteração de senha pelo usuário"
+          - name: FlagUsuarioAtivo
+            description: "Indicador se o usuário está ativo no sistema de origem"
+          - name: FlagTermoResponsabilidade
+            description: "Indicador se o usuário aceitou o termo de responsabilidade"
+
+
+    config:
+      freshness:
+        error_after: {count: 10, period: hour}
+      loaded_at_field: CAST(_prefect_extracted_at AS DATETIME)
