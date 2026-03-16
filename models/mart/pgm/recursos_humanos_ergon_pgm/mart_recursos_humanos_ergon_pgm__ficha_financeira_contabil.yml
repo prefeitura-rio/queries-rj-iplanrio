@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__ficha_financeira_contabil
+  - name: mart_recursos_humanos_ergon_pgm__ficha_financeira_contabil
     description: "**Descrição**: Valores de rubricas de fichas financeiras dos funcionários da Prefeitura da Cidade do Rio de Janeiro. Constam fichas desde o início do ERGON. Uma ficha financeira é um resumo do contracheque do servidor. Nesta tabela estão incluídas informações sobre a natureza da despesa e o plano trabalho.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: mes_ano_folha
@@ -12,7 +12,7 @@ models:
         data_type: integer
         data_tests:
           - not_null:
-              name: raw_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_funcionario__not_null
+              name: mart_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_funcionario__not_null
               config:
                 severity: error
       - name: id_vinculo
@@ -20,7 +20,7 @@ models:
         data_type: integer
         data_tests:
           - not_null:
-              name: raw_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_vinculo__not_null
+              name: mart_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_vinculo__not_null
               config:
                 severity: error
       - name: id_pensionista

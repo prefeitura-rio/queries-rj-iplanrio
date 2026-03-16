@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__funcionario
+  - name: mart_recursos_humanos_ergon_pgm__funcionario
     description: "**Descrição**: Pessoas físicas que precisam ter suas informações guardadas pela prefeitura para algum controle, como controle de pagamento, de frequência ou de lotação. Em geral são pessoas que entram ou entraram em alguma folha de pagamento da prefeitura do Rio de Janeiro, sendo funcionário ou não, prestando serviço ou não (ex. pensionista previdenciário).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_funcionario
@@ -9,11 +9,11 @@ models:
         data_type: integer
         data_tests:  
           - unique:  
-              name: raw_recursos_humanos_ergon__funcionario__id_funcionario__unique  
+              name: mart_recursos_humanos_ergon__funcionario__id_funcionario__unique  
               config:  
                 severity: error  
           - not_null:  
-              name: raw_recursos_humanos_ergon__funcionario__id_funcionario__not_null  
+              name: mart_recursos_humanos_ergon__funcionario__id_funcionario__not_null  
               config:  
                 severity: error       
       - name: nome_funcionario

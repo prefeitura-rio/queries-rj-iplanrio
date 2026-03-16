@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__averbacoes
+  - name: mart_recursos_humanos_ergon_pgm__averbacoes
     description: "**Descrição**: Tabela que armazena o cadastro das averbações.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_funcionario
@@ -9,7 +9,7 @@ models:
         data_type: integer
         data_tests:
           - not_null:
-              name: raw_recursos_humanos_ergon_pgm__averbacoes__id_funcionario__not_null
+              name: mart_recursos_humanos_ergon_pgm__averbacoes__id_funcionario__not_null
               config:
                 severity: error
       - name: id_vinculo
@@ -17,7 +17,7 @@ models:
         data_type: integer
         data_tests:
           - not_null:
-              name: raw_recursos_humanos_ergon_pgm__averbacoes__id_vinculo__not_null
+              name: mart_recursos_humanos_ergon_pgm__averbacoes__id_vinculo__not_null
               config:
                 severity: error
       - name: id_averbacao

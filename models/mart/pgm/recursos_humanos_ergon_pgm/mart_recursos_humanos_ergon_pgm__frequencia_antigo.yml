@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__frequencia_antigo
+  - name: mart_recursos_humanos_ergon_pgm__frequencia_antigo
     description: "**Descrição**: Frequência de servidores da Prefeitura da Cidade do Rio de Janeiro cadastrada em sistemas de recursos humanos antigos.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_matricula_vinculo

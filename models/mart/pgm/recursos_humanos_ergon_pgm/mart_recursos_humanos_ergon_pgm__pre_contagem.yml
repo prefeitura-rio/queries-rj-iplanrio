@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__pre_contagem
+  - name: mart_recursos_humanos_ergon_pgm__pre_contagem
     description: "**Descrição**: A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: finalidade
@@ -13,7 +13,7 @@ models:
         data_type: integer
         data_tests:
           - not_null:
-              name: raw_recursos_humanos_ergon_pgm__pre_contagem__id_funcionario__not_null
+              name: mart_recursos_humanos_ergon_pgm__pre_contagem__id_funcionario__not_null
               config:
                 severity: error
       - name: id_vinculo
@@ -21,7 +21,7 @@ models:
         data_type: integer
         data_tests:
           - not_null:
-              name: raw_recursos_humanos_ergon_pgm__pre_contagem__id_vinculo__not_null
+              name: mart_recursos_humanos_ergon_pgm__pre_contagem__id_vinculo__not_null
               config:
                 severity: error
       - name: periodos

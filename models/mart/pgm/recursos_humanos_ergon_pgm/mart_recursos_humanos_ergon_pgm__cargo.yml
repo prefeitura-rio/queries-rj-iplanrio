@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__cargo
+  - name: mart_recursos_humanos_ergon_pgm__cargo
     description: "Cargos existentes na administração direta ou indireta da PCRJ. sem filtrar apenas aqueles ligados à PGM."
     columns:
       - name: id_cargo

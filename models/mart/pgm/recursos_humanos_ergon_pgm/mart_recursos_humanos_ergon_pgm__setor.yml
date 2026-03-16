@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__setor
+  - name: mart_recursos_humanos_ergon_pgm__setor
     description: "**Descrição**: Setores existentes tanto na administração direta como indireta da prefeitura do Rio de Janeiro.\r\nOs setores são os mesmos do SICI.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"      
     columns:
       - name: id_setor

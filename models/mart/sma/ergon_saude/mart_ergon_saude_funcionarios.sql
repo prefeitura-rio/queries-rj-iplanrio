@@ -17,10 +17,10 @@ with
     funcionarios as (
         select
             f.id_vinculo as id_funcionario,
-            lpad(f.id_cpf, 11, '0') as cpf,  -- Adiciona zero à esquerda caso o CPF tenha menos de 11 dígitos
+            lpad(f.cpf, 11, '0') as cpf,  -- Adiciona zero à esquerda caso o CPF tenha menos de 11 dígitos
             f.nome
         from {{ ref("raw_recursos_humanos_ergon__funcionario") }} f
-        where f.id_cpf is not null  -- and lpad(f.id_cpf, 11, '0') in ('')
+        where f.cpf is not null  -- and lpad(f.id_cpf, 11, '0') in ('')
     ),
 
     provimento as (

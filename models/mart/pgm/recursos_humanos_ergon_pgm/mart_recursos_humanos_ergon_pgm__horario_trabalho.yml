@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__horario_trabalho
+  - name: mart_recursos_humanos_ergon_pgm__horario_trabalho
     description: "**Descrição**: Horários possíveis para funcionários da administração direta da prefeitura do Rio de Janeiro (ainda não tem dados disponibilizados) (esperado colocação também da administração indireta).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_horario

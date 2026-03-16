@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__tipo_tempo
+  - name: mart_recursos_humanos_ergon_pgm__tipo_tempo
     description: "**Descrição**: Esta tabela armazena os tipos de tempo utilizados para contagem de benefícios categorizados como finalidades. Nesta tabela se encontram os nomes dos tipos de tempo.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_tipo_tempo

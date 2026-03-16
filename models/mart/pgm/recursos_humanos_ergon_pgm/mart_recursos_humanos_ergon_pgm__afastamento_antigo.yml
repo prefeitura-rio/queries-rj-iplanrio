@@ -1,7 +1,7 @@
 ﻿version: 2
 
 models:
-  - name: raw_recursos_humanos_ergon_pgm__afastamento_antigo
+  - name: mart_recursos_humanos_ergon_pgm__afastamento_antigo
     description: "**Descrição**: Nesta tabela são armazenadas informações referentes a afastamentos dos servidores da Prefeitura da Cidade do Rio de Janeiro cadastrados em sistemas de recursos humanos antigos.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_matricula_vinculo
