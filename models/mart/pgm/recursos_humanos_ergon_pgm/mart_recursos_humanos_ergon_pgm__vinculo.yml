@@ -24,7 +24,7 @@ models:
         description: Matricula do funcionário relativa a este vínculo.
         data_type: string
         quote: true
-      - name: tipo
+      - name: tipo_vinculo
         description: 'Detalhamento do regime jurídico. Exemplo: CLT - Contrato indeterminado, CLT - Contrato determinado.'
         data_type: string
         quote: true
@@ -87,7 +87,7 @@ models:
       - name: data_vacancia
         description: Data de vacância relativa ao vínculo. A vacância ocorre quando se encerra o vínculo.
         data_type: date
-      - name: id_vacancia
+      - name: id_forma_vacancia
         description: Código de vacância relativa ao vínculo.
         data_type: integer
       - name: motivo_vacancia
@@ -142,10 +142,6 @@ models:
       - name: contrato_suspenso
         description: Booleana que indica se o contrato do empregado público cedido encontra-se suspenso.
         data_type: boolean
-      - name: professor
-        description: Caso o vínculo seja de professor contém a disciplina que ele leciona. Caso não seja professor fica em branco.
-        data_type: string
-        quote: true
       - name: cota
         description: Indica se o vínculo foi preenchido por cota. Em branco, não entrou por cota. Caso esteja preenchido o vínculo foi preenchido por cota. Valores possíveis Lei 2.111/1994 para DEFICIENTE, LEi 5.401/2012 para Raça, lei 5.695/2014 para Raça.
         data_type: string
