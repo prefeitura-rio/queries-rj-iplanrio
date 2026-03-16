@@ -1,13 +1,22 @@
-version: 2
+﻿version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__funcionario
-    description: "**Descrição**: Pessoas físicas que precisam ter suas informações guardadas pela prefeitura para algum controle, como controle de pagamento, de frequência ou de lotação. Em geral são pessoas que entram ou entraram em alguma folha de pagamento da prefeitura do Rio de Janeiro, sendo funcionário ou não, prestando serviço ou não (ex. pensionista previdenciário).\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    description: "**Descrição**: Pessoas físicas que precisam ter suas informações guardadas pela prefeitura para algum controle, como controle de pagamento, de frequência ou de lotação. Em geral são pessoas que entram ou entraram em alguma folha de pagamento da prefeitura do Rio de Janeiro, sendo funcionário ou não, prestando serviço ou não (ex. pensionista previdenciário).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
-      - name: id_vinculo
-        description: Identificador no banco de dados do vínculo da pessoa. A pessoa tem um vínculo caso receba algum pagamento da prefeitura.
+      - name: id_funcionario
+        description: Identificador no banco de dados do registro da pessoa na PCRJ, independente de quantos cargos exerça ou quantas matrículas tenha.
         data_type: integer
-      - name: nome
+        data_tests:  
+          - unique:  
+              name: raw_recursos_humanos_ergon__funcionario__id_funcionario__unique  
+              config:  
+                severity: error  
+          - not_null:  
+              name: raw_recursos_humanos_ergon__funcionario__id_funcionario__not_null  
+              config:  
+                severity: error       
+      - name: nome_funcionario
         description: Nome da pessoa.
         data_type: string
         quote: true
@@ -23,14 +32,15 @@ models:
         description: Sexo da pessoa.
         data_type: string
         quote: true
-      - name: raca_cor
-        description: Raça ou cor da pessoa.
+      - name: codigo_raca_cor
+        description: Código da raça ou cor da pessoa.
         data_type: string
         quote: true
       - name: deficiente
-        description: Booleano que indica que a pessoa é deficiente.
-        data_type: boolean
-      - name: tipo_deficiencia
+        description: Indica que a pessoa é deficiente (S/N).
+        data_type: string
+        quote: true
+      - name: codigo_deficiencia
         description: Identificador no banco de dados do tipo de Deficiência do funcionário. Chave para a tabela 'ERG_TIPO_DEFIC'.
         data_type: integer
       - name: data_nascimento
@@ -40,7 +50,7 @@ models:
         description: País de nascimento da pessoa.
         data_type: string
         quote: true
-      - name: municipio_nascimento
+      - name: nome_municipio_nascimento
         description: Cidade de nascimento da pessoa.
         data_type: string
         quote: true
@@ -134,7 +144,8 @@ models:
         quote: true
       - name: ano_primeiro_emprego
         description: Ano do 1º emprego da pessoa.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: data_primeiro_emprego
         description: Data do primeiro emprego da pessoa na vida.
         data_type: date
@@ -143,23 +154,29 @@ models:
         data_type: string
         quote: true
       - name: data_primeira_habitacao
-        description: Data da primeira habilitação da pessoa.
-        data_type: date
+        description: Data da primeira habilitação da pessoa. Está com tipo string por conta de inconsistências de preenchimento
+        data_type: string
+        quote: true
       - name: deficiente_fisico
-        description: Booleano indicando se a pessoa tem deficiência física.
-        data_type: boolean
+        description: Indicando se a pessoa tem deficiência física.
+        data_type: string
+        quote: true
       - name: deficiente_visual
-        description: Booleano indicando se a pessoa tem deficiência visual.
-        data_type: boolean
+        description: Indicando se a pessoa tem deficiência visual.
+        data_type: string
+        quote: true
       - name: deficiente_auditivo
-        description: Booleano indicando se a pessoa tem deficiência auditiva
-        data_type: boolean
+        description: Indicando se a pessoa tem deficiência auditiva.
+        data_type: string
+        quote: true
       - name: deficiente_mental
-        description: Booleano indicando se a pessoa tem deficiência mental
-        data_type: boolean
+        description: Indicando se a pessoa tem deficiência mental.
+        data_type: string
+        quote: true
       - name: deficiente_intelectual
-        description: Booleano indicando se a pessoa tem deficiência intelectual.
-        data_type: boolean
+        description: Indicando se a pessoa tem deficiência intelectual.
+        data_type: string
+        quote: true
       - name: id_rg
         description: Número do RG da pessoa.
         data_type: string
@@ -179,11 +196,11 @@ models:
       - name: data_expedicao_rg
         description: Data de expedição do RG da pessoa. RG é o documento nacional de identificação civil no Brasil.
         data_type: date
-      - name: id_cpf
+      - name: cpf
         description: Número do cpf da pessoa.
         data_type: string
         quote: true
-      - name: id_ctps
+      - name: ctps
         description: Número da carteira profissional da pessoa.
         data_type: string
         quote: true
@@ -231,7 +248,7 @@ models:
         description: UF do Documento Militar da pessoa.
         data_type: string
         quote: true
-      - name: id_cnh
+      - name: cnh
         description: Número da CNH da pessoa.
         data_type: string
         quote: true
@@ -260,7 +277,7 @@ models:
       - name: data_inicio_pis
         description: Data início do NIS da pessoa.
         data_type: date
-      - name: id_nis
+      - name: nis
         description: 'Número do NIS da pessoa. NIS significa Número de Identificação Social. O documento está relacionado às pessoas que recebem ou não benefícios sociais do Governo Federal. '
         data_type: string
         quote: true
@@ -268,7 +285,7 @@ models:
         description: Número do banco do NIS da pessoa.
         data_type: string
         quote: true
-      - name: id_identidade_profissional
+      - name: identidade_profissional
         description: Número da identidade profissional da pessoa.
         data_type: string
         quote: true
@@ -285,7 +302,7 @@ models:
         data_type: string
         quote: true
       - name: data_emissao_ric
-        description: Data de amissão do RIC da pessoa.
+        description: Data de emissão do RIC da pessoa.
         data_type: date
       - name: expedicao_documento_orgao_classe
         description: Data de expedição do documento de órgão de classe.
@@ -294,7 +311,7 @@ models:
         description: Órgão emissor do documento do orgão de classe.
         data_type: string
         quote: true
-      - name: sigla_uf_documento_orgoao_classe
+      - name: sigla_uf_documento_orgao_classe
         description: "UF do documento do orgão de classe.\n"
         data_type: string
         quote: true
@@ -319,10 +336,6 @@ models:
         data_type: date
       - name: tipo_certidao
         description: "Tipo da certidão que altera o estado civil, caso o servidor tenha modificado seu estado civil apresentada, caso não tenha fica em branco.\n"
-        data_type: string
-        quote: true
-      - name: numero_certidao
-        description: Número da certidão de casamento, nascimento ou união estável da pessoa.
         data_type: string
         quote: true
       - name: livro_certidao
@@ -354,20 +367,25 @@ models:
         data_type: string
         quote: true
       - name: trabalho_voluntario
-        description: Booleano se a pessoa já participou de algum Trabalho Voluntário.
-        data_type: boolean
+        description: Indicando se a pessoa já participou de algum Trabalho Voluntário.
+        data_type: string
+        quote: true
       - name: interesse_trabalho_voluntario
-        description: Booleano que indica se a pessoa tem interesse em participar em trabalhos voluntários.
-        data_type: boolean
+        description: Indicando se a pessoa tem interesse em participar em trabalhos voluntários.
+        data_type: string
+        quote: true
       - name: interesse_projeto_olimpico
-        description: Booleano que indica se existe interesse da pessoa em participar do projeto olímpico.
-        data_type: boolean
-      - name: interesse_projeto_sociais
-        description: Booleano que indica se existe interesse da pessoa em participar de projetos sociais.
-        data_type: boolean
+        description: Indicando se existe interesse da pessoa em participar do projeto olímpico.
+        data_type: string
+        quote: true
+      - name: interesse_projetos_sociais
+        description: Indicando se existe interesse da pessoa em participar de projetos sociais.
+        data_type: string
+        quote: true
       - name: recebe_beneficio_previdenciario
-        description: "Booleano indicando se a pessoa já percebe algum benefício previdenciário (pensão, aposentadoria).\ncampo em branco"
-        data_type: boolean
+        description: "Indicando se a pessoa já percebe algum benefício previdenciário (pensão, aposentadoria)."
+        data_type: string
+        quote: true
       - name: nome_posse_alteracao_sexo
         description: Nome na posse da pessoa que mudou de sexo.
         data_type: string
@@ -385,7 +403,8 @@ models:
         quote: true
       - name: ano_chegada_brasil
         description: Ano da chegada ao Brasil caso a pessoa seja estrangeira.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: emissor_rne
         description: Órgão emissor do Registro Nacional de Estrangeiros.
         data_type: string
@@ -400,11 +419,13 @@ models:
         description: Data de naturalização brasileira em caso de estrangeiro naturalizado.
         data_type: date
       - name: estrangeiro_casado_brasileiro
-        description: Booleano que indica se a pessoa, caso estrangeiro, é ou não casado com brasileiro.
-        data_type: boolean
+        description: Indicando se a pessoa, caso estrangeiro, é ou não casado com brasileiro.
+        data_type: string
+        quote: true
       - name: estrangeiro_filho_brasileiro
-        description: Booleano que indica se a pessoa, caso estrangeira, tem filhos brasileiros.
-        data_type: boolean
+        description: Indicando se a pessoa, caso estrangeira, tem filhos brasileiros.
+        data_type: string
+        quote: true
       - name: login_facebook
         description: Login da pessoa no Facebook.
         data_type: string
@@ -429,3 +450,12 @@ models:
         description: Login da pessoa no MySpace.
         data_type: string
         quote: true
+      - name: ID_REG
+        description: Identificador único do registro no sistema ERGON.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp
+
+

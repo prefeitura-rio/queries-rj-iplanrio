@@ -1,15 +1,18 @@
-version: 2
+﻿version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__frequencia_antigo
-    description: "**Descrição**: Frequência de servidores da Prefeitura da Cidade do Rio de Janeiro cadastrada em sistemas de recursos humanos antigos.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    description: "**Descrição**: Frequência de servidores da Prefeitura da Cidade do Rio de Janeiro cadastrada em sistemas de recursos humanos antigos.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_matricula_vinculo
         description: Matrícula do serivdor.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_frequencia
         description: Código de frequência.
         data_type: integer
       - name: data_frequencia
         description: Data da ocorrência de frequência.
         data_type: date
+
+

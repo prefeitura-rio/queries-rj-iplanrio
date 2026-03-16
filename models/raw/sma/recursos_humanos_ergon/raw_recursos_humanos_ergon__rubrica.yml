@@ -1,20 +1,29 @@
-version: 2
+﻿version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__rubrica
-    description: "**Descrição**: Tabela que armazena informações sobre rubricas de pagamento.\n**Frequência de atualização**: Não informado\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    description: "**Descrição**: Tabela que armazena informações sobre rubricas de pagamento.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_rubrica
         description: Identificador único da rubrica.
         data_type: integer
-      - name: nome_rubrica
-        description: Nome da rubrica.
-        data_type: string
-        quote: true
       - name: tipo_rubrica
         description: Tipo da rubrica.
         data_type: string
         quote: true
-      - name: ativo
-        description: Indica se a rubrica está ativa.
-        data_type: boolean
+      - name: nome
+        description: Nome da rubrica.
+        data_type: string
+        quote: true
+      - name: nome_abreviado
+        description: Nome abreviado da rubrica.
+        data_type: string
+        quote: true
+      - name: fator
+        description: Fator de multiplicação do valor a ser pago ao funcionário (1) ou descontado (-1) no lançamento da rubrica.
+        data_type: integer
+      - name: observacoes
+        description: Observações sobre a rubrica.
+        data_type: string
+
+

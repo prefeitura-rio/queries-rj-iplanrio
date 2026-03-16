@@ -1,8 +1,8 @@
-version: 2
+﻿version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__afastamento_antigo_nomes
-    description: "**Descrição**: Nesta tabela são armazenadas informações sobre os códigos de afastamentos utilizados em sistemas antigos da Prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: nao.informado@gmail.com\n"
+    description: "**Descrição**: Nesta tabela são armazenadas informações sobre os códigos de afastamentos utilizados em sistemas da Prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: id_empresa
         description: Código da empresa.
@@ -14,3 +14,5 @@ models:
         description: Nome do afastamento.
         data_type: string
         quote: true
+
+

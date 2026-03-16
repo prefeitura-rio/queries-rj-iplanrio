@@ -1,19 +1,29 @@
-version: 2
+﻿version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__pre_contagem
-    description: "**Descrição**: A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    description: "**Descrição**: A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: finalidade
-        description: "Tipo da finalidade que motivou o cadastro da pré-contagem. \r\nEx.: \"Aposentadoria\", \"Progressão\"."
+        description: "Tipo da finalidade que motivou o cadastro da pré-contagem. \r\nExemplo  \"Aposentadoria\", \"Progressão\"."
         data_type: string
         quote: true
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__pre_contagem__id_funcionario__not_null
+              config:
+                severity: warn
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__pre_contagem__id_vinculo__not_null
+              config:
+                severity: warn
       - name: periodos
         description: Quantidade de períodos de contagem para determinada finalidade.
         data_type: integer
@@ -30,3 +40,5 @@ models:
         description: Campo de observações sobre a pré-contagem.
         data_type: string
         quote: true
+
+

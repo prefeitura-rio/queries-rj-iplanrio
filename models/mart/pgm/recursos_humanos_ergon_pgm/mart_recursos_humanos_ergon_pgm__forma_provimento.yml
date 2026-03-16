@@ -1,0 +1,23 @@
+﻿version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pgm__forma_provimento
+    description: "**Descrição**: Formas de provimentos possíveis tanto na administração direta como indireta da prefeitura do Rio de Janeiro. O provimento é a investidura em um cargo público.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: id_forma_provimento
+        description: Código numérico definido pelo gestor do Sistema que identifica a forma de provimento.
+        data_type: integer
+      - name: nome
+        description: Nome da forma de provimento. Ex. NOMEACAO OU PROVIMENTO (relativo a sigla 01).
+        data_type: string
+        quote: true
+      - name: inativo
+        description: Indica que a forma de provimento é válida para funcionários inativos (S/N).
+        data_type: boolean
+      - name: primeiro_provimento
+        description: Indica se a forma de provimento pode ser um primeiro provimento (S/N) ( quando se entra na prefeitura ).
+        data_type: boolean
+      - name: ativo
+        description: Indica que a forma de provimento é válida para funcionários ativos (S/N).
+        data_type: boolean
+

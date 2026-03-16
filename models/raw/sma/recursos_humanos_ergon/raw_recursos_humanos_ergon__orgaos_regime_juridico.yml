@@ -1,8 +1,8 @@
-version: 2
+﻿version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__orgaos_regime_juridico
-    description: "**Descrição**: Regimes jurídicos que podem ser aceitos para contratação de funcionários nos órgãos da administração direta ou indireta da prefeitura do Rio de Janeiro assim como outras empresas de interesse da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: SMFP/SUBGCC/CGRH\n**Publicado por**: Anderson Ferraz Carneiro\n**Publicado por (email)**: anderson.carneiro@rio.rj.gov.br\n"
+    description: "**Descrição**: Regimes jurídicos que podem ser aceitos para contratação de funcionários nos órgãos da administração direta ou indireta da prefeitura do Rio de Janeiro, assim como outras empresas de interesse da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
     columns:
       - name: sigla
         description: Sigla do regime jurídico. Ex. CLT, EFETIVO etc
@@ -12,3 +12,5 @@ models:
         description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
         data_type: string
         quote: true
+
+

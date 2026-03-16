@@ -6,13 +6,13 @@ models:
     columns:
       - name: municipio_ibge_codigo
         description: "Código IBGE do município"
-        datatype: decimal
+        data_type: decimal
       - name: uf_ibge_codigo
         description: "Código IBGE da unidade federativa (UF) do município"
-        datatype: decimal
+        data_type: decimal
       - name: municipio_nome
         description: "Nome do município"
-        datatype: string
+        data_type: string
       - name: datalake_loaded_at
         description: "timestamp de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: string 

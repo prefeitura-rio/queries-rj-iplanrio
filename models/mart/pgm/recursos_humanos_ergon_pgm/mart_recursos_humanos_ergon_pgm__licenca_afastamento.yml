@@ -1,0 +1,58 @@
+﻿version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pgm__licenca_afastamento
+    description: "**Descrição**: Tabela contendo o início e fim dos afastamentos, seu motivo e o tipo de afastamento.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: id_funcionario
+        description: Identificador único do funcionário na PCRJ, sistema Ergon
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__licenca_afastamento__id_funcionario__not_null
+              config:
+                severity: error
+      - name: id_vinculo
+        description: Identificador do vínculo do referido funcionário para o qual aponta a ocorrência de afastamento
+        data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pgm__licenca_afastamento__id_vinculo__not_null
+              config:
+                severity: error
+      - name: data_inicio
+        description: Data de início do afastamento
+        data_type: date
+      - name: data_final
+        description: Data de fim do afastamento
+        data_type: date
+      - name: tipo_afastamento
+        description: Tipo do afastamento que pode ser dividido em Normal e Especial
+        data_type: string
+        quote: true
+      - name: id_afastamento
+        description: Código do tipo de afastamento cadastrado no sistema Ergon
+        data_type: integer
+      - name: motivo
+        description: Campo de texto livre para descrição do motivo do afastamento
+        data_type: string
+        quote: true
+      - name: data_previsao_retorno
+        description: Data prevista para o retorno do funcionário ao trabalho
+        data_type: date
+      - name: parecer
+        description: Registro do parecer do afastamento a ser registrado em caso de afastamentos médicos
+        data_type: string
+        quote: true
+      - name: data_atendimento
+        description: Data do atendimento realizado pela Perícia Médica. Somente utilizado em casos de afastamento médico
+        data_type: date
+      - name: id_empresa
+        description: Empresa do servidor após o provimento. Sempre é a mesma empresa do vínculo.
+        data_type: integer
+      - name: crm
+        description: CRM do médico. Preenchido somente em casos de afastamento médico.
+        data_type: string
+        quote: true
+
+

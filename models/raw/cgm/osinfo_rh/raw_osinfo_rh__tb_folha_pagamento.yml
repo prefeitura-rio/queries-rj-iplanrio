@@ -6,43 +6,43 @@ models:
     columns:
       - name: folha_codigo
         description: "Código da folha de pagamento"
-        datatype: integer
+        data_type: integer
       - name: vinculo_codigo
         description: "Código do vínculo"
-        datatype: int64
+        data_type: int64
       - name: mes_referencia
         description: "Mês de referência"
-        datatype: int64
+        data_type: int64
       - name: ano_referencia
         description: "Ano de referência"
-        datatype: int64
+        data_type: int64
       - name: mes_competencia
         description: "Mês de competência"
-        datatype: int64
+        data_type: int64
       - name: ano_competencia
         description: "Ano de competência"
-        datatype: int64
+        data_type: int64
       - name: contrato_id
         description: "ID do contrato"
-        datatype: int64
+        data_type: int64
       - name: unidade_codigo
         description: "Código da unidade"
-        datatype: int64
+        data_type: int64
       - name: carga_horaria_efetiva
         description: "Carga horária efetiva"
-        datatype: numeric
+        data_type: numeric
       - name: percentual_rateio
         description: "Percentual de rateio"
-        datatype: numeric
+        data_type: numeric
       - name: licenca_inicio_data
         description: "Data de início da licença"
-        datatype: date
+        data_type: date
       - name: licenca_fim_data
         description: "Data de fim da licença"
-        datatype: date
+        data_type: date
       - name: observacao
         description: "Observação"
-        datatype: string
+        data_type: string
       - name: rem_bruta
         description: "Remuneração bruta do funcionário para o período de competência. Representa a soma de todas as verbas de natureza provisória (P) e remuneratória (R) antes dos descontos. Valores esperados: >= 0, tipicamente entre R$ 0,00 e R$ 100.000,00 para a maioria dos casos, podendo ser maior para cargos de alta hierarquia."
         data_type: numeric
