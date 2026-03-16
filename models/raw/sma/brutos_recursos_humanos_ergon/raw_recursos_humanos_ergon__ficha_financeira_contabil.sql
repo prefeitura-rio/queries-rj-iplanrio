@@ -14,7 +14,6 @@
 
 SELECT
     SAFE_CAST(DATE(mes_ano_folha) AS DATE) AS mes_ano_folha,
-    COALESCE(_prefect_extracted_at, _airbyte_extracted_at) AS loaded_at,
     SAFE_CAST(REGEXP_REPLACE(TRIM(numfunc), r'\\.0$', '') AS int64) AS id_funcionario,
     SAFE_CAST(REGEXP_REPLACE(TRIM(numvinc), r'\\.0$', '') AS int64) AS id_vinculo,
     SAFE_CAST(REGEXP_REPLACE(TRIM(numpens), r'\\.0$', '') AS INT64) AS id_pensionista,
@@ -31,6 +30,7 @@ SELECT
     SAFE_CAST(TRIM(complemento) AS STRING) AS observacao,
     SAFE_CAST(TRIM(tipo_classif) AS STRING) AS tipo_classificacao,
     SAFE_CAST(TRIM(classificacao) AS int64) AS classificacao,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'\\.0$', '') AS STRING) AS id_empresa
+    SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'\\.0$', '') AS STRING) AS id_empresa,
+    data_particao
 FROM {{ source('brutos_ergon_staging', 'IPL_PT_FICHAS') }} AS t
 
