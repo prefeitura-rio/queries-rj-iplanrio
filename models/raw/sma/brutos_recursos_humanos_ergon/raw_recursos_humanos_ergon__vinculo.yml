@@ -90,7 +90,7 @@ models:
         data_type: date
       - name: id_forma_vacancia
         description: Código de vacância relativa ao vínculo.
-        data_type: string
+        data_type: int64
         quote: true
       - name: motivo_vacancia
         description: Motivo da vacância. O que encerrou o vínculo, caso ele tenha sido encerrado. Caso não o atributo está em branco. Campo livre para preenchimento.
