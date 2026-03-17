@@ -1,0 +1,52 @@
+{{
+    config(
+        alias='vinculo',
+        materialized="table",
+        tags=["raw", "ergon", "vinculo"],
+        description="Tabela que contém os registros dos vínculos funcionais da administração direta ou indireta da prefeitura do Rio de Janeiro."
+    )
+}}
+
+SELECT
+    safe_cast(NUMFUNC AS int64) AS id_funcionario,
+    safe_cast(NUMERO AS int64) AS id_vinculo,
+    safe_cast(TIPOVINC AS STRING) AS tipo_vinculo,
+    safe_cast(MATRIC AS STRING) AS id_matricula_vinculo,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', DTNOM) AS DATE) AS data_nomeacao,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', DTPOSSE) AS DATE) AS data_posse,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', DTEXERC) AS DATE) AS data_exercicio,
+    safe_cast(REGIMEJUR AS STRING) AS regime_juridico,
+    safe_cast(CATEGORIA AS STRING) AS categoria,
+    safe_cast(DESCONTA_IR AS STRING) AS desconta_ir,
+    safe_cast(MOTIVO AS STRING) AS descricao_provimento,
+    safe_cast(REGEXP_REPLACE(CAST(CLASSIFCONC AS STRING), r'\.0$', '') AS STRING) AS classificacao_concurso,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTINI_CESSAO) AS DATE) AS data_inicio_cessao,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTFIM_CESSAO) AS DATE) AS data_fim_cessao,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTCONC) AS DATE) AS data_concurso,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTOPFGTS) AS DATE) AS data_fgts,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTINICONTR) AS DATE) AS data_inicio_contrato,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTFIMCONTR) AS DATE) AS data_fim_contrato,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTPRORROGCONTR) AS DATE) AS data_prorrogacao_contrato,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTAPOSENT) AS DATE) AS data_aposentadoria,
+    safe_cast(TIPOAPOS AS STRING) AS tipo_aposentadoria,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTVAC) AS DATE) AS data_vacancia,
+    safe_cast(FORMAVAC AS int64) AS id_forma_vacancia,
+    safe_cast(MOTIVOVAC AS STRING) AS motivo_vacancia,
+    safe_cast(NUMVINCANT AS int64) AS id_vinculo_anterior,
+    safe_cast(NUMVINCPOS AS int64) AS id_vinculo_posterior,
+    safe_cast(TIPOORG_REQ AS STRING) AS tipo_orgao_origem,
+    safe_cast(FUNCAO_REQ AS STRING) AS funcao_origem_requisicao,
+    safe_cast(FONE_REQ AS STRING) AS telefone_requisicao,
+    safe_cast(ORGAO_EXT_REQ AS STRING) AS orgao_origem_requisicao,
+    safe_cast(TIPO_ONUS_REQ AS STRING) AS tipo_onus_requisicao,
+    safe_cast(TIPO_RESSARC_REQ AS STRING) AS tipo_ressarcimento_requisicao,
+    safe_cast(TIPO_REQ AS STRING) AS tipo_requisicao,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DT_PGTO_ATE) AS DATE) AS data_pagamento_requisicao,
+    safe_cast(FLEX_CAMPO_01 AS STRING) AS origem_servidor_cedido,
+    safe_cast(FLEX_CAMPO_05 AS STRING) AS id_processo_origem,
+    safe_cast(FLEX_CAMPO_09 AS STRING) AS contrato_suspenso,
+    safe_cast(FLEX_CAMPO_18 AS STRING) AS cota,
+    safe_cast(EMP_CODIGO AS int64) AS id_empresa,
+    safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DT_HOMOLOG) AS DATE) AS data_homologacao_aposentadoria,
+    _airbyte_extracted_at AS updated_at
+FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_VINCULOS') }}

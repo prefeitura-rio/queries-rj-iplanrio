@@ -6,34 +6,34 @@ models:
     columns:
       - name: vinculo_codigo
         description: "Código do vínculo de trabalho"
-        datatype: integer
+        data_type: integer
       - name: funcionario_cpf
         description: "CPF do funcionário"
-        datatype: int64
+        data_type: int64
       - name: vinculo_ativo
         description: "Indicador de vínculo ativo"
-        datatype: string
+        data_type: string
       - name: organizacao_social_codigo
         description: "Código da organização social"
-        datatype: string
+        data_type: string
       - name: organizacao_social_cnpj
         description: "CNPJ da organização social"
-        datatype: string
+        data_type: string
       - name: cbo_codigo
         description: "Código CBO"
-        datatype: string
+        data_type: string
       - name: registro_profissional_numero
         description: "Número do registro profissional"
-        datatype: string
+        data_type: string
       - name: conselho_sigla
         description: "Sigla do conselho profissional"
-        datatype: string
+        data_type: string
       - name: conselho_uf_ibge
         description: "Código IBGE da UF do conselho"
-        datatype: string
+        data_type: string
       - name: id_categoria
         description: "ID da categoria"
-        datatype: integer
+        data_type: integer
         data_tests:
           - relationships:
               name: raw_osinfo_rh__tb_vinculo_trabalho__id_categoria__relationships
@@ -42,34 +42,34 @@ models:
               severity: error
       - name: vinculo_setor
         description: "Setor do vínculo"
-        datatype: string
+        data_type: string
       - name: tipo_vinculacao_codigo
         description: "Código do tipo de vinculação"
-        datatype: integer
+        data_type: integer
       - name: carga_horaria
         description: "Carga horária"
-        datatype: float64
+        data_type: float64
       - name: vinculo_inicio_data
         description: "Data de início do vínculo"
-        datatype: date
+        data_type: date
       - name: vinculo_encerramento_data
         description: "Data de encerramento do vínculo"
-        datatype: date
+        data_type: date
       - name: endereco_codigo
         description: "Código do endereço"
-        datatype: integer
+        data_type: integer
       - name: email
         description: "Email do funcionário"
-        datatype: string
+        data_type: string
       - name: cnes_codigo
         description: "Código CNES"
-        datatype: string
+        data_type: string
       - name: cargo_descricao
         description: "Descrição do cargo"
-        datatype: string
+        data_type: string
       - name: telefone_numero
         description: "Número do telefone"
-        datatype: string
+        data_type: string
       - name: datalake_loaded_at
         description: "Data de quando o dado foi extraído do banco de dados de origem do OSINFO."
         data_type: datetime

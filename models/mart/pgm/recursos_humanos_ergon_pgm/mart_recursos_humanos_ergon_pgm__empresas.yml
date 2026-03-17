@@ -1,0 +1,104 @@
+﻿version: 2
+
+models:
+  - name: mart_recursos_humanos_ergon_pgm__empresas
+    description: "**Descrição**: Empresas da administração direta ou indireta da prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: id_empresa
+        description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
+        data_type: integer
+      - name: tipo_empresa
+        description: Tipo da empresa, se é uma empresa pública, privada ou uma organização social.
+        data_type: string
+        quote: true
+      - name: nome_empresa
+        description: Nome da empresa.
+        data_type: string
+        quote: true
+      - name: sigla
+        description: Sigla da empresa.
+        data_type: string
+        quote: true
+      - name: razao_social
+        description: Razão social da empresa.
+        data_type: string
+        quote: true
+      - name: cnpj
+        description: CNPJ da empresa.
+        data_type: string
+        quote: true
+      - name: atividade_economica
+        description: Atividade econômica da empresa.
+        data_type: string
+        quote: true
+      - name: cep
+        description: CEP da empresa.
+        data_type: string
+        quote: true
+      - name: cnae
+        description: CNAE (código nacional de atividade econômica) da empresa.
+        data_type: string
+        quote: true
+      - name: telefone
+        description: Telefone da empresa.
+        data_type: string
+        quote: true
+      - name: email
+        description: Email da empresa.
+        data_type: string
+        quote: true
+      - name: website
+        description: Website da empresa.
+        data_type: string
+        quote: true
+      - name: natureza_juridica
+        description: Natureza jurídica da empresa.
+        data_type: string
+        quote: true
+      - name: cpf_resp
+        description: CPF do responsável pela empresa.
+        data_type: string
+        quote: true
+      - name: responsavel
+        description: Responsável pela empresa.
+        data_type: string
+        quote: true
+      - name: codigo_logradouro
+        description: Código do logradouro da empresa.
+        data_type: string
+        quote: true
+      - name: nome_logradouro
+        description: Nome do logradouro da empresa.
+        data_type: string
+        quote: true
+      - name: tipo_logradouro
+        description: Tipo do logradouro da empresa.
+        data_type: string
+        quote: true
+      - name: numero_endereco
+        description: Número do endereço da empresa.
+        data_type: string
+        quote: true
+      - name: complemento
+        description: Complemento do endereço da empresa.
+        data_type: string
+        quote: true
+      - name: bairro
+        description: Bairro onde a empresa está localizada.
+        data_type: string
+        quote: true
+      - name: municipio_codigo
+        description: Código IBGE do município onde a empresa está localizada.
+        data_type: string
+        quote: true
+      - name: municipio_sede
+        description: Nome do município onde a empresa tem sede.
+        data_type: string
+        quote: true
+      - name: uf_sigla
+        description: Sigla da unidade federativa onde a empresa está localizada.
+        data_type: string
+        quote: true
+      - name: data_atualizacao
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

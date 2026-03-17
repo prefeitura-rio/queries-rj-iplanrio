@@ -139,7 +139,7 @@ models:
         +project: rj-sma
         recursos_humanos_ergon:
           +materialized: table
-          +schema: recursos_humanos_ergon
+          +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
       smi:
         +tags: "smi"
