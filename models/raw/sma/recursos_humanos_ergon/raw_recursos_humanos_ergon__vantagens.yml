@@ -2,92 +2,104 @@ version: 2
 
 models:
   - name: raw_recursos_humanos_ergon__vantagens
-    description: "**Descrição**: Tabela que armazena informações sobre atributos cadastrados que representam vantagens dos servidores. Os atributos podem se referir a situações funcionais que não geram repercursão financeira e apenas existem para fins de cadastro.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
+    description: "**Descrição**: Tabela que armazena informações sobre atributos cadastrados que representam vantagens (valores a receber) dos servidores. Os atributos podem se referir a situações funcionais que não geram repercursão financeira e apenas existem para fins de cadastro.\n**Frequência de atualização**: Nunca\n**Cobertura temporal**: Não informado\n**Órgão gestor dos dados**: Não informado\n**Publicado por**: Não informado\n**Publicado por (email)**: naoinformado@naoinformado.com\n"
     columns:
       - name: id_funcionario
-        description: Não informado
+        description: Identificador do funcionário, que pode estar repetido no caso do funcionário possua ou tenha possuído mais de 1 vínculo funcional com a PCRJ.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__vantagens__id_funcionario__not_null
+              config:
+                severity: error
       - name: id_vinculo
-        description: Não informado
+        description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa que é professora, e funcionária do IPLANRIO, tem dois vínculos.
         data_type: integer
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__vantagens__id_vinculo__not_null
+              config:
+                severity: error
       - name: nome_vantagem
-        description: Não informado
+        description: Nome da vantagem ou seja, descrição do valor a ser recebido pelo funcionário e que integra os registros do contracheque.
         data_type: string
         quote: true
+      - name: data_inicio
+        description: Data de início da vantagem
+        data_type: date
+      - name: data_final
+        description: Data final da vantagem, permite campo nulo, o que significa que a vantagem ainda está válida
+        data_type: date
       - name: valor_vantagem
-        description: Não informado
+        description: Valor da vantagem a ser recebido pelo funcionário.
         data_type: numeric
       - name: informacao_atributo
-        description: Não informado
+        description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
       - name: tipo_incorporacao_cargo_fiducia
-        description: Não informado
+        description: Campo que informa o tipo de incorporação de cargo de fidúcia, somente é utilizado quando o campo VANTAGEM se referir a alguma incorporação de cargo de fidúcia
         data_type: string
         quote: true
       - name: percentual_incorporacao_cargo_fiducia
-        description: Não informado
+        description: Percentual de incorporação de cargo de fidúcia
         data_type: numeric
       - name: incide_tabela_vencimentos
-        description: Não informado
-        data_type: boolean
-      - name: incide_tabela_simbolo
-        description: Não informado
-        data_type: boolean
-      - name: observacoes
-        description: Não informado
+        description: Tabela de valores do cargo incorporado, somente é utilizado quando o campo VANTAGEM se referir a alguma incorporação de cargo de fidúcia.
         data_type: string
         quote: true
-      - name: valor_complementar
-        description: Não informado
+      - name: incide_tabela_simbolo
+        description: Referência correspondente ao símbolo do cargo incorporado
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: Observações adicionais sobre a vantagem.
+        data_type: string
+        quote: true
+      - name: valor_complementar_1
+        description: Valor adicional referente à vantagem, uma informação adicional que compõe a cantagem, pode ser um percentual, um valor financeiro, ou alguma informação categórica. Geralmente o campo possui lista de valores tabulados.
         data_type: numeric
-      - name: informacao_complementar
-        description: Não informado
+      - name: informacao_complementar_1
+        description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
       - name: valor_complementar_2
-        description: Não informado
+        description: Valor adicional referente à vantagem, uma informação adicional que compõe a cantagem, pode ser um percentual, um valor financeiro, ou alguma informação categórica. Geralmente o campo possui lista de valores tabulados.
         data_type: numeric
       - name: informacao_complementar_2
-        description: Não informado
+        description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
-      - name: valor_coplementar_3
-        description: Não informado
+      - name: valor_complementar_3
+        description: Valor adicional referente à vantagem, uma informação adicional que compõe a cantagem, pode ser um percentual, um valor financeiro, ou alguma informação categórica. Geralmente o campo possui lista de valores tabulados.
         data_type: numeric
       - name: informacao_complementar_3
-        description: Não informado
+        description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
       - name: valor_complementar_4
-        description: Não informado
+        description: Valor adicional referente à vantagem, uma informação adicional que compõe a cantagem, pode ser um percentual, um valor financeiro, ou alguma informação categórica. Geralmente o campo possui lista de valores tabulados.
         data_type: numeric
       - name: informacao_complementar_4
-        description: Não informado
+        description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
       - name: valor_complementar_5
-        description: Não informado
+        description: Valor adicional referente à vantagem, uma informação adicional que compõe a cantagem, pode ser um percentual, um valor financeiro, ou alguma informação categórica. Geralmente o campo possui lista de valores tabulados.
         data_type: numeric
       - name: informacao_complementar_5
-        description: Não informado
+        description: Informação adicional sobre a vantagem, geralmente o campo contem lista de valores tabulados
         data_type: string
         quote: true
       - name: valor_incorporado
-        description: Não informado
+        description: Valor incorporado
         data_type: numeric
       - name: id_empresa
-        description: Não informado
+        description: Código da Empresa do vínculo funcional do servidor ao qual a vantagem está associada.
         data_type: integer
       - name: id_vantagem
-        description: Não informado
+        description: Chave de identificação do registro de vantagem
         data_type: integer
-      - name: data_inicio
-        description: Não informado
-        data_type: date
-      - name: data_final
-        description: Não informado
-        data_type: date
       - name: data_particao
-        description: Não informado
+        description: Data de partição
         data_type: date

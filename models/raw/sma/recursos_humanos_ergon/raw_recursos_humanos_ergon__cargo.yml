@@ -31,3 +31,17 @@ models:
         description: Todos cadastrados com N.
         data_type: string
         quote: true
+      - name: tipo_cargo 
+        description: Tipo do cargo, se é um cargo em comissão ou um cargo efetivo.
+        data_type: string
+        quote: true
+      - name: dt_extincao
+        description: Data de extinção do tipo de cargo, caso exista.
+        data_type: date
+      - name: cargo_funcao
+        description: Indica se o tipo de cargo é um cargo (C) ou uma função (F).
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp
