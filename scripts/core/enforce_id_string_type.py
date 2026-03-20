@@ -117,7 +117,7 @@ def should_transform_column(
         return True, f"Erro na análise de contexto: {e}"
 
 
-def find_id_columns_in_sql(file_path: Path, check_context: bool = True) -> Dict[str, Dict]:
+def find_id_columns_in_sql(file_path: Path, check_context: bool = True) -> Tuple[Dict[str, Dict], Dict[str, Dict]]:
     """
     Encontra todas as colunas id_* em um arquivo SQL e verifica se estão corretas.
 
@@ -126,12 +126,14 @@ def find_id_columns_in_sql(file_path: Path, check_context: bool = True) -> Dict[
         check_context: Se True, verifica contexto (source vs ref) antes de marcar como issue
 
     Returns:
-        Dict com informações sobre as colunas encontradas
+        Tupla (issues, skipped) onde:
+        - issues: Dict com informações sobre as colunas que precisam de correção
+        - skipped: Dict com informações sobre as colunas ignoradas por contexto
     """
     try:
         content = file_path.read_text(encoding='utf-8')
-    except Exception as e:
-        return {}
+    except (OSError, IOError, UnicodeDecodeError) as e:
+        return {}, {}
 
     issues = {}
     skipped = {}  # Para debug: colunas que foram ignoradas por contexto
@@ -322,8 +324,8 @@ def find_yaml_for_sql(sql_path: Path) -> Path:
                 content = f.read()
                 if f"name: {model_name}" in content:
                     return yml_file
-        except:
-            pass
+        except (OSError, IOError, UnicodeDecodeError):
+            continue
 
     return None
 
@@ -474,7 +476,7 @@ Exemplos:
     yamls_updated = 0
 
     for sql_file in sql_files:
-        issues = find_id_columns_in_sql(sql_file)
+        issues, skipped = find_id_columns_in_sql(sql_file, check_context=not args.no_context_check)
 
         if issues:
             files_with_issues += 1

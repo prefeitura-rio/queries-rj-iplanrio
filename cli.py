@@ -10,10 +10,6 @@ Uso:
 import sys
 from pathlib import Path
 
-# Adicionar diretório scripts ao path
-SCRIPTS_DIR = Path(__file__).parent / "scripts"
-sys.path.insert(0, str(SCRIPTS_DIR))
-
 # Importar e executar CLI principal
 from scripts.cli.main import main
 

@@ -166,8 +166,21 @@ def find_model_file(model_name: str, extension: str = '.sql') -> Path:
             return file_path
 
     # Se não encontrou, tentar busca parcial (útil para nomes curtos)
-    for file_path in models_dir.rglob(f"*{model_name}*{extension}"):
-        return file_path
+    matches = list(models_dir.rglob(f"*{model_name}*{extension}"))
+
+    if len(matches) == 1:
+        return matches[0]
+    elif len(matches) > 1:
+        print(f"⚠️  Múltiplos modelos encontrados para '{model_name}':")
+        for m in matches[:5]:
+            try:
+                print(f"   - {m.relative_to(models_dir)}")
+            except ValueError:
+                print(f"   - {m}")
+        if len(matches) > 5:
+            print(f"   ... e mais {len(matches) - 5}")
+        print(f"\n💡 Use o nome completo do modelo para especificar qual deseja.")
+        return None
 
     return None
 

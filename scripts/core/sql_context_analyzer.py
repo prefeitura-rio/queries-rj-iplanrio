@@ -284,7 +284,7 @@ def analyze_sql_file(file_path: Path) -> Dict[str, any]:
     """
     try:
         content = file_path.read_text(encoding='utf-8')
-    except:
+    except (OSError, IOError, UnicodeDecodeError):
         return {}
 
     return {
