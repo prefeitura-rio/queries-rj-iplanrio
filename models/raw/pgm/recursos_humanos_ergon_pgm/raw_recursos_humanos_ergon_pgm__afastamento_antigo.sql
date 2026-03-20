@@ -8,9 +8,9 @@
 }}
 
 SELECT
-    id_matricula_vinculo,
-    data_inicio,
-    data_previsao_retorno,
-    data_fim
+    t.id_matricula_vinculo,
+    t.data_inicio,
+    t.data_previsao_retorno,
+    t.data_fim
 FROM {{ ref('raw_recursos_humanos_ergon__afastamento_antigo') }} AS t
 inner join {{ ref('raw_recursos_humanos_ergon_pgm__vinculo') }} AS v on v.id_matricula_vinculo = t.id_matricula_vinculo

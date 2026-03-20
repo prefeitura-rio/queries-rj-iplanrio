@@ -8,19 +8,19 @@
 }}
 
 SELECT
-    id_funcionario,
-    id_vinculo,
-    id_averbacao,
-    data_inicio,
-    data_final,
-    instituicao,
-    id_tipo_tempo,
-    data_validade,
-    total_dias_averbados,
-    motivo,
-    sobrepoe,
-    id_empresa,
-    obs,
-    regime_previdenciario
+    t.id_funcionario,
+    t.id_vinculo,
+    t.id_averbacao,
+    t.data_inicio,
+    t.data_final,
+    t.instituicao,
+    t.id_tipo_tempo,
+    t.data_validade,
+    t.total_dias_averbados,
+    t.motivo,
+    t.sobrepoe,
+    t.id_empresa,
+    t.obs,
+    t.regime_previdenciario
 FROM {{ ref('raw_recursos_humanos_ergon__averbacoes') }} AS t
-inner join {{ ref('raw_recursos_humanos_ergon_pgm__vinculo') }} AS v on v.id_funcionario = t.NUMFUNC and t.NUMVINC = v.id_vinculo
+inner join {{ ref('raw_recursos_humanos_ergon_pgm__vinculo') }} AS v on v.id_funcionario = t.id_funcionario and t.id_vinculo = v.id_vinculo
