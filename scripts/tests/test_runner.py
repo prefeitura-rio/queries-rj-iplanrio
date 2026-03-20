@@ -211,12 +211,13 @@ def discover_tests(filter_pattern: str = None) -> Dict[str, List[Tuple[Path, Pat
     return tests_by_command
 
 
-def run_all_tests(filter_pattern: str = None) -> List[TestResult]:
+def run_all_tests(filter_pattern: str = None, verbose: bool = False) -> List[TestResult]:
     """
     Executa todos os testes descobertos automaticamente.
 
     Args:
         filter_pattern: Padrão opcional para filtrar testes
+        verbose: Se True, mostra detalhes de cada teste
 
     Returns:
         Lista de TestResult
@@ -247,6 +248,10 @@ def run_all_tests(filter_pattern: str = None) -> List[TestResult]:
             result = run_test_for_command(command, input_file, expected_file)
             results.append(result)
             print(result)
+
+            # Mostrar detalhes extras em modo verbose
+            if verbose and result.message:
+                print(f"   Detalhes: {result.message}")
 
     return results
 

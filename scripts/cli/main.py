@@ -747,7 +747,10 @@ def run_test(args):
     print_banner()
 
     # Executar testes
-    results = run_all_tests(filter_pattern=getattr(args, 'filter', None))
+    verbose = getattr(args, 'verbose', False)
+    filter_pattern = getattr(args, 'filter', None)
+
+    results = run_all_tests(filter_pattern=filter_pattern, verbose=verbose)
 
     # Imprimir resumo
     success = print_summary(results)
