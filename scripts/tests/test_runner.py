@@ -1,43 +1,53 @@
 #!/usr/bin/env python3
 """
-Test Runner para validar transformações SQL.
+Test Runner V2 - Testa comandos da CLI usando a interface real.
 
-Compara arquivos de input com expected após aplicar transformações.
+Organização:
+  tests/
+    ├── clean-cast/          # Testes do comando clean-cast
+    │   ├── input/
+    │   └── expected/
+    ├── enforce-id-string/   # Testes do comando enforce-id-string
+    │   ├── input/
+    │   └── expected/
+    └── integration/         # Testes de integração
+        ├── input/
+        └── expected/
+
+Cada teste:
+  1. Copia arquivo de input/ para temp
+  2. Executa CLI real: python cli.py <comando> --apply <temp_file>
+  3. Compara resultado com expected/
 """
 
 import sys
+import subprocess
 from pathlib import Path
 from typing import List, Tuple, Dict
 import difflib
 import tempfile
 import shutil
 
-# Adicionar paths necessários
-SCRIPTS_DIR = Path(__file__).parent.parent
-PROJECT_ROOT = SCRIPTS_DIR.parent
-sys.path.insert(0, str(SCRIPTS_DIR))
-
-from core.replace_with_clean_and_cast_macro import process_file as process_clean_cast
-from core.enforce_id_string_type import find_id_columns_in_sql, fix_sql_file
-
-# Diretórios de teste
-FIXTURES_DIR = Path(__file__).parent / "fixtures"
-INPUT_DIR = FIXTURES_DIR / "input"
-EXPECTED_DIR = FIXTURES_DIR / "expected"
+# Diretórios
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+TESTS_DIR = Path(__file__).parent
+CLI_PATH = PROJECT_ROOT / "cli.py"
 
 
 class TestResult:
     """Resultado de um teste."""
 
-    def __init__(self, name: str, passed: bool, message: str = ""):
+    def __init__(self, name: str, command: str, passed: bool, message: str = ""):
         self.name = name
+        self.command = command
         self.passed = passed
         self.message = message
 
     def __str__(self):
         status = "✅ PASS" if self.passed else "❌ FAIL"
+        cmd_badge = f"[{self.command}]"
         msg = f"\n   {self.message}" if self.message else ""
-        return f"{status} - {self.name}{msg}"
+        return f"{status} {cmd_badge:20} {self.name}{msg}"
 
 
 def normalize_whitespace(content: str) -> str:
@@ -45,37 +55,76 @@ def normalize_whitespace(content: str) -> str:
     lines = content.split('\n')
     normalized = []
     for line in lines:
-        # Remove trailing whitespace, mas mantém leading
         normalized.append(line.rstrip())
     return '\n'.join(normalized)
 
 
-def run_clean_cast_test(input_file: Path, expected_file: Path) -> TestResult:
+def run_cli_command(command: str, file_path: Path, check_context: bool = True) -> subprocess.CompletedProcess:
     """
-    Testa transformação clean_and_cast.
+    Executa comando da CLI em um arquivo.
 
     Args:
+        command: Nome do comando (clean-cast, enforce-id-string, etc.)
+        file_path: Caminho do arquivo SQL a processar
+        check_context: Se deve usar análise de contexto
+
+    Returns:
+        CompletedProcess com resultado da execução
+    """
+    cmd = [
+        sys.executable,
+        str(CLI_PATH),
+        command,
+        "--apply",
+        "--path", str(file_path.parent)
+    ]
+
+    # Adicionar flags específicas por comando
+    if not check_context:
+        cmd.append("--no-context-check")
+
+    result = subprocess.run(
+        cmd,
+        capture_output=True,
+        text=True,
+        cwd=PROJECT_ROOT
+    )
+
+    return result
+
+
+def run_test_for_command(
+    command: str,
+    input_file: Path,
+    expected_file: Path,
+    check_context: bool = True
+) -> TestResult:
+    """
+    Executa um teste para um comando específico da CLI.
+
+    Args:
+        command: Nome do comando (clean-cast, enforce-id-string)
         input_file: Arquivo de entrada
         expected_file: Resultado esperado
+        check_context: Se deve usar análise de contexto
 
     Returns:
         TestResult com resultado do teste
     """
-    # Criar cópia temporária do input
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.sql', delete=False) as tmp:
-        tmp.write(input_file.read_text())
-        tmp_path = Path(tmp.name)
+    # Criar diretório temporário dentro de tests/ para manter contexto do projeto
+    tmp_dir = TESTS_DIR / f".tmp_{command}"
+    tmp_dir.mkdir(exist_ok=True)
 
     try:
-        # Aplicar transformação
-        replacements, changes, skipped = process_clean_cast(
-            tmp_path,
-            dry_run=False,  # Aplicar de verdade no arquivo temp
-            check_context=True
-        )
+        # Copiar arquivo de input para temp
+        test_file = tmp_dir / input_file.name
+        shutil.copy2(input_file, test_file)
+
+        # Executar CLI
+        result = run_cli_command(command, test_file, check_context)
 
         # Ler resultado
-        result_content = tmp_path.read_text()
+        result_content = test_file.read_text()
         expected_content = expected_file.read_text()
 
         # Normalizar espaços
@@ -86,8 +135,9 @@ def run_clean_cast_test(input_file: Path, expected_file: Path) -> TestResult:
         if result_norm == expected_norm:
             return TestResult(
                 input_file.name,
+                command,
                 True,
-                f"Transformações: {replacements}, Pulados: {skipped}"
+                "Output matches expected"
             )
         else:
             # Gerar diff
@@ -101,134 +151,142 @@ def run_clean_cast_test(input_file: Path, expected_file: Path) -> TestResult:
 
             return TestResult(
                 input_file.name,
+                command,
                 False,
-                f"Output differs from expected:\n{diff[:500]}"
+                f"Output differs:\n{diff[:500]}"
             )
 
     finally:
         # Limpar arquivo temporário
-        tmp_path.unlink()
+        if test_file.exists():
+            test_file.unlink()
 
 
-def run_enforce_id_test(input_file: Path, expected_file: Path) -> TestResult:
+def discover_tests(filter_pattern: str = None) -> Dict[str, List[Tuple[Path, Path]]]:
     """
-    Testa transformação enforce-id-string.
+    Descobre automaticamente os testes organizados por comando.
 
     Args:
-        input_file: Arquivo de entrada
-        expected_file: Resultado esperado
+        filter_pattern: Padrão opcional para filtrar testes
 
     Returns:
-        TestResult com resultado do teste
+        Dict mapeando comando -> lista de (input_file, expected_file)
     """
-    # Criar cópia temporária do input
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.sql', delete=False) as tmp:
-        tmp.write(input_file.read_text())
-        tmp_path = Path(tmp.name)
+    tests_by_command = {}
 
-    try:
-        # Detectar issues
-        issues, skipped = find_id_columns_in_sql(tmp_path, check_context=True)
+    # Procurar diretórios de teste (clean-cast, enforce-id-string, etc.)
+    for command_dir in TESTS_DIR.iterdir():
+        if not command_dir.is_dir():
+            continue
 
-        # Aplicar correções
-        if issues:
-            fix_sql_file(tmp_path, issues, dry_run=False)
+        command_name = command_dir.name
 
-        # Ler resultado
-        result_content = tmp_path.read_text()
-        expected_content = expected_file.read_text()
+        # Pular diretórios especiais
+        if command_name in ['__pycache__', 'fixtures']:
+            continue
 
-        # Normalizar espaços
-        result_norm = normalize_whitespace(result_content)
-        expected_norm = normalize_whitespace(expected_content)
+        input_dir = command_dir / "input"
+        expected_dir = command_dir / "expected"
 
-        # Comparar
-        if result_norm == expected_norm:
-            return TestResult(
-                input_file.name,
-                True,
-                f"Issues corrigidos: {len(issues)}, Pulados: {len(skipped)}"
-            )
-        else:
-            # Gerar diff
-            diff = '\n'.join(difflib.unified_diff(
-                expected_norm.splitlines(keepends=True),
-                result_norm.splitlines(keepends=True),
-                fromfile='expected',
-                tofile='result',
-                lineterm=''
-            ))
+        if not input_dir.exists() or not expected_dir.exists():
+            continue
 
-            return TestResult(
-                input_file.name,
-                False,
-                f"Output differs from expected:\n{diff[:500]}"
-            )
+        # Listar arquivos de input
+        input_files = sorted(input_dir.glob("*.sql"))
 
-    finally:
-        # Limpar arquivo temporário
-        tmp_path.unlink()
+        # Aplicar filtro se fornecido
+        if filter_pattern:
+            input_files = [f for f in input_files if filter_pattern.lower() in f.name.lower()]
+
+        # Parear com expected
+        test_pairs = []
+        for input_file in input_files:
+            expected_file = expected_dir / input_file.name
+            if expected_file.exists():
+                test_pairs.append((input_file, expected_file))
+
+        if test_pairs:
+            tests_by_command[command_name] = test_pairs
+
+    return tests_by_command
 
 
 def run_all_tests(filter_pattern: str = None) -> List[TestResult]:
     """
-    Executa todos os testes de fixtures.
+    Executa todos os testes descobertos automaticamente.
 
     Args:
-        filter_pattern: Padrão opcional para filtrar testes por nome
+        filter_pattern: Padrão opcional para filtrar testes
 
     Returns:
         Lista de TestResult
     """
     results = []
 
-    # Listar todos os arquivos de input
-    input_files = sorted(INPUT_DIR.glob("*.sql"))
-
-    # Aplicar filtro se fornecido
-    if filter_pattern:
-        input_files = [f for f in input_files if filter_pattern.lower() in f.name.lower()]
+    # Descobrir testes
+    tests_by_command = discover_tests(filter_pattern)
 
     print(f"\n{'='*80}")
-    print(f"🧪 EXECUTANDO TESTES DE TRANSFORMAÇÃO")
+    print(f"🧪 EXECUTANDO TESTES DA CLI")
     print(f"{'='*80}\n")
+
     if filter_pattern:
         print(f"Filtro aplicado: '{filter_pattern}'")
-    print(f"Fixtures encontrados: {len(input_files)}\n")
 
-    for input_file in input_files:
-        expected_file = EXPECTED_DIR / input_file.name
+    total_tests = sum(len(pairs) for pairs in tests_by_command.values())
+    print(f"Comandos encontrados: {len(tests_by_command)}")
+    print(f"Total de testes: {total_tests}\n")
 
-        if not expected_file.exists():
-            results.append(TestResult(
-                input_file.name,
-                False,
-                f"Expected file not found: {expected_file}"
-            ))
-            continue
+    # Executar testes por comando
+    for command, test_pairs in sorted(tests_by_command.items()):
+        print(f"\n{'─'*80}")
+        print(f"🔧 Testando comando: {command}")
+        print(f"{'─'*80}\n")
 
-        # Determinar qual teste rodar baseado no nome do arquivo
-        if "id_columns" in input_file.name:
-            result = run_enforce_id_test(input_file, expected_file)
-        else:
-            result = run_clean_cast_test(input_file, expected_file)
-
-        results.append(result)
-        print(result)
+        for input_file, expected_file in test_pairs:
+            result = run_test_for_command(command, input_file, expected_file)
+            results.append(result)
+            print(result)
 
     return results
 
 
-def print_summary(results: List[TestResult]):
-    """Imprime resumo dos testes."""
+def print_summary(results: List[TestResult]) -> bool:
+    """
+    Imprime resumo dos testes por comando.
+
+    Args:
+        results: Lista de TestResult
+
+    Returns:
+        True se todos passaram, False caso contrário
+    """
+    # Agrupar por comando
+    by_command = {}
+    for r in results:
+        if r.command not in by_command:
+            by_command[r.command] = []
+        by_command[r.command].append(r)
+
+    print(f"\n{'='*80}")
+    print(f"📊 RESUMO DOS TESTES")
+    print(f"{'='*80}\n")
+
     total = len(results)
     passed = sum(1 for r in results if r.passed)
     failed = total - passed
 
-    print(f"\n{'='*80}")
-    print(f"📊 RESUMO DOS TESTES")
-    print(f"{'='*80}")
-    print(f"Total:   {total}")
+    # Resumo por comando
+    for command in sorted(by_command.keys()):
+        cmd_results = by_command[command]
+        cmd_passed = sum(1 for r in cmd_results if r.passed)
+        cmd_total = len(cmd_results)
+        status = "✅" if cmd_passed == cmd_total else "❌"
+
+        print(f"{status} {command:20} - {cmd_passed}/{cmd_total} testes passaram")
+
+    print(f"\n{'─'*80}")
+    print(f"TOTAL:   {total}")
     print(f"✅ Passou: {passed}")
     print(f"❌ Falhou: {failed}")
 
@@ -236,7 +294,7 @@ def print_summary(results: List[TestResult]):
         print(f"\n⚠️  Testes que falharam:")
         for r in results:
             if not r.passed:
-                print(f"   - {r.name}")
+                print(f"   [{r.command}] {r.name}")
 
     print(f"{'='*80}\n")
 
@@ -245,14 +303,28 @@ def print_summary(results: List[TestResult]):
 
 def main():
     """Main function."""
+    import argparse
 
-    if not INPUT_DIR.exists() or not EXPECTED_DIR.exists():
-        print("❌ Diretórios de fixtures não encontrados!")
-        print(f"   Input:    {INPUT_DIR}")
-        print(f"   Expected: {EXPECTED_DIR}")
-        return 1
+    parser = argparse.ArgumentParser(
+        description="Test Runner - Testa comandos da CLI usando interface real"
+    )
+    parser.add_argument(
+        "--filter", "-f",
+        type=str,
+        help="Filtra testes por nome"
+    )
+    parser.add_argument(
+        "--command", "-c",
+        type=str,
+        help="Testa apenas um comando específico (clean-cast, enforce-id-string)"
+    )
 
-    results = run_all_tests()
+    args = parser.parse_args()
+
+    # Se especificou comando, usar como filtro de diretório
+    filter_pattern = args.filter
+
+    results = run_all_tests(filter_pattern)
     success = print_summary(results)
 
     return 0 if success else 1
