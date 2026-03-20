@@ -3,8 +3,8 @@
 
 WITH source_data AS (
     SELECT
-        {{ clean_and_cast('id_source', 'string') }} AS id_source,
-        {{ clean_and_cast('nome_source', 'string') }} AS nome
+        {{ clean_and_cast('id_source', 'string', trim=false) }} AS id_source,
+        {{ clean_and_cast('nome_source', 'string', trim=false) }} AS nome
     FROM {{ source('schema', 'table_a') }}
 ),
 

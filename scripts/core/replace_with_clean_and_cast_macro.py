@@ -96,30 +96,34 @@ def generate_macro_call(pattern_idx: int, column_name: str, data_type: str) -> s
 
     Returns:
         String com a chamada do macro
+
+    Note:
+        trim=true é o padrão do macro, então não precisa especificar
+        Apenas especificamos trim=false quando o padrão original não tem TRIM
     """
-    # Padrão 0: TRIM + CAST
+    # Padrão 0: TRIM + CAST (trim=true é padrão, não precisa especificar)
     if pattern_idx == 0:
-        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', trim=true) }}}}"
+        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}') }}}}"
 
-    # Padrão 1: TRIM apenas
+    # Padrão 1: TRIM apenas (trim=true é padrão, não precisa especificar)
     elif pattern_idx == 1:
-        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', trim=true) }}}}"
+        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}') }}}}"
 
-    # Padrão 2: CAST apenas
+    # Padrão 2: CAST apenas (sem TRIM no original, especificar trim=false)
     elif pattern_idx == 2:
-        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}') }}}}"
+        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', trim=false) }}}}"
 
-    # Padrão 3: Sem TRIM nem CAST explícito
+    # Padrão 3: Sem TRIM nem CAST explícito (sem TRIM, especificar trim=false)
     elif pattern_idx == 3:
-        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}') }}}}"
+        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', trim=false) }}}}"
 
-    # Padrão 4: CAST sem SAFE + TRIM
+    # Padrão 4: CAST sem SAFE + TRIM (trim=true é padrão)
     elif pattern_idx == 4:
-        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', trim=true, safe=false) }}}}"
-
-    # Padrão 5: CAST sem SAFE
-    elif pattern_idx == 5:
         return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', safe=false) }}}}"
+
+    # Padrão 5: CAST sem SAFE (sem TRIM, especificar ambos)
+    elif pattern_idx == 5:
+        return f"{{{{ clean_and_cast('{column_name}', '{data_type.lower()}', trim=false, safe=false) }}}}"
 
     return None
 

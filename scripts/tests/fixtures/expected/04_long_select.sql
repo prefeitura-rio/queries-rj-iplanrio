@@ -12,5 +12,5 @@ SELECT
     c71, c72, c73, c74, c75, c76, c77, c78, c79, c80,
     c81, c82, c83, c84, c85, c86, c87, c88, c89, c90,
     c91, c92, c93, c94, c95, c96, c97, c98, c99, c100,
-    {{ clean_and_cast('id_far_away', 'string') }} AS id_test
+    {{ clean_and_cast('id_far_away', 'string', trim=false) }} AS id_test
 FROM {{ source('dataset', 'huge_table') }}
