@@ -30,7 +30,7 @@ SELECT
     a.data_aposentadoria,
     a.tipo_aposentadoria,
     a.data_vacancia,
-    a.id_vacancia,
+    a.id_forma_vacancia,
     a.motivo_vacancia,
     a.id_vinculo_anterior,
     a.id_vinculo_posterior,
