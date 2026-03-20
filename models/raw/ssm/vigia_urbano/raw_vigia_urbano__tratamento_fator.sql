@@ -1,7 +1,7 @@
 {{
     config(
         alias="tratamento_fator",
-        description="Tabela de Relacionamento entre Orgãos e Usuários do sistema Vigia Urbano.",
+        description="Tabela de Relacionamento entre Tratamento e Fator do sistema Vigia Urbano.",
     )
 }}
 
