@@ -36,7 +36,7 @@ models:
         description: Identificador da secretaria onde o funcionário está lotado no período da folha.
         data_type: integer
       - name: tipo_funcionario
-        description: Tipo do funcionário (ex: servidor, terceirizado).
+        description: Tipo do funcionário (ex servidor, terceirizado).
         data_type: string
         quote: true
       - name: detalhamento
