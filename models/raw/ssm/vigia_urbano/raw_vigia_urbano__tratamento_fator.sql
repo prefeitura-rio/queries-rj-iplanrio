@@ -9,7 +9,13 @@ SELECT
     safe_cast(id AS int64) AS id_tratamento_fator,
     safe_cast(fatorid AS int64) AS id_fator,
     safe_cast(usuarioid AS int64) AS id_usuario,
-    safe_cast(resolvido AS bool) AS flag_resolvido,
+    safe_cast((
+        CASE 
+            WHEN resolvido = "1" THEN TRUE
+            ELSE FALSE
+        END
+
+    ) AS bool) AS flag_resolvido,
     safe_cast(justificativa AS string) AS justificativa,
     safe_cast(dataresolucao AS datetime) AS data_resolucao,
     safe_cast(caminhofoto AS string) AS caminho_foto,
