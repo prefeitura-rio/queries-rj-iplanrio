@@ -19,7 +19,7 @@ SELECT
     SAFE_CAST(MOTIVO AS STRING) AS motivo,
     safe_cast(SAFE_CAST(DTPREVFIM AS timestamp) as date) AS data_previsao_retorno,
     SAFE_CAST(FLEX_CAMPO_01 AS STRING) AS parecer,
-    parse_date('%d/%m/%Y', FLEX_CAMPO_02) AS data_atendimento,
+    SAFE.parse_date('%d/%m/%Y', FLEX_CAMPO_02) AS data_atendimento,
     SAFE_CAST(EMP_CODIGO AS int64) AS id_empresa,
     SAFE_CAST(FLEX_CAMPO_07 AS STRING) AS crm
 FROM {{ source('brutos_ergon_staging', 'LIC_AFAST') }} AS t

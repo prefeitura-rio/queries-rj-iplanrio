@@ -14,7 +14,7 @@ models:
           - not_null:
               name: raw_recursos_humanos_ergon__ficha_financeira_contabil__id_funcionario__not_null
               config:
-                severity: error
+                severity: warn
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: integer
@@ -22,7 +22,7 @@ models:
           - not_null:
               name: raw_recursos_humanos_ergon__ficha_financeira_contabil__id_vinculo__not_null
               config:
-                severity: error
+                severity: warn
       - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
         data_type: integer

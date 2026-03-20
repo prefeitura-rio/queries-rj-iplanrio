@@ -16,11 +16,11 @@
 with
     funcionarios as (
         select
-            f.id_vinculo as id_funcionario,
-            lpad(f.id_cpf, 11, '0') as cpf,  -- Adiciona zero à esquerda caso o CPF tenha menos de 11 dígitos
-            f.nome
+            f.id_funcionario as id_funcionario,
+            lpad(f.cpf, 11, '0') as cpf,  -- Adiciona zero à esquerda caso o CPF tenha menos de 11 dígitos
+            f.nome_funcionario as nome
         from {{ ref("raw_recursos_humanos_ergon__funcionario") }} f
-        where f.id_cpf is not null  -- and lpad(f.id_cpf, 11, '0') in ('')
+        where f.cpf is not null  -- and lpad(f.cpf, 11, '0') in ('')
     ),
 
     provimento as (
@@ -31,7 +31,7 @@ with
             p.data_fim as provimento_fim,
             p.id_setor,
             p.id_cargo,
-            p.empresa_vinculo as id_empresa
+            p.id_empresa
         from {{ ref("raw_recursos_humanos_ergon__provimento") }} p
         -- get the most recent id_vinculo
         qualify
@@ -83,7 +83,7 @@ with
 
     secretaria as (
         select
-            safe_cast(regexp_replace(cd_ua, r'\.0$', '') as string) as id_secretaria,
+            safe_cast(regexp_replace(cd_ua, r'\.0$', '') as int64) as id_secretaria,
             safe_cast(
                 regexp_replace(sigla_ua, r'\.0$', '') as string
             ) as secretaria_sigla,
@@ -136,21 +136,21 @@ with
         left join secretaria sec on s.id_secretaria = sec.id_secretaria
 
         where
-            s.id_secretaria in ('1800', '1851')
+            s.id_secretaria in (1800, 1851)
             or p.id_empresa in (
-                '32',
-                '80',
-                '81',
-                '82',
-                '83',
-                '84',
-                '85',
-                '86',
-                '87',
-                '88',
-                '89',
-                '97',
-                '23'
+                32,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                97,
+                23
             )
 
         group by f.cpf
