@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__tratamento_fator
+    description: "Tabela de Relacionamento entre Tratamento e Fator do sistema Vigia Urbano."
+    columns:
+      - name: id_tratamento_fator
+        description: "Identificador chave do registro"
+        data_type: int64
+        tests:
+          - unique:
+              name: raw_vigia_urbano__tratamento_fator__id_tratamento_fator__unique
+              severity: warn
+          - not_null:
+              name: raw_vigia_urbano__tratamento_fator__id_tratamento_fator__not_null
+              severity: warn
+
+      - name: id_fator
+        description: "Identificador do Registro da RespostaOcorrencia"
+        data_type: int64
+
+      - name: id_usuario
+        description: "Identificador do Usuario que realizou a ação"
+        data_type: int64
+ 
+      - name: flag_resolvido
+        description: "Foi marcado Resolvido?"
+        data_type: bool
+        tests:
+          - not_null:
+              name: raw_vigia_urbano__tratamento_fator__flag_resolvido__not_null
+              severity: warn
+
+      - name: justificativa
+        description: "Justificativa informada"
+        data_type: string
+        quote: true
+
+      - name: data_resolucao
+        description: "Data informada"
+        data_type: datetime
+
+      - name: caminho_foto
+        description: "Caminho da Foto no Google"
+        data_type: string
+        quote: true
+
+      - name: data_registro
+        description: "Data do dia da ação"
+        data_type: datetime
+
+      - name: datalake_loaded_at
+        description: "Data de quando o dado foi extraído do banco de dados de origem do Vigia Urbano"
+        data_type: datetime
+              
+      - name: datalake_transformed_at
+        description: "Data de quando o dado foi transformado no dbt."
+        data_type: datetime
+        
