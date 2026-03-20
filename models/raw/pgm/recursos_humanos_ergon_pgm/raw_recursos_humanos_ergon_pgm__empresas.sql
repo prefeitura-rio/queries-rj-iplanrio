@@ -34,4 +34,4 @@ SELECT
     uf_sigla,
     updated_at as data_atualizacao
 FROM {{ ref('raw_recursos_humanos_ergon__empresas') }} -- pegando como origem o dbt original de tratamento das empresas da SMA apenas com setores que mencionam a PGM, para garantir que traga apenas os registros relacionados à PGM em sua sigla.
-where id_empresa in ('1', '2', '12') -- apenas empresas ligadas a setors que apresentam a palavra PGM em sua sigla.
+where CAST(id_empresa as string) in ('1', '2', '12') -- apenas empresas ligadas a setors que apresentam a palavra PGM em sua sigla.

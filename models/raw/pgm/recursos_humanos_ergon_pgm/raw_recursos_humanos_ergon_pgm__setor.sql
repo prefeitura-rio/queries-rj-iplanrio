@@ -24,6 +24,5 @@ SELECT
         else 'Não Informado'
     end as extinto,
     updated_at as data_atualizacao, 
-    _airbyte_generation_id as id_registro_airbyte
 FROM {{ ref('raw_recursos_humanos_ergon__setor')}}
 where id_secretaria = 2200
