@@ -170,9 +170,12 @@ def run_enforce_id_test(input_file: Path, expected_file: Path) -> TestResult:
         tmp_path.unlink()
 
 
-def run_all_tests() -> List[TestResult]:
+def run_all_tests(filter_pattern: str = None) -> List[TestResult]:
     """
     Executa todos os testes de fixtures.
+
+    Args:
+        filter_pattern: Padrão opcional para filtrar testes por nome
 
     Returns:
         Lista de TestResult
@@ -182,9 +185,15 @@ def run_all_tests() -> List[TestResult]:
     # Listar todos os arquivos de input
     input_files = sorted(INPUT_DIR.glob("*.sql"))
 
+    # Aplicar filtro se fornecido
+    if filter_pattern:
+        input_files = [f for f in input_files if filter_pattern.lower() in f.name.lower()]
+
     print(f"\n{'='*80}")
     print(f"🧪 EXECUTANDO TESTES DE TRANSFORMAÇÃO")
     print(f"{'='*80}\n")
+    if filter_pattern:
+        print(f"Filtro aplicado: '{filter_pattern}'")
     print(f"Fixtures encontrados: {len(input_files)}\n")
 
     for input_file in input_files:

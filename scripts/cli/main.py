@@ -217,12 +217,16 @@ def print_banner():
 
 def print_script_list():
     """Imprime lista formatada de scripts disponíveis."""
-    print("\n📋 Scripts Disponíveis:\n")
+    print("\n📋 Comandos Disponíveis:\n")
 
+    # Comandos especiais
+    print(f"  {'test':15} - Executa bateria de testes de transformações")
+
+    # Scripts de transformação
     for name, info in ScriptRegistry.SCRIPTS.items():
         print(f"  {name:15} - {info['description']}")
 
-    print("\nUse 'python scripts/main.py <comando> --help' para mais informações.\n")
+    print("\nUse 'python cli.py <comando> --help' para mais informações.\n")
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -255,6 +259,30 @@ def create_parser() -> argparse.ArgumentParser:
         "list",
         help="Lista todos os scripts disponíveis",
         description="Mostra informações sobre todos os scripts disponíveis no CLI"
+    )
+
+    # Comando: test
+    test_parser = subparsers.add_parser(
+        "test",
+        help="Executa bateria de testes de transformações",
+        description="Executa todos os testes para validar as transformações SQL",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos:
+  python cli.py test                    # Executar todos os testes
+  python cli.py test --verbose          # Mostrar detalhes dos testes
+  python cli.py test --filter 08        # Executar apenas testes que contém "08" no nome
+        """
+    )
+    test_parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Mostra saída detalhada de cada teste"
+    )
+    test_parser.add_argument(
+        "--filter", "-f",
+        type=str,
+        help="Filtra testes por nome (ex: 08, source, complex)"
     )
 
     # Comando: clean-cast
@@ -699,6 +727,21 @@ def run_enforce_id_string(args):
     return 0
 
 
+def run_test(args):
+    """Executa bateria de testes."""
+    from tests.test_runner import run_all_tests, print_summary
+
+    print_banner()
+
+    # Executar testes
+    results = run_all_tests(filter_pattern=getattr(args, 'filter', None))
+
+    # Imprimir resumo
+    success = print_summary(results)
+
+    return 0 if success else 1
+
+
 def main():
     """Função principal do CLI."""
 
@@ -721,6 +764,10 @@ def main():
         print_banner()
         print_script_list()
         return 0
+
+    # Comando: test
+    if args.command == "test":
+        return run_test(args)
 
     # Se --apply foi passado, desabilitar dry-run
     if hasattr(args, 'apply') and args.apply:
