@@ -8,14 +8,14 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(CAST(NUMFUNC AS STRING), r'\.0$', '') AS int64) AS id_funcionario,
-    SAFE_CAST(REGEXP_REPLACE(CAST(NUMVINC AS STRING), r'\.0$', '') AS int64) AS id_vinculo,
+    {{ clean_and_cast('NUMFUNC', 'int64') }} AS id_funcionario,
+    {{ clean_and_cast('NUMVINC', 'int64') }} AS id_vinculo,
     SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTINI) AS DATE) AS data_inicio,
     SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTFIM) AS DATE) AS data_fim,
-    SAFE_CAST(REGEXP_REPLACE(SETOR, r'\.0$', '') AS int64) AS id_setor,
-    SAFE_CAST(REGEXP_REPLACE(CAST(CARGO AS STRING), r'\.0$', '') AS int64) AS id_cargo,
-    SAFE_CAST(REGEXP_REPLACE(REFERENCIA, r'\.0$', '') AS string) AS id_referencia,
-    SAFE_CAST(REGEXP_REPLACE(JORNADA, r'\.0$', '') AS string) AS id_jornada,
+    {{ clean_and_cast('SETOR', 'int64') }} AS id_setor,
+    {{ clean_and_cast('CARGO', 'int64') }} AS id_cargo,
+    {{ clean_and_cast('REFERENCIA', 'string') }} AS id_referencia,
+    {{ clean_and_cast('JORNADA', 'string') }} AS id_jornada,
     SAFE_CAST(FORMAPROV AS int64) AS id_forma_provimento,
     SAFE_CAST(OBS AS STRING) AS observacoes,
     SAFE_CAST(FLEX_CAMPO_03 AS STRING) AS regime_horas,

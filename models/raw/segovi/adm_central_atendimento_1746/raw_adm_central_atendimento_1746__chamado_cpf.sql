@@ -60,22 +60,12 @@ source_data AS (
    )
 
 SELECT
-    SAFE_CAST(
-        REGEXP_REPLACE(id_chamado, r'\.0$', '') AS STRING
-    ) id_chamado,
+    {{ clean_and_cast('id_chamado', 'string') }} id_chamado,
     cpf, 
-    SAFE_CAST(
-        REGEXP_REPLACE(id_pessoa, r'\.0$', '') AS STRING
-    ) id_pessoa,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_protocolo, r'\.0$', '') AS STRING
-    ) id_protocolo,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_protocolo_chamado, r'\.0$', '') AS STRING
-    ) id_protocolo_chamado,
-    SAFE_CAST(
-        REGEXP_REPLACE(numero_protocolo, r'\.0$', '') AS STRING
-    ) numero_protocolo,
+    {{ clean_and_cast('id_pessoa', 'string') }} id_pessoa,
+    {{ clean_and_cast('id_protocolo', 'string') }} id_protocolo,
+    {{ clean_and_cast('id_protocolo_chamado', 'string') }} id_protocolo_chamado,
+    {{ clean_and_cast('numero_protocolo', 'string') }} numero_protocolo,
     ic_motivo,
     extracted_at,
     data_particao

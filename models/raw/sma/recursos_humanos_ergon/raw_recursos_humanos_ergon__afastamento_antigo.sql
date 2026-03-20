@@ -8,7 +8,7 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(TRIM(m10), r'\.0$', '') AS string) AS id_matricula_vinculo,
+    {{ clean_and_cast('m10', 'string', trim=true) }} AS id_matricula_vinculo,
     safe_cast(SAFE_CAST(TRIM(sa_dt_afas_y2) AS timestamp) as date) AS data_inicio,
     safe_cast(SAFE_CAST(TRIM(sa_dt_prer_y2) AS timestamp) as date) AS data_previsao_retorno,
     safe_cast(SAFE_CAST(TRIM(sa_dt_retr_y2) AS timestamp) as date) AS data_fim

@@ -8,7 +8,7 @@
 
 SELECT 
     DISTINCT
-        SAFE_CAST(REGEXP_REPLACE(cd_obra, r'\.0$', '') AS STRING) id_obra,
+        {{ clean_and_cast('cd_obra', 'string') }} id_obra,
         SAFE_CAST(tp_acerto AS STRING) tipo_acerto,
         SAFE_CAST(
             SAFE.PARSE_TIMESTAMP ('%Y-%m-%d %H:%M:%S', dt_do) AS DATETIME

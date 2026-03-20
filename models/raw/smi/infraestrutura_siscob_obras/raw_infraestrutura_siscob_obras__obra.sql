@@ -8,16 +8,10 @@
 
 SELECT 
     DISTINCT
-        SAFE_CAST(REGEXP_REPLACE(cd_obra, r'\.0$', '') AS STRING) id_obra,
-        SAFE_CAST(
-            REGEXP_REPLACE(nr_processo, r'\.0$', '') AS STRING
-        ) id_processo,
-        SAFE_CAST(
-            REGEXP_REPLACE(nr_licitacao, r'\.0$', '') AS STRING
-        ) id_licitacao,
-        SAFE_CAST(
-            REGEXP_REPLACE(nr_contrato, r'\.0$', '') AS STRING
-        ) id_contrato,
+        {{ clean_and_cast('cd_obra', 'string') }} id_obra,
+        {{ clean_and_cast('nr_processo', 'string') }} id_processo,
+        {{ clean_and_cast('nr_licitacao', 'string') }} id_licitacao,
+        {{ clean_and_cast('nr_contrato', 'string') }} id_contrato,
         SAFE_CAST(ds_titulo AS STRING) titulo,
         SAFE_CAST(orgao_contratante AS STRING) orgao_contratante,
         SAFE_CAST(orgao_executor AS STRING) orgao_executor,

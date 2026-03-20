@@ -8,11 +8,9 @@
 
 SELECT 
     DISTINCT
-        SAFE_CAST(REGEXP_REPLACE(cd_obra, r'\.0$', '') AS STRING) id_obra,
-        SAFE_CAST(
-            REGEXP_REPLACE(nr_processo, r'\.0$', '') AS STRING
-        ) id_processo,
-        SAFE_CAST(REGEXP_REPLACE(cd_etapa, r'\.0$', '') AS STRING) id_etapa,
+        {{ clean_and_cast('cd_obra', 'string') }} id_obra,
+        {{ clean_and_cast('nr_processo', 'string') }} id_processo,
+        {{ clean_and_cast('cd_etapa', 'string') }} id_etapa,
         SAFE_CAST(tp_alteracao AS STRING) tipo_alteracao,
         SAFE_CAST(
             SAFE.PARSE_TIMESTAMP ('%Y-%m-%d %H:%M:%S', dt_publ_do) AS DATETIME

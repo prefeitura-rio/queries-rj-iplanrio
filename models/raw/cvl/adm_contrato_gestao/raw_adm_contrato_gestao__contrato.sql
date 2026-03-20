@@ -7,7 +7,7 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_contrato), r'\.0$', '') AS STRING) AS id_contrato,
+  {{ clean_and_cast('id_contrato', 'string', trim=true) }} AS id_contrato,
   SAFE_CAST(TRIM(numero_contrato) AS STRING) AS numero_contrato,
   SAFE_CAST(TRIM(cod_organizacao) AS STRING) AS cod_organizacao,
   SAFE_CAST(DATE(data_atualizacao) AS DATE) AS data_atualizacao,
@@ -22,5 +22,5 @@ SELECT
   SAFE_CAST(TRIM(valor_variavel) AS NUMERIC) AS valor_variavel,
   SAFE_CAST(TRIM(observacao) AS STRING) AS observacao,
   SAFE_CAST(TRIM(ap) AS STRING) AS ap,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_secretaria), r'\.0$', '') AS STRING) AS id_secretaria
+  {{ clean_and_cast('id_secretaria', 'string', trim=true) }} AS id_secretaria
 FROM {{ source('brutos_osinfo_staging', 'contrato') }} AS t

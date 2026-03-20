@@ -16,11 +16,11 @@ with source as (
 
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(ano, r'\.0$', '') AS INT64) AS ano,
-    SAFE_CAST(REGEXP_REPLACE(cre, r'\.0$', '') AS STRING) AS id_cre,
-    SAFE_CAST(REGEXP_REPLACE(coc, r'\.0$', '') AS STRING) AS id_coc,
-    SAFE_CAST(REGEXP_REPLACE(unidade, r'\.0$', '') AS STRING) AS id_unidade,
-    SAFE_CAST(REGEXP_REPLACE(turma, r'\.0$', '') AS STRING) AS id_turma_escola,
+    {{ clean_and_cast('ano', 'int64') }} AS ano,
+    {{ clean_and_cast('cre', 'string') }} AS id_cre,
+    {{ clean_and_cast('coc', 'string') }} AS id_coc,
+    {{ clean_and_cast('unidade', 'string') }} AS id_unidade,
+    {{ clean_and_cast('turma', 'string') }} AS id_turma_escola,
     SAFE_CAST(grupamento AS STRING) AS grupamento,
     SUBSTR(SHA256(
         CONCAT(
@@ -37,13 +37,13 @@ SELECT
     ), 2,17) as  id_aluno_ano,
     SAFE_CAST(aluno AS STRING) AS matricula,
     SAFE_CAST(sexo AS STRING) AS genero,
-    SAFE_CAST(REGEXP_REPLACE(cod_def, r'\.0$', '') AS STRING) AS id_deficiencia,
+    {{ clean_and_cast('cod_def', 'string') }} AS id_deficiencia,
     SAFE_CAST(deficiencia AS STRING) AS deficiencia,
     SAFE_CAST(datanascimento AS DATE) AS data_nascimentoo,
-    SAFE_CAST(REGEXP_REPLACE(idade_atual, r'\.0$', '') AS INT64) AS idade_atual,
-    SAFE_CAST(REGEXP_REPLACE(idade_3112, r'\.0$', '') AS INT64) AS idade_final_ano,
+    {{ clean_and_cast('idade_atual', 'int64') }} AS idade_atual,
+    {{ clean_and_cast('idade_3112', 'int64') }} AS idade_final_ano,
     SAFE_CAST(data_mov AS DATE) AS data_movimentacao,
-    SAFE_CAST(REGEXP_REPLACE(cod_mov, r'\.0$', '') AS STRING) AS id_movimentacao,
+    {{ clean_and_cast('cod_mov', 'string') }} AS id_movimentacao,
     SAFE_CAST(movimentacao AS STRING) AS movimentacao,
     SAFE_CAST(mov_ordem AS STRING) AS ordem,
     SAFE_CAST(tipo_mov AS STRING) AS tipo,

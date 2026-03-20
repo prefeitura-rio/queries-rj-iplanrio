@@ -17,7 +17,7 @@ with source as (
 
 SELECT
     SAFE_CAST(ano AS INT64) AS ano,
-    SAFE_CAST(REGEXP_REPLACE(tur_id, r'\.0$', '') AS STRING) AS id_turma,
+    {{ clean_and_cast('tur_id', 'string') }} AS id_turma,
     SUBSTR(SHA256(
         CONCAT(
             '{{ var("HASH_SEED") }}',
@@ -31,12 +31,12 @@ SELECT
             SAFE_CAST(TRIM(ano) AS STRING)
         )
     ), 2,17) as  id_aluno_ano,
-    SAFE_CAST(REGEXP_REPLACE(mtu_id, r'\.0$', '') AS STRING) AS id_matricula_turma,
-    SAFE_CAST(REGEXP_REPLACE(cur_id, r'\.0$', '') AS STRING) AS id_curriculo,
-    SAFE_CAST(REGEXP_REPLACE(crp_id, r'\.0$', '') AS STRING) AS id_curriculo_periodo,
-    SAFE_CAST(REGEXP_REPLACE(coc, r'\.0$', '') AS STRING) AS id_coc,
+    {{ clean_and_cast('mtu_id', 'string') }} AS id_matricula_turma,
+    {{ clean_and_cast('cur_id', 'string') }} AS id_curriculo,
+    {{ clean_and_cast('crp_id', 'string') }} AS id_curriculo_periodo,
+    {{ clean_and_cast('coc', 'string') }} AS id_coc,
     SAFE_CAST(tpc_nome AS STRING) AS coc,
-    SAFE_CAST(REGEXP_REPLACE(tur_codigo, r'\.0$', '') AS STRING) AS id_turma_escola,
+    {{ clean_and_cast('tur_codigo', 'string') }} AS id_turma_escola,
     SAFE_CAST(REGEXP_REPLACE(frequencia, r',', '.') AS FLOAT64) AS frequencia,
     NULLIF(conceito, 'Sem Informação') AS conceito,
     NULLIF(REGEXP_REPLACE(glb, r',', '.'), 'Sem Informação') AS nota_fundamental_1,

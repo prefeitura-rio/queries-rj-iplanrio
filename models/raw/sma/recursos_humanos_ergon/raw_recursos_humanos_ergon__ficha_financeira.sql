@@ -14,10 +14,10 @@
 
 SELECT
     SAFE_CAST(DATE(mes_ano_folha) AS DATE) AS mes_ano_folha,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(num_folha), r'\.0$', '') AS int64) AS numero_folha,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(numfunc), r'\.0$', '') AS int64) AS id_funcionario,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(numvinc), r'\.0$', '') AS int64) AS id_vinculo,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(numpens), r'\.0$', '') AS INT64) AS id_pensionista,
+    {{ clean_and_cast('num_folha', 'int64', trim=true) }} AS numero_folha,
+    {{ clean_and_cast('numfunc', 'int64', trim=true) }} AS id_funcionario,
+    {{ clean_and_cast('numvinc', 'int64', trim=true) }} AS id_vinculo,
+    {{ clean_and_cast('numpens', 'int64', trim=true) }} AS id_pensionista,
     SAFE_CAST(TRIM(mes_ano_direito) AS date) AS mes_ano_direito,
     SAFE_CAST(TRIM(rubrica) AS int64) AS id_rubrica,
     SAFE_CAST(TRIM(tipo_rubrica) AS STRING) AS tipo_rubrica,
@@ -25,6 +25,6 @@ SELECT
     SAFE_CAST(TRIM(complemento) AS STRING) AS observacao,
     SAFE_CAST(REGEXP_REPLACE(valor, r',', '.') AS FLOAT64) AS valor,
     SAFE_CAST(REGEXP_REPLACE(correcao, r',', '.') AS FLOAT64) AS correcao,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(emp_codigo), r'\.0$', '') AS STRING) AS id_empresa,
+    {{ clean_and_cast('emp_codigo', 'string', trim=true) }} AS id_empresa,
     SAFE_CAST(data_particao AS DATE) data_particao
 FROM {{ source('brutos_ergon_staging', 'FICHAS_FINANCEIRAS') }} AS t

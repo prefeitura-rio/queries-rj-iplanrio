@@ -7,11 +7,11 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_documento), r'\.0$', '') AS STRING) AS id_documento,
+  {{ clean_and_cast('id_documento', 'string', trim=true) }} AS id_documento,
   SAFE_CAST(TRIM(cod_organizacao) AS STRING) AS cod_organizacao,
   SAFE_CAST(TRIM(cod_unidade) AS STRING) AS cod_unidade,
   SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_envio) AS DATETIME) AS data_envio,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_tipo_documento), r'\.0$', '') AS STRING) AS id_tipo_documento,
+  {{ clean_and_cast('id_tipo_documento', 'string', trim=true) }} AS id_tipo_documento,
   SAFE_CAST(TRIM(codigo_fiscal) AS STRING) AS codigo_fiscal,
   SAFE_CAST(TRIM(cnpj) AS STRING) AS cnpj,
   SAFE_CAST(TRIM(razao) AS STRING) AS razao,
@@ -26,17 +26,17 @@ SELECT
   SAFE_CAST(data_apuracao AS DATE) AS data_apuracao,
   SAFE_CAST(TRIM(valor_documento) AS NUMERIC) AS valor_documento,
   SAFE_CAST(TRIM(valor_pago) AS NUMERIC) AS valor_pago,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_despesa), r'\.0$', '') AS STRING) AS id_despesa,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_rubrica), r'\.0$', '') AS STRING) AS id_rubrica,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_contrato), r'\.0$', '') AS STRING) AS id_contrato,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_conta_bancaria), r'\.0$', '') AS STRING) AS id_conta_bancaria,
+  {{ clean_and_cast('id_despesa', 'string', trim=true) }} AS id_despesa,
+  {{ clean_and_cast('id_rubrica', 'string', trim=true) }} AS id_rubrica,
+  {{ clean_and_cast('id_contrato', 'string', trim=true) }} AS id_contrato,
+  {{ clean_and_cast('id_conta_bancaria', 'string', trim=true) }} AS id_conta_bancaria,
   SAFE_CAST(TRIM(referencia_mes) AS STRING) AS referencia_mes,
   SAFE_CAST(TRIM(referencia_ano) AS STRING) AS referencia_ano,
   SAFE_CAST(TRIM(cod_bancario) AS STRING) AS cod_bancario,
   SAFE_CAST(TRIM(flg_justificativa) AS STRING) AS flg_justificativa,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(parcelamento_mes), r'\.0$', '') AS INT64) AS parcela_mes,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(parcelamento_total), r'\.0$', '') AS INT64) AS parcelamento_total,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_imagem), r'\.0$', '') AS STRING) AS id_imagem,
+  {{ clean_and_cast('parcelamento_mes', 'int64', trim=true) }} AS parcela_mes,
+  {{ clean_and_cast('parcelamento_total', 'int64', trim=true) }} AS parcelamento_total,
+  {{ clean_and_cast('id_imagem', 'string', trim=true) }} AS id_imagem,
   SAFE_CAST(TRIM(nf_validada_sigma) AS STRING) AS nf_validada_sigma,
   SAFE_CAST(DATE(data_validacao) AS DATE) AS data_validacao
 FROM {{ source('brutos_osinfo_staging', 'despesa') }} AS t

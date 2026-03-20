@@ -58,90 +58,42 @@ WITH source_data AS (
 
 SELECT
    -- Chaves e Identificação Primária
-    SAFE_CAST(
-        REGEXP_REPLACE(id_pessoa, r'\.0$', '') AS INT64
-    ) id_pessoa,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_cpf, r'\.0$', '') AS STRING
-    ) cpf,
-    SAFE_CAST(
-        REGEXP_REPLACE(no_pessoa, r'\.0$', '') AS STRING
-    ) nome,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_identidade, r'\.0$', '') AS STRING
-    ) documento_identidade,
-    SAFE_CAST(
-        REGEXP_REPLACE(nu_matricula, r'\.0$', '') AS STRING
-    ) numero_matricula,
-    SAFE_CAST(
-        REGEXP_REPLACE(no_mae, r'\.0$', '') AS STRING
-    ) nome_mae,
+    {{ clean_and_cast('id_pessoa', 'int64') }} id_pessoa,
+    {{ clean_and_cast('ds_cpf', 'string') }} cpf,
+    {{ clean_and_cast('no_pessoa', 'string') }} nome,
+    {{ clean_and_cast('ds_identidade', 'string') }} documento_identidade,
+    {{ clean_and_cast('nu_matricula', 'string') }} numero_matricula,
+    {{ clean_and_cast('no_mae', 'string') }} nome_mae,
     SAFE_CAST(
         SAFE.PARSE_TIMESTAMP('%Y-%m-%d', dt_nascimento) AS DATE -- TODO: review date format
     ) data_nascimento,
-    SAFE_CAST(
-        REGEXP_REPLACE(ic_sexo, r'\.0$', '') AS STRING
-    ) sexo,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_atividade_profissional, r'\.0$', '') AS STRING
-    ) atividade_profissional,
+    {{ clean_and_cast('ic_sexo', 'string') }} sexo,
+    {{ clean_and_cast('ds_atividade_profissional', 'string') }} atividade_profissional,
 
     -- Chaves Estrangeiras (FKs)
-    SAFE_CAST(
-        REGEXP_REPLACE(id_cargo_fk, r'\.0$', '') AS INT64
-    ) id_cargo,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_idioma_fk, r'\.0$', '') AS INT64
-    ) id_idioma,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_pais_ddi_fk, r'\.0$', '') AS INT64
-    ) id_pais_ddi,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_tratamento_fk, r'\.0$', '') AS INT64
-    ) id_tratamento,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_escolaridade_fk, r'\.0$', '') AS INT64
-    ) id_escolaridade,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_tipo_endereco_fk, r'\.0$', '') AS INT64
-    ) id_tipo_endereco,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_bairro_logradouro_fk, r'\.0$', '') AS INT64
-    ) id_bairro_logradouro,
-    SAFE_CAST(
-        REGEXP_REPLACE(id_unidade_organizacional_fk, r'\.0$', '') AS INT64
-    ) id_unidade_organizacional,
+    {{ clean_and_cast('id_cargo_fk', 'int64') }} id_cargo,
+    {{ clean_and_cast('id_idioma_fk', 'int64') }} id_idioma,
+    {{ clean_and_cast('id_pais_ddi_fk', 'int64') }} id_pais_ddi,
+    {{ clean_and_cast('id_tratamento_fk', 'int64') }} id_tratamento,
+    {{ clean_and_cast('id_escolaridade_fk', 'int64') }} id_escolaridade,
+    {{ clean_and_cast('id_tipo_endereco_fk', 'int64') }} id_tipo_endereco,
+    {{ clean_and_cast('id_bairro_logradouro_fk', 'int64') }} id_bairro_logradouro,
+    {{ clean_and_cast('id_unidade_organizacional_fk', 'int64') }} id_unidade_organizacional,
 
     -- Contato (Email e Telefone)
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_email, r'\.0$', '') AS STRING
-    ) email,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_telefone_1, r'\.0$', '') AS STRING
-    ) telefone_1,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_telefone_2, r'\.0$', '') AS STRING
-    ) telefone_2,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_telefone_3, r'\.0$', '') AS STRING
-    ) telefone_3,
+    {{ clean_and_cast('ds_email', 'string') }} email,
+    {{ clean_and_cast('ds_telefone_1', 'string') }} telefone_1,
+    {{ clean_and_cast('ds_telefone_2', 'string') }} telefone_2,
+    {{ clean_and_cast('ds_telefone_3', 'string') }} telefone_3,
 
     -- Endereço
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_endereco, r'\.0$', '') AS STRING
-    ) endereco,
+    {{ clean_and_cast('ds_endereco', 'string') }} endereco,
     SAFE_CAST(
         SAFE_CAST(ds_endereco_numero AS FLOAT64) AS INT64
     ) endereco_numero,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_endereco_cep, r'\.0$', '') AS STRING
-    ) endereco_cep,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_endereco_complemento, r'\.0$', '') AS STRING
-    ) endereco_complemento,
-    SAFE_CAST(
-        REGEXP_REPLACE(ds_endereco_referencia, r'\.0$', '') AS STRING
-    ) endereco_referencia,
+    {{ clean_and_cast('ds_endereco_cep', 'string') }} endereco_cep,
+    {{ clean_and_cast('ds_endereco_complemento', 'string') }} endereco_complemento,
+    {{ clean_and_cast('ds_endereco_referencia', 'string') }} endereco_referencia,
     SAFE_CAST(
         SAFE_CAST(nu_coord_x AS FLOAT64) AS FLOAT64
     ) coordenada_x,
@@ -150,42 +102,18 @@ SELECT
     ) coordenada_y,
 
     -- Flags/Status
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_ativo, r'\.0$', '') AS STRING
-    ) flag_ativo,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_auditor, r'\.0$', '') AS STRING
-    ) flag_auditor,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_sms, r'\.0$', '') AS STRING
-    ) flag_sms,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_email, r'\.0$', '') AS STRING
-    ) flag_email,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_recebe_sms, r'\.0$', '') AS STRING
-    ) flag_recebe_sms,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_recebe_email, r'\.0$', '') AS STRING
-    ) flag_recebe_email,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_reintegracao_sms, r'\.0$', '') AS STRING
-    ) flag_reintegracao_sms,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_reintegracao_email, r'\.0$', '') AS STRING
-    ) flag_reintegracao_email,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_nao_reside_no_municipio, r'\.0$', '') AS STRING
-    ) flag_nao_reside_no_municipio,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_recebe_notificacao_generica, r'\.0$', '') AS STRING
-    ) flag_recebe_notificacao_generica,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_recebe_notificacao_alerta_rio, r'\.0$', '') AS STRING
-    ) flag_recebe_notificacao_alerta_rio,
-    SAFE_CAST(
-        REGEXP_REPLACE(fl_recebe_notificacao_andamento_chamado, r'\.0$', '') AS STRING
-    ) flag_recebe_notificacao_andamento_chamado,
+    {{ clean_and_cast('fl_ativo', 'string') }} flag_ativo,
+    {{ clean_and_cast('fl_auditor', 'string') }} flag_auditor,
+    {{ clean_and_cast('fl_sms', 'string') }} flag_sms,
+    {{ clean_and_cast('fl_email', 'string') }} flag_email,
+    {{ clean_and_cast('fl_recebe_sms', 'string') }} flag_recebe_sms,
+    {{ clean_and_cast('fl_recebe_email', 'string') }} flag_recebe_email,
+    {{ clean_and_cast('fl_reintegracao_sms', 'string') }} flag_reintegracao_sms,
+    {{ clean_and_cast('fl_reintegracao_email', 'string') }} flag_reintegracao_email,
+    {{ clean_and_cast('fl_nao_reside_no_municipio', 'string') }} flag_nao_reside_no_municipio,
+    {{ clean_and_cast('fl_recebe_notificacao_generica', 'string') }} flag_recebe_notificacao_generica,
+    {{ clean_and_cast('fl_recebe_notificacao_alerta_rio', 'string') }} flag_recebe_notificacao_alerta_rio,
+    {{ clean_and_cast('fl_recebe_notificacao_andamento_chamado', 'string') }} flag_recebe_notificacao_andamento_chamado,
 
     -- Datas de Controle
     SAFE_CAST(

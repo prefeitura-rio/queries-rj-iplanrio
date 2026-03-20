@@ -8,8 +8,8 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_termo_aditivo), r'\.0$', '') AS INT64) AS id_termo_aditivo,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_contrato), r'\.0$', '') AS INT64) AS id_contrato,
+  {{ clean_and_cast('id_termo_aditivo', 'int64', trim=true) }} AS id_termo_aditivo,
+  {{ clean_and_cast('id_contrato', 'int64', trim=true) }} AS id_contrato,
   SAFE_CAST(TRIM(num_termo_aditivo) AS STRING) AS num_termo_aditivo,
   SAFE_CAST(TRIM(cod_os) AS INT64) AS id_os,
   SAFE_CAST(DATE(dt_atualizacao) AS DATE) AS data_atualizacao,

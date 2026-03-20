@@ -7,9 +7,9 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_bem), r'\.0$', '') AS INT64) AS id_bem,
+  {{ clean_and_cast('id_bem', 'int64', trim=true) }} AS id_bem,
   SAFE_CAST(TRIM(cod_os) AS INT64) AS id_os,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_contrato), r'\.0$', '') AS INT64) AS id_contrato,
+  {{ clean_and_cast('id_contrato', 'int64', trim=true) }} AS id_contrato,
   SAFE_CAST(TRIM(ref_mes) AS INT64) AS ref_mes,
   SAFE_CAST(TRIM(ref_ano) AS INT64) AS ref_ano,
   SAFE_CAST(TRIM(id_bem_tipo) AS INT64) AS id_bem_tipo,

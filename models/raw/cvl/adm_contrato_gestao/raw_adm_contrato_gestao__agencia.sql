@@ -7,8 +7,8 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_agencia), r'\.0$', '') AS STRING) AS id_agencia,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_banco), r'\.0$', '') AS STRING) AS id_banco,
+  {{ clean_and_cast('id_agencia', 'string', trim=true) }} AS id_agencia,
+  {{ clean_and_cast('id_banco', 'string', trim=true) }} AS id_banco,
   SAFE_CAST(TRIM(numero_agencia) AS STRING) AS numero_agencia,
   SAFE_CAST(TRIM(digito) AS STRING) AS digito,
   SAFE_CAST(TRIM(agencia) AS STRING) AS agencia,

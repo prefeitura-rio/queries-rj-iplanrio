@@ -9,21 +9,21 @@
 
 SELECT
     DISTINCT
-        SAFE_CAST(REGEXP_REPLACE(cd_obra, r'\.0$', '') AS STRING) id_obra,
+        {{ clean_and_cast('cd_obra', 'string') }} id_obra,
         SAFE_CAST(ds_titulo_objeto AS STRING) titulo_objeto,
         SAFE_CAST(ds_estado AS STRING) estado,
-        SAFE_CAST(REGEXP_REPLACE(nr_medicao, r'\.0$', '') AS STRING) id_medicao,
+        {{ clean_and_cast('nr_medicao', 'string') }} id_medicao,
         SAFE_CAST(
             SAFE.PARSE_DATE('%Y-%m-%d', dt_ini_medicao) AS DATE
         ) AS data_inicio_medicao,
         SAFE_CAST(
             SAFE.PARSE_DATE('%Y-%m-%d', dt_fim_medicao) AS DATE
         ) AS data_fim_medicao,
-        SAFE_CAST(REGEXP_REPLACE(cd_etapa, r'\.0$', '') AS STRING) id_etapa,
+        {{ clean_and_cast('cd_etapa', 'string') }} id_etapa,
         SAFE_CAST(nm_sistema AS STRING) nome_sistema,
         SAFE_CAST(nm_sub_sistema AS STRING) nome_subsistema,
         SAFE_CAST(nm_planilha AS STRING) nome_planilha,
-        SAFE_CAST(REGEXP_REPLACE(nr_item, r'\.0$', '') AS STRING) numero_item,
+        {{ clean_and_cast('nr_item', 'string') }} numero_item,
         SAFE_CAST(cd_chave_externa AS STRING) chave_externa,
         SAFE_CAST(ds_item_servico AS STRING) descricao_item_servico,
         SAFE_CAST(tx_unidade_medida AS STRING) unidade_medida,

@@ -7,7 +7,7 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_secretaria), r'\.0$', '') AS STRING) AS id_secretaria,
+  {{ clean_and_cast('id_secretaria', 'string', trim=true) }} AS id_secretaria,
   SAFE_CAST(TRIM(secretaria) AS STRING) AS secretaria,
   SAFE_CAST(TRIM(sigla) AS STRING) AS sigla,
   SAFE_CAST(TRIM(regional) AS STRING) AS regional,

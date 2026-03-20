@@ -8,13 +8,13 @@
 
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_item_nf), r'\.0$', '') AS STRING) AS id_item_nf,
+  {{ clean_and_cast('id_item_nf', 'string', trim=true) }} AS id_item_nf,
   SAFE_CAST(TRIM(cod_item_nf) AS STRING) AS cod_item_nf,
   SAFE_CAST(TRIM(qtd_material) AS NUMERIC) AS qtd_material,
   SAFE_CAST(TRIM(valor_unitario) AS NUMERIC) AS valor_unitario,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(referencia_mes_nf), r'\.0$', '') AS INT64) AS referencia_mes_nf,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(referencia_ano_nf), r'\.0$', '') AS INT64) AS referencia_ano_nf,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_fornecedor), r'\.0$', '') AS STRING) AS id_fornecedor,
+  {{ clean_and_cast('referencia_mes_nf', 'int64', trim=true) }} AS referencia_mes_nf,
+  {{ clean_and_cast('referencia_ano_nf', 'int64', trim=true) }} AS referencia_ano_nf,
+  {{ clean_and_cast('id_fornecedor', 'string', trim=true) }} AS id_fornecedor,
   SAFE_CAST(TRIM(valor_total) AS NUMERIC) AS valor_total,
   SAFE_CAST(TRIM(num_documento) AS STRING) AS num_documento,
   SAFE_CAST(TRIM(cod_organizacao) AS STRING) AS cod_instituicao,

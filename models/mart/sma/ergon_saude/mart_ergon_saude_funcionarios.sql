@@ -83,11 +83,9 @@ with
 
     secretaria as (
         select
-            safe_cast(regexp_replace(cd_ua, r'\.0$', '') as int64) as id_secretaria,
-            safe_cast(
-                regexp_replace(sigla_ua, r'\.0$', '') as string
-            ) as secretaria_sigla,
-            safe_cast(regexp_replace(nome_ua, r'\.0$', '') as string) as secretaria_nome
+            {{ clean_and_cast('cd_ua', 'int64') }} as id_secretaria,
+            {{ clean_and_cast('sigla_ua', 'string') }} as secretaria_sigla,
+            {{ clean_and_cast('nome_ua', 'string') }} as secretaria_nome
         from {{ source('unidades_administrativas_staging', 'orgaos')}}
     ),
 

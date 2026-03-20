@@ -16,7 +16,7 @@ with source as (
 )
 SELECT
     SAFE_CAST(ano AS INT64) ano,
-    SAFE_CAST(REGEXP_REPLACE(tur_id, r'\.0$', '') AS STRING) id_turma,
+    {{ clean_and_cast('tur_id', 'string') }} id_turma,
     TRIM(alu_id) AS id_aluno_original,
     SUBSTR(SHA256(
         CONCAT(

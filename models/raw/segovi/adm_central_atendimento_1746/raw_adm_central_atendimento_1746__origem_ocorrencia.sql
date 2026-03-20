@@ -18,9 +18,9 @@ WITH source_data AS (
 )
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(TRIM(id_origem_ocorrencia), r'\.0$', '') AS STRING) AS id_origem_ocorrencia,
+    {{ clean_and_cast('id_origem_ocorrencia', 'string', trim=true) }} AS id_origem_ocorrencia,
     SAFE_CAST(TRIM(no_origem_ocorrencia) AS STRING) AS no_origem_ocorrencia,
-    SAFE_CAST(REGEXP_REPLACE(TRIM(id_origem_ocorrencia_categoria_fk), r'\.0$', '') AS STRING) AS id_origem_ocorrencia_categoria_fk,
+    {{ clean_and_cast('id_origem_ocorrencia_categoria_fk', 'string', trim=true) }} AS id_origem_ocorrencia_categoria_fk,
     SAFE_CAST(TRIM(fl_ativo) AS STRING) AS fl_ativo,
     SAFE_CAST(_airbyte_extracted_at AS DATETIME) AS extracted_at
 FROM source_data AS t

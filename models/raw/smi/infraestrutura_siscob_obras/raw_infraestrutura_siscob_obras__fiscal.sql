@@ -8,7 +8,7 @@
 
 select 
     DISTINCT
-        SAFE_CAST(REGEXP_REPLACE(cd_obra, r'\.0$', '') AS STRING) id_obra,
+        {{ clean_and_cast('cd_obra', 'string') }} id_obra,
         SAFE_CAST(
             SAFE.PARSE_DATE ('%Y-%m-%d', dt_inicio_vig) AS DATE
         ) AS data_inicio_vigencia,

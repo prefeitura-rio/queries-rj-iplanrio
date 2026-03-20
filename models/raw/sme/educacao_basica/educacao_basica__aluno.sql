@@ -12,7 +12,7 @@ with source as (
 
 SELECT
     SAFE_CAST(ano AS INT64) ano,
-    SAFE_CAST(REGEXP_REPLACE(tur_id, r'\.0$', '') AS STRING) id_turma,
+    {{ clean_and_cast('tur_id', 'string') }} id_turma,
     SAFE_CAST(turma AS STRING) turma,
     TRIM(alu_id)  id_aluno_original,
     SUBSTR(SHA256(
@@ -30,14 +30,14 @@ SELECT
     ), 2,17) as  id_aluno_ano,
     SAFE_CAST(matricula AS STRING) matricula,
     SAFE_CAST(situacao AS STRING) situacao,
-    SAFE_CAST(REGEXP_REPLACE(cod_ult_mov, r'\.0$', '') AS STRING) id_utltima_movimentacao,
+    {{ clean_and_cast('cod_ult_mov', 'string') }} id_utltima_movimentacao,
     SAFE_CAST(ult_movimentacao AS STRING) ultima_movimentacao,
     SAFE_CAST(sexo AS STRING) genero,
     SAFE_CAST(raca_cor AS STRING) raca_cor,
     SAFE_CAST(SAFE.PARSE_DATE('%d/%m/%Y',  datanascimento) AS DATE) data_nascimento,
-    SAFE_CAST(REGEXP_REPLACE(idade_atual, r'\.0$', '') AS INT64) idade_atual,
-    SAFE_CAST(REGEXP_REPLACE(idade_3112, r'\.0$', '') AS INT64) idade_final_ano,
-    SAFE_CAST(REGEXP_REPLACE(cod_def, r'\.0$', '') AS STRING) id_deficiencia,
+    {{ clean_and_cast('idade_atual', 'int64') }} idade_atual,
+    {{ clean_and_cast('idade_3112', 'int64') }} idade_final_ano,
+    {{ clean_and_cast('cod_def', 'string') }} id_deficiencia,
     SAFE_CAST(deficiencia AS STRING) deficiencia,
     SAFE_CAST(bairro AS STRING) bairro,
     SAFE_CAST(mora_com_filiacao AS STRING) mora_com_filiacao,

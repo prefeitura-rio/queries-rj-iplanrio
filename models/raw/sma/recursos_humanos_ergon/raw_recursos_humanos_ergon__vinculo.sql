@@ -19,7 +19,7 @@ SELECT
     safe_cast(CATEGORIA AS STRING) AS categoria,
     safe_cast(DESCONTA_IR AS STRING) AS desconta_ir,
     safe_cast(MOTIVO AS STRING) AS descricao_provimento,
-    safe_cast(REGEXP_REPLACE(CAST(CLASSIFCONC AS STRING), r'\.0$', '') AS STRING) AS classificacao_concurso,
+    {{ clean_and_cast('CLASSIFCONC', 'string') }} AS classificacao_concurso,
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTINI_CESSAO) AS DATE) AS data_inicio_cessao,
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTFIM_CESSAO) AS DATE) AS data_fim_cessao,
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTCONC) AS DATE) AS data_concurso,

@@ -7,7 +7,7 @@
 }}
 
 SELECT
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_fornecedor), r'\.0$', '') AS STRING) AS id_fornecedor,
+  {{ clean_and_cast('id_fornecedor', 'string', trim=true) }} AS id_fornecedor,
   SAFE_CAST(TRIM(cod_fornecedor) AS STRING) AS cod_fornecedor,
   SAFE_CAST(TRIM(fornecedor) AS STRING) AS fornecedor,
   SAFE_CAST(TRIM(tipo_pessoa) AS STRING) AS tipo_pessoa,
@@ -26,7 +26,7 @@ SELECT
   SAFE_CAST(TRIM(telefone_fax) AS STRING) AS telefone_fax,
   SAFE_CAST(TRIM(email) AS STRING) AS email,
   SAFE_CAST(TRIM(contato) AS STRING) AS contato,
-  SAFE_CAST(REGEXP_REPLACE(TRIM(id_log_importacao), r'\.0$', '') AS STRING) AS id_log_importacao,
+  {{ clean_and_cast('id_log_importacao', 'string', trim=true) }} AS id_log_importacao,
   SAFE_CAST(TRIM(cod_organizacao) AS STRING) AS cod_organizacao,
   SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_envio_data_envio) AS DATETIME) AS data_envio
 FROM {{ source('brutos_osinfo_staging', 'fornecedor') }} AS t
