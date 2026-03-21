@@ -485,13 +485,17 @@ def run_remove_quotes(args):
     import glob
     import os
 
+    # Safe access to optional args
+    verbose = getattr(args, "verbose", False)
+    apply_changes = getattr(args, "apply", False)
+
     print(f"\n🔧 Executando: remove-quotes")
 
     base_path, is_single_file = resolve_path_or_model(args)
 
     if not is_single_file:
         print(f"📁 Caminho: {args.path}")
-    print(f"🔒 Modo: {'DRY-RUN (simulação)' if not args.apply else 'APLICAR MUDANÇAS'}\n")
+    print(f"🔒 Modo: {'DRY-RUN (simulação)' if not apply_changes else 'APLICAR MUDANÇAS'}\n")
 
     # Buscar arquivos YAML
     pattern = args.file_pattern or "*.yml"
@@ -504,7 +508,7 @@ def run_remove_quotes(args):
 
     print(f"📄 Encontrados {len(yml_files)} arquivo(s) YAML\n")
 
-    if not args.apply:
+    if not apply_changes:
         print("⚠️  MODO DRY-RUN - Nenhum arquivo será modificado\n")
 
     files_changed = 0
@@ -525,7 +529,7 @@ def run_remove_quotes(args):
                     if j >= 0 and 'data_type:' in lines[j]:
                         if 'string' not in lines[j]:
                             changed = True
-                            if args.verbose or not args.apply:
+                            if verbose or not apply_changes:
                                 print(f"  Removendo quote: true (linha {i+1}) - tipo não-string")
                             continue
                 new_lines.append(line)
@@ -533,9 +537,9 @@ def run_remove_quotes(args):
             if changed:
                 files_changed += 1
                 rel_path = yml_file.relative_to(PROJECT_ROOT)
-                print(f"{'🔍' if not args.apply else '✅'} {rel_path}")
+                print(f"{'🔍' if not apply_changes else '✅'} {rel_path}")
 
-                if args.apply:
+                if apply_changes:
                     with open(yml_file, 'w', encoding='utf-8') as f:
                         f.writelines(new_lines)
 
@@ -547,7 +551,7 @@ def run_remove_quotes(args):
     print(f"  Arquivos processados: {len(yml_files)}")
     print(f"  Arquivos modificados: {files_changed}")
 
-    if not args.apply and files_changed > 0:
+    if not apply_changes and files_changed > 0:
         print(f"\n💡 Execute com --apply para aplicar as mudanças")
     elif files_changed > 0:
         print(f"\n✅ Mudanças aplicadas com sucesso!")
@@ -561,13 +565,16 @@ def run_fix_exemplo(args):
     """Executa o script replace_ex_with_exemplo."""
     import re
 
+    # Safe access to optional args
+    apply_changes = getattr(args, "apply", False)
+
     print(f"\n🔧 Executando: fix-exemplo")
 
     base_path, is_single_file = resolve_path_or_model(args)
 
     if not is_single_file:
         print(f"📁 Caminho: {args.path}")
-    print(f"🔒 Modo: {'DRY-RUN (simulação)' if not args.apply else 'APLICAR MUDANÇAS'}\n")
+    print(f"🔒 Modo: {'DRY-RUN (simulação)' if not apply_changes else 'APLICAR MUDANÇAS'}\n")
 
     pattern = re.compile(r"Ex\.?:")
 
@@ -582,7 +589,7 @@ def run_fix_exemplo(args):
 
     print(f"📄 Encontrados {len(yml_files)} arquivo(s) YAML\n")
 
-    if not args.apply:
+    if not apply_changes:
         print("⚠️  MODO DRY-RUN - Nenhum arquivo será modificado\n")
 
     files_changed = 0
@@ -601,10 +608,10 @@ def run_fix_exemplo(args):
                 total_replacements += len(matches)
 
                 rel_path = yml_file.relative_to(PROJECT_ROOT)
-                print(f"{'🔍' if not args.apply else '✅'} {rel_path}")
+                print(f"{'🔍' if not apply_changes else '✅'} {rel_path}")
                 print(f"  {len(matches)} substituição(ões)")
 
-                if args.apply:
+                if apply_changes:
                     with open(yml_file, 'w', encoding='utf-8') as f:
                         f.write(new_text)
 
@@ -617,7 +624,7 @@ def run_fix_exemplo(args):
     print(f"  Arquivos modificados: {files_changed}")
     print(f"  Total de substituições: {total_replacements}")
 
-    if not args.apply and files_changed > 0:
+    if not apply_changes and files_changed > 0:
         print(f"\n💡 Execute com --apply para aplicar as mudanças")
     elif files_changed > 0:
         print(f"\n✅ Mudanças aplicadas com sucesso!")

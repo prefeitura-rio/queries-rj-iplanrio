@@ -123,6 +123,16 @@ def run_test_for_command(
         # Executar CLI
         result = run_cli_command(command, test_file, check_context)
 
+        # Validar código de retorno
+        if result.returncode != 0:
+            err = (result.stderr or result.stdout or "").strip()
+            return TestResult(
+                input_file.name,
+                command,
+                False,
+                f"CLI retornou código {result.returncode}: {err[:500]}"
+            )
+
         # Ler resultado
         result_content = test_file.read_text()
         expected_content = expected_file.read_text()

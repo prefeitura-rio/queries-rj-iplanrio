@@ -23,7 +23,7 @@ python cli.py test                              # Validar
 
 ## 📂 Estrutura
 
-```
+```text
 queries-rj-iplanrio/
 ├── cli.py                              # ⭐ Ponto de entrada
 ├── macros/clean_and_cast.sql           # Macro principal (trim=true padrão)
@@ -203,8 +203,8 @@ python cli.py test --filter 99
 python cli.py test --verbose  # Ver diffs
 python cli.py test --filter 08
 
-# Imports não funcionando - executar da raiz
-cd /Users/m/github/emd/queries-rj-iplanrio  # ✅
+# Imports não funcionando - executar da raiz do projeto
+cd <diretório-raiz-do-projeto>  # ✅
 python cli.py <comando>
 
 # Transformações não aplicadas
