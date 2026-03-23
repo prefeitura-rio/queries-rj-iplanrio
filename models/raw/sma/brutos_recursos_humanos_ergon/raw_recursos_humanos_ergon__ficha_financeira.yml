@@ -9,10 +9,12 @@ models:
         data_type: date
       - name: numero_folha
         description: Número da folha da ficha financeira.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__ficha_financeira__id_funcionario__not_null
@@ -20,7 +22,8 @@ models:
                 severity: warn
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__ficha_financeira__id_vinculo__not_null
@@ -28,13 +31,15 @@ models:
                 severity: warn
       - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: mes_ano_direito
         description: Mês e ano trabalhado relativo ao pagamento.
         data_type: date
       - name: id_rubrica
         description: Rubrica da despesa. Caso o funcionário receba em rubricas diferentes haverá mais de um registro nesta visão.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: tipo_rubrica
         description: Tipo de rubrica. Ex, Auxiliar, consignatária, desconto ou vantagem.
         data_type: string
@@ -54,7 +59,8 @@ models:
         data_type: numeric
       - name: id_empresa
         description: Código da empresa.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: data_particao
         description: Data da partição dos dados.
         data_type: date

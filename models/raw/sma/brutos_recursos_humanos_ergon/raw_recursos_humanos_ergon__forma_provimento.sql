@@ -5,7 +5,7 @@
 }}
 
 SELECT
-    SAFE_CAST(sigla AS int64) AS id_forma_provimento,
+    SAFE_CAST(sigla AS string) AS id_forma_provimento,
     SAFE_CAST(nome AS STRING) AS nome,
     SAFE_CAST(inativo AS STRING) AS inativo,
     SAFE_CAST(primeiro_prov AS STRING) AS primeiro_provimento,

@@ -8,14 +8,14 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(CAST(NUMERO AS string), r'\.0$', '') AS int64) AS id_funcionario,
+    SAFE_CAST(REGEXP_REPLACE(CAST(NUMERO AS string), r'\.0$', '') AS string) AS id_funcionario,
     SAFE_CAST(NOME AS STRING) AS nome_funcionario,
     SAFE_CAST(FLEX_CAMPO_03 AS STRING) AS nome_social,
     SAFE_CAST(TRATAMENTO AS STRING) AS nome_tratamento,
     SAFE_CAST(SEXO AS STRING) AS sexo,
     SAFE_CAST(CAST(RACA AS STRING) AS STRING) AS codigo_raca_cor,
     SAFE_CAST(DEFICIENTE AS STRING) AS deficiente,
-    SAFE_CAST(TIPODEFIC AS int64) AS codigo_deficiencia,
+    SAFE_CAST(TIPODEFIC AS string) AS codigo_deficiencia,
     safe_cast(SAFE_CAST(DTNASC as timestamp) AS DATE) AS data_nascimento,
     SAFE_CAST(FLEX_CAMPO_69 AS STRING) AS pais_nascimento,
     SAFE_CAST(CIDNASC AS STRING) AS nome_municipio_nascimento,

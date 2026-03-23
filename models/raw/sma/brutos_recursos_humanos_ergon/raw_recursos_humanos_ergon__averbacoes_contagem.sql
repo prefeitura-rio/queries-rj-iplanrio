@@ -8,9 +8,9 @@
 }}
 
 SELECT
-    SAFE_CAST(NUMFUNC AS int64) AS id_funcionario,
-    SAFE_CAST(NUMVINC AS int64) AS id_vinculo,
-    SAFE_CAST(CHAVEAVERB AS int64) AS id_averbacao,
+    SAFE_CAST(NUMFUNC AS string) AS id_funcionario,
+    SAFE_CAST(NUMVINC AS string) AS id_vinculo,
+    SAFE_CAST(CHAVEAVERB AS string) AS id_averbacao,
     SAFE_CAST(FINALIDADE AS STRING) AS finalidade,
     SAFE_CAST(DIAS AS int64) AS dias
 FROM {{ source('brutos_ergon_staging', 'AVERB_OQUE_CONTA') }} AS t

@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__total_contagem__id_funcionario__not_null
@@ -14,7 +15,8 @@ models:
                 severity: warn
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__total_contagem__id_vinculo__not_null
@@ -22,7 +24,8 @@ models:
                 severity: warn
       - name: id_chave
         description: Chave de identificação do cadastro da averbação realizada 
-        data_type: integer
+        data_type: string
+        quote: true
       - name: finalidade
         description: Registro da finalidade da averbação que aceita múltiplas finalidades para um mesmo registro de averbação. Exemplo Adic Tempo Serv, Aposentadoria, Progressão
         data_type: string
@@ -51,6 +54,7 @@ models:
         quote: true
       - name: id_empresa
         description: Identificador da empresa no contexto do Ergon, para a qual a averbação foi realizada, de acordo com o provimento do funcionário.
-        data_type: integer
+        data_type: string
+        quote: true
 
 

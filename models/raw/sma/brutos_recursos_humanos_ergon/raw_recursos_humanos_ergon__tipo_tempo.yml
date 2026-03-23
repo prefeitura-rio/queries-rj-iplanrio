@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_tipo_tempo
         description: Coluna que armazena o código numérico referente ao tipo de tempo.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: nome_tipo_tempo
         description: Campo que armazena o nome do tipo de tempo.
         data_type: string
@@ -42,5 +43,6 @@ models:
       - name: progressao
         description: Informa se aquele tempo é computado para fins de contagem para a contagem de progressão no cargo.
         data_type: string
+        quote: true
 
 

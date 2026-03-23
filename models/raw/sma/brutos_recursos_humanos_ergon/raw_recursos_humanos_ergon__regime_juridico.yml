@@ -11,5 +11,6 @@ models:
       - name: nome
         description: Nome do regime jurídico. Ex. Celetista, estatutário.
         data_type: string
+        quote: true
 
 

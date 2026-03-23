@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_funcionario
         description: Identificador único do funcionário na PCRJ, sistema Ergon
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__licenca_afastamento__id_funcionario__not_null
@@ -14,7 +15,8 @@ models:
                 severity: warn
       - name: id_vinculo
         description: Identificador do vínculo do referido funcionário para o qual aponta a ocorrência de afastamento
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__licenca_afastamento__id_vinculo__not_null
@@ -32,7 +34,8 @@ models:
         quote: true
       - name: id_afastamento
         description: Código do tipo de afastamento cadastrado no sistema Ergon
-        data_type: integer
+        data_type: string
+        quote: true
       - name: motivo
         description: Campo de texto livre para descrição do motivo do afastamento
         data_type: string
@@ -49,7 +52,8 @@ models:
         data_type: date
       - name: id_empresa
         description: Empresa do servidor após o provimento. Sempre é a mesma empresa do vínculo.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: crm
         description: CRM do médico. Preenchido somente em casos de afastamento médico.
         data_type: string

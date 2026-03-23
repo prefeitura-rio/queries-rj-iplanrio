@@ -10,7 +10,8 @@ models:
         quote: true
       - name: id_frequencia
         description: Código de frequência.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: data_frequencia
         description: Data da ocorrência de frequência.
         data_type: date

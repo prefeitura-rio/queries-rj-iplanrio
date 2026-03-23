@@ -8,7 +8,7 @@
 }}
 
 SELECT
-    safe_cast(sigla as int64) as id_tipo_tempo,
+    safe_cast(sigla as string) as id_tipo_tempo,
     SAFE_CAST(nome AS STRING) AS nome_tipo_tempo,
     safe_cast(aposentadoria as string) as aposentadoria,
     SAFE_CAST(ferias AS string) AS ferias,

@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_funcionario
         description: Identificador no banco de dados do registro da pessoa na PCRJ, independente de quantos cargos exerça ou quantas matrículas tenha.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:  
           - unique:  
               name: raw_recursos_humanos_ergon__funcionario__id_funcionario__unique  

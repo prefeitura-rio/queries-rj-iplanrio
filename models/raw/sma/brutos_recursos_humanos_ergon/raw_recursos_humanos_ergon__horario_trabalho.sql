@@ -8,7 +8,7 @@
 }}
 
 SELECT
-    SAFE_CAST(CODIGO AS int64) AS id_horario,
+    SAFE_CAST(CODIGO AS string) AS id_horario,
     SAFE_CAST(DESCRICAO AS STRING) AS descricao,
     SAFE_CAST(PONTLEI AS STRING) AS publicacao_diario_oficial,
     SAFE_CAST(CARGA_HR_MES AS STRING) AS carga_horaria_mes,

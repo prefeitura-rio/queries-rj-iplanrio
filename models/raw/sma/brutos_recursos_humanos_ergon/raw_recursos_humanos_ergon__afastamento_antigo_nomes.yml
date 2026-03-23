@@ -6,10 +6,12 @@ models:
     columns:
       - name: id_empresa
         description: Código da empresa.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_afastamento
         description: Código do afastamento.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: nome_afastamento
         description: Nome do afastamento.
         data_type: string

@@ -8,8 +8,8 @@
 }}
 
 SELECT
-    safe_cast(NUMFUNC AS int64) AS id_funcionario,
-    safe_cast(NUMERO AS int64) AS id_vinculo,
+    safe_cast(NUMFUNC AS string) AS id_funcionario,
+    safe_cast(NUMERO AS string) AS id_vinculo,
     safe_cast(TIPOVINC AS STRING) AS tipo_vinculo,
     safe_cast(MATRIC AS STRING) AS id_matricula_vinculo,
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', DTNOM) AS DATE) AS data_nomeacao,
@@ -30,10 +30,10 @@ SELECT
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTAPOSENT) AS DATE) AS data_aposentadoria,
     safe_cast(TIPOAPOS AS STRING) AS tipo_aposentadoria,
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DTVAC) AS DATE) AS data_vacancia,
-    safe_cast(FORMAVAC AS int64) AS id_forma_vacancia,
+    safe_cast(FORMAVAC AS string) AS id_forma_vacancia,
     safe_cast(MOTIVOVAC AS STRING) AS motivo_vacancia,
-    safe_cast(NUMVINCANT AS int64) AS id_vinculo_anterior,
-    safe_cast(NUMVINCPOS AS int64) AS id_vinculo_posterior,
+    safe_cast(NUMVINCANT AS string) AS id_vinculo_anterior,
+    safe_cast(NUMVINCPOS AS string) AS id_vinculo_posterior,
     safe_cast(TIPOORG_REQ AS STRING) AS tipo_orgao_origem,
     safe_cast(FUNCAO_REQ AS STRING) AS funcao_origem_requisicao,
     safe_cast(FONE_REQ AS STRING) AS telefone_requisicao,
@@ -46,7 +46,7 @@ SELECT
     safe_cast(FLEX_CAMPO_05 AS STRING) AS id_processo_origem,
     safe_cast(FLEX_CAMPO_09 AS STRING) AS contrato_suspenso,
     safe_cast(FLEX_CAMPO_18 AS STRING) AS cota,
-    safe_cast(EMP_CODIGO AS int64) AS id_empresa,
+    safe_cast(EMP_CODIGO AS string) AS id_empresa,
     safe_cast(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DT_HOMOLOG) AS DATE) AS data_homologacao_aposentadoria,
     _airbyte_extracted_at AS updated_at
 FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_VINCULOS') }}

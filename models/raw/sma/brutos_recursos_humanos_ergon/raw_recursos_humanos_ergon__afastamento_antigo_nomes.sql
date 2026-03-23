@@ -8,7 +8,7 @@
 }}
 
 SELECT
-    SAFE_CAST(EMP_CODIGO AS int64) AS id_empresa,
-    SAFE_CAST(AFAST_COD AS int64) AS id_afastamento,
+    SAFE_CAST(EMP_CODIGO AS string) AS id_empresa,
+    SAFE_CAST(AFAST_COD AS string) AS id_afastamento,
     SAFE_CAST(AFAST_DESCR AS string) AS nome_afastamento
 FROM {{ source('brutos_ergon_staging', 'SIRHU_DBTABELAS_AFASTAMENTO') }} AS t

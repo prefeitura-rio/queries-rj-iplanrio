@@ -8,7 +8,7 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(CAST(CARGO AS STRING), r'\.0$', '') AS int64) AS id_cargo,
+    SAFE_CAST(REGEXP_REPLACE(CAST(CARGO AS STRING), r'\.0$', '') AS string) AS id_cargo,
     SAFE_CAST(NOME AS STRING) AS nome,
     SAFE_CAST(CATEGORIA AS STRING) AS categoria,
     SAFE_CAST(SUBCATEGORIA AS STRING) AS subcategoria,

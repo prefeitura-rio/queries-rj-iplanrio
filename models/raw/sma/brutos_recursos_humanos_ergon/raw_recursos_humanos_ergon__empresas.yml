@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_empresa
         description: Código, dado pela prefeitura do Rio de Janeiro, da empresa.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: tipo_empresa
         description: Tipo da empresa, se é uma empresa pública, privada ou uma organização social.
         data_type: string

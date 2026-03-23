@@ -6,8 +6,8 @@ models:
     columns:
       - name: id_matricula_vinculo
         description: Matrícula do servidor.
-        data_type: integer
-        
+        data_type: string
+        quote: true
       - name: data_inicio
         description: Data incial do afastamento.
         data_type: date

@@ -8,7 +8,7 @@
 }}
 
 SELECT
-    SAFE_CAST(REGEXP_REPLACE(CAST(EMPRESA AS STRING), r'\.0$', '') AS int64) AS id_empresa,
+    SAFE_CAST(REGEXP_REPLACE(CAST(EMPRESA AS STRING), r'\.0$', '') AS string) AS id_empresa,
     SAFE_CAST(FLEX_CAMPO_07 AS STRING) AS tipo_empresa,
     SAFE_CAST(NOME AS STRING) AS nome_empresa,
     SAFE_CAST(FANTASIA AS STRING) AS sigla,

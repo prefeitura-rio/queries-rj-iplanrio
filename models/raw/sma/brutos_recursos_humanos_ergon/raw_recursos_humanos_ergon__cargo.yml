@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_cargo
         description: Código dado pela prefeitura do Rio de Janeiro ao tipo de cargo.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: nome
         description: Nome do tipo de cargo. Ex. Analista de Sistemas.
         data_type: string

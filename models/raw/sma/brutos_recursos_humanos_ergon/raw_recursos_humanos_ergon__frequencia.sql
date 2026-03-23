@@ -9,12 +9,12 @@
 }}
 
 SELECT
-    SAFE_CAST(NUMFUNC AS int64) AS id_funcionario,
-    SAFE_CAST(NUMVINC AS int64) AS id_vinculo,
+    SAFE_CAST(NUMFUNC AS string) AS id_funcionario,
+    SAFE_CAST(NUMVINC AS string) AS id_vinculo,
     safe_cast(SAFE_CAST(DTINI AS timestamp) as date) AS data_inicio,
     safe_cast(SAFE_CAST(DTFIM AS timestamp) as date) AS data_final,
     SAFE_CAST(TIPOFREQ AS STRING) AS tipo_frequencia,
-    SAFE_CAST(CODFREQ AS int64) AS id_frequencia,
+    SAFE_CAST(CODFREQ AS string) AS id_frequencia,
     SAFE_CAST(OBS AS STRING) AS observacoes,
-    SAFE_CAST(EMP_CODIGO AS int64) AS id_empresa
+    SAFE_CAST(EMP_CODIGO AS string) AS id_empresa
 FROM {{ source('brutos_ergon_staging', 'FREQUENCIAS') }} AS t

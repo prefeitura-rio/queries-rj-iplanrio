@@ -8,6 +8,6 @@
 }}
 
 SELECT
-    SAFE_CAST(NUMFUNC AS int64) AS id_funcionario,
+    SAFE_CAST(NUMFUNC AS string) AS id_funcionario,
     SAFE_CAST(MATRIC AS string) AS id_matricula
 FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_ERG_MATRICULAS') }} AS t

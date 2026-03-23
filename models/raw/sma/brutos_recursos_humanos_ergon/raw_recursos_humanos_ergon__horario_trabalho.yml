@@ -6,7 +6,9 @@ models:
     columns:
       - name: id_horario
         description: Identificador do horário na base de dados.
-        data_type: integer
+        data_type: string
+        quote: true
+
       - name: descricao
         description: Descrição do horário. Neste atributo deve constar o horário de entrada, de almoço e de saída relativos a todos os dias da semana.
         data_type: string

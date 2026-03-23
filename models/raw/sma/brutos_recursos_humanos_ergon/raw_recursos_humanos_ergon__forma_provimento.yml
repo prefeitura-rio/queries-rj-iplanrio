@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_forma_provimento
         description: Código numérico definido pelo gestor do Sistema que identifica a forma de provimento.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: nome
         description: Nome da forma de provimento. Ex. NOMEACAO OU PROVIMENTO (relativo a sigla 01).
         data_type: string

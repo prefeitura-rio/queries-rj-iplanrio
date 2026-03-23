@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_lancamento
         description: Chave gerada pelo banco para a fitabanco para cada numfunc
-        data_type: integer
+        data_type: string
+        quote: true
       - name: mes_ano_referencia
         description: Mês e ano da folha de pagamentos.
         data_type: date
@@ -24,7 +25,8 @@ models:
         data_type: date
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__fita_banco__id_funcionario__not_null
@@ -32,7 +34,8 @@ models:
                 severity: warn
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa que vai receber o pagamento.
-        data_type: integer
+        data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: raw_recursos_humanos_ergon__fita_banco__id_vinculo__not_null
@@ -40,13 +43,16 @@ models:
                 severity: warn
       - name: numero_folha
         description: Número da Folha
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_rubrica
         description: Rubrica relativa ao pagamento a ser feito à pessoa que vai receber o pagamento. Caso haja rubricas diferentes haverá um registro para cada rubrica na fita_banco.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_setor
         description: Setor onde trabalha o funcionário. Caso não trabalhe o setor é a EGM.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: valor_vantagens
         description: Remuneração bruta.
         data_type: numeric
@@ -58,10 +64,12 @@ models:
         data_type: numeric
       - name: id_pensionista
         description: Número do pensionista associado ao funcionário, usado somente para a empresa 04 (Pensionistas da PREVIRIO).
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_dependente
         description: Número do dependente associado ao funcionário, quando dependente for cotista (pr ex. pensão alimentícia). Quando há mais de um dependente, há um registro por dependente.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: banco
         description: Número do banco onde está a conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
         data_type: integer
@@ -74,7 +82,8 @@ models:
         quote: true
       - name: id_cargo
         description: Cargo do funcionário associado ao pagamento.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: referencia
         description: Código do nível/posicionamento após o provimento. Ex PROFESSOR II, MM1, MM2, MM3, MM4, MM5, MM6, MM7, 999990 - ESPECIAL o valor do vencimento é zero.
         data_type: string
@@ -89,10 +98,12 @@ models:
         quote: true
       - name: id_empresa
         description: Código da empresa onde trabalha a pessoa que vai receber o pagamento.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_ficha
         description: Identificador único no banco de dados da ficha financeira da pessoa que vai receber o pagamento.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: regime_juridico
         description: Nome do regime jurídico da pessoa que vai receber o pagamento. Ex. Celetista, estatutário.
         data_type: string
@@ -115,7 +126,8 @@ models:
         quote: true
       - name: id_lotacao
         description: Órgão de Lotação. Código Numérico que indica a Secretaria em que o servidor está lotado. 1800 - SMS, 1600 - SME, etc. Ver tabela hsetor_.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: agencia_banco
         description: Número da agência onde está a conta corrente da pessoa que vai receber o pagamento, onde será depositado o pagamento.
         data_type: string

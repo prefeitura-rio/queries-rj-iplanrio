@@ -6,7 +6,8 @@ models:
     columns:
       - name: id_rubrica
         description: Identificador único da rubrica.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: tipo_rubrica
         description: Tipo da rubrica.
         data_type: string
@@ -25,5 +26,6 @@ models:
       - name: observacoes
         description: Observações sobre a rubrica.
         data_type: string
+        quote: true
 
 

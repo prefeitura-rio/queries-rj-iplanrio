@@ -6,10 +6,12 @@ models:
     columns:
       - name: id_setor
         description: Código do setor, dado pelo SICI.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_setor_pai
         description: Código do setor superior na hierarquia. Indica a subordinação direta, dado pelo SICI .
-        data_type: integer
+        data_type: string
+        quote: true
       - name: data_inicio
         description: Data de início de vigência do registro do setor. Normalmente indica a entrada no organograma da época.
         data_type: date
@@ -30,13 +32,16 @@ models:
         quote: true
       - name: id_empresa
         description: Código da empresa onde está localizada o setor, dado pelo SICI.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_empresa_prevrio
         description: Código da empresa na PREVRIO.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_secretaria
         description: Código da secretaria onde está o setor, dado pelo SICI.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: extinto
         description: Indicador se o setor foi extinto (N ou S).
         data_type: string

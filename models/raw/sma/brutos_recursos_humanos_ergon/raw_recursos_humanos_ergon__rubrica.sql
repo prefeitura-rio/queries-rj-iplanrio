@@ -11,7 +11,7 @@
 FROM {{ source('brutos_ergon_staging', 'RUBRICAS') }} AS t
 */
 
-select safe_cast(rubrica as int64) as id_rubrica, 
+select safe_cast(rubrica as string) as id_rubrica, 
   safe_cast(tiporubr as string) as tipo_rubrica, 
   safe_cast(nome as string) as nome, 
   safe_cast(nome_abrev as string) as nome_abreviado, 
