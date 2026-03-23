@@ -13,3 +13,5 @@ SELECT
     horas_semana,
     horas_mes
 FROM {{ ref('raw_recursos_humanos_ergon__jornada') }} AS t
+
+

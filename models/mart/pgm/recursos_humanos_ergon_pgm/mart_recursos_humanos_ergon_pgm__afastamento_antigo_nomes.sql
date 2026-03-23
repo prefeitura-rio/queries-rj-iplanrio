@@ -12,3 +12,5 @@ SELECT
     t.id_afastamento,
     t.nome_afastamento
 FROM {{ ref('raw_recursos_humanos_ergon__afastamento_antigo_nomes') }} AS t
+
+

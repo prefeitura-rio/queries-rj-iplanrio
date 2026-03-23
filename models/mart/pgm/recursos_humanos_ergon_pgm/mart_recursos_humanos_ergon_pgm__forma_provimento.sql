@@ -26,3 +26,5 @@ SELECT
         else null
     end as ativo
 FROM {{ ref('raw_recursos_humanos_ergon__forma_provimento') }} AS t
+
+

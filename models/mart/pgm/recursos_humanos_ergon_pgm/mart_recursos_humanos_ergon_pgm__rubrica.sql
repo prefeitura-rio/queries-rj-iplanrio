@@ -14,3 +14,6 @@ select id_rubrica,
   fator, 
   observacoes
 FROM {{ ref('raw_recursos_humanos_ergon__rubrica') }} AS t
+
+
+

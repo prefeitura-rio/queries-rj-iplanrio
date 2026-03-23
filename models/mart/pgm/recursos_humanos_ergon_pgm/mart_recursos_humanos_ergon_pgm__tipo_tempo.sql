@@ -19,3 +19,5 @@ SELECT
     tempo_de_chefia,
     progressao
 FROM {{ ref('raw_recursos_humanos_ergon__tipo_tempo') }} AS t
+
+

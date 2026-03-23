@@ -56,3 +56,6 @@ inner join (
 inner join (
     select distinct id_funcionario, id_vinculo from {{ ref('mart_recursos_humanos_ergon_pgm__provimento')}} 
     ) c on c.id_funcionario = a.id_funcionario and c.id_vinculo = a.id_vinculo -- e combinando apenas com os funcionários que possuem provimentos relacionados à PGM, para garantir que traga apenas os vínculos relacionados à PGM
+
+
+

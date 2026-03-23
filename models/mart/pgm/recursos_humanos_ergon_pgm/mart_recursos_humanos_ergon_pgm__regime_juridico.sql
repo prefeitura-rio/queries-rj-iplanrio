@@ -11,3 +11,5 @@ SELECT
     sigla,
     nome
 FROM {{ ref('raw_recursos_humanos_ergon__regime_juridico') }} AS t
+
+

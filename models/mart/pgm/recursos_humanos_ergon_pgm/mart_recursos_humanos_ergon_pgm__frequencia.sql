@@ -19,3 +19,6 @@ SELECT
     t.id_empresa
 FROM {{ ref('raw_recursos_humanos_ergon__frequencia') }} AS t
 inner join {{ ref('mart_recursos_humanos_ergon_pgm__vinculo') }} AS v on v.id_funcionario = t.id_funcionario and t.id_vinculo = v.id_vinculo
+
+
+

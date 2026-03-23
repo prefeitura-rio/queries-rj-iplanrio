@@ -16,3 +16,5 @@ SELECT
     carga_horaria_dia,
     id_registro
 FROM {{ ref('raw_recursos_humanos_ergon__horario_trabalho') }} AS t
+
+

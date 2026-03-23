@@ -1,4 +1,4 @@
-﻿version: 2
+version: 2
 
 models:
   - name: mart_recursos_humanos_ergon_pgm__ficha_financeira_contabil
@@ -9,7 +9,7 @@ models:
         data_type: date
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
-        data_type: integer
+        data_type: string
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_funcionario__not_null
@@ -17,7 +17,7 @@ models:
                 severity: error
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
-        data_type: integer
+        data_type: string
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__ficha_financeira_contabil__id_vinculo__not_null
@@ -25,16 +25,16 @@ models:
                 severity: error
       - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
-        data_type: integer
+        data_type: string
       - name: numero_folha
         description: Número da folha da ficha financeira.
         data_type: integer
       - name: id_setor
         description: Código do setor onde o funcionário está lotado no período da folha.
-        data_type: integer
+        data_type: string
       - name: id_secretaria
         description: Identificador da secretaria onde o funcionário está lotado no período da folha.
-        data_type: integer
+        data_type: string
       - name: tipo_funcionario
         description: Tipo do funcionário (servidor, terceirizado, etc).
         data_type: string
@@ -44,7 +44,7 @@ models:
         data_type: integer
       - name: id_rubrica
         description: Código da rubrica, que é um código numérico que identifica a natureza do pagamento ou desconto.
-        data_type: integer
+        data_type: string
       - name: tipo_rubrica
         description: Informação não descrita na documentação disponível. Varia entre 1,2,3 e 4.
         data_type: string
@@ -71,8 +71,11 @@ models:
         data_type: integer
       - name: id_empresa
         description: Identificador da empresa a qual a folha de pagamento pertence.
-        data_type: integer
+        data_type: string
       - name: data_particao
         description: Data da partição dos dados.
         data_type: date
+
+
+
 

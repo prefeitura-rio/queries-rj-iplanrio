@@ -13,3 +13,5 @@ SELECT
     t.data_frequencia
 FROM {{ ref('raw_recursos_humanos_ergon__frequencia_antigo') }} AS t
 inner join {{ ref('mart_recursos_humanos_ergon_pgm__vinculo') }} AS v on v.id_matricula_vinculo = t.id_matricula_vinculo
+
+

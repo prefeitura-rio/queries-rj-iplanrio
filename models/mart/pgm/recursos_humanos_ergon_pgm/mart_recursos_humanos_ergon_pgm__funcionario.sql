@@ -125,3 +125,5 @@ SELECT
     a.updated_at as data_atualizacao
 from {{ ref('raw_recursos_humanos_ergon__funcionario') }} a
 inner join (select distinct id_funcionario from {{ ref('mart_recursos_humanos_ergon_pgm__vinculo') }}) b on b.id_funcionario = a.id_funcionario
+
+

@@ -20,3 +20,5 @@ SELECT
     cargo_funcao,
     updated_at as data_atualizacao
 FROM {{ ref('raw_recursos_humanos_ergon__cargo') }} -- pegando como origem o dbt original de tratamento dos setores da SMA
+
+

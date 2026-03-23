@@ -25,3 +25,6 @@ FROM {{ ref('raw_recursos_humanos_ergon__provimento')}} a -- pegando como origem
 inner join (
     select distinct id_setor from {{ ref('mart_recursos_humanos_ergon_pgm__setor')}} 
     ) b on b.id_setor = a.id_setor -- e combinando apenas com os setores da PGM que foram tratados neste outro dbt, para garantir que traga apenas os provimentos relacionados à PGM
+
+
+

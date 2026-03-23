@@ -11,3 +11,5 @@ SELECT
     sigla,
     nome
 FROM {{ ref('raw_recursos_humanos_ergon__tipo_vinculo') }} AS t
+
+

@@ -1,4 +1,4 @@
-﻿version: 2
+version: 2
 
 models:
   - name: mart_recursos_humanos_ergon_pgm__afastamento_antigo
@@ -6,7 +6,7 @@ models:
     columns:
       - name: id_matricula_vinculo
         description: Matrícula do servidor.
-        data_type: integer
+        data_type: string
       - name: data_inicio
         description: Data incial do afastamento.
         data_type: date
@@ -16,5 +16,8 @@ models:
       - name: data_fim
         description: Data final do afastamento, representa o efetivo retorno do servidor à atividade.
         data_type: date
+
+
+
 
 

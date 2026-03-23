@@ -1,4 +1,4 @@
-﻿version: 2
+version: 2
 
 models:
   - name: mart_recursos_humanos_ergon_pgm__provimento
@@ -6,7 +6,7 @@ models:
     columns:
       - name: id_funcionario
         description: Identificador no banco de dados da pessoa cadastrada na tabela de funcionários.
-        data_type: integer
+        data_type: string
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__provimento__id_funcionario__not_null
@@ -14,7 +14,7 @@ models:
                 severity: error
       - name: id_vinculo
         description: Identificador no banco de dados do vínculo da pessoa.
-        data_type: integer
+        data_type: string
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__provimento__id_vinculo__not_null
@@ -28,10 +28,10 @@ models:
         data_type: date
       - name: id_setor
         description: Código dado pela prefeitura do Rio de Janeiro para o setor de lotação do servidor após o provimento. Código da estrutura organizacional atribuidos pela GI/CGGI/CSIC.
-        data_type: integer
+        data_type: string
       - name: id_cargo
         description: Código dado pela prefeitura do Rio de Janeiro para o cargo/emprego relacionado ao vínculo do servidor. Regime juridicos A DISPOSICAO, APOS. SERV. PUBLICO, CONT. SAL. FAMILIA e EST. AOS QUADROS o cargo é 999990 - ESPECIAL
-        data_type: integer
+        data_type: string
       - name: id_referencia
         description: Código do nível/posicionamento após o provimento. Ex PROFESSOR II, MM1, MM2, MM3, MM4, MM5, MM6, MM7, 999990 - ESPECIAL o valor do vencimento é zero.
         data_type: string
@@ -58,4 +58,7 @@ models:
       - name: data_atualizacao
         description: Data da última atualização do registro.
         data_type: timestamp
+
+
+
 

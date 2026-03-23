@@ -26,3 +26,5 @@ SELECT
     updated_at as data_atualizacao
 FROM {{ ref('raw_recursos_humanos_ergon__setor')}}
 where id_secretaria = 2200
+
+
