@@ -13,11 +13,13 @@ models:
         description: Nome da jornada. Ex. 40 horas semanais.
         data_type: string
         quote: true
+
       - name: horas_semana
         description: Número de horas semanais da jornada.
-        data_type: integer
+        data_type: numeric
+
       - name: horas_mes
         description: Número de horas mensais da jornada.
-        data_type: integer
+        data_type: numeric
 
 

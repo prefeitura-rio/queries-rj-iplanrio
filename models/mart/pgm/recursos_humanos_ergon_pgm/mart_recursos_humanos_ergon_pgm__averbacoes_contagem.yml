@@ -7,6 +7,7 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__averbacoes_contagem__id_funcionario__not_null
@@ -15,6 +16,7 @@ models:
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__averbacoes_contagem__id_vinculo__not_null
@@ -23,6 +25,7 @@ models:
       - name: id_averbacao
         description: Chave gerada pelo banco para registro de averbação.
         data_type: string
+        quote: true
       - name: finalidade
         description: Tipo da finalidade da averbação.
         data_type: string

@@ -52,7 +52,8 @@ models:
         quote: true
       - name: sobrepoe
         description: Booleano que indica se o período averbado permite concomitância com outro período averbado.
-        data_type: boolean
+        data_type: string
+        quote: true
       - name: id_empresa
         description: Código da empresa.
         data_type: integer

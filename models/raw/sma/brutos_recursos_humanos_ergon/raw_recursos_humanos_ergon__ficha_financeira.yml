@@ -45,8 +45,9 @@ models:
         data_type: string
         quote: true
       - name: desconto_vantagem
-        description: Booleana que indica se a rubrica é de desconto ou não. 1 quando tem desconto e 2 quando não tem desconto.
-        data_type: boolean
+        description: Indica se a rubrica é de desconto ou não. 1 quando tem desconto e 2 quando não tem desconto.
+        data_type: string
+        quote: true
       - name: observacao
         description: Informações adicionais para descrever a rubrica.
         data_type: string

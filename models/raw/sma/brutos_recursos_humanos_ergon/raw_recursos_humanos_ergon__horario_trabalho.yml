@@ -8,11 +8,9 @@ models:
         description: Identificador do horário na base de dados.
         data_type: string
         quote: true
-
       - name: descricao
         description: Descrição do horário. Neste atributo deve constar o horário de entrada, de almoço e de saída relativos a todos os dias da semana.
         data_type: string
-        
         quote: true
       - name: publicacao_diario_oficial
         description: Publicação em diário oficial autorizando o horário.
@@ -26,7 +24,8 @@ models:
         data_type: integer
       - name: carga_horaria_dia
         description: Carga diária em horas do horário.
-        data_type: integer
+        data_type: string
+        quote: true
       - name: id_registro
         description: Identificação do Registro
         data_type: integer

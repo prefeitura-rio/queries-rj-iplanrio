@@ -13,6 +13,7 @@ models:
       - name: id_funcionario
         description: Número do funcionário gerado pelo ERGON.
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__ficha_financeira__id_funcionario__not_null
@@ -21,6 +22,7 @@ models:
       - name: id_vinculo
         description: Número do vínculo relativo ao pagamento.
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__ficha_financeira__id_vinculo__not_null
@@ -29,19 +31,22 @@ models:
       - name: id_pensionista
         description: Número do pensionista, caso o pagamento seja relativo a um pensionista.
         data_type: string
+        quote: true
       - name: mes_ano_direito
         description: Mês e ano trabalhado relativo ao pagamento.
         data_type: date
       - name: id_rubrica
         description: Rubrica da despesa. Caso o funcionário receba em rubricas diferentes haverá mais de um registro nesta visão.
         data_type: string
+        quote: true
       - name: tipo_rubrica
         description: Tipo de rubrica. Ex, Auxiliar, consignatária, desconto ou vantagem.
         data_type: string
         quote: true
       - name: desconto_vantagem
-        description: Booleana que indica se a rubrica é de desconto ou não. 1 quando tem desconto e 2 quando não tem desconto.
-        data_type: boolean
+        description: Indica se a rubrica é de desconto ou não. 1 quando tem desconto e 2 quando não tem desconto.
+        data_type: string
+        quote: true
       - name: observacao
         description: Informações adicionais para descrever a rubrica.
         data_type: string
@@ -55,6 +60,7 @@ models:
       - name: id_empresa
         description: Código da empresa.
         data_type: string
+        quote: true
       - name: data_particao
         description: Data da partição dos dados.
         data_type: date

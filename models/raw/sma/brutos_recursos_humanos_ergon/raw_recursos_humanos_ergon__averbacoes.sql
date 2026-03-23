@@ -18,10 +18,7 @@ SELECT
     safe_cast(SAFE_CAST(DATA_A_CONTAR AS timestamp) as date) AS data_validade,
     SAFE_CAST(TOTAL_DIAS AS int64) AS total_dias_averbados,
     SAFE_CAST(MOTIVO AS STRING) AS motivo,
-    case SAFE_CAST(SOBREPOE AS STRING)
-      when 'S' then true
-      else false
-    end as sobrepoe,
+    case SAFE_CAST(SOBREPOE AS STRING) as sobrepoe,
     SAFE_CAST(EMP_CODIGO AS int64) AS id_empresa,
     SAFE_CAST(OBS AS STRING) AS obs,
     SAFE_CAST(REGPREV AS STRING) AS regime_previdenciario

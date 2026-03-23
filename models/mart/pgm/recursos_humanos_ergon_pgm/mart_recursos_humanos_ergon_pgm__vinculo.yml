@@ -7,6 +7,7 @@ models:
       - name: id_funcionario
         description: Identificador do funcionário, que pode estar repetido no caso do funcionário possua ou tenha possuído mais de 1 vínculo funcional com a PCRJ.
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__vinculo__id_funcionario__not_null
@@ -15,6 +16,7 @@ models:
       - name: id_vinculo
         description: Número do vínculo da pessoa. O número é dado sequencialmente, com 1 para o primeiro vínculo, 2 para o segundo e assim por diante. Ex. Uma pessoa que é professora, e funcionária do IPLANRIO, tem dois vínculos.
         data_type: string
+        quote: true
         data_tests:
           - not_null:
               name: mart_recursos_humanos_ergon_pgm__vinculo__id_vinculo__not_null
@@ -46,8 +48,9 @@ models:
         data_type: string
         quote: true
       - name: desconta_ir
-        description: Booleano indicando se o vínculo desconta IR ou não. Valores N ou S.
-        data_type: boolean
+        description: Indica se o vínculo desconta IR ou não. Valores N ou S.
+        data_type: string
+        quote: true
       - name: descricao_provimento
         description: Descrição do provimento. Campo livre.
         data_type: string
@@ -89,7 +92,8 @@ models:
         data_type: date
       - name: id_forma_vacancia
         description: Código de vacância relativa ao vínculo.
-        data_type: int64
+        data_type: string
+        quote: true
       - name: motivo_vacancia
         description: Motivo da vacância. O que encerrou o vínculo, caso ele tenha sido encerrado. Caso não o atributo está em branco. Campo livre para preenchimento.
         data_type: string
@@ -97,9 +101,11 @@ models:
       - name: id_vinculo_anterior
         description: Número do vínculo anterior, caso haja algum. Se não fica em branco.
         data_type: string
+        quote: true
       - name: id_vinculo_posterior
         description: Número do vínculo posterior, caso haja algum. Se não fica em branco.
         data_type: string
+        quote: true
       - name: tipo_orgao_origem
         description: 'Tipo do órgão da origem do funcionário ( em caso do funcionário ser cedido para a prefeitura do Rio de Janeiro). Exemplo: DIR.EST. (Direta estatual)'
         data_type: string
@@ -142,6 +148,7 @@ models:
       - name: contrato_suspenso
         description: Indica se o contrato do empregado público cedido encontra-se suspenso ou não.
         data_type: string
+        quote: true
       - name: cota
         description: Indica se o vínculo foi preenchido por cota. Em branco, não entrou por cota. Caso esteja preenchido o vínculo foi preenchido por cota. Valores possíveis Lei 2.111/1994 para DEFICIENTE, LEi 5.401/2012 para Raça, lei 5.695/2014 para Raça.
         data_type: string

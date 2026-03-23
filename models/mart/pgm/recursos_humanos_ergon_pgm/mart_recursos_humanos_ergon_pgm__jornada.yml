@@ -14,10 +14,10 @@ models:
         quote: true
       - name: horas_semana
         description: Número de horas semanais da jornada.
-        data_type: integer
+        data_type: numeric
       - name: horas_mes
         description: Número de horas mensais da jornada.
-        data_type: integer
+        data_type: numeric
 
 
 
