@@ -2,7 +2,7 @@
     config(
         alias='horario_trabalho',
         materialized="table",
-        tags=["raw", "ergon", "horario_trabalho"],
+        tags=["mart", "ergon", "horario_trabalho"],
         description="Horários possíveis para funcionários da administração direta da prefeitura do Rio de Janeiro."
     )
 }}

@@ -2,7 +2,7 @@
     config(
         alias='tipo_tempo',
         materialized="table",
-        tags=["raw", "ergon", "tipo", "tipo_tempo"],
+        tags=["mart", "ergon", "tipo", "tipo_tempo"],
         description="Tabela armazena os tipos de tempo utilizados para contagem de benefícios categorizados como finalidades."
     )
 }}

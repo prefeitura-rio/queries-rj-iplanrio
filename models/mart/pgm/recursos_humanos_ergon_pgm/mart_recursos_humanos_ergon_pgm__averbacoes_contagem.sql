@@ -2,7 +2,7 @@
     config(
         alias='averbacoes_contagem',
         materialized="table",
-        tags=["raw", "ergon", "averbacoes", "contagem"],
+        tags=["mart", "ergon", "averbacoes", "contagem"],
         description="Tabela que armazena informações referentes sobre finalidade de contagem e total do tempo de contagem referentes a períodos averbados pelos servidores."
     )
 }}

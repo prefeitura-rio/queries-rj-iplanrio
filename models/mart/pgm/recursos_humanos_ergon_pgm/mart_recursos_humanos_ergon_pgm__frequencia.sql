@@ -3,7 +3,7 @@
     config(
         alias='frequencia',
         materialized="table",
-        tags=["raw", "ergon", "frequencia"],
+        tags=["mart", "ergon", "frequencia"],
         description="Tabela que armazena as ocorrências de frequência do servidor municipal."
     )
 }}

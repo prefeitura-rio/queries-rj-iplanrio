@@ -1,6 +1,9 @@
 {{
     config(
         alias='pre_contagem',
+        materialized="table",
+        tags=["raw", "ergon", "pre_contagem", "contagem"],
+        description="A tabela armazena informações de contagens anteriores ao início do sistema recursos humanos ou da entrada do servidor no sistema, se por algum motivo não possuía informações anteriormente."
     )
 }}
 

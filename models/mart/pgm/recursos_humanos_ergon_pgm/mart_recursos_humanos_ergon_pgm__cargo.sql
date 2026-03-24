@@ -2,7 +2,7 @@
     config(
         alias='cargo',
         materialized="table",
-        tags=["raw", "ergon", "cargo"],
+        tags=["mart", "ergon", "cargo"],
         description="Tabela que contém os registros dos cargos para os quais os funcionários são nomeados em seus provimentos."
     )
 }}

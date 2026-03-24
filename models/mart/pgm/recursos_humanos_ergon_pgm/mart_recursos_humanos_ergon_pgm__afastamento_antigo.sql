@@ -2,7 +2,7 @@
     config(
         alias='afastamento_antigo',
         materialized="table",
-        tags=["raw", "ergon", "afastamento"],
+        tags=["mart", "ergon", "afastamento"],
         description="Tabela que armazena as ocorrências de frequência do servidor municipal."
     )
 }}

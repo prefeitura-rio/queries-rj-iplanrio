@@ -7,7 +7,7 @@
             "data_type": "date",
             "granularity": "month",
         },
-        tags=["raw", "ergon", "ficha_financeira_contabil", "salarios"],
+        tags=["mart", "ergon", "ficha_financeira_contabil", "salarios"],
         description="Tabela que contém os registros de valores de rubricas de fichas financeiras dos funcionários da Prefeitura da Cidade do Rio de Janeiro."
     )
 }}

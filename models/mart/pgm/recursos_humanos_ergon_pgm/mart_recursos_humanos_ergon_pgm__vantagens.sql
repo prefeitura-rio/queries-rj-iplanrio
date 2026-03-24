@@ -8,7 +8,7 @@
         },
         alias='vantagens',
         materialized="table",
-        tags=["raw", "ergon", "vantagens"],
+        tags=["mart", "ergon", "vantagens"],
         description="Tabela que armazena informações sobre atributos cadastrados que representam vantagens (valores a receber) dos servidores."
     )
 }}

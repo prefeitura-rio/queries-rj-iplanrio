@@ -2,7 +2,7 @@
     config(
         alias='averbacoes',
         materialized="table",
-        tags=["raw", "ergon", "averbacoes"],
+        tags=["mart", "ergon", "averbacoes"],
         description="Tabela que armazena o cadastro das averbações."
     )
 }}

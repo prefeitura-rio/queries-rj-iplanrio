@@ -5,7 +5,7 @@
 
         alias='licenca_afastamento',
         materialized="table",
-        tags=["raw", "ergon", "afastamento"],
+        tags=["mart", "ergon", "afastamento"],
         description="Tabela que armazena as ocorrências de afastamento do servidor municipal."
     )
 }}

@@ -2,7 +2,7 @@
     config(
         alias='rubrica_ergon',
         materialized="table",
-        tags=["raw", "ergon", "rubricas"],
+        tags=["mart", "ergon", "rubricas"],
         description="Tabela que armazena informações sobre rubricas de pagamento."
     )
 }}

@@ -2,7 +2,7 @@
     config(
         alias='setor',
         materialized="table",
-        tags=["raw", "ergon", "setor"],
+        tags=["mart", "ergon", "setor"],
         description="Tabela que contém os registros do histórico da estrutura da PGM com todos os seus setores e em todas as suas versões."
     )
 }}
@@ -25,6 +25,6 @@ SELECT
     end as extinto,
     updated_at as data_atualizacao
 FROM {{ ref('raw_recursos_humanos_ergon__setor')}}
-where id_secretaria = 2200
+where id_secretaria = '2200'
 
 

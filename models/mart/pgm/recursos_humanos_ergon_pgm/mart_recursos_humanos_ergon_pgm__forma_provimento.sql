@@ -2,7 +2,7 @@
     config(
         alias='forma_provimento',
         materialized="table",
-        tags=["raw", "forma_provimento", "ergon"],
+        tags=["mart", "forma_provimento", "ergon"],
         description="Tabela que contém as formas de provimentos possíveis tanto na administração direta como indireta da prefeitura do Rio de Janeiro."
     )
 }}

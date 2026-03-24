@@ -2,7 +2,7 @@
     config(
         alias='vinculo',
         materialized="table",
-        tags=["raw", "ergon", "vinculo"],
+        tags=["mart", "ergon", "vinculo"],
         description="Tabela que contém os registros dos vínculos funcionais da administração direta ou indireta da prefeitura do Rio de Janeiro."
     )
 }}

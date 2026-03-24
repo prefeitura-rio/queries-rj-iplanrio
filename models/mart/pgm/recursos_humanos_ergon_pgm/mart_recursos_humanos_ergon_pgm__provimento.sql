@@ -2,7 +2,7 @@
     config(
         alias='provimento',
         materialized="table",
-        tags=["raw", "ergon", "provimento"],
+        tags=["mart", "ergon", "provimento"],
         description="Eventos relacionados aos vínculos funcionais tanto com a administração direta como indireta da prefeitura do Rio de Janeiro."
     )
 }}

@@ -2,7 +2,7 @@
     config(
         alias='funcionario',
         materialized="table",
-        tags=["raw", "ergon", "funcionario"],
+        tags=["mart", "ergon", "funcionario"],
         description="Tabela que contém os registros dos funcionários da administração direta ou indireta da prefeitura do Rio de Janeiro."
     )
 }}

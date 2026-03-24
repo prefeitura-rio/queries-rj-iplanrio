@@ -2,7 +2,7 @@
     config(
         alias='jornada',
         materialized="table",
-        tags=["raw", "ergon", "jornada"],
+        tags=["mart", "ergon", "jornada"],
         description="Tipos de jornadas existentes tanto na administração direta como indireta da prefeitura do Rio de Janeiro."
     )
 }}

@@ -2,7 +2,7 @@
     config(
         alias='total_contagem',
         materialized="table",
-        tags=["raw", "ergon", "contagem", "total", "tempo"],
+        tags=["mart", "ergon", "contagem", "total", "tempo"],
         description="Tabela que armazena o resultado das contagens de tempo para benefícios dos servidores municipais."
     )
 }}

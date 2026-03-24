@@ -2,7 +2,7 @@
     config(
         alias='matricula',
         materialized="table",
-        tags=["raw", "ergon", "matricula"],
+        tags=["mart", "ergon", "matricula"],
         description="Tabela que armazena as matrículas de cada servidor municipal."
     )
 }}

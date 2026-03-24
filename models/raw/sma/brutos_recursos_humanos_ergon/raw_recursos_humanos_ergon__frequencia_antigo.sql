@@ -1,6 +1,9 @@
 {{
     config(
         alias='frequencia_antigo',
+        materialized="table",
+        tags=["raw", "ergon", "frequencia"],
+        description="Frequência de servidores da Prefeitura da Cidade do Rio de Janeiro cadastrada em sistemas de recursos humanos antigos."
     )
 }}
 

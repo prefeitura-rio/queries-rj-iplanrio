@@ -1,6 +1,9 @@
 {{
     config(
         alias='forma_provimento',
+        materialized="table",
+        tags=["raw", "ergon", "forma_provimento", "provimento"],
+        description="Formas de provimentos possíveis tanto na administração direta como indireta da prefeitura do Rio de Janeiro."
     )
 }}
 

@@ -2,7 +2,7 @@
     config(
         alias='frequencia_antigo',
         materialized="table",
-        tags=["raw", "ergon", "frequencia"],
+        tags=["mart", "ergon", "frequencia"],
         description="requência de servidores da Prefeitura da Cidade do Rio de Janeiro cadastrada em sistemas de recursos humanos antigos."
     )
 }}
