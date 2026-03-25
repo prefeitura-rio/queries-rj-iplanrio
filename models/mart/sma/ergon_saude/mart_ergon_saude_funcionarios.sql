@@ -16,11 +16,11 @@
 with
     funcionarios as (
         select
-            f.id_funcionario as id_funcionario,
+            f.id_funcionario,
             lpad(f.cpf, 11, '0') as cpf,  -- Adiciona zero à esquerda caso o CPF tenha menos de 11 dígitos
             f.nome_funcionario as nome
         from {{ ref("raw_recursos_humanos_ergon__funcionario") }} f
-        where f.cpf is not null  -- and lpad(f.cpf, 11, '0') in ('')
+        where f.cpf is not null  -- and lpad(f.id_cpf, 11, '0') in ('')
     ),
 
     provimento as (
@@ -83,7 +83,7 @@ with
 
     secretaria as (
         select
-            safe_cast(regexp_replace(cd_ua, r'\.0$', '') as int64) as id_secretaria,
+            safe_cast(regexp_replace(cd_ua, r'\.0$', '') as string) as id_secretaria,
             safe_cast(
                 regexp_replace(sigla_ua, r'\.0$', '') as string
             ) as secretaria_sigla,
@@ -133,24 +133,24 @@ with
             on f.id_funcionario = vv.id_funcionario
             and p.id_vinculo = vv.id_vinculo
         left join empresa emp on p.id_empresa = emp.id_empresa
-        left join secretaria sec on s.id_secretaria = sec.id_secretaria
+        left join secretaria sec on cast(s.id_secretaria as int64) = cast(sec.id_secretaria as int64)
 
         where
-            s.id_secretaria in (1800, 1851)
+            s.id_secretaria in ('1800', '1851')
             or p.id_empresa in (
-                32,
-                80,
-                81,
-                82,
-                83,
-                84,
-                85,
-                86,
-                87,
-                88,
-                89,
-                97,
-                23
+                '32',
+                '80',
+                '81',
+                '82',
+                '83',
+                '84',
+                '85',
+                '86',
+                '87',
+                '88',
+                '89',
+                '97',
+                '23'
             )
 
         group by f.cpf

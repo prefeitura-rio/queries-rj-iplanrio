@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: mart_recursos_humanos_ergon_pgm__total_contagem
+    description: "**Descrição**: Tabela que armazena o resultado das contagens de tempo para benefícios dos servidores municipais.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: PGM\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_recursos_humanos_ergon_pgm__total_contagem__id_funcionario__not_null
+              config:
+                severity: error
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_recursos_humanos_ergon_pgm__total_contagem__id_vinculo__not_null
+              config:
+                severity: error
+      - name: id_chave
+        description: Chave de identificação do cadastro da averbação realizada 
+        data_type: string
+      - name: finalidade
+        description: Registro da finalidade da averbação que aceita múltiplas finalidades para um mesmo registro de averbação. Exemplo Adic Tempo Serv, Aposentadoria, Progressão
+        data_type: string
+        quote: true
+      - name: total_dias
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo total_dias é o resultado da contagem de tempo para determinada finalidade, expressa em dias. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: integer
+      - name: diasfpub
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo total_dias é o resultado da contagem de tempo para determinada finalidade, expressa em dias. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: integer
+      - name: diasfpubesp
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo total_dias é o resultado da contagem de tempo para determinada finalidade, expressa em dias. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: integer
+      - name: total_periodos
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo total_periodos é o resultado da contagem de tempo para determinada finalidade, expressa em períodos. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: integer
+      - name: total_anos
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo total_anos é o resultado da contagem de tempo para determinada finalidade, expressa em anos. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: integer
+      - name: data_previsao_proximo_periodo
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo data_previsao_proximo_periodo é a data prevista para o próximo período de contagem de tempo. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: date
+      - name: nome_finalidade_proximo_periodo
+        description: Descrição da coluna não informada na documentação, mas o campo tem relevância para análises de contagem de tempo. O campo nome_finalidade_proximo_periodo é o nome da finalidade do próximo período de contagem de tempo. Para análises de contagem de tempo, este campo é o mais relevante, pois é o resultado da contagem de tempo para determinada finalidade.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Identificador da empresa no contexto do Ergon, para a qual a averbação foi realizada, de acordo com o provimento do funcionário.
+        data_type: string
+        quote: true
+
+
+
+
