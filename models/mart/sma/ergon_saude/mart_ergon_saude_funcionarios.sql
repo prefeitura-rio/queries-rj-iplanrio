@@ -136,21 +136,21 @@ with
         left join secretaria sec on cast(s.id_secretaria as int64) = cast(sec.id_secretaria as int64)
 
         where
-            s.id_secretaria in (1800, 1851)
+            s.id_secretaria in ('1800', '1851')
             or p.id_empresa in (
-                32,
-                80,
-                81,
-                82,
-                83,
-                84,
-                85,
-                86,
-                87,
-                88,
-                89,
-                97,
-                23
+                '32',
+                '80',
+                '81',
+                '82',
+                '83',
+                '84',
+                '85',
+                '86',
+                '87',
+                '88',
+                '89',
+                '97',
+                '23'
             )
 
         group by f.cpf

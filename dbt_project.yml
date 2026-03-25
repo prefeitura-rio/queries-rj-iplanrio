@@ -60,7 +60,7 @@ models:
       pgm:
         +tags: "pgm"
         +project: rj-pgm
-        recursos_humanos_ergon:
+        recursos_humanos_ergon_pgm:
           +materialized: table
           +schema: recursos_humanos_ergon_pgm
           +tags: "daily"
@@ -144,7 +144,7 @@ models:
       sma:
         +tags: "sma"
         +project: rj-sma
-        recursos_humanos_ergon:
+        brutos_recursos_humanos_ergon:
           +materialized: table
           +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
