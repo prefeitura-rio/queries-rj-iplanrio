@@ -1,0 +1,25 @@
+﻿version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__jornada
+    description: "**Descrição**: Tipos de jornadas existentes tanto na administração direta como indireta da prefeitura do Rio de Janeiro. Jornada é a carga horária semanal.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: sigla
+        description: Sigla da jornada. Ex. 40 horas.
+        data_type: string
+        quote: true
+        
+      - name: nome
+        description: Nome da jornada. Ex. 40 horas semanais.
+        data_type: string
+        quote: true
+
+      - name: horas_semana
+        description: Número de horas semanais da jornada.
+        data_type: numeric
+
+      - name: horas_mes
+        description: Número de horas mensais da jornada.
+        data_type: numeric
+
+

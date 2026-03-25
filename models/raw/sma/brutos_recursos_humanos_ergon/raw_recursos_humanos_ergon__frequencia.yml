@@ -1,0 +1,48 @@
+﻿version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__frequencia
+    description: "**Descrição**: Tabela que armazena as ocorrências de frequência do servidor municipal.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__frequencia__id_funcionario__not_null
+              config:
+                severity: warn
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__frequencia__id_vinculo__not_null
+              config:
+                severity: warn
+      - name: data_inicio
+        description: Data início da ocorrência de frequência.
+        data_type: date
+      - name: data_final
+        description: Data final da ocorrência de frequência.
+        data_type: date
+      - name: tipo_frequencia
+        description: Tipo da frequência.
+        data_type: string
+        quote: true
+      - name: id_frequencia
+        description: Código da frequência.
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: Observções referentes à frequência do servidor.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: string
+        quote: true
+
+
