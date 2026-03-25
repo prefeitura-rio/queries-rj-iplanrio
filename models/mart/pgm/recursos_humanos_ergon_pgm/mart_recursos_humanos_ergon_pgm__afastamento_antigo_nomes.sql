@@ -3,7 +3,7 @@
         alias='afastamento_antigo_nomes',
         materialized="table",
         tags=["mart", "ergon", "afastamento"],
-        description="Tabela que armazena informações sobre os códigos de afastamentos utilizados em sistemas da Prefeitura do Rio de Janeiro."
+        description="Tabela que armazena informações sobre os códigos de afastamentos utilizados em sistemas da Prefeitura do Rio de Janeiro ."
     )
 }}
 
