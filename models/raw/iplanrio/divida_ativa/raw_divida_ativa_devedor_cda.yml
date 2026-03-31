@@ -29,6 +29,15 @@ models:
       - name: nome_tipo_vinculo
         description: "Nome do tipo de vínculo do devedor com a CDA."
         data_type: string
+        
+      - name: cod_situacao_devedor
+        description: "Código da situação do devedor na Dívida Ativa do Município."
+        data_type: string
+
+      - name: nome_situacao_devedor
+        description: "Nome da situação do devedor na Dívida Ativa do Município. (1) ativo , (2) inativo, (3) classificação indevida, Não Classificado para demais valores."
+        data_type: string
+
       - name: loaded_at
         description: "Timestamp de quando o dado foi extraído do banco de dados de origem."
         data_type: timestamp
