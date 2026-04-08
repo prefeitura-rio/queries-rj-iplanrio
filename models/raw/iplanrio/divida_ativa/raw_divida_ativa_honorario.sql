@@ -8,6 +8,7 @@
 }}
 
 select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
+  safe_cast(a.flgCampanha as int64) as flag_indica_campanha,
   safe_cast(a.ValSaldo as numeric) as valor_saldo_devido, 
   safe_cast(a.valMM as numeric) as valor_multa_moratoria, 
   safe_cast(a.valJM as numeric) as valor_juros_moratorios, 
