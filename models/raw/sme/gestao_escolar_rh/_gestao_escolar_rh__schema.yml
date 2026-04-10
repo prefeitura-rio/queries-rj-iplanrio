@@ -1,6 +1,6 @@
 version: 2
 models :
-  - name: gestao_escolar_rh__funcionario
+  - name: gestao_escolar_rh__funcionario_ativo
     description: "**Descrição**: Funcionários ativos da Secretaria Municipal de Educação.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Até data corrente\n**Órgão gestor dos dados**: Secretaria Municipal de Educação\n**Publicado por**: Nuno Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
     columns:
       - name: cpf_servidor
