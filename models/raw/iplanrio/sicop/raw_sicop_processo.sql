@@ -28,7 +28,7 @@ select
   safe_cast(auto_infracao as string)                        as auto_infracao,
   safe_cast(logradouro as string)                           as logradouro,
   safe_cast(numero_porta as int64)                          as numero_porta,
-  safe_cast(complemento as string) 
+  safe_cast(complemento as string)                          as complemento, 
   safe_cast(endereco_requerente as string)                  as endereco_requerente,
   safe_cast(cep as string)                                  as cep,
   safe_cast(bairro as string)                               as bairro,
