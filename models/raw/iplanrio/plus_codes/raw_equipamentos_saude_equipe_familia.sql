@@ -20,7 +20,7 @@ SELECT
   CAST(NULL AS STRING) AS plus11,
   
   -- Identificação principal
-  id_equipe AS id_equipamento,
+  t.id_ine AS id_equipamento,
   'SMS' AS secretaria_responsavel,
   TRIM(t.categoria) AS tipo_equipamento,
   t.nome_area AS nome_oficial,
@@ -89,6 +89,7 @@ SELECT
       t.area_planejamento,
       t.nome_area,
       t.id_ine,
+      t.id_equipe,
       t.tipo_equipe,
       t.medicos,
       t.enfermeiros
