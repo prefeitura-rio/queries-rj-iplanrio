@@ -1,0 +1,184 @@
+version: 2
+
+models:
+  - name: mart_sisvisa_situacao_licenciamento_estabelecimento
+    description: "Tabela que contém a situação de licenciamento de todos os estabelecimentos que estão cadastrados no SISVISA, e que tiveram algum licenciamento ativo."
+    config:
+      alias: situacao_licenciamento_estabelecimento
+    columns:
+      - name: id_estabelecimento_sisvisa
+        description: "Identificador único do estabelecimento no SISVISA."
+        data_type: string
+        quote: true
+
+      - name: cnpj
+        description: "CNPJ do estabelecimento no BCADASTRO."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_sisvisa_situacao_licenciamento_estabelecimento__cnpj__not_null
+
+      - name: inscricao_municipal
+        description: "Inscrição municipal do estabelecimento no SISVISA."
+        data_type: string
+        quote: true
+
+      - name: nome_fantasia
+        description: "Nome fantasia do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: razao_social
+        description: "Razão social do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: email_estabelecimento
+        description: "E-mail de contato do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: quantidade_telefones_estabelecimento
+        description: "Quantidade de telefones do estabelecimento."
+        data_type: int64
+
+      - name: telefones_estabelecimento
+        description: "Lista de telefones do estabelecimento."
+        data_type: struct
+      - name: telefones_estabelecimento.ddd
+        description: "DDD com código de área do Número do telefone do estabelecimento."
+        data_type: string
+        quote: true
+      - name: telefones_estabelecimento.telefone
+        description: "Número do telefone do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: endereco_estabelecimento
+        description: "Endereço do estabelecimento."
+        data_type: struct
+      - name: endereco_estabelecimento.tipo_logradouro
+        description: "Tipo do logradouro do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.logradouro
+        description: "Logradouro do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.numero
+        description: "Número do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.complemento
+        description: "Complemento do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.bairro
+        description: "Bairro do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.cep
+        description: "CEP do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.municipio_nome
+        description: "Nome do município do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.uf
+        description: "UF do endereço do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: cpf_responsavel
+        description: "CPF do responsável pelo estabelecimento no BCADASTRO."
+        data_type: string
+        quote: true
+
+      - name: nome_responsavel
+        description: "Nome do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: email_responsavel
+        description: "E-mail de contato do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: telefone_responsavel
+        description: "Lista de telefones do responsável pelo estabelecimento."
+        data_type: struct
+      - name: telefone_responsavel.ddi
+        description: "DDI com código internacional de área do Número do telefone do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+      - name: telefone_responsavel.ddd
+        description: "DDD com código de área do Número do telefone do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+      - name: telefone_responsavel.numero
+        description: "Número do telefone do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: endereco_responsavel
+        description: "Endereço do responsável pelo estabelecimento."
+        data_type: struct
+      - name: endereco_responsavel.tipo_logradouro
+        description: "Tipo do logradouro do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.logradouro
+        description: "Logradouro do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.numero
+        description: "Número do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.complemento
+        description: "Complemento do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.bairro
+        description: "Bairro do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.cep
+        description: "CEP do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.municipio
+        description: "Município do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.uf
+        description: "UF do endereço do responsável."
+        data_type: string
+        quote: true
+
+      - name: data_ultimo_requerimento_valido
+        description: "Data do último requerimento válido do estabelecimento."
+        data_type: date
+
+      - name: data_validade_ult_licenca_ativa
+        description: "Data de validade da última licença ativa do estabelecimento."
+        data_type: date
+
+      - name: data_validade_ult_licenca_expirada
+        description: "Data de validade da última licença expirada do estabelecimento."
+        data_type: date
+
+      - name: id_situacao
+        description: "Identificador da situação do licenciamento."
+        data_type: int64
+
+      - name: nome_situacao
+        description: "Nome descritivo da situação do licenciamento."
+        data_type: string
+        quote: true
+
+      - name: total_cobranca_ultimo_licenciamento
+        description: "Valor total cobrado no último licenciamento válido."
+        data_type: numeric

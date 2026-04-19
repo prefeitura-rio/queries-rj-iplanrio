@@ -1,0 +1,172 @@
+version: 2
+
+models:
+  - name: mart_sisvisa_estabelecimento_nunca_licenciado
+    description: "Tabela que contém os estabelecimentos que estão cadastrados no SISVISA, mas que nunca tiveram licenciamento ativo."
+
+##    config:
+##      alias: estabelecimento_sisvisa_nunca_licenciado
+    
+    columns:
+      - name: id_estabelecimento_sisvisa
+        description: "Identificador do estabelecimento no SISVISA."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_estabelecimento_sisvisa_nunca_licenciado__id_estabelecimento_sisvisa__not_null
+              config:
+                severity: error
+      - name: cnpj
+        description: "CNPJ do estabelecimento."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_estabelecimento_sisvisa_nunca_licenciado__cnpj__not_null
+              config:
+                severity: error
+
+          - unique:
+              name: mart_estabelecimento_sisvisa_nunca_licenciado__cnpj__unique
+              config:
+                severity: warn
+
+      - name: inscricao_municipal
+        description: "Inscrição municipal do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: nome_fantasia
+        description: "Nome fantasia do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: razao_social
+        description: "Razão social do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: email_estabelecimento
+        description: "E-mail de contato do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: quantidade_telefones_estabelecimento
+        description: "Quantidade de telefones do estabelecimento."
+        data_type: int64
+        
+      - name: telefones_estabelecimento
+        description: "Lista de telefones do estabelecimento."
+        data_type: struct
+      - name: telefones_estabelecimento.ddd
+        description: "DDD com código de área do Número do telefone do estabelecimento."
+        data_type: string
+        quote: true
+      - name: telefones_estabelecimento.telefone
+        description: "Número do telefone do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: endereco_estabelecimento
+        description: "Endereço do estabelecimento."
+        data_type: struct
+      - name: endereco_estabelecimento.tipo_logradouro
+        description: "Tipo do logradouro do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.logradouro
+        description: "Logradouro do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.numero
+        description: "Número do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.complemento
+        description: "Complemento do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.bairro
+        description: "Bairro do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.cep
+        description: "CEP do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.municipio
+        description: "Nome do município do endereço do estabelecimento."
+        data_type: string
+        quote: true
+      - name: endereco_estabelecimento.uf
+        description: "UF do endereço do estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: cpf_responsavel
+        description: "CPF do responsável pelo estabelecimento no BCADASTRO."
+        data_type: string
+        quote: true
+
+      - name: nome_responsavel
+        description: "Nome do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: email_responsavel
+        description: "E-mail de contato do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: telefone_responsavel
+        description: "Lista de telefones do responsável pelo estabelecimento."
+        data_type: struct
+      - name: telefone_responsavel.ddi
+        description: "DDI com código internacional de área do Número do telefone do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+      - name: telefone_responsavel.ddd
+        description: "DDD com código de área do Número do telefone do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+      - name: telefone_responsavel.numero
+        description: "Número do telefone do responsável pelo estabelecimento."
+        data_type: string
+        quote: true
+
+      - name: endereco_responsavel
+        description: "Endereço do responsável pelo estabelecimento."
+        data_type: struct
+      - name: endereco_responsavel.tipo_logradouro
+        description: "Tipo do logradouro do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.logradouro
+        description: "Logradouro do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.numero
+        description: "Número do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.complemento
+        description: "Complemento do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.bairro
+        description: "Bairro do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.cep
+        description: "CEP do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.municipio
+        description: "Município do endereço do responsável."
+        data_type: string
+        quote: true
+      - name: endereco_responsavel.uf
+        description: "UF do endereço do responsável."
+        data_type: string
+        quote: true
