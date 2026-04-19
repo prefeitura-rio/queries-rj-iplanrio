@@ -10,6 +10,11 @@ models:
         description: "Identificador único do estabelecimento no SISVISA."
         data_type: string
         quote: true
+        data_tests:
+          - not_null:
+              name: mart_sisvisa_situacao_licenciamento_estabelecimento__id_estabelecimento_sisvisa__not_null
+              config:
+                severity: error
 
       - name: cnpj
         description: "CNPJ do estabelecimento no BCADASTRO."
@@ -18,6 +23,13 @@ models:
         data_tests:
           - not_null:
               name: mart_sisvisa_situacao_licenciamento_estabelecimento__cnpj__not_null
+              config:
+                severity: error
+
+          - unique:
+              name: mart_sisvisa_situacao_licenciamento_estabelecimento__cnpj__unique
+              config:
+                severity: warn
 
       - name: inscricao_municipal
         description: "Inscrição municipal do estabelecimento no SISVISA."
