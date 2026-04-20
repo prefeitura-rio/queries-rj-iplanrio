@@ -141,6 +141,11 @@ models:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
           +tags: "daily"
+        consulta_previa_eventos:
+          +materialized: table
+          +schema: consulta_previa_eventos
+          +tags: "daily"
+
       sma:
         +tags: "sma"
         +project: rj-sma
@@ -200,13 +205,19 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
+
       ssm:
         +tags: "ssm"
         +project: rj-ssm
         vigia_urbano:
           +materialized: table
           +schema: brutos_formulario_ocorrencia
-          +tags: ["hourly", "ssm"]      
+          +tags: ["hourly", "ssm"]
+        compstat:
+          +materialized: table
+          +schema: bruto_api_compstat
+          +tags: ["daily", "ssm"]
+
       iplanrio:
         +project: rj-iplanrio
         pessoa_vinculada:
