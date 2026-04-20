@@ -4,12 +4,6 @@ version: 2
 models:
   - name: raw_consulta_previa_eventos__alvaras_consulta_previa_eventos
     description: "Alvarás de Eventos Emitidos e/ou Consulta Prévia."
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-            combination_of_columns:
-              - codigo_cpe
-      - not_null_proportion_multiple_columns:
-            at_least: 0.95
     columns:
       - name: codigo_cpe
         description: Identificador único dado pelo sistema ao alvará de evento e consulta

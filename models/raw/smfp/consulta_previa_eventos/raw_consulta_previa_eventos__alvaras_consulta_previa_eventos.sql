@@ -1,6 +1,6 @@
 {{config(
     materialized = 'table',
-    alias = 'brutos_consulta_previa_eventos',
+    alias = 'alvaras_consulta_previa_eventos',
     partition_by = {
         "field": "data_inicio_processo_cpe",
         "data_type": "date",

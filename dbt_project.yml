@@ -143,7 +143,7 @@ models:
           +tags: "daily"
         consulta_previa_eventos:
           +materialized: table
-          +schema: consulta_previa_eventos
+          +schema: brutos_consulta_previa_eventos
           +tags: "daily"
 
       sma:
