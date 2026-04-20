@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: brutos_sisvisa_staging
+    database: rj-iplanrio
+    schema: brutos_sisvisa_staging
+    tables:
+      - name: RequerimentoAutodeclaracao
+      - name: CobrancaSisvisa
+      - name: HistoricoDeLicenca
+      - name: Estabelecimento
+      - name: Vw_Rest_Alvara_Estab_Sinae_Datalake
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
