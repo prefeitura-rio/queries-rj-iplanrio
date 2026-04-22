@@ -131,4 +131,6 @@ select
     safe_cast(data_pagamento_TUAP_alvara as date) data_pagamento_TUAP_alvara,
     safe_cast(data_vencimento_TUAP_alvara as date) data_vencimento_TUAP_alvara,
     safe_cast(status_TUAP_alvara as string) status_TUAP_alvara,
+    _airbyte_extracted_at as datalake_loaded_at, 
+    current_timestamp() as datalake_transformed_at
         FROM {{ source('brutos_consulta_previa_eventos_staging', 'vw_Consulta_Previa_Eventos') }}
