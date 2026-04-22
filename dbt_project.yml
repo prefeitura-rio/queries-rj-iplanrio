@@ -219,11 +219,6 @@ models:
           +materialized: table
           +schema: brutos_formulario_ocorrencia
           +tags: ["hourly", "ssm"]
-        compstat:
-          +materialized: table
-          +schema: bruto_api_compstat
-          +tags: ["daily", "ssm"]
-
       iplanrio:
         +project: rj-iplanrio
         pessoa_vinculada:
