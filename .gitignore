@@ -37,6 +37,7 @@ README_BRUNO.md
 # Temporary files
 *.log
 *.tmp
+*tmp/
 *.temp
 .qodo
 dbt_internal_packages/

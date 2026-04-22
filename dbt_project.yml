@@ -147,6 +147,11 @@ models:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
           +tags: "daily"
+        consulta_previa_eventos:
+          +materialized: table
+          +schema: brutos_consulta_previa_eventos
+          +tags: "daily"
+
       sma:
         +tags: "sma"
         +project: rj-sma
