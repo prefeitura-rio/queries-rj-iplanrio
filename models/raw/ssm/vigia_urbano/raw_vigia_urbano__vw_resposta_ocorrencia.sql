@@ -5,6 +5,85 @@
     )
 }}
 
+
+with resposta_ocorrencia AS (SELECT 
+    Id,
+    dataHoraRegistro,
+    logradouro,
+    numeroPorta,
+    referencia,
+    coordenadaX,
+    coordenadaY,
+    coordenadaXDispositivo,
+    coordenadaYDispositivo,
+    observacao,
+    CASE 
+    WHEN SAFE_CAST(REPLACE(excluido, ".0", "") AS INT64) = 1 THEN TRUE
+    WHEN SAFE_CAST(REPLACE(excluido, ".0", "") AS INT64) = 0 THEN FALSE
+    ELSE NULL 
+    END as excluido,
+    CASE 
+    WHEN SAFE_CAST(REPLACE(enderecoInformado, ".0", "") AS INT64) = 1 THEN TRUE
+    WHEN SAFE_CAST(REPLACE(enderecoInformado, ".0", "") AS INT64) = 0 THEN FALSE
+    ELSE NULL 
+    END as enderecoInformado,
+    caminhoImagem,
+    CASE 
+    WHEN SAFE_CAST(REPLACE(valido, ".0", "") AS INT64) = 1 THEN TRUE
+    WHEN SAFE_CAST(REPLACE(valido, ".0", "") AS INT64) = 0 THEN FALSE
+    ELSE NULL 
+    END as valido,
+    bairroID,
+    bairroNome,
+    tipoPessoa,
+    subareaid,
+    subarea,
+    tipoPessoaDescricao,
+    ocupacaoPessoa,
+    ocupacaoPessoaDescricao,
+    tipoFrequencia,
+    tipoFrequenciaDescricao,
+    ocupacaoDrogas,
+    ocupacaoDrogasDescricao,
+    itemPraca,
+    itemPracaDescricao,
+    ocorrenciaID,
+    ocorrenciaDescricao,
+    CASE 
+    WHEN SAFE_CAST(REPLACE(ocorrenciaAtivo, ".0", "") AS INT64) = 1 THEN TRUE
+    WHEN SAFE_CAST(REPLACE(ocorrenciaAtivo, ".0", "") AS INT64) = 0 THEN FALSE
+    ELSE NULL 
+    END as ocorrenciaAtivo,
+    orgaoResponsavel,
+    quemOpera,
+    servico1746,
+    ocorrenciaInformacao,
+    ocorrenciaOrgaoID,
+    ocorrenciaOrgaoNome,
+    ocorrenciaOrgaoCodigo,
+    categoriaID,
+    categoriaNome,
+    CASE 
+    WHEN SAFE_CAST(REPLACE(categoriaAtivo, ".0", "") AS INT64) = 1 THEN TRUE
+    WHEN SAFE_CAST(REPLACE(categoriaAtivo, ".0", "") AS INT64) = 0 THEN FALSE
+    ELSE NULL 
+    END as categoriaAtivo,
+    usuarioID,
+    usuarioNome,
+    usuarioCpf,
+    usuarioEmail,
+    usuarioMatricula,
+    CASE 
+    WHEN SAFE_CAST(REPLACE(usuarioAtivo, ".0", "") AS INT64) = 1 THEN TRUE
+    WHEN SAFE_CAST(REPLACE(usuarioAtivo, ".0", "") AS INT64) = 0 THEN FALSE
+    ELSE NULL 
+    END as usuarioAtivo,
+    usuarioPerfis,
+    usuarioOrgaoNome,
+    usuarioOrgaoCodigo,
+    _prefect_extracted_at
+    FROM {{ source('brutos_formulario_ocorrencia_staging', 'vw_RespostaOcorrencia') }})
+
 SELECT
     safe_cast(Id AS int64) AS id_resposta_ocorrencia,
     safe_cast(dataHoraRegistro AS datetime) AS data_hora_registro,
@@ -19,9 +98,12 @@ SELECT
     safe_cast(excluido AS bool) AS excluido,
     safe_cast(enderecoInformado AS bool) AS endereco_informado,
     safe_cast(TRIM(caminhoImagem) AS string) AS caminho_imagem,
+    safe_cast(valido AS bool) AS valido,
     safe_cast(bairroID AS int64) AS id_bairro,
     safe_cast(TRIM(bairroNome) AS string) AS bairro_nome,
     safe_cast(tipoPessoa AS int64) AS id_tipo_pessoa,
+    safe_cast(REPLACE(subareaid, ".0", "") AS string) AS id_subarea,
+    safe_cast(subarea AS string) AS subarea_nome,
     safe_cast(TRIM(tipoPessoaDescricao) AS string) AS tipo_pessoa_descricao,
     safe_cast(ocupacaoPessoa AS int64) AS id_ocupacao_pessoa,
     safe_cast(TRIM(ocupacaoPessoaDescricao) AS string) AS ocupacao_pessoa_descricao,
@@ -55,4 +137,4 @@ SELECT
     safe_cast(TRIM(usuarioOrgaoCodigo) AS string) AS codigo_orgao_usuario,
     safe.parse_datetime('%Y-%m-%d %H:%M:%E*S', _prefect_extracted_at) as datalake_loaded_at,
     safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
-FROM {{ source('brutos_formulario_ocorrencia_staging', 'vw_RespostaOcorrencia') }}
+FROM resposta_ocorrencia
