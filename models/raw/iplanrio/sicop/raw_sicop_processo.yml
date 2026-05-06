@@ -77,6 +77,11 @@ models:
         data_type: string
         quote: true
 
+      - name: endereco_requerente
+        description: "Endereço do requerente"
+        data_type: string
+        quote: true
+    
       - name: cep
         description: "cep do requerente"
         data_type: string

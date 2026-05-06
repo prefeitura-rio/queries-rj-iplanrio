@@ -91,6 +91,12 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: tributos
             845941190868/acesso: restrito
+        sisvisa:
+          +schema: sisvisa
+          +tags: ["daily", "sisvisa"]
+          +resource_tags:
+            rj-iplanrio/dominio: tributos
+            845941190868/acesso: restrito
       cvl:
         +project: rj-cvl
         +tags: ["cvl"]
@@ -141,6 +147,11 @@ models:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
           +tags: "daily"
+        consulta_previa_eventos:
+          +materialized: table
+          +schema: brutos_consulta_previa_eventos
+          +tags: "daily"
+
       sma:
         +tags: "sma"
         +project: rj-sma

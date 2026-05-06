@@ -49,6 +49,18 @@ models:
         description: "Coordenada Y (latitude) capturada pelo dispositivo (geolocalização)"
         data_type: string
         quote: true
+      - name: valido
+        description: "Flag que Indica se o registro é válido (False=0 / True=1)"
+        data_type: bool
+        quote: true
+      - name: id_subarea
+        description: "Identificador da subárea onde a ocorrência foi registrada"
+        data_type: string
+        quote: true
+      - name: subarea_nome
+        description: "Nome da subárea onde a ocorrência foi registrada"
+        data_type: string
+        quote: true
       - name: observacao
         description: "Observações sobre a ocorrência"
         data_type: string
