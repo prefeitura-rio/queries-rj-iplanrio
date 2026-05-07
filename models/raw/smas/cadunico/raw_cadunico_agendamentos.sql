@@ -11,10 +11,11 @@
 
 with source_data as (
     select
+        DISTINCT
         id,
         id_capacidade,
         nome_completo,
-        cpf,
+        REGEXP_REPLACE(cpf, r'[\.\-]', '') as cpf,
         telefone,
         tipo,
         data_hora,
@@ -23,7 +24,7 @@ with source_data as (
         unidade_bairro,
         current_timestamp() as processed_at,
         DATE(data_hora) as data_particao
-    from {{ source('brutos_data_metrica', 'agendamentos_cadunico') }}
+    from {{ source('brutos_data_metrica', 'cadunico_agendamentos') }}
     where data_hora is not null
 )
 
