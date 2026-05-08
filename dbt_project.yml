@@ -151,6 +151,10 @@ models:
           +materialized: table
           +schema: brutos_consulta_previa_eventos
           +tags: "daily"
+        atividade_economica:
+          +materialized: table
+          +schema: atividade_economica
+          +tags: "daily"
 
       sma:
         +tags: "sma"
