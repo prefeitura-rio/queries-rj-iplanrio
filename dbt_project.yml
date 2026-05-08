@@ -140,6 +140,9 @@ models:
           +materialized: table
           +schema: brutos_plano_educacional_individualizado
           +tags: ["daily"]
+        educacao_basica_avaliacao:
+          +materialized: table
+          +schema: educacao_basica_avaliacao
       smfp:
         +tags: "smfp"
         +project: rj-smfp
