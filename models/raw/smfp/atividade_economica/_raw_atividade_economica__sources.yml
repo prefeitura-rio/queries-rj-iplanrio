@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: atividade_economica_staging
+    database: rj-iplanrio
+    schema: atividade_economica_staging
+    description: Dados brutos de atividade econômica da SMFP
+    tables:
+      - name: fact_fatoalvaras
+        description: Tabela fato com dados de alvarás
+      - name: fact_fatocp
+        description: Tabela fato com dados de consultas prévias
+      - name: tab_alvara
+        description: Tabela de dimensão com detalhes de alvarás
+      - name: tab_atvprocesso
+        description: Tabela de dimensão com atividades de processo
+      - name: tab_cae
+        description: Tabela de dimensão com códigos CAE (Classificação de Atividades Econômicas)
+      - name: tab_cnae
+        description: Tabela de dimensão com códigos CNAE (Classificação Nacional de Atividades Econômicas)
+      - name: tab_consulta
+        description: Tabela de dimensão com detalhes de consultas prévias
+      - name: tab_direcionamento
+        description: Tabela de dimensão com direcionamentos
+      - name: tab_tipocontribuinte_tipocontribuint
+        description: Tabela de dimensão com tipos de contribuinte
+      - name: tab_tiposolicitacao
+        description: Tabela de dimensão com tipos de solicitação
+
+    config:
+      freshness:
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
