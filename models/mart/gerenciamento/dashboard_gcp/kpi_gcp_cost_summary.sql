@@ -1,6 +1,7 @@
 {{
     config(
         materialized='table',
+        alias='kpi_gcp_cost_summary',
         tags=['dashboard', 'gcp', 'kpi', 'summary'],
     )
 }}
@@ -38,7 +39,7 @@ bigquery_monthly_stats AS (
         COUNT(DISTINCT CASE WHEN is_service_account THEN principal_email END) AS total_service_accounts,
         COUNT(DISTINCT job_id) AS total_jobs
     FROM {{ ref('raw_gcp_bigquery_cost_allocated_v1') }}
-    WHERE allocated_cost_job > 0
+    WHERE 1=1
     GROUP BY invoice_month_date
 ),
 

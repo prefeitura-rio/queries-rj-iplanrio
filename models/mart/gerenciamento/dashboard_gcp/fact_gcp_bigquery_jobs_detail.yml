@@ -27,8 +27,6 @@ models:
       - raw_gcp_bigquery_cost_allocated_v1
 
     config:
-      schema: dashboard_gcp
-      alias: fact_gcp_bigquery_jobs_detail
       materialized: view
       tags:
         - dashboard

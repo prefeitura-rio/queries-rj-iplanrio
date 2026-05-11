@@ -48,7 +48,7 @@ models:
 
       - name: principal_type
         description: >
-          Tipo de principal: human, service_account, compute_engine, google_apis, unknown.
+          Tipo de principal: user, service_account, compute_engine, google_apis, unknown.
         data_type: string
         quote: true
 
@@ -164,7 +164,7 @@ models:
 
       - name: allocated_cost_job
         description: >
-          Custo alocado para este job específico (em USD).
+          Custo alocado para este job específico (em BRL).
           Calculado proporcionalmente aos bytes faturados:
           (total_bytes_billed / total_bytes_project_month) * bigquery_cost_net.
           A soma de allocated_cost_job por projeto/mês deve ser ≈ bigquery_cost_net.

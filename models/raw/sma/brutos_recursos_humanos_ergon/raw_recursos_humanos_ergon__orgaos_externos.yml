@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__orgaos_externos
+    description: "**Descrição**: Órgãos de outros entes federativos que pertence não pertencem à prefeitura do Rio de Janeiro, mas que são de interesse da prefeitura do Rio de Janeiro. Usada, geralmente, para documentar a origem de servidores cedidos à prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n**Publicado por**: Luciano Muniz Francisco\n**Publicado por (email)**: luciano.muniz@prefeitura.rio\n"
+    columns:
+      - name: nome
+        description: Nome do órgão. Ex. GE ACRE (Governo do estado do Acre),PR NITEROI (Prefeitura de Niteroi)
+        data_type: string
+        quote: true
+      - name: nome_completo
+        description: Nome por extenso do órgão. Ex. Prefeitura da cidade de Niteroi.
+        data_type: string
+        quote: true
+      - name: tipo
+        description: Tipo do órgão. Ex. OUT.GOV. (outro governo estadual, que não o do Rio de Janeiro), OUT.PREF. (outra prefeitura que não a do Rio de Janeiro)
+        data_type: string
+        quote: true
+
+

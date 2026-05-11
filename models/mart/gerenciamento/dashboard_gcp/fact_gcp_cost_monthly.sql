@@ -8,6 +8,7 @@
             "granularity": "month",
         },
         cluster_by=["orgao", "service_description"],
+        alias='fact_gcp_cost_monthly',
         tags=['dashboard', 'gcp', 'cost', 'monthly'],
     )
 }}
@@ -77,7 +78,7 @@ bigquery_stats AS (
             SUM(total_bytes_billed) AS total_bytes_billed
 
         FROM {{ ref('raw_gcp_bigquery_cost_allocated_v1') }}
-        WHERE allocated_cost_job > 0
+        WHERE 1=1
 
         {% if is_incremental() %}
             AND invoice_month_date >= DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL {{ lookback_months }} MONTH), MONTH)

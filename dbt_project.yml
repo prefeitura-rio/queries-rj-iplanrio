@@ -57,6 +57,13 @@ models:
           +materialized: table
           +schema: recursos_humanos_ergon_saude
           +tags: "daily"
+      pgm:
+        +tags: "pgm"
+        +project: rj-pgm
+        recursos_humanos_ergon_pgm:
+          +materialized: table
+          +schema: recursos_humanos_ergon_pgm
+          +tags: "daily"
       sms:
         +project: rj-sms
         billing:
@@ -81,6 +88,12 @@ models:
         divida_ativa:
           +schema: divida_ativa
           +tags: ["daily", "divida_ativa"]
+          +resource_tags:
+            rj-iplanrio/dominio: tributos
+            845941190868/acesso: restrito
+        sisvisa:
+          +schema: sisvisa
+          +tags: ["daily", "sisvisa"]
           +resource_tags:
             rj-iplanrio/dominio: tributos
             845941190868/acesso: restrito
@@ -127,6 +140,9 @@ models:
           +materialized: table
           +schema: brutos_plano_educacional_individualizado
           +tags: ["daily"]
+        educacao_basica_avaliacao:
+          +materialized: table
+          +schema: educacao_basica_avaliacao
       smfp:
         +tags: "smfp"
         +project: rj-smfp
@@ -134,12 +150,17 @@ models:
           +materialized: table
           +schema: compras_materiais_servicos_sigma
           +tags: "daily"
+        consulta_previa_eventos:
+          +materialized: table
+          +schema: brutos_consulta_previa_eventos
+          +tags: "daily"
+
       sma:
         +tags: "sma"
         +project: rj-sma
-        recursos_humanos_ergon:
+        brutos_recursos_humanos_ergon:
           +materialized: table
-          +schema: recursos_humanos_ergon
+          +schema: brutos_recursos_humanos_ergon
           +tags: "daily"
       smi:
         +tags: "smi"
@@ -196,7 +217,13 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
-      
+      ssm:
+        +tags: "ssm"
+        +project: rj-ssm
+        vigia_urbano:
+          +materialized: table
+          +schema: brutos_formulario_ocorrencia
+          +tags: ["hourly", "ssm"]      
       iplanrio:
         +project: rj-iplanrio
         pessoa_vinculada:
