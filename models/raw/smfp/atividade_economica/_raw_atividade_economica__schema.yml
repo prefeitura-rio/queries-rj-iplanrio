@@ -1,0 +1,173 @@
+---
+version: 2
+
+models:
+  - name: raw_atividade_economica__fact_fatoalvaras
+    description: "Tabela fato contendo métricas e chaves estrangeiras relacionadas aos alvarás emitidos"
+    columns:
+      - name: ID_Alvara
+        description: Identificador único do alvará
+      - name: Quantidade
+        description: Quantidade de alvarás
+      - name: ID_AtvProcesso
+        description: Identificador da atividade do processo
+      - name: ID_CAE
+        description: Identificador do código CAE (Classificação de Atividades Econômicas)
+      - name: ID_CNAE
+        description: Identificador do código CNAE (Classificação Nacional de Atividades Econômicas)
+      - name: ID_DiaDeferimento
+        description: Identificador do dia de deferimento do alvará
+      - name: ID_DiaSolicitacao
+        description: Identificador do dia de solicitação do alvará
+      - name: ID_DiaTaxaPagamen
+        description: Identificador do dia de pagamento da taxa
+      - name: ID_Direcionamento
+        description: Identificador do direcionamento
+      - name: ID_TipoContribuint
+        description: Identificador do tipo de contribuinte
+      - name: ID_TipoSolicitacao
+        description: Identificador do tipo de solicitação
+
+  - name: raw_atividade_economica__fact_fatocp
+    description: "Tabela fato contendo métricas e chaves estrangeiras relacionadas às consultas prévias"
+    columns:
+      - name: ID_AtvProcesso
+        description: Identificador da atividade do processo
+      - name: Quantidade_cp
+        description: Quantidade de consultas prévias
+      - name: ID_CAE
+        description: Identificador do código CAE (Classificação de Atividades Econômicas)
+      - name: ID_CNAE
+        description: Identificador do código CNAE (Classificação Nacional de Atividades Econômicas)
+      - name: ID_Consulta
+        description: Identificador da consulta prévia
+      - name: ID_DiaInicial
+        description: Identificador do dia inicial da consulta
+      - name: ID_Direcionamento
+        description: Identificador do direcionamento
+      - name: ID_TipoContribuint
+        description: Identificador do tipo de contribuinte
+      - name: ID_TipoSolicitacao
+        description: Identificador do tipo de solicitação
+
+  - name: raw_atividade_economica__tab_alvara
+    description: "Tabela de dimensão com informações detalhadas sobre os alvarás"
+    columns:
+      - name: ID_Alvara
+        description: Identificador único do alvará
+      - name: DSC_Alvara
+        description: Descrição do alvará
+      - name: DSC_Endereco
+        description: Endereço do alvará
+      - name: DSC_Bairro
+        description: Bairro do alvará
+      - name: DSC_Zoneamento
+        description: Zoneamento do alvará
+      - name: DSC_IRLF
+        description: Índice de Referência de Lançamento Fiscal (IRLF)
+      - name: DSC_TipoAnalise
+        description: Tipo de análise do alvará
+      - name: DSC_TempoRespDia
+        description: Tempo de resposta em dias
+      - name: DSC_StatusIntermediario
+        description: Status intermediário do processo
+      - name: DSC_StatusCPL
+        description: Status CPL (Consulta Prévia de Localização)
+      - name: DSC_TempoRespMinuto
+        description: Tempo de resposta em minutos
+      - name: DSC_TipoAlvara
+        description: Tipo do alvará
+      - name: DSC_TaxaOriginal
+        description: Valor original da taxa
+      - name: DSC_TaxaMulta
+        description: Valor da multa sobre a taxa
+      - name: DSC_TaxaMora
+        description: Valor dos juros de mora sobre a taxa
+      - name: DSC_TaxaTotal
+        description: Valor total da taxa (original + multa + mora)
+      - name: DSC_IsentoTaxa
+        description: Indicador se o alvará é isento de taxa
+      - name: DSC_Numero
+        description: Número do alvará
+      - name: DSC_AlvaraLiberado
+        description: Indicador se o alvará foi liberado
+
+  - name: raw_atividade_economica__tab_atvprocesso
+    description: "Tabela de dimensão com informações sobre atividades de processo"
+    columns:
+      - name: ID_AtvProcesso
+        description: Identificador único da atividade do processo
+      - name: DSC_AtvProcesso
+        description: Descrição da atividade do processo
+      - name: DSC_RespAtividade
+        description: Responsável pela atividade
+      - name: DSC_RefAtividade
+        description: Referência da atividade
+
+  - name: raw_atividade_economica__tab_cae
+    description: "Tabela de dimensão com códigos CAE (Classificação de Atividades Econômicas)"
+    columns:
+      - name: ID_CAE
+        description: Identificador único do código CAE
+      - name: DSC_CAE
+        description: Descrição do código CAE
+      - name: ID_TipoAtividade
+        description: Identificador do tipo de atividade
+      - name: DSC_TipoAtividade
+        description: Descrição do tipo de atividade
+
+  - name: raw_atividade_economica__tab_cnae
+    description: "Tabela de dimensão com códigos CNAE (Classificação Nacional de Atividades Econômicas)"
+    columns:
+      - name: ID_CNAE
+        description: Identificador único do código CNAE
+      - name: DSC_CNAE
+        description: Descrição do código CNAE
+
+  - name: raw_atividade_economica__tab_consulta
+    description: "Tabela de dimensão com informações detalhadas sobre consultas prévias"
+    columns:
+      - name: ID_Consulta
+        description: Identificador único da consulta prévia
+      - name: DSC_Consulta
+        description: Descrição da consulta prévia
+      - name: DSC_Endereco_cp
+        description: Endereço da consulta prévia
+      - name: DSC_Bairro_cp
+        description: Bairro da consulta prévia
+      - name: DSC_Zoneamento_cp
+        description: Zoneamento da consulta prévia
+      - name: DSC_CodeConsulta
+        description: Código da consulta
+      - name: DSC_IRLF_cp
+        description: Índice de Referência de Lançamento Fiscal (IRLF) da consulta prévia
+      - name: DSC_StatusCPL_cp
+        description: Status CPL (Consulta Prévia de Localização) da consulta
+      - name: DSC_TipoAnalise_cp
+        description: Tipo de análise da consulta prévia
+      - name: DSC_Status_cp
+        description: Status da consulta prévia
+
+  - name: raw_atividade_economica__tab_direcionamento
+    description: "Tabela de dimensão com informações sobre direcionamentos"
+    columns:
+      - name: ID_Direcionamento
+        description: Identificador único do direcionamento
+      - name: DSC_Direcionamento
+        description: Descrição do direcionamento
+
+  - name: raw_atividade_economica__tab_tipocontribuinte
+    description: "Tabela de dimensão com tipos de contribuinte"
+    columns:
+      - name: ID_TipoContribuint
+        description: Identificador único do tipo de contribuinte
+      - name: DSC_TipoContribuint
+        description: Descrição do tipo de contribuinte
+
+  - name: raw_atividade_economica__tab_tiposolicitacao
+    description: "Tabela de dimensão com tipos de solicitação"
+    columns:
+      - name: ID_TipoSolicitacao
+        description: Identificador único do tipo de solicitação
+      - name: DSC_TipoSolicitacao
+        description: Descrição do tipo de solicitação
