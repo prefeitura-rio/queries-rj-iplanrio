@@ -8,11 +8,6 @@ models:
       schema: "plus_codes"
       materialized: "table"
     columns:
-      - name: plus11
-        description: "Código plus com 11 dígitos de precisão para localização específica"
-        data_type: string
-        tests:
-          - not_null
       - name: id_equipamento
         description: "Identificador único do equipamento gerado por hash MD5 do nome + logradouro"
         data_type: string

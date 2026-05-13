@@ -31,14 +31,6 @@ with
             coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))) as lat_final,
             coalesce(e.longitude_tratada, st_x(st_centroid(t.geometry))) as lng_final,
             
-            -- Pluscodes (calculados com a localização final)
-            coalesce(
-                tools.encode_pluscode(
-                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
-                    coalesce(e.longitude_tratada, st_x(st_centroid(t.geometry))), 
-                    11
-                ), ''
-            ) as plus11,
 
             -- Identificação principal do equipamento
             t.codigo_unidade as id_equipamento,
@@ -49,23 +41,23 @@ with
 
             -- Mais Pluscodes
             coalesce(
-                tools.encode_pluscode(
-                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
+                `rj-iplanrio.plus_codes.encode_plus_code`(
                     coalesce(e.longitude_tratada, st_x(st_centroid(t.geometry))), 
+                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
                     10
                 ), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(
-                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
+                `rj-iplanrio.plus_codes.encode_plus_code`(
                     coalesce(e.longitude_tratada, st_x(st_centroid(t.geometry))), 
+                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
                     8
                 ), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(
-                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
+                `rj-iplanrio.plus_codes.encode_plus_code`(
                     coalesce(e.longitude_tratada, st_x(st_centroid(t.geometry))), 
+                    coalesce(e.latitude_tratada, st_y(st_centroid(t.geometry))), 
                     6
                 ), ''
             ) as plus6,
@@ -185,7 +177,6 @@ with
 
 -- Seleção final garantindo a ordem exata das colunas
 select
-    plus11,
     id_equipamento,
     trim(secretaria_responsavel) as secretaria_responsavel,
     trim(tipo_equipamento) as tipo_equipamento,

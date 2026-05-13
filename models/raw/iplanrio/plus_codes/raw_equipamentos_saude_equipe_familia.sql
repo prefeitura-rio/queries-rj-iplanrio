@@ -16,9 +16,6 @@ WITH
   )
 
 SELECT
-  -- Plus Codes (não podem ser gerados sem coordenadas de ponto)
-  CAST(NULL AS STRING) AS plus11,
-  
   -- Identificação principal
   t.id_ine AS id_equipamento,
   'SMS' AS secretaria_responsavel,
