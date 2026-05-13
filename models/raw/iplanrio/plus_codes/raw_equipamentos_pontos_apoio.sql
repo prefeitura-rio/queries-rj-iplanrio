@@ -31,15 +31,6 @@ with
             c.lat_tratada as lat_final,
             c.lon_tratada as lng_final,
             
-            -- Pluscodes (calculados com as coordenadas tratadas)
-            coalesce(
-                tools.encode_pluscode(
-                    c.lat_tratada, 
-                    c.lon_tratada, 
-                    11
-                ), ''
-            ) as plus11,
-
             -- Identificação principal do equipamento
             -- Hash do nome + logradouro para ID único
             to_hex(md5(concat(upper(trim(c.nome)), '|', upper(trim(c.logradouro))))) as id_equipamento,
@@ -50,23 +41,23 @@ with
 
             -- Mais Pluscodes
             coalesce(
-                tools.encode_pluscode(
-                    c.lat_tratada, 
+                `rj-iplanrio.plus_codes.encode_plus_code`(
                     c.lon_tratada, 
+                    c.lat_tratada, 
                     10
                 ), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(
-                    c.lat_tratada, 
+                `rj-iplanrio.plus_codes.encode_plus_code`(
                     c.lon_tratada, 
+                    c.lat_tratada, 
                     8
                 ), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(
-                    c.lat_tratada, 
+                `rj-iplanrio.plus_codes.encode_plus_code`(
                     c.lon_tratada, 
+                    c.lat_tratada, 
                     6
                 ), ''
             ) as plus6,
@@ -152,7 +143,6 @@ with
 
 -- Seleção final garantindo a ordem exata das colunas
 select
-    plus11,
     id_equipamento,
     trim(secretaria_responsavel) as secretaria_responsavel,
     trim(tipo_equipamento) as tipo_equipamento,

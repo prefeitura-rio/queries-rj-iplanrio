@@ -31,8 +31,8 @@ WITH
     ),
     final_tb AS (
         SELECT
-            tools.encode_pluscode(center_lat, center_lon, 8) AS plus8,
-            tools.encode_pluscode(center_lat, center_lon, 6) AS plus6,
+            `rj-iplanrio.plus_codes.encode_plus_code`(center_lon, center_lat,8) AS plus8,
+            `rj-iplanrio.plus_codes.encode_plus_code`(center_lon, center_lat, 6) AS plus6,
             ANY_VALUE(ST_GEOGPOINT(center_lon, center_lat)) AS geometry,
             ANY_VALUE(ST_GEOGFROMTEXT(
                 FORMAT('LINESTRING(%f %f, %f %f, %f %f, %f %f, %f %f)',

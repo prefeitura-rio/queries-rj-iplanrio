@@ -34,7 +34,6 @@ pair_territorio as (
         (
             select as struct
                     e.plus8,
-                    e.plus11,
                     e.id_equipamento,
                     e.secretaria_responsavel,
                     e.categoria,

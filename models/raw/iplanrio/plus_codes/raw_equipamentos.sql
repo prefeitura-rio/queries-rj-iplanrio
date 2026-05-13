@@ -1,6 +1,4 @@
 /*
-plus11
-
 id_equipamento STRING
 secretaria_responsavel STRING
 tipo_equipamento STRING
@@ -8,7 +6,6 @@ nome_oficial STRING
 nome_popular STRING
 
 plus10 STRING
-plus11 STRING
 plus6 STRING
 latitude FLOAT64
 longitude FLOAT64
@@ -92,7 +89,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -121,7 +117,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -151,7 +146,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -180,7 +174,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -209,7 +202,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -238,7 +230,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -267,7 +258,6 @@ with
         select
             plus8,
             geometry,
-            plus11,
             id_equipamento,
             secretaria_responsavel,
             tipo_equipamento,
@@ -318,7 +308,6 @@ with
     equipamentos_categorias as (
         select distinct
             eq.plus8,
-            eq.plus11,
             eq.id_equipamento,
             eq.secretaria_responsavel,
             coalesce(c_esp.tipo, c_gen.tipo, eq.tipo_equipamento) as categoria,
@@ -360,7 +349,6 @@ with
 
 select
     eq.plus8,
-    eq.plus11,
     eq.id_equipamento,
     ST_GEOGFROMTEXT(eq.geometry_text) as geometry,
     eq.secretaria_responsavel,

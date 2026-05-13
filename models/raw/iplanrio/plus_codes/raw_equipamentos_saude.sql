@@ -49,10 +49,6 @@ with
     tb as (
         select
             -- Pluscodes (computed and ordered as specified)
-            coalesce(
-                tools.encode_pluscode(t.endereco_latitude, t.endereco_longitude, 11), ''
-            ) as plus11,
-
             -- Core identification
             t.id_cnes as id_equipamento,
             'SMS' as secretaria_responsavel,
@@ -66,13 +62,13 @@ with
 
             -- More Pluscodes
             coalesce(
-                tools.encode_pluscode(t.endereco_latitude, t.endereco_longitude, 10), ''
+                `rj-iplanrio.plus_codes.encode_plus_code`(t.endereco_longitude, t.endereco_latitude, 10), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(t.endereco_latitude, t.endereco_longitude, 8), ''
+                `rj-iplanrio.plus_codes.encode_plus_code`(t.endereco_longitude, t.endereco_latitude, 8), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(t.endereco_latitude, t.endereco_longitude, 6), ''
+                `rj-iplanrio.plus_codes.encode_plus_code`(t.endereco_longitude, t.endereco_latitude, 6), ''
             ) as plus6,
 
             -- Location details
@@ -216,7 +212,6 @@ with
     )
 
 select
-    plus11,
     id_equipamento,
     trim(secretaria_responsavel) as secretaria_responsavel,
     trim(tipo_equipamento) as tipo_equipamento,
