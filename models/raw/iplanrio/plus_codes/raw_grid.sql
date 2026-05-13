@@ -41,6 +41,8 @@ WITH
     -- Agrupa os resultados e gera os Plus Codes.
     final_tb AS (
         SELECT
+            -- Migrate from tools.encode_pluscode to rj-iplanrio.plus_codes.encode_plus_code
+            -- tools.encode_pluscode(center_lat, center_lon, 8) AS plus8,
             `rj-iplanrio.plus_codes.encode_plus_code`(center_lon,center_lat, 8) AS plus8,
             `rj-iplanrio.plus_codes.encode_plus_code`(center_lon, center_lat, 6) AS plus6,
             -- any_value é usado aqui pois já estamos agrupando por plus8 e plus6
