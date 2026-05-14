@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: brutos_forca_municipal_staging
+    database: rj-iplanrio
+    schema: brutos_forca_municipal_staging
+    tables:
+      - name: unidades_ativas
+      - name: unidades_historico
+      - name: ocorrencias_ativas
+      - name: ocorrencias_historico
+      - name: qmd
+      - name: qmd_servicos
+      - name: qmd_missoes
+      - name: qmd_plano
+      - name: qmd_detalhes
+      - name: qmd_ativos
+      - name: ocorrencias_ativas_v2

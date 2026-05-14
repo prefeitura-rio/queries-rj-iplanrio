@@ -1,0 +1,566 @@
+version: 2
+
+models:
+  - name: raw_api_segur__unidades_ativas
+    description: "Unidades/viaturas logadas no sistema da Força Municipal"
+    columns:
+      - name: id_agencia
+        description: "Identificador da agência responsável (ex: 'FORCA')"
+      - name: tempo_duracao_alarme
+        description: "Tempo de duração do alarme em milissegundos"
+      - name: id_ocorrencia_atribuida
+        description: "ID da ocorrência atualmente atribuída à unidade"
+      - name: setor_patrulhamento
+        description: "Setor ou subsetor de patrulhamento (ex: 'Leblon', 'Copacabana')"
+      - name: comentario_alteracao
+        description: "Comentário sobre a alteração realizada na ocorrência"
+      - name: dados_personalizados
+        description: "Campo para informações personalizadas em formato JSON string"
+      - name: status_disponibilidade_padrao
+        description: "Status padrão de disponibilidade da unidade"
+      - name: tempo_atraso
+        description: "Tempo de atraso registrado em milissegundos"
+      - name: nivel_alarme_despacho
+        description: "Nível de alarme utilizado para o despacho"
+      - name: grupo_despacho
+        description: "Grupo de despacho da ocorrência (ex: '23 AISP - Leblon')"
+      - name: indicador_indisponivel
+        description: "Indica se a unidade está indisponível"
+      - name: latitude
+        description: "Coordenada geográfica de latitude"
+      - name: endereco
+        description: "Endereço em formato textual"
+      - name: data_hora_login_sistema
+        description: "Data e hora em que a unidade/viatura logou no sistema"
+      - name: longitude
+        description: "Coordenada geográfica de longitude"
+      - name: codigo_motivo_fora_servico
+        description: "Código do motivo de saída de serviço da unidade"
+      - name: codigo_status_atual
+        description: "Código numérico do estado atual da unidade"
+      - name: data_hora_mudanca_status
+        description: "Data e hora da mudança de status da unidade"
+      - name: id_ocorrencia
+        description: "Identificador único da ocorrência"
+      - name: codigo_subtipo_ocorrencia
+        description: "Código do subtipo da ocorrência vinculada ao status"
+      - name: codigo_tipo_ocorrencia
+        description: "Código do tipo da ocorrência vinculada ao status"
+      - name: tempo_total_ocorrencias
+        description: "Tempo total gasto em ocorrências em milissegundos"
+      - name: tempo_total_indisponivel
+        description: "Tempo total em que a unidade ficou indisponível (não contando com 'Fora de serviço') em milissegundos"
+      - name: id_viatura
+        description: "Identificador da unidade/viatura (ex: 'POG01')"
+      - name: tipo_viatura
+        description: "Tipo da unidade/veículo (ex: 'POG', 'VTR', 'MOT')"
+      - name: contador_atualizacoes
+        description: "Contador de atualizações realizadas na ocorrência"
+      - name: zona_geografica
+        description: "Zona geográfica ampla (ex: 'Zona Sul')"
+
+  - name: raw_api_segur__unidades_historico
+    description: "Histórico de todas as viaturas do sistema da Força Municipal"
+    columns:
+      - name: codigo_status_viatura
+        description: "Código de status da unidade/viatura"
+      - name: id_historico_viatura
+        description: "Identificador único do registro de histórico da unidade"
+      - name: id_agencia
+        description: "Identificador da agência responsável (ex: 'FORCA')"
+      - name: tempo_duracao_alarme
+        description: "Tempo de duração do alarme em milissegundos"
+      - name: indicador_funcionarios_rastreados
+        description: "Indica se os funcionários vinculados à ocorrência estão sendo rastreados"
+      - name: id_ocorrencia_atribuida
+        description: "ID da ocorrência atualmente atribuída à unidade"
+      - name: setor_patrulhamento
+        description: "Setor ou subsetor de patrulhamento"
+      - name: comentario_alteracao
+        description: "Comentário sobre a alteração realizada na ocorrência"
+      - name: id_funcionario_criacao
+        description: "ID do funcionário que criou a ocorrência"
+      - name: data_hora_criacao
+        description: "Data e hora de criação da ocorrência"
+      - name: dados_personalizados
+        description: "Campo para informações personalizadas em formato JSON string"
+      - name: data_hora_insercao_banco
+        description: "Data e hora da inserção do registro no banco de dados"
+      - name: status_disponibilidade_padrao
+        description: "Status padrão de disponibilidade da unidade"
+      - name: tempo_atraso
+        description: "Tempo de atraso registrado em milissegundos"
+      - name: nivel_alarme_despacho
+        description: "Nível de alarme utilizado para o despacho"
+      - name: grupo_despacho
+        description: "Grupo de despacho da ocorrência"
+      - name: indicador_indisponivel
+        description: "Indica se a unidade está indisponível"
+      - name: latitude
+        description: "Coordenada geográfica de latitude"
+      - name: nome_escala_viatura
+        description: "Nome da escala da unidade/veículo"
+      - name: endereco
+        description: "Endereço em formato textual"
+      - name: data_hora_login_sistema
+        description: "Data e hora em que a unidade/viatura logou no sistema"
+      - name: longitude
+        description: "Coordenada geográfica de longitude"
+      - name: ordem_criacao_viatura
+        description: "Ordem de criação da unidade/veículo"
+      - name: codigo_motivo_fora_servico
+        description: "Código do motivo de saída de serviço da unidade"
+      - name: id_estacao
+        description: "Identificador da estação vinculada"
+      - name: status_final
+        description: "Estado final da unidade em formato textual (ex: 'DP')"
+      - name: id_ocorrencia
+        description: "Identificador único da ocorrência"
+      - name: numero_revisao_ocorrencia
+        description: "Número da revisão da ocorrência em que a unidade/veículo atuou"
+      - name: codigo_subtipo_ocorrencia
+        description: "Código do subtipo da ocorrência vinculada ao status"
+      - name: codigo_tipo_ocorrencia
+        description: "Código do tipo da ocorrência vinculada ao status"
+      - name: tempo_total_disponivel_base
+        description: "Tempo total que a unidade ficou disponível na base"
+      - name: contagem_total_ocorrencias
+        description: "Contagem total de ocorrências"
+      - name: tempo_total_ocorrencias
+        description: "Tempo total gasto em ocorrências em milissegundos"
+      - name: tempo_total_indisponivel
+        description: "Tempo total em que a unidade ficou indisponível em milissegundos"
+      - name: id_viatura
+        description: "Identificador da unidade/viatura"
+      - name: tipo_viatura
+        description: "Tipo da unidade/veículo"
+      - name: zona_geografica
+        description: "Zona geográfica ampla"
+
+  - name: raw_api_segur__ocorrencias_ativas
+    description: "Ocorrências em curso do sistema da Força Municipal"
+    columns:
+      - name: data_hora_insercao_sistema
+        description: "Data e hora em que a ocorrência foi inserida no sistema"
+      - name: id_ocorrencia
+        description: "Identificador único da ocorrência para a agência"
+      - name: codigo_subtipo_ocorrencia
+        description: "Código do subtipo da ocorrência"
+      - name: descricao_subtipo_ocorrencia
+        description: "Descrição textual do subtipo da ocorrência"
+      - name: codigo_tipo_ocorrencia
+        description: "Código do tipo da ocorrência (ex: 'F' para Furto)"
+      - name: descricao_tipo_ocorrencia
+        description: "Descrição textual do tipo da ocorrência"
+      - name: id_agencia
+        description: "Identificador da agência responsável"
+      - name: nivel_prioridade_alarme
+        description: "Nível de prioridade do alarme da ocorrência"
+      - name: area
+        description: "Área da ocorrência"
+      - name: atributos_flags
+        description: "Atributos ou flags numéricas da ocorrência"
+      - name: setor_patrulhamento
+        description: "Setor ou subsetor de patrulhamento"
+      - name: comentario_encerramento
+        description: "Comentário registrado no encerramento da ocorrência"
+      - name: id_funcionario_encerramento
+        description: "ID do funcionário que encerrou a ocorrência"
+      - name: data_hora_encerramento
+        description: "Data e hora do encerramento da ocorrência"
+      - name: id_funcionario_criacao
+        description: "ID do funcionário que criou a ocorrência"
+      - name: data_hora_criacao
+        description: "Data e hora de criação da ocorrência"
+      - name: dados_personalizados
+        description: "Campo para informações personalizadas em formato JSON string"
+      - name: data_hora_insercao_banco
+        description: "Data e hora da inserção do registro no banco de dados"
+      - name: data_hora_atualizacao_banco
+        description: "Data e hora da última atualização no banco de dados"
+      - name: grupo_despacho
+        description: "Grupo de despacho da ocorrência"
+      - name: bairro
+        description: "Bairro da ocorrência"
+      - name: codigo_zona_servico_emergencial
+        description: "Código da Zona de Serviço Emergencial"
+      - name: descricao_ocorrencia
+        description: "Descrição da ocorrência"
+      - name: data_hora_primeira_viatura_chegada
+        description: "Data e hora da primeira chegada de unidade/veículo à ocorrência"
+      - name: data_hora_primeiro_despacho_viatura
+        description: "Data e hora do primeiro despacho de unidade/veículo para a ocorrência"
+      - name: data_hora_primeiro_roteamento_viatura
+        description: "Data e hora do primeiro roteamento de unidade/veículo para a ocorrência"
+      - name: indicador_ocorrencia_aberta
+        description: "Indica se a ocorrência está aberta"
+      - name: indicador_ocorrencia_reaberta
+        description: "Indica se a ocorrência foi reaberta"
+      - name: data_hora_ultima_alteracao_status
+        description: "Data e hora da última alteração de status"
+      - name: municipio
+        description: "Município da ocorrência"
+      - name: data_hora_alarme_pendente
+        description: "Data e hora de um alarme pendente"
+      - name: id_funcionario_principal
+        description: "ID do funcionário principal responsável"
+      - name: id_viatura_principal
+        description: "ID da unidade/viatura principal responsável pela ocorrência"
+      - name: nivel_prioridade
+        description: "Nível de prioridade da ocorrência"
+      - name: data_hora_alteracao_prioridade
+        description: "Data e hora da última alteração de prioridade"
+      - name: id_funcionario_revisao
+        description: "ID do funcionário que realizou a revisão do registro"
+      - name: numero_revisao
+        description: "Número da revisão do registro"
+      - name: data_hora_revisao
+        description: "Data e hora da revisão"
+      - name: data_hora_inicio
+        description: "Data e hora de início da ocorrência"
+      - name: codigo_status
+        description: "Código numérico do status da ocorrência"
+      - name: codigo_substatus
+        description: "Código de detalhamento do status (sub-status)"
+      - name: total_viaturas_atribuidas
+        description: "Total de unidades atribuídas a uma ocorrência"
+      - name: id_funcionario_atualizacao
+        description: "ID do último funcionário que atualizou a ocorrência"
+      - name: data_hora_atualizacao
+        description: "Data e hora da última atualização"
+      - name: informacoes_suplementares_usuario
+        description: "Máscara com informações suplementares definidas pelo usuário"
+      - name: id_grupo_usuarios
+        description: "ID do grupo de usuários ao qual a ocorrência pertence"
+      - name: zona_geografica
+        description: "Zona geográfica ampla"
+
+  - name: raw_api_segur__ocorrencias_historico
+    description: "Histórico de todas as alterações ocorridas nas ocorrências do sistema"
+    columns:
+      - name: data_hora_insercao_sistema
+        description: "Data e hora em que a ocorrência foi inserida no sistema"
+      - name: id_ocorrencia
+        description: "Identificador único da ocorrência para a agência"
+      - name: codigo_subtipo_ocorrencia
+        description: "Código do subtipo da ocorrência"
+      - name: descricao_subtipo_ocorrencia
+        description: "Descrição textual do subtipo da ocorrência"
+      - name: codigo_tipo_ocorrencia
+        description: "Código do tipo da ocorrência"
+      - name: descricao_tipo_ocorrencia
+        description: "Descrição textual do tipo da ocorrência"
+      - name: id_agencia
+        description: "Identificador da agência responsável"
+      - name: nivel_prioridade_alarme
+        description: "Nível de prioridade do alarme da ocorrência"
+      - name: area
+        description: "Área da ocorrência"
+      - name: atributos_flags
+        description: "Atributos ou flags numéricas da ocorrência"
+      - name: setor_patrulhamento
+        description: "Setor ou subsetor de patrulhamento"
+      - name: comentario_encerramento
+        description: "Comentário registrado no encerramento da ocorrência"
+      - name: id_funcionario_encerramento
+        description: "ID do funcionário que encerrou a ocorrência"
+      - name: data_hora_encerramento
+        description: "Data e hora do encerramento da ocorrência"
+      - name: id_funcionario_criacao
+        description: "ID do funcionário que criou a ocorrência"
+      - name: data_hora_criacao
+        description: "Data e hora de criação da ocorrência"
+      - name: dados_personalizados
+        description: "Campo para informações personalizadas em formato JSON string"
+      - name: data_hora_insercao_banco
+        description: "Data e hora da inserção do registro no banco de dados"
+      - name: grupo_despacho
+        description: "Grupo de despacho da ocorrência"
+      - name: bairro
+        description: "Bairro da ocorrência"
+      - name: codigo_zona_servico_emergencial
+        description: "Código da Zona de Serviço Emergencial"
+      - name: descricao_ocorrencia
+        description: "Descrição da ocorrência"
+      - name: indicador_ocorrencia_aberta
+        description: "Indica se a ocorrência está aberta"
+      - name: indicador_ocorrencia_reaberta
+        description: "Indica se a ocorrência foi reaberta"
+      - name: data_hora_ultima_alteracao_status
+        description: "Data e hora da última alteração de status"
+      - name: municipio
+        description: "Município da ocorrência"
+      - name: id_funcionario_original
+        description: "ID do funcionário que iniciou a ocorrência"
+      - name: data_hora_alarme_pendente
+        description: "Data e hora de um alarme pendente"
+      - name: nivel_prioridade
+        description: "Nível de prioridade da ocorrência"
+      - name: data_hora_alteracao_prioridade
+        description: "Data e hora da última alteração de prioridade"
+      - name: id_funcionario_revisao
+        description: "ID do funcionário que realizou a revisão do registro"
+      - name: numero_revisao
+        description: "Número da revisão do registro"
+      - name: data_hora_revisao
+        description: "Data e hora da revisão"
+      - name: data_hora_inicio
+        description: "Data e hora de início da ocorrência"
+      - name: codigo_status
+        description: "Código numérico do status da ocorrência"
+      - name: codigo_substatus
+        description: "Código de detalhamento do status (sub-status)"
+      - name: total_viaturas_atribuidas
+        description: "Total de unidades atribuídas a uma ocorrência"
+      - name: informacoes_suplementares_usuario
+        description: "Máscara com informações suplementares definidas pelo usuário"
+      - name: id_grupo_usuarios
+        description: "ID do grupo de usuários ao qual a ocorrência pertence"
+      - name: zona_geografica
+        description: "Zona geográfica ampla"
+
+  - name: raw_api_segur__qmd
+    description: "Quadro de Movimentação Diária (QMD) do sistema da Força Municipal"
+    columns:
+      - name: id_qmd
+        description: "Identificador único do QMD"
+      - name: nome_qmd
+        description: "Nome descritivo do QMD"
+      - name: area_qmd
+        description: "Nome da área do QMD"
+      - name: resumo_qmd
+        description: "Resumo do QMD"
+      - name: prescricoes_qmd
+        description: "Prescrições do QMD"
+      - name: data_vigencia_inicio
+        description: "Data inicial da validade do QMD"
+      - name: data_vigencia_fim
+        description: "Data final da validade do QMD"
+      - name: hora_execucao_inicio
+        description: "Horário de início de execução do QMD"
+      - name: hora_execucao_fim
+        description: "Horário de término da execução do QMD"
+      - name: indicador_qmd_ativo
+        description: "Indica se o QMD está ativo"
+      - name: indicador_qmd_valido
+        description: "Indica se o QMD é válido"
+      - name: indicador_qmd_autorizado
+        description: "Indica se o QMD está autorizado"
+      - name: id_responsavel_criacao
+        description: "ID do funcionário responsável pela criação"
+      - name: id_responsavel_autorizacao
+        description: "ID do funcionário responsável pela autorização"
+      - name: data_hora_criacao
+        description: "Data e hora de criação do QMD"
+      - name: data_hora_autorizacao
+        description: "Data e hora em que o QMD foi autorizado"
+
+  - name: raw_api_segur__qmd_servicos
+    description: "Serviços dos QMDs do sistema da Força Municipal"
+    columns:
+      - name: id_servico
+        description: "Identificador único do serviço"
+      - name: id_plano_servico
+        description: "Identificador do plano de serviço"
+      - name: id_qmd
+        description: "Identificador do QMD"
+      - name: nome_servico
+        description: "Nome do Serviço (ex. 'POG01' ou 'VTR01')"
+      - name: dias_semana_execucao
+        description: "Dias da semana para execução do serviço em formato array JSON"
+
+  - name: raw_api_segur__qmd_missoes
+    description: "Missões dos QMDs do sistema da Força Municipal"
+    columns:
+      - name: id_missao
+        description: "Identificador único da missão"
+      - name: id_qmd
+        description: "Identificador do QMD"
+      - name: tipo_missao
+        description: "Sigla do tipo de missão (ex: 'PB', 'PTR', 'RF')"
+      - name: roteiro_missao
+        description: "Roteiro da missão"
+      - name: hora_inicio_missao
+        description: "Horário de início de uma missão"
+      - name: hora_fim_missao
+        description: "Horário de término de uma missão"
+
+  - name: raw_api_segur__qmd_plano
+    description: "Planos dos QMDs do sistema da Força Municipal"
+    columns:
+      - name: id_plano
+        description: "Identificador único do plano"
+      - name: nome_plano
+        description: "Nome descritivo do Plano ou Serviço"
+      - name: data_inicio_semana_referencia
+        description: "Data inicial da semana de referência do plano"
+      - name: data_fim_semana_referencia
+        description: "Data final da semana de referência do plano"
+      - name: id_responsavel_criacao
+        description: "ID do funcionário responsável pela criação"
+      - name: data_hora_criacao
+        description: "Data e hora de criação do Plano de serviço"
+
+  - name: raw_api_segur__unit_positions
+    description: "Posições das unidades no intervalo solicitado"
+    columns:
+      - name: id_viatura
+        description: "Identificador da unidade/viatura"
+      - name: latitude
+        description: "Coordenada geográfica de latitude"
+      - name: longitude
+        description: "Coordenada geográfica de longitude"
+      - name: data_hora_localizacao
+        description: "Data e hora do registro da localização"
+
+  - name: raw_api_segur__qmd_detalhes
+    description: "Detalhes completos de um QMD específico incluindo missões e serviços"
+    columns:
+      - name: id_qmd
+        description: "Identificador único do QMD no detalhamento"
+      - name: nome_qmd
+        description: "Nome completo do QMD"
+      - name: resumo_qmd
+        description: "Resumo descritivo da finalidade do QMD"
+      - name: area_qmd
+        description: "Área de atuação específica do QMD consultado"
+      - name: data_vigencia_inicio_qmd
+        description: "Data inicial da vigência no detalhamento do QMD"
+      - name: data_vigencia_fim_qmd
+        description: "Data final da vigência no detalhamento do QMD"
+      - name: status_ativo_qmd
+        description: "Status de ativação do QMD em formato textual ('Sim'/'Não')"
+      - name: status_autorizado_qmd
+        description: "Status de autorização do QMD em formato textual ('Sim'/'Não')"
+      - name: status_valido_qmd
+        description: "Status de validade do QMD em formato textual ('Sim'/'Não')"
+      - name: id_missao
+        description: "Identificador único da missão dentro do QMD"
+      - name: tipo_missao
+        description: "Sigla do tipo de missão no detalhamento"
+      - name: roteiro_missao
+        description: "Descrição do roteiro a ser seguido na missão detalhada"
+      - name: hora_inicio_missao
+        description: "Horário de início da missão no detalhamento do QMD"
+      - name: hora_fim_missao
+        description: "Horário de término da missão no detalhamento do QMD"
+      - name: geometria_wkt
+        description: "Representação geográfica da missão em formato Well-Known Text"
+      - name: id_servico
+        description: "Identificador único do serviço"
+      - name: nome_servico
+        description: "Nome do serviço"
+      - name: dias_semana_execucao
+        description: "Dias da semana para execução do serviço em formato array JSON"
+      - name: data_hora_inicio_execucao
+        description: "Data e hora de início da execução de um serviço"
+      - name: data_hora_fim_execucao
+        description: "Data e hora de término da execução de um serviço"
+
+  - name: raw_api_segur__qmd_ativos
+    description: "QMDs ativos no sistema da Força Municipal"
+    columns:
+      - name: id_qmd_ativo
+        description: "Identificador único do QMD ativo"
+      - name: nome_qmd
+        description: "Nome descritivo do QMD"
+      - name: area_qmd
+        description: "Nome da área do QMD"
+      - name: resumo_qmd
+        description: "Resumo do QMD"
+      - name: prescricoes_qmd
+        description: "Prescrições do QMD"
+      - name: data_vigencia_inicio
+        description: "Data inicial da validade do QMD"
+      - name: data_vigencia_fim
+        description: "Data final da validade do QMD"
+      - name: hora_execucao_inicio
+        description: "Horário de início de execução do QMD"
+      - name: hora_execucao_fim
+        description: "Horário de término da execução do QMD"
+      - name: indicador_qmd_ativo
+        description: "Indica se o QMD está ativo"
+      - name: indicador_qmd_valido
+        description: "Indica se o QMD é válido"
+      - name: indicador_qmd_autorizado
+        description: "Indica se o QMD está autorizado"
+      - name: id_responsavel_criacao
+        description: "ID do funcionário responsável pela criação"
+      - name: id_responsavel_autorizacao
+        description: "ID do funcionário responsável pela autorização"
+      - name: data_hora_criacao
+        description: "Data e hora de criação do QMD"
+      - name: data_hora_autorizacao
+        description: "Data e hora em que o QMD foi autorizado"
+
+  - name: raw_api_segur__ocorrencias_ativas_v2
+    description: "Ocorrências em curso do sistema (versão 2 da API)"
+    columns:
+      - name: data_hora_criacao
+        description: "Data e hora de criação da ocorrência"
+      - name: id_ocorrencia
+        description: "Identificador único da ocorrência para a agência"
+      - name: codigo_subtipo_ocorrencia
+        description: "Código do subtipo da ocorrência"
+      - name: descricao_subtipo_ocorrencia
+        description: "Descrição textual do subtipo da ocorrência"
+      - name: codigo_tipo_ocorrencia
+        description: "Código do tipo da ocorrência"
+      - name: descricao_tipo_ocorrencia
+        description: "Descrição textual do tipo da ocorrência"
+      - name: area
+        description: "Área da ocorrência"
+      - name: atributos_flags
+        description: "Atributos ou flags numéricas da ocorrência"
+      - name: setor_patrulhamento
+        description: "Setor ou subsetor de patrulhamento"
+      - name: comentario_encerramento
+        description: "Comentário registrado no encerramento da ocorrência"
+      - name: id_funcionario_encerramento
+        description: "ID do funcionário que encerrou a ocorrência"
+      - name: data_hora_encerramento
+        description: "Data e hora do encerramento da ocorrência"
+      - name: id_funcionario_criacao
+        description: "ID do funcionário que criou a ocorrência"
+      - name: dados_personalizados
+        description: "Campo para informações personalizadas em formato JSON string"
+      - name: data_hora_atualizacao_banco
+        description: "Data e hora da última atualização no banco de dados"
+      - name: grupo_despacho
+        description: "Grupo de despacho da ocorrência"
+      - name: bairro
+        description: "Bairro da ocorrência"
+      - name: codigo_zona_servico_emergencial
+        description: "Código da Zona de Serviço Emergencial"
+      - name: descricao_ocorrencia
+        description: "Descrição da ocorrência"
+      - name: data_hora_primeira_viatura_chegada
+        description: "Data e hora da primeira chegada de unidade/veículo à ocorrência"
+      - name: data_hora_primeiro_despacho_viatura
+        description: "Data e hora do primeiro despacho de unidade/veículo para a ocorrência"
+      - name: data_hora_primeiro_roteamento_viatura
+        description: "Data e hora do primeiro roteamento de unidade/veículo para a ocorrência"
+      - name: data_hora_ultima_alteracao_status
+        description: "Data e hora da última alteração de status"
+      - name: id_funcionario_principal
+        description: "ID do funcionário principal responsável"
+      - name: id_viatura_principal
+        description: "ID da unidade/viatura principal responsável pela ocorrência"
+      - name: nivel_prioridade
+        description: "Nível de prioridade da ocorrência"
+      - name: data_hora_alteracao_prioridade
+        description: "Data e hora da última alteração de prioridade"
+      - name: codigo_status
+        description: "Código numérico do status da ocorrência"
+      - name: id_grupo_usuarios
+        description: "ID do grupo de usuários ao qual a ocorrência pertence"
+      - name: zona_geografica
+        description: "Zona geográfica ampla"
+      - name: latitude
+        description: "Coordenada geográfica de latitude"
+      - name: longitude
+        description: "Coordenada geográfica de longitude"
+      - name: endereco
+        description: "Endereço em formato textual"
+      - name: agentes_envolvidos
+        description: "Lista de agentes envolvidos na ocorrência"

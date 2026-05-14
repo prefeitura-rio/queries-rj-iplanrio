@@ -1,0 +1,43 @@
+{{
+    config(
+        schema='forca_municipal',
+        alias="unidades_ativas",
+        materialized='table',
+    )
+}}
+
+SELECT
+    SAFE_CAST(AgencyId AS STRING) AS id_agencia,
+    SAFE_CAST(AlarmTime AS INT64) AS tempo_duracao_alarme,
+    SAFE_CAST(AssignedAgencyEventId AS STRING) AS id_ocorrencia_atribuida,
+    SAFE_CAST(Beat AS STRING) AS setor_patrulhamento,
+    SAFE_CAST(ChangeComment AS STRING) AS comentario_alteracao,
+    SAFE_CAST(CustomData_DataSaida AS STRING) AS custom_data_data_saida,
+    SAFE_CAST(CustomData_PlacaViatura AS STRING) AS custom_data_placa_viatura,
+    SAFE_CAST(CustomData_DataChegada AS TIMESTAMP) AS custom_data_data_chegada,
+    SAFE_CAST(CustomData_HouveAlteracao AS STRING) AS custom_data_houve_alteracao,
+    SAFE_CAST(CustomData_Descricao AS STRING) AS custom_data_descricao,
+    SAFE_CAST(CustomData_BRAT AS STRING) AS custom_data_brat,
+    SAFE_CAST(CustomData_AttachmentId AS STRING) AS custom_data_attachment_id,
+    SAFE_CAST(DefaultAvailableStatus AS INT64) AS status_disponibilidade_padrao,
+    SAFE_CAST(DelayTime AS INT64) AS tempo_atraso,
+    SAFE_CAST(DispatchAlarmLevel AS INT64) AS nivel_alarme_despacho,
+    SAFE_CAST(DispatchGroup AS STRING) AS grupo_despacho,
+    SAFE_CAST(IsUnavailable AS BOOL) AS indicador_indisponivel,
+    SAFE_CAST(Latitude AS FLOAT64) AS latitude,
+    SAFE_CAST("Location" AS STRING) AS endereco,
+    SAFE_CAST(LogonTime AS TIMESTAMP) AS data_hora_login_sistema,
+    SAFE_CAST(Longitude AS FLOAT64) AS longitude,
+    SAFE_CAST(OutOfServiceTypeCode AS STRING) AS codigo_motivo_fora_servico,
+    SAFE_CAST("Status" AS INT64) AS codigo_status_atual,
+    SAFE_CAST(StatusChangeTime AS TIMESTAMP) AS data_hora_mudanca_status,
+    SAFE_CAST(StatusedAgencyEventId AS STRING) AS id_ocorrencia,
+    SAFE_CAST(StatusedAgencyEventSubtypeCode AS STRING) AS codigo_subtipo_ocorrencia,
+    SAFE_CAST(StatusedAgencyEventTypeCode AS STRING) AS codigo_tipo_ocorrencia,
+    SAFE_CAST(TotalEventTime AS INT64) AS tempo_total_ocorrencias,
+    SAFE_CAST(TotalUnavailableTime AS INT64) AS tempo_total_indisponivel,
+    SAFE_CAST(UnitId AS STRING) AS id_viatura,
+    SAFE_CAST(UnitType AS STRING) AS tipo_viatura,
+    SAFE_CAST(UpdateCount AS INT64) AS contador_atualizacoes,
+    SAFE_CAST(Zone AS STRING) AS zona_geografica
+FROM {{ source('brutos_forca_municipal_staging', 'unidades_ativas') }}
