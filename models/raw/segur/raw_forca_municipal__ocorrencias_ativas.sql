@@ -10,7 +10,7 @@ SELECT
     SAFE_CAST(AddedTime AS TIMESTAMP) AS data_hora_insercao_sistema,
     SAFE_CAST(AgencyEventId AS STRING) AS id_ocorrencia,
     SAFE_CAST(AgencyEventSubtypeCode AS STRING) AS codigo_subtipo_ocorrencia,
-    SAFE_CAST(AgencyEventSubtypeCodeDesc AS STRING) AS descricao_subtipo_ocorrencia,
+    SAFE_CAST(AgencyEventSubtypeCodeDesc AS STRING) AS descricao_subtipo_ocorrencia, -- NULA
     SAFE_CAST(AgencyEventTypeCode AS STRING) AS codigo_tipo_ocorrencia,
     SAFE_CAST(AgencyEventTypeCodeDesc AS STRING) AS descricao_tipo_ocorrencia,
     SAFE_CAST(AgencyId AS STRING) AS id_agencia,
@@ -30,17 +30,17 @@ SELECT
     SAFE_CAST(District AS STRING) AS bairro,
     SAFE_CAST(Esz AS INT64) AS codigo_zona_servico_emergencial,
     SAFE_CAST(EventDescription AS STRING) AS descricao_ocorrencia,
-    SAFE_CAST(FirstUnitArrivedTime AS TIMESTAMP) AS data_hora_primeira_viatura_chegada,
+    SAFE_CAST(FirstUnitArrivedTime AS TIMESTAMP) AS data_hora_primeira_viatura_chegada, -- NULA
     SAFE_CAST(FirstUnitDispatchedTime AS TIMESTAMP) AS data_hora_primeiro_despacho_viatura,
-    SAFE_CAST(FirstUnitEnroutedTime AS TIMESTAMP) AS data_hora_primeiro_roteamento_viatura,
+    SAFE_CAST(FirstUnitEnroutedTime AS TIMESTAMP) AS data_hora_primeiro_roteamento_viatura, -- NULA
     SAFE_CAST(IsOpen AS BOOL) AS indicador_ocorrencia_aberta,
     SAFE_CAST(IsReopened AS BOOL) AS indicador_ocorrencia_reaberta,
     SAFE_CAST(LastStatusChangeTime AS TIMESTAMP) AS data_hora_ultima_alteracao_status,
     SAFE_CAST(Municipality AS STRING) AS municipio,
-    SAFE_CAST(PendingAlarmTime AS TIMESTAMP) AS data_hora_alarme_pendente,
+    SAFE_CAST(PendingAlarmTime AS TIMESTAMP) AS data_hora_alarme_pendente, -- NULA
     SAFE_CAST(PrimaryEmployeeId AS STRING) AS id_funcionario_principal,
     SAFE_CAST(PrimaryUnitId AS STRING) AS id_viatura_principal,
-    SAFE_CAST("Priority" AS INT64) AS nivel_prioridade,
+    SAFE_CAST(Priority AS INT64) AS nivel_prioridade,
     SAFE_CAST(PriorityChangedTime AS TIMESTAMP) AS data_hora_alteracao_prioridade,
     SAFE_CAST(RevisionEmployeeId AS INT64) AS id_funcionario_revisao,
     SAFE_CAST(RevisionNumber AS INT64) AS numero_revisao,
@@ -53,5 +53,5 @@ SELECT
     SAFE_CAST(UpdatedTime AS TIMESTAMP) AS data_hora_atualizacao,
     SAFE_CAST(UserDefinedSupplementalInfo AS INT64) AS informacoes_suplementares_usuario,
     SAFE_CAST(UserGroupId AS INT64) AS id_grupo_usuarios,
-    SAFE_CAST("Zone" AS STRING) AS zona_geografica
+    SAFE_CAST(Zone AS STRING) AS zona_geografica
 FROM {{ source('brutos_forca_municipal_staging', 'ocorrencias_ativas') }}

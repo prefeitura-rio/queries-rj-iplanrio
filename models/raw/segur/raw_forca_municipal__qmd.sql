@@ -20,7 +20,7 @@ SELECT
     SAFE_CAST(StatusValido AS BOOL) AS indicador_qmd_valido,
     SAFE_CAST(StatusAutorizado AS BOOL) AS indicador_qmd_autorizado,
     SAFE_CAST(IdRespCriacao AS INT64) AS id_responsavel_criacao,
-    SAFE_CAST(IdRespAutorizacao AS INT64) AS id_responsavel_autorizacao,
+    SAFE_CAST(REPLACE(IdRespAutorizacao, ".0", "") AS INT64) AS id_responsavel_autorizacao,
     SAFE_CAST(DataHoraCriacao AS TIMESTAMP) AS data_hora_criacao,
     SAFE_CAST(DataHoraAutorizacao AS TIMESTAMP) AS data_hora_autorizacao
 FROM {{ source('brutos_forca_municipal_staging', 'qmd') }}
