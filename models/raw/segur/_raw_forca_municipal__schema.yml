@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_api_segur__unidades_ativas
+  - name: raw_forca_municipal__unidades_ativas
     description: "Unidades/viaturas logadas no sistema da Força Municipal"
     columns:
       - name: id_agencia
@@ -59,7 +59,7 @@ models:
       - name: zona_geografica
         description: "Zona geográfica ampla (ex: 'Zona Sul')"
 
-  - name: raw_api_segur__unidades_historico
+  - name: raw_forca_municipal__unidades_historico
     description: "Histórico de todas as viaturas do sistema da Força Municipal"
     columns:
       - name: codigo_status_viatura
@@ -137,7 +137,7 @@ models:
       - name: zona_geografica
         description: "Zona geográfica ampla"
 
-  - name: raw_api_segur__ocorrencias_ativas
+  - name: raw_forca_municipal__ocorrencias_ativas
     description: "Ocorrências em curso do sistema da Força Municipal"
     columns:
       - name: data_hora_insercao_sistema
@@ -235,7 +235,7 @@ models:
       - name: zona_geografica
         description: "Zona geográfica ampla"
 
-  - name: raw_api_segur__ocorrencias_historico
+  - name: raw_forca_municipal__ocorrencias_historico
     description: "Histórico de todas as alterações ocorridas nas ocorrências do sistema"
     columns:
       - name: data_hora_insercao_sistema
@@ -319,7 +319,7 @@ models:
       - name: zona_geografica
         description: "Zona geográfica ampla"
 
-  - name: raw_api_segur__qmd
+  - name: raw_forca_municipal__qmd
     description: "Quadro de Movimentação Diária (QMD) do sistema da Força Municipal"
     columns:
       - name: id_qmd
@@ -355,7 +355,7 @@ models:
       - name: data_hora_autorizacao
         description: "Data e hora em que o QMD foi autorizado"
 
-  - name: raw_api_segur__qmd_servicos
+  - name: raw_forca_municipal__qmd_servicos
     description: "Serviços dos QMDs do sistema da Força Municipal"
     columns:
       - name: id_servico
@@ -369,7 +369,7 @@ models:
       - name: dias_semana_execucao
         description: "Dias da semana para execução do serviço em formato array JSON"
 
-  - name: raw_api_segur__qmd_missoes
+  - name: raw_forca_municipal__qmd_missoes
     description: "Missões dos QMDs do sistema da Força Municipal"
     columns:
       - name: id_missao
@@ -385,7 +385,7 @@ models:
       - name: hora_fim_missao
         description: "Horário de término de uma missão"
 
-  - name: raw_api_segur__qmd_plano
+  - name: raw_forca_municipal__qmd_plano
     description: "Planos dos QMDs do sistema da Força Municipal"
     columns:
       - name: id_plano
@@ -401,7 +401,7 @@ models:
       - name: data_hora_criacao
         description: "Data e hora de criação do Plano de serviço"
 
-  - name: raw_api_segur__unit_positions
+  - name: raw_forca_municipal__unit_positions
     description: "Posições das unidades no intervalo solicitado"
     columns:
       - name: id_viatura
@@ -413,7 +413,7 @@ models:
       - name: data_hora_localizacao
         description: "Data e hora do registro da localização"
 
-  - name: raw_api_segur__qmd_detalhes
+  - name: raw_forca_municipal__qmd_detalhes
     description: "Detalhes completos de um QMD específico incluindo missões e serviços"
     columns:
       - name: id_qmd
@@ -457,7 +457,7 @@ models:
       - name: data_hora_fim_execucao
         description: "Data e hora de término da execução de um serviço"
 
-  - name: raw_api_segur__qmd_ativos
+  - name: raw_forca_municipal__qmd_ativos
     description: "QMDs ativos no sistema da Força Municipal"
     columns:
       - name: id_qmd_ativo
@@ -493,7 +493,7 @@ models:
       - name: data_hora_autorizacao
         description: "Data e hora em que o QMD foi autorizado"
 
-  - name: raw_api_segur__ocorrencias_ativas_v2
+  - name: raw_forca_municipal__ocorrencias_ativas_v2
     description: "Ocorrências em curso do sistema (versão 2 da API)"
     columns:
       - name: data_hora_criacao
