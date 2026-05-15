@@ -1,0 +1,164 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__ocorrencias_ativas
+    description: >
+      Estado atual de todas as ocorrências abertas no sistema HxGN OnCall
+      da Guarda Municipal do Rio de Janeiro.
+      Frequência de atualização: a cada 5 minutos.
+      Fonte: GET /api/ocorrencias/ativas.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: ocorrencias_ativas
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_agencia
+        description: Identificador da agência responsável (ex. FORCA).
+        data_type: string
+      - name: id_unidade_primaria
+        description: Identificador da unidade principal atribuída à ocorrência (ex. VTR01-LITORANEA).
+        data_type: string
+      - name: id_esz
+        description: Código da zona estatística de segurança (ESZ) onde a ocorrência está registrada.
+        data_type: string
+      - name: id_grupo_usuario
+        description: Identificador do grupo de usuário responsável pelo registro.
+        data_type: string
+      - name: id_funcionario_criacao
+        description: Identificador do funcionário que criou a ocorrência.
+        data_type: string
+      - name: id_funcionario_primario
+        description: Identificador do funcionário primário responsável.
+        data_type: string
+      - name: id_funcionario_revisao
+        description: Identificador do funcionário que realizou a última revisão.
+        data_type: string
+      - name: id_funcionario_atualizacao
+        description: Identificador do funcionário que realizou a última atualização.
+        data_type: string
+      - name: id_funcionario_fechamento
+        description: Identificador do funcionário que fechou a ocorrência.
+        data_type: string
+      - name: id_ocorrencia
+        description: Identificador único da ocorrência (ex. FORCA2026010200233).
+        data_type: string
+      - name: tipo_ocorrencia_codigo
+        description: Código do tipo da ocorrência (ex. A, DIO, F).
+        data_type: string
+      - name: tipo_ocorrencia_descricao
+        description: Descrição do tipo da ocorrência (ex. Abordagem, Dado de inteligência operacional).
+        data_type: string
+      - name: subtipo_ocorrencia_codigo
+        description: Código do subtipo da ocorrência.
+        data_type: string
+      - name: subtipo_ocorrencia_descricao
+        description: Descrição do subtipo da ocorrência.
+        data_type: string
+      - name: descricao_ocorrencia
+        description: Descrição textual livre da ocorrência.
+        data_type: string
+      - name: data_hora_adicao
+        description: Data e hora em que a ocorrência foi adicionada ao sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_criacao
+        description: Data e hora em que a ocorrência foi criada (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_inicio
+        description: Data e hora de início da ocorrência (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_primeiro_despacho
+        description: Data e hora do primeiro despacho de unidade para a ocorrência (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_primeira_unidade_a_caminho
+        description: Data e hora em que a primeira unidade entrou em rota para a ocorrência (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_primeira_chegada
+        description: Data e hora em que a primeira unidade chegou ao local da ocorrência (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_ultima_mudanca_status
+        description: Data e hora da última mudança de status da ocorrência (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_mudanca_prioridade
+        description: Data e hora em que a prioridade da ocorrência foi alterada (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_revisao
+        description: Data e hora da última revisão do registro (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_atualizacao
+        description: Data e hora da última atualização do registro (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_insercao_bd
+        description: Data e hora da inserção do registro no banco de dados do sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_atualizacao_bd
+        description: Data e hora da última atualização do registro no banco de dados do sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_fechamento
+        description: Data e hora em que a ocorrência foi fechada (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_alarme_pendente
+        description: Data e hora do alarme pendente associado à ocorrência (America/Sao_Paulo).
+        data_type: datetime
+      - name: prioridade
+        description: Nível de prioridade da ocorrência (ex. 1 a 9).
+        data_type: string
+      - name: nivel_alarme
+        description: Nível de alarme associado à ocorrência.
+        data_type: string
+      - name: id_status
+        description: Identificador do status atual da ocorrência no sistema.
+        data_type: string
+      - name: id_substatus
+        description: Identificador do substatus atual da ocorrência no sistema.
+        data_type: string
+      - name: indicador_aberta
+        description: Indica se a ocorrência está aberta no momento da coleta.
+        data_type: bool
+      - name: indicador_reaberta
+        description: Indica se a ocorrência foi reaberta após fechamento.
+        data_type: bool
+      - name: total_unidades_atribuidas
+        description: Quantidade de unidades atribuídas à ocorrência no momento da coleta.
+        data_type: int64
+      - name: numero_revisao
+        description: Número da revisão atual do registro.
+        data_type: string
+      - name: comentario_fechamento
+        description: Comentário registrado no momento do fechamento da ocorrência.
+        data_type: string
+      - name: area
+        description: Código da área de planejamento (ex. AP1.1).
+        data_type: string
+      - name: setor
+        description: Setor ou bairro de patrulhamento (ex. Cidade Nova, Copacabana).
+        data_type: string
+      - name: distrito
+        description: Distrito onde a ocorrência foi registrada (ex. Rio Comprido, Portuária).
+        data_type: string
+      - name: municipio
+        description: Município onde a ocorrência ocorreu (ex. Rio de Janeiro).
+        data_type: string
+      - name: zona
+        description: Zona geográfica ampla (ex. Centro, Zona Sul).
+        data_type: string
+      - name: grupo_despacho
+        description: Grupo de despacho responsável pela ocorrência (ex. 4 Aisp - São Cristóvão).
+        data_type: string
+      - name: atributos
+        description: Código de atributos adicionais da ocorrência (pode representar bitmask de flags internas).
+        data_type: string
+      - name: dados_customizados
+        description: Informações adicionais em formato JSON definidas pela agência.
+        data_type: string
+      - name: informacao_suplementar
+        description: Informação suplementar definida pelo usuário.
+        data_type: string
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date

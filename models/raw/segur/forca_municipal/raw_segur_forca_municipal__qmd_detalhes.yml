@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_detalhes
+    description: >
+      Detalhamento dos Quadros de Missões Diárias (QMD) com suas missões embutidas
+      em formato JSON. Visão denormalizada que consolida o QMD e suas missões em
+      uma única linha por QMD.
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd/detalhes.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: qmd_detalhes
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_qmd
+        description: Identificador único do QMD.
+        data_type: string
+      - name: nome
+        description: Nome descritivo do QMD (ex. Ponto Base Centro).
+        data_type: string
+      - name: area
+        description: Área geográfica de atuação do QMD (ex. Centro, Zona Sul).
+        data_type: string
+      - name: data_hora_vigencia_inicio
+        description: Data e hora de início da vigência do QMD (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_vigencia_fim
+        description: Data e hora de fim da vigência do QMD (America/Sao_Paulo).
+        data_type: datetime
+      - name: indicador_ativo
+        description: Indica se o QMD está ativo (derivado de qmdStatusAtivo = 'Sim').
+        data_type: bool
+      - name: indicador_autorizado
+        description: Indica se o QMD foi formalmente autorizado (derivado de qmdStatusAutorizado = 'Sim').
+        data_type: bool
+      - name: indicador_valido
+        description: Indica se o QMD é válido (derivado de qmdStatusValido = 'Sim').
+        data_type: bool
+      - name: resumo
+        description: Texto de resumo das instruções do QMD.
+        data_type: string
+      - name: missoes
+        description: Array JSON com as missões do QMD, incluindo geometria WKT, tipo, roteiro e horários.
+        data_type: string
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date

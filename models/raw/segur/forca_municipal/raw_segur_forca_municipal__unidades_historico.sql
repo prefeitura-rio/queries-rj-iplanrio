@@ -1,0 +1,94 @@
+{{
+    config(
+        alias="unidades_historico",
+        schema="brutos_forca_municipal",
+        materialized="incremental",
+        incremental_strategy="insert_overwrite",
+        partition_by={
+            "field": "data_particao",
+            "data_type": "date",
+            "granularity": "day",
+        },
+        cluster_by=["id_unidade"],
+    )
+}}
+
+with
+    source as (
+        select *
+        from {{ source('brutos_forca_municipal_staging', 'unidades_historico') }}
+        {% if is_incremental() %}
+            where
+                safe_cast(data_particao as date)
+                >= (select max(data_particao) from {{ this }})
+        {% endif %}
+    ),
+
+    renamed as (
+        select
+            -- metadados da pipeline
+            {{ padronize_id('id_hash') }} as id_hash,
+            safe_cast(updated_at as datetime) as updated_at,
+
+            -- identificadores (FKs para outras entidades)
+            upper({{ padronize_id('AgencyId') }}) as id_agencia,
+            upper({{ padronize_id('UnitId') }}) as id_unidade,
+            {{ padronize_id('StationId') }} as id_estacao,
+            {{ padronize_id('AssignedAgencyEventId') }} as id_ocorrencia_atribuida,
+            {{ padronize_id('StatusedAgencyEventId') }} as id_ocorrencia_status,
+            {{ padronize_id('CreatedEmployeeId') }} as id_funcionario_criacao,
+
+            -- dados
+            {{ padronize_id('ActiveUnitHistoryId') }} as id_historico_unidade,
+            {{ padronize_id('ActionCode') }} as id_acao,
+            upper(safe_cast(UnitType as string)) as tipo_unidade,
+            upper(safe_cast(StatusedAgencyEventTypeCode as string)) as tipo_ocorrencia_status_codigo,
+            upper(safe_cast(StatusedAgencyEventSubtypeCode as string)) as subtipo_ocorrencia_status_codigo,
+            {{ padronize_id('StatusedAgencyEventRevisionNum') }} as numero_revisao_ocorrencia_status,
+            datetime(
+                safe_cast(CreatedTime as timestamp), 'America/Sao_Paulo'
+            ) as data_hora_criacao,
+            datetime(
+                safe_cast(LogonTime as timestamp), 'America/Sao_Paulo'
+            ) as data_hora_logon,
+            datetime(
+                safe_cast(DatabaseInsertTime as timestamp), 'America/Sao_Paulo'
+            ) as data_hora_insercao_bd,
+            upper({{ padronize_id('Status') }}) as id_status,
+            {{ padronize_id('DefaultAvailableStatus') }} as id_status_disponibilidade_padrao,
+            {{ padronize_id('DispatchAlarmLevel') }} as nivel_alarme_despacho,
+            safe_cast(IsUnavailable as bool) as indicador_indisponivel,
+            safe_cast(AreEmployeesTracked as bool) as indicador_funcionarios_rastreados,
+            upper(safe_cast(OutOfServiceTypeCode as string)) as tipo_saida_servico,
+            {{ proper_br('safe_cast(Beat as string)') }} as setor,
+            {{ proper_br('safe_cast(DispatchGroup as string)') }} as grupo_despacho,
+            {{ proper_br('safe_cast(Zone as string)') }} as zona,
+            {{ proper_br('safe_cast(LineupName as string)') }} as nome_escalacao,
+            {{ proper_br('safe_cast(Location as string)') }} as localizacao,
+            safe_cast(OrderWithinCreatedTime as int64) as ordem_criacao,
+            safe_cast(AlarmTime as int64) as tempo_alarme,
+            safe_cast(DelayTime as int64) as tempo_atraso,
+            safe_cast(safe_cast(TotalEventTime as float64) as int64) as tempo_total_ocorrencias,
+            safe_cast(safe_cast(TotalUnavailableTime as float64) as int64) as tempo_total_indisponivel,
+            safe_cast(safe_cast(TotalAvailableStationTime as float64) as int64)
+            as tempo_total_disponivel_estacao,
+            safe_cast(TotalEventCount as int64) as total_ocorrencias,
+            safe_cast(ChangeComment as string) as comentario_alteracao,
+            safe_cast(CustomData as string) as dados_customizados,
+
+            -- espacial
+            safe_cast(Latitude as float64) as latitude,
+            safe_cast(Longitude as float64) as longitude,
+            st_geogpoint(
+                safe_cast(Longitude as float64),
+                safe_cast(Latitude as float64)
+            ) as geometry,
+
+            -- partição
+            safe_cast(data_particao as date) as data_particao
+
+        from source
+    )
+
+select *
+from renamed
