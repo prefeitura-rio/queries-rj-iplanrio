@@ -194,19 +194,25 @@ from renamed
 
 ## Tipos de dados por campo da API
 
+**Regra geral:** só usar tipo numérico (`int64`, `float64`) quando o campo for usado em
+operações matemáticas (soma, média, subtração). Códigos, níveis e status permanecem
+como `string` mesmo que seus valores sejam numéricos.
+
 | Tipo na API | Tipo BigQuery | Cast |
 |---|---|---|
-| `string` ID numérico | `string` | `{{ padronize_id('col') }}` |
-| `string` código/sigla | `string` | `upper(safe_cast(col as string))` |
-| `string` nome descritivo | `string` | `{{ proper_br('safe_cast(col as string)') }}` |
-| `int` | `int64` | `safe_cast(col as int64)` |
-| `float` / coordenadas | `float64` | `safe_cast(col as float64)` |
+| ID (qualquer origem) | `string` | `{{ padronize_id('col') }}` — remove `.0` de floats |
+| Código / sigla curta | `string` | `upper(safe_cast(col as string))` |
+| Nome / endereço descritivo | `string` | `{{ proper_br('safe_cast(col as string)') }}` |
+| Código numérico (status, nível) | `string` | `{{ padronize_id('col') }}` — sem operações matemáticas |
+| Duração / contagem (operações matemáticas) | `int64` | `safe_cast(col as int64)` |
+| Float que vem como `"1.0"` antes de int | `int64` | `safe_cast(safe_cast(col as float64) as int64)` |
+| Coordenadas geográficas | `float64` | `safe_cast(col as float64)` |
 | `boolean` | `bool` | `safe_cast(col as bool)` |
-| `string` ISO 8601 com tz (UTC) | `datetime` BRT | `datetime(safe_cast(col as timestamp), 'America/Sao_Paulo')` |
-| `string` datetime sem tz (updated_at) | `datetime` | `safe_cast(col as datetime)` |
+| `string` ISO 8601 com tz (ex. `+00:00`, `-03:00`) | `datetime` BRT | `datetime(safe_cast(col as timestamp), 'America/Sao_Paulo')` |
+| `string` datetime sem tz (`updated_at`) | `datetime` | `safe_cast(col as datetime)` — já em BRT |
 | `string` data (`YYYY-MM-DD`) | `date` | `safe_cast(col as date)` |
 | JSON serializado | `string` | mantém como `string` |
-| array serializado como JSON | `string` | mantém como `string` |
+| Array serializado como JSON | `string` | mantém como `string` |
 
 > Todos os campos da staging chegam como `STRING` (limitação do Parquet gerado pela pipeline).
 > Use sempre `safe_cast` para evitar quebra do modelo em caso de valor inválido.
