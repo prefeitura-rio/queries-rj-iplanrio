@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd
+    description: >
+      Quadros de Missões Diárias (QMD) cadastrados no sistema HxGN OnCall da Guarda
+      Municipal do Rio de Janeiro. Cada QMD define um conjunto de missões e prescrições
+      para unidades em uma área e período específicos.
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: qmd
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_responsavel_criacao
+        description: Identificador do funcionário responsável pela criação do QMD.
+        data_type: string
+      - name: id_responsavel_autorizacao
+        description: Identificador do funcionário responsável pela autorização do QMD.
+        data_type: string
+      - name: id_qmd
+        description: Identificador único do QMD no sistema.
+        data_type: string
+      - name: nome
+        description: Nome descritivo do QMD (ex. Ponto Base Centro).
+        data_type: string
+      - name: area
+        description: Área geográfica de atuação do QMD (ex. Centro, Zona Sul).
+        data_type: string
+      - name: data_hora_vigencia_inicio
+        description: Data e hora de início da vigência do QMD (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_vigencia_fim
+        description: Data e hora de fim da vigência do QMD (America/Sao_Paulo).
+        data_type: datetime
+      - name: hora_execucao_inicio
+        description: Hora de início da execução diária do QMD (ex. 06:00:00).
+        data_type: time
+      - name: hora_execucao_fim
+        description: Hora de fim da execução diária do QMD (ex. 22:00:00).
+        data_type: time
+      - name: data_hora_criacao
+        description: Data e hora de criação do QMD no sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_autorizacao
+        description: Data e hora de autorização do QMD (America/Sao_Paulo).
+        data_type: datetime
+      - name: indicador_ativo
+        description: Indica se o QMD está ativo no momento da coleta.
+        data_type: bool
+      - name: indicador_valido
+        description: Indica se o QMD é válido (dentro da vigência e sem inconsistências).
+        data_type: bool
+      - name: indicador_autorizado
+        description: Indica se o QMD foi formalmente autorizado.
+        data_type: bool
+      - name: resumo
+        description: Texto de resumo das instruções do QMD.
+        data_type: string
+      - name: prescricoes
+        description: Texto com as prescrições detalhadas do QMD.
+        data_type: string
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date
