@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_plano
+    description: >
+      Planos semanais de Quadros de Missões Diárias (QMD) no sistema HxGN OnCall.
+      Cada plano define uma semana de referência à qual os QMDs e serviços estão
+      associados.
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd/plano.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: qmd_plano
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_responsavel_criacao
+        description: Identificador do funcionário responsável pela criação do plano.
+        data_type: string
+      - name: id_plano
+        description: Identificador único do plano semanal.
+        data_type: string
+      - name: nome
+        description: Nome descritivo do plano (ex. Semana 01/03 a 07/03).
+        data_type: string
+      - name: data_hora_semana_referencia_inicio
+        description: Data e hora de início da semana de referência do plano (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_semana_referencia_fim
+        description: Data e hora de fim da semana de referência do plano (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_criacao
+        description: Data e hora de criação do plano no sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date

@@ -1,0 +1,138 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__unidades_historico
+    description: >
+      Histórico de mudanças de estado das unidades (viaturas) no sistema HxGN OnCall
+      da Guarda Municipal do Rio de Janeiro. Cada linha representa um evento de mudança
+      de status, posição ou atribuição de uma unidade.
+      Frequência de atualização: diária.
+      Fonte: GET /api/unidades/historico.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: unidades_historico
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_agencia
+        description: Identificador da agência responsável (ex. FORCA).
+        data_type: string
+      - name: id_unidade
+        description: Identificador da unidade/viatura (ex. POG02-LITORANEA).
+        data_type: string
+      - name: id_estacao
+        description: Identificador da estação/posto de origem da unidade.
+        data_type: string
+      - name: id_ocorrencia_atribuida
+        description: ID da ocorrência atribuída à unidade no momento do evento.
+        data_type: string
+      - name: id_ocorrencia_status
+        description: ID da ocorrência vinculada ao status da unidade no momento do evento.
+        data_type: string
+      - name: id_funcionario_criacao
+        description: Identificador do funcionário responsável pelo registro do evento.
+        data_type: string
+      - name: id_historico_unidade
+        description: Identificador único do registro histórico (UUID gerado pelo sistema).
+        data_type: string
+      - name: id_acao
+        description: Identificador do tipo de ação que gerou o registro histórico.
+        data_type: string
+      - name: tipo_unidade
+        description: Código do tipo da unidade (ex. POG, VTR, MOT).
+        data_type: string
+      - name: tipo_ocorrencia_status_codigo
+        description: Código do tipo da ocorrência vinculada ao status da unidade (ex. A, F, R).
+        data_type: string
+      - name: subtipo_ocorrencia_status_codigo
+        description: Código do subtipo da ocorrência vinculada ao status da unidade.
+        data_type: string
+      - name: numero_revisao_ocorrencia_status
+        description: Número de revisão da ocorrência vinculada ao status da unidade.
+        data_type: string
+      - name: data_hora_criacao
+        description: Data e hora em que o evento foi registrado no sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_logon
+        description: Data e hora do logon da unidade vigente no momento do evento (America/Sao_Paulo).
+        data_type: datetime
+      - name: data_hora_insercao_bd
+        description: Data e hora da inserção do registro no banco de dados do sistema (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_status
+        description: Identificador do status da unidade no momento do evento (ex. AV, LN).
+        data_type: string
+      - name: id_status_disponibilidade_padrao
+        description: Identificador do status padrão de disponibilidade da unidade.
+        data_type: string
+      - name: nivel_alarme_despacho
+        description: Nível de alarme utilizado para o despacho no momento do evento.
+        data_type: string
+      - name: indicador_indisponivel
+        description: Indica se a unidade estava indisponível no momento do evento.
+        data_type: bool
+      - name: indicador_funcionarios_rastreados
+        description: Indica se os funcionários da unidade estavam sendo rastreados no momento do evento.
+        data_type: bool
+      - name: tipo_saida_servico
+        description: Código do tipo de saída de serviço da unidade (quando aplicável).
+        data_type: string
+      - name: setor
+        description: Setor ou bairro de patrulhamento da unidade no momento do evento (ex. Leblon).
+        data_type: string
+      - name: grupo_despacho
+        description: Grupo de despacho da unidade no momento do evento (ex. 23 Aisp - Leblon).
+        data_type: string
+      - name: zona
+        description: Zona geográfica ampla da unidade no momento do evento (ex. Zona Sul).
+        data_type: string
+      - name: nome_escalacao
+        description: Nome da escalação (lineup) à qual a unidade estava associada no momento do evento.
+        data_type: string
+      - name: localizacao
+        description: Endereço textual da posição da unidade no momento do evento.
+        data_type: string
+      - name: ordem_criacao
+        description: Número de ordem da linha dentro do conjunto de registros com o mesmo data_hora_criacao, usado para desambiguação.
+        data_type: int64
+      - name: tempo_alarme
+        description: Duração do alarme em segundos no momento do evento.
+        data_type: int64
+      - name: tempo_atraso
+        description: Tempo de atraso em segundos no momento do evento.
+        data_type: int64
+      - name: tempo_total_ocorrencias
+        description: Tempo total acumulado em ocorrências em segundos até o momento do evento.
+        data_type: int64
+      - name: tempo_total_indisponivel
+        description: Tempo total acumulado em indisponibilidade em segundos até o momento do evento.
+        data_type: int64
+      - name: tempo_total_disponivel_estacao
+        description: Tempo total acumulado disponível na estação em segundos até o momento do evento.
+        data_type: int64
+      - name: total_ocorrencias
+        description: Número total de ocorrências acumuladas pela unidade até o momento do evento.
+        data_type: int64
+      - name: comentario_alteracao
+        description: Comentário registrado na alteração de status.
+        data_type: string
+      - name: dados_customizados
+        description: Informações adicionais em formato JSON (ex. placa, matrícula do motorista).
+        data_type: string
+      - name: latitude
+        description: Coordenada geográfica de latitude da unidade no momento do evento.
+        data_type: float64
+      - name: longitude
+        description: Coordenada geográfica de longitude da unidade no momento do evento.
+        data_type: float64
+      - name: geometry
+        description: Ponto geográfico derivado de latitude e longitude via ST_GEOGPOINT.
+        data_type: geography
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date

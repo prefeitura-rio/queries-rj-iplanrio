@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_servicos
+    description: >
+      Serviços (unidades) vinculados a cada Quadro de Missão Diária (QMD) no sistema
+      HxGN OnCall. Cada linha representa a atribuição de uma unidade a um QMD em um
+      plano semanal, com os dias da semana em que o serviço está ativo.
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd/servicos.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: qmd_servicos
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_plano
+        description: Identificador do plano semanal ao qual este serviço pertence.
+        data_type: string
+      - name: id_qmd
+        description: Identificador do QMD ao qual este serviço pertence.
+        data_type: string
+      - name: id_servico
+        description: Identificador único do serviço (vinculação unidade-QMD-plano).
+        data_type: string
+      - name: nome
+        description: Identificador da unidade atribuída ao serviço (ex. POG01-LITORANEA).
+        data_type: string
+      - name: dias
+        description: Lista JSON dos dias da semana em que o serviço está ativo (ex. ["seg","ter","qua"]).
+        data_type: string
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date

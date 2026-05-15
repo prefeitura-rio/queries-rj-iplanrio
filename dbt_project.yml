@@ -200,6 +200,13 @@ models:
           +schema: adm_contrato_gestao
           +tags: "daily"
 
+      segur:
+        +project: rj-segur
+        +tags: ["segur"]
+        forca_municipal:
+          +materialized: table
+          +schema: forca_municipal
+          +tags: ["daily"]
 
       segovi:
         +tags: "segovi"
