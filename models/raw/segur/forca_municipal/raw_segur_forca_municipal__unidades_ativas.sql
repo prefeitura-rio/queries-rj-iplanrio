@@ -9,6 +9,7 @@
             "data_type": "date",
             "granularity": "day",
         },
+        cluster_by=["id_unidade"],
     )
 }}
 

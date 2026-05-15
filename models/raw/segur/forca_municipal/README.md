@@ -27,7 +27,18 @@ Todos os modelos usam:
 materialized="incremental",
 incremental_strategy="insert_overwrite",
 partition_by={"field": "data_particao", "data_type": "date", "granularity": "day"},
+cluster_by=["tipo_ocorrencia_codigo", "id_status"],  # tabelas de ocorrência
+# ou
+cluster_by=["id_unidade"],  # tabelas de unidade/posição
 ```
+
+**Regra de clustering:**
+
+| Tipo de tabela | `cluster_by` | Motivo |
+|---|---|---|
+| Ocorrência (`ocorrencias_*`) | `["tipo_ocorrencia_codigo", "id_status"]` | analytics filtra por tipo (baixa cardinalidade) e status |
+| Unidade / posição (`unidades_*`, `unit_positions`) | `["id_unidade"]` | consultas quase sempre filtram por unidade |
+| QMD e demais | a definir conforme schema | seguir o mesmo critério: coluna mais usada em filtros |
 
 O filtro incremental usa a própria tabela destino como watermark, evitando lookback fixo
 e garantindo que late arrivals sejam capturados:
