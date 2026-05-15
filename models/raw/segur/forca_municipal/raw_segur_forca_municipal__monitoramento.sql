@@ -7,6 +7,44 @@
 }}
 
 with
+    hashes as (
+        select 'ocorrencias_ativas' as tabela, count(distinct id_hash) as total_hashes
+        from {{ ref('raw_segur_forca_municipal__ocorrencias_ativas') }}
+        union all
+        select 'ocorrencias_ativas_v2', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__ocorrencias_ativas_v2') }}
+        union all
+        select 'ocorrencias_historico', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__ocorrencias_historico') }}
+        union all
+        select 'qmd', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__qmd') }}
+        union all
+        select 'qmd_ativos', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__qmd_ativos') }}
+        union all
+        select 'qmd_detalhes', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__qmd_detalhes') }}
+        union all
+        select 'qmd_kml', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__qmd_kml') }}
+        union all
+        select 'qmd_plano', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__qmd_plano') }}
+        union all
+        select 'qmd_servicos', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__qmd_servicos') }}
+        union all
+        select 'unidades_ativas', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__unidades_ativas') }}
+        union all
+        select 'unidades_historico', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__unidades_historico') }}
+        union all
+        select 'unit_positions', count(distinct id_hash)
+        from {{ ref('raw_segur_forca_municipal__unit_positions') }}
+    ),
+
     particoes as (
         select
             table_name as tabela,
@@ -27,20 +65,22 @@ with
                 as linhas_ultima_particao,
             sum(total_rows) as total_linhas,
             max(last_modified_time) as ultima_modificacao,
-            round(sum(total_logical_bytes) / pow(1024, 3), 6) as total_gigabytes,
+            round(sum(total_logical_bytes) / pow(1024, 2), 4) as total_megabytes,
         from particoes
         group by tabela
     )
 
 select
-    tabela,
-    ultima_data_particao,
+    t.tabela,
+    t.ultima_data_particao,
     date_diff(
-        current_date('America/Sao_Paulo'), ultima_data_particao, day
+        current_date('America/Sao_Paulo'), t.ultima_data_particao, day
     ) as dias_atraso,
-    linhas_ultima_particao,
-    total_linhas,
-    datetime(ultima_modificacao, 'America/Sao_Paulo') as ultima_modificacao,
-    total_gigabytes,
-from por_tabela
-order by tabela
+    t.linhas_ultima_particao,
+    t.total_linhas,
+    h.total_hashes,
+    datetime(t.ultima_modificacao, 'America/Sao_Paulo') as ultima_modificacao,
+    t.total_megabytes,
+from por_tabela t
+join hashes h using (tabela)
+order by t.tabela

@@ -20,9 +20,14 @@ models:
         description: Total de linhas na partição mais recente.
       - name: total_linhas
         description: Total de linhas somando todas as partições da tabela.
+      - name: total_hashes
+        description: >
+          Número de batches de extração distintos (count distinct id_hash). Cada
+          execução do pipeline de ingestão gera um id_hash único compartilhado por
+          todas as linhas daquele lote.
       - name: ultima_modificacao
         description: >
           Timestamp da última modificação de qualquer partição da tabela,
           convertido para o fuso America/Sao_Paulo.
-      - name: total_gigabytes
-        description: Tamanho lógico total da tabela em gigabytes.
+      - name: total_megabytes
+        description: Tamanho lógico total da tabela em megabytes.
