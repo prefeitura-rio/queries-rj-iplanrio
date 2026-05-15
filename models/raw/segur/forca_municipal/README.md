@@ -67,50 +67,56 @@ safe_cast(updated_at as datetime) as updated_at,
 | `id_hash` | `string` | Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS. Todas as linhas de um mesmo run compartilham o mesmo hash. Usado para deduplicação e monitoramento. |
 | `updated_at` | `datetime` | Timestamp da coleta pela pipeline (America/Sao_Paulo). Já armazenado em BRT pela pipeline — não requer conversão. |
 
-### 2. Identificadores sem par
+### 2. Identificadores (FKs para outras entidades)
 
-IDs que não possuem um campo `nome_*` correspondente na API.
-Usar `{{ padronize_id('coluna') }}` para IDs numéricos (remove o `.0` de floats vindos do Parquet).
-Usar `upper(safe_cast(coluna as string))` para códigos e siglas.
+Campos que referenciam entidades externas: agência, unidade, funcionário, zona geográfica, grupo.
+O ID **primário da própria entidade** descrita na tabela vai em `-- dados`, não aqui.
+
+> **Regra:** todo campo que é um identificador deve obrigatoriamente ter nome `id_*`,
+> independentemente de ser numérico ou alfanumérico, e usar `{{ padronize_id('col') }}`.
+> Códigos curtos de sigla/classificação usam `upper(safe_cast(...))`.
 
 ```sql
--- identificadores
-{{ padronize_id('AgencyEventId') }} as id_ocorrencia,            -- numérico → remove .0
-upper({{ padronize_id('UnitId') }}) as id_unidade,               -- código/sigla → padronize + UPPER
+-- identificadores (FKs para outras entidades)
+upper({{ padronize_id('AgencyId') }}) as id_agencia,        -- sigla → UPPER
+upper({{ padronize_id('UnitId') }}) as id_unidade,          -- código/sigla → padronize + UPPER
+{{ padronize_id('EmployeeId') }} as id_funcionario,         -- numérico → remove .0
 ```
 
 ### 3. Dados
 
 Campos de negócio na seguinte sub-ordem:
 
-1. **Datas/horas** — sempre antes dos demais campos de dados. Timestamps com fuso
-   horário devem ser convertidos para `America/Sao_Paulo`.
-2. **Pares `id_*` / `nome_*`** — IDs numéricos usam `padronize_id`; nomes longos usam
-   `proper_br`; siglas/códigos curtos usam `UPPER`.
-3. **Demais atributos** — booleanos, inteiros, strings de status.
+1. **ID primário da entidade** — o identificador único da linha (ex. `id_ocorrencia`,
+   `id_unidade`). Abre o bloco `-- dados` para que o contexto da entidade seja lido antes
+   de seus atributos.
+2. **Tipo / subtipo / descrição** — código + descrição do tipo da entidade, logo após o ID.
+3. **Datas/horas** — timestamps convertidos para `America/Sao_Paulo`.
+4. **Status, flags e demais atributos** — prioridade, status, booleanos, contagens, texto livre.
 
 ```sql
 -- dados
+{{ padronize_id('AgencyEventId') }} as id_ocorrencia,
+upper(safe_cast(AgencyEventTypeCode as string)) as tipo_ocorrencia_codigo,
+{{ proper_br('safe_cast(AgencyEventTypeCodeDesc as string)') }} as tipo_ocorrencia_descricao,
+
 datetime(safe_cast(CreatedTime as timestamp), 'America/Sao_Paulo') as data_hora_criacao,
 datetime(safe_cast(ClosingTime as timestamp), 'America/Sao_Paulo') as data_hora_encerramento,
 
-{{ padronize_id('AgencyEventTypeCode') }} as id_tipo_ocorrencia,
-upper(safe_cast(AgencyEventTypeCode as string)) as tipo_ocorrencia_codigo,
-{{ proper_br('safe_cast(AgencyEventTypeCodeDesc as string)') }} as tipo_ocorrencia,
-
+{{ padronize_id('StatusCode') }} as id_status,
 safe_cast(IsOpen as bool) as indicador_aberta,
-safe_cast(Priority as int64) as prioridade,
+{{ padronize_id('Priority') }} as prioridade,
 ```
 
 **Regras de nomenclatura:**
 
-| Caso | Macro/função | Exemplo resultado |
+| Caso | Macro/função | Nome resultante |
 |---|---|---|
-| ID numérico (vem como float) | `{{ padronize_id('col') }}` | `"1.0"` → `"1"` |
-| Código / sigla curta | `upper(safe_cast(col as string))` | `"pog01"` → `"POG01"` |
-| Nome descritivo longo | `{{ proper_br('safe_cast(col as string)') }}` | `"GUARDA MUNICIPAL"` → `"Guarda Municipal"` |
-| Timestamp UTC com fuso | `datetime(safe_cast(col as timestamp), 'America/Sao_Paulo')` | converte para BRT |
-| Datetime sem fuso (updated_at) | `safe_cast(col as datetime)` | já em BRT, sem conversão |
+| ID de qualquer entidade | `{{ padronize_id('col') }}` | sempre `id_*` — remove `.0` de floats |
+| Código / sigla curta | `upper(safe_cast(col as string))` | ex. `"pog01"` → `"POG01"` |
+| Nome / endereço descritivo | `{{ proper_br('safe_cast(col as string)') }}` | ex. `"RIO DE JANEIRO"` → `"Rio de Janeiro"` |
+| Timestamp com fuso (`+00:00` ou `-03:00`) | `datetime(safe_cast(col as timestamp), 'America/Sao_Paulo')` | converte para BRT |
+| Datetime sem fuso (`updated_at`) | `safe_cast(col as datetime)` | já em BRT, sem conversão |
 
 ### 4. Campos espaciais
 
@@ -160,18 +166,21 @@ with
             {{ padronize_id('id_hash') }} as id_hash,
             safe_cast(updated_at as datetime) as updated_at,
 
-            -- identificadores
-            {{ padronize_id('AgencyEventId') }} as id_ocorrencia,
+            -- identificadores (FKs para outras entidades)
+            upper({{ padronize_id('AgencyId') }}) as id_agencia,
             upper({{ padronize_id('UnitId') }}) as id_unidade,
 
             -- dados
+            {{ padronize_id('AgencyEventId') }} as id_ocorrencia,
+            upper(safe_cast(AgencyEventTypeCode as string)) as tipo_ocorrencia_codigo,
+            {{ proper_br('safe_cast(AgencyEventTypeCodeDesc as string)') }} as tipo_ocorrencia_descricao,
+
             datetime(safe_cast(CreatedTime as timestamp), 'America/Sao_Paulo') as data_hora_criacao,
             datetime(safe_cast(ClosingTime as timestamp), 'America/Sao_Paulo') as data_hora_encerramento,
 
-            upper(safe_cast(AgencyEventTypeCode as string)) as tipo_ocorrencia_codigo,
-            {{ proper_br('safe_cast(AgencyEventTypeCodeDesc as string)') }} as tipo_ocorrencia,
+            {{ padronize_id('StatusCode') }} as id_status,
             safe_cast(IsOpen as bool) as indicador_aberta,
-            safe_cast(Priority as int64) as prioridade,
+            {{ padronize_id('Priority') }} as prioridade,
 
             -- espacial
             safe_cast(Latitude as float64) as latitude,

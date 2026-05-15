@@ -24,6 +24,9 @@ models:
       - name: id_unidade
         description: Identificador da unidade/viatura (ex. POG01, MOT07-LITORANEA).
         data_type: string
+      - name: tipo_unidade
+        description: Código do tipo da unidade (ex. POG, VTR, MOT).
+        data_type: string
       - name: data_hora_logon
         description: Data e hora em que a unidade logou no sistema (America/Sao_Paulo).
         data_type: datetime
@@ -42,6 +45,21 @@ models:
       - name: subtipo_ocorrencia_status_codigo
         description: Código do subtipo da ocorrência vinculada ao status.
         data_type: string
+      - name: id_status
+        description: Identificador do status atual da unidade no sistema.
+        data_type: string
+      - name: id_status_disponibilidade_padrao
+        description: Identificador do status padrão de disponibilidade da unidade.
+        data_type: string
+      - name: nivel_alarme_despacho
+        description: Nível de alarme utilizado para o despacho.
+        data_type: string
+      - name: indicador_indisponivel
+        description: Indica se a unidade está indisponível no momento da coleta.
+        data_type: bool
+      - name: tipo_saida_servico
+        description: Código do tipo de saída de serviço da unidade (quando aplicável).
+        data_type: string
       - name: setor
         description: Setor ou subsetor de patrulhamento (ex. Leblon, Copacabana).
         data_type: string
@@ -50,21 +68,6 @@ models:
         data_type: string
       - name: zona
         description: Zona geográfica ampla (ex. Zona Sul).
-        data_type: string
-      - name: tipo_unidade
-        description: Código do tipo da unidade (ex. POG, VTR, MOT).
-        data_type: string
-      - name: codigo_saida_servico
-        description: Código do motivo de saída de serviço da unidade.
-        data_type: string
-      - name: status
-        description: Código do status atual da unidade.
-        data_type: string
-      - name: status_disponibilidade_padrao
-        description: Código do status padrão de disponibilidade da unidade.
-        data_type: string
-      - name: nivel_alarme_despacho
-        description: Nível de alarme utilizado para o despacho.
         data_type: string
       - name: tempo_alarme
         description: Tempo de duração do alarme em segundos.
@@ -81,9 +84,6 @@ models:
       - name: contador_atualizacoes
         description: Número de atualizações realizadas no registro da unidade.
         data_type: int64
-      - name: indicador_indisponivel
-        description: Indica se a unidade está indisponível no momento da coleta.
-        data_type: bool
       - name: comentario_alteracao
         description: Comentário registrado na última alteração do status.
         data_type: string
