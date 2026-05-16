@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__monitoramento_qualidade
+    description: >
+      Extensão do modelo de monitoramento com métricas de qualidade de dados para
+      a pipeline `rj_segur__forca_municipal`. Serializa cada linha via `to_json_string`
+      excluindo colunas de pipeline (`id_hash`, `updated_at`, `data_particao`) e campos
+      derivados (`geometry`), usando `unnest([src])` para uma única leitura por tabela.
+
+      Distingue dois tipos de duplicata:
+      - **Cross-partition** (`dup_cross`): mesmo registro em partições distintas.
+        Esperado em tabelas de snapshot (ocorrências ativas, posições) e referência
+        estável (qmd_*). O `fator_reextracao` indica quantas vezes cada registro único
+        aparece em média no total da tabela.
+      - **Intra-partition** (`dup_intra`): mesmo registro dentro da mesma partição/dia.
+        Indica bug real na ingestão — a fonte está enviando dados duplicados no mesmo
+        lote de extração.
+    columns:
+      - name: tabela
+        description: Nome da tabela no dataset `brutos_forca_municipal`.
+      - name: ultima_data_particao
+        description: Data da partição mais recente presente na tabela.
+      - name: dias_atraso
+        description: >
+          Diferença em dias entre a data atual (fuso America/Sao_Paulo) e a última
+          partição. Valores maiores que 1 indicam atraso na ingestão.
+      - name: total_particoes
+        description: Número de partições (dias) com dados na tabela.
+      - name: linhas_ultima_particao
+        description: Total de linhas na partição mais recente.
+      - name: media_linhas_por_particao
+        description: Média de linhas por partição. Desvio grande em relação a min/max indica extração inconsistente.
+      - name: min_linhas_particao
+        description: Menor contagem de linhas entre todas as partições.
+      - name: max_linhas_particao
+        description: Maior contagem de linhas entre todas as partições.
+      - name: total_linhas
+        description: Total de linhas somando todas as partições da tabela.
+      - name: registros_unicos
+        description: >
+          Número de combinações únicas de valores de negócio (excluindo id_hash,
+          updated_at, data_particao, geometry) em toda a tabela.
+      - name: fator_reextracao
+        description: >
+          Razão entre total_linhas e registros_unicos. Valor 1.0 = sem duplicatas;
+          2.0 = cada registro aparece em média 2x (ex: tabelas de referência estável
+          com 2 partições); valores altos (>10) indicam problema de ingestão.
+      - name: linhas_dup_cross
+        description: Linhas cujo conteúdo de negócio aparece em mais de uma partição.
+      - name: grupos_dup_cross
+        description: Número de registros únicos que aparecem em mais de uma partição.
+      - name: pct_dup_cross
+        description: Percentual de linhas duplicadas entre partições.
+      - name: linhas_dup_intra
+        description: >
+          Linhas cujo conteúdo de negócio aparece mais de uma vez dentro da mesma
+          partição. Valor > 0 indica bug na ingestão (fonte enviando dados duplicados).
+      - name: grupos_dup_intra
+        description: >
+          Número de combinações (data_particao, registro) que aparecem mais de uma
+          vez dentro da mesma partição.
+      - name: pct_dup_intra
+        description: >
+          Percentual de linhas com duplicatas intra-partição. Deve ser 0% em condições
+          normais de operação.
+      - name: total_hashes
+        description: >
+          Número de batches de extração distintos (count distinct id_hash). Cada
+          execução do pipeline de ingestão gera um id_hash único compartilhado por
+          todas as linhas daquele lote.
+      - name: ultima_modificacao
+        description: >
+          Timestamp da última modificação de qualquer partição da tabela,
+          convertido para o fuso America/Sao_Paulo.
+      - name: total_megabytes
+        description: Tamanho lógico total da tabela em megabytes.
