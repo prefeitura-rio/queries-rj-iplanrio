@@ -6,35 +6,27 @@
     )
 }}
 
--- Serializa cada linha excluindo colunas de pipeline (id_hash, updated_at, data_particao)
--- e campos derivados (geometry). Usa unnest([src]) para fazer uma única leitura por tabela
--- e derivar a chave de negócio sem data_particao (cross) — a data_particao é mantida
--- separada para permitir também a detecção de duplicatas intra-partição.
+-- Serializa cada linha excluindo colunas de pipeline (updated_at, data_particao)
+-- e campos derivados (geometry). id_hash é mantido separado para contar runs distintos.
+-- Usa unnest([src]) para fazer uma única leitura por tabela.
 
 with
     linhas as (
         -- tabelas sem geometry
         select
-            'ocorrencias_ativas' as tabela,
+            'ocorrencias_historico' as tabela,
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao)
                  from unnest([src]))
             ) as row_key
-        from {{ ref('raw_segur_forca_municipal__ocorrencias_ativas') }} src
-        union all
-        select
-            'ocorrencias_historico',
-            data_particao,
-            to_json_string(
-                (select as struct * except(id_hash, updated_at, data_particao)
-                 from unnest([src]))
-            )
         from {{ ref('raw_segur_forca_municipal__ocorrencias_historico') }} src
         union all
         select
             'qmd',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao)
                  from unnest([src]))
@@ -42,17 +34,9 @@ with
         from {{ ref('raw_segur_forca_municipal__qmd') }} src
         union all
         select
-            'qmd_ativos',
-            data_particao,
-            to_json_string(
-                (select as struct * except(id_hash, updated_at, data_particao)
-                 from unnest([src]))
-            )
-        from {{ ref('raw_segur_forca_municipal__qmd_ativos') }} src
-        union all
-        select
             'qmd_detalhes',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao)
                  from unnest([src]))
@@ -62,6 +46,7 @@ with
         select
             'qmd_plano',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao)
                  from unnest([src]))
@@ -71,6 +56,7 @@ with
         select
             'qmd_servicos',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao)
                  from unnest([src]))
@@ -81,6 +67,7 @@ with
         select
             'ocorrencias_ativas_v2',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao, geometry)
                  from unnest([src]))
@@ -90,6 +77,7 @@ with
         select
             'qmd_kml',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao, geometry)
                  from unnest([src]))
@@ -97,17 +85,9 @@ with
         from {{ ref('raw_segur_forca_municipal__qmd_kml') }} src
         union all
         select
-            'unidades_ativas',
-            data_particao,
-            to_json_string(
-                (select as struct * except(id_hash, updated_at, data_particao, geometry)
-                 from unnest([src]))
-            )
-        from {{ ref('raw_segur_forca_municipal__unidades_ativas') }} src
-        union all
-        select
             'unidades_historico',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao, geometry)
                  from unnest([src]))
@@ -117,11 +97,18 @@ with
         select
             'unit_positions',
             data_particao,
+            id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao, geometry)
                  from unnest([src]))
             )
         from {{ ref('raw_segur_forca_municipal__unit_positions') }} src
+    ),
+
+    hashes as (
+        select tabela, count(distinct id_hash) as total_hashes
+        from linhas
+        group by tabela
     ),
 
     -- window functions numa única passagem:
@@ -137,7 +124,7 @@ with
         from linhas
     ),
 
-    por_tabela as (
+    dup as (
         select
             tabela,
             count(*)                                                              as total_linhas,
@@ -153,49 +140,65 @@ with
         group by tabela
     ),
 
-    stats_particoes as (
+    particoes as (
         select
-            table_name                                            as tabela,
-            count(*)                                              as total_particoes,
-            round(avg(total_rows))                                as media_linhas_por_particao,
-            min(total_rows)                                       as min_linhas_particao,
-            max(total_rows)                                       as max_linhas_particao,
+            table_name                                                             as tabela,
+            partition_id,
+            total_rows,
+            total_logical_bytes,
+            last_modified_time,
+            max(partition_id) over (partition by table_name)                      as ultima_partition_id,
         from `rj-segur.brutos_forca_municipal.INFORMATION_SCHEMA.PARTITIONS`
         where partition_id not in ('__NULL__', '__UNPARTITIONED__')
-        group by table_name
+    ),
+
+    frescor as (
+        select
+            tabela,
+            parse_date('%Y%m%d', max(partition_id))                               as ultima_data_particao,
+            count(*)                                                              as total_particoes,
+            sum(if(partition_id = ultima_partition_id, total_rows, 0))           as linhas_ultima_particao,
+            round(avg(total_rows))                                                as media_linhas_por_particao,
+            min(total_rows)                                                       as min_linhas_particao,
+            max(total_rows)                                                       as max_linhas_particao,
+            sum(total_rows)                                                       as total_linhas,
+            datetime(max(last_modified_time), 'America/Sao_Paulo')               as ultima_modificacao,
+            round(sum(total_logical_bytes) / pow(1024, 2), 4)                    as total_megabytes,
+        from particoes
+        group by tabela
     )
 
 select
     -- identificação e frescor
-    m.tabela,
-    m.ultima_data_particao,
-    m.dias_atraso,
-    sp.total_particoes,
-    m.linhas_ultima_particao,
-    round(sp.media_linhas_por_particao)                                        as media_linhas_por_particao,
-    sp.min_linhas_particao,
-    sp.max_linhas_particao,
+    f.tabela,
+    f.ultima_data_particao,
+    date_diff(current_date('America/Sao_Paulo'), f.ultima_data_particao, day)  as dias_atraso,
+    f.total_particoes,
+    f.linhas_ultima_particao,
+    f.media_linhas_por_particao,
+    f.min_linhas_particao,
+    f.max_linhas_particao,
 
     -- volume e unicidade
-    m.total_linhas,
-    q.registros_unicos,
-    round(m.total_linhas / nullif(q.registros_unicos, 0), 2)                   as fator_reextracao,
+    f.total_linhas,
+    d.registros_unicos,
+    round(f.total_linhas / nullif(d.registros_unicos, 0), 2)                   as fator_reextracao,
 
     -- duplicatas entre partições (esperado em tabelas de snapshot/referência estável)
-    q.linhas_dup_cross,
-    q.grupos_dup_cross,
-    round(100.0 * q.linhas_dup_cross / nullif(m.total_linhas, 0), 2)           as pct_dup_cross,
+    d.linhas_dup_cross,
+    d.grupos_dup_cross,
+    round(100.0 * d.linhas_dup_cross / nullif(f.total_linhas, 0), 2)           as pct_dup_cross,
 
     -- duplicatas dentro da mesma partição (sinal de bug na ingestão)
-    q.linhas_dup_intra,
-    q.grupos_dup_intra,
-    round(100.0 * q.linhas_dup_intra / nullif(m.total_linhas, 0), 2)           as pct_dup_intra,
+    d.linhas_dup_intra,
+    d.grupos_dup_intra,
+    round(100.0 * d.linhas_dup_intra / nullif(f.total_linhas, 0), 2)           as pct_dup_intra,
 
     -- pipeline
-    m.total_hashes,
-    m.ultima_modificacao,
-    m.total_megabytes,
-from {{ ref('raw_segur_forca_municipal__monitoramento') }} m
-left join por_tabela      q  using (tabela)
-left join stats_particoes sp using (tabela)
-order by m.tabela
+    h.total_hashes,
+    f.ultima_modificacao,
+    f.total_megabytes,
+from frescor f
+join hashes h using (tabela)
+left join dup d using (tabela)
+order by f.tabela

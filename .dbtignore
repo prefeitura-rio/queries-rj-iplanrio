@@ -4,3 +4,8 @@ models/raw/iplanrio/plus_codes/raw_grid.sql
 
 # Adicionado enquanto não resolvemos o problema de subir os dados com Airbyte	
 models/raw/iplanrio/sisbicho/raw_sisbicho_animal.sql
+
+# Endpoints redundantes da pipeline forca_municipal — desativados em 2026-05-17
+models/raw/segur/forca_municipal/raw_segur_forca_municipal__ocorrencias_ativas.sql
+models/raw/segur/forca_municipal/raw_segur_forca_municipal__unidades_ativas.sql
+models/raw/segur/forca_municipal/raw_segur_forca_municipal__qmd_ativos.sql

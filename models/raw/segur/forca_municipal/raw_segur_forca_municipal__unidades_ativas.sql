@@ -1,5 +1,6 @@
 {{
     config(
+        enabled=False,
         alias="unidades_ativas",
         schema="brutos_forca_municipal",
         materialized="incremental",

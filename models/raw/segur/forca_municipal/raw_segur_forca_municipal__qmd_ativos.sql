@@ -1,5 +1,6 @@
 {{
     config(
+        enabled=False,
         alias="qmd_ativos",
         schema="brutos_forca_municipal",
         materialized="incremental",
