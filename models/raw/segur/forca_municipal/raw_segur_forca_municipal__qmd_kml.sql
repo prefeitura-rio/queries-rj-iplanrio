@@ -34,11 +34,25 @@ with
             {{ padronize_id('qmd_id') }} as id_qmd,
 
             -- dados
-            safe_cast(kml_folder as string) as pasta_kml,
+            case kml_folder
+                when 'QMDs'    then 'QMD'
+                when 'Missões' then 'MISSAO'
+                else upper(safe_cast(kml_folder as string))
+            end as pasta_kml,
             {{ proper_br('safe_cast(name as string)') }} as nome,
             safe_cast(geometry_type as string) as tipo_geometria,
             safe_cast(description as string) as descricao,
             safe_cast(extended_data as string) as dados_extendidos,
+
+            -- dados derivados de dados_extendidos (válidos para pasta_kml = 'MISSAO')
+            json_value(safe_cast(extended_data as string), '$.MissaoId') as id_missao,
+            json_value(safe_cast(extended_data as string), '$.Tipo')     as tipo_missao,
+            safe.parse_time(
+                '%H:%M', json_value(safe_cast(extended_data as string), '$.HoraInicio')
+            ) as hora_inicio_missao,
+            safe.parse_time(
+                '%H:%M', json_value(safe_cast(extended_data as string), '$.HoraFim')
+            ) as hora_fim_missao,
 
             -- espacial
             safe_cast(geometry_wkt as string) as geometria_wkt,

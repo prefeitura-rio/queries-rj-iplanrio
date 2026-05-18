@@ -36,8 +36,10 @@ with
 
             -- dados
             {{ padronize_id('Id') }} as id_servico,
-            upper(trim(safe_cast(Nome as string))) as nome,
+            upper(trim(safe_cast(Nome as string))) as id_unidade,
             safe_cast(Dias as string) as dias,
+            regexp_extract(upper(trim(safe_cast(Nome as string))), r'^([A-Z]+)\d') as tipo_unidade,
+            regexp_extract(upper(trim(safe_cast(Nome as string))), r'-(.+)$')      as base_operacional,
 
             -- partição
             safe_cast(data_particao as date) as data_particao
