@@ -9,7 +9,7 @@
             "data_type": "date",
             "granularity": "day",
         },
-        cluster_by=["indicador_ativo", "area"],
+        cluster_by=["indicador_ativo"],
     )
 }}
 
@@ -37,15 +37,15 @@ with
             -- dados
             {{ padronize_id('Id') }} as id_qmd,
             {{ proper_br('safe_cast(Nome as string)') }} as nome,
-            {{ proper_br('safe_cast(Area as string)') }} as area,
+            {{ proper_br('safe_cast(Area as string)') }} as localizacao_patrulha,
             datetime(
                 safe_cast(DataVigenciaInicio as timestamp), 'America/Sao_Paulo'
             ) as data_hora_vigencia_inicio,
             datetime(
                 safe_cast(DataVigenciaFim as timestamp), 'America/Sao_Paulo'
             ) as data_hora_vigencia_fim,
-            parse_time('%H:%M', HoraExecucaoInicio) as hora_execucao_inicio,
-            parse_time('%H:%M', HoraExecucaoFim) as hora_execucao_fim,
+            parse_time('%H:%M', HoraExecucaoInicio) as hora_inicio_qmd,
+            parse_time('%H:%M', HoraExecucaoFim)    as hora_fim_qmd,
             datetime(
                 safe_cast(regexp_replace(DataHoraCriacao, r'(\.\d{6})\d+', r'\1') as timestamp),
                 'America/Sao_Paulo'
@@ -59,6 +59,8 @@ with
             safe_cast(StatusAutorizado as bool) as indicador_autorizado,
             safe_cast(Resumo as string) as resumo,
             safe_cast(Prescricoes as string) as prescricoes,
+            parse_time('%H:%M', HoraExecucaoFim) < parse_time('%H:%M', HoraExecucaoInicio)
+                as indicador_hora_cruza_meia_noite,
 
             -- partição
             safe_cast(data_particao as date) as data_particao

@@ -3,9 +3,11 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__unit_positions
     description: >
-      Posições GPS de cada unidade ativa da Guarda Municipal do Rio de Janeiro,
-      coletadas via GET /api/unit/positions.
-      Frequência de atualização: a cada 1 minuto.
+      Log completo de posições GPS de todas as viaturas ativas da Guarda Municipal
+      do Rio de Janeiro para o dia D-1. A pipeline extrai o dia fechado às 04:00
+      via parâmetro de data à API — cada partição cobre exatamente um dia de operação.
+      Frequência de leitura GPS: ~17–44s por unidade (variável).
+      Fonte: GET /api/unit/positions com parâmetro de data.
       Órgão gestor dos dados: SEGUR / Força Municipal.
     config:
       alias: unit_positions
@@ -18,23 +20,50 @@ models:
         description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
         data_type: datetime
       - name: id_unidade
-        description: Identificador da unidade/viatura (ex. POG01, MOT07-LITORANEA).
+        description: >
+          Identificador da viatura no formato `TIPO##-BASE` (ex. `POG01-LITORANEA`,
+          `MOT07-NORTE`). Mesmo formato de `qmd_servicos.nome` e
+          `unidades_historico.id_unidade` — chave de join entre execução e planejamento.
+          Tipos observados em produção: `POG`, `MOT`, `VTR`, `TRP`, `SUP`, `CUST`.
         data_type: string
       - name: data_hora
-        description: Timestamp do registro da posição GPS com fuso horário UTC.
-        data_type: timestamp
+        description: >
+          Datetime do registro da posição GPS (America/Sao_Paulo). Âncora temporal
+          para joins com janelas de execução planejada (`qmd_detalhes.missoes[].execucoes`).
+        data_type: datetime
       - name: data_coleta
-        description: Data passada como parâmetro para a API no momento da coleta. data_particao é derivada deste campo.
+        description: >
+          Data do dia extraído, passada como parâmetro à API. Sempre D-1 em relação
+          ao run das 04:00. Igual a `data_particao` — usar como âncora de join com
+          `qmd_plano` (não usar `updated_at`).
         data_type: date
+      - name: tipo_unidade
+        description: >
+          Tipo da viatura, extraído do prefixo alfabético de `id_unidade`
+          (ex. `POG01-LITORANEA` → `POG`). Valores observados em produção:
+          `POG`, `MOT`, `VTR`, `TRP`, `SUP`, `CUST`. Consistente com
+          `unidades_historico.tipo_unidade` e `qmd_servicos.tipo_unidade`.
+        data_type: string
+      - name: base_operacional
+        description: >
+          Base operacional da viatura, extraída do sufixo de `id_unidade`
+          (ex. `POG01-LITORANEA` → `LITORANEA`). Valores: `NORTE`, `OESTE`,
+          `LITORANEA`. Chave de join com `qmd_plano.area`.
+        data_type: string
       - name: latitude
-        description: Coordenada geográfica de latitude.
+        description: Latitude do ponto GPS em graus decimais (WGS84).
         data_type: float64
       - name: longitude
-        description: Coordenada geográfica de longitude.
+        description: Longitude do ponto GPS em graus decimais (WGS84).
         data_type: float64
       - name: geometry
-        description: Ponto geográfico derivado de latitude e longitude via ST_GEOGPOINT.
+        description: >
+          Ponto geográfico (`GEOGRAPHY`) derivado de `latitude` e `longitude` via
+          `ST_GEOGPOINT`. Pronto para funções `ST_*` como `ST_CONTAINS` e
+          `ST_DISTANCE`.
         data_type: geography
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: >
+          Data de partição. Igual a `data_coleta` (D-1) — esta tabela é a única
+          do dataset onde `data_particao` não corresponde à data do run da pipeline.
         data_type: date

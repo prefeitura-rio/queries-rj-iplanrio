@@ -92,7 +92,11 @@ models:
         description: Nível de alarme associado à ocorrência no momento da revisão.
         data_type: string
       - name: id_status
-        description: Identificador do status da ocorrência no momento da revisão.
+        description: >
+          Código numérico do status interno da ocorrência no momento da revisão.
+          Valores observados: `7`, `8`, `16`, `22`, `12` — sem definição oficial
+          na documentação da API. Não confundir com `indicador_aberta`, que é o
+          indicador de negócio explícito.
         data_type: string
       - name: id_substatus
         description: Identificador do substatus da ocorrência no momento da revisão.
@@ -107,13 +111,16 @@ models:
         description: Quantidade de unidades atribuídas à ocorrência no momento da revisão.
         data_type: int64
       - name: numero_revisao
-        description: Número sequencial desta revisão da ocorrência.
-        data_type: string
+        description: Número sequencial desta revisão da ocorrência. Usar `ORDER BY numero_revisao DESC` para encontrar a revisão mais recente por `id_ocorrencia`.
+        data_type: integer
       - name: comentario_fechamento
         description: Comentário registrado no fechamento da ocorrência.
         data_type: string
-      - name: area
-        description: Código da área de planejamento (ex. AP1.1).
+      - name: area_planejamento
+        description: >
+          Código da área de planejamento municipal (ex. AP1.1, AP2.1, AP5.2).
+          Não confundir com `localizacao_patrulha` em `qmd`/`qmd_detalhes`
+          (descrição textual de cruzamentos) — são conceitos distintos.
         data_type: string
       - name: setor
         description: Setor ou bairro de patrulhamento (ex. Cidade Nova, Copacabana).
@@ -134,11 +141,24 @@ models:
         description: Código de atributos adicionais da ocorrência (pode representar bitmask de flags internas).
         data_type: string
       - name: dados_customizados
-        description: Informações adicionais em formato JSON definidas pela agência.
+        description: >
+          JSON com informações adicionais. Em produção, sempre `{"Estado":
+          "Informado"}` — conteúdo invariante sem valor analítico no estado atual.
         data_type: string
       - name: informacao_suplementar
         description: Informação suplementar definida pelo usuário.
         data_type: string
+      - name: indicador_desvio_missao
+        description: >
+          True se `tipo_ocorrencia_codigo = 'DM'` (Desvio de Missão) — evento operacional
+          interno gerado quando uma viatura sai da área de missão planejada. Representa
+          46,6% das ocorrências em produção. Excluir de todas as análises P1 que medem
+          incidência criminal ou de segurança pública.
+        data_type: bool
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: >
+          Data do run da pipeline. Como a tabela é materializada como `table`
+          (substituição total a cada run), há um único valor em toda a tabela —
+          o da última execução. Não representa a data das ocorrências; usar
+          `data_hora_criacao` para filtros temporais.
         data_type: date

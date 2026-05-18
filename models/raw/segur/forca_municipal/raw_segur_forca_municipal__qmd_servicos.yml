@@ -28,12 +28,33 @@ models:
       - name: id_servico
         description: Identificador único do serviço (vinculação unidade-QMD-plano).
         data_type: string
-      - name: nome
-        description: Identificador da unidade atribuída ao serviço (ex. POG01-LITORANEA).
+      - name: id_unidade
+        description: >
+          Identificador da unidade alocada ao serviço, no formato `TIPO##-BASE`
+          (ex. `POG01-LITORANEA`, `MOT02-NORTE`). Equivalente a `id_unidade` em
+          `unit_positions` e `unidades_historico` — chave de join entre planejamento
+          e execução.
         data_type: string
       - name: dias
-        description: Lista JSON dos dias da semana em que o serviço está ativo (ex. ["seg","ter","qua"]).
+        description: >
+          Array JSON com os dias da semana em que o serviço está ativo, usando
+          abreviações em português: `"dom"`, `"seg"`, `"ter"`, `"qua"`, `"qui"`,
+          `"sex"`, `"sab"`. A ordem dos elementos varia entre registros. Em produção,
+          99,8% dos serviços têm os 7 dias — o campo é minimamente discriminante
+          no estado atual.
+        data_type: string
+      - name: tipo_unidade
+        description: >
+          Tipo da viatura, extraído do prefixo alfabético de `nome`
+          (ex. `POG01-LITORANEA` → `POG`). Consistente com
+          `unit_positions.tipo_unidade` e `unidades_historico.tipo_unidade`.
+        data_type: string
+      - name: base_operacional
+        description: >
+          Base operacional da viatura, extraída do sufixo de `nome`
+          (ex. `POG01-LITORANEA` → `LITORANEA`). Valores: `NORTE`, `OESTE`,
+          `LITORANEA`. Chave de join com `qmd_plano.area`.
         data_type: string
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
         data_type: date

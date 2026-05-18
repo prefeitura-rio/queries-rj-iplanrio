@@ -43,8 +43,9 @@ with
             upper(
                 safe_cast(statusedagencyeventsubtypecode as string)
             ) as subtipo_ocorrencia_status_codigo,
-            {{ padronize_id("StatusedAgencyEventRevisionNum") }}
-            as numero_revisao_ocorrencia_status,
+            safe_cast(
+                {{ padronize_id("StatusedAgencyEventRevisionNum") }} as int64
+            ) as numero_revisao_ocorrencia_status,
             datetime(
                 safe_cast(createdtime as timestamp), 'America/Sao_Paulo'
             ) as data_hora_criacao,
@@ -81,6 +82,7 @@ with
             safe_cast(totaleventcount as int64) as total_ocorrencias,
             safe_cast(changecomment as string) as comentario_alteracao,
             safe_cast(customdata as string) as dados_customizados,
+            regexp_extract(upper(trim(safe_cast(UnitId as string))), r'-(.+)$') as base_operacional,
 
             -- espacial
             safe_cast(latitude as float64) as latitude,

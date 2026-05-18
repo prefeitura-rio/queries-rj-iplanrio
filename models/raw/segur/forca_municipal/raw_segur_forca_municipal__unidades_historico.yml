@@ -41,7 +41,10 @@ models:
         description: Identificador único do registro histórico (UUID gerado pelo sistema).
         data_type: string
       - name: id_acao
-        description: Identificador do tipo de ação que gerou o registro histórico.
+        description: >
+          Código numérico do tipo de ação que gerou o registro histórico. Valores
+          não documentados oficialmente (ex. `74`, `64`, `4`, `48`). Usar com cautela
+          sem mapeamento confirmado com a equipe da GM.
         data_type: string
       - name: tipo_unidade
         description: Código do tipo da unidade (ex. POG, VTR, MOT).
@@ -53,8 +56,8 @@ models:
         description: Código do subtipo da ocorrência vinculada ao status da unidade.
         data_type: string
       - name: numero_revisao_ocorrencia_status
-        description: Número de revisão da ocorrência vinculada ao status da unidade.
-        data_type: string
+        description: Número de revisão da ocorrência vinculada ao status da unidade. Inteiro — ordenável diretamente.
+        data_type: integer
       - name: data_hora_criacao
         description: Data e hora em que o evento foi registrado no sistema (America/Sao_Paulo).
         data_type: datetime
@@ -65,7 +68,12 @@ models:
         description: Data e hora da inserção do registro no banco de dados do sistema (America/Sao_Paulo).
         data_type: datetime
       - name: id_status
-        description: Identificador do status da unidade no momento do evento (ex. AV, LN).
+        description: >
+          Código do status da unidade no momento do evento. Valores observados em
+          produção: `DC` (31%), `UE` (20%), `AM` (19%), `OS` (7%), `UG` (5%),
+          `DP` (4%), `LN` (4%), `AV` (4%), `LO` (4%), `UV` (2%), `QE` (1%).
+          `UE`, `AM` e `UG` não têm definição oficial na documentação da API —
+          representam 43% dos eventos; não usar como dimensão sem confirmar com a GM.
         data_type: string
       - name: id_status_disponibilidade_padrao
         description: Identificador do status padrão de disponibilidade da unidade.
@@ -107,22 +115,39 @@ models:
         description: Tempo de atraso em segundos no momento do evento.
         data_type: int64
       - name: tempo_total_ocorrencias
-        description: Tempo total acumulado em ocorrências em segundos até o momento do evento.
+        description: >
+          Total acumulado em segundos em ocorrências desde o logon do turno atual.
+          É um contador crescente dentro do turno, não o delta deste evento.
         data_type: int64
       - name: tempo_total_indisponivel
-        description: Tempo total acumulado em indisponibilidade em segundos até o momento do evento.
+        description: >
+          Total acumulado em segundos em indisponibilidade desde o logon do turno atual.
+          Contador crescente — não usar como duração do evento.
         data_type: int64
       - name: tempo_total_disponivel_estacao
-        description: Tempo total acumulado disponível na estação em segundos até o momento do evento.
+        description: >
+          Total acumulado em segundos disponível na estação desde o logon do turno atual.
+          Contador crescente — não usar como duração do evento.
         data_type: int64
       - name: total_ocorrencias
-        description: Número total de ocorrências acumuladas pela unidade até o momento do evento.
+        description: >
+          Número acumulado de ocorrências atendidas pela unidade desde o logon do
+          turno atual. Contador crescente — não usar como contagem do evento.
         data_type: int64
       - name: comentario_alteracao
         description: Comentário registrado na alteração de status.
         data_type: string
       - name: dados_customizados
-        description: Informações adicionais em formato JSON (ex. placa, matrícula do motorista).
+        description: >
+          JSON com dados de saída de serviço. Preenchido em ~34% dos eventos.
+          Estrutura: `{"DataSaida": "<ISO8601 UTC>", "PlacaViatura": "<placa>",
+          "MatriculaMotorista": "<matrícula>"}`. Contém dados operacionais sensíveis.
+        data_type: string
+      - name: base_operacional
+        description: >
+          Base operacional da viatura, extraída do sufixo de `id_unidade`
+          (ex. `POG01-LITORANEA` → `LITORANEA`). Valores: `NORTE`, `OESTE`,
+          `LITORANEA`. Chave de join com `qmd_plano.area`.
         data_type: string
       - name: latitude
         description: Coordenada geográfica de latitude da unidade no momento do evento.
@@ -134,5 +159,9 @@ models:
         description: Ponto geográfico derivado de latitude e longitude via ST_GEOGPOINT.
         data_type: geography
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: >
+          Data do run da pipeline. Como a tabela é materializada como `table`
+          (substituição total a cada run), há um único valor em toda a tabela —
+          o da última execução. Não representa a data dos eventos; usar
+          `data_hora_criacao` para filtros temporais.
         data_type: date

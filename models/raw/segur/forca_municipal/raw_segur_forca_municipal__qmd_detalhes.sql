@@ -9,7 +9,7 @@
             "data_type": "date",
             "granularity": "day",
         },
-        cluster_by=["indicador_ativo", "area"],
+        cluster_by=["indicador_ativo"],
     )
 }}
 
@@ -33,7 +33,7 @@ with
             -- dados
             {{ padronize_id('qmdId') }} as id_qmd,
             {{ proper_br('safe_cast(qmdNome as string)') }} as nome,
-            {{ proper_br('safe_cast(qmdArea as string)') }} as area,
+            {{ proper_br('safe_cast(qmdArea as string)') }} as localizacao_patrulha,
             datetime(
                 safe_cast(qmdDataVigenciaInicio as timestamp), 'America/Sao_Paulo'
             ) as data_hora_vigencia_inicio,

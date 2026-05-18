@@ -47,6 +47,20 @@ with
                 'America/Sao_Paulo'
             ) as data_hora_criacao,
 
+            -- dados derivados do nome (break estrutural 2026-05-03: unificado → 3 bases)
+            case
+                when Nome like '%Norte%'     then 'NORTE'
+                when Nome like '%Oeste%'     then 'OESTE'
+                when Nome like '%Litorânea%' then 'LITORANEA'
+                else null
+            end as area,
+            safe_cast(
+                regexp_extract(Nome, r'- Semana (\d+)') as int64
+            ) as numero_semana,
+            regexp_contains(Nome, r'Força Municipal') as indicador_plano_unificado,
+            regexp_contains(Nome, r'Encerrado')       as indicador_plano_encerrado,
+            regexp_contains(lower(Nome), r'\(teste\)') as indicador_plano_teste,
+
             -- partição
             safe_cast(data_particao as date) as data_particao
 

@@ -72,7 +72,7 @@ with
             {{ padronize_id('Priority') }} as prioridade,
             {{ padronize_id('StatusCode') }} as id_status,
             safe_cast(ClosingComment as string) as comentario_fechamento,
-            upper(safe_cast(Area as string)) as area,
+            upper(safe_cast(Area as string)) as area_planejamento,
             {{ proper_br('safe_cast(Beat as string)') }} as setor,
             {{ proper_br('safe_cast(District as string)') }} as distrito,
             {{ proper_br('safe_cast(Zone as string)') }} as zona,
@@ -81,6 +81,7 @@ with
             safe_cast(Agents as string) as agentes,
             {{ padronize_id('Attributes') }} as atributos,
             safe_cast(CustomData as string) as dados_customizados,
+            upper(safe_cast(AgencyEventTypeCode as string)) = 'DM' as indicador_desvio_missao,
 
             -- espacial
             safe_cast(Latitude as float64) as latitude,
