@@ -10,11 +10,6 @@
 with
     tb as (
         select
-            -- Pluscodes (calculados e ordenados como no exemplo)
-            coalesce(
-                tools.encode_pluscode(t.latitude, t.longitude, 11), ''
-            ) as plus11,
-
             -- Identificação principal do equipamento
             -- Gerando um ID único caso não exista um na tabela de origem
             cast(null as string) as id_equipamento,
@@ -25,13 +20,13 @@ with
 
             -- Mais Pluscodes
             coalesce(
-                tools.encode_pluscode(t.latitude, t.longitude, 10), ''
+                `rj-iplanrio.plus_codes.encode_plus_code`(t.longitude, t.latitude, 10), ''
             ) as plus10,
             coalesce(
-                tools.encode_pluscode(t.latitude, t.longitude, 8), ''
+                `rj-iplanrio.plus_codes.encode_plus_code`(t.longitude, t.latitude, 8), ''
             ) as plus8,
             coalesce(
-                tools.encode_pluscode(t.latitude, t.longitude, 6), ''
+                `rj-iplanrio.plus_codes.encode_plus_code`(t.longitude, t.latitude, 6), ''
             ) as plus6,
 
             -- Detalhes de localização
@@ -106,7 +101,6 @@ with
 
 -- Seleção final garantindo a ordem exata das colunas
 select
-    plus11,
     id_equipamento,
     trim(secretaria_responsavel) as secretaria_responsavel,
     trim(tipo_equipamento) as tipo_equipamento,

@@ -1,3 +1,6 @@
+**/**/test*
+**/**/prefect_*
+**/**/api.pdf
 .cursor/
 queries_rj_iplanrio.egg-info/
 

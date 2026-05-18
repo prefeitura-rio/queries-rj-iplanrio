@@ -46,7 +46,6 @@ with
             (
                 select as struct
                         e.plus8,
-                        e.plus11,
                         e.id_equipamento,
                         e.geometry,
                         e.secretaria_responsavel,

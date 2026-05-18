@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__unit_positions
+    description: >
+      Posições GPS de cada unidade ativa da Guarda Municipal do Rio de Janeiro,
+      coletadas via GET /api/unit/positions.
+      Frequência de atualização: a cada 1 minuto.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: unit_positions
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        data_type: datetime
+      - name: id_unidade
+        description: Identificador da unidade/viatura (ex. POG01, MOT07-LITORANEA).
+        data_type: string
+      - name: data_hora
+        description: Timestamp do registro da posição GPS com fuso horário UTC.
+        data_type: timestamp
+      - name: data_coleta
+        description: Data passada como parâmetro para a API no momento da coleta. data_particao é derivada deste campo.
+        data_type: date
+      - name: latitude
+        description: Coordenada geográfica de latitude.
+        data_type: float64
+      - name: longitude
+        description: Coordenada geográfica de longitude.
+        data_type: float64
+      - name: geometry
+        description: Ponto geográfico derivado de latitude e longitude via ST_GEOGPOINT.
+        data_type: geography
+      - name: data_particao
+        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        data_type: date

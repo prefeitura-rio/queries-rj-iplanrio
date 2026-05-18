@@ -46,10 +46,9 @@ WITH
   tb AS (
     SELECT
       -- Pluscodes
-      coalesce(tools.encode_pluscode(t.latitude_unidade, t.longitude_unidade, 11), '') as plus11,
-      coalesce(tools.encode_pluscode(t.latitude_unidade, t.longitude_unidade, 10), '') as plus10,
-      coalesce(tools.encode_pluscode(t.latitude_unidade, t.longitude_unidade, 8), '') as plus8,
-      coalesce(tools.encode_pluscode(t.latitude_unidade, t.longitude_unidade, 6), '') as plus6,
+      coalesce(`rj-iplanrio.plus_codes.encode_plus_code`(t.longitude_unidade, t.latitude_unidade, 10), '') as plus10,
+      coalesce(`rj-iplanrio.plus_codes.encode_plus_code`(t.longitude_unidade, t.latitude_unidade, 8), '') as plus8,
+      coalesce(`rj-iplanrio.plus_codes.encode_plus_code`(t.longitude_unidade, t.latitude_unidade, 6), '') as plus6,
       -- Core identification
       t.cnes AS id_equipamento,
       'SMS' AS secretaria_responsavel,
@@ -138,7 +137,6 @@ WITH
       t.cnes = e.id_cnes
   )
 SELECT
-  plus11,
   id_equipamento,
   TRIM(secretaria_responsavel) AS secretaria_responsavel,
   TRIM(tipo_equipamento) AS tipo_equipamento,
