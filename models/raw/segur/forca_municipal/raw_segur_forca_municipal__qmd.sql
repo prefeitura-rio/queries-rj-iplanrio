@@ -44,13 +44,15 @@ with
             datetime(
                 safe_cast(DataVigenciaFim as timestamp), 'America/Sao_Paulo'
             ) as data_hora_vigencia_fim,
-            safe_cast(HoraExecucaoInicio as time) as hora_execucao_inicio,
-            safe_cast(HoraExecucaoFim as time) as hora_execucao_fim,
+            parse_time('%H:%M', HoraExecucaoInicio) as hora_execucao_inicio,
+            parse_time('%H:%M', HoraExecucaoFim) as hora_execucao_fim,
             datetime(
-                safe_cast(DataHoraCriacao as timestamp), 'America/Sao_Paulo'
+                safe_cast(regexp_replace(DataHoraCriacao, r'(\.\d{6})\d+', r'\1') as timestamp),
+                'America/Sao_Paulo'
             ) as data_hora_criacao,
             datetime(
-                safe_cast(DataHoraAutorizacao as timestamp), 'America/Sao_Paulo'
+                safe_cast(regexp_replace(DataHoraAutorizacao, r'(\.\d{6})\d+', r'\1') as timestamp),
+                'America/Sao_Paulo'
             ) as data_hora_autorizacao,
             safe_cast(StatusAtivo as bool) as indicador_ativo,
             safe_cast(StatusValido as bool) as indicador_valido,

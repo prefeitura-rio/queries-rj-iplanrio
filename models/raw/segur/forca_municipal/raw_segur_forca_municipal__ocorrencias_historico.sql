@@ -2,13 +2,7 @@
     config(
         alias="ocorrencias_historico",
         schema="brutos_forca_municipal",
-        materialized="incremental",
-        incremental_strategy="insert_overwrite",
-        partition_by={
-            "field": "data_particao",
-            "data_type": "date",
-            "granularity": "day",
-        },
+        materialized="table",
         cluster_by=["tipo_ocorrencia_codigo", "id_status"],
     )
 }}
@@ -17,11 +11,11 @@ with
     source as (
         select *
         from {{ source('brutos_forca_municipal_staging', 'ocorrencias_historico') }}
-        {% if is_incremental() %}
-            where
-                safe_cast(data_particao as date)
-                >= (select max(data_particao) from {{ this }})
-        {% endif %}
+        where
+            safe_cast(data_particao as date) = (
+                select max(safe_cast(data_particao as date))
+                from {{ source('brutos_forca_municipal_staging', 'ocorrencias_historico') }}
+            )
     ),
 
     renamed as (
