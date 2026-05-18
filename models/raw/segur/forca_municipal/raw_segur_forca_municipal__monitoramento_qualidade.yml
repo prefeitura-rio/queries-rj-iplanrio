@@ -66,9 +66,10 @@ models:
           normais de operação.
       - name: total_hashes
         description: >
-          Número de batches de extração distintos (count distinct id_hash). Cada
-          execução do pipeline de ingestão gera um id_hash único compartilhado por
-          todas as linhas daquele lote.
+          Número de hashes de conteúdo de linha distintos (count distinct id_hash).
+          Como id_hash é calculado por linha sobre os campos da API, este valor é
+          equivalente a registros_unicos e serve de verificação cruzada da integridade
+          do hash.
       - name: ultima_modificacao
         description: >
           Timestamp da última modificação de qualquer partição da tabela,

@@ -14,7 +14,7 @@ models:
       schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
         data_type: string
       - name: updated_at
         description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
