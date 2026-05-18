@@ -40,9 +40,9 @@ with
             datetime(
                 safe_cast(qmdDataVigenciaFim as timestamp), 'America/Sao_Paulo'
             ) as data_hora_vigencia_fim,
-            qmdStatusAtivo = 'Sim' as indicador_ativo,
-            qmdStatusAutorizado = 'Sim' as indicador_autorizado,
-            qmdStatusValido = 'Sim' as indicador_valido,
+            lower(trim(qmdStatusAtivo)) = 'sim' as indicador_ativo,
+            lower(trim(qmdStatusAutorizado)) = 'sim' as indicador_autorizado,
+            lower(trim(qmdStatusValido)) = 'sim' as indicador_valido,
             safe_cast(qmdResumo as string) as resumo,
             safe_cast(missoes as string) as missoes,
 

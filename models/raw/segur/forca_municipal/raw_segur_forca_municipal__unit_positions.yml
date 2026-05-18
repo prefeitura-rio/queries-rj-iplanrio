@@ -23,6 +23,9 @@ models:
       - name: data_hora
         description: Timestamp do registro da posição GPS com fuso horário UTC.
         data_type: timestamp
+      - name: data_coleta
+        description: Data passada como parâmetro para a API no momento da coleta. data_particao é derivada deste campo.
+        data_type: date
       - name: latitude
         description: Coordenada geográfica de latitude.
         data_type: float64

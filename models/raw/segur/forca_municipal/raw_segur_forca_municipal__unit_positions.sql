@@ -35,6 +35,7 @@ with
 
             -- dados
             datetime(safe_cast(Date as timestamp), 'America/Sao_Paulo') as data_hora,
+            safe_cast(data_coleta as date) as data_coleta,
 
             -- espacial
             safe_cast(Latitude as float64) as latitude,

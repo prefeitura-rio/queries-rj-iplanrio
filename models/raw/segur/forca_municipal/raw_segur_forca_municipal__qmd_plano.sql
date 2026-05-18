@@ -43,7 +43,8 @@ with
                 safe_cast(SemanaReferenciaFim as timestamp), 'America/Sao_Paulo'
             ) as data_hora_semana_referencia_fim,
             datetime(
-                safe_cast(DataHoraCriacao as timestamp), 'America/Sao_Paulo'
+                safe_cast(regexp_replace(DataHoraCriacao, r'(\.\d{6})\d+', r'\1') as timestamp),
+                'America/Sao_Paulo'
             ) as data_hora_criacao,
 
             -- partição
