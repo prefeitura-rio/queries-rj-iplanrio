@@ -14,7 +14,7 @@ models:
       schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
         data_type: string
       - name: updated_at
         description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
@@ -23,26 +23,66 @@ models:
         description: Identificador do QMD ao qual a feição pertence.
         data_type: string
       - name: pasta_kml
-        description: Pasta KML à qual a feição pertence (ex. QMD, Missões).
+        description: >
+          Pasta KML da feição, normalizada para uppercase sem acentos. Valores:
+          `QMD` (1 ponto por QMD, sem dados de missão) e `MISSAO` (1 feature por
+          missão não-DS). Usar para distinguir features de área de missão vs ponto de QMD.
         data_type: string
       - name: nome
-        description: Nome da feição KML (ex. Informações do QMD, Missão 128 - PB).
+        description: >
+          Nome da feição. Para pasta `QMD`: sempre `"Informações do Qmd"`. Para
+          pasta `Missões`: padrão `"Missão NNN - TIPO"` (ex. `"Missão 795 - Pb"`).
         data_type: string
       - name: tipo_geometria
-        description: Tipo da geometria WKT (ex. Point, LineString, Polygon).
+        description: >
+          Tipo da geometria. Valores observados: `Point` (pasta QMD e missões PB),
+          `LineString` (missões PTR), `Polygon` (missões RF, SV, SP).
+          Missões DS não têm feature nesta tabela.
         data_type: string
       - name: descricao
-        description: Descrição HTML da feição com atributos do QMD ou missão.
+        description: >
+          HTML com atributos do QMD (pasta `QMD`: nome, resumo) ou da missão
+          (pasta `Missões`: tipo, roteiro, horário). Sempre preenchido.
         data_type: string
       - name: dados_extendidos
-        description: Dados estendidos em formato JSON com atributos adicionais da feição.
+        description: >
+          JSON com metadados da missão. Presente apenas na pasta `MISSAO`
+          (NULL para pasta `QMD`). Campos: `MissaoId` (FK para
+          `qmd_detalhes.missoes[].missaoId`), `Tipo`, `Roteiro`, `HoraInicio`,
+          `HoraFim`, `Servicos` (string CSV de id_unidade — pode repetir a mesma
+          unidade para execuções de semanas diferentes; não normalizado).
         data_type: string
+      - name: id_missao
+        description: >
+          Identificador da missão, extraído de `dados_extendidos.MissaoId`. FK para
+          `qmd_detalhes.missoes[].missaoId`. NULL para linhas de pasta `QMD`.
+        data_type: string
+      - name: tipo_missao
+        description: >
+          Tipo da missão, extraído de `dados_extendidos.Tipo`. Valores: `PTR`
+          (patrulha — LineString), `PB` (ponto base — Point), `RF` / `SV` / `SP`
+          (polígonos de área). NULL para linhas de pasta `QMD`. Missões `DS` não
+          têm feature nesta tabela.
+        data_type: string
+      - name: hora_inicio_missao
+        description: >
+          Hora de início da missão, extraída de `dados_extendidos.HoraInicio`.
+          NULL para linhas de pasta `QMD`. Usar com `indicador_hora_cruza_meia_noite`
+          de `qmd` para janelas que atravessam a meia-noite.
+        data_type: time
+      - name: hora_fim_missao
+        description: >
+          Hora de fim da missão, extraída de `dados_extendidos.HoraFim`.
+          NULL para linhas de pasta `QMD`.
+        data_type: time
       - name: geometria_wkt
         description: Geometria da feição em formato WKT (Well-Known Text).
         data_type: string
       - name: geometry
-        description: Geometria da feição convertida para o tipo GEOGRAPHY via ST_GEOGFROMTEXT.
+        description: >
+          Geometria da feição como `GEOGRAPHY`, pronta para funções `ST_*` do
+          BigQuery. Derivada de `geometria_wkt` via `ST_GEOGFROMTEXT`.
         data_type: geography
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
         data_type: date

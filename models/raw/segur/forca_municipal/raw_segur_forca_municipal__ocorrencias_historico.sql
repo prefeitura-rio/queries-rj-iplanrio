@@ -75,9 +75,9 @@ with
             safe_cast(IsReopened as bool) as indicador_reaberta,
             safe_cast(safe_cast(TotalAssignedUnits as float64) as int64)
             as total_unidades_atribuidas,
-            {{ padronize_id('RevisionNumber') }} as numero_revisao,
+            safe_cast({{ padronize_id('RevisionNumber') }} as int64) as numero_revisao,
             safe_cast(ClosingComment as string) as comentario_fechamento,
-            upper(safe_cast(Area as string)) as area,
+            upper(safe_cast(Area as string)) as area_planejamento,
             {{ proper_br('safe_cast(Beat as string)') }} as setor,
             {{ proper_br('safe_cast(District as string)') }} as distrito,
             {{ proper_br('safe_cast(Municipality as string)') }} as municipio,
@@ -86,12 +86,27 @@ with
             {{ padronize_id('Attributes') }} as atributos,
             safe_cast(CustomData as string) as dados_customizados,
             safe_cast(UserDefinedSupplementalInfo as string) as informacao_suplementar,
+            upper(safe_cast(AgencyEventTypeCode as string)) = 'DM'                as indicador_desvio_missao,
+            upper(safe_cast(AgencyEventTypeCode as string)) in ('DM', 'AGD')    as indicador_evento_operacional,
 
             -- partição
             safe_cast(data_particao as date) as data_particao
 
         from source
+    ),
+
+    com_indicador_revisao as (
+        select
+            *,
+            row_number() over (
+                partition by id_ocorrencia
+                order by numero_revisao desc
+            ) = 1                                                                  as indicador_ultima_revisao,
+            datetime_diff(
+                data_hora_fechamento, data_hora_criacao, minute
+            )                                                                      as duracao_ocorrencia_minutos
+        from renamed
     )
 
 select *
-from renamed
+from com_indicador_revisao
