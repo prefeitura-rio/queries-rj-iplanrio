@@ -218,6 +218,13 @@ models:
           +materialized: table
           +schema: turismo_fluxo_visitantes_staging
           +tags: "daily"
+      seconserva:
+        +tags: "seconserva"
+        +project: rj-seconserva
+        seconserva:
+          +materialized: table
+          +schema: processo_autorizacao_obra
+          +tags: "daily"
       ssm:
         +tags: "ssm"
         +project: rj-ssm
