@@ -95,7 +95,15 @@ with
             safe_cast(data_particao as date) as data_particao
 
         from source
+    ),
+
+    com_derivados as (
+        select
+            *,
+            id_status in ('DP', 'QE')  as indicador_despachada,
+            date(data_hora_logon)       as data_logon
+        from renamed
     )
 
 select *
-from renamed
+from com_derivados

@@ -50,7 +50,14 @@ with
             -- partição
             safe_cast(data_particao as date) as data_particao,
         from source
+    ),
+
+    com_hora as (
+        select
+            *,
+            time(data_hora) as hora_leitura
+        from renamed
     )
 
 select *
-from renamed
+from com_hora

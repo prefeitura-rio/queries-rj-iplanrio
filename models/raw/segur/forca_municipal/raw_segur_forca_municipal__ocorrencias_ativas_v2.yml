@@ -133,7 +133,15 @@ models:
         description: >
           True se `tipo_ocorrencia_codigo = 'DM'` (Desvio de Missão) — evento operacional
           interno gerado quando uma viatura sai da área de missão planejada. Excluir de
-          todas as análises P1 que medem incidência criminal ou de segurança pública.
+          todas as análises P1. Ver também `indicador_evento_operacional` para filtro
+          mais abrangente.
+        data_type: bool
+      - name: indicador_evento_operacional
+        description: >
+          True se `tipo_ocorrencia_codigo IN ('DM', 'AGD')` — cobre todos os tipos
+          operacionais internos que não representam crime. Mesmo critério de
+          `ocorrencias_historico.indicador_evento_operacional`. Usar
+          `WHERE NOT indicador_evento_operacional` como filtro-base de P1.
         data_type: bool
       - name: latitude
         description: Coordenada geográfica de latitude do local da ocorrência.
@@ -144,6 +152,25 @@ models:
       - name: geometry
         description: Ponto geográfico derivado de latitude e longitude via ST_GEOGPOINT.
         data_type: geography
+      - name: ttd_segundos
+        description: >
+          Time to Dispatch em segundos: `DATETIME_DIFF(data_hora_primeiro_despacho,
+          data_hora_criacao, SECOND)`. Métrica central de P4. NULL quando
+          `data_hora_primeiro_despacho IS NULL` (ocorrências sem despacho de unidade,
+          ex. tipo `OT`, `DIO`).
+        data_type: int64
+      - name: tter_segundos
+        description: >
+          Time to Enroute em segundos: `DATETIME_DIFF(data_hora_primeira_unidade_a_caminho,
+          data_hora_primeiro_despacho, SECOND)`. Tempo entre o despacho e a unidade
+          entrar em rota. NULL quando `data_hora_primeira_unidade_a_caminho IS NULL`.
+        data_type: int64
+      - name: ttoa_segundos
+        description: >
+          Time on Arrival em segundos: `DATETIME_DIFF(data_hora_primeira_chegada,
+          data_hora_primeiro_despacho, SECOND)`. Tempo entre o despacho e a unidade
+          chegar ao local. NULL quando `data_hora_primeira_chegada IS NULL`.
+        data_type: int64
       - name: data_particao
         description: >
           Data de partição da carga incremental, correspondente à data do run (America/Sao_Paulo).

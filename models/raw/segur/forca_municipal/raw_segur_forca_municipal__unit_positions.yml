@@ -62,6 +62,13 @@ models:
           `ST_GEOGPOINT`. Pronto para funções `ST_*` como `ST_CONTAINS` e
           `ST_DISTANCE`.
         data_type: geography
+      - name: hora_leitura
+        description: >
+          Hora do registro GPS como `TIME`, derivada de `TIME(data_hora)`. Elimina
+          o cast em filtros temporais de conformidade de missão (P3):
+          `WHERE u.hora_leitura BETWEEN k.hora_inicio_missao AND k.hora_fim_missao`.
+          Também útil para `GROUP BY hora_leitura` em análises de cobertura intradiária.
+        data_type: time
       - name: data_particao
         description: >
           Data de partição. Igual a `data_coleta` (D-1) — esta tabela é a única

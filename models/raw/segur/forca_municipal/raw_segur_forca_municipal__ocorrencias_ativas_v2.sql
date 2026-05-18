@@ -81,7 +81,8 @@ with
             safe_cast(Agents as string) as agentes,
             {{ padronize_id('Attributes') }} as atributos,
             safe_cast(CustomData as string) as dados_customizados,
-            upper(safe_cast(AgencyEventTypeCode as string)) = 'DM' as indicador_desvio_missao,
+            upper(safe_cast(AgencyEventTypeCode as string)) = 'DM'                as indicador_desvio_missao,
+            upper(safe_cast(AgencyEventTypeCode as string)) in ('DM', 'AGD')    as indicador_evento_operacional,
 
             -- espacial
             safe_cast(Latitude as float64) as latitude,
@@ -95,7 +96,22 @@ with
             safe_cast(data_particao as date) as data_particao
 
         from source
+    ),
+
+    derivados as (
+        select
+            *,
+            datetime_diff(
+                data_hora_primeiro_despacho, data_hora_criacao, second
+            )                                                                      as ttd_segundos,
+            datetime_diff(
+                data_hora_primeira_unidade_a_caminho, data_hora_primeiro_despacho, second
+            )                                                                      as tter_segundos,
+            datetime_diff(
+                data_hora_primeira_chegada, data_hora_primeiro_despacho, second
+            )                                                                      as ttoa_segundos
+        from renamed
     )
 
 select *
-from renamed
+from derivados

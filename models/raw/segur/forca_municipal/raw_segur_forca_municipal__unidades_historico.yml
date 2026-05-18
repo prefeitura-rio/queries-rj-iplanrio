@@ -149,6 +149,20 @@ models:
           (ex. `POG01-LITORANEA` → `LITORANEA`). Valores: `NORTE`, `OESTE`,
           `LITORANEA`. Chave de join com `qmd_plano.area`.
         data_type: string
+      - name: indicador_despachada
+        description: >
+          True quando `id_status IN ('DP', 'QE')` — unidade ativamente atribuída
+          a uma ocorrência (despachada ou em atendimento). Shortcut para
+          `WHERE id_status IN ('DP', 'QE')` usado em P3 de disponibilidade e
+          no join com `ocorrencias_historico` via `id_ocorrencia_atribuida`.
+        data_type: bool
+      - name: data_logon
+        description: >
+          Data do logon do turno vigente no momento do evento, derivada de
+          `DATE(data_hora_logon)`. Agrupador natural de turno — usar em
+          `PARTITION BY id_unidade, data_logon` para calcular tempo por status
+          dentro de cada turno de operação.
+        data_type: date
       - name: latitude
         description: Coordenada geográfica de latitude da unidade no momento do evento.
         data_type: float64

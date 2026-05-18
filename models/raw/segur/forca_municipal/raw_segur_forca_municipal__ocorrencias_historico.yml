@@ -153,8 +153,32 @@ models:
           True se `tipo_ocorrencia_codigo = 'DM'` (Desvio de Missão) — evento operacional
           interno gerado quando uma viatura sai da área de missão planejada. Representa
           46,6% das ocorrências em produção. Excluir de todas as análises P1 que medem
-          incidência criminal ou de segurança pública.
+          incidência criminal ou de segurança pública. Ver também `indicador_evento_operacional`
+          para excluir DM + AGD de uma vez.
         data_type: bool
+      - name: indicador_evento_operacional
+        description: >
+          True se `tipo_ocorrencia_codigo IN ('DM', 'AGD')` — cobre todos os tipos
+          de ocorrência que representam eventos operacionais internos e não devem
+          ser contados como crime em P1. `DM` = Desvio de Missão (46,6%), `AGD` =
+          Agente Desmobilizado (0,5%). Usar `WHERE NOT indicador_evento_operacional`
+          como filtro-base de P1.
+        data_type: bool
+      - name: indicador_ultima_revisao
+        description: >
+          True para a revisão mais recente de cada `id_ocorrencia` (maior `numero_revisao`).
+          Elimina a necessidade de `QUALIFY ROW_NUMBER() OVER (PARTITION BY id_ocorrencia
+          ORDER BY numero_revisao DESC) = 1` no mart. Usar `WHERE indicador_ultima_revisao`
+          para obter o estado atual de cada ocorrência sem multi-contagem.
+        data_type: bool
+      - name: duracao_ocorrencia_minutos
+        description: >
+          Duração em minutos entre criação e fechamento da ocorrência
+          (`DATETIME_DIFF(data_hora_fechamento, data_hora_criacao, MINUTE)`).
+          NULL para ocorrências ainda abertas (60% do total em produção).
+          Não requer DATETIME_DIFF no mart — campo pronto para histogramas de
+          tempo de resolução e filtros de outliers.
+        data_type: int64
       - name: data_particao
         description: >
           Data do run da pipeline. Como a tabela é materializada como `table`

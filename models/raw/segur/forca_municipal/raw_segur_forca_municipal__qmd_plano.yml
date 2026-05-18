@@ -83,6 +83,19 @@ models:
           True para planos criados com propósito de teste, identificados pelo prefixo
           "(teste)" no nome. Excluir de todas as análises operacionais.
         data_type: boolean
+      - name: data_semana_referencia_inicio
+        description: >
+          Data de início da semana de referência como `DATE` (derivada de
+          `DATE(data_hora_semana_referencia_inicio)`). Elimina o cast explícito
+          em joins com `unit_positions.data_coleta` (DATE):
+          `u.data_coleta BETWEEN p.data_semana_referencia_inicio AND p.data_semana_referencia_fim`.
+        data_type: date
+      - name: data_semana_referencia_fim
+        description: >
+          Data de fim da semana de referência como `DATE` (derivada de
+          `DATE(data_hora_semana_referencia_fim)`). Par de `data_semana_referencia_inicio`
+          para filtros `BETWEEN` sem cast. Sempre sábado (seis dias após o início).
+        data_type: date
       - name: data_particao
         description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
         data_type: date

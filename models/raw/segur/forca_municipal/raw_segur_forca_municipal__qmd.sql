@@ -66,7 +66,18 @@ with
             safe_cast(data_particao as date) as data_particao
 
         from source
+    ),
+
+    com_duracao as (
+        select
+            *,
+            if(
+                indicador_hora_cruza_meia_noite,
+                time_diff(hora_fim_qmd, hora_inicio_qmd, minute) + 24 * 60,
+                time_diff(hora_fim_qmd, hora_inicio_qmd, minute)
+            ) as duracao_minutos_qmd
+        from renamed
     )
 
 select *
-from renamed
+from com_duracao

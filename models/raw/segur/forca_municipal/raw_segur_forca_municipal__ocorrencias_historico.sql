@@ -86,13 +86,27 @@ with
             {{ padronize_id('Attributes') }} as atributos,
             safe_cast(CustomData as string) as dados_customizados,
             safe_cast(UserDefinedSupplementalInfo as string) as informacao_suplementar,
-            upper(safe_cast(AgencyEventTypeCode as string)) = 'DM' as indicador_desvio_missao,
+            upper(safe_cast(AgencyEventTypeCode as string)) = 'DM'                as indicador_desvio_missao,
+            upper(safe_cast(AgencyEventTypeCode as string)) in ('DM', 'AGD')    as indicador_evento_operacional,
 
             -- partição
             safe_cast(data_particao as date) as data_particao
 
         from source
+    ),
+
+    com_indicador_revisao as (
+        select
+            *,
+            row_number() over (
+                partition by id_ocorrencia
+                order by numero_revisao desc
+            ) = 1                                                                  as indicador_ultima_revisao,
+            datetime_diff(
+                data_hora_fechamento, data_hora_criacao, minute
+            )                                                                      as duracao_ocorrencia_minutos
+        from renamed
     )
 
 select *
-from renamed
+from com_indicador_revisao

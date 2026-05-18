@@ -99,10 +99,17 @@ models:
       - name: indicador_hora_cruza_meia_noite
         description: >
           True quando `hora_fim_qmd < hora_inicio_qmd`, indicando que o turno
-          atravessa a meia-noite (ex. início 22:00, fim 02:00). Cálculos de
-          duração devem adicionar 1 dia ao fim quando este indicador for true para
-          evitar durações negativas.
+          atravessa a meia-noite (ex. início 22:00, fim 02:00). Usado internamente
+          por `duracao_minutos_qmd` — não é necessário tratá-lo no mart.
         data_type: bool
+      - name: duracao_minutos_qmd
+        description: >
+          Duração do turno diário em minutos, calculada a partir de `hora_inicio_qmd`
+          e `hora_fim_qmd` com correção automática para turnos que cruzam a
+          meia-noite (`indicador_hora_cruza_meia_noite`). Pronto para uso direto
+          em agregações — não requer o `IF(indicador_hora_cruza_meia_noite, ...)`
+          no mart. Valores observados: ~720 min (12h) a ~720 min (turnos noturnos 20:00→08:00).
+        data_type: int64
       - name: data_particao
         description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
         data_type: date
