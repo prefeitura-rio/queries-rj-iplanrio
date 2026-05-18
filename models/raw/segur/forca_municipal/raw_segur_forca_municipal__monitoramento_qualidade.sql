@@ -7,8 +7,10 @@
 }}
 
 -- Serializa cada linha excluindo colunas de pipeline (updated_at, data_particao)
--- e campos derivados (geometry). id_hash é mantido separado para contar runs distintos.
+-- e campos derivados (geometry). id_hash é mantido separado para contar hashes distintos.
 -- Usa unnest([src]) para fazer uma única leitura por tabela.
+-- Tabelas com materialized="table" (não-particionadas no BQ) têm partition_id IS NULL
+-- no INFORMATION_SCHEMA; datas e contagem de partições são derivadas da coluna data_particao.
 
 with
     linhas as (
@@ -140,32 +142,54 @@ with
         group by tabela
     ),
 
+    -- deriva datas e contagem de partições da coluna data_particao do dado,
+    -- o que funciona tanto para tabelas particionadas quanto para table (não-particionadas)
+    datas as (
+        select
+            tabela,
+            max(data_particao)            as ultima_data_particao,
+            count(distinct data_particao) as total_particoes,
+        from linhas
+        group by tabela
+    ),
+
     particoes as (
         select
-            table_name                                                             as tabela,
+            table_name                                                                      as tabela,
             partition_id,
             total_rows,
             total_logical_bytes,
             last_modified_time,
-            max(partition_id) over (partition by table_name)                      as ultima_partition_id,
+            -- partition_id IS NULL = tabela não-particionada; ignora no cálculo do max
+            max(case when partition_id is not null then partition_id end)
+                over (partition by table_name)                                             as ultima_partition_id,
         from `rj-segur.brutos_forca_municipal.INFORMATION_SCHEMA.PARTITIONS`
-        where partition_id not in ('__NULL__', '__UNPARTITIONED__')
+        -- mantém NULLs (tabelas não-particionadas); exclui apenas __UNPARTITIONED__
+        -- (linhas de partição sem valor em tabelas particionadas)
+        where partition_id is null or partition_id != '__UNPARTITIONED__'
     ),
 
     frescor as (
         select
-            tabela,
-            parse_date('%Y%m%d', max(partition_id))                               as ultima_data_particao,
-            count(*)                                                              as total_particoes,
-            sum(if(partition_id = ultima_partition_id, total_rows, 0))           as linhas_ultima_particao,
-            round(avg(total_rows))                                                as media_linhas_por_particao,
-            min(total_rows)                                                       as min_linhas_particao,
-            max(total_rows)                                                       as max_linhas_particao,
-            sum(total_rows)                                                       as total_linhas,
-            datetime(max(last_modified_time), 'America/Sao_Paulo')               as ultima_modificacao,
-            round(sum(total_logical_bytes) / pow(1024, 2), 4)                    as total_megabytes,
-        from particoes
-        group by tabela
+            p.tabela,
+            d.ultima_data_particao,
+            d.total_particoes,
+            -- para tabelas particionadas: linhas da última partição
+            -- para table (__NULL__): total_rows é o total da tabela inteira
+            sum(if(
+                p.partition_id is null or p.partition_id = p.ultima_partition_id,
+                p.total_rows, 0
+            ))                                                                             as linhas_ultima_particao,
+            -- estatísticas por partição só fazem sentido para tabelas particionadas
+            round(avg(if(p.partition_id is not null, p.total_rows, null)))                 as media_linhas_por_particao,
+            min(if(p.partition_id is not null, p.total_rows, null))                        as min_linhas_particao,
+            max(if(p.partition_id is not null, p.total_rows, null))                        as max_linhas_particao,
+            sum(p.total_rows)                                                              as total_linhas,
+            datetime(max(p.last_modified_time), 'America/Sao_Paulo')                      as ultima_modificacao,
+            round(sum(p.total_logical_bytes) / pow(1024, 2), 4)                           as total_megabytes,
+        from particoes p
+        join datas d using (tabela)
+        group by p.tabela, d.ultima_data_particao, d.total_particoes
     )
 
 select

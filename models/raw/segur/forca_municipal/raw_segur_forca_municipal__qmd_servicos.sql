@@ -36,7 +36,7 @@ with
 
             -- dados
             {{ padronize_id('Id') }} as id_servico,
-            upper(safe_cast(Nome as string)) as nome,
+            upper(trim(safe_cast(Nome as string))) as nome,
             safe_cast(Dias as string) as dias,
 
             -- partição
