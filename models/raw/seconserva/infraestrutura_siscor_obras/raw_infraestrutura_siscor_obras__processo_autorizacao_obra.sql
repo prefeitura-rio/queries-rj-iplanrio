@@ -3,7 +3,6 @@
         alias='processo_autorizacao_obra',
         schema='infraestrutura_siscor_obras',
         materialized='table',
-        project='rj-seconserva',
     )
 
 }}
