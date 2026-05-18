@@ -14,29 +14,88 @@ models:
       schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
         data_type: string
       - name: updated_at
         description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
         data_type: datetime
       - name: id_responsavel_criacao
-        description: Identificador do funcionário responsável pela criação do plano.
+        description: >
+          Identificador do usuário que criou o plano no HxGN OnCall. O valor `0`
+          indica criação automática pelo sistema (observado em 16 dos 18 planos em produção).
         data_type: string
       - name: id_plano
-        description: Identificador único do plano semanal.
+        description: Identificador único do plano semanal. Chave primária desta tabela e FK em `qmd_servicos`.
         data_type: string
       - name: nome
-        description: Nome descritivo do plano (ex. Semana 01/03 a 07/03).
+        description: >
+          Nome descritivo do plano. Codifica base operacional e status de encerramento.
+          Formato na era unificada (até 2026-05-02): "Força Municipal - Semana N" ou
+          "Força Municipal - Semana N - Encerrado". Formato na era multi-base (a partir de
+          2026-05-03): "Base [Norte|Oeste|Litorânea] - Semana N". O sufixo "- Encerrado"
+          é a única indicação de que o plano foi encerrado formalmente — não há campo
+          booleano dedicado.
         data_type: string
       - name: data_hora_semana_referencia_inicio
-        description: Data e hora de início da semana de referência do plano (America/Sao_Paulo).
+        description: >
+          Data e hora de início da semana de referência (America/Sao_Paulo). Sempre
+          domingo às 00:00:00. Âncora temporal canônica para ligar registros operacionais
+          a uma semana do CompStat.
         data_type: datetime
       - name: data_hora_semana_referencia_fim
-        description: Data e hora de fim da semana de referência do plano (America/Sao_Paulo).
+        description: >
+          Data e hora de fim da semana de referência (America/Sao_Paulo). Sempre
+          sábado às 23:59:59 (seis dias após o início).
         data_type: datetime
       - name: data_hora_criacao
-        description: Data e hora de criação do plano no sistema (America/Sao_Paulo).
+        description: >
+          Data e hora de criação do plano no sistema (America/Sao_Paulo). Pode ser
+          anterior ou posterior ao início da semana de referência — não usar como
+          âncora temporal para análises.
         data_type: datetime
+      - name: area
+        description: >
+          Base operacional extraída do campo `nome`. Valores possíveis: NORTE, OESTE, LITORANEA.
+          NULL para planos anteriores ao break estrutural de 2026-05-03 (era unificada) e para
+          planos de teste. Coluna derivada — usar em conjunto com `indicador_plano_unificado`
+          para distinguir NULL por design (era unificada) de NULL por dado ausente.
+        data_type: string
+      - name: numero_semana
+        description: >
+          Número ordinal da semana dentro do ciclo operacional, extraído do campo `nome`
+          via padrão "- Semana N". NULL para planos de teste (que usam datas no nome em vez
+          de número ordinal). Não é ISO week — é o contador interno de semanas do sistema.
+        data_type: integer
+      - name: indicador_plano_unificado
+        description: >
+          True para planos da era unificada (até 2026-05-02), identificados pelo padrão
+          "Força Municipal" no nome. False para planos multi-base (Norte/Oeste/Litorânea)
+          e planos de teste. Usar para segmentar análises que cruzam o break de 2026-05-03.
+        data_type: boolean
+      - name: indicador_plano_encerrado
+        description: >
+          True se o plano foi formalmente encerrado, identificado pelo sufixo "Encerrado"
+          no nome. É a única indicação de encerramento disponível — não há campo booleano
+          dedicado na API.
+        data_type: boolean
+      - name: indicador_plano_teste
+        description: >
+          True para planos criados com propósito de teste, identificados pelo prefixo
+          "(teste)" no nome. Excluir de todas as análises operacionais.
+        data_type: boolean
+      - name: data_semana_referencia_inicio
+        description: >
+          Data de início da semana de referência como `DATE` (derivada de
+          `DATE(data_hora_semana_referencia_inicio)`). Elimina o cast explícito
+          em joins com `unit_positions.data_coleta` (DATE):
+          `u.data_coleta BETWEEN p.data_semana_referencia_inicio AND p.data_semana_referencia_fim`.
+        data_type: date
+      - name: data_semana_referencia_fim
+        description: >
+          Data de fim da semana de referência como `DATE` (derivada de
+          `DATE(data_hora_semana_referencia_fim)`). Par de `data_semana_referencia_inicio`
+          para filtros `BETWEEN` sem cast. Sempre sábado (seis dias após o início).
+        data_type: date
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
         data_type: date

@@ -224,6 +224,7 @@ como `string` mesmo que seus valores sejam numéricos.
 | Código / sigla curta | `string` | `upper(safe_cast(col as string))` |
 | Nome / endereço descritivo | `string` | `{{ proper_br('safe_cast(col as string)') }}` |
 | Código numérico (status, nível) | `string` | `{{ padronize_id('col') }}` — sem operações matemáticas |
+| **Número de sequência** (ex. `numero_revisao`) | `int64` | `safe_cast({{ padronize_id('col') }} as int64)` — ordenação numérica |
 | Duração / contagem (operações matemáticas) | `int64` | `safe_cast(col as int64)` |
 | Float que vem como `"1.0"` antes de int | `int64` | `safe_cast(safe_cast(col as float64) as int64)` |
 | Coordenadas geográficas | `float64` | `safe_cast(col as float64)` |
@@ -236,6 +237,44 @@ como `string` mesmo que seus valores sejam numéricos.
 
 > Todos os campos da staging chegam como `STRING` (limitação do Parquet gerado pela pipeline).
 > Use sempre `safe_cast` para evitar quebra do modelo em caso de valor inválido.
+
+---
+
+## Consistência entre modelos
+
+### Mesmo nome para a mesma informação
+
+Campos que representam o mesmo conceito em tabelas diferentes **devem ter exatamente o
+mesmo nome**, independentemente do nome original na API. Isso elimina ambiguidade nos
+joins e torna o mart previsível.
+
+Exemplos consolidados neste dataset:
+
+| Campo | Tabelas | Significado |
+|---|---|---|
+| `id_unidade` | `unit_positions`, `qmd_servicos`, `unidades_historico` | Identificador da viatura no formato `TIPO##-BASE` |
+| `base_operacional` | `unit_positions`, `qmd_servicos`, `unidades_historico`, `qmd_plano` (`area`) | Base operacional (NORTE / OESTE / LITORANEA) |
+| `tipo_unidade` | `unit_positions`, `qmd_servicos`, `unidades_historico` | Tipo da viatura (VTR / MTO / BIC / PEA / CUST) |
+| `indicador_desvio_missao` | `ocorrencias_historico`, `ocorrencias_ativas_v2` | Se a ocorrência é um Desvio de Missão (DM) |
+
+> Em `qmd_plano`, o equivalente de `base_operacional` chama-se `area` porque é o campo
+> primário da tabela — para joins, usar `qmd_plano.area = <tabela>.base_operacional`.
+
+### Números de sequência → `int64`
+
+Campos que representam uma **sequência ordinal** usada para ordenação (ex. `numero_revisao`)
+devem ser convertidos para `int64`, mesmo que o README geral recomende `string` para
+códigos numéricos. A distinção é:
+
+- **Código numérico** (ex. `id_status = "7"`): sem ordenação relativa, permanece `string`.
+- **Número de sequência** (ex. `numero_revisao = 10`): ordenação define semântica
+  ("última revisão"). Manter como `string` causa ordenação lexicográfica silenciosamente
+  errada (`"9" > "10"`).
+
+```sql
+-- correto para números de sequência
+safe_cast({{ padronize_id('RevisionNumber') }} as int64) as numero_revisao
+```
 
 ---
 

@@ -14,41 +14,60 @@ models:
       schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 do conteúdo bruto da resposta da API. Identifica um arquivo Parquet no GCS — todas as linhas de um mesmo run compartilham o mesmo hash.
+        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
         data_type: string
       - name: updated_at
         description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
         data_type: datetime
       - name: id_qmd
-        description: Identificador único do QMD.
+        description: >
+          Identificador único do QMD. FK para `qmd`, `qmd_servicos` e `qmd_kml`.
         data_type: string
       - name: nome
-        description: Nome descritivo do QMD (ex. Ponto Base Centro).
+        description: >
+          Número de portaria do QMD no formato `NNN/26` (ex. `001/26`, `138/26`).
+          Mesmo campo que `qmd.nome` — não é nome descritivo.
         data_type: string
-      - name: area
-        description: Área geográfica de atuação do QMD (ex. Centro, Zona Sul).
+      - name: localizacao_patrulha
+        description: >
+          Localização de atuação do QMD descrita por cruzamentos ou pontos de
+          referência específicos. Mesmo campo que `qmd.localizacao_patrulha` —
+          não é bairro nem zona administrativa.
         data_type: string
       - name: data_hora_vigencia_inicio
         description: Data e hora de início da vigência do QMD (America/Sao_Paulo).
         data_type: datetime
       - name: data_hora_vigencia_fim
-        description: Data e hora de fim da vigência do QMD (America/Sao_Paulo).
+        description: >
+          Data e hora de fim da vigência do QMD (America/Sao_Paulo). Uma vigência
+          tipicamente cobre ~3 meses (múltiplas semanas de operação).
         data_type: datetime
       - name: indicador_ativo
-        description: Indica se o QMD está ativo (derivado de qmdStatusAtivo = 'Sim').
+        description: Indica se o QMD está ativo (derivado de `qmdStatusAtivo = 'Sim'`).
         data_type: bool
       - name: indicador_autorizado
-        description: Indica se o QMD foi formalmente autorizado (derivado de qmdStatusAutorizado = 'Sim').
+        description: Indica se o QMD foi formalmente autorizado (derivado de `qmdStatusAutorizado = 'Sim'`).
         data_type: bool
       - name: indicador_valido
-        description: Indica se o QMD é válido (derivado de qmdStatusValido = 'Sim').
+        description: >
+          Indica se o QMD é considerado válido pelo sistema (derivado de
+          `qmdStatusValido = 'Sim'`). O critério exato não está documentado na API —
+          não usar como filtro de qualidade sem confirmar com a equipe da GM.
         data_type: bool
       - name: resumo
-        description: Texto de resumo das instruções do QMD.
+        description: Texto livre com o resumo operacional do QMD. Mesmo campo que `qmd.resumo`.
         data_type: string
       - name: missoes
-        description: Array JSON com as missões do QMD, incluindo geometria WKT, tipo, roteiro e horários.
+        description: >
+          Array JSON com as missões do QMD. Cada elemento representa uma missão com
+          os campos: `missaoId` (id único), `tipo` (PTR/PB/DS/RF/SV/SP — não
+          documentados oficialmente), `roteiro` (texto livre), `horaInicio`/`horaFim`
+          (HH:MM), `geometriaWkt` (WKT string — vazio para tipo DS), e `servicos`
+          (array com `servicoId` FK para `qmd_servicos.id_servico`, `nome`
+          id_unidade, e `execucoes` com timestamps ISO 8601 por dia planejado).
+          O campo `dias` dentro de `servicos[]` é double-encoded (JSON string dentro
+          de JSON). 1 QMD inativo tem `missoes = "[]"`.
         data_type: string
       - name: data_particao
-        description: Data de partição dos dados, derivada do caminho do arquivo no GCS.
+        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
         data_type: date
