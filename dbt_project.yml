@@ -223,7 +223,7 @@ models:
         +project: rj-seconserva
         seconserva:
           +materialized: table
-          +schema: processo_autorizacao_obra
+          +schema: infraestrutura_siscor_obras
           +tags: "daily"
       ssm:
         +tags: "ssm"
