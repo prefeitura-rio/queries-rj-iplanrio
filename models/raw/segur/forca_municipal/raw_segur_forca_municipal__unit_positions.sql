@@ -57,7 +57,15 @@ with
             *,
             time(data_hora) as hora_leitura
         from renamed
+    ),
+
+    -- A API ocasionalmente retorna o mesmo registro GPS duas vezes na mesma resposta.
+    -- QUALIFY garante um único id_hash por partição antes do insert_overwrite.
+    deduplicado as (
+        select *
+        from com_hora
+        qualify row_number() over (partition by id_hash order by updated_at desc) = 1
     )
 
 select *
-from com_hora
+from deduplicado
