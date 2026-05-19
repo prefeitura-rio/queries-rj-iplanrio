@@ -102,9 +102,19 @@ with
             id_hash,
             to_json_string(
                 (select as struct * except(id_hash, updated_at, data_particao, geometry)
-                 from unnest([src]))
+                  from unnest([src]))
             )
         from {{ ref('raw_segur_forca_municipal__unit_positions') }} src
+        union all
+        select
+            'qmd_detalhes_missao',
+            data_particao,
+            id_hash,
+            to_json_string(
+                (select as struct * except(id_hash, updated_at, data_particao, geometry)
+                  from unnest([src]))
+            )
+        from {{ ref('raw_segur_forca_municipal__qmd_detalhes_missao') }} src
     ),
 
     hashes as (

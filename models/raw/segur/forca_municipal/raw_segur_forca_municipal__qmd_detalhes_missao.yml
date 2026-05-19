@@ -1,0 +1,106 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_detalhes_missao
+    description: >
+      Missões dos QMDs com granularidade missão × serviço (unidade alocada).
+      Derivado de `qmd_detalhes` via unnest do campo `missoes` (JSON).
+      Cada linha representa uma unidade alocada a uma missão específica de um QMD,
+      com geometria pronta para `ST_*`, horários tipados e dias já desserializados.
+      Frequência de atualização: diária (mesma cadência de `qmd_detalhes`).
+      Fonte: `raw_segur_forca_municipal__qmd_detalhes.missoes`.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: qmd_detalhes_missao
+      schema: brutos_forca_municipal
+    columns:
+      - name: id_hash
+        description: >
+          Hash herdado de `qmd_detalhes` — identifica o arquivo Parquet do run que gerou
+          o QMD pai. Todas as linhas derivadas do mesmo QMD num mesmo run compartilham
+          o mesmo `id_hash`. Para identificar linhas únicas neste modelo usar a chave
+          composta `(id_qmd, id_missao, id_servico, data_particao)`.
+        data_type: string
+      - name: updated_at
+        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo). Herdado de `qmd_detalhes`.
+        data_type: datetime
+      - name: id_qmd
+        description: >
+          Identificador do QMD pai. FK para `qmd`, `qmd_detalhes`, `qmd_kml`
+          e `qmd_servicos`.
+        data_type: string
+      - name: id_unidade
+        description: >
+          Identificador da unidade alocada a esta missão, no formato
+          `TIPO##-BASE` (ex. `POG01-LITORANEA`). FK para
+          `unit_positions.id_unidade` e `unidades_historico.id_unidade`.
+          Mesmo campo que `qmd_servicos.id_unidade`.
+        data_type: string
+      - name: id_missao
+        description: >
+          Identificador único da missão. Chave primária do nível de missão.
+          FK para `qmd_kml.id_missao` (mesmo valor, mesmo tipo STRING).
+        data_type: string
+      - name: id_servico
+        description: >
+          Identificador da alocação unidade ↔ missão. Chave primária do nível
+          de serviço. FK direta para `qmd_servicos.id_servico` — o elo que
+          liga a missão à unidade dentro do plano semanal.
+        data_type: string
+      - name: tipo_missao
+        description: >
+          Tipo da missão. Valores observados: `PTR` (Patrulhamento — LineString),
+          `PB` (Ponto Base — Point), `DS` (Deslocamento — sem geometria),
+          `RF` (Ronda — Polygon), `SV` (Supervisão — Polygon), `SP` (não
+          documentado). Mesmo campo que `qmd_kml.tipo_missao`.
+        data_type: string
+      - name: roteiro
+        description: >
+          Texto livre descrevendo a rota ou localização da missão
+          (ex. `PTR_01\tAv. Lauro Sodré, da Rua General Severiano até...`).
+        data_type: string
+      - name: hora_inicio_missao
+        description: >
+          Hora de início planejada da missão. Mesmo campo que
+          `qmd_kml.hora_inicio_missao`. Complementa `qmd.hora_inicio_qmd`
+          (que é o turno do QMD inteiro).
+        data_type: time
+      - name: hora_fim_missao
+        description: >
+          Hora de fim planejada da missão. Mesmo campo que
+          `qmd_kml.hora_fim_missao`. Pode cruzar meia-noite se
+          `hora_fim_missao < hora_inicio_missao`.
+        data_type: time
+      - name: dias
+        description: >
+          Dias da semana em que o serviço está programado, como
+          `ARRAY<STRING>`. Valores possíveis: `dom`, `seg`, `ter`, `qua`,
+          `qui`, `sex`, `sab`. Derivado do campo `dias` double-encoded do
+          JSON de origem (JSON string dentro de JSON — resolvido neste modelo).
+          Quase sempre contém os 7 dias da semana.
+        data_type: array<string>
+      - name: execucoes
+        description: >
+          Array JSON com as execuções planejadas desta alocação, uma por dia
+          agendado. Estrutura de cada elemento:
+          `{"dataHoraInicio": "2026-05-10T13:30:00-03:00", "dataHoraFim": "..."}`.
+          Timestamps em ISO 8601 com fuso -03:00. Usar para comparar planejado
+          vs. executado em P3 (join com `unit_positions.data_hora` ou
+          `unidades_historico.data_hora_criacao`). O unnest por dia pertence
+          ao mart.
+        data_type: string
+      - name: indicador_ativo
+        description: >
+          Indica se o QMD pai está ativo. Herdado de `qmd_detalhes.indicador_ativo`.
+          Usar como filtro primário: `WHERE indicador_ativo` para missões em vigor.
+        data_type: bool
+      - name: geometry
+        description: >
+          Geometria da missão como `GEOGRAPHY`, pronta para funções `ST_*`.
+          `NULL` para missões do tipo `DS` (deslocamento — sem área de cobertura).
+          Tipos de geometria: LineString (`PTR`), Point (`PB`),
+          Polygon (`RF`, `SV`, `SP`).
+        data_type: geography
+      - name: data_particao
+        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
+        data_type: date
