@@ -3,14 +3,19 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__ocorrencias_ativas_v2
     description: >
-      Série temporal de snapshots intradiários das ocorrências ativas no sistema HxGN OnCall
-      da Guarda Municipal do Rio de Janeiro. Cada linha representa o estado de 1 ocorrência
-      ativa em 1 momento específico (polling a cada 5 min). Uma ocorrência ativa durante 2h
-      gera ~24 linhas na partição do dia. Ocorrências fechadas desaparecem do endpoint e
-      não são retroativamente atualizadas nesta tabela — usar ocorrencias_historico para
-      histórico completo. Versão estendida de ocorrencias_ativas: inclui localização
-      (Latitude, Longitude, Location, geometry) e timeline de despacho (3 timestamps),
-      sem AgencyId, IsOpen, SubstatusCode presentes na v1.
+      Histórico deduplicado de estados de ocorrências ativas da Guarda Municipal do Rio de Janeiro.
+      A staging é populada por polling a cada ~5 min do endpoint de ocorrências ativas; cada poll
+      retorna todas as ocorrências no momento. Este modelo colapsa snapshots idênticos: cada linha
+      representa um estado único de uma ocorrência (`id_hash`), com `first_seen`/`last_seen`
+      indicando quando aquele estado foi observado pela primeira vez e pela última vez.
+      Uma ocorrência que permanece sem alteração por 2h gera 1 linha (não ~24).
+      Quando o estado muda (ex. status, prioridade), um novo `id_hash` é gerado — a evolução
+      de uma ocorrência é rastreável via `id_ocorrencia` ordenado por `first_seen`.
+      Ocorrências fechadas desaparecem do endpoint e não são retroativamente atualizadas —
+      usar ocorrencias_historico para histórico completo.
+      Versão estendida de ocorrencias_ativas: inclui localização (Latitude, Longitude, Location,
+      geometry) e timeline de despacho (3 timestamps), sem AgencyId, IsOpen, SubstatusCode
+      presentes na v1.
       Frequência de atualização: a cada 5 minutos.
       Fonte: GET /api/ocorrencias/ativas (v2).
       Órgão gestor dos dados: SEGUR / Força Municipal.
@@ -19,10 +24,16 @@ models:
       schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
+        description: Hash md5 de 32 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Chave de deduplicação — identifica unicamente um estado de ocorrência.
         data_type: string
+      - name: first_seen
+        description: Datetime do primeiro poll em que este estado (`id_hash`) foi observado (America/Sao_Paulo). Imutável após o primeiro insert.
+        data_type: datetime
+      - name: last_seen
+        description: Datetime do poll mais recente em que este estado (`id_hash`) foi observado (America/Sao_Paulo). Atualizado a cada run enquanto o estado permanecer ativo. Quando parar de aparecer no feed, marca aproximadamente quando o estado foi encerrado ou sucedido.
+        data_type: datetime
       - name: updated_at
-        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        description: Igual a `last_seen` — datetime do poll mais recente deste estado. Mantido para compatibilidade com o padrão do dataset.
         data_type: datetime
       - name: id_unidade_primaria
         description: Identificador da unidade principal atribuída à ocorrência (ex. VTR01-LITORANEA).
@@ -173,7 +184,8 @@ models:
         data_type: int64
       - name: data_particao
         description: >
-          Data de partição da carga incremental, correspondente à data do run (America/Sao_Paulo).
-          Cada partição acumula todos os snapshots de 5 min do dia. Padrão normal — diferente
-          de unit_positions onde data_particao = D-1 (data de coleta do GPS).
+          Data do run mais recente em que este estado (`id_hash`) foi observado (America/Sao_Paulo).
+          Atualizado junto com `last_seen` a cada run. Tabela sem partição no destino —
+          dedup por `id_hash` implica que `data_particao` seria alterada a cada merge,
+          inviabilizando particionamento eficiente.
         data_type: date
