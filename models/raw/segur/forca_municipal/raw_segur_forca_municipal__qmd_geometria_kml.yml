@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_geometria_kml
+    description: >
+      Base model: todas as features KML exportadas pelo sistema QMD, todas as pastas.
+      Centraliza todas as transformações (parsing de extended_data, geometry, dedup).
+      Modelos derivados apenas filtram por tipo_missao ou kml_folder — sem lógica própria.
+      Pastas conhecidas: 'Missões' (missões operacionais) e 'QMD' (localização das bases).
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd/kml.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    columns:
+      - name: id_hash
+        description: >
+          Hash MD5 de 32 hex calculado sobre as colunas da API (excluindo updated_at).
+          Chave única — uma linha por versão de feature KML.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        description: Datetime da primeira coleta em que esta versão foi observada.
+        data_type: datetime
+      - name: last_seen
+        description: Datetime da última coleta em que esta versão foi observada.
+        data_type: datetime
+      - name: updated_at
+        description: Igual a last_seen.
+        data_type: datetime
+      - name: data_particao
+        description: Data da partição mais recente em que esta versão foi observada.
+        data_type: date
+      - name: id_qmd
+        description: Identificador do QMD. FK para qmd, qmd_missoes, qmd_bases.
+        data_type: string
+      - name: id_missao
+        description: >
+          Identificador da missão. NULL para features da pasta QMD (bases).
+          FK para qmd_missoes.id_missao.
+        data_type: string
+      - name: kml_folder
+        description: >
+          Nome da pasta KML normalizado (lowercase, sem acentos).
+          Valores conhecidos: 'missoes' (pasta Missões) e 'qmd' (pasta QMD).
+          Usar para filtrar nos modelos derivados.
+        data_type: string
+      - name: kml_folder_raw
+        description: Valor original de kml_folder antes de normalização.
+        data_type: string
+      - name: nome
+        description: Nome da feature KML.
+        data_type: string
+      - name: tipo_missao
+        description: >
+          Tipo da missão. Valores: PTR, PB, RF, SV, SP.
+          NULL para features da pasta QMD (bases).
+        data_type: string
+      - name: tipo_geometria
+        description: >
+          Tipo da geometria: LineString (PTR), Point (PB/QMD), Polygon (RF/SV/SP).
+        data_type: string
+      - name: hora_inicio_missao
+        description: Hora de início planejada. Extraída de dados_extendidos.HoraInicio. NULL para bases.
+        data_type: time
+      - name: hora_fim_missao
+        description: Hora de fim planejada. Extraída de dados_extendidos.HoraFim. NULL para bases.
+        data_type: time
+      - name: roteiro
+        description: >
+          Descrição textual do roteiro/área, com prefixo de tipo removido.
+          NULL para features da pasta QMD.
+        data_type: string
+      - name: servicos
+        description: >
+          Unidades alocadas à missão. ARRAY<STRING> de valores distintos.
+          Array vazio para bases ou missões sem alocação.
+        data_type: "array<string>"
+      - name: descricao
+        description: HTML com atributos da feature.
+        data_type: string
+      - name: dados_extendidos
+        description: JSON bruto com metadados. NULL para features da pasta QMD.
+        data_type: string
+      - name: geometria_wkt
+        description: Geometria em formato WKT.
+        data_type: string
+      - name: geometry
+        description: >
+          Geometria como GEOGRAPHY, pronta para funções ST_*.
+          Derivada de geometria_wkt via SAFE.ST_GEOGFROMTEXT(..., make_valid => TRUE).
+        data_type: geography

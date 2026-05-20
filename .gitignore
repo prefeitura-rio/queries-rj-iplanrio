@@ -1,4 +1,6 @@
-**/**/test*
+**/**/test*.md
+**/**/test*.pdf
+
 **/**/prefect_*
 **/**/api.pdf
 .cursor/

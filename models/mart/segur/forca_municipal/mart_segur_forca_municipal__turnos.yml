@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: mart_segur_forca_municipal__turnos
+    description: >
+      Um turno por id_unidade × data_logon, consolidado a partir de unidades_historico.
+      Os contadores (tempo_total_*, total_ocorrencias) são acumuladores crescentes no
+      sistema — este modelo extrai o valor final do último evento do turno, representando
+      o total acumulado na sessão. Métricas complementares (total_eventos,
+      total_eventos_despachada) derivadas por agregação sobre todos os eventos do turno.
+
+      data_logon é a data do início do logon; turnos noturnos cruzam meia-noite.
+    config:
+      schema: forca_municipal
+
+    columns:
+      # ── identificadores ──────────────────────────────────────────────────
+      - name: id_unidade
+        description: Identificador da viatura (ex. POG01-LITORANEA).
+        data_type: string
+        tests:
+          - not_null
+
+      - name: data_logon
+        description: >
+          Data do logon do turno (DATE). Chave natural do turno junto a id_unidade.
+          Para turnos noturnos, data_logon é a data de início — eventos podem ocorrer
+          no dia seguinte.
+        data_type: date
+        tests:
+          - not_null
+
+      - name: id_agencia
+        description: Identificador da agência responsável (ex. FORCA).
+        data_type: string
+
+      - name: id_estacao
+        description: Identificador da estação/posto de origem da unidade no turno.
+        data_type: string
+
+      # ── atributos da unidade ──────────────────────────────────────────────
+      - name: tipo_unidade
+        description: Tipo da viatura (POG, VTR, MOT, etc.), derivado do prefixo de id_unidade.
+        data_type: string
+
+      - name: base_operacional
+        description: Base operacional (NORTE, OESTE, LITORANEA), derivada do sufixo de id_unidade.
+        data_type: string
+
+      # ── temporal do turno ─────────────────────────────────────────────────
+      - name: data_hora_logon
+        description: Data e hora exata do logon da unidade (America/Sao_Paulo).
+        data_type: datetime
+
+      - name: data_hora_primeiro_evento
+        description: >
+          Data e hora do primeiro evento registrado no turno (America/Sao_Paulo).
+          Pode diferir de data_hora_logon por latência de registro.
+        data_type: datetime
+
+      - name: data_hora_ultimo_evento
+        description: Data e hora do último evento registrado no turno (America/Sao_Paulo).
+        data_type: datetime
+
+      # ── contadores acumulados ─────────────────────────────────────────────
+      - name: total_ocorrencias
+        description: >
+          Total de ocorrências atendidas no turno — valor final do contador
+          acumulado desde o logon. Não requer window function no downstream.
+        data_type: int64
+
+      - name: tempo_total_ocorrencias
+        description: >
+          Tempo total em segundos dedicado a atendimento de ocorrências no turno —
+          valor final do contador acumulado desde o logon.
+        data_type: int64
+
+      - name: tempo_total_indisponivel
+        description: >
+          Tempo total em segundos em status de indisponibilidade no turno —
+          valor final do contador acumulado desde o logon.
+        data_type: int64
+
+      - name: tempo_total_disponivel_estacao
+        description: >
+          Tempo total em segundos disponível na estação no turno —
+          valor final do contador acumulado desde o logon.
+        data_type: int64
+
+      # ── métricas derivadas ────────────────────────────────────────────────
+      - name: total_eventos
+        description: >
+          Número total de eventos de mudança de status registrados em
+          unidades_historico para este turno.
+        data_type: int64
+
+      - name: total_eventos_despachada
+        description: >
+          Número de eventos em que a unidade estava despachada
+          (id_status IN ('DP', 'QE')) no turno. Proxy de intensidade de atendimento.
+        data_type: int64

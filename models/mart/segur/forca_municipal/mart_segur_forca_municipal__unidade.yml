@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: mart_segur_forca_municipal__unidade
+    description: >
+      Dimensão de unidades operacionais da Força Municipal. Uma linha por unidade
+      (id_unidade), consolidada a partir do histórico de atividade. Fonte
+      autoritativa para tipo_unidade e base_operacional — modelos downstream não
+      precisam derivar esses campos via regex.
+    columns:
+      - name: id_unidade
+        description: >
+          Identificador da unidade operacional (ex.: "POG01-LITORANEA").
+          Chave primária da dimensão.
+        tests:
+          - not_null
+          - unique
+
+      - name: tipo_unidade
+        description: >
+          Prefixo alfabético do id_unidade, indicando o tipo da unidade
+          (ex.: POG, VTR, MOT). Derivado do campo nativo unittype da API
+          via unidades_historico.
+        tests:
+          - not_null
+
+      - name: base_operacional
+        description: >
+          Base operacional da unidade, extraída do sufixo após o hífen do
+          id_unidade (ex.: LITORANEA, NORTE, OESTE). NULL para unidades
+          sem base definida.
+
+      - name: id_estacao
+        description: >
+          Identificador da estação (StationId) à qual a unidade pertence.
+          Campo nativo da API.
+
+      - name: id_agencia
+        description: >
+          Identificador da agência (AgencyId) à qual a unidade pertence.
+          Campo nativo da API.

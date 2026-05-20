@@ -57,6 +57,13 @@ models:
           +materialized: table
           +schema: recursos_humanos_ergon_saude
           +tags: "daily"
+      segur:
+        +project: rj-segur
+        +tags: ["segur"]
+        forca_municipal:
+          +materialized: table
+          +schema: forca_municipal
+          +tags: ["daily"]
       pgm:
         +tags: "pgm"
         +project: rj-pgm
@@ -205,7 +212,7 @@ models:
         +tags: ["segur"]
         forca_municipal:
           +materialized: table
-          +schema: forca_municipal
+          +schema: brutos_forca_municipal
           +tags: ["daily"]
 
       segovi:
