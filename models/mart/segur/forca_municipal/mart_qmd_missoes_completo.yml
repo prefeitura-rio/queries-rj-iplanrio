@@ -1,0 +1,162 @@
+version: 2
+
+models:
+  - name: mart_qmd_missoes_completo
+    description: >
+      Mart canônico de planejamento operacional da Força Municipal.
+      Grain: uma linha por unidade × missão (id_servico × id_missao).
+
+      Consolida em uma única tabela o join que toda query CompStat precisava
+      re-escrever: qmd_plano → qmd_servicos → qmd → qmd_missoes →
+      qmd_missoes_geometria → qmd_bases.
+
+      geometry_missao é o polígono/linha/ponto autoritativo da missão
+      (NULL para missões de tipo DS — Deslocamento, que não têm feature KML).
+      geometry_qmd é o ponto físico do QMD.
+    config:
+      schema: forca_municipal
+
+    columns:
+      # ── identificadores ──────────────────────────────────────────────────
+      - name: id_plano
+        description: FK para qmd_plano. Identifica o plano semanal.
+        tests:
+          - not_null
+
+      - name: id_qmd
+        description: FK para qmd. Identifica o Quadro de Missão Diária.
+        tests:
+          - not_null
+
+      - name: id_servico
+        description: >
+          FK para qmd_servicos. Identifica a alocação de uma unidade a um QMD
+          dentro de um plano. Chave natural da dimensão unidade neste contexto.
+        tests:
+          - not_null
+
+      - name: id_missao
+        description: FK para qmd_missoes / qmd_missoes_geometria. Identifica a missão.
+        tests:
+          - not_null
+
+      - name: id_unidade
+        description: Identificador da unidade operacional (ex. "POG01-LITORANEA").
+        tests:
+          - not_null
+
+      # ── plano semanal ─────────────────────────────────────────────────────
+      - name: nome_plano
+        description: Nome completo do plano (ex. "Plano Força Municipal - Norte - Semana 18").
+
+      - name: area
+        description: Base operacional do plano (NORTE, OESTE, LITORANEA). NULL para planos unificados.
+
+      - name: numero_semana
+        description: Número da semana de referência do plano.
+
+      - name: data_semana_referencia_inicio
+        description: Data de início da semana de referência do plano.
+
+      - name: data_semana_referencia_fim
+        description: Data de fim da semana de referência do plano.
+
+      - name: indicador_plano_unificado
+        description: TRUE se o plano abrange todas as bases (Força Municipal unificada).
+
+      - name: indicador_plano_encerrado
+        description: TRUE se o plano está marcado como encerrado no nome.
+
+      - name: indicador_plano_teste
+        description: TRUE se o plano é de teste.
+
+      # ── QMD ──────────────────────────────────────────────────────────────
+      - name: nome_qmd
+        description: Nome do QMD.
+
+      - name: localizacao_patrulha
+        description: Descrição textual da área de patrulha do QMD.
+
+      - name: data_hora_vigencia_inicio
+        description: Início do período de vigência do QMD (America/Sao_Paulo).
+
+      - name: data_hora_vigencia_fim
+        description: Fim do período de vigência do QMD (America/Sao_Paulo).
+
+      - name: hora_inicio_qmd
+        description: Horário de início da execução diária do QMD.
+
+      - name: hora_fim_qmd
+        description: Horário de fim da execução diária do QMD.
+
+      - name: indicador_ativo
+        description: TRUE se o QMD está ativo.
+
+      - name: indicador_valido
+        description: TRUE se o QMD está válido.
+
+      - name: indicador_autorizado
+        description: TRUE se o QMD está autorizado.
+
+      - name: indicador_hora_cruza_meia_noite
+        description: >
+          TRUE quando hora_fim_qmd < hora_inicio_qmd (turno que cruza 00:00).
+          Crítico para joins temporais em mart_unidade_em_missao — o filtro de
+          hora precisa de lógica condicional nesse caso.
+
+      - name: duracao_minutos_qmd
+        description: Duração total do turno do QMD em minutos (corrigido para turnos noturnos).
+
+      - name: prescricoes
+        description: Prescrições operacionais do QMD em texto livre.
+
+      - name: resumo
+        description: Resumo descritivo do QMD.
+
+      # ── unidade ───────────────────────────────────────────────────────────
+      - name: tipo_unidade
+        description: Prefixo do id_unidade indicando o tipo (POG, VTR, MOT, etc.).
+
+      - name: base_operacional
+        description: Base operacional da unidade (LITORANEA, NORTE, OESTE). NULL se sem base.
+
+      # ── missão ────────────────────────────────────────────────────────────
+      - name: tipo_missao
+        description: Tipo da missão (PTR, PB, RF, SV, SP, DS).
+
+      - name: roteiro
+        description: Descrição textual do roteiro da missão.
+
+      - name: hora_inicio_missao
+        description: Horário de início da missão.
+
+      - name: hora_fim_missao
+        description: Horário de fim da missão.
+
+      - name: dias
+        description: >
+          Dias da semana em que a missão é executada (ARRAY<STRING>).
+          Valores: "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab".
+          Para filtrar: WHERE 'Qua' IN UNNEST(dias).
+
+      - name: execucoes
+        description: >
+          JSON com as execuções planejadas por dia (estrutura interna variável).
+          Unnest pertence a queries downstream — não é materializado aqui.
+
+      - name: tipo_geometria
+        description: >
+          Tipo da geometry da missão derivado do WKT (POINT, LINESTRING, POLYGON).
+          NULL para missões DS (sem feature geoespacial).
+
+      # ── espacial ──────────────────────────────────────────────────────────
+      - name: geometry_missao
+        description: >
+          Geometry autoritativa da missão (fonte: qmd_missoes_geometria / KML dedicado).
+          NULL para missões DS. Para análise espacial, prefer este campo ao WKT
+          de qmd_missoes.
+
+      - name: geometry_qmd
+        description: >
+          Ponto físico do QMD (fonte: qmd_bases). Representa a localização geral
+          do QMD, não a área de cobertura de missões individuais.

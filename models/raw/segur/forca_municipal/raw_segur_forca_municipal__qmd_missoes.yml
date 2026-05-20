@@ -107,22 +107,26 @@ models:
         data_type: time
       - name: dias
         description: >
-          Dias da semana em que o serviço está programado, como
-          `ARRAY<STRING>`. Valores possíveis: `dom`, `seg`, `ter`, `qua`,
-          `qui`, `sex`, `sab`. Derivado do campo `dias` double-encoded do
-          JSON de origem (JSON string dentro de JSON — resolvido neste modelo).
-          Quase sempre contém os 7 dias da semana.
-        data_type: array<string>
+          Dias da semana em que a missão está programada.
+          ARRAY<STRUCT<week_day STRING, week_day_number INT64>>.
+          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
+          week_day_number: número ISO (1=seg … 7=dom).
+          Consistente com qmd_servicos.dias e qmd_missoes.execucoes.week_day.
+          Derivado do campo double-encoded do JSON de origem (resolvido neste modelo).
+        data_type: array<struct<week_day string, week_day_number int64>>
       - name: execucoes
         description: >
-          Array JSON com as execuções planejadas desta alocação, uma por dia
-          agendado. Estrutura de cada elemento:
-          `{"dataHoraInicio": "2026-05-10T13:30:00-03:00", "dataHoraFim": "..."}`.
-          Timestamps em ISO 8601 com fuso -03:00. Usar para comparar planejado
-          vs. executado em P3 (join com `unit_positions.data_hora` ou
-          `unidades_historico.data_hora_criacao`). O unnest por dia pertence
-          ao mart.
-        data_type: string
+          Janelas temporais planejadas desta missão, uma por dia agendado.
+          ARRAY<STRUCT<data_hora_inicio DATETIME, data_hora_fim DATETIME, week_day STRING, week_day_number INT64>>.
+          Cada elemento representa um intervalo exato de execução no fuso America/Sao_Paulo.
+          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
+          week_day_number: número ISO (1=seg … 7=dom), útil para ordenação e filtros numéricos.
+          Fonte autoritativa para joins temporais no mart — substitui hora_inicio/fim_missao
+          + dia_semana com uma única condição:
+          gps.data_hora BETWEEN exec.data_hora_inicio AND exec.data_hora_fim.
+        data_type: >
+          array<struct<data_hora_inicio datetime, data_hora_fim datetime,
+          week_day string, week_day_number int64>>
       - name: indicador_ativo
         description: >
           Indica se o QMD pai está ativo. Derivado de `qmdStatusAtivo = 'Sim'`

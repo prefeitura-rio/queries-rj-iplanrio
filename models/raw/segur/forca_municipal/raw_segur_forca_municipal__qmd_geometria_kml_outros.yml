@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_segur_forca_municipal__qmd_kml_outros
+  - name: raw_segur_forca_municipal__qmd_geometria_kml_outros
     description: >
       Catch-all para feições do endpoint GET /api/qmd/kml cujo `kml_folder` não é
       reconhecido por `qmd_bases` (pasta QMD) nem por `qmd_missoes_geometria` (pasta Missões).

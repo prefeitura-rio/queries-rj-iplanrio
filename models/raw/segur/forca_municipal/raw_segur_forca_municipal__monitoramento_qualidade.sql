@@ -27,66 +27,44 @@ with
             count(*) - count(distinct id_hash) as hashes_duplicados
         from {{ ref("raw_segur_forca_municipal__qmd") }}
         union all
-        select
-            'qmd_plano',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
+        select 'qmd_plano', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
         from {{ ref("raw_segur_forca_municipal__qmd_plano") }}
         union all
-        select
-            'qmd_servicos',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
+        select 'qmd_servicos', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
         from {{ ref("raw_segur_forca_municipal__qmd_servicos") }}
         union all
-        select
-            'qmd_bases',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
-            count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_bases") }}
-        union all
-        select
-            'qmd_missoes_geometria',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
-            count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_missoes_geometria") }}
-        union all
-        select
-            'qmd_kml_outros',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
-            count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_kml_outros") }}
-        union all
-        select
-            'qmd_missoes',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
+        select 'qmd_missoes', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
         from {{ ref("raw_segur_forca_municipal__qmd_missoes") }}
         union all
-        select
-            'ocorrencias_ativas_v2',
-            'merge_dedup',
-            count(*),
-            date(min(first_seen)),
-            max(last_seen),
+        -- geometrias KML
+        select 'qmd_geometria_kml', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
+        union all
+        select 'qmd_geometria_bases', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_bases") }}
+        union all
+        select 'qmd_geometria_missoes_rotas', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_rotas") }}
+        union all
+        select 'qmd_geometria_missoes_areas', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_areas") }}
+        union all
+        select 'qmd_geometria_missoes_pontos', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_pontos") }}
+        union all
+        select 'qmd_geometria_kml_outros', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml_outros") }}
+        union all
+        select 'ocorrencias_ativas_v2', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
         from {{ ref("raw_segur_forca_municipal__ocorrencias_ativas_v2") }}
     ),

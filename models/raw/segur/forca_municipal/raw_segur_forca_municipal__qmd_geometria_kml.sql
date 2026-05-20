@@ -1,28 +1,31 @@
 {{
     config(
-        alias="qmd_missoes_geometria",
+        alias="qmd_geometria_kml",
         schema="brutos_forca_municipal",
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
         merge_update_columns=["last_seen", "data_particao", "updated_at"],
-        cluster_by=["id_qmd", "tipo_geometria"],
+        cluster_by=["id_qmd", "tipo_missao"],
     )
 }}
 
--- Geometrias das missões exportadas via KML — uma linha por missão.
--- Cobertura maior que qmd_missoes: inclui missões de QMDs inativos e missões sem
--- serviço alocado. Missões DS (Deslocamento) não têm feature KML e portanto
--- não aparecem aqui.
--- Join canônico para geometry: qmd_missoes LEFT JOIN qmd_missoes_geometria USING (id_missao)
+-- Base model: todas as features KML do QMD, todas as pastas.
+-- Centraliza as transformações de parsing e geometry. Modelos derivados apenas filtram.
+-- Pastas conhecidas: 'Missões' (missoes/missao) → missões; 'QMD' (qmd/qmds) → bases.
+-- Modelos derivados:
+--   qmd_geometria_missoes_rotas  (tipo_missao = 'PTR')
+--   qmd_geometria_missoes_areas  (tipo_missao IN ('RF','SV','SP'))
+--   qmd_geometria_missoes_pontos (tipo_missao = 'PB')
+--   qmd_bases                    (kml_folder = 'qmd')
+--   qmd_kml_outros               (kml_folder fora dos valores conhecidos)
 
 with
     source as (
         select *
         from {{ source('brutos_forca_municipal_staging', 'qmd_kml') }}
-        where lower(regexp_replace(normalize(kml_folder, NFD), r'\pM', '')) in ('missoes', 'missao')
         {% if is_incremental() %}
-            and safe_cast(data_particao as date) = (
+            where safe_cast(data_particao as date) = (
                 select max(safe_cast(data_particao as date))
                 from {{ source('brutos_forca_municipal_staging', 'qmd_kml') }}
             )
@@ -40,6 +43,10 @@ with
             {{ padronize_id('qmd_id') }}                                               as id_qmd,
             json_value(safe_cast(extended_data as string), '$.MissaoId')               as id_missao,
 
+            -- pasta KML
+            lower(regexp_replace(normalize(kml_folder, nfd), r'\pM', ''))              as kml_folder,
+            safe_cast(kml_folder as string)                                            as kml_folder_raw,
+
             -- dados
             {{ proper_br('safe_cast(name as string)') }}                               as nome,
             json_value(safe_cast(extended_data as string), '$.Tipo')                   as tipo_missao,
@@ -50,6 +57,23 @@ with
             safe.parse_time(
                 '%H:%M', json_value(safe_cast(extended_data as string), '$.HoraFim')
             )                                                                          as hora_fim_missao,
+            -- roteiro: remove prefixo redundante com tipo_missao (ex: "RF\t", "PTR _01\t")
+            regexp_replace(
+                trim(json_value(safe_cast(extended_data as string), '$.Roteiro')),
+                r'^(?:RF|PTR|PB|SV|SP)(?:\s*_\d+)?\t',
+                ''
+            )                                                                          as roteiro,
+            -- servicos: unidades alocadas à missão (CSV da API → ARRAY de valores distintos)
+            array(
+                select distinct u
+                from unnest(
+                    if(
+                        json_value(safe_cast(extended_data as string), '$.Servicos') is null,
+                        [],
+                        split(trim(json_value(safe_cast(extended_data as string), '$.Servicos')), ', ')
+                    )
+                ) as u
+            )                                                                          as servicos,
             safe_cast(description as string)                                           as descricao,
             safe_cast(extended_data as string)                                         as dados_extendidos,
 
@@ -73,12 +97,18 @@ with
             any_value(id_qmd)    as id_qmd,
             any_value(id_missao) as id_missao,
 
+            -- pasta KML
+            any_value(kml_folder)     as kml_folder,
+            any_value(kml_folder_raw) as kml_folder_raw,
+
             -- dados
             any_value(nome)               as nome,
             any_value(tipo_missao)        as tipo_missao,
             any_value(tipo_geometria)     as tipo_geometria,
             any_value(hora_inicio_missao) as hora_inicio_missao,
             any_value(hora_fim_missao)    as hora_fim_missao,
+            any_value(roteiro)            as roteiro,
+            any_value(servicos)           as servicos,
             any_value(descricao)          as descricao,
             any_value(dados_extendidos)   as dados_extendidos,
 

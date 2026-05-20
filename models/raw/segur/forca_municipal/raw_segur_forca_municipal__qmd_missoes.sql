@@ -72,13 +72,49 @@ with
             safe.parse_time(
                 '%H:%M', json_value(missao, '$.horaFim')
             ) as hora_fim_missao,
-            -- dias: double-encoding resolvido (JSON string → ARRAY<STRING>)
+            -- dias: ARRAY<STRUCT<week_day, week_day_number>> — consistente com qmd_servicos.dias
             array(
-                select json_value(dia, '$')
+                select as struct
+                    json_value(dia, '$') as week_day,
+                    case json_value(dia, '$')
+                        when 'seg' then 1
+                        when 'ter' then 2
+                        when 'qua' then 3
+                        when 'qui' then 4
+                        when 'sex' then 5
+                        when 'sab' then 6
+                        when 'dom' then 7
+                    end                  as week_day_number
                 from unnest(json_query_array(json_value(servico, '$.dias'))) as dia
             ) as dias,
-            -- execuções planejadas por dia (unnest pertence ao mart)
-            json_query(servico, '$.execucoes') as execucoes,
+            -- execuções planejadas: ARRAY<STRUCT<data_hora_inicio, data_hora_fim, week_day, week_day_number>>
+            -- cada entrada representa uma janela temporal de execução da missão naquele dia.
+            -- week_day/week_day_number derivados de data_hora_inicio eliminam a necessidade
+            -- de derivar o dia da semana no mart a partir do GPS.
+            -- unnest([scalar]) é usado para calcular dt_i uma única vez e reutilizar nos 3 campos.
+            array(
+                select as struct
+                    dt_i                                                           as data_hora_inicio,
+                    datetime(
+                        safe_cast(json_value(exec, '$.dataHoraFim') as timestamp),
+                        'America/Sao_Paulo'
+                    )                                                              as data_hora_fim,
+                    case format_date('%u', date(dt_i))
+                        when '1' then 'seg'
+                        when '2' then 'ter'
+                        when '3' then 'qua'
+                        when '4' then 'qui'
+                        when '5' then 'sex'
+                        when '6' then 'sab'
+                        when '7' then 'dom'
+                    end                                                            as week_day,
+                    safe_cast(format_date('%u', date(dt_i)) as int64)             as week_day_number
+                from unnest(json_query_array(json_query(servico, '$.execucoes'))) as exec,
+                unnest([datetime(
+                    safe_cast(json_value(exec, '$.dataHoraInicio') as timestamp),
+                    'America/Sao_Paulo'
+                )]) as dt_i
+            ) as execucoes,
             indicador_ativo,
             upper(
                 regexp_extract(

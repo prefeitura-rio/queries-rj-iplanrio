@@ -1,0 +1,181 @@
+version: 2
+
+models:
+  - name: mart_ocorrencias_resposta
+    description: >
+      Mart de resposta a ocorrências da Força Municipal (P4).
+      Grain: uma linha por id_ocorrencia (revisão mais recente de ocorrencias_historico).
+
+      Resolve dois gaps que nenhum modelo raw resolve isolado:
+        1. TTD histórico — ocorrencias_historico tem duracao_ocorrencia_minutos mas
+           não tem os timestamps de despacho. ocorrencias_ativas_v2 tem
+           data_hora_primeiro_despacho, data_hora_primeira_unidade_a_caminho e
+           data_hora_primeira_chegada. O join por id_ocorrencia une as duas fontes.
+        2. Quais unidades responderam — ocorrencias_historico tem apenas
+           total_unidades_atribuidas (inteiro da API, sem IDs). unidades_historico
+           tem id_ocorrencia_atribuida por evento de status, permitindo reconstruir
+           o conjunto exato de unidades por ocorrência.
+
+      Cobertura de TTD: apenas ocorrências que apareceram em ocorrencias_ativas_v2.
+      Ocorrências anteriores ao go-live desse endpoint terão ttd_segundos = NULL.
+    config:
+      schema: forca_municipal
+
+    columns:
+      # ── identificadores ───────────────────────────────────────────────────
+      - name: id_ocorrencia
+        description: Identificador único da ocorrência. Chave primária do mart.
+        tests:
+          - not_null
+          - unique
+
+      - name: id_agencia
+        description: Agência responsável pela ocorrência.
+
+      - name: id_esz
+        description: Identificador ESZ da ocorrência.
+
+      # ── classificação ──────────────────────────────────────────────────────
+      - name: tipo_ocorrencia_codigo
+        description: Código do tipo de ocorrência (ex. DM, AGD).
+        tests:
+          - not_null
+
+      - name: tipo_ocorrencia_descricao
+        description: Descrição do tipo de ocorrência.
+
+      - name: subtipo_ocorrencia_codigo
+        description: Código do subtipo de ocorrência.
+
+      - name: subtipo_ocorrencia_descricao
+        description: Descrição do subtipo de ocorrência.
+
+      - name: descricao_ocorrencia
+        description: Texto livre descrevendo a ocorrência.
+
+      - name: prioridade
+        description: Prioridade atribuída à ocorrência.
+
+      - name: nivel_alarme
+        description: Nível de alarme da ocorrência.
+
+      - name: id_status
+        description: Código de status final da ocorrência.
+
+      - name: indicador_aberta
+        description: TRUE se a ocorrência está aberta.
+
+      - name: indicador_reaberta
+        description: TRUE se a ocorrência foi reaberta após fechamento.
+
+      - name: indicador_desvio_missao
+        description: TRUE se o tipo de ocorrência é DM (Desvio de Missão).
+
+      - name: indicador_evento_operacional
+        description: TRUE se o tipo é DM ou AGD (eventos com impacto operacional direto).
+
+      # ── timestamps da ocorrência ──────────────────────────────────────────
+      - name: data_hora_criacao
+        description: Quando a ocorrência foi criada no sistema (America/Sao_Paulo).
+        tests:
+          - not_null
+
+      - name: data_hora_inicio
+        description: Quando a ocorrência foi iniciada operacionalmente.
+
+      - name: data_hora_fechamento
+        description: Quando a ocorrência foi encerrada.
+
+      - name: duracao_ocorrencia_minutos
+        description: >
+          Duração total da ocorrência em minutos (data_hora_fechamento -
+          data_hora_criacao). NULL para ocorrências ainda abertas.
+
+      - name: comentario_fechamento
+        description: Comentário registrado no fechamento da ocorrência.
+
+      # ── timestamps de resposta (fonte: ocorrencias_ativas_v2) ─────────────
+      - name: data_hora_primeiro_despacho
+        description: >
+          Quando a primeira unidade foi despachada. NULL para ocorrências fora
+          da cobertura de ocorrencias_ativas_v2.
+
+      - name: data_hora_primeira_unidade_a_caminho
+        description: Quando a primeira unidade saiu em direção à ocorrência.
+
+      - name: data_hora_primeira_chegada
+        description: Quando a primeira unidade chegou ao local.
+
+      # ── métricas de tempo de resposta ─────────────────────────────────────
+      - name: ttd_segundos
+        description: >
+          Time to Dispatch — segundos entre data_hora_criacao e
+          data_hora_primeiro_despacho. NULL fora da cobertura de ativas_v2.
+          Valores negativos indicam problema de qualidade de dados.
+
+      - name: tter_segundos
+        description: >
+          Time to Enroute — segundos entre data_hora_primeiro_despacho e
+          data_hora_primeira_unidade_a_caminho.
+
+      - name: ttoa_segundos
+        description: >
+          Time to On-scene Arrival — segundos entre data_hora_primeiro_despacho
+          e data_hora_primeira_chegada.
+
+      # ── unidades ──────────────────────────────────────────────────────────
+      - name: id_unidade_primaria
+        description: >
+          Unidade principal despachada para a ocorrência (PrimaryUnitId da API).
+          NULL fora da cobertura de ocorrencias_ativas_v2.
+
+      - name: total_unidades_atribuidas
+        description: >
+          Total de unidades atribuídas conforme a API (ocorrencias_historico).
+          Conta de referência, pode diferir de total_unidades_confirmadas.
+
+      - name: total_unidades_confirmadas
+        description: >
+          Total de unidades distintas com evento de status vinculado a esta
+          ocorrência em unidades_historico. Zero se nenhum evento registrado.
+
+      - name: unidades_atribuidas
+        description: >
+          Array com os id_unidade de cada unidade que atuou na ocorrência,
+          reconstruído a partir de unidades_historico.id_ocorrencia_atribuida.
+          Array vazio se nenhum evento de status registrado.
+
+      # ── geografia ─────────────────────────────────────────────────────────
+      - name: area_planejamento
+        description: Área de planejamento da ocorrência (ex. NORTE, LITORANEA).
+
+      - name: setor
+        description: Setor geográfico (Beat) da ocorrência.
+
+      - name: distrito
+        description: Distrito da ocorrência.
+
+      - name: municipio
+        description: Município da ocorrência.
+
+      - name: zona
+        description: Zona da ocorrência.
+
+      - name: grupo_despacho
+        description: Grupo de despacho responsável.
+
+      - name: localizacao
+        description: >
+          Descrição textual do local da ocorrência (fonte: ocorrencias_ativas_v2).
+
+      # ── espacial ──────────────────────────────────────────────────────────
+      - name: latitude
+        description: >
+          Latitude do local da ocorrência (fonte: ocorrencias_ativas_v2).
+          NULL para ocorrências fora da cobertura.
+
+      - name: longitude
+        description: Longitude do local da ocorrência.
+
+      - name: geometry
+        description: Ponto geoespacial do local da ocorrência.
