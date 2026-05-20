@@ -60,21 +60,22 @@ models:
         description: >
           Tipo da geometria: LineString (PTR), Point (PB/QMD), Polygon (RF/SV/SP).
         data_type: string
-      - name: tipo_area
+      - name: tipo_operacional
         description: >
-          Classificação semântica da feature. Valores:
-          'base' — ponto físico do QMD (pasta QMD);
-          'rota' — rota de patrulhamento PTR (LineString);
-          'ponto' — ponto base fixo PB (Point);
-          'area' — zona de cobertura RF/SV/SP com ST_AREA > 50 km² (polígono de base inteira, sem valor analítico);
-          'subarea' — zona de cobertura RF/SV/SP com ST_AREA ≤ 50 km² (área operacional real).
-          NULL para missões DS (sem geometria) e features não classificadas.
+          Classificação operacional da feature, derivada de múltiplos sinais (kml_folder,
+          id_missao, tipo_missao, tipo_geometria, ST_AREA) para robustez. NULL quando os
+          sinais discordam — indica inconsistência no dado fonte. Valores:
+          'sede' — localização física do QMD (kml_folder='qmd' + id_missao IS NULL);
+          'patrulha' — rota PTR (tipo_missao='PTR' + LineString);
+          'posto' — ponto fixo PB (tipo_missao='PB' + Point);
+          'area' — polígono RF/SV/SP de base inteira >50 km², sem valor analítico;
+          'subarea' — polígono RF/SV/SP de subárea operacional ≤50 km².
         data_type: string
       - name: indicador_geometry_util
         description: >
-          TRUE quando o polígono representa uma zona operacional real (ST_AREA < 50 km²).
-          FALSE quando é polígono de base inteira (ST_AREA ≥ 50 km²) — excluir de análises
-          de conformidade espacial. NULL para tipos que não são RF, SV ou SP.
+          FALSE apenas para polígonos de base inteira (tipo_operacional = 'area', ST_AREA > 50 km²).
+          TRUE para todo o resto: sede, patrulha, posto e subarea são sempre úteis.
+          Usar como filtro primário em análises de conformidade espacial.
         data_type: bool
       - name: hora_inicio_missao
         description: Hora de início planejada. Extraída de dados_extendidos.HoraInicio. NULL para bases.

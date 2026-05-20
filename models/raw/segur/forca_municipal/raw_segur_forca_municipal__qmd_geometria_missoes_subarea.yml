@@ -1,13 +1,12 @@
 version: 2
 
 models:
-  - name: raw_segur_forca_municipal__qmd_geometria_missoes_areas
+  - name: raw_segur_forca_municipal__qmd_geometria_missoes_subarea
     description: >
-      Áreas de cobertura (tipo_missao IN ('RF','SV','SP')) — geometria Polygon.
-      Derivado de qmd_geometria_kml, filtra por tipo_missao.
-      tipo_area e indicador_geometry_util computados no base model.
-      Representa zonas de atuação planejadas por cada missão de área.
-      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_areas USING (id_missao).
+      Subáreas operacionais RF/SV/SP com ST_AREA ≤ 50 km² — zona específica de missão.
+      Derivado de qmd_geometria_kml, filtra por tipo_operacional = 'subarea'.
+      Para polígonos de base inteira (> 50 km²), usar qmd_geometria_missoes_area.
+      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_subarea USING (id_missao).
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.
     columns:
@@ -44,12 +43,6 @@ models:
       - name: tipo_geometria
         description: Sempre 'Polygon' nesta tabela.
         data_type: string
-      - name: tipo_area
-        description: >
-          'area' para RF/SV/SP com ST_AREA > 50 km² (polígono de base inteira);
-          'subarea' para RF/SV/SP com ST_AREA ≤ 50 km² (zona operacional real).
-          Computado em qmd_geometria_kml.
-        data_type: string
       - name: hora_inicio_missao
         description: Hora de início planejada da missão de área.
         data_type: time
@@ -58,12 +51,12 @@ models:
         data_type: time
       - name: roteiro
         description: >
-          Nome da subárea ou descrição da área de cobertura, sem prefixos de tipo
+          Nome da subárea ou descrição da zona operacional, sem prefixos de tipo
           ou "Dentro da Subárea" (removidos na transformação do base model).
           100% preenchido.
         data_type: string
       - name: servicos
-        description: Unidades alocadas a esta área. ARRAY<STRING> de valores distintos.
+        description: Unidades alocadas a esta subárea. ARRAY<STRING> de valores distintos.
         data_type: "array<string>"
       - name: descricao
         description: HTML com atributos da missão.
@@ -77,14 +70,6 @@ models:
       - name: geometry
         description: >
           Geometria Polygon como GEOGRAPHY. Usar ST_WITHIN para verificar
-          se um ponto GPS está dentro da área planejada.
+          se um ponto GPS está dentro da subárea planejada.
         data_type: geography
-      - name: indicador_geometry_util
-        description: >
-          TRUE quando ST_AREA < 50 km² — polígono representa uma zona operacional real.
-          FALSE quando ST_AREA ≥ 50 km² — polígono de base inteira sem valor analítico
-          para análises de conformidade (SV, SP e RF genérica).
-          Computado em qmd_geometria_kml. Usar como filtro em marts de conformidade.
-        data_type: bool
-        tests:
-          - not_null
+

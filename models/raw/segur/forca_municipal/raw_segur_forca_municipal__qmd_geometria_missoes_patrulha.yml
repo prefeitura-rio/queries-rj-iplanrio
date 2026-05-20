@@ -1,12 +1,12 @@
 version: 2
 
 models:
-  - name: raw_segur_forca_municipal__qmd_geometria_missoes_pontos
+  - name: raw_segur_forca_municipal__qmd_geometria_missoes_patrulha
     description: >
-      Pontos de bloqueio (tipo_missao = 'PB') — geometria Point.
+      Rotas de patrulhamento (tipo_missao = 'PTR') — geometria LineString.
       Derivado de qmd_kml, apenas filtra por tipo_missao.
-      Representa posições fixas onde as unidades devem permanecer estacionadas.
-      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_pontos USING (id_missao).
+      Representa os caminhos planejados que as viaturas/motos devem percorrer.
+      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_patrulha USING (id_missao).
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.
     columns:
@@ -38,24 +38,24 @@ models:
         description: Nome da feature KML.
         data_type: string
       - name: tipo_missao
-        description: Sempre 'PB' nesta tabela.
+        description: Sempre 'PTR' nesta tabela.
         data_type: string
       - name: tipo_geometria
-        description: Sempre 'Point' nesta tabela.
+        description: Sempre 'LineString' nesta tabela.
         data_type: string
       - name: hora_inicio_missao
-        description: Hora de início planejada do bloqueio.
+        description: Hora de início planejada da rota.
         data_type: time
       - name: hora_fim_missao
-        description: Hora de fim planejada do bloqueio.
+        description: Hora de fim planejada da rota.
         data_type: time
       - name: roteiro
         description: >
-          Descrição da localização do ponto de bloqueio (ex: "Av. Rui Barbosa, no ponto de ônibus").
+          Sequência de ruas do percurso de patrulha, com prefixo de tipo removido.
           100% preenchido.
         data_type: string
       - name: servicos
-        description: Unidades alocadas a este ponto. ARRAY<STRING> de valores distintos.
+        description: Unidades alocadas a esta rota. ARRAY<STRING> de valores distintos.
         data_type: "array<string>"
       - name: descricao
         description: HTML com atributos da missão.
@@ -64,10 +64,10 @@ models:
         description: JSON bruto com metadados da missão.
         data_type: string
       - name: geometria_wkt
-        description: Geometria Point em formato WKT.
+        description: Geometria LineString em formato WKT.
         data_type: string
       - name: geometry
         description: >
-          Geometria Point como GEOGRAPHY. Usar ST_DWITHIN para verificar
-          se um ponto GPS está próximo do ponto de bloqueio planejado.
+          Geometria LineString como GEOGRAPHY. Usar ST_DWITHIN para verificar
+          se um ponto GPS está próximo da rota planejada.
         data_type: geography

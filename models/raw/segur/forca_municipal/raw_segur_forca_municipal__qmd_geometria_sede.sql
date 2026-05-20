@@ -1,6 +1,6 @@
 {{
     config(
-        alias="qmd_geometria_bases",
+        alias="qmd_geometria_sede",
         schema="brutos_forca_municipal",
         materialized="incremental",
         incremental_strategy="merge",
@@ -10,7 +10,7 @@
     )
 }}
 
--- Derivado de qmd_kml. Filtra pela pasta 'QMD' (localização das bases operacionais).
+-- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'sede'.
 
 select
     id_hash, first_seen, last_seen, updated_at, data_particao,
@@ -19,4 +19,4 @@ select
     descricao,
     geometria_wkt, geometry
 from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
-where kml_folder in ('qmd', 'qmds')
+where tipo_operacional = 'sede'

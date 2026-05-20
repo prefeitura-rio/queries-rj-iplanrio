@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_geometria_missoes_posto
+    description: >
+      Pontos de bloqueio (tipo_missao = 'PB') — geometria Point.
+      Derivado de qmd_kml, apenas filtra por tipo_missao.
+      Representa posições fixas onde as unidades devem permanecer estacionadas.
+      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_posto USING (id_missao).
+      Frequência de atualização: diária.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    columns:
+      - name: id_hash
+        description: Hash MD5 identificador único da versão da feature.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        description: Datetime da primeira coleta desta versão.
+        data_type: datetime
+      - name: last_seen
+        description: Datetime da última coleta desta versão.
+        data_type: datetime
+      - name: updated_at
+        description: Igual a last_seen.
+        data_type: datetime
+      - name: data_particao
+        description: Data da partição mais recente desta versão.
+        data_type: date
+      - name: id_qmd
+        description: Identificador do QMD. FK para qmd.
+        data_type: string
+      - name: id_missao
+        description: Identificador da missão. FK para qmd_missoes.id_missao.
+        data_type: string
+      - name: nome
+        description: Nome da feature KML.
+        data_type: string
+      - name: tipo_missao
+        description: Sempre 'PB' nesta tabela.
+        data_type: string
+      - name: tipo_geometria
+        description: Sempre 'Point' nesta tabela.
+        data_type: string
+      - name: hora_inicio_missao
+        description: Hora de início planejada do bloqueio.
+        data_type: time
+      - name: hora_fim_missao
+        description: Hora de fim planejada do bloqueio.
+        data_type: time
+      - name: roteiro
+        description: >
+          Descrição da localização do ponto de bloqueio (ex: "Av. Rui Barbosa, no ponto de ônibus").
+          100% preenchido.
+        data_type: string
+      - name: servicos
+        description: Unidades alocadas a este ponto. ARRAY<STRING> de valores distintos.
+        data_type: "array<string>"
+      - name: descricao
+        description: HTML com atributos da missão.
+        data_type: string
+      - name: dados_extendidos
+        description: JSON bruto com metadados da missão.
+        data_type: string
+      - name: geometria_wkt
+        description: Geometria Point em formato WKT.
+        data_type: string
+      - name: geometry
+        description: >
+          Geometria Point como GEOGRAPHY. Usar ST_DWITHIN para verificar
+          se um ponto GPS está próximo do ponto de bloqueio planejado.
+        data_type: geography

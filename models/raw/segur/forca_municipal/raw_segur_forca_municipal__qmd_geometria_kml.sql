@@ -14,10 +14,11 @@
 -- Centraliza as transformações de parsing e geometry. Modelos derivados apenas filtram.
 -- Pastas conhecidas: 'Missões' (missoes/missao) → missões; 'QMD' (qmd/qmds) → bases.
 -- Modelos derivados:
---   qmd_geometria_missoes_rotas  (tipo_missao = 'PTR')
---   qmd_geometria_missoes_areas  (tipo_missao IN ('RF','SV','SP'))
---   qmd_geometria_missoes_pontos (tipo_missao = 'PB')
---   qmd_bases                    (kml_folder = 'qmd')
+--   qmd_geometria_missoes_patrulha (tipo_missao = 'PTR')
+--   qmd_geometria_missoes_area     (tipo_operacional = 'area')
+--   qmd_geometria_missoes_subarea  (tipo_operacional = 'subarea')
+--   qmd_geometria_missoes_posto    (tipo_missao = 'PB')
+--   qmd_geometria_sede           (kml_folder = 'qmd')
 --   qmd_kml_outros               (kml_folder fora dos valores conhecidos)
 
 with
@@ -145,22 +146,39 @@ with
             nome,
             tipo_missao,
             tipo_geometria,
-            -- classificação semântica da feature
+            -- Classificação operacional da feature — múltiplos sinais para robustez:
+            --   kml_folder  : distingue sede (qmd) de missão (missoes)
+            --   id_missao   : NULL exclusivamente para sedes QMD
+            --   tipo_missao : código operacional (PTR, PB, RF, SV, SP)
+            --   tipo_geometria : consistente com tipo_missao (validação cruzada)
+            --   st_area     : distingue area de subarea para polígonos RF/SV/SP
+            -- Se os sinais discordarem, retorna NULL — sinal de dado fonte inconsistente.
             case
-                when kml_folder = 'qmd'                                                  then 'base'
-                when tipo_geometria = 'LINESTRING'                                       then 'rota'
-                when tipo_geometria = 'POINT'                                            then 'ponto'
-                when tipo_missao in ('RF', 'SV', 'SP')
-                    and st_area(geometry) > 50 * 1000 * 1000                            then 'area'
-                when tipo_missao in ('RF', 'SV', 'SP')
-                    and st_area(geometry) <= 50 * 1000 * 1000                           then 'subarea'
-            end                                                                          as tipo_area,
-            -- TRUE quando o polígono representa uma subárea de missão com valor analítico.
-            -- FALSE/NULL para polígonos de base inteira (area > 50 km²) — excluir em
-            -- análises de conformidade. Aplicável apenas a RF, SV, SP.
+                -- Sede QMD: pasta qmd E missão nula (dois sinais)
+                when lower(trim(kml_folder)) = 'qmd'
+                    and id_missao is null                                                then 'sede'
+                -- Patrulha PTR: tipo_missao E geometria LineString
+                when lower(trim(tipo_missao)) = 'ptr'
+                    and lower(trim(tipo_geometria)) = 'linestring'                      then 'patrulha'
+                -- Posto fixo PB: tipo_missao E geometria Point
+                when lower(trim(tipo_missao)) = 'pb'
+                    and lower(trim(tipo_geometria)) = 'point'                           then 'posto'
+                -- Área de base inteira (>50 km²): sem valor analítico para conformidade
+                when lower(trim(tipo_missao)) in ('rf', 'sv', 'sp')
+                    and lower(trim(tipo_geometria)) = 'polygon'
+                    and st_area(geometry) > 50 * 1000 * 1000                           then 'area'
+                -- Subárea operacional (≤50 km²): zona específica de missão
+                when lower(trim(tipo_missao)) in ('rf', 'sv', 'sp')
+                    and lower(trim(tipo_geometria)) = 'polygon'
+                    and st_area(geometry) <= 50 * 1000 * 1000                          then 'subarea'
+            end                                                                          as tipo_operacional,
+            -- FALSE apenas para polígonos de base inteira (tipo_operacional = 'area', > 50 km²).
+            -- TRUE para tudo o resto: sede, patrulha, posto e subarea são sempre úteis.
             case
-                when tipo_missao in ('RF', 'SV', 'SP')
-                    then st_area(geometry) < 50 * 1000 * 1000
+                when lower(trim(tipo_missao)) in ('rf', 'sv', 'sp')
+                    and lower(trim(tipo_geometria)) = 'polygon'
+                    and st_area(geometry) > 50 * 1000 * 1000                           then false
+                else true
             end                                                                          as indicador_geometry_util,
             hora_inicio_missao,
             hora_fim_missao,

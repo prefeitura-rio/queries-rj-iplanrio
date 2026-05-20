@@ -44,21 +44,25 @@ with
             count(*) - count(distinct id_hash)
         from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
         union all
-        select 'qmd_geometria_bases', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+        select 'qmd_geometria_sede', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_geometria_bases") }}
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_sede") }}
         union all
-        select 'qmd_geometria_missoes_rotas', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+        select 'qmd_geometria_missoes_patrulha', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_rotas") }}
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_patrulha") }}
         union all
-        select 'qmd_geometria_missoes_areas', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+        select 'qmd_geometria_missoes_area', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_areas") }}
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_area") }}
         union all
-        select 'qmd_geometria_missoes_pontos', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+        select 'qmd_geometria_missoes_subarea', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_pontos") }}
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_subarea") }}
+        union all
+        select 'qmd_geometria_missoes_posto', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_missoes_posto") }}
         union all
         select 'qmd_geometria_kml_outros', 'merge_dedup', count(*), date(min(first_seen)), max(last_seen),
             count(*) - count(distinct id_hash)

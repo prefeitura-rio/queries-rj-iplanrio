@@ -4,7 +4,7 @@ models:
   - name: raw_segur_forca_municipal__qmd_geometria_kml_outros
     description: >
       Catch-all para feições do endpoint GET /api/qmd/kml cujo `kml_folder` não é
-      reconhecido por `qmd_geometria_bases` (pasta QMD) nem pelos modelos
+      reconhecido por `qmd_geometria_sede` (pasta QMD) nem pelos modelos
       `qmd_geometria_missoes_*` (pasta Missões).
       Em condições normais esta tabela deve ter zero linhas.
       `total_linhas > 0` no monitoramento_qualidade indica que a API introduziu um novo

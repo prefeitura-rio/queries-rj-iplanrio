@@ -20,7 +20,7 @@ Modelos de materialização das tabelas de dump da pipeline `rj_segur__forca_mun
 - [Modelos raw](#modelos)
   - `unit_positions` · `unidades_historico` · `ocorrencias_historico` · `ocorrencias_ativas_v2`
   - `qmd_plano` · `qmd` · `qmd_servicos` · `qmd_missoes`
-  - `qmd_geometria_kml` · `qmd_geometria_bases` · `qmd_geometria_missoes_rotas` · `qmd_geometria_missoes_areas` · `qmd_geometria_missoes_pontos` · `qmd_geometria_kml_outros`
+  - `qmd_geometria_kml` · `qmd_geometria_sede` · `qmd_geometria_missoes_patrulha` · `qmd_geometria_missoes_area` · `qmd_geometria_missoes_subarea` · `qmd_geometria_missoes_posto` · `qmd_geometria_kml_outros`
   - `monitoramento_qualidade`
 - [Marts](#marts-rj-segurforca_municipal)
   - `unidade` · `qmd_missoes` · `ocorrencias` · `turnos`
@@ -363,7 +363,7 @@ como DATE eliminam cast em joins com `unit_positions.data_particao`.
 
 ### `qmd`
 
-**Grain:** versão de QMD (`id_hash`) | **Materialização:** incremental / merge | **Joins:** `id_qmd` → `qmd_servicos`, `qmd_missoes`, `qmd_geometria_bases`
+**Grain:** versão de QMD (`id_hash`) | **Materialização:** incremental / merge | **Joins:** `id_qmd` → `qmd_servicos`, `qmd_missoes`, `qmd_geometria_sede`
 
 Quadros de Missões Diárias. Uma linha por versão de conteúdo — mudanças no QMD geram
 novo `id_hash`. `indicador_hora_cruza_meia_noite` e `duracao_minutos_qmd` já derivados;
@@ -384,7 +384,7 @@ dos serviços cobrem os 7 dias.
 
 ### `qmd_missoes`
 
-**Grain:** missão × serviço (`id_missao × id_servico`) | **Materialização:** incremental / merge | **Joins:** `id_servico` → `qmd_servicos`; `id_missao` → `qmd_geometria_missoes_*`
+**Grain:** missão × serviço (`id_missao × id_servico`) | **Materialização:** incremental / merge | **Joins:** `id_servico` → `qmd_servicos`; `id_missao` → `qmd_geometria_missoes_{patrulha,area,subarea,posto}`
 
 Missões dos QMDs com unnest inline do JSON de missões do endpoint `/api/qmd/{id}`.
 `execucoes` (`ARRAY<STRUCT<data_hora_inicio, data_hora_fim, week_day, week_day_number>>`)
@@ -399,48 +399,62 @@ mas `qmd_geometria_missoes_*` são a fonte autoritativa de geometria.
 **Grain:** feature KML por versão (`id_hash`) | **Materialização:** incremental / merge | **Joins:** `id_missao` → `qmd_missoes`; `id_qmd` → `qmd`
 
 Base model que centraliza todas as transformações do KML exportado pelo sistema QMD.
-Cobre todas as pastas conhecidas (`Missões` e `QMD`). Modelos derivados apenas filtram
-por `kml_folder` ou `tipo_missao` — nenhuma transformação própria. `servicos`
-(`ARRAY<STRING>`) e `roteiro` (prefixo removido via regex) derivados aqui.
+Cobre todas as pastas conhecidas (`Missões` e `QMD`). Todos os modelos derivados filtram
+exclusivamente por `tipo_operacional` — nenhuma transformação própria. `tipo_operacional`
+(classificação semântica com 5 valores) e `indicador_geometry_util` são computados aqui
+e não aparecem nos derivados. `servicos` (`ARRAY<STRING>`) e `roteiro` (prefixo removido
+via regex) também derivados aqui.
+
+Os 4 modelos `qmd_geometria_missoes_*` têm schema idêntico e mesma ordem de colunas,
+permitindo `SELECT * FROM ... UNION ALL SELECT * FROM ...` sem conversão.
 
 ---
 
-### `qmd_geometria_bases`
+### `qmd_geometria_sede`
 
-**Grain:** feature KML da pasta `QMD` | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_qmd` → `qmd`
+**Grain:** localização física do QMD | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_qmd` → `qmd`
 
-Pontos físicos (POINT) das bases QMD. Filtro: `kml_folder = 'QMD'`. Alguns QMDs têm
-múltiplas features — agregar com `ANY_VALUE(geometry)` quando necessário para evitar
-fan-out em joins.
+Pontos (POINT) das sedes físicas dos QMDs. Filtro: `tipo_operacional = 'sede'`. Alguns
+QMDs têm múltiplas features — agregar com `ANY_VALUE(geometry)` quando necessário para
+evitar fan-out em joins. ~174 linhas em produção.
 
 ---
 
-### `qmd_geometria_missoes_rotas`
+### `qmd_geometria_missoes_patrulha`
 
 **Grain:** rota de patrulhamento PTR | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
 
-Geometrias LineString de missões de patrulhamento (PTR). Filtro: `tipo_missao = 'PTR'`.
-~474 linhas em produção.
+Geometrias LineString de missões de patrulhamento (PTR). Filtro: `tipo_operacional = 'patrulha'`.
+~476 linhas em produção.
 
 ---
 
-### `qmd_geometria_missoes_areas`
+### `qmd_geometria_missoes_area`
 
-**Grain:** área de cobertura de missão (RF / SV / SP) | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
+**Grain:** polígono de base inteira RF/SV/SP | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
 
-Geometrias Polygon de missões de cobertura de área. Filtro: `tipo_missao IN ('RF', 'SV', 'SP')`.
-`indicador_geometry_util = FALSE` para polígonos que representam a base inteira (SV/SP
-sem subárea e RF genérica > 50 km²) — excluir em análises espaciais de conformidade.
-~259 linhas em produção.
+Polígonos (POLYGON) de base inteira com ST_AREA > 50 km². Filtro: `tipo_operacional = 'area'`.
+Sem valor analítico direto para conformidade — usar `qmd_geometria_missoes_subarea` para
+zonas operacionais reais. ~111 linhas em produção.
 
 ---
 
-### `qmd_geometria_missoes_pontos`
+### `qmd_geometria_missoes_subarea`
 
-**Grain:** ponto base fixo PB | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
+**Grain:** subárea operacional RF/SV/SP | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
 
-Geometrias Point de missões de ponto base (PB). Filtro: `tipo_missao = 'PB'`. ~400 linhas
-em produção.
+Polígonos (POLYGON) de zonas operacionais com ST_AREA ≤ 50 km². Filtro: `tipo_operacional = 'subarea'`.
+Fonte autoritativa para análises de conformidade espacial de missões de área.
+~149 linhas em produção.
+
+---
+
+### `qmd_geometria_missoes_posto`
+
+**Grain:** ponto fixo de bloqueio PB | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
+
+Geometrias Point de missões de ponto base (PB). Filtro: `tipo_operacional = 'posto'`.
+~400 linhas em produção.
 
 ---
 

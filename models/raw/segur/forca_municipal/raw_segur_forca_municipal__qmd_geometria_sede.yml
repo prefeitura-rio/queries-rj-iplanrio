@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_segur_forca_municipal__qmd_geometria_bases
+  - name: raw_segur_forca_municipal__qmd_geometria_sede
     description: >
       Localização física (ponto) de cada QMD — onde a base operacional está instalada.
       Uma linha por QMD. Fonte: pasta `QMDs` do endpoint GET /api/qmd/kml.

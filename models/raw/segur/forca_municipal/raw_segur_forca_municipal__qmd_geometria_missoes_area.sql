@@ -1,6 +1,6 @@
 {{
     config(
-        alias="qmd_geometria_missoes_rotas",
+        alias="qmd_geometria_missoes_area",
         schema="brutos_forca_municipal",
         materialized="incremental",
         incremental_strategy="merge",
@@ -10,9 +10,10 @@
     )
 }}
 
--- Rotas de patrulhamento (PTR) — geometria LineString.
--- Derivado de qmd_kml. Responsabilidade: representar caminhos planejados de patrulha.
--- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_rotas USING (id_missao)
+-- Polígonos de base inteira (RF, SV, SP, ST_AREA > 50 km²) — sem valor analítico.
+-- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'area'.
+-- tipo_operacional e indicador_geometry_util computados no base model.
+-- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_area USING (id_missao)
 
 select
     id_hash, first_seen, last_seen, updated_at, data_particao,
@@ -23,4 +24,4 @@ select
     descricao, dados_extendidos,
     geometria_wkt, geometry
 from {{ ref('raw_segur_forca_municipal__qmd_geometria_kml') }}
-where tipo_missao = 'PTR'
+where tipo_operacional = 'area'
