@@ -9,16 +9,37 @@ models:
       Frequência de atualização: diária.
       Fonte: GET /api/qmd/servicos.
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: qmd_servicos
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
+        description: >
+          Hash md5 de 32 hex calculado **por linha** sobre as colunas da API (excluindo
+          `updated_at`). Chave única desta tabela — uma linha por versão de conteúdo.
+          Mesmo conteúdo = mesmo hash entre runs.
         data_type: string
-      - name: updated_at
-        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        description: >
+          Datetime da primeira coleta em que esta versão do registro (`id_hash`) foi
+          observada. Derivado de `MIN(updated_at)`. Imutável após o insert.
         data_type: datetime
+      - name: last_seen
+        description: >
+          Datetime da última coleta em que esta versão do registro foi observada.
+          Derivado de `MAX(updated_at)`. Congela quando o registro muda (novo `id_hash`)
+          ou é removido da API — serve como `valid_until` implícito.
+        data_type: datetime
+      - name: updated_at
+        description: >
+          Datetime da coleta mais recente em que esta versão foi observada (America/Sao_Paulo).
+          Igual a `last_seen` — mantido para compatibilidade com o padrão do dataset.
+        data_type: datetime
+      - name: data_particao
+        description: >
+          Data da partição mais recente em que esta versão foi observada. Equivalente a
+          `DATE(last_seen)`. Mantido para compatibilidade com o padrão do dataset.
+        data_type: date
       - name: id_plano
         description: Identificador do plano semanal ao qual este serviço pertence.
         data_type: string
@@ -37,12 +58,12 @@ models:
         data_type: string
       - name: dias
         description: >
-          Array JSON com os dias da semana em que o serviço está ativo, usando
-          abreviações em português: `"dom"`, `"seg"`, `"ter"`, `"qua"`, `"qui"`,
-          `"sex"`, `"sab"`. A ordem dos elementos varia entre registros. Em produção,
-          99,8% dos serviços têm os 7 dias — o campo é minimamente discriminante
-          no estado atual.
-        data_type: string
+          Dias da semana em que o serviço está ativo.
+          ARRAY<STRUCT<week_day STRING, week_day_number INT64>>.
+          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
+          week_day_number: número ISO (1=seg … 7=dom), consistente com qmd_missoes.execucoes.
+          Em produção, 99,8% dos serviços têm os 7 dias.
+        data_type: array<struct<week_day string, week_day_number int64>>
       - name: tipo_unidade
         description: >
           Tipo da viatura, extraído do prefixo alfabético de `nome`
@@ -55,6 +76,4 @@ models:
           (ex. `POG01-LITORANEA` → `LITORANEA`). Valores: `NORTE`, `OESTE`,
           `LITORANEA`. Chave de join com `qmd_plano.area`.
         data_type: string
-      - name: data_particao
-        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
-        data_type: date
+

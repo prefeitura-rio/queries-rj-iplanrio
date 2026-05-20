@@ -1,0 +1,199 @@
+version: 2
+
+models:
+  - name: mart_segur_forca_municipal__ocorrencias
+    description: >
+      Uma linha por ocorrência — estado final derivado de ocorrencias_historico
+      (indicador_ultima_revisao). Localização e métricas de despacho (TTD / TTER / TTOA)
+      via ocorrencias_ativas_v2; NULL nesses campos indica ocorrências fechadas antes
+      de serem capturadas pelo feed ativas.
+
+      P1: WHERE NOT indicador_evento_operacional
+      P4: ttd_segundos / tter_segundos / ttoa_segundos
+
+    columns:
+      # ── identificadores ──────────────────────────────────────────────────
+      - name: id_ocorrencia
+        description: Identificador único da ocorrência (ex. FORCA2026010200233).
+        data_type: string
+        tests:
+          - not_null
+          - unique
+
+      - name: id_agencia
+        description: Identificador da agência responsável (ex. FORCA).
+        data_type: string
+
+      - name: id_esz
+        description: Código da zona estatística de segurança (ESZ).
+        data_type: string
+
+      # ── classificação ─────────────────────────────────────────────────────
+      - name: tipo_ocorrencia_codigo
+        description: Código do tipo da ocorrência (ex. A, DIO, F, DM, AGD).
+        data_type: string
+
+      - name: tipo_ocorrencia_descricao
+        description: Descrição do tipo da ocorrência (ex. Abordagem, Desvio de Missão).
+        data_type: string
+
+      - name: subtipo_ocorrencia_codigo
+        description: Código do subtipo da ocorrência.
+        data_type: string
+
+      - name: subtipo_ocorrencia_descricao
+        description: Descrição do subtipo da ocorrência.
+        data_type: string
+
+      - name: descricao_ocorrencia
+        description: Descrição textual livre da ocorrência.
+        data_type: string
+
+      - name: prioridade
+        description: Nível de prioridade da ocorrência (1–9).
+        data_type: string
+
+      - name: indicador_desvio_missao
+        description: >
+          TRUE se tipo_ocorrencia_codigo = 'DM' (Desvio de Missão).
+          Representa ~46,6% das ocorrências — excluir de análises P1.
+        data_type: bool
+
+      - name: indicador_evento_operacional
+        description: >
+          TRUE se tipo_ocorrencia_codigo IN ('DM', 'AGD'). Filtro-base de P1:
+          WHERE NOT indicador_evento_operacional.
+        data_type: bool
+
+      # ── temporal da ocorrência ────────────────────────────────────────────
+      - name: data_hora_criacao
+        description: Data e hora de criação da ocorrência (America/Sao_Paulo).
+        data_type: datetime
+
+      - name: data_hora_inicio
+        description: Data e hora de início da ocorrência (America/Sao_Paulo).
+        data_type: datetime
+
+      - name: data_hora_fechamento
+        description: >
+          Data e hora de fechamento da ocorrência (America/Sao_Paulo).
+          NULL para ocorrências ainda abertas.
+        data_type: datetime
+
+      - name: duracao_ocorrencia_minutos
+        description: >
+          Duração em minutos entre criação e fechamento.
+          NULL para ocorrências ainda abertas (~60% em produção).
+        data_type: int64
+
+      # ── temporal de despacho ──────────────────────────────────────────────
+      - name: data_hora_primeiro_despacho
+        description: >
+          Data e hora do primeiro despacho de unidade (America/Sao_Paulo).
+          NULL para ocorrências não capturadas em ocorrencias_ativas_v2.
+        data_type: datetime
+
+      - name: data_hora_primeira_unidade_a_caminho
+        description: >
+          Data e hora em que a primeira unidade entrou em rota (America/Sao_Paulo).
+          NULL para ocorrências não capturadas em ocorrencias_ativas_v2.
+        data_type: datetime
+
+      - name: data_hora_primeira_chegada
+        description: >
+          Data e hora em que a primeira unidade chegou ao local (America/Sao_Paulo).
+          NULL para ocorrências não capturadas em ocorrencias_ativas_v2.
+        data_type: datetime
+
+      # ── métricas de resposta ──────────────────────────────────────────────
+      - name: ttd_segundos
+        description: >
+          Time to Dispatch em segundos (data_hora_primeiro_despacho − data_hora_criacao).
+          Métrica central de P4. NULL quando não capturado em ocorrencias_ativas_v2.
+        data_type: int64
+
+      - name: tter_segundos
+        description: >
+          Time to Enroute em segundos
+          (data_hora_primeira_unidade_a_caminho − data_hora_primeiro_despacho).
+          NULL quando não capturado.
+        data_type: int64
+
+      - name: ttoa_segundos
+        description: >
+          Time on Arrival em segundos
+          (data_hora_primeira_chegada − data_hora_primeiro_despacho).
+          NULL quando não capturado.
+        data_type: int64
+
+      # ── estado ────────────────────────────────────────────────────────────
+      - name: indicador_aberta
+        description: TRUE se a ocorrência está aberta no estado final.
+        data_type: bool
+
+      - name: indicador_reaberta
+        description: TRUE se a ocorrência foi reaberta em algum momento.
+        data_type: bool
+
+      - name: total_unidades_atribuidas
+        description: Número de unidades atribuídas no estado final.
+        data_type: int64
+
+      - name: numero_ultima_revisao
+        description: Número sequencial da última revisão registrada em ocorrencias_historico.
+        data_type: int64
+
+      - name: comentario_fechamento
+        description: Comentário registrado no fechamento da ocorrência.
+        data_type: string
+
+      # ── unidade ───────────────────────────────────────────────────────────
+      - name: id_unidade_primaria
+        description: >
+          Identificador da unidade principal atribuída (ex. VTR01-LITORANEA).
+          NULL para ocorrências não capturadas em ocorrencias_ativas_v2.
+        data_type: string
+
+      # ── geográfico (textual) ──────────────────────────────────────────────
+      - name: area_planejamento
+        description: Código da área de planejamento municipal (ex. AP1.1, AP2.1, AP5.2).
+        data_type: string
+
+      - name: setor
+        description: Setor ou bairro de patrulhamento (ex. Copacabana, Cidade Nova).
+        data_type: string
+
+      - name: distrito
+        description: Distrito onde a ocorrência foi registrada (ex. Rio Comprido, Portuária).
+        data_type: string
+
+      - name: municipio
+        description: Município onde a ocorrência ocorreu (ex. Rio de Janeiro).
+        data_type: string
+
+      - name: zona
+        description: Zona geográfica ampla (ex. Centro, Zona Sul).
+        data_type: string
+
+      - name: grupo_despacho
+        description: Grupo de despacho responsável (ex. 4 Aisp - São Cristóvão).
+        data_type: string
+
+      # ── geográfico (espacial) ─────────────────────────────────────────────
+      - name: latitude
+        description: >
+          Latitude do local da ocorrência. NULL para ocorrências não capturadas
+          em ocorrencias_ativas_v2.
+        data_type: float64
+
+      - name: longitude
+        description: >
+          Longitude do local da ocorrência. NULL para ocorrências não capturadas
+          em ocorrencias_ativas_v2.
+        data_type: float64
+
+      - name: geometry
+        description: >
+          Ponto geográfico (GEOGRAPHY) derivado de latitude/longitude.
+          NULL para ocorrências não capturadas em ocorrencias_ativas_v2.
+        data_type: geography

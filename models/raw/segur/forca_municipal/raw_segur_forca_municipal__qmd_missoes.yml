@@ -1,0 +1,158 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_missoes
+    description: >
+      Missões dos QMDs com granularidade missão × serviço (unidade alocada).
+      Lê diretamente da staging `qmd_detalhes` (endpoint `/api/qmd/{id}`) e faz o unnest
+      do campo JSON `missoes` inline — sem modelo intermediário.
+      Cada linha representa uma unidade alocada a uma missão específica de um QMD,
+      com geometria pronta para `ST_*`, horários tipados e dias já desserializados.
+      Possui `id_hash` próprio calculado sobre os campos da missão — independente do
+      `id_hash` do pai. Isso garante que mudanças no QMD pai que não afetam as missões
+      (ex. `indicador_ativo`) não gerem duplicatas neste modelo. O `id_hash` do pai é
+      preservado em `id_hash_pai` para rastreabilidade.
+      O endpoint `/api/qmd/missoes` existe na especificação da API mas está inativo.
+      Quando funcional, retornará subconjunto dos campos aqui disponíveis (sem geometry,
+      id_unidade, dias, execucoes) — a fonte `/api/qmd/{id}` permanece autoritativa.
+      Frequência de atualização: diária (merge incremental a partir da staging).
+      Fonte: staging `qmd_detalhes` → endpoint `/api/qmd/{id}`.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    columns:
+      - name: id_hash
+        description: >
+          Hash MD5 (hex string) calculado sobre os campos da missão:
+          `(id_qmd, id_missao, id_servico, tipo_missao, roteiro, hora_inicio_missao,
+          hora_fim_missao, dias, execucoes, geometria_wkt)`. Chave única deste modelo —
+          independente do `id_hash` do pai. Mudanças no QMD pai que não afetam a missão
+          não geram novo hash.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        description: >
+          Datetime da primeira coleta em que esta versão da missão (`id_hash`) foi
+          observada. Derivado de `MIN(updated_at)`. Imutável após o insert.
+        data_type: datetime
+      - name: last_seen
+        description: >
+          Datetime da última coleta em que esta versão da missão foi observada.
+          Derivado de `MAX(updated_at)`. Congela quando a missão muda ou é removida.
+        data_type: datetime
+      - name: updated_at
+        description: >
+          Datetime da coleta mais recente em que esta versão foi observada (America/Sao_Paulo).
+          Igual a `last_seen` — mantido para compatibilidade com o padrão do dataset.
+        data_type: datetime
+      - name: data_particao
+        description: >
+          Data da partição mais recente em que esta versão foi observada. Equivalente a
+          `DATE(last_seen)`. Mantido para compatibilidade com o padrão do dataset.
+        data_type: date
+      - name: id_hash_pai
+        description: >
+          `id_hash` herdado da staging `qmd_detalhes` — identifica a versão do QMD pai
+          que gerou esta missão. Útil para rastrear qual versão do pai estava ativa quando
+          a missão foi coletada.
+        data_type: string
+      - name: id_qmd
+        description: >
+          Identificador do QMD pai. FK para `qmd`, `qmd_bases` e `qmd_missoes_geometria`.
+        data_type: string
+      - name: id_unidade
+        description: >
+          Identificador da unidade alocada a esta missão, no formato
+          `TIPO##-BASE` (ex. `POG01-LITORANEA`). FK para
+          `unit_positions.id_unidade` e `unidades_historico.id_unidade`.
+          Mesmo campo que `qmd_servicos.id_unidade`.
+        data_type: string
+      - name: id_missao
+        description: >
+          Identificador único da missão. Chave primária do nível de missão.
+          FK para `qmd_missoes_geometria.id_missao` (mesmo valor, mesmo tipo STRING).
+        data_type: string
+      - name: id_servico
+        description: >
+          Identificador da alocação unidade ↔ missão. Chave primária do nível
+          de serviço. FK direta para `qmd_servicos.id_servico` — o elo que
+          liga a missão à unidade dentro do plano semanal.
+        data_type: string
+      - name: tipo_missao
+        description: >
+          Tipo da missão. Valores observados: `PTR` (Patrulhamento — LineString),
+          `PB` (Ponto Base — Point), `DS` (Deslocamento — sem geometria),
+          `RF` (Ronda — Polygon), `SV` (Supervisão — Polygon), `SP` (não
+          documentado). Mesmo campo que `qmd_missoes_geometria.tipo_missao`.
+        data_type: string
+      - name: roteiro
+        description: >
+          Texto livre descrevendo a rota ou localização da missão
+          (ex. `PTR_01\tAv. Lauro Sodré, da Rua General Severiano até...`).
+        data_type: string
+      - name: hora_inicio_missao
+        description: >
+          Hora de início planejada da missão. Mesmo campo que
+          `qmd_missoes_geometria.hora_inicio_missao`. Complementa `qmd.hora_inicio_qmd`
+          (que é o turno do QMD inteiro).
+        data_type: time
+      - name: hora_fim_missao
+        description: >
+          Hora de fim planejada da missão. Mesmo campo que
+          `qmd_missoes_geometria.hora_fim_missao`. Pode cruzar meia-noite se
+          `hora_fim_missao < hora_inicio_missao`.
+        data_type: time
+      - name: dias
+        description: >
+          Dias da semana em que a missão está programada.
+          ARRAY<STRUCT<week_day STRING, week_day_number INT64>>.
+          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
+          week_day_number: número ISO (1=seg … 7=dom).
+          Consistente com qmd_servicos.dias e qmd_missoes.execucoes.week_day.
+          Derivado do campo double-encoded do JSON de origem (resolvido neste modelo).
+        data_type: array<struct<week_day string, week_day_number int64>>
+      - name: execucoes
+        description: >
+          Janelas temporais planejadas desta missão, uma por dia agendado.
+          ARRAY<STRUCT<data_hora_inicio DATETIME, data_hora_fim DATETIME, week_day STRING, week_day_number INT64>>.
+          Cada elemento representa um intervalo exato de execução no fuso America/Sao_Paulo.
+          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
+          week_day_number: número ISO (1=seg … 7=dom), útil para ordenação e filtros numéricos.
+          Fonte autoritativa para joins temporais no mart — substitui hora_inicio/fim_missao
+          + dia_semana com uma única condição:
+          gps.data_hora BETWEEN exec.data_hora_inicio AND exec.data_hora_fim.
+        data_type: >
+          array<struct<data_hora_inicio datetime, data_hora_fim datetime,
+          week_day string, week_day_number int64>>
+      - name: indicador_ativo
+        description: >
+          Indica se o QMD pai está ativo. Derivado de `qmdStatusAtivo = 'Sim'`
+          na staging. Usar como filtro primário: `WHERE indicador_ativo` para
+          missões em vigor.
+        data_type: bool
+      - name: tipo_geometria
+        description: >
+          Tipo da geometria da missão. Determinado pelo `tipo_missao`:
+          `LINESTRING` (PTR), `POINT` (PB), `POLYGON` (RF, SV, SP).
+          `NULL` para missões DS (sem geometria).
+          Usar para filtrar antes de operações espaciais — `ST_WITHIN` só faz sentido
+          com `POLYGON`, distância de rota usa `LINESTRING`.
+          Mesmo valor que `qmd_missoes_geometria.tipo_geometria` (uppercase).
+        data_type: string
+      - name: geometria_wkt
+        description: >
+          Geometria da missão em formato WKT (Well-Known Text), extraída do campo
+          `geometriaWkt` do JSON. `NULL` para missões do tipo `DS` (deslocamento —
+          sem área de cobertura) e quando o campo é string vazia na origem.
+          Incluída no cálculo do `id_hash` desta tabela.
+        data_type: string
+      - name: geometry
+        description: >
+          Geometria da missão como `GEOGRAPHY`, pronta para funções `ST_*`.
+          Derivada de `geometria_wkt` via `SAFE.ST_GEOGFROMTEXT(...)`.
+          `NULL` para missões do tipo `DS` (deslocamento — sem área de cobertura).
+          Tipos de geometria: LineString (`PTR`), Point (`PB`),
+          Polygon (`RF`, `SV`, `SP`).
+          Para análises espaciais, preferir `qmd_missoes_geometria.geometry`
+          como fonte autoritativa — join por `id_missao`.
+        data_type: geography
