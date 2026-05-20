@@ -3,9 +3,9 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__qmd_geometria_missoes_subarea
     description: >
-      Subáreas operacionais RF/SV/SP com ST_AREA ≤ 50 km² — zona específica de missão.
+      Subáreas operacionais RF/SV/SP com ST_AREA ≤ 10 km² — zona específica de missão.
       Derivado de qmd_geometria_kml, filtra por tipo_operacional = 'subarea'.
-      Para polígonos de base inteira (> 50 km²), usar qmd_geometria_missoes_area.
+      Para polígonos de base inteira (> 10 km²), usar qmd_geometria_missoes_area.
       Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_subarea USING (id_missao).
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.

@@ -433,7 +433,7 @@ Geometrias LineString de missões de patrulhamento (PTR). Filtro: `tipo_operacio
 
 **Grain:** polígono de base inteira RF/SV/SP | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
 
-Polígonos (POLYGON) de base inteira com ST_AREA > 50 km². Filtro: `tipo_operacional = 'area'`.
+Polígonos (POLYGON) de base inteira com ST_AREA > 10 km². Filtro: `tipo_operacional = 'area'`.
 Sem valor analítico direto para conformidade — usar `qmd_geometria_missoes_subarea` para
 zonas operacionais reais. ~111 linhas em produção.
 
@@ -443,7 +443,7 @@ zonas operacionais reais. ~111 linhas em produção.
 
 **Grain:** subárea operacional RF/SV/SP | **Derivado de:** `qmd_geometria_kml` | **Joins:** `id_missao` → `qmd_missoes`
 
-Polígonos (POLYGON) de zonas operacionais com ST_AREA ≤ 50 km². Filtro: `tipo_operacional = 'subarea'`.
+Polígonos (POLYGON) de zonas operacionais com ST_AREA ≤ 10 km². Filtro: `tipo_operacional = 'subarea'`.
 Fonte autoritativa para análises de conformidade espacial de missões de área.
 ~149 linhas em produção.
 

@@ -3,9 +3,9 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__qmd_geometria_missoes_area
     description: >
-      Polígonos de base inteira RF/SV/SP com ST_AREA > 50 km² — sem valor analítico direto.
+      Polígonos de base inteira RF/SV/SP com ST_AREA > 10 km² — sem valor analítico direto.
       Derivado de qmd_geometria_kml, filtra por tipo_operacional = 'area'.
-      Para zonas operacionais reais (≤50 km²), usar qmd_geometria_missoes_subarea.
+      Para zonas operacionais reais (≤10 km²), usar qmd_geometria_missoes_subarea.
       Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_area USING (id_missao).
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.
