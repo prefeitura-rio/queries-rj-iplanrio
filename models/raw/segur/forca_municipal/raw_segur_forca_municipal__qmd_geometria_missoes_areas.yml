@@ -4,7 +4,8 @@ models:
   - name: raw_segur_forca_municipal__qmd_geometria_missoes_areas
     description: >
       Áreas de cobertura (tipo_missao IN ('RF','SV','SP')) — geometria Polygon.
-      Derivado de qmd_kml, filtra por tipo_missao e adiciona indicador_geometry_util.
+      Derivado de qmd_geometria_kml, filtra por tipo_missao.
+      tipo_area e indicador_geometry_util computados no base model.
       Representa zonas de atuação planejadas por cada missão de área.
       Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_areas USING (id_missao).
       Frequência de atualização: diária.
@@ -43,6 +44,12 @@ models:
       - name: tipo_geometria
         description: Sempre 'Polygon' nesta tabela.
         data_type: string
+      - name: tipo_area
+        description: >
+          'area' para RF/SV/SP com ST_AREA > 50 km² (polígono de base inteira);
+          'subarea' para RF/SV/SP com ST_AREA ≤ 50 km² (zona operacional real).
+          Computado em qmd_geometria_kml.
+        data_type: string
       - name: hora_inicio_missao
         description: Hora de início planejada da missão de área.
         data_type: time
@@ -51,8 +58,8 @@ models:
         data_type: time
       - name: roteiro
         description: >
-          Nome da subárea ou descrição genérica da área de cobertura.
-          Para RF subárea: "Dentro da Subárea X". Para RF/SV/SP genérica: "Dentro da área da Base X".
+          Nome da subárea ou descrição da área de cobertura, sem prefixos de tipo
+          ou "Dentro da Subárea" (removidos na transformação do base model).
           100% preenchido.
         data_type: string
       - name: servicos
@@ -74,18 +81,10 @@ models:
         data_type: geography
       - name: indicador_geometry_util
         description: >
-          TRUE se o polígono tem valor analítico para conformidade operacional.
-          FALSE nos seguintes casos (polígono não representa uma área operacional real):
-
-          - SV (Supervisão) e SP (Suporte): geometry é o polígono da base inteira
-            (295–587 km²) — qualquer GPS dentro da base seria conforme trivialmente.
-          - RF com roteiro genérico "Dentro da área da Base X": mesmo problema,
-            polígono da base sem subárea definida.
-
-          Critério para RF: presença de "subárea" no roteiro (semântico, primário) OR
-          ST_AREA < 50 km² (safety net para roteiros mal cadastrados sem a palavra "Subárea").
-
-          Usar como filtro em marts de conformidade.
+          TRUE quando ST_AREA < 50 km² — polígono representa uma zona operacional real.
+          FALSE quando ST_AREA ≥ 50 km² — polígono de base inteira sem valor analítico
+          para análises de conformidade (SV, SP e RF genérica).
+          Computado em qmd_geometria_kml. Usar como filtro em marts de conformidade.
         data_type: bool
         tests:
           - not_null

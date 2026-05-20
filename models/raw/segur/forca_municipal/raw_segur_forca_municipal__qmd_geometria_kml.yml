@@ -60,6 +60,22 @@ models:
         description: >
           Tipo da geometria: LineString (PTR), Point (PB/QMD), Polygon (RF/SV/SP).
         data_type: string
+      - name: tipo_area
+        description: >
+          Classificação semântica da feature. Valores:
+          'base' — ponto físico do QMD (pasta QMD);
+          'rota' — rota de patrulhamento PTR (LineString);
+          'ponto' — ponto base fixo PB (Point);
+          'area' — zona de cobertura RF/SV/SP com ST_AREA > 50 km² (polígono de base inteira, sem valor analítico);
+          'subarea' — zona de cobertura RF/SV/SP com ST_AREA ≤ 50 km² (área operacional real).
+          NULL para missões DS (sem geometria) e features não classificadas.
+        data_type: string
+      - name: indicador_geometry_util
+        description: >
+          TRUE quando o polígono representa uma zona operacional real (ST_AREA < 50 km²).
+          FALSE quando é polígono de base inteira (ST_AREA ≥ 50 km²) — excluir de análises
+          de conformidade espacial. NULL para tipos que não são RF, SV ou SP.
+        data_type: bool
       - name: hora_inicio_missao
         description: Hora de início planejada. Extraída de dados_extendidos.HoraInicio. NULL para bases.
         data_type: time
@@ -68,7 +84,9 @@ models:
         data_type: time
       - name: roteiro
         description: >
-          Descrição textual do roteiro/área, com prefixo de tipo removido.
+          Descrição textual do roteiro/área. Prefixo de tipo (ex: "RF\t", "PTR_01\t") e
+          prefixo "Dentro da Subárea" removidos na transformação — inconsistência do dado
+          fonte onde o mesmo geometry aparecia com e sem o prefixo.
           NULL para features da pasta QMD.
         data_type: string
       - name: servicos

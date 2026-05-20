@@ -57,10 +57,15 @@ with
             safe.parse_time(
                 '%H:%M', json_value(safe_cast(extended_data as string), '$.HoraFim')
             )                                                                          as hora_fim_missao,
-            -- roteiro: remove prefixo redundante com tipo_missao (ex: "RF\t", "PTR _01\t")
+            -- roteiro: remove prefixo de tipo (ex: "RF\t", "PTR_01\t") e prefixo
+            -- "Dentro da Subárea" (inconsistência na fonte — mesmo geometry, nomes distintos)
             regexp_replace(
-                trim(json_value(safe_cast(extended_data as string), '$.Roteiro')),
-                r'^(?:RF|PTR|PB|SV|SP)(?:\s*_\d+)?\t',
+                regexp_replace(
+                    trim(json_value(safe_cast(extended_data as string), '$.Roteiro')),
+                    r'^(?:RF|PTR|PB|SV|SP)(?:\s*_\d+)?\t',
+                    ''
+                ),
+                r'(?i)^Dentro da Sub[aá]rea\s*',
                 ''
             )                                                                          as roteiro,
             -- servicos: unidades alocadas à missão (CSV da API → ARRAY de valores distintos)
@@ -117,7 +122,58 @@ with
             any_value(geometry)      as geometry
         from renamed
         group by id_hash
+    ),
+
+    final as (
+        select
+            -- metadados
+            id_hash,
+            first_seen,
+            last_seen,
+            updated_at,
+            data_particao,
+
+            -- identificadores
+            id_qmd,
+            id_missao,
+
+            -- pasta KML
+            kml_folder,
+            kml_folder_raw,
+
+            -- dados
+            nome,
+            tipo_missao,
+            tipo_geometria,
+            -- classificação semântica da feature
+            case
+                when kml_folder = 'qmd'                                                  then 'base'
+                when tipo_geometria = 'LINESTRING'                                       then 'rota'
+                when tipo_geometria = 'POINT'                                            then 'ponto'
+                when tipo_missao in ('RF', 'SV', 'SP')
+                    and st_area(geometry) > 50 * 1000 * 1000                            then 'area'
+                when tipo_missao in ('RF', 'SV', 'SP')
+                    and st_area(geometry) <= 50 * 1000 * 1000                           then 'subarea'
+            end                                                                          as tipo_area,
+            -- TRUE quando o polígono representa uma subárea de missão com valor analítico.
+            -- FALSE/NULL para polígonos de base inteira (area > 50 km²) — excluir em
+            -- análises de conformidade. Aplicável apenas a RF, SV, SP.
+            case
+                when tipo_missao in ('RF', 'SV', 'SP')
+                    then st_area(geometry) < 50 * 1000 * 1000
+            end                                                                          as indicador_geometry_util,
+            hora_inicio_missao,
+            hora_fim_missao,
+            roteiro,
+            servicos,
+            descricao,
+            dados_extendidos,
+
+            -- espacial
+            geometria_wkt,
+            geometry
+        from deduplicado
     )
 
 select *
-from deduplicado
+from final
