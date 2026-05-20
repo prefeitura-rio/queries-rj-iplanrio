@@ -9,13 +9,13 @@ models:
       Frequência de atualização: diária.
       Fonte: GET /api/unidades/historico.
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: unidades_historico
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
         description: Hash md5 de 32 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
         data_type: string
+        tests:
+          - not_null
+          - unique
       - name: updated_at
         description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
         data_type: datetime

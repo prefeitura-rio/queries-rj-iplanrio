@@ -13,9 +13,6 @@ models:
         `ultima_atualizacao = datetime(max(data_particao))`; `dias_atraso = 1` é normal por design (D-1).
       - **table**: `ocorrencias_historico` e `unidades_historico` — full refresh diário.
         `ultima_atualizacao = datetime(max(data_particao))`; `dias_atraso = 0` é normal.
-    config:
-      alias: monitoramento_qualidade
-      schema: brutos_forca_municipal
     columns:
       - name: tabela
         description: Nome da tabela no dataset `brutos_forca_municipal`.

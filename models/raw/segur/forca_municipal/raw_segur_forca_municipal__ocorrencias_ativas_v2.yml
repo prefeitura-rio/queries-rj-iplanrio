@@ -19,13 +19,13 @@ models:
       Frequência de atualização: a cada 5 minutos.
       Fonte: GET /api/ocorrencias/ativas (v2).
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: ocorrencias_ativas_v2
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
         description: Hash md5 de 32 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Chave de deduplicação — identifica unicamente um estado de ocorrência.
         data_type: string
+        tests:
+          - not_null
+          - unique
       - name: first_seen
         description: Datetime do primeiro poll em que este estado (`id_hash`) foi observado (America/Sao_Paulo). Imutável após o primeiro insert.
         data_type: datetime

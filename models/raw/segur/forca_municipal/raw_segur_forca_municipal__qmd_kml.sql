@@ -56,7 +56,7 @@ with
 
             -- espacial
             safe_cast(geometry_wkt as string) as geometria_wkt,
-            st_geogfromtext(safe_cast(geometry_wkt as string)) as geometry
+            safe.st_geogfromtext(safe_cast(geometry_wkt as string), make_valid => true) as geometry
 
         from source
     ),

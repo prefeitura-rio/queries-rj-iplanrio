@@ -9,9 +9,6 @@ models:
       Frequência de atualização: diária.
       Fonte: GET /api/qmd/servicos.
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: qmd_servicos
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
         description: >
@@ -19,6 +16,9 @@ models:
           `updated_at`). Chave única desta tabela — uma linha por versão de conteúdo.
           Mesmo conteúdo = mesmo hash entre runs.
         data_type: string
+        tests:
+          - not_null
+          - unique
       - name: first_seen
         description: >
           Datetime da primeira coleta em que esta versão do registro (`id_hash`) foi

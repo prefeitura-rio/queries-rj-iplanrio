@@ -14,9 +14,6 @@ models:
       Frequência de atualização: diária (merge incremental a partir de `qmd_detalhes`).
       Fonte: `raw_segur_forca_municipal__qmd_detalhes.missoes`.
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: qmd_detalhes_missao
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
         description: >
@@ -26,6 +23,9 @@ models:
           independente do `id_hash` do pai. Mudanças no QMD pai que não afetam a missão
           não geram novo hash.
         data_type: string
+        tests:
+          - not_null
+          - unique
       - name: first_seen
         description: >
           Datetime da primeira coleta em que esta versão da missão (`id_hash`) foi
@@ -122,9 +122,17 @@ models:
           Indica se o QMD pai está ativo. Herdado de `qmd_detalhes.indicador_ativo`.
           Usar como filtro primário: `WHERE indicador_ativo` para missões em vigor.
         data_type: bool
+      - name: geometria_wkt
+        description: >
+          Geometria da missão em formato WKT (Well-Known Text), extraída do campo
+          `geometriaWkt` do JSON de `qmd_detalhes.missoes`. `NULL` para missões do
+          tipo `DS` (deslocamento — sem área de cobertura) e quando o campo é string
+          vazia na origem. Incluída no cálculo do `id_hash` desta tabela.
+        data_type: string
       - name: geometry
         description: >
           Geometria da missão como `GEOGRAPHY`, pronta para funções `ST_*`.
+          Derivada de `geometria_wkt` via `SAFE.ST_GEOGFROMTEXT(..., make_valid => TRUE)`.
           `NULL` para missões do tipo `DS` (deslocamento — sem área de cobertura).
           Tipos de geometria: LineString (`PTR`), Point (`PB`),
           Polygon (`RF`, `SV`, `SP`).

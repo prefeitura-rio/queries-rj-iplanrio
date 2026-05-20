@@ -89,7 +89,8 @@ with
             -- espacial
             nullif(json_value(missao, '$.geometriaWkt'), '')              as geometria_wkt,
             safe.st_geogfromtext(
-                nullif(json_value(missao, '$.geometriaWkt'), '')
+                nullif(json_value(missao, '$.geometriaWkt'), ''),
+                make_valid => true
             )                                                             as geometry
         from com_servicos
     ),
