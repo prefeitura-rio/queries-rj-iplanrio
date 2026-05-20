@@ -75,7 +75,7 @@ with
             safe_cast(IsReopened as bool) as indicador_reaberta,
             safe_cast(safe_cast(TotalAssignedUnits as float64) as int64)
             as total_unidades_atribuidas,
-            safe_cast({{ padronize_id('RevisionNumber') }} as int64) as numero_revisao,
+            safe_cast(RevisionNumber as int64) as numero_revisao,
             safe_cast(ClosingComment as string) as comentario_fechamento,
             upper(safe_cast(Area as string)) as area_planejamento,
             {{ proper_br('safe_cast(Beat as string)') }} as setor,

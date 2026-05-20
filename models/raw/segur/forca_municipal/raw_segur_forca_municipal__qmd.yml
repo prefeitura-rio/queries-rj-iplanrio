@@ -3,22 +3,48 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__qmd
     description: >
-      Quadros de Missões Diárias (QMD) cadastrados no sistema HxGN OnCall da Guarda
-      Municipal do Rio de Janeiro. Cada QMD define um conjunto de missões e prescrições
-      para unidades em uma área e período específicos.
-      Frequência de atualização: diária.
+      Quadros de Missões Diárias (QMD) cadastrados no sistema de gestão de ocorrências
+      e unidades da Guarda Municipal do Rio de Janeiro. Cada QMD define um conjunto de
+      missões e prescrições para unidades em uma área e período específicos.
+      Deduplica os snapshots diários da staging: uma linha por versão única de conteúdo
+      (`id_hash`), com `first_seen`/`last_seen` indicando o intervalo em que essa versão
+      foi observada. Frequência de atualização: diária (merge incremental).
       Fonte: GET /api/qmd.
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: qmd
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
-        description: Hash MD5 de 16 hex calculado **por linha** sobre as colunas da API (excluindo `updated_at`). Mesmo conteúdo = mesmo hash entre runs. Identifica linhas únicas e detecta duplicatas de fonte.
+        description: >
+          Hash md5 de 32 hex calculado **por linha** sobre as colunas da API (excluindo
+          `updated_at`). Chave única desta tabela — uma linha por versão de conteúdo.
+          Mesmo conteúdo = mesmo hash entre runs.
         data_type: string
-      - name: updated_at
-        description: Datetime da coleta dos dados pela pipeline (America/Sao_Paulo).
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        description: >
+          Datetime da primeira coleta em que esta versão do registro (`id_hash`) foi
+          observada. Derivado de `MIN(updated_at)`. Imutável após o insert — nunca é
+          atualizado pelo merge.
         data_type: datetime
+      - name: last_seen
+        description: >
+          Datetime da última coleta em que esta versão do registro foi observada.
+          Derivado de `MAX(updated_at)`. Atualizado a cada run enquanto o conteúdo não
+          muda. Congela naturalmente quando o registro é alterado na API (novo `id_hash`)
+          ou removido — serve como `valid_until` implícito.
+        data_type: datetime
+      - name: updated_at
+        description: >
+          Datetime da coleta mais recente em que esta versão foi observada (America/Sao_Paulo).
+          Igual a `last_seen` — mantido para compatibilidade com o padrão do dataset.
+        data_type: datetime
+      - name: data_particao
+        description: >
+          Data da partição mais recente em que esta versão foi observada. Equivalente a
+          `last_seen` em granularidade de data. Mantido para compatibilidade com padrão
+          do dataset.
+        data_type: date
       - name: id_responsavel_criacao
         description: Identificador do usuário que criou o QMD no HxGN OnCall.
         data_type: string
@@ -30,7 +56,7 @@ models:
       - name: id_qmd
         description: >
           Identificador único do QMD. Chave primária desta tabela e FK em
-          `qmd_servicos`, `qmd_detalhes` e `qmd_kml`.
+          `qmd_servicos`, `qmd_missoes`, `qmd_bases` e `qmd_missoes_geometria`.
         data_type: string
       - name: nome
         description: >
@@ -43,7 +69,7 @@ models:
           Localização de atuação do QMD descrita por cruzamentos ou pontos de
           referência específicos (ex. "Rodoviária X Terminal Gentileza X Estação
           Leopoldina"). Campo descritivo — não é bairro nem zona administrativa.
-          Para análise espacial usar as geometrias em `qmd_detalhes` ou `qmd_kml`.
+          Para análise espacial usar as geometrias em `qmd_missoes_geometria`.
           Não confundir com `area_planejamento` em `ocorrencias_historico`/`ocorrencias_ativas_v2`
           (código AP1.1 etc.) — são conceitos distintos.
         data_type: string
@@ -57,8 +83,8 @@ models:
         data_type: datetime
       - name: hora_inicio_qmd
         description: >
-          Hora de início do turno diário de execução do QMD. Segue o padrão
-          `hora_inicio_*`/`hora_fim_*` de `qmd_kml`. Pode ser igual a `hora_fim_qmd`
+          Hora de início do turno diário de execução do QMD. Mesmo padrão de
+          `hora_inicio_missao` em `qmd_missoes` e `qmd_missoes_geometria`. Pode ser igual a `hora_fim_qmd`
           em casos não documentados (observado em 5 QMDs ativos).
         data_type: time
       - name: hora_fim_qmd
@@ -110,6 +136,4 @@ models:
           em agregações — não requer o `IF(indicador_hora_cruza_meia_noite, ...)`
           no mart. Valores observados: ~720 min (12h) a ~720 min (turnos noturnos 20:00→08:00).
         data_type: int64
-      - name: data_particao
-        description: Data de partição, equivalente à data de execução da pipeline que gerou a linha.
-        data_type: date
+
