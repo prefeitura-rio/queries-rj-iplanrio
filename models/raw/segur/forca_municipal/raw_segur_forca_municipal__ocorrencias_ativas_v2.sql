@@ -116,8 +116,8 @@ with
             id_hash,
             min(updated_at)     as first_seen,
             max(updated_at)     as last_seen,
-            max(data_particao)  as data_particao,
             max(updated_at)     as updated_at,
+            max(data_particao)  as data_particao,
 
             -- identificadores
             any_value(id_unidade_primaria)      as id_unidade_primaria,
@@ -156,16 +156,14 @@ with
             any_value(dados_customizados)                   as dados_customizados,
             any_value(indicador_desvio_missao)              as indicador_desvio_missao,
             any_value(indicador_evento_operacional)         as indicador_evento_operacional,
+            any_value(ttd_segundos)                         as ttd_segundos,
+            any_value(tter_segundos)                        as tter_segundos,
+            any_value(ttoa_segundos)                        as ttoa_segundos,
 
             -- espacial
             any_value(latitude)     as latitude,
             any_value(longitude)    as longitude,
-            any_value(geometry)     as geometry,
-
-            -- derivados
-            any_value(ttd_segundos)     as ttd_segundos,
-            any_value(tter_segundos)    as tter_segundos,
-            any_value(ttoa_segundos)    as ttoa_segundos
+            any_value(geometry)     as geometry
 
         from derivados
         group by id_hash

@@ -41,7 +41,7 @@ with
 
             -- identificadores
             {{ padronize_id('qmd_id') }}                                               as id_qmd,
-            json_value(safe_cast(extended_data as string), '$.MissaoId')               as id_missao,
+            {{ padronize_id("json_value(safe_cast(extended_data as string), '$.MissaoId')") }} as id_missao,
 
             -- pasta KML
             lower(regexp_replace(normalize(kml_folder, nfd), r'\pM', ''))              as kml_folder,
@@ -90,8 +90,8 @@ with
             id_hash,
             min(updated_at) as first_seen,
             max(updated_at) as last_seen,
-            max(data_particao) as data_particao,
             max(updated_at)    as updated_at,
+            max(data_particao) as data_particao,
 
             -- identificadores
             any_value(id_qmd)    as id_qmd,

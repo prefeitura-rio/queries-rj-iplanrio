@@ -86,6 +86,6 @@ models:
           ST_AREA < 50 km² (safety net para roteiros mal cadastrados sem a palavra "Subárea").
 
           Usar como filtro em marts de conformidade.
-        data_type: boolean
+        data_type: bool
         tests:
           - not_null

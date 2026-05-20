@@ -35,6 +35,13 @@ models:
       - name: updated_at
         description: Igual a `last_seen` — datetime do poll mais recente deste estado. Mantido para compatibilidade com o padrão do dataset.
         data_type: datetime
+      - name: data_particao
+        description: >
+          Data do run mais recente em que este estado (`id_hash`) foi observado (America/Sao_Paulo).
+          Atualizado junto com `last_seen` a cada run. Tabela sem partição no destino —
+          dedup por `id_hash` implica que `data_particao` seria alterada a cada merge,
+          inviabilizando particionamento eficiente.
+        data_type: date
       - name: id_unidade_primaria
         description: Identificador da unidade principal atribuída à ocorrência (ex. VTR01-LITORANEA).
         data_type: string
@@ -182,10 +189,3 @@ models:
           data_hora_primeiro_despacho, SECOND)`. Tempo entre o despacho e a unidade
           chegar ao local. NULL quando `data_hora_primeira_chegada IS NULL`.
         data_type: int64
-      - name: data_particao
-        description: >
-          Data do run mais recente em que este estado (`id_hash`) foi observado (America/Sao_Paulo).
-          Atualizado junto com `last_seen` a cada run. Tabela sem partição no destino —
-          dedup por `id_hash` implica que `data_particao` seria alterada a cada merge,
-          inviabilizando particionamento eficiente.
-        data_type: date

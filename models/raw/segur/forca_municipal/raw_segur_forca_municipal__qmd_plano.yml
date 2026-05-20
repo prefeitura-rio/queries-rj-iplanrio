@@ -86,24 +86,24 @@ models:
           Número ordinal da semana dentro do ciclo operacional, extraído do campo `nome`
           via padrão "- Semana N". NULL para planos de teste (que usam datas no nome em vez
           de número ordinal). Não é ISO week — é o contador interno de semanas do sistema.
-        data_type: integer
+        data_type: int64
       - name: indicador_plano_unificado
         description: >
           True para planos da era unificada (até 2026-05-02), identificados pelo padrão
           "Força Municipal" no nome. False para planos multi-base (Norte/Oeste/Litorânea)
           e planos de teste. Usar para segmentar análises que cruzam o break de 2026-05-03.
-        data_type: boolean
+        data_type: bool
       - name: indicador_plano_encerrado
         description: >
           True se o plano foi formalmente encerrado, identificado pelo sufixo "Encerrado"
           no nome. É a única indicação de encerramento disponível — não há campo booleano
           dedicado na API.
-        data_type: boolean
+        data_type: bool
       - name: indicador_plano_teste
         description: >
           True para planos criados com propósito de teste, identificados pelo prefixo
           "(teste)" no nome. Excluir de todas as análises operacionais.
-        data_type: boolean
+        data_type: bool
       - name: data_semana_referencia_inicio
         description: >
           Data de início da semana de referência como `DATE` (derivada de

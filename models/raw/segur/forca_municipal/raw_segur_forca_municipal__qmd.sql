@@ -82,8 +82,8 @@ with
             id_hash,
             min(updated_at) as first_seen,
             max(updated_at) as last_seen,
-            max(data_particao) as data_particao,
             max(updated_at)    as updated_at,
+            max(data_particao) as data_particao,
 
             -- identificadores
             any_value(id_responsavel_criacao)      as id_responsavel_criacao,

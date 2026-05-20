@@ -39,10 +39,6 @@ with
             {{ padronize_id("Id") }} as id_servico,
             upper(trim(safe_cast(nome as string))) as id_unidade,
             array(
-                select json_value(dia, '$')
-                from unnest(json_query_array(safe_cast(dias as string))) as dia
-            ) as dias,
-            array(
                 select as struct
                     json_value(dia, '$') as week_day,
                     case
@@ -76,8 +72,8 @@ with
             id_hash,
             min(updated_at) as first_seen,
             max(updated_at) as last_seen,
-            max(data_particao) as data_particao,
             max(updated_at) as updated_at,
+            max(data_particao) as data_particao,
 
             -- identificadores
             any_value(id_plano) as id_plano,

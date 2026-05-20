@@ -23,7 +23,6 @@ select
     hora_inicio_missao, hora_fim_missao,
     roteiro, servicos,
     descricao, dados_extendidos,
-    geometria_wkt, geometry,
     -- Sinaliza se o polígono tem valor analítico para conformidade.
     -- FALSE para missões cujo polígono é a área da base inteira:
     --   SV e SP: usam o polígono da base como geometry.
@@ -37,6 +36,7 @@ select
             or regexp_contains(lower(roteiro), r'sub.?rea')
             or st_area(geometry) / 1e6 < 50
         )
-    ) as indicador_geometry_util
+    ) as indicador_geometry_util,
+    geometria_wkt, geometry
 from {{ ref('raw_segur_forca_municipal__qmd_geometria_kml') }}
 where tipo_missao in ('RF', 'SV', 'SP')

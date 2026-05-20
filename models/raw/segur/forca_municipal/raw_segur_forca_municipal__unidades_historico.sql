@@ -43,9 +43,7 @@ with
             upper(
                 safe_cast(statusedagencyeventsubtypecode as string)
             ) as subtipo_ocorrencia_status_codigo,
-            safe_cast(
-                {{ padronize_id("StatusedAgencyEventRevisionNum") }} as int64
-            ) as numero_revisao_ocorrencia_status,
+            safe_cast(StatusedAgencyEventRevisionNum as int64) as numero_revisao_ocorrencia_status,
             datetime(
                 safe_cast(createdtime as timestamp), 'America/Sao_Paulo'
             ) as data_hora_criacao,

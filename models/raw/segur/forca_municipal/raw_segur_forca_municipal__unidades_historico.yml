@@ -57,7 +57,7 @@ models:
         data_type: string
       - name: numero_revisao_ocorrencia_status
         description: Número de revisão da ocorrência vinculada ao status da unidade. Inteiro — ordenável diretamente.
-        data_type: integer
+        data_type: int64
       - name: data_hora_criacao
         description: Data e hora em que o evento foi registrado no sistema (America/Sao_Paulo).
         data_type: datetime

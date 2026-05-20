@@ -18,9 +18,6 @@ models:
       Frequência de atualização: diária (merge incremental a partir da staging).
       Fonte: staging `qmd_detalhes` → endpoint `/api/qmd/{id}`.
       Órgão gestor dos dados: SEGUR / Força Municipal.
-    config:
-      alias: qmd_missoes
-      schema: brutos_forca_municipal
     columns:
       - name: id_hash
         description: >

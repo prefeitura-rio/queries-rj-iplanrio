@@ -112,7 +112,7 @@ models:
         data_type: int64
       - name: numero_revisao
         description: Número sequencial desta revisão da ocorrência. Usar `ORDER BY numero_revisao DESC` para encontrar a revisão mais recente por `id_ocorrencia`.
-        data_type: integer
+        data_type: int64
       - name: comentario_fechamento
         description: Comentário registrado no fechamento da ocorrência.
         data_type: string
