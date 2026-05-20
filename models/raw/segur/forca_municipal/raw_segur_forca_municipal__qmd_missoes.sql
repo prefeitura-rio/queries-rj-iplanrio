@@ -1,6 +1,6 @@
 {{
     config(
-        alias="qmd_detalhes_missao",
+        alias="qmd_missoes",
         schema="brutos_forca_municipal",
         materialized="incremental",
         incremental_strategy="merge",
@@ -12,19 +12,13 @@
 
 with
     source as (
-        select
-            id_hash,
-            updated_at,
-            data_particao,
-            id_qmd,
-            indicador_ativo,
-            missoes
-        from {{ ref('raw_segur_forca_municipal__qmd_detalhes') }}
+        select *
+        from {{ source('brutos_forca_municipal_staging', 'qmd_detalhes') }}
         {% if is_incremental() %}
-            -- runs incrementais: só versões correntes do pai (data_particao = MAX)
-            where data_particao = (
-                select max(data_particao)
-                from {{ ref('raw_segur_forca_municipal__qmd_detalhes') }}
+            -- runs incrementais: só a última partição disponível na staging
+            where safe_cast(data_particao as date) = (
+                select max(safe_cast(data_particao as date))
+                from {{ source('brutos_forca_municipal_staging', 'qmd_detalhes') }}
             )
         {% endif %}
     ),
@@ -32,11 +26,11 @@ with
     -- uma linha por missão por QMD
     com_missoes as (
         select
-            id_hash,
-            updated_at,
-            data_particao,
-            id_qmd,
-            indicador_ativo,
+            {{ padronize_id('id_hash') }}               as id_hash_pai,
+            safe_cast(updated_at as datetime)           as updated_at,
+            safe_cast(data_particao as date)            as data_particao,
+            {{ padronize_id('qmdId') }}                 as id_qmd,
+            lower(trim(qmdStatusAtivo)) = 'sim'         as indicador_ativo,
             missao
         from source,
             unnest(json_query_array(missoes)) as missao
@@ -45,7 +39,7 @@ with
     -- uma linha por missão × serviço (unidade alocada)
     com_servicos as (
         select
-            id_hash,
+            id_hash_pai,
             updated_at,
             data_particao,
             id_qmd,
@@ -60,7 +54,7 @@ with
     renamed as (
         select
             -- id_hash do pai (preservado para rastreabilidade)
-            id_hash                                                       as id_hash_pai,
+            id_hash_pai,
             updated_at,
             data_particao,
 
@@ -89,13 +83,12 @@ with
             -- espacial
             nullif(json_value(missao, '$.geometriaWkt'), '')              as geometria_wkt,
             safe.st_geogfromtext(
-                nullif(json_value(missao, '$.geometriaWkt'), ''),
-                make_valid => true
+                nullif(json_value(missao, '$.geometriaWkt'), '')
             )                                                             as geometry
         from com_servicos
     ),
 
-    -- novo id_hash calculado sobre campos da missão (independente do pai)
+    -- id_hash calculado sobre campos da missão (independente do pai)
     com_hash as (
         select
             to_hex(md5(to_json_string(struct(

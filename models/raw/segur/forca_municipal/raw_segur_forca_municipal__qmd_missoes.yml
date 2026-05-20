@@ -1,19 +1,26 @@
 version: 2
 
 models:
-  - name: raw_segur_forca_municipal__qmd_detalhes_missao
+  - name: raw_segur_forca_municipal__qmd_missoes
     description: >
       Missões dos QMDs com granularidade missão × serviço (unidade alocada).
-      Derivado de `qmd_detalhes` via unnest do campo `missoes` (JSON).
+      Lê diretamente da staging `qmd_detalhes` (endpoint `/api/qmd/{id}`) e faz o unnest
+      do campo JSON `missoes` inline — sem modelo intermediário.
       Cada linha representa uma unidade alocada a uma missão específica de um QMD,
       com geometria pronta para `ST_*`, horários tipados e dias já desserializados.
       Possui `id_hash` próprio calculado sobre os campos da missão — independente do
       `id_hash` do pai. Isso garante que mudanças no QMD pai que não afetam as missões
       (ex. `indicador_ativo`) não gerem duplicatas neste modelo. O `id_hash` do pai é
-      preservado em `id_hash_pai` para rastreabilidade. Chave única: `id_hash`.
-      Frequência de atualização: diária (merge incremental a partir de `qmd_detalhes`).
-      Fonte: `raw_segur_forca_municipal__qmd_detalhes.missoes`.
+      preservado em `id_hash_pai` para rastreabilidade.
+      O endpoint `/api/qmd/missoes` existe na especificação da API mas está inativo.
+      Quando funcional, retornará subconjunto dos campos aqui disponíveis (sem geometry,
+      id_unidade, dias, execucoes) — a fonte `/api/qmd/{id}` permanece autoritativa.
+      Frequência de atualização: diária (merge incremental a partir da staging).
+      Fonte: staging `qmd_detalhes` → endpoint `/api/qmd/{id}`.
       Órgão gestor dos dados: SEGUR / Força Municipal.
+    config:
+      alias: qmd_missoes
+      schema: brutos_forca_municipal
     columns:
       - name: id_hash
         description: >
@@ -48,14 +55,13 @@ models:
         data_type: date
       - name: id_hash_pai
         description: >
-          `id_hash` herdado de `qmd_detalhes` — identifica a versão do QMD pai que
-          gerou esta missão. Útil para rastrear qual versão do pai estava ativa quando
+          `id_hash` herdado da staging `qmd_detalhes` — identifica a versão do QMD pai
+          que gerou esta missão. Útil para rastrear qual versão do pai estava ativa quando
           a missão foi coletada.
         data_type: string
       - name: id_qmd
         description: >
-          Identificador do QMD pai. FK para `qmd`, `qmd_detalhes`, `qmd_kml`
-          e `qmd_servicos`.
+          Identificador do QMD pai. FK para `qmd` e `qmd_kml`.
         data_type: string
       - name: id_unidade
         description: >
@@ -119,22 +125,24 @@ models:
         data_type: string
       - name: indicador_ativo
         description: >
-          Indica se o QMD pai está ativo. Herdado de `qmd_detalhes.indicador_ativo`.
-          Usar como filtro primário: `WHERE indicador_ativo` para missões em vigor.
+          Indica se o QMD pai está ativo. Derivado de `qmdStatusAtivo = 'Sim'`
+          na staging. Usar como filtro primário: `WHERE indicador_ativo` para
+          missões em vigor.
         data_type: bool
       - name: geometria_wkt
         description: >
           Geometria da missão em formato WKT (Well-Known Text), extraída do campo
-          `geometriaWkt` do JSON de `qmd_detalhes.missoes`. `NULL` para missões do
-          tipo `DS` (deslocamento — sem área de cobertura) e quando o campo é string
-          vazia na origem. Incluída no cálculo do `id_hash` desta tabela.
+          `geometriaWkt` do JSON. `NULL` para missões do tipo `DS` (deslocamento —
+          sem área de cobertura) e quando o campo é string vazia na origem.
+          Incluída no cálculo do `id_hash` desta tabela.
         data_type: string
       - name: geometry
         description: >
           Geometria da missão como `GEOGRAPHY`, pronta para funções `ST_*`.
-          Derivada de `geometria_wkt` via `SAFE.ST_GEOGFROMTEXT(..., make_valid => TRUE)`.
+          Derivada de `geometria_wkt` via `SAFE.ST_GEOGFROMTEXT(...)`.
           `NULL` para missões do tipo `DS` (deslocamento — sem área de cobertura).
           Tipos de geometria: LineString (`PTR`), Point (`PB`),
           Polygon (`RF`, `SV`, `SP`).
+          Para o mart `mart_qmd_missoes_completo`, preferir `qmd_kml.geometry`
+          como fonte autoritativa — join por `id_missao WHERE pasta_kml = 'MISSAO'`.
         data_type: geography
-
