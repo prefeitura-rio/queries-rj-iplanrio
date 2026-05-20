@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: infraestrutura_siscor_obras_staging
+    database: rj-iplanrio
+    schema: infraestrutura_siscor_obras_staging
+    tables:
+      - name: processo_autorizacao_obra
