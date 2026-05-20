@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_kml_outros
+    description: >
+      Catch-all para feições do endpoint GET /api/qmd/kml cujo `kml_folder` não é
+      reconhecido por `qmd_bases` (pasta QMD) nem por `qmd_missoes_geometria` (pasta Missões).
+      Em condições normais esta tabela deve ter zero linhas.
+      `total_linhas > 0` no monitoramento_qualidade indica que a API introduziu um novo
+      tipo de pasta KML — investigar o campo `kml_folder_raw` e criar modelo dedicado.
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd/kml.
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    columns:
+      - name: id_hash
+        description: Hash MD5 de 32 hex calculado por linha sobre as colunas da API.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        data_type: datetime
+      - name: last_seen
+        data_type: datetime
+      - name: updated_at
+        data_type: datetime
+      - name: data_particao
+        data_type: date
+      - name: id_qmd
+        data_type: string
+      - name: kml_folder_raw
+        description: >
+          Valor original do campo `kml_folder` da staging, sem normalização.
+          Usar para identificar o novo tipo de pasta introduzido pela API.
+        data_type: string
+      - name: nome
+        data_type: string
+      - name: tipo_geometria
+        data_type: string
+      - name: descricao
+        data_type: string
+      - name: dados_extendidos
+        data_type: string
+      - name: geometria_wkt
+        data_type: string

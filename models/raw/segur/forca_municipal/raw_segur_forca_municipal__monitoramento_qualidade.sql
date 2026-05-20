@@ -46,13 +46,31 @@ with
         from {{ ref("raw_segur_forca_municipal__qmd_servicos") }}
         union all
         select
-            'qmd_kml',
+            'qmd_bases',
             'merge_dedup',
             count(*),
             date(min(first_seen)),
             max(last_seen),
             count(*) - count(distinct id_hash)
-        from {{ ref("raw_segur_forca_municipal__qmd_kml") }}
+        from {{ ref("raw_segur_forca_municipal__qmd_bases") }}
+        union all
+        select
+            'qmd_missoes_geometria',
+            'merge_dedup',
+            count(*),
+            date(min(first_seen)),
+            max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_missoes_geometria") }}
+        union all
+        select
+            'qmd_kml_outros',
+            'merge_dedup',
+            count(*),
+            date(min(first_seen)),
+            max(last_seen),
+            count(*) - count(distinct id_hash)
+        from {{ ref("raw_segur_forca_municipal__qmd_kml_outros") }}
         union all
         select
             'qmd_missoes',

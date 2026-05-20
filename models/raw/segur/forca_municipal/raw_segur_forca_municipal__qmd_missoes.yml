@@ -61,7 +61,7 @@ models:
         data_type: string
       - name: id_qmd
         description: >
-          Identificador do QMD pai. FK para `qmd` e `qmd_kml`.
+          Identificador do QMD pai. FK para `qmd`, `qmd_bases` e `qmd_missoes_geometria`.
         data_type: string
       - name: id_unidade
         description: >
@@ -73,7 +73,7 @@ models:
       - name: id_missao
         description: >
           Identificador único da missão. Chave primária do nível de missão.
-          FK para `qmd_kml.id_missao` (mesmo valor, mesmo tipo STRING).
+          FK para `qmd_missoes_geometria.id_missao` (mesmo valor, mesmo tipo STRING).
         data_type: string
       - name: id_servico
         description: >
@@ -86,7 +86,7 @@ models:
           Tipo da missão. Valores observados: `PTR` (Patrulhamento — LineString),
           `PB` (Ponto Base — Point), `DS` (Deslocamento — sem geometria),
           `RF` (Ronda — Polygon), `SV` (Supervisão — Polygon), `SP` (não
-          documentado). Mesmo campo que `qmd_kml.tipo_missao`.
+          documentado). Mesmo campo que `qmd_missoes_geometria.tipo_missao`.
         data_type: string
       - name: roteiro
         description: >
@@ -96,13 +96,13 @@ models:
       - name: hora_inicio_missao
         description: >
           Hora de início planejada da missão. Mesmo campo que
-          `qmd_kml.hora_inicio_missao`. Complementa `qmd.hora_inicio_qmd`
+          `qmd_missoes_geometria.hora_inicio_missao`. Complementa `qmd.hora_inicio_qmd`
           (que é o turno do QMD inteiro).
         data_type: time
       - name: hora_fim_missao
         description: >
           Hora de fim planejada da missão. Mesmo campo que
-          `qmd_kml.hora_fim_missao`. Pode cruzar meia-noite se
+          `qmd_missoes_geometria.hora_fim_missao`. Pode cruzar meia-noite se
           `hora_fim_missao < hora_inicio_missao`.
         data_type: time
       - name: dias
@@ -129,6 +129,15 @@ models:
           na staging. Usar como filtro primário: `WHERE indicador_ativo` para
           missões em vigor.
         data_type: bool
+      - name: tipo_geometria
+        description: >
+          Tipo da geometria da missão. Determinado pelo `tipo_missao`:
+          `LINESTRING` (PTR), `POINT` (PB), `POLYGON` (RF, SV, SP).
+          `NULL` para missões DS (sem geometria).
+          Usar para filtrar antes de operações espaciais — `ST_WITHIN` só faz sentido
+          com `POLYGON`, distância de rota usa `LINESTRING`.
+          Mesmo valor que `qmd_missoes_geometria.tipo_geometria` (uppercase).
+        data_type: string
       - name: geometria_wkt
         description: >
           Geometria da missão em formato WKT (Well-Known Text), extraída do campo
@@ -143,6 +152,6 @@ models:
           `NULL` para missões do tipo `DS` (deslocamento — sem área de cobertura).
           Tipos de geometria: LineString (`PTR`), Point (`PB`),
           Polygon (`RF`, `SV`, `SP`).
-          Para o mart `mart_qmd_missoes_completo`, preferir `qmd_kml.geometry`
-          como fonte autoritativa — join por `id_missao WHERE pasta_kml = 'MISSAO'`.
+          Para análises espaciais, preferir `qmd_missoes_geometria.geometry`
+          como fonte autoritativa — join por `id_missao`.
         data_type: geography

@@ -1,0 +1,102 @@
+version: 2
+
+models:
+  - name: raw_segur_forca_municipal__qmd_missoes_geometria
+    description: >
+      Geometria de cada missão exportada via KML — uma linha por missão.
+      Fonte autoritativa para operações espaciais (`ST_WITHIN`, `ST_INTERSECTS`, etc.).
+      Cobertura: 1.133 missões, incluindo QMDs inativos e missões sem serviço alocado
+      (ausentes em `qmd_missoes`). Missões DS (Deslocamento) não têm feature KML
+      e portanto não aparecem aqui.
+      Frequência de atualização: diária.
+      Fonte: GET /api/qmd/kml (pasta `Missões`).
+      Órgão gestor dos dados: SEGUR / Força Municipal.
+    columns:
+      - name: id_hash
+        description: >
+          Hash MD5 de 32 hex calculado por linha sobre as colunas da API (excluindo
+          `updated_at`). Chave única desta tabela — uma linha por versão de missão.
+        data_type: string
+        tests:
+          - not_null
+          - unique
+      - name: first_seen
+        description: >
+          Datetime da primeira coleta em que esta versão do registro foi observada.
+          Derivado de `MIN(updated_at)`. Imutável após o insert.
+        data_type: datetime
+      - name: last_seen
+        description: >
+          Datetime da última coleta em que esta versão do registro foi observada.
+          Derivado de `MAX(updated_at)`.
+        data_type: datetime
+      - name: updated_at
+        description: >
+          Datetime da coleta mais recente em que esta versão foi observada
+          (America/Sao_Paulo). Igual a `last_seen`.
+        data_type: datetime
+      - name: data_particao
+        description: >
+          Data da partição mais recente em que esta versão foi observada.
+          Equivalente a `DATE(last_seen)`.
+        data_type: date
+      - name: id_qmd
+        description: >
+          Identificador do QMD ao qual a missão pertence.
+          FK para `qmd`, `qmd_missoes`, `qmd_bases`.
+        data_type: string
+      - name: id_missao
+        description: >
+          Identificador único da missão. FK para `qmd_missoes.id_missao`.
+          Usar para join entre geometria e alocação operacional.
+        data_type: string
+      - name: nome
+        description: >
+          Nome da feição KML no padrão `"Missão NNN - Tipo"` (ex. `"Missão 795 - Pb"`).
+        data_type: string
+      - name: tipo_missao
+        description: >
+          Tipo da missão. Valores: `PTR` (Patrulhamento), `PB` (Ponto de Bloqueio),
+          `RF` (Ronda em Foco), `SV` (Supervisão), `SP`.
+          Missões `DS` (Deslocamento) não aparecem nesta tabela — não têm geometria KML.
+          Mesmo campo que `qmd_missoes.tipo_missao`.
+        data_type: string
+      - name: tipo_geometria
+        description: >
+          Tipo da geometria. Determinado pelo `tipo_missao`:
+          `LineString` (PTR), `Point` (PB), `Polygon` (RF, SV, SP).
+          Usar para filtrar antes de operações espaciais — `ST_WITHIN` só faz sentido
+          com `Polygon`, `ST_DISTANCE` para rotas usa `LineString`.
+        data_type: string
+      - name: hora_inicio_missao
+        description: >
+          Hora de início planejada da missão. Extraída de `dados_extendidos.HoraInicio`.
+          Mesmo valor que `qmd_missoes.hora_inicio_missao` — concordância 100% verificada.
+        data_type: time
+      - name: hora_fim_missao
+        description: >
+          Hora de fim planejada da missão. Extraída de `dados_extendidos.HoraFim`.
+          Mesmo valor que `qmd_missoes.hora_fim_missao` — concordância 100% verificada.
+        data_type: time
+      - name: descricao
+        description: >
+          HTML com atributos da missão: tipo, roteiro, horário. Sempre preenchido.
+        data_type: string
+      - name: dados_extendidos
+        description: >
+          JSON com metadados da missão. Campos: `MissaoId`, `Tipo`, `Roteiro`,
+          `HoraInicio`, `HoraFim`, `Servicos` (string CSV de id_unidade — não
+          normalizado, pode repetir a mesma unidade em semanas diferentes).
+        data_type: string
+      - name: geometria_wkt
+        description: >
+          Geometria da missão em formato WKT. Fonte autoritativa — preferir sobre
+          `qmd_missoes.geometria_wkt` para análises espaciais.
+        data_type: string
+      - name: geometry
+        description: >
+          Geometria da missão como `GEOGRAPHY`, pronta para funções `ST_*`.
+          Derivada de `geometria_wkt` via `SAFE.ST_GEOGFROMTEXT(..., make_valid => TRUE)`.
+          Tipo varia por `tipo_geometria`: LineString (PTR), Point (PB), Polygon (RF, SV, SP).
+          Nunca NULL nesta tabela — missões sem geometria (DS) não têm feature KML.
+        data_type: geography

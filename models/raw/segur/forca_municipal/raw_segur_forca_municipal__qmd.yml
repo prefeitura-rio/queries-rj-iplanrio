@@ -56,7 +56,7 @@ models:
       - name: id_qmd
         description: >
           Identificador único do QMD. Chave primária desta tabela e FK em
-          `qmd_servicos`, `qmd_detalhes` e `qmd_kml`.
+          `qmd_servicos`, `qmd_missoes`, `qmd_bases` e `qmd_missoes_geometria`.
         data_type: string
       - name: nome
         description: >
@@ -69,7 +69,7 @@ models:
           Localização de atuação do QMD descrita por cruzamentos ou pontos de
           referência específicos (ex. "Rodoviária X Terminal Gentileza X Estação
           Leopoldina"). Campo descritivo — não é bairro nem zona administrativa.
-          Para análise espacial usar as geometrias em `qmd_detalhes` ou `qmd_kml`.
+          Para análise espacial usar as geometrias em `qmd_missoes_geometria`.
           Não confundir com `area_planejamento` em `ocorrencias_historico`/`ocorrencias_ativas_v2`
           (código AP1.1 etc.) — são conceitos distintos.
         data_type: string
@@ -83,8 +83,8 @@ models:
         data_type: datetime
       - name: hora_inicio_qmd
         description: >
-          Hora de início do turno diário de execução do QMD. Segue o padrão
-          `hora_inicio_*`/`hora_fim_*` de `qmd_kml`. Pode ser igual a `hora_fim_qmd`
+          Hora de início do turno diário de execução do QMD. Mesmo padrão de
+          `hora_inicio_missao` em `qmd_missoes` e `qmd_missoes_geometria`. Pode ser igual a `hora_fim_qmd`
           em casos não documentados (observado em 5 QMDs ativos).
         data_type: time
       - name: hora_fim_qmd
