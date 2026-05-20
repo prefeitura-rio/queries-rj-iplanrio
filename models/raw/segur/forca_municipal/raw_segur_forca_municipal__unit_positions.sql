@@ -36,8 +36,8 @@ with
             -- dados
             datetime(safe_cast(Date as timestamp), 'America/Sao_Paulo') as data_hora,
             safe_cast(data_coleta as date) as data_coleta,
-            regexp_extract(upper(trim(safe_cast(UnitId as string))), r'^([A-Z]+)\d') as tipo_unidade,
-            regexp_extract(upper(trim(safe_cast(UnitId as string))), r'-(.+)$')      as base_operacional,
+            {{ tipo_unidade('UnitId') }}       as tipo_unidade,
+            {{ base_operacional('UnitId') }}   as base_operacional,
 
             -- espacial
             safe_cast(Latitude as float64) as latitude,

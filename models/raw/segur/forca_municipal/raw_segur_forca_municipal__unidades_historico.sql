@@ -82,7 +82,7 @@ with
             safe_cast(totaleventcount as int64) as total_ocorrencias,
             safe_cast(changecomment as string) as comentario_alteracao,
             safe_cast(customdata as string) as dados_customizados,
-            regexp_extract(upper(trim(safe_cast(UnitId as string))), r'-(.+)$') as base_operacional,
+            {{ base_operacional('UnitId') }} as base_operacional,
 
             -- espacial
             safe_cast(latitude as float64) as latitude,

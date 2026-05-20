@@ -37,9 +37,12 @@ with
             -- dados
             {{ padronize_id('Id') }} as id_servico,
             upper(trim(safe_cast(Nome as string))) as id_unidade,
-            safe_cast(Dias as string) as dias,
-            regexp_extract(upper(trim(safe_cast(Nome as string))), r'^([A-Z]+)\d') as tipo_unidade,
-            regexp_extract(upper(trim(safe_cast(Nome as string))), r'-(.+)$')      as base_operacional
+            array(
+                select json_value(dia, '$')
+                from unnest(json_query_array(safe_cast(Dias as string))) as dia
+            )                         as dias,
+            {{ tipo_unidade('Nome') }}       as tipo_unidade,
+            {{ base_operacional('Nome') }}   as base_operacional
 
         from source
     ),
