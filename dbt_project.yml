@@ -62,7 +62,7 @@ models:
         +tags: ["segur"]
         forca_municipal:
           +materialized: table
-          +schema: forca_municipals
+          +schema: forca_municipal
           +tags: ["daily"]
       pgm:
         +tags: "pgm"

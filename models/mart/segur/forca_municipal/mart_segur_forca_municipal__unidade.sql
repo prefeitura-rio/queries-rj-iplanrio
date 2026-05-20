@@ -11,26 +11,17 @@
 -- Fonte autoritativa: unidades_historico, que expõe unittype como campo nativo da API.
 -- base_operacional é o único campo derivado por regex — centralizado aqui para
 -- que nenhum modelo downstream precise derivá-lo.
+-- Uma linha por id_unidade via QUALIFY: estado mais recente do registro.
 with
     unidades_historico as (
         select * from {{ ref("raw_segur_forca_municipal__unidades_historico") }}
-    ),
-
-    -- Uma linha por id_unidade.
-    -- tipo_unidade e id_estacao vêm do campo nativo da API (sem regex).
-    -- base_operacional vem da macro centralizada (único ponto de regex).
-    -- id_agencia é estável por unidade — any_value é seguro.
-    dim as (
-        select
-            id_unidade,
-            any_value(tipo_unidade) as tipo_unidade,
-            any_value(base_operacional) as base_operacional,
-            any_value(id_estacao) as id_estacao,
-            any_value(id_agencia) as id_agencia,
-        from unidades_historico
-        where id_unidade is not null
-        group by id_unidade
     )
 
-select *
-from dim
+select id_unidade, tipo_unidade, base_operacional, id_estacao, id_agencia
+from unidades_historico
+where id_unidade is not null
+qualify
+    row_number() over (
+        partition by id_unidade order by data_hora_criacao desc, ordem_criacao desc
+    )
+    = 1
