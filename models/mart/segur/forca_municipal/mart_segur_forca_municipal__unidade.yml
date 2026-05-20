@@ -1,14 +1,12 @@
 version: 2
 
 models:
-  - name: dim_unidade
+  - name: mart_segur_forca_municipal__unidade
     description: >
       Dimensão de unidades operacionais da Força Municipal. Uma linha por unidade
       (id_unidade), consolidada a partir do histórico de atividade. Fonte
       autoritativa para tipo_unidade e base_operacional — modelos downstream não
       precisam derivar esses campos via regex.
-    config:
-      schema: segur_forca_municipal
     columns:
       - name: id_unidade
         description: >

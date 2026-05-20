@@ -1,6 +1,6 @@
 {{
     config(
-        alias="dim_unidade",
+        alias="unidade",
         schema="forca_municipal",
         materialized="table",
         cluster_by=["tipo_unidade", "base_operacional"],

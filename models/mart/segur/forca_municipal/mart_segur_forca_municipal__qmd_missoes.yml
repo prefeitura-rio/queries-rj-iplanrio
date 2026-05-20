@@ -1,21 +1,16 @@
 version: 2
 
 models:
-  - name: mart_qmd_missoes_completo
+  - name: mart_segur_forca_municipal__qmd_missoes
     description: >
       Mart canônico de planejamento operacional da Força Municipal.
       Grain: uma linha por unidade × missão (id_servico × id_missao).
 
-      Consolida em uma única tabela o join que toda query CompStat precisava
-      re-escrever: qmd_plano → qmd_servicos → qmd → qmd_missoes →
-      qmd_missoes_geometria → qmd_bases.
+      Consolida em uma única tabela o join que toda query downstream precisava
+      re-escrever: qmd_plano → qmd_servicos → qmd → qmd_missoes.
 
-      geometry_missao é o polígono/linha/ponto autoritativo da missão
-      (NULL para missões de tipo DS — Deslocamento, que não têm feature KML).
-      geometry_qmd é o ponto físico do QMD.
-    config:
-      schema: forca_municipal
-
+      Geometrias disponíveis nas tabelas raw qmd_geometria_missoes_* (missões)
+      e qmd_geometria_bases (ponto físico do QMD).
     columns:
       # ── identificadores ──────────────────────────────────────────────────
       - name: id_plano
@@ -36,7 +31,7 @@ models:
           - not_null
 
       - name: id_missao
-        description: FK para qmd_missoes / qmd_missoes_geometria. Identifica a missão.
+        description: FK para qmd_missoes. Identifica a missão.
         tests:
           - not_null
 
@@ -101,8 +96,7 @@ models:
       - name: indicador_hora_cruza_meia_noite
         description: >
           TRUE quando hora_fim_qmd < hora_inicio_qmd (turno que cruza 00:00).
-          Crítico para joins temporais em mart_unidade_em_missao — o filtro de
-          hora precisa de lógica condicional nesse caso.
+          Joins temporais com unit_positions requerem lógica condicional nesse caso.
 
       - name: duracao_minutos_qmd
         description: Duração total do turno do QMD em minutos (corrigido para turnos noturnos).
@@ -149,14 +143,4 @@ models:
           Tipo da geometry da missão derivado do WKT (POINT, LINESTRING, POLYGON).
           NULL para missões DS (sem feature geoespacial).
 
-      # ── espacial ──────────────────────────────────────────────────────────
-      - name: geometry_missao
-        description: >
-          Geometry autoritativa da missão (fonte: qmd_missoes_geometria / KML dedicado).
-          NULL para missões DS. Para análise espacial, prefer este campo ao WKT
-          de qmd_missoes.
 
-      - name: geometry_qmd
-        description: >
-          Ponto físico do QMD (fonte: qmd_bases). Representa a localização geral
-          do QMD, não a área de cobertura de missões individuais.
