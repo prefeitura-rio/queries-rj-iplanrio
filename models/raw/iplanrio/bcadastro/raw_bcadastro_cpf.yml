@@ -6,18 +6,6 @@ models:
       Tabela contendo dados de pessoas físicas do Cadastro de Pessoas Físicas (CPF).
       Atualizada diariamente a partir do sistema BCadastro.
       Stakeholders principais: Secretaria Municipal de Fazenda.
-    config:
-      alias: cpf
-      schema: brutos_bcadastro
-      materialized: table
-      partition_by:
-        field: cpf_particao
-        data_type: int64
-        range:
-          start: 0
-          end: 100000000000
-          interval: 25000000
-
     columns:
       - name: cpf
         description: "Número de inscrição no Cadastro de Pessoas Físicas (CPF)"
