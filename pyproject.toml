@@ -3,10 +3,9 @@ name = "queries-rj-iplanrio"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13,<3.14"
 dependencies = [
-    "dbt-bigquery==1.11.0b1",
-    "dbt-core==1.10.9",
+    "dbt-bigquery==1.11.1",
     "pyyaml>=6.0.2",
     "shandy-sqlfmt[jinjafmt]>=0.26.0",
 ]
