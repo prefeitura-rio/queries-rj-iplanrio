@@ -10,7 +10,7 @@ models:
       re-escrever: qmd_plano → qmd_servicos → qmd → qmd_missoes.
 
       Geometrias disponíveis nas tabelas raw qmd_geometria_missoes_* (missões)
-      e qmd_geometria_bases (ponto físico do QMD).
+      e qmd_geometria_sede (ponto físico do QMD).
     columns:
       # ── identificadores ──────────────────────────────────────────────────
       - name: id_plano
