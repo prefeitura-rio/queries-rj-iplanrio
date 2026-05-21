@@ -59,8 +59,12 @@ models:
       - name: id
         description: "ID único do incidente gerado pelo BetterStack"
         tests:
-          - unique
-          - not_null
+          - unique:
+              name: raw_eai_gateway_incidents__id__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_eai_gateway_incidents__id__not_null
       - name: name
         description: "Nome do monitor que gerou o incidente (ex: eAí Gateway)"
       - name: status

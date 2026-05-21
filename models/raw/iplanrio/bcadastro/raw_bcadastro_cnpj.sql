@@ -1,3 +1,21 @@
+{{
+    config(
+        alias="cnpj",
+        schema="brutos_bcadastro",
+        materialized="table",
+        tags=["raw", "bcadastro", "cnpj"],
+        partition_by={
+            "field": "cnpj_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 99999999999999,
+                "interval": 25000000000,
+            },
+        },
+    )
+}}
+
 with
     -- SOURCES
     cnpj_base as (select * from {{ ref("int_bcadastro_chcnpj_parse") }}),
@@ -102,8 +120,8 @@ with
         array_convert_tb as (
         select
             id_cnpj,
-            array_agg(distinct tut.descricao) as tipos_unidade,
-            array_agg(distinct fat.descricao) as formas_atuacao,
+            array_agg(distinct tut.descricao ignore nulls) as tipos_unidade,
+            array_agg(distinct fat.descricao ignore nulls) as formas_atuacao,
             array_agg(distinct json_value(cs)) as cnae_secundarias
         from
             cnpj_renomeada t,
@@ -116,14 +134,16 @@ with
                 from dominio
                 where column = 'tipo_unidade'
             ) tut
-            on cast(cast(json_value(tu) as int64) as string) = tut.tipos_unidade_id
+            on cast(safe_cast(nullif(trim(json_value(tu)), '') as int64) as string)
+            = tut.tipos_unidade_id
         left join
             (
                 select id as formas_atuacao_id, descricao
                 from dominio
                 where column = 'forma_atuacao'
             ) fat
-            on cast(cast(json_value(fa) as int64) as string) = fat.formas_atuacao_id
+            on cast(safe_cast(nullif(trim(json_value(fa)), '') as int64) as string)
+            = fat.formas_atuacao_id
         group by id_cnpj
     ),
 
@@ -153,11 +173,8 @@ with
                 where column = 'qualificacao_representante_legal'
             ) qrl
             on cast(
-                cast(
-                    nullif(
-                        json_value(so, '$.qualificacaoRepresentanteLegal'), ""
-                    ) as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(so, '$.qualificacaoRepresentanteLegal')), '') as int64)
+                as string
             )
             = qrl.qualificacao_representante_legal_id
         left join
@@ -167,9 +184,8 @@ with
                 where column = 'qualificacao_socio'
             ) qs
             on cast(
-                cast(
-                    nullif(json_value(so, '$.qualificacaoSocio'), "") as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(so, '$.qualificacaoSocio')), '') as int64)
+                as string
             )
             = qs.qualificacao_socio_id
         left join
@@ -178,7 +194,7 @@ with
                 from dominio
                 where column = 'tipo_socio'
             ) ts
-            on cast(cast(nullif(json_value(so, '$.tipo'), "") as int64) as string)
+            on cast(safe_cast(nullif(trim(json_value(so, '$.tipo')), '') as int64) as string)
             = ts.tipo_socio_id
     ),
 
@@ -238,9 +254,8 @@ with
         left join
             (select id as evento_id, descricao from dominio where column = 'eventos') ev
             on cast(
-                cast(
-                    nullif(json_value(su, '$.codigoEventoSucedida'), "") as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(su, '$.codigoEventoSucedida')), '') as int64)
+                as string
             )
             = ev.evento_id
         group by id_cnpj_sucedida
@@ -531,7 +546,7 @@ with
         left join array_convert_tb as actb on t.id_cnpj = actb.id_cnpj
         left join
             municipio_bd as md
-            on cast(t.id_municipio as int64) = cast(md.id_municipio_rf as int64)
+            on safe_cast(t.id_municipio as int64) = safe_cast(md.id_municipio_rf as int64)
         left join
             (
                 select id as id_situacao_cadastral, descricao
