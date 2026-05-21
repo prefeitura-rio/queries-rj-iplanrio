@@ -26,14 +26,12 @@ with
             -- Alphabetically ordered fields
             nullif(json_value(doc, '$.bairro'), '') as bairro,
             cast(
-                cast(
-                    nullif(json_value(doc, '$.classificacaoCrcContadorPF'), '') as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(doc, '$.classificacaoCrcContadorPF')), '') as int64)
+                as string
             ) as classificacaoCrcContadorPF,
             cast(
-                cast(
-                    nullif(json_value(doc, '$.classificacaoCrcContadorPJ'), '') as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(doc, '$.classificacaoCrcContadorPJ')), '') as int64)
+                as string
             ) as classificacaoCrcContadorPJ,
             nullif(json_value(doc, '$.cnae'), '') as cnae,
             nullif(json_value(doc, '$.cnaeSecundarias'), '') as cnaeSecundarias,
@@ -81,19 +79,17 @@ with
             end as enteFederativo,
             json_extract_array(doc, '$.formasAtuacao') as formasAtuacao,
             cast(
-                cast(
-                    nullif(json_value(doc, '$.indicadorMatriz'), '') as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(doc, '$.indicadorMatriz')), '') as int64)
+                as string
             ) as indicadorMatriz,
             nullif(json_value(doc, '$.language'), '') as language,
             nullif(json_value(doc, '$.logradouro'), '') as logradouro,
             cast(
-                cast(nullif(json_value(doc, '$.motivoSituacao'), '') as int64) as string
+                safe_cast(nullif(trim(json_value(doc, '$.motivoSituacao')), '') as int64) as string
             ) as motivoSituacao,
             cast(
-                cast(
-                    nullif(json_value(doc, '$.naturezaJuridica'), '') as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(doc, '$.naturezaJuridica')), '') as int64)
+                as string
             ) as naturezaJuridica,
             nullif(json_value(doc, '$.nire'), '') as nire,
             nullif(json_value(doc, '$.nomeCidadeExterior'), '') as nomeCidadeExterior,
@@ -101,12 +97,11 @@ with
             nullif(json_value(doc, '$.nomeFantasia'), '') as nomeFantasia,
             nullif(json_value(doc, '$.numero'), '') as numero,
             cast(
-                cast(nullif(json_value(doc, '$.porteEmpresa'), '') as int64) as string
+                safe_cast(nullif(trim(json_value(doc, '$.porteEmpresa')), '') as int64) as string
             ) as porteEmpresa,
             cast(
-                cast(
-                    nullif(json_value(doc, '$.qualificacaoResponsavel'), '') as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(doc, '$.qualificacaoResponsavel')), '') as int64)
+                as string
             ) as qualificacaoResponsavel,
             nullif(
                 json_value(doc, '$.sequencialCrcContadorPF'), ''
@@ -115,9 +110,8 @@ with
                 json_value(doc, '$.sequencialCrcContadorPJ'), ''
             ) as sequencialCrcContadorPJ,
             cast(
-                cast(
-                    nullif(json_value(doc, '$.situacaoCadastral'), '') as int64
-                ) as string
+                safe_cast(nullif(trim(json_value(doc, '$.situacaoCadastral')), '') as int64)
+                as string
             ) as situacaoCadastral,
             nullif(json_value(doc, '$.situacaoEspecial'), '') as situacaoEspecial,
             json_extract_array(doc, '$.socios') as socios,

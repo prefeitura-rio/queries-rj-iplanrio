@@ -24,7 +24,7 @@ with
     fonte_parseada as (
         select
             -- Alphabetically ordered fields
-            cast(nullif(json_value(doc, '$.anoExerc'), "") as int64) as anoExerc,
+            safe_cast(nullif(trim(json_value(doc, '$.anoExerc')), "") as int64) as anoExerc,
             nullif(json_value(doc, '$.anoObito'), "") as anoObito,
             nullif(json_value(doc, '$.bairro'), "") as bairro,
             nullif(json_value(doc, '$.cep'), "") as cep,
