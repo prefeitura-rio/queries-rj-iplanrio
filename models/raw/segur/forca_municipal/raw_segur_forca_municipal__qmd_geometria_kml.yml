@@ -60,15 +60,45 @@ models:
         description: >
           Tipo da geometria: LineString (PTR), Point (PB/QMD), Polygon (RF/SV/SP).
         data_type: string
+      - name: tipo_operacional
+        tests:
+          - not_null
+        description: >
+          Classificação operacional da feature, derivada de múltiplos sinais (kml_folder,
+          id_missao, tipo_missao, tipo_geometria, ST_AREA) para robustez. NULL quando os
+          sinais discordam — indica inconsistência no dado fonte. Valores:
+          'sede' — localização física do QMD (kml_folder='qmd' + id_missao IS NULL);
+          'patrulha' — rota PTR (tipo_missao='PTR' + LineString);
+          'posto' — ponto fixo PB (tipo_missao='PB' + Point);
+          'area' — polígono RF/SV/SP de base inteira >10 km², sem valor analítico;
+          'subarea' — polígono RF/SV/SP de subárea operacional ≤10 km².
+        data_type: string
+      - name: indicador_geometry_util
+        description: >
+          FALSE apenas para polígonos de base inteira (tipo_operacional = 'area', ST_AREA > 10 km²).
+          TRUE para todo o resto: sede, patrulha, posto e subarea são sempre úteis.
+          Usar como filtro primário em análises de conformidade espacial.
+        data_type: bool
       - name: hora_inicio_missao
         description: Hora de início planejada. Extraída de dados_extendidos.HoraInicio. NULL para bases.
         data_type: time
       - name: hora_fim_missao
         description: Hora de fim planejada. Extraída de dados_extendidos.HoraFim. NULL para bases.
         data_type: time
+      - name: roteiro_raw
+        description: >
+          Valor bruto de $.Roteiro da API, apenas com trim aplicado. Preserva prefixos
+          de tipo (ex: "RF\t", "SUPERVISÃO\t") e acentuação original. Usado internamente
+          como sinal de redundância textual na classificação de tipo_operacional:
+          'area da base' → exclusivo de polígonos de base inteira;
+          'dentro da subarea' → exclusivo de subáreas operacionais.
+          NULL para features da pasta QMD (bases) e missões sem roteiro definido.
+        data_type: string
       - name: roteiro
         description: >
-          Descrição textual do roteiro/área, com prefixo de tipo removido.
+          Descrição textual do roteiro/área. Prefixo de tipo (ex: "RF\t", "PTR_01\t") e
+          prefixo "Dentro da Subárea" removidos na transformação — inconsistência do dado
+          fonte onde o mesmo geometry aparecia com e sem o prefixo.
           NULL para features da pasta QMD.
         data_type: string
       - name: servicos
