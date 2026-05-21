@@ -1,12 +1,12 @@
 version: 2
 
 models:
-  - name: raw_segur_forca_municipal__qmd_geometria_missoes_rotas
+  - name: raw_segur_forca_municipal__qmd_geometria_missoes_area
     description: >
-      Rotas de patrulhamento (tipo_missao = 'PTR') — geometria LineString.
-      Derivado de qmd_kml, apenas filtra por tipo_missao.
-      Representa os caminhos planejados que as viaturas/motos devem percorrer.
-      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_rotas USING (id_missao).
+      Polígonos de base inteira RF/SV/SP com ST_AREA > 10 km² — sem valor analítico direto.
+      Derivado de qmd_geometria_kml, filtra por tipo_operacional = 'area'.
+      Para zonas operacionais reais (≤10 km²), usar qmd_geometria_missoes_subarea.
+      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_area USING (id_missao).
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.
     columns:
@@ -38,24 +38,25 @@ models:
         description: Nome da feature KML.
         data_type: string
       - name: tipo_missao
-        description: Sempre 'PTR' nesta tabela.
+        description: "Tipo da missão. Valores nesta tabela: 'RF', 'SV', 'SP'."
         data_type: string
       - name: tipo_geometria
-        description: Sempre 'LineString' nesta tabela.
+        description: Sempre 'Polygon' nesta tabela.
         data_type: string
       - name: hora_inicio_missao
-        description: Hora de início planejada da rota.
+        description: Hora de início planejada da missão de área.
         data_type: time
       - name: hora_fim_missao
-        description: Hora de fim planejada da rota.
+        description: Hora de fim planejada da missão de área.
         data_type: time
       - name: roteiro
         description: >
-          Sequência de ruas do percurso de patrulha, com prefixo de tipo removido.
+          Nome da subárea ou descrição da área de cobertura, sem prefixos de tipo
+          ou "Dentro da Subárea" (removidos na transformação do base model).
           100% preenchido.
         data_type: string
       - name: servicos
-        description: Unidades alocadas a esta rota. ARRAY<STRING> de valores distintos.
+        description: Unidades alocadas a esta área. ARRAY<STRING> de valores distintos.
         data_type: "array<string>"
       - name: descricao
         description: HTML com atributos da missão.
@@ -64,10 +65,11 @@ models:
         description: JSON bruto com metadados da missão.
         data_type: string
       - name: geometria_wkt
-        description: Geometria LineString em formato WKT.
+        description: Geometria Polygon em formato WKT.
         data_type: string
       - name: geometry
         description: >
-          Geometria LineString como GEOGRAPHY. Usar ST_DWITHIN para verificar
-          se um ponto GPS está próximo da rota planejada.
+          Geometria Polygon como GEOGRAPHY. Usar ST_WITHIN para verificar
+          se um ponto GPS está dentro da área planejada.
         data_type: geography
+

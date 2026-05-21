@@ -1,6 +1,6 @@
 {{
     config(
-        alias="qmd_geometria_missoes_pontos",
+        alias="qmd_geometria_missoes_posto",
         schema="brutos_forca_municipal",
         materialized="incremental",
         incremental_strategy="merge",
@@ -11,8 +11,8 @@
 }}
 
 -- Pontos de bloqueio (PB) — geometria Point.
--- Derivado de qmd_kml. Responsabilidade: representar posições fixas de bloqueio.
--- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_pontos USING (id_missao)
+-- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'posto'.
+-- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_posto USING (id_missao)
 
 select
     id_hash, first_seen, last_seen, updated_at, data_particao,
@@ -23,4 +23,4 @@ select
     descricao, dados_extendidos,
     geometria_wkt, geometry
 from {{ ref('raw_segur_forca_municipal__qmd_geometria_kml') }}
-where tipo_missao = 'PB'
+where tipo_operacional = 'posto'

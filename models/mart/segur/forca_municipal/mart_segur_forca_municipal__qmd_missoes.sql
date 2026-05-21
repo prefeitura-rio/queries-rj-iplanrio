@@ -10,7 +10,7 @@
 -- Mart canônico de planejamento operacional da Força Municipal.
 -- Grain: uma linha por unidade × missão (id_servico × id_missao).
 -- Elimina o join de 5 tabelas que toda query downstream precisava re-escrever.
--- Geometrias disponíveis nas tabelas raw qmd_geometria_missoes_* e qmd_geometria_bases.
+-- Geometrias disponíveis nas tabelas raw qmd_geometria_missoes_* e qmd_geometria_sede.
 with
     qmd_servicos as (
         select * from {{ ref("raw_segur_forca_municipal__qmd_servicos") }}
