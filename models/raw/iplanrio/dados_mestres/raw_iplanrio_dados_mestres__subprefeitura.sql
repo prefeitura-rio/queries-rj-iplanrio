@@ -1,14 +1,14 @@
 {{
     config(
         alias="subprefeitura",
-        description="Dados de subprefeituras do município do Rio de Janeiro"
+        description="Dados de subprefeituras do município do Rio de Janeiro",
     )
 }}
 
-SELECT 
-    SAFE_CAST(TRIM(nome_subprefeitura) AS STRING) AS subprefeitura,
-    SAFE_CAST(REGEXP_REPLACE(shape_area, r',', '.') AS FLOAT64) AS area,
-    SAFE_CAST(REGEXP_REPLACE(shape_length, r',', '.') AS FLOAT64) AS perimetro,
-    SAFE_CAST(geometry AS STRING) geometry_wkt,
-    ST_GEOGFROMTEXT(geometry, make_valid => TRUE) AS geometria,
-FROM {{ source("brutos_dados_mestres_staging", "subprefeitura") }} AS t
+select
+    safe_cast(trim(subprefeitura) as string) as subprefeitura,
+    safe_cast(regexp_replace(shape_area, r',', '.') as float64) as area,
+    safe_cast(regexp_replace(shape_length, r',', '.') as float64) as perimetro,
+    safe_cast(geometry as string) geometry_wkt,
+    st_geogfromtext(geometry, make_valid => true) as geometria,
+from {{ source("brutos_dados_mestres_staging", "subprefeitura") }} as t
