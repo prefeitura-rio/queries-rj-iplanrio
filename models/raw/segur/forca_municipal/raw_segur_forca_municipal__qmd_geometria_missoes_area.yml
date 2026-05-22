@@ -40,8 +40,14 @@ models:
       - name: tipo_missao
         description: "Tipo da missão. Valores nesta tabela: 'RF', 'SV', 'SP'."
         data_type: string
+      - name: tipo_missao_nome
+        description: "Nome do tipo. Valores nesta tabela: 'refeicao', 'supervisao', 'suporte'."
+        data_type: string
       - name: tipo_geometria
-        description: Sempre 'Polygon' nesta tabela.
+        description: Sempre 'POLYGON' nesta tabela.
+        data_type: string
+      - name: tipo_operacional
+        description: Sempre 'area' nesta tabela.
         data_type: string
       - name: hora_inicio_missao
         description: Hora de início planejada da missão de área.

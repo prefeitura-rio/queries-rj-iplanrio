@@ -62,6 +62,8 @@ with
 
             -- missão
             miss.tipo_missao,
+            miss.tipo_missao_nome,
+            miss.tipo_operacional,
             miss.tipo_geometria,
             miss.roteiro,
             miss.hora_inicio_missao,

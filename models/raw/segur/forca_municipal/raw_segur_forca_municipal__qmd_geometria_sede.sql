@@ -11,12 +11,18 @@
 }}
 
 -- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'sede'.
-
 select
-    id_hash, first_seen, last_seen, updated_at, data_particao,
+    id_hash,
+    first_seen,
+    last_seen,
+    updated_at,
+    data_particao,
     id_qmd,
-    nome, tipo_geometria,
+    nome,
+    tipo_geometria,
+    tipo_operacional,
     descricao,
-    geometria_wkt, geometry
+    geometria_wkt,
+    geometry
 from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
 where tipo_operacional = 'sede'

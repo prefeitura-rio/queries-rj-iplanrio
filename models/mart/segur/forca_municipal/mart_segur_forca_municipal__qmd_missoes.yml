@@ -118,6 +118,18 @@ models:
       - name: tipo_missao
         description: Tipo da missão (PTR, PB, RF, SV, SP, DS).
 
+      - name: tipo_missao_nome
+        description: >
+          Nome do tipo de missão. Valores: 'posto' (PB), 'patrulhamento' (PTR),
+          'refeicao' (RF), 'deslocamento' (DS), 'supervisao' (SV), 'suporte' (SP).
+          NULL para siglas não mapeadas.
+
+      - name: tipo_operacional
+        description: >
+          Classificação operacional da missão: 'patrulha' (PTR), 'posto' (PB),
+          'area' (RF/SV/SP > 10 km²), 'subarea' (RF/SV/SP ≤ 10 km²).
+          NULL para DS (sem geometria).
+
       - name: roteiro
         description: Descrição textual do roteiro da missão.
 
