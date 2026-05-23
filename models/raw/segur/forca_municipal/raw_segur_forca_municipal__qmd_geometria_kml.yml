@@ -56,9 +56,16 @@ models:
           Tipo da missão. Valores: PTR, PB, RF, SV, SP.
           NULL para features da pasta QMD (bases).
         data_type: string
+      - name: tipo_missao_nome
+        description: >
+          Nome do tipo de missão. Traduzido de tipo_missao via macro tipo_missao_nome.
+          Valores: 'posto' (PB), 'patrulhamento' (PTR), 'refeicao' (RF),
+          'supervisao' (SV), 'suporte' (SP).
+          NULL para features da pasta QMD (bases) e siglas não mapeadas.
+        data_type: string
       - name: tipo_geometria
         description: >
-          Tipo da geometria: LineString (PTR), Point (PB/QMD), Polygon (RF/SV/SP).
+          Tipo da geometria: LINESTRING (PTR), POINT (PB/QMD), POLYGON (RF/SV/SP).
         data_type: string
       - name: tipo_operacional
         tests:
@@ -68,8 +75,8 @@ models:
           id_missao, tipo_missao, tipo_geometria, ST_AREA) para robustez. NULL quando os
           sinais discordam — indica inconsistência no dado fonte. Valores:
           'sede' — localização física do QMD (kml_folder='qmd' + id_missao IS NULL);
-          'patrulha' — rota PTR (tipo_missao='PTR' + LineString);
-          'posto' — ponto fixo PB (tipo_missao='PB' + Point);
+          'patrulha' — rota PTR (tipo_missao='PTR' + LINESTRING);
+          'posto' — ponto fixo PB (tipo_missao='PB' + POINT);
           'area' — polígono RF/SV/SP de base inteira >10 km², sem valor analítico;
           'subarea' — polígono RF/SV/SP de subárea operacional ≤10 km².
         data_type: string
