@@ -47,8 +47,11 @@ models:
         data_type: string
       - name: tipo_geometria
         description: >
-          Tipo da geometria. Sempre `Point` para linhas desta tabela — cada QMD
+          Tipo da geometria. Sempre `POINT` para linhas desta tabela — cada QMD
           tem exatamente um ponto de localização.
+        data_type: string
+      - name: tipo_operacional
+        description: Sempre 'sede' nesta tabela.
         data_type: string
       - name: descricao
         description: >

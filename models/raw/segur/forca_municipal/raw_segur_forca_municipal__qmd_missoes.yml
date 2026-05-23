@@ -81,14 +81,30 @@ models:
       - name: tipo_missao
         description: >
           Tipo da missão. Valores observados: `PTR` (Patrulhamento — LineString),
-          `PB` (Ponto Base — Point), `DS` (Deslocamento — sem geometria),
-          `RF` (Ronda — Polygon), `SV` (Supervisão — Polygon), `SP` (não
-          documentado). Mesmo campo que `qmd_missoes_geometria.tipo_missao`.
+          `PB` (Posto de Bloqueio — Point), `DS` (Deslocamento — sem geometria),
+          `RF` (Ronda Fixa — Polygon), `SV` (Supervisão — Polygon),
+          `SP` (Suporte — Polygon). Mesmo campo que `qmd_missoes_geometria.tipo_missao`.
+        data_type: string
+      - name: tipo_missao_nome
+        description: >
+          Nome do tipo de missão. Traduzido de tipo_missao via macro tipo_missao_nome.
+          Valores: 'posto' (PB), 'patrulhamento' (PTR), 'refeicao' (RF),
+          'deslocamento' (DS), 'supervisao' (SV), 'suporte' (SP).
+          NULL para siglas não mapeadas.
+        data_type: string
+      - name: roteiro_raw
+        description: >
+          Valor bruto do campo `roteiro` da API, apenas com trim aplicado.
+          Preserva prefixos de tipo (ex: "RF\t", "PTR_01\t", "SUPERVISÃO\t") e
+          acentuação original. Incluído no cálculo do id_hash deste modelo.
+          NULL quando ausente na origem.
         data_type: string
       - name: roteiro
         description: >
-          Texto livre descrevendo a rota ou localização da missão
-          (ex. `PTR_01\tAv. Lauro Sodré, da Rua General Severiano até...`).
+          Roteiro com prefixos operacionais removidos via macro padronize_roteiro:
+          prefixo de tipo + número + tab (ex: "PTR_01\t", "DESLOCAMENTO\t") e
+          redundâncias textuais ("Dentro da Subárea", "Dentro da área da Base").
+          Equivalente ao roteiro de qmd_geometria_kml. NULL quando ausente na origem.
         data_type: string
       - name: hora_inicio_missao
         description: >
@@ -156,3 +172,12 @@ models:
           Para análises espaciais, preferir `qmd_missoes_geometria.geometry`
           como fonte autoritativa — join por `id_missao`.
         data_type: geography
+      - name: tipo_operacional
+        description: >
+          Classificação operacional da missão, derivada de múltiplos sinais
+          (tipo_missao, tipo_geometria, ST_AREA, roteiro_norm) para robustez.
+          Valores: 'patrulha' (PTR + LineString), 'posto' (PB + Point),
+          'area' (RF/SV/SP Polygon > 10 km²), 'subarea' (RF/SV/SP Polygon ≤ 10 km²).
+          NULL para DS (sem geometria) e combinações não mapeadas.
+          Não inclui 'sede' — exclusivo de qmd_geometria_kml (pasta QMD do KML).
+        data_type: string
