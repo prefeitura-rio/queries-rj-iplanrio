@@ -64,7 +64,7 @@ with
             -- dados
             {{ proper_br("safe_cast(name as string)") }} as nome,
             json_value(safe_cast(extended_data as string), '$.Tipo') as tipo_missao,
-            safe_cast(geometry_type as string) as tipo_geometria,
+            upper(trim(safe_cast(geometry_type as string))) as tipo_geometria,
             safe.parse_time(
                 '%H:%M', json_value(safe_cast(extended_data as string), '$.HoraInicio')
             ) as hora_inicio_missao,
@@ -73,19 +73,16 @@ with
             ) as hora_fim_missao,
             -- roteiro_raw: valor bruto de $.Roteiro, apenas trim. Usado como sinal
             -- de redundância textual na classificação de tipo_operacional.
-            trim(json_value(safe_cast(extended_data as string), '$.Roteiro')) as roteiro_raw,
-            -- roteiro: remove prefixo de tipo (ex: "RF\t", "PTR_01\t") e prefixo
-            -- "Dentro da Subárea" (inconsistência na fonte — mesmo geometry, nomes
-            -- distintos)
-            regexp_replace(
-                regexp_replace(
-                    trim(json_value(safe_cast(extended_data as string), '$.Roteiro')),
-                    r'^(?:RF|PTR|PB|SV|SP)(?:\s*_\d+)?\t',
-                    ''
-                ),
-                r'(?i)^Dentro da Sub[aá]rea\s*',
-                ''
-            ) as roteiro,
+            trim(
+                json_value(safe_cast(extended_data as string), '$.Roteiro')
+            ) as roteiro_raw,
+            -- roteiro: prefixos operacionais e redundâncias removidos via macro.
+            -- Ver macro padronize_roteiro para a lista completa de padrões stripados.
+            {{
+                padronize_roteiro(
+                    "json_value(safe_cast(extended_data as string), '$.Roteiro')"
+                )
+            }} as roteiro,
             -- servicos: unidades alocadas à missão (CSV da API → ARRAY de valores
             -- distintos)
             array(
@@ -186,52 +183,20 @@ with
             -- dados
             nome,
             tipo_missao,
+            {{ tipo_missao_nome("tipo_missao") }} as tipo_missao_nome,
             tipo_geometria,
-            -- Classificação operacional da feature — múltiplos sinais para robustez:
-            --   kml_folder     : distingue sede (qmd) de missão (missoes)
-            --   id_missao      : NULL exclusivamente para sedes QMD
-            --   tipo_missao    : código operacional (PTR, PB, RF, SV, SP)
-            --   tipo_geometria : consistente com tipo_missao (validação cruzada)
-            -- Para RF/SV/SP Polygon, dois sinais redundantes definem area vs subarea:
-            --   st_area        : sinal primário — gap confirmado em staging (1.7→295 km²)
-            --   roteiro_norm   : sinal secundário — padrões exclusivos por cluster:
-            --                    'area da base'     → exclusivo de polígonos grandes
-            --                    'dentro da subarea'→ exclusivo de polígonos pequenos
-            -- Um sinal basta (OR). Se ambos discordarem, CASE ordering decide: area primeiro.
-            -- NULL indica combinação de sinais não mapeada — dado fonte inconsistente.
-            case
-                -- Sede QMD: pasta qmd E missão nula (dois sinais)
-                when lower(trim(kml_folder)) = 'qmd' and id_missao is null
-                then 'sede'
-                -- Patrulha PTR: tipo_missao E geometria LineString
-                when
-                    lower(trim(tipo_missao)) = 'ptr'
-                    and lower(trim(tipo_geometria)) = 'linestring'
-                then 'patrulha'
-                -- Posto fixo PB: tipo_missao E geometria Point
-                when
-                    lower(trim(tipo_missao)) = 'pb'
-                    and lower(trim(tipo_geometria)) = 'point'
-                then 'posto'
-                -- Área de base inteira: sinal primário (> 10 km²) OU texto 'area da base'
-                when
-                    lower(trim(tipo_missao)) in ('rf', 'sv', 'sp')
-                    and lower(trim(tipo_geometria)) = 'polygon'
-                    and (
-                        st_area(geometry) > {{ limite_area_m2 }}
-                        or regexp_contains(roteiro_norm, r'area da base')
-                    )
-                then 'area'
-                -- Subárea operacional: sinal primário (≤ 10 km²) OU texto 'dentro da subarea'
-                when
-                    lower(trim(tipo_missao)) in ('rf', 'sv', 'sp')
-                    and lower(trim(tipo_geometria)) = 'polygon'
-                    and (
-                        st_area(geometry) <= {{ limite_area_m2 }}
-                        or regexp_contains(roteiro_norm, r'dentro da subarea')
-                    )
-                then 'subarea'
-            end as tipo_operacional,
+            -- Ver macro tipo_operacional para documentação dos sinais e tipos.
+            {{
+                tipo_operacional(
+                    tipo_missao="tipo_missao",
+                    tipo_geometria="tipo_geometria",
+                    geometry="geometry",
+                    roteiro_norm="roteiro_norm",
+                    limite_area_m2=limite_area_m2,
+                    kml_folder="kml_folder",
+                    id_missao="id_missao",
+                )
+            }} as tipo_operacional,
             -- FALSE para tipo_operacional = 'area' (mesmos sinais duais acima).
             -- TRUE para todo o resto: sede, patrulha, posto e subarea são sempre úteis.
             case

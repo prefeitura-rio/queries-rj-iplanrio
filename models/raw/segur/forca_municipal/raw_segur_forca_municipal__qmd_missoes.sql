@@ -72,53 +72,85 @@ with
             safe.parse_time(
                 '%H:%M', json_value(missao, '$.horaFim')
             ) as hora_fim_missao,
-            -- dias: ARRAY<STRUCT<week_day, week_day_number>> — consistente com qmd_servicos.dias
+            -- dias: ARRAY<STRUCT<week_day, week_day_number>> — consistente com
+            -- qmd_servicos.dias
             array(
                 select as struct
                     json_value(dia, '$') as week_day,
-                    case json_value(dia, '$')
-                        when 'seg' then 1
-                        when 'ter' then 2
-                        when 'qua' then 3
-                        when 'qui' then 4
-                        when 'sex' then 5
-                        when 'sab' then 6
-                        when 'dom' then 7
-                    end                  as week_day_number
+                    case
+                        json_value(dia, '$')
+                        when 'seg'
+                        then 1
+                        when 'ter'
+                        then 2
+                        when 'qua'
+                        then 3
+                        when 'qui'
+                        then 4
+                        when 'sex'
+                        then 5
+                        when 'sab'
+                        then 6
+                        when 'dom'
+                        then 7
+                    end as week_day_number
                 from unnest(json_query_array(json_value(servico, '$.dias'))) as dia
             ) as dias,
-            -- execuções planejadas: ARRAY<STRUCT<data_hora_inicio, data_hora_fim, week_day, week_day_number>>
-            -- cada entrada representa uma janela temporal de execução da missão naquele dia.
-            -- week_day/week_day_number derivados de data_hora_inicio eliminam a necessidade
+            -- execuções planejadas: ARRAY<STRUCT<data_hora_inicio, data_hora_fim,
+            -- week_day, week_day_number>>
+            -- cada entrada representa uma janela temporal de execução da missão
+            -- naquele dia.
+            -- week_day/week_day_number derivados de data_hora_inicio eliminam a
+            -- necessidade
             -- de derivar o dia da semana no mart a partir do GPS.
-            -- unnest([scalar]) é usado para calcular dt_i uma única vez e reutilizar nos 3 campos.
+            -- unnest([scalar]) é usado para calcular dt_i uma única vez e reutilizar
+            -- nos 3 campos.
             array(
                 select as struct
-                    dt_i                                                           as data_hora_inicio,
+                    dt_i as data_hora_inicio,
                     datetime(
                         safe_cast(json_value(exec, '$.dataHoraFim') as timestamp),
                         'America/Sao_Paulo'
-                    )                                                              as data_hora_fim,
-                    case format_date('%u', date(dt_i))
-                        when '1' then 'seg'
-                        when '2' then 'ter'
-                        when '3' then 'qua'
-                        when '4' then 'qui'
-                        when '5' then 'sex'
-                        when '6' then 'sab'
-                        when '7' then 'dom'
-                    end                                                            as week_day,
-                    safe_cast(format_date('%u', date(dt_i)) as int64)             as week_day_number
-                from unnest(json_query_array(json_query(servico, '$.execucoes'))) as exec,
-                unnest([datetime(
-                    safe_cast(json_value(exec, '$.dataHoraInicio') as timestamp),
-                    'America/Sao_Paulo'
-                )]) as dt_i
+                    ) as data_hora_fim,
+                    case
+                        format_date('%u', date(dt_i))
+                        when '1'
+                        then 'seg'
+                        when '2'
+                        then 'ter'
+                        when '3'
+                        then 'qua'
+                        when '4'
+                        then 'qui'
+                        when '5'
+                        then 'sex'
+                        when '6'
+                        then 'sab'
+                        when '7'
+                        then 'dom'
+                    end as week_day,
+                    safe_cast(format_date('%u', date(dt_i)) as int64) as week_day_number
+                from
+                    unnest(
+                        json_query_array(json_query(servico, '$.execucoes'))
+                    ) as exec,
+                    unnest(
+                        [
+                            datetime(
+                                safe_cast(
+                                    json_value(exec, '$.dataHoraInicio') as timestamp
+                                ),
+                                'America/Sao_Paulo'
+                            )
+                        ]
+                    ) as dt_i
             ) as execucoes,
             indicador_ativo,
             upper(
-                regexp_extract(
-                    nullif(json_value(missao, '$.geometriaWkt'), ''), r'^([A-Z]+)'
+                trim(
+                    regexp_extract(
+                        nullif(json_value(missao, '$.geometriaWkt'), ''), r'^([A-Z]+)'
+                    )
                 )
             ) as tipo_geometria,
 
@@ -173,7 +205,7 @@ with
             any_value(id_missao) as id_missao,
             any_value(id_servico) as id_servico,
             any_value(tipo_missao) as tipo_missao,
-            any_value(roteiro) as roteiro,
+            any_value(roteiro) as roteiro_raw,
             any_value(hora_inicio_missao) as hora_inicio_missao,
             any_value(hora_fim_missao) as hora_fim_missao,
             any_value(dias) as dias,
@@ -186,7 +218,32 @@ with
             any_value(geometry) as geometry
         from com_hash
         group by id_hash
+    ),
+
+    enriquecido as (
+        -- roteiro     : roteiro_raw com prefixos operacionais removidos (via macro).
+        -- Equivalente ao roteiro de qmd_geometria_kml.
+        -- roteiro_norm: normalização de roteiro_raw para derivação de tipo_operacional
+        -- (lower + trim + NFD). Calculado sobre raw para preservar os
+        -- padrões textuais usados na classificação. Não exposto no final.
+        select
+            *,
+            {{ padronize_roteiro("roteiro_raw") }} as roteiro,
+            lower(
+                trim(regexp_replace(normalize(roteiro_raw, nfd), r'\pM', ''))
+            ) as roteiro_norm
+        from deduplicado
     )
 
-select *
-from deduplicado
+select
+    * except (roteiro_norm),
+    {{ tipo_missao_nome("tipo_missao") }} as tipo_missao_nome,
+    {{
+        tipo_operacional(
+            tipo_missao="tipo_missao",
+            tipo_geometria="tipo_geometria",
+            geometry="geometry",
+            roteiro_norm="roteiro_norm",
+        )
+    }} as tipo_operacional
+from enriquecido

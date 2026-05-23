@@ -40,8 +40,14 @@ models:
       - name: tipo_missao
         description: Sempre 'PB' nesta tabela.
         data_type: string
+      - name: tipo_missao_nome
+        description: Sempre 'posto' nesta tabela.
+        data_type: string
       - name: tipo_geometria
-        description: Sempre 'Point' nesta tabela.
+        description: Sempre 'POINT' nesta tabela.
+        data_type: string
+      - name: tipo_operacional
+        description: Sempre 'posto' nesta tabela.
         data_type: string
       - name: hora_inicio_missao
         description: Hora de início planejada do bloqueio.
