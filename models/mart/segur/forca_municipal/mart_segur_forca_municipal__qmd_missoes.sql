@@ -10,17 +10,70 @@
 -- Mart canônico de planejamento operacional da Força Municipal.
 -- Grain: uma linha por unidade × missão (id_servico × id_missao).
 -- Elimina o join de 5 tabelas que toda query downstream precisava re-escrever.
--- Geometrias disponíveis nas tabelas raw qmd_geometria_missoes_* e qmd_geometria_sede.
+-- Geometria da missão incluída diretamente (geometria_wkt + geometry).
 with
     qmd_servicos as (
-        select * from {{ ref("raw_segur_forca_municipal__qmd_servicos") }}
+        select id_servico, id_plano, id_qmd, id_unidade, tipo_unidade, base_operacional
+        from {{ ref("raw_segur_forca_municipal__qmd_servicos") }}
     ),
 
-    qmd_plano as (select * from {{ ref("raw_segur_forca_municipal__qmd_plano") }}),
+    qmd_plano as (
+        select
+            id_plano,
+            nome,
+            area,
+            numero_semana,
+            data_semana_referencia_inicio,
+            data_semana_referencia_fim,
+            indicador_plano_unificado,
+            indicador_plano_encerrado,
+            indicador_plano_teste
+        from {{ ref("raw_segur_forca_municipal__qmd_plano") }}
+    ),
 
-    qmd as (select * from {{ ref("raw_segur_forca_municipal__qmd") }}),
+    -- QUALIFY: qmd é SCD — múltiplos snapshots por id_qmd quando indicadores mudam.
+    -- Seleciona o snapshot mais recente para evitar fan-out no join.
+    qmd as (
+        select
+            id_qmd,
+            nome,
+            localizacao_patrulha,
+            data_hora_vigencia_inicio,
+            data_hora_vigencia_fim,
+            hora_inicio_qmd,
+            hora_fim_qmd,
+            indicador_ativo,
+            indicador_valido,
+            indicador_autorizado,
+            indicador_hora_cruza_meia_noite,
+            duracao_minutos_qmd,
+            prescricoes,
+            resumo
+        from {{ ref("raw_segur_forca_municipal__qmd") }}
+        qualify row_number() over (partition by id_qmd order by last_seen desc) = 1
+    ),
 
-    qmd_missoes as (select * from {{ ref("raw_segur_forca_municipal__qmd_missoes") }}),
+    qmd_missoes as (
+        select
+            id_servico,
+            id_qmd,
+            id_missao,
+            tipo_missao,
+            tipo_missao_nome,
+            tipo_operacional,
+            tipo_geometria,
+            roteiro,
+            id_roteiro,
+            id_subarea,
+            id_area,
+            hora_inicio_missao,
+            hora_fim_missao,
+            dias,
+            execucoes,
+            geometria_wkt,
+            geometry
+        from {{ ref("raw_segur_forca_municipal__qmd_missoes") }}
+    ),
 
     joined as (
         select
@@ -72,13 +125,69 @@ with
             miss.hora_inicio_missao,
             miss.hora_fim_missao,
             miss.dias,
-            miss.execucoes
+            miss.execucoes,
+            miss.geometria_wkt,
+            miss.geometry
 
         from qmd_servicos as srv
         inner join qmd_plano as plano on srv.id_plano = plano.id_plano
         inner join qmd on srv.id_qmd = qmd.id_qmd
-        inner join qmd_missoes as miss on srv.id_servico = miss.id_servico
+        inner join qmd_missoes as miss
+            on  srv.id_servico = miss.id_servico
+            and srv.id_qmd     = miss.id_qmd
     )
 
-select *
+select
+    -- identificadores
+    id_plano,
+    id_qmd,
+    id_servico,
+    id_missao,
+    id_unidade,
+
+    -- plano semanal
+    nome_plano,
+    area,
+    numero_semana,
+    data_semana_referencia_inicio,
+    data_semana_referencia_fim,
+    indicador_plano_unificado,
+    indicador_plano_encerrado,
+    indicador_plano_teste,
+
+    -- QMD
+    nome_qmd,
+    localizacao_patrulha,
+    data_hora_vigencia_inicio,
+    data_hora_vigencia_fim,
+    hora_inicio_qmd,
+    hora_fim_qmd,
+    indicador_ativo,
+    indicador_valido,
+    indicador_autorizado,
+    indicador_hora_cruza_meia_noite,
+    duracao_minutos_qmd,
+    prescricoes,
+    resumo,
+
+    -- unidade
+    tipo_unidade,
+    base_operacional,
+
+    -- missão
+    tipo_missao,
+    tipo_missao_nome,
+    tipo_operacional,
+    tipo_geometria,
+    roteiro,
+    id_roteiro,
+    id_subarea,
+    id_area,
+    hora_inicio_missao,
+    hora_fim_missao,
+    dias,
+    execucoes,
+    geometria_wkt,
+    geometry
+
 from joined

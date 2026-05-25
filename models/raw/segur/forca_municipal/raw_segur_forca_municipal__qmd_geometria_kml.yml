@@ -13,12 +13,24 @@ models:
     columns:
       - name: id_hash
         description: >
-          Hash MD5 de 32 hex calculado sobre as colunas da API (excluindo updated_at).
-          Chave única — uma linha por versão de feature KML.
+          Hash MD5 estável calculado sobre campos estruturais imutáveis da geometry:
+          id_qmd, id_missao, geometria_wkt, tipo_missao, hora_inicio_missao,
+          hora_fim_missao, roteiro_raw. Exclui descricao e servicos (voláteis).
+          Chave única do SCD — 1 linha por geometry distinta, independente de
+          quantos planos referenciem a feature ao longo do tempo.
         data_type: string
         tests:
           - not_null
           - unique
+      - name: id_hash_original
+        description: >
+          Hash original do pipeline upstream rj-segur (inclui descricao e servicos).
+          Volátil: muda semanalmente pois descricao acumula a lista de todos os planos
+          que referenciam a geometry. Mantido para rastreabilidade e auditoria.
+          Atualizado via merge_update_columns para refletir o hash mais recente.
+        data_type: string
+        tests:
+          - not_null
       - name: first_seen
         description: Datetime da primeira coleta em que esta versão foi observada.
         data_type: datetime
