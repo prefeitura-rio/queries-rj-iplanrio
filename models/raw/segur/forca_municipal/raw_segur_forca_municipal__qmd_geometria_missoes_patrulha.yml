@@ -60,6 +60,25 @@ models:
           Sequência de ruas do percurso de patrulha, com prefixo de tipo removido.
           100% preenchido.
         data_type: string
+      - name: id_roteiro
+        description: Slug do roteiro. Agrupador para filtros — todas as geometrias com mesmo roteiro. 100% preenchido.
+        data_type: string
+        tests:
+          - not_null
+      - name: id_subarea
+        description: >
+          Slug da subárea à qual esta rota pertence geograficamente.
+          Join primário: mesmo QMD + ST_INTERSECTS. Fallback: subarea mais próxima de
+          qualquer QMD via ST_DISTANCE (sem filtro espacial) — cobre casos de borda/precisão.
+          NULL apenas quando não existem subareas cadastradas em nenhum QMD.
+        data_type: string
+      - name: id_area
+        description: >
+          Slug da área de base inteira à qual esta rota pertence geograficamente.
+          Join primário: mesmo QMD + ST_INTERSECTS. Fallback: area mais próxima de
+          qualquer QMD via ST_DISTANCE (sem filtro espacial).
+          NULL apenas quando não existem areas cadastradas em nenhum QMD.
+        data_type: string
       - name: servicos
         description: Unidades alocadas a esta rota. ARRAY<STRING> de valores distintos.
         data_type: "array<string>"

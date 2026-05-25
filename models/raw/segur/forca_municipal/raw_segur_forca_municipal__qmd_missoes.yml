@@ -106,6 +106,31 @@ models:
           redundâncias textuais ("Dentro da Subárea", "Dentro da área da Base").
           Equivalente ao roteiro de qmd_geometria_kml. NULL quando ausente na origem.
         data_type: string
+      - name: id_roteiro
+        description: >
+          Slug do roteiro para uso como agrupador em filtros de aplicação.
+          Derivado de roteiro via macro slugify: lowercase, sem acentos,
+          caracteres não-alfanuméricos substituídos por underscore.
+          NULL quando roteiro é NULL (missões DS ou sem roteiro definido).
+        data_type: string
+      - name: id_subarea
+        description: >
+          Slug da subárea à qual esta missão pertence geograficamente.
+          Derivado de qmd_geometria_kml via join em (id_missao, id_qmd) —
+          reutiliza o join espacial (ST_INTERSECTS + fallback ST_DISTANCE)
+          já computado no base model. Versão mais recente por last_seen desc.
+          NULL para missões DS (sem geometria) e quando não existem subareas
+          cadastradas no QMD.
+        data_type: string
+      - name: id_area
+        description: >
+          Slug da área de base inteira à qual esta missão pertence geograficamente.
+          Derivado de qmd_geometria_kml via join em (id_missao, id_qmd) —
+          reutiliza o join espacial (ST_INTERSECTS + fallback ST_DISTANCE)
+          já computado no base model. Versão mais recente por last_seen desc.
+          NULL para missões DS (sem geometria) e quando não existem areas
+          cadastradas no QMD.
+        data_type: string
       - name: hora_inicio_missao
         description: >
           Hora de início planejada da missão. Mesmo campo que

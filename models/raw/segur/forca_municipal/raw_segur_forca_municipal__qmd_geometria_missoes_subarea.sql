@@ -5,7 +5,7 @@
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
-        merge_update_columns=["last_seen", "data_particao", "updated_at"],
+        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_area"],
         cluster_by=["id_qmd"],
     )
 }}
@@ -30,6 +30,9 @@ select
     hora_inicio_missao,
     hora_fim_missao,
     roteiro,
+    id_roteiro,
+    id_subarea,
+    id_area,
     servicos,
     descricao,
     dados_extendidos,
