@@ -9,8 +9,8 @@ models:
       Consolida em uma única tabela o join que toda query downstream precisava
       re-escrever: qmd_plano → qmd_servicos → qmd → qmd_missoes.
 
-      Geometrias disponíveis nas tabelas raw qmd_geometria_missoes_* (missões)
-      e qmd_geometria_sede (ponto físico do QMD).
+      Inclui geometria da missão (geometria_wkt + geometry) diretamente.
+      Para o ponto físico do QMD, usar qmd_geometria_sede.
     columns:
       # ── identificadores ──────────────────────────────────────────────────
       - name: id_plano
@@ -140,15 +140,15 @@ models:
 
       - name: id_subarea
         description: >
-          Slug da subárea à qual esta missão pertence. Derivado do base model
-          qmd_geometria_kml via join em (id_missao, id_qmd).
-          NULL para missões DS e QMDs sem subarea definida.
+          Slug da subárea à qual esta missão pertence. Computado via equi-join
+          (id_qmd, id_servico) contra o RF do mesmo plano semanal — 100% cobertura.
+          NULL para missões DS (sem geometria).
 
       - name: id_area
         description: >
-          Slug da área de base inteira à qual esta missão pertence. Derivado do base
-          model qmd_geometria_kml via join em (id_missao, id_qmd).
-          NULL para missões DS e QMDs sem area definida.
+          Slug da área de base inteira (>10 km²) à qual esta missão pertence.
+          Equi-join primário (id_qmd, id_servico); fallback ST_DISTANCE cross-QMD.
+          NULL para missões DS (sem geometria).
 
       - name: hora_inicio_missao
         description: Horário de início da missão.
@@ -172,4 +172,16 @@ models:
           Tipo da geometry da missão derivado do WKT (POINT, LINESTRING, POLYGON).
           NULL para missões DS (sem feature geoespacial).
 
+      - name: geometria_wkt
+        description: >
+          Geometria da missão em formato WKT (Well-Known Text).
+          NULL para missões DS (sem feature geoespacial).
+        data_type: string
+
+      - name: geometry
+        description: >
+          Geometria da missão como GEOGRAPHY, pronta para funções ST_*.
+          POINT (PB), LINESTRING (PTR), POLYGON (RF/SV/SP).
+          NULL para missões DS (sem feature geoespacial).
+        data_type: geography
 

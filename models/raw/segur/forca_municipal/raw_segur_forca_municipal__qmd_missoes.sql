@@ -30,19 +30,6 @@ with
         {% endif %}
     ),
 
-    -- Versão mais recente de id_subarea e id_area por missão, derivada do base
-    -- model qmd_geometria_kml que já fez o join espacial (ST_INTERSECTS + fallback
-    -- ST_DISTANCE). Versões históricas da mesma missão (mesmo id_missao + id_qmd,
-    -- geometria mudou) são colapsadas pelo QUALIFY — last_seen desc.
-    kml_missao as (
-        select id_missao, id_qmd, tipo_missao, id_subarea, id_area
-        from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
-        where id_missao is not null
-        qualify
-            row_number() over (partition by id_missao, id_qmd order by last_seen desc)
-            = 1
-    ),
-
     -- uma linha por missão por QMD
     com_missoes as (
         select
@@ -270,15 +257,97 @@ with
         from enriquecido
     ),
 
-    com_ids_geo as (
-        select d.*, kml.id_subarea, kml.id_area
+    -- -------------------------------------------------------------------------
+    -- Polígonos de referência derivados do próprio qmd_missoes.
+    -- RF/SV/SP com tipo_operacional='subarea' (≤10 km²): zonas operacionais.
+    -- RF/SV/SP com tipo_operacional='area'   (>10 km²): bases inteiras.
+    -- Chave de deduplicação: (id_qmd, id_servico) — plano semanal da unidade.
+    -- Confirmado nos dados: sempre exatamente 1 RF subarea por (id_qmd, id_servico).
+    -- -------------------------------------------------------------------------
+    -- id_subarea: resolvido por equi-join (id_qmd, id_servico).
+    -- id_servico é o plano semanal da unidade — cobre todas as suas missões
+    -- na semana (DS + PTR/PB + RF). Confirmado nos dados:
+    -- · 100% dos PTR e PB têm exatamente 1 RF subarea no mesmo id_servico.
+    -- · Join é 1:1 por construção — sem ST_INTERSECTS, sem QUALIFY no join.
+    -- QUALIFY de segurança: preferência RF sobre SV/SP no caso raro de coexistência.
+    subareas as (
+        select id_qmd, id_servico, id_roteiro as id_subarea
+        from derivado
+        where tipo_operacional = 'subarea'
+        qualify
+            row_number() over (
+                partition by id_qmd, id_servico
+                order by case tipo_missao when 'RF' then 1 else 2 end
+            )
+            = 1
+    ),
+
+    -- id_area: mesmo padrão de id_subarea — equi-join primário (id_qmd, id_servico),
+    -- fallback ST_DISTANCE cross-QMD para o que não resolver.
+    areas as (
+        select id_qmd, id_servico, geometry, id_roteiro as id_area
+        from derivado
+        where tipo_operacional = 'area'
+        qualify
+            row_number() over (
+                partition by id_qmd, id_servico
+                order by case tipo_missao when 'RF' then 1 else 2 end
+            ) = 1
+    ),
+
+    -- -------------------------------------------------------------------------
+    -- id_subarea: equi-join por (id_qmd, id_servico) — sem custo espacial.
+    -- · subarea: identifica-se com sua própria zona (id_roteiro).
+    -- · patrulha/posto: join direto ao RF do mesmo plano semanal.
+    -- · DS/area/NULL: id_subarea = NULL.
+    -- -------------------------------------------------------------------------
+    com_ids_subarea as (
+        select
+            d.*,
+            coalesce(
+                case when d.tipo_operacional = 'subarea' then d.id_roteiro end,
+                s.id_subarea
+            ) as id_subarea
         from derivado d
         left join
-            kml_missao kml
-            on d.id_missao = kml.id_missao
-            and d.id_qmd = kml.id_qmd
-            and d.tipo_missao = kml.tipo_missao
+            subareas s
+            on d.id_qmd = s.id_qmd
+            and d.id_servico = s.id_servico
+            and d.tipo_operacional in ('patrulha', 'posto')
+    ),
+
+    -- -------------------------------------------------------------------------
+    -- id_area: equi-join primário (id_qmd, id_servico) + fallback ST_DISTANCE.
+    -- · area: identifica-se com sua própria zona (id_roteiro).
+    -- · patrulha/posto/subarea: equi-join resolve se area estiver no mesmo plano;
+    -- fallback ST_DISTANCE cross-QMD cobre o caso normal (QMDs distintos).
+    -- · DS/NULL: id_area = NULL.
+    -- -------------------------------------------------------------------------
+    com_ids_area as (
+        select
+            cs.*,
+            coalesce(
+                case when cs.tipo_operacional = 'area' then cs.id_roteiro end,
+                a_serv.id_area,
+                a_geo.id_area
+            ) as id_area
+        from com_ids_subarea cs
+        left join
+            areas a_serv
+            on cs.id_qmd = a_serv.id_qmd
+            and cs.id_servico = a_serv.id_servico
+            and cs.tipo_operacional in ('patrulha', 'posto', 'subarea')
+        left join areas a_geo on cs.tipo_operacional in ('patrulha', 'posto', 'subarea')
+        qualify
+            row_number() over (
+                partition by cs.id_hash
+                order by
+                    (a_serv.id_area is not null) desc,
+                    st_distance(cs.geometry, a_geo.geometry) nulls last,
+                    coalesce(a_serv.id_area, a_geo.id_area) nulls last
+            )
+            = 1
     )
 
 select *
-from com_ids_geo
+from com_ids_area

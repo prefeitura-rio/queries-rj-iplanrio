@@ -3,101 +3,87 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__qmd_geometria_missoes_area
     description: >
-      Polígonos de base inteira RF/SV/SP com ST_AREA > 10 km² — sem valor analítico direto.
-      Derivado de qmd_geometria_kml, filtra por tipo_operacional = 'area'.
-      Para zonas operacionais reais (≤10 km²), usar qmd_geometria_missoes_subarea.
-      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_area USING (id_missao).
+      Polígonos de base inteira RF/SV/SP com ST_AREA > 10 km² — geometria Polygon.
+      Derivado de qmd_missoes (filtro: tipo_operacional = 'area').
+      Grain: (id_missao, id_servico) — um polígono por plano semanal.
+      Inclui apenas missões com unidade alocada — sem missões sem planejamento.
+      Para o mapa completo incluindo missões não alocadas, usar qmd_geometria_kml.
+      Para zonas operacionais reais (≤ 10 km²), usar qmd_geometria_missoes_subarea.
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.
     columns:
       - name: id_hash
         description: >
-          Hash MD5 estável sobre campos estruturais (id_qmd, id_missao, geometria_wkt,
-          tipo_missao, hora_inicio/fim, roteiro_raw). Exclui descricao e servicos.
-          Chave única — 1 linha por geometry distinta. Herdado de qmd_geometria_kml.
+          Hash MD5 herdado de qmd_missoes. Chave única por plano semanal:
+          (id_qmd, id_missao, id_servico, tipo_missao, roteiro, hora_inicio/fim,
+          dias, execucoes, geometria_wkt). Um polígono por plano semanal.
         data_type: string
         tests:
           - not_null
           - unique
-      - name: id_hash_original
-        description: Hash original do pipeline upstream rj-segur. Volátil — mantido para rastreabilidade.
-        data_type: string
-        tests:
-          - not_null
-      - name: first_seen
-        description: Datetime da primeira coleta desta versão.
-        data_type: datetime
-      - name: last_seen
-        description: Datetime da última coleta desta versão.
-        data_type: datetime
-      - name: updated_at
-        description: Igual a last_seen.
-        data_type: datetime
-      - name: data_particao
-        description: Data da partição mais recente desta versão.
-        data_type: date
       - name: id_qmd
-        description: Identificador do QMD. FK para qmd.
+        description: Identificador do QMD.
         data_type: string
       - name: id_missao
-        description: Identificador da missão. FK para qmd_missoes.id_missao.
+        description: Identificador da missão. Estável entre semanas para o mesmo polígono.
         data_type: string
-      - name: nome
-        description: Nome da feature KML.
+      - name: id_servico
+        description: Identificador do plano semanal desta unidade. Muda a cada semana de planejamento.
+        data_type: string
+      - name: id_unidade
+        description: Unidade alocada a esta área no plano semanal.
         data_type: string
       - name: tipo_missao
-        description: "Tipo da missão. Valores nesta tabela: 'RF', 'SV', 'SP'."
+        description: "Tipo da missão. Valores observados nesta tabela: 'RF', 'SV', 'SP'."
         data_type: string
       - name: tipo_missao_nome
-        description: "Nome do tipo. Valores nesta tabela: 'refeicao', 'supervisao', 'suporte'."
-        data_type: string
-      - name: tipo_geometria
-        description: Sempre 'POLYGON' nesta tabela.
+        description: Nome do tipo de missão (refeicao, supervisao, suporte).
         data_type: string
       - name: tipo_operacional
         description: Sempre 'area' nesta tabela.
         data_type: string
+      - name: tipo_geometria
+        description: Sempre 'POLYGON' nesta tabela.
+        data_type: string
       - name: hora_inicio_missao
-        description: Hora de início planejada da missão de área.
+        description: Hora de início planejada da missão na área.
         data_type: time
       - name: hora_fim_missao
-        description: Hora de fim planejada da missão de área.
+        description: Hora de fim planejada da missão na área.
         data_type: time
       - name: roteiro
-        description: >
-          Nome da subárea ou descrição da área de cobertura, sem prefixos de tipo
-          ou "Dentro da Subárea" (removidos na transformação do base model).
-          100% preenchido.
+        description: Descrição da área, com prefixo de tipo removido.
+        data_type: string
+      - name: roteiro_raw
+        description: Valor bruto do campo roteiro da API, com apenas trim aplicado.
         data_type: string
       - name: id_roteiro
-        description: Slug do roteiro. Agrupador para filtros — todas as geometrias com mesmo roteiro. 100% preenchido.
+        description: >
+          Slug da área. Igual a id_area para estas linhas (auto-referência).
+          Agrupador estável independente do plano semanal.
         data_type: string
       - name: id_subarea
-        description: >
-          Sempre NULL nesta tabela — area não faz join espacial com subarea.
-          Coluna presente para consistência de schema com os modelos patrulha e posto.
+        description: Sempre NULL para polígonos de área inteira (sem subárea associada).
         data_type: string
       - name: id_area
+        description: Igual a id_roteiro — a área identifica-se com sua própria zona.
+        data_type: string
+      - name: execucoes
         description: >
-          Igual a id_roteiro para linhas desta tabela — a área identifica-se com
-          sua própria zona.
-          Join direto: subarea.id_area = area.id_roteiro (= area.id_area).
-        data_type: string
-      - name: servicos
-        description: Unidades alocadas a esta área. ARRAY<STRING> de valores distintos.
-        data_type: "array<string>"
-      - name: descricao
-        description: HTML com atributos da missão.
-        data_type: string
-      - name: dados_extendidos
-        description: JSON bruto com metadados da missão.
-        data_type: string
+          Janelas temporais desta missão no plano semanal.
+          ARRAY<STRUCT<data_hora_inicio, data_hora_fim, week_day, week_day_number>>.
+        data_type: >
+          array<struct<data_hora_inicio datetime, data_hora_fim datetime,
+          week_day string, week_day_number int64>>
+      - name: dias
+        description: Dias da semana programados. ARRAY<STRUCT<week_day, week_day_number>>.
+        data_type: array<struct<week_day string, week_day_number int64>>
+      - name: indicador_ativo
+        description: TRUE se o QMD pai está ativo no momento da coleta.
+        data_type: bool
       - name: geometria_wkt
         description: Geometria Polygon em formato WKT.
         data_type: string
       - name: geometry
-        description: >
-          Geometria Polygon como GEOGRAPHY. Usar ST_WITHIN para verificar
-          se um ponto GPS está dentro da área planejada.
+        description: Geometria Polygon como GEOGRAPHY — base inteira do QMD operacional.
         data_type: geography
-
