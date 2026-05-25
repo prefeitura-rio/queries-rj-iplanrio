@@ -15,6 +15,7 @@
 -- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_posto USING (id_missao)
 select
     id_hash,
+    id_hash_original,
     first_seen,
     last_seen,
     updated_at,

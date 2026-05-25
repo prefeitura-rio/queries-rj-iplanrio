@@ -13,6 +13,7 @@
 -- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'sede'.
 select
     id_hash,
+    id_hash_original,
     first_seen,
     last_seen,
     updated_at,
