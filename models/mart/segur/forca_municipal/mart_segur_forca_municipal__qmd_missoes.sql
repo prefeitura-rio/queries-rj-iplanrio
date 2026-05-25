@@ -12,11 +12,19 @@
 -- Elimina o join de 5 tabelas que toda query downstream precisava re-escrever.
 -- Geometria da missão incluída diretamente (geometria_wkt + geometry).
 with
+    -- QUALIFY: quando uma unidade tem dois id_servico para o mesmo (id_qmd, id_plano)
+    -- (plano corrigido/substituído na mesma semana), mantém apenas o mais recente.
     qmd_servicos as (
         select id_servico, id_plano, id_qmd, id_unidade, tipo_unidade, base_operacional
         from {{ ref("raw_segur_forca_municipal__qmd_servicos") }}
+        qualify row_number() over (
+            partition by id_qmd, id_unidade, id_plano
+            order by last_seen desc
+        ) = 1
     ),
 
+    -- QUALIFY: plano é SCD — se a API corrigir metadados do plano na mesma semana,
+    -- mantém apenas o snapshot mais recente para evitar fan-out no join por id_plano.
     qmd_plano as (
         select
             id_plano,
@@ -29,6 +37,7 @@ with
             indicador_plano_encerrado,
             indicador_plano_teste
         from {{ ref("raw_segur_forca_municipal__qmd_plano") }}
+        qualify row_number() over (partition by id_plano order by last_seen desc) = 1
     ),
 
     -- QUALIFY: qmd é SCD — múltiplos snapshots por id_qmd quando indicadores mudam.
@@ -53,6 +62,9 @@ with
         qualify row_number() over (partition by id_qmd order by last_seen desc) = 1
     ),
 
+    -- QUALIFY: se a API corrigir uma missão (mesmo id_missao + id_servico + id_qmd,
+    -- novo conteúdo), o SCD produz dois id_hash → fan-out no join.
+    -- Mantém apenas o snapshot mais recente por chave de negócio.
     qmd_missoes as (
         select
             id_servico,
@@ -73,6 +85,10 @@ with
             geometria_wkt,
             geometry
         from {{ ref("raw_segur_forca_municipal__qmd_missoes") }}
+        qualify row_number() over (
+            partition by id_servico, id_qmd, id_missao
+            order by last_seen desc
+        ) = 1
     ),
 
     joined as (
