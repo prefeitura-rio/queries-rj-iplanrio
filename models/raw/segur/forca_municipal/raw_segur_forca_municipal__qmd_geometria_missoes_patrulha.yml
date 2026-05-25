@@ -3,39 +3,34 @@ version: 2
 models:
   - name: raw_segur_forca_municipal__qmd_geometria_missoes_patrulha
     description: >
-      Rotas de patrulhamento (tipo_missao = 'PTR') — geometria LineString.
-      Derivado de qmd_kml, apenas filtra por tipo_missao.
-      Representa os caminhos planejados que as viaturas/motos devem percorrer.
-      Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_patrulha USING (id_missao).
+      Rotas de patrulhamento (PTR) — geometria LineString.
+      Derivado de qmd_missoes (filtro: tipo_operacional = 'patrulha').
+      Grain: (id_missao, id_servico) — uma linha por rota por plano semanal.
+      Inclui apenas missões com unidade alocada — sem missões sem planejamento.
+      Para o mapa completo incluindo missões não alocadas, usar qmd_geometria_kml.
       Frequência de atualização: diária.
       Órgão gestor dos dados: SEGUR / Força Municipal.
     columns:
       - name: id_hash
-        description: Hash MD5 identificador único da versão da feature.
+        description: >
+          Hash MD5 herdado de qmd_missoes. Chave única por plano semanal:
+          (id_qmd, id_missao, id_servico, tipo_missao, roteiro, hora_inicio/fim,
+          dias, execucoes, geometria_wkt). Uma linha por rota por semana de plano.
         data_type: string
         tests:
           - not_null
           - unique
-      - name: first_seen
-        description: Datetime da primeira coleta desta versão.
-        data_type: datetime
-      - name: last_seen
-        description: Datetime da última coleta desta versão.
-        data_type: datetime
-      - name: updated_at
-        description: Igual a last_seen.
-        data_type: datetime
-      - name: data_particao
-        description: Data da partição mais recente desta versão.
-        data_type: date
       - name: id_qmd
-        description: Identificador do QMD. FK para qmd.
+        description: Identificador do QMD.
         data_type: string
       - name: id_missao
-        description: Identificador da missão. FK para qmd_missoes.id_missao.
+        description: Identificador da missão. Estável — não muda entre semanas para a mesma rota.
         data_type: string
-      - name: nome
-        description: Nome da feature KML.
+      - name: id_servico
+        description: Identificador do plano semanal desta unidade. Muda a cada semana de planejamento.
+        data_type: string
+      - name: id_unidade
+        description: Unidade alocada a esta rota no plano semanal. Ex. 'POG01-LITORANEA'.
         data_type: string
       - name: tipo_missao
         description: Sempre 'PTR' nesta tabela.
@@ -43,11 +38,11 @@ models:
       - name: tipo_missao_nome
         description: Sempre 'patrulhamento' nesta tabela.
         data_type: string
-      - name: tipo_geometria
-        description: Sempre 'LINESTRING' nesta tabela.
-        data_type: string
       - name: tipo_operacional
         description: Sempre 'patrulha' nesta tabela.
+        data_type: string
+      - name: tipo_geometria
+        description: Sempre 'LINESTRING' nesta tabela.
         data_type: string
       - name: hora_inicio_missao
         description: Hora de início planejada da rota.
@@ -56,38 +51,42 @@ models:
         description: Hora de fim planejada da rota.
         data_type: time
       - name: roteiro
-        description: >
-          Sequência de ruas do percurso de patrulha, com prefixo de tipo removido.
-          100% preenchido.
+        description: Sequência de ruas do percurso, com prefixo de tipo removido.
+        data_type: string
+      - name: roteiro_raw
+        description: Valor bruto do campo roteiro da API, com apenas trim aplicado.
         data_type: string
       - name: id_roteiro
-        description: Slug do roteiro. Agrupador para filtros — todas as geometrias com mesmo roteiro. 100% preenchido.
+        description: Slug do roteiro. Agrupador estável independente do plano semanal.
         data_type: string
         tests:
           - not_null
       - name: id_subarea
         description: >
-          Slug da subárea à qual esta rota pertence geograficamente.
-          Join primário: mesmo QMD + ST_INTERSECTS. Fallback: subarea mais próxima de
-          qualquer QMD via ST_DISTANCE (sem filtro espacial) — cobre casos de borda/precisão.
-          NULL apenas quando não existem subareas cadastradas em nenhum QMD.
+          Slug da subárea à qual esta rota pertence. Computado via equi-join
+          (id_qmd, id_servico) contra o RF do mesmo plano semanal — 100% cobertura,
+          join 1:1 por construção.
         data_type: string
       - name: id_area
         description: >
-          Slug da área de base inteira à qual esta rota pertence geograficamente.
-          Join primário: mesmo QMD + ST_INTERSECTS. Fallback: area mais próxima de
-          qualquer QMD via ST_DISTANCE (sem filtro espacial).
-          NULL apenas quando não existem areas cadastradas em nenhum QMD.
+          Slug da área de base inteira (>10 km²) à qual esta rota pertence.
+          Equi-join primário (id_qmd, id_servico); fallback ST_DISTANCE cross-QMD
+          — caminho esperado pois polígonos de area vivem em QMDs distintos.
         data_type: string
-      - name: servicos
-        description: Unidades alocadas a esta rota. ARRAY<STRING> de valores distintos.
-        data_type: "array<string>"
-      - name: descricao
-        description: HTML com atributos da missão.
-        data_type: string
-      - name: dados_extendidos
-        description: JSON bruto com metadados da missão.
-        data_type: string
+      - name: execucoes
+        description: >
+          Janelas temporais desta missão no plano semanal.
+          ARRAY<STRUCT<data_hora_inicio, data_hora_fim, week_day, week_day_number>>.
+          Usar para filtrar por semana: WHERE exec.data_hora_inicio BETWEEN ...
+        data_type: >
+          array<struct<data_hora_inicio datetime, data_hora_fim datetime,
+          week_day string, week_day_number int64>>
+      - name: dias
+        description: Dias da semana programados. ARRAY<STRUCT<week_day, week_day_number>>.
+        data_type: array<struct<week_day string, week_day_number int64>>
+      - name: indicador_ativo
+        description: TRUE se o QMD pai está ativo no momento da coleta.
+        data_type: bool
       - name: geometria_wkt
         description: Geometria LineString em formato WKT.
         data_type: string

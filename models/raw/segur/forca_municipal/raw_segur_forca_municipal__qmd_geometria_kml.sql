@@ -5,7 +5,7 @@
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
-        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_subarea", "id_area"],
+        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_subarea", "id_area", "id_hash_original"],
         cluster_by=["id_qmd", "tipo_missao"],
     )
 }}
@@ -45,7 +45,7 @@ with
     renamed as (
         select
             -- metadados da pipeline
-            {{ padronize_id("id_hash") }} as id_hash,
+            {{ padronize_id("id_hash") }} as id_hash_original,
             safe_cast(updated_at as datetime) as updated_at,
             safe_cast(data_particao as date) as data_particao,
 
@@ -116,6 +116,30 @@ with
         from source
     ),
 
+    -- -------------------------------------------------------------------------
+    -- Hash estável: exclui descricao e servicos (campos voláteis).
+    -- O id_hash_original do upstream muda semanalmente porque descricao acumula
+    -- a lista de todos os planos que referenciam a geometry (cresce a cada novo
+    -- id_plano). O id_hash novo é determinístico sobre campos estruturais
+    -- imutáveis, garantindo 1 linha por geometry distinta no SCD.
+    -- Campos incluídos: id_qmd, id_missao, geometria_wkt, tipo_missao,
+    --   hora_inicio_missao, hora_fim_missao, roteiro_raw.
+    -- -------------------------------------------------------------------------
+    com_hash_estavel as (
+        select
+            to_hex(md5(concat(
+                coalesce(id_qmd,        ''), '|',
+                coalesce(id_missao,     ''), '|',
+                coalesce(geometria_wkt, ''), '|',
+                coalesce(tipo_missao,   ''), '|',
+                coalesce(cast(hora_inicio_missao as string), ''), '|',
+                coalesce(cast(hora_fim_missao    as string), ''), '|',
+                coalesce(roteiro_raw,   '')
+            ))) as id_hash,
+            *
+        from renamed
+    ),
+
     deduplicado as (
         select
             -- metadados da pipeline
@@ -147,8 +171,11 @@ with
 
             -- espacial
             any_value(geometria_wkt) as geometria_wkt,
-            any_value(geometry) as geometry
-        from renamed
+            any_value(geometry) as geometry,
+
+            -- hash original do upstream (volátil — mantido para rastreabilidade)
+            any_value(id_hash_original) as id_hash_original
+        from com_hash_estavel
         group by id_hash
     ),
 
@@ -167,6 +194,7 @@ with
         select
             -- metadados
             id_hash,
+            id_hash_original,
             first_seen,
             last_seen,
             updated_at,
