@@ -44,7 +44,7 @@ models:
         description: Data da partição mais recente em que esta versão foi observada.
         data_type: date
       - name: id_qmd
-        description: Identificador do QMD. FK para qmd, qmd_missoes, qmd_bases.
+        description:           Identificador do QMD. FK para qmd e qmd_missoes.
         data_type: string
       - name: id_missao
         description: >

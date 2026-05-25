@@ -158,14 +158,19 @@ models:
 
       - name: dias
         description: >
-          Dias da semana em que a missão é executada (ARRAY<STRING>).
-          Valores: "Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab".
-          Para filtrar: WHERE 'Qua' IN UNNEST(dias).
+          Dias da semana em que a missão está programada.
+          ARRAY<STRUCT<week_day STRING, week_day_number INT64>>.
+          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
+          week_day_number: número ISO (1=seg … 7=dom).
+          Para filtrar: SELECT * FROM UNNEST(dias) WHERE week_day = 'qua'.
 
       - name: execucoes
         description: >
-          JSON com as execuções planejadas por dia (estrutura interna variável).
-          Unnest pertence a queries downstream — não é materializado aqui.
+          Janelas temporais planejadas desta missão, uma por dia agendado.
+          ARRAY<STRUCT<data_hora_inicio DATETIME, data_hora_fim DATETIME,
+          week_day STRING, week_day_number INT64>>.
+          Fonte autoritativa para joins temporais com unit_positions:
+          gps.data_hora BETWEEN exec.data_hora_inicio AND exec.data_hora_fim.
 
       - name: tipo_geometria
         description: >

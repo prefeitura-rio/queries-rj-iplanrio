@@ -21,6 +21,21 @@ models:
         tests:
           - not_null
           - unique
+      - name: first_seen
+        description: Datetime da primeira coleta em que esta versão foi observada. Herdado de qmd_missoes.
+        data_type: datetime
+      - name: last_seen
+        description: Datetime da última coleta em que esta versão foi observada. Herdado de qmd_missoes.
+        data_type: datetime
+      - name: updated_at
+        description: Igual a last_seen. Mantido para compatibilidade com o padrão do dataset.
+        data_type: datetime
+      - name: data_particao
+        description: Data da partição mais recente em que esta versão foi observada. Equivalente a DATE(last_seen).
+        data_type: date
+      - name: id_hash_pai
+        description: id_hash da linha em qmd_missoes da qual esta linha foi derivada. Para rastreabilidade.
+        data_type: string
       - name: id_qmd
         description: Identificador do QMD.
         data_type: string
