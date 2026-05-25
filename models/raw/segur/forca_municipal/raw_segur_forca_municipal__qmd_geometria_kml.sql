@@ -5,7 +5,7 @@
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
-        merge_update_columns=["last_seen", "data_particao", "updated_at"],
+        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_subarea", "id_area"],
         cluster_by=["id_qmd", "tipo_missao"],
     )
 }}
@@ -213,6 +213,7 @@ with
             hora_inicio_missao,
             hora_fim_missao,
             roteiro,
+            {{ slugify('roteiro') }} as id_roteiro,
             roteiro_raw,
             servicos,
             descricao,
@@ -222,7 +223,105 @@ with
             geometria_wkt,
             geometry
         from enriquecido
+    ),
+
+    -- Subareas e areas deduplificadas por (id_qmd, geometria_wkt) para join espacial.
+    -- Preferência RF sobre SV/SP quando o mesmo polígono é usado por múltiplos tipos.
+    -- Garante 1 linha por zona geográfica distinta por QMD.
+    subareas as (
+        select
+            id_qmd,
+            geometria_wkt,
+            geometry,
+            id_roteiro as id_subarea
+        from final
+        where tipo_operacional = 'subarea'
+        qualify
+            row_number() over (
+                partition by id_qmd, geometria_wkt
+                order by case tipo_missao when 'RF' then 1 else 2 end
+            ) = 1
+    ),
+
+    areas as (
+        select
+            id_qmd,
+            geometria_wkt,
+            geometry,
+            id_roteiro as id_area
+        from final
+        where tipo_operacional = 'area'
+        qualify
+            row_number() over (
+                partition by id_qmd, geometria_wkt
+                order by case tipo_missao when 'RF' then 1 else 2 end
+            ) = 1
+    ),
+
+    enriquecido_subarea as (
+        select
+            f.*,
+            coalesce(
+                -- subarea identifica-se com sua própria zona
+                case when f.tipo_operacional = 'subarea' then f.id_roteiro end,
+                -- patrulha/posto/sede: join primário (mesmo QMD + ST_INTERSECTS)
+                s_qmd.id_subarea,
+                -- patrulha/posto/sede: fallback ST_DISTANCE (qualquer QMD)
+                s_geo.id_subarea
+            ) as id_subarea
+        from final f
+        -- Primário: mesmo QMD + ST_INTERSECTS
+        left join subareas s_qmd
+            on  f.id_qmd = s_qmd.id_qmd
+            and f.tipo_operacional in ('patrulha', 'posto', 'sede')
+            and st_intersects(f.geometry, s_qmd.geometry)
+        -- Fallback: subarea mais próxima de qualquer QMD (sem filtro espacial).
+        -- Handles casos onde a feature está na borda ou fora do polígono por precisão.
+        -- O QUALIFY ordena por distância e seleciona a mais próxima.
+        left join subareas s_geo
+            on f.tipo_operacional in ('patrulha', 'posto', 'sede')
+        qualify
+            row_number() over (
+                partition by f.id_hash
+                order by
+                    -- 1. preferir match do mesmo QMD (ST_INTERSECTS)
+                    (s_qmd.id_subarea is not null) desc,
+                    -- 2. fallback: subarea mais próxima
+                    st_distance(f.geometry, s_geo.geometry) nulls last,
+                    -- 3. determinístico
+                    coalesce(s_qmd.id_subarea, s_geo.id_subarea) nulls last
+            ) = 1
+    ),
+
+    enriquecido_area as (
+        select
+            es.*,
+            coalesce(
+                -- area identifica-se com sua própria zona
+                case when es.tipo_operacional = 'area' then es.id_roteiro end,
+                -- patrulha/posto/sede/subarea: join primário (mesmo QMD + ST_INTERSECTS)
+                a_qmd.id_area,
+                -- patrulha/posto/sede/subarea: fallback ST_DISTANCE (qualquer QMD)
+                a_geo.id_area
+            ) as id_area
+        from enriquecido_subarea es
+        -- Primário: mesmo QMD + ST_INTERSECTS
+        left join areas a_qmd
+            on  es.id_qmd = a_qmd.id_qmd
+            and es.tipo_operacional in ('patrulha', 'posto', 'sede', 'subarea')
+            and st_intersects(es.geometry, a_qmd.geometry)
+        -- Fallback: area mais próxima de qualquer QMD (sem filtro espacial).
+        left join areas a_geo
+            on es.tipo_operacional in ('patrulha', 'posto', 'sede', 'subarea')
+        qualify
+            row_number() over (
+                partition by es.id_hash
+                order by
+                    (a_qmd.id_area is not null) desc,
+                    st_distance(es.geometry, a_geo.geometry) nulls last,
+                    coalesce(a_qmd.id_area, a_geo.id_area) nulls last
+            ) = 1
     )
 
 select *
-from final
+from enriquecido_area

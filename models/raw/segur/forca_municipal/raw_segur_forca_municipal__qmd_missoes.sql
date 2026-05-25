@@ -5,7 +5,13 @@
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
-        merge_update_columns=["last_seen", "data_particao", "updated_at"],
+        merge_update_columns=[
+            "last_seen",
+            "data_particao",
+            "updated_at",
+            "id_subarea",
+            "id_area",
+        ],
         cluster_by=["id_qmd", "tipo_missao"],
     )
 }}
@@ -22,6 +28,19 @@ with
                     from {{ source("brutos_forca_municipal_staging", "qmd_detalhes") }}
                 )
         {% endif %}
+    ),
+
+    -- Versão mais recente de id_subarea e id_area por missão, derivada do base
+    -- model qmd_geometria_kml que já fez o join espacial (ST_INTERSECTS + fallback
+    -- ST_DISTANCE). Versões históricas da mesma missão (mesmo id_missao + id_qmd,
+    -- geometria mudou) são colapsadas pelo QUALIFY — last_seen desc.
+    kml_missao as (
+        select id_missao, id_qmd, tipo_missao, id_subarea, id_area
+        from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
+        where id_missao is not null
+        qualify
+            row_number() over (partition by id_missao, id_qmd order by last_seen desc)
+            = 1
     ),
 
     -- uma linha por missão por QMD
@@ -233,17 +252,33 @@ with
                 trim(regexp_replace(normalize(roteiro_raw, nfd), r'\pM', ''))
             ) as roteiro_norm
         from deduplicado
+    ),
+
+    derivado as (
+        select
+            * except (roteiro_norm),
+            {{ tipo_missao_nome("tipo_missao") }} as tipo_missao_nome,
+            {{
+                tipo_operacional(
+                    tipo_missao="tipo_missao",
+                    tipo_geometria="tipo_geometria",
+                    geometry="geometry",
+                    roteiro_norm="roteiro_norm",
+                )
+            }} as tipo_operacional,
+            {{ slugify("roteiro") }} as id_roteiro
+        from enriquecido
+    ),
+
+    com_ids_geo as (
+        select d.*, kml.id_subarea, kml.id_area
+        from derivado d
+        left join
+            kml_missao kml
+            on d.id_missao = kml.id_missao
+            and d.id_qmd = kml.id_qmd
+            and d.tipo_missao = kml.tipo_missao
     )
 
-select
-    * except (roteiro_norm),
-    {{ tipo_missao_nome("tipo_missao") }} as tipo_missao_nome,
-    {{
-        tipo_operacional(
-            tipo_missao="tipo_missao",
-            tipo_geometria="tipo_geometria",
-            geometry="geometry",
-            roteiro_norm="roteiro_norm",
-        )
-    }} as tipo_operacional
-from enriquecido
+select *
+from com_ids_geo
