@@ -11,31 +11,39 @@
 }}
 
 -- Rotas de patrulhamento (PTR) — geometria LineString.
--- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'patrulha'.
--- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_patrulha USING (id_missao)
+-- Derivado de qmd_missoes. Filtro: tipo_operacional = 'patrulha'.
+-- Grain: (id_missao, id_servico) — uma linha por rota por plano semanal.
+-- Inclui apenas missões com unidade alocada. Para o mapa completo com missões
+-- não alocadas, usar qmd_geometria_kml (filtro tipo_operacional = 'patrulha').
 select
     id_hash,
     first_seen,
     last_seen,
     updated_at,
     data_particao,
+    id_hash_pai,
     id_qmd,
+    id_unidade,
     id_missao,
-    nome,
+    id_servico,
     tipo_missao,
-    tipo_missao_nome,
-    tipo_geometria,
-    tipo_operacional,
+    roteiro_raw,
     hora_inicio_missao,
     hora_fim_missao,
+    dias,
+    execucoes,
+    indicador_ativo,
+    tipo_geometria,
+    geometria_wkt,
+    geometry,
     roteiro,
+    tipo_missao_nome,
+    tipo_operacional,
     id_roteiro,
     id_subarea,
-    id_area,
-    servicos,
-    descricao,
-    dados_extendidos,
-    geometria_wkt,
-    geometry
-from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
+    id_area
+from {{ ref("raw_segur_forca_municipal__qmd_missoes") }}
 where tipo_operacional = 'patrulha'
+{% if is_incremental() %}
+    and data_particao >= (select max(data_particao) from {{ this }})
+{% endif %}

@@ -5,38 +5,45 @@
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
-        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_area"],
+        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_subarea", "id_area"],
         cluster_by=["id_qmd"],
     )
 }}
 
--- Subáreas operacionais (RF, SV, SP, ST_AREA ≤ 10 km²) — zona específica de missão.
--- Derivado de qmd_geometria_kml. Filtro: tipo_operacional = 'subarea'.
--- tipo_operacional e indicador_geometry_util computados no base model.
--- Join canônico: qmd_missoes LEFT JOIN qmd_geometria_missoes_subarea USING (id_missao)
+-- Subáreas operacionais RF/SV/SP com ST_AREA ≤ 10 km² — geometria Polygon.
+-- Derivado de qmd_missoes. Filtro: tipo_operacional = 'subarea'.
+-- Grain: (id_missao, id_servico) — uma zona por plano semanal.
+-- Inclui apenas missões com unidade alocada. Para o mapa completo com missões
+-- não alocadas, usar qmd_geometria_kml (filtro tipo_operacional = 'subarea').
 select
     id_hash,
     first_seen,
     last_seen,
     updated_at,
     data_particao,
+    id_hash_pai,
     id_qmd,
+    id_unidade,
     id_missao,
-    nome,
+    id_servico,
     tipo_missao,
-    tipo_missao_nome,
-    tipo_geometria,
-    tipo_operacional,
+    roteiro_raw,
     hora_inicio_missao,
     hora_fim_missao,
+    dias,
+    execucoes,
+    indicador_ativo,
+    tipo_geometria,
+    geometria_wkt,
+    geometry,
     roteiro,
+    tipo_missao_nome,
+    tipo_operacional,
     id_roteiro,
     id_subarea,
-    id_area,
-    servicos,
-    descricao,
-    dados_extendidos,
-    geometria_wkt,
-    geometry
-from {{ ref("raw_segur_forca_municipal__qmd_geometria_kml") }}
+    id_area
+from {{ ref("raw_segur_forca_municipal__qmd_missoes") }}
 where tipo_operacional = 'subarea'
+{% if is_incremental() %}
+    and data_particao >= (select max(data_particao) from {{ this }})
+{% endif %}

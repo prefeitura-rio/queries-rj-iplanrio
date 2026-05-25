@@ -116,20 +116,25 @@ models:
       - name: id_subarea
         description: >
           Slug da subárea à qual esta missão pertence geograficamente.
-          Derivado de qmd_geometria_kml via join em (id_missao, id_qmd) —
-          reutiliza o join espacial (ST_INTERSECTS + fallback ST_DISTANCE)
-          já computado no base model. Versão mais recente por last_seen desc.
-          NULL para missões DS (sem geometria) e quando não existem subareas
-          cadastradas no QMD.
+          Computado diretamente da geometry própria da missão via join espacial
+          contra os polígonos RF/SV/SP (tipo_operacional='subarea') presentes
+          no próprio qmd_missoes — sem dependência de qmd_geometria_kml.
+          Para 'subarea': igual a id_roteiro (auto-referência).
+          Para 'patrulha'/'posto': join primário (mesmo QMD + ST_INTERSECTS);
+          fallback ST_DISTANCE (qualquer QMD) para bordas e QMDs sem subarea local.
+          NULL para missões DS (sem geometria) e 'area'.
         data_type: string
       - name: id_area
         description: >
-          Slug da área de base inteira à qual esta missão pertence geograficamente.
-          Derivado de qmd_geometria_kml via join em (id_missao, id_qmd) —
-          reutiliza o join espacial (ST_INTERSECTS + fallback ST_DISTANCE)
-          já computado no base model. Versão mais recente por last_seen desc.
-          NULL para missões DS (sem geometria) e quando não existem areas
-          cadastradas no QMD.
+          Slug da área de base inteira (>10 km²) à qual esta missão pertence.
+          Computado diretamente da geometry própria da missão via join espacial
+          contra os polígonos RF/SV/SP (tipo_operacional='area') presentes
+          no próprio qmd_missoes — sem dependência de qmd_geometria_kml.
+          Para 'area': igual a id_roteiro (auto-referência).
+          Para 'patrulha'/'posto'/'subarea': join primário (mesmo QMD + ST_INTERSECTS);
+          fallback ST_DISTANCE — QMDs operacionais nunca têm polígono de area,
+          logo o fallback é o caminho esperado para patrulha/posto.
+          NULL para missões DS (sem geometria).
         data_type: string
       - name: hora_inicio_missao
         description: >
