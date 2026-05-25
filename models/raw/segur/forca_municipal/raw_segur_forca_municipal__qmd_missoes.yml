@@ -58,7 +58,7 @@ models:
         data_type: string
       - name: id_qmd
         description: >
-          Identificador do QMD pai. FK para `qmd`, `qmd_bases` e `qmd_missoes_geometria`.
+          Identificador do QMD pai.           FK para `qmd` e modelos `qmd_geometria_*`.
         data_type: string
       - name: id_unidade
         description: >
@@ -70,7 +70,7 @@ models:
       - name: id_missao
         description: >
           Identificador único da missão. Chave primária do nível de missão.
-          FK para `qmd_missoes_geometria.id_missao` (mesmo valor, mesmo tipo STRING).
+          FK para `qmd_geometria_kml.id_missao` e modelos `qmd_geometria_missoes_*`.
         data_type: string
       - name: id_servico
         description: >
@@ -82,8 +82,8 @@ models:
         description: >
           Tipo da missão. Valores observados: `PTR` (Patrulhamento — LineString),
           `PB` (Posto de Bloqueio — Point), `DS` (Deslocamento — sem geometria),
-          `RF` (Ronda Fixa — Polygon), `SV` (Supervisão — Polygon),
-          `SP` (Suporte — Polygon). Mesmo campo que `qmd_missoes_geometria.tipo_missao`.
+          `RF` (Refeição — Polygon), `SV` (Supervisão — Polygon),
+          `SP` (Suporte — Polygon).
         data_type: string
       - name: tipo_missao_nome
         description: >
@@ -115,37 +115,33 @@ models:
         data_type: string
       - name: id_subarea
         description: >
-          Slug da subárea à qual esta missão pertence geograficamente.
-          Computado diretamente da geometry própria da missão via join espacial
-          contra os polígonos RF/SV/SP (tipo_operacional='subarea') presentes
-          no próprio qmd_missoes — sem dependência de qmd_geometria_kml.
+          Slug da subárea à qual esta missão pertence.
+          Computado diretamente do próprio qmd_missoes — sem dependência de qmd_geometria_kml.
           Para 'subarea': igual a id_roteiro (auto-referência).
-          Para 'patrulha'/'posto': join primário (mesmo QMD + ST_INTERSECTS);
-          fallback ST_DISTANCE (qualquer QMD) para bordas e QMDs sem subarea local.
+          Para 'patrulha'/'posto': equi-join por (id_qmd, id_servico) contra o RF do mesmo
+          plano semanal — join 1:1, 100% cobertura confirmada nos dados.
           NULL para missões DS (sem geometria) e 'area'.
         data_type: string
       - name: id_area
         description: >
           Slug da área de base inteira (>10 km²) à qual esta missão pertence.
-          Computado diretamente da geometry própria da missão via join espacial
-          contra os polígonos RF/SV/SP (tipo_operacional='area') presentes
-          no próprio qmd_missoes — sem dependência de qmd_geometria_kml.
+          Computado diretamente do próprio qmd_missoes — sem dependência de qmd_geometria_kml.
           Para 'area': igual a id_roteiro (auto-referência).
-          Para 'patrulha'/'posto'/'subarea': join primário (mesmo QMD + ST_INTERSECTS);
-          fallback ST_DISTANCE — QMDs operacionais nunca têm polígono de area,
-          logo o fallback é o caminho esperado para patrulha/posto.
+          Para 'patrulha'/'posto'/'subarea': equi-join primário por (id_qmd, id_servico);
+          fallback ST_DISTANCE cross-QMD — QMDs operacionais nunca têm polígono de area,
+          logo o fallback é o caminho esperado (0% cobertura pelo equi-join primário).
           NULL para missões DS (sem geometria).
         data_type: string
       - name: hora_inicio_missao
         description: >
           Hora de início planejada da missão. Mesmo campo que
-          `qmd_missoes_geometria.hora_inicio_missao`. Complementa `qmd.hora_inicio_qmd`
+          Complementa `qmd.hora_inicio_qmd`
           (que é o turno do QMD inteiro).
         data_type: time
       - name: hora_fim_missao
         description: >
           Hora de fim planejada da missão. Mesmo campo que
-          `qmd_missoes_geometria.hora_fim_missao`. Pode cruzar meia-noite se
+          Pode cruzar meia-noite se
           `hora_fim_missao < hora_inicio_missao`.
         data_type: time
       - name: dias
@@ -183,7 +179,7 @@ models:
           `NULL` para missões DS (sem geometria).
           Usar para filtrar antes de operações espaciais — `ST_WITHIN` só faz sentido
           com `POLYGON`, distância de rota usa `LINESTRING`.
-          Mesmo valor que `qmd_missoes_geometria.tipo_geometria` (uppercase).
+          Mesmo padrão de `qmd_geometria_kml.tipo_geometria` (uppercase).
         data_type: string
       - name: geometria_wkt
         description: >
@@ -199,8 +195,8 @@ models:
           `NULL` para missões do tipo `DS` (deslocamento — sem área de cobertura).
           Tipos de geometria: LineString (`PTR`), Point (`PB`),
           Polygon (`RF`, `SV`, `SP`).
-          Para análises espaciais, preferir `qmd_missoes_geometria.geometry`
-          como fonte autoritativa — join por `id_missao`.
+          Fonte autoritativa para análises espaciais — os modelos `qmd_geometria_missoes_*`
+          derivam desta coluna.
         data_type: geography
       - name: tipo_operacional
         description: >
