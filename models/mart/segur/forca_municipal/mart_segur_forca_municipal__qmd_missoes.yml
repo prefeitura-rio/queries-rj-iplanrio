@@ -133,6 +133,23 @@ models:
       - name: roteiro
         description: Descrição textual do roteiro da missão.
 
+      - name: id_roteiro
+        description: >
+          Slug do roteiro. Agrupador para filtros — todas as missões com mesmo roteiro.
+          NULL para missões DS ou sem roteiro definido.
+
+      - name: id_subarea
+        description: >
+          Slug da subárea à qual esta missão pertence. Derivado do base model
+          qmd_geometria_kml via join em (id_missao, id_qmd).
+          NULL para missões DS e QMDs sem subarea definida.
+
+      - name: id_area
+        description: >
+          Slug da área de base inteira à qual esta missão pertence. Derivado do base
+          model qmd_geometria_kml via join em (id_missao, id_qmd).
+          NULL para missões DS e QMDs sem area definida.
+
       - name: hora_inicio_missao
         description: Horário de início da missão.
 
