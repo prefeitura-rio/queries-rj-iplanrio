@@ -5,7 +5,7 @@
         materialized="incremental",
         incremental_strategy="merge",
         unique_key="id_hash",
-        merge_update_columns=["last_seen", "data_particao", "updated_at"],
+        merge_update_columns=["last_seen", "data_particao", "updated_at", "id_subarea", "id_area"],
         cluster_by=["id_qmd"],
     )
 }}
@@ -21,6 +21,8 @@ select
     nome,
     tipo_geometria,
     tipo_operacional,
+    id_subarea,
+    id_area,
     descricao,
     geometria_wkt,
     geometry

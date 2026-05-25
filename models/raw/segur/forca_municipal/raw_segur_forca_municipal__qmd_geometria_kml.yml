@@ -108,6 +108,32 @@ models:
           fonte onde o mesmo geometry aparecia com e sem o prefixo.
           NULL para features da pasta QMD.
         data_type: string
+      - name: id_roteiro
+        description: >
+          Slug do roteiro para uso como agrupador em filtros de aplicação.
+          Derivado de roteiro via macro slugify: lowercase, sem acentos,
+          caracteres não-alfanuméricos substituídos por underscore.
+          Agrupa todas as geometrias de um mesmo roteiro independente de horário ou unidade.
+          NULL para features da pasta QMD (bases, onde roteiro é NULL).
+        data_type: string
+      - name: id_subarea
+        description: >
+          Slug da subárea à qual esta feature pertence geograficamente.
+          Para 'subarea': igual a id_roteiro — a zona identifica-se com ela mesma.
+          Para 'patrulha'/'posto'/'sede': join primário (mesmo QMD + ST_INTERSECTS);
+          fallback ST_DISTANCE (qualquer QMD) para casos de borda/precisão.
+          NULL para 'area' e features sem subarea em nenhum QMD.
+          Join direto: patrulha.id_subarea = subarea.id_roteiro (= subarea.id_subarea).
+        data_type: string
+      - name: id_area
+        description: >
+          Slug da área de base inteira (>10 km²) à qual esta feature pertence geograficamente.
+          Para 'area': igual a id_roteiro — a zona identifica-se com ela mesma.
+          Para 'patrulha'/'posto'/'sede'/'subarea': join primário (mesmo QMD + ST_INTERSECTS);
+          fallback ST_DISTANCE (qualquer QMD) para casos de borda/precisão.
+          NULL para features sem area em nenhum QMD.
+          Join direto: patrulha.id_area = area.id_roteiro (= area.id_area).
+        data_type: string
       - name: servicos
         description: >
           Unidades alocadas à missão. ARRAY<STRING> de valores distintos.

@@ -53,6 +53,20 @@ models:
       - name: tipo_operacional
         description: Sempre 'sede' nesta tabela.
         data_type: string
+      - name: id_subarea
+        description: >
+          Slug da subárea em que a sede está localizada geograficamente.
+          Join primário: mesmo QMD + ST_INTERSECTS. Fallback: subarea mais próxima de
+          qualquer QMD via ST_DISTANCE — cobre casos onde a sede fica na borda do polígono.
+          NULL quando não existem subareas cadastradas em nenhum QMD.
+        data_type: string
+      - name: id_area
+        description: >
+          Slug da área de base inteira em que a sede está localizada geograficamente.
+          Join primário: mesmo QMD + ST_INTERSECTS. Fallback: area mais próxima de
+          qualquer QMD via ST_DISTANCE.
+          NULL quando não existem areas cadastradas em nenhum QMD.
+        data_type: string
       - name: descricao
         description: >
           HTML com atributos do QMD exportados pelo sistema: nome, resumo.

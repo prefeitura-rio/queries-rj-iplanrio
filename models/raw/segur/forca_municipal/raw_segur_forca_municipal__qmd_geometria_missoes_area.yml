@@ -61,6 +61,20 @@ models:
           ou "Dentro da Subárea" (removidos na transformação do base model).
           100% preenchido.
         data_type: string
+      - name: id_roteiro
+        description: Slug do roteiro. Agrupador para filtros — todas as geometrias com mesmo roteiro. 100% preenchido.
+        data_type: string
+      - name: id_subarea
+        description: >
+          Sempre NULL nesta tabela — area não faz join espacial com subarea.
+          Coluna presente para consistência de schema com os modelos patrulha e posto.
+        data_type: string
+      - name: id_area
+        description: >
+          Igual a id_roteiro para linhas desta tabela — a área identifica-se com
+          sua própria zona.
+          Join direto: subarea.id_area = area.id_roteiro (= area.id_area).
+        data_type: string
       - name: servicos
         description: Unidades alocadas a esta área. ARRAY<STRING> de valores distintos.
         data_type: "array<string>"
