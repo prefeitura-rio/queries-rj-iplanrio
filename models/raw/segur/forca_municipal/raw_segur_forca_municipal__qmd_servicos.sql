@@ -40,23 +40,25 @@ with
             upper(trim(safe_cast(nome as string))) as id_unidade,
             array(
                 select as struct
-                    json_value(dia, '$') as week_day,
                     case
                         json_value(dia, '$')
-                        when 'seg'
-                        then 1
-                        when 'ter'
-                        then 2
-                        when 'qua'
-                        then 3
-                        when 'qui'
-                        then 4
-                        when 'sex'
-                        then 5
-                        when 'sab'
-                        then 6
-                        when 'dom'
-                        then 7
+                        when 'seg' then 'Segunda'
+                        when 'ter' then 'Terça'
+                        when 'qua' then 'Quarta'
+                        when 'qui' then 'Quinta'
+                        when 'sex' then 'Sexta'
+                        when 'sab' then 'Sábado'
+                        when 'dom' then 'Domingo'
+                    end as week_day,
+                    case
+                        json_value(dia, '$')
+                        when 'seg' then 2
+                        when 'ter' then 3
+                        when 'qua' then 4
+                        when 'qui' then 5
+                        when 'sex' then 6
+                        when 'sab' then 7
+                        when 'dom' then 1
                     end as week_day_number
                 from unnest(json_query_array(safe_cast(dias as string))) as dia
             ) as dias,

@@ -148,8 +148,8 @@ models:
         description: >
           Dias da semana em que a missão está programada.
           ARRAY<STRUCT<week_day STRING, week_day_number INT64>>.
-          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
-          week_day_number: número ISO (1=seg … 7=dom).
+          week_day: nome completo em português (Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado).
+          week_day_number: numeração BigQuery EXTRACT(DAYOFWEEK) — 1=Domingo, 2=Segunda … 7=Sábado.
           Consistente com qmd_servicos.dias e qmd_missoes.execucoes.week_day.
           Derivado do campo double-encoded do JSON de origem (resolvido neste modelo).
         data_type: array<struct<week_day string, week_day_number int64>>
@@ -158,8 +158,8 @@ models:
           Janelas temporais planejadas desta missão, uma por dia agendado.
           ARRAY<STRUCT<data_hora_inicio DATETIME, data_hora_fim DATETIME, week_day STRING, week_day_number INT64>>.
           Cada elemento representa um intervalo exato de execução no fuso America/Sao_Paulo.
-          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
-          week_day_number: número ISO (1=seg … 7=dom), útil para ordenação e filtros numéricos.
+          week_day: nome completo em português (Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado).
+          week_day_number: numeração BigQuery EXTRACT(DAYOFWEEK) — 1=Domingo, 2=Segunda … 7=Sábado.
           Fonte autoritativa para joins temporais no mart — substitui hora_inicio/fim_missao
           + dia_semana com uma única condição:
           gps.data_hora BETWEEN exec.data_hora_inicio AND exec.data_hora_fim.
