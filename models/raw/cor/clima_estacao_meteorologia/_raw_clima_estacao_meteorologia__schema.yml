@@ -7,7 +7,6 @@ models:
       - name: id_estacao
         description: "ID da estação dada pelo INMET."
         tests:
-          - unique
           - not_null
       - name: data
         description: "Data em que foi realizada a medição."
@@ -60,7 +59,6 @@ models:
       - name: id_estacao
         description: "ID da estação dada pelo INMET."
         tests:
-          - unique
           - not_null
       - name: data
         description: "Data em que foi realizada a medição."
@@ -107,7 +105,6 @@ models:
       - name: id_estacao
         description: "ID da estação definido pelo INMET."
         tests:
-          - unique
           - not_null
       - name: estacao
         description: "Nome da estação."
@@ -140,7 +137,6 @@ models:
       - name: id_estacao
         description: "Código único ICAO do aeródromo da estação."
         tests:
-          - unique
           - not_null
       - name: data_medicao
         description: "Data e horário no GMT-3 no qual foi realizada a medição."
@@ -165,7 +161,6 @@ models:
       - name: id_estacao
         description: "Código da estação definido pela REDEMET."
         tests:
-          - unique
           - not_null
       - name: estacao
         description: "Nome da estação."
@@ -184,7 +179,6 @@ models:
       - name: id_estacao
         description: "ID da estação dada pelo AlertaRio."
         tests:
-          - unique
           - not_null
       - name: data_medicao
         description: "Data e horário em que foi realizada a medição no formato YYYY-MM-DD HH:MM:SS em América/São Paulo."

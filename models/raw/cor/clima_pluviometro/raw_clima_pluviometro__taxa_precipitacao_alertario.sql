@@ -13,8 +13,25 @@
 }}
 
 SELECT
-    * EXCEPT(data),
-    PARSE_DATE('%Y-%m-%d', data) AS data
+    CONCAT(id_estacao, '_', data_medicao) AS primary_key,
+    SAFE_CAST(id_estacao AS STRING) AS id_estacao,
+    SAFE_CAST(data_medicao AS DATETIME) AS data_medicao,
+    SAFE_CAST(acumulado_chuva_5min AS FLOAT64) AS acumulado_chuva_5min,
+    SAFE_CAST(acumulado_chuva_10min AS FLOAT64) AS acumulado_chuva_10min,
+    SAFE_CAST(acumulado_chuva_15min AS FLOAT64) AS acumulado_chuva_15min,
+    SAFE_CAST(acumulado_chuva_30min AS FLOAT64) AS acumulado_chuva_30min,
+    SAFE_CAST(acumulado_chuva_1h AS FLOAT64) AS acumulado_chuva_1h,
+    SAFE_CAST(acumulado_chuva_2h AS FLOAT64) AS acumulado_chuva_2h,
+    SAFE_CAST(acumulado_chuva_3h AS FLOAT64) AS acumulado_chuva_3h,
+    SAFE_CAST(acumulado_chuva_4h AS FLOAT64) AS acumulado_chuva_4h,
+    SAFE_CAST(acumulado_chuva_6h AS FLOAT64) AS acumulado_chuva_6h,
+    SAFE_CAST(acumulado_chuva_12h AS FLOAT64) AS acumulado_chuva_12h,
+    SAFE_CAST(acumulado_chuva_24h AS FLOAT64) AS acumulado_chuva_24h,
+    SAFE_CAST(acumulado_chuva_96h AS FLOAT64) AS acumulado_chuva_96h,
+    SAFE_CAST(acumulado_chuva_mes AS FLOAT64) AS acumulado_chuva_mes,
+    SAFE_CAST(ano AS INT64) AS ano,
+    SAFE_CAST(mes AS INT64) AS mes,
+    SAFE_CAST(data AS DATE) AS data
 FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_alertario') }}
 
 

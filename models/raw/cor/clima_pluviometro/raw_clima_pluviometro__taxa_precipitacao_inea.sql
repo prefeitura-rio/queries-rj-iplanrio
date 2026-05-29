@@ -13,8 +13,18 @@
 }}
 
 SELECT
-    * EXCEPT(data),
-    PARSE_DATE('%Y-%m-%d', data) AS data
+    CONCAT(id_estacao, '_', data_medicao) AS primary_key,
+    SAFE_CAST(id_estacao AS STRING) AS id_estacao,
+    SAFE_CAST(data_medicao AS DATETIME) AS data_medicao,
+    SAFE_CAST(acumulado_chuva_15_min AS FLOAT64) AS acumulado_chuva_15_min,
+    SAFE_CAST(acumulado_chuva_1_h AS FLOAT64) AS acumulado_chuva_1_h,
+    SAFE_CAST(acumulado_chuva_4_h AS FLOAT64) AS acumulado_chuva_4_h,
+    SAFE_CAST(acumulado_chuva_24_h AS FLOAT64) AS acumulado_chuva_24_h,
+    SAFE_CAST(acumulado_chuva_96_h AS FLOAT64) AS acumulado_chuva_96_h,
+    SAFE_CAST(acumulado_chuva_30_d AS FLOAT64) AS acumulado_chuva_30_d,
+    SAFE_CAST(ano AS INT64) AS ano,
+    SAFE_CAST(mes AS INT64) AS mes,
+    SAFE_CAST(data AS DATE) AS data
 FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_inea') }}
 
 
