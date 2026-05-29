@@ -34,3 +34,15 @@ sources:
     tables:
       - name: gcp_billing_export_v1_01E7FF_E3D5BA_3EF20C
 
+  - name: rj_ia_desenvolvimento_analyticslink
+    database: rj-ia-desenvolvimento
+    schema: analyticslink
+    tables:
+      - name: _AllLogs
+
+  - name: rj_ia_desenvolvimento_auditlog
+    database: rj-ia-desenvolvimento
+    schema: auditlog
+    tables:
+      - name: cloudaudit_googleapis_com_data_access
+
