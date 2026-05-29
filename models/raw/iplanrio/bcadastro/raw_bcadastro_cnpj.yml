@@ -4,19 +4,6 @@ models:
   - name: raw_bcadastro_cnpj
     description: >-
       O modelo cnpj é um conjunto de dados abrangente que contém informações detalhadas sobre empresas, incluindo seus dados cadastrais,  informações de contato, detalhes de localização, informações sobre o quadro societário e informações sobre empresas sucedidas.  Inclui campos como CNPJ (um identificador único para empresas no Brasil), nomes, informações de contato (telefone e e-mail),  detalhes de endereço (incluindo cidade, estado e país), informações sobre a natureza jurídica da empresa, informações sobre o  porte da empresa e outras informações relevantes. Este modelo é particularmente útil para usuários de negócios que precisam  entender a demografia das empresas, acompanhar dados das empresas ao longo do tempo ou analisar o comportamento da empresa  com base em atributos cadastrais ou de localização.
-    config:
-      alias: cnpj
-      schema: brutos_bcadastro
-      materialized: table
-      tags: ['raw', 'bcadastro', 'cnpj']
-      partition_by:
-        field: cnpj_particao
-        data_type: int64
-        range:
-          start: 0
-          end: 99999999999999
-          interval: 25000000000
-
     columns:
       - name: cnpj
         description: >-
