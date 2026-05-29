@@ -1,3 +1,19 @@
+{{
+    config(
+        alias="cpf",
+        schema="brutos_bcadastro",
+        materialized="table",
+        partition_by={
+            "field": "cpf_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 100000000000,
+                "interval": 25000000,
+            },
+        },
+    )
+}}
 
 with
     fonte as (
@@ -78,7 +94,7 @@ with
             nullif(json_value(doc, '$.nomePaisRes'), "") as residencia_pais,
 
             -- Metadata
-            cast(nullif(json_value(doc, '$.anoExerc'), "") as int64) as exercicio_ano,
+            safe_cast(nullif(trim(json_value(doc, '$.anoExerc')), "") as int64) as exercicio_ano,
             nullif(
                 json_value(replace(to_json_string(doc), '~', ''), '$.version'), ""
             ) as version,
@@ -187,12 +203,12 @@ with
         from fonte_parseada t
         left join
             municipio_bd as md
-            on cast(t.id_municipio_domicilio as int64)
-            = cast(md.id_municipio_rf as int64)
+            on safe_cast(t.id_municipio_domicilio as int64)
+            = safe_cast(md.id_municipio_rf as int64)
         left join
             municipio_bd as mn
-            on cast(t.id_nascimento_municipio as int64)
-            = cast(mn.id_municipio_rf as int64)
+            on safe_cast(t.id_nascimento_municipio as int64)
+            = safe_cast(mn.id_municipio_rf as int64)
         left join
             (
                 select id as id_ocupacao, descricao
