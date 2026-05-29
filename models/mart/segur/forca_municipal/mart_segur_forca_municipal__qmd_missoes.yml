@@ -160,9 +160,9 @@ models:
         description: >
           Dias da semana em que a missão está programada.
           ARRAY<STRUCT<week_day STRING, week_day_number INT64>>.
-          week_day: abreviação em português minúsculo (seg, ter, qua, qui, sex, sab, dom).
-          week_day_number: número ISO (1=seg … 7=dom).
-          Para filtrar: SELECT * FROM UNNEST(dias) WHERE week_day = 'qua'.
+          week_day: nome completo em português (Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado).
+          week_day_number: numeração BigQuery EXTRACT(DAYOFWEEK) — 1=Domingo, 2=Segunda … 7=Sábado.
+          Para filtrar: SELECT * FROM UNNEST(dias) WHERE week_day = 'Quarta'.
 
       - name: execucoes
         description: >
