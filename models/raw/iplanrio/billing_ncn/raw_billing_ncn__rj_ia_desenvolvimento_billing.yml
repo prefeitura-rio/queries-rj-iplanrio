@@ -1,84 +1,89 @@
 version: 2
 
 models:
-  - name: raw_gcp_rj_ia_desenvolvimento_billing
+  - name: raw_billing_ncn__rj_ia_desenvolvimento_billing
     description: >
-      Custo de IA por usuário no projeto rj-ia-desenvolvimento.
-      Atribui proporcionalmente o custo de cada SKU de billing aos usuários com base
-      na fração de chamadas feitas por cada um (user_calls / model_total_calls).
-      Combina o billing do GCP com logs de auditoria do Vertex AI (aiplatform.googleapis.com)
-      provenientes de duas fontes: _AllLogs (retenção curta) e cloudaudit_googleapis_com_data_access
-      (retenção longa, a partir de 28/05/2025). Cobre modelos Claude, Gemini, DeepSeek, Kimi e Qwen.
+      Custo de IA por usuário no projeto rj-ia-desenvolvimento, agregado por dia e serviço.
+      Atribui proporcionalmente o custo do billing aos usuários com base na fração de
+      chamadas feitas por cada um (user_calls / model_total_calls).
+      Combina billing do GCP com logs de auditoria do Vertex AI (aiplatform.googleapis.com)
+      de duas fontes: _AllLogs (retenção curta) e cloudaudit_googleapis_com_data_access
+      (retenção longa, a partir de 28/05/2025).
+      O auditlog é filtrado para cobrir apenas datas presentes no billing, garantindo
+      consistência entre model_calls e cost_brl.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_billing_ncn__rj_ia_desenvolvimento_billing__unique_combination
+          combination_of_columns:
+            - date
+            - service_description
+            - service_account
+          config:
+            severity: error
+
     columns:
       - name: date
         description: >
-          Data de uso do modelo, derivada de usage_date do billing.
+          Data de uso, derivada de usage_date do billing.
         data_type: date
-      - name: model
+        tests:
+          - not_null:
+              name: raw_billing_ncn__rj_ia_desenvolvimento_billing__date__not_null
+              config:
+                severity: error
+
+      - name: service_description
         description: >
-          Nome legível do modelo de IA utilizado.
-          Para serviços Gemini API e Vertex AI, o modelo é derivado do sku_description
-          (ex: 'Gemini 2.5 Flash', 'DeepSeek V3.2', 'Kimi K2').
-          Para Claude, corresponde ao service_description (ex: 'Claude Sonnet 4.6').
+          Serviço GCP conforme registrado no billing (ex: 'Claude Sonnet 4.6',
+          'Gemini API', 'Vertex AI', 'Cloud Storage'). Cobre todos os serviços
+          do projeto sem filtro, garantindo que novos modelos não sejam perdidos.
         data_type: string
         quote: true
-      - name: token_type
+        tests:
+          - not_null:
+              name: raw_billing_ncn__rj_ia_desenvolvimento_billing__service_description__not_null
+              config:
+                severity: error
+
+      - name: service_account
         description: >
-          Tipo de token associado ao custo do SKU.
-          Valores possíveis: input, output, cache_read, cache_write, embedding,
-          web_search, other.
+          E-mail completo do principal que realizou as chamadas, extraído do auditlog.
+          Quando não há dados de auditoria disponíveis, assume 'no_audit_data_access'.
         data_type: string
         quote: true
-      - name: region
-        description: >
-          Região de inferência. Prioriza a região extraída do auditlog (call_region);
-          quando ausente, usa a região do sku_description do billing (billing_region).
-          Valores possíveis: global, us-east5, europe-west1, unspecified.
-        data_type: string
-        quote: true
+        tests:
+          - not_null:
+              name: raw_billing_ncn__rj_ia_desenvolvimento_billing__service_account__not_null
+              config:
+                severity: error
 
       - name: user
         description: >
-          E-mail do principal que realizou as chamadas, extraído do auditlog.
-          Quando não há dados de auditoria disponíveis, assume o valor 'no_audit_data_access'.
+          Nome curto do usuário, derivado de service_account: remove o sufixo '@...'
+          e o prefixo 'claude-'. Ex: 'claude-pedro-hrmendes@rj-ia-desenvolvimento.iam.gserviceaccount.com'
+          → 'pedro-hrmendes'. Para contas sem prefixo 'claude-', mantém o nome antes do '@'.
         data_type: string
         quote: true
-      - name: user_type
-        description: >
-          Classificação do principal. Valores possíveis:
-          human (usuário humano), service_account (conta de serviço com sufixo
-          iam.gserviceaccount.com), unknown (sem dados de auditoria).
-        data_type: string
-        quote: true
-      - name: tool
-        description: >
-          Ferramenta ou cliente que originou a chamada, extraída do user_agent
-          (primeiro token antes de '/', ',' ou espaço).
-          Exemplos: opencode, curl, python-httpx. Valor 'unknown' quando não identificado.
-        data_type: string
-        quote: true
-
-      - name: method
-        description: >
-          Método da API invocado, extraído do methodName do auditlog
-          (última parte após o último ponto).
-          Exemplos: GenerateContent, StreamGenerateContent, Predict.
-          Valor 'unknown' quando não identificado.
-        data_type: string
-        quote: true
+        tests:
+          - not_null:
+              name: raw_billing_ncn__rj_ia_desenvolvimento_billing__user__not_null
+              config:
+                severity: error
 
       - name: cost_brl
         description: >
           Custo atribuído ao usuário em BRL, arredondado a 4 casas decimais.
-          Calculado como: sum(sku_cost × call_fraction), onde
-          call_fraction = user_calls / model_total_calls para a data e modelo.
-          Quando não há dados de auditoria, o custo integral do SKU é atribuído
-          ao usuário 'no_audit_data_access' (call_fraction = 1).
-          O custo já inclui créditos: cost + total_credit do billing.
+          Calculado como sum(sku_cost × call_fraction), onde
+          call_fraction = user_calls / model_total_calls para a data e serviço.
+          Para serviços sem match no auditlog, o custo integral é atribuído a
+          'no_audit_data_access' (call_fraction = 1).
+          Já inclui créditos: coalesce(cost, 0) + coalesce(total_credit, 0).
         data_type: float64
 
       - name: model_calls
         description: >
-          Número de chamadas feitas pelo usuário para o modelo na data,
-          conforme registrado no auditlog. Nulo quando não há dados de auditoria.
+          Número exato de chamadas feitas pelo usuário ao modelo na data,
+          contado direto do auditlog (count por date, model_name, user).
+          Somável — não há duplicação por SKU ou token_type.
+          Nulo para usuários sem dados de auditoria (no_audit_data_access).
         data_type: int64
