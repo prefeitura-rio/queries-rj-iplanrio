@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: clima_estacao_meteorologica_staging
+    description: "Dados de estações meteorológicas que monitoram condições climáticas no Rio de Janeiro"
+    database: rj-iplanrio
+    schema: clima_estacao_meteorologica_staging
+    tables:
+      - name: meteorologia_inmet
+        config:
+          freshness:
+            error_after: {count: 24, period: hour}
+          loaded_at_field: data_medicao
+      - name: meteorologia_redemet
+        config:
+          freshness:
+            error_after: {count: 24, period: hour}
+          loaded_at_field: data_medicao
+      - name: meteorologia_alertario
+        config:
+          freshness:
+            error_after: {count: 24, period: hour}
+          loaded_at_field: data

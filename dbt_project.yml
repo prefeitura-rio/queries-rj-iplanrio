@@ -124,6 +124,17 @@ models:
           +materialized: table
           +schema: adm_central_atendimento_1746
           +tags: ["daily"]
+      cor:
+        +project: rj-cor
+        clima_fluviometro:
+          +schema: clima_fluviometro
+          +tags: ["daily"]
+        clima_pluviometro:
+          +schema: clima_pluviometro
+          +tags: ["daily"]
+        clima_estacao_meteorologia:
+          +schema: clima_estacao_meteorologia
+          +tags: ["daily"]
       sme:
         +project: rj-sme
         +tags: ["sme"]
