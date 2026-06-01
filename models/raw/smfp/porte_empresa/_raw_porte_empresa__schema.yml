@@ -1,0 +1,21 @@
+version: 2
+models:
+  - name: raw_porte_empresa__situacao_cadastral
+    description: "**Descrição**: Cadastro de empresas com informações sobre porte e situação cadastral\n**Frequência de atualização**: Mensal\n**Cobertura temporal**: Indefinido\n**Órgão gestor dos dados**: SMFP\n**Publicado por**: Indefinido\n**Publicado por (email)**: indefinido@mail.com\n"
+    columns:
+      - name: cnpj_basico
+        description: Oito primeiros dígitos do CNPJ (identifica a empresa)
+      - name: cnpj_ordem
+        description: Quatro dígitos de ordem do CNPJ (identifica o estabelecimento)
+      - name: cnpj_dv
+        description: Dois dígitos verificadores do CNPJ
+      - name: razao_social
+        description: Razão social da empresa
+      - name: id_porte_empresa
+        description: Código do porte da empresa (microempresa, pequena, média, grande)
+      - name: id_situacao_cadastral
+        description: Código da situação cadastral da empresa (ativa, baixada, suspensa, etc)
+      - name: data_situacao_cadastral
+        description: Data em que a empresa entrou na situação cadastral atual
+      - name: data_particao
+        description: Data de particionamento da tabela (formato YYYY-MM-DD, granularidade mensal)
