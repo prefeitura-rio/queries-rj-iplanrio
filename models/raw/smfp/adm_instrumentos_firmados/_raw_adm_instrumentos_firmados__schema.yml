@@ -1,0 +1,99 @@
+version: 2
+models :
+  - name: raw_adm_instrumentos_firmados__instrumento_firmado
+    description: "**Descrição**: Instrumentos firmados entre a Prefeitura da Cidade
+      do Rio de Janeiro e um particular (Pessoa Jurídica ou Pessoa Física)\n**Frequência
+      de atualização**: Diário\n**Cobertura temporal**: A partir de 2018\n**Órgão
+      gestor dos dados**: SMFP\n**Publicado por**: Carlos Carlily\n**Publicado por
+      (email)**: carlos.carlily@rio.rj.gov.br\n"
+    columns:
+      - name: ano_exercicio
+        description: Ano referente ao exercício financeiro no qual o instrumento foi
+          assinado
+      - name: id_contrato
+        description: Identificador numérico único para cada instrumento da unidade
+          orçamentária do órgão no ano do exercício da assinatura do instrumento.
+          Identificador único dado pela prefeitura do Rio de Janeiro ao instrumento.
+          Constam do identificador o código da unidade orçamentária que assinou o
+          instrumento e o ano da assinatura do instrumento
+      - name: nome_orgao_executor
+        description: Nome da unidade orçamentária (órgão da PCRJ) responsável pela
+          celebração (assinatura) do instrumento
+      - name: objeto
+        description: Descrição do que deverá ser executado/obrigação assumida (fornecimento
+          de materiais ou prestação de serviço = o que será entrega até o fim da vigência
+          do instrumento)
+      - name: tipo_instrumento
+        description: Tipo do instrumento firmado (Contrato, Termo de Execução, Termo
+          Aditivo, Convênio, Acordo de Cooperação, Contrato de Gestão, Termo de Ajuste
+          de Contas etc)
+      - name: status_instrumento
+        description: Status atual do instrumento ("Suspenso", "Ativo", "Encerrado",
+          "Rescindido")
+      - name: cnpj_cpf_favorecido
+        description: Número do CNPJ/CPF do favorecido (pessoa física ou jurídica que
+          deve fornecer material ou prestar o serviço)
+      - name: nome_favorecido
+        description: Nome da pessoa física ou jurídica que firmou o instrumento com
+          a PCRJ assumindo obrigações (prestação) e direitos (contraprestação/compensação).
+          Pessoa física pode assinar contrato com a prefeitura
+      - name: id_processo_instrutivo
+        description: Número do processo instrutivo (processo mãe). Processo mãe é
+          o processo aberto que dá origem ao instrumento
+      - name: data_inicio_prevista
+        description: Data prevista de início da vigência do instrumento
+      - name: data_fim_prevista
+        description: Data prevista de término da vigência do instrumento
+      - name: valor_atualizado
+        description: Valor do instrumento incluindo quaisquer alterações (ajuste,
+          reequilíbrio, redução) feitas após a assinatura. Este campo reflete o valor
+          total atualizado do instrumento. Valor total do instrumento subtraído o
+          valor executado liquidado até a data de referência
+      - name: valor_pago
+        description: Valor liquidado e efetivamente pago até a data  de referência.
+          Este campo mostra o valor total que já foi recebido pelo favorecido em compensação
+          pela obrigação assumida ao firmar o instrumento.
+      - name: natureza_despesa
+        description: Natureza da despesa onde são categorizados os pagamentos feitos
+          ao favorecido pelo cumprimento do instrumento. Código estruturado que agrega
+          a categoria econômica, o grupo, a modalidade de aplicação e o elemento (conjunto
+          de informações orçamentárias que identificam a classificação da despesa).
+      - name: modalidade_licitacao
+        description: 'Modalidade da licitação feita para selecionar o favorecido pelo
+          instrumento jurídico. Classificação do tipo de licitação indicando o processo
+          utilizado que embasa o instrumento firmado (Na Lei n.º 14.133/21 são: pregão,
+          concorrência, concurso, leilão e diálogo competitivo).'
+      - name: embasamento_legal
+        description: 'Embasamento legal para a licitação feita para selecionar o favorecido
+          pelo instrumento jurídico. Base jurídica/legal sobre a qual a licitação
+          e/ou ajuste firmado é fundamentado. Embasamento jurídico que justifica a
+          modalidade de licitação escolhida (menciona artigo e/ou inciso da lei. ex.:
+          art. 28, I, Lei 14.133/21 se refere a pregão realizado pela nova lei de
+          licitações).'
+      - name: valor_saldo_executado
+        description: Valor do instrumento que já foi liquidado até a data de referência.
+      - name: valor_empenhado
+        description: Valor do instrumento que já foi empenhado até a data de referência
+          (incluído o valor empenhado no exercício financeiro da data de referência
+          e dos execícios financeiros anteriores, se houver).
+      - name: valor_liquidado
+        description: Valor total do instrumento subtraído o valor executado liquidado
+          até a data de referência (incluído o valor liquidado no exercício financeiro
+          da data de referência e dos exercícios financeiros anteriores, se houver).
+      - name: data_assinatura
+        description: Data na qual o instrumento foi assinado (pode ser diferente da
+          data o início da vigência. sempre anterior, mas nunca posterior a data do
+          início da vigência).
+      - name: tipo_favorecido
+        description: 1 = Pessoa Física ou 2 = Pessoa Jurídica
+      - name: id_orgao_executor
+        description: Código da unidade orçamentária responsável pela celebração do
+          instrumento
+      - name: id_programa_trabalho
+        description: Programa de trabalho ao qual o instrumento se alinha. O programa
+          de trabalho é uma estrutura de classificação orçamentária que define qualitativamente
+          a programação orçamentária.
+      - name: id_fonte_recurso
+        description: Fonte do recurso utilizado para honrar a contraprestação pela
+          execução do instrumento firmado. Fonte do recurso utilizado para pagar pela
+          execução do instrumento firmado.

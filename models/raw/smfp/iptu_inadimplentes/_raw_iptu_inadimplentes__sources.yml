@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: iptu_inadimplentes_staging
+    database: rj-iplanrio
+    schema: iptu_inadimplentes_staging
+    tables:
+      - name: perfil_inadimplente
+      - name: perfil_inadimplente_v2
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 168, period: hour}  # 1 semana
+      loaded_at_field: _prefect_extracted_at

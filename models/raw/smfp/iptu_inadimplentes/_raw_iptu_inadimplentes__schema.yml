@@ -1,0 +1,135 @@
+version: 2
+models:
+  - name: raw_iptu_inadimplentes__perfil_inadimplente
+    description: "**Descrição**: Perfil de inadimplentes do IPTU\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Indefinido\n**Órgão gestor dos dados**: SMFP\n**Publicado por**: Indefinido\n**Publicado por (email)**: indefinido@mail.com\n"
+    columns:
+      - name: ano_competencia
+        description: Ano da competência
+      - name: valor_lancado
+        description: Valor de IPTU lançado para a inscrição imobiliária
+      - name: valor_pago
+        description: Valor de IPTU pago para a inscrição imobiliária
+      - name: valor_devido
+        description: Valor de IPTU devido para a inscrição imobiliária
+      - name: tipo_guia
+        description: Tipo de guia da inscrição imobiliária
+      - name: id_bairro
+        description: Identificador único do bairro (do datario)
+      - name: bairro
+        description: Nome do bairro da inscrição imobiliária
+      - name: bairro_geometria
+        description: Geometria do bairro (polygon)
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento
+      - name: id_regiao_planejamento
+        description: Identificador da região de planejamento
+      - name: id_regiao_administrativa
+        description: Identificador da região administrativa
+      - name: nome_regiao_administrativa
+        description: Nome da região administrativa
+      - name: status_lancamento_iptu
+        description: Situação do lançamento do IPTU
+      - name: area_planejamento
+        description: Área de planejamento da cidade
+      - name: zona_cidade
+        description: Zona da cidade
+      - name: regiao_administrativa
+        description: Região administrativa da cidade
+      - name: regiao_fiscal
+        description: Região fiscal da cidade
+      - name: ano_construcao_imovel
+        description: Ano de construção do imóvel
+      - name: situacao_terreno
+        description: Situação do terreno
+      - name: tipologia
+        description: Tipologia do terreno
+      - name: utilizacao_principal
+        description: Utilização principal do imóvel
+      - name: area_tributada_nao_residencial
+        description: Área tributada não residencial do imóvel
+      - name: area_tributada_residencial
+        description: Área tributada residencial do imóvel
+      - name: area_tributada_territorial
+        description: Área tributada territorial do imóvel
+      - name: area_terreno
+        description: Área total do terreno
+      - name: valor_isento_iptu
+        description: Valor isento de IPTU
+      - name: tributacao
+        description: Tributação da inscrição imobiliária
+      - name: area_residencial
+        description: Área residencial do imóvel
+      - name: area_nao_residencial
+        description: Área não residencial do imóvel
+      - name: inscricao_imobiliaria
+        description: Inscrição imobiliária do imóvel
+
+  - name: raw_iptu_inadimplentes__perfil_inadimplente_v2
+    description: "**Descrição**: Perfil de inadimplentes do IPTU (versão 2 - com campos adicionais)\n**Frequência de atualização**: Semanal\n**Cobertura temporal**: Indefinido\n**Órgão gestor dos dados**: SMFP\n**Publicado por**: Indefinido\n**Publicado por (email)**: indefinido@mail.com\n"
+    columns:
+      - name: ano_competencia
+        description: Ano da competência
+      - name: valor_lancado
+        description: Valor de IPTU lançado para a inscrição imobiliária
+      - name: valor_pago
+        description: Valor de IPTU pago para a inscrição imobiliária
+      - name: valor_desconto
+        description: Valor de desconto concedido para a inscrição imobiliária
+      - name: valor_devido
+        description: Valor de IPTU devido para a inscrição imobiliária
+      - name: valor_multa
+        description: Valor de multa aplicada para a inscrição imobiliária
+      - name: cota
+        description: Número da cota do pagamento
+      - name: id_bairro
+        description: Identificador único do bairro (do datario)
+      - name: bairro
+        description: Nome do bairro da inscrição imobiliária
+      - name: bairro_geometria
+        description: Geometria do bairro (polygon)
+      - name: id_area_planejamento
+        description: Identificador da área de planejamento
+      - name: id_regiao_planejamento
+        description: Identificador da região de planejamento
+      - name: id_regiao_administrativa
+        description: Identificador da região administrativa
+      - name: nome_regiao_administrativa
+        description: Nome da região administrativa
+      - name: subprefeitura
+        description: Nome da subprefeitura
+      - name: status_lancamento_iptu
+        description: Situação do lançamento do IPTU
+      - name: area_planejamento
+        description: Área de planejamento da cidade
+      - name: zona_cidade
+        description: Zona da cidade
+      - name: regiao_administrativa
+        description: Região administrativa da cidade
+      - name: regiao_fiscal
+        description: Região fiscal da cidade
+      - name: ano_construcao_imovel
+        description: Ano de construção do imóvel
+      - name: situacao_terreno
+        description: Situação do terreno
+      - name: tipologia
+        description: Tipologia do terreno
+      - name: utilizacao_principal
+        description: Utilização principal do imóvel
+      - name: area_tributada_nao_residencial
+        description: Área tributada não residencial do imóvel
+      - name: area_tributada_residencial
+        description: Área tributada residencial do imóvel
+      - name: area_tributada_territorial
+        description: Área tributada territorial do imóvel
+      - name: area_terreno
+        description: Área total do terreno
+      - name: valor_isento_iptu
+        description: Valor isento de IPTU
+      - name: tributacao
+        description: Tributação da inscrição imobiliária
+      - name: area_residencial
+        description: Área residencial do imóvel
+      - name: area_nao_residencial
+        description: Área não residencial do imóvel
+      - name: inscricao_imobiliaria
+        description: Inscrição imobiliária do imóvel

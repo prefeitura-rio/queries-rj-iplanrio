@@ -165,6 +165,17 @@ models:
           +materialized: table
           +schema: atividade_economica
           +tags: "daily"
+        adm_instrumentos_firmados:
+          +materialized: table
+          +schema: adm_instrumentos_firmados
+          +tags: "daily"
+        iptu_inadimplentes:
+          +materialized: table
+          +schema: iptu_inadimplentes
+        porte_empresa:
+          +materialized: table
+          +schema: porte_empresa
+
 
       sma:
         +tags: "sma"
