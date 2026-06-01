@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: porte_empresa_staging
+    database: rj-iplanrio
+    schema: porte_empresa_staging
+    tables:
+      - name: situacao_cadastral
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 720, period: hour}  # 30 dias
+      loaded_at_field: _prefect_extracted_at
