@@ -19,6 +19,12 @@ sources:
         description: "Tabela de usuários do sistema Vigia Urbano"
       - name: TratamentoFator
         description: "Tabela de tratamento de fatores do sistema Vigia Urbano"
+      - name: chamado
+        description: "Tabela de chamados do sistema Vigia Urbano"
+      - name: EncaminhamentoOrgao
+        description: "Tabela de encaminhamento de órgãos do sistema Vigia Urbano"
+      - name: ArquivoEncaminhamento
+        description: "Tabela de arquivos de encaminhamento do sistema Vigia Urbano"
       
     config:
       freshness:

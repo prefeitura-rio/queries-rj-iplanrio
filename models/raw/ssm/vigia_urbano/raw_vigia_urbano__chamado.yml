@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__chamado
+    description: Tabela de chamados do sistema Vigia Urbano
+    columns:
+      - name: id_chamado
+        description: Identificador único do chamado
+        data_type: string
+        quote: true
+
+      - name: chamado
+        description: Texto descritivo do chamado
+        data_type: string
+        quote: true
+
+      - name: observacao
+        description: Texto de observação adicional sobre o chamado
+        data_type: string
+        quote: true
+
+      - name: prazo
+        description: Data limite para conclusão do chamado
+        data_type: date
+        quote: true
+
+      - name: status
+        description: |
+          Status atual do chamado:
+          1 = A_INICIAR
+          2 = EM_ANDAMENTO
+          3 = CONCLUIDO_PARCIALMENTE
+          4 = CONCLUIDO
+          5 = NAO_CONCLUIDO
+          6 = CANCELADO
+        data_type: int64
+        quote: true
+
+      - name: id_subarea
+        description: Identificador da subárea relacionada ao chamado
+        data_type: string
+        quote: true
+
+      - name: categoria_enum
+        description: |
+          Categoria do chamado:
+          1 = ESTRATEGIA
+          2 = SERVICO
+        data_type: int64
+        quote: true
+
+      - name: atividade_continuada
+        description: Indica se o chamado é uma atividade continuada (true/false)
+        data_type: bool
+        quote: true
+
+      - name: id_orgao_responsavel
+        description: Identificador do órgão responsável pelo chamado
+        data_type: string
+        quote: true
+
+      - name: id_usuario_registro
+        description: Identificador do usuário que registrou o chamado
+        data_type: string
+        quote: true
+
+      - name: data_registro
+        description: Data e hora de criação do registro do chamado
+        data_type: datetime
+        quote: true
+
+      - name: datalake_loaded_at
+        description: Data e hora de carregamento no datalake
+        data_type: datetime
+        quote: true
+
+      - name: datalake_transformed_at
+        description: Data e hora de transformação no datalake
+        data_type: datetime
+        quote: true

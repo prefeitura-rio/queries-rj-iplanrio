@@ -14,6 +14,7 @@ SELECT
     SAFE_CAST(ID_DiaInicial AS STRING) AS ID_DiaInicial,
     SAFE_CAST(ID_Direcionamento AS STRING) AS ID_Direcionamento,
     SAFE_CAST(ID_TipoContribuint AS STRING) AS ID_TipoContribuint,
-    SAFE_CAST(ID_TipoSolicitacao AS STRING) AS ID_TipoSolicitacao
+    SAFE_CAST(ID_TipoSolicitacao AS STRING) AS ID_TipoSolicitacao,
+    _prefect_extracted_at as loaded_at,
 
 FROM {{ source('atividade_economica_staging', 'fact_fatocp') }}
