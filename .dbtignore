@@ -6,8 +6,6 @@ models/raw/iplanrio/plus_codes/raw_grid.sql
 models/raw/smfp/porte_empresa/
 models/raw/smfp/iptu_inadimplentes/
 
--- Pipeline foi desativada 
-models/raw/sma/brutos_recursos_humanos_ergon/
 -- Até que os dados do SSM comecem a subir..
 models/raw/ssm/vigia_urbano/raw_vigia_urbano__arquivo_encaminhamento.sql
 
