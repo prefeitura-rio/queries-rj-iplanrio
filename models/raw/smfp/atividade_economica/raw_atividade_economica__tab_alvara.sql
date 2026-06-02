@@ -24,6 +24,7 @@ SELECT
     SAFE_CAST(DSC_TaxaTotal AS FLOAT64) AS DSC_TaxaTotal,
     SAFE_CAST(DSC_IsentoTaxa AS STRING) AS DSC_IsentoTaxa,
     SAFE_CAST(DSC_Numero AS FLOAT64) AS DSC_Numero,
-    SAFE_CAST(DSC_AlvaraLiberado AS STRING) AS DSC_AlvaraLiberado
+    SAFE_CAST(DSC_AlvaraLiberado AS STRING) AS DSC_AlvaraLiberado,
+    _prefect_extracted_at as loaded_at,
 
 FROM {{ source('atividade_economica_staging', 'tab_alvara') }}
