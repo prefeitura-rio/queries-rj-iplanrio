@@ -15,6 +15,7 @@ SELECT
     SAFE_CAST(DSC_IRLF_cp AS STRING) AS DSC_IRLF_cp,
     SAFE_CAST(DSC_StatusCPL_cp AS STRING) AS DSC_StatusCPL_cp,
     SAFE_CAST(DSC_TipoAnalise_cp AS STRING) AS DSC_TipoAnalise_cp,
-    SAFE_CAST(DSC_Status_cp AS STRING) AS DSC_Status_cp
+    SAFE_CAST(DSC_Status_cp AS STRING) AS DSC_Status_cp,
+    _prefect_extracted_at as loaded_at,
 
 FROM {{ source('atividade_economica_staging', 'tab_consulta') }}
