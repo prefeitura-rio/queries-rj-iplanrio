@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: raw_vigia_urbano__arquivo_encaminhamento
+    description: Tabela de arquivos de encaminhamento do sistema Vigia Urbano
+    columns:
+      - name: id_arquivo_encaminhamento
+        description: Identificador único do arquivo de encaminhamento
+        data_type: string
+        quote: true
+
+      - name: arquivo
+        description: Nome ou caminho do arquivo anexado ao encaminhamento
+        data_type: string
+        quote: true
+
+      - name: id_encaminhamento
+        description: Identificador do encaminhamento relacionado ao arquivo
+        data_type: int64
+        quote: true
+
+      - name: datalake_loaded_at
+        description: Data e hora de carregamento no datalake
+        data_type: datetime
+        quote: true
+
+      - name: datalake_transformed_at
+        description: Data e hora de transformação no datalake
+        data_type: datetime
+        quote: true
