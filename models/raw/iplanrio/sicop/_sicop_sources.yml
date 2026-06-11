@@ -5,8 +5,8 @@ sources:
     database: rj-iplanrio
     schema: brutos_sicop_staging
     tables:
-      - name: processo
-        description: "View de processos do SICOP"
+      # - name: processo
+      #   description: "View de processos do SICOP"
       - name: veiculo
         description: "View de veículos do SICOP"
       - name: parte_envolvida
