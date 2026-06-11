@@ -19,15 +19,15 @@ sources:
         description: "Source table for paymentmethods information"
       - name: races
         description: "Source table for races information"
-        config:
-          freshness:
-            error_after: {count: 24, period: hour}
-          loaded_at_field: 'datetime(timestamp(createdat))'
+        # config:
+        #   freshness:
+        #     error_after: {count: 24, period: hour}
+        #   loaded_at_field: 'datetime(timestamp(createdat))'
       - name: rankingraces
         description: "Source table for rankingraces information"
-        config:
-          freshness:
-            error_after: {count: 24, period: hour}
-          loaded_at_field: 'datetime(timestamp(createdat))'
+        # config:
+        #   freshness:
+        #     error_after: {count: 24, period: hour}
+        #   loaded_at_field: 'datetime(timestamp(createdat))'
       - name: users
         description: "Source table for users information"
