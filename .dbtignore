@@ -5,7 +5,13 @@ models/raw/iplanrio/plus_codes/raw_grid.sql
 -- Pipeline desativada.
 models/raw/smfp/porte_empresa/
 models/raw/smfp/iptu_inadimplentes/
+
+-- Pipeline desativada devido a uma mudança no schema.
+-- Aguardando a documentação atualizada
 models/raw/iplanrio/sicop/raw_sicop_processo.sql
+
+-- Pipeline desativada até a resposta da Célia
+models/raw/cvl/adm_contrato_gestao/raw_adm_contrato_gestao__contrato_terceiros.sql
 
 -- Até que os dados do SSM comecem a subir..
 models/raw/ssm/vigia_urbano/raw_vigia_urbano__arquivo_encaminhamento.sql
