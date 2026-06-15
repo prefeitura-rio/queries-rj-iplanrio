@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: clima_pluviometro_staging
+    description: "Dados de estações pluviométricas que monitoram a precipitação (chuva) no município do Rio de Janeiro"
+    database: rj-iplanrio
+    schema: clima_pluviometro_staging
+    tables:
+      - name: taxa_precipitacao_alertario
+      - name: taxa_precipitacao_inea
+    config:
+      freshness:
+        error_after: {count: 24, period: hour}
+      loaded_at_field: data

@@ -78,7 +78,7 @@ sources:
         description: "Vínculos de pagamento dos funcionários"
       - name: VW_DLK_ERG_EMPRESAS
         description: "Empresas da administração direta ou indireta"
-    config:
-      freshness: # default freshness
-        error_after: {count: 24, period: hour}
-      loaded_at_field: _airbyte_extracted_at
+    # config:
+    #   freshness: # default freshness
+    #     error_after: {count: 24, period: hour}
+    #   loaded_at_field: _airbyte_extracted_at
