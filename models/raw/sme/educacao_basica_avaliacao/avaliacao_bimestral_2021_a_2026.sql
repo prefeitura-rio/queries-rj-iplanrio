@@ -176,11 +176,15 @@ SELECT
     WHEN cd_disciplina IS NOT NULL THEN SAFE_CAST(cd_disciplina AS INT64)
     WHEN nm_disciplina = "Língua Portuguesa" THEN 1
     WHEN nm_disciplina = "Matemática" THEN 2
+    WHEN nm_disciplina = "Ciências da Natureza" THEN 29
+    WHEN nm_disciplina = "Ciências Humanas" THEN 30
     ELSE NULL
     END as codigo_disciplina,
   CASE
     WHEN nm_disciplina = "Língua Portuguesa" OR SAFE_CAST(cd_disciplina AS INT64) = 1 THEN "LP"
     WHEN nm_disciplina = "Matemática" OR SAFE_CAST(cd_disciplina AS INT64) = 2 THEN "MT"
+    WHEN nm_disciplina = "Ciências da Natureza" OR SAFE_CAST(cd_disciplina AS INT64) = 29 THEN "CN"
+    WHEN nm_disciplina = "Ciências Humanas" OR SAFE_CAST(cd_disciplina AS INT64) = 30 THEN "CH"
     ELSE NULL
     END as sigla_disciplina,
   SAFE_CAST(SAFE_CAST(SAFE_CAST(fl_previsto as FLOAT64) AS INT64) AS BOOL) as indicador_previsto_avaliacao,
@@ -215,11 +219,15 @@ SELECT
     WHEN cd_disciplina IS NOT NULL THEN SAFE_CAST(cd_disciplina AS INT64)
     WHEN nm_disciplina = "Língua Portuguesa" THEN 1
     WHEN nm_disciplina = "Matemática" THEN 2
+    WHEN nm_disciplina = "Ciências da Natureza" THEN 29
+    WHEN nm_disciplina = "Ciências Humanas" THEN 30
     ELSE NULL
     END as codigo_disciplina,
   CASE
     WHEN nm_disciplina = "Língua Portuguesa" OR SAFE_CAST(cd_disciplina AS INT64) = 1 THEN "LP"
     WHEN nm_disciplina = "Matemática" OR SAFE_CAST(cd_disciplina AS INT64) = 2 THEN "MT"
+    WHEN nm_disciplina = "Ciências da Natureza" OR SAFE_CAST(cd_disciplina AS INT64) = 29 THEN "CN"
+    WHEN nm_disciplina = "Ciências Humanas" OR SAFE_CAST(cd_disciplina AS INT64) = 30 THEN "CH"
     ELSE NULL
     END as sigla_disciplina,
   SAFE_CAST(SAFE_CAST(SAFE_CAST(fl_previsto as FLOAT64) AS INT64) AS BOOL) as indicador_previsto_avaliacao,
