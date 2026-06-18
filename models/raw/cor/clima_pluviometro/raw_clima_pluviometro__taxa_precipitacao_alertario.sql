@@ -1,7 +1,7 @@
 {{
     config(
         alias="taxa_precipitacao_alertario",
-        materialized='table',
+        materialized='incremental',
         unique_key="primary_key",
         partition_by={
             "field": "data_particao",
