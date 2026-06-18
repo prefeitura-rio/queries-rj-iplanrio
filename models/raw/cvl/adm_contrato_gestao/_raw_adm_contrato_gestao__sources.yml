@@ -13,7 +13,7 @@ sources:
       - name: conta_bancaria
       - name: conta_bancaria_tipo
       - name: contrato
-      # - name: contrato_terceiros
+      - name: contrato_terceiros
       - name: despesa
       - name: estado_entrega
       - name: fechamento

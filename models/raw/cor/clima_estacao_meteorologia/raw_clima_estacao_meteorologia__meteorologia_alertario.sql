@@ -6,9 +6,8 @@
         partition_by={
             "field": "data",
             "data_type": "date",
-            "granularity": "month",
+            "granularity": "day",
         },
-        post_hook='CREATE OR REPLACE TABLE `rj-iplanrio.clima_estacao_meteorologica_staging.meteorologia_alertario_last_partition` AS (SELECT CURRENT_DATETIME("America/Sao_Paulo") AS data)'
     )
 }}
 
@@ -32,27 +31,8 @@ SELECT
 
 FROM {{ source('clima_estacao_meteorologica_staging', 'meteorologia_alertario') }}
 
-
-
 {% if is_incremental() %}
 
-{% set max_partition = run_query(
-    "SELECT DATE(gr) FROM (
-        SELECT IF(
-            max(data) > CURRENT_DATE('America/Sao_Paulo'), CURRENT_DATE('America/Sao_Paulo'), max(data)
-            ) as gr
-        FROM `rj-iplanrio.clima_estacao_meteorologica_staging.meteorologia_alertario_last_partition`
-        )
-    ").columns[0].values()[0] %}
-
-WHERE
-    ano_particao >= SAFE_CAST(EXTRACT(YEAR FROM DATE(("{{ max_partition }}"))) AS STRING) AND
-    mes_particao >= SAFE_CAST(EXTRACT(MONTH FROM DATE(("{{ max_partition }}"))) AS STRING) AND
-    data >= SAFE_CAST(DATE_TRUNC(DATE(("{{ max_partition }}")), day) AS STRING)
-
-AND
-    SAFE_CAST(
-        SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_medicao) AS DATETIME
-    ) > ("{{ max_partition }}")
+where DATETIME(data_medicao) > (SELECT MAX(DATETIME(data_medicao)) FROM {{ this }})
 
 {% endif %}
