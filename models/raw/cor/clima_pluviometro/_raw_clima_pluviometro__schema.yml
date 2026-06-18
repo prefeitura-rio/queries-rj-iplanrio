@@ -71,7 +71,7 @@ models:
       - name: data_particao
         description: "Data em que foi realizada a medição"
 
-  - name: taxa_precipitacao_alertario_5min
+  - name: raw_clima_pluviometro__taxa_precipitacao_alertario_5min
     description: "Taxa medida de precipitação das estações pluviométricas da cidade do Rio de Janeiro. As estimativas são feitas de 5 em 5 minutos, cada registro contendo dados desta medida."
     columns:
       - name: primary_key
