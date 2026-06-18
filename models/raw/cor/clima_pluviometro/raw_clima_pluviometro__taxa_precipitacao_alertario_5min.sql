@@ -17,7 +17,6 @@ SELECT
     CONCAT(id_estacao, '_', data_medicao) AS primary_key,
     SAFE_CAST(id_estacao AS STRING) AS id_estacao,
     SAFE_CAST(data_medicao AS DATETIME) data_medicao,
-    SAFE_CAST(SPLIT(data_medicao, " ")[0] AS DATE) data_particao,
     SAFE_CAST(SPLIT(data_medicao, " ")[1] AS TIME) horario,
     SAFE_CAST(acumulado_chuva_5min AS FLOAT64) acumulado_chuva_5min,
     SAFE_CAST(acumulado_chuva_10min AS FLOAT64) acumulado_chuva_10min,
@@ -32,6 +31,9 @@ SELECT
     SAFE_CAST(acumulado_chuva_24h AS FLOAT64) acumulado_chuva_24h,
     SAFE_CAST(acumulado_chuva_96h AS FLOAT64) acumulado_chuva_96h,
     SAFE_CAST(acumulado_chuva_mes AS FLOAT64) acumulado_chuva_mes,
+    SAFE_CAST(ano_particao as INT64) ano_particao,
+    SAFE_CAST(mes_particao as INT64) mes_particao,
+    SAFE_CAST(data_particao as DATE) data_particao,
 
 FROM `rj-iplanrio.clima_pluviometro_staging.taxa_precipitacao_alertario_5min`
 

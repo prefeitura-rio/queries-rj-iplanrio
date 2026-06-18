@@ -29,9 +29,9 @@ SELECT
     SAFE_CAST(acumulado_chuva_24h AS FLOAT64) AS acumulado_chuva_24h,
     SAFE_CAST(acumulado_chuva_96h AS FLOAT64) AS acumulado_chuva_96h,
     SAFE_CAST(acumulado_chuva_mes AS FLOAT64) AS acumulado_chuva_mes,
-    SAFE_CAST(ano AS INT64) AS ano,
-    SAFE_CAST(mes AS INT64) AS mes,
-    SAFE_CAST(data AS DATE) AS data_particao
+    SAFE_CAST(ano_particao as INT64) ano_particao,
+    SAFE_CAST(mes_particao as INT64) mes_particao,
+    SAFE_CAST(data_particao as DATE) data_particao,
 FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_alertario') }}
 
 
