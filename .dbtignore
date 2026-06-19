@@ -7,8 +7,8 @@ models/raw/smfp/porte_empresa/
 models/raw/smfp/iptu_inadimplentes/
 models/raw/smfp/atividade_economica/
 models/raw/cgm/osinfo_rh/raw_osinfo_rh__tb_valores_folha_pagamento.sql
+models/raw/cgm/osinfo_rh/raw_osinfo_rh__tb_folha_pagamento.sql
 models/raw/cvl/adm_contrato_gestao/raw_adm_contrato_gestao__historico_alteracoes.sql
-
 
 -- Pipeline desativada devido a uma mudança no schema.
 -- Aguardando a documentação atualizada
