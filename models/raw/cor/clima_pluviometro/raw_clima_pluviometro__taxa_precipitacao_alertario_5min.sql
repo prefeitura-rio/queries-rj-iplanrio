@@ -17,7 +17,7 @@ SELECT
     CONCAT(id_estacao, '_', data_medicao) AS primary_key,
     SAFE_CAST(id_estacao AS STRING) AS id_estacao,
     SAFE_CAST(data_medicao AS DATETIME) data_medicao,
-    SAFE_CAST(SPLIT(data_medicao, " ")[1] AS TIME) horario,
+    TIME(SAFE_CAST(data_medicao AS datetime)) AS horario,
     SAFE_CAST(acumulado_chuva_5min AS FLOAT64) acumulado_chuva_5min,
     SAFE_CAST(acumulado_chuva_10min AS FLOAT64) acumulado_chuva_10min,
     SAFE_CAST(acumulado_chuva_15min AS FLOAT64) acumulado_chuva_15min,
