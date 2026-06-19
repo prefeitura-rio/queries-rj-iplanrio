@@ -5,16 +5,18 @@ models/raw/iplanrio/plus_codes/raw_grid.sql
 -- Pipeline desativada.
 models/raw/smfp/porte_empresa/
 models/raw/smfp/iptu_inadimplentes/
+models/raw/smfp/atividade_economica/
+models/raw/cgm/osinfo_rh/raw_osinfo_rh__tb_valores_folha_pagamento.sql
+models/raw/cgm/osinfo_rh/raw_osinfo_rh__tb_folha_pagamento.sql
+models/raw/cvl/adm_contrato_gestao/raw_adm_contrato_gestao__historico_alteracoes.sql
 
 -- Pipeline desativada devido a uma mudança no schema.
 -- Aguardando a documentação atualizada
 models/raw/iplanrio/sicop/raw_sicop_processo.sql
 
--- Pipeline desativada até a resposta da Célia
-models/raw/cvl/adm_contrato_gestao/raw_adm_contrato_gestao__contrato_terceiros.sql
-
 -- Até que os dados do SSM comecem a subir..
 models/raw/ssm/vigia_urbano/raw_vigia_urbano__arquivo_encaminhamento.sql
+
 
 
 # Adicionado enquanto não resolvemos o problema de subir os dados com Airbyte	

@@ -1,25 +1,23 @@
 {{
     config(
         alias="meteorologia_alertario",
-        materialized='table',
+        materialized='incremental',
         unique_key="primary_key",
         partition_by={
-            "field": "data",
+            "field": "data_particao",
             "data_type": "date",
-            "granularity": "month",
+            "granularity": "day",
         },
-        post_hook='CREATE OR REPLACE TABLE `rj-iplanrio.clima_estacao_meteorologica_staging.meteorologia_alertario_last_partition` AS (SELECT CURRENT_DATETIME("America/Sao_Paulo") AS data)'
     )
 }}
 
 SELECT
     DISTINCT
+    CONCAT(id_estacao, '_', data_medicao) AS primary_key,
     SAFE_CAST(
         REGEXP_REPLACE(id_estacao, r'\.0$', '') AS STRING
         ) id_estacao,
-    SAFE_CAST(
-        SAFE.PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_medicao) AS DATETIME
-    ) AS data_medicao,
+    SAFE_CAST(SAFE.PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_medicao) AS DATETIME) AS data_medicao,
     SAFE_CAST(temperatura AS FLOAT64) temperatura,
     SAFE_CAST(pressao_atmosferica AS FLOAT64) pressao,
     SAFE_CAST(temperatura_orvalho AS FLOAT64) temperatura_orvalho,
@@ -27,32 +25,13 @@ SELECT
     SAFE_CAST(SAFE_CAST(direcao_vento AS FLOAT64) AS INT64) direcao_vento,
     SAFE_CAST(velocidade_vento AS FLOAT64) velocidade_vento,
     SAFE_CAST(sensacao_termica AS FLOAT64) sensacao_termica,
-    SAFE_CAST(DATE_TRUNC(DATE(data_medicao), day) AS DATE) data,
-    CONCAT(id_estacao, '_', data_medicao) AS primary_key,
-
+    SAFE_CAST(ano_particao as INT64) ano_particao,
+    SAFE_CAST(mes_particao as INT64) mes_particao,
+    SAFE_CAST(data_particao as DATE) data_particao,
 FROM {{ source('clima_estacao_meteorologica_staging', 'meteorologia_alertario') }}
-
-
 
 {% if is_incremental() %}
 
-{% set max_partition = run_query(
-    "SELECT DATE(gr) FROM (
-        SELECT IF(
-            max(data) > CURRENT_DATE('America/Sao_Paulo'), CURRENT_DATE('America/Sao_Paulo'), max(data)
-            ) as gr
-        FROM `rj-iplanrio.clima_estacao_meteorologica_staging.meteorologia_alertario_last_partition`
-        )
-    ").columns[0].values()[0] %}
-
-WHERE
-    ano_particao >= SAFE_CAST(EXTRACT(YEAR FROM DATE(("{{ max_partition }}"))) AS STRING) AND
-    mes_particao >= SAFE_CAST(EXTRACT(MONTH FROM DATE(("{{ max_partition }}"))) AS STRING) AND
-    data >= SAFE_CAST(DATE_TRUNC(DATE(("{{ max_partition }}")), day) AS STRING)
-
-AND
-    SAFE_CAST(
-        SAFE.PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', data_medicao) AS DATETIME
-    ) > ("{{ max_partition }}")
+where DATETIME(data_medicao) > (SELECT MAX(DATETIME(data_medicao)) FROM {{ this }})
 
 {% endif %}

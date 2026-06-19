@@ -128,13 +128,13 @@ models:
         +project: rj-cor
         clima_fluviometro:
           +schema: clima_fluviometro
-          +tags: ["daily"]
+          +tags: ["hourly"]
         clima_pluviometro:
           +schema: clima_pluviometro
-          +tags: ["daily"]
+          +tags: ["hourly"]
         clima_estacao_meteorologia:
           +schema: clima_estacao_meteorologia
-          +tags: ["daily"]
+          +tags: ["hourly"]
       sme:
         +project: rj-sme
         +tags: ["sme"]
