@@ -18,7 +18,7 @@ sources:
       - name: estado_entrega
       - name: fechamento
       - name: fornecedor
-      - name: historico_alteracoes
+      # - name: historico_alteracoes
       - name: itens_nota_fiscal
       - name: plano_contas
       - name: receita_dados
