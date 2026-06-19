@@ -13,12 +13,12 @@ sources:
       - name: conta_bancaria
       - name: conta_bancaria_tipo
       - name: contrato
-      # - name: contrato_terceiros
+      - name: contrato_terceiros
       - name: despesa
       - name: estado_entrega
       - name: fechamento
       - name: fornecedor
-      - name: historico_alteracoes
+      # - name: historico_alteracoes
       - name: itens_nota_fiscal
       - name: plano_contas
       - name: receita_dados

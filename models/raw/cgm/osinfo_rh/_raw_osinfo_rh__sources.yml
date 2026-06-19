@@ -22,16 +22,16 @@ sources:
         description: "Ocupações da Classificação Brasileira de Ocupações (CBO) provenientes de uma cópia de segurança."
       - name: tb_colunas_valores
         description: "Valores permitidos para colunas de outras tabelas, utilizados para validação ou configuração dinâmica."
-      - name: tb_folha_pagamento
-        description: "Folhas de pagamento consolidadas de funcionários para um determinado período de competência."
+      # - name: tb_folha_pagamento
+      #   description: "Folhas de pagamento consolidadas de funcionários para um determinado período de competência."
       - name: tb_funcionario
         description: "Funcionários com suas informações cadastrais, pessoais e profissionais, para gestão de recursos humanos."
       - name: tb_grupo
         description: "Grupos de usuários ou funcionários definidos para fins de controle de acesso ou alocação."
       - name: tb_provisionamento
         description: "Provisionamentos de verbas trabalhistas de funcionários para um período, garantindo a reserva contábil."
-      - name: tb_valores_folha_pagamento
-        description: "Valores de eventos (rubricas) detalhados na folha de pagamento de um funcionário para um período."
+      # - name: tb_valores_folha_pagamento
+      #   description: "Valores de eventos (rubricas) detalhados na folha de pagamento de um funcionário para um período."
       - name: tb_valores_provisionamento
         description: "Valores detalhados de verbas provisionadas mensalmente para cada funcionário."
       - name: tb_vinculo_trabalho
