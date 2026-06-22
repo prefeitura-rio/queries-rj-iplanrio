@@ -9,17 +9,22 @@ sources:
       - name: claro_pais_origem_new   
       - name: claro_pais_origem_2024_new
       - name: claro_pais_origem_2025
+      - name: claro_pais_origem_2026
 
       - name: claro_nacionalidade_new
       - name: claro_nacionalidade_2024_new
       - name: claro_nacionalidade_2025
+      - name: claro_nacionalidade_2026
 
       - name: claro_estado_origem_new
       - name: claro_estado_origem_2024_new
       - name: claro_estado_origem_2025
+      - name: claro_estado_origem_2026
 
       - name: claro_atrativos_geral_2024_new
       - name: claro_atrativos_geral_2025
+      - name: claro_atrativos_geral_2026
 
       - name: claro_atrativos_turistas_2024_new
       - name: claro_atrativos_turistas_2025
+      - name: claro_atrativos_turistas_2026
