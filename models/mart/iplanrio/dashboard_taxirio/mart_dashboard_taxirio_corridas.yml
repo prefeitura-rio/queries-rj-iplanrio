@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: mart_dashboard_taxirio_corridas
+    description: "Tabela mart que consolida as corridas do Taxirio para análise."
+    columns:
+      - name: id_corrida
+        description: "Identificador único da corrida."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_dashboard_taxirio_corridas__id_corrida__not_null
+              config:
+                severity: error
+          - unique:
+              name: mart_dashboard_taxirio_corridas__id_corrida__unique
+              config:
+                severity: error
+
+      - name: id_motorista
+        description: "Identificador do motorista associado à corrida."
+        data_type: string
+        quote: true
+
+      - name: metodo_pagamento
+        description: "Método de pagamento utilizado na corrida."
+        data_type: string
+        quote: true
+
+      - name: desconto_associado
+        description: "Descrição do desconto associado à corrida."
+        data_type: string
+        quote: true
+
+      - name: tipo_pagamento
+        description: "Tipo de pagamento classificado para análise do dashboard."
+        data_type: string
+        quote: true
+
+      - name: status_corrida_para_dashboard
+        description: "Status da corrida adequado para exibição no dashboard."
+        data_type: string
+        quote: true
+
+      - name: status_corrida
+        description: "Status original da corrida a partir do registro fonte."
+        data_type: string
+        quote: true
+
+      - name: data_corrida
+        description: "Data da criação da corrida ajustada para o fuso horário de análise."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: mart_dashboard_taxirio_corridas__data_corrida__not_null
+              config:
+                severity: error
+
+      - name: hora_corrida
+        description: "Hora da criação da corrida ajustada para o fuso horário de análise."
+        data_type: time
+
+      - name: avaliacao
+        description: "Avaliação da corrida pelo usuário."
+        data_type: numeric
+
+      - name: preco_corrida_com_pedagio
+        description: "Valor total da corrida com pedágio."
+        data_type: numeric
+
+      - name: valor_pedagio
+        description: "Valor do pedágio incluso na corrida."
+        data_type: numeric
+
+      - name: preco_com_desconto_bruto
+        description: "Valor bruto da corrida com desconto aplicado."
+        data_type: numeric
+
+      - name: preco_com_desconto_calculado
+        description: "Valor da corrida com desconto calculado conforme regra de negócio."
+        data_type: numeric
+
+      - name: preco_sem_desconto
+        description: "Valor da corrida sem desconto."
+        data_type: numeric
+
+      - name: desconto_efetivo
+        description: "Desconto efetivamente aplicado, calculado a partir dos valores da corrida."
+        data_type: numeric
+
+      - name: nome_municipio
+        description: "Nome do município associado à corrida."
+        data_type: string
+        quote: true
