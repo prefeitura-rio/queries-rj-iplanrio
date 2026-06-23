@@ -3,8 +3,6 @@ version: 2
 models:
   - name: mart_dashboard_taxirio_corridas
     description: "Tabela mart que consolida as corridas do Taxirio para análise."
-    config:
-      alias: corridas
     columns:
       - name: id_corrida
         description: "Identificador único da corrida."
