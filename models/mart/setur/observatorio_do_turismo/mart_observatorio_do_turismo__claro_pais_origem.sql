@@ -4,7 +4,7 @@
     schema='turismo_fluxo_visitantes'
 ) }}
 
-WITH claro_origem_pais_0 as (
+WITH claro_origem_pais_2023 as (
   SELECT
   CASE 
     WHEN data = "janeiro" THEN DATE("2023-01-01")
@@ -76,7 +76,7 @@ UNPIVOT(metrica_valor FOR data IN (
   )
 ),
 
-claro_origem_pais_1 as (
+claro_origem_pais_2024 as (
   SELECT
   CASE 
     WHEN data = "janeiro" THEN DATE("2024-01-01")
@@ -148,7 +148,7 @@ UNPIVOT(metrica_valor FOR data IN (
   )
 ),
 
-claro_origem_pais_2 as (
+claro_origem_pais_2025 as (
   SELECT
   CASE 
     WHEN data = "janeiro" THEN DATE("2025-01-01")
@@ -190,22 +190,71 @@ UNPIVOT(metrica_valor FOR data IN (
   )
 ),
 
+claro_origem_pais_2026 as (
+  SELECT
+  CASE 
+    WHEN data = "janeiro" THEN DATE("2026-01-01")
+    WHEN data = "fevereiro" THEN DATE("2026-02-01")
+    WHEN data = "marco" THEN DATE("2026-03-01")
+    WHEN data = "abril" THEN DATE("2026-04-01")
+    WHEN data = "maio" THEN DATE("2026-05-01")
+    WHEN data = "junho" THEN DATE("2026-06-01")
+    WHEN data = "julho" THEN DATE("2026-07-01")
+    WHEN data = "agosto" THEN DATE("2026-08-01")
+    WHEN data = "setembro" THEN DATE("2026-09-01")
+    WHEN data = "outubro" THEN DATE("2026-10-01")
+    WHEN data = "novembro" THEN DATE("2026-11-01")
+    WHEN data = "dezembro" THEN DATE("2026-12-01")
+    ELSE NULL
+    END data,
+    SAFE_CAST(metrica_valor AS INT64) as metrica_valor,
+    "numero_visitantes" as metrica_tipo,
+  unnamed_0 as pais_origem,
+  CASE 
+    WHEN unnamed_0 = 'Distrito Federal' THEN "Distrito Federal, Brasil"
+    ELSE unnamed_0
+  END as pais_origem_google
+FROM {{ ref('raw_turismo_fluxo_visitantes__claro_pais_origem_2026_clean') }}
+UNPIVOT(metrica_valor FOR data IN (
+    janeiro,
+    fevereiro,
+    marco,
+    abril,
+    maio,
+    junho,
+    julho,
+    agosto,
+    setembro,
+    outubro,
+    novembro,
+    dezembro
+    )
+  )
+),
+
 claro_origem_pais AS (
   SELECT
     *
-  FROM claro_origem_pais_0
+  FROM claro_origem_pais_2023
 
   UNION ALL
 
   SELECT
     *
-  FROM claro_origem_pais_1
+  FROM claro_origem_pais_2024
 
   UNION ALL
 
   SELECT
     *
-  FROM claro_origem_pais_2
+  FROM claro_origem_pais_2025
+
+
+  UNION ALL
+
+  SELECT
+    *
+  FROM claro_origem_pais_2026
 ),
 
 compara_mes_passado AS (

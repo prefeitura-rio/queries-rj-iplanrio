@@ -88,6 +88,34 @@ UNPIVOT(metrica_valor FOR origem IN (
   )
 ),
 
+nacionalidades_2026 AS (
+SELECT 
+  CASE 
+    WHEN _2023 = "Janeiro" THEN DATE("2026-01-01")
+    WHEN _2023 = "fevereiro" THEN DATE("2026-02-01")
+    WHEN _2023 = "março" THEN DATE("2026-03-01")
+    WHEN _2023 = "abril" THEN DATE("2026-04-01")
+    WHEN _2023 = "maio" THEN DATE("2026-05-01")
+    WHEN _2023 = "junho" THEN DATE("2026-06-01")
+    WHEN _2023 = "julho" THEN DATE("2026-07-01")
+    WHEN _2023 = "agosto" THEN DATE("2026-08-01")
+    WHEN _2023 = "setembro" THEN DATE("2026-09-01")
+    WHEN _2023 = "outubro" THEN DATE("2026-10-01")
+    WHEN _2023 = "novembro" THEN DATE("2026-11-01")
+    WHEN _2023 = "dezembro" THEN DATE("2026-12-01")
+  ELSE NULL
+  END AS data,
+  SAFE_CAST(SAFE_CAST(REPLACE(REPLACE(metrica_valor, ".", ""),",", ".") AS FLOAT64) AS INT64) as metrica_valor,
+  "numero_visitantes" as metrica_tipo,
+  origem
+FROM {{ ref('raw_turismo_fluxo_visitantes__claro_nacionalidade_2026_clean') }}
+UNPIVOT(metrica_valor FOR origem IN (
+    internacionais,
+    nacionais
+    )
+  )
+),
+
 nacionalidades AS (
   SELECT * FROM nacionalidades_2023
   
@@ -98,6 +126,10 @@ nacionalidades AS (
   UNION ALL
   
   SELECT * FROM nacionalidades_2025
+
+  UNION ALL
+  
+  SELECT * FROM nacionalidades_2026
 ),
 
 compara_mes_passado AS (

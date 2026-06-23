@@ -4,7 +4,7 @@
     alias='claro_origem',
 ) }}
 
-WITH claro_origem_estado_0 as (
+WITH claro_origem_estado_2023 as (
   SELECT
   CASE 
     WHEN data = "janeiro" THEN DATE("2023-01-01")
@@ -114,7 +114,7 @@ UNPIVOT(metrica_valor FOR data IN (
   )
 ),
 
-claro_origem_estado_1 as (
+claro_origem_estado_2024 as (
   SELECT
   CASE 
     WHEN data = "janeiro" THEN DATE("2024-01-01")
@@ -224,7 +224,7 @@ UNPIVOT(metrica_valor FOR data IN (
   )
 ),
 
-claro_origem_estado_2 as (
+claro_origem_estado_2025 as (
   SELECT
   CASE 
     WHEN data = "janeiro" THEN DATE("2025-01-01")
@@ -304,11 +304,91 @@ UNPIVOT(metrica_valor FOR data IN (
   )
 ),
 
+claro_origem_estado_2026 as (
+  SELECT
+  CASE 
+    WHEN data = "janeiro" THEN DATE("2026-01-01")
+    WHEN data = "fevereiro" THEN DATE("2026-02-01")
+    WHEN data = "marco" THEN DATE("2026-03-01")
+    WHEN data = "abril" THEN DATE("2026-04-01")
+    WHEN data = "maio" THEN DATE("2026-05-01")
+    WHEN data = "junho" THEN DATE("2026-06-01")
+    WHEN data = "julho" THEN DATE("2026-07-01")
+    WHEN data = "agosto" THEN DATE("2026-08-01")
+    WHEN data = "setembro" THEN DATE("2026-09-01")
+    WHEN data = "outubro" THEN DATE("2026-10-01")
+    WHEN data = "novembro" THEN DATE("2026-11-01")
+    WHEN data = "dezembro" THEN DATE("2026-12-01")
+    ELSE NULL
+    END data,
+    SAFE_CAST(SAFE_CAST(REPLACE(REPLACE(metrica_valor, ".", ""),",", ".") AS FLOAT64) AS INT64) as metrica_valor,
+    "numero_visitantes" as metrica_tipo,
+  unnamed_0 as estado_origem,
+  CASE 
+    WHEN unnamed_0 = 'Distrito Federal' THEN "Distrito Federal, Brasil"
+    ELSE unnamed_0
+  END as estado_origem_google,
+    CASE
+      WHEN unnamed_0 = 'Acre' THEN 'AC'
+      WHEN unnamed_0 = 'Alagoas' THEN 'AL'
+      WHEN unnamed_0 = 'Amapá' THEN 'AP'
+      WHEN unnamed_0 = 'Amazonas' THEN 'AM'
+      WHEN unnamed_0 = 'Bahia' THEN 'BA'
+      WHEN unnamed_0 = 'Ceará' THEN 'CE'
+      WHEN unnamed_0 = 'Espírito Santo' THEN 'ES'
+      WHEN unnamed_0 = 'Goiás' THEN 'GO'
+      WHEN unnamed_0 = 'Maranhão' THEN 'MA'
+      WHEN unnamed_0 = 'Mato Grosso' THEN 'MT'
+      WHEN unnamed_0 = 'Mato Grosso do Sul' THEN 'MS'
+      WHEN unnamed_0 = 'Minas Gerais' THEN 'MG'
+      WHEN unnamed_0 = 'Pará' THEN 'PA'
+      WHEN unnamed_0 = 'Paraíba' THEN 'PB'
+      WHEN unnamed_0 = 'Paraná' THEN 'PR'
+      WHEN unnamed_0 = 'Pernambuco' THEN 'PE'
+      WHEN unnamed_0 = 'Piauí' THEN 'PI'
+      WHEN unnamed_0 = 'Rio de Janeiro' THEN 'RJ'
+      WHEN unnamed_0 = 'Rio Grande do Norte' THEN 'RN'
+      WHEN unnamed_0 = 'Rio Grande do Sul' THEN 'RS'
+      WHEN unnamed_0 = 'Rondônia' THEN 'RO'
+      WHEN unnamed_0 = 'Roraima' THEN 'RR'
+      WHEN unnamed_0 = 'Santa Catarina' THEN 'SC'
+      WHEN unnamed_0 = 'São Paulo' THEN 'SP'
+      WHEN unnamed_0 = 'Sergipe' THEN 'SE'
+      WHEN unnamed_0 = 'Tocantins' THEN 'TO'
+      WHEN unnamed_0 = 'Distrito Federal' THEN 'DF'
+      ELSE '000'
+    END estado_origem_sigla,
+    CASE 
+      WHEN unnamed_0 IN ('Goiás', 'Mato Grosso', 'Mato Grosso do Sul', 'Distrito Federal') THEN 'Centro Oeste'
+      WHEN unnamed_0 IN ('Alagoas', 'Bahia', 'Ceará', 'Maranhão', 'Paraíba', 'Pernambuco', 'Piauí', 'Rio Grande do Norte', 'Sergipe') THEN 'Nordeste'
+      WHEN unnamed_0 IN ('Acre', 'Amapá', 'Amazonas', 'Pará', 'Rondônia', 'Roraima', 'Tocantins') THEN 'Norte'
+      WHEN unnamed_0 IN ('Espírito Santo', 'Minas Gerais', 'Rio de Janeiro', 'São Paulo') THEN 'Sudeste'
+      WHEN unnamed_0 IN ('Paraná', 'Rio Grande do Sul', 'Santa Catarina') THEN 'Sul'
+      ELSE '000'
+    END regiao
+FROM {{ ref('raw_turismo_fluxo_visitantes__claro_estado_origem_2026_clean') }}
+UNPIVOT(metrica_valor FOR data IN (
+    janeiro,
+    fevereiro,
+    marco,
+    abril,
+    maio,
+    junho,
+    julho,
+    agosto,
+    setembro,
+    outubro,
+    novembro,
+    dezembro
+    )
+  )
+),
+
 claro_origem_estado AS (
   SELECT
     coe.*,
     ST_GEOGFROMTEXT(e.geometry) as estado_geometry
-    FROM claro_origem_estado_0 as coe
+    FROM claro_origem_estado_2023 as coe
   LEFT JOIN `rj-setur.turismo_fluxo_visitantes_staging.brasil_estados` as e
     ON coe.estado_origem_sigla = e.abbrev_state
   
@@ -317,7 +397,7 @@ claro_origem_estado AS (
   SELECT
     coe.*,
     ST_GEOGFROMTEXT(e.geometry) as estado_geometry
-    FROM claro_origem_estado_1 as coe
+    FROM claro_origem_estado_2024 as coe
   LEFT JOIN `rj-setur.turismo_fluxo_visitantes_staging.brasil_estados` as e
     ON coe.estado_origem_sigla = e.abbrev_state
 
@@ -326,7 +406,16 @@ claro_origem_estado AS (
   SELECT
     coe.*,
     ST_GEOGFROMTEXT(e.geometry) as estado_geometry
-    FROM claro_origem_estado_2 as coe
+    FROM claro_origem_estado_2025 as coe
+  LEFT JOIN `rj-setur.turismo_fluxo_visitantes_staging.brasil_estados` as e
+    ON coe.estado_origem_sigla = e.abbrev_state
+
+  UNION ALL
+
+  SELECT
+    coe.*,
+    ST_GEOGFROMTEXT(e.geometry) as estado_geometry
+    FROM claro_origem_estado_2026 as coe
   LEFT JOIN `rj-setur.turismo_fluxo_visitantes_staging.brasil_estados` as e
     ON coe.estado_origem_sigla = e.abbrev_state
 ),
