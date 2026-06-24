@@ -9,6 +9,17 @@ models :
       e outra para aulas.\n**Frequência de atualização**: Diário\n**Cobertura temporal**:
       Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura
       Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_matricula_turma
+              - id_aluno
+              - id_matricula_disciplina
+              - id_aula_disciplina
+              - id_disciplina_turma
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
       - name: faltas_disciplina_dia
         description: Quantidade de faltas do aluno no dia
@@ -23,31 +34,57 @@ models :
       - name: usuario_alteracao
         description: Identificador do usuário que realizou a última alteração no registro
       - name: id_matricula_disciplina
-        description: Identificador de matricula do aluno para determinada disciplina
-          em uma turma
+        description: Identificador de matricula do aluno para determinada disciplina em uma turma
+        tests:
+          - not_null
       - name: id_disciplina_turma
         description: Identificador de disciplina para cada turma
+        tests:
+          - not_null
       - name: id_aluno
         description: Identificador do aluno
+        tests:
+          - not_null
       - name: id_matricula_turma
         description: Identificador de matrícula do aluno na turma
+        tests:
+          - not_null
       - name: id_situacao
-        description: 'Situação do registro: 1 – Ativo;  3 – Excluído. É excluído quando
-          foram inseridos dados incorretamente'
+        description: 'Situação do registro: 1 – Ativo;  3 – Excluído. É excluído quando foram inseridos dados incorretamente'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['1', '3', '6']
       - name: id_aula_disciplina
         description: Identificador das aulas da disciplina da turma em determinado
           dia. Uma aula corresponde a um tempo da disciplina. Este identificador pode
           corresponder a várias aulas, desde que estejam no mesmo dia
+        tests:
+          - not_null
   - name: raw_gestao_escolar__turma_curriculo
     description: "**Descrição**: Grupamento de determinada turma.\n**Frequência de
       atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos
       dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado
       por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_turma
+              - id_curso
+              - id_curriculo
+              - id_periodo_curriculo
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
       - name: prioridade_curriculo
         description: Número de prioridade do currículo da turma
       - name: id_situacao
         description: 'Situação do registro: 1 – Ativo; 3 – Excluído'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['1', '3', '5']
       - name: data_criacao
         description: Data/hora de criação do registro
       - name: data_alteracao
@@ -55,18 +92,31 @@ models :
       - name: id_periodo_curriculo
         description: Identificador do período do currículo, sequencial (manual) com
           base no curso e no currículo
+        tests:
+          - not_null
       - name: id_curriculo
         description: Identificador de currículo, sequencial (manual) com base no curso
+        tests:
+          - not_null
       - name: id_curso
         description: Identificador de curso, sequencial
+        tests:
+          - not_null
       - name: id_turma
         description: Identificador de turma
+        tests:
+          - not_null
   - name: raw_gestao_escolar__turma_disciplina
     description: "**Descrição**: Disciplina de determinada turma de escolas municipais
       do município do Rio de Janeiro. A turma associada deve ser vista na tabela turma_disciplina_rel.\n
       **Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n
       **Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da
       Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_disciplina_turma
     columns:
       - name: multiseriado
         description: Verificador se a disciplina da turma é multiseriada
@@ -82,6 +132,8 @@ models :
         description: 'Modo: 1 – Normal; 2 – Regime Especial; 3 – Excepcional'
       - name: id_disciplina
         description: Código da disciplina da turma
+        tests:
+          - not_null
       - name: nome_disciplina
         description: Nome da disciplina da turma
       - name: data_inicio
@@ -91,20 +143,34 @@ models :
       - name: id_situacao
         description: 'Situação do registro: 1 – Ativo; 3 – Excluído; 4 – Cancelada;
           5 – Encerrada'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['1', '3', '4', '5']
       - name: global
         description: Verificador se a disciplina da turma é global
       - name: disciplina_especial
         description: Indicar se a turma/disciplina
       - name: id_disciplina_turma
         description: Identificador sequencial da disciplina da turma
+        tests:
+          - not_null
       - name: aula_fora_periodo_normal
         description: Verificador se existe aulas fora do período normal
       - name: carga_hora_semanal
         description: Carga horária semanal da disciplina da turma
       - name: id_duracao
         description: 'Duração: 1 – Anual; 2 – Semestral; 3 – Condensada; 4 – Livre'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['1', '2', '3', '4']
       - name: id_tipo
         description: '"Tipo: 1 – Obrigatória; 2 – Estágio; 3 – Optativa; 4 – Eletiva'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['1', '2', '3', '4']
   - name: raw_gestao_escolar__turma_aula
     description: "**Descrição**: Plano de aula de determinado tipo de aula. Um plano
       de aula contém o conteúdo ( e dinâmica ) dado nos tempos de uma determinada
@@ -114,10 +180,20 @@ models :
       para prova e outra para aulas.\n**Frequência de atualização**: Diário\n**Cobertura
       temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
       Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_aula_disciplina
+              - id_disciplina
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
       - name: id_aula_disciplina
         description: Parte do identificador do plano de aula, que é composto também
           por tud_id.
+        tests:
+          - not_null
       - name: sequencia_aula
         description: Número da ordem do tempo no plano de aula.
       - name: data_aula
@@ -134,6 +210,10 @@ models :
       - name: id_situacao
         description: 'Situação do registro: 1 – Aula prevista; 3 – Excluído; 4 – Aula
           dada; 6 – Aula cancelada'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["1", "3", "4", "6"]
       - name: data_criacao
         description: Data/hora de criação do registro
       - name: data_alteracao
@@ -158,6 +238,8 @@ models :
         description: Identificador do COC onde o plano de aula foi realizado.
       - name: id_disciplina
         description: Identificador de disciplina
+        tests:
+          - not_null
       - name: recursos_utilizados
         description: lnforme dos recursos utilizados na aula
       - name: atividade_casa
@@ -170,15 +252,30 @@ models :
       75%.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n
       **Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da
       Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_formato_avaliacao
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
       - name: id_formato_avaliacao
         description: Identificador sequencial de formato de avaliação
+        tests:
+          - not_null
       - name: id_entidade
         description: Identificador de entidade
+        tests:
+          - not_null
       - name: id_escola
         description: 'FK: Identificador de escola'
+        tests:
+          - not_null
       - name: id_unidade_escola
         description: 'FK: Identificador de unidade da escola'
+        tests:
+          - not_null
       - name: formato_avaliacao
         description: Verificador se o formato de avaliação é padrão
       - name: nome_avaliacao
@@ -186,9 +283,19 @@ models :
       - name: tipo_avaliacao
         description: "Tipo do formato de avaliação:\r\n · 1 – Conceito global\r\n
           · 2 – Por disciplina\r\n · 3 – Conceito global e por disciplina"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+                quote: false
       - name: tipo_frequencia
         description: "Tipo de lançamento de frequência:\r\n · 1 – Aulas planejadas\r
           \n · 2 – Período"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
       - name: conceito_global
         description: 'FK: Identificador de escala de avaliação'
       - name: valor_aprovacao_global
@@ -201,6 +308,11 @@ models :
         description: "Tipo de progressão parcial:\r\n · 1 – Período de matrícula seguinte\r
           \n · 2 – Anterior ao período de matrícula seguinte\r\n · 3 - Sem progressão
           parcial"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+                quote: false
       - name: valor_progressao
         description: Valor mínimo de progressão parcial por disciplina
       - name: maximo_progressao
@@ -208,6 +320,11 @@ models :
       - name: situacao_registro
         description: "Situação do registro:\r\n · 1 – Ativo\r\n · 2 – Bloqueado\r\n
           · 3 – Excluído"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+                quote: false
       - name: data_criacao
         description: Data/hora de criação do registro
       - name: data_altercao
@@ -215,24 +332,48 @@ models :
       - name: tipo_frequencia_apurada
         description: "Define se a frequencia será apurada por dia ou por tempos\r\n
           1 - Tempos de Aula\r\n2 - Dias"
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2]
+                quote: false
   - name: raw_gestao_escolar__turma_disciplina_rel
     description: "**Descrição**: Disciplina de determinada turma de escolas municipais
       do município do Rio de Janeiro.\n**Frequência de atualização**: Diário\n**Cobertura
       temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
       Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_disciplina
+              - id_turma
     columns:
       - name: id_disciplina
         description: Identificador de disciplina da turma
+        tests:
+          - not_null
       - name: id_turma
         description: Identificador de turma
+        tests:
+          - not_null
   - name: raw_gestao_escolar__turno
     description: "**Descrição**: Turnos das escolas.\n**Frequência de atualização**:
       Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n
       **Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**:
       camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_turno
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
       - name: id_turno
         description: Identificador, seqüencial do turno
+        tests:
+          - not_null
       - name: id_entidade
         description: Identificador de entidade
       - name: descricao_turno
@@ -241,6 +382,11 @@ models :
         description: Verificador se o turno é padrão
       - name: situacao
         description: 'Situação do registro: 1 – Ativo; 2 – Bloqueado; 3 – Excluído'
+        tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3]
+                quote: false
       - name: data_criacao
         description: Data/hora de criação do registro
       - name: data_alteracao
@@ -253,6 +399,8 @@ models :
         description: Horário final do turno
       - name: id_tipo_turno
         description: Identificador de tipo de turno
+        tests:
+          - not_null
 
 
   - name: raw_gestao_escolar__curriculo_periodo
@@ -263,10 +411,21 @@ models :
       ano etc ... ), fundamental II.\n**Frequência de atualização**: Diário\n**Cobertura
       temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
       Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_periodo_curriculo
+              - id_curriculo
+              - id_curso
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
       - name: id_periodo_curriculo
         description: Identificador do período do currículo, sequencial (manual) com
           base no curso e no currículo
+        tests:
+          - not_null
       - name: ordem_periodo
         description: Ordem do período do currículo
       - name: descricao_periodo
@@ -281,6 +440,10 @@ models :
         description: Mês da idade ideal final
       - name: id_situacao
         description: 'Situação do registro: 1–Ativo; 3–Excluído'
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['1', '3']
       - name: data_criacao
         description: Data/hora de criação do registro
       - name: data_alteracao
@@ -297,27 +460,43 @@ models :
         description: Quantidade de minutos por dia
       - name: id_coc
         description: Número do Conselho de Classe (coc) que subdivide o ano escolar
-          em período de 2 meses e meio. Valores posíveis (1,2,3,4,5, NULL). Sempre
-          NULL
+          em período de 2 meses e meio. Valores posíveis (1,2,3,4,5, NULL). Sempre NULL
       - name: id_curriculo
         description: Identificador de currículo, sequencial (manual) com base no curso,
           sempre 1
+        tests:
+          - not_null
       - name: id_etapa_mec_inep
         description: Identificador de etapa do MEC/INEP. Sempre NULL
       - name: id_curso
         description: Identificador de curso, sequencia. Etapa???
+        tests:
+          - not_null
   - name: raw_gestao_escolar__tipo_turno
     description: "**Descrição**: Tipos de turno possíveis.  Ex. integral, manhã, noite
         e tarde.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde
         2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira
         da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - id_tipo_turno
+      - not_null_proportion_multiple_columns:
+            at_least: 0.99
     columns:
     - name: id_tipo_turno
       description: Identificador, sequencial do tipo de turno
+      tests:
+        - not_null
     - name: tipo_turno
       description: Nome do tipo de turno.
     - name: id_situacao
       description: 'Situação do registro: 1 – Ativo; 2 – Bloqueado; 3 – Excluído'
+      tests:
+        - accepted_values:
+            arguments:
+              values: ['1', '2', '3']
     - name: data_criacao
       description: Data/hora de criação do registro
     - name: data_alteracao
