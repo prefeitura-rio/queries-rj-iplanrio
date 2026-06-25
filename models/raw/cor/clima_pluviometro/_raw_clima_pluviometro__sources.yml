@@ -7,8 +7,17 @@ sources:
     schema: clima_pluviometro_staging
     tables:
       - name: taxa_precipitacao_alertario
+      - name: taxa_precipitacao_alertario_5min 
       - name: taxa_precipitacao_inea
+        config:
+          freshness:
+            error_after: {count: 24, period: hour}
+          loaded_at_field: SAFE_CAST(data AS TIMESTAMP)
     config:
       freshness:
         error_after: {count: 24, period: hour}
-      loaded_at_field: data_particao
+      loaded_at_field: SAFE_CAST(data_particao AS TIMESTAMP)
+
+    
+
+
