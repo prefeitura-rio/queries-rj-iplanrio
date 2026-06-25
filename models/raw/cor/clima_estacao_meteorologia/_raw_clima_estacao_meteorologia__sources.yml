@@ -10,14 +10,14 @@ sources:
         config:
           freshness:
             error_after: {count: 24, period: hour}
-          loaded_at_field: data_medicao
+          loaded_at_field: SAFE_CAST(data AS TIMESTAMP)
       - name: meteorologia_redemet
         config:
           freshness:
             error_after: {count: 24, period: hour}
-          loaded_at_field: data_medicao
+          loaded_at_field: safe_cast(DATE(SAFE_CAST(ano as int64), SAFE_CAST(mes AS INT64), SAFE_CAST(dia AS INT64)) AS TIMESTAMP)
       - name: meteorologia_alertario
         config:
           freshness:
             error_after: {count: 24, period: hour}
-          loaded_at_field: data_particao
+          loaded_at_field: SAFE_CAST(data_particao AS TIMESTAMP) 
