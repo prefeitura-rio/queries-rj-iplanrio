@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: raw_sicop_processo2
+    description: "Staging da view processo2 do SICOP — modelo raw_sicop_processo2."
+    columns:
+      - name: id_processo
+        description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+      - name: num_processo_principal
+        description: "Número identificador único de um processo principal administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
+      - name: data_processo
+        description: "Data da Inclusão do Processo"
+      - name: data_sistema
+        description: "Data do Sistema"
+      - name: hora_entra
+        description: "Hora de entrada do registro."
+      - name: mat_receb
+        description: "Matrícula do receptor"
+      - name: org_doc
+        description: "Órgão expedidor do documento de identificação da parte envolvida."
+      - name: tipo_docto
+        description: "Nome do Tipo do documento do processo relacionado ao campo tipo_documento"
+      - name: cpf_cgc
+        description: "Número relacionado ao tipo de documento"
+      - name: cod_assu_p
+        description: "Código do Assunto. Ex.: 0- Administração Geral; 1- Assunto Jurídico; 2- Assunto"
+      - name: desc_assun
+        description: "Descrição do Assunto do processo"
+      - name: status
+        description: "identifica o status do processo"
+      - name: status_dig
+        description: "identifica o status de digitação do registro"
+      - name: qtd_vol
+        description: "Identifica a quantidade de volumes referente ao processo"
+      - name: org_origem
+        description: "Órgão de origem do processo."
+      - name: org_transc
+        description: "Órgão transcritor do processo. Órgão do usuário responsável pela inclusão do registro."
+      - name: org_alt
+        description: "Órgão que fez alteração no processo"
+      - name: org_dest
+        description: "Órgão de destino do processo"
+      - name: cod_logr
+        description: "Identifica de forma padronizada o endereço (rua, avenida, travessa, etc.) associado à parte."
+      - name: requerente
+        description: "Nome do Requerente"
+      - name: volume
+        description: "Número do volume"
+      - name: loaded_at
+        description: "Timestamp de extração (CAST de _prefect_extracted_at)."

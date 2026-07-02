@@ -30,6 +30,8 @@ select
   safe_cast(CONCAT( SUBSTR(data_despacho,7,4),'-', SUBSTR(data_despacho,4,2) ,'-', SUBSTR(data_despacho,1,2) ) as date)         as data_despacho,
   --safe_cast(data_saida as date)                             as data_saida,
   safe_cast(CONCAT( SUBSTR(data_saida,7,4),'-', SUBSTR(data_saida,4,2) ,'-', SUBSTR(data_saida,1,2) ) as date)         as data_saida,
+  safe_cast(CONCAT( SUBSTR(dt_dig_tramitacao,7,4),'-', SUBSTR(dt_dig_tramitacao,4,2) ,'-', SUBSTR(dt_dig_tramitacao,1,2) ) as date)  as data_digitacao_tramitacao,
+  safe_cast(CONCAT( SUBSTR(dt_dig_recebimento,7,4),'-', SUBSTR(dt_dig_recebimento,4,2) ,'-', SUBSTR(dt_dig_recebimento,1,2) ) as date) as data_digitacao_recebimento,
   
   -- Órgãos envolvidos na tramitação
   safe_cast(org_origem as int64)                            as orgao_origem,

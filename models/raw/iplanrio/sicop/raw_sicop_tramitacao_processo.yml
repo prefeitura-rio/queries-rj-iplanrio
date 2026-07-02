@@ -43,6 +43,14 @@ models:
         description: "Data de saída do despacho que consta no processo"
         data_type: date
 
+      - name: data_digitacao_tramitacao
+        description: "Data de digitação da tramitação do processo"
+        data_type: date
+
+      - name: data_digitacao_recebimento
+        description: "Data de digitação do recebimento do processo"
+        data_type: date
+
       - name: orgao_origem
         description: "Órgão de origem dos processos, ou seja, órgão autor da tramitação"
         data_type: int64

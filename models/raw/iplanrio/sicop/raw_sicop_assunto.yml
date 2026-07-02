@@ -5,6 +5,9 @@ models:
     description: "Dados brutos de assuntos do SICOP (origem VW_ASSUNTO_DLK)"
 
     columns:
+      - name: data_sistema
+        description: "Data do sistema"
+        data_type: date
       - name: id_assunto
         description: "Identificador único do assunto"
         data_type: string
