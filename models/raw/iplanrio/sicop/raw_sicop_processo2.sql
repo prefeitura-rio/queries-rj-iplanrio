@@ -13,7 +13,13 @@ select
   safe_cast(CONCAT( SUBSTR(data_processo,7,4),'-', SUBSTR(data_processo,4,2) ,'-', SUBSTR(data_processo,1,2) ) as date) as data_processo,
   safe_cast(CONCAT( SUBSTR(data_sistema,7,4),'-', SUBSTR(data_sistema,4,2) ,'-', SUBSTR(data_sistema,1,2) ) as date) as data_sistema,
 
-  PARSE_TIME("%H:%M", hora_processo)                     as hora_entra,
+  case
+    when REGEXP_CONTAINS(hora_processo, r'^[0-2][0-9]:[0-5][0-9]:[0-5][0-9]$')
+      then PARSE_TIME("%H:%M:%S", hora_processo)
+    when REGEXP_CONTAINS(hora_processo, r'^[0-2][0-9]:[0-5][0-9]$')
+      then PARSE_TIME("%H:%M", hora_processo)
+    else null
+  end as hora_entra,
 
   -- Documento
   safe_cast(documento as string)                            as cpf_cgc,

@@ -19,8 +19,8 @@ select
   
   -- Matrículas relacionadas à tramitação
   safe_cast(mat_despacho as int64)                          as matricula_despacho,
-  safe_cast(mat_logado as int64)                            as matricula_logado,
-  safe_cast(mat_recebedor as int64)                         as matricula_recebedor,
+  safe_cast(mat_dig_tramitacao as int64)                    as matricula_digitacao_tramitacao,
+  safe_cast(mat_dig_recebimento as int64)                   as matricula_digitacao_recebimento,
   
   -- Código de despacho
   safe_cast(cod_despacho as string)                         as id_despacho,

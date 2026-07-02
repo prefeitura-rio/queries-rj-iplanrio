@@ -22,12 +22,12 @@ models:
         description: "Matrícula do responsável pelo despacho do processo"
         data_type: int64
 
-      - name: matricula_logado
-        description: "Matrícula de quem se loga no sistema, que acessa a estação de trabalho"
+      - name: matricula_digitacao_tramitacao
+        description: "Matrícula do usuário que digitou a tramitação do processo"
         data_type: int64
 
-      - name: matricula_recebedor
-        description: "Matrícula do responsável pelo recebimento do processo no orgão de destino"
+      - name: matricula_digitacao_recebimento
+        description: "Matrícula do usuário que digitou o recebimento do processo"
         data_type: int64
 
       - name: id_despacho
