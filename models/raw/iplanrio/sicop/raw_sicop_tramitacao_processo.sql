@@ -26,7 +26,6 @@ select
   safe_cast(cod_despacho as string)                         as id_despacho,
 
   -- Datas da tramitação
-  safe_cast(data_despacho as date)                          as data_despacho,
   safe_cast(CONCAT( SUBSTR(data_despacho,7,4),'-', SUBSTR(data_despacho,4,2) ,'-', SUBSTR(data_despacho,1,2) ) as date)         as data_despacho,
   --safe_cast(data_saida as date)                             as data_saida,
   safe_cast(CONCAT( SUBSTR(data_saida,7,4),'-', SUBSTR(data_saida,4,2) ,'-', SUBSTR(data_saida,1,2) ) as date)         as data_saida,
