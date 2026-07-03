@@ -4,8 +4,8 @@ sources:
   - name: clima_fluviometro_staging
     database: rj-iplanrio
     schema: clima_fluviometro_staging
-    # tables:
-    #   - name: lamina_agua_inea
+    tables:
+      - name: lamina_agua_inea
     # config:
     #   freshness:
     #     error_after: {count: 24, period: hour}

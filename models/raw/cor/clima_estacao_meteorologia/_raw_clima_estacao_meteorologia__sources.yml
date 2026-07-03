@@ -11,7 +11,7 @@ sources:
           freshness:
             error_after: {count: 24, period: hour}
           loaded_at_field: SAFE_CAST(data AS TIMESTAMP)
-      # - name: meteorologia_redemet
+      - name: meteorologia_redemet
       #   config:
       #     freshness:
       #       error_after: {count: 24, period: hour}
