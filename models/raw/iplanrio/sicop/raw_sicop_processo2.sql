@@ -24,7 +24,7 @@ select
   -- Documento
   safe_cast(documento as string)                            as cpf_cgc,
   safe_cast(orgao_documento as string)                      as org_doc,
-  safe_cast(tipo_documento as int64)                        as tipo_docto,
+  safe_cast(tipo_documento as string)                        as tipo_docto,
 
   -- Assunto
   safe_cast(codigo_assunto as string)                       as cod_assu_p,
