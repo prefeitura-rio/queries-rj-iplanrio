@@ -26,6 +26,9 @@ sources:
       - name: orgao
         description: "View de órgãos do SICOP (VW_ORGAO_DLK)"
 
+      - name: processo2
+        description: "View de processos do SICOP (VW_PROCESSO2_DLK)"
+
     config:
       freshness: # default freshness
         error_after: {count: 24, period: hour}

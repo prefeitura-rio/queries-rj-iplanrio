@@ -7,6 +7,7 @@
 
 -- Conversões e padronização de nomes conforme guia de estilo
 SELECT
+    SAFE_CAST(CONCAT( SUBSTR(data_sistema,7,4),'-', SUBSTR(data_sistema,4,2) ,'-', SUBSTR(data_sistema,1,2) ) as date)         as data_sistema,
     SAFE_CAST(IDENT AS STRING) AS id_assunto,
     SAFE_CAST(COD AS STRING) AS codigo_assunto,
     SAFE_CAST(SEQ AS INT64) AS sequencia,
