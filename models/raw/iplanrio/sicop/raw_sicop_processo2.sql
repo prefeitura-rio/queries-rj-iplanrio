@@ -1,6 +1,6 @@
 {{
     config(
-        alias="raw_sicop_processo2",
+        alias="processo2",
         description="Dados brutos de processo2 do SICOP (VW_PROCESSO2_DLK)"
     )
 }}
