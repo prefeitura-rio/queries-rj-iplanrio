@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-    if: github.actor == 'tricktx' || github.actor == 'd116626'
+    if: github.actor == 'tricktx' || github.actor == 'd116626' || github.actor == 'gabriel-milan'
     steps:
       - uses: hmarr/auto-approve-action@v3
