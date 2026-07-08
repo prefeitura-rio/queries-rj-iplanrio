@@ -1,7 +1,6 @@
 {{
     config(
         alias='taxa_precipitacao_alertario_5min',
-        schema='clima_pluviometro',
         materialized='incremental',
         unique_key="primary_key",
         partition_by={
@@ -35,7 +34,7 @@ SELECT
     SAFE_CAST(mes_particao as INT64) mes_particao,
     SAFE_CAST(data_particao as DATE) data_particao,
 
-FROM `rj-iplanrio.clima_pluviometro_staging.taxa_precipitacao_alertario_5min`
+FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_alertario_5min') }}
 
 {% if is_incremental() %}
 
