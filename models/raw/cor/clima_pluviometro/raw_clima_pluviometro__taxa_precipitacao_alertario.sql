@@ -1,6 +1,6 @@
 {{
     config(
-        alias="taxa_precipitacao_alertario_final",
+        alias="taxa_precipitacao_alertario",
         materialized='incremental',
         incremental_strategy = "merge",
         unique_key="primary_key",

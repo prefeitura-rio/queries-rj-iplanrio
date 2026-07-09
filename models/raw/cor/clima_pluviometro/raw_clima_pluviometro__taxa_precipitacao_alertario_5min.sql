@@ -1,6 +1,6 @@
 {{
     config(
-        alias="taxa_precipitacao_alertario_5min_final",
+        alias="taxa_precipitacao_alertario_5min",
         materialized='incremental',
         unique_key="primary_key",
         partition_by={
