@@ -2,13 +2,16 @@
     config(
         alias="taxa_precipitacao_alertario",
         materialized='incremental',
-        incremental_strategy = "merge",
-        unique_key="primary_key",
+        unique_key='primary_key',
         partition_by={
             "field": "data_particao",
             "data_type": "date",
             "granularity": "day",
         },
+        cluster_by=[
+            "primary_key",
+            "id_estacao"
+        ]
     )
 }}
 
@@ -29,9 +32,9 @@ with source_1 as (
     FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_alertario') }}
 
     {% if is_incremental() %}
-    WHERE DATETIME(data_medicao) > (
-        SELECT MAX(DATETIME(data_medicao))
-        FROM {{ this }}
+        WHERE DATETIME(data_medicao) > (
+            SELECT MAX(DATETIME(data_medicao))
+            FROM {{ this }}
         WHERE DATE(data_medicao) != '2099-03-03'
     )
     {% endif %}

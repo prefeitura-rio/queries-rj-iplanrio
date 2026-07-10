@@ -1,13 +1,18 @@
 {{
     config(
         alias="taxa_precipitacao_alertario_5min",
+        incremental_strategy='merge',
         materialized='incremental',
         unique_key="primary_key",
         partition_by={
-            "field": "data_particao",
-            "data_type": "date",
+            "field": "data_medicao",
+            "data_type": "datetime",
             "granularity": "day",
         },
+        cluster_by=[
+            "primary_key",
+            "id_estacao"
+        ]
     )
 }}
 
