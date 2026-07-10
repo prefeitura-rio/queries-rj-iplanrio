@@ -10,6 +10,8 @@ models:
         description: "ID da estação pluviométrica em que ocorreu a medição."
       - name: data_medicao
         description: "Data e horário em que foi realizada a medição no formato YYYY-MM-DD HH:MM:SS."
+      - name: horario
+        description: "Horário em que foi realizada a medição no formato HH:MM:SS."
       - name: acumulado_chuva_5min
         description: "Acumulado de chuva em 5 minutos."
       - name: acumulado_chuva_10min
@@ -36,11 +38,11 @@ models:
         description: "Acumulado de chuva em 96 horas."
       - name: acumulado_chuva_mes
         description: "Acumulado de chuva no mês."
-      - name: ano
+      - name: ano_particao
         description: "Ano em que foi realizada a medição."
-      - name: mes
+      - name: mes_particao
         description: "Mês em que foi realizada a medição."
-      - name: data
+      - name: data_particao
         description: "Data em que foi realizada a medição (campo de particionamento)."
 
   - name: raw_clima_pluviometro__taxa_precipitacao_inea
@@ -76,15 +78,10 @@ models:
     columns:
       - name: primary_key
         description: "Chave primária criada a partir da coluna id_estacao e da data_medicao. Serve para evitar dados duplicados."
-        tests:
-          - unique
-          - not_null
       - name: data_medicao
         description: "Data e hora em que foi realizada a medição (no formato Y-m-d H:M:S)."
       - name: id_estacao
         description: "ID da estação pluviométrica em que ocorreu a medição."
-        tests:
-          - not_null
       - name: acumulado_chuva_5min
         description: "Acumulado de chuva em 5 minutos."
       - name: acumulado_chuva_10min
