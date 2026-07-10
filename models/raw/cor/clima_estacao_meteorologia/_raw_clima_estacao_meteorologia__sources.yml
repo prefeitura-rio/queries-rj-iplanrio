@@ -10,7 +10,7 @@ sources:
         config:
           freshness:
             error_after: {count: 24, period: hour}
-          loaded_at_field: SAFE_CAST(data AS TIMESTAMP)
+          loaded_at_field: SAFE_CAST(DATETIME(SAFE_CAST(data as DATE) , SAFE_CAST(horario AS TIME)) AS TIMESTAMP)
       - name: meteorologia_redemet
       #   config:
       #     freshness:
