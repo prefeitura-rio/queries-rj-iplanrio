@@ -350,6 +350,65 @@ UNPIVOT(metrica_valor FOR ferramenta_turistica IN (
     pequena_africa
     )
   )
+
+
+UNION ALL
+
+SELECT 
+  CASE 
+    WHEN _2023 = "Janeiro" THEN DATE("2026-01-01")
+    WHEN _2023 = "Fevereiro" THEN DATE("2026-02-01")
+    WHEN _2023 = "Março" THEN DATE("2026-03-01")
+    WHEN _2023 = "Abril" THEN DATE("2026-04-01")
+    WHEN _2023 = "maio" THEN DATE("2026-05-01")
+    WHEN _2023 = "junho" THEN DATE("2026-06-01")
+    WHEN _2023 = "julho" THEN DATE("2026-07-01")
+    WHEN _2023 = "agosto" THEN DATE("2026-08-01")
+    WHEN _2023 = "setembro" THEN DATE("2026-09-01")
+    WHEN _2023 = "outubro" THEN DATE("2026-10-01")
+    WHEN _2023 = "novembro" THEN DATE("2026-11-01")
+    WHEN _2023 = "dezembro" THEN DATE("2026-12-01")
+  ELSE NULL
+  END AS data,
+  SAFE_CAST(SAFE_CAST(metrica_valor AS FLOAT64) AS INT64) as metrica_valor,
+  "numero_visitantes" as metrica_tipo,
+  "Turistas" as origem_visitante,
+  CASE
+    WHEN ferramenta_turistica = "cristo_redentor" THEN "Cristo Redentor"
+    WHEN ferramenta_turistica = "pao_de_acucar" THEN "Pão de Açúcar"
+    WHEN ferramenta_turistica = "selaron" THEN "Escadaria Selarón"
+    WHEN ferramenta_turistica = "ccbb_correios" THEN "CCBB Correios"
+    WHEN ferramenta_turistica = "praia_de_copacabana_leme" THEN "Praias de Copacabana e Leme"
+    WHEN ferramenta_turistica = "jardim_botanico" THEN "Jardim Botânico"
+    WHEN ferramenta_turistica = "catedral_metropolitana" THEN "Catedral Metropolitana"
+    WHEN ferramenta_turistica = "lapa_bairro" THEN "Lapa"
+    WHEN ferramenta_turistica = "boulevard_olimpico" THEN "Boulevard Olímpico"
+    WHEN ferramenta_turistica = "lagoa_rodrigo_de_freitas" THEN "Lagoa Rodrigo de Freitas"
+    WHEN ferramenta_turistica = "floresta_da_tijuca" THEN "Floresta da Tijuca"
+    WHEN ferramenta_turistica = "maracana" THEN "Maracanã"
+    WHEN ferramenta_turistica = "pequena_africa" THEN "Centro Cultural Pequena África"    
+    ELSE ferramenta_turistica 
+  END ferramenta_turistica,
+  ST_GEOGPOINT(`rj-setur.turismo_fluxo_visitantes`.geolocate_sight(ferramenta_turistica)[1], `rj-setur.turismo_fluxo_visitantes`.geolocate_sight(ferramenta_turistica)[0]) as ferramenta_turistica_coordenadas,
+  `rj-setur.turismo_fluxo_visitantes`.geolocate_sight(ferramenta_turistica)[0] as latitude,
+  `rj-setur.turismo_fluxo_visitantes`.geolocate_sight(ferramenta_turistica)[1] as longitude
+FROM {{ ref('raw_turismo_fluxo_visitantes__claro_atrativos_turistas_2026_clean') }}
+UNPIVOT(metrica_valor FOR ferramenta_turistica IN (
+    cristo_redentor,
+    pao_de_acucar,
+    selaron,
+    ccbb_correios,
+    praia_de_copacabana_leme,
+    jardim_botanico,
+    catedral_metropolitana,
+    lapa_bairro,
+    boulevard_olimpico,
+    lagoa_rodrigo_de_freitas,
+    floresta_da_tijuca,
+    maracana,
+    pequena_africa
+    )
+  )
 ),
 
 pontos_turisticos as (
