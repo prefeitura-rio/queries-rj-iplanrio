@@ -1,7 +1,7 @@
 {{
     config(
         alias='aluno_historico_2025',
-        schema='educacao_basica',
+        schema='educacao_basica_backup',
         partition_by={
             "field": "data_particao",
             "data_type": "date",

@@ -1,4 +1,6 @@
-{{ config(alias='turma')}}
+{{ config(alias='turma',
+          schema='gestao_escolar',)
+          }}
 
 
 with source as (
@@ -21,7 +23,10 @@ renamed as (
         SAFE_CAST({{ adapter.quote("tipo_sala") }} AS STRING) AS tipo_sala,
         SAFE_CAST({{ adapter.quote("tur_id") }} AS STRING) AS id_turma,
         SAFE_CAST({{ adapter.quote("turma") }} AS STRING) AS id_turma_escola,
-        SAFE_CAST({{ adapter.quote("turno") }} AS STRING) AS turno
+        SAFE_CAST({{ adapter.quote("turno") }} AS STRING) AS turno,
+        SAFE_CAST(ano_particao as  INT64) AS ano_particao,
+        SAFE_CAST(mes_particao as  INT64) AS mes_particao,
+        SAFE_CAST(data_particao as  DATE) AS data_particao
     from source
 )
 

@@ -141,28 +141,50 @@ models:
         clima_estacao_meteorologia:
           +schema: clima_estacao_meteorologia
           +tags: ["hourly"]
+      sme-backup:
+        +project: rj-sme
+        +tags: ["sme"]
+        gestao_escolar:
+          +materialized: table
+          +schema: brutos_gestao_escolar # ! backup
+          +tags: ["daily"]
+        educacao_basica:
+          +materialized: table
+          +schema: educacao_basica_staging # ! backup
+          +tags: "daily"
+        gestao_creche:
+          +materialized: table
+          +schema: brutos_gestao_creche # ! backup
+          +tags: ["daily"]  
+        alunos_participantes_de_programas:
+          +materialized: table
+          +schema: brutos_gestao_escolar # ! backup
+          +tags: ["daily"]
+        plano_educacional_individualizado:
+          +materialized: table
+          +schema: brutos_plano_educacional_individualizado # ! backup
+          +tags: ["daily"]
+        educacao_basica_avaliacao:
+          +materialized: table
+          +schema: educacao_basica_avaliacao # ! backup
       sme:
         +project: rj-sme
         +tags: ["sme"]
         gestao_escolar:
           +materialized: table
-          +schema: brutos_gestao_escolar
+          +schema: gestao_escolar
           +tags: ["daily"]
-        educacao_basica:
+        educaco_basica:
           +materialized: table
-          +schema: educacao_basica_staging
+          +schema: educacao_basica
           +tags: "daily"
         gestao_creche:
           +materialized: table
-          +schema: brutos_gestao_creche
+          +schema: gestao_creche
           +tags: ["daily"]  
-        alunos_participantes_de_programas:
-          +materialized: table
-          +schema: brutos_gestao_escolar
-          +tags: ["daily"]
         plano_educacional_individualizado:
           +materialized: table
-          +schema: brutos_plano_educacional_individualizado
+          +schema: plano_educacional_individualizado
           +tags: ["daily"]
         educacao_basica_avaliacao:
           +materialized: table

@@ -1,7 +1,10 @@
+-- Tabela é puxada de rj-iplanrio.educacao_basica_staging.movimentacao. 
+-- Quando a estrutura foi construída, a tabela era para ficar no dataset de educacao_basica
+-- Mas após a reorganização do projeto rj-sme, as equipes ATAE e CIT chegaram ao consenso de trazer essa tabela para o dataset gestao_escolar.
 {{
     config(
         alias='movimentacao_escolar',
-        schema='educacao_basica',
+        schema='gestao_escolar',
         partition_by={
             "field": "data_particao",
             "data_type": "date",

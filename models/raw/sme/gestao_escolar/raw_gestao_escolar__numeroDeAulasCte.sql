@@ -1,6 +1,6 @@
 {{ config(
     alias='numeroDeAulasCte',
-    schema='brutos_gestao_escolar',
+    schema='gestao_escolar',
     materialized='ephemeral',
 ) }}
 
