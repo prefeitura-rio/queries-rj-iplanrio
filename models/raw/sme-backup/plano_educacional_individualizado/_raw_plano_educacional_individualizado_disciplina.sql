@@ -1,6 +1,7 @@
 {{
     config(        
         alias="disciplina",
+        schema="brutos_plano_educacional_individualizado",
         tags=["raw", "plano_educacional_individualizado", "disciplina", "PEIDisciplina"],
         description="Disciplinas a serem usadas no PEI"
     )

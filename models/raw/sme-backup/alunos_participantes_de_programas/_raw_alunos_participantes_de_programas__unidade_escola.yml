@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_alunos_participantes_de_programas__unidade_escola
+  - name: _raw_alunos_participantes_de_programas__unidade_escola
     description: "Informações complementares sobre as unidades escolares."
     columns:
       - name: identificador_escola

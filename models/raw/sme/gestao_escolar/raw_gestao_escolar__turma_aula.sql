@@ -1,7 +1,7 @@
 {{
     config(
         alias='turma_aula',
-        schema='gestao_escolar',
+        schema='brutos_gestao_escolar',
         materialized='incremental',
         unique_key=['id_disciplina', 'id_aula_disciplina']
     )

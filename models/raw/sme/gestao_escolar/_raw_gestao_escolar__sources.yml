@@ -6,16 +6,10 @@ sources:
     schema: brutos_gestao_escolar_staging
     tables:
       - name: ACA_AlunoCurriculo
-      - name: ACA_Aluno
-      - name: ACA_Religiao
       - name: ACA_AlunoJustificativaFalta
-      - name: ESC_UnidadeEscola
       - name: ACA_Avaliacao
-      - name: PPE_ProjetoPrograma
       - name: ACA_CalendarioAnual
-      - name: PPE_TipoExtensividade
       - name: ACA_CalendarioPeriodo
-      - name: PPE_AlunoProjetoPrograma
       - name: ACA_CurriculoPeriodo
       - name: ACA_FormatoAvaliacao
       - name: ACA_TipoJustificativaFalta

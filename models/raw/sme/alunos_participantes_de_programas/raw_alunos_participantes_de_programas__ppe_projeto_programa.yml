@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: raw_alunos_participantes_de_programas__ppe_projeto_programa
+    description: "Tabela que traz as informações dos programas educacionais existentes."
+    columns:
+      - name: identificador_projeto_programa
+        description: "PK desta tabela."
+        data_type: integer
+
+      - name: nome_projeto_programa
+        description: "Nome do Projeto Programa."
+        data_type: string
+
+      - name: expectativa_minima_projeto_programa
+        description: "Expectativa mínima de duração."
+        data_type: integer
+
+      - name: objetivo_projeto_programa
+        description: "Objetivo do programa."
+        data_type: string
+
+      - name: extensividade_projeto_programa
+        description: "Indicador se o programa é extensivo. Valores válidos: 1 (Sim), 0 (Não). Origem: sistema brutos_gestao_escolar_staging."
+        data_type: boolean
+
+      - name: identificador_tipo_extensividade
+        description: "FK da tabela ppe_tipo_extensividade."
+        data_type: integer
+
+      - name: situacao_projeto_programa
+        description: "Situação/status do programa educacional. Consultada com valores válidos na tabela de domínio. Origem: sistema brutos_gestao_escolar_staging."
+        data_type: integer
+
+      - name: data_criacao_registro_projeto_programa
+        description: "Data da criação do registro."
+        data_type: date
+
+      - name: data_alteracao_registro_projeto_programa
+        description: "Data de alteração do registro."
+        data_type: date

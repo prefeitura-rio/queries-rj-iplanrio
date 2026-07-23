@@ -1,6 +1,7 @@
 {{
     config(        
         alias="inscricao_polo",
+        schema="brutos_gestao_creche",
         materialized="table",
         tags=["raw", "gestao_creche", "polo", "ICH_InscricaoPolo"],
         description="Apresenta as informações relativas às inscrições realizadas em pólos disponiblizados."

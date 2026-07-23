@@ -1,7 +1,7 @@
 {{
     config(
         alias='funcionarios_ativos',
-        schema='gestao_escolar_rh_backup'
+        schema='brutos_gestao_escolar_rh',
     )
 }}
 

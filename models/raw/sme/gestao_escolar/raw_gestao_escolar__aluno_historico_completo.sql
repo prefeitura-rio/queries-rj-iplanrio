@@ -1,4 +1,4 @@
-{{ config(alias='aluno_historico_completo', schema='gestao_escolar') }}
+{{ config(alias='aluno_historico_completo', schema='brutos_gestao_escolar') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'VW_BI_Aluno_Todos_Os_Anos') }}

@@ -1,6 +1,7 @@
 {{
     config(        
         alias="inscricao_creche",
+        schema="brutos_gestao_creche",
         materialized="table",
         tags=["raw", "gestao_creche", "inscricao_creche", "ICH_InscricaoCreche"],
         description="Apresenta informações sobre as inscrições realizadas para uma creche."

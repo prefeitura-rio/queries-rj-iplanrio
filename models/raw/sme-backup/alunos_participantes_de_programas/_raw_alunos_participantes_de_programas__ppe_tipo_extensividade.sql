@@ -3,6 +3,7 @@
 
 {{ config(
     alias='ppe_tipo_extensividade',
+    schema='brutos_gestao_escolar',
     materialized='table'
 ) }}
 

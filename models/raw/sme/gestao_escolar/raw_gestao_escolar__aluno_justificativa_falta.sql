@@ -1,4 +1,4 @@
-{{ config(alias='aluno_justificativa_falta', schema='gestao_escolar') }}
+{{ config(alias='aluno_justificativa_falta', schema='brutos_gestao_escolar') }}
 
 with source as (
     select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'ACA_AlunoJustificativaFalta') }}

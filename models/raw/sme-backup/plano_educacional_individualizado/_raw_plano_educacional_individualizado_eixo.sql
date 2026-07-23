@@ -1,6 +1,7 @@
 {{
     config(        
         alias="eixo",
+        schema="brutos_plano_educacional_individualizado",
         tags=["raw", "plano_educacional_individualizado", "eixo", "PEI_Eixo"],
         description="Eixos educacionais do PEI"
     )

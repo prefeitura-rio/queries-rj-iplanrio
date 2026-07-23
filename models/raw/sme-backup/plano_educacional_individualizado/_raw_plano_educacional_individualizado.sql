@@ -1,6 +1,7 @@
 {{
     config(        
         alias="plano_educacional_individualizado",
+        schema="brutos_plano_educacional_individualizado",
         tags=["raw", "plano_educacional_individualizado", "PEI"],
         description="Contém os detalhes do Plano Educacional Individualizado"
     )

@@ -1,6 +1,7 @@
 {{
     config(        
         alias="habilidade",
+        schema="brutos_plano_educacional_individualizado",
         tags=["raw", "plano_educacional_individualizado", "habilidade", "PEI_Habilidade"],
         description="Habilidades Avaliadas no PEI"
     )

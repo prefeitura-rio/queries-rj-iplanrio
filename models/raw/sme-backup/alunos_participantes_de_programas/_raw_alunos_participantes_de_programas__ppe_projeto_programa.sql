@@ -3,6 +3,7 @@
 
 {{ config(
     alias='ppe_projeto_programa',
+    schema='brutos_gestao_escolar',
     materialized='table'
 ) }}
 

@@ -1,6 +1,7 @@
 {{
     config(        
         alias="responsavel_endereco",
+        schema="brutos_gestao_creche",
         materialized="table",
         tags=["raw", "gestao_creche", "responsavel_endereco", "ICH_ResponsavelEndereco"],
         description="Relaciona os responsáveis de uma criança e suas informações de endereo e contato"

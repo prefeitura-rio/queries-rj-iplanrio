@@ -51,6 +51,12 @@ models:
           +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
+      sme-backup:
+        frequencia:
+          +materialized: table
+          +schema: backup_educacao_basica_frequencia
+          +tags: ["daily", "sme"]
+          +project: rj-sme
       sma:
         +project: rj-sma
         ergon_saude:
@@ -150,8 +156,8 @@ models:
           +tags: ["daily"]
         educacao_basica:
           +materialized: table
-          +schema: educacao_basica_staging # ! backup
-          +tags: "daily"
+          +schema: educacao_basica # ! backup
+          +tags: ["daily"]
         gestao_creche:
           +materialized: table
           +schema: brutos_gestao_creche # ! backup
@@ -164,9 +170,10 @@ models:
           +materialized: table
           +schema: brutos_plano_educacional_individualizado # ! backup
           +tags: ["daily"]
-        educacao_basica_avaliacao:
+        gestao_escolar_rh:
           +materialized: table
-          +schema: educacao_basica_avaliacao # ! backup
+          +schema: brutos_gestao_escolar_rh # ! backup
+        
       sme:
         +project: rj-sme
         +tags: ["sme"]
@@ -176,7 +183,11 @@ models:
           +tags: ["daily"]
         educaco_basica:
           +materialized: table
-          +schema: educacao_basica
+          +schema: backup_educacao_basica
+          +tags: "daily"
+        gestao_escolar_rh:
+          +materialized: table
+          +schema: gestao_escolar_rh
           +tags: "daily"
         gestao_creche:
           +materialized: table
@@ -186,9 +197,6 @@ models:
           +materialized: table
           +schema: plano_educacional_individualizado
           +tags: ["daily"]
-        educacao_basica_avaliacao:
-          +materialized: table
-          +schema: educacao_basica_avaliacao
       smfp:
         +tags: "smfp"
         +project: rj-smfp

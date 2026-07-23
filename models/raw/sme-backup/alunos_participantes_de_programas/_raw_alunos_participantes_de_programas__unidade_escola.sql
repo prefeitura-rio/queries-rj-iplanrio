@@ -3,6 +3,7 @@
 
 {{ config(
     alias='unidade_escola',
+    schema='brutos_gestao_escolar',
     materialized='table'
 ) }}
 

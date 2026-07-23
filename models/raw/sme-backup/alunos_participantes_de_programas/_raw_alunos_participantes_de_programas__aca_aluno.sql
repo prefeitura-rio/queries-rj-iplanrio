@@ -3,6 +3,7 @@
 
 {{ config(
     alias='aca_aluno',
+    schema='brutos_gestao_escolar',
     materialized='table'
 ) }}
 

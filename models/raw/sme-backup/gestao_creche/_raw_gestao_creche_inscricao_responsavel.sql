@@ -1,6 +1,7 @@
 {{
     config(        
         alias="inscricao_responsavel",
+        schema="brutos_gestao_creche",
         materialized="table",
         tags=["raw", "gestao_creche", "inscricao_responsavel", "ICH_InscricaoResponsável"],
         description="Relaciona as informações de uma inscrição em creche aos responsáveis pela criança."

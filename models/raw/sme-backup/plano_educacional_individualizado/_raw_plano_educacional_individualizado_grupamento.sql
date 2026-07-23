@@ -1,6 +1,7 @@
 {{
     config(        
         alias="grupamento",
+        schema="brutos_plano_educacional_individualizado",
         tags=["raw", "plano_educacional_individualizado", "grupamento", "PEI_Grupamento"],
         description="Tabela de grupamentos do PEI"
     )

@@ -1,6 +1,6 @@
 {{ config(
         alias='mtr_matricula_turma',
-        schema='gestao_escolar'
+        schema='brutos_gestao_escolar'
 
     )}}
 

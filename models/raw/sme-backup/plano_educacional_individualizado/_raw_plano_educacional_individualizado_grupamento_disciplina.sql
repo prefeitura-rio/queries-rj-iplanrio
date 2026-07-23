@@ -1,6 +1,7 @@
 {{
     config(        
         alias="grupamento_disciplina",
+        schema="brutos_plano_educacional_individualizado",
         tags=["raw", "plano_educacional_individualizado", "grupamento_disciplina", "GrupamentoDisciplina"],
         description="Grupamentos da Disciplina"
     )
