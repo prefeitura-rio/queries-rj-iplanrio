@@ -1,7 +1,7 @@
 {{
     config(
         alias='movimentacao_escolar',
-        schema='educacao_basica',
+        schema='gestao_escolar',
         partition_by={
             "field": "data_particao",
             "data_type": "date",
