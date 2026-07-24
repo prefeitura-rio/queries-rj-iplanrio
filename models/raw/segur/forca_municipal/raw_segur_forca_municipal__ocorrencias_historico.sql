@@ -95,6 +95,14 @@ with
         from source
     ),
 
+    -- A API ocasionalmente retorna o mesmo registro duas vezes na mesma resposta.
+    -- QUALIFY garante um único id_hash antes das janelas seguintes.
+    deduplicado as (
+        select *
+        from renamed
+        qualify row_number() over (partition by id_hash order by updated_at desc) = 1
+    ),
+
     com_indicador_revisao as (
         select
             *,
@@ -105,7 +113,7 @@ with
             datetime_diff(
                 data_hora_fechamento, data_hora_criacao, minute
             )                                                                      as duracao_ocorrencia_minutos
-        from renamed
+        from deduplicado
     )
 
 select *
