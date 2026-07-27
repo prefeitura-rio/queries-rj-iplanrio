@@ -15,7 +15,7 @@
 }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'CLS_AlunoAvaliacaoTurma') }}
+    select * from {{ source('brutos_gestao_escolar_staging', 'CLS_AlunoAvaliacaoTurma') }}
     
     {{ incremental_filter() }}
 

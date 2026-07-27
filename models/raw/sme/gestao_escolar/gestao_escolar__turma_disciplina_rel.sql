@@ -6,7 +6,7 @@
     }}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_prefect', 'TUR_TurmaRelTurmaDisciplina') }}
+    select * from {{ source('brutos_gestao_escolar_staging', 'TUR_TurmaRelTurmaDisciplina') }}
     {% if is_incremental() %}
       where _prefect_extracted_at > (select max(loaded_at) from {{ this }})
     {% endif %}

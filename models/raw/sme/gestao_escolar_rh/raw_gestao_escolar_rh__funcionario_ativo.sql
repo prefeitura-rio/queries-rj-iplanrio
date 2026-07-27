@@ -1,7 +1,8 @@
 {{
     config(
         alias='funcionarios_ativos',
-        schema='gestao_escolar_rh'
+        schema='gestao_escolar_rh',
+        materialized="table"
     )
 }}
 

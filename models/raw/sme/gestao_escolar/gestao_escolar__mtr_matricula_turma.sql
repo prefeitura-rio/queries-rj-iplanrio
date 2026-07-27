@@ -5,7 +5,7 @@
     )}}
 
 with source as (
-    select * from {{ source('sme_brutos_gestao_escolar_staging_airbyte', 'MTR_MatriculaTurma') }}
+    select * from {{ source('brutos_gestao_escolar_staging', 'MTR_MatriculaTurma') }}
     
 ),
 renamed as (
