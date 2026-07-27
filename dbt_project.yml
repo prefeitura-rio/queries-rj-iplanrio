@@ -146,27 +146,24 @@ models:
         +tags: ["sme"]
         gestao_escolar:
           +materialized: table
-          +schema: brutos_gestao_escolar
+          +schema: gestao_escolar
           +tags: ["daily"]
         educacao_basica:
           +materialized: table
-          +schema: educacao_basica_staging
+          +schema: educacao_basica
           +tags: "daily"
         gestao_creche:
           +materialized: table
-          +schema: brutos_gestao_creche
+          +schema: gestao_creche
           +tags: ["daily"]  
-        alunos_participantes_de_programas:
-          +materialized: table
-          +schema: brutos_gestao_escolar
-          +tags: ["daily"]
         plano_educacional_individualizado:
           +materialized: table
-          +schema: brutos_plano_educacional_individualizado
+          +schema: plano_educacional_individualizado
           +tags: ["daily"]
-        educacao_basica_avaliacao:
+        educacao_basica_frequencia:
           +materialized: table
-          +schema: educacao_basica_avaliacao
+          +schema: educacao_basica_frequencia
+          +tags: ["daily"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp

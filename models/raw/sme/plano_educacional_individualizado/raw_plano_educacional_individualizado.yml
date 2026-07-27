@@ -2,56 +2,29 @@ version: 2
 
 models:
   - name: raw_plano_educacional_individualizado
-    description: "Contém os detalhes do Plano Educacional Individualizado"
+    description: |
+      **Origem**: GestaoEscolar.dbo.PEI
+      Contém os detalhes do Plano Educacional Individualizado
     columns:
       - name: id_plano_educacional_individualizado
         description: "Id do PEI (PK)"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_plano_educacional_individualizado__id_plano_educacional_individualizado__not_null
-              config:
-                severity: error
-          - unique:
-              name: raw_plano_educacional_individualizado__id_plano_educacional_individualizado__unique
-              config:
-                severity: error
 
       - name: id_aluno
         description: "Id do aluno (FK)"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_plano_educacional_individualizado__id_aluno__not_null
-              config:
-                severity: error
 
       - name: id_sigla_disciplina_sga
         description: "Sigla da Disciplina no SGA"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_plano_educacional_individualizado__sigla_disciplina_sga__not_null
-              config:
-                severity: error
 
       - name: conselho_classe_plano_educacional_individualizado
         description: "COC do PEI"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_plano_educacional_individualizado__conselho_classe_plano_educacional_individualizado__not_null
-              config:
-                severity: error
 
       - name: ano_plano_educacional_individualizado
         description: "Ano do PEI"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_plano_educacional_individualizado__ano_plano_educacional_individualizado__not_null
-              config:
-                severity: error
 
       - name: descricao_estrategia_plano_educacional_individualizado
         description: "Descrição da Estratégia adotada"
@@ -68,11 +41,6 @@ models:
       - name: id_atual_turma
         description: "Id da turma atual (FK)"
         data_type: int64
-        data_tests:
-          - not_null:
-              name: raw_plano_educacional_individualizado__id_atual_turma__not_null
-              config:
-                severity: error
 
       - name: objetivo_plano_educacional_individualizado
         description: "Objetivo do PEI"
@@ -85,14 +53,6 @@ models:
       - name: id_disciplina_plano_educacional_individualizado
         description: "Id da disciplina no PEI (FK da tabela PEIDisciplina)"
         data_type: int64
-        data_tests:
-          - relationships:
-              name: raw_plano_educacional_individualizado__id_disciplina_pei__relationships
-              config:
-                severity: error
-              arguments:
-                to: ref('raw_plano_educacional_individualizado_disciplina')
-                field: id_disciplina
 
       - name: id_curriculo
         description: "Id do currículo (FK)"

@@ -1,7 +1,7 @@
 version: 2
 models :
   - name: educacao_basica__coc
-    description: "**Descrição**: COCs fechados (não leva em conta o atual ) das turmas
+    description: "**Origem:** VW_BI_Aluno_Turma_com_COC0 \n**Descrição**: COCs fechados (não leva em conta o atual ) das turmas
       de escolas da prefeitura do Rio de Janeiro, com informações desde 2014. \r\n
       Estas informações são levantadas para, entre outras coisas, comparar a variação
       entre um COC e outro.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**:
@@ -64,7 +64,7 @@ models :
           ser menor do que a resolução da SME \r\n\r\n(vai ser verificada esta definição
           )."
   - name: educacao_basica__dependencia
-    description: "**Descrição**: Dependências pertencentes à prefeitura do Rio de
+    description: "**Origem:** VW_BI_Dependencia \n**Descrição**: Dependências pertencentes à prefeitura do Rio de
       Janeiro. Dependência em uma unidade escolar pertencente a prefeitura do Rio
       de Janeiro. . Ex.: Sala de Aula, Auditório, Laboratório de Informática, despensa,
       rampa de acesso etc.\n**Frequência de atualização**: Mensal\n**Cobertura temporal**:
@@ -160,7 +160,7 @@ models :
           da mesma unidade escolar. Tem sempre o valor 'Entrada' quando a transferência
           é entre turmas dentro da mesma unidade escolar.
   - name: educacao_basica__aluno_turma
-    description: "**Descrição**: Relacionamento entre alunos e turmas.\n**Frequência
+    description: "**Origem**: VW_BI_Aluno_Turma \n**Descrição**: Relacionamento entre alunos e turmas.\n**Frequência
       de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n**Órgão
       gestor dos dados**: Secretaria Municipal de Educação\n**Publicado por**: Nuno
       Caminada Silva\n**Publicado por (email)**: nuno.silva@rioeduca.net\n"
@@ -255,8 +255,8 @@ models :
   #      description: Descrição da deficiência do aluno.
   #    - name: genero
   #      description: Gênero do aluno, pode ser masculino ou feminino.
-  - name: educacao_basica__frequencia
-    description: "**Descrição**: Frequência dos alunos matriculados ou que já tenham
+  - name: educacao_basica__frequencia_escolar
+    description: "**Origem:** VW_BI_Frequencia \n**Descrição**: Frequência dos alunos matriculados ou que já tenham
       sido matriculados em uma escola da prefeitura do Rio de Janeiro desde 2012.
       A frequência do aluno leva em consideração o periodo (em geral de um mês) e
       a disciplina feita.\n**Frequência de atualização**: Anual\n**Cobertura temporal**:
@@ -313,7 +313,7 @@ models :
         description: "Carga horária semanal na disciplina.\r\nQuando é fundamental
           1 fica zerado."
   - name: educacao_basica__escola
-    description: "**Descrição**: Unidade escolar pertencente a, ou de interesse, da
+    description: "**Origem**: VW_BI_Escola \n**Descrição**: Unidade escolar pertencente a, ou de interesse, da
       prefeitura do Rio de Janeiro onde podem ser alocadas turmas. As unidades escolares
       de interesse da PCRJ são creche parceiras onde estão matriculados alunos da
       prefeitura do Rio de Janeiro.\n**Frequência de atualização**: Mensal\n**Cobertura
@@ -482,7 +482,7 @@ models :
       - name: reuniao_pais
         description: Indica se teve reunião dos pais
   - name: educacao_basica__aluno
-    description: "**Descrição**: Alunos matriculados em escolas da prefeitura do Rio
+    description: "**Origem**: VW_BI_Aluno_lgpd \n**Descrição**: Alunos matriculados em escolas da prefeitura do Rio
       de Janeiro no ano corrente. \r\nCampos anonimizados para atendimento a LGPD.\n
       **Frequência de atualização**: Anual\n**Cobertura temporal**: Até data corrente\n
       **Órgão gestor dos dados**: Secretaria Municipal de Educação\n**Publicado por**:

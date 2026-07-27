@@ -1,7 +1,7 @@
 
 {{
     config(
-        alias='aluno_turma_2025',
+        alias='aluno_turma',
         schema='educacao_basica',
         partition_by={
             "field": "data_particao",

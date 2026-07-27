@@ -1,6 +1,6 @@
 {{ config(
     alias='escola',
-    schema='educacao_basica'
+        schema='educacao_basica',
     )
 }}
 

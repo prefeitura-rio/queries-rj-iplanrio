@@ -1,7 +1,7 @@
 version: 2
 models :
-  - name: raw_gestao_escolar__turma_aula_aluno
-    description: "**Descrição**: Falta de um aluno em plano de aula de determinado
+  - name: gestao_escolar__turma_aula_aluno
+    description: "**Origem:** GestaoEscolar.dbo.CLS_TurmaAulaAluno \n**Descrição**: Falta de um aluno em plano de aula de determinado
       tipo de determinada disciplina em um dado dia. Uma disciplina pode ter vários
       tempos em um mesmo dia. Para saber o dia da frequencia do aluno deve-se acessar
       a tabela turma-aula. Pode haver vários planos de aula de uma mesma disciplina
@@ -38,8 +38,8 @@ models :
         description: Identificador das aulas da disciplina da turma em determinado
           dia. Uma aula corresponde a um tempo da disciplina. Este identificador pode
           corresponder a várias aulas, desde que estejam no mesmo dia
-  - name: raw_gestao_escolar__turma_curriculo
-    description: "**Descrição**: Grupamento de determinada turma.\n**Frequência de
+  - name: gestao_escolar__turma_curriculo
+    description: "**Origem:** GestaoEscolar.dbo.TUR_TurmaCurriculo \n**Descrição**: Grupamento de determinada turma.\n**Frequência de
       atualização**: Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos
       dados**: SME\n**Publicado por**: Camila Maura Moreira da Silva\n**Publicado
       por (email)**: camila.maura@rioeduca.net\n"
@@ -61,8 +61,8 @@ models :
         description: Identificador de curso, sequencial
       - name: id_turma
         description: Identificador de turma
-  - name: raw_gestao_escolar__turma_disciplina
-    description: "**Descrição**: Disciplina de determinada turma de escolas municipais
+  - name: gestao_escolar__turma_disciplina
+    description: "**Origem:** GestaoEscolar.dbo.TUR_TurmaDisciplina \n**Descrição**: Disciplina de determinada turma de escolas municipais
       do município do Rio de Janeiro. A turma associada deve ser vista na tabela turma_disciplina_rel.\n
       **Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n
       **Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira da
@@ -105,8 +105,8 @@ models :
         description: 'Duração: 1 – Anual; 2 – Semestral; 3 – Condensada; 4 – Livre'
       - name: id_tipo
         description: '"Tipo: 1 – Obrigatória; 2 – Estágio; 3 – Optativa; 4 – Eletiva'
-  - name: raw_gestao_escolar__turma_aula
-    description: "**Descrição**: Plano de aula de determinado tipo de aula. Um plano
+  - name: gestao_escolar__turma_aula
+    description: "**Origem:** GestaoEscolar.dbo.CLS_TurmaAula\n**Descrição**: Plano de aula de determinado tipo de aula. Um plano
       de aula contém o conteúdo ( e dinâmica ) dado nos tempos de uma determinada
       disciplina em determinado dia. Dinâmica indica a forma de alcançar os objetivos
       pedagógicos pré-estabelecidos. Pode haver vários planos de aula de uma mesma
@@ -163,8 +163,8 @@ models :
       - name: atividade_casa
         description: Assunto da atividade indicada para os alunos da turma realizarem
           em casa.
-  - name: raw_gestao_escolar__formato_avaliacao
-    description: "**Descrição**: Formato de avaliação dos grupamentos. Este formato
+  - name: gestao_escolar__formato_avaliacao
+    description: "**Origem:** GestaoEscolar.dbo.ACA_FormatoAvaliacao \n**Descrição**: Formato de avaliação dos grupamentos. Este formato
       pode ter impacto na contagem de frequencia e avaliação das notas. Por exemplo
       a avalição pode ser por nota ou conceito, a frequência mínima pode ser 60% ou
       75%.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde 2012\n
@@ -215,8 +215,8 @@ models :
       - name: tipo_frequencia_apurada
         description: "Define se a frequencia será apurada por dia ou por tempos\r\n
           1 - Tempos de Aula\r\n2 - Dias"
-  - name: raw_gestao_escolar__turma_disciplina_rel
-    description: "**Descrição**: Disciplina de determinada turma de escolas municipais
+  - name: gestao_escolar__turma_disciplina_rel
+    description: "**Origem:** GestaoEscolar.dbo.TUR_TurmaRelTurmaDisciplina \n**Descrição**: Disciplina de determinada turma de escolas municipais
       do município do Rio de Janeiro.\n**Frequência de atualização**: Diário\n**Cobertura
       temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
       Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
@@ -225,8 +225,8 @@ models :
         description: Identificador de disciplina da turma
       - name: id_turma
         description: Identificador de turma
-  - name: raw_gestao_escolar__turno
-    description: "**Descrição**: Turnos das escolas.\n**Frequência de atualização**:
+  - name: gestao_escolar__turno
+    description: "**Origem:** GestaoEscolar.dbo.ACA_Turno \n**Descrição**: Turnos das escolas.\n**Frequência de atualização**:
       Diário\n**Cobertura temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n
       **Publicado por**: Camila Maura Moreira da Silva\n**Publicado por (email)**:
       camila.maura@rioeduca.net\n"
@@ -255,8 +255,8 @@ models :
         description: Identificador de tipo de turno
 
 
-  - name: raw_gestao_escolar__curriculo_periodo
-    description: "**Descrição**: Grupamentos das etapas.  Grupamento - berçario, maternal
+  - name: gestao_escolar__curriculo_periodo
+    description: "**Origem:** Tabela mart \n**Descrição**: Grupamentos das etapas.  Grupamento - berçario, maternal
       I e maternal II e pré-escola I e II, 1º ao 9º.  Etapa, o mesmo que curso:  um
       subtipo de segmento. Exemplos: fundamental I bilingue, Fundamental ( 1 ao 9
       ) bilingue.  Segmento - educação infantil, ensino fundamental I ( 1º ano, 2º
@@ -306,8 +306,8 @@ models :
         description: Identificador de etapa do MEC/INEP. Sempre NULL
       - name: id_curso
         description: Identificador de curso, sequencia. Etapa???
-  - name: raw_gestao_escolar__tipo_turno
-    description: "**Descrição**: Tipos de turno possíveis.  Ex. integral, manhã, noite
+  - name: gestao_escolar__tipo_turno
+    description: "**Origem:** GestaoEscolar.dbo.ACA_TipoTurno \n**Descrição**: Tipos de turno possíveis.  Ex. integral, manhã, noite
         e tarde.\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Desde
         2012\n**Órgão gestor dos dados**: SME\n**Publicado por**: Camila Maura Moreira
         da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
@@ -322,15 +322,314 @@ models :
       description: Data/hora de criação do registro
     - name: data_alteracao
       description: Data/hora da última alteração
-  - name: raw_gestao_escolar__calendario_periodo
-  - name: raw_gestao_escolar__turno_horario
-  - name: raw_gestao_escolar__vw_bi_aluno
-  - name: raw_gestao_escolar__calendario_anual
-  - name: raw_gestao_escolar__processo_fechamento_inicio
-  - name: raw_gestao_escolar__aluno_curriculo
-  - name: raw_gestao_escolar__aluno_justificativa_falta
-  - name: raw_gestao_escolar__tipo_justificativa_falta
-  - name: raw_gestao_escolar__aluno_historico_completo
-  - name: raw_gestao_escolar__avaliacao
-  - name: raw_gestao_escolar__diasCoc
-  - name: raw_gestao_escolar__numeroDeAulasCte
+  - name: gestao_escolar__calendario_periodo
+    description: "**Origem:** GestaoEscolar.dbo.ACA_CalendarioPeriodo \n"
+  - name: gestao_escolar__turno_horario
+    description: "**Origem:** GestaoEscolar.dbo.ACA_TurnoHorario \n"
+  - name: gestao_escolar__vw_bi_aluno
+    description: "**Origem:** GestaoEscolar.dbo.VW_BI_Aluno \n"
+  - name: gestao_escolar__calendario_anual
+    description: "**Origem:** GestaoEscolar.dbo.ACA_CalendarioAnual \n"
+  - name: gestao_escolar__processo_fechamento_inicio
+    description: "**Origem:** GestaoEscolar.dbo.MTR_ProcessoFechamentoInicio \n"
+  - name: gestao_escolar__aluno_curriculo
+    description: "**Origem:** GestaoEscolar.dbo.ACA_AlunoCurriculo \n"
+  - name: gestao_escolar__aluno_justificativa_falta
+    description: "**Origem:** GestaoEscolar.dbo.ACA_AlunoJustificativaFalta \n"
+  - name: gestao_escolar__tipo_justificativa_falta
+    description: "**Origem:** GestaoEscolar.dbo.ACA_TipoJustificativaFalta \n"
+  - name: gestao_escolar__aluno_historico_completo
+    description: "**Origem:** GestaoEscolar.dbo.VW_BI_Aluno_Todos_Os_Anos \n"
+  - name: gestao_escolar__avaliacao
+    description: "**Origem:** GestaoEscolar.dbo.avaliacao \n"
+  - name: gestao_escolar__diasCoc
+    description: "**Origem:** Tabela Mart \n"
+  - name: gestao_escolar__numeroDeAulasCte
+    description: "**Origem:** Tabela mart \n"
+
+  - name: gestao_escolar__aca_religiao
+    description: "**Origem:** GestaoEscolar.dbo.ACA_Religiao\n Tabela que apresenta a lista de religiões."
+    columns:
+      - name: identificador_religiao
+        description: "PK desta tabela."
+        data_type: integer
+        
+      - name: nome_religiao
+        description: "Nome da religião."
+        data_type: string
+
+      - name: situacao_religiao
+        description: "Situação da religião."
+        data_type: integer
+
+  - name: gestao_escolar__aca_aluno
+    description: "**Origem:** GestaoEscolar.dbo.ACA_Aluno \n Tabela que contém informações complementares aos dados pessoais do aluno."
+    columns:
+      - name: identificador_aluno
+        description: "PK desta tabela."
+        data_type: integer
+        
+      - name: identificador_pessoa
+        description: "Identificador da pessoa."
+        data_type: integer
+
+      - name: identificador_entidade
+        description: "Identificador da entidade."
+        data_type: integer
+
+      - name: aluno_observacao
+        description: "Observação sobre o aluno."
+        data_type: integer
+
+      - name: aluno_data_criacao_registro
+        description: "Data da criação do registro."
+        data_type: date
+
+      - name: aluno_data_alteracao_registro
+        description: "Data de alteração do registro."
+        data_type: date
+
+      - name: aluno_situacao
+        description: "Situação do aluno."
+        data_type: integer
+
+      - name: aluno_dados_incompletos
+        description: "Dados do aluno estão incompletos? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_historico_escolar_incompleto
+        description: "Histórico escolar do aluno incompleto? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: identificador_religiao
+        description: "FK da tabela aca_religiao."
+        data_type: integer
+
+      - name: aluno_meio_transporte
+        description: "Meio de transporte que o aluno utiliza no deslocamento casa escola"
+        data_type: integer
+
+      - name: aluno_tempo_deslocamento
+        description: "Tempo de deslocamento de casa para escola."
+        data_type: integer
+
+      - name: aluno_regressa_sozinho
+        description: "Aluno volta pra casa sozinho? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_data_cadastro_fisico
+        description: "Data do cadastro físico do aluno."
+        data_type: boolean
+
+      - name: aluno_responsavel_informacao
+        description: "Informações sobre o responsável do aluno."
+        data_type: string
+
+      - name: aluno_responsavel_informacao_documento
+        description: "Informações sobre o documento do responsável do aluno."
+        data_type: string
+
+      - name: aluno_responsavel_informacao_orgao_emissor
+        description: "Informações sobre o órgão emissor do documento do responsável"
+        data_type: string
+
+      - name: aluno_aula_religiao
+        description: "Aluno participa de aula de religião? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_gemeo
+        description: "Tem irmão gêmeo? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_possui_email
+        description: "Possui e-mail? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: identificador_endereco
+        description: "Identificador único do endereço do aluno."
+        data_type: integer
+
+      - name: aluno_observacao_situacao
+        description: "Situação das observações sobre o aluno."
+        data_type: string
+
+      - name: aluno_participa_mais_educacao
+        description: "Participa do Programa Mais Educação? 1=Sim; 0=Não."
+        data_type: boolean
+
+      - name: aluno_participa_aluno_presente
+        description: "Participa do Programa Aluno Presente? 1=Sim; 0=Não."
+        data_type: boolean
+
+  - name: gestao_escolar__ppe_aluno_projeto_programa
+    description: "**Origem:** GestaoEscolar.dbo.PPE_AlunoProjetoPrograma\nTabela que associa o aluno aos Programas dos Projetos que ele participa."
+    columns:
+      - name: identificador_aluno
+        description: "FK da tabela aca_aluno (Parte da PK composta)."
+        data_type: integer
+
+      - name: identificador_projeto_programa
+        description: "FK da tabela ppe_projeto_programa (Parte da PK composta)."
+        data_type: integer
+
+      - name: identificador_aluno_projeto
+        description: "PK desta tabela (Parte da PK composta)."
+        data_type: integer
+        
+      - name: identificador_calendario_anual
+        description: "FK da tabela ACA_CalendarioAnual."
+        data_type: integer
+
+      - name: identificador_escola
+        description: "FK da escola."
+        data_type: integer
+
+      - name: identificador_unidade_escolar
+        description: "FK da unidade_escola."
+        data_type: integer
+
+      - name: data_entrada_programa
+        description: "Data de entrada do aluno no programa."
+        data_type: date
+
+      - name: data_saida_programa
+        description: "Data de saída do aluno no programa."
+        data_type: date
+
+      - name: situacao_aluno_projeto
+        description: "Situação do aluno no projeto (1 - Ativo, 2 - Inativo, 3 - Excluído)."
+        data_type: integer
+
+      - name: data_criacao_registro_base
+        description: "Data da criação do registro na base."
+        data_type: date
+
+      - name: data_alteracao_registro_base
+        description: "Data de alteração do registro na base."
+        data_type: date
+
+  - name: gestao_escolar__ppe_projeto_programa
+    description: "**Origem:** GestaoEscolar.dbo.PPE_ProjetoPrograma \nTabela que traz as informações dos programas educacionais existentes."
+    columns:
+      - name: identificador_projeto_programa
+        description: "PK desta tabela."
+        data_type: integer
+
+      - name: nome_projeto_programa
+        description: "Nome do Projeto Programa."
+        data_type: string
+
+      - name: expectativa_minima_projeto_programa
+        description: "Expectativa mínima de duração."
+        data_type: integer
+
+      - name: objetivo_projeto_programa
+        description: "Objetivo do programa."
+        data_type: string
+
+      - name: extensividade_projeto_programa
+        description: "Indicador se o programa é extensivo. Valores válidos: 1 (Sim), 0 (Não). Origem: sistema brutos_gestao_escolar_staging."
+        data_type: boolean
+
+      - name: identificador_tipo_extensividade
+        description: "FK da tabela ppe_tipo_extensividade."
+        data_type: integer
+
+      - name: situacao_projeto_programa
+        description: "Situação/status do programa educacional. Consultada com valores válidos na tabela de domínio. Origem: sistema brutos_gestao_escolar_staging."
+        data_type: integer
+
+      - name: data_criacao_registro_projeto_programa
+        description: "Data da criação do registro."
+        data_type: date
+
+      - name: data_alteracao_registro_projeto_programa
+        description: "Data de alteração do registro."
+        data_type: date
+
+  - name: gestao_escolar__ppe_tipo_extensividade
+    description: "**Origem:** GestaoEscolar.dbo.PPE_TipoExtensividade \n Tabela que apresenta os tipos de extensividade dos programas."
+    columns:
+      - name: identificador_tipo_extensividade
+        description: "PK desta tabela."
+        data_type: integer
+        quote: true
+        
+      - name: nome_tipo_extensividade
+        description: "Nome do tipo de extensividade."
+        data_type: string
+
+      - name: situacao_tipo_extensividade
+        description: "Situação do tipo de extensividade."
+        data_type: integer
+
+      - name: data_criacao_registro_tipo_extensividade
+        description: "Data de criação do registro."
+        data_type: date
+
+      - name: data_alteracao_registro_tipo_extensividade
+        description: "Data de alteração do registro."
+        data_type: date        
+  
+  - name: gestao_escolar__unidade_escola
+    description: "**Origem:** GestaoEscolar.dbo.ESC_UnidadeEscola \nInformações complementares sobre as unidades escolares."
+    columns:
+      - name: identificador_escola
+        description: "FK da tabela escola."
+        data_type: integer
+
+      - name: identificador_unidade_escolar
+        description: "PK desta tabela."
+        data_type: integer
+
+      - name: codigo_unidade_escolar
+        description: "Código da Unidade Escolar."
+        data_type: string
+
+      - name: descricao
+        description: "Sempre nulo. (não é utilizado)."
+        data_type: string
+
+      - name: principal
+        description: "Sempre igual a 1."
+        data_type: boolean
+
+      - name: zona
+        description: "Sempre nulo. (não é utilizado)"
+        data_type: integer
+
+      - name: funcionamento_inicio
+        description: "Início de funcionamento da unidade escolar."
+        data_type: date
+
+      - name: funcionamento_fim
+        description: "Término do funcionamento da unidade escolar."
+        data_type: date
+
+      - name: ceps_proximos
+        description: "Ceps próximos à unidade escolar."
+        data_type: string
+
+      - name: data_criacao
+        description: "Data de criação do registro da unidade escolar na base."
+        data_type: date
+
+      - name: data_alteracao
+        description: "Data de alteração do registro da unidade escolar na base."
+        data_type: date 
+
+      - name: situacao
+        description: "Situação"
+        data_type: integer
+
+      - name: observacao
+        description: "Observação."
+        data_type: string
+
+      - name: alimentacao_escolar
+        description: "Preenchido com 0 ou nulo (campo não utilizado)."
+        data_type: boolean
+
+      - name: proposta_formacao_alternancia
+        description: "Preenchido com 0 ou nulo (campo não utilizado)."
+        data_type: boolean
