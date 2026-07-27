@@ -3,7 +3,8 @@
 
 {{ config(
     alias='aca_aluno',
-    materialized='table'
+    materialized='table',
+    schema='gestao_escolar'
 ) }}
 
 SELECT
