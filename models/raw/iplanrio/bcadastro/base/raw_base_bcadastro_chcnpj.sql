@@ -145,8 +145,10 @@ with
 
     dedup as (
         select *,
-        -- Partition by cnpj
-            cast(cnpj as int64) as cnpj_particao,
+        -- CNPJ vai passar a aceitar caracteres alfanuméricos (Receita Federal), por isso
+        -- a particao usa hash em vez de CAST direto do numero do CNPJ, garantindo que o
+        -- resultado seja sempre int64 e caiba no range 0-99999999999999 do partition_by.
+            {{ hash_particao("cnpj") }} as cnpj_particao,
         from fonte_parseada
         qualify
             row_number() over (partition by cnpj order by airbyte.extracted_at desc)

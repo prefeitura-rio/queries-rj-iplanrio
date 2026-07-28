@@ -308,7 +308,10 @@ with
             ) as airbyte,
     
 
-            cast(est.cnpj as int64) as cnpj_particao,
+            -- CNPJ vai passar a aceitar caracteres alfanuméricos (Receita Federal), por isso
+            -- a particao usa hash em vez de CAST direto do numero do CNPJ, garantindo que o
+            -- resultado seja sempre int64 e caiba no range 0-99999999999999 do partition_by.
+            {{ hash_particao("est.cnpj") }} as cnpj_particao,
 
         from dedup_estabelecimento as est
         left join dedup_matriz as mat on est.cnpj_matriz = mat.cnpj_matriz
