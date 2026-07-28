@@ -361,6 +361,9 @@ models:
 
       # Coluna de particionamento
       - name: cnpj_particao
-        description: "Coluna de particionamento baseada no CNPJ"
+        description: >
+          Partição do CNPJ: MOD(ABS(FARM_FINGERPRINT(cnpj)), 100000000000000), sempre int64
+          mesmo com CNPJs alfanuméricos. Para filtrar por essa coluna, aplique a mesma
+          expressão no valor de busca.
         data_type: integer
         quote: true
