@@ -51,6 +51,11 @@ models:
           +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
+      dialogflowcx:
+        +project: rj-chatbot-dev
+        +schema: dialogflowcx
+        +tags: ["daily"]
+        +materialized: table
       sma:
         +project: rj-sma
         ergon_saude:
