@@ -1,3 +1,6 @@
+-- Após a seguinte discussão no discord: https://discord.com/channels/891689044889698404/1529841768521138176
+-- Foi decidido desativar essa pipeline. 
+-- Caso queira ativa-la novamente, basta remove-la do .dbtignore
 {{
     config(
         alias="eai_dashboard_history",
