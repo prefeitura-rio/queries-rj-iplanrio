@@ -1,3 +1,7 @@
+-- Foi decidido que esse modelo será desativado. 
+-- Caso queira ativa-la novamente, basta remove-la do .dbtignore
+
+
 {{
     config(
         alias="gcp_billing",

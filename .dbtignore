@@ -18,6 +18,10 @@ models/raw/iplanrio/sicop/raw_sicop_processo.sql
 models/raw/ssm/vigia_urbano/raw_vigia_urbano__arquivo_encaminhamento.sql
 
 
+models/raw/iplanrio/eai_logs/eai_dashboard_history.sql
+models/raw/iplanrio/gcp
+models/mart/gerenciamento/dashboard_gcp
+models/mart/gerenciamento/custos
 
 # Adicionado enquanto não resolvemos o problema de subir os dados com Airbyte	
 models/raw/iplanrio/sisbicho/raw_sisbicho_animal.sql

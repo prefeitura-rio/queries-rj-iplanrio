@@ -1,6 +1,8 @@
 -- Custos do BigQuery abertos por execução
 -- Baseado na tabela brutos_gcp.gcp_bigquery_jobs
 
+
+
 {{
     config(
         schema="gerenciamento_custos",
