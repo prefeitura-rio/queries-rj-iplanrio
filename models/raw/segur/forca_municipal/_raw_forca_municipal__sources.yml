@@ -12,10 +12,17 @@ sources:
       - name: qmd_servicos
       - name: qmd_plano
       - name: unit_positions
+        config:
+          freshness: # default freshness
+            error_after: {count: 48, period: hour}
+          loaded_at_field: SAFE_CAST(data_particao AS TIMESTAMP)
       - name: qmd_detalhes
       - name: qmd_kml
       # - name: ocorrencias_ativas
       # - name: unidades_ativas
       # - name: qmd_ativos
       # - name: qmd_missoes
-        
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: SAFE_CAST(data_particao AS TIMESTAMP)
