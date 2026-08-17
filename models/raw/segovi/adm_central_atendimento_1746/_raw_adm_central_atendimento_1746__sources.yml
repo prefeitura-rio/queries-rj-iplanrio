@@ -7,9 +7,9 @@ sources:
     tables:
       - name: ViewDatalake
       - name: tb_origem_ocorrencia
-      - name: tb_pessoa
+      - name: vw_pessoa
       - name: tb_protocolo_chamado
-      - name: tb_protocolo
+      - name: vw_protocolo
       - name: tb_atributo
       - name: tb_classificacao
       - name: tb_classificacao_atributo
