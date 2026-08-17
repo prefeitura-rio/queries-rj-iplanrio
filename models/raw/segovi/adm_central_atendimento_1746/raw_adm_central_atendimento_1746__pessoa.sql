@@ -53,7 +53,7 @@ WITH source_data AS (
     CAST(fl_recebe_notificacao_generica AS STRING) AS fl_recebe_notificacao_generica,
     CAST(fl_recebe_notificacao_alerta_rio AS STRING) AS fl_recebe_notificacao_alerta_rio,
     CAST(fl_recebe_notificacao_andamento_chamado AS STRING) AS fl_recebe_notificacao_andamento_chamado
-  FROM {{ source('brutos_1746_staging_airbyte', 'tb_pessoa') }}
+  FROM {{ source('brutos_1746_staging_airbyte', 'vw_pessoa') }}
 )
 
 SELECT

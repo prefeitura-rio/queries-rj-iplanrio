@@ -15,7 +15,7 @@ WITH tb_pessoa AS (
     SELECT
         CAST(id_pessoa AS STRING) AS id_pessoa,
         CAST(ds_cpf AS STRING) AS ds_cpf
-    FROM {{ source('brutos_1746_staging_airbyte', 'tb_pessoa') }} AS t
+    FROM {{ source('brutos_1746_staging_airbyte', 'vw_pessoa') }} AS t
 ),
 
 tb_protocolo_chamado AS (
@@ -35,7 +35,7 @@ tb_protocolo AS (
         CAST(id_pessoa_fk AS STRING) AS id_pessoa,
         CAST(dt_inicio AS STRING) as dt_inicio,
         CAST(ds_codigo_fk AS STRING) as ds_codigo_fk,
-    FROM {{ source('brutos_1746_staging_airbyte', 'tb_protocolo') }} AS t
+    FROM {{ source('brutos_1746_staging_airbyte', 'vw_protocolo') }} AS t
 ),
 
 
