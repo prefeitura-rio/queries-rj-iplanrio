@@ -1,0 +1,149 @@
+version: 2
+
+models:
+  - name: mart_ergon_saude_funcionarios_sms
+    description: "Tabela mart consolidada de funcionários ativos e inativos da Secretaria Municipal de Saúde (SMS), com informações sobre vínculos, lotação, cargo e secretaria."
+
+    config:
+      alias: funcionarios_sms
+
+    columns:
+      # Chave de agrupamento e identificação
+      - name: cpf
+        description: "CPF do funcionário."
+        data_type: string
+        quote: true
+
+      - name: cpf_particao
+        description: "CPF em formato numérico para particionamento da tabela."
+        data_type: int64
+
+      - name: id_funcionario
+        description: "Identificador único do funcionário."
+        data_type: int64
+
+      - name: nome_funcionario
+        description: "Nome completo do funcionário."
+        data_type: string
+
+      - name: contagem_vinculos
+        description: "Quantidade de vínculos do funcionário na SMS."
+        data_type: int64
+
+      # Estrutura de vínculos do funcionário
+      - name: vinculos
+        description: "Array contendo informações detalhadas de cada vínculo do funcionário com a SMS."
+        data_type: array<struct>
+
+      - name: vinculos.vinculo_id
+        description: "Identificador único do vínculo."
+        data_type: int64
+
+      - name: vinculos.vinculo_matricula
+        description: "Número de matrícula do vínculo."
+        data_type: string
+
+      - name: vinculos.provimento_inicio
+        description: "Data de início do provimento no vínculo."
+        data_type: date
+
+      - name: vinculos.provimento_fim
+        description: "Data de fim do provimento no vínculo."
+        data_type: date
+
+      - name: vinculos.vinculo_tipo
+        description: "Tipo de vínculo do funcionário (ex: CLT, Estatutário, Temporário)."
+        data_type: string
+
+      - name: vinculos.status_ativo
+        description: "Indicador de status ativo do vínculo. True se ativo, False se inativo."
+        data_type: bool
+
+      # Estrutura de vacância do vínculo
+      - name: vinculos.vacancia_vinculo
+        description: "Estrutura contendo informações sobre vacância do vínculo."
+        data_type: struct
+
+      - name: vinculos.vacancia_vinculo.vacancia_data
+        description: "Data de vacância do vínculo."
+        data_type: date
+
+      - name: vinculos.vacancia_vinculo.vacancia_motivo
+        description: "Motivo da vacância do vínculo."
+        data_type: string
+
+      # Estrutura de lotação
+      - name: vinculos.lotacao
+        description: "Estrutura contendo informações da lotação (setor, empresa, secretaria)."
+        data_type: struct
+
+      - name: vinculos.lotacao.setor_id
+        description: "Identificador do setor de lotação."
+        data_type: int64
+
+      - name: vinculos.lotacao.setor_sigla
+        description: "Sigla do setor de lotação."
+        data_type: string
+
+      - name: vinculos.lotacao.setor_nome
+        description: "Nome do setor de lotação."
+        data_type: string
+
+      # Estrutura de empresa dentro de lotação
+      - name: vinculos.lotacao.empresa
+        description: "Estrutura contendo informações da empresa responsável pela lotação."
+        data_type: struct
+
+      - name: vinculos.lotacao.empresa.empresa_id
+        description: "Identificador da empresa."
+        data_type: int64
+
+      - name: vinculos.lotacao.empresa.empresa_nome
+        description: "Nome da empresa."
+        data_type: string
+
+      - name: vinculos.lotacao.empresa.empresa_cnpj
+        description: "CNPJ da empresa."
+        data_type: string
+
+      - name: vinculos.lotacao.empresa.empresa_sigla
+        description: "Sigla da empresa."
+        data_type: string
+
+      # Estrutura de secretaria dentro de lotação
+      - name: vinculos.lotacao.secretaria
+        description: "Estrutura contendo informações da secretaria responsável pela lotação."
+        data_type: struct
+
+      - name: vinculos.lotacao.secretaria.secretaria_id
+        description: "Identificador da secretaria."
+        data_type: int64
+
+      - name: vinculos.lotacao.secretaria.secretaria_sigla
+        description: "Sigla da secretaria."
+        data_type: string
+
+      - name: vinculos.lotacao.secretaria.secretaria_nome
+        description: "Nome da secretaria."
+        data_type: string
+
+      # Estrutura de cargo
+      - name: vinculos.cargo
+        description: "Estrutura contendo informações do cargo ocupado."
+        data_type: struct
+
+      - name: vinculos.cargo.cargo_id
+        description: "Identificador do cargo."
+        data_type: int64
+
+      - name: vinculos.cargo.cargo_nome
+        description: "Nome do cargo."
+        data_type: string
+
+      - name: vinculos.cargo.cargo_categoria
+        description: "Categoria do cargo."
+        data_type: string
+
+      - name: vinculos.cargo.cargo_subcategoria
+        description: "Subcategoria do cargo."
+        data_type: string
