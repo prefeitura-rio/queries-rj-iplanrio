@@ -43,28 +43,20 @@ models:
         description: "Número de matrícula do vínculo."
         data_type: string
 
-      - name: vinculos.provimento_inicio
-        description: "Data de início do provimento no vínculo."
-        data_type: date
-
-      - name: vinculos.provimento_fim
-        description: "Data de fim do provimento no vínculo."
-        data_type: date
-
       - name: vinculos.vinculo_tipo
         description: "Tipo de vínculo do funcionário (ex: CLT, Estatutário, Temporário)."
         data_type: string
       
-      - name: vinculos.regime_juridico_vinculo
-        description: "Regime jurídico do vínculo (ex: celetista, estatutário)."
+      - name: vinculos.vinculo_regime_juridico
+        description: "Regime jurídico do vínculo (ex: EFETIVO, ESTÁGIO, CLT, BOLSISTA, RPA, etc)."
         data_type: string
 
-      - name: vinculos.data_exercicio_vinculo
+      - name: vinculos.vinculo_data_exercicio
         description: "Data de início de exercício do vínculo."
         data_type: date
 
       - name: vinculos.status_ativo
-        description: "Indicador de status ativo do vínculo. True se ativo, False se inativo."
+        description: "Indicador de status ativo do vínculo. True se ativo, False se inativo. É considerado ativo apenas se a data de vacância do vinculo e a data de fim de provimento forem nulas."
         data_type: bool
 
       # Estrutura de vacância do vínculo
@@ -79,6 +71,14 @@ models:
       - name: vinculos.vacancia_vinculo.vacancia_motivo
         description: "Motivo da vacância do vínculo."
         data_type: string
+
+      - name: vinculos.provimento_inicio
+        description: "Data de início do provimento no vínculo."
+        data_type: date
+
+      - name: vinculos.provimento_fim
+        description: "Data de fim do provimento no vínculo."
+        data_type: date
 
       # Estrutura de lotação
       - name: vinculos.lotacao

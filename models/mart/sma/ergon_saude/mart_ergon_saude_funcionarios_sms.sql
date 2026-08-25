@@ -73,11 +73,9 @@ ultimo_provimento_sms_de_cada_vinculo as (
     struct(
       p.id_vinculo as vinculo_id,
       v.id_matricula_vinculo as vinculo_matricula,
-      p.data_inicio as provimento_inicio,
-      p.data_fim as provimento_fim,
       v.tipo_vinculo as vinculo_tipo,
-      v.regime_juridico as regime_juridico_vinculo,
-      v.data_exercicio as data_exercicio_vinculo,
+      v.regime_juridico as vinculo_regime_juridico,
+      v.data_exercicio as vinculo_data_exercicio,
       case 
         when v.data_vacancia is null and p.data_fim is null
         then true
@@ -87,6 +85,8 @@ ultimo_provimento_sms_de_cada_vinculo as (
         v.data_vacancia as vacancia_data,
         v.motivo_vacancia as vacancia_motivo
       ) as vacancia_vinculo,
+      p.data_inicio as provimento_inicio,
+      p.data_fim as provimento_fim,
       struct(
         s.id_setor as setor_id,
         s.setor_sigla,
