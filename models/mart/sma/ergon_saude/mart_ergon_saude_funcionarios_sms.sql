@@ -59,7 +59,9 @@ vinculos as (
     v.id_matricula_vinculo,
     v.data_vacancia,
     v.motivo_vacancia,
-    tv.nome as tipo_vinculo
+    tv.nome as tipo_vinculo,
+    v.regime_juridico,
+    v.data_exercicio
   from {{ ref("raw_recursos_humanos_ergon__vinculo") }} v
   inner join {{ ref("raw_recursos_humanos_ergon__tipo_vinculo") }} tv
     on tv.sigla = v.tipo_vinculo
@@ -74,6 +76,8 @@ ultimo_provimento_sms_de_cada_vinculo as (
       p.data_inicio as provimento_inicio,
       p.data_fim as provimento_fim,
       v.tipo_vinculo as vinculo_tipo,
+      v.regime_juridico as regime_juridico_vinculo,
+      v.data_exercicio as data_exercicio_vinculo,
       case 
         when v.data_vacancia is null and p.data_fim is null
         then true
@@ -101,7 +105,7 @@ ultimo_provimento_sms_de_cada_vinculo as (
   inner join setor_sms s 
     on s.empresa.empresa_id = p.id_empresa 
     and s.id_setor = p.id_setor
-    and p.data_inicio between s.setor_inicio and ifnull(s.setor_fim, current_date("America/Sao_Paulo"))
+    and p.data_inicio between s.setor_inicio and ifnull(s.setor_fim, '9999-12-31') --current_date("America/Sao_Paulo"))
   inner join {{ ref("raw_recursos_humanos_ergon__cargo") }} c 
     on c.id_cargo = p.id_cargo
   inner join vinculos v

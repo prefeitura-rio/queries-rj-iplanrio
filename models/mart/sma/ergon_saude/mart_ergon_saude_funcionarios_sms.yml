@@ -54,6 +54,14 @@ models:
       - name: vinculos.vinculo_tipo
         description: "Tipo de vínculo do funcionário (ex: CLT, Estatutário, Temporário)."
         data_type: string
+      
+      - name: vinculos.regime_juridico_vinculo
+        description: "Regime jurídico do vínculo (ex: celetista, estatutário)."
+        data_type: string
+
+      - name: vinculos.data_exercicio_vinculo
+        description: "Data de início de exercício do vínculo."
+        data_type: date
 
       - name: vinculos.status_ativo
         description: "Indicador de status ativo do vínculo. True se ativo, False se inativo."
