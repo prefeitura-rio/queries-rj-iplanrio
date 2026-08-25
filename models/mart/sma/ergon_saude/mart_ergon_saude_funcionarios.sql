@@ -51,7 +51,7 @@ with
             sigla as setor_sigla,
             id_secretaria
         from  {{ ref("raw_recursos_humanos_ergon__setor") }}
-        -- get the most recent of the setor
+        -- get the most recent of the setor.
         qualify row_number() over (partition by id_setor order by data_inicio desc) = 1
     ),
 
