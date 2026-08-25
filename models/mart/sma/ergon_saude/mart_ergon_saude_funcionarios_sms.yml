@@ -8,7 +8,7 @@ models:
       alias: funcionarios_sms
 
     columns:
-      # Chave de agrupamento e identificação
+      # Chave de agrupamento e identificação.
       - name: cpf
         description: "CPF do funcionário."
         data_type: string

@@ -1,3 +1,5 @@
+-- table approve ergon
+
 {{
     config(
         alias="funcionarios_sms",
