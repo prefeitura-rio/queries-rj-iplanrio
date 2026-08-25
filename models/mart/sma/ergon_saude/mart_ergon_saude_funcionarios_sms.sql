@@ -124,7 +124,7 @@ select
   f.nome_funcionario,
   f.id_funcionario,
   count(distinct p.vinculos.vinculo_id) as contagem_vinculos,
-  array_agg(p.vinculos order by p.vinculos.vinculo_id) as vinculos
+  array_agg(p.vinculos order by cast(p.vinculos.vinculo_id as int64)) as vinculos
 from ultimo_provimento_sms_de_cada_vinculo p 
 inner join {{ ref("raw_recursos_humanos_ergon__funcionario") }} f 
   on f.id_funcionario = p.id_funcionario
