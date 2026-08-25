@@ -32,7 +32,7 @@ setor_sms as (
     ifnull(s.nome_completo, nome) as setor_nome,
     s.sigla as setor_sigla,
     struct(
-      se.secretaria_id,
+      s.id_secretaria as secretaria_id,
       se.secretaria_sigla,
       se.secretaria_nome
     ) as secretaria,
@@ -45,7 +45,7 @@ setor_sms as (
   from {{ ref("raw_recursos_humanos_ergon__setor") }} s
   inner join {{ ref("raw_recursos_humanos_ergon__empresas") }} e
     on e.id_empresa = s.id_empresa
-  inner join secretarias se
+  left join secretarias se
     on se.secretaria_id = s.id_secretaria
     and s.data_inicio between se.secretaria_inicio and ifnull(se.secretaria_fim, current_date("America/Sao_Paulo"))
   where s.id_secretaria in ('1800', '1851')
