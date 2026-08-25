@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: mart_ergon_saude_funcionarios_sms
-    description: "Tabela mart consolidada de funcionários ativos e inativos da Secretaria Municipal de Saúde (SMS), com informações sobre vínculos, lotação, cargo e secretaria."
+    description: "Tabela mart consolidada de funcionários ativos e inativos da Secretaria Municipal de Saúde (SMS) e das Oraganizações Sociais, com informações sobre vínculos, lotação, cargo e secretaria."
 
     config:
       alias: funcionarios_sms
