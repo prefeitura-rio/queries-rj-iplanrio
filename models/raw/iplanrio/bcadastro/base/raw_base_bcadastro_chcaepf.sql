@@ -10,9 +10,10 @@
             "range": {
                 "start": 0,
                 "end": 100000000000,
-                "interval": 34722222
+                "interval": 26000000
             }
-        }
+        },
+        cluster_by=["nroCpf", "nroAepf", "ufMunicipio", "codSituacao"],
     )
 }}
 
@@ -91,7 +92,7 @@ with
     dedup as (
         select *,
             -- Partition by cpf
-            cast(nroCpf as int64) as cpf_particao,
+            safe_cast(nroCpf as int64) as cpf_particao,
 
         from fonte_parseada
         qualify

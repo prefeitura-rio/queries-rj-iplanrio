@@ -21,6 +21,16 @@ models:
               name: raw_bcadastro_cnpj__cnpj__not_null
               config:
                 severity: error
+      - name: uf
+        description: Sigla da Unidade Federativa do endereço da empresa.
+        data_type: string
+        quote: true
+
+      - name: id_municipio
+        description: Identificador do município do endereço da empresa (código Receita Federal / TOM).
+        data_type: string
+        quote: true
+
       - name: razao_social
         description: Nome empresarial (razão social) da empresa.
         data_type: string

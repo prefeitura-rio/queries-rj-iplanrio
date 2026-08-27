@@ -1,7 +1,17 @@
 {{
     config(
         alias='cnpj',
-        materialized='table'
+        materialized='table',
+        partition_by={
+            "field": "cnpj_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 99999999999999,
+                "interval": 26000000000,
+            },
+        },
+        cluster_by=["cnpj", "uf", "id_municipio", "cnae_fiscal"],
     )
 }}
 
@@ -26,6 +36,8 @@ socios_achatados as (
 
 select
     cnpj.cnpj,
+    cnpj.uf,
+    cnpj.id_municipio,
     cnpj.razao_social,
     cnpj.nome_fantasia,
     cnpj.capital_social,

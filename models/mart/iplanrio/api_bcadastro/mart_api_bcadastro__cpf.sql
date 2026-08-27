@@ -1,11 +1,24 @@
 {{
     config(
-        alias='cpf'
-)
+        alias='cpf',
+        materialized='table',
+        partition_by={
+            "field": "cpf_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 100000000000,
+                "interval": 26000000,
+            },
+        },
+        cluster_by=["cpf", "uf", "situacao_cadastral_tipo", "id_municipio"],
+    )
 }}
 
 select
     cpf.cpf,
+    cpf.uf,
+    cpf.id_municipio,
     cpf.nome,
     cpf.nome_social,
     cpf.mae_nome,
