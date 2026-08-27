@@ -5,6 +5,16 @@
         alias="chcpf_bcadastros_parsed",
         schema="brutos_bcadastro_staging",
         materialized="table",
+        partition_by={
+            "field": "cpf_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 100000000000,
+                "interval": 26000000,
+            },
+        },
+        cluster_by=["cpfId", "ufMunDomic", "codSitCad", "codMunDomic"],
     )
 }}
 
@@ -84,7 +94,7 @@ with
     dedup as (
         select *,
          -- Partition by cpfId
-            cast(cpfId as int64) as cpfId_particao,
+            safe_cast(cpfId as int64) as cpf_particao,
         
         from fonte_parseada
         qualify

@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: mart_api_bcadastro__cpf
-    description: "Modelo mart para dados de CPF da API do BCadastro, contendo informações pessoais, contato, endereço e metadados"
+  - name: mart_api_bcadastro__cpf_rio
+    description: "Modelo mart para dados de CPF do município do Rio de Janeiro da API do BCadastro, contendo informações pessoais, contato, endereço e metadados"
     config:
-      alias: cpf
+      alias: cpf_rio
       partition_by:
         field: cpf_particao
         data_type: int64
@@ -14,9 +14,9 @@ models:
           interval: 26000000
       cluster_by:
         - cpf
-        - uf
         - situacao_cadastral_tipo
-        - id_municipio
+        - nome
+        - nascimento_data
       contract:
         enforced: true
     columns:

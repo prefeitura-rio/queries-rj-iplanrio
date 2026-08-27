@@ -10,9 +10,10 @@
             "range": {
                 "start": 0,
                 "end": 99999999999999,
-                "interval": 25000000000,
+                "interval": 26000000000,
             },
         },
+        cluster_by=["cnpj", "uf", "id_municipio", "cnae_fiscal"],
     )
 }}
 
@@ -710,6 +711,10 @@ with
         select
             -- Primary key
             id_cnpj as cnpj,
+
+            -- Location (top-level)
+            endereco_uf as uf,
+            id_municipio,
 
             -- Business data
             razao_social,

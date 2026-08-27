@@ -1,10 +1,10 @@
 version: 2
 
 models:
-  - name: mart_api_bcadastro__cnpj
-    description: "Modelo mart para dados de CNPJ da API do BCadastro, contendo informações empresariais, contato, endereço, sócios e metadados"
+  - name: mart_api_bcadastro__cnpj_rio
+    description: "Modelo mart para dados de CNPJ do município do Rio de Janeiro da API do BCadastro, contendo informações empresariais, contato, endereço, sócios e metadados"
     config:
-      alias: cnpj
+      alias: cnpj_rio
       partition_by:
         field: cnpj_particao
         data_type: int64
@@ -14,9 +14,9 @@ models:
           interval: 26000000000
       cluster_by:
         - cnpj
-        - uf
-        - id_municipio
         - cnae_fiscal
+        - razao_social
+        - inicio_atividade_data
       contract:
         enforced: true
     columns:
@@ -157,7 +157,7 @@ models:
         quote: true
 
       - name: ente_federativo.tipo
-        description: "Tipo do ente federativo"
+        description: "Tipo doエンte federativo"
         data_type: string
         quote: true
 

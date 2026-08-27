@@ -19,6 +19,14 @@ models:
               name: raw_bcadastro_cpf__cpf__not_null
               config:
                 severity: error
+      - name: uf
+        description: "Sigla da Unidade Federativa do endereço do contribuinte"
+        data_type: string
+
+      - name: id_municipio
+        description: "Identificador do município de domicílio do contribuinte (código Receita Federal / TOM)"
+        data_type: string
+
       - name: nome
         description: "Nome completo do contribuinte"
         data_type: string

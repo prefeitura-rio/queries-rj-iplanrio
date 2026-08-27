@@ -5,6 +5,16 @@
         alias="chcnpj_bcadastros_parsed",
         schema="brutos_bcadastro_staging",
         materialized="table",
+        partition_by={
+            "field": "cnpj_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 99999999999999,
+                "interval": 26000000000,
+            },
+        },
+        cluster_by=["cnpj", "uf", "situacaoCadastral", "codigoMunicipio"],
     )
 }}
 

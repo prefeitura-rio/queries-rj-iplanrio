@@ -9,9 +9,10 @@
             "range": {
                 "start": 0,
                 "end": 100000000000,
-                "interval": 25000000,
+                "interval": 26000000,
             },
         },
+        cluster_by=["cpf", "uf", "situacao_cadastral_tipo", "id_municipio"],
     )
 }}
 
@@ -190,7 +191,7 @@ with
             airbyte_generation_id,
 
             -- Partition
-            cast(cpf_id as int64) as cpf_particao,
+            safe_cast(cpf_id as int64) as cpf_particao,
 
             -- Outros
             id,
@@ -367,6 +368,10 @@ with
         select
             -- Primary key
             cpf,
+
+            -- Location (top-level)
+            endereco_uf as uf,
+            id_municipio_domicilio as id_municipio,
 
             -- Foreign keys
             -- id_municipio_domicilio,

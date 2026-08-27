@@ -4,6 +4,16 @@
         alias="chcno_bcadastros_parsed",
         schema="brutos_bcadastro_staging",
         materialized="table",
+        partition_by={
+            "field": "cno_particao",
+            "data_type": "int64",
+            "range": {
+                "start": 0,
+                "end": 100000000000,
+                "interval": 26000000,
+            },
+        },
+        cluster_by=["cno", "niResponsavel", "uf", "situacao"],
     )
 }}
 
@@ -76,7 +86,7 @@ with
     dedup as (
         select *,
         -- Partition by cno
-            cast(cno as int64) as cno_particao,
+            safe_cast(cno as int64) as cno_particao,
         from fonte_parseada
         qualify
             row_number() over (partition by cno order by airbyte.extracted_at desc) = 1
