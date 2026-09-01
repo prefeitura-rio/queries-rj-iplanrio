@@ -24,6 +24,7 @@ WITH frequencia_acumulada_dias_letivos AS (
     INNER JOIN {{ ref('gestao_escolar__calendario_periodo') }} CAP
         ON TUR.cal_id = CAP.cal_id
         AND AVA.tpc_id = CAP.tpc_id
+        AND CAP.cap_dataFim < CURRENT_DATE() -- incluir filtro
     UNION ALL
 
     -- 2ª Parte: Totais das aulas já realizadas no COC atual (consome a view consolidada)
@@ -33,7 +34,7 @@ WITH frequencia_acumulada_dias_letivos AS (
         EXTRACT(YEAR FROM data_aula)      AS ano_calendario,
         SUM(numeroAulas) AS numeroAulas,
         SUM(falta) AS numeroFaltas     
-    FROM {{ ref('educacao_basica_frequencia__vw_alunos_aulas') }}
+    FROM {{ ref('mart_frequencia__vw_alunos_aulas') }}
     GROUP BY 
         id_aluno,
         id_tipo_calendario,
@@ -41,11 +42,11 @@ WITH frequencia_acumulada_dias_letivos AS (
 )
 
 SELECT
-    alu_id,
-    tpc_id,
+    alu_id AS id_aluno,
+    tpc_id AS id_tipo_calendario,
     ano_calendario,
-    COALESCE(SUM(numeroFaltas), 0) AS numeroFaltas,
-    COALESCE(SUM(numeroAulas), 0) AS numeroAulas
+    COALESCE(SUM(numeroFaltas), 0) AS  numero_faltas,
+    COALESCE(SUM(numeroAulas), 0) AS numero_aulas
 
 FROM frequencia_acumulada_dias_letivos
 GROUP BY

@@ -87,7 +87,7 @@ CAP.cap_dataFim < CURRENT_DATE()
 | Responsável            | Ação                                                                                                                                                 |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Fernando**           | Finalizar os ajustes das queries, incluindo `ano_calendario`, corrigindo os agrupamentos e removendo comentários desnecessários.                     |
-| **Patrick**            | Materializar e atualizar as novas versões das tabelas em produção após o recebimento das queries ajustadas.                                          |
+| **Patrick**            | Materializar e atualizar as novas versões das tabelas em produção após o recebimento das queries ajustadas.                            PR para as mudanças sugeridas: https://github.com/prefeitura-rio/queries-rj-iplanrio/pull/298           |
 | **Gabi / Kamila**      | Validar a estrutura e a correção dos dados após as alterações.                                                                                       |
 | **Gabi / Kamila** | Realizar os ajustes finos nas regras de negócio e validar se as métricas de frequência e faltas estão de acordo com as expectativas da área técnica. |
 | **Fernanda**           | Comunicar o time de **Pequenos Cariocas** sobre as alterações na estrutura das tabelas e possíveis impactos em suas dependências.                    |
