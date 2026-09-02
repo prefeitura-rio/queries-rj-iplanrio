@@ -12,16 +12,16 @@ WITH frequencia_acumulada_dias_letivos AS (
         CAST(CAL.cal_ano AS INT64) AS ano_calendario,
         CAST(AAT.aat_numeroAulas AS INT64) AS numeroAulas,
         CAST(AAT.aat_numeroFaltas AS INT64) AS numeroFaltas
-    FROM `rj-sme`.`gestao_escolar`.`aluno_avaliacao_turma` AAT
-    INNER JOIN `rj-sme`.`gestao_escolar`.`aca_avaliacao` AVA
+    FROM {{ ref('gestao_escolar__aluno_avaliacao_turma') }} AAT
+    INNER JOIN {{ ref('gestao_escolar__aca_avaliacao') }} AVA
         ON AAT.fav_id = AVA.fav_id
         AND AAT.ava_id = AVA.ava_id
-    INNER JOIN `rj-sme`.`gestao_escolar`.`tur_turma` TUR
+    INNER JOIN {{ ref('gestao_escolar__tur_turma') }} TUR
         ON AAT.tur_id = TUR.tur_id
         AND TUR.tur_situacao IN (1, 5)
-    INNER JOIN `rj-sme`.`gestao_escolar`.`calendario_anual` CAL
+    INNER JOIN {{ ref('gestao_escolar__calendario_anual') }} CAL
         ON TUR.cal_id = CAL.cal_id
-    INNER JOIN `rj-sme`.`gestao_escolar`.`calendario_periodo` CAP
+    INNER JOIN {{ ref('gestao_escolar__calendario_periodo') }} CAP
         ON TUR.cal_id = CAP.cal_id
         AND AVA.tpc_id = CAP.tpc_id
         AND CAP.cap_dataFim < CURRENT_DATE() -- incluir filtro
@@ -34,7 +34,7 @@ WITH frequencia_acumulada_dias_letivos AS (
         EXTRACT(YEAR FROM data_aula)      AS ano_calendario,
         SUM(numeroAulas) AS numeroAulas,
         SUM(falta) AS numeroFaltas     
-    FROM `rj-sme`.`educacao_basica_frequencia`.`vw_alunos_aulas`
+    FROM {{ ref('mart_frequencia__vw_alunos_aulas') }}
     GROUP BY 
         id_aluno,
         id_tipo_calendario,
