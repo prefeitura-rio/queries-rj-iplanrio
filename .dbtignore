@@ -17,11 +17,6 @@ models/raw/iplanrio/sicop/raw_sicop_processo.sql
 -- Até que os dados do SSM comecem a subir..
 models/raw/ssm/vigia_urbano/raw_vigia_urbano__arquivo_encaminhamento.sql
 
--- Modelo desativado até a Kamila e a Gabi validarem o novo modelo.
--- Data de desativação: 2026-09-02
-models/mart/sme/frequencia/mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql
-models/mart/sme/frequencia/mart_frequencia__vw_alunos_frequencia_acumulada.sql
-
 models/raw/iplanrio/eai_logs
 models/raw/iplanrio/gcp
 models/mart/gerenciamento/dashboard_gcp
