@@ -54,6 +54,7 @@ sources:
       - name: PPE_ProjetoPrograma
       - name: PPE_TipoExtensividade
       - name: PPE_AlunoProjetoPrograma
+      - name: VW_BI_Avaliacao
 
 
     config:

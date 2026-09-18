@@ -8,7 +8,6 @@ sources:
       - name: aluno
       - name: aluno_historico
       - name: aluno_turma
-      - name: avaliacao
       - name: coc
       - name: dependencia
       - name: escola
