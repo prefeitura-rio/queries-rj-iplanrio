@@ -69,6 +69,7 @@ models:
           +materialized: table
           +schema: forca_municipal
           +tags: ["daily"]
+        
       pgm:
         +tags: "pgm"
         +project: rj-pgm
@@ -275,7 +276,11 @@ models:
         vigia_urbano:
           +materialized: table
           +schema: brutos_formulario_ocorrencia
-          +tags: ["hourly", "ssm"]      
+          +tags: ["hourly", "ssm"]
+        ispgeo:
+          +materialized: table
+          +schema: brutos_ispgeo
+          +tags: ["daily", "ssm"]
       iplanrio:
         +project: rj-iplanrio
         pessoa_vinculada:

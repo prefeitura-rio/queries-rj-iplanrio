@@ -1,0 +1,185 @@
+version: 2
+
+models:
+  - name: raw_ssm_ispgeo__ocorrencias
+    description: >
+      Ocorrências criminais georreferenciadas do ISPGEO (Instituto de Segurança
+      Pública). Cada linha representa um envolvido em um registro de ocorrência (RO),
+      com informações de tempo, localização, área de segurança pública e proximidade
+      a áreas sob foco especial.
+      Fonte: ISPGEO / SSM.
+    columns:
+      - name: objectid
+        description: Identificador único do objeto na camada geoespacial (OID).
+        data_type: int64
+        tests:
+          - not_null
+          - unique
+      - name: target_fid
+        description: TARGET_FID — identificador da feição alvo no join espacial de origem.
+        data_type: int64
+      - name: chave
+        description: Chave composta de identificação do registro.
+        data_type: string
+      - name: RO
+        description: Número do Registro de Ocorrência (RO).
+        data_type: string
+      - name: uuid
+        description: Identificador universalmente único (GUID) do registro.
+        data_type: string
+      - name: titulo_delito
+        description: Título do delito — código numérico do tipo de crime registrado.
+        data_type: int64
+      - name: sequencial_envolvido
+        description: Sequencial do envolvido — número de ordem do envolvido dentro do RO.
+        data_type: int64
+      - name: titulo_do
+        description: Título do DO — código do delito principal do documento de ocorrência.
+        data_type: int64
+      - name: indicador_estrategico
+        description: Indicador estratégico — flag de uso analítico interno.
+        data_type: int64
+      - name: total_rbft
+        description: total_rbft — total de registros de base de fatos por título (uso interno).
+        data_type: int64
+      - name: fase_divulgacao
+        description: Fase de divulgação — estágio de publicação/divulgação do registro.
+        data_type: int64
+      - name: ano_registro
+        description: Ano do registro da ocorrência.
+        data_type: int64
+      - name: mes_registro
+        description: Mês do registro da ocorrência (1–12).
+        data_type: int64
+      - name: data_registro
+        description: Data do registro (data de cadastro da ocorrência no sistema).
+        data_type: date
+      - name: data_fato
+        description: Data do fato (data em que o crime ocorreu).
+        data_type: date
+      - name: ano_fato
+        description: Ano do fato (derivado de data_fato).
+        data_type: int64
+      - name: id_mes_fato
+        description: Identificador numérico do mês do fato (1–12).
+        data_type: int64
+      - name: mes_fato
+        description: Nome do mês do fato (ex. Janeiro, Fevereiro).
+        data_type: string
+      - name: hora_fato
+        description: Hora do fato no formato HH:MM.
+        data_type: string
+      - name: hora_fato_faixa
+        description: Faixa horária do fato em formato textual (ex. 06h-12h).
+        data_type: string
+      - name: hora_fato_sem_minutos
+        description: Hora do fato sem os minutos (0–23).
+        data_type: int64
+      - name: dia_semana_fato
+        description: Dia da semana do fato em formato numérico (convenção do sistema).
+        data_type: int64
+      - name: id_dia_semana_fato
+        description: Identificador numérico padronizado do dia da semana do fato (1=domingo … 7=sábado).
+        data_type: int64
+      - name: dia_semana_fato_abrev
+        description: Abreviatura do dia da semana do fato (ex. seg, ter, qua).
+        data_type: string
+      - name: faixa_horaria
+        description: Faixa horária do fato — agrupamento de horas para análise de turno (código numérico).
+        data_type: int64
+      - name: periodo_dia
+        description: Período do dia do fato (ex. Manhã, Tarde, Noite, Madrugada).
+        data_type: string
+      - name: cisp
+        description: CISP do fato — Circunscrição Integrada de Segurança Pública.
+        data_type: int64
+      - name: aisp
+        description: AISP do fato — Área Integrada de Segurança Pública.
+        data_type: int64
+      - name: risp
+        description: RISP do fato — Região Integrada de Segurança Pública.
+        data_type: int64
+      - name: tipo_local_fato
+        description: Tipo de local do fato — código numérico da tipologia do local.
+        data_type: int64
+      - name: municipio_fato_ibge
+        description: Código IBGE do município do fato.
+        data_type: int64
+      - name: municipio_fato
+        description: Nome do município onde o fato ocorreu.
+        data_type: string
+      - name: complemento_endereco
+        description: Complemento do endereço do fato.
+        data_type: string
+      - name: localidade
+        description: Localidade ou sub-bairro do fato.
+        data_type: string
+      - name: tipo_logradouro
+        description: Tipo do logradouro (recodificado).
+        data_type: string
+      - name: nome_logradouro
+        description: Nome do logradouro (recodificado).
+        data_type: string
+      - name: logradouro_completo
+        description: Logradouro completo — tipo + nome (recodificado).
+        data_type: string
+      - name: num_porta
+        description: Número da via (numérica) do endereço do fato (recodificado).
+        data_type: int64
+      - name: ponto_referencia
+        description: Ponto de referência do endereço do fato (recodificado).
+        data_type: string
+      - name: bairro
+        description: Bairro do fato (recodificado).
+        data_type: string
+      - name: intersecao_esquina
+        description: Logradouro de esquina — nome da via que faz cruzamento com o local do fato.
+        data_type: string
+      - name: km
+        description: Quilometragem da via no local do fato (quando aplicável).
+        data_type: int64
+      - name: logradouro_numerica
+        description: Endereço completo do fato (logradouro + numérica).
+        data_type: string
+      - name: endereco_sem_tipo
+        description: Endereço do fato sem o tipo do logradouro.
+        data_type: string
+      - name: esquina
+        description: Descrição textual da esquina mais próxima ao local do fato.
+        data_type: string
+      - name: latitude
+        description: Latitude do ponto geocodificado do fato (WGS 84).
+        data_type: float64
+      - name: longitude
+        description: Longitude do ponto geocodificado do fato (WGS 84).
+        data_type: float64
+      - name: point_x
+        description: POINT_X — coordenada X do ponto geocodificado (sistema de projeção da camada).
+        data_type: float64
+      - name: point_y
+        description: POINT_Y — coordenada Y do ponto geocodificado (sistema de projeção da camada).
+        data_type: float64
+      - name: celula_ibge
+        description: Célula IBGE — código da célula da grade estatística do IBGE onde o fato ocorreu.
+        data_type: int64
+      - name: class_geocode
+        description: Classificação do ponto geocodificado — qualidade/precisão da geocodificação.
+        data_type: int64
+      - name: wkt
+        description: Geometria do ponto em formato WKT (Well-Known Text).
+        data_type: string
+      - name: geography
+        description: Representação geográfica do ponto (geography).
+        data_type: string
+      - name: id_territorio
+        description: Identificador do território administrativo ou operacional associado ao fato.
+        data_type: int64
+      - name: distancia_area_foco_especial
+        description: Distância em metros para a área sob foco especial mais próxima do local do fato.
+        data_type: float64
+      - name: nome_area_foco_especial
+        description: Nome da área sob foco especial (comunidade/complexo) mais próxima ao local do fato.
+        data_type: string
+      - name: dominio_focoespecial
+        description: Grupo armado dominante na área sob foco especial mais próxima ao local do fato.
+        data_type: string

@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: brutos_ispgeo_staging
+    database: rj-iplanrio
+    schema: brutos_ispgeo_staging
+    tables:
+      - name: ocorrencias
