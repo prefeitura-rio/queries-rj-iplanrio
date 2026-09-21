@@ -1,55 +1,76 @@
-{{ config(
-    alias='frequencia_acumulada_dias_letivos',
-) }}
+{{
+    config(
+        alias="frequencia_acumulada_dias_letivos",
+    )
+}}
 
 -- Nome frequencia acumulada dias letivos
+with
+    frequencia_acumulada_dias_letivos as (
+        -- 1ª Parte: Totais salvos nos COCs anteriores ao atual
+        select
+            cast(aat.alu_id as int64) as alu_id,
+            cast(cap.tpc_id as int64) as tpc_id,
+            cast(cal.cal_ano as int64) as ano_calendario,
+            cast(aat.aat_numeroaulas as int64) as numeroaulas,
+            cast(aat.aat_numerofaltas as int64) as numerofaltas
+        from {{ ref("gestao_escolar__aluno_avaliacao_turma") }} aat
+        inner join
+            {{ ref("gestao_escolar__aca_avaliacao") }} ava
+            on aat.fav_id = ava.fav_id
+            and aat.ava_id = ava.ava_id
+        inner join
+            {{ ref("gestao_escolar__tur_turma") }} tur
+            on aat.tur_id = tur.tur_id
+            and tur.tur_situacao in (1, 5)
+        inner join
+            {{ ref("gestao_escolar__calendario_anual") }} cal on tur.cal_id = cal.cal_id
+        inner join
+            {{ ref("gestao_escolar__calendario_periodo") }} cap
+            on tur.cal_id = cap.cal_id
+            and ava.tpc_id = cap.tpc_id
+            and cap.cap_datafim < current_date()  -- incluir filtro
+        union all
 
-WITH frequencia_acumulada_dias_letivos AS (
-    -- 1ª Parte: Totais salvos nos COCs anteriores ao atual
-    SELECT
-        CAST(AAT.alu_id AS INT64) AS alu_id,
-        CAST(CAP.tpc_id AS INT64) AS tpc_id,
-        CAST(CAL.cal_ano AS INT64) AS ano_calendario,
-        CAST(AAT.aat_numeroAulas AS INT64) AS numeroAulas,
-        CAST(AAT.aat_numeroFaltas AS INT64) AS numeroFaltas
-    FROM {{ ref('gestao_escolar__aluno_avaliacao_turma') }} AAT
-    INNER JOIN {{ ref('gestao_escolar__aca_avaliacao') }} AVA
-        ON AAT.fav_id = AVA.fav_id
-        AND AAT.ava_id = AVA.ava_id
-    INNER JOIN {{ ref('gestao_escolar__tur_turma') }} TUR
-        ON AAT.tur_id = TUR.tur_id
-        AND TUR.tur_situacao IN (1, 5)
-    INNER JOIN {{ ref('gestao_escolar__calendario_anual') }} CAL
-        ON TUR.cal_id = CAL.cal_id
-    INNER JOIN {{ ref('gestao_escolar__calendario_periodo') }} CAP
-        ON TUR.cal_id = CAP.cal_id
-        AND AVA.tpc_id = CAP.tpc_id
-        AND CAP.cap_dataFim < CURRENT_DATE() -- incluir filtro
-    UNION ALL
+        -- 2ª Parte: Totais das aulas já realizadas no COC atual (consome a view
+        -- consolidada)
+        select
+            cast(id_aluno as int64) as alu_id,
+            cast(id_tipo_calendario as int64) as tpc_id,
+            extract(year from data_aula) as ano_calendario,
+            sum(numeroaulas) as numeroaulas,
+            sum(falta) as numerofaltas
+        from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+        group by id_aluno, id_tipo_calendario, extract(year from data_aula)
+    ),
 
-    -- 2ª Parte: Totais das aulas já realizadas no COC atual (consome a view consolidada)
-    SELECT
-        CAST(id_aluno AS INT64) AS alu_id,
-        CAST(id_tipo_calendario AS INT64) AS tpc_id,
-        EXTRACT(YEAR FROM data_aula)      AS ano_calendario,
-        SUM(numeroAulas) AS numeroAulas,
-        SUM(falta) AS numeroFaltas     
-    FROM {{ ref('mart_frequencia__vw_alunos_aulas') }}
-    GROUP BY 
-        id_aluno,
-        id_tipo_calendario,
-        EXTRACT(YEAR FROM data_aula)
-)
+    final as (
+        select
+        
+            {{
+                dbt_utils.generate_surrogate_key(
+                    ["alu_id", "tpc_id", "ano_calendario"]
+                )
+            }} as id,
 
-SELECT
-    alu_id AS id_aluno,
-    tpc_id AS id_tipo_calendario,
-    ano_calendario,
-    numeroFaltas AS numero_faltas,
-    numeroAulas AS numero_aulas,
-    CASE
-        WHEN numeroAulas = 0 THEN 0.00
-        ELSE ROUND(100.00 - ((numeroFaltas * 1.00) / (numeroAulas * 1.00) * 100.00), 2)
-    END AS frequencia_percentual
+            alu_id as id_aluno,
+            tpc_id as id_tipo_calendario,
+            ano_calendario,
+            numerofaltas as numero_faltas,
+            numeroaulas as numero_aulas,
+            case
+                when numeroaulas = 0
+                then 0.00
+                else
+                    round(
+                        100.00
+                        - ((numerofaltas * 1.00) / (numeroaulas * 1.00) * 100.00),
+                        2
+                    )
+            end as frequencia_percentual
 
-FROM frequencia_acumulada_dias_letivos
+        from frequencia_acumulada_dias_letivos
+    )
+
+select *
+from final
