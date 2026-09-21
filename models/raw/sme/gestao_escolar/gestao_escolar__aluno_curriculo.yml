@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__aluno_curriculo
+    description: "**Origem:** GestaoEscolar.dbo.ACA_AlunoCurriculo \n"
+

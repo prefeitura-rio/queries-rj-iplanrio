@@ -1,0 +1,93 @@
+models:
+  - name: gestao_escolar__aluno_avaliacao_turma
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique
+          - not_null
+        quote: true
+      - name: tur_id
+        data_type: string
+        quote: true
+      - name: alu_id
+        data_type: string
+        quote: true
+      - name: mtu_id
+        data_type: string
+        quote: true
+      - name: aat_id
+        data_type: string
+        quote: true
+      - name: fav_id
+        data_type: string
+        quote: true
+      - name: ava_id
+        data_type: string
+        quote: true
+      - name: aat_avaliacao
+        data_type: string
+        quote: true
+      - name: aat_frequencia
+        data_type: string
+        quote: true
+      - name: aat_comentarios
+        data_type: string
+        quote: true
+      - name: aat_relatorio
+        data_type: string
+        quote: true
+      - name: aat_situacao
+        data_type: string
+        quote: true
+      - name: data_criacao
+        data_type: timestamp
+        quote: true
+      - name: data_alteracao
+        data_type: timestamp
+        quote: true
+      - name: aat_semprofessor
+        data_type: string
+        quote: true
+      - name: aat_numerofaltas
+        data_type: int64
+        quote: true
+      - name: aat_numeroaulas
+        data_type: int64
+        quote: true
+      - name: arq_idrelatorio
+        data_type: string
+        quote: true
+      - name: aat_ausenciascompensadas
+        data_type: string
+        quote: true
+      - name: aat_avaliacaoadicional
+        data_type: string
+        quote: true
+      - name: aat_faltoso
+        data_type: string
+        quote: true
+      - name: aat_frequenciaacumulada
+        data_type: string
+        quote: true
+      - name: aat_registroexterno
+        data_type: string
+        quote: true
+      - name: aat_frequenciaacumuladacalculada
+        data_type: string
+        quote: true
+      - name: aat_naoavaliado
+        data_type: string
+        quote: true
+      - name: aat_avaliacaoposconselho
+        data_type: string
+        quote: true
+      - name: aat_justificativaposconselho
+        data_type: string
+        quote: true
+      - name: aat_frequenciafinalajustada
+        data_type: string
+        quote: true
+      - name: loaded_at
+        data_type: timestamp
+        quote: true

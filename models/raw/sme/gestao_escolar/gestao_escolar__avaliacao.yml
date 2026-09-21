@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__avaliacao
+    description: "**Origem:** GestaoEscolar.dbo.avaliacao \n"
+

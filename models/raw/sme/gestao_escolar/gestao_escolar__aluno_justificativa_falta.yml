@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__aluno_justificativa_falta
+    description: "**Origem:** GestaoEscolar.dbo.ACA_AlunoJustificativaFalta \n"
+

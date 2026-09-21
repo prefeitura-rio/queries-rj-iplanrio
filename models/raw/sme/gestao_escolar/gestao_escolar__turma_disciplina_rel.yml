@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: gestao_escolar__turma_disciplina_rel
+    description: "**Origem:** GestaoEscolar.dbo.TUR_TurmaRelTurmaDisciplina \n**Descrição**: Disciplina de determinada turma de escolas municipais
+      do município do Rio de Janeiro.\n**Frequência de atualização**: Diário\n**Cobertura
+      temporal**: Desde 2012\n**Órgão gestor dos dados**: SME\n**Publicado por**:
+      Camila Maura Moreira da Silva\n**Publicado por (email)**: camila.maura@rioeduca.net\n"
+    columns:
+      - name: id_disciplina
+        description: Identificador de disciplina da turma
+      - name: id_turma
+        description: Identificador de turma
+

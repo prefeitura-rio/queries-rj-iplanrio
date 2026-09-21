@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__numeroDeAulasCte
+    description: "**Origem:** Tabela mart \n"
+

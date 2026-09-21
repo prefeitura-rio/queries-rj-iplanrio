@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: gestao_escolar__calendario_anual
+    description: "**Origem:** GestaoEscolar.dbo.ACA_CalendarioAnual"
+    columns:
+      - name: loaded_at
+        data_type: timestamp
+        quote: true
+      - name: cal_id
+        data_type: string
+        tests:
+          - unique
+          - not_null
+        quote: true
+      - name: ent_id
+        data_type: string
+        quote: true
+      - name: cal_padrao
+        data_type: boolean
+        quote: true
+      - name: cal_ano
+        data_type: int64
+        quote: true
+      - name: cal_descricao
+        data_type: string
+        quote: true
+      - name: cal_dataInicio
+        data_type: date
+        quote: true
+      - name: cal_dataFim
+        data_type: date
+        quote: true
+      - name: cal_situacao
+        data_type: int64
+        quote: true
+      - name: cal_dataCriacao
+        data_type: datetime
+        quote: true
+      - name: cal_dataAlteracao
+        data_type: datetime
+        quote: true
