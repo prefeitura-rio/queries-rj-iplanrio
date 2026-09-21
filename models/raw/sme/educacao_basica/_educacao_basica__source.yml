@@ -14,6 +14,11 @@ sources:
       - name: escola
       - name: frequencia
       - name: movimentacao
+  - name: gestao_escolar_staging
+    database: rj-iplanrio
+    schema: brutos_gestao_escolar_staging
+    tables: 
+      - name: VW_BI_Avaliacao
 
 
     config:

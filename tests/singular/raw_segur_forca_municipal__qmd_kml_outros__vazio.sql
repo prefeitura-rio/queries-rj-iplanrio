@@ -1,4 +1,4 @@
--- Falha se a API introduziu um novo tipo de kml_folder não reconhecido por
+ -- Falha se a API introduziu um novo tipo de kml_folder não reconhecido por
 -- qmd_bases ('qmds', 'qmd') ou qmd_missoes_geometria ('missoes', 'missao').
 -- Em condições normais esta tabela deve ter zero linhas.
 -- Se falhar: inspecionar kml_folder_raw para identificar o novo valor
