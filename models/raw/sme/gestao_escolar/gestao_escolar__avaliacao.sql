@@ -11,7 +11,7 @@
 }}
 
 with source as (
-    select * FROM {{ source('educacao_basica_staging', 'avaliacao') }}
+    select * FROM {{ source('brutos_gestao_escolar_staging_prefect', 'VW_BI_Avaliacao') }}
 )
 
 
