@@ -4,7 +4,9 @@
 
 {{
     config(
-        alias="todos_alunos_presentes_2026",
+        alias="mart_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes",
+        warn_if = ">0",
+        error_if = ">5000"
     )
 }}
 

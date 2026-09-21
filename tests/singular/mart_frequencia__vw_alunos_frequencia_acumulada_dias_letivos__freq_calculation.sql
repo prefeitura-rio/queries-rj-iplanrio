@@ -3,7 +3,9 @@
 -- 'mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos')
 {{
     config(
-        alias="freq_calculation_2026",
+        alias="mart_frequencia__freq_acumulada_dias_letivos__freq_coc_fechados_igual",
+        warn_if = ">0",
+        error_if = ">5000"
     )
 }}
 
