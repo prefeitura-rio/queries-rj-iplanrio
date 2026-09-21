@@ -633,3 +633,136 @@ models :
       - name: proposta_formacao_alternancia
         description: "Preenchido com 0 ou nulo (campo não utilizado)."
         data_type: boolean
+
+  - name: gestao_escolar__vw_bi_avaliacao
+    columns:
+      - name: id
+        data_type: string
+        quote: true
+        tests:
+          - unique:
+              name: gestao_escolar_staging_vw_bi_avaliacao__id__unique
+      - name: ano
+        data_type: string
+        quote: true
+      - name: coc
+        data_type: string
+        quote: true
+      - name: tpc_nome
+        data_type: string
+        quote: true
+      - name: tur_codigo
+        data_type: string
+        quote: true
+      - name: reuniao_pais
+        data_type: string
+        quote: true
+      - name: conceito
+        data_type: string
+        quote: true
+      - name: glb
+        data_type: string
+        quote: true
+      - name: mat
+        data_type: string
+        quote: true
+      - name: por
+        data_type: string
+        quote: true
+      - name: cie
+        data_type: string
+        quote: true
+      - name: geo
+        data_type: string
+        quote: true
+      - name: his
+        data_type: string
+        quote: true
+      - name: efi
+        data_type: string
+        quote: true
+      - name: ing
+        data_type: string
+        quote: true
+      - name: esp
+        data_type: string
+        quote: true
+      - name: fra
+        data_type: string
+        quote: true
+      - name: ale
+        data_type: string
+        quote: true
+      - name: le
+        data_type: string
+        quote: true
+      - name: avi
+        data_type: string
+        quote: true
+      - name: apl
+        data_type: string
+        quote: true
+      - name: ace
+        data_type: string
+        quote: true
+      - name: tea
+        data_type: string
+        quote: true
+      - name: mus
+        data_type: string
+        quote: true
+      - name: art
+        data_type: string
+        quote: true
+      - name: cur_id
+        data_type: string
+        quote: true
+      - name: crp_id
+        data_type: string
+        quote: true
+      - name: tur_id
+        data_type: string
+        quote: true
+      - name: alu_id
+        data_type: string
+        quote: true
+      - name: mtu_id
+        data_type: string
+        quote: true
+      - name: _prefect_extracted_at
+        data_type: string
+        quote: true
+      - name: ano_particao
+        data_type: string
+        quote: true
+      - name: mes_particao
+        data_type: string
+        quote: true
+      - name: data_particao
+        data_type: string
+        quote: true
+      - name: frequencia_str
+        data_type: string
+        quote: true
+      - name: frequencia
+        data_type: float64
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: gestao_escolar_staging_vw_bi_avaliacao__frequencia__between_0_100
+              min_value: 0
+              max_value: 100
+              strictly: false
+
+      - name: freq_acumulada_str
+        data_type: string
+        quote: true
+      - name: freq_acumulada
+        data_type: float64
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: gestao_escolar_staging_vw_bi_avaliacao__freq_acumulado__between_0_100
+              min_value: 0
+              max_value: 100
+              strictly: false

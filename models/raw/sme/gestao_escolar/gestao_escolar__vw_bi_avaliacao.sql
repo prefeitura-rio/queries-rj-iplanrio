@@ -6,7 +6,7 @@
 }}
 
 with
-    source as (select * from {{ source("gestao_escolar_staging", "VW_BI_Avaliacao") }}),
+    source as (select * from {{ source("brutos_gestao_escolar_staging_prefect", "VW_BI_Avaliacao") }}),
     renamed as (
         select
             {{ dbt_utils.generate_surrogate_key(["alu_id", "ano", "coc", "mtu_id"]) }}

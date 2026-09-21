@@ -29,15 +29,20 @@ sources:
         config:
           freshness:
             error_after: {count: 96, period: hour}
-
       - name: VW_BI_Aluno
+      - name: ACA_Aluno
+      - name: ACA_Religiao
+      - name: ESC_UnidadeEscola
+      - name: PPE_ProjetoPrograma
+      - name: PPE_TipoExtensividade
+      - name: PPE_AlunoProjetoPrograma
 
     config:
       freshness: # default freshness
         error_after: {count: 24, period: hour}
       loaded_at_field: _airbyte_extracted_at
 
-  - name: brutos_gestao_escolar_staging
+  - name: brutos_gestao_escolar_staging_prefect
     database: rj-iplanrio
     schema: brutos_gestao_escolar_staging
     tables:
@@ -48,14 +53,7 @@ sources:
       - name: numeroDeAulasCte
       - name: diasCoc
       - name: CLS_AlunoAvaliacaoTurma
-      - name: ACA_Aluno
-      - name: ACA_Religiao
-      - name: ESC_UnidadeEscola
-      - name: PPE_ProjetoPrograma
-      - name: PPE_TipoExtensividade
-      - name: PPE_AlunoProjetoPrograma
       - name: VW_BI_Avaliacao
-
 
     config:
       freshness: # default freshness

@@ -2,7 +2,7 @@
 
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging', 'turma') }}
+    select * from {{ source('brutos_gestao_escolar_staging_prefect', 'turma') }}
 ),
 
 renamed as (

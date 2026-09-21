@@ -6,7 +6,7 @@
 
 
 with source as (
-    select * from {{ source('brutos_gestao_escolar_staging', 'diasCoc') }}
+    select * from {{ source('brutos_gestao_escolar_staging_prefect', 'diasCoc') }}
   ),
   renamed as (
       select
