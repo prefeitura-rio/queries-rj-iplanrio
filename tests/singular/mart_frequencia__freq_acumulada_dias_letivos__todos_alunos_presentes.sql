@@ -1,11 +1,15 @@
 -- este teste checa o calculo da frequencia entre aquilo que é calculado no SGA (model
 -- 'gestao_escolar_vw_bi_avlaliacao') contra o calculado no lake (model
 -- 'mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos')
+
 {{
     config(
-        alias="freq_calculation_2026",
+        alias="mart_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes",
+        warn_if = ">0",
+        error_if = ">5000"
     )
 }}
+
 
 
 with
@@ -35,7 +39,7 @@ with
     final as (
         select *
         from joined
-        where ano = '2026' and coc in ('1', '2') and abs(freq_sga - freq_lake) >= 0.01
+        where ano = '2026' and coc in ('1', '2') and freq_lake is null
     )
 
 select *

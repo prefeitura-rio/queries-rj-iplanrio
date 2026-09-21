@@ -1,0 +1,105 @@
+models:
+  - name: gestao_escolar__aca_avaliacao
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique
+          - not_null
+        quote: true
+      - name: loaded_at
+        data_type: timestamp
+        quote: true
+      - name: fav_id
+        data_type: string
+        quote: true
+      - name: ava_id
+        data_type: string
+        quote: true
+      - name: ava_nome
+        data_type: string
+        quote: true
+      - name: ava_tipo
+        data_type: int64
+        quote: true
+      - name: tpc_id
+        data_type: string
+        quote: true
+      - name: ava_ordemPeriodo
+        data_type: int64
+        quote: true
+      - name: ava_apareceBoletim
+        data_type: boolean
+        quote: true
+      - name: ava_situacao
+        data_type: int64
+        quote: true
+      - name: ava_dataCriacao
+        data_type: datetime
+        quote: true
+      - name: ava_dataAlteracao
+        data_type: datetime
+        quote: true
+      - name: ava_conceitoGlobalObrigatorio
+        data_type: boolean
+        quote: true
+      - name: ava_baseadaConceitoGlobal
+        data_type: boolean
+        quote: true
+      - name: ava_baseadaNotaDisciplina
+        data_type: boolean
+        quote: true
+      - name: ava_baseadaAvaliacaoAdicional
+        data_type: boolean
+        quote: true
+      - name: ava_mostraBoletimConceitoGlobalNota
+        data_type: boolean
+        quote: true
+      - name: ava_mostraBoletimConceitoGlobalFrequencia
+        data_type: boolean
+        quote: true
+      - name: ava_mostraBoletimConceitoGlobalAvaliacaoAdicional
+        data_type: boolean
+        quote: true
+      - name: ava_mostraBoletimDisciplinaNota
+        data_type: boolean
+        quote: true
+      - name: ava_mostraBoletimDisciplinaFrequencia
+        data_type: boolean
+        quote: true
+      - name: ava_recFinalConceitoMaximoAprovacao
+        data_type: int64
+        quote: true
+      - name: ava_recFinalConceitoGlobalMinimoNaoAtingido
+        data_type: boolean
+        quote: true
+      - name: ava_recFinalFrequenciaMinimaFinalNaoAtingida
+        data_type: boolean
+        quote: true
+      - name: ava_recFinalNotaDisciplinaApenasConceitoGlobalNaoAtingido
+        data_type: boolean
+        quote: true
+      - name: ava_disciplinaObrigatoria
+        data_type: boolean
+        quote: true
+      - name: ava_exibeNaoAvaliados
+        data_type: boolean
+        quote: true
+      - name: ava_exibeSemProfessor
+        data_type: boolean
+        quote: true
+      - name: ava_exibeObservacaoDisciplina
+        data_type: boolean
+        quote: true
+      - name: ava_exibeObservacaoConselhoPedagogico
+        data_type: boolean
+        quote: true
+      - name: ava_exibeFrequencia
+        data_type: boolean
+        quote: true
+      - name: ava_exibeNotaPosConselho
+        data_type: boolean
+        quote: true
+      - name: ava_conceitoGlobalObrigatorioFrequencia
+        data_type: boolean
+        quote: true

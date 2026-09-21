@@ -1,0 +1,81 @@
+models:
+  - name: gestao_escolar__tur_turma
+    columns:
+      - name: loaded_at
+        data_type: timestamp
+        quote: true
+      - name: cal_id
+        data_type: string
+        quote: true
+      - name: dep_id
+        data_type: string
+        quote: true
+      - name: esc_id
+        data_type: string
+        quote: true
+      - name: fav_id
+        data_type: string
+        quote: true
+      - name: prd_id
+        data_type: string
+        quote: true
+      - name: trn_id
+        data_type: string
+        quote: true
+      - name: tur_id
+        data_type: string
+        data_tests:
+          - unique
+          - not_null
+        quote: true
+      - name: uni_id
+        data_type: string
+        quote: true
+      - name: tur_tipo
+        data_type: int64
+        quote: true
+      - name: tur_vagas
+        data_type: int64
+        quote: true
+      - name: tur_codigo
+        data_type: string
+        quote: true
+      - name: tur_duracao
+        data_type: int64
+        quote: true
+      - name: tur_situacao
+        data_type: int64
+        quote: true
+      - name: tur_descricao
+        data_type: string
+        quote: true
+      - name: tur_codigoInep
+        data_type: string
+        quote: true
+      - name: tur_observacao
+        data_type: string
+        quote: true
+      - name: tur_seqChamada
+        data_type: boolean
+        quote: true
+      - name: tur_dataCriacao
+        data_type: datetime
+        quote: true
+      - name: tur_dataAlteracao
+        data_type: datetime
+        quote: true
+      - name: tur_dataEncerramento
+        data_type: datetime
+        quote: true
+      - name: tur_participaRodizio
+        data_type: boolean
+        quote: true
+      - name: tur_flag_tem_acrescimo
+        data_type: boolean
+        quote: true
+      - name: tur_minimoMatriculados
+        data_type: int64
+        quote: true
+      - name: tur_docenteEspecialista
+        data_type: boolean
+        quote: true

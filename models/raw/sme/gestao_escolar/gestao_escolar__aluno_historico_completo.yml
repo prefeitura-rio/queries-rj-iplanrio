@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__aluno_historico_completo
+    description: "**Origem:** GestaoEscolar.dbo.VW_BI_Aluno_Todos_Os_Anos \n"
+

@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__turno_horario
+    description: "**Origem:** GestaoEscolar.dbo.ACA_TurnoHorario \n"
+

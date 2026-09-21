@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__diasCoc
+    description: "**Origem:** Tabela Mart \n"
+

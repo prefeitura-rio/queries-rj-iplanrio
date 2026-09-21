@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: gestao_escolar__calendario_periodo
+    description: "**Origem:** GestaoEscolar.dbo.ACA_CalendarioPeriodo"
+    columns:
+      - name: id
+        data_type: string
+        tests:
+          - not_null
+          - unique
+        quote: true
+      - name: loaded_at
+        data_type: timestamp
+        quote: true
+      - name: cal_id
+        data_type: string
+        quote: true
+      - name: cap_id
+        data_type: string
+        quote: true
+      - name: cap_descricao
+        data_type: string
+        quote: true
+      - name: tpc_id
+        data_type: string
+        quote: true
+      - name: cap_dataInicio
+        data_type: date
+        quote: true
+      - name: cap_dataFim
+        data_type: date
+        quote: true
+      - name: cap_situacao
+        data_type: int64
+        quote: true
+      - name: cap_dataCriacao
+        data_type: datetime
+        quote: true
+      - name: cap_dataAlteracao
+        data_type: datetime
+        quote: true

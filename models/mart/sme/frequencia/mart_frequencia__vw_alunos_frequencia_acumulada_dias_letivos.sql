@@ -6,7 +6,7 @@
 
 -- Nome frequencia acumulada dias letivos
 with
-    frequencia_acumulada_dias_letivos as (
+    frequencia_cocs_fechados as (
         -- 1ª Parte: Totais salvos nos COCs anteriores ao atual
         select
             cast(aat.alu_id as int64) as alu_id,
@@ -30,8 +30,9 @@ with
             on tur.cal_id = cap.cal_id
             and ava.tpc_id = cap.tpc_id
             and cap.cap_datafim < current_date()  -- incluir filtro
-        union all
+    ),
 
+    freq_coc_atual as (
         -- 2ª Parte: Totais das aulas já realizadas no COC atual (consome a view
         -- consolidada)
         select
@@ -41,12 +42,23 @@ with
             sum(numeroaulas) as numeroaulas,
             sum(falta) as numerofaltas
         from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+
         group by id_aluno, id_tipo_calendario, extract(year from data_aula)
+        having ano_calendario = 2026 and tpc_id = 3 -- ALTERAR EM TODA VIRADA DE COC
+
+    ),
+
+    frequencia_acumulada_dias_letivos as (
+        select *
+        from frequencia_cocs_fechados
+        union all
+        select *
+        from freq_coc_atual
     ),
 
     final as (
         select
-        
+
             {{
                 dbt_utils.generate_surrogate_key(
                     ["alu_id", "tpc_id", "ano_calendario"]
@@ -70,7 +82,10 @@ with
             end as frequencia_percentual
 
         from frequencia_acumulada_dias_letivos
-    )
+    ),
+
+    correcoes_manuais as (select distinct * from final where numero_aulas is not null)
 
 select *
-from final
+from correcoes_manuais
+where ano_calendario >= 2024

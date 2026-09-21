@@ -1,64 +1,183 @@
 {{
     config(
-        alias='aluno_avaliacao_turma',
-        schema='gestao_escolar',
-        materialized='incremental',
-        incremental_strategy='merge',
+        alias="aluno_avaliacao_turma",
+        schema="gestao_escolar",
         partition_by={
             "field": "data_alteracao",
             "data_type": "timestamp",
-            "granularity": "year"
+            "granularity": "year",
         },
-        unique_key=['tur_id', 'alu_id', 'mtu_id', 'aat_id'],
-        cluster_by=['alu_id']
+        unique_key=["tur_id", "alu_id", "mtu_id", "aat_id"],
+        cluster_by=["alu_id"],
     )
 }}
 
-with source as (
-    select * from {{ source('brutos_gestao_escolar_staging', 'CLS_AlunoAvaliacaoTurma') }}
-    
-    {{ incremental_filter() }}
+with
+    source as (
+        select *
+        from {{ source("brutos_gestao_escolar_staging", "CLS_AlunoAvaliacaoTurma") }}
 
-),
-renamed as (
-    select
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("tur_id") }}), r'\.0$', '') AS STRING) AS tur_id,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("alu_id") }}), r'\.0$', '') AS STRING) AS alu_id,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("mtu_id") }}), r'\.0$', '') AS STRING) AS mtu_id,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_id") }}), r'\.0$', '') AS STRING) AS aat_id,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("fav_id") }}), r'\.0$', '') AS STRING) AS fav_id,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("ava_id") }}), r'\.0$', '') AS STRING) AS ava_id,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_avaliacao") }}), r'\.0$', '') AS STRING) AS aat_avaliacao,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_frequencia") }}), r'\.0$', '') AS STRING) AS aat_frequencia,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_comentarios") }}), r'\.0$', '') AS STRING) AS aat_comentarios,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_relatorio") }}), r'\.0$', '') AS STRING) AS aat_relatorio,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_situacao") }}), r'\.0$', '') AS STRING) AS aat_situacao,
-        SAFE_CAST({{ adapter.quote("aat_dataCriacao") }} AS TIMESTAMP) AS data_criacao,
-        SAFE_CAST({{ adapter.quote("aat_dataAlteracao") }} AS TIMESTAMP) AS data_alteracao,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_semProfessor") }}), r'\.0$', '') AS STRING) AS aat_semProfessor,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_numeroFaltas") }}), r'\.0$', '') AS INT64) AS aat_numeroFaltas,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_numeroAulas") }}), r'\.0$', '') AS INT64) AS aat_numeroAulas,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("arq_idRelatorio") }}), r'\.0$', '') AS STRING) AS arq_idRelatorio,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_ausenciasCompensadas") }}), r'\.0$', '') AS STRING) AS aat_ausenciasCompensadas,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_avaliacaoAdicional") }}), r'\.0$', '') AS STRING) AS aat_avaliacaoAdicional,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_faltoso") }}), r'\.0$', '') AS STRING) AS aat_faltoso,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_frequenciaAcumulada") }}), r'\.0$', '') AS STRING) AS aat_frequenciaAcumulada,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_registroexterno") }}), r'\.0$', '') AS STRING) AS aat_registroexterno,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_frequenciaAcumuladaCalculada") }}), r'\.0$', '') AS STRING) AS aat_frequenciaAcumuladaCalculada,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_naoAvaliado") }}), r'\.0$', '') AS STRING) AS aat_naoAvaliado,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_avaliacaoPosConselho") }}), r'\.0$', '') AS STRING) AS aat_avaliacaoPosConselho,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_justificativaPosConselho") }}), r'\.0$', '') AS STRING) AS aat_justificativaPosConselho,
-        SAFE_CAST(REGEXP_REPLACE(TRIM({{ adapter.quote("aat_frequenciaFinalAjustada") }}), r'\.0$', '') AS STRING) AS aat_frequenciaFinalAjustada,
-        SAFE_CAST({{ adapter.quote("_prefect_extracted_at") }} AS TIMESTAMP) AS loaded_at
-    from source
-), dedup AS (
-    select *,
-        row_number() over (
-            partition by tur_id, alu_id, mtu_id, aat_id
-            order by data_alteracao desc
-        ) as row_num
-    from renamed
-)
-SELECT *
-FROM dedup
-WHERE row_num = 1
+    ),
+    renamed as (
+        select
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("tur_id") }}), r'\.0$', ''
+                ) as string
+            ) as tur_id,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("alu_id") }}), r'\.0$', ''
+                ) as string
+            ) as alu_id,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("mtu_id") }}), r'\.0$', ''
+                ) as string
+            ) as mtu_id,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_id") }}), r'\.0$', ''
+                ) as string
+            ) as aat_id,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("fav_id") }}), r'\.0$', ''
+                ) as string
+            ) as fav_id,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("ava_id") }}), r'\.0$', ''
+                ) as string
+            ) as ava_id,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_avaliacao") }}), r'\.0$', ''
+                ) as string
+            ) as aat_avaliacao,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_frequencia") }}), r'\.0$', ''
+                ) as string
+            ) as aat_frequencia,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_comentarios") }}), r'\.0$', ''
+                ) as string
+            ) as aat_comentarios,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_relatorio") }}), r'\.0$', ''
+                ) as string
+            ) as aat_relatorio,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_situacao") }}), r'\.0$', ''
+                ) as string
+            ) as aat_situacao,
+            safe_cast(
+                {{ adapter.quote("aat_dataCriacao") }} as timestamp
+            ) as data_criacao,
+            safe_cast(
+                {{ adapter.quote("aat_dataAlteracao") }} as timestamp
+            ) as data_alteracao,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_semProfessor") }}), r'\.0$', ''
+                ) as string
+            ) as aat_semprofessor,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_numeroFaltas") }}), r'\.0$', ''
+                ) as int64
+            ) as aat_numerofaltas,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_numeroAulas") }}), r'\.0$', ''
+                ) as int64
+            ) as aat_numeroaulas,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("arq_idRelatorio") }}), r'\.0$', ''
+                ) as string
+            ) as arq_idrelatorio,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_ausenciasCompensadas") }}), r'\.0$', ''
+                ) as string
+            ) as aat_ausenciascompensadas,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_avaliacaoAdicional") }}), r'\.0$', ''
+                ) as string
+            ) as aat_avaliacaoadicional,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_faltoso") }}), r'\.0$', ''
+                ) as string
+            ) as aat_faltoso,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_frequenciaAcumulada") }}), r'\.0$', ''
+                ) as string
+            ) as aat_frequenciaacumulada,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_registroexterno") }}), r'\.0$', ''
+                ) as string
+            ) as aat_registroexterno,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_frequenciaAcumuladaCalculada") }}),
+                    r'\.0$',
+                    ''
+                ) as string
+            ) as aat_frequenciaacumuladacalculada,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_naoAvaliado") }}), r'\.0$', ''
+                ) as string
+            ) as aat_naoavaliado,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_avaliacaoPosConselho") }}), r'\.0$', ''
+                ) as string
+            ) as aat_avaliacaoposconselho,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_justificativaPosConselho") }}),
+                    r'\.0$',
+                    ''
+                ) as string
+            ) as aat_justificativaposconselho,
+            safe_cast(
+                regexp_replace(
+                    trim({{ adapter.quote("aat_frequenciaFinalAjustada") }}),
+                    r'\.0$',
+                    ''
+                ) as string
+            ) as aat_frequenciafinalajustada,
+            safe_cast(
+                {{ adapter.quote("_prefect_extracted_at") }} as timestamp
+            ) as loaded_at
+        from source
+    ),
+    dedup as (
+        select
+            *
+            from renamed
+            qualify row_number() over (
+                partition by tur_id, alu_id, mtu_id, aat_id order by data_alteracao desc
+            ) = 1
+    ),
+
+    final as (select 
+    
+        {{dbt_utils.generate_surrogate_key(['tur_id', 'alu_id', 'mtu_id', 'aat_id'])}} as id,
+        *
+        from dedup
+    )
+
+
+select *
+from final

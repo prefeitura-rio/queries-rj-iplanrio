@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__vw_bi_aluno
+    description: "**Origem:** GestaoEscolar.dbo.VW_BI_Aluno \n"
+

@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: gestao_escolar__processo_fechamento_inicio
+    description: "**Origem:** GestaoEscolar.dbo.MTR_ProcessoFechamentoInicio \n"
+
