@@ -1,5 +1,5 @@
 -- este teste checa o calculo da frequencia entre aquilo que é calculado no SGA (model
--- 'gestao_escolar_vw_bi_avlaliacao') contra o calculado no lake (model
+-- 'gestao_escolar_vw_bi_avaliacao') contra o calculado no lake (model
 -- 'mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos')
 {{
     config(
@@ -11,7 +11,7 @@
 
 
 with
-    sga as (select * from {{ ref("gestao_escolar_vw_bi_avlaliacao") }}),
+    sga as (select * from {{ ref("gestao_escolar_vw_bi_avaliacao") }}),
 
     lake as (
         select *
