@@ -32,7 +32,7 @@ with
             and cap.cap_datafim < current_date()  -- incluir filtro
     ),
 
-    freq_coc_atual as (
+    frequencia_coc_atual as (
         -- 2ª Parte: Totais das aulas já realizadas no COC atual (consome a view
         -- consolidada)
         select
@@ -53,7 +53,7 @@ with
         from frequencia_cocs_fechados
         union all
         select *
-        from freq_coc_atual
+        from frequencia_coc_atual
     ),
 
     final as (
@@ -89,3 +89,4 @@ with
 select *
 from correcoes_manuais
 where ano_calendario >= 2024
+order by id_aluno, ano_calendario desc, id_tipo_calendario desc
