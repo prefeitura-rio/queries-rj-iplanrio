@@ -12,8 +12,8 @@ with
             cast(aat.alu_id as int64) as alu_id,
             cast(cap.tpc_id as int64) as tpc_id,
             cast(cal.cal_ano as int64) as ano_calendario,
-            cast(aat.aat_numeroaulas as int64) as numeroaulas,
-            cast(aat.aat_numerofaltas as int64) as numerofaltas
+            cast(aat.aat_numeroaulas as int64) as numero_aulas,
+            cast(aat.aat_numerofaltas as int64) as numero_faltas
         from {{ ref("gestao_escolar__aluno_avaliacao_turma") }} aat
         inner join
             {{ ref("gestao_escolar__aca_avaliacao") }} ava
@@ -32,20 +32,61 @@ with
             and cap.cap_datafim < current_date()  -- incluir filtro
     ),
 
-    frequencia_coc_atual as (
-        -- 2ª Parte: Totais das aulas já realizadas no COC atual (consome a view
-        -- consolidada)
+    freq_coc_atual as (
+        -- 2ª Parte: Totais das aulas já realizadas no COC atual
         select
-            cast(id_aluno as int64) as alu_id,
-            cast(id_tipo_calendario as int64) as tpc_id,
-            extract(year from data_aula) as ano_calendario,
-            sum(numeroaulas) as numeroaulas,
-            sum(falta) as numerofaltas
-        from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+            alu_id,
+            tpc_id,
+            ano_calendario,
+            sum(numero_aulas) as numero_aulas,
+            sum(numero_faltas) as numero_faltas
+        from
+            (
+                -- tipo 2: agrupa por dia (lógica original)
+                select
+                    alu_id,
+                    tpc_id,
+                    ano_calendario,
+                    count(data_aula) as numero_aulas,
+                    sum(
+                        case when total_falta_tempo < total_tempos then 0 else 1 end
+                    ) as numero_faltas
+                from
+                    (
+                        select
+                            cast(id_aluno as int64) as alu_id,
+                            cast(id_tipo_calendario as int64) as tpc_id,
+                            cast(tipo_frequencia_apurada as int64) as tipo_freq,
+                            extract(year from data_aula) as ano_calendario,
+                            data_aula,
+                            sum(falta) as total_falta_tempo,
+                            sum(numeroaulas) as total_tempos
+                        from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+                        where tipo_frequencia_apurada = 2
+                        group by
+                            id_aluno,
+                            id_tipo_calendario,
+                            tipo_frequencia_apurada,
+                            extract(year from data_aula),
+                            data_aula
+                    )
+                group by alu_id, tpc_id, ano_calendario
 
-        group by id_aluno, id_tipo_calendario, extract(year from data_aula)
-        having ano_calendario = 2026 and tpc_id = 3 -- ALTERAR EM TODA VIRADA DE COC
+                union all
 
+                -- tipo 1: soma tempos sem agrupar por dia
+                select
+                    cast(id_aluno as int64) as alu_id,
+                    cast(id_tipo_calendario as int64) as tpc_id,
+                    extract(year from data_aula) as ano_calendario,
+                    sum(numeroaulas) as numero_aulas,
+                    sum(falta) as numero_faltas
+                from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+                where tipo_frequencia_apurada = 1
+                group by id_aluno, id_tipo_calendario, extract(year from data_aula)
+            )
+        where ano_calendario = 2026 and tpc_id = 3
+        group by alu_id, tpc_id, ano_calendario
     ),
 
     frequencia_acumulada_dias_letivos as (
@@ -53,7 +94,7 @@ with
         from frequencia_cocs_fechados
         union all
         select *
-        from frequencia_coc_atual
+        from freq_coc_atual
     ),
 
     final as (
@@ -68,15 +109,15 @@ with
             alu_id as id_aluno,
             tpc_id as id_tipo_calendario,
             ano_calendario,
-            numerofaltas as numero_faltas,
-            numeroaulas as numero_aulas,
+            numero_faltas,
+            numero_aulas,
             case
-                when numeroaulas = 0
+                when numero_aulas = 0
                 then 0.00
                 else
                     round(
                         100.00
-                        - ((numerofaltas * 1.00) / (numeroaulas * 1.00) * 100.00),
+                        - ((numero_faltas * 1.00) / (numero_aulas * 1.00) * 100.00),
                         2
                     )
             end as frequencia_percentual
@@ -89,4 +130,3 @@ with
 select *
 from correcoes_manuais
 where ano_calendario >= 2024
-order by id_aluno, ano_calendario desc, id_tipo_calendario desc

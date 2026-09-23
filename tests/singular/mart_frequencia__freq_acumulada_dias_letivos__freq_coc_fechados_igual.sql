@@ -11,7 +11,7 @@
 
 
 with
-    sga as (select * from {{ ref("gestao_escolar_vw_bi_avlaliacao") }}),
+    sga as (select * from {{ ref("gestao_escolar_vw_bi_avaliacao") }}),
 
     lake as (
         select *

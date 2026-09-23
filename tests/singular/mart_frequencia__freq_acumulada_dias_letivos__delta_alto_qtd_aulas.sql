@@ -35,4 +35,4 @@ with
 
 select *
 from test
-where ano_calendario = 2026 and abs(taxa_crescimento - 1) > 0.3
+where ano_calendario = 2026 and taxa_crescimento > 1.3

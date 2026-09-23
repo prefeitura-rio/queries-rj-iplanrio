@@ -1,5 +1,5 @@
 models:
-  - name: gestao_escolar_vw_bi_avlaliacao
+  - name: gestao_escolar_vw_bi_avaliacao
     columns:
       - name: id
         data_type: string

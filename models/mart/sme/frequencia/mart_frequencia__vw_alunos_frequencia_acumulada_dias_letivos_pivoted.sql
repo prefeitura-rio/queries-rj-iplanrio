@@ -1,3 +1,9 @@
+{{
+    config(
+        alias="frequencia_acumulada_dias_letivos_pivoted",
+    )
+}}
+
 with
     source as (
         select * except (id)
