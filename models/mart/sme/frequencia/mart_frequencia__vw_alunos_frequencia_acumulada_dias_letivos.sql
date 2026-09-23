@@ -33,27 +33,51 @@ with
     ),
 
      freq_coc_atual as (
-         -- 2ª Parte: Totais das aulas já realizadas no COC atual
-         select 
-             alu_id,
-             tpc_id,
-             ano_calendario,
-             count(data_aula) as numero_aulas, 
-             sum(case when total_falta_tempo < total_tempos then 0 else 1 end) as numero_faltas
-         from (
-             select 
-                 cast(id_aluno as int64) as alu_id,
-                 cast(id_tipo_calendario as int64) as tpc_id,
-                 extract(year from data_aula) as ano_calendario,
-                 data_aula,
-                 sum(falta) as total_falta_tempo,
-                 sum(numeroAulas) as total_tempos
-             from {{ ref("mart_frequencia__vw_alunos_aulas") }}
-             GROUP BY alu_id, tpc_id, ano_calendario, data_aula
-         )
-         GROUP BY alu_id, tpc_id, ano_calendario
-         having ano_calendario = 2026 and tpc_id = 3 -- ALTERAR EM TODA VIRADA DE COC
+        -- 2ª Parte: Totais das aulas já realizadas no COC atual
+        select 
+            alu_id,
+            tpc_id,
+            ano_calendario,
+            sum(numero_aulas) as numero_aulas, 
+            sum(numero_faltas) as numero_faltas
+        from (
+            -- tipo 2: agrupa por dia (lógica original)
+            select 
+                alu_id,
+                tpc_id,
+                ano_calendario,
+                count(data_aula) as numero_aulas,
+                sum(case when total_falta_tempo < total_tempos then 0 else 1 end) as numero_faltas
+            from (
+                select 
+                    cast(id_aluno as int64) as alu_id,
+                    cast(id_tipo_calendario as int64) as tpc_id,
+                    cast(tipo_frequencia_apurada as int64) as tipo_freq,
+                    extract(year from data_aula) as ano_calendario,
+                    data_aula,
+                    sum(falta) as total_falta_tempo,
+                    sum(numeroAulas) as total_tempos
+                from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+                where tipo_frequencia_apurada = 2
+                group by id_aluno, id_tipo_calendario, tipo_frequencia_apurada, extract(year from data_aula), data_aula
+            )
+            group by alu_id, tpc_id, ano_calendario
 
+            union all
+
+            -- tipo 1: soma tempos sem agrupar por dia
+            select 
+                cast(id_aluno as int64) as alu_id,
+                cast(id_tipo_calendario as int64) as tpc_id,
+                extract(year from data_aula) as ano_calendario,
+                sum(numeroAulas) as numero_aulas,
+                sum(falta) as numero_faltas
+            from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+            where tipo_frequencia_apurada = 1
+            group by id_aluno, id_tipo_calendario, extract(year from data_aula)
+        )
+        where ano_calendario = 2026 and tpc_id = 3
+        group by alu_id, tpc_id, ano_calendario
      ),
 
     frequencia_acumulada_dias_letivos as (
