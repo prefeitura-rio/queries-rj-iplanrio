@@ -1,7 +1,7 @@
 version: 2
 models:
 
-  - name: mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos
+  - name: int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos
     description: "**Origem**: Tabela Mart\ 
 
       **Descrição**: Calcula o indicador de frequência acumulada por aluno considerando apenas os dias letivos, a partir do início do ano letivo até a data atual, considerando o período de matrícula do aluno na(s) turma(s)."
@@ -13,12 +13,12 @@ models:
         quote: true
         tests:
           - unique:
-              name: mart_frequencia__freq_acumulada_dias_letivos__id__unique
+              name: int_frequencia__freq_acumulada_dias_letivos__id__unique
               config:
                 warn_if: ">0"
                 error_if: ">5000"
           - not_null:
-              name: mart_frequencia__freq_acumulada_dias_letivos__id__not_null
+              name: int_frequencia__freq_acumulada_dias_letivos__id__not_null
               config:
                 severity: warn
       - name: id_aluno
@@ -41,7 +41,7 @@ models:
         quote: true
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
-              name: mart_frequencia__freq_acumulada_dias_letivos__frequencia_percentual__between_0_100
+              name: int_frequencia__freq_acumulada_dias_letivos__frequencia_percentual__between_0_100
               min_value: 0
               max_value: 100
               strictly: false
