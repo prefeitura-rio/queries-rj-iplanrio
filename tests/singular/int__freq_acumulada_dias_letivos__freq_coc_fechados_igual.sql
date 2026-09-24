@@ -3,7 +3,7 @@
 -- 'mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos')
 {{
     config(
-        alias="mart_frequencia__freq_acumulada_dias_letivos__freq_coc_fechados_igual",
+        alias="int_frequencia__freq_acumulada_dias_letivos__freq_coc_fechados_igual",
         warn_if = ">0",
         error_if = ">5000"
     )
@@ -11,11 +11,11 @@
 
 
 with
-    sga as (select * from {{ ref("gestao_escolar_vw_bi_avlaliacao") }}),
+    sga as (select * from {{ ref("gestao_escolar_vw_bi_avaliacao") }}),
 
     lake as (
         select *
-        from {{ ref("mart_frequencia__vw_alunos_frequencia_acumulada_dias_letivos") }}
+        from {{ ref("int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos") }}
     ),
 
     joined as (
