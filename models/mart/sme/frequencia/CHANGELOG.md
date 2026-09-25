@@ -4,7 +4,27 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 > O formato utilizado para documentação segue as boas práticas de [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
-### 🔧 Correção [não lançado]
+### 🔧 Correção
+
+#### Commit: `284ccc3` + `d325b91` - 25/09/2026
+**fix: corrige cálculo de faltas abonadas considerando abono por dia**
+
+Correção da lógica de abonação de faltas para considerar que o abono é sempre por dia e não por tempo individual
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+
+**Mudanças aplicadas:**
+1. **Modelo de frequência para COC aberto (freq_coc_atual)**
+   - Campo: `numero_faltas`
+   - Antes: `sum(falta) - countif(abonaFalta is true and falta > 0)`
+   - Depois: `sum(case when abonaFalta is true then 0 else falta end)`
+
+**Impacto:**
+- O cálculo de frequência acumulada agora trata corretamente o abono como exclusão de faltas por dia inteiro
+- Elimina a contagem de faltas em dias onde há abonação
+
+---
 
 #### Commit: `2e34761` - 24/09/2026
 **fix(sme): exclude absences with abonaFalta flag from frequencia acumulada calculation**
@@ -18,13 +38,13 @@ Excluir ausências marcadas com flag `abonaFalta` do cálculo de frequência acu
 1. **Modelo de frequência por tempo de aula (tipo_frequencia_apurada = 2)**
    - Campo: `total_falta_tempo`
    - Antes: `sum(falta)`
-   - Depois: `sum(falta) - countif(abonaFalta is true and falta = 1)`
+   - Depois: `sum(case when abonaFalta is true then 0 else falta end)`
    - Descrição: Subtrai a quantidade de faltas justificadas do total de faltas por tempo
 
 2. **Modelo de frequência por dia de aula (tipo_frequencia_apurada = 1)**
    - Campo: `numero_faltas`
    - Antes: `sum(falta)`
-   - Depois: `sum(falta) - countif(abonaFalta is true and falta = 1)`
+   - Depois: `sum(falta) - countif(abonaFalta is true and falta = 1)` (refatorado em commit posterior)
    - Descrição: Subtrai a quantidade de faltas justificadas do total de faltas por dia
 
 **Impacto:**
