@@ -80,7 +80,7 @@ with
                     cast(id_tipo_calendario as int64) as tpc_id,
                     extract(year from data_aula) as ano_calendario,
                     sum(numeroaulas) as numero_aulas,
-                    sum(falta) - countif(abonaFalta is true and falta > 0) as numero_faltas
+                    sum(case when abonaFalta is true then 0 else falta end)  as numero_faltas
                 from {{ ref("mart_frequencia__vw_alunos_aulas") }}
                 where tipo_frequencia_apurada = 1
                 group by id_aluno, id_tipo_calendario, extract(year from data_aula)
