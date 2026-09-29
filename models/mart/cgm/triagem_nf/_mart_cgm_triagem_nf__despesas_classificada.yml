@@ -208,18 +208,19 @@ models:
 
       - name: apontamento_duplicidade_indicador
         description: |
-          Flag indicando duplicação de pagamento.
-          
-          **Regra:** `cod_organizacao <> cod_unidade AND valor_pago_total > valor_extracao + 1 AND rank > 1`
-          
-          TRUE = mesma NF foi declarada e paga múltiplas vezes | FALSE/NULL = sem duplicação
-          
+          Flag indicando duplicação de pagamento (simetria bilateral).
+
+          **Regra:** `cod_organizacao <> cod_unidade AND valor_pago_total > valor_extracao + 1 AND ids_grupo_nf LIKE '%,%'`
+
+          TRUE = todas as declarações que compõem o grupo duplicado recebem marcação positiva | FALSE/NULL = sem duplicação
+
           **Prioridade:** Grave
         data_type: bool
 
       - name: apontamento_duplicidade_ids
         description: |
-          IDs de documentos duplicados (string delimitada por ", ").
+          IDs de todos os documentos que compõem o grupo duplicado (string delimitada por ", ").
+          Disponível bilateralmente em todas as despesas do par/grupo duplicado.
           
           Exemplo: `"DOC001, DOC002, DOC003"`
           

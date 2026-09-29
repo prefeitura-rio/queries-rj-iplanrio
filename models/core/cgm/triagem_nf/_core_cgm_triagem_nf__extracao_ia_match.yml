@@ -119,26 +119,26 @@ models:
 
       - name: valor_pago_total_documento
         description: |
-          Soma de `valor_pago` de todas as despesas do mesmo CNPJ + número de NF + parcela.
-          
-          Indica se há múltiplas declarações do mesmo documento (duplicidade).
-          Cálculo: SUM(valor_pago) OVER (PARTITION BY cnpj, numero_nf, parcela_mes)
+          Soma de `valor_pago` de todas as despesas do mesmo CNPJ + número de NF no histórico.
+
+          Indica se há múltiplas declarações do mesmo documento (duplicidade/rateio).
+          Cálculo: SUM(valor_pago) OVER (PARTITION BY cnpj, numero_nf)
         data_type: float64
 
       - name: rank_declaracao
         description: |
-          Ranking (densa) da posição desta despesa dentro do grupo (CNPJ + NF + parcela).
+          Ranking (densa) da posição desta despesa dentro do grupo (CNPJ + NF).
           
           Ordem: data_envio ASC, id_documento ASC
           Valores: 1 = primeira declaração, 2 = segunda, etc.
-          
-          Usado para identificar se há duplicidade.
         data_type: int64
 
       - name: ids_grupo_nf
         description: |
           String delimitada por ", " (vírgula-espaço) de todos os `id_documento` 
           que fazem parte do mesmo grupo (CNPJ + NF + parcela).
+
+          Utilizada para a regra de duplicidade bilateral no mart.
           
           Exemplo: "DOC001, DOC002, DOC003"
           
