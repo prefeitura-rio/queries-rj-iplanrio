@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: core_cgm_triagem_nf__bcadastro_cnpj
+    description: |
+      Dados de cadastro de CNPJs extraídos do BCadastro da Receita Federal filtrados para o recorte do projeto.
+
+    config:
+      schema: cgm_despesas_nf
+      alias: bcadastro_cnpj
+      materialized: table
+
+    columns:
+      - name: cnpj
+        description: "CNPJ normalizado (14 dígitos). Chave primária."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - unique
+
+      - name: razao_social
+        description: "Razão social do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: uf
+        description: "Unidade federativa do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: id_municipio
+        description: "ID do município do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: cnae_fiscal
+        description: "CNAE principal do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: cnae_fiscal_descricao
+        description: "Descrição do CNAE principal do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: inicio_atividade_data
+        description: "Data de início da atividade do CNPJ."
+        data_type: date
+
+      - name: situacao_cadastral
+        description: "Situação cadastral atual do CNPJ (ex: Ativa, Inativa, Suspensa)."
+        data_type: string
+        quote: true
+
+      - name: situacao_especial
+        description: "Situação especial do CNPJ (ex: Baixada, Nula, etc.)."
+        data_type: string
+        quote: true
+
