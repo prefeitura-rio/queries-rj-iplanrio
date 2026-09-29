@@ -51,6 +51,11 @@ models:
           +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
+      smf:
+        nota_carioca:
+          +materialized: table
+          +schema: nota_carioca
+          +project: rj-iplanrio-dia
       dialogflowcx:
         +project: rj-chatbot-dev
         +schema: dialogflowcx

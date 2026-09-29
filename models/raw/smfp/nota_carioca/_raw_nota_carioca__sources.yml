@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: nota_carioca
+    database: rj-iplanrio-dia
+    schema: brutos_nota_fiscal
+    tables:
+      - name: NOTAS_NACIONAIS
+      - name: PESSOAS_NACIONAIS
+      - name: DPS
