@@ -1,6 +1,10 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
+    {# TODO: apenas local, remover antes de ir para master! #}
+    {% if target.name == "dev_cgm_triagem_nf" -%}
 
-    {% if target.name == "dev" -%}
+        {{ target.schema }}
+
+    {%- elif target.name == "dev" -%}
 
         {%- set default_schema = target.schema -%}
         {%- if custom_schema_name is none -%}
