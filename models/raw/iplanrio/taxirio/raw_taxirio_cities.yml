@@ -5,15 +5,9 @@ models:
       - name: id_municipio
         description: "Identificador da cidade"
         data_type: string
-        data_tests:
-          - not_null:
-              name: raw_taxirio__id_municipio__not_null,
-              config:
-                severity: error
-          - unique:
-              name: raw_taxirio__id_municipio__unique,
-              config:
-                severity: error
+        tests:
+          - not_null
+          - unique
       - name: nome_municipio
         description: "Nome do Municipio"
         data_type: string
