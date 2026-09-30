@@ -30,6 +30,10 @@ models:
         tests:
           - not_null
           - unique
+          - relationships:
+              arguments:
+                to: ref('core_cgm_triagem_nf__extracao_ia_match')
+                field: id_documento
 
       - name: contrato_numero
         description: "Número do contrato associado (se houver). Fonte: OSInfo."
@@ -93,6 +97,12 @@ models:
         description: "CNPJ ou CPF do fornecedor declarado (normalizado para 14 dígitos). Fonte: OSInfo."
         data_type: string
         quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{11}$|^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '00000000000', '11111111111111']
 
       - name: declaracao_documento_valor
         description: "Valor total do documento declarado. Fonte: OSInfo."
@@ -120,6 +130,10 @@ models:
           - `"NF Não Encontrada"`: Nenhuma NF foi extraída do arquivo
         data_type: string
         quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NF Encontrada', 'NF Sem Match', 'NF Não Encontrada']
 
       - name: extracao_pagina
         description: "Número da página onde a NF foi extraída (primeira ocorrência)."
@@ -139,6 +153,11 @@ models:
         description: "CNPJ ou CPF extraído e normalizado para 14 dígitos."
         data_type: string
         quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{11}$|^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '99999999999999', '00000000000']
 
       - name: extracao_documento_valor
         description: "Valor total extraído pela IA do documento."
@@ -205,6 +224,10 @@ models:
           - `"Descartado"`: Sem anomalias detectadas
         data_type: string
         quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Grave', 'Leve', 'Descartado', 'Não avaliado']
 
       - name: apontamento_duplicidade_indicador
         description: |
