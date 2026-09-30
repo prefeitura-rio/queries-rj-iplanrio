@@ -34,12 +34,12 @@ WITH
       (
         od.cod_organizacao <> od.cod_unidade
         AND epd.valor_pago_total_documento > (epd.valor_documento_extracao_ia + 1)
-        AND epd.rank_declaracao > 1) AS apontamento_duplicidade_indicador,
+        AND epd.ids_grupo_nf LIKE '%,%') AS apontamento_duplicidade_indicador,
       CASE
         WHEN
           od.cod_organizacao <> od.cod_unidade
           AND epd.valor_pago_total_documento > (epd.valor_documento_extracao_ia + 1)
-          AND epd.rank_declaracao > 1
+          AND epd.ids_grupo_nf LIKE '%,%'
           THEN epd.ids_grupo_nf
         ELSE NULL
         END AS apontamento_duplicidade_ids,

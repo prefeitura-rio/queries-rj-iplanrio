@@ -42,10 +42,17 @@ models:
           - `"NF Não Encontrada"`: Nenhuma NF extraída correspondente
         data_type: string
         quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NF Encontrada', 'NF Sem Match', 'NF Não Encontrada']
 
       - name: pagina_nf_extracao_ia
         description: "Número da página onde a NF foi extraída (primeira ocorrência se múltiplas). NULL se não encontrada."
         data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
 
       - name: tipo_documento_extracao_ia
         description: "Tipo de documento extraído (ex: NF, RPA, Recibo). NULL se não encontrado."
@@ -65,10 +72,18 @@ models:
         description: "CNPJ/CPF extraído e normalizado. Chave de match com fornecedor. NULL se não encontrado."
         data_type: string
         quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{11}$|^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '00000000000']
 
       - name: valor_documento_extracao_ia
         description: "Valor total do documento extraído. NULL se não encontrado."
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
 
       - name: data_emissao_extracao_ia
         description: "Data de emissão extraída. NULL se não encontrado."
@@ -95,6 +110,9 @@ models:
           NULL se nenhuma página teve match.
         data_type: string
         quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['[]', '""', 'null']
 
       - name: arquivo_paginas_sem_match
         description: |
@@ -116,29 +134,38 @@ models:
           NULL se todas as páginas tiveram match ou nenhuma NF foi extraída.
         data_type: string
         quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['[]', '""', 'null']
 
       - name: valor_pago_total_documento
         description: |
-          Soma de `valor_pago` de todas as despesas do mesmo CNPJ + número de NF + parcela.
-          
-          Indica se há múltiplas declarações do mesmo documento (duplicidade).
-          Cálculo: SUM(valor_pago) OVER (PARTITION BY cnpj, numero_nf, parcela_mes)
+          Soma de `valor_pago` de todas as despesas do mesmo CNPJ + número de NF no histórico.
+
+          Indica se há múltiplas declarações do mesmo documento (duplicidade/rateio).
+          Cálculo: SUM(valor_pago) OVER (PARTITION BY cnpj, numero_nf)
         data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
 
       - name: rank_declaracao
         description: |
-          Ranking (densa) da posição desta despesa dentro do grupo (CNPJ + NF + parcela).
+          Ranking (densa) da posição desta despesa dentro do grupo (CNPJ + NF).
           
           Ordem: data_envio ASC, id_documento ASC
           Valores: 1 = primeira declaração, 2 = segunda, etc.
-          
-          Usado para identificar se há duplicidade.
         data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
 
       - name: ids_grupo_nf
         description: |
           String delimitada por ", " (vírgula-espaço) de todos os `id_documento` 
           que fazem parte do mesmo grupo (CNPJ + NF + parcela).
+
+          Utilizada para a regra de duplicidade bilateral no mart.
           
           Exemplo: "DOC001, DOC002, DOC003"
           

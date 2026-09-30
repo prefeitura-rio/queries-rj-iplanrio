@@ -95,15 +95,15 @@ WITH
     SELECT
       od.id_documento,
       SUM(od.valor_pago)
-        OVER (PARTITION BY epd.cnpj_cpf_extracao_ia, epd.numero_documento_extracao_ia, od.parcela_mes)
+        OVER (PARTITION BY epd.cnpj_cpf_extracao_ia, epd.numero_documento_extracao_ia)
         AS valor_pago_total_documento,
       DENSE_RANK()
         OVER (
-          PARTITION BY epd.cnpj_cpf_extracao_ia, epd.numero_documento_extracao_ia, od.parcela_mes
+          PARTITION BY epd.cnpj_cpf_extracao_ia, epd.numero_documento_extracao_ia
           ORDER BY od.data_envio, od.id_documento
         ) AS rank_declaracao,
       STRING_AGG(CAST(od.id_documento AS STRING), ', ')
-        OVER (PARTITION BY epd.cnpj_cpf_extracao_ia, epd.numero_documento_extracao_ia, od.parcela_mes)
+        OVER (PARTITION BY epd.cnpj_cpf_extracao_ia, epd.numero_documento_extracao_ia)
         AS ids_grupo_nf
     FROM {{ ref("core_cgm_triagem_nf__osinfo_despesas") }} od
     INNER JOIN extracao_por_documento epd
