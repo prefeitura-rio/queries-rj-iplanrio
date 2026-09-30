@@ -1,4 +1,21 @@
-{{ config(alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS_DETALHES") }}
+{{
+    config(
+        alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS_DETALHES",
+        partition_by={
+            "field": "_bigquery_particao_data",
+            "data_type": "date",
+            "granularity": "month",
+        },
+        materialized="incremental",
+        incremental_strategy="insert_overwrite",
+        on_schema_change="fail",
+    )
+}}
+
+-- variáveis
+{% set current_day = modules.datetime.date.today().day %}
+{% set lookback_months = 1 if current_day <= 10 else 0 %}
+
 
 with
     notas_nacionais as (select * from {{ source("nota_carioca", "NOTAS_NACIONAIS") }}),
@@ -12,6 +29,24 @@ with
     final as (
 
         select
+
+            -- bigquery metadata
+            safe_cast(
+                safe.parse_timestamp(
+                    '%Y-%m-%dT%H:%M:%E*S', n.data_compmunicipio
+                ) as date
+            ) as _bigquery_particao_data,
+
+            current_datetime('America/Sao_Paulo') as _bigquery_updated_at,
+
+            {{
+                dbt_utils.generate_surrogate_key(
+                    ["n.dps", "n.data_compmunicipio"]
+                )
+            }} as _bigquery_uid,
+
+
+            -- business logic
             pr.cpf_cnpj as cpf_cnpj_responsavel,
             pc.nome as nome_contraparte,
             pc.cpf_cnpj as cpf_cnpj_contraparte,
@@ -24,15 +59,17 @@ with
             n.chave_acesso as chave_acesso,
             n.data_validacao as data_validacao,
             n.data_compmunicipio as data_competencia_municipio,
+
             d.tipo_retencao_issqn as tipo_retencao,
             n.nota_nacional as nota_nacional,
             n.dps as dps,
-            pp.opcao_simples_nacional as opcao_simples_nacional,
-            --n.rowid as nn_rowid,
-            --d.rowid as dps_rowid,
-            --pr.rowid as pr_rowid,
-            --pp.rowid as pp_rowid,
-            --pc.rowid as pc_rowid
+            pp.opcao_simples_nacional as opcao_simples_nacional
+
+        -- n.rowid as nn_rowid,
+        -- d.rowid as dps_rowid,
+        -- pr.rowid as pr_rowid,
+        -- pp.rowid as pp_rowid,
+        -- pc.rowid as pc_rowid
         from
             notas_nacionais as n,
             dps as d,
@@ -52,3 +89,12 @@ with
 
 select *
 from final
+{% if is_incremental() %}
+    where
+
+        _bigquery_particao_data >= date_sub(
+            date_trunc(current_date('America/Sao_Paulo'), month),
+            interval {{ lookback_months }} month
+        )
+
+{% endif %}
