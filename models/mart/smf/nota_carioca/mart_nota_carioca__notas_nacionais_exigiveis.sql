@@ -33,6 +33,7 @@ with
 
     final as (
         select
+            *,
 
             -- bigquery metadata
             safe_cast(
@@ -50,12 +51,11 @@ with
                         "data_competencia_municipio",
                         "tipo_retencao",
                         "opcao_simples_nacional",
-                        "retencao"
+                        "retencao",
                     ]
                 )
-            }} as _bigquery_uid,
+            }} as _bigquery_uid
 
-            *
         from grouped
     )
 

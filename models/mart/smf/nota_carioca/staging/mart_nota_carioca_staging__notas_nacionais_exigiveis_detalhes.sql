@@ -15,6 +15,7 @@ with
     final as (
 
         select
+        -- business logic
             pr.cpf_cnpj as cpf_cnpj_responsavel,
             pc.nome as nome_contraparte,
             pc.cpf_cnpj as cpf_cnpj_contraparte,
@@ -36,6 +37,22 @@ with
             --pr.rowid as pr_rowid,
             --pp.rowid as pp_rowid,
             --pc.rowid as pc_rowid
+
+        -- bigquery metadata
+            safe_cast(
+                safe.parse_timestamp(
+                    '%Y-%m-%dT%H:%M:%E*S', n.data_compmunicipio
+                ) as date
+            ) as _bigquery_particao_data,
+
+            current_datetime('America/Sao_Paulo') as _bigquery_updated_at,
+
+            {{
+                dbt_utils.generate_surrogate_key(
+                    ["n.dps", "n.data_compmunicipio"]
+                )
+            }} as _bigquery_uid,
+            
         from
             notas_nacionais as n,
             dps as d,

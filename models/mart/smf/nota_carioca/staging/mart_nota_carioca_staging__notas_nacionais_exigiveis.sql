@@ -1,14 +1,12 @@
-{{ config(
-    alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS",
-    schema="nota_carioca_staging") 
-}}
+{{ config(alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS", schema="nota_carioca_staging") }}
 
 with
     notas as (
-        select * from {{ ref("mart_nota_carioca_staging__notas_nacionais_exigiveis_detalhes") }}
+        select *
+        from {{ ref("mart_nota_carioca_staging__notas_nacionais_exigiveis_detalhes") }}
     ),
-    
-    final as (
+
+    grouped as (
         select
             mv.cpf_cnpj_responsavel,
             mv.data_competencia_municipio,
@@ -32,6 +30,34 @@ with
             mv.opcao_simples_nacional,
             mv.retencao
 
+    ),
+
+    final as (
+        select
+            *,
+
+            -- bigquery metadata
+            safe_cast(
+                safe.parse_timestamp(
+                    '%Y-%m-%dT%H:%M:%E*S', data_competencia_municipio
+                ) as date
+            ) as _bigquery_particao_data,
+
+            current_datetime('America/Sao_Paulo') as _bigquery_updated_at,
+
+            {{
+                dbt_utils.generate_surrogate_key(
+                    [
+                        "cpf_cnpj_responsavel",
+                        "data_competencia_municipio",
+                        "tipo_retencao",
+                        "opcao_simples_nacional",
+                        "retencao",
+                    ]
+                )
+            }} as _bigquery_uid
+
+        from grouped
     )
 
 select *
