@@ -3,8 +3,8 @@ SELECT
   
   -- Strings incompletas ('10/2021') viram NULL
   COALESCE(
-    SAFE.PARSE_DATE('%Y-%m-%d', data_emissao_documento),
-    SAFE.PARSE_DATE('%d/%m/%Y', data_emissao_documento)
+    SAFE.PARSE_DATE('%Y-%m-%d', TRIM(data_emissao_documento)),
+    SAFE.PARSE_DATE('%d/%m/%Y', REGEXP_REPLACE(TRIM(data_emissao_documento), r'[\.\-]', '/'))
   ) AS data_emissao_documento,
 
   LPAD(REGEXP_REPLACE(cnpj_emitente, r'[^0-9]', ''), 14, '0')
