@@ -1,7 +1,7 @@
 {{
     config(
         alias='chamado',
-        schema='adm_central_atendimento_1746',
+        schema='adm_central_atendimento_1746_2',
         materialized='table',
         unique_key='id_chamado',
         partition_by={
