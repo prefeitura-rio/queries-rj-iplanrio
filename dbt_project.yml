@@ -51,7 +51,7 @@ models:
           +schema: educacao_basica_frequencia
           +tags: ["daily", "sme"]
           +project: rj-sme
-      smf:
+      smfp:
         nota_carioca:
           +materialized: table
           +schema: nota_carioca
