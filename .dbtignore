@@ -24,3 +24,8 @@ models/mart/gerenciamento/custos
 
 # Adicionado enquanto não resolvemos o problema de subir os dados com Airbyte	
 models/raw/iplanrio/sisbicho/raw_sisbicho_animal.sql
+
+# Adicionando enquanto os dados do bCadastro estão subindo no novo cluster do Airbyte.
+models/raw/iplanrio/bcadastro
+models/mart/iplanrio/api_bcadastro
+models/mart/iplanrio/sisvisa
