@@ -1,4 +1,5 @@
 {{ config(
+    enabled=false,
     alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS_DETALHES",
     schema="nota_carioca_staging") 
 }}
