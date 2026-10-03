@@ -8,6 +8,7 @@ sources:
       - name: NOTAS_NACIONAIS
       - name: PESSOAS_NACIONAIS
       - name: DPS
+        identifier: VW_DPS_COM_NSU
   - name: nota_carioca_staging
     database: rj-iplanrio-dia
     schema: brutos_nota_fiscal_staging
