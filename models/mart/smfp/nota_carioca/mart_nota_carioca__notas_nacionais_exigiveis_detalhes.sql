@@ -6,7 +6,7 @@
             "data_type": "date",
             "granularity": "month",
         },
-        materialized="incremental",
+        materialized="table",
         incremental_strategy="insert_overwrite",
         on_schema_change="fail",
     )
