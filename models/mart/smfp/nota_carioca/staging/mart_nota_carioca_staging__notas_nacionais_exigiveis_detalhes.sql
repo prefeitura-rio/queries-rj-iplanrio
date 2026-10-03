@@ -7,7 +7,7 @@
 with
     notas_nacionais as (select * from {{ source("nota_carioca_staging", "NOTAS_NACIONAIS") }}),
 
-    dps as (select * from {{ source("nota_carioca_staging", "DPS") }}),
+    dps as (select * from {{ source("nota_carioca_staging", "VW_DPS_COM_NSU") }}),
 
     pessoas_nacionais as (
         select * from {{ source("nota_carioca_staging", "PESSOAS_NACIONAIS") }}
