@@ -1,0 +1,174 @@
+version: 2
+
+models:
+  - name: core_cgm_triagem_nf__extracao_ia_match
+    description: |
+      Matching de despesas com extração IA e métricas de agregação.
+      
+      **Grain:** uma linha por `id_documento` (despesa)
+      **Materialização:** table
+      **Origem:** `despesas_declaracao` FULL OUTER JOIN `extracao_pagina` + métricas
+      
+      Tabela central da análise que:
+      1. Match despesas declaradas com NFs extraídas pela IA
+      2. Classifica resultado da extração (Encontrada, Sem Match, Não Encontrada)
+      3. Agrega páginas com e sem match no arquivo
+      4. Calcula métricas de duplicidade (valor pago total, rank de declaração, grupo de IDs)
+      
+      Usa 7 CTEs para:
+      - Matching por valor/número/CNPJ
+      - Pré-agregação para evitar subqueries correlacionadas
+      - Deduplicação de matches
+      - Agregação em JSON e métricas janeladas
+
+    config:
+      schema: cgm_despesas_nf
+      alias: extracao_ia_match
+
+    columns:
+      - name: id_documento
+        description: "Identificador único da despesa. Chave primária."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - unique
+
+      - name: resultado_extracao_ia
+        description: |
+          Classificação do resultado da extração IA:
+          - `"NF Encontrada"`: Existe match por número + CNPJ/CPF
+          - `"NF Sem Match"`: NF extraída existe mas sem match por valor
+          - `"NF Não Encontrada"`: Nenhuma NF extraída correspondente
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NF Encontrada', 'NF Sem Match', 'NF Não Encontrada']
+
+      - name: pagina_nf_extracao_ia
+        description: "Número da página onde a NF foi extraída (primeira ocorrência se múltiplas). NULL se não encontrada."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+
+      - name: tipo_documento_extracao_ia
+        description: "Tipo de documento extraído (ex: NF, RPA, Recibo). NULL se não encontrado."
+        data_type: string
+        quote: true
+
+      - name: numero_documento_extracao_ia
+        description: "Número do documento extraído (original, antes de normalização). NULL se não encontrado."
+        data_type: string
+        quote: true
+
+      - name: numero_documento_extracao_ia_norm
+        description: "Número do documento extraído normalizado (INT64). NULL se não encontrado."
+        data_type: int64
+
+      - name: cnpj_cpf_extracao_ia
+        description: "CNPJ/CPF extraído e normalizado. Chave de match com fornecedor. NULL se não encontrado."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{11}$|^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '00000000000']
+
+      - name: valor_documento_extracao_ia
+        description: "Valor total do documento extraído. NULL se não encontrado."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: data_emissao_extracao_ia
+        description: "Data de emissão extraída. NULL se não encontrado."
+        data_type: date
+
+      - name: arquivo_paginas_com_match
+        description: |
+          JSON array de páginas do arquivo onde houve match com despesas.
+          
+          Estrutura:
+          ```json
+          [
+            {
+              "pagina": 1,
+              "numero_nf_modelo": "NF123456",
+              "cnpj_modelo": "12345678901234",
+              "valor_total_documento": 1000.50,
+              "data_emissao_documento": "2024-01-15",
+              "id_documentos_correspondentes": ["ID1", "ID2"]
+            }
+          ]
+          ```
+          
+          NULL se nenhuma página teve match.
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['[]', '""', 'null']
+
+      - name: arquivo_paginas_sem_match
+        description: |
+          JSON array de páginas do arquivo onde não houve match com despesas.
+          
+          Estrutura:
+          ```json
+          [
+            {
+              "pagina": 2,
+              "numero_nf_modelo": "NF789012",
+              "cnpj_modelo": "98765432109876",
+              "valor_total_documento": 500.00,
+              "data_emissao_documento": "2024-01-20"
+            }
+          ]
+          ```
+          
+          NULL se todas as páginas tiveram match ou nenhuma NF foi extraída.
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['[]', '""', 'null']
+
+      - name: valor_pago_total_documento
+        description: |
+          Soma de `valor_pago` de todas as despesas do mesmo CNPJ + número de NF no histórico.
+
+          Indica se há múltiplas declarações do mesmo documento (duplicidade/rateio).
+          Cálculo: SUM(valor_pago) OVER (PARTITION BY cnpj, numero_nf)
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: rank_declaracao
+        description: |
+          Ranking (densa) da posição desta despesa dentro do grupo (CNPJ + NF).
+          
+          Ordem: data_envio ASC, id_documento ASC
+          Valores: 1 = primeira declaração, 2 = segunda, etc.
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+
+      - name: ids_grupo_nf
+        description: |
+          String delimitada por ", " (vírgula-espaço) de todos os `id_documento` 
+          que fazem parte do mesmo grupo (CNPJ + NF + parcela).
+
+          Utilizada para a regra de duplicidade bilateral no mart.
+          
+          Exemplo: "DOC001, DOC002, DOC003"
+          
+          Permite rastrear todas as declarações relacionadas.
+        data_type: string
+        quote: true

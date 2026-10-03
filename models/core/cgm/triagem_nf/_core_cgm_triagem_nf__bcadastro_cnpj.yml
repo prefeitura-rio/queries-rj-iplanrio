@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: core_cgm_triagem_nf__bcadastro_cnpj
+    description: |
+      Dados de cadastro de CNPJs extraídos do BCadastro da Receita Federal filtrados para o recorte do projeto.
+
+    config:
+      schema: cgm_despesas_nf
+      alias: bcadastro_cnpj
+      materialized: table
+
+    columns:
+      - name: cnpj
+        description: "CNPJ normalizado (14 dígitos). Chave primária."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '99999999999999']
+
+      - name: razao_social
+        description: "Razão social do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: uf
+        description: "Unidade federativa do CNPJ."
+        data_type: string
+        quote: true
+        tests:
+          - accepted_values:
+              values: [
+                'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
+                'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
+                'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO', 'EX'
+              ]
+
+      - name: id_municipio
+        description: "ID do município do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: cnae_fiscal
+        description: "CNAE principal do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: cnae_fiscal_descricao
+        description: "Descrição do CNAE principal do CNPJ."
+        data_type: string
+        quote: true
+
+      - name: inicio_atividade_data
+        description: "Data de início da atividade do CNPJ."
+        data_type: date
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "'1900-01-01'"
+              max_value: "CURRENT_DATE()"
+              config:
+                  severity: warn
+
+      - name: situacao_cadastral
+        description: "Situação cadastral atual do CNPJ (ex: Ativa, Inativa, Suspensa)."
+        data_type: string
+        quote: true
+
+      - name: situacao_especial
+        description: "Situação especial do CNPJ (ex: Baixada, Nula, etc.)."
+        data_type: string
+        quote: true

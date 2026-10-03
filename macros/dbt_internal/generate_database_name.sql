@@ -1,6 +1,8 @@
 {% macro generate_database_name(custom_database_name=none, node=none) -%}
-
-    {%- if target.name != 'prod' and target.name != 'pr_prod' -%}
+    {# TODO: apenas local, remover antes de ir para master! #}
+    {%- if target.name == 'dev_cgm_triagem_nf' -%}
+        {{ target.database }}
+    {%- elif target.name != 'prod' and target.name != 'pr_prod' -%}
         rj-iplanrio-dev
     {%- else -%}
         {%- set default_database = target.database -%}
