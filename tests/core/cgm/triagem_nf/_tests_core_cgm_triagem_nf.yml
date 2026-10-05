@@ -1,0 +1,35 @@
+version: 2
+
+data_tests:
+  - name: assert_extracao_ia_match_duplicidade
+    description: |
+      Garante que cada despesa declarada (`id_documento`) possua no máximo uma linha
+      de resolução após o processo de matching com a IA.
+      
+      **Regra de Auditoria:** Impede multiplicação de registros no pipeline antes do Mart.
+    config:
+      severity: error
+      store_failures: true
+      tags: ['cgm', 'core', 'duplicidade']
+
+  - name: assert_extracao_ia_match_consistencia_resultado
+    description: |
+      Valida a integridade referencial dos resultados da extração por IA:
+      1. Se `resultado_extracao_ia = 'NF Encontrada'`, valida a presença das chaves de junção
+         (`pagina_nf_extracao_ia`, `cnpj_cpf_extracao_ia` e `ids_grupo_nf`).
+      2. Se `NF Sem Match` ou `NF Não Encontrada`, garante que nenhum campo de extração foi populado.
+    config:
+      severity: error
+      store_failures: true
+      tags: ['cgm', 'core', 'consistencia_ia']
+
+  - name: assert_despesas_valor_pago_consistente
+    description: |
+      Verifica a consistência orçamentária dos lançamentos declarados no OSInfo.
+      
+      **Regra:** Nenhuma despesa individual pode ter `valor_pago > valor_documento + 0.05`
+      (tolerância para arredondamentos monetários).
+    config:
+      severity: warn
+      store_failures: true
+      tags: ['cgm', 'core', 'financeiro']
