@@ -146,7 +146,11 @@ SELECT
   ap.apontamento_valor_pago_excedente_indicador,
   ap.apontamento_emissao_anterior_abertura_indicador,
   ap.apontamento_emissao_divergente_indicador,
-  ap.apontamento_valor_divergente_indicador
+  ap.apontamento_valor_divergente_indicador,
+  ep.current_timestamp() AS data_geracao,
+  ep.current_timestamp() AS data_extracao,
+  ep.current_timestamp() AS timestamp_geracao,
+  ep.versao_pipeline
 FROM od
 LEFT JOIN epd USING (id_documento)
 LEFT JOIN apontamentos ap USING (id_documento)
