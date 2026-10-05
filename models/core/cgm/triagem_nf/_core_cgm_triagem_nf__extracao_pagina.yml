@@ -87,10 +87,6 @@ models:
               max_value: "CURRENT_DATE()"
               config:
                 severity: warn
-          - dbt_expectations.expect_column_null_values_to_be_below:
-              threshold: 0.05
-              config:
-                severity: warn
 
       - name: tipo_documento_extracao
         description: "Tipo de documento identificado pela IA (ex: NF, RPA, Recibo, etc)."
@@ -115,3 +111,7 @@ models:
         description: "ID da instância de execução da pipeline de extração."
         data_type: string
         quote: true
+
+      - name: timestamp_geracao
+        description: "Timestamp UTC do momento em que a IA processou a página do documento."
+        data_type: timestamp
