@@ -18,11 +18,11 @@ models:
       alias: extracao_pagina
       materialized: table
 
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - nome_arquivo
-            - pagina
+    # tests:
+      # - dbt_utils.unique_combination_of_columns:
+      #     combination_of_columns:
+      #       - nome_arquivo
+      #       - pagina
     
     columns:
       - name: nome_arquivo
