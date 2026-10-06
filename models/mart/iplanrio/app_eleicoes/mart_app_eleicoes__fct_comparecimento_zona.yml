@@ -1,0 +1,195 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__fct_comparecimento_zona
+    description: "Comparecimento e abstenção por zona eleitoral do RJ, por ano, turno e cargo (2022, 2024 e 2026). Inclui a cobertura da apuração, calculada pelas seções com resultado, porque `secoes_totalizadas` vem zerado em 2026."
+    config:
+      alias: fct_comparecimento_zona
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__fct_comparecimento_zona__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - ano
+              - turno
+              - cargo
+              - id_zona
+          config:
+            severity: error
+      - dbt_utils.expression_is_true:
+          name: mart_app_eleicoes__fct_comparecimento_zona__table__comparecimento_mais_abstencao_igual_aptos
+          arguments:
+            expression: "comparecimento + abstencoes = aptos"
+          config:
+            severity: warn
+      - dbt_utils.expression_is_true:
+          name: mart_app_eleicoes__fct_comparecimento_zona__table__validos_brancos_nulos_igual_comparecimento
+          arguments:
+            expression: "votos_validos + votos_brancos + votos_nulos = comparecimento"
+          config:
+            severity: warn
+    columns:
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_comparecimento_zona__ano__not_null
+              config:
+                severity: error
+
+      - name: turno
+        description: "Turno da eleição (1 ou 2)."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_comparecimento_zona__turno__not_null
+              config:
+                severity: error
+
+      - name: cargo
+        description: "Cargo disputado: `presidente`, `governador` ou `prefeito`."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_comparecimento_zona__cargo__not_null
+              config:
+                severity: error
+          - accepted_values:
+              name: mart_app_eleicoes__fct_comparecimento_zona__cargo__accepted_values
+              arguments:
+                values: ["presidente", "governador", "prefeito"]
+              config:
+                severity: error
+
+      - name: id_zona
+        description: "Chave da zona eleitoral."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_comparecimento_zona__id_zona__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__fct_comparecimento_zona__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: aptos
+        description: "Eleitores aptos a votar."
+        data_type: int64
+
+      - name: comparecimento
+        description: "Eleitores que compareceram."
+        data_type: int64
+
+      - name: abstencoes
+        description: "Eleitores que se abstiveram."
+        data_type: int64
+
+      - name: votos_validos
+        description: "Votos válidos (nominais mais de legenda). Soma das seções, não a coluna de detalhes do TSE, que perde votos."
+        data_type: int64
+
+      - name: votos_brancos
+        description: "Votos em branco."
+        data_type: int64
+
+      - name: votos_nulos
+        description: "Votos nulos."
+        data_type: int64
+
+      - name: votos_nominais
+        description: "Votos nominais, dados a candidatos. Soma das seções (igual à soma de `fct_votos_zona`)."
+        data_type: int64
+
+      - name: votos_legenda
+        description: "Votos de legenda. Zero nos cargos majoritários do recorte."
+        data_type: int64
+
+      - name: proporcao_comparecimento
+        description: "Comparecimento sobre aptos, de 0 a 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_comparecimento_zona__proporcao_comparecimento__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn
+
+      - name: proporcao_abstencao
+        description: "Abstenções sobre aptos, de 0 a 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_comparecimento_zona__proporcao_abstencao__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn
+
+      - name: proporcao_votos_validos
+        description: "Votos válidos sobre o comparecimento, de 0 a 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_comparecimento_zona__proporcao_votos_validos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn
+
+      - name: proporcao_votos_brancos
+        description: "Votos em branco sobre o comparecimento, de 0 a 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_comparecimento_zona__proporcao_votos_brancos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn
+
+      - name: proporcao_votos_nulos
+        description: "Votos nulos sobre o comparecimento, de 0 a 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_comparecimento_zona__proporcao_votos_nulos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn
+
+      - name: secoes
+        description: "Seções da zona (principais, sem as agregadas)."
+        data_type: int64
+
+      - name: secoes_apuradas
+        description: "Seções principais com resultado em `resultados_candidato_secao`. Mede a cobertura da apuração."
+        data_type: int64
+
+      - name: proporcao_secoes_apuradas
+        description: "Seções apuradas sobre seções da zona, de 0 a 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_comparecimento_zona__proporcao_secoes_apuradas__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn

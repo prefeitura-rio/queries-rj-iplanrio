@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_candidato
+    description: "Candidaturas de presidente, governador (2022 e 2026) e prefeito (2024) do RJ. Uma linha por candidatura. O número de urna muda entre eleições, então a pessoa é identificada por `titulo_eleitoral`."
+    config:
+      alias: dim_candidato
+      schema: app_eleicoes
+      materialized: table
+    columns:
+      - name: id_candidato
+        description: "Chave da candidatura: `ano-cargo-sequencial`."
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: mart_app_eleicoes__dim_candidato__id_candidato__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_app_eleicoes__dim_candidato__id_candidato__not_null
+              config:
+                severity: error
+
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+
+      - name: cargo
+        description: "Cargo disputado: `presidente`, `governador` ou `prefeito`."
+        data_type: string
+        quote: true
+        data_tests:
+          - accepted_values:
+              name: mart_app_eleicoes__dim_candidato__cargo__accepted_values
+              arguments:
+                values: ["presidente", "governador", "prefeito"]
+              config:
+                severity: error
+
+      - name: sequencial
+        description: "Número sequencial da candidatura no TSE. Chave de junção com os resultados."
+        data_type: string
+        quote: true
+
+      - name: numero
+        description: "Número de urna do candidato. Muda entre eleições."
+        data_type: string
+        quote: true
+
+      - name: nome
+        description: "Nome completo do candidato."
+        data_type: string
+        quote: true
+
+      - name: nome_urna
+        description: "Nome de urna do candidato."
+        data_type: string
+        quote: true
+
+      - name: sigla_partido
+        description: "Sigla do partido do candidato."
+        data_type: string
+        quote: true
+
+      - name: titulo_eleitoral
+        description: "Título eleitoral. Identifica a mesma pessoa entre eleições. Pode ser nulo em poucas candidaturas de prefeito."
+        data_type: string
+        quote: true
+
+      - name: situacao
+        description: "Situação da candidatura no TSE. Nula nos dados de 2026."
+        data_type: string
+        quote: true

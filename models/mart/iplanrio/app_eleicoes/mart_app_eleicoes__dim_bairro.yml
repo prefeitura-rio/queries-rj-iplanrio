@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_bairro
+    description: "Bairros do município do Rio de Janeiro (167), dos dados mestres da prefeitura. Uma linha por bairro. Dá a visão intramunicipal do app."
+    config:
+      alias: dim_bairro
+      schema: app_eleicoes
+      materialized: table
+    columns:
+      - name: id_bairro
+        description: "Identificador do bairro."
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: mart_app_eleicoes__dim_bairro__id_bairro__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_app_eleicoes__dim_bairro__id_bairro__not_null
+              config:
+                severity: error
+
+      - name: id_municipio
+        description: "Código IBGE do município. Sempre `3304557` (Rio de Janeiro)."
+        data_type: string
+        quote: true
+
+      - name: nome
+        description: "Nome do bairro."
+        data_type: string
+        quote: true
+
+      - name: subprefeitura
+        description: "Subprefeitura do bairro."
+        data_type: string
+        quote: true
+
+      - name: id_area_planejamento
+        description: "Área de planejamento (AP)."
+        data_type: string
+        quote: true
+
+      - name: id_regiao_planejamento
+        description: "Região de planejamento (RP)."
+        data_type: string
+        quote: true
+
+      - name: nome_regiao_planejamento
+        description: "Nome da região de planejamento."
+        data_type: string
+        quote: true
+
+      - name: id_regiao_administrativa
+        description: "Região administrativa (RA)."
+        data_type: string
+        quote: true
+
+      - name: nome_regiao_administrativa
+        description: "Nome da região administrativa."
+        data_type: string
+        quote: true
+
+      - name: area_km2
+        description: "Área do bairro em km², calculada a partir da geometria."
+        data_type: float64
+
+      - name: latitude
+        description: "Latitude do centroide do bairro."
+        data_type: float64
+
+      - name: longitude
+        description: "Longitude do centroide do bairro."
+        data_type: float64
+
+      - name: geometry
+        description: "Limite do bairro."
+        data_type: geography
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_bairro__geometry__not_null
+              config:
+                severity: error

@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: basedosdados_br_tse_eleicoes
+    description: "Dados eleitorais do TSE tratados pela Base dos Dados."
+    database: basedosdados
+    schema: br_tse_eleicoes
+    tables:
+      - name: candidatos
+      - name: resultados_candidato_municipio_zona
+      - name: resultados_candidato_secao
+      - name: detalhes_votacao_municipio_zona
+      - name: detalhes_votacao_secao
+      - name: perfil_eleitorado_municipio_zona
+      - name: perfil_eleitorado_local_votacao
+
+  - name: basedosdados_br_bd_diretorios_brasil
+    description: "Diretórios de municípios e outras entidades do Brasil (Base dos Dados)."
+    database: basedosdados
+    schema: br_bd_diretorios_brasil
+    tables:
+      - name: municipio
+
+  - name: basedosdados_br_geobr_mapas
+    description: "Malhas geográficas do IBGE tratadas pela Base dos Dados."
+    database: basedosdados
+    schema: br_geobr_mapas
+    tables:
+      - name: municipio
+      - name: setor_censitario_2010

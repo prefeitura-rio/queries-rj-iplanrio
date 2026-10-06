@@ -1,0 +1,135 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__fct_votos_zona
+    description: "Votos por candidato em cada zona eleitoral do RJ, por ano, turno e cargo (2022, 2024 e 2026), com a proporção sobre votos válidos e sobre aptos. Somado a partir das seções, porque a tabela de resultados por zona do TSE perde candidatos (ex.: Republicanos no governo em 2026). Candidato sem linha na zona teve 0 votos."
+    config:
+      alias: fct_votos_zona
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__fct_votos_zona__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - ano
+              - turno
+              - cargo
+              - id_zona
+              - id_candidato
+          config:
+            severity: error
+    columns:
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_zona__ano__not_null
+              config:
+                severity: error
+
+      - name: turno
+        description: "Turno da eleição (1 ou 2)."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_zona__turno__not_null
+              config:
+                severity: error
+
+      - name: cargo
+        description: "Cargo disputado: `presidente`, `governador` ou `prefeito`."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_zona__cargo__not_null
+              config:
+                severity: error
+          - accepted_values:
+              name: mart_app_eleicoes__fct_votos_zona__cargo__accepted_values
+              arguments:
+                values: ["presidente", "governador", "prefeito"]
+              config:
+                severity: error
+
+      - name: id_zona
+        description: "Chave da zona eleitoral."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_zona__id_zona__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__fct_votos_zona__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: id_candidato
+        description: "Chave da candidatura: `ano-cargo-sequencial`."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_zona__id_candidato__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__fct_votos_zona__id_candidato__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_candidato')
+                field: id_candidato
+              config:
+                severity: error
+
+      - name: numero_candidato
+        description: "Número de urna do candidato."
+        data_type: string
+        quote: true
+
+      - name: sigla_partido
+        description: "Sigla do partido do candidato."
+        data_type: string
+        quote: true
+
+      - name: votos
+        description: "Votos do candidato na zona."
+        data_type: int64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_votos_zona__votos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 10000000
+              config:
+                severity: error
+
+      - name: proporcao_votos_validos
+        description: "Votos do candidato sobre a soma dos votos dos candidatos na zona, de 0 a 1. As proporções de uma zona somam 1."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_votos_zona__proporcao_votos_validos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn
+
+      - name: proporcao_aptos
+        description: "Votos do candidato sobre os aptos da zona, de 0 a 1. Usada para medir mobilização."
+        data_type: float64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_votos_zona__proporcao_aptos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 1
+              config:
+                severity: warn

@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_secao
+    description: "Seções eleitorais do RJ por ano (2022, 2024 e 2026, turno 1), com coordenadas. O TSE não publicou latitude e longitude de 2026, então as coordenadas ausentes são herdadas de 2024 pela mesma seção ou pelo mesmo local (nome e endereço). Uma linha por ano e seção."
+    config:
+      alias: dim_secao
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__dim_secao__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - ano
+              - id_secao
+          config:
+            severity: error
+    columns:
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_secao__ano__not_null
+              config:
+                severity: error
+
+      - name: id_secao
+        description: "Chave da seção: `id_zona`, hífen e seção com 4 dígitos."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_secao__id_secao__not_null
+              config:
+                severity: error
+
+      - name: id_zona
+        description: "Chave da zona eleitoral da seção."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_secao__id_zona__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__dim_secao__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: secao
+        description: "Número da seção dentro da zona."
+        data_type: int64
+
+      - name: id_local_votacao
+        description: "Chave do local de votação (único por ano): `id_zona`, hífen e número do local com 4 dígitos."
+        data_type: string
+        quote: true
+
+      - name: indicador_secao_agregada
+        description: "Indica seção agregada (`tipo_secao_agregada = 2` no TSE). Seções agregadas não têm resultado próprio: os votos aparecem na seção principal."
+        data_type: bool
+
+      - name: eleitores_secao
+        description: "Eleitores aptos cadastrados na seção."
+        data_type: int64
+
+      - name: latitude
+        description: "Latitude do local da seção, do TSE ou herdada de 2024. Nula quando não há coordenada."
+        data_type: float64
+
+      - name: longitude
+        description: "Longitude do local da seção, do TSE ou herdada de 2024. Nula quando não há coordenada."
+        data_type: float64
+
+      - name: geometry
+        description: "Ponto do local da seção (GEOGRAPHY)."
+        data_type: geography
+
+      - name: metodo_geocodificacao
+        description: "Origem da coordenada: `tse` (do próprio ano), `herdada_secao` (2024, mesma zona e seção) ou `herdada_local` (2024, mesmo nome e endereço do local). Nulo quando não há coordenada."
+        data_type: string
+        quote: true
+        data_tests:
+          - accepted_values:
+              name: mart_app_eleicoes__dim_secao__metodo_geocodificacao__accepted_values
+              arguments:
+                values: ["tse", "herdada_secao", "herdada_local"]
+              config:
+                severity: error

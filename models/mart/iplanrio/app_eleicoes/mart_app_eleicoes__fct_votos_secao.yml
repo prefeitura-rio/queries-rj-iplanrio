@@ -1,0 +1,121 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__fct_votos_secao
+    description: "Votos por candidato em cada seção eleitoral do RJ, por ano, turno e cargo (2022, 2024 e 2026). Seções agregadas não aparecem, porque seus votos estão na seção principal."
+    config:
+      alias: fct_votos_secao
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__fct_votos_secao__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - ano
+              - turno
+              - cargo
+              - id_secao
+              - id_candidato
+          config:
+            severity: error
+    columns:
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_secao__ano__not_null
+              config:
+                severity: error
+
+      - name: turno
+        description: "Turno da eleição (1 ou 2)."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_secao__turno__not_null
+              config:
+                severity: error
+
+      - name: cargo
+        description: "Cargo disputado: `presidente`, `governador` ou `prefeito`."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_secao__cargo__not_null
+              config:
+                severity: error
+          - accepted_values:
+              name: mart_app_eleicoes__fct_votos_secao__cargo__accepted_values
+              arguments:
+                values: ["presidente", "governador", "prefeito"]
+              config:
+                severity: error
+
+      - name: id_secao
+        description: "Chave da seção: `id_zona`, hífen e seção com 4 dígitos."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_secao__id_secao__not_null
+              config:
+                severity: error
+
+      - name: id_zona
+        description: "Chave da zona eleitoral da seção."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_secao__id_zona__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__fct_votos_secao__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: id_candidato
+        description: "Chave da candidatura: `ano-cargo-sequencial`."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__fct_votos_secao__id_candidato__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__fct_votos_secao__id_candidato__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_candidato')
+                field: id_candidato
+              config:
+                severity: error
+
+      - name: numero_candidato
+        description: "Número de urna do candidato."
+        data_type: string
+        quote: true
+
+      - name: sigla_partido
+        description: "Sigla do partido do candidato."
+        data_type: string
+        quote: true
+
+      - name: votos
+        description: "Votos do candidato na seção."
+        data_type: int64
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              name: mart_app_eleicoes__fct_votos_secao__votos__expect_column_values_to_be_between
+              arguments:
+                min_value: 0
+                max_value: 100000
+              config:
+                severity: error

@@ -1,0 +1,140 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_perfil_eleitorado_zona
+    description: "Perfil do eleitorado por zona do RJ e ano (2022, 2024 e 2026), por gênero, faixa etária, instrução e estado civil. Os códigos do TSE vêm decodificados. A situação da biometria da fonte é somada."
+    config:
+      alias: dim_perfil_eleitorado_zona
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__dim_perfil_eleitorado_zona__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - ano
+              - id_zona
+              - genero_codigo
+              - grupo_idade_codigo
+              - instrucao_codigo
+              - estado_civil_codigo
+          config:
+            severity: error
+    columns:
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__ano__not_null
+              config:
+                severity: error
+
+      - name: id_zona
+        description: "Chave da zona eleitoral."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__id_zona__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: genero_codigo
+        description: "Código do gênero no TSE: 0 não informado, 2 masculino, 4 feminino."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__genero_codigo__not_null
+              config:
+                severity: error
+
+      - name: genero
+        description: "Gênero decodificado. Nulo se surgir um código novo no TSE."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__genero__not_null
+              config:
+                severity: warn
+
+      - name: grupo_idade_codigo
+        description: "Código do grupo de idade no TSE. 1600 a 2000 são idades individuais, depois faixas de 5 anos (por exemplo 2529), 9999 é 100 anos ou mais e -3 é inválido."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__grupo_idade_codigo__not_null
+              config:
+                severity: error
+
+      - name: faixa_etaria
+        description: "Faixa etária decodificada, por exemplo `25 a 29 anos`."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__faixa_etaria__not_null
+              config:
+                severity: warn
+
+      - name: instrucao_codigo
+        description: "Código do grau de instrução no TSE, de 0 a 8."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__instrucao_codigo__not_null
+              config:
+                severity: error
+
+      - name: instrucao
+        description: "Grau de instrução decodificado. Nulo se surgir um código novo no TSE."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__instrucao__not_null
+              config:
+                severity: warn
+
+      - name: estado_civil_codigo
+        description: "Código do estado civil no TSE."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__estado_civil_codigo__not_null
+              config:
+                severity: error
+
+      - name: estado_civil
+        description: "Estado civil decodificado. Nulo se surgir um código novo no TSE."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_perfil_eleitorado_zona__estado_civil__not_null
+              config:
+                severity: warn
+
+      - name: eleitores
+        description: "Eleitores no recorte da linha."
+        data_type: int64
+
+      - name: eleitores_biometria
+        description: "Eleitores com biometria cadastrada."
+        data_type: int64
+
+      - name: eleitores_deficiencia
+        description: "Eleitores com deficiência declarada."
+        data_type: int64

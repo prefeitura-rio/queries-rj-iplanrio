@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_zona_geometria
+    description: "Polígono APROXIMADO de cada zona eleitoral do RJ. Não existe fonte oficial de limites de zona. Cada setor censitário de 2010 recebe a zona do local de votação mais próximo (pontos de 2024), os setores são unidos por zona e o resultado é simplificado. Uma linha por zona. Pode faltar zona sem local com coordenada."
+    config:
+      alias: dim_zona_geometria
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__dim_zona_geometria__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - id_zona
+          config:
+            severity: error
+      - dbt_utils.expression_is_true:
+          name: mart_app_eleicoes__dim_zona_geometria__table__geometria_nao_vazia
+          arguments:
+            expression: "not st_isempty(geometry)"
+          config:
+            severity: error
+    columns:
+      - name: id_zona
+        description: "Chave da zona eleitoral."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_zona_geometria__id_zona__not_null
+              config:
+                severity: error
+          - relationships:
+              name: mart_app_eleicoes__dim_zona_geometria__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: geometry
+        description: "Polígono aproximado da zona (GEOGRAPHY), simplificado em 20 metros."
+        data_type: geography
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_zona_geometria__geometry__not_null
+              config:
+                severity: error
+
+      - name: geometria_wkt
+        description: "O mesmo polígono em WKT."
+        data_type: string
+        quote: true
+
+      - name: area_km2
+        description: "Área do polígono em km²."
+        data_type: float64
+
+      - name: metodo
+        description: "Método de construção do polígono: `setor_2010_local_mais_proximo`."
+        data_type: string
+        quote: true
+        data_tests:
+          - accepted_values:
+              name: mart_app_eleicoes__dim_zona_geometria__metodo__accepted_values
+              arguments:
+                values: ["setor_2010_local_mais_proximo"]
+              config:
+                severity: error
+
+      - name: fonte
+        description: "Fontes usadas na construção do polígono."
+        data_type: string
+        quote: true
+
+      - name: indicador_oficial
+        description: "Indica se o polígono é o limite oficial da zona. Falso enquanto for aproximação."
+        data_type: bool
+
+      - name: ano_referencia
+        description: "Ano dos pontos de locais de votação usados na construção."
+        data_type: int64

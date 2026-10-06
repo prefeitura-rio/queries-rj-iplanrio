@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_zona
+    description: "Zonas eleitorais do RJ presentes em ao menos uma eleição do recorte do app (2022, 2024 e 2026). Uma linha por zona. A chave `id_zona` é estável entre os anos, então o join entre eleições é direto."
+    config:
+      alias: dim_zona
+      schema: app_eleicoes
+      materialized: table
+    columns:
+      - name: id_zona
+        description: "Chave da zona: IBGE do município de 7 dígitos, hífen e zona com 3 dígitos (por exemplo `3304557-004`)."
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: mart_app_eleicoes__dim_zona__id_zona__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_app_eleicoes__dim_zona__id_zona__not_null
+              config:
+                severity: error
+
+      - name: sigla_uf
+        description: "Sigla da unidade federativa. No recorte atual, sempre `RJ`."
+        data_type: string
+        quote: true
+
+      - name: id_municipio
+        description: "Código IBGE do município com 7 dígitos."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_zona__id_municipio__not_null
+              config:
+                severity: error
+
+      - name: id_municipio_tse
+        description: "Código do município no TSE."
+        data_type: string
+        quote: true
+
+      - name: nome_municipio
+        description: "Nome do município."
+        data_type: string
+        quote: true
+
+      - name: zona
+        description: "Número da zona eleitoral dentro do município."
+        data_type: int64
+
+      - name: indicador_capital
+        description: "Indica se o município é a capital do estado."
+        data_type: bool
+
+      - name: nome_regiao_metropolitana
+        description: "Nome da região metropolitana do município, quando houver."
+        data_type: string
+        quote: true
+
+      - name: anos
+        description: "Anos de eleição do recorte em que a zona existiu."
+        data_type: array<int64>

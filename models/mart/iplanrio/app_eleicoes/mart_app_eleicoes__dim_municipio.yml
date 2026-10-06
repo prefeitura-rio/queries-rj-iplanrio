@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_municipio
+    description: "Municípios do RJ (92), com os detalhes do diretório da Base dos Dados e o limite municipal do IBGE. Uma linha por município."
+    config:
+      alias: dim_municipio
+      schema: app_eleicoes
+      materialized: table
+    columns:
+      - name: id_municipio
+        description: "Código IBGE do município com 7 dígitos."
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: mart_app_eleicoes__dim_municipio__id_municipio__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_app_eleicoes__dim_municipio__id_municipio__not_null
+              config:
+                severity: error
+
+      - name: id_municipio_6
+        description: "Código IBGE com 6 dígitos."
+        data_type: string
+        quote: true
+
+      - name: id_municipio_tse
+        description: "Código do município no TSE."
+        data_type: string
+        quote: true
+
+      - name: nome
+        description: "Nome do município."
+        data_type: string
+        quote: true
+
+      - name: sigla_uf
+        description: "Sigla da unidade federativa. Sempre `RJ`."
+        data_type: string
+        quote: true
+
+      - name: indicador_capital
+        description: "Indica se o município é a capital do estado."
+        data_type: bool
+
+      - name: ddd
+        description: "Código DDD do município."
+        data_type: string
+        quote: true
+
+      - name: nome_regiao_metropolitana
+        description: "Região metropolitana, quando houver."
+        data_type: string
+        quote: true
+
+      - name: nome_regiao_imediata
+        description: "Região geográfica imediata."
+        data_type: string
+        quote: true
+
+      - name: nome_regiao_intermediaria
+        description: "Região geográfica intermediária."
+        data_type: string
+        quote: true
+
+      - name: nome_microrregiao
+        description: "Microrregião."
+        data_type: string
+        quote: true
+
+      - name: nome_mesorregiao
+        description: "Mesorregião."
+        data_type: string
+        quote: true
+
+      - name: latitude
+        description: "Latitude do centroide do município."
+        data_type: float64
+
+      - name: longitude
+        description: "Longitude do centroide do município."
+        data_type: float64
+
+      - name: area_km2
+        description: "Área do município em km², calculada a partir da geometria."
+        data_type: float64
+
+      - name: geometry
+        description: "Limite municipal (IBGE, malha da Base dos Dados)."
+        data_type: geography
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_municipio__geometry__not_null
+              config:
+                severity: warn

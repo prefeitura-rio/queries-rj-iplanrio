@@ -1,0 +1,115 @@
+version: 2
+
+models:
+  - name: mart_app_eleicoes__dim_local_votacao
+    description: "Locais de votação do RJ por ano (2022, 2024 e 2026). Uma linha por ano e local. O ponto é o centroide das seções do local, e o método de geocodificação é o de menor confiança entre elas."
+    config:
+      alias: dim_local_votacao
+      schema: app_eleicoes
+      materialized: table
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: mart_app_eleicoes__dim_local_votacao__table__unique_combination
+          arguments:
+            combination_of_columns:
+              - ano
+              - id_local_votacao
+          config:
+            severity: error
+    columns:
+      - name: ano
+        description: "Ano da eleição."
+        data_type: int64
+
+      - name: id_local_votacao
+        description: "Chave do local de votação: `id_zona`, hífen e número do local com 4 dígitos. Única por ano."
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: mart_app_eleicoes__dim_local_votacao__id_local_votacao__not_null
+              config:
+                severity: error
+
+      - name: id_zona
+        description: "Chave da zona eleitoral do local."
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: mart_app_eleicoes__dim_local_votacao__id_zona__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_zona')
+                field: id_zona
+              config:
+                severity: error
+
+      - name: numero_local
+        description: "Número do local de votação dentro da zona."
+        data_type: string
+        quote: true
+
+      - name: nome_local
+        description: "Nome do local de votação (por exemplo, o nome da escola)."
+        data_type: string
+        quote: true
+
+      - name: endereco
+        description: "Endereço do local de votação."
+        data_type: string
+        quote: true
+
+      - name: bairro
+        description: "Bairro do local de votação, como digitado no cadastro do TSE (texto livre)."
+        data_type: string
+        quote: true
+
+      - name: id_bairro
+        description: "Bairro oficial (`dim_bairro`) que contém o ponto do local. Só existe para locais do município do Rio de Janeiro com coordenada."
+        data_type: string
+        quote: true
+        data_tests:
+          - relationships:
+              name: mart_app_eleicoes__dim_local_votacao__id_bairro__relationships
+              arguments:
+                to: ref('mart_app_eleicoes__dim_bairro')
+                field: id_bairro
+              config:
+                severity: error
+
+      - name: cep
+        description: "CEP do local de votação."
+        data_type: string
+        quote: true
+
+      - name: quantidade_secoes
+        description: "Quantidade de seções (principais e agregadas) do local."
+        data_type: int64
+
+      - name: eleitores
+        description: "Eleitores aptos cadastrados no local, somando as seções."
+        data_type: int64
+
+      - name: latitude
+        description: "Latitude do centroide das seções do local. Nula quando nenhuma seção tem coordenada."
+        data_type: float64
+
+      - name: longitude
+        description: "Longitude do centroide das seções do local. Nula quando nenhuma seção tem coordenada."
+        data_type: float64
+
+      - name: geometry
+        description: "Ponto do local (GEOGRAPHY), centroide dos pontos das seções."
+        data_type: geography
+
+      - name: metodo_geocodificacao
+        description: "Origem da coordenada, a de menor confiança entre as seções do local: `tse`, `herdada_secao` ou `herdada_local`. Nulo quando não há coordenada."
+        data_type: string
+        quote: true
+        data_tests:
+          - accepted_values:
+              name: mart_app_eleicoes__dim_local_votacao__metodo_geocodificacao__accepted_values
+              arguments:
+                values: ["tse", "herdada_secao", "herdada_local"]
+              config:
+                severity: error
