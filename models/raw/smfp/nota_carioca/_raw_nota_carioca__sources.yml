@@ -5,13 +5,13 @@ sources:
     database: rj-iplanrio-dia
     schema: brutos_nota_fiscal
     tables:
-      - name: NOTAS_NACIONAIS
+      - name: VW_NOTAS_NACIONAIS
       - name: PESSOAS_NACIONAIS
       - name: VW_DPS_COM_NSU
   - name: nota_carioca_staging
     database: rj-iplanrio-dia
     schema: brutos_nota_fiscal_staging
     tables:
-      - name: NOTAS_NACIONAIS
+      - name: VW_NOTAS_NACIONAIS
       - name: PESSOAS_NACIONAIS
       - name: VW_DPS_COM_NSU
