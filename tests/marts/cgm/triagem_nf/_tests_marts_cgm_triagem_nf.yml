@@ -1,7 +1,7 @@
 version: 2
 
 data_tests:
-  - name: assert_despesas_classificadas_escala
+  - name: assert_despesas_classificada_escala
     description: |
       Garante a preservação estrita de grão 1:1 entre a base de despesas declaradas
       (`core_cgm_triagem_nf__osinfo_despesas`) e o Mart final (`mart_cgm_triagem_nf__despesas_classificada`).
@@ -10,10 +10,10 @@ data_tests:
       ou perda de despesas auditáveis.
     config:
       severity: error
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'mart', 'anti_fanout', 'volumetria']
 
-  - name: assert_despesas_classificadas_apontamento
+  - name: assert_despesas_classificada_apontamento
     description: |
       Valida a coerência da matriz de apontamentos da CGM em 5 quadrantes:
       1. Regras graves ativas exigem `apontamento_resultado = 'Grave'`.
@@ -23,7 +23,7 @@ data_tests:
       5. 'Não avaliado' deve espelhar estritamente despesas com status 'NF Sem Match'.
     config:
       severity: error
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'mart', 'regras_apontamento']
 
   - name: assert_despesas_classificada_temporal
@@ -33,14 +33,14 @@ data_tests:
       - A data de emissão deve ser posterior à data de fundação cadastral do fornecedor.
     config:
       severity: warn
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'mart', 'temporal']
 
   - name: assert_despesas_classificada_duplicidade
     description: |
-      Audita se despesas com flag de duplicidade ativa (`apontamento_duplicidade_indicador = TRUE`)
+      Audita se despesas com flag de duplicidade ativa (`apontamento_duplicidade_indicador = false`)
       possuem a lista de identificadores correlatos preenchida em `apontamento_duplicidade_ids`.
     config:
       severity: error
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'mart', 'duplicidade']

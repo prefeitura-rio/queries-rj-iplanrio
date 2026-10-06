@@ -1,7 +1,11 @@
 WITH
   ep AS (
-    SELECT DISTINCT nome_arquivo
+    SELECT
+      nome_arquivo,
+      MAX(data_geracao) AS data_processamento,
+      MAX(timestamp_geracao) AS timestamp_processamento
     FROM {{ ref("core_cgm_triagem_nf__extracao_pagina") }}
+    GROUP BY nome_arquivo
   ),
 
   od AS (
@@ -147,11 +151,12 @@ SELECT
   ap.apontamento_emissao_anterior_abertura_indicador,
   ap.apontamento_emissao_divergente_indicador,
   ap.apontamento_valor_divergente_indicador,
-  ep.current_timestamp() AS data_geracao,
-  ep.current_timestamp() AS data_extracao,
-  ep.current_timestamp() AS timestamp_geracao,
+  ep.data_processamento,
+  ep.timestamp_processamento
   ep.versao_pipeline
 FROM od
+LEFT JOIN ep
+  ON od.nome_arquivo = ep.nome_arquivo
 LEFT JOIN epd USING (id_documento)
 LEFT JOIN apontamentos ap USING (id_documento)
 LEFT JOIN bc

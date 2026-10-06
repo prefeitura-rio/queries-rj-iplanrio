@@ -9,7 +9,7 @@ data_tests:
       **Regra de Auditoria:** Impede multiplicação de registros no pipeline antes do Mart.
     config:
       severity: error
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'core', 'duplicidade']
 
   - name: assert_extracao_ia_match_consistencia_resultado
@@ -20,7 +20,7 @@ data_tests:
       2. Se `NF Sem Match` ou `NF Não Encontrada`, garante que nenhum campo de extração foi populado.
     config:
       severity: error
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'core', 'consistencia_ia']
 
   - name: assert_despesas_valor_pago_consistente
@@ -31,5 +31,5 @@ data_tests:
       (tolerância para arredondamentos monetários).
     config:
       severity: warn
-      store_failures: true
+      store_failures: false
       tags: ['cgm', 'core', 'financeiro']
