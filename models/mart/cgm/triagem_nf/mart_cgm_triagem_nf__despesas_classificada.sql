@@ -151,8 +151,9 @@ SELECT
   ap.apontamento_emissao_anterior_abertura_indicador,
   ap.apontamento_emissao_divergente_indicador,
   ap.apontamento_valor_divergente_indicador,
-  ep.data_processamento,
-  ep.timestamp_processamento
+  ep.data_processamento AS data_processamento,
+  ep.current_timestamp() AS data_geracao,
+  ep.timestamp_processamento,
   ep.versao_pipeline
 FROM od
 LEFT JOIN ep
