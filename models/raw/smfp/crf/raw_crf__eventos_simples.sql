@@ -22,7 +22,7 @@ SAFE_CAST(codigo_municipio AS INT64) AS codigo_municipio,
 
 SAFE.PARSE_DATE("%Y%m%d", data_ocorrencia) AS data_ocorrencia,
 
-SAFE_CAST(numero_opcao AS INT64) AS numero_opcao,
+SAFE_CAST(numero_opcao AS STRING) AS numero_opcao,
 SAFE_CAST(ano_particao AS INT64) AS ano_particao,
 SAFE_CAST(mes_particao AS INT64) AS mes_particao,
 SAFE_CAST(data_particao AS DATE) AS data_particao,
