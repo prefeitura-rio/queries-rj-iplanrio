@@ -175,6 +175,10 @@ models:
           +materialized: table
           +schema: educacao_basica_frequencia
           +tags: ["daily"]
+        gestao_escolar_rh:
+          +materialized: table
+          +schema: gestao_escolar_rh
+          +tags: ["daily"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp
