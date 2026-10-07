@@ -24,7 +24,7 @@ with recursive setores_iplan as (
     extinto
   from {{ ref("raw_ergon_iplanrio__setor") }} raiz
   where id_setor in ('1153') --, '1451', '5651') - comentado, pois apenas o código 1153 será considerado para a IplanRio
-  and ifnull(raiz.data_fim, current_date("America/Sao_Paulo")) between '2025-01-01' and '9999-12-31' -- Definindo histórico de registros a partir de 2025.
+  and ifnull(data_fim, current_date("America/Sao_Paulo")) between '2025-01-01' and '9999-12-31' -- Definindo histórico de registros a partir de 2025.
 
   union all
 
