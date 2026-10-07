@@ -24,6 +24,13 @@ models:
       alias: nf_cancelamento
       materialized: table
 
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - nome_arquivo
+            - cnpj_modelo
+            - numero_nf_modelo
+
     columns:
       - name: nome_arquivo
         description: "Nome do arquivo original da declaração. Chave de matching com extracao_pagina e despesas."
@@ -38,6 +45,10 @@ models:
         quote: true
         tests:
           - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{14}$"
+              config:
+                severity: warn
 
       - name: numero_nf_modelo
         description: "Número da NF normalizado (INT64). Chave de matching com extração."

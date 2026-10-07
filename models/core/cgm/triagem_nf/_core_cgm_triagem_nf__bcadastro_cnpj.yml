@@ -3,7 +3,14 @@ version: 2
 models:
   - name: core_cgm_triagem_nf__bcadastro_cnpj
     description: |
-      Dados de cadastro de CNPJs extraídos do BCadastro da Receita Federal filtrados para o recorte do projeto.
+      Dados cadastrais da Receita Federal (bCadastro) filtrados para os fornecedores do recorte do projeto.
+      
+      **Grain:** um registro por CNPJ (`cnpj`)
+      **Materialização:** table
+      **Origem:** `rj-iplanrio.brutos_bcadastro.cnpj` cruzado com os CNPJs de `extracao_pagina` e `osinfo_despesas`
+      
+      Enriquece os fornecedores com razão social, UF, descrição da atividade econômica principal (CNAE)
+      e data de abertura para detecção de notas emitidas antes da criação da empresa.
 
     config:
       schema: cgm_despesas_nf

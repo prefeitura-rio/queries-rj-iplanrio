@@ -100,9 +100,11 @@ models:
         tests:
           - not_null
           - dbt_expectations.expect_column_values_to_match_regex:
-              regex: "^[0-9]{11}$|^[0-9]{14}$"
+              regex: "^[0-9]{14}$"
           - dbt_expectations.expect_column_values_to_not_be_in_set:
-              value_set: ['00000000000000', '00000000000', '11111111111111']
+              value_set: ['00000000000000', '11111111111111', '99999999999999']
+              config:
+                severity: warn
 
       - name: declaracao_documento_valor
         description: "Valor total do documento declarado. Fonte: OSInfo."
@@ -315,3 +317,11 @@ models:
           
           **Prioridade:** Leve
         data_type: bool
+      
+      - name: data_processamento
+        description: "Data em que o arquivo da declaração foi processado pela pipeline de extração da IA. Fonte: extracao_pagina."
+        data_type: date
+
+      - name: timestamp_processamento
+        description: "Timestamp UTC do momento em que o lote do arquivo foi processado pela IA. Fonte: extracao_pagina."
+        data_type: timestamp

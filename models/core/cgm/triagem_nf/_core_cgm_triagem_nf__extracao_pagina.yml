@@ -111,3 +111,7 @@ models:
         description: "ID da instância de execução da pipeline de extração."
         data_type: string
         quote: true
+
+      - name: timestamp_geracao
+        description: "Timestamp UTC do momento em que a IA processou a página do documento."
+        data_type: timestamp
