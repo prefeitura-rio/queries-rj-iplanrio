@@ -17,7 +17,7 @@ select
   safe_cast(num_processo_principal as string)               as num_processo_principal,
   safe_cast(CONCAT( SUBSTR(data_processo,7,4),'-', SUBSTR(data_processo,4,2) ,'-', SUBSTR(data_processo,1,2) ) as date)         as data_processo,
   safe_cast(CONCAT( SUBSTR(data_sistema,7,4),'-', SUBSTR(data_sistema,4,2) ,'-', SUBSTR(data_sistema,1,2) ) as date)           as data_sistema,
-  safe_cast(hora_processo as string)                        as hora_processo,
+  safe_cast(hora_processo as TIME)                        as hora_processo,
   safe_cast(matricula_digitador as string)                  as matricula_digitador,
 
   -- Documento
@@ -75,7 +75,7 @@ select
 
   -- Auditoria de alteração 
   safe_cast(CONCAT( SUBSTR(data_alteracao,7,4),'-', SUBSTR(data_alteracao,4,2) ,'-', SUBSTR(data_alteracao,1,2) ) as date)         as data_alteracao,
-  safe_cast(hora_alteracao as int64)                        as hora_alteracao,
+  PARSE_TIME("%H:%M", hora_alteracao) as hora_alteracao,
   safe_cast(matricula_alteracao as string)                  as matricula_alteracao,
-  safe_cast(SUBSTR(_prefect_extracted_at,1,10) as date)      as datalake_transformed_at  
+  safe_cast(_prefect_extracted_at AS DATETIME)      as datalake_transformed_at  
 from {{ source("brutos_sicop_staging","processo") }}

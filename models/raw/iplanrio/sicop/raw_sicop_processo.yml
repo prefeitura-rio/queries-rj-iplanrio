@@ -186,7 +186,7 @@ models:
         quote: true
 
       - name: situacao_processo
-        description: "Indica a Situação do processo: 1 - 'APENSADO', 2 - 'DESAPENSADO', 3 - 'ANEXADO'"
+        description: "Indica a Situação do processo"
         data_type: string
         quote: true
 
