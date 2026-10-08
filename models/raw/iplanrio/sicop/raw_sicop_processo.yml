@@ -7,246 +7,195 @@ models:
     columns:
       - name: status_principal
         description: "Descrição do Status do processo principal. Informa: '0' - 'ATIVO' ou '7' - JUNTADO AO PROCESSO PRINCIPAL'"
-        data_type: string
         quote: true
 
       - name: documento_distribuido
         description: "Informa se o documento foi distribuido e não pode ser tramitado enquanto não for liberado"
-        data_type: string
         quote: true
 
       - name: numero_volume
         description: "Identifica a quantidade de volumes referente ao processo"
-        data_type: int64
 
       - name: status_oficio
         description: "Booleano que indica o status do ofício"
-        data_type: int64
 
       - name: id_processo
         description: "Número identificador único de um processo administrativo ou judicial ao qual uma determinada parte (pessoa física, jurídica ou órgão) está vinculada."
-        data_type: string
         config:
           meta:
             nullable: false
 
       - name: num_processo_principal
         description: "Número do processo principal"
-        data_type: string
         quote: true
 
       - name: data_processo
         description: "Data da Inclusão do Processo"
-        data_type: date
 
       - name: data_sistema
         description: "Esta data será a usada para encontrar a descrição do assunto adicionada a vw_processo_dlk"
-        data_type: date
 
       - name: hora_processo
         description: "Transforma o número em 000000 e fatia em HH:MM:SS"
-        data_type: string
         quote: true
 
       - name: matricula_digitador
         description: "Geralmente 7 ou 8 dígitos conforme padrão PCRJ"
-        data_type: string
         quote: true
 
       - name: documento
         description: "Pode ter 11 tipos de documentos diferentes:  Ex.: 1- CPF; 2- CGC; 3- INSCR. IMOBILIARIA; 4-INSCR. MUNICIPAL; 5-MATRICULA; 6-NUMERO DO CASS; 7-NOTIFICACAO (MULTA DE TRANSITO)'; 8-NUMERO CADASTRAL DO IMOVEL;9-IDENTIDADE; 10-ORGAO DA ADMINISTRACAO PUBLICA/REQUERENTE SEM DOCUMENTO; 11- NOTIFICACAO (MULTA DE TRANSPORTE URBANO)"
-        data_type: string
         quote: true
 
       - name: nome_documento
         description: "Nome do Tipo do documento do processo relacionado ao campo tipo_documento"
-        data_type: string
         quote: true
 
       - name: orgao_documento
         description: "Órgão expedidor do documento de identificação da parte envolvida."
-        data_type: int64
 
       - name: tipo_documento
         description: "Tipo do Documento. Ex.: 2- Requerimento; 3- Memorando; 4- Ofício"
-        data_type: int64
 
       - name: nome_tipo_documento
         description: "Nome do tipo de documento relacionado ao campo tipo_docto"
-        data_type: string
         quote: true
 
       - name: codigo_assunto
         description: "Código do Assunto. Ex.: 0- Administração Geral; 1- Assunto Jurídico; 2-Assunto Fazendário"
-        data_type: string
         quote: true
 
       - name: descricao_assunto
         description: "Descrição do Assunto do processo"
-        data_type: string
         quote: true
 
       - name: requerente
         description: "Nome do Requerente"
-        data_type: string
         quote: true
 
       - name: auto_infracao
         description: "Registro formal de uma infração cometida, lavrado por autoridade competente, que passa a tramitar dentro do sistema como um processo/protocolo."
-        data_type: string
         quote: true
 
       - name: logradouro
         description: "Identifica de forma padronizada o endereço (rua, avenida, travessa, etc.) associado à parte envolvida ou ao processo."
-        data_type: string
         quote: true
 
       - name: endereco_requerente
         description: "Endereço do requerente"
-        data_type: string
         quote: true
 
       - name: numero_porta
         description: "Número de porta do logradouro do requerente"
-        data_type: int64
 
       - name: complemento
         description: "Complemento do logradouro do requerente"
-        data_type: string
         quote: true
 
       - name: cep
         description: "CEP do requerente"
-        data_type: string
         quote: true
 
       - name: bairro
         description: "Bairro do requerente"
-        data_type: string
         quote: true
 
       - name: ddi
         description: "DDI do requerente"
-        data_type: string
         quote: true
 
       - name: ddd
         description: "DDD do requerente"
-        data_type: string
         quote: true
 
       - name: telefone
         description: "Telefone do requerente"
-        data_type: string
         quote: true
 
       - name: ramal
         description: "Ramal do requerente"
-        data_type: string
         quote: true
 
       - name: email
         description: "Email do requerente"
-        data_type: string
         quote: true
 
       - name: numero_processo_judicial
         description: "Número do processo judicial."
-        data_type: string
         quote: true
 
       - name: inscricao_imobiliaria_inicial
         description: "Inscrição imobiliária inicial"
-        data_type: string
         quote: true
 
       - name: inscricao_imobiliaria_final
         description: "Inscrição imobiliária final"
-        data_type: string
         quote: true
 
       - name: documento_arquivado
         description: "Indica se o processo foi arquivado"
-        data_type: string
         quote: true
 
       - name: documento_microfilmado
         description: "Indica se o Processo foi microfilmado"
-        data_type: string
         quote: true
 
       - name: documento_eliminado
         description: "Indica se o processo foi eliminado"
-        data_type: string
         quote: true
 
       - name: documento_extraviado
         description: "Indica se o processo foi extraviado"
-        data_type: string
         quote: true
 
       - name: situacao_processo
         description: "Indica a Situação do processo"
-        data_type: string
         quote: true
 
       - name: status_digitacao_registro
         description: "Indica o status de digitação do registro. Ex.: 0- digitado por outros sistemas; 6- referente a assuntos gerais e digitados pelo Sicop; 9- referente a multa de trânsito e digitado pelo Sicop."
-        data_type: string
         quote: true
 
       - name: documento_remissivo
         description: "Código que se refere ao processo. Indica se o processo é remissivo"
-        data_type: int64
 
       - name: orgao_origem
         description: "Orgão de origem do processo."
-        data_type: string
         quote: true
 
       - name: orgao_transcritor
         description: "Orgão transcritor do processo. Órgão do usuário responsável pela inclusão do registro"
-        data_type: string
         quote: true
 
       - name: orgao_alteracao
         description: "Orgão do usuário responsável pela alteração do registro"
-        data_type: string
         quote: true
 
       - name: orgao_destino
         description: "Orgão de destino do processo"
-        data_type: string
         quote: true
 
       - name: pasta_localizacao_documento
         description: "Pasta onde o documento está localizado. Pasta de acentação de servidor referente a Secretaria de Educação"
-        data_type: string
         quote: true
 
       - name: mudanca_registro
         description: "Indica se houve mudança no registro. Mudança de categoria do servidor da Secretaria de Educação"
-        data_type: string
         quote: true
 
       - name: quantidade_volume
         description: "Identifica a quantidade de volumes referente ao processo"
-        data_type: string
         quote: true
 
       - name: data_alteracao
         description: "Data da alteração do registro"
-        data_type: date
 
       - name: hora_alteracao
         description: "Hora da Alteração do registro"
-        data_type: int64
 
       - name: matricula_alteracao
         description: "Matrícula do usuário responsável pela alteração do registro."
-        data_type: string
         quote: true
 
       - name: datalake_transformed_at
         description: "Data de transformação do dado"
-        data_type: date
