@@ -31,5 +31,6 @@ SELECT
     SAFE_CAST(LOTACAO_A AS STRING) sigla_lotacao_primeira_matricula_servidor,
     SAFE_CAST(NLOTACAO_A AS STRING) nome_lotacao_primeira_matricula_servidor,
     SAFE_CAST(LOTACAO_B AS STRING) sigla_lotacao_segunda_matricula_servidor,
-    SAFE_CAST(NLOTACAO_B AS STRING) nome_lotacao_segunda_matricula_servidor
+    SAFE_CAST(NLOTACAO_B AS STRING) nome_lotacao_segunda_matricula_servidor,
+    SAFE_CAST(_airbyte_extracted_at AS DATETIME) loaded_at,
 FROM source
