@@ -204,6 +204,10 @@ models:
         porte_empresa:
           +materialized: table
           +schema: porte_empresa
+        crf:
+          +materialized: table
+          +schema: brutos_crf
+          +tags: "daily"
 
 
       sma:
