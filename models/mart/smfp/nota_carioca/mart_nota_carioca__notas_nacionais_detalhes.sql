@@ -7,6 +7,7 @@
             "granularity": "month",
         },
         materialized="table",
+        job_execution_timeout_seconds=1800,
     )
 }}
 
@@ -31,7 +32,7 @@ with
             n.chave_acesso_substituida,
             n.chave_acesso_substituta,
             n.data_validacao,
-            n.data_compmunicipio,
+            n.data_compmunicipio as data_competencia_municipio,
             n.status_nota,
             n.fiscalizacao,
             n.cenario_exigibilidade,
