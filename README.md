@@ -27,18 +27,23 @@ queries-rj-iplanrio/
 │   └── 📁 mart/                  # Data marts para análise específica
 ├── 📁 macros/                    # Macros reutilizáveis
 │   ├── 📁 dbt_internal/          # Macros internos do projeto
-│   └── 📁 string/                # Macros para manipulação de strings
+│   ├── 📁 string/                # Macros para manipulação de strings
+├── 📁 scripts/                   # Scripts de manutenção e automação
+│   ├── 📁 cli/                   # Interface de linha de comando
+│   ├── 📁 core/                  # Módulos de transformação
+│   ├── 📁 tests/                 # Suite de testes
 ├── 📁 .github/                   # Configurações do GitHub
 │   ├── 📁 workflows/             # Workflows de CI/CD
-│   │   ├── dbt-ci.yml           # CI para Pull Requests
-│   │   ├── dbt-cd.yml           # CD para produção
+│   │   ├── dbt-ci.yml            # CI para Pull Requests
+│   │   ├── dbt-cd.yml            # CD para produção
 │   │   ├── dbt-drop-dev-schemas.yml # Limpeza de schemas de desenvolvimento
-│   │   └── sqlfmt.yml           # Formatação automática de SQL
+│   │   └── sqlfmt.yml            # Formatação automática de SQL
 ├── 📁 analyses/                  # Análises ad-hoc (consultas exploratórias)
-├── 📁 seeds/                     # Dados .csv 
+├── 📁 seeds/                     # Dados .csv
 ├── 📁 snapshots/                 # Modelos de snapshot
-├── 📁 tests/                     # Testes customizados de qualidade
+├── 📁 tests/                     # Testes customizados de qualidade dbt
 ├── 📁 .cursor/                   # Configurações do Cursor IDE
+├── cli.py                        # Ponto de entrada da CLI de scripts
 ├── dbt_project.yml               # Configuração principal do projeto DBT
 ├── profiles.yml                  # Configurações de conexão com banco de dados
 ├── packages.yml                  # Dependências de pacotes DBT
@@ -56,6 +61,7 @@ queries-rj-iplanrio/
 
 ### **Arquivos de Configuração Principais:**
 
+- **[`cli.py`](scripts/README.md)**: Ponto de entrada da CLI de scripts de manutenção
 - **`dbt_project.yml`**: Configurações do projeto, modelos, testes e variáveis
 - **`profiles.yml`**: Conexões com BigQuery e outros bancos de dados
 - **`packages.yml`**: Dependências de pacotes DBT externos
@@ -76,10 +82,11 @@ queries-rj-iplanrio/
 
 ### **Ferramentas:**
 
+- [**Scripts CLI**](scripts/README.md): Suite de automação para migracao, manutenção e transformações
 - **Recce**: Ferramenta para comparação de resultados entre diferentes execuções
 - **Pre-commit**: Hooks para validação automática de código antes do commit
 
-## Comandos Básicos
+## Comandos Básicos do DBT
 
 ```bash
 # Instalar dependências
@@ -101,6 +108,12 @@ dbt build --select 'seu_modelo'
 # Debug da configuração
 dbt debug
 ```
+
+## Scripts CLI de Manutenção
+
+Este repositório inclui uma [**suite de scripts CLI**](scripts/README.md) para automação de tarefas de manutenção e padronização de código dbt. A CLI unificada ([`cli.py`](scripts/README.md)) facilita a execução de transformações em lote com análise inteligente de contexto.
+
+**📚 Documentação completa:** [`scripts/README.md`](scripts/README.md)
 
 ## Recursos Adicionais
 
