@@ -1,0 +1,117 @@
+version: 2
+
+models:
+  - name: core_cgm_triagem_nf__extracao_pagina
+    description: |
+      Dados extraídos pela IA com normalizações para matching com despesas.
+      
+      **Grain:** uma linha por página × NF extraída
+      **Materialização:** table
+      **Origem:** `brutos_pipeline_extracao_staging.extracao_pagina`
+      
+      Transformação dos dados extraídos pela IA de documentos declarados.
+      Normaliza CNPJ, número de NF e outros campos para permitir matching preciso
+      com despesas declaradas e análises de triagem.
+
+    config:
+      schema: cgm_despesas_nf
+      alias: extracao_pagina
+      materialized: table
+
+    # tests:
+      # - dbt_utils.unique_combination_of_columns:
+      #     combination_of_columns:
+      #       - nome_arquivo
+      #       - pagina
+    
+    columns:
+      - name: nome_arquivo
+        description: "Nome do arquivo original da declaração (PDF ou documento)."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: pagina
+        description: "Número da página dentro do arquivo onde a NF foi extraída."
+        data_type: int64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+
+      - name: numero_documento
+        description: "Número da NF extraída (original, pode conter caracteres especiais)."
+        data_type: string
+        quote: true
+
+      - name: numero_nf_modelo_norm
+        description: "Número da NF normalizado como INT64 (removendo caracteres especiais). Chave de matching."
+        data_type: int64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 999999999 # NF-e vai até 9 dígitos (999.999.999)
+              config:
+                severity: warn
+        
+
+      - name: cnpj_emitente
+        description: "CNPJ do emitente da NF (original, antes de normalização)."
+        data_type: string
+        quote: true
+
+      - name: cnpj_modelo_normalizado
+        description: "CNPJ normalizado para 14 dígitos (LPAD + REGEXP_REPLACE). Chave de matching."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '99999999999999']
+
+      - name: valor_documento
+        description: "Valor total extraído da NF."
+        data_type: float64
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+
+      - name: data_emissao_documento
+        description: "Data de emissão extraída da NF."
+        data_type: date
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: "'2010-01-01'"
+              max_value: "CURRENT_DATE()"
+              config:
+                severity: warn
+
+      - name: tipo_documento_extracao
+        description: "Tipo de documento identificado pela IA (ex: NF, RPA, Recibo, etc)."
+        data_type: string
+        quote: true
+
+      - name: razao_social_emitente
+        description: "Razão social do emitente extraída do documento (se disponível)."
+        data_type: string
+        quote: true
+
+      - name: descricao
+        description: "Descrição ou observações sobre a extração."
+        data_type: string
+        quote: true
+
+      - name: confianca_extracao
+        description: "Nível de confiança da extração pela IA (0-1 ou percentual). Indica qualidade do OCR."
+        data_type: float64
+
+      - name: id_origem_pipeline
+        description: "ID da instância de execução da pipeline de extração."
+        data_type: string
+        quote: true
+
+      - name: timestamp_geracao
+        description: "Timestamp UTC do momento em que a IA processou a página do documento."
+        data_type: timestamp
