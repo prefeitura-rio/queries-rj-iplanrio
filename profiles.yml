@@ -14,7 +14,7 @@ iplan:
       type: bigquery
     prod:
       dataset: dbt
-      job_execution_timeout_seconds: 300
+      job_execution_timeout_seconds: 1800
       job_retries: 1
       keyfile: /tmp/credentials.json
       location: US
