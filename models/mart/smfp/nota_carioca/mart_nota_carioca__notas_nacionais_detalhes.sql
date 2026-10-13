@@ -7,7 +7,6 @@
             "granularity": "month",
         },
         materialized="table",
-        job_execution_timeout_seconds=1800,
     )
 }}
 
