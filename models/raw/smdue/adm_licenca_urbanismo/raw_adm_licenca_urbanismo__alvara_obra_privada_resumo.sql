@@ -95,5 +95,6 @@ SAFE_CAST(licenca_em_retificacao AS BOOL) AS alvara_em_retificacao,
 SAFE_CAST(dt_retificacao AS DATETIME) AS dt_retificacao,
 SAFE_CAST(licenca_retificadora AS BOOL) AS alvara_retificadora,
 SAFE_CAST(tipo_licenca AS STRING) AS tipo_alvara,
+CAST(_prefect_extracted_at AS DATETIME) AS loaded_at
 
 FROM {{ source('adm_licenca_urbanismo_staging', 'alvara_obra_privada_resumo') }}
