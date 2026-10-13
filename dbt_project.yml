@@ -236,6 +236,10 @@ models:
           +materialized: table
           +schema: brutos_adm_licenca_urbanismo
           +tags: "daily"
+        adm_licenca_urbanismo:
+          +materialized: table
+          +schema: adm_licenca_urbanismo
+          +tags: "daily"
       cgm:
         osinfo_rh:
           +materialized: table

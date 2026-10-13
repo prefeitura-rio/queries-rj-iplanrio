@@ -6,6 +6,7 @@ sources:
     schema: adm_licenca_urbanismo_staging
     tables:
       - name: alvara_obra_privada
+      - name: alvara_obra_privada_resumo
       - name: area_protecao_cultural
       - name: area_protecao_processo
       - name: assunto_nivel_1
