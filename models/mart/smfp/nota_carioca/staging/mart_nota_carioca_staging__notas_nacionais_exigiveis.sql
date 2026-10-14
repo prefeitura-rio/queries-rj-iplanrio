@@ -1,8 +1,4 @@
-{{ config(
-    enabled=false,
-    alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS", 
-    schema="nota_carioca_staging") 
-}}
+{{ config(schema="nota_carioca_staging", alias="MVT_NOTAS_NACIONAIS_EXIGIVEIS") }}
 
 with
     notas as (
