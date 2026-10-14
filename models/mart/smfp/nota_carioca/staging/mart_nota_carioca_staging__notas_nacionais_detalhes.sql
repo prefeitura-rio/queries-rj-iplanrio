@@ -1,6 +1,6 @@
 {{
     config(
-        enabled=false,
+        schema="nota_carioca_staging",
         alias="MVT_NOTAS_NACIONAIS_DETALHES",
         partition_by={
             "field": "_bigquery_particao_data",
@@ -8,13 +8,14 @@
             "granularity": "month",
         },
         materialized="table",
-        schema="nota_carioca_staging"
     )
 }}
 
 
 with
-    notas_nacionais as (select * from {{ source("nota_carioca_staging", "NOTAS_NACIONAIS") }}),
+    notas_nacionais as (
+        select * from {{ source("nota_carioca_staging", "NOTAS_NACIONAIS") }}
+    ),
 
     dps as (select * from {{ source("nota_carioca_staging", "DPS") }}),
 
@@ -33,7 +34,7 @@ with
             n.chave_acesso_substituida,
             n.chave_acesso_substituta,
             n.data_validacao,
-            n.data_compmunicipio,
+            n.data_compmunicipio as data_competencia_municipio,
             n.status_nota,
             n.fiscalizacao,
             n.cenario_exigibilidade,
@@ -66,13 +67,13 @@ with
             pi.nome as nome_intermediario,
             n.nsu,
             n.data_cancelamento,
-            n.pessoa_emitente,
+            upper(to_hex(from_base64(n.pessoa_emitente))) as pessoa_emitente,
             d.data_emissao,
             d.tipo_suspensao,
             d.beneficio,
-            d.pessoa_prestador,
-            d.pessoa_tomador,
-            d.pessoa_intermediario,
+            upper(to_hex(from_base64(d.pessoa_prestador))) as pessoa_prestador,
+            upper(to_hex(from_base64(d.pessoa_tomador))) as pessoa_tomador,
+            upper(to_hex(from_base64(d.pessoa_intermediario))) as pessoa_intermediario,
             d.beneficio_nacional,
             d.valor_desconto_condicionado,
             -- n.rowid,
