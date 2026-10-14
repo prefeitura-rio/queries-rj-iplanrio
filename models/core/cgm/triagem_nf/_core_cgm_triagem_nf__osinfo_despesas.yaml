@@ -1,0 +1,140 @@
+version: 2
+
+models:
+  - name: core_cgm_triagem_nf__osinfo_despesas
+    description: |
+      Despesas declaradas por Organizações Sociais (OS) no sistema OSInfo.
+      
+      **Grain:** uma linha por despesa declarada (`id_documento`)
+      **Materialização:** view
+      **Origem:** `rj-cvl.adm_contrato_gestao.despesas` (enriquecida com `contrato`, `secretaria` e `administracao_unidade`)
+      
+      Tabela base do domínio de auditoria que padroniza os lançamentos de despesas
+      comprovadas via documentos fiscais:
+      - Filtra notas fiscais / comprovantes (`id_tipo_documento = "1"`)
+      - Delimita o período de envio entre 01/11/2021 e 31/08/2026
+      - Normaliza o nome do arquivo da declaração (removendo a extensão `.pdf`)
+      - Normaliza CPF/CNPJ para 14 dígitos e extrai o radical numérico da NF
+      - Enriquece os dados com vigência contratual e nomes das unidades gestoras
+
+    config:
+      schema: cgm_despesas_nf
+      alias: osinfo_despesas
+      materialized: view
+
+    columns:
+      - name: id_documento
+        description: "Identificador único do lançamento da despesa no sistema OSInfo. Chave primária."
+        data_type: int64
+        tests:
+          - not_null
+          - unique
+
+      - name: nome_arquivo
+        description: "Nome base do arquivo PDF declarado (sem extensão), utilizado como chave de cruzamento com a extração visual da IA."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: numero_documento
+        description: "Número do documento fiscal declarado pelo prestador (mantém formato original digitado)."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: numero_documento_norm
+        description: "Número do documento fiscal contendo apenas dígitos numéricos convertidos para INT64. Chave de matching com a extração da IA."
+        data_type: int64
+
+      - name: cnpj_cpf_normalizado
+        description: "CNPJ ou CPF do emitente declarado, limpo apenas com números e preenchido com zeros à esquerda até 14 dígitos. Chave de matching com a IA e bCadastro."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{14}$"
+              config:
+                severity: warn
+
+      - name: valor_documento
+        description: "Valor total da nota fiscal informado na declaração da despesa."
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.01
+              config:
+                severity: warn
+
+      - name: valor_pago
+        description: "Valor efetivamente pago ou rateado para a despesa declarada."
+        data_type: float64
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.01
+              config:
+                severity: warn
+
+      - name: data_emissao
+        description: "Data de emissão da nota fiscal informada na declaração."
+        data_type: date
+
+      - name: data_pagamento
+        description: "Data em que a despesa foi liquidada/paga pela Organização Social."
+        data_type: date
+
+      - name: data_envio
+        description: "Data em que a prestação de contas foi enviada no sistema OSInfo."
+        data_type: date
+        tests:
+          - not_null
+
+      - name: referencia_ano
+        description: "Ano da competência da prestação de contas da despesa."
+        data_type: int64
+
+      - name: referencia_mes
+        description: "Mês da competência da prestação de contas da despesa."
+        data_type: int64
+
+      - name: cod_organizacao
+        description: "Código identificador da Organização Social responsável pelo contrato."
+        data_type: string
+        quote: true
+
+      - name: organizacao_nome
+        description: "Razão social / nome fantasia da Organização Social gestora."
+        data_type: string
+        quote: true
+
+      - name: cod_unidade
+        description: "Código identificador da unidade executora do serviço / equipamento público."
+        data_type: string
+        quote: true
+
+      - name: unidade_nome
+        description: "Nome fantasia da unidade executora de saúde onde ocorreu a despesa."
+        data_type: string
+        quote: true
+
+      - name: id_contrato
+        description: "Identificador interno do contrato de gestão vinculado à despesa."
+        data_type: int64
+
+      - name: numero_contrato
+        description: "Número formal do contrato de gestão firmado com a Prefeitura."
+        data_type: string
+        quote: true
+
+      - name: periodo_vigencia_contrato
+        description: "Data final de vigência do contrato de gestão obtida a partir do texto original de vigência."
+        data_type: date
+
+      - name: secretaria_nome
+        description: "Nome da secretaria municipal contratante (ex.: Secretaria Municipal de Saúde)."
+        data_type: string
+        quote: true

@@ -1,6 +1,6 @@
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
-
-    {%- if target.name == "pr" -%}
+    {# TODO: apenas local, remover antes de ir para master! #}
+    {%- if target.name == "pr" or target.name == "dev_cgm_triagem_nf" -%}
 
         {{ node.name }}
 

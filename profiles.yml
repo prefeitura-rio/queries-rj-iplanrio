@@ -8,8 +8,20 @@ iplan:
       keyfile: /tmp/credentials.json
       location: US
       method: service-account
+      # method: oauth -> alterar para rodar local
       priority: interactive
       project: rj-iplanrio-dev
+      threads: 8
+      type: bigquery
+    # TODO: apenas local, remover antes de ir para master!
+    dev_cgm_triagem_nf:
+      dataset: dev_fernanda
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: rj-agent-cgm-triagem-nf
       threads: 8
       type: bigquery
     prod:
