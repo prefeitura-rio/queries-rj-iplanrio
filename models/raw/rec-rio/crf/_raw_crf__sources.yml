@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: brutos_crf
+    database: rj-iplanrio
+    schema: brutos_crf_staging
+    tables:
+      - name: periodos_simples
+      - name: periodos_mei
+      - name: eventos_simples
+      - name: eventos_mei
