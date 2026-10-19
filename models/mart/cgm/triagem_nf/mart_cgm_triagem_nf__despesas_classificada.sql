@@ -68,7 +68,7 @@ WITH
       (od.data_emissao <> epd.data_emissao_extracao_ia)
         AS apontamento_emissao_divergente_indicador,
 
-      (od.valor_documento <> epd.valor_documento_extracao_ia)
+      (ABS(od.valor_documento - epd.valor_documento_extracao_ia) > 1.0) AS apontamento_valor_divergente_indicador
         AS apontamento_valor_divergente_indicador
     FROM od
     LEFT JOIN epd ON epd.id_documento = od.id_documento
@@ -76,7 +76,7 @@ WITH
       ON
         canc.nome_arquivo = od.nome_arquivo
         AND canc.cnpj_modelo = epd.cnpj_cpf_extracao_ia
-        AND canc.numero_nf_modelo = epd.numero_documento_extracao_ia_norm
+        AND canc.numero_nf_modelo = SAFE_CAST(epd.numero_documento_extracao_ia_norm AS INT64
     LEFT JOIN bc
       ON epd.cnpj_cpf_extracao_ia = bc.cnpj
   ),
@@ -152,9 +152,8 @@ SELECT
   ap.apontamento_emissao_divergente_indicador,
   ap.apontamento_valor_divergente_indicador,
   ep.data_processamento AS data_processamento,
-  ep.current_timestamp() AS data_geracao,
-  ep.timestamp_processamento,
-  ep.versao_pipeline
+  CURRENT_TIMESTAMP() AS data_geracao,
+  ep.timestamp_processamento
 FROM od
 LEFT JOIN ep
   ON od.nome_arquivo = ep.nome_arquivo
