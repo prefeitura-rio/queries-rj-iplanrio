@@ -7,8 +7,8 @@
 
 SELECT
     SAFE_CAST(cnpj AS STRING) AS cnpj,
-    SAFE_CAST(data_inicio AS STRING) AS data_inicio,
-    SAFE_CAST(data_fim AS STRING) AS data_fim,
+    SAFE.PARSE_DATE("%Y%m%d",data_inicio) AS data_inicio,
+    SAFE.PARSE_DATE("%Y%m%d",data_fim) AS data_fim,
     SAFE_CAST(identificador_cancelamento AS STRING) AS identificador_cancelamento,
     SAFE_CAST(numero_opcao AS STRING) AS numero_opcao,
     SAFE_CAST(ano_particao AS INT64) AS ano_particao,
