@@ -1,0 +1,11 @@
+
+version: 2
+models:
+
+  - name: mart_nota_carioca__notas_nacionais_exigiveis_detalhes
+    columns:
+      - name: _bigquery_uid
+        description: ''
+        data_tests:
+          - unique:
+              name: mart_nota_carioca__notas_nacionais_exigiveis_detalhes__bigquery_uid__unique
