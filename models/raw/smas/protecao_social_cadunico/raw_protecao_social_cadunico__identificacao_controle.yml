@@ -4,163 +4,192 @@ models :
     description: Table identificacao_controle from number 01
     columns:
       - name: id_prefeitura
-        description: 'Chave única de identificação da Prefeitura | version: 0628'
+        description: 'Chave única de identificação da Prefeitura | version: 0629'
       - name: id_condicao_cadastro
         description: 'Código de condição do cadastro da família: 1- ATUALIZADO 2-
           DESATUALIZADO 3- POR CONFIRMAÇÃO 4- NÃO SE APLICA 5– POR CONFIRMAÇÃO DO
-          USUÁRIO 6– PELO RF AO CONFIRMAR O INDICATIVO DE ÓBITO 7- ATUALIZADO POR
-          INTEGRACAO DE DADOS 8- DESATUALIZADO APÓS INTEGRAÇÃO DE DADOS | version:
-          0628'
+          USUÁRIO 6– PELO RF VIA APLICATIVO DO CIDADÃO 7- ATUALIZADO POR INTEGRACAO
+          DE DADOS 8- DESATUALIZADO APÓS INTEGRAÇÃO DE DADOS | version: 0629'
       - name: condicao_cadastro
         description: 'Código de condição do cadastro da família: 1- ATUALIZADO 2-
           DESATUALIZADO 3- POR CONFIRMAÇÃO 4- NÃO SE APLICA 5– POR CONFIRMAÇÃO DO
-          USUÁRIO 6– PELO RF AO CONFIRMAR O INDICATIVO DE ÓBITO 7- ATUALIZADO POR
-          INTEGRACAO DE DADOS 8- DESATUALIZADO APÓS INTEGRAÇÃO DE DADOS | version:
-          0628'
+          USUÁRIO 6– PELO RF VIA APLICATIVO DO CIDADÃO 7- ATUALIZADO POR INTEGRACAO
+          DE DADOS 8- DESATUALIZADO APÓS INTEGRAÇÃO DE DADOS | version: 0629'
       - name: id_estado_cadastro
         description: 'Estado cadastral da família: 1- EM CADASTRAMENTO 2- SEM REGISTRO
-          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0628'
+          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0629'
       - name: estado_cadastro
         description: 'Estado cadastral da família: 1- EM CADASTRAMENTO 2- SEM REGISTRO
-          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0628'
+          CIVIL 3- CADASTRADO 4- EXCLUIDO | version: 0629'
       - name: id_familia
-        description: 'Código Familiar | version: 0628'
+        description: 'Código Familiar | version: 0629'
       - name: id_forma_coleta
         description: 'Forma de coleta: 0-Informação migrada como inexistente, 1-Fora
-          do domicílio 2-Em domicílio 3-Impossibilidade em domicílio | version: 0628'
+          do domicílio 2-Em domicílio 3-Impossibilidade em domicílio | version: 0629'
       - name: forma_coleta
         description: 'Forma de coleta: 0-Informação migrada como inexistente, 1-Fora
-          do domicílio 2-Em domicílio 3-Impossibilidade em domicílio | version: 0628'
+          do domicílio 2-Em domicílio 3-Impossibilidade em domicílio | version: 0629'
       - name: id_distrito
-        description: 'Distrito relacionado ao código IBGE | version: 0628'
+        description: 'Distrito relacionado ao código IBGE | version: 0629'
       - name: id_setor_censitario
-        description: 'Setor Censitário relacionado ao código IBGE | version: 0628'
+        description: 'Setor Censitário relacionado ao código IBGE | version: 0629'
       - name: id_subdistrito
-        description: 'Subdistrito relacionado ao código IBGE | version: 0628'
+        description: 'Subdistrito relacionado ao código IBGE | version: 0629'
       - name: id_modalidade
-        description: 'Modalidade da operação: 1-Inclusão, 2-Alteração | version: 0628'
+        description: 'Modalidade da operação: 1-Inclusão, 2-Alteração | version: 0629'
+      - name: id_motivo_atualizacao_cidadao
+        description: 'Atualização cadastral via APP 1-Exclusão por indicativo de óbito
+          2-Inclusão por indicativo de nascimento | version: 0629'
+      - name: motivo_atualizacao_cidadao
+        description: 'Atualização cadastral via APP 1-Exclusão por indicativo de óbito
+          2-Inclusão por indicativo de nascimento | version: 0629'
       - name: id_mot_impossib_visita_fam
         description: "Motivo da impossibilidade de visita domiciliar\nPreenchido somente
           se a \"Forma de Coleta\" selecionada for \"3-Impossibilidade em domicílio\"\
           \ 1 – Área de violência 2 – Calamidade/emergência/desastre 3-Área de difícil
-          acesso 4-Pessoa em programa de proteção ou medida protetiva | version: 0628"
+          acesso 4-Pessoa em programa de proteção ou medida protetiva | version: 0629"
       - name: mot_impossib_visita_fam
         description: "Motivo da impossibilidade de visita domiciliar\nPreenchido somente
           se a \"Forma de Coleta\" selecionada for \"3-Impossibilidade em domicílio\"\
           \ 1 – Área de violência 2 – Calamidade/emergência/desastre 3-Área de difícil
-          acesso 4-Pessoa em programa de proteção ou medida protetiva | version: 0628"
+          acesso 4-Pessoa em programa de proteção ou medida protetiva | version: 0629"
       - name: id_uf
         description: 'Primeira parte do código IBGE: numérico de dois algarismos descrevendo
-          sua UF | version: 0628'
+          sua UF | version: 0629'
       - name: id_municipio
-        description: 'Segunda parte do código IBGE | version: 0628'
+        description: 'Segunda parte do código IBGE | version: 0629'
       - name: id_familia_origem
         description: 'CÓDIGO DA FAMÍLIA DE ORIGEM ANTES DA TRANFERÊNCIA | version:
-          0628'
+          0629'
       - name: id_prefeitura_origem
         description: 'CÓDIGO DA PREFEITURA DE ORIGEM ANTES DA TRANFERÊNCIA | version:
-          0628'
+          0629'
       - name: id_unidade_territorial
         description: 'Código da Unidade Territorial Local, campo numérico formato
-          NNNNN | version: 0628'
+          NNNNN | version: 0629'
       - name: cpf_usu_alt_fam
         description: 'CPF do usuário que realizou a inclusão ou última alteração da
-          família | version: 0628'
+          família | version: 0629'
       - name: data_alteracao
         description: 'Data da última alteração da família no formato DDMMAAAA | version:
-          0628'
+          0629'
+      - name: data_atualizacao_cidadao
+        description: 'Data de atualização da família pelo CIDADAO | version: 0629'
       - name: data_atualizacao
         description: 'Data da atualização da família no formato DDMMAAAA dos dados
-          considerados sensíveis a manutenção do cadastro | version: 0628'
+          considerados sensíveis a manutenção do cadastro | version: 0629'
+      - name: data_atualizacao_gestao_municipal
+        description: 'Data de atualização da família pelo município | version: 0629'
+      - name: data_atualizacao_integracao
+        description: 'Data de atualização da família por Integração de Dados | version:
+          0629'
       - name: data_catrastro
         description: 'Data do cadastramento da Família, formato DDMMAAAA | version:
-          0628'
+          0629'
       - name: complemento_adicional
-        description: 'Complemento adicional do endereço | version: 0628'
+        description: 'Complemento adicional do endereço | version: 0629'
       - name: complemento
-        description: 'Complemento do número do endereço | version: 0628'
+        description: 'Complemento do número do endereço | version: 0629'
       - name: data_limite_catastro_atual
         description: 'Data Limite para atualização do cadastro da família | version:
-          0628'
+          0629'
       - name: data_entrevista
-        description: 'Data da entrevista no formato DDMMAAAA | version: 0628'
+        description: 'Data da entrevista no formato DDMMAAAA | version: 0629'
       - name: data_integracao_escolaridade
         description: 'Data de integração referente a data de processamento de arquivo
-          de escolaridade no formato DDMMAAAA | version: 0628'
+          de escolaridade no formato DDMMAAAA | version: 0629'
       - name: data_integracao_familia
         description: 'Data de integração referente a data de processamento de arquivo
-          de renda origem CNIS no formato DDMMAAAA | version: 0628'
+          de renda origem CNIS no formato DDMMAAAA | version: 0629'
       - name: filler
-        description: 'Espaços em branco. | version: 0628'
+        description: 'Espaços em branco. | version: 0629'
       - name: id_alterada_v7
         description: '0-Família não atualizada na V7 1-Família atualizada na V7 2-Família
-          oriunda da V7 | version: 0628'
+          oriunda da V7 | version: 0629'
       - name: alterada_v7
         description: '0-Família não atualizada na V7 1-Família atualizada na V7 2-Família
-          oriunda da V7 | version: 0628'
+          oriunda da V7 | version: 0629'
+      - name: id_cadastro_familia_finalizado
+        description: "0-Cadastro não finalizado (Em cadastramento raiz, o cadastro
+          foi interrompido antes de finalizar) 1-Cadastro finalizado (família está
+          “Em cadastramento” exclusivamente pq o RF não tem CPF no Cadastro) Indica
+          se o cadastro da família foi finalizado pelo operador\nOu seja, se todos
+          os campos obrigatórios foram preenchidos e o operador concluiu o cadastro:
+          OBS 1: PARA PROCESSOS DE QUALIFICAÇÃO-UMA FAMÍLIA “EM CADASTRAMENTO _1-CADASTRO
+          FINALIZADO” NUNCA PODERÁ SER EXCLUÍDA FISICAMENTE\nOBS 2: VAMOS AVALIAR
+          SE NO FUTURO CRIAREMOS UM MOTIVO DE EXCLUSÃO ESPECÍFICO. | version: 0629"
+      - name: cadastro_familia_finalizado
+        description: "0-Cadastro não finalizado (Em cadastramento raiz, o cadastro
+          foi interrompido antes de finalizar) 1-Cadastro finalizado (família está
+          “Em cadastramento” exclusivamente pq o RF não tem CPF no Cadastro) Indica
+          se o cadastro da família foi finalizado pelo operador\nOu seja, se todos
+          os campos obrigatórios foram preenchidos e o operador concluiu o cadastro:
+          OBS 1: PARA PROCESSOS DE QUALIFICAÇÃO-UMA FAMÍLIA “EM CADASTRAMENTO _1-CADASTRO
+          FINALIZADO” NUNCA PODERÁ SER EXCLUÍDA FISICAMENTE\nOBS 2: VAMOS AVALIAR
+          SE NO FUTURO CRIAREMOS UM MOTIVO DE EXCLUSÃO ESPECÍFICO. | version: 0629"
       - name: id_cadastro_valido
-        description: 'Cadastro válido: 1- Sim 2- Não 3- Não se Aplica | version: 0628'
+        description: 'Cadastro válido: 1- Sim 2- Não 3- Não se Aplica | version: 0629'
       - name: cadastro_valido
-        description: 'Cadastro válido: 1- Sim 2- Não 3- Não se Aplica | version: 0628'
+        description: 'Cadastro válido: 1- Sim 2- Não 3- Não se Aplica | version: 0629'
       - name: formulario_0
         description: "O conteúdo deste campo é 1 se a Opção '0-Principal' for marcada
-          no formulário, caso contrário o conteúdo é 0 | version: 0628"
+          no formulário, caso contrário o conteúdo é 0 | version: 0629"
       - name: formulario_1
         description: "O conteúdo deste campo é 1 se a Opção '1-Avulso 1' for marcada
-          no formulário, caso contrário o conteúdo é 0 | version: 0628"
+          no formulário, caso contrário o conteúdo é 0 | version: 0629"
       - name: formulario_2
         description: "O conteúdo deste campo é 1 se a Opção '2-Avulso 2' for marcada
-          no formulário, caso contrário o conteúdo é 0 | version: 0628"
+          no formulário, caso contrário o conteúdo é 0 | version: 0629"
       - name: formulario_suplementar_1
         description: 'O conteúdo deste campo é 1 se a opção 3-Formulário Suplementar
           1 for marcada no formulário e o código do form suplementar 1 estiver transcrito
-          no campo textual relacionado, caso contrário o conteúdo é 0 | version: 0628'
+          no campo textual relacionado, caso contrário o conteúdo é 0 | version: 0629'
       - name: formulario_suplementar_2
         description: "O conteúdo deste campo é 1 se na Opção '3-Suplementar(es) nº(s)'
           for marcada no formulário e o código do form Suplementar 2 estiver transcrito
-          no campo textual relacionado, caso contrário o conteúdo é 0 | version: 0628"
+          no campo textual relacionado, caso contrário o conteúdo é 0 | version: 0629"
       - name: formulario_suplementar_3
         description: "O conteúdo deste campo é 1 se na Opção '1.09 – Formulários Preenchidos’
           for marcada a opção 5 – Formulário Suplementar 3, caso contrário o conteúdo
-          é 0 | version: 0628"
+          é 0 | version: 0629"
       - name: id_trabalho_infantil
-        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0628'
+        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0629'
       - name: trabalho_infantil
-        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0628'
+        description: 'Trabalho infantil na família: 1-Sim, 2-Não | version: 0629'
       - name: entrevistador
-        description: 'Nome do entrevistador | version: 0628'
+        description: 'Nome do entrevistador | version: 0629'
       - name: localidade
-        description: 'Nome da localidade | version: 0628'
+        description: 'Nome da localidade | version: 0629'
       - name: logradouro
-        description: 'Nome do logradouro | version: 0628'
+        description: 'Nome do logradouro | version: 0629'
       - name: tipo_logradouro
-        description: 'Típo de logradouro | version: 0628'
+        description: 'Típo de logradouro | version: 0629'
       - name: titulo_logradouro
-        description: 'Título do logradouro | version: 0628'
+        description: 'Título do logradouro | version: 0629'
       - name: unidade_territorial
-        description: 'Nome da Unidade Territorial Local | version: 0628'
+        description: 'Nome da Unidade Territorial Local | version: 0629'
       - name: origem_cadastro
         description: "Valor contendo o domínio da origem\nAtualmente temos as origens:
-          01 – Online\n02 – APP\n03-Novo Portal | version: 0628"
+          01 – Online\n02 – APP\n03-Novo Portal | version: 0629"
       - name: cep
-        description: 'CEP do endereço, formato 99999999 | version: 0628'
+        description: 'CEP do endereço, formato 99999999 | version: 0629'
       - name: cpf_entrevistador
         description: 'CPF do entrevistador, campo numérico no formato NNNNNNNNNNN
-          | version: 0628'
+          | version: 0629'
       - name: numero_logradouro
-        description: 'Número do endereço | version: 0628'
+        description: 'Número do endereço | version: 0629'
       - name: numero_registro_arquivo
-        description: '01 | version: 0628'
+        description: '01 | version: 0629'
       - name: quantidade_pes_calc_rnd
         description: 'Quantidade de pessoas para cálculo da renda de acordo com as
-          regras do cadastro | version: 0628'
+          regras do cadastro | version: 0629'
       - name: observacoes_entrevistador
-        description: 'Observações apontadas pelo entrevistador | version: 0628'
+        description: 'Observações apontadas pelo entrevistador | version: 0629'
       - name: refencia_logradouro
-        description: 'Referência para localização do endereço | version: 0628'
+        description: 'Referência para localização do endereço | version: 0629'
       - name: valor_renda_media_original
         description: 'Valor da renda média (per capita) da família, formato NNNNNNNNN
-          | version: 0628'
+          | version: 0629'
       - name: valor_renda_media
         description: 'Valor da renda média (per capita) da família, formato NNNNNNNNN
-          | version: 0628'
+          | version: 0629'
