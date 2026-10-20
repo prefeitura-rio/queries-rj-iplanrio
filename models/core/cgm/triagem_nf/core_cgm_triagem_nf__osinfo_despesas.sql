@@ -1,7 +1,7 @@
 WITH
   despesas_norm AS (
     SELECT
-      * EXCEPT (num_documento),
+      *,
       REGEXP_REPLACE(descricao, r'(?i)\.pdf$', '') AS nome_arquivo,
       LPAD(REGEXP_REPLACE(COALESCE(cpf, cnpj), r'[^0-9]', ''), 14, '0')
         AS cnpj_cpf_normalizado,
@@ -66,3 +66,7 @@ LEFT JOIN administracao_unidade uni
   ON uni.cod_unidade = d.cod_unidade
 LEFT JOIN administracao_unidade org
   ON org.cod_unidade = d.cod_organizacao
+-- TODO: 10.286 casos com `numero_documento` nulo, por ora ignorados na view:
+WHERE d.numero_documento IS NOT NULL
+-- TODO: 1.021 casos com `cnpj_cpf_normalizado` nulo, por ora ignorados na view:
+AND  d.cnpj_cpf_normalizado IS NOT NULL

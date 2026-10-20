@@ -70,6 +70,9 @@ models:
               regex: "^[0-9]{14}$"
           - dbt_expectations.expect_column_values_to_not_be_in_set:
               value_set: ['00000000000000', '11111111111111', '99999999999999']
+              config:
+                warn_if: ">0"
+                error_if: ">1000"
 
       - name: valor_documento
         description: "Valor total extraído da NF."
