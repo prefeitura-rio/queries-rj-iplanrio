@@ -1,0 +1,101 @@
+version: 2
+
+unit_tests:
+  - name: ut_despesas_classificada_resultado_por_extracao
+    description: |
+      `NF Sem Match` resulta em 'Não avaliado' e `NF Não Encontrada` resulta em 'Grave',
+      independentemente de qualquer outra regra.
+    model: mart_cgm_triagem_nf__despesas_classificada
+    given:
+      - input: ref('core_cgm_triagem_nf__osinfo_despesas')
+        rows:
+          - {id_documento: 1, nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1}
+          - {id_documento: 2, nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1}
+      - input: ref('core_cgm_triagem_nf__extracao_pagina')
+        rows:
+          - {nome_arquivo: a.pdf}
+      - input: ref('core_cgm_triagem_nf__extracao_ia_match')
+        rows:
+          - {id_documento: 1, resultado_extracao_ia: NF Sem Match}
+          - {id_documento: 2, resultado_extracao_ia: NF Não Encontrada}
+      - input: ref('core_cgm_triagem_nf__nf_cancelamento')
+        rows: []
+      - input: ref('core_cgm_triagem_nf__bcadastro_cnpj')
+        rows: []
+    expect:
+      rows:
+        - {id_documento: 1, apontamento_resultado: Não avaliado}
+        - {id_documento: 2, apontamento_resultado: Grave}
+
+  - name: ut_despesas_classificada_regras_apontamento
+    description: |
+      Regras de apontamento para despesas com `NF Encontrada`:
+      limites numéricos, condições da duplicidade, cancelamento, abertura do CNPJ,
+      divergências leves e precedência de Grave sobre Leve.
+
+      Cenários (id_documento):
+      3  - valor pago > valor da NF + 1 em despesa isolada: excedente, sem duplicidade
+      4  - valor pago = valor da NF + 1 (limite): não é excedente
+      5  - duplicidade: excedente e mais de uma despesa no grupo (indep. de unidade/organização)
+      6  - mesmo de 5: excedente e mais de uma despesa no grupo (unidade = organização): com duplicidade
+      7  - NF cancelada, sem excedente, grupo isolado: cancelamento gera Grave
+      8  - emissão anterior ao início de atividade do CNPJ
+      9  - CNPJ sem cadastro: indicador de abertura NULL não gera Grave
+      10 - apenas divergência de valor: Leve
+      11 - apenas divergência de data de emissão: Leve
+      12 - tudo coerente: Descartado
+    model: mart_cgm_triagem_nf__despesas_classificada
+    given:
+      - input: ref('core_cgm_triagem_nf__osinfo_despesas')
+        rows:
+          - {id_documento: 3,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 2, data_emissao: '2024-01-10', valor_documento: 100}
+          - {id_documento: 4,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 2, data_emissao: '2024-01-10', valor_documento: 100}
+          - {id_documento: 5,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 2, data_emissao: '2024-01-10', valor_documento: 100}
+          - {id_documento: 6,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-10', valor_documento: 100}
+          - {id_documento: 7,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-10', valor_documento: 90}
+          - {id_documento: 8,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-10', valor_documento: 100}
+          - {id_documento: 9,  nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-10', valor_documento: 100}
+          - {id_documento: 10, nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-10', valor_documento: 90}
+          - {id_documento: 11, nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-11', valor_documento: 100}
+          - {id_documento: 12, nome_arquivo: a.pdf, cod_organizacao: 1, cod_unidade: 1, data_emissao: '2024-01-10', valor_documento: 100}
+      - input: ref('core_cgm_triagem_nf__extracao_pagina')
+        rows:
+          - {nome_arquivo: a.pdf}
+      - input: ref('core_cgm_triagem_nf__extracao_ia_match')
+        rows:
+          - {id_documento: 3,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c3,  numero_documento_extracao_ia_norm: 3,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 101.01, ids_grupo_nf: '3'}
+          - {id_documento: 4,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c4,  numero_documento_extracao_ia_norm: 4,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 101,    ids_grupo_nf: '4'}
+          - {id_documento: 5,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c5,  numero_documento_extracao_ia_norm: 5,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 200,    ids_grupo_nf: '5, 6'}
+          - {id_documento: 6,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c6,  numero_documento_extracao_ia_norm: 6,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 200,    ids_grupo_nf: '6, 7'}
+          - {id_documento: 7,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c7,  numero_documento_extracao_ia_norm: 7,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 100,    ids_grupo_nf: '7'}
+          - {id_documento: 8,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c8,  numero_documento_extracao_ia_norm: 8,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 100,    ids_grupo_nf: '8'}
+          - {id_documento: 9,  resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c9,  numero_documento_extracao_ia_norm: 9,  valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 100,    ids_grupo_nf: '9'}
+          - {id_documento: 10, resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c10, numero_documento_extracao_ia_norm: 10, valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 100,    ids_grupo_nf: '10'}
+          - {id_documento: 11, resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c11, numero_documento_extracao_ia_norm: 11, valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 100,    ids_grupo_nf: '11'}
+          - {id_documento: 12, resultado_extracao_ia: NF Encontrada, cnpj_cpf_extracao_ia: c12, numero_documento_extracao_ia_norm: 12, valor_documento_extracao_ia: 100, data_emissao_extracao_ia: '2024-01-10', valor_pago_total_documento: 100,    ids_grupo_nf: '12'}
+      - input: ref('core_cgm_triagem_nf__nf_cancelamento')
+        rows:
+          - {nome_arquivo: a.pdf, cnpj_modelo: c7, numero_nf_modelo: 7, cancelada: true}
+      - input: ref('core_cgm_triagem_nf__bcadastro_cnpj')
+        rows:
+          - {cnpj: c3,  inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c4,  inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c5,  inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c6,  inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c7,  inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c8,  inicio_atividade_data: '2024-02-01'}
+          - {cnpj: c10, inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c11, inicio_atividade_data: '2000-01-01'}
+          - {cnpj: c12, inicio_atividade_data: '2000-01-01'}
+    expect:
+      rows:
+        - {id_documento: 3,  apontamento_resultado: Grave,      apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: true,  apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 4,  apontamento_resultado: Descartado, apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 5,  apontamento_resultado: Grave,      apontamento_duplicidade_indicador: true,  apontamento_valor_pago_excedente_indicador: true,  apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 6,  apontamento_resultado: Grave,      apontamento_duplicidade_indicador: true,  apontamento_valor_pago_excedente_indicador: true,  apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 7,  apontamento_resultado: Grave,      apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 8,  apontamento_resultado: Grave,      apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: true}
+        - {id_documento: 9,  apontamento_resultado: Descartado, apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: null}
+        - {id_documento: 10, apontamento_resultado: Leve,       apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 11, apontamento_resultado: Leve,       apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false}
+        - {id_documento: 12, apontamento_resultado: Descartado, apontamento_duplicidade_indicador: false, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false}
