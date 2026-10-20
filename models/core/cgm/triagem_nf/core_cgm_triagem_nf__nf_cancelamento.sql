@@ -5,7 +5,7 @@ WITH
       cnpj_modelo_normalizado AS cnpj_modelo,
       numero_nf_modelo_norm AS numero_nf_modelo
     FROM {{ ref("core_cgm_triagem_nf__extracao_pagina") }}
-    WHERE numero_documento IS NOT NULL AND cnpj_emitente IS NOT NULL
+    WHERE numero_nf_modelo_norm IS NOT NULL AND cnpj_emitente IS NOT NULL
   ),
 
   smf_nf_substituta_norm AS (
