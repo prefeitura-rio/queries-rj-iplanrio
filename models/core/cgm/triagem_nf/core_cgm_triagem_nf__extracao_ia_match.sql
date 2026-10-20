@@ -136,7 +136,7 @@ SELECT
   m.rank_declaracao,
   m.ids_grupo_nf
 FROM {{ ref("core_cgm_triagem_nf__osinfo_despesas") }} od
-LEFT JOIN match_por_declaracao_valor mval ON mval.id_documento = od.id_documento
+INNER JOIN match_por_declaracao_valor mval ON mval.id_documento = od.id_documento
 LEFT JOIN nf_extraida_sem_match_valor s ON s.nome_arquivo = od.nome_arquivo
 LEFT JOIN paginas_com_match_valor_por_arquivo c ON c.nome_arquivo = od.nome_arquivo
 LEFT JOIN extracao_por_documento epd ON epd.id_documento = od.id_documento
