@@ -23,4 +23,3 @@ from ids_referenciados r
 left join despesas_duplicadas alvo
     on r.id_relacionado = alvo.id_documento
 where alvo.id_documento is null
-   or alvo.apontamento_duplicidade_indicador is not true
