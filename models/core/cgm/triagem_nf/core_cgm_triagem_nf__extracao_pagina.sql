@@ -31,7 +31,7 @@ SELECT
   SAFE_CAST(REGEXP_REPLACE(CAST(numero_documento AS STRING), r'[^0-9]', '') AS INT64)
     AS numero_nf_modelo_norm
 
-FROM `rj-agent-cgm-triagem-nf.brutos_pipeline_extracao_staging.extracao_pagina`
+FROM {{ source("brutos_pipeline_extracao_staging", "extracao_pagina") }}
 WHERE COALESCE(pipeline_status, 'ok') = 'ok'
 
 -- 6. Deduplicação defensiva sem TRIM na coluna numérica

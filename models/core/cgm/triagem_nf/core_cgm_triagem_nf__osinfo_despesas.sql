@@ -12,7 +12,7 @@ WITH
       num_documento AS numero_documento,
       SAFE_CAST(REGEXP_REPLACE(CAST(num_documento AS STRING), r'[^0-9]', '') AS INT64)
         AS numero_documento_norm
-    FROM `rj-cvl.adm_contrato_gestao.despesas`
+    FROM {{ source("adm_contrato_gestao", "despesas") }}
     WHERE
       id_tipo_documento = "1"
       AND data_envio BETWEEN DATE("2021-11-01") AND DATE("2026-08-31")
@@ -46,14 +46,14 @@ WITH
                 '-', '/'))
         ELSE NULL
         END AS periodo_vigencia_contrato
-    FROM `rj-cvl.adm_contrato_gestao.secretaria` s
-    LEFT JOIN `rj-cvl.adm_contrato_gestao.contrato` c
+    FROM {{ source("adm_contrato_gestao", "secretaria") }} s
+    LEFT JOIN {{ source("adm_contrato_gestao", "contrato") }} c
       USING (id_secretaria)
   ),
 
   administracao_unidade AS (
     SELECT cod_unidade, nome_fantasia
-    FROM `rj-cvl.adm_contrato_gestao.administracao_unidade`
+    FROM {{ source("adm_contrato_gestao", "administracao_unidade") }}
   )
 
 SELECT
