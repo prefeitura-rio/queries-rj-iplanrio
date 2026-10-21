@@ -10,7 +10,6 @@ WITH
     FROM {{ ref("core_cgm_triagem_nf__osinfo_despesas") }} od
     INNER JOIN {{ ref("core_cgm_triagem_nf__extracao_pagina") }} p
       ON p.nome_arquivo = od.nome_arquivo
-    WHERE p.numero_documento IS NOT NULL AND p.cnpj_emitente IS NOT NULL
     GROUP BY od.id_documento
   ),
 
