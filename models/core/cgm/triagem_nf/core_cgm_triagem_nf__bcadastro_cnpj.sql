@@ -1,3 +1,7 @@
+{{
+  config(alias="bcadastro_cnpj")
+}}
+
 WITH
   cnpjs_alvo AS (
     SELECT DISTINCT

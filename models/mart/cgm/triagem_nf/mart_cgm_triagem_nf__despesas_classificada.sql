@@ -1,3 +1,7 @@
+{{
+  config(alias="despesas_classificada")
+}}
+
 WITH
   ep AS (
     SELECT

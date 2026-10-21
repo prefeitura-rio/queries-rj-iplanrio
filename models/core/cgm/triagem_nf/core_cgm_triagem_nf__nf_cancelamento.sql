@@ -1,3 +1,7 @@
+{{
+  config(alias="nf_cancelamento")
+}}
+
 WITH
   extracao_chave AS (
     SELECT DISTINCT

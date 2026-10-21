@@ -1,3 +1,7 @@
+{{
+  config(alias="osinfo_despesas")
+}}
+
 WITH
   despesas_norm AS (
     SELECT

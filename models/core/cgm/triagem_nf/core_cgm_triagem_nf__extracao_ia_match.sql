@@ -1,3 +1,7 @@
+{{
+  config(alias="extracao_ia_match")
+}}
+
 WITH
   despesas_base AS (
     SELECT

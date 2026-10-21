@@ -1,3 +1,7 @@
+{{
+  config(alias="extracao_ia_pagina")
+}}
+
 SELECT
   * EXCEPT(
     pagina,
