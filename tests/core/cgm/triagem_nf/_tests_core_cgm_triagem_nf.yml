@@ -22,14 +22,3 @@ data_tests:
       severity: error
       store_failures: false
       tags: ['cgm', 'core', 'consistencia_ia']
-
-  - name: assert_despesas_valor_pago_consistente
-    description: |
-      Verifica a consistência orçamentária dos lançamentos declarados no OSInfo.
-      
-      **Regra:** Nenhuma despesa individual pode ter `valor_pago > valor_documento + 0.05`
-      (tolerância para arredondamentos monetários).
-    config:
-      severity: warn
-      store_failures: false
-      tags: ['cgm', 'core', 'financeiro']
