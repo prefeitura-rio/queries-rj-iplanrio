@@ -20,7 +20,7 @@ models:
     config:
       schema: cgm_despesas_nf
       alias: osinfo_despesas
-      materialized: view
+      materialized: table
 
     columns:
       - name: id_documento
