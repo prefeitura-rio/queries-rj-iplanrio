@@ -34,3 +34,12 @@ sources:
         description: "Contratos de gestão"
       - name: administracao_unidade
         description: "Unidades e organizações da administração"
+
+  - name: brutos_bcadastro
+    database: rj-iplanrio
+    schema: brutos_bcadastro
+    tables:
+      - name: cnpj
+        description: "Cadastro de CNPJs (BCadastro)"
+      - name: dominio
+        description: "Tabela de domínios do BCadastro (ex.: atividade econômica)"

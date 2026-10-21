@@ -20,7 +20,7 @@ WITH
     SELECT
       LPAD(CAST(id AS STRING), 7, '0') AS id,
       descricao
-    FROM `rj-iplanrio.brutos_bcadastro.dominio`
+    FROM {{ source("brutos_bcadastro", "dominio") }}
     WHERE column = 'atividade_economica' AND source = 'cnpj'
   )
 
@@ -34,7 +34,7 @@ SELECT
   c.inicio_atividade_data,
   c.situacao_cadastral,
   c.situacao_especial
-FROM `rj-iplanrio.brutos_bcadastro.cnpj` c
+FROM {{ source("brutos_bcadastro", "cnpj") }} c
 INNER JOIN cnpjs_alvo t
   ON c.cnpj = t.cnpj_norm
 LEFT JOIN dominio_atividade d
