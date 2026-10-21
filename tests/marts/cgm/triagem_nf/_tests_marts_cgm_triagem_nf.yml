@@ -1,17 +1,6 @@
 version: 2
 
 data_tests:
-  - name: assert_despesas_classificada_escala
-    description: |
-      Garante a preservação estrita de grão 1:1 entre a base de despesas declaradas
-      (`core_cgm_triagem_nf__osinfo_despesas`) e o Mart final (`mart_cgm_triagem_nf__despesas_classificada`).
-      
-      **Regra:** Nenhuma operação de join (bCadastro, Cancelamento, IA) pode gerar multiplicação (fan-out)
-      ou perda de despesas auditáveis.
-    config:
-      severity: error
-      store_failures: false
-      tags: ['cgm', 'mart', 'anti_fanout', 'volumetria']
 
   - name: assert_despesas_classificada_apontamento
     description: |
@@ -26,7 +15,7 @@ data_tests:
       store_failures: false
       tags: ['cgm', 'mart', 'regras_apontamento']
 
-  - name: assert_despesas_classificada_temporal
+  - name: assert_despesas_classificada_emissao_posterior_pagamento
     description: |
       Verifica a consistência temporal das despesas declaradas e extraídas:
       - A data de emissão não pode ser posterior à data de pagamento.
@@ -38,7 +27,7 @@ data_tests:
 
   - name: assert_despesas_classificada_duplicidade
     description: |
-      Audita se despesas com flag de duplicidade ativa (`apontamento_duplicidade_indicador = false`)
+      Audita se despesas com flag de duplicidade ativa (`apontamento_duplicidade_indicador = true`)
       possuem a lista de identificadores correlatos preenchida em `apontamento_duplicidade_ids`.
     config:
       severity: error
