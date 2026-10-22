@@ -37,7 +37,7 @@ with
     final as (
         select *
         from joined
-        where ano = '2026' and coc in ('1', '2') and abs(freq_sga - freq_lake) >= 0.01
+        where ano = '2026' and coc in ('1', '2') and abs(freq_sga - freq_lake) >= 0.1
     )
 
 select *
