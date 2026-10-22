@@ -40,7 +40,18 @@ with
         select *
         from joined
         where ano = '2026' and coc in ('1', '2') and freq_lake is null
+    ),
+
+    -- Correção temporária: remoção dos alunos EJA para tratamento;
+    vw_bi_aluno as (
+        select alu_id as id_aluno, Grupamento as grupamento
+        from {{ ref('gestao_escolar__vw_bi_aluno') }} alu
     )
 
-select *
-from final
+    select f.*
+    from final f
+    left join vw_bi_aluno bia
+    on cast(f.alu_id as string) = cast(bia.id_aluno as string)
+    where grupamento not like 'EJA%' and grupamento not like 'PROEJA%'
+
+

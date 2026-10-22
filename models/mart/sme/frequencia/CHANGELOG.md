@@ -6,6 +6,39 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 ### 🔧 Correção
 
+#### Commit: `5d5de0c` - 22/10/2026
+**fix: corrige duplicação coc fechado + remove eja (temporário)**
+
+Correção da lógica de acumulação de frequência para evitar duplicatas entre COCs fechados e abertos, além de tratamento temporário de alunos EJA.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+
+**Mudanças aplicadas:**
+1. **Renomeação de CTE**
+   - `freq_coc_atual` → `frequencia_coc_aberto`
+   - Melhora na clareza e padronização de nomenclatura
+
+2. **Refatoração da CTE `frequencia_acumulada_dias_letivos`**
+   - Antes: UNION ALL direto entre `frequencia_cocs_fechados` e `frequencia_coc_aberto`
+   - Depois: Adicionado LEFT JOIN para filtrar apenas registros de `frequencia_coc_aberto` que NÃO existem em `frequencia_cocs_fechados`
+   - Chaves de junção: `alu_id`, `tpc_id`, `ano_calendario`
+   - Cláusula: `WHERE fcf.alu_id is null`
+   - Objetivo: Eliminar duplicatas entre períodos fechados e abertos
+
+3. **Inclusão de filtro temporário para EJA**
+   - Adicionada junção com `vw_bi_aluno` para filtrar alunos EJA
+   - Exclusão de registros onde `Grupamento LIKE 'EJA%'` ou `Grupamento LIKE 'PROEJA%'`
+   - Status: **TEMPORÁRIO** - Requer tratamento posterior para estes grupos
+
+**Impacto:**
+- Elimina duplicação de dados de frequência entre COCs fechados e abertos
+- Garante que cada aluno/tipo de calendário/ano é contado apenas uma vez
+- Melhora na integridade dos dados de frequência acumulada
+- **ATENÇÃO**: Alunos EJA estão sendo removidos temporariamente até novo tratamento
+
+### 🔧 Correção
+
 #### Commit: `284ccc3` + `d325b91` - 25/09/2026
 **fix: corrige cálculo de faltas abonadas considerando abono por dia**
 
