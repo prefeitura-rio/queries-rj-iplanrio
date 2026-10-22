@@ -32,7 +32,7 @@ with
             and cap.cap_datafim < current_date()  -- incluir filtro
     ),
 
-    freq_coc_atual as (
+    frequencia_coc_aberto as (
         -- 2ª Parte: Totais das aulas já realizadas no COC atual
         select
             alu_id,
@@ -93,8 +93,13 @@ with
         select *
         from frequencia_cocs_fechados
         union all
-        select *
-        from freq_coc_atual
+        select coc.*
+        from frequencia_coc_aberto coc
+        left join frequencia_cocs_fechados fcf
+            on coc.alu_id = fcf.alu_id
+            and coc.tpc_id = fcf.tpc_id
+            and coc.ano_calendario = fcf.ano_calendario
+        where fcf.alu_id is null
     ),
 
     final as (
@@ -125,8 +130,21 @@ with
         from frequencia_acumulada_dias_letivos
     ),
 
-    correcoes_manuais as (select distinct * from final where numero_aulas is not null)
+    correcoes_manuais as (select distinct * from final where numero_aulas is not null),
 
-select *
-from correcoes_manuais
-where ano_calendario >= 2024
+    correcao as (
+        select *
+        from correcoes_manuais
+        where ano_calendario >= 2024
+    ),
+    -- Correção temporária: remoção dos alunos EJA para tratamento;
+    vw_bi_aluno as (
+        select alu_id as id_aluno, Grupamento as grupamento
+        from {{ ref('gestao_escolar__vw_bi_aluno') }} alu
+    )
+
+select c.* 
+from correcao c
+left join vw_bi_aluno bia
+on cast(c.id_aluno as string) = cast(bia.id_aluno as string)
+where grupamento not like 'EJA%' and grupamento not like 'PROEJA%'
