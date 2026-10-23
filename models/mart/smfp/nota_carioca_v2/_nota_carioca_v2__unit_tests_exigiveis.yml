@@ -1,0 +1,47 @@
+version: 2
+
+# Unit tests do dbt (só em dev e pr; dbt_project.yml desliga os de prod): cada um fixa uma regra com poucas linhas e deixa as
+# entradas que a regra não usa vazias. Os casos de borda sobre as seeds ficam em tests/singular/nota_carioca_v2/.
+
+unit_tests:
+  - name: int_nc2__cenario__retida_sem_habilitacao_e_zero
+    description: >
+      R-06 e B-04: retida de contribuinte sem habilitação dá 0 (e não -1); ISS próprio sem habilitação dá -1, mas 4 e 5 vêm antes;
+      IF ativa com ISS próprio dá 1; Simples com regime 2 dá 0 e com regime 1 dá 3.
+    model: int_nc2__cenario
+    given:
+      - input: ref('int_nc2__config')
+        rows:
+          - {inicio_plano_b: "2026-05-01"}
+      - input: ref('int_nc2__papeis')
+        rows:
+          - {chave_acesso: RETIDA_SEM_HABILITACAO, nota_nacional: N1, tipo_retencao_issqn: 2, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "99000000000001"}
+          - {chave_acesso: PROPRIO_SEM_HABILITACAO, nota_nacional: N2, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "99000000000002"}
+          - {chave_acesso: PLANO_C_SEM_HABILITACAO, nota_nacional: N3, tipo_retencao_issqn: 1, data_competencia_servico: "2026-04-30", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "99000000000002"}
+          - {chave_acesso: SEM_ISS_SEM_HABILITACAO, nota_nacional: N4, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10", valor_issqn: "0.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "99000000000002"}
+          - {chave_acesso: INSTITUICAO_FINANCEIRA, nota_nacional: N5, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "98000006000106"}
+          - {chave_acesso: SIMPLES_REGIME_2, nota_nacional: N6, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "98000003000103", regime_apuracao_simples: 2}
+          - {chave_acesso: SIMPLES_REGIME_1, nota_nacional: N7, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "98000004000104", regime_apuracao_simples: 1}
+          - {chave_acesso: PEDAGIO_GRUPO_22, nota_nacional: N8, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "98000008000108", grupo_servico: "22"}
+          - {chave_acesso: SUSPENSA, nota_nacional: N9, tipo_retencao_issqn: 2, data_competencia_servico: "2026-06-10", valor_issqn: "10.00", issqn: 1, cod_local_incidencia: "3304557", cpf_cnpj_responsavel: "98000004000104", tipo_suspensao: 2}
+      - input: ref('nc2_seed__nota_carioca__mv_contribuintes')
+        rows:
+          - {inscricao: 1, cpf_cnpj: "98000006000106", inscricao_notanacional: 1, pedagio: 0}
+          - {inscricao: 2, cpf_cnpj: "98000003000103", inscricao_notanacional: 1, pedagio: 0}
+          - {inscricao: 3, cpf_cnpj: "98000004000104", inscricao_notanacional: 1, pedagio: 0}
+          - {inscricao: 4, cpf_cnpj: "98000008000108", inscricao_notanacional: 1, pedagio: 1}
+          - {inscricao: 5, cpf_cnpj: "99000000000002", inscricao_notanacional: 0, pedagio: 0}
+      - input: ref('nc2_seed__nota_carioca__desifinstituicoes')
+        rows:
+          - {instituicao: 1, raiz_cnpj: "98000006", status: 0}
+    expect:
+      rows:
+        - {chave_acesso: RETIDA_SEM_HABILITACAO, cenario_exigibilidade: 0, responsavel_habilitado: false}
+        - {chave_acesso: PROPRIO_SEM_HABILITACAO, cenario_exigibilidade: -1, responsavel_habilitado: false}
+        - {chave_acesso: PLANO_C_SEM_HABILITACAO, cenario_exigibilidade: 4}
+        - {chave_acesso: SEM_ISS_SEM_HABILITACAO, cenario_exigibilidade: 5}
+        - {chave_acesso: INSTITUICAO_FINANCEIRA, cenario_exigibilidade: 1, instituicao_financeira_ativa: true}
+        - {chave_acesso: SIMPLES_REGIME_2, cenario_exigibilidade: 0}
+        - {chave_acesso: SIMPLES_REGIME_1, cenario_exigibilidade: 3}
+        - {chave_acesso: PEDAGIO_GRUPO_22, cenario_exigibilidade: 2}
+        - {chave_acesso: SUSPENSA, cenario_exigibilidade: 6}
