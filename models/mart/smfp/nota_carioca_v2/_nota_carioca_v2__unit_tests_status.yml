@@ -1,0 +1,54 @@
+version: 2
+
+# Unit tests do dbt (só em dev e pr; dbt_project.yml desliga os de prod): cada um fixa uma regra com poucas linhas e deixa as
+# entradas que a regra não usa vazias. Os casos de borda sobre as seeds ficam em tests/singular/nota_carioca_v2/.
+
+unit_tests:
+  - name: int_nc2__eventos_status__vale_o_evento_mais_recente
+    description: >
+      R-08 (B-06): entre os eventos de status vale o de maior DATA_EVENTO, e o de maior NSU no empate; a regra do VB (primeiro
+      do lote, menor NSU) daria o resultado oposto nos três casos. Evento que não muda status é ignorado.
+    model: int_nc2__eventos_status
+    given:
+      - input: ref('int_nc2__dedup_eventos')
+        rows:
+          - {evento: E1, chave_acesso: BLOQUEIO_E_DESBLOQUEIO, tipo_evento: e305102, data_evento: "2026-06-20 09:00:00", nsu: 10}
+          - {evento: E2, chave_acesso: BLOQUEIO_E_DESBLOQUEIO, tipo_evento: e305103, data_evento: "2026-06-21 09:00:00", nsu: 11}
+          - {evento: E3, chave_acesso: LOTE, tipo_evento: e305102, data_evento: "2026-06-22 08:00:00", nsu: 20}
+          - {evento: E4, chave_acesso: LOTE, tipo_evento: e101101, data_evento: "2026-06-22 09:00:00", nsu: 21}
+          - {evento: E5, chave_acesso: EMPATE, tipo_evento: e305102, data_evento: "2026-06-22 10:00:00", nsu: 30}
+          - {evento: E6, chave_acesso: EMPATE, tipo_evento: e305103, data_evento: "2026-06-22 10:00:00", nsu: 31}
+          - {evento: E7, chave_acesso: SO_IRRELEVANTE, tipo_evento: e101103, data_evento: "2026-06-23 08:00:00", nsu: 40}
+    expect:
+      rows:
+        - {chave_acesso: BLOQUEIO_E_DESBLOQUEIO, status_nota: 0, nsu_evento: 11, nsu_max_evento: 11}
+        - {chave_acesso: LOTE, status_nota: 1, data_cancelamento: "2026-06-22 09:00:00", nsu_evento: 21, nsu_max_evento: 21}
+        - {chave_acesso: EMPATE, status_nota: 0, nsu_evento: 31, nsu_max_evento: 31}
+
+  - name: int_nc2__status__evento_de_substituta_tem_precedencia
+    description: >
+      R-08 e R-09: um e105102 que já traz a chave da substituta mantém data e chave do evento; cancelada sem chave (e101101) e
+      nota normal ainda são marcadas pela substituição, com a DATA_VALIDACAO da substituta (B-06/R-09).
+    model: int_nc2__status
+    given:
+      - input: ref('int_nc2__dedup')
+        rows:
+          - {chave_acesso: COM_EVENTO_E_CHAVE, nsu: 1}
+          - {chave_acesso: CANCELADA_SEM_CHAVE, nsu: 2}
+          - {chave_acesso: NORMAL, nsu: 3}
+          - {chave_acesso: SEM_NADA, nsu: 4}
+      - input: ref('int_nc2__eventos_status')
+        rows:
+          - {chave_acesso: COM_EVENTO_E_CHAVE, status_nota: 1, data_cancelamento: "2026-06-18 12:00:00", chave_acesso_substituta: SUBST_DO_EVENTO, nsu_max_evento: 50}
+          - {chave_acesso: CANCELADA_SEM_CHAVE, status_nota: 1, data_cancelamento: "2026-06-17 12:00:00", nsu_max_evento: 51}
+      - input: ref('int_nc2__substituicao')
+        rows:
+          - {chave_acesso: COM_EVENTO_E_CHAVE, chave_acesso_substituta: SUBST_DA_NOTA, data_cancelamento: "2026-06-19 08:00:00", nsu_substituta: 60}
+          - {chave_acesso: CANCELADA_SEM_CHAVE, chave_acesso_substituta: SUBST_B, data_cancelamento: "2026-06-26 08:00:00", nsu_substituta: 61}
+          - {chave_acesso: NORMAL, chave_acesso_substituta: SUBST_C, data_cancelamento: "2026-06-27 08:00:00", nsu_substituta: 62}
+    expect:
+      rows:
+        - {chave_acesso: COM_EVENTO_E_CHAVE, status_nota: 1, data_cancelamento: "2026-06-18 12:00:00", chave_acesso_substituta: SUBST_DO_EVENTO, origem_status: evento}
+        - {chave_acesso: CANCELADA_SEM_CHAVE, status_nota: 1, data_cancelamento: "2026-06-26 08:00:00", chave_acesso_substituta: SUBST_B, origem_status: substituicao}
+        - {chave_acesso: NORMAL, status_nota: 1, data_cancelamento: "2026-06-27 08:00:00", chave_acesso_substituta: SUBST_C, origem_status: substituicao}
+        - {chave_acesso: SEM_NADA, status_nota: 0, origem_status: normal}
