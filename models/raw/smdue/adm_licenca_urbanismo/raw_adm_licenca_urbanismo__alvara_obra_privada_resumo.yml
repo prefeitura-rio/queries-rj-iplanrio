@@ -1,0 +1,361 @@
+version: 2
+
+models:
+  - name: raw_adm_licenca_urbanismo__alvara_obra_privada_resumo
+    description: "**Origem:** adm_licenca_urbanismo_staging.alvara_obra_privada_resumo \n  Visão resumida dos alvarás de obra privada emitidos pelo sistema SISLIC, consolidando informações do alvará, endereço, responsáveis técnicos e situação da licença."
+    columns:
+      - name: id_orgao_sislic
+        description: "Identificador do órgão de licenciamento e fiscalização que emitiu o alvará."
+        data_type: int64
+
+      - name: id_orgao_sici
+        description: "Identificador SICI do órgão de licenciamento e fiscalização que emitiu o alvará."
+        data_type: int64
+
+      - name: id_secretaria_sislic
+        description: "Identificador da Secretaria do órgão que emitiu o alvará. SMDU = 23"
+        data_type: int64
+
+      - name: sigla_orgao_sislic
+        description: "Sigla do órgão de licenciamento e fiscalização que emitiu o alvará."
+        data_type: string
+
+      - name: nome_orgao_sislic
+        description: "Nome do órgão de licenciamento e fiscalização que emitiu o alvará."
+        data_type: string
+
+      - name: processo
+        description: "Número do processo que está recebendo o alvará."
+        data_type: string
+
+      - name: data_abertura_processo
+        description: "Data de abertura do processo."
+        data_type: datetime
+
+      - name: ano_processo
+        description: "Ano de abertura do processo."
+        data_type: int64
+
+      - name: minuta
+        description: "Indica se ainda é uma minuta de alvará."
+        data_type: bool
+
+      - name: id_licenciamento
+        description: "Identificador da licença."
+        data_type: int64
+
+      - name: numero_alvara_licenca
+        description: "Número do alvará de Licença. Ex. 21/0001/2023 (Órgão/sequencial/Ano). Se NULL indica que ainda é uma minuta."
+        data_type: string
+
+      - name: ordem_emissao
+        description: "Consiste na concatenação do ano de emissão da licença com o seu número sequencial, mais a letra que identifica a retificação, nos casos de licença retificada. Utilizado para ordenar as licenças em ordem numérica independente da data de emissão. Nos casos de retificação de licença mantém as licenças original e suas retificadoras em sequência."
+        data_type: string
+
+      - name: data_emissao
+        description: "Data de emissão do alvará de licença."
+        data_type: datetime
+
+      - name: data_inicio_validade
+        description: "Data de início da validade do alvará de licença."
+        data_type: datetime
+
+      - name: prazo
+        description: "Prazo de validade do alvará, em meses."
+        data_type: int64
+
+      - name: data_vencimento
+        description: "Data de vencimento do alvará de licença."
+        data_type: datetime
+
+      - name: data_passe_alvara
+        description: "Data do passe alvará."
+        data_type: datetime
+
+      - name: licenca_gratis
+        description: "Indica se é uma licença sem cobrança de darm, ou seja, licença gratuita."
+        data_type: bool
+
+      - name: valor_bruto_licenca
+        description: "Valor do alvará. É a soma de todas as licenças calculadas para o alvará. Pode ser diferente do valor do Darm porque o darm pode ter tido abatimento do valor do darm inicial ou pode ter tido um acréscimo e multa por falta de pagamento dentro do vencimento."
+        data_type: float64
+
+      - name: numero_darm
+        description: "Número do DARM."
+        data_type: string
+
+      - name: valor_darm
+        description: "Valor do darm. Este valor não leva em consideração o valor inicial. O DARM, em geral, é pago em duas etapas, um DARM inicial e o DARM da licença."
+        data_type: float64
+
+      - name: requerente
+        description: "Nome do requerente."
+        data_type: string
+
+      - name: cnpj_cpf
+        description: "CPF ou CNPJ do requerente."
+        data_type: string
+
+      - name: id_logra
+        description: "Código do Logradouro (código SMU)."
+        data_type: string
+
+      - name: tipo_logradouro
+        description: "Tipo do logradouro (Rua, Avenida)."
+        data_type: string
+
+      - name: nobreza_logradouro
+        description: "Nobreza do logradouro."
+        data_type: string
+
+      - name: preposicao_logradouro
+        description: "Preposição do logradouro."
+        data_type: string
+
+      - name: nome_logradouro
+        description: "Nome do logradouro."
+        data_type: string
+
+      - name: numero_porta
+        description: "Número de porta."
+        data_type: string
+
+      - name: complemento_numero_porta
+        description: "Complemento do número de porta."
+        data_type: string
+
+      - name: paa
+        description: "PAA – Projeto aprovado de alinhamento. Caso a licença seja ligada a PAA."
+        data_type: string
+
+      - name: pal
+        description: "PAL – Projeto aprovado de loteamento. Caso a licença esteja ligado a um PAL e não haja número de porta ou complemento."
+        data_type: string
+
+      - name: plt
+        description: "PLT – Projeto da Fazenda. Caso a licença esteja relacionada a PLT."
+        data_type: string
+
+      - name: quadra
+        description: "Quadra do lote onde vai ser feita a obra, caso a obra esteja ligada a um PAL."
+        data_type: string
+
+      - name: lote
+        description: "Lote onde vai ser feita a obra, caso a obra esteja ligada a um PAL."
+        data_type: string
+
+      - name: centro_bairro
+        description: "Centro de bairro onde vai ser feita a obra, caso a obra seja feita em um centro de bairro."
+        data_type: string
+
+      - name: zona
+        description: "Zona onde vai ser feita a obra."
+        data_type: string
+
+      - name: subzona
+        description: "Subzona onde vai ser feita a obra."
+        data_type: string
+
+      - name: endereco
+        description: "Endereço já concatenado. Se tiver número de porta e/ou complemento: 'Rua Afonso Cavalcanti, 455' ou 'Rua Afonso Cavalcanti, 455, 10º andar'. Se não tiver número de porta e nem complemento: 'Rua Afonso Cavalcanti, PAL 123, Quadra A, Lote 1'."
+        data_type: string
+
+      - name: cod_bairro
+        description: "Código do Bairro onde vai ser feita a obra."
+        data_type: int64
+
+      - name: bairro
+        description: "Nome do bairro."
+        data_type: string
+
+      - name: cep
+        description: "CEP do endereço onde vai ser feita a obra."
+        data_type: string
+
+      - name: id_area_planejamento
+        description: "Código da Área de Planejamento onde a RA se encontra na tabela tbLogra_Aps."
+        data_type: string
+
+      - name: id_regiao_administrativa
+        description: "Identificador da Região Administrativa (1, 2, 3, …, 34)."
+        data_type: string
+
+      - name: numero_logradouro_suplementar
+        description: "Numeração suplementar. Número do logradouro caso a obra seja feita em lugar que esteja relacionada a mais de um logradouro, por exemplo uma casa de esquina."
+        data_type: string
+
+      - name: id_tipo_inscricao_imovel
+        description: "Identificador único dado pelo sistema ao tipo de inscrição. Por exemplo, IPTU (caso o imóvel tenha sido cadastrado pelo sistema do IPTU), Incra, sem inscrição etc."
+        data_type: string
+
+      - name: tipo_inscricao_imovel
+        description: "Tipo de Inscrição do imóvel. Por exemplo: IPTU, ITR, INCRA,..."
+        data_type: string
+
+      - name: inscricao_imovel
+        description: "Número de inscrição do imóvel onde vai ser feita a obra."
+        data_type: string
+
+      - name: uso_atividade
+        description: "Uso ou atividade da edificação (Residencial, comercial, etc.)."
+        data_type: string
+
+      - name: implantacao
+        description: "Posição da edificação no terreno (afastado das divisas ou não afastado das divisas)."
+        data_type: string
+
+      - name: total_edificacoes
+        description: "Total de edificações. Por exemplo, o total de prédios em determinado terreno. Alguns tipos podem não entrar no total de edificações mesmo que cadastradas. Por exemplo: Edícula."
+        data_type: int64
+
+      - name: area_construida
+        description: "Somatório das áreas existentes de todas as edificações."
+        data_type: float64
+
+      - name: area_acrescida
+        description: "Somatório das áreas acrescidas de todas as edificações. Somente em caso de licença para acréscimo de área."
+        data_type: float64
+
+      - name: area_reduzida
+        description: "Somatório das áreas reduzidas de todas as edificações. Somente em caso de licença para diminuição de área."
+        data_type: float64
+
+      - name: area_total_construida
+        description: "Área total Construída."
+        data_type: float64
+
+      - name: area_util
+        description: "Somatório das áreas úteis de todas as edificações."
+        data_type: float64
+
+      - name: area_total_edificada
+        description: "ATE – Área total edificada."
+        data_type: bignumeric
+
+      - name: area_existente_declarada_responsavel
+        description: "Indica que a Área Construída/Edificada existente foi declarada pelo responsável pelo imóvel."
+        data_type: bool
+
+      - name: total_unidades
+        description: "Total de unidades. Por exemplo, a quantidade de apartamentos de um prédio. Esse campo é livre."
+        data_type: int64
+
+      - name: area_total_loteamento
+        description: "Área total do loteamento, no caso de licença de loteamento."
+        data_type: bignumeric
+
+      - name: metros_lineares_obras_urbanizacao
+        description: "Metros lineares para licença de urbanização. A urbanização é relativa às ruas internas do lote."
+        data_type: bignumeric
+
+      - name: vagas_externas_descobertas
+        description: "Total de vagas de estacionamento externas descobertas."
+        data_type: int64
+
+      - name: vagas_externas_cobertas
+        description: "Total de vagas de estacionamento externas cobertas."
+        data_type: int64
+
+      - name: vagas_pavimentos
+        description: "Total de vagas cobertas e descobertas cadastradas nos pavimentos das edificações."
+        data_type: int64
+
+      - name: nome_preo
+        description: "Nome do profissional responsável pela execução da obra."
+        data_type: string
+
+      - name: crea_preo
+        description: "Crea do profissional responsável pela execução da obra."
+        data_type: string
+
+      - name: rrt_art_preo
+        description: "RRT ou ART do Preo – Registro de responsabilidade técnica (Arquitetos) | Anotação de responsabilidade técnica (Engenheiro). Preo é o responsável pela obra, em geral um engenheiro."
+        data_type: string
+
+      - name: nome_prpa
+        description: "Nome do profissional responsável pelo projeto aprovado."
+        data_type: string
+
+      - name: crea_prpa
+        description: "Crea do profissional responsável pelo projeto aprovado."
+        data_type: string
+
+      - name: rrt_art_prpa
+        description: "RRT ou ART do Prpa. Prpa é o responsável pelo projeto, em geral um arquiteto."
+        data_type: string
+
+      - name: grupamento
+        description: "Indica se a licença é de um grupamento. Um grupamento é a construção de várias edificações em um mesmo loteamento."
+        data_type: bool
+
+      - name: total_etapas
+        description: "Se for licença de grupamento, indica o total de etapas programadas."
+        data_type: int64
+
+      - name: total_edificacoes_etapa
+        description: "Se for licença de grupamento, indica o total de edificações dessa etapa."
+        data_type: int64
+
+      - name: area_total_etapa
+        description: "Se for licença de grupamento, indica a área total dessa etapa."
+        data_type: float64
+
+      - name: licenca_concedida
+        description: "Um alvará de licença pode conceder mais de um tipo de licença, esse campo tem todas as licenças concedidas nesse alvará concatenadas."
+        data_type: string
+
+      - name: descricao_edificacao_concatenada
+        description: "Possui a descrição de todas as edificações concatenadas, com logradouro, número de porta, tipo da edificação e pavimentos."
+        data_type: string
+
+      - name: concede_numeracao
+        description: "Indica se a licença está concedendo alguma numeração de porta. Quando não há ainda um número de porta."
+        data_type: bool
+
+      - name: numeracao_concedida
+        description: "Se a licença tiver criando nova numeração, esse campo possui a numeração concedida concatenada, com Logradouro, número de porta e número das unidades."
+        data_type: string
+
+      - name: observacao
+        description: "Observação, feita pelo licenciador, sobre a obra, sobre o requerente etc."
+        data_type: string
+
+      - name: licenca_orgao_central
+        description: "Indica se a licença foi emitida por algum órgão central. Por exemplo pelo CGLF."
+        data_type: bool
+
+      - name: cod_orgao_especial
+        description: "Código do órgão central que emitiu a licença."
+        data_type: string
+
+      - name: id_requerimento_andamento
+        description: "Código do requerimento em andamento. É por esse código que o sistema identifica o requerimento para disponibilizar os dados para o requerente pelo Requerimento Online."
+        data_type: int64
+
+      - name: cancelado
+        description: "Indica se a licença está cancelada. Nos casos onde esse flag estiver marcado é preciso verificar se a licença foi cancelada ou retificada. Quando uma licença é retificada a anterior é cancelada e criada uma nova."
+        data_type: bool
+
+      - name: data_cancelamento
+        description: "Data em que a Licença foi cancelada."
+        data_type: datetime
+
+      - name: alvara_retificada
+        description: "Indica se a Licença foi retificada."
+        data_type: bool
+
+      - name: alvara_em_retificacao
+        description: "Indica se existe uma minuta retificando essa licença."
+        data_type: bool
+
+      - name: dt_retificacao
+        description: "Data em que a Licença foi retificada."
+        data_type: datetime
+
+      - name: alvara_retificadora
+        description: "Indica se essa Licença foi emitida em retificação a uma Licença."
+        data_type: bool
+
+      - name: tipo_alvara
+        description: "Indica o tipo de Licença. Que pode ser: EDIFICACAO, LOTEAMENTO, URBANIZACAO, PARCELAMENTO, AVULSA (Não é mais utilizada mas existe no passivo)."
+        data_type: string
