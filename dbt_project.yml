@@ -121,6 +121,12 @@ models:
           +resource_tags:
             rj-iplanrio/dominio: taxirio
             845941190868/acesso: restrito
+        projeto_bi_dtgg:
+          +schema: projeto_bi_dtgg
+          +tags: ["daily", "projeto_bi_dtgg", "recursos_humanos", "dtgg"]
+          +resource_tags:
+            rj-iplanrio/dominio: administrativo
+            845941190868/acesso: restrito            
       cvl:
         +project: rj-cvl
         +tags: ["cvl"]
