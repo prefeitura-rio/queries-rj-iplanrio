@@ -8,6 +8,13 @@ sources:
       - name: NOTAS_NACIONAIS
       - name: PESSOAS_NACIONAIS
       - name: DPS
+      # Réplicas de cadastro e de eventos (oracle_to_bq, PR prefect_rj_iplanrio#439) que alimentam o dbt nota_carioca_v2.
+      # Dono no Oracle: NFSE_RPE (MV_CONTRIBUINTES*), NFSE_OWNER (DESIFINSTITUICOES, CONFIGURACOES) e DFEN (EVENTOS_DFEN).
+      - name: MV_CONTRIBUINTES
+      - name: MV_CONTRIBUINTES_HISTORICOS
+      - name: DESIFINSTITUICOES
+      - name: CONFIGURACOES
+      - name: EVENTOS_DFEN
   - name: nota_carioca_staging
     database: rj-iplanrio-dia
     schema: brutos_nota_fiscal_staging
@@ -15,3 +22,23 @@ sources:
       - name: NOTAS_NACIONAIS
       - name: PESSOAS_NACIONAIS
       - name: DPS
+  # Raw do parser de NFS-e Nacional (PR prefect_rj_iplanrio#440): colunas MAIÚSCULAS iguais às do Oracle mais NSU,
+  # DATA_HORA_GERACAO (partição diária), VERSAO_PARSER e INGERIDO_EM. Append-only, com reprocessamentos: a
+  # deduplicação (R-04) é do dbt. PESSOA_* da DPS e PESSOA_EMITENTE guardam o HASH_ID hex da pessoa, não o GUID do Oracle.
+  # Em dev e pr os modelos nota_carioca_v2 leem seeds sintéticas no lugar destas tabelas (macro nc2_fonte).
+  - name: raw_nfse_nacional
+    database: rj-iplanrio-dia
+    schema: raw_nfse_nacional
+    tables:
+      - name: nfse
+      - name: dps
+      - name: pessoas
+      - name: eventos
+  # MVTs atuais do domínio nota_carioca (saída do dbt atual, lado Oracle da paridade F1), lidas como tabelas já
+  # materializadas: o v2 não depende dos modelos nota_carioca no grafo.
+  - name: nota_carioca_mvt
+    database: rj-iplanrio-dia
+    schema: nota_carioca
+    tables:
+      - name: MVT_NOTAS_NACIONAIS_EXIGIVEIS_DETALHES
+      - name: MVT_NOTAS_NACIONAIS_EXIGIVEIS
