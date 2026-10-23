@@ -43,7 +43,7 @@ unit_tests:
         rows: []
     expect:
       rows:
-        - {regra: R-11, chave: D|NFS_IGUAL, classe: igual}
+        - {regra: R-11, chave: D|NFS_IGUAL, classe: igual, detalhe: null}
         - {regra: R-11, chave: D|NFS_CENTAVO, classe: divergente, detalhe: colunas_diferentes}
 
   - name: paridade_nc2__r11__nsu_acima_do_corte_nao_entra

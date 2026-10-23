@@ -21,9 +21,9 @@ unit_tests:
           - {evento: E7, chave_acesso: SO_IRRELEVANTE, tipo_evento: e101103, data_evento: "2026-06-23 08:00:00", nsu: 40}
     expect:
       rows:
-        - {chave_acesso: BLOQUEIO_E_DESBLOQUEIO, status_nota: 0, nsu_evento: 11, nsu_max_evento: 11}
+        - {chave_acesso: BLOQUEIO_E_DESBLOQUEIO, status_nota: 0, data_cancelamento: null, nsu_evento: 11, nsu_max_evento: 11}
         - {chave_acesso: LOTE, status_nota: 1, data_cancelamento: "2026-06-22 09:00:00", nsu_evento: 21, nsu_max_evento: 21}
-        - {chave_acesso: EMPATE, status_nota: 0, nsu_evento: 31, nsu_max_evento: 31}
+        - {chave_acesso: EMPATE, status_nota: 0, data_cancelamento: null, nsu_evento: 31, nsu_max_evento: 31}
 
   - name: int_nc2__status__evento_de_substituta_tem_precedencia
     description: >
@@ -51,4 +51,4 @@ unit_tests:
         - {chave_acesso: COM_EVENTO_E_CHAVE, status_nota: 1, data_cancelamento: "2026-06-18 12:00:00", chave_acesso_substituta: SUBST_DO_EVENTO, origem_status: evento}
         - {chave_acesso: CANCELADA_SEM_CHAVE, status_nota: 1, data_cancelamento: "2026-06-26 08:00:00", chave_acesso_substituta: SUBST_B, origem_status: substituicao}
         - {chave_acesso: NORMAL, status_nota: 1, data_cancelamento: "2026-06-27 08:00:00", chave_acesso_substituta: SUBST_C, origem_status: substituicao}
-        - {chave_acesso: SEM_NADA, status_nota: 0, origem_status: normal}
+        - {chave_acesso: SEM_NADA, status_nota: 0, data_cancelamento: null, chave_acesso_substituta: null, origem_status: normal}

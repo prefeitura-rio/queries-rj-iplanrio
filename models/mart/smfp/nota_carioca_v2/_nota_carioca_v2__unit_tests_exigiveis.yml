@@ -36,12 +36,12 @@ unit_tests:
           - {instituicao: 1, raiz_cnpj: "98000006", status: 0}
     expect:
       rows:
-        - {chave_acesso: RETIDA_SEM_HABILITACAO, cenario_exigibilidade: 0, responsavel_habilitado: false}
-        - {chave_acesso: PROPRIO_SEM_HABILITACAO, cenario_exigibilidade: -1, responsavel_habilitado: false}
-        - {chave_acesso: PLANO_C_SEM_HABILITACAO, cenario_exigibilidade: 4}
-        - {chave_acesso: SEM_ISS_SEM_HABILITACAO, cenario_exigibilidade: 5}
-        - {chave_acesso: INSTITUICAO_FINANCEIRA, cenario_exigibilidade: 1, instituicao_financeira_ativa: true}
-        - {chave_acesso: SIMPLES_REGIME_2, cenario_exigibilidade: 0}
-        - {chave_acesso: SIMPLES_REGIME_1, cenario_exigibilidade: 3}
-        - {chave_acesso: PEDAGIO_GRUPO_22, cenario_exigibilidade: 2}
-        - {chave_acesso: SUSPENSA, cenario_exigibilidade: 6}
+        - {chave_acesso: RETIDA_SEM_HABILITACAO, cenario_exigibilidade: 0, responsavel_habilitado: false, instituicao_financeira_ativa: false}
+        - {chave_acesso: PROPRIO_SEM_HABILITACAO, cenario_exigibilidade: -1, responsavel_habilitado: false, instituicao_financeira_ativa: false}
+        - {chave_acesso: PLANO_C_SEM_HABILITACAO, cenario_exigibilidade: 4, responsavel_habilitado: false, instituicao_financeira_ativa: false}
+        - {chave_acesso: SEM_ISS_SEM_HABILITACAO, cenario_exigibilidade: 5, responsavel_habilitado: false, instituicao_financeira_ativa: false}
+        - {chave_acesso: INSTITUICAO_FINANCEIRA, cenario_exigibilidade: 1, responsavel_habilitado: true, instituicao_financeira_ativa: true}
+        - {chave_acesso: SIMPLES_REGIME_2, cenario_exigibilidade: 0, responsavel_habilitado: true, instituicao_financeira_ativa: false}
+        - {chave_acesso: SIMPLES_REGIME_1, cenario_exigibilidade: 3, responsavel_habilitado: true, instituicao_financeira_ativa: false}
+        - {chave_acesso: PEDAGIO_GRUPO_22, cenario_exigibilidade: 2, responsavel_habilitado: true, instituicao_financeira_ativa: false}
+        - {chave_acesso: SUSPENSA, cenario_exigibilidade: 6, responsavel_habilitado: true, instituicao_financeira_ativa: false}
