@@ -5,7 +5,6 @@ sources:
     database: rj-iplanrio
     schema: brutos_1746_staging
     tables:
-      - name: ViewDatalake
       - name: tb_origem_ocorrencia
       - name: vw_pessoa
       - name: tb_protocolo_chamado
