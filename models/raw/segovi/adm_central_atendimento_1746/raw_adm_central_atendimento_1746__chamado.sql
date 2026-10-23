@@ -15,7 +15,7 @@
 WITH chamados AS (
     -- Elimina linhas duplicadas
     SELECT 
-    _airbyte_extracted_at,
+    --_airbyte_extracted_at,
     CAST(tipo AS STRING) as tipo,
     CAST(status AS STRING) as status,
     CAST(id_tipo AS STRING) as id_tipo,	
@@ -137,7 +137,7 @@ SELECT DISTINCT
     SAFE_CAST(ch.justificativa_status AS STRING) justificativa_status,
     SAFE_CAST(ch.reclamacoes AS INT64) reclamacoes,
     SAFE_CAST(ch.descricao AS STRING) descricao,
-    _airbyte_extracted_at as extracted_at,
+    --_airbyte_extracted_at as extracted_at,
     dt_atualizacao as updated_at,
     SAFE_CAST(DATE_TRUNC(DATE(ch.data_inicio), day) AS DATE) data_particao,
     FROM chamados ch
