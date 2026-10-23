@@ -1,0 +1,327 @@
+version: 2
+
+models:
+  - name: mart_cgm_triagem_nf__despesas_classificada
+    description: |
+      Tabela de análise final com classificação de apontamentos por despesa.
+      
+      **Grain:** uma linha por `id_documento` (despesa)
+      **Materialização:** table
+      **Origem:** Múltiplas CTEs com apontamentos de anomalias baseados em regras de negócio
+      
+      Consolida despesas com extração IA, informações de cancelamento SMF, dados cadastrais
+      de fornecedor, e aplica 8 indicadores de anomalia com classificação final em 3 níveis:
+      Grave (investigação imediata), Leve (revisão), Descartado (conforme).
+      
+      **Ponto de saída para:** Dashboards operacionais, triagem manual, análises de conformidade.
+
+    config:
+      schema: poc_cgm_triagem_nf
+      alias: despesas_classificada
+      materialized: table
+
+    columns:
+      # Chave Primária e Contexto Administrativo
+      
+      - name: id_documento
+        description: "Identificador único da despesa. Chave primária. Fonte: OSInfo."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              arguments:
+                to: ref('core_cgm_triagem_nf__extracao_ia_match')
+                field: id_documento
+
+      - name: contrato_numero
+        description: "Número do contrato associado (se houver). Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: contrato_periodo_vigencia
+        description: "Período de vigência do contrato como DATE estruturada. NULL se contrato não associado. Fonte: OSInfo."
+        data_type: date
+
+      - name: secretaria_nome
+        description: "Nome da secretaria responsável pelo contrato. Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: id_organizacao
+        description: "Código da organização (órgão pai) responsável pela despesa. Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: organizacao_nome
+        description: "Nome da organização. Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: id_unidade
+        description: "Código da unidade administrativa responsável. Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: unidade_nome
+        description: "Nome da unidade. Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      # Dados de Declaração (CVL OSInfo)
+      
+      - name: declaracao_envio_data
+        description: "Data em que a despesa foi enviada. Fonte: OSInfo."
+        data_type: date
+
+      - name: declaracao_arquivo_nome
+        description: "Nome do arquivo declarado (normalizado, sem extensão .pdf). Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: declaracao_referencia_ano
+        description: "Ano de referência contábil da despesa. Fonte: OSInfo."
+        data_type: int64
+
+      - name: declaracao_referencia_mes
+        description: "Mês de referência contábil (1-12). Fonte: OSInfo."
+        data_type: int64
+
+      - name: declaracao_numero_documento
+        description: "Número do documento declarado (ex: NF, RPA, etc). Fonte: OSInfo."
+        data_type: string
+        quote: true
+
+      - name: declaracao_cnpj_cpf
+        description: "CNPJ ou CPF do fornecedor declarado (normalizado para 14 dígitos). Fonte: OSInfo."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '99999999999999']
+              config:
+                severity: warn
+
+      - name: declaracao_documento_valor
+        description: "Valor total do documento declarado. Fonte: OSInfo."
+        data_type: float64
+
+      - name: declaracao_pago_valor
+        description: "Valor pago declarado referente ao documento. Fonte: OSInfo."
+        data_type: float64
+
+      - name: declaracao_emissao_data
+        description: "Data de emissão do documento declarado. Fonte: OSInfo."
+        data_type: date
+
+      - name: declaracao_pagamento_data
+        description: "Data de pagamento da despesa. Fonte: OSInfo."
+        data_type: date
+
+      # Dados de Extração IA
+      
+      - name: extracao_resultado
+        description: |
+          Classificação do resultado da extração IA:
+          - `"NF Encontrada"`: Match bem-sucedido por número + CNPJ
+          - `"NF Sem Match"`: NF extraída existe mas sem correspondência por valor
+          - `"NF Não Encontrada"`: Nenhuma NF foi extraída do arquivo
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NF Encontrada', 'NF Sem Match', 'NF Não Encontrada']
+
+      - name: extracao_pagina
+        description: "Número da página onde a NF foi extraída (primeira ocorrência)."
+        data_type: int64
+
+      - name: extracao_documento_tipo
+        description: "Tipo de documento identificado pela IA (ex: NFe, NFSe, Fatura)."
+        data_type: string
+        quote: true
+
+      - name: extracao_numero_documento
+        description: "Número do documento extraído pela IA."
+        data_type: string
+        quote: true
+
+      - name: extracao_cnpj_cpf
+        description: "CNPJ ou CPF extraído e normalizado para 14 dígitos."
+        data_type: string
+        quote: true
+        tests:
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{11}$|^[0-9]{14}$"
+          - dbt_expectations.expect_column_values_to_not_be_in_set:
+              value_set: ['00000000000000', '11111111111111', '99999999999999', '00000000000']
+
+      - name: extracao_documento_valor
+        description: "Valor total extraído pela IA do documento."
+        data_type: float64
+
+      - name: extracao_emissao_data
+        description: "Data de emissão extraída pela IA."
+        data_type: date
+
+      - name: extracao_paginas_com_match
+        description: |
+          JSON array de páginas do arquivo que tiveram match com despesas declaradas.
+          NULL se nenhum match ou arquivo não foi processado.
+          
+          Estrutura: `[{"pagina": ..., "numero_nf_modelo": ..., ...}]`
+        data_type: string
+        quote: true
+
+      - name: extracao_paginas_sem_match
+        description: |
+          JSON array de páginas do arquivo que NÃO tiveram match com despesas.
+          NULL se todos os matches ou arquivo não foi processado.
+          
+          Estrutura: `[{"pagina": ..., "numero_nf_modelo": ..., ...}]`
+        data_type: string
+        quote: true
+
+      # Dados de Fornecedor (BCadastro)
+      
+      - name: fornecedor_razao_social
+        description: "Razão social (nome jurídico) da empresa. Fonte: BCadastro CNPJ."
+        data_type: string
+        quote: true
+
+      - name: fornecedor_uf
+        description: "Unidade federativa do fornecedor. Fonte: BCadastro CNPJ."
+        data_type: string
+        quote: true
+
+      - name: fornecedor_cnae_descricao
+        description: "Descrição da atividade econômica (CNAE fiscal) da empresa. Fonte: BCadastro CNPJ."
+        data_type: string
+        quote: true
+
+      - name: fornecedor_situacao_cadastral_atual
+        description: |
+          Situação cadastral ATUAL da empresa na Receita Federal.
+          Valores: Ativa, Suspensa, Cancelada, etc.
+          
+          **Atenção:** Reflete status HOJE, não o status na data de emissão da NF.
+          Pode ter mudado desde a emissão do documento.
+        data_type: string
+        quote: true
+
+      # Apontamentos e Classificação Final
+      
+      - name: apontamento_resultado
+        description: |
+          Classificação final consolidada baseada nos indicadores:
+          
+          - `"Não avaliado"`: Extração inconclusiva (NF Sem Match)
+          - `"Grave"`: Anomalia séria detectada (vide regras abaixo)
+          - `"Leve"`: Discrepância menor (vide regras abaixo)
+          - `"Descartado"`: Sem anomalias detectadas
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Grave', 'Leve', 'Descartado', 'Não avaliado']
+
+      - name: apontamento_duplicidade_indicador
+        description: |
+          Flag indicando duplicação de pagamento (simetria bilateral).
+
+          **Regra:** `cod_organizacao <> cod_unidade AND valor_pago_total > valor_extracao + 1 AND ids_grupo_nf LIKE '%,%'`
+
+          TRUE = todas as declarações que compõem o grupo duplicado recebem marcação positiva | FALSE/NULL = sem duplicação
+
+          **Prioridade:** Grave
+        data_type: bool
+
+      - name: apontamento_duplicidade_ids
+        description: |
+          IDs de todos os documentos que compõem o grupo duplicado (string delimitada por ", ").
+          Disponível bilateralmente em todas as despesas do par/grupo duplicado.
+          
+          Exemplo: `"DOC001, DOC002, DOC003"`
+          
+          NULL se sem duplicação. Útil para rastreamento manual.
+        data_type: string
+        quote: true
+
+      - name: apontamento_cancelamento_indicador
+        description: |
+          Flag indicando cancelamento de NF no SMF.
+          
+          TRUE = NF foi cancelada | FALSE = não cancelada | NULL = informação inconclusiva
+          
+          **Prioridade:** Grave
+        data_type: bool
+
+      - name: apontamento_cnpj_inativo_indicador
+        description: |
+          Flag indicando CNPJ inativo. MANTIDO NULL POR DESIGN.
+          
+          **Motivo:** BCadastro traz situacao_cadastral ATUAL, não histórica.
+          Comparar com data de emissão não é confiável.
+          
+          Deixado para avaliação manual ou análise integrada com histórico.
+          
+          **Prioridade:** Grave (se implementado no futuro)
+        data_type: bool
+
+      - name: apontamento_valor_pago_excedente_indicador
+        description: |
+          Flag indicando que o valor pago excede significativamente o valor extraído.
+          
+          **Regra:** `valor_pago_total > valor_extracao + 1`
+          
+          TRUE = há diferença significativa | FALSE/NULL = valores consistentes
+          
+          **Prioridade:** Grave
+        data_type: bool
+
+      - name: apontamento_emissao_anterior_abertura_indicador
+        description: |
+          Flag indicando emissão anterior à abertura da empresa.
+          
+          **Regra:** `DATE(inicio_atividade_data) > DATE(data_emissao_extracao)`
+          
+          TRUE = NF emitida antes de fornecedor existir | FALSE = dentro da validade
+          
+          **Prioridade:** Grave
+        data_type: bool
+
+      - name: apontamento_emissao_divergente_indicador
+        description: |
+          Flag indicando divergência de datas de emissão.
+          
+          **Regra:** `data_emissao_declarada <> data_emissao_extracao`
+          
+          TRUE = datas diferentes | FALSE = datas consistentes
+          
+          **Prioridade:** Leve
+        data_type: bool
+
+      - name: apontamento_valor_divergente_indicador
+        description: |
+          Flag indicando divergência de valores.
+          
+          **Regra:** `valor_declarado <> valor_extracao`
+          
+          TRUE = valores diferentes | FALSE = valores consistentes
+          
+          **Prioridade:** Leve
+        data_type: bool
+      
+      - name: data_processamento
+        description: "Data em que o arquivo da declaração foi processado pela pipeline de extração da IA. Fonte: extracao_pagina."
+        data_type: date
+
+      - name: timestamp_processamento
+        description: "Timestamp UTC do momento em que o lote do arquivo foi processado pela IA. Fonte: extracao_pagina."
+        data_type: timestamp
