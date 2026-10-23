@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: brutos_1746_staging
+    database: rj-iplanrio
+    schema: brutos_1746_staging
+    tables:
+    - name: tb_chamado
+    - name: tb_chamado_vinculado
+    - name: tb_bairro_logradouro
+    - name: tb_bairro
+    - name: tb_territorialidade_regiao_administrativa_bairro
+    - name: tb_territorialidade_regiao_administrativa
+    - name: tb_responsavel_chamado
+    - name: tb_unidade_organizacional
+    - name: tb_classificacao_chamado
+    - name: tb_classificacao
+    - name: tb_categoria
+    - name: tb_subtipo
+    - name: tb_tipo
+    - name: tb_status
+    - name: tb_chamado_sla
+    - name: tb_dicionario_ic
+    - name: tb_andamento
+    - name: tb_justificativa
+
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
