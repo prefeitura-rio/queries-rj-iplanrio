@@ -15,7 +15,7 @@
 WITH chamados AS (
     -- Elimina linhas duplicadas
     SELECT 
-    _airbyte_extracted_at,
+    --_airbyte_extracted_at,
     CAST(tipo AS STRING) as tipo,
     CAST(status AS STRING) as status,
     CAST(id_tipo AS STRING) as id_tipo,	
@@ -55,7 +55,7 @@ WITH chamados AS (
             * EXCEPT(numero_logradouro),
             CASE WHEN REGEXP_CONTAINS(CAST(numero_logradouro AS STRING), ",") THEN SPLIT(CAST(numero_logradouro AS STRING), ',')[SAFE_OFFSET(0)] ELSE numero_logradouro END AS numero_logradouro,
             row_number() OVER (PARTITION BY id_chamado ORDER BY data_fim DESC, data_inicio DESC) AS ranking
-        FROM {{ source('brutos_1746_staging_airbyte', 'ViewDatalake') }} AS t
+        FROM {{ ref('raw_sgrc_1746__viewdatalake') }} AS t
     )
     WHERE ranking=1
 ),
@@ -137,7 +137,7 @@ SELECT DISTINCT
     SAFE_CAST(ch.justificativa_status AS STRING) justificativa_status,
     SAFE_CAST(ch.reclamacoes AS INT64) reclamacoes,
     SAFE_CAST(ch.descricao AS STRING) descricao,
-    _airbyte_extracted_at as extracted_at,
+    --_airbyte_extracted_at as extracted_at,
     dt_atualizacao as updated_at,
     SAFE_CAST(DATE_TRUNC(DATE(ch.data_inicio), day) AS DATE) data_particao,
     FROM chamados ch
