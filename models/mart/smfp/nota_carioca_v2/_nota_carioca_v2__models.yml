@@ -1,0 +1,114 @@
+version: 2
+
+# Nota Carioca v2 (trilha nacional): as regras R-01 a R-11 de guia-nacional/04-regras-de-negocio.md derivadas do raw do
+# parser (raw_nfse_nacional) e das réplicas do Oracle. Em dev e pr, todas as fontes são seeds sintéticas
+# (macro nc2_fonte); em prod e pr_prod os modelos só existem com --vars '{nota_carioca_v2_habilitado: true}'.
+
+models:
+  - name: int_nc2__config
+    description: >
+      Parâmetros de NFSE_OWNER.CONFIGURACOES que mudam o resultado das regras (IniExtDocsFiscais de R-04 e InicioPlanoB de
+      R-06), uma linha. Sem a chave vale Date.MaxValue (9999-12-31), o default do código do Oracle.
+    columns:
+      - name: ini_ext_docs_fiscais
+        description: "Notas com DPS.DATA_COMPETENCIA anterior a esta data são descartadas (R-04)."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: int_nc2__config__ini_ext_docs_fiscais__not_null
+      - name: inicio_plano_b
+        description: "DPS.DATA_COMPETENCIA anterior a esta data é cenário 4, Plano C (R-06)."
+        data_type: date
+        data_tests:
+          - not_null:
+              name: int_nc2__config__inicio_plano_b__not_null
+
+  - name: int_nc2__dedup
+    description: >
+      R-04. Uma linha por nota nacional do raw (menor NSU; no mesmo NSU, a ingestão mais recente), com a DPS correspondente
+      (idem), sem as notas de competência do serviço anterior a IniExtDocsFiscais.
+    columns:
+      - name: nota_nacional
+        description: "Id da NFS-e (NFS + chave de 50 dígitos)."
+        data_tests:
+          - unique:
+              name: int_nc2__dedup__nota_nacional__unique
+          - not_null:
+              name: int_nc2__dedup__nota_nacional__not_null
+      - name: chave_acesso
+        description: "Chave de acesso de 50 dígitos."
+        data_tests:
+          - unique:
+              name: int_nc2__dedup__chave_acesso__unique
+      - name: nsu
+        description: "Menor NSU do ADN entre as ocorrências da nota."
+        data_tests:
+          - not_null:
+              name: int_nc2__dedup__nsu__not_null
+      - name: data_competencia_servico
+        description: "Dia de DPS.DATA_COMPETENCIA; coluna de partição mensal."
+
+  - name: int_nc2__dedup_eventos
+    description: "R-04 para eventos: o EVENTO (Id) repetido mantém o menor NSU."
+    columns:
+      - name: evento
+        data_tests:
+          - unique:
+              name: int_nc2__dedup_eventos__evento__unique
+      - name: nsu
+        data_tests:
+          - unique:
+              name: int_nc2__dedup_eventos__nsu__unique
+
+  - name: int_nc2__dedup_pessoas
+    description: "Pessoas únicas pelo HASH_ID (R-03 no dbt): o raw traz uma linha por pessoa por NSU."
+    columns:
+      - name: hash_id
+        data_tests:
+          - unique:
+              name: int_nc2__dedup_pessoas__hash_id__unique
+          - not_null:
+              name: int_nc2__dedup_pessoas__hash_id__not_null
+
+  - name: int_nc2__competencia
+    description: >
+      R-01. A nota com a competência municipal: primeiro dia do mês de DPS.DATA_COMPETENCIA, mais 1 mês quando
+      tpRetISSQN é 2 ou 3 (ISS retido).
+    data_tests:
+      - dbt_utils.expression_is_true:
+          name: int_nc2__competencia__data_compmunicipio__dia_1
+          arguments:
+            expression: "extract(day from data_compmunicipio) = 1"
+    columns:
+      - name: nota_nacional
+        data_tests:
+          - unique:
+              name: int_nc2__competencia__nota_nacional__unique
+      - name: data_compmunicipio
+        description: "Competência municipal (dia 1); coluna de partição mensal."
+        data_tests:
+          - not_null:
+              name: int_nc2__competencia__data_compmunicipio__not_null
+
+  - name: int_nc2__papeis
+    description: >
+      R-02. Responsável e contraparte (com a sentinela zero-GUID e CPF/CNPJ '00000000000000' quando não há tomador), CPF/CNPJ
+      dos papéis, colunas de serviço (grupo, subgrupo, serviço nacional), retenção e Simples do prestador.
+    columns:
+      - name: nota_nacional
+        data_tests:
+          - unique:
+              name: int_nc2__papeis__nota_nacional__unique
+      - name: retencao
+        description: "0 ISS não retido (tpRetISSQN 1), 1 retido."
+        data_tests:
+          - accepted_values:
+              name: int_nc2__papeis__retencao__accepted_values
+              arguments:
+                values: [0, 1]
+                quote: false
+      - name: pessoas_resolvidas
+        description: "Responsável, prestador e contraparte existem em pessoas (os INNER JOIN do Oracle)."
+        data_tests:
+          - not_null:
+              name: int_nc2__papeis__pessoas_resolvidas__not_null

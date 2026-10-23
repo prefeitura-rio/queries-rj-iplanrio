@@ -1,0 +1,151 @@
+version: 2
+
+# Unit tests do dbt (só em dev e pr; dbt_project.yml desliga os de prod): cada um fixa uma regra com poucas linhas e deixa as
+# entradas que a regra não usa vazias. Os casos de borda sobre as seeds ficam em tests/singular/nota_carioca_v2/.
+
+unit_tests:
+  - name: paridade_nc2__r11__centavo_diferente_e_divergente
+    description: >
+      R-11 com tolerância zero: o mesmo detalhe nos dois lados é igual; um centavo de diferença no ISSQN é divergente
+      (divergente = 1 e o flow de paridade reprova).
+    model: paridade_nc2__r11
+    given:
+      - input: ref('paridade_nc2__corte')
+        rows:
+          - {corte_nsu: 1000}
+      - input: ref('int_nc2__status')
+        rows: []
+      - input: ref('int_nc2__dedup')
+        rows:
+          - {nota_nacional: NFS_IGUAL, nsu: 10}
+          - {nota_nacional: NFS_CENTAVO, nsu: 11}
+      - input: ref('mvt_notas_nacionais_exigiveis_detalhes')
+        rows:
+          - {nota_nacional: NFS_IGUAL, chave_acesso: IGUAL, cpf_cnpj_responsavel: "98000001000101", data_competencia_municipio: "2026-06-01T00:00:00", tipo_retencao: 1, opcao_simples_nacional: 1, retencao: 0, valor_servico: "5000.00", valor_issqn: "100.00"}
+          - {nota_nacional: NFS_CENTAVO, chave_acesso: CENTAVO, cpf_cnpj_responsavel: "98000001000101", data_competencia_municipio: "2026-06-01T00:00:00", tipo_retencao: 1, opcao_simples_nacional: 1, retencao: 0, valor_servico: "5000.00", valor_issqn: "100.00"}
+      - input: ref('nc2_seed__nota_carioca_mvt__mvt_notas_nacionais_exigiveis_detalhes')
+        rows:
+          - {nota_nacional: NFS_IGUAL, chave_acesso: IGUAL, cpf_cnpj_responsavel: "98000001000101", data_competencia_municipio: "2026-06-01T00:00:00", tipo_retencao: 1, opcao_simples_nacional: 1, retencao: 0, valor_servico: "5000.00", valor_issqn: "100.00"}
+          - {nota_nacional: NFS_CENTAVO, chave_acesso: CENTAVO, cpf_cnpj_responsavel: "98000001000101", data_competencia_municipio: "2026-06-01T00:00:00", tipo_retencao: 1, opcao_simples_nacional: 1, retencao: 0, valor_servico: "5000.00", valor_issqn: "100.01"}
+      - input: ref('nc2_seed__nota_carioca__notas_nacionais')
+        rows:
+          - {nota_nacional: NFS_IGUAL, nsu: 10}
+          - {nota_nacional: NFS_CENTAVO, nsu: 11}
+      - input: ref('paridade_nc2__r06')
+        rows: []
+      - input: ref('paridade_nc2__r08')
+        rows: []
+      - input: ref('paridade_nc2__r09')
+        rows: []
+      - input: ref('mvt_notas_nacionais_exigiveis')
+        rows: []
+      - input: ref('nc2_seed__nota_carioca_mvt__mvt_notas_nacionais_exigiveis')
+        rows: []
+    expect:
+      rows:
+        - {regra: R-11, chave: D|NFS_IGUAL, classe: igual, detalhe: null}
+        - {regra: R-11, chave: D|NFS_CENTAVO, classe: divergente, detalhe: colunas_diferentes}
+
+  - name: paridade_nc2__r11__nsu_acima_do_corte_nao_entra
+    description: >
+      R-11: nota do v2 com NSU acima do corte (o Oracle ainda não extraiu) não é comparada, nem como divergência de nota que só
+      existe do lado do v2; a dimensão dela também sai do resumo.
+    model: paridade_nc2__r11
+    given:
+      - input: ref('paridade_nc2__corte')
+        rows:
+          - {corte_nsu: 1000}
+      - input: ref('int_nc2__status')
+        rows: []
+      - input: ref('int_nc2__dedup')
+        rows:
+          - {nota_nacional: NFS_ACIMA, nsu: 1001}
+      - input: ref('mvt_notas_nacionais_exigiveis_detalhes')
+        rows:
+          - {nota_nacional: NFS_ACIMA, chave_acesso: ACIMA, cpf_cnpj_responsavel: "98000012000112", data_competencia_municipio: "2026-06-01T00:00:00", tipo_retencao: 1, opcao_simples_nacional: 1, retencao: 0, valor_servico: "5000.00", valor_issqn: "100.00"}
+      - input: ref('nc2_seed__nota_carioca_mvt__mvt_notas_nacionais_exigiveis_detalhes')
+        rows: []
+      - input: ref('nc2_seed__nota_carioca__notas_nacionais')
+        rows: []
+      - input: ref('paridade_nc2__r06')
+        rows: []
+      - input: ref('paridade_nc2__r08')
+        rows: []
+      - input: ref('paridade_nc2__r09')
+        rows: []
+      - input: ref('mvt_notas_nacionais_exigiveis')
+        rows:
+          - {cpf_cnpj_responsavel: "98000012000112", data_competencia_municipio: "2026-06-01T00:00:00", tipo_retencao: 1, opcao_simples_nacional: 1, retencao: 0, quantidade_notas: 1, total_valor_servico: "5000.00", total_valor_issqn: "100.00"}
+      - input: ref('nc2_seed__nota_carioca_mvt__mvt_notas_nacionais_exigiveis')
+        rows: []
+    expect:
+      rows: []
+
+  - name: paridade_nc2__r06__oracle_em_menos_um_e_correcao_b04
+    description: >
+      R-06: v2 = 0 contra -1 do Oracle é a correção catalogada B-04; contra qualquer outro cenário é divergente; igual é igual.
+    model: paridade_nc2__r06
+    given:
+      - input: ref('paridade_nc2__corte')
+        rows:
+          - {corte_nsu: 1000}
+      - input: ref('int_nc2__config')
+        rows:
+          - {inicio_plano_b: "2026-05-01"}
+      - input: ref('int_nc2__cenario')
+        rows:
+          - {nota_nacional: IGUAL, cenario_exigibilidade: 0, nsu: 1, data_compmunicipio: "2026-06-01"}
+          - {nota_nacional: B04, cenario_exigibilidade: 0, nsu: 2, data_compmunicipio: "2026-06-01"}
+          - {nota_nacional: DIVERGENTE, cenario_exigibilidade: 0, nsu: 3, data_compmunicipio: "2026-06-01"}
+          - {nota_nacional: ACIMA_DO_CORTE, cenario_exigibilidade: 0, nsu: 1001, data_compmunicipio: "2026-06-01"}
+      - input: ref('nc2_seed__nota_carioca__notas_nacionais')
+        rows:
+          - {nota_nacional: IGUAL, cenario_exigibilidade: 0, nsu: 1, data_compmunicipio: "2026-06-01T00:00:00"}
+          - {nota_nacional: B04, cenario_exigibilidade: -1, nsu: 2, data_compmunicipio: "2026-06-01T00:00:00"}
+          - {nota_nacional: DIVERGENTE, cenario_exigibilidade: 5, nsu: 3, data_compmunicipio: "2026-06-01T00:00:00"}
+    expect:
+      rows:
+        - {regra: R-06, chave: IGUAL, classe: igual}
+        - {regra: R-06, chave: B04, classe: "correcao_catalogada:B-04"}
+        - {regra: R-06, chave: DIVERGENTE, classe: divergente}
+
+  - name: paridade_nc2__resumo__uma_linha_por_regra_e_classe
+    description: >
+      O resumo conta as chaves por regra e classe (contrato lido pelo flow de paridade) e leva o corte de NSU; o contrato
+      (nomes e tipos das 5 colunas) é imposto pelo dbt.
+    model: paridade_nc2__resumo
+    given:
+      - input: ref('paridade_nc2__corte')
+        rows:
+          - {corte_nsu: 8000}
+      - input: ref('paridade_nc2__r01')
+        rows:
+          - {regra: R-01, classe: igual}
+          - {regra: R-01, classe: igual}
+          - {regra: R-01, classe: divergente}
+      - input: ref('paridade_nc2__r02')
+        rows: []
+      - input: ref('paridade_nc2__r03')
+        rows: []
+      - input: ref('paridade_nc2__r04')
+        rows: []
+      - input: ref('paridade_nc2__r05')
+        rows: []
+      - input: ref('paridade_nc2__r06')
+        rows:
+          - {regra: R-06, classe: "correcao_catalogada:B-04"}
+      - input: ref('paridade_nc2__r07')
+        rows: []
+      - input: ref('paridade_nc2__r08')
+        rows: []
+      - input: ref('paridade_nc2__r09')
+        rows: []
+      - input: ref('paridade_nc2__r10')
+        rows: []
+      - input: ref('paridade_nc2__r11')
+        rows: []
+    expect:
+      rows:
+        - {regra: R-01, classe: igual, quantidade: 2, corte_nsu: 8000}
+        - {regra: R-01, classe: divergente, quantidade: 1, corte_nsu: 8000}
+        - {regra: R-06, classe: "correcao_catalogada:B-04", quantidade: 1, corte_nsu: 8000}
