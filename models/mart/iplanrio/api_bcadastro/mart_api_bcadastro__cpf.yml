@@ -245,46 +245,9 @@ models:
         data_type: string
 
       # Estrutura do Airbyte
-      - name: airbyte
-        description: "Metadados de sincronização do Airbyte"
-        data_type: struct
-        quote: true
-
-      - name: airbyte.seq
-        description: "Sequência do Airbyte"
-        data_type: string
-
-      - name: airbyte.last_seq
-        description: "Última sequência do Airbyte"
-        data_type: string
-
-      - name: airbyte.airbyte_raw_id
-        description: "ID raw do Airbyte"
-        data_type: string
-        quote: true
-
-      - name: airbyte.airbyte_extracted_at
-        description: "Data de extração do Airbyte"
+      - name: _prefect_extracted_at
+        description: Timestamp da extração dos dados pelo Prefect.
         data_type: timestamp
-
-      - name: airbyte.airbyte_meta
-        description: "Metadados do Airbyte"
-        data_type: struct
-        quote: true
-
-      - name: airbyte.airbyte_meta.changes
-        description: "Mudanças registradas pelo Airbyte"
-        data_type: string
-        quote: true
-
-      - name: airbyte.airbyte_meta.sync_id
-        description: "ID de sincronização do Airbyte"
-        data_type: string
-        quote: true
-
-      - name: airbyte.airbyte_generation_id
-        description: "ID de geração do Airbyte"
-        data_type: integer
         quote: true
 
       # Coluna de particionamento

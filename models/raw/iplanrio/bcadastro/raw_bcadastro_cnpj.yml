@@ -441,35 +441,11 @@ models:
         data_type: string
         quote: true
 
-      - name: airbyte
-        description: Sistema de controle de versão e sincronização do Airbyte.
-        data_type: string
-        quote: true
-
-      - name: airbyte.raw_id
-        description: ID bruto do Airbyte.
-        data_type: string
-        quote: true
-
-      - name: airbyte.extracted_at
-        description: Data e hora da extração pelo Airbyte.
+      - name: _prefect_extracted_at
+        description: Timestamp da extração dos dados pelo Prefect.
         data_type: timestamp
         quote: true
 
-      - name: airbyte.changes
-        description: Alterações detectadas pelo Airbyte.
-        data_type: string
-        quote: true
-
-      - name: airbyte.sync_id
-        description: ID de sincronização do Airbyte.
-        data_type: string
-        quote: true
-
-      - name: airbyte.generation_id
-        description: ID de geração do Airbyte.
-        data_type: string
-        quote: true
 
       - name: cnpj_particao
         description: >
