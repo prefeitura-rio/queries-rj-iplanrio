@@ -196,3 +196,118 @@ models :
         description: Data de atualização do registro no banco de dados.
       - name: extracted_at
         description: Data e hora em que o registro foi extraído pelo Airbyte.
+  - name: raw_adm_central_atendimento_1746__chamado_ouvidoria
+    description: "Tabela que representa a ViewDatalake_ouvidoria que existe no banco de dados de origem do 1746. Seu código foi transcrito para cá para resolver o problema de ingestão, uma vez que a execução do comando da view é extremamente lento no banco de dados de origem."
+    columns:
+      - name: id_chamado
+        description: "Identificador único do chamado no banco de dados."
+        data_type: int64
+      - name: id_origem_ocorrencia
+        description: "Identificador da origem da ocorrência."
+        data_type: int64
+      - name: data_inicio
+        description: "Data de abertura do chamado (quando o operador registra o chamado)."
+        data_type: datetime
+      - name: data_fim
+        description: "Data de fechamento do chamado (quando atendido ou quando não pode ser atendido)."
+        data_type: datetime
+      - name: id_bairro
+        description: "Identificador único do bairro onde ocorreu o fato."
+        data_type: int64
+      - name: id_territorialidade
+        description: "Identificador único da territorialidade (região da cidade com órgão responsável, ex.: CDURP)."
+        data_type: int64
+      - name: id_logradouro
+        description: "Identificador único do logradouro onde ocorreu o fato."
+        data_type: int64
+      - name: numero_logradouro
+        description: "Número do logradouro onde ocorreu o fato."
+        data_type: string
+        quote: true
+      - name: id_unidade_organizacional
+        description: "Identificador único do órgão executor do chamado (ex.: COMLURB)."
+        data_type: int64
+      - name: nome_unidade_organizacional
+        description: "Nome do órgão executor da demanda."
+        data_type: string
+        quote: true
+      - name: id_unidade_organizacional_mae
+        description: "Identificador da unidade organizacional mãe."
+        data_type: int64
+      - name: unidade_organizacional_ouvidoria
+        description: "Indica se o chamado foi feito pela Ouvidoria (1 = sim, 0 = não)."
+        data_type: bool
+      - name: categoria
+        description: "Categoria do chamado (ex.: serviço, informação, sugestão, elogio, reclamação, crítica)."
+        data_type: string
+        quote: true
+      - name: id_tipo
+        description: "Identificador do tipo do chamado."
+        data_type: int64
+      - name: tipo
+        description: "Nome do tipo do chamado (ex.: Iluminação pública)."
+        data_type: string
+        quote: true
+      - name: id_subtipo
+        description: "Identificador do subtipo."
+        data_type: int64
+      - name: subtipo
+        description: "Nome do subtipo (ex.: Reparo de lâmpada apagada)."
+        data_type: string
+        quote: true
+      - name: status
+        description: "Status do chamado (ex.: fechado com solução, em andamento, pendente)."
+        data_type: string
+        quote: true
+      - name: longitude
+        description: "Localização do evento."
+        data_type: float64
+      - name: latitude
+        description: "Localização do evento."
+        data_type: float64
+      - name: data_alvo_finalizacao
+        description: "Data prevista para finalização."
+        data_type: date
+      - name: data_alvo_diagnostico
+        description: "Data prevista para diagnóstico (quando aplicável)."
+        data_type: date
+      - name: data_real_diagnostico
+        description: "Data em que o diagnóstico foi realizado (quando aplicável)."
+        data_type: date
+      - name: tempo_prazo
+        description: "Prazo para execução do serviço (em dias ou horas)."
+        data_type: int64
+      - name: prazo_unidade
+        description: "Unidade de tempo utilizada no prazo (D ou H)."
+        data_type: string
+        quote: true
+      - name: prazo_tipo
+        description: "Tipo de prazo (D = diagnóstico ou F = finalização)."
+        data_type: string
+        quote: true
+      - name: dentro_prazo
+        description: "Indica se o chamado está dentro do prazo estipulado."
+        data_type: string
+        quote: true
+      - name: situacao
+        description: "Indica se o chamado foi encerrado."
+        data_type: string
+        quote: true
+      - name: tipo_situacao
+        description: "Status atual (Atendido, Atendido parcialmente, Não atendido, Não constatado, Andamento)."
+        data_type: string
+        quote: true
+      - name: justificativa_status
+        description: "Justificativa usada pelo órgão ao definir o status."
+        data_type: string
+        quote: true
+      - name: reclamacoes
+        description: "Quantidade de reclamações."
+        data_type: int64
+      - name: descricao
+        description: "Descrição do chamado."
+        data_type: string
+        quote: true
+      - name: dt_atualizacao
+        description: "Data da última atualização do chamado."
+        data_type: datetime
