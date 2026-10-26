@@ -9,6 +9,7 @@ WITH
       od.nome_arquivo,
       od.numero_documento_norm,
       od.cnpj_cpf_normalizado,
+      od.valor_documento,
       {{ tratar_numero_documento("od.numero_documento") }} AS candidatos_numero
     FROM {{ ref("core_cgm_triagem_nf__osinfo_despesas") }} od
   ),
@@ -137,8 +138,14 @@ WITH
       valor_total_documento AS valor_documento_extracao_ia,
       tipo_documento AS tipo_documento_extracao_ia,
       data_emissao_documento AS data_emissao_extracao_ia
-    FROM paginas_com_match_valor, UNNEST(id_documentos_correspondentes) AS id_documento
-    QUALIFY ROW_NUMBER() OVER (PARTITION BY id_documento ORDER BY pagina) = 1
+    FROM paginas_com_match_valor pv, UNNEST(pv.id_documentos_correspondentes) AS id_documento
+    INNER JOIN despesas_base db USING (id_documento)
+    QUALIFY ROW_NUMBER() OVER (
+      PARTITION BY id_documento
+      ORDER BY
+        ABS(db.valor_documento - pv.valor_total_documento) ASC NULLS LAST,
+        pv.pagina
+    ) = 1
   ),
 
   metricas_por_documento AS (

@@ -48,7 +48,7 @@ models:
               values: ['NF Encontrada', 'NF Sem Match', 'NF Não Encontrada']
 
       - name: pagina_nf_extracao_ia
-        description: "Número da página onde a NF foi extraída (primeira ocorrência se múltiplas). NULL se não encontrada."
+        description: "Número da página onde a NF foi extraída. Se mais de uma página casa com a despesa (mesmo CNPJ e número), escolhe a de valor extraído mais próximo do valor declarado (desempate: menor página). NULL se não encontrada."
         data_type: int64
         tests:
           - dbt_expectations.expect_column_values_to_be_between:
