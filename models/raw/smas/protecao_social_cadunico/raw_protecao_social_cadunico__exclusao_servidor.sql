@@ -101,6 +101,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -241,6 +242,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -381,6 +383,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -521,6 +524,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -661,6 +665,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -801,6 +806,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -941,6 +947,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1081,6 +1088,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1221,6 +1229,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1361,6 +1370,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1501,6 +1511,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1641,6 +1652,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1781,6 +1793,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1921,6 +1934,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -2061,6 +2075,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -2201,6 +2216,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,

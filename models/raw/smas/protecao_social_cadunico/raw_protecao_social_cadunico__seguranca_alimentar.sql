@@ -110,6 +110,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -540,6 +541,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -970,6 +972,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -1400,6 +1403,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -1830,6 +1834,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -2260,6 +2265,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -2690,6 +2696,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -3120,6 +3127,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -3550,6 +3558,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -3980,6 +3989,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -4410,6 +4420,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -4840,6 +4851,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -5270,6 +5282,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -5700,6 +5713,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -6130,6 +6144,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
@@ -6560,6 +6575,7 @@ SELECT
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING

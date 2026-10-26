@@ -34,14 +34,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -509,14 +509,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -989,14 +989,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -1469,14 +1469,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -1949,14 +1949,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -2429,14 +2429,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -2914,14 +2914,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -3399,14 +3399,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -3889,14 +3889,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -4379,14 +4379,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -4869,14 +4869,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -5369,14 +5369,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -5869,14 +5869,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -6369,14 +6369,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -6883,14 +6883,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -7397,14 +7397,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^1$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^2$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^3$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^4$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^5$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^7$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^8$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^01$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^02$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^03$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^04$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^05$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^07$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^08$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,2))
         END AS STRING
     ) AS condicao_cadastro,
