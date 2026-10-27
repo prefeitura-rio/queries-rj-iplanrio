@@ -67,17 +67,7 @@ select
         cpf.metadados.tipo,
         cpf.metadados.timestamp
     ) as metadados,
-    struct(
-        cpf.airbyte.seq,
-        cpf.airbyte.last_seq,
-        cpf.airbyte.airbyte_raw_id,
-        cpf.airbyte.airbyte_extracted_at,
-        struct(
-            cpf.airbyte.airbyte_meta.changes,
-            cpf.airbyte.airbyte_meta.sync_id
-        ) as airbyte_meta,
-        cpf.airbyte.airbyte_generation_id
-    ) as airbyte,
+    cpf._prefect_extracted_at AS _prefect_extracted_at,
     cpf.cpf_particao
 
 from {{ ref("raw_bcadastro_cpf") }} as cpf
