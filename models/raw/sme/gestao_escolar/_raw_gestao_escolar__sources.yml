@@ -36,6 +36,7 @@ sources:
       - name: PPE_TipoExtensividade
       - name: PPE_AlunoProjetoPrograma
       - name: VW_BI_Aluno
+      - name: CLS_ConfirmacaoEfetivacao
 
     config:
       freshness: # default freshness
@@ -53,7 +54,6 @@ sources:
       - name: numeroDeAulasCte
       - name: diasCoc
       - name: CLS_AlunoAvaliacaoTurma
-      - name: CLS_ConfirmacaoEfetivacao
 
     config:
       freshness: # default freshness
