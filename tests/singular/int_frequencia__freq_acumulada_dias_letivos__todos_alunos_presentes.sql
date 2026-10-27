@@ -37,7 +37,7 @@ with
     ),
 
     final as (
-        select *
+        select distinct alu_id, ano, coc
         from joined
         where ano = '2026' and coc in ('1', '2') and freq_lake is null
     ),

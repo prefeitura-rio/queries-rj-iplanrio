@@ -6,6 +6,43 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 ### 🔧 Correção
 
+#### Commit: _pendente_ - 27/10/2026
+**fix: uma única aat por aluno/COC nos COCs fechados (regra da matrícula ativa)**
+
+Corrige as divergências SGA × lake apontadas pela CIT/SME, causadas por alunos com matrículas duplicadas.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+- `tests/singular/int__freq_acumulada_dias_letivos__freq_coc_fechados_igual.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+
+**Mudanças aplicadas:**
+1. **Uma `aat` por aluno/COC** (CTE `frequencia_cocs_fechados`)
+   - Antes: aluno com mais de uma matrícula no calendário gerava mais de uma linha por COC
+   - Agora: fica uma única `aat`, escolhida nesta ordem:
+     1. a que tem aulas preenchidas;
+     2. a de matrícula com situação 1 ou 5 (situação 3 só vale se for a única);
+     3. a de matrícula ativa no fim do COC (`cap_datafim`);
+     4. se nenhuma estiver ativa, a da última matrícula que saiu antes do fim
+2. **Filtro `ava_tipo = 1`:** considera só avaliações de frequência
+3. **Testes**
+   - `freq_coc_fechados_igual`: o SGA tem uma linha por matrícula, então só há divergência se nenhuma linha bater com o lake. Passa a contar pares, e não linhas
+   - `todos_alunos_presentes`: passa a contar pares distintos
+4. **Dependência:** `gestao_escolar_vw_bi_avaliacao` entra no upstream do mart (`depends_on`), porque os testes dependem dela
+
+**Impacto (dev × prod):**
+- `id__unique`: de 1.020 chaves duplicadas para 0
+- `freq_coc_fechados_igual`: de 994 para 780 registros
+- `delta_alto_qtd_aulas`: de 2.537 para 2.465 alunos em alerta
+- `todos_alunos_presentes`: sem mudança (2.226)
+
+**Pendências:**
+- Carga faltante de `aluno_avaliacao_turma` em 31/08 e 30/09 (ingestão)
+- COC fechado/aberto por `CLS_ConfirmacaoEfetivacao.cne_situacao` (tabela ainda não ingerida) e remoção do COC 3/2026 fixo no COC aberto
+- EJA/PROEJA seguem excluídos temporariamente
+
+### 🔧 Correção
+
 #### Commit: `5d5de0c` - 22/10/2026
 **fix: corrige duplicação coc fechado + remove eja (temporário)**
 
