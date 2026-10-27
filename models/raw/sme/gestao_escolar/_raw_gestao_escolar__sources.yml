@@ -4,6 +4,10 @@ sources:
   - name: brutos_gestao_escolar_staging
     database: rj-iplanrio
     schema: brutos_gestao_escolar_staging
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _airbyte_extracted_at
     tables:
       - name: ACA_AlunoCurriculo
       - name: ACA_AlunoJustificativaFalta
@@ -37,25 +41,24 @@ sources:
       - name: PPE_AlunoProjetoPrograma
       - name: VW_BI_Aluno
       - name: CLS_ConfirmacaoEfetivacao
-
-    config:
-      freshness: # default freshness
-        error_after: {count: 24, period: hour}
-      loaded_at_field: _airbyte_extracted_at
-
-  - name: brutos_gestao_escolar_staging
-    database: rj-iplanrio
-    schema: brutos_gestao_escolar_staging
-    tables:
       - name: turma
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
       - name: TUR_TurmaRelTurmaDisciplina
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
       - name: VW_BI_Aluno_Todos_Os_Anos
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
       - name: CLS_TurmaAulaAluno
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
       - name: numeroDeAulasCte
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
       - name: diasCoc
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
       - name: CLS_AlunoAvaliacaoTurma
-
-    config:
-      freshness: # default freshness
-        error_after: {count: 24, period: hour}
-      loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
+        config:
+          loaded_at_field: CAST(_prefect_extracted_at AS TIMESTAMP)
