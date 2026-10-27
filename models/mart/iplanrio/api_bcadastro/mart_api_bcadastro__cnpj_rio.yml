@@ -351,27 +351,9 @@ models:
         quote: true
 
       # Estrutura do Airbyte
-      - name: airbyte.raw_id
-        description: "ID raw do Airbyte"
-        data_type: string
-        quote: true
-
-      - name: airbyte.extracted_at
-        description: "Data de extração do Airbyte"
+      - name: _prefect_extracted_at
+        description: Timestamp da extração dos dados pelo Prefect.
         data_type: timestamp
-
-      - name: airbyte.generation_id
-        description: "ID de geração do Airbyte"
-        data_type: integer
-
-      - name: airbyte.changes
-        description: "Mudanças registradas pelo Airbyte"
-        data_type: string
-        quote: true
-
-      - name: airbyte.sync_id
-        description: "ID de sincronização do Airbyte"
-        data_type: string
         quote: true
 
       # Coluna de particionamento

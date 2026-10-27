@@ -23,7 +23,7 @@ with
 
         {% if target.name == "dev" %}
             where
-                timestamp(_airbyte_extracted_at)
+                timestamp(_prefect_extracted_at)
                 >= timestamp_sub(current_timestamp(), interval 3 day)
         {% endif %}
     ),
@@ -112,13 +112,7 @@ with
 
             nullif(json_value(doc, '$._id'), "") as _id,
             nullif(json_value(doc, '$._rev'), "") as _rev,
-            _airbyte_raw_id as airbyte_raw_id,
-            _airbyte_extracted_at as airbyte_extracted_at,
-            struct(
-                nullif(json_value(_airbyte_meta, '$.changes'), "") as changes,
-                nullif(json_value(_airbyte_meta, '$.sync_id'), "") as sync_id
-            ) as airbyte_meta,
-            _airbyte_generation_id as airbyte_generation_id
+            SAFE_CAST(_prefect_extracted_at AS TIMESTAMP) AS _prefect_extracted_at,
         from fonte
     ),
 
@@ -185,10 +179,7 @@ with
             -- Technical fields
             seq,
             last_seq,
-            airbyte_raw_id,
-            airbyte_extracted_at,
-            airbyte_meta,
-            airbyte_generation_id,
+            _prefect_extracted_at,
 
             -- Partition
             safe_cast(cpf_id as int64) as cpf_particao,
@@ -336,14 +327,7 @@ with
             timestamp,
 
             -- Technical fields
-            struct(
-                seq,
-                last_seq,
-                airbyte_raw_id,
-                airbyte_extracted_at,
-                airbyte_meta,
-                airbyte_generation_id
-            ) as airbyte,
+            _prefect_extracted_at  AS _prefect_extracted_at,
 
             -- Partition
             cpf_particao,
@@ -443,7 +427,7 @@ with
             struct(ano_exercicio, version, tipo, timestamp) as metadados,
 
             -- Technical fields
-            airbyte,
+            _prefect_extracted_at,
 
             -- Partition
             cpf_particao
