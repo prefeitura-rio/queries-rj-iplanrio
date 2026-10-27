@@ -29,7 +29,12 @@ sources:
         config:
           freshness:
             error_after: {count: 96, period: hour}
-
+      - name: ACA_Aluno
+      - name: ACA_Religiao
+      - name: ESC_UnidadeEscola
+      - name: PPE_ProjetoPrograma
+      - name: PPE_TipoExtensividade
+      - name: PPE_AlunoProjetoPrograma
       - name: VW_BI_Aluno
 
     config:
@@ -48,13 +53,7 @@ sources:
       - name: numeroDeAulasCte
       - name: diasCoc
       - name: CLS_AlunoAvaliacaoTurma
-      - name: ACA_Aluno
-      - name: ACA_Religiao
-      - name: ESC_UnidadeEscola
-      - name: PPE_ProjetoPrograma
-      - name: PPE_TipoExtensividade
-      - name: PPE_AlunoProjetoPrograma
-
+      - name: CLS_ConfirmacaoEfetivacao
 
     config:
       freshness: # default freshness
