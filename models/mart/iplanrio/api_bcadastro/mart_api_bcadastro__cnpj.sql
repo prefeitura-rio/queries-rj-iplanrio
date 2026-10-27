@@ -127,13 +127,7 @@ select
         cnpj.couchdb.seq,
         cnpj.couchdb.last_seq
     ) as couchdb,
-    struct(
-        cnpj.airbyte.raw_id,
-        cnpj.airbyte.extracted_at,
-        cnpj.airbyte.generation_id,
-        cnpj.airbyte.changes,
-        cnpj.airbyte.sync_id
-    ) as airbyte,
+    cnpj._prefect_extracted_at AS _prefect_extracted_at,
     cnpj.cnpj_particao
 
 from {{ ref("raw_bcadastro_cnpj") }} as cnpj
