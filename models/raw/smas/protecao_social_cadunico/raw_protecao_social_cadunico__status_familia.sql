@@ -60,8 +60,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -87,8 +87,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -104,8 +104,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -121,8 +121,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -138,8 +138,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -155,8 +155,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -172,8 +172,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -189,8 +189,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -206,8 +206,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -233,8 +233,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -250,9 +250,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -268,9 +268,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -286,9 +286,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -304,9 +304,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -322,9 +322,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -340,9 +340,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -358,9 +358,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -376,9 +376,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -394,9 +394,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -412,9 +412,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -430,9 +430,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -448,9 +448,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -466,9 +466,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -484,9 +484,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -502,9 +502,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -520,9 +520,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -538,9 +538,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -556,9 +556,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -574,9 +574,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -592,9 +592,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -610,9 +610,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -628,9 +628,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -646,9 +646,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -664,9 +664,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -682,9 +682,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -700,9 +700,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -718,9 +718,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -736,9 +736,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -754,9 +754,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -772,9 +772,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -790,8 +790,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -807,8 +807,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -824,8 +824,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -841,8 +841,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -858,8 +858,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -883,8 +883,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -900,8 +900,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -969,8 +969,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -996,8 +996,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -1013,8 +1013,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -1030,8 +1030,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -1047,8 +1047,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -1064,8 +1064,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -1081,8 +1081,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -1098,8 +1098,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -1115,8 +1115,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -1142,8 +1142,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -1159,9 +1159,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -1177,9 +1177,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -1195,9 +1195,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -1213,9 +1213,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -1231,9 +1231,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -1249,9 +1249,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -1267,9 +1267,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -1285,9 +1285,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -1303,9 +1303,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -1321,9 +1321,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -1339,9 +1339,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -1357,9 +1357,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -1375,9 +1375,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -1393,9 +1393,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -1411,9 +1411,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -1429,9 +1429,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -1447,9 +1447,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -1465,9 +1465,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -1483,9 +1483,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -1501,9 +1501,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -1519,9 +1519,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -1537,9 +1537,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -1555,9 +1555,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -1573,9 +1573,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -1591,9 +1591,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -1609,9 +1609,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -1627,9 +1627,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -1645,9 +1645,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -1663,9 +1663,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -1681,9 +1681,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -1699,8 +1699,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -1716,8 +1716,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -1733,8 +1733,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -1750,8 +1750,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -1767,8 +1767,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -1792,8 +1792,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -1809,8 +1809,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -1878,8 +1878,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -1905,8 +1905,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -1922,8 +1922,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -1939,8 +1939,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -1956,8 +1956,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -1973,8 +1973,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -1990,8 +1990,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -2007,8 +2007,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -2024,8 +2024,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -2051,8 +2051,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -2068,9 +2068,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -2086,9 +2086,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -2104,9 +2104,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -2122,9 +2122,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -2140,9 +2140,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -2158,9 +2158,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -2176,9 +2176,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -2194,9 +2194,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -2212,9 +2212,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -2230,9 +2230,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -2248,9 +2248,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -2266,9 +2266,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -2284,9 +2284,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -2302,9 +2302,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -2320,9 +2320,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -2338,9 +2338,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -2356,9 +2356,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -2374,9 +2374,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -2392,9 +2392,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -2410,9 +2410,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -2428,9 +2428,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -2446,9 +2446,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -2464,9 +2464,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -2482,9 +2482,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -2500,9 +2500,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -2518,9 +2518,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -2536,9 +2536,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -2554,9 +2554,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -2572,9 +2572,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -2590,9 +2590,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -2608,8 +2608,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -2625,8 +2625,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -2642,8 +2642,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -2659,8 +2659,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -2676,8 +2676,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -2701,8 +2701,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -2718,8 +2718,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -2787,8 +2787,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -2814,8 +2814,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -2831,8 +2831,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -2848,8 +2848,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -2865,8 +2865,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -2882,8 +2882,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -2899,8 +2899,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -2916,8 +2916,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -2933,8 +2933,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -2960,8 +2960,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -2977,9 +2977,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -2995,9 +2995,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -3013,9 +3013,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -3031,9 +3031,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -3049,9 +3049,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -3067,9 +3067,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -3085,9 +3085,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -3103,9 +3103,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -3121,9 +3121,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -3139,9 +3139,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -3157,9 +3157,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -3175,9 +3175,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -3193,9 +3193,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -3211,9 +3211,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -3229,9 +3229,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -3247,9 +3247,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -3265,9 +3265,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -3283,9 +3283,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -3301,9 +3301,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -3319,9 +3319,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -3337,9 +3337,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -3355,9 +3355,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -3373,9 +3373,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -3391,9 +3391,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -3409,9 +3409,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -3427,9 +3427,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -3445,9 +3445,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -3463,9 +3463,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -3481,9 +3481,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -3499,9 +3499,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -3517,8 +3517,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -3534,8 +3534,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -3551,8 +3551,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -3568,8 +3568,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -3585,8 +3585,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -3610,8 +3610,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -3627,8 +3627,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -3696,8 +3696,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -3723,8 +3723,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -3740,8 +3740,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -3757,8 +3757,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -3774,8 +3774,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -3791,8 +3791,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -3808,8 +3808,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -3825,8 +3825,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -3842,8 +3842,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -3869,8 +3869,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -3886,9 +3886,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -3904,9 +3904,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -3922,9 +3922,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -3940,9 +3940,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -3958,9 +3958,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -3976,9 +3976,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -3994,9 +3994,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -4012,9 +4012,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -4030,9 +4030,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -4048,9 +4048,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -4066,9 +4066,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -4084,9 +4084,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -4102,9 +4102,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -4120,9 +4120,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -4138,9 +4138,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -4156,9 +4156,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -4174,9 +4174,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -4192,9 +4192,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -4210,9 +4210,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -4228,9 +4228,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -4246,9 +4246,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -4264,9 +4264,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -4282,9 +4282,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -4300,9 +4300,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -4318,9 +4318,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -4336,9 +4336,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -4354,9 +4354,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -4372,9 +4372,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -4390,9 +4390,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -4408,9 +4408,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -4426,8 +4426,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -4443,8 +4443,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -4460,8 +4460,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -4477,8 +4477,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -4494,8 +4494,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -4519,8 +4519,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -4536,8 +4536,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -4605,8 +4605,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -4632,8 +4632,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -4649,8 +4649,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -4666,8 +4666,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -4683,8 +4683,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -4700,8 +4700,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -4717,8 +4717,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -4734,8 +4734,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -4751,8 +4751,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -4778,8 +4778,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -4795,9 +4795,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -4813,9 +4813,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -4831,9 +4831,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -4849,9 +4849,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -4867,9 +4867,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -4885,9 +4885,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -4903,9 +4903,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -4921,9 +4921,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -4939,9 +4939,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -4957,9 +4957,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -4975,9 +4975,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -4993,9 +4993,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -5011,9 +5011,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -5029,9 +5029,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -5047,9 +5047,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -5065,9 +5065,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -5083,9 +5083,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -5101,9 +5101,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -5119,9 +5119,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -5137,9 +5137,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -5155,9 +5155,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -5173,9 +5173,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -5191,9 +5191,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -5209,9 +5209,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -5227,9 +5227,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -5245,9 +5245,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -5263,9 +5263,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -5281,9 +5281,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -5299,9 +5299,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -5317,9 +5317,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -5335,8 +5335,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -5352,8 +5352,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -5369,8 +5369,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -5386,8 +5386,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -5403,8 +5403,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -5428,8 +5428,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -5445,8 +5445,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -5514,8 +5514,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -5531,8 +5531,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -5553,8 +5553,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -5570,8 +5570,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -5587,8 +5587,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -5604,8 +5604,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -5621,8 +5621,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -5638,8 +5638,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -5655,8 +5655,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -5672,8 +5672,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -5689,8 +5689,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -5711,8 +5711,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -5728,9 +5728,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -5746,9 +5746,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -5764,9 +5764,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -5782,9 +5782,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -5800,9 +5800,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -5818,9 +5818,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -5836,9 +5836,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -5854,9 +5854,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -5872,9 +5872,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -5890,9 +5890,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -5908,9 +5908,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -5926,9 +5926,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -5944,9 +5944,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -5962,9 +5962,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -5980,9 +5980,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -5998,9 +5998,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -6016,9 +6016,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -6034,9 +6034,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -6052,9 +6052,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -6070,9 +6070,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -6088,9 +6088,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -6106,9 +6106,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -6124,9 +6124,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -6142,9 +6142,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -6160,9 +6160,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -6178,9 +6178,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -6196,9 +6196,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -6214,9 +6214,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -6232,9 +6232,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -6250,9 +6250,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -6268,8 +6268,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -6285,8 +6285,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -6302,8 +6302,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -6319,8 +6319,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -6336,8 +6336,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -6361,8 +6361,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -6378,8 +6378,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -6447,8 +6447,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -6464,8 +6464,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -6486,8 +6486,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -6503,8 +6503,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -6520,8 +6520,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -6537,8 +6537,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -6554,8 +6554,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -6571,8 +6571,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -6588,8 +6588,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -6605,8 +6605,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -6622,8 +6622,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -6644,8 +6644,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -6661,9 +6661,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -6679,9 +6679,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -6697,9 +6697,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -6715,9 +6715,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -6733,9 +6733,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -6751,9 +6751,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -6769,9 +6769,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -6787,9 +6787,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -6805,9 +6805,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -6823,9 +6823,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -6841,9 +6841,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -6859,9 +6859,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -6877,9 +6877,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -6895,9 +6895,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -6913,9 +6913,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -6931,9 +6931,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -6949,9 +6949,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -6967,9 +6967,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -6985,9 +6985,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -7003,9 +7003,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -7021,9 +7021,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -7039,9 +7039,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -7057,9 +7057,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -7075,9 +7075,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -7093,9 +7093,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -7111,9 +7111,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -7129,9 +7129,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -7147,9 +7147,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -7165,9 +7165,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -7183,9 +7183,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -7201,8 +7201,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -7218,8 +7218,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -7235,8 +7235,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -7252,8 +7252,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -7269,8 +7269,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -7294,8 +7294,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -7311,8 +7311,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -7380,8 +7380,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -7397,8 +7397,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -7419,8 +7419,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -7436,8 +7436,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -7453,8 +7453,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -7470,8 +7470,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -7487,8 +7487,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -7504,8 +7504,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -7521,8 +7521,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -7538,8 +7538,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -7555,8 +7555,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -7577,8 +7577,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -7594,9 +7594,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -7612,9 +7612,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -7630,9 +7630,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -7648,9 +7648,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -7666,9 +7666,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -7684,9 +7684,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -7702,9 +7702,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -7720,9 +7720,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -7738,9 +7738,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -7756,9 +7756,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -7774,9 +7774,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -7792,9 +7792,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -7810,9 +7810,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -7828,9 +7828,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -7846,9 +7846,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -7864,9 +7864,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -7882,9 +7882,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -7900,9 +7900,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -7918,9 +7918,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -7936,9 +7936,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -7954,9 +7954,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -7972,9 +7972,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -7990,9 +7990,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -8008,9 +8008,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -8026,9 +8026,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -8044,9 +8044,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -8062,9 +8062,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -8080,9 +8080,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -8098,9 +8098,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -8116,9 +8116,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -8134,8 +8134,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -8151,8 +8151,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -8168,8 +8168,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -8185,8 +8185,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -8202,8 +8202,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -8227,8 +8227,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -8244,8 +8244,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -8313,8 +8313,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -8330,8 +8330,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -8352,8 +8352,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -8369,8 +8369,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -8386,8 +8386,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -8403,8 +8403,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -8420,8 +8420,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -8437,8 +8437,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -8454,8 +8454,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -8471,8 +8471,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -8488,8 +8488,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -8510,8 +8510,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -8527,9 +8527,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -8545,9 +8545,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -8563,9 +8563,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -8581,9 +8581,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -8599,9 +8599,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -8617,9 +8617,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -8635,9 +8635,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -8653,9 +8653,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -8671,9 +8671,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -8689,9 +8689,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -8707,9 +8707,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -8725,9 +8725,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -8743,9 +8743,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -8761,9 +8761,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -8779,9 +8779,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -8797,9 +8797,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -8815,9 +8815,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -8833,9 +8833,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -8851,9 +8851,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -8869,9 +8869,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -8887,9 +8887,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -8905,9 +8905,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -8923,9 +8923,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -8941,9 +8941,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -8959,9 +8959,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -8977,9 +8977,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -8995,9 +8995,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -9013,9 +9013,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -9031,9 +9031,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -9049,9 +9049,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -9067,8 +9067,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -9084,8 +9084,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -9101,8 +9101,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -9118,8 +9118,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -9135,8 +9135,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -9160,8 +9160,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -9177,8 +9177,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -9266,8 +9266,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -9283,8 +9283,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -9305,8 +9305,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -9322,8 +9322,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -9339,8 +9339,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -9356,8 +9356,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -9373,8 +9373,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -9390,8 +9390,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -9407,8 +9407,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -9424,8 +9424,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -9441,8 +9441,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -9463,8 +9463,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -9480,9 +9480,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -9498,9 +9498,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -9516,9 +9516,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -9534,9 +9534,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -9552,9 +9552,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -9570,9 +9570,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -9588,9 +9588,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -9606,9 +9606,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -9624,9 +9624,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -9642,9 +9642,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -9660,9 +9660,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -9678,9 +9678,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -9696,9 +9696,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -9714,9 +9714,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -9732,9 +9732,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -9750,9 +9750,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -9768,9 +9768,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -9786,9 +9786,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -9804,9 +9804,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -9822,9 +9822,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -9840,9 +9840,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -9858,9 +9858,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -9876,9 +9876,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -9894,9 +9894,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -9912,9 +9912,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -9930,9 +9930,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -9948,9 +9948,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -9966,9 +9966,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -9984,9 +9984,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -10002,9 +10002,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -10020,8 +10020,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -10037,8 +10037,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -10054,8 +10054,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -10071,8 +10071,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -10088,8 +10088,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -10113,8 +10113,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -10130,8 +10130,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -10219,8 +10219,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -10236,8 +10236,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -10258,8 +10258,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -10275,8 +10275,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -10292,8 +10292,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -10309,8 +10309,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -10326,8 +10326,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -10343,8 +10343,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -10360,8 +10360,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -10377,8 +10377,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -10394,8 +10394,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -10416,8 +10416,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -10433,9 +10433,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -10451,9 +10451,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -10469,9 +10469,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -10487,9 +10487,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -10505,9 +10505,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -10523,9 +10523,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -10541,9 +10541,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -10559,9 +10559,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -10577,9 +10577,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -10595,9 +10595,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -10613,9 +10613,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -10631,9 +10631,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -10649,9 +10649,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -10667,9 +10667,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -10685,9 +10685,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -10703,9 +10703,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -10721,9 +10721,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -10739,9 +10739,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -10757,9 +10757,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -10775,9 +10775,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -10793,9 +10793,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -10811,9 +10811,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -10829,9 +10829,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -10847,9 +10847,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -10865,9 +10865,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -10883,9 +10883,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -10901,9 +10901,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -10919,9 +10919,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -10937,9 +10937,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -10955,9 +10955,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -10973,8 +10973,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -10990,8 +10990,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -11007,8 +11007,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -11024,8 +11024,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -11041,8 +11041,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -11066,8 +11066,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -11083,8 +11083,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -11172,8 +11172,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -11189,8 +11189,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -11211,8 +11211,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -11228,8 +11228,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -11245,8 +11245,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -11262,8 +11262,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -11279,8 +11279,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -11296,8 +11296,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -11313,8 +11313,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -11330,8 +11330,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -11347,8 +11347,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -11369,8 +11369,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -11386,9 +11386,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -11404,9 +11404,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -11422,9 +11422,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -11440,9 +11440,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -11458,9 +11458,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -11476,9 +11476,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -11494,9 +11494,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -11512,9 +11512,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -11530,9 +11530,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -11548,9 +11548,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -11566,9 +11566,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -11584,9 +11584,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -11602,9 +11602,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -11620,9 +11620,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -11638,9 +11638,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -11656,9 +11656,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -11674,9 +11674,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -11692,9 +11692,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -11710,9 +11710,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -11728,9 +11728,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -11746,9 +11746,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -11764,9 +11764,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -11782,9 +11782,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -11800,9 +11800,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -11818,9 +11818,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -11836,9 +11836,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -11854,9 +11854,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -11872,9 +11872,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -11890,9 +11890,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -11908,9 +11908,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -11926,8 +11926,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -11943,8 +11943,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -11960,8 +11960,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -11977,8 +11977,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -11994,8 +11994,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -12019,8 +12019,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -12036,8 +12036,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -12135,8 +12135,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -12152,8 +12152,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -12169,8 +12169,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,122,1))
         END AS STRING
     ) AS oaud_irregularidade_fam,
@@ -12186,8 +12186,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -12203,8 +12203,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -12220,8 +12220,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -12237,8 +12237,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -12254,8 +12254,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -12271,8 +12271,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -12288,8 +12288,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -12305,8 +12305,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -12322,8 +12322,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -12339,8 +12339,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,131,1))
         END AS STRING
     ) AS paud_irregularidade_fam,
@@ -12356,8 +12356,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -12373,9 +12373,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -12391,9 +12391,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -12409,9 +12409,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -12427,9 +12427,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -12445,9 +12445,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -12463,9 +12463,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -12481,9 +12481,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -12499,9 +12499,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -12517,9 +12517,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -12535,9 +12535,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -12553,9 +12553,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -12571,9 +12571,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -12589,9 +12589,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -12607,9 +12607,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -12625,9 +12625,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -12643,9 +12643,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -12661,9 +12661,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -12679,9 +12679,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -12697,9 +12697,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -12715,9 +12715,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -12733,9 +12733,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -12751,9 +12751,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -12769,9 +12769,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -12787,9 +12787,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -12805,9 +12805,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -12823,9 +12823,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -12841,9 +12841,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -12859,9 +12859,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -12877,9 +12877,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -12895,9 +12895,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -12913,8 +12913,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -12930,8 +12930,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -12947,8 +12947,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -12964,8 +12964,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -12981,8 +12981,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -13006,8 +13006,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -13023,8 +13023,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -13122,8 +13122,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -13139,8 +13139,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -13156,8 +13156,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,122,1))
         END AS STRING
     ) AS oaud_irregularidade_fam,
@@ -13173,8 +13173,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -13190,8 +13190,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -13207,8 +13207,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -13224,8 +13224,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -13241,8 +13241,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -13258,8 +13258,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -13275,8 +13275,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -13292,8 +13292,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -13309,8 +13309,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -13326,8 +13326,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,131,1))
         END AS STRING
     ) AS paud_irregularidade_fam,
@@ -13343,8 +13343,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -13360,9 +13360,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -13378,9 +13378,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -13396,9 +13396,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -13414,9 +13414,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -13432,9 +13432,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -13450,9 +13450,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -13468,9 +13468,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -13486,9 +13486,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -13504,9 +13504,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -13522,9 +13522,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -13540,9 +13540,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -13558,9 +13558,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -13576,9 +13576,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -13594,9 +13594,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -13612,9 +13612,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -13630,9 +13630,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -13648,9 +13648,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -13666,9 +13666,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -13684,9 +13684,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -13702,9 +13702,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -13720,9 +13720,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -13738,9 +13738,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -13756,9 +13756,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -13774,9 +13774,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -13792,9 +13792,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -13810,9 +13810,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -13828,9 +13828,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -13846,9 +13846,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -13864,9 +13864,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -13882,9 +13882,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -13900,8 +13900,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -13917,8 +13917,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -13934,8 +13934,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -13951,8 +13951,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -13968,8 +13968,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -13993,8 +13993,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -14010,8 +14010,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,
@@ -14109,8 +14109,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,86,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,86,1))
         END AS STRING
     ) AS exclusao_pessoa_cpf_nulo,
@@ -14126,8 +14126,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,89,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,89,1))
         END AS STRING
     ) AS oaud_sem_upload_arquivo,
@@ -14143,8 +14143,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,122,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,122,1))
         END AS STRING
     ) AS oaud_irregularidade_fam,
@@ -14160,8 +14160,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS sem_unidade_territorial,
@@ -14177,8 +14177,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS transferida_este_municipio_familia_existente,
@@ -14194,8 +14194,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS transferida_este_municipio_nova_familia,
@@ -14211,8 +14211,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS transferida_outra_familia_mesmo_municipio,
@@ -14228,8 +14228,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS transferida_outro_municipio,
@@ -14245,8 +14245,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS patl_dados_desatualizados,
@@ -14262,8 +14262,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_principal,
@@ -14279,8 +14279,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido_formulario_suplementar_1,
@@ -14296,8 +14296,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,88,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,88,1))
         END AS STRING
     ) AS paud_sem_upload_arquivo,
@@ -14313,8 +14313,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,131,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,131,1))
         END AS STRING
     ) AS paud_irregularidade_fam,
@@ -14330,8 +14330,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS paud_sem_responsavel_cadastrado,
@@ -14347,9 +14347,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS pmds_pendencia_01,
@@ -14365,9 +14365,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS pmds_pendencia_02,
@@ -14383,9 +14383,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS pmds_pendencia_03,
@@ -14401,9 +14401,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS pmds_pendencia_04,
@@ -14419,9 +14419,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS pmds_pendencia_05,
@@ -14437,9 +14437,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS pmds_pendencia_06,
@@ -14455,9 +14455,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS pmds_pendencia_07,
@@ -14473,9 +14473,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS pmds_pendencia_08,
@@ -14491,9 +14491,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS pmds_pendencia_09,
@@ -14509,9 +14509,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS pmds_pendencia_10,
@@ -14527,9 +14527,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS pmds_pendencia_11,
@@ -14545,9 +14545,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS pmds_pendencia_12,
@@ -14563,9 +14563,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS pmds_pendencia_13,
@@ -14581,9 +14581,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS pmds_pendencia_14,
@@ -14599,9 +14599,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS pmds_pendencia_15,
@@ -14617,9 +14617,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS pmds_pendencia_16,
@@ -14635,9 +14635,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS pmds_pendencia_17,
@@ -14653,9 +14653,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS pmds_pendencia_18,
@@ -14671,9 +14671,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS pmds_pendencia_19,
@@ -14689,9 +14689,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS pmds_pendencia_20,
@@ -14707,9 +14707,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS pmds_pendencia_21,
@@ -14725,9 +14725,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS pmds_pendencia_22,
@@ -14743,9 +14743,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS pmds_pendencia_23,
@@ -14761,9 +14761,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS pmds_pendencia_24,
@@ -14779,9 +14779,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS pmds_pendencia_25,
@@ -14797,9 +14797,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS pmds_pendencia_26,
@@ -14815,9 +14815,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS pmds_pendencia_27,
@@ -14833,9 +14833,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS pmds_pendencia_28,
@@ -14851,9 +14851,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS pmds_pendencia_29,
@@ -14869,9 +14869,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Sem Pendência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Pendente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Atualizada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Sem Pendência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Pendente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Atualizada'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS pmds_pendencia_30,
@@ -14887,8 +14887,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos,
@@ -14904,8 +14904,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_campos_obrigatorios_nao_preenchidos_sumeplentar_1,
@@ -14921,8 +14921,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_sem_responsavel_familiar_cadastrado,
@@ -14938,8 +14938,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS ptab_desativacao_cras_creas,
@@ -14955,8 +14955,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS ptab_desativacao_eas,
@@ -14980,8 +14980,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS ptab_desativacao_terras_indigenas,
@@ -14997,8 +14997,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS ptrn_sem_responsavel_familiar_cadastrado,

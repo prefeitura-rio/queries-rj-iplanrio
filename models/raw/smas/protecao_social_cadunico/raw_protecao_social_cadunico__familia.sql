@@ -50,8 +50,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -75,8 +75,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -178,8 +178,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -479,8 +479,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -504,8 +504,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -607,8 +607,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -908,8 +908,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -933,8 +933,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -1036,8 +1036,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -1337,8 +1337,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -1362,8 +1362,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -1465,8 +1465,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -1766,8 +1766,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -1791,8 +1791,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -1894,8 +1894,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -2195,8 +2195,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -2220,8 +2220,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -2323,8 +2323,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -2624,8 +2624,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -2649,8 +2649,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -2752,8 +2752,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -3053,8 +3053,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -3078,8 +3078,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -3181,8 +3181,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -3482,8 +3482,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -3507,8 +3507,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -3620,8 +3620,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -3669,8 +3669,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -3686,8 +3686,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -3945,8 +3945,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -3970,8 +3970,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -4083,8 +4083,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -4132,8 +4132,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -4149,8 +4149,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -4408,8 +4408,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -4433,8 +4433,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -4546,8 +4546,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -4595,8 +4595,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -4612,8 +4612,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -4871,8 +4871,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -4896,8 +4896,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -5009,8 +5009,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -5058,8 +5058,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -5075,8 +5075,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -5334,8 +5334,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -5359,8 +5359,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -5472,8 +5472,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -5521,8 +5521,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -5538,8 +5538,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -5797,8 +5797,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -5822,8 +5822,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -5935,8 +5935,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -5984,8 +5984,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -6001,8 +6001,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -6260,8 +6260,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -6285,8 +6285,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -6398,8 +6398,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -6447,8 +6447,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -6464,8 +6464,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -6723,8 +6723,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -6748,8 +6748,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -6861,8 +6861,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -6910,8 +6910,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -6927,8 +6927,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,

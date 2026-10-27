@@ -66,8 +66,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -349,10 +349,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -418,8 +418,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -701,10 +701,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -770,8 +770,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -1053,10 +1053,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -1122,8 +1122,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -1405,10 +1405,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -1474,8 +1474,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -1757,10 +1757,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -1826,8 +1826,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -2109,10 +2109,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -2178,8 +2178,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -2461,10 +2461,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -2530,8 +2530,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -2813,10 +2813,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -2882,8 +2882,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -3165,10 +3165,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -3234,8 +3234,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -3517,10 +3517,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -3586,8 +3586,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -3869,10 +3869,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -3938,8 +3938,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -4221,10 +4221,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -4290,8 +4290,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -4573,10 +4573,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -4642,8 +4642,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -4925,10 +4925,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -4994,8 +4994,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -5277,10 +5277,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
@@ -5346,8 +5346,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -5629,10 +5629,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,

@@ -34,8 +34,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -205,8 +205,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -376,8 +376,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -547,8 +547,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -718,8 +718,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -889,8 +889,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -1060,8 +1060,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -1231,8 +1231,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -1402,8 +1402,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -1573,8 +1573,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -1744,8 +1744,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -1915,8 +1915,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -2086,8 +2086,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -2257,8 +2257,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -2428,8 +2428,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,
@@ -2599,8 +2599,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS tem_deficiencia,

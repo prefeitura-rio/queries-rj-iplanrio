@@ -50,8 +50,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -117,8 +117,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -184,8 +184,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -251,8 +251,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -318,8 +318,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -385,8 +385,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -452,8 +452,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -519,8 +519,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -586,8 +586,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -653,8 +653,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -720,8 +720,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -787,8 +787,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -854,8 +854,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -921,8 +921,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -988,8 +988,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,
@@ -1055,8 +1055,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS migracao,

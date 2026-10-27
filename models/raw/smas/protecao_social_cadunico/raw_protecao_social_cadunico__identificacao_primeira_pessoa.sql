@@ -50,10 +50,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -69,13 +69,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -107,9 +107,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -149,17 +149,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -175,11 +175,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -195,8 +195,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -282,8 +282,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -299,8 +299,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -488,10 +488,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -507,13 +507,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -545,9 +545,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -587,17 +587,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -613,11 +613,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -633,8 +633,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -720,8 +720,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -737,8 +737,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -842,8 +842,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -938,10 +938,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -957,13 +957,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -995,9 +995,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -1037,17 +1037,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -1063,11 +1063,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -1083,8 +1083,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -1170,8 +1170,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -1187,8 +1187,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -1292,8 +1292,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -1388,10 +1388,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -1407,13 +1407,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -1445,9 +1445,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -1487,17 +1487,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -1513,11 +1513,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -1533,8 +1533,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -1620,8 +1620,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -1637,8 +1637,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -1742,8 +1742,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -1838,10 +1838,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -1857,13 +1857,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -1895,9 +1895,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -1937,17 +1937,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -1963,11 +1963,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -1983,8 +1983,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -2070,8 +2070,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -2087,8 +2087,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -2192,8 +2192,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -2288,10 +2288,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -2307,13 +2307,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -2345,9 +2345,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -2387,17 +2387,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -2413,11 +2413,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -2433,8 +2433,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -2520,8 +2520,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -2537,8 +2537,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -2642,8 +2642,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -2738,10 +2738,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -2757,13 +2757,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -2795,9 +2795,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -2837,17 +2837,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -2863,11 +2863,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -2883,8 +2883,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -2970,8 +2970,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -2987,8 +2987,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -3092,8 +3092,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -3188,10 +3188,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -3207,13 +3207,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -3245,9 +3245,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -3287,17 +3287,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -3313,11 +3313,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -3333,8 +3333,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -3420,8 +3420,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -3437,8 +3437,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -3542,8 +3542,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -3638,10 +3638,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -3657,13 +3657,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -3695,9 +3695,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -3737,17 +3737,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -3763,11 +3763,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -3783,8 +3783,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -3870,8 +3870,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -3887,8 +3887,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -3992,8 +3992,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -4088,10 +4088,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -4107,13 +4107,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -4145,9 +4145,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -4187,17 +4187,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -4213,11 +4213,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -4233,8 +4233,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -4319,8 +4319,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -4342,8 +4342,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -4359,8 +4359,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -4384,9 +4384,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -4467,8 +4467,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -4484,9 +4484,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,
@@ -4576,10 +4576,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -4595,13 +4595,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -4633,9 +4633,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -4675,17 +4675,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -4701,11 +4701,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -4721,8 +4721,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -4807,8 +4807,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -4830,8 +4830,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -4847,8 +4847,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -4872,9 +4872,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -4955,8 +4955,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -4972,9 +4972,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,
@@ -5064,10 +5064,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -5083,13 +5083,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -5121,9 +5121,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -5163,17 +5163,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -5189,11 +5189,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -5209,8 +5209,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -5295,8 +5295,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -5318,8 +5318,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -5335,8 +5335,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -5360,9 +5360,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -5443,8 +5443,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -5460,9 +5460,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,
@@ -5552,10 +5552,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -5571,13 +5571,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -5609,9 +5609,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -5651,17 +5651,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -5677,11 +5677,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -5697,8 +5697,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -5783,8 +5783,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -5806,8 +5806,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -5823,8 +5823,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -5848,9 +5848,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -5931,8 +5931,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -5948,9 +5948,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,
@@ -6040,10 +6040,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -6059,13 +6059,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -6097,9 +6097,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -6139,17 +6139,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -6165,11 +6165,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -6185,8 +6185,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -6271,8 +6271,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -6294,8 +6294,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -6311,8 +6311,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -6336,9 +6336,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -6419,8 +6419,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -6436,9 +6436,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,
@@ -6528,10 +6528,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -6547,13 +6547,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -6585,9 +6585,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -6627,17 +6627,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -6653,11 +6653,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -6673,8 +6673,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -6759,8 +6759,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -6782,8 +6782,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -6799,8 +6799,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -6824,9 +6824,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -6907,8 +6907,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -6924,9 +6924,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,
@@ -7016,10 +7016,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^3$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^4$') THEN 'Não Sabe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*1$') THEN 'Sim E Tem Certidão De Nascimento E/Ou De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*2$') THEN 'Sim, Mas Não Tem Certidão De Nascimento Nem De Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,419,1), r'^0*4$') THEN 'Não Sabe'
             ELSE TRIM(SUBSTRING(text,419,1))
         END AS STRING
     ) AS certidao_registrada_cartorio,
@@ -7035,13 +7035,13 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^5$') THEN 'Aguardando Atribuição Nis'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^6$') THEN 'Aguardando Alteração De Caracterização'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^7$') THEN 'Aguardando CPF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*5$') THEN 'Aguardando Atribuição Nis'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*6$') THEN 'Aguardando Alteração De Caracterização'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*7$') THEN 'Aguardando CPF'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastral,
@@ -7073,9 +7073,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^1$') THEN 'Neste Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^2$') THEN 'Em Outro Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^3$') THEN 'Em Outro País'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*1$') THEN 'Neste Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*2$') THEN 'Em Outro Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,329,1), r'^0*3$') THEN 'Em Outro País'
             ELSE TRIM(SUBSTRING(text,329,1))
         END AS STRING
     ) AS local_nascimento,
@@ -7115,17 +7115,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^01$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^02$') THEN 'Cônjuge ou companheiro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^03$') THEN 'Filho(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^04$') THEN 'Enteado(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^05$') THEN 'Neto(a) ou bisneto(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^06$') THEN 'Pai ou mãe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^07$') THEN 'Sogro(a)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^08$') THEN 'Irmão ou irmã'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^09$') THEN 'Genro ou nora'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^10$') THEN 'Outro parente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^11$') THEN 'Não parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*1$') THEN 'Pessoa Responsável pela Unidade Familiar - RF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*2$') THEN 'Cônjuge ou companheiro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*3$') THEN 'Filho(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*4$') THEN 'Enteado(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*5$') THEN 'Neto(a) ou bisneto(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*6$') THEN 'Pai ou mãe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*7$') THEN 'Sogro(a)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*8$') THEN 'Irmão ou irmã'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*9$') THEN 'Genro ou nora'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*10$') THEN 'Outro parente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,184,2), r'^0*11$') THEN 'Não parente'
             ELSE TRIM(SUBSTRING(text,184,2))
         END AS STRING
     ) AS parentesco_responsavel_familia,
@@ -7141,11 +7141,11 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^1$') THEN 'Branca'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^2$') THEN 'Preta'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^3$') THEN 'Amarela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^4$') THEN 'Parda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^5$') THEN 'Indígena'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*1$') THEN 'Branca'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*2$') THEN 'Preta'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*3$') THEN 'Amarela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*4$') THEN 'Parda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,186,1), r'^0*5$') THEN 'Indígena'
             ELSE TRIM(SUBSTRING(text,186,1))
         END AS STRING
     ) AS raca_cor,
@@ -7161,8 +7161,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,175,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,175,1))
         END AS STRING
     ) AS sexo,
@@ -7218,9 +7218,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^3$') THEN 'Não se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,553,1), r'^0*3$') THEN 'Não se Aplica'
             ELSE TRIM(SUBSTRING(text,553,1))
         END AS STRING
     ) AS cadastro_valido_pessoa,
@@ -7260,8 +7260,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,548,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,548,1))
         END AS STRING
     ) AS identidade_genero,
@@ -7283,8 +7283,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,418,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,418,1))
         END AS STRING
     ) AS sabe_pais_nascimento,
@@ -7300,8 +7300,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -7325,9 +7325,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^1$') THEN 'Sim, a pessoa é trans'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^2$') THEN 'Sim, a pessoa é travesti'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^3$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*1$') THEN 'Sim, a pessoa é trans'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*2$') THEN 'Sim, a pessoa é travesti'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,549,1), r'^0*3$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,549,1))
         END AS STRING
     ) AS transgenero,
@@ -7408,8 +7408,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^01$') THEN 'Online'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^02$') THEN 'APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*1$') THEN 'Online'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,546,2), r'^0*2$') THEN 'APP'
             ELSE TRIM(SUBSTRING(text,546,2))
         END AS STRING
     ) AS origem_cadastro_pessoa,
@@ -7425,9 +7425,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^001$') THEN 'Feminina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^002$') THEN 'Masculina'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^003$') THEN 'Não binário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*1$') THEN 'Feminina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*2$') THEN 'Masculina'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,550,3), r'^0*3$') THEN 'Não binário'
             ELSE TRIM(SUBSTRING(text,550,3))
         END AS STRING
     ) AS tipo_identidade_genero,

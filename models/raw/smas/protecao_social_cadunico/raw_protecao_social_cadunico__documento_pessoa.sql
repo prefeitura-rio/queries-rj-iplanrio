@@ -42,10 +42,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -303,10 +303,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -564,10 +564,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -825,10 +825,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1086,10 +1086,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1347,10 +1347,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1608,10 +1608,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1869,10 +1869,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2130,10 +2130,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2391,10 +2391,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2652,10 +2652,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2913,10 +2913,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3174,10 +3174,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3435,10 +3435,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3696,10 +3696,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3957,10 +3957,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -4072,8 +4072,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^0$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^0*0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^0*1$') THEN 'Sim'
             ELSE TRIM(SUBSTRING(text,343,1))
         END AS STRING
     ) AS biometria_cin,
@@ -4089,8 +4089,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^0$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^0*0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^0*1$') THEN 'Sim'
             ELSE TRIM(SUBSTRING(text,352,1))
         END AS STRING
     ) AS biometria_cnh,
@@ -4106,8 +4106,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^0$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^0*0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^0*1$') THEN 'Sim'
             ELSE TRIM(SUBSTRING(text,361,1))
         END AS STRING
     ) AS biometria_tse,

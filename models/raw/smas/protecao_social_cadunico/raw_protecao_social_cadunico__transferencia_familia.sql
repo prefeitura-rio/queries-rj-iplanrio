@@ -50,10 +50,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -143,10 +143,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -236,10 +236,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -329,10 +329,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -422,10 +422,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -515,10 +515,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -608,10 +608,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -701,10 +701,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -794,10 +794,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -887,10 +887,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -980,10 +980,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1073,10 +1073,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1166,10 +1166,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1259,10 +1259,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1352,10 +1352,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1445,10 +1445,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,

@@ -34,14 +34,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -57,10 +57,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -84,10 +84,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -267,9 +267,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -290,9 +290,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -356,8 +356,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -509,14 +509,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -532,10 +532,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -559,10 +559,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -742,9 +742,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -765,9 +765,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -831,8 +831,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -989,14 +989,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -1012,10 +1012,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -1039,10 +1039,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -1222,9 +1222,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -1245,9 +1245,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -1311,8 +1311,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -1469,14 +1469,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -1492,10 +1492,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -1519,10 +1519,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -1702,9 +1702,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -1725,9 +1725,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -1791,8 +1791,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -1949,14 +1949,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -1972,10 +1972,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -1999,10 +1999,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -2182,9 +2182,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -2205,9 +2205,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -2271,8 +2271,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -2429,14 +2429,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -2452,10 +2452,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -2479,10 +2479,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -2667,9 +2667,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -2690,9 +2690,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -2756,8 +2756,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -2914,14 +2914,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -2937,10 +2937,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -2964,10 +2964,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -3152,9 +3152,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -3175,9 +3175,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -3241,8 +3241,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -3399,14 +3399,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -3422,10 +3422,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -3449,10 +3449,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -3642,9 +3642,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -3665,9 +3665,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -3731,8 +3731,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -3889,14 +3889,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -3912,10 +3912,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -3939,10 +3939,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -4132,9 +4132,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -4155,9 +4155,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -4221,8 +4221,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -4379,14 +4379,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -4402,10 +4402,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -4429,10 +4429,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -4622,9 +4622,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -4645,9 +4645,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -4711,8 +4711,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -4869,14 +4869,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -4892,10 +4892,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -4919,10 +4919,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -5117,9 +5117,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -5140,9 +5140,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -5206,8 +5206,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -5369,14 +5369,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -5392,10 +5392,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -5419,10 +5419,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -5617,9 +5617,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -5640,9 +5640,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -5706,8 +5706,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -5869,14 +5869,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -5892,10 +5892,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -5919,10 +5919,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -6117,9 +6117,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -6140,9 +6140,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -6206,8 +6206,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -6369,14 +6369,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -6392,10 +6392,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -6419,10 +6419,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -6475,10 +6475,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^1$') THEN 'Área de violência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^2$') THEN 'Calamidade/emergência/desastre'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^3$') THEN 'Área de difícil acesso'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^4$') THEN 'Pessoas em programa de proteção ou medida protetiva'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*1$') THEN 'Área de violência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*2$') THEN 'Calamidade/emergência/desastre'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*3$') THEN 'Área de difícil acesso'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*4$') THEN 'Pessoas em programa de proteção ou medida protetiva'
             ELSE TRIM(SUBSTRING(text,1263,1))
         END AS STRING
     ) AS mot_impossib_visita_fam,
@@ -6631,9 +6631,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -6654,9 +6654,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -6720,8 +6720,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -6883,14 +6883,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS condicao_cadastro,
@@ -6906,10 +6906,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -6933,10 +6933,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,85,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,85,1))
         END AS STRING
     ) AS forma_coleta,
@@ -6989,10 +6989,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^1$') THEN 'Área de violência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^2$') THEN 'Calamidade/emergência/desastre'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^3$') THEN 'Área de difícil acesso'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^4$') THEN 'Pessoas em programa de proteção ou medida protetiva'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*1$') THEN 'Área de violência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*2$') THEN 'Calamidade/emergência/desastre'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*3$') THEN 'Área de difícil acesso'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1263,1), r'^0*4$') THEN 'Pessoas em programa de proteção ou medida protetiva'
             ELSE TRIM(SUBSTRING(text,1263,1))
         END AS STRING
     ) AS mot_impossib_visita_fam,
@@ -7145,9 +7145,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1111,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1111,1))
         END AS STRING
     ) AS alterada_v7,
@@ -7168,9 +7168,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -7234,8 +7234,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS trabalho_infantil,
@@ -7397,14 +7397,14 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^01$') THEN 'Atualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^02$') THEN 'Desatualizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^03$') THEN 'Por Confirmação'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^04$') THEN 'Não Se Aplica'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^05$') THEN 'Por Confirmação Do Usuário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^06$') THEN 'Pelo RF Via Aplicativo do Cidadão'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^07$') THEN 'Atualizado Por Integração de Dados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^08$') THEN 'Desatualizado Após Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*1$') THEN 'Atualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*2$') THEN 'Desatualizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*3$') THEN 'Por Confirmação'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*4$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*5$') THEN 'Por Confirmação Do Usuário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*6$') THEN 'Pelo RF Via Aplicativo do Cidadão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*7$') THEN 'Atualizado Por Integração de Dados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,2), r'^0*8$') THEN 'Desatualizado Após Integração de Dados'
             ELSE TRIM(SUBSTRING(text,58,2))
         END AS STRING
     ) AS condicao_cadastro,
@@ -7420,10 +7420,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS estado_cadastro,
@@ -7447,10 +7447,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0$') THEN 'Informação Migrada Como Inexistente'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^1$') THEN 'Fora do domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^2$') THEN 'Em domicílio'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^3$') THEN 'Impossibilidade em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*0$') THEN 'Informação Migrada Como Inexistente'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*1$') THEN 'Fora do domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*2$') THEN 'Em domicílio'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,87,1), r'^0*3$') THEN 'Impossibilidade em domicílio'
             ELSE TRIM(SUBSTRING(text,87,1))
         END AS STRING
     ) AS forma_coleta,
@@ -7498,8 +7498,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1290,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1290,2), r'^1$') THEN 'Exclusão por indicativo de óbito'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1290,2), r'^2$') THEN 'Inclusão por indicativo de nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1290,2), r'^0*1$') THEN 'Exclusão por indicativo de óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1290,2), r'^0*2$') THEN 'Inclusão por indicativo de nascimento'
             ELSE TRIM(SUBSTRING(text,1290,2))
         END AS STRING
     ) AS motivo_atualizacao_cidadao,
@@ -7515,10 +7515,10 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^1$') THEN 'Área de violência'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^2$') THEN 'Calamidade/emergência/desastre'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^3$') THEN 'Área de difícil acesso'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^4$') THEN 'Pessoas em programa de proteção ou medida protetiva'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^0*1$') THEN 'Área de violência'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^0*2$') THEN 'Calamidade/emergência/desastre'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^0*3$') THEN 'Área de difícil acesso'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1265,1), r'^0*4$') THEN 'Pessoas em programa de proteção ou medida protetiva'
             ELSE TRIM(SUBSTRING(text,1265,1))
         END AS STRING
     ) AS mot_impossib_visita_fam,
@@ -7686,9 +7686,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^0$') THEN 'Família Não Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^1$') THEN 'Família Atualizada Na V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^2$') THEN 'Família Oriunda Da V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^0*0$') THEN 'Família Não Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^0*1$') THEN 'Família Atualizada Na V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1113,1), r'^0*2$') THEN 'Família Oriunda Da V7'
             ELSE TRIM(SUBSTRING(text,1113,1))
         END AS STRING
     ) AS alterada_v7,
@@ -7704,8 +7704,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,1292,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1292,1), r'^0$') THEN 'Cadastro não finalizado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,1292,1), r'^1$') THEN 'Cadastro finalizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1292,1), r'^0*0$') THEN 'Cadastro não finalizado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,1292,1), r'^0*1$') THEN 'Cadastro finalizado'
             ELSE TRIM(SUBSTRING(text,1292,1))
         END AS STRING
     ) AS cadastro_familia_finalizado,
@@ -7721,9 +7721,9 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^2$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^3$') THEN 'Não Se Aplica'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*3$') THEN 'Não Se Aplica'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS cadastro_valido,
@@ -7787,8 +7787,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS trabalho_infantil,

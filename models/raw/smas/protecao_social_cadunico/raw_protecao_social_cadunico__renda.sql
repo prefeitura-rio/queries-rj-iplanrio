@@ -58,8 +58,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -75,8 +75,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -92,8 +92,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -109,8 +109,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -126,8 +126,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -143,8 +143,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -160,8 +160,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -177,17 +177,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -437,8 +437,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -454,8 +454,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -471,8 +471,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -488,8 +488,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -505,8 +505,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -522,8 +522,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -539,8 +539,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -556,17 +556,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -816,8 +816,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -833,8 +833,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -850,8 +850,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -867,8 +867,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -884,8 +884,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -901,8 +901,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -918,8 +918,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -935,17 +935,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -1195,8 +1195,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -1212,8 +1212,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -1229,8 +1229,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -1246,8 +1246,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -1263,8 +1263,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -1280,8 +1280,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -1297,8 +1297,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -1314,17 +1314,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -1574,8 +1574,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -1591,8 +1591,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -1608,8 +1608,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -1625,8 +1625,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -1642,8 +1642,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -1659,8 +1659,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -1676,8 +1676,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -1693,17 +1693,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -1953,8 +1953,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -1970,8 +1970,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -1987,8 +1987,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -2004,8 +2004,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -2021,8 +2021,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -2038,8 +2038,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -2055,8 +2055,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -2072,17 +2072,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -2332,8 +2332,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -2349,8 +2349,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -2366,8 +2366,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -2383,8 +2383,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -2400,8 +2400,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -2417,8 +2417,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -2434,8 +2434,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -2451,17 +2451,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -2711,8 +2711,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -2728,8 +2728,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -2745,8 +2745,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -2762,8 +2762,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -2779,8 +2779,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -2796,8 +2796,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -2813,8 +2813,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -2830,17 +2830,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -3090,8 +3090,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -3107,8 +3107,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -3124,8 +3124,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -3141,8 +3141,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -3158,8 +3158,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -3175,8 +3175,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -3192,8 +3192,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -3209,17 +3209,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -3469,8 +3469,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -3486,8 +3486,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -3503,8 +3503,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -3520,8 +3520,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -3537,8 +3537,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -3554,8 +3554,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -3571,8 +3571,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -3588,17 +3588,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,
@@ -3848,8 +3848,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS origem_valor_outra_fonte,
@@ -3865,8 +3865,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS origem_valor_pensao_alimenticia,
@@ -3882,8 +3882,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS origem_valor_rendimento_bruto,
@@ -3899,8 +3899,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS origem_valor_rendimento_mes_passado,
@@ -3916,8 +3916,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS origem_valor_seguro_desemprego,
@@ -3933,8 +3933,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS origem_valor_ajuda_doacao,
@@ -3950,8 +3950,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Auto Declarada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^2$') THEN 'CNIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Auto Declarada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*2$') THEN 'CNIS'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS origem_valor_aposentadoria,
@@ -3967,17 +3967,17 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^01$') THEN 'Trabalhador por conta própria (bico, autônomo)'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^02$') THEN 'Trabalhador temporário em área rural'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^03$') THEN 'Empregado sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^04$') THEN 'Empregado com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^05$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^06$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^07$') THEN 'Trabalhador não-remunerado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^08$') THEN 'Militar ou servidor público'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^09$') THEN 'Empregador'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^10$') THEN 'Estagiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^11$') THEN 'Aprendiz'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*1$') THEN 'Trabalhador por conta própria (bico, autônomo)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*2$') THEN 'Trabalhador temporário em área rural'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*3$') THEN 'Empregado sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*4$') THEN 'Empregado com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*5$') THEN 'Trabalhador doméstico sem carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*6$') THEN 'Trabalhador doméstico com carteira de trabalho assinada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*7$') THEN 'Trabalhador não-remunerado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*8$') THEN 'Militar ou servidor público'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*9$') THEN 'Empregador'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*10$') THEN 'Estagiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,2), r'^0*11$') THEN 'Aprendiz'
             ELSE TRIM(SUBSTRING(text,43,2))
         END AS STRING
     ) AS funcao_principal_trabalho,

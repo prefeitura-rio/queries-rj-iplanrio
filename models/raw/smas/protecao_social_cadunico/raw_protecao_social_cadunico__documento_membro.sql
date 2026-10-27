@@ -81,8 +81,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -98,8 +98,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -115,8 +115,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -132,8 +132,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -154,8 +154,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -171,8 +171,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -188,8 +188,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -205,8 +205,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -222,8 +222,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -239,8 +239,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -256,8 +256,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -273,8 +273,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -290,8 +290,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -307,8 +307,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -324,8 +324,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -341,8 +341,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -358,8 +358,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -375,8 +375,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -392,8 +392,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -409,8 +409,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -431,8 +431,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -448,8 +448,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -465,8 +465,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -482,8 +482,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -499,8 +499,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -516,8 +516,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -533,8 +533,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -550,8 +550,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -567,8 +567,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -584,8 +584,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -601,8 +601,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -618,8 +618,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -635,8 +635,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -652,8 +652,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -669,8 +669,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -686,8 +686,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -703,8 +703,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -720,8 +720,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -737,8 +737,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -754,8 +754,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -771,8 +771,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -788,8 +788,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -805,8 +805,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -822,8 +822,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -920,8 +920,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -937,8 +937,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -954,8 +954,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -971,8 +971,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -993,8 +993,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -1010,8 +1010,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -1027,8 +1027,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -1044,8 +1044,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -1061,8 +1061,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -1078,8 +1078,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -1095,8 +1095,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -1112,8 +1112,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -1129,8 +1129,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -1146,8 +1146,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -1163,8 +1163,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -1180,8 +1180,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -1197,8 +1197,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -1214,8 +1214,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -1231,8 +1231,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -1248,8 +1248,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -1270,8 +1270,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -1287,8 +1287,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -1304,8 +1304,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -1321,8 +1321,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -1338,8 +1338,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -1355,8 +1355,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -1372,8 +1372,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -1389,8 +1389,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -1406,8 +1406,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -1423,8 +1423,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -1440,8 +1440,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -1457,8 +1457,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -1474,8 +1474,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -1491,8 +1491,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -1508,8 +1508,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -1525,8 +1525,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -1542,8 +1542,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -1559,8 +1559,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -1576,8 +1576,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -1593,8 +1593,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -1610,8 +1610,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -1627,8 +1627,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -1644,8 +1644,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -1661,8 +1661,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -1759,8 +1759,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -1776,8 +1776,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -1793,8 +1793,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -1810,8 +1810,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -1832,8 +1832,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -1849,8 +1849,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -1866,8 +1866,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -1883,8 +1883,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -1900,8 +1900,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -1917,8 +1917,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -1934,8 +1934,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -1951,8 +1951,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -1968,8 +1968,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -1985,8 +1985,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -2002,8 +2002,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -2019,8 +2019,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -2036,8 +2036,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -2053,8 +2053,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -2070,8 +2070,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -2087,8 +2087,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -2109,8 +2109,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -2126,8 +2126,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -2143,8 +2143,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -2160,8 +2160,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -2177,8 +2177,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -2194,8 +2194,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -2211,8 +2211,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -2228,8 +2228,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -2245,8 +2245,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -2262,8 +2262,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -2279,8 +2279,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -2296,8 +2296,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -2313,8 +2313,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -2330,8 +2330,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -2347,8 +2347,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -2364,8 +2364,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -2381,8 +2381,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -2398,8 +2398,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -2415,8 +2415,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -2432,8 +2432,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -2449,8 +2449,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -2466,8 +2466,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -2483,8 +2483,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -2500,8 +2500,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -2598,8 +2598,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -2615,8 +2615,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -2632,8 +2632,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -2649,8 +2649,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -2671,8 +2671,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -2688,8 +2688,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -2705,8 +2705,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -2722,8 +2722,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -2739,8 +2739,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -2756,8 +2756,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -2773,8 +2773,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -2790,8 +2790,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -2807,8 +2807,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -2824,8 +2824,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -2841,8 +2841,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -2858,8 +2858,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -2875,8 +2875,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -2892,8 +2892,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -2909,8 +2909,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -2926,8 +2926,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -2948,8 +2948,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -2965,8 +2965,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -2982,8 +2982,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -2999,8 +2999,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -3016,8 +3016,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -3033,8 +3033,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -3050,8 +3050,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -3067,8 +3067,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -3084,8 +3084,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -3101,8 +3101,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -3118,8 +3118,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -3135,8 +3135,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -3152,8 +3152,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -3169,8 +3169,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -3186,8 +3186,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -3203,8 +3203,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -3220,8 +3220,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -3237,8 +3237,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -3254,8 +3254,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -3271,8 +3271,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -3288,8 +3288,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -3305,8 +3305,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -3322,8 +3322,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -3339,8 +3339,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -3437,8 +3437,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -3454,8 +3454,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -3471,8 +3471,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -3488,8 +3488,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -3510,8 +3510,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -3527,8 +3527,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -3544,8 +3544,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -3561,8 +3561,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -3578,8 +3578,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -3595,8 +3595,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -3612,8 +3612,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -3629,8 +3629,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -3646,8 +3646,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -3663,8 +3663,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -3680,8 +3680,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -3697,8 +3697,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -3714,8 +3714,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -3731,8 +3731,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -3748,8 +3748,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -3765,8 +3765,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -3787,8 +3787,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -3804,8 +3804,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -3821,8 +3821,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -3838,8 +3838,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -3855,8 +3855,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -3872,8 +3872,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -3889,8 +3889,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -3906,8 +3906,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -3923,8 +3923,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -3940,8 +3940,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -3957,8 +3957,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -3974,8 +3974,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -3991,8 +3991,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -4008,8 +4008,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -4025,8 +4025,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -4042,8 +4042,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -4059,8 +4059,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -4076,8 +4076,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -4093,8 +4093,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -4110,8 +4110,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -4127,8 +4127,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -4144,8 +4144,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -4161,8 +4161,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -4178,8 +4178,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -4276,8 +4276,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -4293,8 +4293,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -4310,8 +4310,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -4327,8 +4327,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -4349,8 +4349,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -4366,8 +4366,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -4383,8 +4383,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -4400,8 +4400,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -4417,8 +4417,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -4434,8 +4434,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -4451,8 +4451,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -4468,8 +4468,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -4485,8 +4485,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -4502,8 +4502,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -4519,8 +4519,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -4536,8 +4536,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -4553,8 +4553,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -4570,8 +4570,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -4587,8 +4587,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -4604,8 +4604,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -4626,8 +4626,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -4643,8 +4643,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -4660,8 +4660,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -4677,8 +4677,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -4694,8 +4694,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -4711,8 +4711,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -4728,8 +4728,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -4745,8 +4745,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -4762,8 +4762,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -4779,8 +4779,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -4796,8 +4796,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -4813,8 +4813,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -4830,8 +4830,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -4847,8 +4847,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -4864,8 +4864,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -4881,8 +4881,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -4898,8 +4898,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -4915,8 +4915,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -4932,8 +4932,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -4949,8 +4949,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -4966,8 +4966,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -4983,8 +4983,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -5000,8 +5000,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -5017,8 +5017,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -5115,8 +5115,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -5132,8 +5132,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -5149,8 +5149,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -5166,8 +5166,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -5188,8 +5188,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -5205,8 +5205,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -5222,8 +5222,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -5239,8 +5239,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -5256,8 +5256,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -5273,8 +5273,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -5290,8 +5290,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -5307,8 +5307,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -5324,8 +5324,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -5341,8 +5341,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -5358,8 +5358,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -5375,8 +5375,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -5392,8 +5392,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -5409,8 +5409,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -5426,8 +5426,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -5443,8 +5443,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -5465,8 +5465,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -5482,8 +5482,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -5499,8 +5499,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -5516,8 +5516,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -5533,8 +5533,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -5550,8 +5550,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -5567,8 +5567,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -5584,8 +5584,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -5601,8 +5601,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -5618,8 +5618,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -5635,8 +5635,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -5652,8 +5652,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -5669,8 +5669,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -5686,8 +5686,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -5703,8 +5703,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -5720,8 +5720,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -5737,8 +5737,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -5754,8 +5754,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -5771,8 +5771,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -5788,8 +5788,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -5805,8 +5805,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -5822,8 +5822,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -5839,8 +5839,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -5856,8 +5856,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -5954,8 +5954,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -5971,8 +5971,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -5988,8 +5988,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -6005,8 +6005,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -6027,8 +6027,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -6044,8 +6044,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -6061,8 +6061,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -6078,8 +6078,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -6095,8 +6095,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -6112,8 +6112,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -6129,8 +6129,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -6146,8 +6146,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -6163,8 +6163,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -6180,8 +6180,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -6197,8 +6197,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -6214,8 +6214,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -6231,8 +6231,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -6248,8 +6248,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -6265,8 +6265,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -6282,8 +6282,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -6304,8 +6304,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -6321,8 +6321,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -6338,8 +6338,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -6355,8 +6355,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -6372,8 +6372,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -6389,8 +6389,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -6406,8 +6406,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -6423,8 +6423,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -6440,8 +6440,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -6457,8 +6457,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -6474,8 +6474,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -6491,8 +6491,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -6508,8 +6508,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -6525,8 +6525,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -6542,8 +6542,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -6559,8 +6559,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -6576,8 +6576,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -6593,8 +6593,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -6610,8 +6610,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -6627,8 +6627,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -6644,8 +6644,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -6661,8 +6661,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -6678,8 +6678,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -6695,8 +6695,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -6793,8 +6793,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -6810,8 +6810,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -6827,8 +6827,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -6844,8 +6844,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -6866,8 +6866,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -6883,8 +6883,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -6900,8 +6900,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -6917,8 +6917,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -6934,8 +6934,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -6951,8 +6951,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -6968,8 +6968,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -6985,8 +6985,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -7002,8 +7002,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -7019,8 +7019,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -7036,8 +7036,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -7053,8 +7053,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -7070,8 +7070,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -7087,8 +7087,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -7104,8 +7104,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -7121,8 +7121,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -7143,8 +7143,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -7160,8 +7160,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -7177,8 +7177,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -7194,8 +7194,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -7211,8 +7211,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -7228,8 +7228,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -7245,8 +7245,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -7262,8 +7262,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -7279,8 +7279,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -7296,8 +7296,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -7313,8 +7313,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -7330,8 +7330,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -7347,8 +7347,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -7364,8 +7364,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -7381,8 +7381,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -7398,8 +7398,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -7415,8 +7415,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -7432,8 +7432,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -7449,8 +7449,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -7466,8 +7466,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -7483,8 +7483,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -7500,8 +7500,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -7517,8 +7517,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -7534,8 +7534,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -7632,8 +7632,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -7649,8 +7649,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -7666,8 +7666,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -7683,8 +7683,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -7705,8 +7705,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -7722,8 +7722,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -7739,8 +7739,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -7756,8 +7756,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -7773,8 +7773,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -7790,8 +7790,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -7807,8 +7807,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -7824,8 +7824,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -7841,8 +7841,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -7858,8 +7858,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -7875,8 +7875,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -7892,8 +7892,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -7909,8 +7909,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -7926,8 +7926,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -7943,8 +7943,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -7960,8 +7960,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -7977,8 +7977,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -7994,8 +7994,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -8011,8 +8011,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -8028,8 +8028,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -8045,8 +8045,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -8062,8 +8062,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -8079,8 +8079,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -8096,8 +8096,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -8113,8 +8113,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -8130,8 +8130,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -8147,8 +8147,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -8164,8 +8164,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -8181,8 +8181,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -8198,8 +8198,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -8215,8 +8215,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -8232,8 +8232,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -8249,8 +8249,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -8266,8 +8266,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -8283,8 +8283,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -8300,8 +8300,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -8317,8 +8317,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -8334,8 +8334,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -8351,8 +8351,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -8368,8 +8368,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -8385,8 +8385,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -8548,8 +8548,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -8565,8 +8565,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -8582,8 +8582,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -8599,8 +8599,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -8621,8 +8621,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -8638,8 +8638,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -8655,8 +8655,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -8672,8 +8672,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -8689,8 +8689,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -8706,8 +8706,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -8723,8 +8723,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -8740,8 +8740,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -8757,8 +8757,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -8774,8 +8774,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -8791,8 +8791,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -8808,8 +8808,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -8825,8 +8825,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -8842,8 +8842,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -8859,8 +8859,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -8876,8 +8876,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -8893,8 +8893,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -8910,8 +8910,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -8927,8 +8927,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -8944,8 +8944,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -8961,8 +8961,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -8978,8 +8978,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -8995,8 +8995,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -9012,8 +9012,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -9029,8 +9029,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -9046,8 +9046,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -9063,8 +9063,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -9080,8 +9080,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -9097,8 +9097,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -9114,8 +9114,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -9131,8 +9131,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -9148,8 +9148,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -9165,8 +9165,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -9182,8 +9182,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -9199,8 +9199,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -9216,8 +9216,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -9233,8 +9233,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -9250,8 +9250,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -9267,8 +9267,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -9284,8 +9284,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -9301,8 +9301,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -9464,8 +9464,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -9481,8 +9481,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -9498,8 +9498,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -9515,8 +9515,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -9537,8 +9537,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -9554,8 +9554,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -9571,8 +9571,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -9588,8 +9588,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -9605,8 +9605,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -9622,8 +9622,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -9639,8 +9639,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -9656,8 +9656,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -9673,8 +9673,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -9690,8 +9690,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -9707,8 +9707,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -9724,8 +9724,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -9741,8 +9741,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -9758,8 +9758,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -9775,8 +9775,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -9792,8 +9792,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -9809,8 +9809,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -9826,8 +9826,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -9843,8 +9843,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -9860,8 +9860,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -9877,8 +9877,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -9894,8 +9894,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -9911,8 +9911,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -9928,8 +9928,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -9945,8 +9945,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -9962,8 +9962,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -9979,8 +9979,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -9996,8 +9996,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -10013,8 +10013,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -10030,8 +10030,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -10047,8 +10047,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -10064,8 +10064,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -10081,8 +10081,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -10098,8 +10098,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -10115,8 +10115,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -10132,8 +10132,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -10149,8 +10149,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -10166,8 +10166,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -10183,8 +10183,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -10200,8 +10200,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -10217,8 +10217,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -10380,8 +10380,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -10397,8 +10397,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -10414,8 +10414,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -10431,8 +10431,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -10453,8 +10453,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -10470,8 +10470,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -10487,8 +10487,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -10504,8 +10504,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -10521,8 +10521,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -10538,8 +10538,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -10555,8 +10555,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -10572,8 +10572,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -10589,8 +10589,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -10606,8 +10606,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -10623,8 +10623,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -10640,8 +10640,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -10657,8 +10657,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -10674,8 +10674,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -10691,8 +10691,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -10708,8 +10708,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -10725,8 +10725,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -10742,8 +10742,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -10759,8 +10759,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -10776,8 +10776,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -10793,8 +10793,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -10810,8 +10810,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -10827,8 +10827,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -10844,8 +10844,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -10861,8 +10861,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -10878,8 +10878,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -10895,8 +10895,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -10912,8 +10912,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -10929,8 +10929,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -10946,8 +10946,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -10963,8 +10963,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -10980,8 +10980,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -10997,8 +10997,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -11014,8 +11014,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -11031,8 +11031,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -11048,8 +11048,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -11065,8 +11065,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -11082,8 +11082,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -11099,8 +11099,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -11116,8 +11116,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -11133,8 +11133,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -11296,8 +11296,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -11313,8 +11313,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -11330,8 +11330,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -11347,8 +11347,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -11369,8 +11369,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -11386,8 +11386,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -11403,8 +11403,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -11420,8 +11420,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -11437,8 +11437,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -11454,8 +11454,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -11471,8 +11471,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -11488,8 +11488,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -11505,8 +11505,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -11522,8 +11522,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -11539,8 +11539,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -11556,8 +11556,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -11573,8 +11573,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -11590,8 +11590,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -11607,8 +11607,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -11624,8 +11624,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -11641,8 +11641,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -11658,8 +11658,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -11675,8 +11675,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -11692,8 +11692,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -11709,8 +11709,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -11726,8 +11726,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -11743,8 +11743,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -11760,8 +11760,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -11777,8 +11777,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -11794,8 +11794,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -11811,8 +11811,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -11828,8 +11828,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -11845,8 +11845,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -11862,8 +11862,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -11879,8 +11879,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -11896,8 +11896,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -11913,8 +11913,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -11930,8 +11930,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -11947,8 +11947,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -11964,8 +11964,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -11981,8 +11981,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -11998,8 +11998,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -12015,8 +12015,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -12032,8 +12032,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -12049,8 +12049,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -12212,8 +12212,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -12229,8 +12229,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -12246,8 +12246,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -12263,8 +12263,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -12285,8 +12285,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -12302,8 +12302,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -12319,8 +12319,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -12336,8 +12336,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -12353,8 +12353,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -12370,8 +12370,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -12387,8 +12387,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -12404,8 +12404,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -12421,8 +12421,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -12438,8 +12438,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -12455,8 +12455,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -12472,8 +12472,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -12489,8 +12489,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -12506,8 +12506,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -12523,8 +12523,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -12540,8 +12540,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -12557,8 +12557,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -12574,8 +12574,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -12591,8 +12591,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -12608,8 +12608,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -12625,8 +12625,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -12642,8 +12642,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -12659,8 +12659,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -12676,8 +12676,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -12693,8 +12693,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -12710,8 +12710,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -12727,8 +12727,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -12744,8 +12744,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -12761,8 +12761,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -12778,8 +12778,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -12795,8 +12795,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -12812,8 +12812,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -12829,8 +12829,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -12846,8 +12846,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -12863,8 +12863,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -12880,8 +12880,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -12897,8 +12897,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -12914,8 +12914,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -12931,8 +12931,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -12948,8 +12948,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -12965,8 +12965,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,
@@ -13128,8 +13128,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,77,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,77,1))
         END AS STRING
     ) AS oaud_indicativo_obito,
@@ -13145,8 +13145,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,79,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,79,1))
         END AS STRING
     ) AS oaud_carteira_trabalho_multiplicidade,
@@ -13162,8 +13162,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,80,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,80,1))
         END AS STRING
     ) AS oaud_certidao_nascimento_multiplicidade,
@@ -13179,8 +13179,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,81,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,81,1))
         END AS STRING
     ) AS oaud_rg_multiplicidade,
@@ -13196,8 +13196,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,189,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,189,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,189,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,189,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,189,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,189,1))
         END AS STRING
     ) AS nascimento_membro_identificado,
@@ -13213,8 +13213,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,75,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,75,1))
         END AS STRING
     ) AS osrg_nao_sabe_registrada_cartorio,
@@ -13230,8 +13230,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,73,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,73,1))
         END AS STRING
     ) AS osrg_registrada_sem_cetidao_civil,
@@ -13247,8 +13247,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,74,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,74,1))
         END AS STRING
     ) AS osrg_nao_registrada_cartorio,
@@ -13264,8 +13264,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,71,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,71,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_familia_existente,
@@ -13281,8 +13281,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,70,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,70,1))
         END AS STRING
     ) AS otrn_transferida_este_municipio_nova_familia,
@@ -13298,8 +13298,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,72,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,72,1))
         END AS STRING
     ) AS otrn_transferida_outra_familia,
@@ -13315,8 +13315,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,69,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,69,1))
         END AS STRING
     ) AS otrn_transferida_outro_municipio,
@@ -13332,8 +13332,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,82,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,82,1))
         END AS STRING
     ) AS paud_cpf_cancelado_base_receita_federal,
@@ -13349,8 +13349,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,83,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,83,1))
         END AS STRING
     ) AS paud_cpf_suspenso_base_receita_federal,
@@ -13366,8 +13366,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,56,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,56,1))
         END AS STRING
     ) AS paud_campo_obrigatorio_nao_preenchido,
@@ -13383,8 +13383,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,76,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,76,1))
         END AS STRING
     ) AS paud_cadatrado_com_certidao_obito,
@@ -13400,8 +13400,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,63,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,63,1))
         END AS STRING
     ) AS paud_cpf_invalido,
@@ -13417,8 +13417,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,60,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,60,1))
         END AS STRING
     ) AS paud_cpf_multiplicidade,
@@ -13434,8 +13434,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,62,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,62,1))
         END AS STRING
     ) AS paud_cpf_divergencia_titularidade,
@@ -13451,8 +13451,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,64,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,64,1))
         END AS STRING
     ) AS paud_titulo_eleitor_invalido,
@@ -13468,8 +13468,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,66,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,66,1))
         END AS STRING
     ) AS paud_titulo_eleitor_multiplicidade,
@@ -13485,8 +13485,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,84,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,84,1))
         END AS STRING
     ) AS paud_memb_obto_orig_arq,
@@ -13502,8 +13502,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,68,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,68,1))
         END AS STRING
     ) AS paud_rejeicao_inclusao_atualizacao_dados_cadastrais,
@@ -13519,8 +13519,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,57,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,57,1))
         END AS STRING
     ) AS paud_responsavel_sem_cpf_tiluto_eleitor,
@@ -13536,8 +13536,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,58,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,58,1))
         END AS STRING
     ) AS paud_responsavel_cpf_invalido,
@@ -13553,8 +13553,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,59,1))
         END AS STRING
     ) AS paud_responsavel_cpf_multiplicidade,
@@ -13570,8 +13570,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,61,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,61,1))
         END AS STRING
     ) AS paud_responsavel_cpf_divergencia_titularidade,
@@ -13587,8 +13587,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,65,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,65,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_invalido,
@@ -13604,8 +13604,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,78,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,78,1))
         END AS STRING
     ) AS paud_responsavel_titulo_eleitor_multiplicidade,
@@ -13621,8 +13621,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,67,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,67,1))
         END AS STRING
     ) AS paud_responsavel_idade_inferior_16_anos,
@@ -13638,8 +13638,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,41,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,41,1))
         END AS STRING
     ) AS pmig_campo_obrigatorio_nao_preenchido,
@@ -13655,8 +13655,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,51,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,51,1))
         END AS STRING
     ) AS pmig_cpf_invalido,
@@ -13672,8 +13672,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,46,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,46,1))
         END AS STRING
     ) AS pmig_cpf_multiplicidade,
@@ -13689,8 +13689,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS pmig_cpf_divergencia_titularidade,
@@ -13706,8 +13706,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,52,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,52,1))
         END AS STRING
     ) AS pmig_titulo_eleitor_multiplicidade,
@@ -13723,8 +13723,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,43,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,43,1))
         END AS STRING
     ) AS pmig_responsavel_sem_cpf_titulo_eleitor,
@@ -13740,8 +13740,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,44,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,44,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_invalido,
@@ -13757,8 +13757,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,45,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,45,1))
         END AS STRING
     ) AS pmig_reponsavel_cpf_multiplicidade,
@@ -13774,8 +13774,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,47,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,47,1))
         END AS STRING
     ) AS pmig_responsavel_cpf_divergencia_titularidade,
@@ -13791,8 +13791,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,49,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,49,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_invalido,
@@ -13808,8 +13808,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,50,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,50,1))
         END AS STRING
     ) AS pmig_responsavel_titulo_eleitor_multiplicidade,
@@ -13825,8 +13825,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,53,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,53,1))
         END AS STRING
     ) AS pmig_responsavel_idade_inferior_16_anos,
@@ -13842,8 +13842,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,42,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,42,1))
         END AS STRING
     ) AS pmig_sem_nunhuma_documentacao,
@@ -13859,8 +13859,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS ptab_desativacao_inep,
@@ -13876,8 +13876,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,54,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,54,1))
         END AS STRING
     ) AS ptrn_verficacao_dados_inep,
@@ -13893,8 +13893,8 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0$') THEN 'Não Existe'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^1$') THEN 'Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*0$') THEN 'Não Existe'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,55,1), r'^0*1$') THEN 'Existe'
             ELSE TRIM(SUBSTRING(text,55,1))
         END AS STRING
     ) AS ptrn_sem_relacao_parentesco,

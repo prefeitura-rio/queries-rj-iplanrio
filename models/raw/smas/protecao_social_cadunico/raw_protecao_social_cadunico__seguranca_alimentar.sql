@@ -98,20 +98,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -529,20 +529,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -960,20 +960,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -1391,20 +1391,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -1822,20 +1822,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -2253,20 +2253,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -2684,20 +2684,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -3115,20 +3115,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -3546,20 +3546,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -3977,20 +3977,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -4408,20 +4408,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -4839,20 +4839,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -5270,20 +5270,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -5701,20 +5701,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -6132,20 +6132,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
@@ -6563,20 +6563,20 @@ SELECT
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^101$') THEN 'Família Cigana'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^201$') THEN 'Família Extrativista'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^202$') THEN 'Família De Pescadores Artesanais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^203$') THEN 'Família Pertencente A Comunidade De Terreiro'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^204$') THEN 'Família Ribeirinha'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^205$') THEN 'Família De Agricultores Familiares'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^301$') THEN 'Família Assentada Da Reforma Agrária'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^303$') THEN 'Família Acampada'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^305$') THEN 'Família De Preso Do Sistema Carcerário'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^306$') THEN 'Família De Catadores De Material Reciclável'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^401$') THEN 'Desalojados ou desabrigados'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^000$') THEN 'Nenhuma'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*101$') THEN 'Família Cigana'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*201$') THEN 'Família Extrativista'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*202$') THEN 'Família De Pescadores Artesanais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*203$') THEN 'Família Pertencente A Comunidade De Terreiro'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*204$') THEN 'Família Ribeirinha'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*205$') THEN 'Família De Agricultores Familiares'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*301$') THEN 'Família Assentada Da Reforma Agrária'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*302$') THEN 'Família Beneficiária Do Programa Nacional De Crédito Fundiário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*303$') THEN 'Família Acampada'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*304$') THEN 'Família Atingida Por Empreendimentos De Infraestrutura'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*305$') THEN 'Família De Preso Do Sistema Carcerário'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*306$') THEN 'Família De Catadores De Material Reciclável'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*401$') THEN 'Desalojados ou desabrigados'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,106,3), r'^0*0$') THEN 'Nenhuma'
             ELSE TRIM(SUBSTRING(text,106,3))
         END AS STRING
     ) AS ind_parc_mds_fam,
