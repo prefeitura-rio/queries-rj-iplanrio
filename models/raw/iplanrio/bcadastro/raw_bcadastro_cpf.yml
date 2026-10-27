@@ -192,33 +192,10 @@ models:
         data_type: string
 
       # Campos técnicos
-      - name: airbyte.seq
-        description: "Sequência do registro no Airbyte"
-        data_type: integer
-
-      - name: airbyte.last_seq
-        description: "Última sequência do registro no Airbyte"
-        data_type: integer
-
-      - name: airbyte.airbyte_raw_id
-        description: "ID do registro raw no Airbyte"
-        data_type: string
-
-      - name: airbyte.airbyte_extracted_at
-        description: "Data e hora da extração do registro pelo Airbyte"
+      - name: _prefect_extracted_at
+        description: Timestamp da extração dos dados pelo Prefect.
         data_type: timestamp
-
-      - name: airbyte.airbyte_meta.changes
-        description: "Mudanças detectadas pelo Airbyte"
-        data_type: string
-
-      - name: airbyte.airbyte_meta.sync_id
-        description: "ID da sincronização no Airbyte"
-        data_type: string
-
-      - name: airbyte.airbyte_generation_id
-        description: "ID da geração do registro no Airbyte"
-        data_type: string
+        quote: true
 
       # Campo de particionamento
       - name: cpf_particao
