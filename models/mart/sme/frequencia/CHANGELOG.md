@@ -6,7 +6,7 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 ### 🔧 Correção
 
-#### Commit: _pendente_ - 27/10/2026
+#### Commit: `e5f98d8` - 27/10/2026
 **fix: uma única aat por aluno/COC nos COCs fechados (regra da matrícula ativa)**
 
 Corrige as divergências SGA × lake apontadas pela CIT/SME, causadas por alunos com matrículas duplicadas.
