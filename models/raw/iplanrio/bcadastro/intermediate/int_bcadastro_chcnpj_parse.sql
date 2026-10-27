@@ -13,7 +13,7 @@ with
 
         {% if target.name == "dev" %}
             where
-                timestamp(_airbyte_extracted_at)
+                timestamp(_prefect_extracted_at)
                 >= timestamp_sub(current_timestamp(), interval 3 day)
         {% endif %}
     ),
@@ -143,14 +143,7 @@ with
                 last_seq
             ) as couchdb,
 
-            -- Airbyte fields
-            struct(
-                _airbyte_raw_id as raw_id,
-                _airbyte_extracted_at as extracted_at,
-                _airbyte_generation_id as generation_id,
-                nullif(json_value(_airbyte_meta, '$.changes'), "") as changes,
-                nullif(json_value(_airbyte_meta, '$.sync_id'), "") as sync_id
-            ) as airbyte,
+            _prefect_extracted_at AS _prefect_extracted_at,
 
         from fonte
     ),
@@ -176,7 +169,7 @@ with
         from matriz
         qualify
             row_number() over (
-                partition by cnpj_matriz order by airbyte.extracted_at desc
+                partition by cnpj_matriz order by _prefect_extracted_at desc
             )
             = 1
     ),
@@ -185,7 +178,7 @@ with
         select *
         from estabelecimento
         qualify
-            row_number() over (partition by cnpj order by airbyte.extracted_at desc) = 1
+            row_number() over (partition by cnpj order by _prefect_extracted_at desc) = 1
     ),
 
     dedup_sucessao as (
@@ -193,7 +186,7 @@ with
         from sucessao
         qualify
             row_number() over (
-                partition by cnpjsucedida order by airbyte.extracted_at desc
+                partition by cnpjsucedida order by _prefect_extracted_at desc
             )
             = 1
     ),
@@ -294,18 +287,7 @@ with
                 coalesce(est.couchdb.last_seq, mat.couchdb.last_seq) as last_seq
             ) as couchdb,
 
-            -- Airbyte fields
-            struct(
-                coalesce(est.airbyte.raw_id, mat.airbyte.raw_id) as raw_id,
-                coalesce(
-                    est.airbyte.extracted_at, mat.airbyte.extracted_at
-                ) as extracted_at,
-                coalesce(
-                    est.airbyte.generation_id, mat.airbyte.generation_id
-                ) as generation_id,
-                coalesce(est.airbyte.changes, mat.airbyte.changes) as changes,
-                coalesce(est.airbyte.sync_id, mat.airbyte.sync_id) as sync_id
-            ) as airbyte,
+            est._prefect_extracted_at as _prefect_extracted_at,
     
 
             -- CNPJ vai passar a aceitar caracteres alfanuméricos (Receita Federal), por isso
