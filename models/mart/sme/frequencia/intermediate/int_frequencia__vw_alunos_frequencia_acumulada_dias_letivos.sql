@@ -19,6 +19,7 @@ with
             {{ ref("gestao_escolar__aca_avaliacao") }} ava
             on aat.fav_id = ava.fav_id
             and aat.ava_id = ava.ava_id
+            and ava.ava_tipo = 1
         inner join
             {{ ref("gestao_escolar__tur_turma") }} tur
             on aat.tur_id = tur.tur_id
@@ -30,6 +31,27 @@ with
             on tur.cal_id = cap.cal_id
             and ava.tpc_id = cap.tpc_id
             and cap.cap_datafim < current_date()  -- incluir filtro
+        inner join
+            {{ ref("gestao_escolar__mtr_matricula_turma") }} mtu
+            on aat.alu_id = mtu.alu_id
+            and aat.mtu_id = mtu.mtu_id
+        -- aluno com mais de uma matrícula: vale a aat com dados (aulas não nulas) da
+        -- matrícula ativa no fim do COC (situação 3 só vale se for a única); se nenhuma
+        -- estiver ativa, a última que saiu antes do fim
+        qualify
+            row_number() over (
+                partition by aat.alu_id, cap.tpc_id, cal.cal_ano
+                order by
+                    aat.aat_numeroaulas is not null desc,
+                    mtu.mtu_situacao in (1, 5) desc,
+                    (
+                        mtu.mtu_dataMatricula <= cap.cap_datafim
+                        and (mtu.mtu_dataSaida is null or mtu.mtu_dataSaida > cap.cap_datafim)
+                    ) desc,
+                    mtu.mtu_dataSaida desc,
+                    aat.data_alteracao desc
+            )
+            = 1
     ),
 
     frequencia_coc_aberto as (
