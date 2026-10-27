@@ -113,7 +113,7 @@ with
 
             -- Outros
             couchdb,
-            airbyte
+            _prefect_extracted_at  AS _prefect_extracted_at
 
         from cnpj_base
     ),
@@ -518,7 +518,7 @@ with
             t.version,
 
             -- Outros
-            t.airbyte,
+            t._prefect_extracted_at  AS _prefect_extracted_at,
             t.couchdb,
 
             -- Joins
@@ -678,7 +678,7 @@ with
 
             -- Outros
             t.couchdb,
-            t.airbyte,
+            t._prefect_extracted_at  AS _prefect_extracted_at,
             
             -- descricoes
             {{ proper_br("tipo_orgao_registro_descricao") }}
@@ -812,7 +812,7 @@ with
 
             -- Outros
             couchdb,
-            airbyte,
+            _prefect_extracted_at  AS _prefect_extracted_at,
 
             -- Partition
             cnpj_particao

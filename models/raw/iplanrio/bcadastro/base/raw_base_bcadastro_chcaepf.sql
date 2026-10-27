@@ -25,7 +25,7 @@ with
 
         {% if target.name == "dev" %}
             where
-                timestamp(_airbyte_extracted_at)
+                timestamp(_prefect_extracted_at)
                 >= timestamp_sub(current_timestamp(), interval 3 day)
         {% endif %}
     ),
@@ -76,14 +76,7 @@ with
             nullif(json_value(doc, '$._id'), '') as _id,
             nullif(json_value(doc, '$._rev'), '') as _rev,
 
-            -- Airbyte fields
-            struct(
-                _airbyte_raw_id as raw_id,
-                _airbyte_extracted_at as extracted_at,
-                _airbyte_generation_id as generation_id,
-                nullif(json_value(_airbyte_meta, '$.changes'), "") as changes,
-                nullif(json_value(_airbyte_meta, '$.sync_id'), "") as sync_id
-            ) as airbyte,
+            _prefect_extracted_at AS _prefect_extracted_at
 
             
         from fonte
@@ -96,7 +89,7 @@ with
 
         from fonte_parseada
         qualify
-            row_number() over (partition by nroCpf order by airbyte.extracted_at desc)
+            row_number() over (partition by nroCpf order by _prefect_extracted_at desc)
             = 1
     )
 
