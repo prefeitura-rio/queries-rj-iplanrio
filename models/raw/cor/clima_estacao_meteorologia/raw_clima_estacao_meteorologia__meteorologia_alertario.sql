@@ -4,7 +4,7 @@
         materialized='incremental',
         unique_key="primary_key",
         partition_by={
-            "field": "data_particao",
+            "field": "batch",
             "data_type": "date",
             "granularity": "day",
         },
@@ -17,7 +17,7 @@ SELECT
     SAFE_CAST(
         REGEXP_REPLACE(id_estacao, r'\.0$', '') AS STRING
         ) id_estacao,
-    SAFE_CAST(SAFE.PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_medicao) AS DATETIME) AS data_medicao,
+    SAFE_CAST(data_medicao AS DATETIME) AS data_medicao,
     SAFE_CAST(temperatura AS FLOAT64) temperatura,
     SAFE_CAST(pressao_atmosferica AS FLOAT64) pressao,
     SAFE_CAST(temperatura_orvalho AS FLOAT64) temperatura_orvalho,
@@ -25,9 +25,7 @@ SELECT
     SAFE_CAST(SAFE_CAST(direcao_vento AS FLOAT64) AS INT64) direcao_vento,
     SAFE_CAST(velocidade_vento AS FLOAT64) velocidade_vento,
     SAFE_CAST(sensacao_termica AS FLOAT64) sensacao_termica,
-    SAFE_CAST(ano_particao as INT64) ano_particao,
-    SAFE_CAST(mes_particao as INT64) mes_particao,
-    SAFE_CAST(data_particao as DATE) data_particao,
+    SAFE_CAST(batch as DATE) batch
 FROM {{ source('clima_estacao_meteorologica_staging', 'meteorologia_alertario') }}
 
 {% if is_incremental() %}
