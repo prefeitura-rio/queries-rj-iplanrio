@@ -7,549 +7,821 @@ models:
       ordenados por data de abordagem decrescente.
     columns:
       - name: objectid
-        description: "Identificador único do registro na camada ArcGIS"
+        data_type: string
+        description: Identificador único do registro na camada ArcGIS
       - name: globalid
-        description: "Identificador global único (GUID) do registro no ArcGIS"
+        data_type: string
+        description: Identificador global único (GUID) do registro no ArcGIS
       - name: repeat_unidade_calculo
-        description: "REPEAT - Unidade de referência"
+        data_type: string
+        description: REPEAT - Unidade de referência
       - name: repeat_unidade_bairro
-        description: "REPEAT - Bairro da unidade de referência"
+        data_type: string
+        description: REPEAT - Bairro da unidade de referência
       - name: repeat_unidade_cas
-        description: "REPEAT - CAS da unidade de referência"
+        data_type: string
+        description: REPEAT - CAS da unidade de referência
       - name: repeat_nome_usuario
-        description: "Nome da pessoa abordada"
+        data_type: string
+        description: Nome da pessoa abordada
       - name: repeat_nome_social
-        description: "REPEAT - Nome Social do Usuário"
+        data_type: string
+        description: REPEAT - Nome Social do Usuário
       - name: repeat_data_nascimento
-        description: "REPEAT - Data de Nascimento"
+        data_type: string
+        description: REPEAT - Data de Nascimento
       - name: repeat_data_nascimento_iso
-        description: "Data de nascimento em formato ISO 8601 (alias ArcGIS)"
+        data_type: string
+        description: Data de nascimento em formato ISO 8601 (alias ArcGIS)
       - name: repeat_idade
-        description: "REPEAT - Idade"
+        data_type: string
+        description: REPEAT - Idade
       - name: repeat_faixa_etaria
-        description: "REPEAT - Faixa Etária"
+        data_type: string
+        description: REPEAT - Faixa Etária
       - name: repeat_cpf
-        description: "CPF da pessoa abordada"
+        data_type: string
+        description: CPF da pessoa abordada
       - name: repeat_estado_nascimento
-        description: "REPEAT - Local de Nascimento"
+        data_type: string
+        description: REPEAT - Local de Nascimento
       - name: repeat_migrante_sim_nao
-        description: "REPEAT - É Migrante (Estado)"
+        data_type: string
+        description: REPEAT - É Migrante (Estado)
       - name: repeat_nome_mae
-        description: "REPEAT - Nome da Mãe"
+        data_type: string
+        description: REPEAT - Nome da Mãe
       - name: repeat_nome_pai
-        description: "REPEAT - Nome do Pai"
+        data_type: string
+        description: REPEAT - Nome do Pai
       - name: repeat_grupo_familiar
-        description: "REPEAT - Grupo Familiar"
+        data_type: string
+        description: REPEAT - Grupo Familiar
       - name: repeat_raca_cor_etnia
-        description: "REPEAT - Cor/Etnia"
+        data_type: string
+        description: REPEAT - Cor/Etnia
       - name: repeat_sexo
-        description: "REPEAT - Sexo"
+        data_type: string
+        description: REPEAT - Sexo
       - name: repeat_flag_painel
-        description: "REPEAT – flag_painel"
+        data_type: string
+        description: REPEAT – flag_painel
       - name: crianca_adoles_com_responsavel
-        description: "Criança ou Adolescente com Responsável"
+        data_type: string
+        description: Criança ou Adolescente com Responsável
       - name: nome_responsavel
-        description: "Nome do Responsável"
+        data_type: string
+        description: Nome do Responsável
       - name: grau_parentesco
-        description: "Grau de Parentesco"
+        data_type: string
+        description: Grau de Parentesco
       - name: grau_outro
-        description: "Grau de Parentesco (outro)"
+        data_type: string
+        description: Grau de Parentesco (outro)
       - name: turno_abordagem
-        description: "Turno da Abordagem"
+        data_type: string
+        description: Turno da Abordagem
       - name: data_abordagem
-        description: "Data em que a abordagem foi realizada"
+        data_type: string
+        description: Data em que a abordagem foi realizada
       - name: data_envio
-        description: "Data de Envio"
+        data_type: string
+        description: Data de Envio
       - name: dia_num_data_abordagem
-        description: "Dia do Preenchimento (Núm)"
+        data_type: string
+        description: Dia do Preenchimento (Núm)
       - name: dia_abrev_data_abordagem
-        description: "Dia do Preenchimento (Abrev)"
+        data_type: string
+        description: Dia do Preenchimento (Abrev)
       - name: mes_num_data_abordagem
-        description: "Mês do Preenchimento (Núm)"
+        data_type: string
+        description: Mês do Preenchimento (Núm)
       - name: mes_abrev_data_abordagem
-        description: "Mês do Preenchimento (Abrev)"
+        data_type: string
+        description: Mês do Preenchimento (Abrev)
       - name: ano_num_data_abordagem
-        description: "Ano do Preenchimento (Núm)"
+        data_type: string
+        description: Ano do Preenchimento (Núm)
       - name: ano_mes_data_abordagem
-        description: "Mês/Ano do Preenchimento"
+        data_type: string
+        description: Mês/Ano do Preenchimento
       - name: rua_label
-        description: "Rua Label"
+        data_type: string
+        description: Rua Label
       - name: bairro_label
-        description: "Bairro Label"
+        data_type: string
+        description: Bairro Label
       - name: endereco_abord_original
-        description: "Endereço da Abordagem (Original)"
+        data_type: string
+        description: Endereço da Abordagem (Original)
       - name: endereco_abord
-        description: "Endereço da Abordagem (Editável)"
+        data_type: string
+        description: Endereço da Abordagem (Editável)
       - name: complemento_abord
-        description: "Complemento/ponto ref. Da Abordagem"
+        data_type: string
+        description: Complemento/ponto ref. Da Abordagem
       - name: bairro_null_abord
-        description: "Bairro (Original)"
+        data_type: string
+        description: Bairro (Original)
       - name: bairro_abord
-        description: "Bairro onde a abordagem ocorreu"
+        data_type: string
+        description: Bairro onde a abordagem ocorreu
       - name: cep
-        description: "CEP"
+        data_type: string
+        description: CEP
       - name: x
-        description: "X"
+        data_type: string
+        description: X
       - name: y
-        description: "Y"
+        data_type: string
+        description: Y
       - name: note_creas
-        description: "Anotação/observação do CREAS sobre a abordagem"
+        data_type: string
+        description: Anotação/observação do CREAS sobre a abordagem
       - name: resp_abordagem
-        description: "Responsável pela Abordagem"
+        data_type: string
+        description: Responsável pela Abordagem
       - name: resp_abordagem1
-        description: "Unidade Responsável pela Abordagem"
+        data_type: string
+        description: Unidade Responsável pela Abordagem
       - name: acao_conjunta
-        description: "Ação Conjunta"
+        data_type: string
+        description: Ação Conjunta
       - name: orgao_participante
-        description: "Órgãos Participantes"
+        data_type: string
+        description: Órgãos Participantes
       - name: orgao_participante_outro
-        description: "Órgãos Participantes (Outros)"
+        data_type: string
+        description: Órgãos Participantes (Outros)
       - name: flag_seop
-        description: "Órgãos Participantes - SEOP (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - SEOP (FLAG)
       - name: flag_gm
-        description: "Órgãos Participantes - GM (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - GM (FLAG)
       - name: flag_comlurb
-        description: "Órgãos Participantes - Comlurb (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - Comlurb (FLAG)
       - name: flag_gel
-        description: "Órgãos Participantes - Gel (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - Gel (FLAG)
       - name: flag_pm
-        description: "Órgãos Participantes - PM (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - PM (FLAG)
       - name: flag_subpsb_grr
-        description: "Órgãos Participantes - SUBPSB GRR (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - SUBPSB GRR (FLAG)
       - name: flag_saude
-        description: "Órgãos Participantes - SAÚDE (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - SAÚDE (FLAG)
       - name: flag_sub_pref
-        description: "Órgãos Participantes - SUBPREFEITURAS (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - SUBPREFEITURAS (FLAG)
       - name: flag_outro
-        description: "Órgãos Participantes - Outros (FLAG)"
+        data_type: string
+        description: Órgãos Participantes - Outros (FLAG)
       - name: orgao_solicitante
-        description: "Órgãos Solicitante"
+        data_type: string
+        description: Órgãos Solicitante
       - name: orgao_solicitante_outro
-        description: "Órgãos Solicitantes (Outros)"
+        data_type: string
+        description: Órgãos Solicitantes (Outros)
       - name: flag_solicitante_smas
-        description: "Órgãos Solicitantes - SMAS (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - SMAS (FLAG)
       - name: flag_solicitante_subprefeituras
-        description: "Órgãos Solicitantes - Subprefeituras (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - Subprefeituras (FLAG)
       - name: flag_solicitante_seop
-        description: "Órgãos Solicitantes - SEOP (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - SEOP (FLAG)
       - name: flag_solicitante_gm
-        description: "Órgãos Solicitantes - GM (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - GM (FLAG)
       - name: flag_solicitante_comlurb
-        description: "Órgãos Solicitantes - Comlurb (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - Comlurb (FLAG)
       - name: flag_solicitante_gel
-        description: "Órgãos Solicitantes - Gel (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - Gel (FLAG)
       - name: flag_solicitante_pm
-        description: "Órgãos Solicitantes - PM (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - PM (FLAG)
       - name: flag_solicitante_subpsb_grr
-        description: "Órgãos Solicitantes - SUBPSB GRR (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - SUBPSB GRR (FLAG)
       - name: flag_solicitante_outro
-        description: "Órgãos Solicitantes - Outros (FLAG)"
+        data_type: string
+        description: Órgãos Solicitantes - Outros (FLAG)
       - name: permanencia_rua
-        description: "Período de Permanência na Rua"
+        data_type: string
+        description: Período de Permanência na Rua
       - name: tempo_permanencia
-        description: "Tempo de Permanência na Rua"
+        data_type: string
+        description: Tempo de Permanência na Rua
       - name: n_e_poprua
-        description: "Não é PopRua"
+        data_type: string
+        description: Não é PopRua
       - name: principal_motivo_permanencia
-        description: "Principal Motivo de Permanência na Rua"
+        data_type: string
+        description: Principal Motivo de Permanência na Rua
       - name: flag_conflito_familiar
-        description: "Motivo Permanência Rua - Conflito Familiar (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Conflito Familiar (Flag)
       - name: flag_abandono_familiar
-        description: "Motivo Permanência Rua - Abandono Familiar (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Abandono Familiar (Flag)
       - name: flag_desocupacao
-        description: "Motivo Permanência Rua - Desocupação (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Desocupação (Flag)
       - name: flag_orfandade
-        description: "Motivo Permanência Rua - Orfandade (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Orfandade (Flag)
       - name: flag_acesso_a_renda
-        description: "Motivo Permanência Rua - Acesso a Renda (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Acesso a Renda (Flag)
       - name: flag_desemprego
-        description: "Motivo Permanência Rua - Desemprego (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Desemprego (Flag)
       - name: flag_desemprego_dos_pais
-        description: "Motivo Permanência Rua - Desemprego dos Pais (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Desemprego dos Pais (Flag)
       - name: flag_transtorno_psiquiatrico
-        description: "Motivo Permanência Rua - Transtorno Psiquiátrico (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Transtorno Psiquiátrico (Flag)
       - name: flag_uso_drogas_ilicitas
-        description: "Motivo Permanência Rua - Uso de Drogas Ilícitas (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Uso de Drogas Ilícitas (Flag)
       - name: flag_trabalho_infantil
-        description: "Motivo Permanência Rua - Trabalho Infantil (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Trabalho Infantil (Flag)
       - name: flag_exploracao_sexual
-        description: "Motivo Permanência Rua - Exploração Sexual (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Exploração Sexual (Flag)
       - name: flag_egresso_sistema_prisional
-        description: "Motivo Permanência Rua - Egresso do Sistema Prisional (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Egresso do Sistema Prisional (Flag)
       - name: flag_alcoolismo_motivo
-        description: "Motivo Permanência Rua - Alcoolismo (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Alcoolismo (Flag)
       - name: flag_violencia_conflito_comuni
-        description: "Motivo Permanência Rua - Violência ou Conflito na Comunidade (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Violência ou Conflito na Comunidade (Flag)
       - name: flag_preferencia_vontade_prop
-        description: "Motivo Permanência Rua - Preferência ou Vontade Própria (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Preferência ou Vontade Própria (Flag)
       - name: flag_egresso_mse
-        description: "Motivo Permanência Rua - Egresso do Medida Sócioeducativas (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Egresso do Medida Sócioeducativas (Flag)
       - name: flag_imigrante
-        description: "Motivo Permanência Rua - Imigrante (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Imigrante (Flag)
       - name: flag_migrante
-        description: "Motivo Permanência Rua - Migrante (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Migrante (Flag)
       - name: flag_refugiado
-        description: "Motivo Permanência Rua - Refugiado (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Refugiado (Flag)
       - name: flag_ns_nr_motivo
-        description: "Motivo Permanência Rua - Não Sabe/Não Respondeu (Flag)"
+        data_type: string
+        description: Motivo Permanência Rua - Não Sabe/Não Respondeu (Flag)
       - name: e_migrante
-        description: "É Migrante"
+        data_type: string
+        description: É Migrante
       - name: migrante_terra_natal
-        description: "Deseja Voltar para a Terra Natal"
+        data_type: string
+        description: Deseja Voltar para a Terra Natal
       - name: possui_referencia
-        description: "Possui Referência na Terra Natal"
+        data_type: string
+        description: Possui Referência na Terra Natal
       - name: referencia_qual
-        description: "Qual Referência?"
+        data_type: string
+        description: Qual Referência?
       - name: possui_documento
-        description: "Possui Documento"
+        data_type: string
+        description: Possui Documento
       - name: documentacao
-        description: "Documentos"
+        data_type: string
+        description: Documentos
       - name: flg_documentacao_identidade
-        description: "Documentação - Identidade (Flag)"
+        data_type: string
+        description: Documentação - Identidade (Flag)
       - name: flg_documentacao_cnh
-        description: "Documentação - CNH (Flag)"
+        data_type: string
+        description: Documentação - CNH (Flag)
       - name: flg_documentacao_registro_nasc
-        description: "Documentação - Registro de Nascimento (Flag)"
+        data_type: string
+        description: Documentação - Registro de Nascimento (Flag)
       - name: flg_documentacao_ctps
-        description: "Documentação - CTPS (Flag)"
+        data_type: string
+        description: Documentação - CTPS (Flag)
       - name: flg_documentacao_cpf
-        description: "Documentação - CPF (Flag)"
+        data_type: string
+        description: Documentação - CPF (Flag)
       - name: flg_documentacao_passaporte
-        description: "Documentação - Passaporte (Flag)"
+        data_type: string
+        description: Documentação - Passaporte (Flag)
       - name: escolaridade
-        description: "Escolaridade"
+        data_type: string
+        description: Escolaridade
       - name: voce_estuda
-        description: "Estuda"
+        data_type: string
+        description: Estuda
       - name: recebe_beneficio
-        description: "Recebe Benefício"
+        data_type: string
+        description: Recebe Benefício
       - name: beneficios
-        description: "Benefícios"
+        data_type: string
+        description: Benefícios
       - name: flag_bolsa_familia
-        description: "Benefícios - Bolsa Família (Flag)"
+        data_type: string
+        description: Benefícios - Bolsa Família (Flag)
       - name: flag_bpc
-        description: "Benefícios - BPC (Flag)"
+        data_type: string
+        description: Benefícios - BPC (Flag)
       - name: flag_seguro_desemprego
-        description: "Benefícios - Seguro Desemprego (Flag)"
+        data_type: string
+        description: Benefícios - Seguro Desemprego (Flag)
       - name: flag_aposentadoria
-        description: "Benefícios - Aposentadoria (Flag)"
+        data_type: string
+        description: Benefícios - Aposentadoria (Flag)
       - name: flag_pensionista
-        description: "Benefícios - Pensionista (Flag)"
+        data_type: string
+        description: Benefícios - Pensionista (Flag)
       - name: flag_outros_ben
-        description: "Benefícios - Outro (Flag)"
+        data_type: string
+        description: Benefícios - Outro (Flag)
       - name: beneficios_outros
-        description: "Qual Benefício você Recebe? (Outro)"
+        data_type: string
+        description: Qual Benefício você Recebe? (Outro)
       - name: trabalha_carteira_assinada
-        description: "Trabalha com Carteira Assinada"
+        data_type: string
+        description: Trabalha com Carteira Assinada
       - name: ocupacao
-        description: "Principal Ocupação Informal"
+        data_type: string
+        description: Principal Ocupação Informal
       - name: ocupacao_outro
-        description: "Principal Ocupação Informal (Outro)"
+        data_type: string
+        description: Principal Ocupação Informal (Outro)
       - name: interesse_curso
-        description: "Tem Interesse de Realizar algum Curso"
+        data_type: string
+        description: Tem Interesse de Realizar algum Curso
       - name: outros_interesse_curso
-        description: "Qual Curso?"
+        data_type: string
+        description: Qual Curso?
       - name: flag_nao_tem_interesse
-        description: "CURSOS - Não tem Interesse (Flag)"
+        data_type: string
+        description: CURSOS - Não tem Interesse (Flag)
       - name: flag_gastronomia
-        description: "CURSOS - Gastronomia (Flag)"
+        data_type: string
+        description: CURSOS - Gastronomia (Flag)
       - name: flag_beleza
-        description: "CURSOS - Beleza (Flag)"
+        data_type: string
+        description: CURSOS - Beleza (Flag)
       - name: flag_pequenos_reparos
-        description: "CURSOS - Pequenos Reparos (Flag)"
+        data_type: string
+        description: CURSOS - Pequenos Reparos (Flag)
       - name: flag_jardinagem
-        description: "CURSOS - Jardinagem (Flag)"
+        data_type: string
+        description: CURSOS - Jardinagem (Flag)
       - name: flag_empreendedorismo
-        description: "CURSOS - Empreendedorismo (Flag)"
+        data_type: string
+        description: CURSOS - Empreendedorismo (Flag)
       - name: flag_producao_artesanal
-        description: "CURSOS - Produção Artesanal (Flag)"
+        data_type: string
+        description: CURSOS - Produção Artesanal (Flag)
       - name: flag_inclusao_digital
-        description: "CURSOS - Inclusão Digital (Flag)"
+        data_type: string
+        description: CURSOS - Inclusão Digital (Flag)
       - name: flag_outros_curso
-        description: "CURSOS - Outros (Flag)"
+        data_type: string
+        description: CURSOS - Outros (Flag)
       - name: flag_curso_ns_nr
-        description: "CURSOS - Não sabe / Não quis responder (Flag)"
+        data_type: string
+        description: CURSOS - Não sabe / Não quis responder (Flag)
       - name: problema_saude
-        description: "Possui Problema de Saúde"
+        data_type: string
+        description: Possui Problema de Saúde
       - name: flag_nao_tem
-        description: "DOENÇA - Não Tem Doença (Flag)"
+        data_type: string
+        description: DOENÇA - Não Tem Doença (Flag)
       - name: flag_alcoolismo
-        description: "DOENÇA - Alcoolismo (Flag)"
+        data_type: string
+        description: DOENÇA - Alcoolismo (Flag)
       - name: flag_asma_bronquite
-        description: "DOENÇA - Asma/Bronquite (Flag)"
+        data_type: string
+        description: DOENÇA - Asma/Bronquite (Flag)
       - name: flag_covid_19
-        description: "DOENÇA - Covid-19 (Flag)"
+        data_type: string
+        description: DOENÇA - Covid-19 (Flag)
       - name: flag_cancer_tumores
-        description: "DOENÇA - Câncer/Tumores (Flag)"
+        data_type: string
+        description: DOENÇA - Câncer/Tumores (Flag)
       - name: flag_diabetes
-        description: "DOENÇA - Diabetes (Flag)"
+        data_type: string
+        description: DOENÇA - Diabetes (Flag)
       - name: flag_dengue
-        description: "DOENÇA - Dengue (Flag)"
+        data_type: string
+        description: DOENÇA - Dengue (Flag)
       - name: flag_depen_quimica
-        description: "DOENÇA - Dependência Química (Flag)"
+        data_type: string
+        description: DOENÇA - Dependência Química (Flag)
       - name: flag_epilepsia
-        description: "DOENÇA - Epilepsia (Flag)"
+        data_type: string
+        description: DOENÇA - Epilepsia (Flag)
       - name: flag_escabiose
-        description: "DOENÇA - Escabiose (Flag)"
+        data_type: string
+        description: DOENÇA - Escabiose (Flag)
       - name: flag_hanseniase
-        description: "DOENÇA - Hanseníase (Flag)"
+        data_type: string
+        description: DOENÇA - Hanseníase (Flag)
       - name: flag_hepatite
-        description: "DOENÇA - Hepatite (Flag)"
+        data_type: string
+        description: DOENÇA - Hepatite (Flag)
       - name: flag_hipertensao_doenca_cardio
-        description: "DOENÇA - Hipertensão/Doenças Cardiovasculares (Flag)"
+        data_type: string
+        description: DOENÇA - Hipertensão/Doenças Cardiovasculares (Flag)
       - name: flag_hiv_aids
-        description: "DOENÇA - HIV/AIDS (Flag)"
+        data_type: string
+        description: DOENÇA - HIV/AIDS (Flag)
       - name: flag_pneumonia
-        description: "DOENÇA - Pneumonia (Flag)"
+        data_type: string
+        description: DOENÇA - Pneumonia (Flag)
       - name: flag_sarampo
-        description: "DOENÇA - Sarampo (Flag)"
+        data_type: string
+        description: DOENÇA - Sarampo (Flag)
       - name: flag_sifilis
-        description: "DOENÇA - Sífilis (Flag)"
+        data_type: string
+        description: DOENÇA - Sífilis (Flag)
       - name: flag_transtorno_mental
-        description: "DOENÇA - Transtorno Mental (Flag)"
+        data_type: string
+        description: DOENÇA - Transtorno Mental (Flag)
       - name: flag_trauma_fisico
-        description: "DOENÇA - Trauma Físico (Flag)"
+        data_type: string
+        description: DOENÇA - Trauma Físico (Flag)
       - name: flag_tuberculose
-        description: "DOENÇA - Tuberculose (Flag)"
+        data_type: string
+        description: DOENÇA - Tuberculose (Flag)
       - name: flag_ns_nr
-        description: "DOENÇA - Não Sabe/Não Respondeu (Flag)"
+        data_type: string
+        description: DOENÇA - Não Sabe/Não Respondeu (Flag)
       - name: qual_substancia_psicoativa
-        description: "Usa Substância Psicoativa?"
+        data_type: string
+        description: Usa Substância Psicoativa?
       - name: outra_substancia
-        description: "Outra Substância"
+        data_type: string
+        description: Outra Substância
       - name: flag_nao_usa
-        description: "DROGAS - Não Usa (Flag)"
+        data_type: string
+        description: DROGAS - Não Usa (Flag)
       - name: flag_alcool
-        description: "DROGAS - Álcool (Flag)"
+        data_type: string
+        description: DROGAS - Álcool (Flag)
       - name: flag_tabaco
-        description: "DROGAS - Tabaco (Flag)"
+        data_type: string
+        description: DROGAS - Tabaco (Flag)
       - name: flag_maconha
-        description: "DROGAS - Maconha (Flag)"
+        data_type: string
+        description: DROGAS - Maconha (Flag)
       - name: flag_cocaina
-        description: "DROGAS - Cocaína (Flag)"
+        data_type: string
+        description: DROGAS - Cocaína (Flag)
       - name: flag_crack
-        description: "DROGAS - Crack (Flag)"
+        data_type: string
+        description: DROGAS - Crack (Flag)
       - name: flag_inalantes
-        description: "DROGAS - Inalantes (Flag)"
+        data_type: string
+        description: DROGAS - Inalantes (Flag)
       - name: flag_sinteticos
-        description: "DROGAS - Sintéticos (Flag)"
+        data_type: string
+        description: DROGAS - Sintéticos (Flag)
       - name: flag_todas
-        description: "DROGAS - Todas (Flag)"
+        data_type: string
+        description: DROGAS - Todas (Flag)
       - name: flag_outros
-        description: "DROGAS - Outros (Flag)"
+        data_type: string
+        description: DROGAS - Outros (Flag)
       - name: flag_ns_nr_droga
-        description: "DROGAS - Não Sabe/Não Respondeu (Flag)"
+        data_type: string
+        description: DROGAS - Não Sabe/Não Respondeu (Flag)
       - name: qual_deficiencia
-        description: "Possui Deficiência"
+        data_type: string
+        description: Possui Deficiência
       - name: flag_nao_possui
-        description: "Deficiência - Não Possui (Flag)"
+        data_type: string
+        description: Deficiência - Não Possui (Flag)
       - name: flag_fisica
-        description: "Deficiência - Física (Flag)"
+        data_type: string
+        description: Deficiência - Física (Flag)
       - name: flag_visual
-        description: "Deficiência - Visual (Flag)"
+        data_type: string
+        description: Deficiência - Visual (Flag)
       - name: flag_auditiva
-        description: "Deficiência - Auditiva (Flag)"
+        data_type: string
+        description: Deficiência - Auditiva (Flag)
       - name: flag_limitacao_mental
-        description: "Deficiência - Limitação Mental (Flag)"
+        data_type: string
+        description: Deficiência - Limitação Mental (Flag)
       - name: flag_motora
-        description: "Deficiência - Motora (Flag)"
+        data_type: string
+        description: Deficiência - Motora (Flag)
       - name: flag_ns_nr_deficiencia
-        description: "Deficiência - Não Sabe/Não Respondeu (Flag)"
+        data_type: string
+        description: Deficiência - Não Sabe/Não Respondeu (Flag)
       - name: participa_ativ_creas
-        description: "Participa de Atividade de Acompanhamento do CREAS?"
+        data_type: string
+        description: Participa de Atividade de Acompanhamento do CREAS?
       - name: participa_ativ_centropop
-        description: "Participa de Atividade de Acompanhamento do Centro POP?"
+        data_type: string
+        description: Participa de Atividade de Acompanhamento do Centro POP?
       - name: ja_esteve_acolhido
-        description: "Já esteve Acolhido?"
+        data_type: string
+        description: Já esteve Acolhido?
       - name: aceita_acolhimento
-        description: "Aceita Acolhimento"
+        data_type: string
+        description: Aceita Acolhimento
       - name: motivo_acolhimento_nao
-        description: "Motivo por não aceitar acolhimento"
+        data_type: string
+        description: Motivo por não aceitar acolhimento
       - name: outro_motivo
-        description: "Outro motivo por não aceitar acolhimento"
+        data_type: string
+        description: Outro motivo por não aceitar acolhimento
       - name: flag_motivo_renda
-        description: "Motivo de recusa do acolhimento - Renda (flag 0/1)"
+        data_type: string
+        description: Motivo de recusa do acolhimento - Renda (flag 0/1)
       - name: flag_motivo_regra
-        description: "Motivo de recusa do acolhimento - Regras da unidade (flag 0/1)"
+        data_type: string
+        description: Motivo de recusa do acolhimento - Regras da unidade (flag 0/1)
       - name: flag_motivo_moradia
-        description: "Motivo de recusa do acolhimento - Moradia (flag 0/1)"
+        data_type: string
+        description: Motivo de recusa do acolhimento - Moradia (flag 0/1)
       - name: flag_motivo_animal
-        description: "Motivo de recusa do acolhimento - Animal de estimação (flag 0/1)"
+        data_type: string
+        description: Motivo de recusa do acolhimento - Animal de estimação (flag 0/1)
       - name: flag_motivo_n_interesse
-        description: "Motivo de recusa do acolhimento - Não interesse (flag 0/1)"
+        data_type: string
+        description: Motivo de recusa do acolhimento - Não interesse (flag 0/1)
       - name: flag_motivo_outro
-        description: "Motivo de recusa do acolhimento - Outro (flag 0/1)"
+        data_type: string
+        description: Motivo de recusa do acolhimento - Outro (flag 0/1)
       - name: unidade_destino
-        description: "Unidade de destino"
+        data_type: string
+        description: Unidade de destino
       - name: equipamento_destino
-        description: "Equipamento de Destino"
+        data_type: string
+        description: Equipamento de Destino
       - name: nome_equip
-        description: "Nome do Outro Equipamento onde o usuário foi acolhido"
+        data_type: string
+        description: Nome do Outro Equipamento onde o usuário foi acolhido
       - name: encaminhamento_rede
-        description: "Encaminhamento para rede"
+        data_type: string
+        description: Encaminhamento para rede
       - name: encam_creas
-        description: "Nome do CREAS"
+        data_type: string
+        description: Nome do CREAS
       - name: encam_centropop
-        description: "Nome do Centro POP"
+        data_type: string
+        description: Nome do Centro POP
       - name: encam_cras
-        description: "Nome do CRAS"
+        data_type: string
+        description: Nome do CRAS
       - name: encam_conselhotutelar
-        description: "Nome do Conselho Tutelar"
+        data_type: string
+        description: Nome do Conselho Tutelar
       - name: encaminhamento_outro
-        description: "Outro Tipo de Encaminhamento"
+        data_type: string
+        description: Outro Tipo de Encaminhamento
       - name: flg_sem_encaminhamento
-        description: "ENCAMINHAMENTO - Sem Encaminhamento (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Sem Encaminhamento (Flag)
       - name: flg_encam_creas
-        description: "ENCAMINHAMENTO - CREAS (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - CREAS (Flag)
       - name: flg_encam_centropop
-        description: "ENCAMINHAMENTO - CENTRO POP (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - CENTRO POP (Flag)
       - name: flg_encam_cras
-        description: "ENCAMINHAMENTO - CRAS (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - CRAS (Flag)
       - name: flg_encam_conselhotutelar
-        description: "ENCAMINHAMENTO - Conselho Tutelar (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Conselho Tutelar (Flag)
       - name: flg_encam_encaminhamento_saude
-        description: "ENCAMINHAMENTO - Saúde (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Saúde (Flag)
       - name: flg_encam_defensoria_publica
-        description: "ENCAMINHAMENTO - Defensoria Pública (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Defensoria Pública (Flag)
       - name: flg_encam_detran
-        description: "ENCAMINHAMENTO - DETRAN (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - DETRAN (Flag)
       - name: flg_encam_cartorio
-        description: "ENCAMINHAMENTO - Cartório (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Cartório (Flag)
       - name: flg_encam_fundacao_leaoxiii
-        description: "ENCAMINHAMENTO - Fundação Leão XIII (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Fundação Leão XIII (Flag)
       - name: flg_encam_receita_federal
-        description: "ENCAMINHAMENTO - Receita Federal (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Receita Federal (Flag)
       - name: flg_encam_delegacia
-        description: "ENCAMINHAMENTO - Delegacia (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Delegacia (Flag)
       - name: flg_encam_outros
-        description: "ENCAMINHAMENTO - Outros (Flag)"
+        data_type: string
+        description: ENCAMINHAMENTO - Outros (Flag)
       - name: servico_creas
-        description: "SERVIÇO ENCAMINHADO - CREAS (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - CREAS (Flag)
       - name: outro_servico_creas
-        description: "OUTRO SERVIÇO ENCAMINHADO - CREAS (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - CREAS (Flag)
       - name: servico_centro_pop
-        description: "SERVIÇO ENCAMINHADO - CENTRO POP (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - CENTRO POP (Flag)
       - name: outro_servico_centro_pop
-        description: "OUTRO SERVIÇO ENCAMINHADO - CENTRO POP (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - CENTRO POP (Flag)
       - name: servico_defensoria
-        description: "SERVIÇO ENCAMINHADO - Defensoria (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - Defensoria (Flag)
       - name: outro_servico_defensoria
-        description: "OUTRO SERVIÇO ENCAMINHADO - Defensoria (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - Defensoria (Flag)
       - name: servico_detran
-        description: "SERVIÇO ENCAMINHADO - DETRAN (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - DETRAN (Flag)
       - name: outro_servico_detran
-        description: "OUTRO SERVIÇO ENCAMINHADO - DETRAN (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - DETRAN (Flag)
       - name: servico_delegacia
-        description: "SERVIÇO ENCAMINHADO - Delegacia (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - Delegacia (Flag)
       - name: outro_servico_delegacia
-        description: "OUTRO SERVIÇO ENCAMINHADO - Delegacia (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - Delegacia (Flag)
       - name: servico_cartorio
-        description: "SERVIÇO ENCAMINHADO - Cartório (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - Cartório (Flag)
       - name: outro_servico_cartorio
-        description: "OUTRO SERVIÇO ENCAMINHADO - Cartório (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - Cartório (Flag)
       - name: servico_rf
-        description: "SERVIÇO ENCAMINHADO - Receita Federal (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - Receita Federal (Flag)
       - name: outro_servico_rf
-        description: "OUTRO SERVIÇO ENCAMINHADO - Receita Federal (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - Receita Federal (Flag)
       - name: servico_leaoxiii
-        description: "SERVIÇO ENCAMINHADO - Fundação Leão XIII (Flag)"
+        data_type: string
+        description: SERVIÇO ENCAMINHADO - Fundação Leão XIII (Flag)
       - name: outro_servico_leaoxiii
-        description: "OUTRO SERVIÇO ENCAMINHADO - Fundação Leão XIII (Flag)"
+        data_type: string
+        description: OUTRO SERVIÇO ENCAMINHADO - Fundação Leão XIII (Flag)
       - name: f_serv_creas_cad
-        description: "SERVIÇO CREAS - CADÚNICO (Flag)"
+        data_type: string
+        description: SERVIÇO CREAS - CADÚNICO (Flag)
       - name: f_serv_creas_orijur
-        description: "SERVIÇO CREAS - ORIENTAÇÃO JURÍDICA (Flag)"
+        data_type: string
+        description: SERVIÇO CREAS - ORIENTAÇÃO JURÍDICA (Flag)
       - name: f_serv_creas_red
-        description: "SERVIÇO CREAS - RED (Flag)"
+        data_type: string
+        description: SERVIÇO CREAS - RED (Flag)
       - name: f_serv_creas_vaga_abrigo
-        description: "SERVIÇO CREAS - SOLICITAÇÃO DE VAGA EM ABRIGO (Flag)"
+        data_type: string
+        description: SERVIÇO CREAS - SOLICITAÇÃO DE VAGA EM ABRIGO (Flag)
       - name: f_serv_creas_outro
-        description: "SERVIÇO CREAS - OUTROS (Flag)"
+        data_type: string
+        description: SERVIÇO CREAS - OUTROS (Flag)
       - name: f_serv_centropop_hig_pes
-        description: "SERVIÇO CENTRO POP - HIGIENE PESSOAL (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - HIGIENE PESSOAL (Flag)
       - name: f_serv_centropop_recar
-        description: "SERVIÇO CENTRO POP - RECARGA DE TORNOZELEIRA ELETRÔNICA (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - RECARGA DE TORNOZELEIRA ELETRÔNICA (Flag)
       - name: f_serv_centropop_cadunico
-        description: "SERVIÇO CENTRO POP - CADUNICO (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - CADUNICO (Flag)
       - name: f_serv_centropop_sol_abrigo
-        description: "SERVIÇO CENTRO POP - SOLICITAÇÃO DE VAGA EM ABRIGO (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - SOLICITAÇÃO DE VAGA EM ABRIGO (Flag)
       - name: f_serv_centropop_hig_alca_doc
-        description: "SERVIÇO CENTRO POP - ALCATELAMENTO DE DOCUMENTAÇÃO (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - ALCATELAMENTO DE DOCUMENTAÇÃO (Flag)
       - name: f_serv_centropop_ori_jur
-        description: "SERVIÇO CENTRO POP - ORIENTAÇÃO JURÍDICA (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - ORIENTAÇÃO JURÍDICA (Flag)
       - name: f_serv_centropop_outro
-        description: "SERVIÇO CENTRO POP - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO CENTRO POP - OUTRO (Flag)
       - name: f_serv_def_1rg
-        description: "SERVIÇO DEFENSORIA - 1ª VIA RG (Flag)"
+        data_type: string
+        description: SERVIÇO DEFENSORIA - 1ª VIA RG (Flag)
       - name: f_serv_def_2rg
-        description: "SERVIÇO DEFENSORIA - 2ª VIA RG (Flag)"
+        data_type: string
+        description: SERVIÇO DEFENSORIA - 2ª VIA RG (Flag)
       - name: f_serv_def_1cn
-        description: "SERVIÇO DEFENSORIA - 1ª VIA CERTIDÃO DE NASCIMENTO (Flag)"
+        data_type: string
+        description: SERVIÇO DEFENSORIA - 1ª VIA CERTIDÃO DE NASCIMENTO (Flag)
       - name: f_serv_def_2cn
-        description: "SERVIÇO DEFENSORIA - 2ª VIA CERTIDÃO DE NASCIMENTO (Flag)"
+        data_type: string
+        description: SERVIÇO DEFENSORIA - 2ª VIA CERTIDÃO DE NASCIMENTO (Flag)
       - name: f_serv_def_outro
-        description: "SERVIÇO DEFENSORIA - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO DEFENSORIA - OUTRO (Flag)
       - name: f_serv_detran_exame
-        description: "SERVIÇO DETRAN - EXAME PAPILOSCÓPICO (Flag)"
+        data_type: string
+        description: SERVIÇO DETRAN - EXAME PAPILOSCÓPICO (Flag)
       - name: f_serv_detran_1rg
-        description: "SERVIÇO DETRAN - 1ª VIA RG (Flag)"
+        data_type: string
+        description: SERVIÇO DETRAN - 1ª VIA RG (Flag)
       - name: f_serv_detran_2rg
-        description: "SERVIÇO DETRAN - 2ª VIA RG (Flag)"
+        data_type: string
+        description: SERVIÇO DETRAN - 2ª VIA RG (Flag)
       - name: f_serv_detran_cnh
-        description: "SERVIÇO DETRAN - CNH (Flag)"
+        data_type: string
+        description: SERVIÇO DETRAN - CNH (Flag)
       - name: f_serv_detran_outro
-        description: "SERVIÇO DETRAN - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO DETRAN - OUTRO (Flag)
       - name: f_serv_delegacia_red
-        description: "SERVIÇO RED - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO RED - OUTRO (Flag)
       - name: f_serv_delegacia_outro
-        description: "SERVIÇO DELEGACIA - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO DELEGACIA - OUTRO (Flag)
       - name: f_serv_cartorio_1certcas
-        description: "SERVIÇO CARTORIO - 1ª VIA CERTIDÃO DE CASAMENTO (Flag)"
+        data_type: string
+        description: SERVIÇO CARTORIO - 1ª VIA CERTIDÃO DE CASAMENTO (Flag)
       - name: f_serv_cartorio_2certcas
-        description: "SERVIÇO CARTORIO - 2ª VIA CERTIDÃO DE CASAMENTO (Flag)"
+        data_type: string
+        description: SERVIÇO CARTORIO - 2ª VIA CERTIDÃO DE CASAMENTO (Flag)
       - name: f_serv_cartorio_1certnas
-        description: "SERVIÇO CARTORIO - 1ª VIA CERTIDÃO DE NASCIMENTO (Flag)"
+        data_type: string
+        description: SERVIÇO CARTORIO - 1ª VIA CERTIDÃO DE NASCIMENTO (Flag)
       - name: f_serv_cartorio_2certnas
-        description: "SERVIÇO CARTORIO - 2ª VIA CERTIDÃO DE NASCIMENTO (Flag)"
+        data_type: string
+        description: SERVIÇO CARTORIO - 2ª VIA CERTIDÃO DE NASCIMENTO (Flag)
       - name: f_serv_cartorio_outro
-        description: "SERVIÇO CARTORIO - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO CARTORIO - OUTRO (Flag)
       - name: f_serv_rf_cpf
-        description: "SERVIÇO RECEITA FEDERAL - CPF (Flag)"
+        data_type: string
+        description: SERVIÇO RECEITA FEDERAL - CPF (Flag)
       - name: f_serv_rf_outro
-        description: "SERVIÇO RECEITA FEDERAL - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO RECEITA FEDERAL - OUTRO (Flag)
       - name: f_serv_leaoxiii_2viarg
-        description: "SERVIÇO FUNDAÇÃO LEÃO XIII - 2ª VIA DE RG (Flag)"
+        data_type: string
+        description: SERVIÇO FUNDAÇÃO LEÃO XIII - 2ª VIA DE RG (Flag)
       - name: f_serv_leaoxiii_isencao
-        description: "SERVIÇO FUNDAÇÃO LEÃO XIII - ISENÇÃO PARA RETIRADA DE DOCUMENTAÇÃO (Flag)"
+        data_type: string
+        description: SERVIÇO FUNDAÇÃO LEÃO XIII - ISENÇÃO PARA RETIRADA DE DOCUMENTAÇÃO (Flag)
       - name: f_serv_leaoxiii_outro
-        description: "SERVIÇO FUNDAÇÃO LEÃO XIII - OUTRO (Flag)"
+        data_type: string
+        description: SERVIÇO FUNDAÇÃO LEÃO XIII - OUTRO (Flag)
       - name: resp_atendimento
-        description: "Responsável pelo Atendimento"
+        data_type: string
+        description: Responsável pelo Atendimento
       - name: observacao
-        description: "Observações"
+        data_type: string
+        description: Observações
       - name: flag_exc_repeat
-        description: "Flag de exclusão (lógica) do registro repetido"
+        data_type: string
+        description: Flag de exclusão (lógica) do registro repetido
       - name: parentrowid
-        description: "ParentRowID"
+        data_type: string
+        description: ParentRowID
       - name: created_user
-        description: "Usuário que criou o registro no ArcGIS"
+        data_type: string
+        description: Usuário que criou o registro no ArcGIS
       - name: created_date
-        description: "Data/hora de criação do registro no ArcGIS"
+        data_type: string
+        description: Data/hora de criação do registro no ArcGIS
       - name: last_edited_user
-        description: "Usuário da última edição do registro no ArcGIS"
+        data_type: string
+        description: Usuário da última edição do registro no ArcGIS
       - name: last_edited_date
-        description: "Data/hora da última edição do registro no ArcGIS"
+        data_type: string
+        description: Data/hora da última edição do registro no ArcGIS
       - name: outra_saude
-        description: "Outro problema de saúde"
+        data_type: string
+        description: Outro problema de saúde
       - name: flag_outros_saude
-        description: "DOENÇA - Outros (Flag)"
+        data_type: string
+        description: DOENÇA - Outros (Flag)
       - name: timestamp_captura
-        description: "Timestamp de captura do registro na ingestão ArcGIS→BigQuery"
+        data_type: timestamp
+        description: Timestamp de captura do registro na ingestão ArcGIS→BigQuery
       - name: longitude
-        description: "Longitude do ponto representativo da geometria, calculada na ingestão"
+        data_type: float64
+        description: Longitude do ponto representativo da geometria, calculada na ingestão
       - name: latitude
-        description: "Latitude do ponto representativo da geometria, calculada na ingestão"
+        data_type: float64
+        description: Latitude do ponto representativo da geometria, calculada na ingestão
       - name: geometry
-        description: "Geometria do registro convertida para GEOGRAPHY na ingestão"
+        data_type: geography
+        description: Geometria do registro convertida para GEOGRAPHY na ingestão
 
   - name: mart_mp_prontuario_carioca__gh_cidadao_pac
     description: >
@@ -557,117 +829,173 @@ models:
       válidas (excluindo unidades de teste) e sem registros de teste no nome.
     columns:
       - name: seqpac
-        description: "Numero sequencial do usuário no sistema (Prontuario RAPS)"
+        data_type: int64
+        description: Numero sequencial do usuário no sistema (Prontuario RAPS)
       - name: numrg
-        description: "Numero do Registro civil do usuário"
+        data_type: string
+        description: Numero do Registro civil do usuário
       - name: dsccns
-        description: "Numero do Cartao Nacional de Saude - Sem formatacao"
+        data_type: string
+        description: Numero do Cartao Nacional de Saude - Sem formatacao
       - name: numend
-        description: "Numero de endereco de residencia do usuário"
+        data_type: string
+        description: Numero de endereco de residencia do usuário
       - name: apelido
-        description: "Apelido do usuário"
+        data_type: string
+        description: Apelido do usuário
       - name: dscfoto
-        description: "Endereco(caminho) de armazenamento do arquivo de imagem cotendo a foto do usuário(.jpg)"
+        data_type: string
+        description: Endereco(caminho) de armazenamento do arquivo de imagem cotendo a foto do usuário(.jpg)
       - name: indsexo
-        description: "F-Feminino,M-Masculino-''-Sem informacao"
+        data_type: string
+        description: "F-Feminino,M-Masculino-\"\"-Sem informacao"
       - name: muniend
-        description: "Descricao do Municipio de endereco de residencia do usuário"
+        data_type: string
+        description: Descricao do Municipio de endereco de residencia do usuário
       - name: racacor
-        description: "01-Branca,02-Preta,03-Parda,04-Amarela,05-Indigena,99-Sem informacao"
+        data_type: string
+        description: 01-Branca,02-Preta,03-Parda,04-Amarela,05-Indigena,99-Sem informacao
       - name: complend
-        description: "Complemento de endereco de residencia do usuário"
+        data_type: string
+        description: Complemento de endereco de residencia do usuário
       - name: condestr
-        description: "1-Apatrida,2-Asilado,3-Imigrante com autorizacao de residencia,4-Imigrante com visto temporario,5-Refugiado (Nao legalizado),\r\n6-Refugiado (Em solicitacao),7-Refugiado Legalizado,8-Turista"
+        data_type: string
+        description: 1-Apatrida,2-Asilado,3-Imigrante com autorizacao de residencia,4-Imigrante com visto temporario,5-Refugiado (Nao legalizado),\r\n6-Refugiado (Em solicitacao),7-Refugiado Legalizado,8-Turista
       - name: dscemail
-        description: "Endereco de e-mail do usuário"
+        data_type: string
+        description: Endereco de e-mail do usuário
       - name: dscnmmae
-        description: "Nome da mae do usuário"
+        data_type: string
+        description: Nome da mae do usuário
       - name: dscnmpai
-        description: "Nome do pai do usuário"
+        data_type: string
+        description: Nome do pai do usuário
       - name: dscnotif
-        description: "Descricao das Notificacoes de sistema para o usuário (Esta campo contem texo em formato JSON."
+        data_type: string
+        description: Descricao das Notificacoes de sistema para o usuário (Esta campo contem texo em formato JSON.
       - name: estcivil
-        description: "-Sem informacao,'1'-Solteiro,'2'-Casado,'3'-Viuvo,'4'-Separado Judicialmente,'5'-Uniao consensual"
+        data_type: string
+        description: "-Sem informacao,\"1\"-Solteiro,\"2\"-Casado,\"3\"-Viuvo,\"4\"-Separado Judicialmente,\"5\"-Uniao consensual"
       - name: muninasc
-        description: "Descricao do municipio de nascimento"
+        data_type: string
+        description: Descricao do municipio de nascimento
       - name: nacional
-        description: "1-Brasileira,'3'-Brasileiro naturalizado,'2'-Estrangeira"
+        data_type: string
+        description: "1-Brasileira,\"3\"-Brasileiro naturalizado,\"2\"-Estrangeira"
       - name: seqetnia
-        description: "Aponta para a tabela de etnia (gh_etnia)"
+        data_type: int64
+        description: Aponta para a tabela de etnia (gh_etnia)
       - name: seqlogin
-        description: "Usado para guardar o usuario corrente que efetuou o cadastramento do usuário."
+        data_type: int64
+        description: Usado para guardar o usuario corrente que efetuou o cadastramento do usuário.
       - name: sequsref
-        description: "Indica qual a Unidade de Saude da Atencao primaria sera utilizada como referencia para o usuário. Apontando para a tabela de unidade de saude(gh_us)."
+        data_type: int64
+        description: Indica qual a Unidade de Saude da Atencao primaria sera utilizada como referencia para o usuário. Apontando para a tabela de unidade de saude(gh_us).
       - name: ufexpedi
-        description: "Sigla da Uf do estado da expedicao do registro"
+        data_type: string
+        description: Sigla da Uf do estado da expedicao do registro
       - name: datcadast
-        description: "Data de realizacao do cadastro do usuário"
+        data_type: date
+        description: Data de realizacao do cadastro do usuário
       - name: datexpedi
-        description: "Data da exedicao do registro civil"
+        data_type: date
+        description: Data da exedicao do registro civil
       - name: datnascim
-        description: "Data de nascimento do usuário"
+        data_type: date
+        description: Data de nascimento do usuário
       - name: dsctelef1
-        description: "Telefone do usuário 1"
+        data_type: string
+        description: Telefone do usuário 1
       - name: dsctelef2
-        description: "Telefone do usuário 2"
+        data_type: string
+        description: Telefone do usuário 2
       - name: indgenero
-        description: "06-Homem cisgenero,03-Homem transgenero,05-Mulher cisggenero,01-Mulher transgenero,04-Nao binario,02-Travesti,99-Sem informacao"
+        data_type: string
+        description: 06-Homem cisgenero,03-Homem transgenero,05-Mulher cisggenero,01-Mulher transgenero,04-Nao binario,02-Travesti,99-Sem informacao
       - name: indstatus
-        description: "B-Acompanhamento AMBULATORIO,E-Acompanhamento CAPS,P-Alta a Pedido,S-Alta para Atencao Basica,C-Alta para CAPS de outro Municipio,I-Alta por insucesso de busca ativa,M-Alta por Melhora,A-Busca Ativa,\nD-Desaparecido,O-Obito,T-Transferencia para outro municipio"
+        data_type: string
+        description: B-Acompanhamento AMBULATORIO,E-Acompanhamento CAPS,P-Alta a Pedido,S-Alta para Atencao Basica,C-Alta para CAPS de outro Municipio,I-Alta por insucesso de busca ativa,M-Alta por Melhora,A-Busca Ativa,\nD-Desaparecido,O-Obito,T-Transferencia para outro municipio
       - name: numcpfpac
-        description: "Numero de CPF do usuário - Sem formatacao"
+        data_type: string
+        description: Numero de CPF do usuário - Sem formatacao
       - name: pontorefe
-        description: "Ponto de referencia do endereco de residencia do usuário"
+        data_type: string
+        description: Ponto de referencia do endereco de residencia do usuário
       - name: sigufnasc
-        description: "Sigla da Uf do estado de nascimento do usuário"
+        data_type: string
+        description: Sigla da Uf do estado de nascimento do usuário
       - name: dscnomepac
-        description: "Nome do usuário"
+        data_type: string
+        description: Nome do usuário
       - name: dscnomsoci
-        description: "Nome social do usuário"
+        data_type: string
+        description: Nome social do usuário
       - name: indorigcad
-        description: "Indicador de origem do cadastro (R-RAPS,B-Atencao Basica,I-Intersetorial)"
+        data_type: string
+        description: Indicador de origem do cadastro (R-RAPS,B-Atencao Basica,I-Intersetorial)
       - name: paisorigem
-        description: "Pais de origem do usuário"
+        data_type: string
+        description: Pais de origem do usuário
       - name: seqequipfm
-        description: "Sequencial de equipamento (possivelmente equipamento de referência da família)"
+        data_type: int64
+        description: Sequencial de equipamento (possivelmente equipamento de referência da família)
       - name: sigufender
-        description: "Sigla da Uf do estado do endereco de residencia do usuário"
+        data_type: string
+        description: Sigla da Uf do estado do endereco de residencia do usuário
       - name: datatualcad
-        description: "Data da ultima atualizacao de cadastro"
+        data_type: date
+        description: Data da ultima atualizacao de cadastro
       - name: indorgaoexp
-        description: "60-Carteira de identidade classista,20-DIC-Detran,82-Documento Estrangeiro,41-Ministerio da Aeronautica,42-Ministerio do Exercito,43-Ministerio do Marinha,12-OAB,40-Organismos Militares,81-Outros Emissores,44-Policia Federal,10-SSP"
+        data_type: string
+        description: 60-Carteira de identidade classista,20-DIC-Detran,82-Documento Estrangeiro,41-Ministerio da Aeronautica,42-Ministerio do Exercito,43-Ministerio do Marinha,12-OAB,40-Organismos Militares,81-Outros Emissores,44-Policia Federal,10-SSP
       - name: numcepender
-        description: "Numero do Cep do endereco de residencia do usuário"
+        data_type: string
+        description: Numero do Cep do endereco de residencia do usuário
       - name: sequsambref
-        description: "Indica qual a Unidade de Saude do tipo ambulatorial de referencia do usuário"
+        data_type: int64
+        description: Indica qual a Unidade de Saude do tipo ambulatorial de referencia do usuário
       - name: sequscapref
-        description: "Indica qual a Unidade de Saude (CAPS de referencia) do usuário. Aponta para a tabela de unidade de saude(gh_us)."
+        data_type: int64
+        description: Indica qual a Unidade de Saude (CAPS de referencia) do usuário. Aponta para a tabela de unidade de saude(gh_us).
       - name: dslogradouro
-        description: "Descricao do logradouro do endereco de residencia do usuário"
+        data_type: string
+        description: Descricao do logradouro do endereco de residencia do usuário
       - name: indusonomsoc
-        description: "Indicador de uso do nome social"
+        data_type: string
+        description: Indicador de uso do nome social
       - name: nuprontpapel
-        description: "Numero do prontuario de papel da unidade"
+        data_type: string
+        description: Numero do prontuario de papel da unidade
       - name: dscbairroender
-        description: "Descricao do bairro de endereco de residencia do usuário"
+        data_type: string
+        description: Descricao do bairro de endereco de residencia do usuário
       - name: dcsnomresplegal
-        description: "Nome do representante legal"
+        data_type: string
+        description: Nome do representante legal
       - name: dscmodatendativ
-        description: "Pontos de atencao com ciclo de atendimento em aberto"
+        data_type: string
+        description: Pontos de atencao com ciclo de atendimento em aberto
       - name: numcpfresplegal
-        description: "CPF do representante legal"
+        data_type: string
+        description: CPF do representante legal
       - name: seqprofrefdamb1
-        description: "Sequencial do Profissional de referencia Deamb. Principal"
+        data_type: int64
+        description: Sequencial do Profissional de referencia Deamb. Principal
       - name: seqprofrefdamb2
-        description: "Sequencial do Profissional de referencia Deamb. Secundario"
+        data_type: int64
+        description: Sequencial do Profissional de referencia Deamb. Secundario
       - name: dscvincresplegal
-        description: "Vinculo do representante legal com o usuário"
+        data_type: string
+        description: Vinculo do representante legal com o usuário
       - name: dsctelefresplegal
-        description: "Telefone do representante legal"
+        data_type: string
+        description: Telefone do representante legal
       - name: seqprofequirefer1
-        description: "Indica a referencia para o primeiro profissional de Saude do usuário"
+        data_type: int64
+        description: Indica a referencia para o primeiro profissional de Saude do usuário
       - name: seqprofequirefer2
-        description: "Indica a referencia para o segundo profissional de Saude do usuário"
+        data_type: int64
+        description: Indica a referencia para o segundo profissional de Saude do usuário
 
   - name: mart_mp_prontuario_carioca__gh_pac_dados
     description: >
@@ -675,184 +1003,276 @@ models:
       presentes em mart_mp_prontuario_carioca__gh_cidadao_pac.
     columns:
       - name: indavd
-        description: "Indicador (S/N) de dependência em atividades da vida diária (AVD)"
+        data_type: string
+        description: Indicador (S/N) de dependência em atividades da vida diária (AVD)
       - name: indmig
-        description: "Indicador de migrante"
+        data_type: string
+        description: Indicador de migrante
       - name: seqpac
-        description: "Sequencial do usuário no sistema (Prontuário RAPS)"
+        data_type: int64
+        description: Sequencial do usuário no sistema (Prontuário RAPS)
       - name: dsczona
-        description: "sem descrição documentada; campo de 'zona', no bloco de título de eleitor"
+        data_type: string
+        description: sem descrição documentada; campo de 'zona', no bloco de título de eleitor
       - name: indeixo
+        data_type: string
         description: "Eixo/segmento etário: A=Adulto, C=Infantil, I=Idoso"
       - name: dscctnum
-        description: "Número da certidão (registro civil)"
+        data_type: string
+        description: Número da certidão (registro civil)
       - name: dscfolha
-        description: "Folha do termo de registro civil"
+        data_type: string
+        description: Folha do termo de registro civil
       - name: dsclivro
-        description: "Livro do registro civil"
+        data_type: string
+        description: Livro do registro civil
       - name: dsctermo
-        description: "Termo do registro civil"
+        data_type: string
+        description: Termo do registro civil
       - name: motivcpf
+        data_type: int64
         description: "Código do motivo de ausência/irregularidade do CPF (valores observados: 1, 2, 3)"
       - name: dscnumred
-        description: "Número do RED (Registro de Eventos de Defesa Social)"
+        data_type: string
+        description: Número do RED (Registro de Eventos de Defesa Social)
       - name: dscptokey
-        description: "Chave de auditoria dos pontos do usuário"
+        data_type: string
+        description: Chave de auditoria dos pontos do usuário
       - name: indidioma
+        data_type: string
         description: "Idioma de preferência: 1=Português, 2=Espanhol, 3=Inglês, 4=Francês, 5=Chinês, 6=Japonês, 7=Alemão, 8=Hebraico, 9=Árabe, 10=Turco"
       - name: sequsorig
-        description: "Sequencial da unidade de saúde de origem (FK)"
+        data_type: int64
+        description: Sequencial da unidade de saúde de origem (FK)
       - name: valpontos
-        description: "Valor da pontuação (escore) atribuída ao usuário"
+        data_type: int64
+        description: Valor da pontuação (escore) atribuída ao usuário
       - name: comunidade
-        description: "Comunidade onde reside o usuario"
+        data_type: string
+        description: Comunidade onde reside o usuario
       - name: datcttaemi
-        description: "Data de emissão da certidão de registro civil"
+        data_type: date
+        description: Data de emissão da certidão de registro civil
       - name: dscctserie
-        description: "Série da certidão de registro civil"
+        data_type: string
+        description: Série da certidão de registro civil
       - name: dscircuscr
-        description: "Circunscrição (cartório) do registro civil"
+        data_type: string
+        description: Circunscrição (cartório) do registro civil
       - name: dscmunorig
-        description: "Município de origem"
+        data_type: string
+        description: Município de origem
       - name: dsctempjud
-        description: "Campo de tempo/processo judicial"
+        data_type: string
+        description: Campo de tempo/processo judicial
       - name: inddadosok
-        description: "Indicador (S/N) de conferência/validação dos dados cadastrais"
+        data_type: string
+        description: Indicador (S/N) de conferência/validação dos dados cadastrais
       - name: indlibcond
-        description: "Indicador (S/N) de liberdade condicional"
+        data_type: string
+        description: Indicador (S/N) de liberdade condicional
       - name: indterviol
-        description: "Territorio da Violacao"
+        data_type: string
+        description: Territorio da Violacao
       - name: indtornele
-        description: "Indicador (S/N) de uso de tornozeleira eletrônica"
+        data_type: string
+        description: Indicador (S/N) de uso de tornozeleira eletrônica
       - name: indtratamb
-        description: "Indicador (S/N) de tratamento ambulatorial"
+        data_type: string
+        description: Indicador (S/N) de tratamento ambulatorial
       - name: indusorede
+        data_type: string
         description: "Tempo de uso da rede: 01=Menos de 3 meses, 02=Entre 1 e 3 meses, 03=Entre 3 e 6 meses, 04=Entre 6 meses e 1 ano, 05=Entre 1 e 3 anos, 06=Entre 4 e 6 anos, 07=Entre 7 e 10 anos, 08=Mais de 10 anos, 09=Não sabe/Não informou"
       - name: indvioldir
+        data_type: string
         description: "Tipo de violação de direitos (código 01-28; ex.: 01=Violência sexual, 02=Violência psicológica, 03=Violência financeira/patrimonial, 04=Negligência e abandono, 06=Violência doméstica, 12=Auto negligência, 14=Conflitos territoriais, 18=Exploração sexual, 20=Trabalho infantil, 22=Violência física, 28=Violência intrafamiliar)"
       - name: intipocert
+        data_type: string
         description: "Tipo de certidão (valores observados: 1, 2)"
       - name: nmcurador2
-        description: "Nome do curador (segundo curador)"
+        data_type: string
+        description: Nome do curador (segundo curador)
       - name: seqentorig
-        description: "Sequencial da entidade de origem (FK)"
+        data_type: int64
+        description: Sequencial da entidade de origem (FK)
       - name: sequsatend
-        description: "Sequencial da unidade de saúde de atendimento (FK)"
+        data_type: int64
+        description: Sequencial da unidade de saúde de atendimento (FK)
       - name: stescolcod
-        description: "Situacao da escolaridade do usuario"
+        data_type: string
+        description: Situacao da escolaridade do usuario
       - name: datcadunico
-        description: "Data de cadastro/atualização no CadÚnico"
+        data_type: date
+        description: Data de cadastro/atualização no CadÚnico
       - name: dsccartorio
-        description: "Nome/identificação do cartório de registro civil"
+        data_type: string
+        description: Nome/identificação do cartório de registro civil
       - name: dscmatrcert
-        description: "Matrícula da certidão de registro civil"
+        data_type: string
+        description: Matrícula da certidão de registro civil
       - name: dscnumbenef
-        description: "Número do benefício socioassistencial"
+        data_type: string
+        description: Número do benefício socioassistencial
       - name: dscomplorig
-        description: "Complemento do endereço de origem"
+        data_type: string
+        description: Complemento do endereço de origem
       - name: dscpasspais
-        description: "Passaporte/país de origem"
+        data_type: string
+        description: Passaporte/país de origem
       - name: dscprocresp
-        description: "Processo/responsável (bloco tomdec)"
+        data_type: string
+        description: Processo/responsável (bloco tomdec)
       - name: dsctiteleit
-        description: "Número do título de eleitor"
+        data_type: string
+        description: Número do título de eleitor
       - name: indcadunico
-        description: "Indicador (S/N) de inscrição no CadÚnico"
+        data_type: string
+        description: Indicador (S/N) de inscrição no CadÚnico
       - name: indfaixasal
+        data_type: string
         description: "Faixa de renda salarial: 1=Não possui renda, 2=até R$ 89,01, 3=R$ 89,01 a R$ 178,00, 4=R$ 178,00 a meio SM, 5=meio SM a 1 SM, 6=1 a 2 SM, 7=2 SM ou mais, 8=Não sabe/não lembra, 9=Não respondeu"
       - name: indgestante
-        description: "Indicador (S/N) de gestante"
+        data_type: string
+        description: Indicador (S/N) de gestante
       - name: indmedpenas
-        description: "Indicador (S/N) de cumprimento de medida penal"
+        data_type: string
+        description: Indicador (S/N) de cumprimento de medida penal
       - name: indmobreduz
-        description: "Indicador (S/N) do bloco de medidas/penas"
+        data_type: string
+        description: Indicador (S/N) do bloco de medidas/penas
       - name: indqualativ
-        description: "Indicador de atividade profissional exercida pelo usuario"
+        data_type: string
+        description: Indicador de atividade profissional exercida pelo usuario
       - name: indreligiao
+        data_type: string
         description: "Religião: 1=Católica, 2=Evangélica, 3=Espírita, 4=Religiões afro-brasileiras, 5=Judaica, 6=Outra"
       - name: indtipovinc
+        data_type: string
         description: "Código do tipo de vínculo (valores observados: 1, 2, 3, 4)"
       - name: seqloginalt
-        description: "Sequencial do login que realizou a última alteração"
+        data_type: int64
+        description: Sequencial do login que realizou a última alteração
       - name: datcarthabil
-        description: "Data de emissão da carteira de habilitação"
+        data_type: date
+        description: Data de emissão da carteira de habilitação
       - name: datpassexped
-        description: "Data de expedição do passaporte"
+        data_type: date
+        description: Data de expedição do passaporte
       - name: datpassvalid
-        description: "Data de validade do passaporte"
+        data_type: date
+        description: Data de validade do passaporte
       - name: dsccarthabil
-        description: "Número/descrição da carteira de habilitação"
+        data_type: string
+        description: Número/descrição da carteira de habilitação
       - name: dscexpertrab
-        description: "Descrição da experiência de trabalho"
+        data_type: string
+        description: Descrição da experiência de trabalho
       - name: dscgestmeses
-        description: "Tempo de gestação em meses"
+        data_type: string
+        description: Tempo de gestação em meses
       - name: dsctitelseca
-        description: "Seção do título de eleitor"
+        data_type: string
+        description: Seção do título de eleitor
       - name: dsctitelzona
-        description: "Zona do título de eleitor"
+        data_type: string
+        description: Zona do título de eleitor
       - name: dsctomdectel
-        description: "Telefone do bloco 'tomdec' (tomada de decisão/responsável)"
+        data_type: string
+        description: Telefone do bloco 'tomdec' (tomada de decisão/responsável)
       - name: indfamilfrag
-        description: "Indicador (S/N) de família fragmentada"
+        data_type: string
+        description: Indicador (S/N) de família fragmentada
       - name: indmotivacol
-        description: "Motivo do acolhimento (1=Negligência, 2=Abandono, 3=Maus tratos, 4=Conflito familiar, 5=Uso abusivo de drogas, 6=Perdido da família, 7=Violência sexual, 8=Violência psicológica, 9=Conflitos territoriais, 10=Falta de moradia, 11=Falta de suporte familiar/comunitário, 12=Falta/ausência de renda, 13=Medida protetiva, 14=Moradia sem condições, 15=Pessoa com cuidador(a) idoso(a), 16=Pessoa restrita ao leito, 17=Pessoa sem condições de autocuidado, 18=Residente em ocupação/invasão, 19=Situação de rua)"
+        data_type: string
+        description: Motivo do acolhimento (1=Negligência, 2=Abandono, 3=Maus tratos, 4=Conflito familiar, 5=Uso abusivo de drogas, 6=Perdido da família, 7=Violência sexual, 8=Violência psicológica, 9=Conflitos territoriais, 10=Falta de moradia, 11=Falta de suporte familiar/comunitário, 12=Falta/ausência de renda, 13=Medida protetiva, 14=Moradia sem condições, 15=Pessoa com cuidador(a) idoso(a), 16=Pessoa restrita ao leito, 17=Pessoa sem condições de autocuidado, 18=Residente em ocupação/invasão, 19=Situação de rua)
       - name: indorientsex
+        data_type: string
         description: "Orientação sexual: 1=Lésbica, 2=Gay, 3=Bissexual, 4=Heterossexual, 5=Pansexual, 6=Não informado"
       - name: indpovtradic
-        description: "Indicador de pertencimento a povos tradicionais"
+        data_type: string
+        description: Indicador de pertencimento a povos tradicionais
       - name: indusaaparel
+        data_type: string
         description: "Aparelho auxiliar utilizado: 1=Cadeira de rodas, 2=Muletas, 3=Andador, 4=Próteses, 5=Outros"
       - name: valrendaativ
-        description: "Valor da renda proveniente de atividade/trabalho (R$)"
+        data_type: numeric
+        description: Valor da renda proveniente de atividade/trabalho (R$)
       - name: dsccertreserv
-        description: "Certificado de reservista (militar)"
+        data_type: string
+        description: Certificado de reservista (militar)
       - name: dsccuraproces
-        description: "Identificação do curador/processo de curatela"
+        data_type: string
+        description: Identificação do curador/processo de curatela
       - name: dscpassaporte
-        description: "Número do passaporte"
+        data_type: string
+        description: Número do passaporte
       - name: dscregistmigr
-        description: "Número do registro de migração"
+        data_type: string
+        description: Número do registro de migração
       - name: dsctomdecnome
-        description: "Nome do bloco 'tomdec' (tomada de decisão/responsável)"
+        data_type: string
+        description: Nome do bloco 'tomdec' (tomada de decisão/responsável)
       - name: dsctomdectel2
-        description: "Telefone do bloco 'tomdec' (2)"
+        data_type: string
+        description: Telefone do bloco 'tomdec' (2)
       - name: inddeambulaso
-        description: "Indicador (S/N) de deambulação sem apoio"
+        data_type: string
+        description: Indicador (S/N) de deambulação sem apoio
       - name: inddesospital
+        data_type: string
         description: "Indicador do bloco de desospitalização (valores observados: N, H, P, C, U, R, E)"
       - name: indescbarthel
-        description: "Escore da Escala de Barthel (1=independente, 2=dependência em até 3 atividades, 3=dependência em todas)"
+        data_type: string
+        description: Escore da Escala de Barthel (1=independente, 2=dependência em até 3 atividades, 3=dependência em todas)
       - name: indfaixabenef
+        data_type: string
         description: "Faixa de valor dos benefícios: 2=até R$ 70,00, 3=R$ 70,00 a R$ 140,00, 4=R$ 140,00 a meio SM, 5=meio SM a 1 SM, 6=1 a 2 SM, 7=2 SM ou mais, 8=Não sabe/não lembra, 9=Não respondeu"
       - name: indgraudepend
+        data_type: string
         description: "Grau de dependência: 1=Pessoa independente, 2=Dependência em até 3 atividades, 3=Dependência em todas as atividades"
       - name: indinstinterd
-        description: "Indicador (S/N) de instituição/estabelecimento interditado"
+        data_type: string
+        description: Indicador (S/N) de instituição/estabelecimento interditado
       - name: indsmentcompr
+        data_type: string
         description: "Indicador do bloco de compromisso/medida (valores observados: N, D, A)"
       - name: indusuperdido
+        data_type: string
         description: "Indicador do bloco de medidas (valores observados: N, A, D, E, U)"
       - name: indvagasolfam
-        description: "Indicador (S/N) de solicitação de vaga para a família"
+        data_type: string
+        description: Indicador (S/N) de solicitação de vaga para a família
       - name: valrendabenef
-        description: "Valor da renda proveniente de benefícios (R$)"
+        data_type: numeric
+        description: Valor da renda proveniente de benefícios (R$)
       - name: datultapurptos
-        description: "Data da última apuração/atualização da pontuação"
+        data_type: date
+        description: Data da última apuração/atualização da pontuação
       - name: dsclstassocpac
-        description: "Lista de associações/entidades vinculadas ao usuário"
+        data_type: string
+        description: Lista de associações/entidades vinculadas ao usuário
       - name: dscptokeyfamil
-        description: "Chave de auditoria dos pontos da familia"
+        data_type: string
+        description: Chave de auditoria dos pontos da familia
       - name: dsctelcurador2
-        description: "Telefone do curador (segundo curador)"
+        data_type: string
+        description: Telefone do curador (segundo curador)
       - name: dsctomdecnome2
-        description: "Nome do bloco 'tomdec' (2)"
+        data_type: string
+        description: Nome do bloco 'tomdec' (2)
       - name: inddomicinterd
-        description: "Indicador (S/N) de domicílio interditado"
+        data_type: string
+        description: Indicador (S/N) de domicílio interditado
       - name: valpontosfamil
-        description: "Valor da pontuação (escore) atribuída à família"
+        data_type: int64
+        description: Valor da pontuação (escore) atribuída à família
       - name: dsctomdecproces
-        description: "Processo do bloco 'tomdec' (tomada de decisão)"
+        data_type: string
+        description: Processo do bloco 'tomdec' (tomada de decisão)
       - name: indvagasolcomter
-        description: "S-Sim, N-Nao | Indica se a vaga solicitada e para Comunidades Terapeuticas"
+        data_type: string
+        description: S-Sim, N-Nao | Indica se a vaga solicitada e para Comunidades Terapeuticas
       - name: dscoutrosdocsestr
-        description: "Outros documentos estrangeiros"
+        data_type: string
+        description: Outros documentos estrangeiros
+
