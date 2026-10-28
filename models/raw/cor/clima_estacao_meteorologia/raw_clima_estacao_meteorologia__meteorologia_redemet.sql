@@ -22,9 +22,7 @@ SELECT
     SAFE_CAST(
         REGEXP_REPLACE(id_estacao, r'\.0$', '') AS STRING
         ) id_estacao,
-    SAFE_CAST(
-        SAFE.PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_medicao) AS DATETIME
-    ) AS data_medicao,
+    SAFE_CAST(data_medicao AS DATETIME) AS data_medicao,
     SAFE_CAST(temperatura AS int64) temperatura,
     SAFE_CAST(umidade AS int64) umidade,
     SAFE_CAST(condicoes_tempo AS string) condicoes_tempo,
