@@ -35,9 +35,7 @@ with source_1 as (
         SAFE_CAST(acumulado_chuva_24h AS FLOAT64) AS acumulado_chuva_24h,
         SAFE_CAST(acumulado_chuva_96h AS FLOAT64) AS acumulado_chuva_96h,
         SAFE_CAST(acumulado_chuva_mes AS FLOAT64) AS acumulado_chuva_mes,
-        SAFE_CAST(ano_particao AS INT64) AS ano_particao,
-        SAFE_CAST(mes_particao AS INT64) AS mes_particao,
-        SAFE_CAST(data_particao AS DATE) AS data_particao
+        SAFE_CAST(batch AS DATE) AS batch,
     FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_alertario_5min') }}
 
     {% if is_incremental() %}
@@ -70,9 +68,7 @@ with source_1 as (
         SAFE_CAST(acumulado_chuva_24h AS FLOAT64) AS acumulado_chuva_24h,
         SAFE_CAST(acumulado_chuva_96h AS FLOAT64) AS acumulado_chuva_96h,
         SAFE_CAST(acumulado_chuva_mes AS FLOAT64) AS acumulado_chuva_mes,
-        SAFE_CAST(ano_particao AS INT64) AS ano_particao,
-        SAFE_CAST(mes_particao AS INT64) AS mes_particao,
-        SAFE_CAST(data_particao AS DATE) AS data_particao
+        SAFE_CAST(data_particao AS DATE) AS batch
     FROM `rj-cor.clima_pluviometro_staging.taxa_precipitacao_alertario_5min`
     WHERE data_particao BETWEEN '2025-01-01' AND '2026-05-31'
 )
