@@ -35,9 +35,7 @@ SELECT
     SAFE_CAST(velocidade_vento AS FLOAT64) velocidade_vento,
     SAFE_CAST(radiacao_global AS FLOAT64) radiacao_global,
     SAFE_CAST(acumulado_chuva_1_h AS FLOAT64) acumulado_chuva_1_h,
-    SAFE_CAST(
-        SAFE.PARSE_TIME('%H:%M:%S', horario) AS TIME
-        ) horario,
+    SAFE_CAST(horario AS TIME) horario,
     SAFE_CAST(data  AS DATE) data_medicao,
 FROM {{ source('clima_estacao_meteorologica_staging', 'meteorologia_inmet') }}
 
