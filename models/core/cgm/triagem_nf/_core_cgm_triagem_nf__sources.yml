@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: poc_osinfo_ia
+    database: rj-nf-agent
+    schema: poc_osinfo_ia
+    tables:
+      - name: smf_nf_cancelada_substituta_20260311
+        description: "NFs canceladas e substitutas informadas pela SMF"
+
+  - name: brutos_smf
+    database: rj-nf-agent
+    schema: brutos_smf
+    tables:
+      - name: nf_verificacao_20260304
+        description: "Verificação de existência e cancelamento de NFs na base da SMF"
+
+  - name: brutos_pipeline_extracao_staging
+    database: rj-agent-cgm-triagem-nf
+    schema: brutos_pipeline_extracao_staging
+    tables:
+      - name: extracao_pagina
+        description: "Páginas dos documentos fiscais extraídas pela IA (pipeline de extração)"
+
+  - name: adm_contrato_gestao
+    database: rj-cvl
+    schema: adm_contrato_gestao
+    tables:
+      - name: despesas
+        description: "Despesas declaradas por Organizações Sociais no OSInfo"
+      - name: secretaria
+        description: "Secretarias contratantes"
+      - name: contrato
+        description: "Contratos de gestão"
+      - name: administracao_unidade
+        description: "Unidades e organizações da administração"
+
+  - name: brutos_bcadastro
+    database: rj-iplanrio
+    schema: brutos_bcadastro
+    tables:
+      - name: cnpj
+        description: "Cadastro de CNPJs (BCadastro)"
+      - name: dominio
+        description: "Tabela de domínios do BCadastro (ex.: atividade econômica)"
