@@ -24,6 +24,11 @@ vars:
   CHATBOT_START_DATE: "2025-08-19"
   # EAI billing cutover date
   BILLING_CUTOVER_DATE: "2025-08-26"
+  # Nota Carioca v2 (trilha nacional): nos targets de produção (prod, pr_prod) os modelos nota_carioca_v2 e
+  # paridade_nc2__* só existem com esta variável em true (dev e pr sempre os habilitam, sobre seeds sintéticas).
+  nota_carioca_v2_habilitado: false
+  # Início da partição lida nas tabelas raw_nfse_nacional (coluna data_hora_geracao); veja macro nc2_raw.
+  nc2_raw_desde: "2026-01-01"
 
 
 models:
@@ -57,6 +62,15 @@ models:
           +schema: nota_carioca
           +project: rj-iplanrio-dia
           +tags: ["nota_carioca"]
+        nota_carioca_v2:
+          +materialized: table
+          +schema: nota_carioca_v2
+          +project: rj-iplanrio-dia
+          +tags: ["nota_carioca_v2"]
+          +enabled: "{{ target.name in ['dev', 'pr'] or var('nota_carioca_v2_habilitado', false) }}"
+          paridade:
+            +materialized: view
+            +tags: ["paridade_nc2"]
       dialogflowcx:
         +project: rj-chatbot-dev
         +schema: dialogflowcx
@@ -406,8 +420,29 @@ models:
             rj-iplanrio/dominio: administrativo
             845941190868/acesso: restrito
 
+seeds:
+  queries:
+    nota_carioca_v2:
+      # Fontes sintéticas (dados fictícios, sem PII) que substituem raw_nfse_nacional, as réplicas de brutos_nota_fiscal
+      # e o lado Oracle da paridade só nos targets dev e pr; veja a macro nc2_fonte.
+      +schema: nota_carioca_v2
+      +tags: ["nota_carioca_v2", "nc2_seed"]
+      +enabled: "{{ target.name in ['dev', 'pr'] }}"
+
 data_tests:
   +store_failures: true
-  
+  queries:
+    singular:
+      nota_carioca_v2:
+        # Os testes singulares conferem casos de borda sobre as seeds sintéticas: só fazem sentido em dev e pr.
+        +enabled: "{{ target.name in ['dev', 'pr'] }}"
+
+unit_tests:
+  queries:
+    mart:
+      smfp:
+        nota_carioca_v2:
+          +enabled: "{{ target.name in ['dev', 'pr'] }}"
+
 flags:
   require_generic_test_arguments_property: true
