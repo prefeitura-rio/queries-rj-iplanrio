@@ -64,7 +64,7 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at  
 from {{ source('brutos_divida_ativa_staging_prefect', 'GuiaPagamento') }} a
-left join {{ ref('raw_divida_ativa_situacao_guia_pagamento') }} b on CAST(b.id_situacao_guia_pagamento AS string) = a.idSituacaoGuia
-left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on CAST(c.id_tipo_pagamento AS string) = a.codTipoPagamento
-left join {{ ref('raw_divida_ativa_pessoa') }} d on CAST(d.id_pessoa AS string) = a.idPessoa
-left join {{ ref('raw_divida_ativa_tipo_receita') }} e on CAST(e.codigo_receita AS string) = a.codReceita
+left join {{ ref('raw_divida_ativa_situacao_guia_pagamento') }} b on CAST(b.id_situacao_guia_pagamento AS string) = CAST(a.idSituacaoGuia AS STRING)
+left join {{ ref('raw_divida_ativa_tipo_pagamento_guia') }} c on CAST(c.id_tipo_pagamento AS string) = CAST(a.codTipoPagamento AS STRING)
+left join {{ ref('raw_divida_ativa_pessoa') }} d on CAST(d.id_pessoa AS string) = CAST(a.idPessoa AS STRING)
+left join {{ ref('raw_divida_ativa_tipo_receita') }} e on CAST(e.codigo_receita AS string) = CAST(a.codReceita AS STRING)

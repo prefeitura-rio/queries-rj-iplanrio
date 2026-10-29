@@ -12,7 +12,7 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   safe_cast(a.seqCDA as int64) as sequencial_cda,
   safe_cast(a.flgCampanha as int64) as flag_indica_campanha,
   safe_cast(a.numNotaDebito as numeric) as numero_nota_debito,
-  safe_cast(regexp_replace(a.codInscricaoImobiliaria, r'\.0$', '') as int64) as inscricao_imobiliaria_imovel_associado_iptu,
+  safe_cast(regexp_replace(SAFE_CAST(a.codInscricaoImobiliaria AS STRING), r'\.0$', '') as int64) as inscricao_imobiliaria_imovel_associado_iptu,
   safe_cast(a.codSituacaoCDA as int64) as id_situacao_cda,
   b.descricao_situacao_cda,
   safe_cast(a.idNaturezaDivida as int64) as id_natureza_divida,
@@ -51,5 +51,5 @@ select safe_cast(a.numCDA as int64) as id_certidao_divida_ativa,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging_prefect', 'CDA') }} a
 left join {{ ref('raw_divida_ativa_situacao_certidao_divida_ativa') }} b on CAST(b.id_situacao_cda as string) = CAST(a.codSituacaoCDA as string)
-left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} c on CAST(c.id_natureza_divida as string) = a.idNaturezaDivida
-left join {{ ref('raw_divida_ativa_tipo_receita') }} d on CAST(d.codigo_receita AS string) = a.codReceita
+left join {{ ref('raw_divida_ativa_natureza_divida_ativa') }} c on CAST(c.id_natureza_divida as string) = CAST(a.idNaturezaDivida AS STRING)
+left join {{ ref('raw_divida_ativa_tipo_receita') }} d on CAST(d.codigo_receita AS string) = CAST(a.codReceita AS STRING)
