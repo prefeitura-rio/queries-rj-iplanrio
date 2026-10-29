@@ -4,7 +4,7 @@
         alias='aluno_turma',
         schema='educacao_basica',
         partition_by={
-            "field": "data_particao",
+            "field": "batch",
             "data_type": "date",
             "granularity": "year",
         }
@@ -16,20 +16,20 @@ with source as (
 )
 SELECT
     SAFE_CAST(ano AS INT64) ano,
-    SAFE_CAST(REGEXP_REPLACE(tur_id, r'\.0$', '') AS STRING) id_turma,
-    TRIM(alu_id) AS id_aluno_original,
+    SAFE_CAST(REGEXP_REPLACE(SAFE_CAST(tur_id AS STRING), r'\.0$', '') AS STRING) id_turma,
+    TRIM(SAFE_CAST(alu_id AS STRING)) AS id_aluno_original,
     SUBSTR(SHA256(
         CONCAT(
             '{{ var("HASH_SEED") }}',
-            TRIM(alu_id)
+            TRIM(SAFE_CAST(alu_id AS STRING))
         )
     ), 2,17) as  id_aluno,
     SUBSTR(SHA256(
         CONCAT(
             '{{ var("HASH_SEED") }}',
-            TRIM(alu_id),
-            SAFE_CAST(TRIM(ano) AS STRING)
+            TRIM(SAFE_CAST(alu_id AS STRING)),
+            SAFE_CAST(TRIM(SAFE_CAST(ano AS STRING)) AS STRING)
         )
     ), 2,17) as  id_aluno_ano,
-    SAFE_CAST(data_particao AS DATE) data_particao,
+    SAFE_CAST(batch AS DATE) batch,
 FROM source
