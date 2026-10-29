@@ -5,39 +5,38 @@
     )
 }}
 
-
 with source as (
     select * FROM {{ source('educacao_basica_staging', 'aluno') }}
 )
 
 SELECT
     SAFE_CAST(ano AS INT64) ano,
-    SAFE_CAST(REGEXP_REPLACE(tur_id, r'\.0$', '') AS STRING) id_turma,
+    SAFE_CAST(REGEXP_REPLACE(SAFE_CAST(tur_id AS STRING), r'\.0$', '') AS STRING) id_turma,
     SAFE_CAST(turma AS STRING) turma,
-    TRIM(alu_id)  id_aluno_original,
+    TRIM(SAFE_CAST(alu_id AS STRING)) AS id_aluno_original,
     SUBSTR(SHA256(
         CONCAT(
             '{{ var("HASH_SEED") }}',
-            TRIM(alu_id)
+            TRIM(SAFE_CAST(alu_id AS STRING))
         )
     ), 2,17) as  id_aluno,
     SUBSTR(SHA256(
         CONCAT(
             '{{ var("HASH_SEED") }}',
-            TRIM(alu_id),
-            SAFE_CAST(TRIM(ano) AS STRING)
+            TRIM(SAFE_CAST(alu_id AS STRING)),
+            SAFE_CAST(TRIM(SAFE_CAST(ano AS STRING)) AS STRING)
         )
     ), 2,17) as  id_aluno_ano,
     SAFE_CAST(matricula AS STRING) matricula,
     SAFE_CAST(situacao AS STRING) situacao,
-    SAFE_CAST(REGEXP_REPLACE(cod_ult_mov, r'\.0$', '') AS STRING) id_utltima_movimentacao,
+    SAFE_CAST(REGEXP_REPLACE(SAFE_CAST(cod_ult_mov AS STRING), r'\.0$', '') AS STRING) id_utltima_movimentacao,
     SAFE_CAST(ult_movimentacao AS STRING) ultima_movimentacao,
     SAFE_CAST(sexo AS STRING) genero,
     SAFE_CAST(raca_cor AS STRING) raca_cor,
-    SAFE_CAST(SAFE.PARSE_DATE('%d/%m/%Y',  datanascimento) AS DATE) data_nascimento,
-    SAFE_CAST(REGEXP_REPLACE(idade_atual, r'\.0$', '') AS INT64) idade_atual,
-    SAFE_CAST(REGEXP_REPLACE(idade_3112, r'\.0$', '') AS INT64) idade_final_ano,
-    SAFE_CAST(REGEXP_REPLACE(cod_def, r'\.0$', '') AS STRING) id_deficiencia,
+    SAFE_CAST(datanascimento AS DATE) data_nascimento,
+    SAFE_CAST(REGEXP_REPLACE(SAFE_CAST(idade_atual AS STRING), r'\.0$', '') AS INT64) idade_atual,
+    SAFE_CAST(REGEXP_REPLACE(SAFE_CAST(idade_3112 AS STRING), r'\.0$', '') AS INT64) idade_final_ano,
+    SAFE_CAST(REGEXP_REPLACE(SAFE_CAST(cod_def AS STRING), r'\.0$', '') AS STRING) id_deficiencia,
     SAFE_CAST(deficiencia AS STRING) deficiencia,
     SAFE_CAST(bairro AS STRING) bairro,
     SAFE_CAST(mora_com_filiacao AS STRING) mora_com_filiacao,
