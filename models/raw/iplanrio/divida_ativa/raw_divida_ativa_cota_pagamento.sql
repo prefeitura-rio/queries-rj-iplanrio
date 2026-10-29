@@ -65,5 +65,5 @@ select safe_cast(a.numGuiaPagamento as int64) as id_guia_pagamento,
   a._prefect_extracted_at as loaded_at,
   current_timestamp() as transformed_at
 from {{ source('brutos_divida_ativa_staging_prefect', 'CotaPagamento') }} a
-left join cotas_substituidas b on CAST(b.id_guia_pagamento_associada as string) = a.numGuiaPagamento and CAST(b.id_cota_guia_pagamento_associada as string) = a.numCotaPagamento
-left join cotas_substitutas c on CAST(c.id_guia_pagamento as string) = a.numGuiaPagamento and CAST(c.id_cota_guia_pagamento as string) = CAST(a.numCotaPagamento as string)
+left join cotas_substituidas b on CAST(b.id_guia_pagamento_associada as string) = CAST(a.numGuiaPagamento AS STRING) and CAST(b.id_cota_guia_pagamento_associada as string) = CAST(a.numCotaPagamento AS STRING)
+left join cotas_substitutas c on CAST(c.id_guia_pagamento as string) = CAST(a.numGuiaPagamento AS STRING) and CAST(c.id_cota_guia_pagamento as string) = CAST(a.numCotaPagamento AS STRING)
