@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: mart_projeto_bi_dtgg_dimensao__setor
+    description: "Tabela que contém a dimensão de setores, com relacionamento hierárquico, de modo que é possível estabelecer relação de subordinação e o caminho até chegar num setor específico."
+
+    columns:
+      - name: ordem
+        description: Chave de ordenação hierárquica dos setores.
+        data_type: string
+        quote: true
+      - name: id_setor_hash
+        description: Identificador hash do setor, calculado a partir da ordem hierárquica.
+        data_type: string
+        quote: true
+      - name: id_setor_hash_pai
+        description: Hash do setor superior na hierarquia.
+        data_type: string
+        quote: true
+      - name: caminho_id_setor
+        description: Caminho hierárquico percorrido até o setor, considerando o código do setor. Ex. "1153->15433->53219".
+        data_type: string
+        quote: true
+      - name: caminho_sigla
+        description: Caminho hierárquico percorrido até o setor, considerando a sigla do setor. Ex. "IPLANRIO/PRE/VPIA".
+        data_type: string
+        quote: true
+      - name: id_setor
+        description: Código do setor, dado pelo SICI.
+        data_type: string
+        quote: true
+      - name: id_setor_pai
+        description: Código do setor superior na hierarquia. Indica a subordinação direta, dado pelo SICI.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa onde está localizada o setor, dado pelo Ergon.
+        data_type: string
+        quote: true
+      - name: id_secretaria
+        description: Código da secretaria onde está o setor, dado pelo Ergon.
+        data_type: string
+        quote: true
+      - name: sigla_cadastro
+        description: Sigla do setor, segundo o cadastro no Ergon. Ex. IPLANRIO/PRE/VPIA.
+        data_type: string
+      - name: sigla_individual
+        description: Sigla individual do setor, sem o caminho hierárquico. Ex. VPIA.
+        data_type: string
+        quote: true
+      - name: nome_completo
+        description: Nome completo setor.
+        data_type: string
+        quote: true
+      - name: id_nivel
+        description: Nível hierárquico do setor.
+        data_type: int64
+      - name: sigla_nivel_1
+        quote: true
+        description: Sigla do setor no nível 1 da hierarquia.
+        data_type: string
+      - name: sigla_nivel_2
+        quote: true
+        description: Sigla do setor no nível 2 da hierarquia.
+        data_type: string
+      - name: sigla_nivel_3
+        quote: true
+        description: Sigla do setor no nível 3 da hierarquia.
+        data_type: string
+      - name: sigla_nivel_4
+        quote: true
+        description: Sigla do setor no nível 4 da hierarquia.
+        data_type: string
+      - name: sigla_nivel_5
+        quote: true
+        description: Sigla do setor no nível 5 da hierarquia.
+        data_type: string
