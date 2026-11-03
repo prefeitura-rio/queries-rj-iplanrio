@@ -1,5 +1,5 @@
 version: 2
-models :
+models:
   - name: raw_protecao_social_cadunico__identificacao_membro
     description: Table identificacao_membro from number 17
     columns:

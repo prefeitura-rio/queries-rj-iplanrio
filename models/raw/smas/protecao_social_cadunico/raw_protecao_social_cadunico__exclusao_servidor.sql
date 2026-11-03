@@ -1,4 +1,3 @@
-
 {{
     config(
         alias='exclusao_servidor',
@@ -11,8 +10,6 @@
         }
     )
 }}
-
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -53,7 +50,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -61,7 +59,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -78,30 +77,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -145,15 +145,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0601'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -194,7 +194,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -202,7 +203,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -219,30 +221,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -286,15 +289,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0603'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -335,7 +338,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -343,7 +347,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -360,30 +365,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -427,15 +433,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0604'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -476,7 +482,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -484,7 +491,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -501,30 +509,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -568,15 +577,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0609'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -617,7 +626,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -625,7 +635,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -642,30 +653,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -709,15 +721,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0612'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -758,7 +770,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -766,7 +779,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -783,30 +797,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -850,15 +865,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0615'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -899,7 +914,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -907,7 +923,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -924,30 +941,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -991,15 +1009,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0617'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1040,7 +1058,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1048,7 +1067,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1065,30 +1085,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1132,15 +1153,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0619'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1181,7 +1202,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1189,7 +1211,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1206,30 +1229,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1273,15 +1297,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0620'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1322,7 +1346,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1330,7 +1355,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1347,30 +1373,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1414,15 +1441,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0623'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1463,7 +1490,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1471,7 +1499,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1488,30 +1517,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1555,15 +1585,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0624'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1604,7 +1634,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1612,7 +1643,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1629,30 +1661,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1696,15 +1729,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0625'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1745,7 +1778,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1753,7 +1787,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1770,30 +1805,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1837,15 +1873,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0626'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -1886,7 +1922,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -1894,7 +1931,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -1911,30 +1949,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -1978,15 +2017,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0627'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -2027,7 +2066,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -2035,7 +2075,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -2052,30 +2093,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -2119,15 +2161,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0628'
     AND SUBSTRING(text,38,2) = '18'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_fam_exc
@@ -2168,7 +2210,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico,
 
     --column: data_exc
     SAFE.PARSE_DATE(
@@ -2176,7 +2219,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao,
+        END
+    ) AS data_exclusao,
 
     --column: desc_mot_exc
     CAST(
@@ -2193,30 +2237,31 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao,
+
     --column: motivo_exc
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento De Toda A Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Recusa Da Família Em Prestar Informações'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Solicitação Do RUF'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Família Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Solicitação Do RUF Via APP'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento De Toda A Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Recusa Da Família Em Prestar Informações'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Omissão Ou Prestação De Informações Inverídicas Pela Família, Por Comprovada Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Solicitação Do RUF'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Cadastros Desatualizados Cuja Inclusão Ou Última Atualização Ocorreu Há 48 (Quarenta E Oito) Meses Ou Mais'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Exclusão/Inativação Ocorrida Antes Da Versão 7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Família Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Família Com Renda Per Capita Acima De ½ Salário Mínimo E Renda Familiar Acima De 3 Salários Mínimos E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Exclusão De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Exclusão/Transferência De Todos Os Integrantes Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Família Com Renda Per Capita Acima De Meio Salário Mínimo E Que Não Esteja Vinculada A Nenhum Programa Social'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Solicitação Do RUF Via APP'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Exclusão automática - Fim do prazo para realização do upload dos documentos: Documento de identificação com foto e Termo de responsabilidade família unipessoal assinado'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao,
@@ -2260,9 +2305,9 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0629'
     AND SUBSTRING(text,38,2) = '18'
-

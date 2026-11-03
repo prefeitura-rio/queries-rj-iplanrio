@@ -1,5 +1,5 @@
 version: 2
-models :
+models:
   - name: raw_protecao_social_cadunico__transferencia_familia
     description: Table transferencia_familia from number 16
     columns:

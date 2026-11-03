@@ -1,5 +1,5 @@
 version: 2
-models :
+models:
   - name: raw_protecao_social_cadunico__status_familia
     description: Table status_familia from number 13
     columns:

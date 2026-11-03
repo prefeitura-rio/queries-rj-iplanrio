@@ -1,5 +1,5 @@
 version: 2
-models :
+models:
   - name: raw_protecao_social_cadunico__habitacao
     description: Table habitacao from number 15
     columns:

@@ -1,5 +1,5 @@
 version: 2
-models :
+models:
   - name: raw_protecao_social_cadunico__controle
     description: Table controle from number 00
     columns:

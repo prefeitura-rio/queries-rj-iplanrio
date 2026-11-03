@@ -1,4 +1,3 @@
-
 {{
     config(
         alias='exclusao_membro',
@@ -11,8 +10,6 @@
         }
     )
 }}
-
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -85,7 +82,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -93,7 +91,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -109,7 +108,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -118,32 +118,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -219,15 +220,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0601'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -300,7 +301,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -308,7 +310,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -324,7 +327,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -333,32 +337,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -434,15 +439,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0603'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -515,7 +520,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -523,7 +529,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -539,7 +546,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -548,32 +556,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -649,15 +658,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0604'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -730,7 +739,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -738,7 +748,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -754,7 +765,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -763,32 +775,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -864,15 +877,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0609'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -945,7 +958,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -953,7 +967,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -969,7 +984,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -978,32 +994,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -1079,15 +1096,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0612'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -1160,7 +1177,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -1168,7 +1186,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -1184,7 +1203,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -1193,32 +1213,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -1294,15 +1315,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0615'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -1375,7 +1396,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -1383,7 +1405,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -1399,7 +1422,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -1408,32 +1432,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -1509,15 +1534,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0617'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -1590,7 +1615,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -1598,7 +1624,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -1614,7 +1641,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -1623,32 +1651,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -1724,15 +1753,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0619'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -1805,7 +1834,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -1813,7 +1843,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -1829,7 +1860,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -1838,32 +1870,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -1939,15 +1972,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0620'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -2020,7 +2053,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -2028,7 +2062,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -2044,7 +2079,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -2053,32 +2089,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -2154,15 +2191,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0623'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -2235,7 +2272,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -2243,7 +2281,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -2259,7 +2298,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -2268,32 +2308,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -2369,15 +2410,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0624'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -2450,7 +2491,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -2458,7 +2500,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -2474,7 +2517,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -2483,32 +2527,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -2584,15 +2629,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0625'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -2665,7 +2710,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -2673,7 +2719,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -2689,7 +2736,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -2698,32 +2746,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -2799,15 +2848,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0626'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -2880,7 +2929,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -2888,7 +2938,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -2904,7 +2955,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -2913,32 +2965,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -3014,15 +3067,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0627'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -3095,7 +3148,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -3103,7 +3157,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -3119,7 +3174,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -3128,32 +3184,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -3229,15 +3286,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0628'
     AND SUBSTRING(text,38,2) = '19'
 
 UNION ALL
 
-
 SELECT
 
     --column: chv_natural_prefeitura_exc_mbo
@@ -3310,7 +3367,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,71,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,71,8))
-        END    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
+        END
+    ) AS data_emissao_parecer_gestao_municipal_cadunico_membro,
 
     --column: data_exc_mbo
     SAFE.PARSE_DATE(
@@ -3318,7 +3376,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END    ) AS data_exclusao_membro,
+        END
+    ) AS data_exclusao_membro,
 
     --column: desc_mot_exc
     CAST(
@@ -3334,7 +3393,8 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,283,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,283,8))
-        END    ) AS data_emissao_certidao_obito_excluido,
+        END
+    ) AS data_emissao_certidao_obito_excluido,
 
     --column: motivo_exc_mbo
     CAST(
@@ -3343,32 +3403,33 @@ SELECT
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS id_motivo_exclusao_membro,
+
     --column: motivo_exc_mbo
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*1$') THEN 'Falecimento Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*2$') THEN 'Desligamento Da Pessoa Daquela Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*3$') THEN 'Solicitação Da Pessoa'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*4$') THEN 'Decisão Judicial'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*5$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*6$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*7$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*8$') THEN 'Pessoa Transferida'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*9$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*10$') THEN 'Averiguação Cadastral'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*11$') THEN 'Multiplicidade'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*12$') THEN 'NIS Cancelado No Cadastro NIS'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*13$') THEN 'Averiguação - Suspeita De Fraude'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^0*99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^01$') THEN 'Falecimento Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^02$') THEN 'Desligamento Da Pessoa Daquela Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^03$') THEN 'Solicitação Da Pessoa'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^04$') THEN 'Decisão Judicial'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^05$') THEN 'Decurso De Prazo No Estado Cadastral “Em Cadastramento”'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^06$') THEN 'Mudança De Endereço Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^07$') THEN 'Cadastramento Incorreto Ocorrido Anteriormente A V7'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^08$') THEN 'Pessoa Transferida'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^09$') THEN 'Cadastro Desatualizado Há Mais De 48 Meses'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^10$') THEN 'Averiguação Cadastral'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^11$') THEN 'Multiplicidade'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^12$') THEN 'NIS Cancelado No Cadastro NIS'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^13$') THEN 'Averiguação - Suspeita De Fraude'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^14$') THEN 'Pessoa Excluída Por Decurso De Prazo Na Situação "Atribuindo NIS"'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^15$') THEN 'Averiguação - Suspeita De Fraude Identificada Pelo Município'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^16$') THEN 'Pessoa Excluída Por Possuir CPF Nulo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^17$') THEN 'Membro Excluído Por Ter Sido Incluído Pelo Próprio Operador/Entrevistador Da Família'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^18$') THEN 'Identificação De Cadastros Incluídos Ou Alterados Indevidamente Por Agente Público Por Má Fé'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^19$') THEN 'Indicativo De Óbito Há Mais De 12 Meses - Exclusão Batch'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^20$') THEN 'Confirmação De Óbito Pelo RF Via Aplicativo'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^21$') THEN 'Indicativo De Óbito - Bases Do Governo Federal'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,59,2), r'^99$') THEN 'Exclusão Da Família (Para Casos Em Que A Pessoa Tenha Sido Excluída Pela Exclusão De Sua Família)'
             ELSE TRIM(SUBSTRING(text,59,2))
         END AS STRING
     ) AS motivo_exclusao_membro,
@@ -3444,9 +3505,9 @@ SELECT
             ELSE TRIM(SUBSTRING(text,160,2))
         END AS STRING
     ) AS sigla_uf_parecer_gestao_municipal_cadunico_membro,
+
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
+FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
 WHERE versao_layout_particao = '0629'
     AND SUBSTRING(text,38,2) = '19'
-
