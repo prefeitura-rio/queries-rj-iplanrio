@@ -31,15 +31,15 @@ with
         from sga
         left join
             lake
-            on sga.alu_id = cast(lake.id_aluno as string)
-            and sga.ano = cast(lake.ano_calendario as string)
-            and sga.coc = cast(lake.id_tipo_calendario as string)
+            on cast(sga.alu_id as string) = cast(lake.id_aluno as string)
+            and cast(sga.ano as string) = cast(lake.ano_calendario as string)
+            and cast(sga.coc as string) = cast(lake.id_tipo_calendario as string)
     ),
 
     final as (
         select distinct alu_id, ano, coc
         from joined
-        where ano = '2026' and coc in ('1', '2') and freq_lake is null
+        where cast(ano as string) = '2026' and cast(coc as string) in ('1', '2') and freq_lake is null
     ),
 
     -- Correção temporária: remoção dos alunos EJA para tratamento;
