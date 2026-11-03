@@ -39,7 +39,7 @@ with
     final as (
         select distinct alu_id, ano, coc
         from joined
-        where cast(ano as string) = '2026' and cast(coc as string) in ('1', '2') and freq_lake is null
+        where cast(ano as string) = '2026' and cast(coc as string) in ('1', '2', '3') and freq_lake is null
     ),
 
     -- Correção temporária: remoção dos alunos EJA para tratamento;
