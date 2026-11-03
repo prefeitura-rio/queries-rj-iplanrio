@@ -29,15 +29,15 @@ with
         from sga
         left join
             lake
-            on sga.alu_id = cast(lake.id_aluno as string)
-            and sga.ano = cast(lake.ano_calendario as string)
-            and sga.coc = cast(lake.id_tipo_calendario as string)
+            on cast(sga.alu_id as string) = cast(lake.id_aluno as string)
+            and cast(sga.ano as string) = cast(lake.ano_calendario as string)
+            and cast(sga.coc as string) = cast(lake.id_tipo_calendario as string)
     ),
 
     final as (
         select alu_id, ano, coc, any_value(freq_lake) as freq_lake_valor
         from joined
-        where ano = '2026' and coc in ('1', '2')
+        where cast(ano as string) = '2026' and cast(coc as string) in ('1', '2')
         group by alu_id, ano, coc
         having min(abs(freq_sga - freq_lake)) >= 0.1
     )
