@@ -107,7 +107,7 @@ with
                 where tipo_frequencia_apurada = 1
                 group by id_aluno, id_tipo_calendario, extract(year from data_aula)
             )
-        where ano_calendario = 2026 and tpc_id = 3
+        where ano_calendario = 2026 and tpc_id = 4  -- ALTERAR EM TODA VIRADA DE COC
         group by alu_id, tpc_id, ano_calendario
     ),
 
