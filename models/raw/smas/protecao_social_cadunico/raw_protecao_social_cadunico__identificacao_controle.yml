@@ -1,5 +1,5 @@
 version: 2
-models:
+models :
   - name: raw_protecao_social_cadunico__identificacao_controle
     description: Table identificacao_controle from number 01
     columns:
@@ -187,9 +187,9 @@ models:
         description: 'Observações apontadas pelo entrevistador | version: 0629'
       - name: refencia_logradouro
         description: 'Referência para localização do endereço | version: 0629'
-      - name: valor_renda_media
+      - name: valor_renda_media_original
         description: 'Valor da renda média (per capita) da família, formato NNNNNNNNN
           | version: 0629'
-      - name: valor_renda_media_original
+      - name: valor_renda_media
         description: 'Valor da renda média (per capita) da família, formato NNNNNNNNN
           | version: 0629'

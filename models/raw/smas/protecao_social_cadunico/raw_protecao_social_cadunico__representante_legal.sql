@@ -1,3 +1,4 @@
+
 {{
     config(
         alias='representante_legal',
@@ -10,6 +11,8 @@
         }
     )
 }}
+
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -59,13 +62,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -92,8 +94,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -101,8 +102,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -119,7 +119,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -137,7 +136,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -347,27 +345,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0601'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -417,13 +414,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -450,8 +446,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -459,8 +454,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -477,7 +471,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -495,7 +488,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -705,27 +697,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0603'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -775,13 +766,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -808,8 +798,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -817,8 +806,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -835,7 +823,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -853,7 +840,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -1063,27 +1049,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0604'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -1133,13 +1118,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -1166,8 +1150,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -1175,8 +1158,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -1193,7 +1175,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -1211,7 +1192,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -1421,27 +1401,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0609'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -1491,13 +1470,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -1524,8 +1502,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -1533,8 +1510,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -1551,7 +1527,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -1569,7 +1544,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -1779,27 +1753,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0612'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -1849,13 +1822,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -1882,8 +1854,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -1891,8 +1862,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -1909,7 +1879,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -1927,7 +1896,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -2137,27 +2105,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0615'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -2207,13 +2174,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -2240,8 +2206,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -2249,8 +2214,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -2267,7 +2231,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -2285,7 +2248,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -2495,27 +2457,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0617'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -2565,13 +2526,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -2598,8 +2558,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -2607,8 +2566,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -2625,7 +2583,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -2643,7 +2600,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -2853,27 +2809,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0619'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -2923,13 +2878,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -2956,8 +2910,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -2965,8 +2918,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -2983,7 +2935,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -3001,7 +2952,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -3211,27 +3161,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0620'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -3281,13 +3230,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -3314,8 +3262,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -3323,8 +3270,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -3341,7 +3287,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -3359,7 +3304,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -3569,27 +3513,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0623'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -3639,13 +3582,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -3672,8 +3614,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -3681,8 +3622,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -3699,7 +3639,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -3717,7 +3656,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -3927,27 +3865,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0624'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -3997,13 +3934,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -4030,8 +3966,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -4039,8 +3974,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -4057,7 +3991,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -4075,7 +4008,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -4285,27 +4217,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0625'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -4355,13 +4286,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -4388,8 +4318,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -4397,8 +4326,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -4415,7 +4343,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -4433,7 +4360,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -4643,27 +4569,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0626'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -4713,13 +4638,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -4746,8 +4670,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -4755,8 +4678,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -4773,7 +4695,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -4791,7 +4712,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -5001,27 +4921,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0627'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -5071,13 +4990,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -5104,8 +5022,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -5113,8 +5030,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -5131,7 +5047,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -5149,7 +5064,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -5359,27 +5273,26 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0628'
     AND SUBSTRING(text,38,2) = '20'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_rl
@@ -5429,13 +5342,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS id_sexo_representante_legal,
-
     --column: cod_sexo_rl
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^1$') THEN 'Masculino'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^2$') THEN 'Feminino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*1$') THEN 'Masculino'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,129,1), r'^0*2$') THEN 'Feminino'
             ELSE TRIM(SUBSTRING(text,129,1))
         END AS STRING
     ) AS sexo_representante_legal,
@@ -5462,8 +5374,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_cadastro_representante_legal,
+        END    ) AS data_cadastro_representante_legal,
 
     --column: dta_nasc_rl
     SAFE.PARSE_DATE(
@@ -5471,8 +5382,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,130,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,130,8))
-        END
-    ) AS data_nascimento_representante_legal,
+        END    ) AS data_nascimento_representante_legal,
 
     --column: email_rl
     CAST(
@@ -5489,7 +5399,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,380,1))
         END AS STRING
     ) AS id_obito_acatado_representante_legal,
-
     --column: ic_obito_acatado_rl
     CAST(
         CASE
@@ -5507,7 +5416,6 @@ SELECT
             ELSE TRIM(SUBSTRING(text,379,1))
         END AS STRING
     ) AS id_obito_representante_legal,
-
     --column: ic_obito_rl
     CAST(
         CASE
@@ -5717,21 +5625,20 @@ SELECT
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS id_tipo_representacao_legal,
-
     --column: tipo_representacao_legal
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^01$') THEN 'Curatela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^02$') THEN 'Tutela'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^03$') THEN 'Guarda'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^04$') THEN 'Tomador de decisão'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*1$') THEN 'Curatela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*2$') THEN 'Tutela'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*3$') THEN 'Guarda'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,457,100), r'^0*4$') THEN 'Tomador de decisão'
             ELSE TRIM(SUBSTRING(text,457,100))
         END AS STRING
     ) AS tipo_representacao_legal,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0629'
     AND SUBSTRING(text,38,2) = '20'
+

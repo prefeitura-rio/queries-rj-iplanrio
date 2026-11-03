@@ -1,5 +1,5 @@
 version: 2
-models:
+models :
   - name: raw_protecao_social_cadunico__seguranca_alimentar
     description: Table seguranca_alimentar from number 11
     columns:

@@ -1,3 +1,4 @@
+
 {{
     config(
         alias='transferencia_familia',
@@ -10,6 +11,8 @@
         }
     )
 }}
+
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -43,15 +46,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -86,8 +88,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -96,15 +97,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0601'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -138,15 +139,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -181,8 +181,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -191,15 +190,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0603'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -233,15 +232,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -276,8 +274,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -286,15 +283,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0604'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -328,15 +325,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -371,8 +367,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -381,15 +376,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0609'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -423,15 +418,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -466,8 +460,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -476,15 +469,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0612'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -518,15 +511,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -561,8 +553,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -571,15 +562,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0615'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -613,15 +604,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -656,8 +646,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -666,15 +655,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0617'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -708,15 +697,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -751,8 +739,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -761,15 +748,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0619'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -803,15 +790,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -846,8 +832,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -856,15 +841,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0620'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -898,15 +883,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -941,8 +925,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -951,15 +934,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0623'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -993,15 +976,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1036,8 +1018,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -1046,15 +1027,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0624'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -1088,15 +1069,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1131,8 +1111,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -1141,15 +1120,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0625'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -1183,15 +1162,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1226,8 +1204,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -1236,15 +1213,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0626'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -1278,15 +1255,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1321,8 +1297,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -1331,15 +1306,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0627'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -1373,15 +1348,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1416,8 +1390,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -1426,15 +1399,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0628'
     AND SUBSTRING(text,38,2) = '16'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_famt
@@ -1468,15 +1441,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS id_estado_cadastro_transferencia,
-
     --column: cod_est_cadastral_atual_famt
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^1$') THEN 'Em Cadastramento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^2$') THEN 'Sem Registro Civil'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^3$') THEN 'Cadastrado'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^4$') THEN 'Excluido'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*1$') THEN 'Em Cadastramento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*2$') THEN 'Sem Registro Civil'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*3$') THEN 'Cadastrado'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,48,1), r'^0*4$') THEN 'Excluido'
             ELSE TRIM(SUBSTRING(text,48,1))
         END AS STRING
     ) AS estado_cadastro_transferencia,
@@ -1511,8 +1483,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,40,8))
-        END
-    ) AS data_transferencia,
+        END    ) AS data_transferencia,
 
     --column: num_reg_arquivo_famt
     CAST(
@@ -1521,9 +1492,9 @@ SELECT
             ELSE TRIM(SUBSTRING(text,38,2))
         END AS STRING
     ) AS numero_registro_transferencia,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0629'
     AND SUBSTRING(text,38,2) = '16'
+

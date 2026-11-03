@@ -1,5 +1,5 @@
 version: 2
-models:
+models :
   - name: raw_protecao_social_cadunico__renda
     description: Table renda from number 21
     columns:
@@ -91,50 +91,50 @@ models:
         description: 'Data de integração referente ao campo VAL-REMUNER-EMPREGO-MEMB
           conforme data de processamento de arquivo de renda origem CNIS no formato
           DDMMAAAA | version: 0629'
-      - name: renda_outras_rendas
-        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
-          | version: 0629"
       - name: renda_outras_rendas_original
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
-      - name: renda_emprego_ultimo_mes
+      - name: renda_outras_rendas
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
       - name: renda_emprego_ultimo_mes_original
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
-      - name: renda_aposentadoria
+      - name: renda_emprego_ultimo_mes
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
       - name: renda_aposentadoria_original
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
-      - name: renda_bruta_12_meses
-        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN\n
-          O valor representado na faixa de renda é o conteúdo do campo 8.08 dividido
-          por 12\n0-0 1-1 até 109 2-110 até 218 3-219 até SM/2 4-SM/2 + 1 até SM 5-SM+1
-          até 2SM 6-2SM + 1 até 3SM 7-3SM + 1 | version: 0629"
+      - name: renda_aposentadoria
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0629"
       - name: renda_bruta_12_meses_original
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN\n
           O valor representado na faixa de renda é o conteúdo do campo 8.08 dividido
           por 12\n0-0 1-1 até 109 2-110 até 218 3-219 até SM/2 4-SM/2 + 1 até SM 5-SM+1
           até 2SM 6-2SM + 1 até 3SM 7-3SM + 1 | version: 0629"
-      - name: renda_doacao
-        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
-          | version: 0629"
+      - name: renda_bruta_12_meses
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN\n
+          O valor representado na faixa de renda é o conteúdo do campo 8.08 dividido
+          por 12\n0-0 1-1 até 109 2-110 até 218 3-219 até SM/2 4-SM/2 + 1 até SM 5-SM+1
+          até 2SM 6-2SM + 1 até 3SM 7-3SM + 1 | version: 0629"
       - name: renda_doacao_original
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
-      - name: renda_pensao_alimenticia
+      - name: renda_doacao
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
       - name: renda_pensao_alimenticia_original
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
-      - name: renda_seguro_desemprego
+      - name: renda_pensao_alimenticia
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
       - name: renda_seguro_desemprego_original
+        description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
+          | version: 0629"
+      - name: renda_seguro_desemprego
         description: "Valor de remuneração\nCampo numérico de 2 posições formato NN
           | version: 0629"
       - name: nao_recebe_remuneracao

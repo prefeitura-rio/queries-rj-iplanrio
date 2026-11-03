@@ -1,3 +1,4 @@
+
 {{
     config(
         alias='documento_pessoa',
@@ -10,6 +11,8 @@
         }
     )
 }}
+
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -35,15 +38,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -111,8 +113,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -120,8 +121,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -129,24 +129,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -269,15 +265,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0601'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -303,15 +299,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -379,8 +374,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -388,8 +382,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -397,24 +390,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -537,15 +526,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0603'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -571,15 +560,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -647,8 +635,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -656,8 +643,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -665,24 +651,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -805,15 +787,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0604'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -839,15 +821,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -915,8 +896,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -924,8 +904,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -933,24 +912,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -1073,15 +1048,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0609'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -1107,15 +1082,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1183,8 +1157,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -1192,8 +1165,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -1201,24 +1173,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -1341,15 +1309,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0612'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -1375,15 +1343,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1451,8 +1418,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -1460,8 +1426,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -1469,24 +1434,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -1609,15 +1570,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0615'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -1643,15 +1604,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1719,8 +1679,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -1728,8 +1687,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -1737,24 +1695,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -1877,15 +1831,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0617'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -1911,15 +1865,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -1987,8 +1940,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -1996,8 +1948,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -2005,24 +1956,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -2145,15 +2092,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0619'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -2179,15 +2126,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2255,8 +2201,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -2264,8 +2209,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -2273,24 +2217,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -2413,15 +2353,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0620'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -2447,15 +2387,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2523,8 +2462,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -2532,8 +2470,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -2541,24 +2478,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -2681,15 +2614,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0623'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -2715,15 +2648,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -2791,8 +2723,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -2800,8 +2731,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -2809,24 +2739,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -2949,15 +2875,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0624'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -2983,15 +2909,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3059,8 +2984,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -3068,8 +2992,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -3077,24 +3000,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -3217,15 +3136,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0625'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -3251,15 +3170,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3327,8 +3245,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -3336,8 +3253,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -3345,24 +3261,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -3485,15 +3397,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0626'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -3519,15 +3431,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3595,8 +3506,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -3604,8 +3514,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -3613,24 +3522,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -3753,15 +3658,15 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0627'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -3787,15 +3692,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -3863,8 +3767,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -3872,8 +3775,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -3881,24 +3783,20 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     NULL AS id_biometria_cin, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cin
     NULL AS biometria_cin, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_cnh
     NULL AS id_biometria_cnh, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_cnh
     NULL AS biometria_cnh, --Essa coluna não esta na versao posterior
 
     --column: in_biometria_tse
     NULL AS id_biometria_tse, --Essa coluna não esta na versao posterior
-
     --column: in_biometria_tse
     NULL AS biometria_tse, --Essa coluna não esta na versao posterior
 
@@ -4021,14 +3919,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0628'
     AND SUBSTRING(text,38,2) = '05'
 
 UNION ALL
+
 
 SELECT
 
@@ -4055,15 +3953,14 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_certidao_civil,
-
     --column: cod_certidao_civil_pessoa
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Nascimento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Casamento'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^3$') THEN 'RANI'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^4$') THEN 'Óbito'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Nascimento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Casamento'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*3$') THEN 'RANI'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*4$') THEN 'Óbito'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS certidao_civil,
@@ -4122,8 +4019,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,344,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,344,8))
-        END
-    ) AS data_integracao_biometria_cin,
+        END    ) AS data_integracao_biometria_cin,
 
     --column: dt_intgo_biometria_cnh
     SAFE.PARSE_DATE(
@@ -4131,8 +4027,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,353,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,353,8))
-        END
-    ) AS data_integracao_biometria_cnh,
+        END    ) AS data_integracao_biometria_cnh,
 
     --column: dt_intgo_biometria_tse
     SAFE.PARSE_DATE(
@@ -4140,8 +4035,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,362,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,362,8))
-        END
-    ) AS data_integracao_biometria_tse,
+        END    ) AS data_integracao_biometria_tse,
 
     --column: dta_emissao_cart_trab_pessoa
     SAFE.PARSE_DATE(
@@ -4149,8 +4043,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,260,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,260,8))
-        END
-    ) AS data_emissao_carteira_trabalho,
+        END    ) AS data_emissao_carteira_trabalho,
 
     --column: dta_emissao_certid_pessoa
     SAFE.PARSE_DATE(
@@ -4158,8 +4051,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,131,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,131,8))
-        END
-    ) AS data_emissao_certidao,
+        END    ) AS data_emissao_certidao,
 
     --column: dta_emissao_ident_pessoa
     SAFE.PARSE_DATE(
@@ -4167,8 +4059,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,230,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,230,8))
-        END
-    ) AS data_emissao_rg,
+        END    ) AS data_emissao_rg,
 
     --column: in_biometria_cin
     CAST(
@@ -4177,13 +4068,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,343,1))
         END AS STRING
     ) AS id_biometria_cin,
-
     --column: in_biometria_cin
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^0$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^0*0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,343,1), r'^0*1$') THEN 'Sim'
             ELSE TRIM(SUBSTRING(text,343,1))
         END AS STRING
     ) AS biometria_cin,
@@ -4195,13 +4085,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,352,1))
         END AS STRING
     ) AS id_biometria_cnh,
-
     --column: in_biometria_cnh
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^0$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^0*0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,352,1), r'^0*1$') THEN 'Sim'
             ELSE TRIM(SUBSTRING(text,352,1))
         END AS STRING
     ) AS biometria_cnh,
@@ -4213,13 +4102,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,361,1))
         END AS STRING
     ) AS id_biometria_tse,
-
     --column: in_biometria_tse
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^0$') THEN 'Não'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^0*0$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,361,1), r'^0*1$') THEN 'Sim'
             ELSE TRIM(SUBSTRING(text,361,1))
         END AS STRING
     ) AS biometria_tse,
@@ -4343,9 +4231,9 @@ SELECT
             ELSE TRIM(SUBSTRING(text,238,2))
         END AS STRING
     ) AS sigla_uf_rg,
-
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0629'
     AND SUBSTRING(text,38,2) = '05'
+

@@ -1,5 +1,5 @@
 version: 2
-models:
+models :
   - name: raw_protecao_social_cadunico__domicilio
     description: Table domicilio from number 02
     columns:

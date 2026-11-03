@@ -1,3 +1,4 @@
+
 {{
     config(
         alias='familia',
@@ -10,6 +11,8 @@
         }
     )
 }}
+
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -43,13 +46,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -69,13 +71,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -173,13 +174,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -218,13 +218,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -325,14 +323,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -340,13 +330,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -356,13 +346,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -372,13 +362,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -388,13 +378,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -404,13 +394,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -420,13 +410,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -436,14 +426,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0601'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -477,13 +475,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -503,13 +500,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -607,13 +603,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -652,13 +647,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -759,14 +752,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -774,13 +759,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -790,13 +775,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -806,13 +791,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -822,13 +807,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -838,13 +823,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -854,13 +839,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -870,14 +855,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0603'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -911,13 +904,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -937,13 +929,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -1041,13 +1032,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -1086,13 +1076,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -1193,14 +1181,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -1208,13 +1188,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -1224,13 +1204,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -1240,13 +1220,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -1256,13 +1236,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -1272,13 +1252,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -1288,13 +1268,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -1304,14 +1284,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0604'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -1345,13 +1333,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -1371,13 +1358,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -1475,13 +1461,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -1520,13 +1505,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -1627,14 +1610,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -1642,13 +1617,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -1658,13 +1633,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -1674,13 +1649,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -1690,13 +1665,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -1706,13 +1681,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -1722,13 +1697,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -1738,14 +1713,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0609'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -1779,13 +1762,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -1805,13 +1787,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -1909,13 +1890,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -1954,13 +1934,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -2061,14 +2039,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -2076,13 +2046,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -2092,13 +2062,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -2108,13 +2078,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -2124,13 +2094,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -2140,13 +2110,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -2156,13 +2126,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -2172,14 +2142,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0612'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -2213,13 +2191,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -2239,13 +2216,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -2343,13 +2319,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -2388,13 +2363,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -2495,14 +2468,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -2510,13 +2475,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -2526,13 +2491,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -2542,13 +2507,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -2558,13 +2523,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -2574,13 +2539,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -2590,13 +2555,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -2606,14 +2571,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0615'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -2647,13 +2620,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -2673,13 +2645,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -2777,13 +2748,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -2822,13 +2792,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -2929,14 +2897,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -2944,13 +2904,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -2960,13 +2920,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -2976,13 +2936,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -2992,13 +2952,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -3008,13 +2968,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -3024,13 +2984,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -3040,14 +3000,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0617'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -3081,13 +3049,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -3107,13 +3074,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -3211,13 +3177,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -3256,13 +3221,11 @@ SELECT
 
     --column: ind_risco_scl_inseg_alim
     NULL AS id_risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_inseg_alim
     NULL AS risco_inseguranca_alimentar, --Essa coluna não esta na versao posterior
 
     --column: ind_risco_scl_vlco_drts
     NULL AS id_risco_violacao_direitos, --Essa coluna não esta na versao posterior
-
     --column: ind_risco_scl_vlco_drts
     NULL AS risco_violacao_direitos, --Essa coluna não esta na versao posterior
 
@@ -3363,14 +3326,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -3378,13 +3333,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -3394,13 +3349,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -3410,13 +3365,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -3426,13 +3381,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -3442,13 +3397,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -3458,13 +3413,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -3474,14 +3429,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0619'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -3515,13 +3478,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -3541,13 +3503,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -3574,8 +3535,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -3583,8 +3543,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -3657,13 +3616,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -3707,13 +3665,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -3725,13 +3682,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -3833,14 +3789,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -3848,13 +3796,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -3864,13 +3812,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -3880,13 +3828,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -3896,13 +3844,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -3912,13 +3860,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -3928,13 +3876,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -3944,14 +3892,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0620'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -3985,13 +3941,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -4011,13 +3966,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -4044,8 +3998,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -4053,8 +4006,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -4127,13 +4079,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -4177,13 +4128,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -4195,13 +4145,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -4303,14 +4252,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -4318,13 +4259,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -4334,13 +4275,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -4350,13 +4291,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -4366,13 +4307,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -4382,13 +4323,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -4398,13 +4339,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -4414,14 +4355,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0623'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -4455,13 +4404,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -4481,13 +4429,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -4514,8 +4461,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -4523,8 +4469,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -4597,13 +4542,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -4647,13 +4591,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -4665,13 +4608,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -4773,14 +4715,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -4788,13 +4722,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -4804,13 +4738,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -4820,13 +4754,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -4836,13 +4770,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -4852,13 +4786,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -4868,13 +4802,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -4884,14 +4818,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0624'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -4925,13 +4867,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -4951,13 +4892,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -4984,8 +4924,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -4993,8 +4932,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -5067,13 +5005,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -5117,13 +5054,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -5135,13 +5071,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -5243,14 +5178,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -5258,13 +5185,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -5274,13 +5201,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -5290,13 +5217,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -5306,13 +5233,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -5322,13 +5249,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -5338,13 +5265,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -5354,14 +5281,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0625'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -5395,13 +5330,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -5421,13 +5355,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -5454,8 +5387,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -5463,8 +5395,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -5537,13 +5468,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -5587,13 +5517,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -5605,13 +5534,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -5713,14 +5641,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -5728,13 +5648,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -5744,13 +5664,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -5760,13 +5680,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -5776,13 +5696,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -5792,13 +5712,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -5808,13 +5728,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -5824,14 +5744,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0626'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -5865,13 +5793,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -5891,13 +5818,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -5924,8 +5850,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -5933,8 +5858,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -6007,13 +5931,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -6057,13 +5980,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -6075,13 +5997,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -6183,14 +6104,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -6198,13 +6111,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -6214,13 +6127,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -6230,13 +6143,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -6246,13 +6159,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -6262,13 +6175,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -6278,13 +6191,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -6294,14 +6207,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0627'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -6335,13 +6256,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -6361,13 +6281,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -6394,8 +6313,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -6403,8 +6321,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -6477,13 +6394,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -6527,13 +6443,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -6545,13 +6460,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -6653,14 +6567,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -6668,13 +6574,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -6684,13 +6590,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -6700,13 +6606,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -6716,13 +6622,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -6732,13 +6638,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -6748,13 +6654,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -6764,14 +6670,22 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0628'
     AND SUBSTRING(text,38,2) = '03'
 
 UNION ALL
 
+
 SELECT
 
     --column: chv_natural_prefeitura_fam
@@ -6805,13 +6719,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS id_familia_indigena,
-
     --column: cod_familia_indigena_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,40,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,40,1))
         END AS STRING
     ) AS familia_indigena,
@@ -6831,13 +6744,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS id_indigena_residente,
-
     --column: cod_indigena_reside_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,115,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,115,1))
         END AS STRING
     ) AS indigena_residente,
@@ -6864,8 +6776,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,548,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,548,8))
-        END
-    ) AS data_risco_inseguranca_alimentar,
+        END    ) AS data_risco_inseguranca_alimentar,
 
     --column: dt_intgo_rsco_scl_vlco_drts_
     SAFE.PARSE_DATE(
@@ -6873,8 +6784,7 @@ SELECT
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,539,8), r'^\s*$') THEN NULL
             ELSE TRIM(SUBSTRING(text,539,8))
-        END
-    ) AS data_risco_violacao_direitos,
+        END    ) AS data_risco_violacao_direitos,
 
     --column: ind_comunidade_quilombola_fam
     CAST(
@@ -6947,13 +6857,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS id_familia_quilombola,
-
     --column: ind_familia_quilombola_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,193,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,193,1))
         END AS STRING
     ) AS familia_quilombola,
@@ -6997,13 +6906,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS id_risco_inseguranca_alimentar,
-
     --column: ind_risco_scl_inseg_alim
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,547,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,547,1))
         END AS STRING
     ) AS risco_inseguranca_alimentar,
@@ -7015,13 +6923,12 @@ SELECT
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS id_risco_violacao_direitos,
-
     --column: ind_risco_scl_vlco_drts
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^\s*$') THEN NULL
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^1$') THEN 'Sim'
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^2$') THEN 'Não'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*1$') THEN 'Sim'
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,538,1), r'^0*2$') THEN 'Não'
             ELSE TRIM(SUBSTRING(text,538,1))
         END AS STRING
     ) AS risco_violacao_direitos,
@@ -7123,14 +7030,6 @@ SELECT
     ) AS pessoas_domicilio,
 
     --column: val_desp_agua_esgoto_fam
-    SAFE_CAST(
-        CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
-        END AS FLOAT64
-    ) AS despesa_agua_esgoto,
-
-    --column: val_desp_agua_esgoto_fam
     CAST(
         CASE
             WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
@@ -7138,13 +7037,13 @@ SELECT
         END AS STRING
     ) AS despesa_agua_esgoto_original,
 
-    --column: val_desp_alimentacao_fam
+    --column: val_desp_agua_esgoto_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,338,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,338,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_alimentacao,
+    ) AS despesa_agua_esgoto,
 
     --column: val_desp_alimentacao_fam
     CAST(
@@ -7154,13 +7053,13 @@ SELECT
         END AS STRING
     ) AS despesa_alimentacao_original,
 
-    --column: val_desp_aluguel_fam
+    --column: val_desp_alimentacao_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,350,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,350,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_aluguel,
+    ) AS despesa_alimentacao,
 
     --column: val_desp_aluguel_fam
     CAST(
@@ -7170,13 +7069,13 @@ SELECT
         END AS STRING
     ) AS despesa_aluguel_original,
 
-    --column: val_desp_energia_fam
+    --column: val_desp_aluguel_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,362,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,362,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_energia,
+    ) AS despesa_aluguel,
 
     --column: val_desp_energia_fam
     CAST(
@@ -7186,13 +7085,13 @@ SELECT
         END AS STRING
     ) AS despesa_energia_original,
 
-    --column: val_desp_gas_fam
+    --column: val_desp_energia_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,332,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,332,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_gas,
+    ) AS despesa_energia,
 
     --column: val_desp_gas_fam
     CAST(
@@ -7202,13 +7101,13 @@ SELECT
         END AS STRING
     ) AS despesa_gas_original,
 
-    --column: val_desp_medicamentos_fam
+    --column: val_desp_gas_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,344,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,344,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_medicamentos,
+    ) AS despesa_gas,
 
     --column: val_desp_medicamentos_fam
     CAST(
@@ -7218,13 +7117,13 @@ SELECT
         END AS STRING
     ) AS despesa_medicamentos_original,
 
-    --column: val_desp_transpor_fam
+    --column: val_desp_medicamentos_fam
     SAFE_CAST(
         CASE
-            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
-            ELSE SAFE_CAST(TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,368,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,368,5)) AS INT64) / 1
         END AS FLOAT64
-    ) AS despesa_transporte,
+    ) AS despesa_medicamentos,
 
     --column: val_desp_transpor_fam
     CAST(
@@ -7234,8 +7133,16 @@ SELECT
         END AS STRING
     ) AS despesa_transporte_original,
 
+    --column: val_desp_transpor_fam
+    SAFE_CAST(
+        CASE
+            WHEN REGEXP_CONTAINS(SUBSTRING(text,356,5), r'^\s*$') THEN NULL
+            ELSE SAFE_CAST( TRIM(SUBSTRING(text,356,5)) AS INT64) / 1
+        END AS FLOAT64
+    ) AS despesa_transporte,
     SAFE_CAST(versao_layout_particao AS STRING) AS versao_layout,
     SAFE_CAST(data_particao AS DATE) AS data_particao
-FROM `rj-iplanrio.tuning_brutos_cadunico_staging.registro_familia_sample`
+FROM `rj-iplanrio.brutos_cadunico_staging.registro_familia`
 WHERE versao_layout_particao = '0629'
     AND SUBSTRING(text,38,2) = '03'
+

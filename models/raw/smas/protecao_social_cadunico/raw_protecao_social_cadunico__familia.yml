@@ -1,5 +1,5 @@
 version: 2
-models:
+models :
   - name: raw_protecao_social_cadunico__familia
     description: Table familia from number 03
     columns:
@@ -113,45 +113,45 @@ models:
       - name: pessoas_domicilio
         description: 'Quantidade de pessoas no domicílio, campo numérico de 2 posições,
           formato NN | version: 0629'
-      - name: despesa_agua_esgoto
-        description: "Valor de despesas com água\nCampo numérico de 5 posições formato
-          NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_agua_esgoto_original
         description: "Valor de despesas com água\nCampo numérico de 5 posições formato
           NNNNN (não existem casas decimais) | version: 0629"
-      - name: despesa_alimentacao
-        description: "Valor de despesas com alimentação\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0629"
+      - name: despesa_agua_esgoto
+        description: "Valor de despesas com água\nCampo numérico de 5 posições formato
+          NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_alimentacao_original
         description: "Valor de despesas com alimentação\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
-      - name: despesa_aluguel
-        description: "Valor de despesas com aluguel\nCampo numérico de 5 posições
+      - name: despesa_alimentacao
+        description: "Valor de despesas com alimentação\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_aluguel_original
         description: "Valor de despesas com aluguel\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
-      - name: despesa_energia
-        description: "Valor de despesas com energia\nCampo numérico de 5 posições
+      - name: despesa_aluguel
+        description: "Valor de despesas com aluguel\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_energia_original
         description: "Valor de despesas com energia\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
-      - name: despesa_gas
-        description: "Valor de despesas com gás\nCampo numérico de 5 posições formato
-          NNNNN (não existem casas decimais) | version: 0629"
+      - name: despesa_energia
+        description: "Valor de despesas com energia\nCampo numérico de 5 posições
+          formato NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_gas_original
         description: "Valor de despesas com gás\nCampo numérico de 5 posições formato
           NNNNN (não existem casas decimais) | version: 0629"
-      - name: despesa_medicamentos
-        description: "Valor de despesas com medicamentos\nCampo numérico de 5 posições
-          formato NNNNN (não existem casas decimais) | version: 0629"
+      - name: despesa_gas
+        description: "Valor de despesas com gás\nCampo numérico de 5 posições formato
+          NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_medicamentos_original
         description: "Valor de despesas com medicamentos\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
-      - name: despesa_transporte
-        description: "Valor de despesas com transportes\nCampo numérico de 5 posições
+      - name: despesa_medicamentos
+        description: "Valor de despesas com medicamentos\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
       - name: despesa_transporte_original
+        description: "Valor de despesas com transportes\nCampo numérico de 5 posições
+          formato NNNNN (não existem casas decimais) | version: 0629"
+      - name: despesa_transporte
         description: "Valor de despesas com transportes\nCampo numérico de 5 posições
           formato NNNNN (não existem casas decimais) | version: 0629"
