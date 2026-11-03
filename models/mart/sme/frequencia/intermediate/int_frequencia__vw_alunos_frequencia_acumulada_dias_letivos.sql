@@ -6,6 +6,31 @@
 
 -- Nome frequencia acumulada dias letivos
 with
+    situacao_coc as (
+        select
+            cal_id,
+            cap_id,
+            -- o COC é considerado fechado se ao menos uma escola fechou o COC
+            logical_or(cne_situacao in (1, 5)) as coc_fechado
+        from
+            (
+                -- ultima situacao por escola/calendário/COC
+                select
+                    cast(cal_id as string) as cal_id,
+                    cast(cap_id as string) as cap_id,
+                    cast(esc_id as string) as esc_id,
+                    cne_situacao
+                from {{ ref("gestao_escolar__cls_confirmacao_efetivacao") }}
+                qualify
+                    row_number() over (
+                        partition by cal_id, cap_id, esc_id
+                        order by cne_datahora desc, cne_id desc
+                    )
+                    = 1
+            )
+        group by cal_id, cap_id
+    ),
+
     frequencia_cocs_fechados as (
         -- 1ª Parte: Totais salvos nos COCs anteriores ao atual
         select
@@ -30,11 +55,22 @@ with
             {{ ref("gestao_escolar__calendario_periodo") }} cap
             on tur.cal_id = cap.cal_id
             and ava.tpc_id = cap.tpc_id
-            and cap.cap_datafim < current_date()  -- incluir filtro
         inner join
             {{ ref("gestao_escolar__mtr_matricula_turma") }} mtu
             on aat.alu_id = mtu.alu_id
             and aat.mtu_id = mtu.mtu_id
+        left join
+            situacao_coc sit
+            on tur.cal_id = sit.cal_id
+            and cap.cap_id = sit.cap_id
+        where
+            -- ano corrente: fechado somente se confirmado/efetivado (ver situacao_coc)
+            cast(cal.cal_ano as int64) = extract(year from current_date()) and sit.coc_fechado
+            -- anos anteriores: mantém o critério pela data (vw_alunos_aulas)
+            or (
+                cast(cal.cal_ano as int64) < extract(year from current_date())
+                and cap.cap_datafim < current_date()
+            )
         -- aluno com mais de uma matrícula: vale a aat com dados (aulas não nulas) da
         -- matrícula ativa no fim do COC (situação 3 só vale se for a única); se nenhuma
         -- estiver ativa, a última que saiu antes do fim
@@ -54,8 +90,31 @@ with
             = 1
     ),
 
+    -- Aulas do ano corrente em COCs ainda não fechados no calendário
+    aulas_coc_aberto as (
+        select vaa.*
+        from {{ ref("mart_frequencia__vw_alunos_aulas") }} vaa
+        inner join
+            {{ ref("gestao_escolar__mtr_matricula_turma") }} mtu
+            on vaa.id_aluno = mtu.alu_id
+            and vaa.id_matricula_turma = mtu.mtu_id
+        inner join {{ ref("gestao_escolar__tur_turma") }} tur on mtu.tur_id = tur.tur_id
+        inner join
+            {{ ref("gestao_escolar__calendario_periodo") }} cap
+            on tur.cal_id = cap.cal_id
+            and vaa.id_tipo_calendario = cap.tpc_id
+        left join
+            situacao_coc sit
+            on tur.cal_id = sit.cal_id
+            and cap.cap_id = sit.cap_id
+        where
+            extract(year from vaa.data_aula) = extract(year from current_date())
+            and not coalesce(sit.coc_fechado, false)
+    ),
+
     frequencia_coc_aberto as (
-        -- 2ª Parte: Totais das aulas já realizadas no COC atual
+        -- 2ª Parte: Totais das aulas já realizadas nos COCs abertos (ano corrente).
+        -- Quem já tem COC fechado (1ª parte) é descartado no union abaixo
         select
             alu_id,
             tpc_id,
@@ -83,7 +142,7 @@ with
                             data_aula,
                             sum(case when abonaFalta is true then 0 else falta end) as total_falta_tempo,
                             sum(numeroaulas) as total_tempos
-                        from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+                        from aulas_coc_aberto
                         where tipo_frequencia_apurada = 2
                         group by
                             id_aluno,
@@ -103,11 +162,10 @@ with
                     extract(year from data_aula) as ano_calendario,
                     sum(numeroaulas) as numero_aulas,
                     sum(case when abonaFalta is true then 0 else falta end)  as numero_faltas
-                from {{ ref("mart_frequencia__vw_alunos_aulas") }}
+                from aulas_coc_aberto
                 where tipo_frequencia_apurada = 1
                 group by id_aluno, id_tipo_calendario, extract(year from data_aula)
             )
-        where ano_calendario = 2026 and tpc_id = 3
         group by alu_id, tpc_id, ano_calendario
     ),
 

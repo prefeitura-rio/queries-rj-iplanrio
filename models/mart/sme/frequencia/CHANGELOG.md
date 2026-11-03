@@ -6,6 +6,38 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 ### 🔧 Correção
 
+#### Commit: `3377ec1` - 28/10/2026
+**fix: COC fechado/aberto por cne_situacao (cls_confirmacao_efetivacao)**
+
+Corrige o fechamento do COC, que usava a data de fim do COC, e o cálculo do COC aberto, que estava fixo no COC 3 de 2026. Regra validada com a SME: `cne_situacao` 1 ou 5 = COC fechado; os demais (4 ou sem registro) = COC aberto.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+
+**Mudanças aplicadas:**
+1. **Situação do COC por calendário** (nova CTE `situacao_coc`)
+   - Usa o último registro de `cls_confirmacao_efetivacao` de cada escola, calendário e COC
+   - O COC é fechado no calendário se ao menos uma escola o tem com `cne_situacao` 1 ou 5, e a regra vale para todas as escolas (não cruza por `esc_id`)
+2. **COC fechado** (CTE `frequencia_cocs_fechados`)
+   - Ano corrente: fechado somente se `coc_fechado`. Antes, bastava `cap_datafim < current_date()`
+   - Anos anteriores: seguem fechados pela data
+3. **COC aberto** (nova CTE `aulas_coc_aberto`)
+   - Calculado pelas aulas para qualquer COC do ano corrente ainda não fechado. Antes, só `ano_calendario = 2026 and tpc_id = 3`
+
+**Impacto (dev × prod):**
+- `freq_coc_fechados_igual`: 95 (igual a prod)
+- `todos_alunos_presentes`: 2.206 (igual a prod)
+- `delta_alto_qtd_aulas`: 2.464 (prod: 2.465)
+- `id__unique`, `id__not_null` e `frequencia_percentual__between_0_100`: 0
+- COC 4 de 2026 passa a existir (548.810 linhas); COC 3 passa de 561.962 para 555.629 linhas
+
+**Pendências:**
+- Validar com a SME o critério de fechamento no calendário. Considerando o `esc_id` (status por escola), `freq_coc_fechados_igual` iria a 19.241
+- Regra da matrícula ativa não se aplica ao COC aberto (a validar com a SME)
+- Anos anteriores seguem fechados pela data (a `vw_alunos_aulas` não tem as aulas completas de 2024)
+
+### 🔧 Correção
+
 #### Commit: `e5f98d8` - 27/10/2026
 **fix: uma única aat por aluno/COC nos COCs fechados (regra da matrícula ativa)**
 
