@@ -26,9 +26,9 @@ with
         select
             id_aluno,
             ano_calendario,
+            numero_aulas_4,
             numero_aulas_3,
-            numero_aulas_2,
-            {{ dbt_utils.safe_divide("numero_aulas_3", "numero_aulas_2") }}
+            {{ dbt_utils.safe_divide("numero_aulas_4", "numero_aulas_3") }}
             as taxa_crescimento
         from freq
     )
