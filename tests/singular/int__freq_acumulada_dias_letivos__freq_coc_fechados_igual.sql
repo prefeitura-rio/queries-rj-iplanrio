@@ -37,7 +37,7 @@ with
     final as (
         select alu_id, ano, coc, any_value(freq_lake) as freq_lake_valor
         from joined
-        where cast(ano as string) = '2026' and cast(coc as string) in ('1', '2')
+        where cast(ano as string) = '2026' and cast(coc as string) in ('1', '2', '3')
         group by alu_id, ano, coc
         having min(abs(freq_sga - freq_lake)) >= 0.1
     )
