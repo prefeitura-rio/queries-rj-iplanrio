@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: gestao_escolar__cls_confirmacao_efetivacao
+    description: "**Origem:** GestaoEscolar.dbo.CLS_ConfirmacaoEfetivacao
+
+      **Descrição:** Histórico de confirmação e efetivação de cada COC (conselho de classe), por escola e calendário. Cada registro é um evento; vale o último registro de cada combinação `cal_id` + `cap_id` + `esc_id`, ordenado por `cne_datahora` e `cne_id` (decrescente).
+
+      **Situação do COC (`cne_situacao`):** 5 = fechado (efetivado); 1 = a escola confirmou, mas o sistema ainda não efetivou; 4 = reaberto; sem registro = aberto. Na regra validada com a SME, 1 e 5 são COC fechado e os demais são COC aberto.
+
+      **Atenção:** `cne_id` é uma sequência dentro de cada combinação `cal_id` + `cap_id` + `esc_id` (poucos valores distintos), e não um identificador único da linha."
+    columns:
+      - name: loaded_at
+        data_type: timestamp
+        description: Data e hora da carga do registro no data lake
+        quote: true
+      - name: cal_id
+        data_type: int64
+        description: Identificador do calendário anual (ACA_CalendarioAnual)
+        quote: true
+        tests:
+          - not_null:
+              name: gestao_escolar__cls_confirmacao_efetivacao__cal_id__not_null
+              config:
+                severity: warn
+      - name: cap_id
+        data_type: int64
+        description: Identificador do período do calendário, ou seja, o COC (3 para o 3º COC) (ACA_CalendarioPeriodo)
+        quote: true
+        tests:
+          - not_null:
+              name: gestao_escolar__cls_confirmacao_efetivacao__cap_id__not_null
+              config:
+                severity: warn
+      - name: cne_id
+        data_type: int64
+        description: Sequência do registro dentro da combinação calendário, COC e escola
+        quote: true
+      - name: esc_id
+        data_type: int64
+        description: Identificador da escola
+        quote: true
+        tests:
+          - not_null:
+              name: gestao_escolar__cls_confirmacao_efetivacao__esc_id__not_null
+              config:
+                severity: warn
+      - name: uni_id
+        data_type: int64
+        description: Identificador da unidade da escola
+        quote: true
+      - name: usu_id
+        data_type: string
+        description: Identificador do usuário que registrou o evento
+        quote: true
+      - name: cne_datahora
+        data_type: datetime
+        description: Data e hora do evento de confirmação ou efetivação
+        quote: true
+      - name: cne_situacao
+        data_type: int64
+        description: "Situação do COC na escola: 5 = fechado (efetivado); 1 = confirmado pela escola, ainda não efetivado; 4 = reaberto"
+        quote: true
+        tests:
+          - not_null:
+              name: gestao_escolar__cls_confirmacao_efetivacao__cne_situacao__not_null
+              config:
+                severity: warn
+          - accepted_values:
+              name: gestao_escolar__cls_confirmacao_efetivacao__cne_situacao__accepted_values
+              values: [0, 1, 4, 5]
+              config:
+                severity: warn
+      - name: cne_datacriacao
+        data_type: datetime
+        description: Data e hora de criação do registro no SGA
+        quote: true
+      - name: cne_dataalteracao
+        data_type: datetime
+        description: Data e hora da última alteração do registro no SGA
+        quote: true
+      - name: cne_situacao_recuperacao
+        data_type: int64
+        description: Situação da recuperação do COC
+        quote: true
