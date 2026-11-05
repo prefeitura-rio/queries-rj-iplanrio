@@ -158,9 +158,10 @@ SELECT
   ap.apontamento_emissao_anterior_abertura_indicador,
   ap.apontamento_emissao_divergente_indicador,
   ap.apontamento_valor_divergente_indicador,
+  ep.versao_pipeline,
   ep.data_processamento AS data_processamento,
-  CURRENT_TIMESTAMP() AS data_geracao,
-  ep.timestamp_processamento
+  ep.timestamp_processamento,
+  current_timestamp() AS timestamp_geracao
 FROM od
 LEFT JOIN ep
   ON od.nome_arquivo = ep.nome_arquivo
