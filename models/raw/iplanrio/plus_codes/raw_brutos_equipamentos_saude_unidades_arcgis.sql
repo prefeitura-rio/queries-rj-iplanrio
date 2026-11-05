@@ -38,7 +38,7 @@ with base as (
         COD_INE_1 as cod_ine_1,
         TIPO_EQP as tipo_equipe,
         F24horas as funciona_24_horas,
-        END_ as endereco,
+        `END` as endereco,
         TELEFONE_EQP as telefone_equipe,
         FACEBOOK as facebook,
         INSTAGRAM as instagram,
