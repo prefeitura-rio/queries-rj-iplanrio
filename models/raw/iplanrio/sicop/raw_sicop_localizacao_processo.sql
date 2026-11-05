@@ -8,8 +8,8 @@
 -- Conversões e padronização de nomes conforme guia de estilo
 select
   safe_cast(num_processo as string)                          as id_processo,
-  safe_cast(localiza_processo.localiza_processo as string)   as localiza_processo,
-  safe_cast(SUBSTR(_prefect_extracted_at,1,10) as date)       as datalake_transformed_at  
-from {{ source('brutos_sicop_staging','localiza_processo') }}
+  safe_cast(t.localiza_processo as string)   as localiza_processo,
+  safe_cast(_prefect_extracted_at as date)       as datalake_transformed_at  
+from {{ source('brutos_sicop_staging','localiza_processo') }} as t
 
 

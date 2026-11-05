@@ -59,12 +59,12 @@ with alunos_aulas as (
         on (
             tau.data_aula = SAFE_CAST(dnu.dnu_data AS DATE) -- se existe feriado no mesmo dia da aula planejada
             or (
-                dnu.dnu_recorrencia = '1'   -- se o feriado acontece todo ano, verificar somente mes e dia do feriado
+                dnu.dnu_recorrencia = true  -- se o feriado acontece todo ano, verificar somente mes e dia do feriado
                 and extract(month from tau.data_aula) = extract(month from SAFE_CAST(dnu.dnu_data AS DATE))
                 and extract(day from tau.data_aula) = extract(day from SAFE_CAST(dnu.dnu_data AS DATE))
             )
         )
-        and dnu.dnu_situacao = '1'   -- situacao do registro 1 = ativo; 3=excluído
+        and dnu.dnu_situacao = 1   -- situacao do registro 1 = ativo; 3=excluído
     where dnu.dnu_data is null
 )
 

@@ -10,6 +10,5 @@ select
     safe_cast(`GINS_CD_GRAU_INSTRUCAO` as int64) as grau_instrucao_codigo,
     safe_cast(`GINS_DS_GRAU_INSTRUCAO` as string) as grau_instrucao_descricao,
     safe_cast(`GINS_ORDEM` as int64) as grau_instrucao_ordem,
-    safe_cast(SUBSTR(_prefect_extracted_at,1,10) AS datetime) AS datalake_loaded_at,
-    safe_cast(current_timestamp()as datetime) AS datalake_transformed_at
+    safe_cast(_prefect_extracted_at AS datetime) AS datalake_loaded_at,
 FROM {{ source('brutos_osinfo_rh_staging', 'dc_grau_instrucao') }}
