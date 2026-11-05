@@ -69,7 +69,6 @@ models:
           - accepted_values:
               name: gestao_escolar__cls_confirmacao_efetivacao__cne_situacao__accepted_values
               values: [0, 1, 4, 5]
-              quote: false
               config:
                 severity: warn
       - name: cne_datacriacao
