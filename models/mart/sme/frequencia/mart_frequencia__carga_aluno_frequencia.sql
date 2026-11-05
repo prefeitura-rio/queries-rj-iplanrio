@@ -80,7 +80,7 @@ with frqtrn as (
             on trn.trn_id = frq.id_turno
 
         inner join {{ ref('gestao_escolar__diascoc')}} dia
-            on safe_cast(dia.cal_id as string) = frq.id_ano_calendario and safe_cast(dia.tpc_id as string)= frq.id_tipo_calendario
+            on dia.cal_id = frq.id_ano_calendario and dia.tpc_id = frq.id_tipo_calendario
 
         where frq.efetivado = TRUE
 
