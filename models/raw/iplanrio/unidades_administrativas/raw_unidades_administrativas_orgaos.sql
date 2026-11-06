@@ -26,6 +26,9 @@ SELECT
   SAFE_CAST(
     REGEXP_REPLACE(ordem_relativa, r'\.0$', '') AS STRING
   ) as ordem_relativa,
-  CAST(updated_at AS DATETIME) AS updated_at,
-  SAFE_CAST(batch as STRING) as batch
+  CAST(
+    PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%E*S%Ez', updated_at) 
+    AS DATETIME
+  ) AS updated_at
+    
 FROM `rj-iplanrio.unidades_administrativas_staging.orgaos`
