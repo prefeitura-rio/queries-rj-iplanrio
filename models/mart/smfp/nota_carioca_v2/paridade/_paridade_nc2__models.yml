@@ -1,0 +1,81 @@
+version: 2
+
+# Paridade F1 (matriz de paridade de 04 §10, R-01 a R-11): cada modelo paridade_nc2__rNN compara o v2 com o lado Oracle por
+# FULL OUTER JOIN pela chave e classifica cada chave em igual, correcao_catalogada:<B-xx> ou divergente. Só entra NSU até o
+# corte (paridade_nc2__corte). Tolerância zero em valores monetários. paridade_nc2__resumo é o contrato lido pelo flow
+# rj_smfp__nota_carioca_paridade_f1. Em dev e pr o lado Oracle também é seed sintética (macro nc2_fonte).
+
+models:
+  - name: paridade_nc2__corte
+    description: >
+      Corte de NSU da paridade: var('nc2_corte_nsu') se informada; senão o maior NSU de NOTAS_NACIONAIS e EVENTOS_DFEN do Oracle.
+    columns:
+      - name: corte_nsu
+        data_type: int64
+        data_tests:
+          - not_null:
+              name: paridade_nc2__corte__corte_nsu__not_null
+
+  - name: paridade_nc2__r01
+    description: "R-01: identificadores e competência municipal por NOTA_NACIONAL (Oracle x int_nc2__competencia)."
+  - name: paridade_nc2__r02
+    description: "R-02: responsável, contraparte (sentinela), serviço, retenção, Simples e VALOR_DED_RED por NOTA_NACIONAL."
+  - name: paridade_nc2__r03
+    description: "R-03: HASH_ID das pessoas (Oracle x parser) e atributos."
+  - name: paridade_nc2__r04
+    description: "R-04: conjuntos de NOTA, DPS e EVENTO que sobram da deduplicação e do corte IniExtDocsFiscais."
+  - name: paridade_nc2__r05
+    description: "R-05: o que o Oracle aceitou existe no raw do parser com os mesmos valores (unilateral: falha de parse)."
+  - name: paridade_nc2__r06
+    description: "R-06: CENARIO_EXIGIBILIDADE por NOTA_NACIONAL, com a correção B-04 catalogada."
+  - name: paridade_nc2__r07
+    description: "R-07: notas em -1 no Oracle que o v2 promove (B-04) ou mantém."
+  - name: paridade_nc2__r08
+    description: "R-08: status, DATA_CANCELAMENTO e CHAVE_ACESSO_SUBSTITUTA por eventos, com a correção B-06 catalogada."
+  - name: paridade_nc2__r09
+    description: "R-09: marcação da nota substituída, com a correção B-06/R-09 (DATA_CANCELAMENTO) catalogada."
+  - name: paridade_nc2__r10
+    description: "R-10: FISCALIZACAO (origem replicada)."
+  - name: paridade_nc2__r11
+    description: "R-11: exigíveis, detalhe por nota e resumo por dimensão, centavo a centavo, contra as MVTs atuais."
+
+  - name: paridade_nc2__resumo
+    description: >
+      Uma linha por regra e classe da paridade F1. Contrato: regra, classe, quantidade, corte_nsu, gerado_em. Comparados de uma
+      regra = soma de quantidade.
+    config:
+      contract:
+        enforced: true
+    data_tests:
+      - dbt_utils.expression_is_true:
+          name: paridade_nc2__resumo__classe_dentro_do_contrato
+          arguments:
+            expression: "classe = 'igual' or classe = 'divergente' or starts_with(classe, 'correcao_catalogada:')"
+      - dbt_utils.unique_combination_of_columns:
+          name: paridade_nc2__resumo__regra_classe__unique
+          arguments:
+            combination_of_columns:
+              - regra
+              - classe
+    columns:
+      - name: regra
+        data_type: string
+        description: "R-01 a R-11."
+        data_tests:
+          - not_null:
+              name: paridade_nc2__resumo__regra__not_null
+      - name: classe
+        data_type: string
+        description: "igual, correcao_catalogada:<B-xx> ou divergente."
+        data_tests:
+          - not_null:
+              name: paridade_nc2__resumo__classe__not_null
+      - name: quantidade
+        data_type: int64
+        description: "Chaves da regra nesta classe."
+      - name: corte_nsu
+        data_type: int64
+        description: "Corte de NSU usado: só NSU até este valor foi comparado."
+      - name: gerado_em
+        data_type: timestamp
+        description: "Instante da geração."

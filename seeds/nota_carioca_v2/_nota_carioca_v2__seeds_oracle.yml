@@ -1,0 +1,54 @@
+version: 2
+
+# Seeds sintéticas da trilha nota_carioca_v2 (dados fictícios, sem PII). Existem só nos targets dev e pr e substituem as fontes
+# reais (macro nc2_fonte): o raw do parser (raw_nfse_nacional), as réplicas do Oracle (brutos_nota_fiscal) e as MVTs atuais
+# (nota_carioca). Os tipos repetem os das tabelas reais: o raw segue schemas_bq/ do parser (INT64, NUMERIC, DATETIME,
+# TIMESTAMP); as réplicas do Oracle seguem o oracle_to_bq (NUMBER vira NUMERIC; texto, data e RAW viram STRING, com datas
+# AAAA-MM-DDTHH:MM:SS e RAW em base64); as MVTs repetem as 19 e as 17 colunas, na ordem, de
+# mart_nota_carioca__notas_nacionais_exigiveis_detalhes e mart_nota_carioca__notas_nacionais_exigiveis (o teste
+# nc2_colunas_iguais usa estas seeds como referência de layout em dev e pr, e a MVT real em prod).
+# Os rótulos das chaves (A01_..., H09_...) dizem o caso de borda que cada linha exercita; os testes singulares de
+# tests/singular/nota_carioca_v2/ leem esses rótulos. O lado 'Oracle' foi gerado por uma implementação independente das
+# regras (VB e PL/SQL, com NFSE-1003), inclusive as diferenças catalogadas B-04 e B-06, que a paridade classifica como
+# correcao_catalogada. O maior NSU das réplicas do Oracle é 8000 (o corte); as linhas do raw acima disso (9001 a 9003)
+# provam o corte da paridade.
+# Esta parte: o resto do lado Oracle da paridade F1 (DPS, PESSOAS_NACIONAIS e EVENTOS_DFEN).
+
+seeds:
+  - name: nc2_seed__nota_carioca__dps
+    config:
+      column_types:
+        dps: string
+        data_competencia_municipio: string
+        data_competencia: string
+        data_emissao: string
+        pessoa_responsavel: string
+        pessoa_prestador: string
+        pessoa_contraparte: string
+        pessoa_tomador: string
+        tipo_retencao_issqn: numeric
+        issqn: numeric
+        valor_servico: numeric
+        grupo_servico: string
+        subgrupo_servico: string
+        servico_nacional: string
+        tipo_suspensao: numeric
+  - name: nc2_seed__nota_carioca__pessoas_nacionais
+    config:
+      column_types:
+        pessoa_nacional: string
+        hash_id: string
+        cpf_cnpj: string
+        nome: string
+        opcao_simples_nacional: numeric
+        regime_apuracao_simples: numeric
+        regime_tributacao: numeric
+  - name: nc2_seed__nota_carioca__eventos_dfen
+    config:
+      column_types:
+        evento: string
+        chave_acesso: string
+        tipo_evento: string
+        data_evento: string
+        chave_acesso_substituta: string
+        nsu: numeric
