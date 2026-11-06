@@ -128,6 +128,17 @@ models:
           +materialized: table
           +schema: dashboard_cvl
           +tags: ["daily", "dashboard_cvl"]
+      mp:
+        +project: rj-externo-mprj
+        +tags: ["mp"]
+        prontuario_carioca:
+          +materialized: table
+          +schema: prontuario_carioca
+          +tags: ["daily"]
+        abordagem_social:
+          +materialized: table
+          +schema: abordagem_social
+          +tags: ["daily"]
     raw:
       +tags: "raw"
       datario:
