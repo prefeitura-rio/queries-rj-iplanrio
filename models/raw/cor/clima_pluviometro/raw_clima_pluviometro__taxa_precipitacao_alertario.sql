@@ -4,7 +4,7 @@
         materialized='incremental',
         unique_key='primary_key',
         partition_by={
-            "field": "batch",
+            "field": "data_particao",
             "data_type": "date",
             "granularity": "day",
         },
@@ -26,7 +26,9 @@ with source_1 as (
         SAFE_CAST(acumulado_chuva_4h AS FLOAT64) AS acumulado_chuva_4h,
         SAFE_CAST(acumulado_chuva_24h AS FLOAT64) AS acumulado_chuva_24h,
         SAFE_CAST(acumulado_chuva_96h AS FLOAT64) AS acumulado_chuva_96h,
-        SAFE_CAST(batch AS DATE) AS batch,
+        SAFE_CAST(ano_particao AS INT64) AS ano_particao,
+        SAFE_CAST(mes_particao AS INT64) AS mes_particao,
+        SAFE_CAST(data_particao AS DATE) AS data_particao
     FROM {{ source('clima_pluviometro_staging', 'taxa_precipitacao_alertario') }}
 
     {% if is_incremental() %}
@@ -51,7 +53,9 @@ with source_1 as (
         SAFE_CAST(acumulado_chuva_4_h AS FLOAT64) AS acumulado_chuva_4h,
         SAFE_CAST(acumulado_chuva_24_h AS FLOAT64) AS acumulado_chuva_24h,
         SAFE_CAST(acumulado_chuva_96_h AS FLOAT64) AS acumulado_chuva_96h,
-        DATE_TRUNC(SAFE_CAST(data_medicao AS DATE), DAY) AS batch
+        SAFE_CAST(ano AS INT64) AS ano_particao,
+        SAFE_CAST(mes AS INT64) AS mes_particao,
+        DATE_TRUNC(SAFE_CAST(data_medicao AS DATE), DAY) AS data_particao
     FROM `rj-cor.clima_pluviometro_staging.taxa_precipitacao_alertario`
 ),
 -- Como há um furo nos dados de 2025-01-01 até 2026-06-01 no bucket de rj-cor taxa_precipitacao_alertario, 
@@ -67,7 +71,9 @@ source_3 as (
         SAFE_CAST(acumulado_chuva_4h AS FLOAT64) AS acumulado_chuva_4h,
         SAFE_CAST(acumulado_chuva_24h AS FLOAT64) AS acumulado_chuva_24h,
         SAFE_CAST(acumulado_chuva_96h AS FLOAT64) AS acumulado_chuva_96h,
-        SAFE_CAST(data_particao AS DATE) AS batch
+        SAFE_CAST(ano_particao AS INT64) AS ano_particao,
+        SAFE_CAST(mes_particao AS INT64) AS mes_particao,
+        SAFE_CAST(data_medicao as DATE) as data_particao
         FROM `rj-cor.clima_pluviometro_staging.taxa_precipitacao_alertario_5min`
     where DATE(data_medicao) between '2025-01-01' and '2026-06-01'
 )
