@@ -179,6 +179,13 @@ models:
           +materialized: table
           +schema: gestao_escolar_rh
           +tags: ["daily"]
+      rec-rio:
+        +project: rj-rec-rio
+        +tags: ["rec-rio"]
+        crf:
+          +materialized: table
+          +schema: brutos_crf
+          +tags: ["daily", "rec-rio"]
       smfp:
         +tags: "smfp"
         +project: rj-smfp

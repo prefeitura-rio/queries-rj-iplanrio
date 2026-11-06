@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: brutos_crf
+    database: rj-iplanrio
+    schema: brutos_crf_staging
+    tables:
+      - name: daf607_header
+      - name: daf607_detalhe
+      - name: daf607_trailer
