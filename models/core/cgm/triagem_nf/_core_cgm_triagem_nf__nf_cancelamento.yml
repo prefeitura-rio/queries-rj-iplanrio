@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: core_cgm_triagem_nf__nf_cancelamento
+    description: |
+      Status de cancelamento de NFs consolidado a partir de múltiplas fontes SMF.
+      
+      **Grain:** uma linha por NF extraída (nome_arquivo + numero_nf_modelo + cnpj_modelo)
+      **Materialização:** table
+      **Origem:** `extracao_pagina` LEFT JOIN `nf_cancelada_substituta` LEFT JOIN `nf_verificacao`
+      
+      Tabela que consolida informações de cancelamento de notas fiscais a partir de:
+      1. Extração IA (extracao_pagina): NFs encontradas em documentos declarados
+      2. SMF Cancelada/Substituta: Informações de cancelamento e substituição
+      3. SMF Verificação: Verificação de existência e cancelamento na base SMF
+      
+      A lógica de cancelamento usa 3 camadas de dados com precedência:
+      - Verificação SMF: se encontrada, prevalece
+      - Substituição SMF: informações de cancelamento por substituição
+      - Fallback: NULL se inconclusivo
+
+    config:
+      schema: cgm_despesas_nf
+      alias: nf_cancelamento
+      materialized: table
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - nome_arquivo
+            - cnpj_modelo
+            - numero_nf_modelo
+
+    columns:
+      - name: nome_arquivo
+        description: "Nome do arquivo original da declaração. Chave de matching com extracao_pagina e despesas."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+
+      - name: cnpj_modelo
+        description: "CNPJ do emitente normalizado (14 dígitos). Chave de matching."
+        data_type: string
+        quote: true
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[0-9]{14}$"
+              config:
+                severity: warn
+
+      - name: numero_nf_modelo
+        description: "Número da NF normalizado (INT64). Chave de matching com extração."
+        data_type: int64
+        tests:
+          - not_null
+
+      - name: cancelada
+        description: |
+          Status de cancelamento da NF:
+          - `TRUE`: NF foi cancelada (confirmado pelo SMF)
+          - `FALSE`: NF existe na base SMF e NÃO foi cancelada
+          - `NULL`: Informação inconclusiva ou não encontrada
+          
+          **Lógica:**
+          1. Se em `nf_verificacao` com `achei_nota_fiscal IS NOT NULL`:
+             - Se `data_cancelamento IS NULL` → FALSE (encontrada, não cancelada)
+             - Se `data_cancelamento IS NOT NULL` → verifica em `nf_cancelada_substituta`:
+               - Se é NF substituta/substituída com flags ≠ FALSE → NULL (inconclusivo)
+               - Senão → TRUE (confirmado cancelado)
+          2. Se em `nf_cancelada_substituta` mas não em verificação:
+             - Se não existe em SMF → NULL
+             - Se existe sem data_cancelamento → FALSE
+             - Se indicadores são FALSE → TRUE
+             - Senão → NULL
+          3. Senão → NULL (não encontrada)
+        data_type: bool
+
+      - name: cancelamento_data
+        description: "Data em que a NF foi cancelada no SMF. NULL se não foi cancelada."
+        data_type: date
+
+      - name: cancelamento_substituta
+        description: "Número da NF substituta (se cancelada por substituição). NULL se não houve substituição."
+        data_type: string
+        quote: true
