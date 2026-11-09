@@ -6,6 +6,55 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 ### 🔧 Correção
 
+#### Commit: `18a0303` - 03/11/2026
+**fix(sme): virada do COC 4 + atualização dos testes (#356)**
+
+Passa o COC aberto para o COC 4, já que o COC 3 de 2026 está fechado, e atualiza os testes para a virada.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+- `models/raw/sme/gestao_escolar/gestao_escolar__cls_confirmacao_efetivacao.yml`
+- `tests/singular/int__freq_acumulada_dias_letivos__freq_coc_fechados_igual.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+- `tests/singular/mart_frequencia__freq_acumulada_dias_letivos__delta_alto_qtd_aulas.sql`
+
+**Mudanças aplicadas:**
+1. **COC aberto fixo no COC 4** (CTE `frequencia_coc_aberto`)
+   - Antes: `where ano_calendario = 2026 and tpc_id = 3`
+   - Agora: `where ano_calendario = 2026 and tpc_id = 4`, com comentário `-- ALTERAR EM TODA VIRADA DE COC`
+   - A produção segue sem usar `cls_confirmacao_efetivacao` por ora (decisão de reunião com a SME)
+2. **Testes de COC fechado**
+   - `freq_coc_fechados_igual` e `todos_alunos_presentes`: o filtro de COC passa de `in ('1', '2')` para `in ('1', '2', '3')`, incluindo o COC 3 recém-fechado
+3. **Teste de COC aberto**
+   - `delta_alto_qtd_aulas`: passa a comparar o COC 4 com o COC 3 (`numero_aulas_4` / `numero_aulas_3`). Antes comparava COC 3 com COC 2
+4. **Documentação da `cls_confirmacao_efetivacao`**
+   - Descrição da tabela e testes `not_null` (`cal_id`, `cap_id`, `esc_id`, `cne_situacao`) e `accepted_values` em `cne_situacao`, todos com `severity: warn`
+
+**Impacto:**
+- O cálculo pelas aulas (COC aberto) passa a valer para o COC 4
+- Os testes passam a validar o COC 3 como fechado
+
+---
+
+#### Commit: `1e862c8` - 03/11/2026
+**fix: queys sme**
+
+Corrige a tipagem de dados usados nos joins e filtros dos testes da frequência acumulada e de modelos vizinhos de `sme/frequencia` devido à mudança de esquema no BigQuery, decorrente da migração das tabelas do GCS para o formato Delta Lake.
+
+**Arquivos modificados:**
+- `tests/singular/int__freq_acumulada_dias_letivos__freq_coc_fechados_igual.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+- `models/mart/sme/frequencia/mart_frequencia__carga_aluno_frequencia.sql`
+- `models/mart/sme/frequencia/mart_frequencia__vw_alunos_aulas.sql`
+- `models/raw/sme/gestao_escolar/` (`aluno_avaliacao_turma`, `turma`, `turma_aula_aluno` e `turma_disciplina_rel`)
+
+**Impacto:**
+- Nenhuma mudança de regra de negócio no cálculo da frequência acumulada
+
+---
+
+### 🔧 Correção
+
 #### Commit: `e5f98d8` - 27/10/2026
 **fix: uma única aat por aluno/COC nos COCs fechados (regra da matrícula ativa)**
 
