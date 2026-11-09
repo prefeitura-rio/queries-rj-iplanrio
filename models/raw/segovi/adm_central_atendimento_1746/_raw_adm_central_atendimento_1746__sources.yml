@@ -12,6 +12,9 @@ sources:
       - name: tb_atributo
       - name: tb_classificacao
       - name: tb_classificacao_atributo
+      - name: tb_chamado
+      - name: tb_andamento
+      - name: tb_unidade_organizacional
 
 
     config:
