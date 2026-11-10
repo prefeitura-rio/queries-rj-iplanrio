@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: raw_daf607__header
+    description: "**Descrição**: Registro header do arquivo DAF607 - Informações do SERPRO relativas às guias do Simples Nacional\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: REC-Rio / SERPRO\n"
+    columns:
+      - name: codigo_registro
+        description: Código do registro, constante = 1 (posição 1)
+      - name: sequencial
+        description: Sequencial do registro, constante = 00000001 (posições 2-9)
+      - name: codigo_convenio
+        description: Código do convênio, constante = DAF607 SIMPLESNACION (posições 10-29)
+      - name: data_geracao
+        description: Data da geração do arquivo no formato AAAAMMDD (posições 30-37)
+      - name: numero_remessa
+        description: Número da remessa do SERPRO (posições 38-43)
+      - name: versao
+        description: Número da versão, constante = 01 (posições 44-45)
+      - name: banco_arrecadador
+        description: Código do banco arrecadador do documento (posições 76-78)
+      - name: data_credito
+        description: Data de crédito no Banco/SERPRO no formato AAAAMMDD (posições 68-75)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
+      - name: loaded_at
+        description: Data e hora de carregamento do registro
+
+  - name: raw_daf607__detalhe
+    description: "**Descrição**: Registro detalhe do arquivo DAF607 - Informações do SERPRO relativas às guias do Simples Nacional\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: REC-Rio / SERPRO\n"
+    columns:
+      - name: codigo_registro
+        description: Código do registro, constante = 2 (posição 1)
+      - name: sequencial
+        description: Sequencial do registro, iniciado em 00000002 (posições 2-9)
+      - name: data_arrecadacao
+        description: Data de arrecadação do documento no formato AAAAMMDD (posições 10-17)
+      - name: data_vencimento
+        description: Data de vencimento do documento no formato AAAAMMDD (posições 18-25)
+      - name: cnpj_contribuinte
+        description: CNPJ do contribuinte constante na guia (posições 75-88)
+      - name: esfera
+        description: "Esfera da receita: E = Estadual, M = Municipal (posição 100)"
+      - name: competencia
+        description: Competência constante na guia no formato AAAAMM (posições 101-106)
+      - name: valor_principal
+        description: Valor principal da parcela do estado/município, formato N15,2 (posições 107-123)
+      - name: valor_multa
+        description: Valor da multa da parcela do estado/município, formato N15,2 (posições 124-140)
+      - name: valor_juros
+        description: Valor dos juros da parcela do estado/município, formato N15,2 (posições 141-157)
+      - name: valor_autenticacao
+        description: Valor da autenticação da guia, formato N15,2 (posições 205-221)
+      - name: numero_autenticacao_banco
+        description: Número da autenticação do banco arrecadador (posições 222-244)
+      - name: banco_arrecadador
+        description: Código do banco arrecadador da guia (posições 245-247)
+      - name: agencia_arrecadadora
+        description: Prefixo da agência arrecadadora (posições 248-251)
+      - name: codigo_siafi
+        description: Código SIAFI do município precedido de 98, ou código SIAFI do estado (posições 456-461)
+      - name: identificador_serpro
+        description: Código identificador da guia gerado pelo SERPRO (posições 462-478)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
+      - name: loaded_at
+        description: Data e hora de carregamento do registro
+
+  - name: raw_daf607__trailer
+    description: "**Descrição**: Registro trailer do arquivo DAF607 - Informações do SERPRO relativas às guias do Simples Nacional\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: REC-Rio / SERPRO\n"
+    columns:
+      - name: codigo_registro
+        description: Código do registro, constante = 9 (posição 1)
+      - name: sequencial
+        description: Sequencial do registro, constante = 99999999 (posições 2-9)
+      - name: total_registros
+        description: Total de registros gravados, inclusive header e trailer (posições 10-15)
+      - name: valor_total_recebido
+        description: Valor total recebido (principal + multa + juros), formato N15,2 (posições 16-32)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
+      - name: loaded_at
+        description: Data e hora de carregamento do registro
