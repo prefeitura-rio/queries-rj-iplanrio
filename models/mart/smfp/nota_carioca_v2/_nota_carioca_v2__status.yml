@@ -1,0 +1,56 @@
+version: 2
+
+# R-08 e R-09: status da nota por eventos e por substituição.
+
+models:
+  - name: int_nc2__eventos_status
+    description: >
+      R-08, só os eventos: o evento mais recente por chave de acesso entre e101101, e105104, e305101, e105102, e305102 e
+      e305103 (correção catalogada B-06: o VB guardava o primeiro do lote).
+    columns:
+      - name: chave_acesso
+        data_tests:
+          - unique:
+              name: int_nc2__eventos_status__chave_acesso__unique
+      - name: status_nota
+        data_tests:
+          - accepted_values:
+              name: int_nc2__eventos_status__status_nota__accepted_values
+              arguments:
+                values: [0, 1, 2]
+                quote: false
+
+  - name: int_nc2__substituicao
+    description: >
+      R-09, só a marcação da nota substituída: a nota substituída e os dados da substituta (correção catalogada B-06/R-09:
+      DATA_CANCELAMENTO é a DATA_VALIDACAO da substituta).
+    columns:
+      - name: chave_acesso
+        data_tests:
+          - unique:
+              name: int_nc2__substituicao__chave_acesso__unique
+
+  - name: int_nc2__status
+    description: >
+      Status final de cada nota (R-08 e depois R-09): 0 normal, 1 cancelada, 2 bloqueada, com DATA_CANCELAMENTO e
+      CHAVE_ACESSO_SUBSTITUTA.
+    columns:
+      - name: chave_acesso
+        data_tests:
+          - unique:
+              name: int_nc2__status__chave_acesso__unique
+          - not_null:
+              name: int_nc2__status__chave_acesso__not_null
+      - name: status_nota
+        data_tests:
+          - accepted_values:
+              name: int_nc2__status__status_nota__accepted_values
+              arguments:
+                values: [0, 1, 2]
+                quote: false
+      - name: origem_status
+        data_tests:
+          - accepted_values:
+              name: int_nc2__status__origem_status__accepted_values
+              arguments:
+                values: ["normal", "evento", "substituicao"]
