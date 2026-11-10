@@ -158,15 +158,7 @@ with
         select *
         from correcoes_manuais
         where ano_calendario >= 2024
-    ),
-    -- Correção temporária: remoção dos alunos EJA para tratamento;
-    vw_bi_aluno as (
-        select alu_id as id_aluno, Grupamento as grupamento
-        from {{ ref('gestao_escolar__vw_bi_aluno') }} alu
     )
 
-select c.* 
-from correcao c
-left join vw_bi_aluno bia
-on cast(c.id_aluno as string) = cast(bia.id_aluno as string)
-where grupamento not like 'EJA%' and grupamento not like 'PROEJA%'
+select *
+from correcao
