@@ -6,6 +6,61 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 ### 🔧 Correção
 
+#### Commit: `c0878a7` - 10/11/2026
+**fix(sme/frequencia): regras da SME para o EJA e COC 3 da EJA aberto**
+
+Aplica ao EJA as regras validadas pela SME em 10/11 e passa a calcular o COC 3 da EJA, que ainda está aberto.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+
+**Mudanças aplicadas:**
+1. **Par EJA** (CTE `aat_cocs_fechados`)
+   - Um par aluno/COC é EJA quando todas as suas `aat` são de turma do calendário "Educação Jovens e Adultos" de cada ano
+   - Cada par segue uma única regra: a do EJA ou a do regular
+2. **Pares não-EJA** (CTE `frequencia_cocs_fechados_regular`)
+   - Mesma regra de antes (matrícula ativa no fim do COC), sem mudança
+3. **Pares EJA nos COCs fechados** (CTE `frequencia_cocs_fechados_eja`)
+   - Ignora avaliação cancelada (`aat_situacao = 3`)
+   - Vale a `aat` da matrícula de maior `mtu_id`
+   - A frequência é a gravada no SGA (`aat_frequencia`); se for nula ou 0,00 (aula zero), vale a acumulada (`aat_frequenciaacumuladacalculada`)
+   - Aulas e faltas continuam as da `aat`; pares EJA com aulas nulas e frequência gravada deixam de ser descartados
+4. **COC 3 da EJA aberto** (CTEs `matriculas_eja`, `alunos_aulas` e `frequencia_coc_aberto`)
+   - Antes: só o COC 4 era calculado pelas aulas
+   - Agora: o COC 3 de 2026 também é calculado pelas aulas, só nas matrículas de turma da EJA (aluno + `mtu_id`), com comentário `-- ALTERAR EM TODA VIRADA DE COC`
+
+**Impacto (dev × prod de 10/11):**
+- Nenhuma linha não-EJA muda
+- Falhas de EJA: de 559 para 0 em `freq_coc_fechados_igual` e de 2 para 0 em `todos_alunos_presentes`
+- COC 3 aberto da EJA: 14.060 alunos
+
+---
+
+#### Commit: `2576dc0` - 10/11/2026
+**fix(sme/frequencia): remove o filtro temporário de EJA/PROEJA**
+
+Remove o filtro de EJA/PROEJA incluído em `5d5de0c` (22/10/2026), que descartava mais do que o EJA.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+
+**Mudanças aplicadas:**
+1. **Filtro removido do modelo e do teste**
+   - Antes: `left join` com `vw_bi_aluno` e `where grupamento not like 'EJA%' and grupamento not like 'PROEJA%'`
+   - Agora: sem filtro; o modelo termina em `select * from correcao`
+
+**Impacto (dev × prod de 10/11):**
+- As linhas que já existiam em prod não mudam; entram 672.159 linhas (2024 a 2026)
+- Das linhas que o filtro descartava, só 111.516 eram de turma EJA ou mista:
+  - 584.978 eram de alunos fora da `vw_bi_aluno`, que só tem os alunos de 2026. O `left join` deixava o grupamento nulo, e `NULL not like ...` descartava a linha
+  - 22.007 eram COCs em turma regular de alunos que hoje estão no EJA
+- Prod deixava de fora 24,3% dos pares de 2024 e 11,3% dos de 2025
+
+---
+
+### 🔧 Correção
+
 #### Commit: `18a0303` - 03/11/2026
 **fix(sme): virada do COC 4 + atualização dos testes (#356)**
 
