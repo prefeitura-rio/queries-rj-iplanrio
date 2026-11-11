@@ -7,15 +7,25 @@ models:
       - name: andamento_id
         data_type: string
         description: 'Chave do andamento no Salesforce (`WorkOrderUpdate__c.Id`, 18 caracteres).'
-        tests:
-          - unique
-          - not_null
+        data_tests:
+          - unique:
+              name: mart_czrm_staging__mestre_andamento__andamento_id__unique
+              config:
+                severity: error
+          - not_null:
+              name: mart_czrm_staging__mestre_andamento__andamento_id__not_null
+              config:
+                severity: error
       - name: os_id
         data_type: string
         description: 'Relacionamento que vincula o andamento à OS correspondente (`WorkOrder_c__c`).'
-        tests:
-          - not_null
+        data_tests:
+          - not_null:
+              name: mart_czrm_staging__mestre_andamento__os_id__not_null
+              config:
+                severity: error
           - relationships:
+              name: mart_czrm_staging__mestre_andamento__os_id__relationships
               to: ref('raw_czrm_staging__work_order')
               field: id
               config:
@@ -29,8 +39,6 @@ models:
       - name: data_hora
         data_type: timestamp
         description: 'Referência de negócio do andamento (dataHora do órgão).'
-        tests:
-          - not_null
       - name: tipo
         data_type: string
         description: 'Classifica o tipo do evento de andamento.'
