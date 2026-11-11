@@ -11,6 +11,10 @@ models:
               name: raw_czrm_staging__account__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__account__id__not_null
+              config:
+                severity: error
       - name: is_deleted
         data_type: boolean
       - name: master_record_id
@@ -286,6 +290,10 @@ models:
               name: raw_czrm_staging__contact__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__contact__id__not_null
+              config:
+                severity: error
       - name: is_deleted
         data_type: boolean
       - name: master_record_id
@@ -411,6 +419,10 @@ models:
               name: raw_czrm_staging__individual__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__individual__id__not_null
+              config:
+                severity: error
       - name: owner_id
         data_type: string
       - name: is_deleted
@@ -494,6 +506,10 @@ models:
               name: raw_czrm_staging__neighborhood__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__neighborhood__id__not_null
+              config:
+                severity: error
       - name: owner_id
         data_type: string
       - name: is_deleted
@@ -547,6 +563,10 @@ models:
         data_tests:
           - unique:
               name: raw_czrm_staging__organizational_unity__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__organizational_unity__id__not_null
               config:
                 severity: error
       - name: owner_id
@@ -628,6 +648,10 @@ models:
               name: raw_czrm_staging__queue_group__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__queue_group__id__not_null
+              config:
+                severity: error
       - name: name
         data_type: string
       - name: developer_name
@@ -673,6 +697,10 @@ models:
               name: raw_czrm_staging__record_type__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__record_type__id__not_null
+              config:
+                severity: error
       - name: name
         data_type: string
       - name: developer_name
@@ -712,6 +740,10 @@ models:
         data_tests:
           - unique:
               name: raw_czrm_staging__service_attribute_library__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__service_attribute_library__id__not_null
               config:
                 severity: error
       - name: owner_id
@@ -769,6 +801,10 @@ models:
         data_tests:
           - unique:
               name: raw_czrm_staging__service_case__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__service_case__id__not_null
               config:
                 severity: error
       - name: is_deleted
@@ -928,6 +964,10 @@ models:
               name: raw_czrm_staging__service_catalog__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__service_catalog__id__not_null
+              config:
+                severity: error
       - name: owner_id
         data_type: string
       - name: is_deleted
@@ -997,6 +1037,10 @@ models:
         data_tests:
           - unique:
               name: raw_czrm_staging__user__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__user__id__not_null
               config:
                 severity: error
       - name: username
@@ -1402,6 +1446,10 @@ models:
               name: raw_czrm_staging__work_order__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order__id__not_null
+              config:
+                severity: error
       - name: owner_id
         data_type: string
       - name: is_deleted
@@ -1651,6 +1699,10 @@ models:
               name: raw_czrm_staging__work_order_attribute_answer__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order_attribute_answer__id__not_null
+              config:
+                severity: error
       - name: is_deleted
         data_type: boolean
       - name: name
@@ -1722,6 +1774,10 @@ models:
               name: raw_czrm_staging__work_order_relationship__id__unique
               config:
                 severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order_relationship__id__not_null
+              config:
+                severity: error
       - name: owner_id
         data_type: string
       - name: is_deleted
@@ -1759,6 +1815,10 @@ models:
         data_tests:
           - unique:
               name: raw_czrm_staging__work_order_update__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order_update__id__not_null
               config:
                 severity: error
       - name: is_deleted
