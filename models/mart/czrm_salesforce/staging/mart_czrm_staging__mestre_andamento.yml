@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: mart_czrm_staging__mestre_andamento
+    description: 'Histórico de andamentos das ordens de serviço: 1 linha por andamento, para montar a timeline da OS.'
+    columns:
+      - name: andamento_id
+        data_type: string
+        description: 'Chave do andamento no Salesforce (`WorkOrderUpdate__c.Id`, 18 caracteres).'
+        tests:
+          - unique
+          - not_null
+      - name: os_id
+        data_type: string
+        description: 'Relacionamento que vincula o andamento à OS correspondente (`WorkOrder_c__c`).'
+        tests:
+          - not_null
+          - relationships:
+              to: ref('raw_czrm_staging__work_order')
+              field: id
+              config:
+                severity: warn
+      - name: numero_os
+        data_type: string
+        description: 'Número da OS exibido ao cidadão e ao órgão (ex.: `00000009`).'
+      - name: numero_protocolo
+        data_type: string
+        description: 'Número do protocolo (`Case.CaseNumber`) ao qual a OS pertence.'
+      - name: data_hora
+        data_type: timestamp
+        description: 'Referência de negócio do andamento (dataHora do órgão).'
+        tests:
+          - not_null
+      - name: tipo
+        data_type: string
+        description: 'Classifica o tipo do evento de andamento.'
+      - name: status
+        data_type: string
+        description: 'Status do órgão já normalizado (de-para 1 / CMT1).'
+      - name: titulo
+        data_type: string
+        description: 'Título/resumo do andamento, como exibido na timeline.'
+      - name: descricao
+        data_type: string
+        description: 'Relato atual do andamento.'
+      - name: criado_por
+        data_type: string
+        description: 'Nome do usuário que criou o registro.'
+      - name: visivel_cidadao
+        data_type: boolean
+        description: 'Indica se o andamento está publicado e visível para o cidadão.'
+      - name: publicado_em
+        data_type: timestamp
+        description: 'Data e hora em que o andamento foi publicado.'

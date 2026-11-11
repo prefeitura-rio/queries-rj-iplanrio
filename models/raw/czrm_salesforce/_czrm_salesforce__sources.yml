@@ -1,0 +1,53 @@
+version: 2
+
+sources:
+  - name: brutos_czrm_salesforce
+    database: rj-iplanrio
+    schema: brutos_czrm_salesforce_staging
+    description: >
+      Prod = brutos_czrm_salesforce_staging.
+    loaded_at_field: _airbyte_extracted_at
+    freshness:
+      error_after: {count: 20, period: minute}
+    tables:
+      - name: Account
+      - name: Case
+      - name: Contact
+      - name: Group
+      - name: Individual
+      - name: OperatingHours
+      - name: RecordType
+      - name: User
+      - name: Neighborhood__c
+      - name: Organizational_Unity__c
+      - name: Service_Attribute_Library__c
+      - name: Service_Catalog__c
+      - name: WorkOrder
+      - name: WorkOrderUpdate__c
+      - name: WorkOrder_Attribute_Answer__c
+      - name: WorkOrder_Relationship__c
+
+  - name: brutos_czrm_salesforce_staging
+    database: rj-iplanrio
+    schema: brutos_czrm_salesforce_org_staging_staging
+    description: >
+      Objetos do CRM replicados pelo Airbyte (source Salesforce) — ambiente Staging.
+    loaded_at_field: _airbyte_extracted_at
+    freshness:
+      error_after: {count: 20, period: minute}
+    tables:
+      - name: Account
+      - name: Case
+      - name: Contact
+      - name: Group
+      - name: Individual
+      - name: RecordType
+      - name: User
+      - name: Neighborhood__c
+      - name: Organizational_Unity__c
+      - name: Service_Attribute_Library__c
+      - name: Service_Catalog__c
+      - name: WorkOrder
+      - name: WorkOrderUpdate__c
+      - name: WorkOrder_Attribute_Answer__c
+      - name: WorkOrder_Relationship__c

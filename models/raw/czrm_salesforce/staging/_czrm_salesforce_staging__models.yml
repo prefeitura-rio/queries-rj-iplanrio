@@ -1,0 +1,1869 @@
+version: 2
+
+models:
+  - name: raw_czrm_staging__account
+    description: "Tabela raw do objeto Salesforce correspondente a account (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__account__id__unique
+              config:
+                severity: error
+      - name: is_deleted
+        data_type: boolean
+      - name: master_record_id
+        data_type: string
+      - name: name
+        data_type: string
+      - name: last_name
+        data_type: string
+      - name: first_name
+        data_type: string
+      - name: salutation
+        data_type: string
+      - name: type
+        data_type: string
+      - name: record_type_id
+        data_type: string
+      - name: parent_id
+        data_type: string
+      - name: billing_street
+        data_type: string
+      - name: billing_city
+        data_type: string
+      - name: billing_state
+        data_type: string
+      - name: billing_postal_code
+        data_type: string
+      - name: billing_country
+        data_type: string
+      - name: billing_latitude
+        data_type: numeric
+      - name: billing_longitude
+        data_type: numeric
+      - name: billing_geocode_accuracy
+        data_type: string
+      - name: billing_address
+        data_type: string
+      - name: shipping_street
+        data_type: string
+      - name: shipping_city
+        data_type: string
+      - name: shipping_state
+        data_type: string
+      - name: shipping_postal_code
+        data_type: string
+      - name: shipping_country
+        data_type: string
+      - name: shipping_latitude
+        data_type: numeric
+      - name: shipping_longitude
+        data_type: numeric
+      - name: shipping_geocode_accuracy
+        data_type: string
+      - name: shipping_address
+        data_type: string
+      - name: phone
+        data_type: string
+      - name: fax
+        data_type: string
+      - name: account_number
+        data_type: string
+      - name: website
+        data_type: string
+      - name: photo_url
+        data_type: string
+      - name: sic
+        data_type: string
+      - name: industry
+        data_type: string
+      - name: annual_revenue
+        data_type: numeric
+      - name: number_of_employees
+        data_type: int64
+      - name: ownership
+        data_type: string
+      - name: ticker_symbol
+        data_type: string
+      - name: description
+        data_type: string
+      - name: rating
+        data_type: string
+      - name: site
+        data_type: string
+      - name: owner_id
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_activity_date
+        data_type: date
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: source_system_identifier
+        data_type: string
+      - name: is_partner
+        data_type: boolean
+      - name: is_customer_portal
+        data_type: boolean
+      - name: person_contact_id
+        data_type: string
+      - name: is_person_account
+        data_type: boolean
+      - name: person_mailing_street
+        data_type: string
+      - name: person_mailing_city
+        data_type: string
+      - name: person_mailing_state
+        data_type: string
+      - name: person_mailing_postal_code
+        data_type: string
+      - name: person_mailing_country
+        data_type: string
+      - name: person_mailing_latitude
+        data_type: numeric
+      - name: person_mailing_longitude
+        data_type: numeric
+      - name: person_mailing_geocode_accuracy
+        data_type: string
+      - name: person_mailing_address
+        data_type: string
+      - name: person_other_street
+        data_type: string
+      - name: person_other_city
+        data_type: string
+      - name: person_other_state
+        data_type: string
+      - name: person_other_postal_code
+        data_type: string
+      - name: person_other_country
+        data_type: string
+      - name: person_other_latitude
+        data_type: numeric
+      - name: person_other_longitude
+        data_type: numeric
+      - name: person_other_geocode_accuracy
+        data_type: string
+      - name: person_other_address
+        data_type: string
+      - name: person_mobile_phone
+        data_type: string
+      - name: person_home_phone
+        data_type: string
+      - name: person_other_phone
+        data_type: string
+      - name: person_assistant_phone
+        data_type: string
+      - name: person_email
+        data_type: string
+      - name: person_title
+        data_type: string
+      - name: person_department
+        data_type: string
+      - name: person_assistant_name
+        data_type: string
+      - name: person_lead_source
+        data_type: string
+      - name: person_birthdate
+        data_type: date
+      - name: person_has_opted_out_of_email
+        data_type: boolean
+      - name: person_has_opted_out_of_fax
+        data_type: boolean
+      - name: person_do_not_call
+        data_type: boolean
+      - name: person_last_cu_request_date
+        data_type: timestamp
+      - name: person_last_cu_update_date
+        data_type: timestamp
+      - name: person_email_bounced_reason
+        data_type: string
+      - name: person_email_bounced_date
+        data_type: timestamp
+      - name: person_individual_id
+        data_type: string
+      - name: person_pronouns
+        data_type: string
+      - name: person_gender_identity
+        data_type: string
+      - name: jigsaw
+        data_type: string
+      - name: jigsaw_company_id
+        data_type: string
+      - name: account_source
+        data_type: string
+      - name: sic_desc
+        data_type: string
+      - name: has_privacy_hold
+        data_type: boolean
+      - name: cpf
+        data_type: string
+      - name: nome_completo
+        data_type: string
+      - name: ignore_validation_rule
+        data_type: boolean
+      - name: is_tourist
+        data_type: boolean
+      - name: last_access_servant_portal
+        data_type: timestamp
+      - name: passport_number
+        data_type: string
+      - name: phone_1
+        data_type: string
+      - name: phone_2
+        data_type: string
+      - name: phone_3
+        data_type: string
+      - name: social_name
+        data_type: string
+      - name: address_complement
+        data_type: string
+      - name: disability_type
+        data_type: string
+      - name: display_name
+        data_type: string
+      - name: education_level
+        data_type: string
+      - name: family_income
+        data_type: string
+      - name: public_servant_status
+        data_type: string
+      - name: nationality
+        data_type: string
+      - name: phone_1_type
+        data_type: string
+      - name: phone_2_type
+        data_type: string
+      - name: phone_3_type
+        data_type: string
+      - name: phone_international
+        data_type: string
+      - name: race_color
+        data_type: string
+      - name: is_public_servant
+        data_type: boolean
+      - name: speaking_language
+        data_type: string
+      - name: last_update_channel
+        data_type: string
+      - name: email_corporativo
+        data_type: string
+      - name: user_internal
+        data_type: string
+      - name: main_organizational_unit
+        data_type: string
+      - name: user_external
+        data_type: string
+      - name: receber_email_notificacao
+        data_type: boolean
+      - name: et4ae5_has_opted_out_of_mobile_pc
+        data_type: boolean
+      - name: et4ae5_mobile_country_code_pc
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__contact
+    description: "Tabela raw do objeto Salesforce correspondente a contact (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__contact__id__unique
+              config:
+                severity: error
+      - name: is_deleted
+        data_type: boolean
+      - name: master_record_id
+        data_type: string
+      - name: account_id
+        data_type: string
+      - name: is_person_account
+        data_type: boolean
+      - name: last_name
+        data_type: string
+      - name: first_name
+        data_type: string
+      - name: salutation
+        data_type: string
+      - name: name
+        data_type: string
+      - name: mailing_street
+        data_type: string
+      - name: mailing_city
+        data_type: string
+      - name: mailing_state
+        data_type: string
+      - name: mailing_postal_code
+        data_type: string
+      - name: mailing_country
+        data_type: string
+      - name: mailing_latitude
+        data_type: numeric
+      - name: mailing_longitude
+        data_type: numeric
+      - name: mailing_geocode_accuracy
+        data_type: string
+      - name: mailing_address
+        data_type: string
+      - name: phone
+        data_type: string
+      - name: fax
+        data_type: string
+      - name: mobile_phone
+        data_type: string
+      - name: home_phone
+        data_type: string
+      - name: other_phone
+        data_type: string
+      - name: assistant_phone
+        data_type: string
+      - name: reports_to_id
+        data_type: string
+      - name: email
+        data_type: string
+      - name: title
+        data_type: string
+      - name: department
+        data_type: string
+      - name: birthdate
+        data_type: date
+      - name: owner_id
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_activity_date
+        data_type: date
+      - name: last_cu_request_date
+        data_type: timestamp
+      - name: last_cu_update_date
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: email_bounced_reason
+        data_type: string
+      - name: email_bounced_date
+        data_type: timestamp
+      - name: is_email_bounced
+        data_type: boolean
+      - name: photo_url
+        data_type: string
+      - name: jigsaw
+        data_type: string
+      - name: jigsaw_contact_id
+        data_type: string
+      - name: individual_id
+        data_type: string
+      - name: gender_identity
+        data_type: string
+      - name: has_privacy_hold
+        data_type: boolean
+      - name: is_priority_record
+        data_type: boolean
+      - name: contact_source
+        data_type: string
+      - name: title_type
+        data_type: string
+      - name: department_group
+        data_type: string
+      - name: buyer_attributes
+        data_type: string
+      - name: et4ae5_has_opted_out_of_mobile
+        data_type: boolean
+      - name: et4ae5_mobile_country_code
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__individual
+    description: "Tabela raw do objeto Salesforce correspondente a individual (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__individual__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: last_name
+        data_type: string
+      - name: first_name
+        data_type: string
+      - name: salutation
+        data_type: string
+      - name: name
+        data_type: string
+      - name: has_opted_out_tracking
+        data_type: boolean
+      - name: has_opted_out_profiling
+        data_type: boolean
+      - name: has_opted_out_processing
+        data_type: boolean
+      - name: has_opted_out_solicit
+        data_type: boolean
+      - name: should_forget
+        data_type: boolean
+      - name: send_individual_data
+        data_type: boolean
+      - name: can_store_pii_elsewhere
+        data_type: boolean
+      - name: has_opted_out_geo_tracking
+        data_type: boolean
+      - name: birth_date
+        data_type: date
+      - name: death_date
+        data_type: date
+      - name: convictions_count
+        data_type: int64
+      - name: children_count
+        data_type: int64
+      - name: military_service
+        data_type: string
+      - name: is_home_owner
+        data_type: boolean
+      - name: occupation
+        data_type: string
+      - name: website
+        data_type: string
+      - name: individuals_age
+        data_type: string
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: master_record_id
+        data_type: string
+      - name: consumer_credit_score
+        data_type: int64
+      - name: consumer_credit_score_provider_name
+        data_type: string
+      - name: influencer_rating
+        data_type: int64
+      - name: has_privacy_hold
+        data_type: boolean
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__neighborhood
+    description: "Tabela raw do objeto Salesforce correspondente a neighborhood (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__neighborhood__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: codbairro
+        data_type: string
+      - name: codbnum
+        data_type: numeric
+      - name: ra
+        data_type: string
+      - name: ap
+        data_type: string
+      - name: rp
+        data_type: string
+      - name: subprefeitura
+        data_type: string
+      - name: aps
+        data_type: string
+      - name: cre
+        data_type: string
+      - name: coverage
+        data_type: string
+      - name: google_neighborhood_name
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__organizational_unity
+    description: "Tabela raw do objeto Salesforce correspondente a organizational_unity (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__organizational_unity__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: record_type_id
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: external_integration_key
+        data_type: string
+      - name: parent_uo
+        data_type: string
+      - name: ativo
+        data_type: boolean
+      - name: email_institucional
+        data_type: string
+      - name: gestor_responsavel
+        data_type: string
+      - name: natureza_orgao
+        data_type: string
+      - name: permite_atribuir_chamados
+        data_type: boolean
+      - name: role_id
+        data_type: string
+      - name: queue_id
+        data_type: string
+      - name: sgrc_uo_id
+        data_type: numeric
+      - name: telefone_institucional
+        data_type: string
+      - name: record_type_developer_name
+        data_type: string
+      - name: wo_update_event_bundle
+        data_type: string
+      - name: main_organizational_unit
+        data_type: string
+      - name: unity_type
+        data_type: string
+      - name: shortname
+        data_type: string
+      - name: oversight_target_uo
+        data_type: string
+      - name: approval_queue_id
+        data_type: string
+      - name: integracao_ativa
+        data_type: boolean
+      - name: sici_code
+        data_type: string
+      - name: content_approval_queue_id
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__queue_group
+    description: "Tabela raw do objeto Salesforce correspondente a queue_group (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__queue_group__id__unique
+              config:
+                severity: error
+      - name: name
+        data_type: string
+      - name: developer_name
+        data_type: string
+      - name: related_id
+        data_type: string
+      - name: type
+        data_type: string
+      - name: email
+        data_type: string
+      - name: queue_routing_config_id
+        data_type: string
+      - name: owner_id
+        data_type: string
+      - name: does_send_email_to_members
+        data_type: boolean
+      - name: does_include_bosses
+        data_type: boolean
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: description
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__record_type
+    description: "Tabela raw do objeto Salesforce correspondente a record_type (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__record_type__id__unique
+              config:
+                severity: error
+      - name: name
+        data_type: string
+      - name: developer_name
+        data_type: string
+      - name: namespace_prefix
+        data_type: string
+      - name: description
+        data_type: string
+      - name: business_process_id
+        data_type: string
+      - name: sobject_type
+        data_type: string
+      - name: is_active
+        data_type: boolean
+      - name: is_person_type
+        data_type: boolean
+      - name: created_by_id
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: system_modstamp
+        data_type: timestamp
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__service_attribute_library
+    description: "Tabela raw do objeto Salesforce correspondente a service_attribute_library (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__service_attribute_library__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: field_label_name
+        data_type: string
+      - name: integracao_ativa
+        data_type: boolean
+      - name: field_type
+        data_type: string
+      - name: unique_key
+        data_type: string
+      - name: validation_regex
+        data_type: string
+      - name: validation_error_message
+        data_type: string
+      - name: global_help_text
+        data_type: string
+      - name: is_active
+        data_type: boolean
+      - name: valores_cadastrados
+        data_type: numeric
+      - name: form_section
+        data_type: string
+      - name: custom_lwc_name
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__service_case
+    description: "Tabela raw do objeto Salesforce correspondente a service_case (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__service_case__id__unique
+              config:
+                severity: error
+      - name: is_deleted
+        data_type: boolean
+      - name: master_record_id
+        data_type: string
+      - name: case_number
+        data_type: string
+      - name: contact_id
+        data_type: string
+      - name: account_id
+        data_type: string
+      - name: source_id
+        data_type: string
+      - name: parent_id
+        data_type: string
+      - name: supplied_name
+        data_type: string
+      - name: supplied_email
+        data_type: string
+      - name: supplied_phone
+        data_type: string
+      - name: supplied_company
+        data_type: string
+      - name: type
+        data_type: string
+      - name: record_type_id
+        data_type: string
+      - name: status
+        data_type: string
+      - name: origin
+        data_type: string
+      - name: language
+        data_type: string
+      - name: subject
+        data_type: string
+      - name: priority
+        data_type: string
+      - name: description
+        data_type: string
+      - name: is_closed
+        data_type: boolean
+      - name: closed_date
+        data_type: timestamp
+      - name: is_escalated
+        data_type: boolean
+      - name: owner_id
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: contact_phone
+        data_type: string
+      - name: contact_mobile
+        data_type: string
+      - name: contact_email
+        data_type: string
+      - name: contact_fax
+        data_type: string
+      - name: comments
+        data_type: string
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: milestone_timer
+        data_type: string
+      - name: protocolo_formula
+        data_type: string
+      - name: protocolo_texto
+        data_type: string
+      - name: protocolo_hyperlink
+        data_type: string
+      - name: comentarios_de_solucao
+        data_type: string
+      - name: bypass_validation_rule
+        data_type: boolean
+      - name: esta_na_fila
+        data_type: boolean
+      - name: record_type_developer_name
+        data_type: string
+      - name: qtd_emails_recebidos
+        data_type: numeric
+      - name: qtd_emails_enviados
+        data_type: numeric
+      - name: tipo_de_registro_name_formula
+        data_type: string
+      - name: assinatura_case_owner
+        data_type: string
+      - name: nome_equipe_assinatura
+        data_type: string
+      - name: nome_cidadao_assinatura
+        data_type: string
+      - name: assunto_tratado
+        data_type: string
+      - name: categoria
+        data_type: string
+      - name: subcategoria
+        data_type: string
+      - name: detalhe
+        data_type: string
+      - name: descricao_resumida
+        data_type: string
+      - name: substatus
+        data_type: string
+      - name: data_hora_de_resolucao
+        data_type: timestamp
+      - name: possui_data_hora_resolucao_formula
+        data_type: boolean
+      - name: nome_do_proprietario
+        data_type: string
+      - name: chat_fora_do_horario_de_atendimento
+        data_type: boolean
+      - name: tipo_de_usuario
+        data_type: string
+      - name: possui_pesquisa_respondida
+        data_type: boolean
+      - name: link_da_corrida
+        data_type: string
+      - name: survey_invitation_sent
+        data_type: boolean
+      - name: is_reiteracao
+        data_type: boolean
+      - name: is_anonymous
+        data_type: boolean
+      - name: solicitante_departamental
+        data_type: string
+      - name: operador_nome
+        data_type: string
+      - name: operador_telefone
+        data_type: string
+      - name: solicitante_telefone
+        data_type: string
+      - name: tem_dados_departamentais
+        data_type: boolean
+      - name: esqueleto
+        data_type: boolean
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__service_catalog
+    description: "Tabela raw do objeto Salesforce correspondente a service_catalog (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__service_catalog__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: record_type_id
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: is_active
+        data_type: boolean
+      - name: available_for_citizen
+        data_type: boolean
+      - name: slug
+        data_type: string
+      - name: ombudsman_exclusive
+        data_type: boolean
+      - name: is_lai
+        data_type: boolean
+      - name: service_hierarchy
+        data_type: string
+      - name: internal_only
+        data_type: boolean
+      - name: sgrc_legacy_crm_subtype_id
+        data_type: string
+      - name: unique_key
+        data_type: string
+      - name: theme
+        data_type: string
+      - name: subtheme
+        data_type: string
+      - name: theme_formula
+        data_type: string
+      - name: subtheme_formula
+        data_type: string
+      - name: service_name
+        data_type: string
+      - name: service_hyperlink_formula
+        data_type: string
+      - name: responsible_org_unit
+        data_type: string
+      - name: record_type_developer_name
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__user
+    description: "Tabela raw do objeto Salesforce correspondente a user (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__user__id__unique
+              config:
+                severity: error
+      - name: username
+        data_type: string
+      - name: last_name
+        data_type: string
+      - name: first_name
+        data_type: string
+      - name: name
+        data_type: string
+      - name: company_name
+        data_type: string
+      - name: division
+        data_type: string
+      - name: department
+        data_type: string
+      - name: title
+        data_type: string
+      - name: street
+        data_type: string
+      - name: city
+        data_type: string
+      - name: state
+        data_type: string
+      - name: postal_code
+        data_type: string
+      - name: country
+        data_type: string
+      - name: latitude
+        data_type: numeric
+      - name: longitude
+        data_type: numeric
+      - name: geocode_accuracy
+        data_type: string
+      - name: address
+        data_type: string
+      - name: email
+        data_type: string
+      - name: email_preferences_auto_bcc
+        data_type: boolean
+      - name: email_preferences_auto_bcc_stay_in_touch
+        data_type: boolean
+      - name: email_preferences_stay_in_touch_reminder
+        data_type: boolean
+      - name: sender_email
+        data_type: string
+      - name: sender_name
+        data_type: string
+      - name: signature
+        data_type: string
+      - name: stay_in_touch_subject
+        data_type: string
+      - name: stay_in_touch_signature
+        data_type: string
+      - name: stay_in_touch_note
+        data_type: string
+      - name: phone
+        data_type: string
+      - name: fax
+        data_type: string
+      - name: mobile_phone
+        data_type: string
+      - name: alias
+        data_type: string
+      - name: community_nickname
+        data_type: string
+      - name: badge_text
+        data_type: string
+      - name: is_active
+        data_type: boolean
+      - name: time_zone_sid_key
+        data_type: string
+      - name: locale_sid_key
+        data_type: string
+      - name: receives_info_emails
+        data_type: boolean
+      - name: receives_admin_info_emails
+        data_type: boolean
+      - name: email_encoding_key
+        data_type: string
+      - name: user_type
+        data_type: string
+      - name: start_day
+        data_type: string
+      - name: end_day
+        data_type: string
+      - name: language_locale_key
+        data_type: string
+      - name: employee_number
+        data_type: string
+      - name: delegated_approver_id
+        data_type: string
+      - name: manager_id
+        data_type: string
+      - name: last_login_date
+        data_type: timestamp
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: password_expiration_date
+        data_type: timestamp
+      - name: su_access_expiration_date
+        data_type: date
+      - name: offline_trial_expiration_date
+        data_type: timestamp
+      - name: offline_pda_trial_expiration_date
+        data_type: timestamp
+      - name: user_permissions_marketing_user
+        data_type: boolean
+      - name: user_permissions_offline_user
+        data_type: boolean
+      - name: user_permissions_avantgo_user
+        data_type: boolean
+      - name: user_permissions_call_center_auto_login
+        data_type: boolean
+      - name: user_permissions_sf_content_user
+        data_type: boolean
+      - name: user_permissions_knowledge_user
+        data_type: boolean
+      - name: user_permissions_interaction_user
+        data_type: boolean
+      - name: user_permissions_support_user
+        data_type: boolean
+      - name: forecast_enabled
+        data_type: boolean
+      - name: user_preferences_activity_reminders_popup
+        data_type: boolean
+      - name: user_preferences_event_reminders_checkbox_default
+        data_type: boolean
+      - name: user_preferences_task_reminders_checkbox_default
+        data_type: boolean
+      - name: user_preferences_reminder_sound_off
+        data_type: boolean
+      - name: user_preferences_disable_all_feeds_email
+        data_type: boolean
+      - name: user_preferences_disable_followers_email
+        data_type: boolean
+      - name: user_preferences_disable_profile_post_email
+        data_type: boolean
+      - name: user_preferences_disable_change_comment_email
+        data_type: boolean
+      - name: user_preferences_disable_later_comment_email
+        data_type: boolean
+      - name: user_preferences_dis_prof_post_comment_email
+        data_type: boolean
+      - name: user_preferences_hide_csn_get_chatter_mobile_task
+        data_type: boolean
+      - name: user_preferences_disable_mentions_post_email
+        data_type: boolean
+      - name: user_preferences_dis_mentions_comment_email
+        data_type: boolean
+      - name: user_preferences_hide_csn_desktop_task
+        data_type: boolean
+      - name: user_preferences_hide_chatter_onboarding_splash
+        data_type: boolean
+      - name: user_preferences_hide_second_chatter_onboarding_splash
+        data_type: boolean
+      - name: user_preferences_dis_comment_after_like_email
+        data_type: boolean
+      - name: user_preferences_disable_like_email
+        data_type: boolean
+      - name: user_preferences_sort_feed_by_comment
+        data_type: boolean
+      - name: user_preferences_disable_message_email
+        data_type: boolean
+      - name: user_preferences_dismiss_record_channels_suggested_objects
+        data_type: boolean
+      - name: user_preferences_disable_bookmark_email
+        data_type: boolean
+      - name: user_preferences_disable_share_post_email
+        data_type: boolean
+      - name: user_preferences_action_launcher_einstein_gpt_consent
+        data_type: boolean
+      - name: user_preferences_assistive_actions_enabled_in_action_launcher
+        data_type: boolean
+      - name: user_preferences_enable_auto_sub_for_feeds
+        data_type: boolean
+      - name: user_preferences_disable_file_share_notifications_for_api
+        data_type: boolean
+      - name: user_preferences_enable_lwr_lex_pilot
+        data_type: boolean
+      - name: user_preferences_show_title_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_manager_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_email_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_work_phone_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_mobile_phone_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_fax_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_street_address_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_city_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_state_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_postal_code_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_country_to_external_users
+        data_type: boolean
+      - name: user_preferences_show_profile_pic_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_title_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_city_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_state_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_postal_code_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_country_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_forecasting_change_signals
+        data_type: boolean
+      - name: user_preferences_live_agent_miaw_setup_deflection
+        data_type: boolean
+      - name: user_preferences_hide_s1_browser_ui
+        data_type: boolean
+      - name: user_preferences_disable_endorsement_email
+        data_type: boolean
+      - name: user_preferences_path_assistant_collapsed
+        data_type: boolean
+      - name: user_preferences_cache_diagnostics
+        data_type: boolean
+      - name: user_preferences_show_email_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_manager_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_work_phone_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_mobile_phone_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_fax_to_guest_users
+        data_type: boolean
+      - name: user_preferences_show_street_address_to_guest_users
+        data_type: boolean
+      - name: user_preferences_lightning_experience_preferred
+        data_type: boolean
+      - name: user_preferences_hide_end_user_onboarding_assistant_modal
+        data_type: boolean
+      - name: user_preferences_hide_lightning_migration_modal
+        data_type: boolean
+      - name: user_preferences_hide_sfx_welcome_mat
+        data_type: boolean
+      - name: user_preferences_hide_bigger_photo_callout
+        data_type: boolean
+      - name: user_preferences_global_nav_bar_wt_shown
+        data_type: boolean
+      - name: user_preferences_global_nav_grid_menu_wt_shown
+        data_type: boolean
+      - name: user_preferences_create_lex_apps_wt_shown
+        data_type: boolean
+      - name: user_preferences_favorites_wt_shown
+        data_type: boolean
+      - name: user_preferences_record_home_section_collapse_wt_shown
+        data_type: boolean
+      - name: user_preferences_record_home_reserved_wt_shown
+        data_type: boolean
+      - name: user_preferences_favorites_show_top_favorites
+        data_type: boolean
+      - name: user_preferences_exclude_mail_app_attachments
+        data_type: boolean
+      - name: user_preferences_suppress_task_sfx_reminders
+        data_type: boolean
+      - name: user_preferences_suppress_event_sfx_reminders
+        data_type: boolean
+      - name: user_preferences_preview_custom_theme
+        data_type: boolean
+      - name: user_preferences_has_celebration_badge
+        data_type: boolean
+      - name: user_preferences_user_debug_mode_pref
+        data_type: boolean
+      - name: user_preferences_srh_override_activities
+        data_type: boolean
+      - name: user_preferences_reverse_open_activities_view
+        data_type: boolean
+      - name: user_preferences_has_sent_warning_email
+        data_type: boolean
+      - name: user_preferences_has_sent_warning_email238
+        data_type: boolean
+      - name: user_preferences_has_sent_warning_email240
+        data_type: boolean
+      - name: user_preferences_dismiss_personal_space_legal_message
+        data_type: boolean
+      - name: user_preferences_dismiss_reuse_update_reminder_modal
+        data_type: boolean
+      - name: user_preferences_override_default_page_context
+        data_type: boolean
+      - name: user_preferences_bre_lookup_table_welcome_mat
+        data_type: boolean
+      - name: user_preferences_hide_browse_product_redirect_confirmation
+        data_type: boolean
+      - name: user_preferences_hide_online_sales_app_tab_visibility_requirements_modal
+        data_type: boolean
+      - name: user_preferences_hide_online_sales_app_welcome_mat
+        data_type: boolean
+      - name: user_preferences_hide_managed_eca_mobile_pub_modal
+        data_type: boolean
+      - name: user_preferences_gen_ai_summarization_user_consent
+        data_type: boolean
+      - name: user_preferences_hide_flow_type_change_confirmation_modal
+        data_type: boolean
+      - name: user_preferences_show_forecasting_rounded_amounts
+        data_type: boolean
+      - name: has_user_verified_phone
+        data_type: boolean
+      - name: has_user_verified_email
+        data_type: boolean
+      - name: is_partner
+        data_type: boolean
+      - name: contact_id
+        data_type: string
+      - name: account_id
+        data_type: string
+      - name: call_center_id
+        data_type: string
+      - name: extension
+        data_type: string
+      - name: portal_role
+        data_type: string
+      - name: is_portal_enabled
+        data_type: boolean
+      - name: federation_identifier
+        data_type: string
+      - name: about_me
+        data_type: string
+      - name: full_photo_url
+        data_type: string
+      - name: small_photo_url
+        data_type: string
+      - name: is_ext_indicator_visible
+        data_type: boolean
+      - name: out_of_office_message
+        data_type: string
+      - name: medium_photo_url
+        data_type: string
+      - name: digest_frequency
+        data_type: string
+      - name: default_group_notification_frequency
+        data_type: string
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: banner_photo_url
+        data_type: string
+      - name: small_banner_photo_url
+        data_type: string
+      - name: medium_banner_photo_url
+        data_type: string
+      - name: is_profile_photo_active
+        data_type: boolean
+      - name: individual_id
+        data_type: string
+      - name: nome_ficticio
+        data_type: string
+      - name: main_organizational_unit
+        data_type: string
+      - name: et4ae5_default_et_page
+        data_type: string
+      - name: et4ae5_default_mid
+        data_type: string
+      - name: et4ae5_exact_target_for_app_exchange_admin
+        data_type: boolean
+      - name: et4ae5_exact_target_for_app_exchange_user
+        data_type: boolean
+      - name: et4ae5_exact_target_username
+        data_type: string
+      - name: et4ae5_exact_target_o_auth_token
+        data_type: string
+      - name: et4ae5_valid_exact_target_admin
+        data_type: boolean
+      - name: et4ae5_valid_exact_target_user
+        data_type: boolean
+      - name: is_external_public_servant
+        data_type: boolean
+      - name: cpf
+        data_type: string
+      - name: canal_preferencial
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__work_order
+    description: "Tabela raw do objeto Salesforce correspondente a work_order (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: work_order_number
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: account_id
+        data_type: string
+      - name: contact_id
+        data_type: string
+      - name: case_id
+        data_type: string
+      - name: entitlement_id
+        data_type: string
+      - name: service_contract_id
+        data_type: string
+      - name: asset_id
+        data_type: string
+      - name: street
+        data_type: string
+      - name: city
+        data_type: string
+      - name: state
+        data_type: string
+      - name: postal_code
+        data_type: string
+      - name: country
+        data_type: string
+      - name: latitude
+        data_type: numeric
+      - name: longitude
+        data_type: numeric
+      - name: geocode_accuracy
+        data_type: string
+      - name: address
+        data_type: string
+      - name: description
+        data_type: string
+      - name: start_date
+        data_type: timestamp
+      - name: end_date
+        data_type: timestamp
+      - name: subject
+        data_type: string
+      - name: root_work_order_id
+        data_type: string
+      - name: status
+        data_type: string
+      - name: priority
+        data_type: string
+      - name: tax
+        data_type: numeric
+      - name: subtotal
+        data_type: numeric
+      - name: total_price
+        data_type: numeric
+      - name: line_item_count
+        data_type: int64
+      - name: pricebook2_id
+        data_type: string
+      - name: discount
+        data_type: numeric
+      - name: grand_total
+        data_type: numeric
+      - name: parent_work_order_id
+        data_type: string
+      - name: is_closed
+        data_type: boolean
+      - name: is_stopped
+        data_type: boolean
+      - name: stop_start_date
+        data_type: timestamp
+      - name: sla_start_date
+        data_type: timestamp
+      - name: sla_exit_date
+        data_type: timestamp
+      - name: business_hours_id
+        data_type: string
+      - name: milestone_status
+        data_type: string
+      - name: duration
+        data_type: numeric
+      - name: duration_type
+        data_type: string
+      - name: duration_in_minutes
+        data_type: numeric
+      - name: service_appointment_count
+        data_type: int64
+      - name: status_category
+        data_type: string
+      - name: location_id
+        data_type: string
+      - name: pre_work_brief_prompt_template
+        data_type: string
+      - name: post_work_summary
+        data_type: string
+      - name: is_confidential
+        data_type: boolean
+      - name: service_category
+        data_type: string
+      - name: service
+        data_type: string
+      - name: main_organizational_unit
+        data_type: string
+      - name: service_hyperlink
+        data_type: string
+      - name: dynamic_form_config
+        data_type: string
+      - name: has_equivalents
+        data_type: boolean
+      - name: last_update_status
+        data_type: string
+      - name: origin
+        data_type: string
+      - name: assigned_uo
+        data_type: string
+      - name: fsl_is_fill_in_candidate
+        data_type: boolean
+      - name: fsl_prevent_geocoding_for_chatter_actions
+        data_type: boolean
+      - name: fsl_scheduling_priority
+        data_type: numeric
+      - name: external_ticket_id
+        data_type: string
+      - name: integration_direction
+        data_type: string
+      - name: neighborhood
+        data_type: string
+      - name: close_reason
+        data_type: string
+      - name: categoria
+        data_type: string
+      - name: service_catalog_formula
+        data_type: string
+      - name: protocolo_hyperlink
+        data_type: string
+      - name: is_abrangencia
+        data_type: boolean
+      - name: is_equivalencia
+        data_type: boolean
+      - name: is_vinculacao
+        data_type: boolean
+      - name: integration_source
+        data_type: string
+      - name: operador_matricula
+        data_type: string
+      - name: operador_nome
+        data_type: string
+      - name: address_type
+        data_type: string
+      - name: complement
+        data_type: string
+      - name: door_number
+        data_type: string
+      - name: favela_code
+        data_type: string
+      - name: favela_name
+        data_type: string
+      - name: geolocation_precise
+        data_type: boolean
+      - name: ipp_street_name
+        data_type: string
+      - name: is_favela
+        data_type: boolean
+      - name: landmark
+        data_type: string
+      - name: no_number
+        data_type: boolean
+      - name: public_way_code
+        data_type: string
+      - name: public_way
+        data_type: string
+      - name: operador_origem
+        data_type: string
+      - name: is_anonymous
+        data_type: boolean
+      - name: latitude_display
+        data_type: string
+      - name: longitude_display
+        data_type: string
+      - name: equivalent_count
+        data_type: numeric
+      - name: data_fechamento
+        data_type: timestamp
+      - name: is_wo_closed
+        data_type: boolean
+      - name: em_fila_fallback
+        data_type: boolean
+      - name: routing_fallback
+        data_type: boolean
+      - name: tipo_solicitante
+        data_type: string
+      - name: integration_number
+        data_type: numeric
+      - name: os_owner
+        data_type: string
+      - name: motivo_nao_execucao
+        data_type: string
+      - name: operador_telefone
+        data_type: string
+      - name: solicitante_nome
+        data_type: string
+      - name: solicitante_telefone
+        data_type: string
+      - name: tem_dados_departamentais
+        data_type: boolean
+      - name: service_hyperlink_without_category
+        data_type: string
+      - name: sla_target_date
+        data_type: timestamp
+      - name: canal_atendimento
+        data_type: string
+      - name: expected_attachments
+        data_type: numeric
+      - name: address_enrichment_at
+        data_type: timestamp
+      - name: equivalence_analysis_at
+        data_type: timestamp
+      - name: last_update_date
+        data_type: timestamp
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__work_order_attribute_answer
+    description: "Tabela raw do objeto Salesforce correspondente a work_order_attribute_answer (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order_attribute_answer__id__unique
+              config:
+                severity: error
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: work_order
+        data_type: string
+      - name: answered_at
+        data_type: timestamp
+      - name: attribute_label
+        data_type: string
+      - name: attribute_type
+        data_type: string
+      - name: external_key
+        data_type: string
+      - name: order
+        data_type: numeric
+      - name: section
+        data_type: string
+      - name: service_attribute_library
+        data_type: string
+      - name: service_form_config
+        data_type: string
+      - name: value_boolean
+        data_type: boolean
+      - name: value_date_time
+        data_type: timestamp
+      - name: value_date
+        data_type: date
+      - name: value_display
+        data_type: string
+      - name: value_json
+        data_type: string
+      - name: value_long_text
+        data_type: string
+      - name: value_multipicklist
+        data_type: string
+      - name: value_number
+        data_type: numeric
+      - name: value_text
+        data_type: string
+      - name: is_internal
+        data_type: boolean
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__work_order_relationship
+    description: "Tabela raw do objeto Salesforce correspondente a work_order_relationship (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order_relationship__id__unique
+              config:
+                severity: error
+      - name: owner_id
+        data_type: string
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: case
+        data_type: string
+      - name: tipo
+        data_type: string
+      - name: wo_origem
+        data_type: string
+      - name: wo_relacionada
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
+
+  - name: raw_czrm_staging__work_order_update
+    description: "Tabela raw do objeto Salesforce correspondente a work_order_update (staging)."
+    columns:
+      - name: id
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order_update__id__unique
+              config:
+                severity: error
+      - name: is_deleted
+        data_type: boolean
+      - name: name
+        data_type: string
+      - name: created_date
+        data_type: timestamp
+      - name: created_by_id
+        data_type: string
+      - name: last_modified_date
+        data_type: timestamp
+      - name: last_modified_by_id
+        data_type: string
+      - name: system_modstamp
+        data_type: timestamp
+      - name: last_viewed_date
+        data_type: timestamp
+      - name: last_referenced_date
+        data_type: timestamp
+      - name: work_order
+        data_type: string
+      - name: event_type
+        data_type: string
+      - name: response_deadline
+        data_type: timestamp
+      - name: response_time_days
+        data_type: numeric
+      - name: event_comments
+        data_type: string
+      - name: status
+        data_type: string
+      - name: allow_citizen_visibility
+        data_type: boolean
+      - name: is_visible_to_citizen
+        data_type: boolean
+      - name: approver
+        data_type: string
+      - name: rejection_reason
+        data_type: string
+      - name: email_servidor_sent
+        data_type: boolean
+      - name: transaction_id
+        data_type: string
+      - name: approval_process_start
+        data_type: timestamp
+      - name: approve_decision_datetime
+        data_type: timestamp
+      - name: has_approval_process
+        data_type: boolean
+      - name: justification
+        data_type: string
+      - name: approval_outcome
+        data_type: string
+      - name: modification_reason
+        data_type: string
+      - name: response_to
+        data_type: string
+      - name: cancellation_datetime
+        data_type: timestamp
+      - name: transfer_target
+        data_type: string
+      - name: modified_comments
+        data_type: string
+      - name: is_replicated
+        data_type: boolean
+      - name: email_notification_sent
+        data_type: boolean
+      - name: share_citizen_data
+        data_type: boolean
+      - name: target_account
+        data_type: string
+      - name: target_group
+        data_type: string
+      - name: dynamic_fields_json
+        data_type: string
+      - name: target_uo_id
+        data_type: string
+      - name: cancellation_reason
+        data_type: string
+      - name: publication_datetime
+        data_type: timestamp
+      - name: origin_service
+        data_type: string
+      - name: data_criacao
+        data_type: timestamp
+      - name: notificacao_proprietario_sent
+        data_type: boolean
+      - name: whats_app_notification_sent
+        data_type: boolean
+      - name: data_hora_andamento
+        data_type: timestamp
+      - name: integration_event
+        data_type: string
+      - name: status_especifico_orgao
+        data_type: string
+      - name: status_normalizado
+        data_type: string
+      - name: uo_informada_orgao
+        data_type: string
+      - name: related_work_order
+        data_type: string
+      - name: form_answers_json
+        data_type: string
+      - name: _airbyte_extracted_at
+        data_type: datetime
+        data_tests:
+          - no_missing_dates
