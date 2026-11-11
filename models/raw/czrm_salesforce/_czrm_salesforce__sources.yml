@@ -15,7 +15,6 @@ sources:
       - name: Contact
       - name: Group
       - name: Individual
-      - name: OperatingHours
       - name: RecordType
       - name: User
       - name: Neighborhood__c
