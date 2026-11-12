@@ -6,7 +6,7 @@
         partition_by={
             "field": "data_particao",
             "data_type": "date",
-            "granularity": "day",
+            "granularity": "month",
         }
     )
 }}
