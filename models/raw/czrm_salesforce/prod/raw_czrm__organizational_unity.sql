@@ -1,4 +1,11 @@
-{{config (alias = "organizational_unity")}}
+{{
+    config(
+        alias="organizational_unity",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -35,3 +42,6 @@ SELECT
     cast(content_approval_queue_id__c AS string) AS content_approval_queue_id,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce","Organizational_Unity__c")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

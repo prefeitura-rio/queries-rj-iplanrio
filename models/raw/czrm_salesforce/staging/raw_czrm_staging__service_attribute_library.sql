@@ -1,4 +1,11 @@
-{{config (alias = "service_attribute_library")}}
+{{
+    config(
+        alias="service_attribute_library",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -24,3 +31,6 @@ SELECT
     cast(Custom_LWC_Name__c AS string) AS custom_lwc_name,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce_staging","Service_Attribute_Library__c")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

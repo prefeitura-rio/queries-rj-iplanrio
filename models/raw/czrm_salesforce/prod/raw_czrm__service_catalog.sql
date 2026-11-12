@@ -1,4 +1,11 @@
-{{config (alias = "service_catalog")}}
+{{
+    config(
+        alias="service_catalog",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -31,3 +38,6 @@ SELECT
     cast(Record_Type_Developer_Name__c AS string) AS record_type_developer_name,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce", "Service_Catalog__c")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

@@ -1,4 +1,11 @@
-{{config (alias = "work_order_update")}}
+{{
+    config(
+        alias="work_order_update",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(IsDeleted AS boolean) AS is_deleted,
@@ -54,3 +61,6 @@ SELECT
     cast(Form_Answers_Json__c AS string) AS form_answers_json,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce", "WorkOrderUpdate__c")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

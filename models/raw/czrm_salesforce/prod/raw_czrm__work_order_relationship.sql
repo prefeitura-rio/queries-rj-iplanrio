@@ -1,4 +1,11 @@
-{{ config(alias="work_order_relationship") }}
+{{
+    config(
+        alias="work_order_relationship",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 
 select
     cast(Id as string)                      as id,
@@ -16,3 +23,6 @@ select
     cast(WO_Relacionada__c as string)       as wo_relacionada,
     cast(_airbyte_extracted_at as datetime) as _airbyte_extracted_at
 from {{ source("brutos_czrm_salesforce", "WorkOrder_Relationship__c") }}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

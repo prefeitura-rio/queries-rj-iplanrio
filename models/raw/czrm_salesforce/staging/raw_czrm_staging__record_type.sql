@@ -1,4 +1,11 @@
-{{config (alias = "record_type")}}
+{{
+    config(
+        alias="record_type",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(Name AS string) AS name,
@@ -16,3 +23,6 @@ SELECT
     cast(SystemModstamp AS timestamp) AS system_modstamp,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce_staging", "RecordType")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

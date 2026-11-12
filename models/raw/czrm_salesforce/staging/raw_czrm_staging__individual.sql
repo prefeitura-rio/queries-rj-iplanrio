@@ -1,4 +1,11 @@
-{{config (alias = "individual")}}
+{{
+    config(
+        alias="individual",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -37,3 +44,6 @@ SELECT
     cast(SystemModstamp AS timestamp) AS system_modstamp,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce_staging", "Individual")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

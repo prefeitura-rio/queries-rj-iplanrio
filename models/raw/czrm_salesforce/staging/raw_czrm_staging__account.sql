@@ -1,4 +1,11 @@
-{{ config(alias="account") }}
+{{
+    config(
+        alias="account",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 
 select
     cast(Id as string)                               as id,
@@ -134,3 +141,6 @@ select
     cast(et4ae5__Mobile_Country_Code__pc as string)  as et4ae5_mobile_country_code_pc,
     cast(_airbyte_extracted_at as datetime)          as _airbyte_extracted_at
 from {{ source("brutos_czrm_salesforce_staging", "Account") }}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

@@ -1,4 +1,11 @@
-{{ config(alias="work_order_attribute_answer") }}
+{{
+    config(
+        alias="work_order_attribute_answer",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 
 select
     cast(Id as string)                           as id,
@@ -32,3 +39,6 @@ select
     cast(Is_Internal__c as boolean)              as is_internal,
     cast(_airbyte_extracted_at as datetime)      as _airbyte_extracted_at
 from {{ source("brutos_czrm_salesforce_staging", "WorkOrder_Attribute_Answer__c") }}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

@@ -1,4 +1,11 @@
-{{ config(alias="service_case") }}
+{{
+    config(
+        alias="service_case",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 
 select
     cast(Id as string)                                      as id,
@@ -75,3 +82,6 @@ select
     cast(Esqueleto__c as boolean)                           as esqueleto,
     cast(_airbyte_extracted_at as datetime)                 as _airbyte_extracted_at
 from {{ source("brutos_czrm_salesforce_staging", "Case") }}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

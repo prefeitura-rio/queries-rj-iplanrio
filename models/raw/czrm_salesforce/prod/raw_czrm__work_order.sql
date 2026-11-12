@@ -1,4 +1,11 @@
-{{config (alias = "work_order")}}
+{{
+    config(
+        alias="work_order",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -123,3 +130,6 @@ SELECT
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM
     {{source ("brutos_czrm_salesforce", "WorkOrder")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

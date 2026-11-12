@@ -1,4 +1,11 @@
-{{config (alias = "user")}}
+{{
+    config(
+        alias="user",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(Username AS string) AS username,
@@ -279,3 +286,6 @@ SELECT
     cast(Canal_Preferencial__c AS string) AS canal_preferencial,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce_staging", "User")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}

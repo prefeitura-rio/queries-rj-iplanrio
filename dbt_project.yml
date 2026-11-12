@@ -133,24 +133,20 @@ models:
           +project: rj-cvl
           +schema: czrm_salesforce
           +tags: ["quarter_hourly"]
-          +materialized: table
         staging:
           +project: rj-cvl
           +schema: czrm_salesforce_staging
           +tags: ["quarter_hourly"]
-          +materialized: table
     raw:
       czrm_salesforce:
         prod:
           +project: rj-cvl
           +schema: czrm_salesforce
           +tags: ["quarter_hourly"]
-          +materialized: table
         staging:
           +project: rj-cvl
           +schema: czrm_salesforce_staging
           +tags: ["quarter_hourly"]
-          +materialized: table
       +tags: "raw"
       datario:
         +project: datario

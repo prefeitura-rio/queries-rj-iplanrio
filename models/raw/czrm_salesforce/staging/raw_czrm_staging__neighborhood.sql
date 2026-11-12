@@ -1,4 +1,11 @@
-{{config (alias = "neighborhood")}}
+{{
+    config(
+        alias="neighborhood",
+        materialized="incremental",
+        unique_key="id",
+        incremental_strategy="merge"
+    )
+}}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -23,3 +30,6 @@ SELECT
     cast(Google_Neighborhood_Name__c AS string) AS google_neighborhood_name,
     cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
 FROM {{source ("brutos_czrm_salesforce_staging","Neighborhood__c")}}
+    {% if is_incremental() %}
+        where SystemModstamp > (select max(system_modstamp) from {{ this }})
+    {% endif %}
