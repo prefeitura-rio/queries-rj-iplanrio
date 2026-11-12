@@ -1,0 +1,127 @@
+version: 2
+
+models:
+  - name: raw_adm_central_atendimento_1746__chamado_protocolos_andamentos
+    description: Tabela de chamados do 1746 com protocolos associados, dados de endereço e andamentos públicos.
+    columns:
+      - name: id_chamado
+        description: Identificador único do chamado no banco de dados.
+        data_type: int64
+
+      - name: descricao_chamado
+        description: Descrição informada para o chamado.
+        data_type: string
+        quote: true
+
+      - name: data_inicio
+        description: Data e hora de abertura do chamado.
+        data_type: datetime
+
+      - name: data_fim
+        description: Data e hora de encerramento do chamado.
+        data_type: datetime
+
+      - name: data_prevista_atendimento
+        description: Data e hora prevista para o atendimento do chamado.
+        data_type: datetime
+
+      - name: protocolos
+        description: Lista de códigos dos protocolos associados ao chamado.
+        data_type: struct
+      - name: protocolos.codigo_protocolo
+        description: Código do protocolo associado ao chamado.
+        data_type: string
+        quote: true
+      - name: protocolos.cpf
+        description: CPF do solicitante do chamado, vinculado ao protocolo, preenchido com zeros à esquerda quando necessário.
+        data_type: string
+        quote: true
+
+      - name: bairro
+        description: Nome do bairro onde ocorreu o fato que gerou o chamado.
+        data_type: string
+        quote: true
+
+      - name: logradouro
+        description: Nome do logradouro onde ocorreu o fato que gerou o chamado.
+        data_type: string
+        quote: true
+
+      - name: numero
+        description: Número do endereço informado para o chamado.
+        data_type: string
+        quote: true
+
+      - name: complemento
+        description: Complemento do endereço informado para o chamado.
+        data_type: string
+        quote: true
+
+      - name: referencia
+        description: Ponto de referência do endereço informado para o chamado.
+        data_type: string
+        quote: true
+
+      - name: cep
+        description: CEP do endereço informado para o chamado.
+        data_type: string
+        quote: true
+
+      - name: status
+        description: Status atual do chamado.
+        data_type: string
+        quote: true
+
+      - name: origem_ocorrencia
+        description: Origem da ocorrência que gerou o chamado.
+        data_type: string
+        quote: true
+
+      - name: categoria
+        description: Categoria do chamado.
+        data_type: string
+        quote: true
+
+      - name: tipo
+        description: Tipo da classificação mais recente do chamado.
+        data_type: string
+        quote: true
+
+      - name: subtipo
+        description: Subtipo da classificação mais recente do chamado.
+        data_type: string
+        quote: true
+
+      - name: unidade_organizacional_responsavel_atual
+        description: Nome da unidade organizacional responsável pelo andamento mais recente do chamado.
+        data_type: string
+        quote: true
+
+      - name: andamentos
+        description: Lista de andamentos públicos do chamado, ordenados pela data de inserção. Cada item contém o identificador, a data, a descrição, o nome da unidade organizacional e a indicação de publicidade.
+        data_type: struct
+      - name: andamentos.id_andamento
+        description: Identificador único do andamento.
+        data_type: int64
+      - name: andamentos.data
+        description: Data e hora do andamento.
+        data_type: datetime
+      - name: andamentos.descricao
+        description: Descrição do andamento.
+        data_type: string
+        quote: true
+      - name: andamentos.nome_unidade_organizacional
+        description: Nome da unidade organizacional responsável pelo andamento.
+        data_type: string
+        quote: true
+      - name: andamentos.fl_publico
+        description: Indicação se o andamento é público (true) ou não (false).
+        data_type: boolean
+        
+      - name: loaded_at
+        description: Data e hora em que o modelo foi carregado.
+        data_type: timestamp
+
+      - name: data_particao
+        description: Data de início do chamado, truncada para o dia, utilizada para particionar os dados.
+        data_type: date
