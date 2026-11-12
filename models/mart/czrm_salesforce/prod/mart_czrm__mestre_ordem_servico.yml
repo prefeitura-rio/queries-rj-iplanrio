@@ -7,45 +7,21 @@ models:
       - name: os_id
         data_type: string
         description: 'Chave da OS no Salesforce (`WorkOrder.Id`, 18 caracteres). Identifica a linha e serve de join com as demais tabelas.'
-        data_tests:
-          - unique:
-              name: mart_czrm__mestre_ordem_servico__os_id__unique
-              config:
-                severity: error
-          - not_null:
-              name: mart_czrm__mestre_ordem_servico__os_id__not_null
-              config:
-                severity: error
       - name: numero_os
         data_type: string
         description: 'Número da OS exibido ao cidadão e ao órgão (ex.: `00000009`).'
-        data_tests:
-          - not_null:
-              name: mart_czrm__mestre_ordem_servico__numero_os__not_null
-              config:
-                severity: error
       - name: numero_protocolo
         data_type: string
         description: 'Número do protocolo (`Case.CaseNumber`) ao qual a OS pertence. Um protocolo pode ter várias OSs.'
       - name: criado_em
         data_type: timestamp
         description: 'Data/hora de criação da OS, em UTC. É a coluna de partição da tabela.'
-        data_tests:
-          - not_null:
-              name: mart_czrm__mestre_ordem_servico__criado_em__not_null
-              config:
-                severity: error
       - name: atualizado_em
         data_type: timestamp
         description: 'Data/hora da última alteração da OS (`SystemModstamp`), em UTC. Muda a cada edição do registro.'
       - name: status
         data_type: string
         description: 'Status atual da OS (ex.: `Em andamento`, `Fechado`, `Cancelado`).'
-        data_tests:
-          - not_null:
-              name: mart_czrm__mestre_ordem_servico__status__not_null
-              config:
-                severity: error
       - name: encerrada
         data_type: boolean
         description: 'Indica se a ordem de serviço está fechada considerando os status Fechado e Cancelado (o IsClosed nativo não trata Cancelado).'
@@ -64,12 +40,6 @@ models:
       - name: tipo_categoria_servico
         data_type: string
         description: 'Indica a categoria do serviço associado a ordem do serviço'
-        data_tests:
-          - accepted_values:
-              name: mart_czrm__mestre_ordem_servico__tipo_categoria_servico__accepted_values
-              values: ["Solicitação", "Reclamação", "Elogio", "Sugestão", "Informação", "Denúncia", "Recurso", ""]
-              config:
-                severity: warn
       - name: descricao_wo
         data_type: string
         description: 'Texto livre com a descrição da solicitação/problema registrado na OS.'

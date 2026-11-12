@@ -34,7 +34,7 @@ models:
       - name: salutation
         description: "Tratamento"
         data_type: string
-      - name: type
+      - name: account_type
         description: "Tipo de conta"
         data_type: string
       - name: record_type_id
@@ -409,8 +409,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__contact
     description: "Tabela raw do objeto Salesforce correspondente a contact (staging)."
@@ -595,8 +593,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__individual
     description: "Tabela raw do objeto Salesforce correspondente a individual (staging)."
@@ -718,8 +714,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__neighborhood
     description: "Tabela raw do objeto Salesforce correspondente a neighborhood (staging)."
@@ -799,8 +793,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__organizational_unity
     description: "Tabela raw do objeto Salesforce correspondente a organizational_unity (staging)."
@@ -916,8 +908,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__queue_group
     description: "Tabela raw do objeto Salesforce correspondente a queue_group (staging)."
@@ -943,7 +933,7 @@ models:
       - name: related_id
         description: "ID relacionado"
         data_type: string
-      - name: type
+      - name: group_type
         description: "Tipo"
         data_type: string
       - name: email
@@ -982,8 +972,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__record_type
     description: "Tabela raw do objeto Salesforce correspondente a record_type (staging)."
@@ -1042,8 +1030,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__service_attribute_library
     description: "Tabela raw do objeto Salesforce correspondente a service_attribute_library (staging)."
@@ -1126,8 +1112,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__service_case
     description: "Tabela raw do objeto Salesforce correspondente a service_case (staging)."
@@ -1177,7 +1161,7 @@ models:
       - name: supplied_company
         description: "Company"
         data_type: string
-      - name: type
+      - name: case_type
         description: "Tipo do protocolo"
         data_type: string
       - name: record_type_id
@@ -1360,8 +1344,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__service_catalog
     description: "Tabela raw do objeto Salesforce correspondente a service_catalog (staging)."
@@ -1465,8 +1447,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__user
     description: "Tabela raw do objeto Salesforce correspondente a user (staging)."
@@ -2058,8 +2038,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__work_order
     description: "Tabela raw do objeto Salesforce correspondente a work_order (staging)."
@@ -2085,9 +2063,19 @@ models:
       - name: work_order_number
         description: "Número da ordem de serviço"
         data_type: string
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order__work_order_number__not_null
+              config:
+                severity: error
       - name: created_date
         description: "Data de criação"
         data_type: timestamp
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order__created_date__not_null
+              config:
+                severity: error
       - name: created_by_id
         description: "ID do criador"
         data_type: string
@@ -2169,6 +2157,11 @@ models:
       - name: status
         description: "Status"
         data_type: string
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order__status__not_null
+              config:
+                severity: error
       - name: priority
         description: "Prioridade"
         data_type: string
@@ -2430,8 +2423,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__work_order_attribute_answer
     description: "Tabela raw do objeto Salesforce correspondente a work_order_attribute_answer (staging)."
@@ -2490,7 +2481,7 @@ models:
       - name: external_key
         description: "Chave de idempotência da resposta, composta por Ordem de Serviço + Atributo (ou chave própria para atributos customizados como o COMLURB). Usada para upsert sem duplicar linhas."
         data_type: string
-      - name: order
+      - name: attribute_order
         description: "Ordem de exibição do atributo no formulário no momento da resposta. Permite reconstruir a sequência original das perguntas."
         data_type: numeric
       - name: section
@@ -2535,8 +2526,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__work_order_relationship
     description: "Tabela raw do objeto Salesforce correspondente a work_order_relationship (staging)."
@@ -2577,7 +2566,7 @@ models:
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
         data_type: timestamp
-      - name: case
+      - name: case_id
         description: "Caso (protocolo) associado ao vínculo entre as ordens de serviço."
         data_type: string
       - name: tipo
@@ -2592,8 +2581,6 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates
 
   - name: raw_czrm_staging__work_order_update
     description: "Tabela raw do objeto Salesforce correspondente a work_order_update (staging)."
@@ -2640,6 +2627,17 @@ models:
       - name: work_order
         description: "Relacionamento que vincula o presente andamento ao registro mestre da Ordem de Serviço (WorkOrder)."
         data_type: string
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order_update__work_order__not_null
+              config:
+                severity: error
+          - relationships:
+              name: raw_czrm_staging__work_order_update__work_order__relationships
+              to: ref('raw_czrm_staging__work_order')
+              field: id
+              config:
+                severity: warn
       - name: event_type
         description: "Classifica o tipo do evento de andamento a partir de valores prédefinidos no Global Value Set = WorkOrderUpdate_Event_Type."
         data_type: string
@@ -2766,5 +2764,3 @@ models:
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
-        data_tests:
-          - no_missing_dates

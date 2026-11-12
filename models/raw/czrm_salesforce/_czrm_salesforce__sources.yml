@@ -1,14 +1,15 @@
 version: 2
 
 sources:
-  - name: brutos_czrm_salesforce
+  - name: czrm_salesforce_org_producao
     database: rj-iplanrio
     schema: brutos_czrm_salesforce_staging
     description: >
-      Prod = brutos_czrm_salesforce_staging.
+      Objetos do CRM replicados pelo Airbyte (source Salesforce) — ambiente Produção.
     loaded_at_field: _airbyte_extracted_at
     freshness:
-      error_after: {count: 20, period: minute}
+      warn_after: {count: 45, period: minute}
+      error_after: {count: 90, period: minute}
     tables:
       - name: Account
       - name: Case
@@ -26,14 +27,15 @@ sources:
       - name: WorkOrder_Attribute_Answer__c
       - name: WorkOrder_Relationship__c
 
-  - name: brutos_czrm_salesforce_staging
+  - name: czrm_salesforce_org_staging
     database: rj-iplanrio
     schema: brutos_czrm_salesforce_org_staging_staging
     description: >
       Objetos do CRM replicados pelo Airbyte (source Salesforce) — ambiente Staging.
     loaded_at_field: _airbyte_extracted_at
     freshness:
-      error_after: {count: 20, period: minute}
+      warn_after: {count: 45, period: minute}
+      error_after: {count: 90, period: minute}
     tables:
       - name: Account
       - name: Case

@@ -3,7 +3,7 @@
     materialized="table",
     partition_by={"field": "criado_em", "data_type": "timestamp", "granularity": "day"},
     cluster_by=["status", "servico"],
-    tags=["quarter_hourly", "czrm"],
+    on_schema_change="sync_all_columns",
 ) }}
 
 WITH

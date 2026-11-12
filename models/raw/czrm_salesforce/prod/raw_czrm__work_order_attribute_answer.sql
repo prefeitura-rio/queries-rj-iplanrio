@@ -1,44 +1,7 @@
 {{
     config(
         alias="work_order_attribute_answer",
-        materialized="incremental",
-        unique_key="id",
-        incremental_strategy="merge"
+        materialized="table"
     )
 }}
-
-select
-    cast(Id as string)                           as id,
-    cast(IsDeleted as boolean)                   as is_deleted,
-    cast(Name as string)                         as name,
-    cast(CreatedDate as timestamp)               as created_date,
-    cast(CreatedById as string)                  as created_by_id,
-    cast(LastModifiedDate as timestamp)          as last_modified_date,
-    cast(LastModifiedById as string)             as last_modified_by_id,
-    cast(SystemModstamp as timestamp)            as system_modstamp,
-    cast(LastViewedDate as timestamp)            as last_viewed_date,
-    cast(LastReferencedDate as timestamp)        as last_referenced_date,
-    cast(WorkOrder__c as string)                 as work_order,
-    cast(Answered_At__c as timestamp)            as answered_at,
-    cast(Attribute_Label__c as string)           as attribute_label,
-    cast(Attribute_Type__c as string)            as attribute_type,
-    cast(External_Key__c as string)              as external_key,
-    cast(Order__c as numeric)                    as `order`,
-    cast(Section__c as string)                   as section,
-    cast(Service_Attribute_Library__c as string) as service_attribute_library,
-    cast(Service_Form_Config__c as string)       as service_form_config,
-    cast(Value_Boolean__c as boolean)            as value_boolean,
-    cast(Value_DateTime__c as timestamp)         as value_date_time,
-    cast(Value_Date__c as date)                  as value_date,
-    cast(Value_Display__c as string)             as value_display,
-    cast(Value_JSON__c as string)                as value_json,
-    cast(Value_Long_Text__c as string)           as value_long_text,
-    cast(Value_Multipicklist__c as string)       as value_multipicklist,
-    cast(Value_Number__c as numeric)             as value_number,
-    cast(Value_Text__c as string)                as value_text,
-    cast(Is_Internal__c as boolean)              as is_internal,
-    cast(_airbyte_extracted_at as datetime)      as _airbyte_extracted_at
-from {{ source("brutos_czrm_salesforce", "WorkOrder_Attribute_Answer__c") }}
-    {% if is_incremental() %}
-        where SystemModstamp > (select max(system_modstamp) from {{ this }})
-    {% endif %}
+{{ raw_czrm__work_order_attribute_answer("czrm_salesforce_org_producao") }}

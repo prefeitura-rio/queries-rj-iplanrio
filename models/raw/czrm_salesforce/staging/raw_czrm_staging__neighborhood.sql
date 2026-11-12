@@ -1,35 +1,7 @@
 {{
     config(
         alias="neighborhood",
-        materialized="incremental",
-        unique_key="id",
-        incremental_strategy="merge"
+        materialized="table"
     )
 }}
-SELECT
-    cast(Id AS string) AS id,
-    cast(OwnerId AS string) AS owner_id,
-    cast(IsDeleted AS boolean) AS is_deleted,
-    cast(Name AS string) AS name,
-    cast(CreatedDate AS timestamp) AS created_date,
-    cast(CreatedById AS string) AS created_by_id,
-    cast(LastModifiedDate AS timestamp) AS last_modified_date,
-    cast(LastModifiedById AS string) AS last_modified_by_id,
-    cast(SystemModstamp AS timestamp) AS system_modstamp,
-    cast(LastViewedDate AS timestamp) AS last_viewed_date,
-    cast(LastReferencedDate AS timestamp) AS last_referenced_date,
-    cast(codbairro__c AS string) AS codbairro,
-    cast(codbnum__c AS numeric) AS codbnum,
-    cast(RA__c AS string) AS ra,
-    cast(AP__c AS string) AS ap,
-    cast(RP__c AS string) AS rp,
-    cast(Subprefeitura__c AS string) AS subprefeitura,
-    cast(APS__c AS string) AS aps,
-    cast(CRE__c AS string) AS cre,
-    cast(Coverage__c AS string) AS coverage,
-    cast(Google_Neighborhood_Name__c AS string) AS google_neighborhood_name,
-    cast(_airbyte_extracted_at AS datetime) AS _airbyte_extracted_at
-FROM {{source ("brutos_czrm_salesforce_staging","Neighborhood__c")}}
-    {% if is_incremental() %}
-        where SystemModstamp > (select max(system_modstamp) from {{ this }})
-    {% endif %}
+{{ raw_czrm__neighborhood("czrm_salesforce_org_staging") }}
