@@ -69,7 +69,7 @@ models:
         data_type: string
       - name: billing_address
         description: "Endereço de cobrança"
-        data_type: string
+        data_type: json
       - name: shipping_street
         description: "Logradouro de entrega"
         data_type: string
@@ -96,7 +96,7 @@ models:
         data_type: string
       - name: shipping_address
         description: "Endereço de entrega"
-        data_type: string
+        data_type: json
       - name: phone
         description: "Telefone da conta."
         data_type: string
@@ -144,28 +144,28 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_activity_date
         description: "Última atividade"
         data_type: date
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: source_system_identifier
         description: "ID do sistema de origem"
         data_type: string
@@ -207,7 +207,7 @@ models:
         data_type: string
       - name: person_mailing_address
         description: "Endereço de correspondência"
-        data_type: string
+        data_type: json
       - name: person_other_street
         description: "Outro logradouro"
         data_type: string
@@ -234,7 +234,7 @@ models:
         data_type: string
       - name: person_other_address
         description: "Outro endereço"
-        data_type: string
+        data_type: json
       - name: person_mobile_phone
         description: "Telefone celular do cidadão no formato 55 + DDD + número."
         data_type: string
@@ -276,16 +276,16 @@ models:
         data_type: boolean
       - name: person_last_cu_request_date
         description: "Data do último pedido de manter contato"
-        data_type: timestamp
+        data_type: datetime
       - name: person_last_cu_update_date
         description: "Data de salvamento do último manter contato"
-        data_type: timestamp
+        data_type: datetime
       - name: person_email_bounced_reason
         description: "Motivo de rejeição do e-mail"
         data_type: string
       - name: person_email_bounced_date
         description: "Data de rejeição do e-mail"
-        data_type: timestamp
+        data_type: datetime
       - name: person_individual_id
         description: "ID do indivíduo"
         data_type: string
@@ -324,7 +324,7 @@ models:
         data_type: boolean
       - name: last_access_servant_portal
         description: "Armazena a data e hora do último acesso do servidor ao portal de andamentos externos. Utilizado para calcular inatividade de 12 meses."
-        data_type: timestamp
+        data_type: datetime
       - name: passport_number
         description: "Numero do passaporte do cidadao estrangeiro. Obrigatorio quando IsTourist__c = true. Formato: 5 a 20 caracteres alfanumericos."
         data_type: string
@@ -475,7 +475,7 @@ models:
         data_type: string
       - name: mailing_address
         description: "Endereço de correspondência"
-        data_type: string
+        data_type: json
       - name: phone
         description: "Telefone comercial"
         data_type: string
@@ -514,40 +514,40 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_activity_date
         description: "Última atividade"
         data_type: date
       - name: last_cu_request_date
         description: "Data do último pedido de manter contato"
-        data_type: timestamp
+        data_type: datetime
       - name: last_cu_update_date
         description: "Data de salvamento do último manter contato"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: email_bounced_reason
         description: "Motivo de rejeição do e-mail"
         data_type: string
       - name: email_bounced_date
         description: "Data de rejeição do e-mail"
-        data_type: timestamp
+        data_type: datetime
       - name: is_email_bounced
         description: "E-mail rejeitado"
         data_type: boolean
@@ -680,7 +680,7 @@ models:
         data_type: string
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: master_record_id
         description: "ID do registro mestre"
         data_type: string
@@ -698,19 +698,19 @@ models:
         data_type: boolean
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
@@ -741,25 +741,25 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: codbairro
         description: "Código com zero à esquerda (ex: \"013\"). External ID para upsert."
         data_type: string
@@ -823,25 +823,25 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: external_integration_key
         description: "URL/endpoint do webservice de integração definido no SGRC. Preenchido apenas para unidades com integração externa (RIOLUZ, COMLURB, DEFESA CIVIL, GM-RIO)."
         data_type: string
@@ -953,19 +953,19 @@ models:
         data_type: boolean
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: description
         description: "Descrição"
         data_type: string
@@ -1017,16 +1017,16 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
@@ -1057,25 +1057,25 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: field_label_name
         description: "Rótulo amigável do atributo, exibido no formulário dinâmico. Limite de 100 caracteres, alinhado à trava do SGRC (tb_atributo.no_amigavel)."
         data_type: string
@@ -1190,7 +1190,7 @@ models:
         data_type: boolean
       - name: closed_date
         description: "Data de fechamento"
-        data_type: timestamp
+        data_type: datetime
       - name: is_escalated
         description: "Escalado"
         data_type: boolean
@@ -1199,19 +1199,19 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: contact_phone
         description: "Telefone do contato"
         data_type: string
@@ -1229,10 +1229,10 @@ models:
         data_type: string
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: milestone_timer
         description: "Tempo para o próximo marco"
         data_type: string
@@ -1295,7 +1295,7 @@ models:
         data_type: string
       - name: data_hora_de_resolucao
         description: "Campo data/hora preenchido por flow sempre que um caso é atualizado para resolvido"
-        data_type: timestamp
+        data_type: datetime
       - name: possui_data_hora_resolucao_formula
         description: "campo formula para controlar o campo data/hora resolução no layout do caso"
         data_type: boolean
@@ -1374,25 +1374,25 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: is_active
         description: "Controle de disponibilidade. Se desmarcado, o serviço é removido das opções de seleção no sistema."
         data_type: boolean
@@ -1513,7 +1513,7 @@ models:
         data_type: string
       - name: address
         description: "Endereço"
-        data_type: string
+        data_type: json
       - name: email
         description: "E-mail"
         data_type: string
@@ -1603,34 +1603,34 @@ models:
         data_type: string
       - name: last_login_date
         description: "Último login"
-        data_type: timestamp
+        data_type: datetime
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: password_expiration_date
         description: "Data de expiração da senha"
-        data_type: timestamp
+        data_type: datetime
       - name: su_access_expiration_date
         description: "Data de expiração do acesso SU"
         data_type: date
       - name: offline_trial_expiration_date
         description: "Data de expiração do período de teste offline"
-        data_type: timestamp
+        data_type: datetime
       - name: offline_pda_trial_expiration_date
         description: "Data de expiração do período de teste Sales Anywhere"
-        data_type: timestamp
+        data_type: datetime
       - name: user_permissions_marketing_user
         description: "Usuário de marketing"
         data_type: boolean
@@ -1977,10 +1977,10 @@ models:
         data_type: string
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: banner_photo_url
         description: "URL da foto de banner"
         data_type: string
@@ -2070,7 +2070,7 @@ models:
                 severity: error
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
         data_tests:
           - not_null:
               name: raw_czrm__work_order__created_date__not_null
@@ -2081,19 +2081,19 @@ models:
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: account_id
         description: "ID da conta"
         data_type: string
@@ -2138,16 +2138,16 @@ models:
         data_type: string
       - name: address
         description: "Endereço"
-        data_type: string
+        data_type: json
       - name: description
         description: "Descrição"
         data_type: string
       - name: start_date
         description: "Data de início"
-        data_type: timestamp
+        data_type: datetime
       - name: end_date
         description: "Data de término"
-        data_type: timestamp
+        data_type: datetime
       - name: subject
         description: "Assunto"
         data_type: string
@@ -2197,13 +2197,13 @@ models:
         data_type: boolean
       - name: stop_start_date
         description: "Parado desde"
-        data_type: timestamp
+        data_type: datetime
       - name: sla_start_date
         description: "Hora de início do SLA"
-        data_type: timestamp
+        data_type: datetime
       - name: sla_exit_date
         description: "Hora de término do SLA"
-        data_type: timestamp
+        data_type: datetime
       - name: business_hours_id
         description: "ID do horário comercial"
         data_type: string
@@ -2371,7 +2371,7 @@ models:
         data_type: numeric
       - name: data_fechamento
         description: "Data/hora em que a WorkOrder foi fechada (status Fechado ou Cancelado). Gravado automaticamente no after insert/update. É a fonte da janela pós-fechamento de Ouvidoria (CZRM-2369). Não confundir com WorkOrder.EndDate, que não é populado nesta org."
-        data_type: timestamp
+        data_type: datetime
       - name: is_wo_closed
         description: "Indica se a ordem de serviço está fechada considerando os status Fechado e Cancelado (o IsClosed nativo não trata Cancelado)."
         data_type: boolean
@@ -2410,7 +2410,7 @@ models:
         data_type: string
       - name: sla_target_date
         description: "Prazo do serviço"
-        data_type: timestamp
+        data_type: datetime
       - name: canal_atendimento
         description: "Canal de atendimento da OS (valor de API de Case.Origin). Gravado na criação: copiado do chamado pelo WorkOrderTrigger (WorkOrderOriginService) quando a OS tem chamado e o campo vem vazio; OS sem chamado grava o próprio canal. Substitui a leitura da fórmula Origin__c, que continua existindo."
         data_type: string
@@ -2419,13 +2419,13 @@ models:
         data_type: numeric
       - name: address_enrichment_at
         description: "Momento em que o enriquecimento de endereco via IPP foi TENTADO (sucesso, divergencia ou falha). O gate do m1 usa este carimbo para nao esperar indefinidamente por um enriquecimento que nao vem mais."
-        data_type: timestamp
+        data_type: datetime
       - name: equivalence_analysis_at
         description: "Momento em que a analise de equivalencia pos-criacao terminou (com ou sem agrupamento). O gate do m1 usa este carimbo para nao liberar a ocorrencia antes da relationship existir - evita chamado duplicado no orgao."
-        data_type: timestamp
+        data_type: datetime
       - name: last_update_date
         description: "Cópia de WorkOrderUpdate__c.CreatedDate do andamento mais recente da OS pai (CreatedDate DESC, Id DESC, sem Rascunho); vazio quando não há andamento. Mantido por WorkOrderLastUpdateStatusService junto com Last_Update_Status__c (CZRM-2422) para a base Último andamento do filtro Período do Painel de Monitoramento. Não editar à mão."
-        data_type: timestamp
+        data_type: datetime
       - name: _airbyte_extracted_at
         description: "Data/hora da extração no Airbyte (controle de carga)."
         data_type: datetime
@@ -2453,31 +2453,31 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: work_order
         description: "Ordem de Serviço à qual a resposta do atributo pertence. Relacionamento Mestre-Detalhe: herda o compartilhamento da OS e é excluído em cascata com ela."
         data_type: string
       - name: answered_at
         description: "Data e hora em que a resposta foi registrada na Ordem de Serviço."
-        data_type: timestamp
+        data_type: datetime
       - name: attribute_label
         description: "Rótulo do atributo exibido ao cidadão/despachador no momento da resposta. Congelado aqui para preservar o histórico e permitir relatório sem depender da configuração atual."
         data_type: string
@@ -2504,7 +2504,7 @@ models:
         data_type: boolean
       - name: value_date_time
         description: "Valor da resposta para atributos do tipo DateTime."
-        data_type: timestamp
+        data_type: datetime
       - name: value_date
         description: "Valor da resposta para atributos do tipo Date."
         data_type: date
@@ -2559,19 +2559,19 @@ models:
         data_type: string
       - name: created_date
         description: "Data de criação"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: case_id
         description: "Caso (protocolo) associado ao vínculo entre as ordens de serviço."
         data_type: string
@@ -2611,25 +2611,25 @@ models:
         data_type: string
       - name: created_date
         description: "Campo formula que indica a data e hora de criação da OS (campo original não aparece na flexipage)"
-        data_type: timestamp
+        data_type: datetime
       - name: created_by_id
         description: "ID do criador"
         data_type: string
       - name: last_modified_date
         description: "Data da última modificação"
-        data_type: timestamp
+        data_type: datetime
       - name: last_modified_by_id
         description: "ID do último modificador"
         data_type: string
       - name: system_modstamp
         description: "Carimbo de modificação do sistema"
-        data_type: timestamp
+        data_type: datetime
       - name: last_viewed_date
         description: "Data da última visualização"
-        data_type: timestamp
+        data_type: datetime
       - name: last_referenced_date
         description: "Data da última referência"
-        data_type: timestamp
+        data_type: datetime
       - name: work_order
         description: "Relacionamento que vincula o presente andamento ao registro mestre da Ordem de Serviço (WorkOrder)."
         data_type: string
@@ -2649,7 +2649,7 @@ models:
         data_type: string
       - name: response_deadline
         description: "Armazena a data e hora limite calculada para resposta do cidadão. Campo só é aplicável quanto o tipo de andamento é \"Pedido de informação\". Caso não haja resposta dentro desse prazo, a ordem de serviço é cancelada automaticamente."
-        data_type: timestamp
+        data_type: datetime
       - name: response_time_days
         description: "Quantidade de dias corridos definidos como prazo para aguardar a resposta do cidadão. A OS será encerrada automaticamente caso o cidadão não responda dentro do prazo. Campo só é aplicável quanto o tipo de andamento é \"Pedido de informação\"."
         data_type: numeric
@@ -2679,10 +2679,10 @@ models:
         data_type: string
       - name: approval_process_start
         description: "Campo preenchido via flow sempre que é iniciado um processo de aprovação para o registro de andamento."
-        data_type: timestamp
+        data_type: datetime
       - name: approve_decision_datetime
         description: "Campo preenchido via flow sempre que é finalizado um processo de aprovação para o registro de andamento"
-        data_type: timestamp
+        data_type: datetime
       - name: has_approval_process
         description: "Campo fórmula que indica se houve um processo de aprovação para o registgro de andamento."
         data_type: boolean
@@ -2700,7 +2700,7 @@ models:
         data_type: string
       - name: cancellation_datetime
         description: "Data e hora em que o andamento foi cancelado. Preenchido automaticamente quando o status passa para Cancelado."
-        data_type: timestamp
+        data_type: datetime
       - name: transfer_target
         description: "Armazena o ID do serviço destino e da categoria config para transferência de OS. Formato: {serviceId},{categoryConfigId}."
         data_type: string
@@ -2733,13 +2733,13 @@ models:
         data_type: string
       - name: publication_datetime
         description: "Data e hora em que o andamento foi publicado. Preenchido via flow quando o status passa para Publicado, com ou sem aprovação. Campo único de publicação (CZRM-2306)."
-        data_type: timestamp
+        data_type: datetime
       - name: origin_service
         description: "Serviço de origem de uma transferência de OS (Event_Type__c = Transfer_WO). Gravado no registro do andamento com o WorkOrder.Service__c vigente no momento da solicitação, porque a aprovação da transferência sobrescreve o serviço da OS com o destino e a origem deixaria de ser recuperável. Permite exibir \"Transferida de [origem] para [destino]\" na linha do tempo."
         data_type: string
       - name: data_criacao
         description: "Data/hora de criação informada pelo órgão (campo `Created_date__c`). Diferente de `created_date`, que é a criação do registro."
-        data_type: timestamp
+        data_type: datetime
       - name: notificacao_proprietario_sent
         description: "Indica se a notificação ao proprietário da OS sobre a resposta a um andamento externo já foi processada, evitando reenvios em retriggers do registro."
         data_type: boolean
@@ -2748,7 +2748,7 @@ models:
         data_type: boolean
       - name: data_hora_andamento
         description: "Referência de negócio do andamento (dataHora do órgão), com checagem de sanidade. Não usar Publication_Datetime__c."
-        data_type: timestamp
+        data_type: datetime
       - name: integration_event
         description: "Evento de integração que originou este andamento. Discriminador do resolvedor de status (integração ⇒ CMT2) e rastro/idempotência."
         data_type: string
