@@ -1,0 +1,216 @@
+version: 2
+
+models:
+  - name: mart_czrm__mestre_ordem_servico
+    description: 'Tabela mestra de ordens de serviço: 1 linha por OS, com o protocolo desnormalizado, o último andamento e as respostas do formulário agregadas.'
+    columns:
+      - name: os_id
+        data_type: string
+        description: 'Chave da OS no Salesforce (`WorkOrder.Id`, 18 caracteres). Identifica a linha e serve de join com as demais tabelas.'
+      - name: numero_os
+        data_type: string
+        description: 'Número da OS exibido ao cidadão e ao órgão (ex.: `00000009`).'
+      - name: numero_protocolo
+        data_type: string
+        description: 'Número do protocolo (`Case.CaseNumber`) ao qual a OS pertence. Um protocolo pode ter várias OSs.'
+      - name: criado_em
+        data_type: datetime
+        description: 'Data/hora de criação da OS, em UTC. É a coluna de partição da tabela.'
+      - name: atualizado_em
+        data_type: datetime
+        description: 'Data/hora da última alteração da OS (`SystemModstamp`), em UTC. Muda a cada edição do registro.'
+      - name: status
+        data_type: string
+        description: 'Status atual da OS (ex.: `Em andamento`, `Fechado`, `Cancelado`).'
+      - name: encerrada
+        data_type: boolean
+        description: 'Indica se a ordem de serviço está fechada considerando os status Fechado e Cancelado (o IsClosed nativo não trata Cancelado).'
+      - name: prioridade
+        data_type: string
+        description: 'Prioridade da OS. Os valores misturam português e inglês (ex.: `Média`, `Low`).'
+      - name: canal_atendimento
+        data_type: string
+        description: 'Canal de atendimento da OS (valor de API de Case.Origin). Gravado na criação: copiado do chamado pelo WorkOrderTrigger (WorkOrderOriginService) quando a OS tem chamado e o campo vem vazio; OS sem chamado grava o próprio canal.'
+      - name: tipo_solicitante
+        data_type: string
+        description: 'Tipo do solicitante do chamado. Preenchido no reverso da Defesa (m14); um protocolo pode ter chamados do cidadão e internos/servidor.'
+      - name: motivo_encerramento
+        data_type: string
+        description: 'Motivo informado no encerramento da OS (ex.: `Fechado com solução`, `Cancelado`, `Não constatado`). Vem vazio na maioria das OSs.'
+      - name: tipo_categoria_servico
+        data_type: string
+        description: 'Indica a categoria do serviço associado a ordem do serviço'
+      - name: descricao_wo
+        data_type: string
+        description: 'Texto livre com a descrição da solicitação/problema registrado na OS.'
+      - name: servico
+        data_type: string
+        description: 'Terceiro nível de classificação (N3), identificando especificamente o serviço que está sendo solicitado.'
+      - name: servico_tema
+        data_type: string
+        description: 'Primeiro nível de classificação (N1), agrupando serviços por grandes áreas temáticas da prefeitura.'
+      - name: servico_subtema
+        data_type: string
+        description: 'Segundo nível de classificação (N2), que detalha a área do serviço vinculada ao Tema selecionado.'
+      - name: uo_sigla
+        data_type: string
+        description: 'Nome reduzido da unidade organizacional.'
+      - name: uo_nome
+        data_type: string
+        description: 'Nome da unidade organizacional (UO) responsável pela execução.'
+      - name: orgao_central
+        data_type: string
+        description: 'Órgão central responsável pelo serviço'
+      - name: dono_nome
+        data_type: string
+        description: 'Nome de quem está com a OS: o usuário ou a fila.'
+      - name: fila
+        data_type: string
+        description: 'Nome da fila responsável pela OS.'
+      - name: criado_por
+        data_type: string
+        description: 'Nome do usuário que criou o registro.'
+      - name: fechada_em
+        data_type: datetime
+        description: 'Data/hora em que a WorkOrder foi fechada (status Fechado ou Cancelado). Gravado automaticamente no after insert/update. É a fonte da janela pós-fechamento de Ouvidoria (CZRM-2369). Não confundir com WorkOrder.EndDate, que não é populado nesta org.'
+      - name: sla_prazo
+        data_type: datetime
+        description: 'Data/hora limite para atendimento da OS.'
+      - name: logradouro
+        data_type: string
+        description: 'Nome do logradouro sem o número.'
+      - name: numero
+        data_type: string
+        description: 'Número da porta separado do logradouro.'
+      - name: sem_numero
+        data_type: boolean
+        description: 'Indica que o local da ocorrência não possui número.'
+      - name: complemento
+        data_type: string
+        description: 'Complemento do endereço da ocorrência.'
+      - name: referencia
+        data_type: string
+        description: 'Ponto de referência do local da ocorrência.'
+      - name: bairro
+        data_type: string
+        description: 'Nome do bairro do local da ocorrência.'
+      - name: subprefeitura
+        data_type: string
+        description: 'Lookup para o registro de recorte administrativo do tipo Subprefeitura.'
+      - name: regiao_administrativa
+        data_type: string
+        description: 'Lookup para o registro de recorte administrativo do tipo RA.'
+      - name: cep
+        data_type: string
+        description: 'CEP do local da ocorrência.'
+      - name: cidade
+        data_type: string
+        description: 'Município do local da ocorrência.'
+      - name: uf
+        data_type: string
+        description: 'Unidade federativa (UF) do local da ocorrência.'
+      - name: latitude
+        data_type: numeric
+        description: 'Latitude do local da ocorrência, em graus decimais (WGS84).'
+      - name: longitude
+        data_type: numeric
+        description: 'Longitude do local da ocorrência, em graus decimais (WGS84).'
+      - name: precisao_geo
+        data_type: boolean
+        description: 'Indica se a geolocalização do endereço foi obtida com precisão ROOFTOP.'
+      - name: favela
+        data_type: string
+        description: 'Nome da favela/comunidade onde a ocorrência está localizada.'
+      - name: codigo_logradouro
+        data_type: string
+        description: 'Código do Logradouro (CL) IPP da via da ocorrência.'
+      - name: solicitante_nome
+        data_type: string
+        description: 'Nome do solicitante do reverso (m14).'
+      - name: solicitante_telefone
+        data_type: string
+        description: 'Telefone do solicitante informado pelo órgão no reverso (m14).'
+      - name: nome_completo
+        data_type: string
+        description: 'Nome completo do cidadão.'
+      - name: cpf
+        data_type: string
+        description: 'CPF do cidadão.'
+      - name: email
+        data_type: string
+        description: 'E-mail do cidadão.'
+      - name: telefone_1
+        data_type: string
+        description: 'Telefone principal do cidadão.'
+      - name: telefone_1_tipo
+        data_type: string
+        description: 'Tipo do telefone principal (Celular ou Fixo).'
+      - name: telefone_2
+        data_type: string
+        description: 'Telefone secundário do cidadão.'
+      - name: telefone_3
+        data_type: string
+        description: 'Telefone terciário do cidadão.'
+      - name: protocolo_status
+        data_type: string
+        description: 'Status atual do protocolo (`Case.Status`).'
+      - name: protocolo_assunto
+        data_type: string
+        description: 'Assunto do protocolo.'
+      - name: protocolo_origem
+        data_type: string
+        description: 'Canal de origem do protocolo.'
+      - name: protocolo_prioridade
+        data_type: string
+        description: 'Prioridade do protocolo.'
+      - name: protocolo_criado_em
+        data_type: datetime
+        description: 'Data/hora de abertura do protocolo, em UTC.'
+      - name: protocolo_fechado_em
+        data_type: datetime
+        description: 'Data/hora de fechamento do protocolo, em UTC.'
+      - name: protocolo_fechado
+        data_type: boolean
+        description: 'Verdadeiro quando o protocolo está fechado.'
+      - name: qtd_andamentos
+        data_type: int64
+        description: 'Quantidade de andamentos registrados para a OS.'
+      - name: ultimo_andamento_em
+        data_type: datetime
+        description: 'Data do andamento mais recente: `coalesce(data_hora_andamento, created_date)`. Usa a data informada pelo órgão quando existe e a criação do registro quando não. Nunca nula.'
+      - name: ultimo_andamento
+        data_type: string
+        description: 'Código do andamento mais recente (`WorkOrderUpdate__c.Name`, formato `AOS-00000`). Não é título nem resumo: o texto do andamento está em `event_comments` / `modified_comments`.'
+      - name: ultimo_andamento_tipo
+        data_type: string
+        description: 'Tipo do evento de andamento (`Event_Type__c`): `Close_WO`, `Partial_Update`, `Internal_Note`, `Change_Queue_UO`, `Integracao`, `External_Update`, `Transfer_WO`, `Cancel_WO`, `Change_Priority`.'
+      - name: ultimo_andamento_status
+        data_type: string
+        description: 'Status do órgão normalizado (`Status_Normalizado__c`). Só existe em andamentos que carregam status do órgão (~18%).'
+      - name: ultimo_andamento_situacao
+        data_type: string
+        description: 'Situação do andamento no CRM (`Status__c`): Publicado, Aguardando aprovação, Rejeitado, Cancelado, Rascunho etc. Sempre preenchida; é o que diferencia um andamento publicado de um rascunho.'
+      - name: ultimo_andamento_informado_em
+        data_type: datetime
+        description: 'Data/hora crua informada pelo órgão (`Data_Hora_Andamento__c`). Nula nos andamentos criados no CRM.'
+      - name: ultimo_andamento_publicado_em
+        data_type: datetime
+        description: 'Data/hora em que o andamento virou oficial (`publication_datetime`). Pode ser posterior à criação; não usar para ordenar a timeline.'
+      - name: os_pai_numero
+        data_type: string
+        description: 'Número da OS pai, quando a OS é filha de outra.'
+      - name: qtd_equivalentes
+        data_type: numeric
+        description: 'Quantidade de WOs equivalentes vinculadas a esta WO agrupadora.'
+      - name: e_equivalencia
+        data_type: boolean
+        description: 'Indica que esta OS foi agrupada por uma OS agrupadora (é membro de um agrupamento de equivalência). NÃO indica que a OS é agrupadora: para isso usar Has_Equivalents__c. A agrupadora permanece com este campo false.'
+      - name: qtd_respostas
+        data_type: int64
+        description: 'Quantidade de respostas do formulário de atributos vinculadas à OS.'
+      - name: respostas_json
+        data_type: string
+        description: 'Respostas do formulário em JSON, no formato `[{"campo": ..., "valor": ...}]`.'
+      - name: respostas_internas
+        data_type: int64
+        description: 'Quantidade de respostas que pertencem à seção interna (Atualização da OS), preenchida pelo despachador e não visível ao cidadão.'

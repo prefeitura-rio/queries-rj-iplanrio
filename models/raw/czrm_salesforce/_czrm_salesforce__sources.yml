@@ -1,0 +1,84 @@
+version: 2
+
+sources:
+  - name: czrm_salesforce_org_producao
+    database: rj-iplanrio
+    schema: brutos_czrm_salesforce_staging
+    description: >
+      Objetos do CRM replicados pelo Airbyte (source Salesforce) — ambiente Produção.
+    loaded_at_field: _airbyte_extracted_at
+    freshness:
+      warn_after: {count: 10, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: Account
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: Case
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: Contact
+      - name: Group
+      - name: Individual
+      - name: RecordType
+      - name: User
+      - name: Neighborhood__c
+      - name: Organizational_Unity__c
+      - name: Service_Attribute_Library__c
+      - name: Service_Catalog__c
+      - name: WorkOrder
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: WorkOrderUpdate__c
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: WorkOrder_Attribute_Answer__c
+      - name: WorkOrder_Relationship__c
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+
+  - name: czrm_salesforce_org_staging
+    database: rj-iplanrio
+    schema: brutos_czrm_salesforce_org_staging_staging
+    description: >
+      Objetos do CRM replicados pelo Airbyte (source Salesforce) — ambiente Staging.
+    loaded_at_field: _airbyte_extracted_at
+    freshness:
+      warn_after: {count: 10, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: Account
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: Case
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: Contact
+      - name: Group
+      - name: Individual
+      - name: RecordType
+      - name: User
+      - name: Neighborhood__c
+      - name: Organizational_Unity__c
+      - name: Service_Attribute_Library__c
+      - name: Service_Catalog__c
+      - name: WorkOrder
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: WorkOrderUpdate__c
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}
+      - name: WorkOrder_Attribute_Answer__c
+      - name: WorkOrder_Relationship__c
+        freshness:
+          warn_after: {count: 45, period: minute}
+          error_after: {count: 90, period: minute}

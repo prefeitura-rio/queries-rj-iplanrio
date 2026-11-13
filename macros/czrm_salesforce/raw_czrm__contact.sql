@@ -1,0 +1,68 @@
+{% macro raw_czrm__contact (source_name) %}
+SELECT
+    cast(Id AS string) AS id,
+    cast(IsDeleted AS boolean) AS is_deleted,
+    cast(MasterRecordId AS string) AS master_record_id,
+    cast(AccountId AS string) AS account_id,
+    cast(IsPersonAccount AS boolean) AS is_person_account,
+    cast(LastName AS string) AS last_name,
+    cast(FirstName AS string) AS first_name,
+    cast(Salutation AS string) AS salutation,
+    cast(Name AS string) AS name,
+    cast(MailingStreet AS string) AS mailing_street,
+    cast(MailingCity AS string) AS mailing_city,
+    cast(MailingState AS string) AS mailing_state,
+    cast(MailingPostalCode AS string) AS mailing_postal_code,
+    cast(MailingCountry AS string) AS mailing_country,
+    cast(MailingLatitude AS numeric) AS mailing_latitude,
+    cast(MailingLongitude AS numeric) AS mailing_longitude,
+    cast(MailingGeocodeAccuracy AS string) AS mailing_geocode_accuracy,
+    cast(MailingAddress AS json) AS mailing_address,
+    cast(Phone AS string) AS phone,
+    cast(Fax AS string) AS fax,
+    cast(MobilePhone AS string) AS mobile_phone,
+    cast(HomePhone AS string) AS home_phone,
+    cast(OtherPhone AS string) AS other_phone,
+    cast(AssistantPhone AS string) AS assistant_phone,
+    cast(ReportsToId AS string) AS reports_to_id,
+    cast(Email AS string) AS email,
+    cast(Title AS string) AS title,
+    cast(Department AS string) AS department,
+    cast(Birthdate AS date) AS birthdate,
+    cast(OwnerId AS string) AS owner_id,
+    datetime(CreatedDate, 'UTC') AS created_date,
+    cast(CreatedById AS string) AS created_by_id,
+    datetime(LastModifiedDate, 'UTC') AS last_modified_date,
+    cast(LastModifiedById AS string) AS last_modified_by_id,
+    datetime(SystemModstamp, 'UTC') AS system_modstamp,
+    cast(LastActivityDate AS date) AS last_activity_date,
+    datetime(LastCURequestDate, 'UTC') AS last_cu_request_date,
+    datetime(LastCUUpdateDate, 'UTC') AS last_cu_update_date,
+    datetime(LastViewedDate, 'UTC') AS last_viewed_date,
+    datetime(LastReferencedDate, 'UTC') AS last_referenced_date,
+    cast(EmailBouncedReason AS string) AS email_bounced_reason,
+    datetime(EmailBouncedDate, 'UTC') AS email_bounced_date,
+    cast(IsEmailBounced AS boolean) AS is_email_bounced,
+    cast(PhotoUrl AS string) AS photo_url,
+    cast(Jigsaw AS string) AS jigsaw,
+    cast(JigsawContactId AS string) AS jigsaw_contact_id,
+    cast(IndividualId AS string) AS individual_id,
+    cast(GenderIdentity AS string) AS gender_identity,
+    cast(HasPrivacyHold AS boolean) AS has_privacy_hold,
+    cast(IsPriorityRecord AS boolean) AS is_priority_record,
+    cast(ContactSource AS string) AS contact_source,
+    cast(TitleType AS string) AS title_type,
+    cast(DepartmentGroup AS string) AS department_group,
+    cast(BuyerAttributes AS string) AS buyer_attributes,
+    cast(et4ae5__HasOptedOutOfMobile__c AS boolean) AS et4ae5_has_opted_out_of_mobile,
+    cast(et4ae5__Mobile_Country_Code__c AS string) AS et4ae5_mobile_country_code,
+    datetime(_airbyte_extracted_at, 'UTC') AS _airbyte_extracted_at
+FROM
+    {{source (source_name, "Contact")}} {% if is_incremental () %}
+WHERE
+    datetime(SystemModstamp, 'UTC') >= (
+        SELECT
+            coalesce(max(system_modstamp), '1900-01-01 00:00:00')
+        FROM
+            {{this}}
+    ) {% endif %} {% endmacro %}
