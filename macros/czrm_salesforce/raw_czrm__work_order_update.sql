@@ -1,62 +1,66 @@
-{% macro raw_czrm__work_order_update(source_name) %}
-
-select
-    cast(Id as string)                              as id,
-    cast(IsDeleted as boolean)                      as is_deleted,
-    cast(Name as string)                            as name,
-    datetime(CreatedDate, 'America/Sao_Paulo')                  as created_date,
-    cast(CreatedById as string)                     as created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo')             as last_modified_date,
-    cast(LastModifiedById as string)                as last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo')               as system_modstamp,
-    datetime(LastViewedDate, 'America/Sao_Paulo')               as last_viewed_date,
-    datetime(LastReferencedDate, 'America/Sao_Paulo')           as last_referenced_date,
-    cast(WorkOrder__c as string)                    as work_order,
-    cast(Event_Type__c as string)                   as event_type,
-    datetime(Response_Deadline__c, 'America/Sao_Paulo')         as response_deadline,
-    cast(Response_time_days__c as numeric)          as response_time_days,
-    cast(Event_comments__c as string)               as event_comments,
-    cast(Status__c as string)                       as status,
-    cast(Allow_Citizen_Visibility__c as boolean)    as allow_citizen_visibility,
-    cast(Is_Visible_to_Citizen__c as boolean)       as is_visible_to_citizen,
-    cast(Approver__c as string)                     as approver,
-    cast(Rejection_Reason__c as string)             as rejection_reason,
-    cast(Email_Servidor_Sent__c as boolean)         as email_servidor_sent,
-    cast(Transaction_id__c as string)               as transaction_id,
-    datetime(Approval_Process_Start__c, 'America/Sao_Paulo')    as approval_process_start,
-    datetime(Approve_Decision_Datetime__c, 'America/Sao_Paulo') as approve_decision_datetime,
-    cast(Has_Approval_Process__c as boolean)        as has_approval_process,
-    cast(Justification__c as string)                as justification,
-    cast(Approval_Outcome__c as string)             as approval_outcome,
-    cast(Modification_Reason__c as string)          as modification_reason,
-    cast(Response_To__c as string)                  as response_to,
-    datetime(Cancellation_Datetime__c, 'America/Sao_Paulo')     as cancellation_datetime,
-    cast(Transfer_Target__c as string)              as transfer_target,
-    cast(Modified_comments__c as string)            as modified_comments,
-    cast(Is_Replicated__c as boolean)               as is_replicated,
-    cast(Email_Notification_Sent__c as boolean)     as email_notification_sent,
-    cast(Share_Citizen_Data__c as boolean)          as share_citizen_data,
-    cast(Target_Account__c as string)               as target_account,
-    cast(Target_Group__c as string)                 as target_group,
-    cast(Dynamic_Fields_Json__c as string)          as dynamic_fields_json,
-    cast(targetUoId__c as string)                   as target_uo_id,
-    cast(Cancellation_Reason__c as string)          as cancellation_reason,
-    datetime(Publication_Datetime__c, 'America/Sao_Paulo')      as publication_datetime,
-    cast(Origin_Service__c as string)               as origin_service,
-    datetime(Created_date__c, 'America/Sao_Paulo')              as data_criacao,
-    cast(Notificacao_Proprietario_Sent__c as boolean) as notificacao_proprietario_sent,
-    cast(WhatsApp_Notification_Sent__c as boolean)  as whats_app_notification_sent,
-    datetime(Data_Hora_Andamento__c, 'America/Sao_Paulo')       as data_hora_andamento,
-    cast(Integration_Event__c as string)            as integration_event,
-    cast(Status_Especifico_Orgao__c as string)      as status_especifico_orgao,
-    cast(Status_Normalizado__c as string)           as status_normalizado,
-    cast(UO_Informada_Orgao__c as string)           as uo_informada_orgao,
-    cast(Related_WorkOrder__c as string)            as related_work_order,
-    cast(Form_Answers_Json__c as string)            as form_answers_json,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo')         as _airbyte_extracted_at
-from {{ source(source_name, "WorkOrderUpdate__c") }}
-{% if is_incremental() %}
-    where SystemModstamp > (select coalesce(max(system_modstamp), '1900-01-01 00:00:00') from {{ this }})
-{% endif %}
-
-{% endmacro %}
+{
+    % macro raw_czrm__work_order_update (source_name) %
+}
+SELECT
+    cast(Id AS string) AS id,
+    cast(IsDeleted AS boolean) AS is_deleted,
+    cast(Name AS string) AS name,
+    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    cast(CreatedById AS string) AS created_by_id,
+    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    cast(LastModifiedById AS string) AS last_modified_by_id,
+    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
+    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
+    datetime(LastReferencedDate, 'America/Sao_Paulo') AS last_referenced_date,
+    cast(WorkOrder__c AS string) AS work_order,
+    cast(Event_Type__c AS string) AS event_type,
+    datetime(Response_Deadline__c, 'America/Sao_Paulo') AS response_deadline,
+    cast(Response_time_days__c AS numeric) AS response_time_days,
+    cast(Event_comments__c AS string) AS event_comments,
+    cast(Status__c AS string) AS status,
+    cast(Allow_Citizen_Visibility__c AS boolean) AS allow_citizen_visibility,
+    cast(Is_Visible_to_Citizen__c AS boolean) AS is_visible_to_citizen,
+    cast(Approver__c AS string) AS approver,
+    cast(Rejection_Reason__c AS string) AS rejection_reason,
+    cast(Email_Servidor_Sent__c AS boolean) AS email_servidor_sent,
+    cast(Transaction_id__c AS string) AS transaction_id,
+    datetime(Approval_Process_Start__c, 'America/Sao_Paulo') AS approval_process_start,
+    datetime(Approve_Decision_Datetime__c, 'America/Sao_Paulo') AS approve_decision_datetime,
+    cast(Has_Approval_Process__c AS boolean) AS has_approval_process,
+    cast(Justification__c AS string) AS justification,
+    cast(Approval_Outcome__c AS string) AS approval_outcome,
+    cast(Modification_Reason__c AS string) AS modification_reason,
+    cast(Response_To__c AS string) AS response_to,
+    datetime(Cancellation_Datetime__c, 'America/Sao_Paulo') AS cancellation_datetime,
+    cast(Transfer_Target__c AS string) AS transfer_target,
+    cast(Modified_comments__c AS string) AS modified_comments,
+    cast(Is_Replicated__c AS boolean) AS is_replicated,
+    cast(Email_Notification_Sent__c AS boolean) AS email_notification_sent,
+    cast(Share_Citizen_Data__c AS boolean) AS share_citizen_data,
+    cast(Target_Account__c AS string) AS target_account,
+    cast(Target_Group__c AS string) AS target_group,
+    cast(Dynamic_Fields_Json__c AS string) AS dynamic_fields_json,
+    cast(targetUoId__c AS string) AS target_uo_id,
+    cast(Cancellation_Reason__c AS string) AS cancellation_reason,
+    datetime(Publication_Datetime__c, 'America/Sao_Paulo') AS publication_datetime,
+    cast(Origin_Service__c AS string) AS origin_service,
+    datetime(Created_date__c, 'America/Sao_Paulo') AS data_criacao,
+    cast(Notificacao_Proprietario_Sent__c AS boolean) AS notificacao_proprietario_sent,
+    cast(WhatsApp_Notification_Sent__c AS boolean) AS whats_app_notification_sent,
+    datetime(Data_Hora_Andamento__c, 'America/Sao_Paulo') AS data_hora_andamento,
+    cast(Integration_Event__c AS string) AS integration_event,
+    cast(Status_Especifico_Orgao__c AS string) AS status_especifico_orgao,
+    cast(Status_Normalizado__c AS string) AS status_normalizado,
+    cast(UO_Informada_Orgao__c AS string) AS uo_informada_orgao,
+    cast(Related_WorkOrder__c AS string) AS related_work_order,
+    cast(Form_Answers_Json__c AS string) AS form_answers_json,
+    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+FROM
+    {{source (source_name, "WorkOrderUpdate__c")}} {% if is_incremental () %}
+WHERE
+    SystemModstamp >= (
+        SELECT
+            coalesce(max(system_modstamp), '1900-01-01 00:00:00')
+        FROM
+            {{this}}
+    ) {% endif %} {% endmacro %}

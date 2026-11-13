@@ -1,195 +1,292 @@
-{% macro raw_czrm__user(source_name) %}
-
-select
-    cast(Id as string)                                                              as id,
-    cast(Username as string)                                                        as username,
-    cast(LastName as string)                                                        as last_name,
-    cast(FirstName as string)                                                       as first_name,
-    cast(Name as string)                                                            as name,
-    cast(CompanyName as string)                                                     as company_name,
-    cast(Division as string)                                                        as division,
-    cast(Department as string)                                                      as department,
-    cast(Title as string)                                                           as title,
-    cast(Street as string)                                                          as street,
-    cast(City as string)                                                            as city,
-    cast(State as string)                                                           as state,
-    cast(PostalCode as string)                                                      as postal_code,
-    cast(Country as string)                                                         as country,
-    cast(Latitude as numeric)                                                       as latitude,
-    cast(Longitude as numeric)                                                      as longitude,
-    cast(GeocodeAccuracy as string)                                                 as geocode_accuracy,
-    cast(Address as json)                                                           as address,
-    cast(Email as string)                                                           as email,
-    cast(EmailPreferencesAutoBcc as boolean)                                        as email_preferences_auto_bcc,
-    cast(EmailPreferencesAutoBccStayInTouch as boolean)                             as email_preferences_auto_bcc_stay_in_touch,
-    cast(EmailPreferencesStayInTouchReminder as boolean)                            as email_preferences_stay_in_touch_reminder,
-    cast(SenderEmail as string)                                                     as sender_email,
-    cast(SenderName as string)                                                      as sender_name,
-    cast(Signature as string)                                                       as signature,
-    cast(StayInTouchSubject as string)                                              as stay_in_touch_subject,
-    cast(StayInTouchSignature as string)                                            as stay_in_touch_signature,
-    cast(StayInTouchNote as string)                                                 as stay_in_touch_note,
-    cast(Phone as string)                                                           as phone,
-    cast(Fax as string)                                                             as fax,
-    cast(MobilePhone as string)                                                     as mobile_phone,
-    cast(Alias as string)                                                           as alias,
-    cast(CommunityNickname as string)                                               as community_nickname,
-    cast(BadgeText as string)                                                       as badge_text,
-    cast(IsActive as boolean)                                                       as is_active,
-    cast(TimeZoneSidKey as string)                                                  as time_zone_sid_key,
-    cast(LocaleSidKey as string)                                                    as locale_sid_key,
-    cast(ReceivesInfoEmails as boolean)                                             as receives_info_emails,
-    cast(ReceivesAdminInfoEmails as boolean)                                        as receives_admin_info_emails,
-    cast(EmailEncodingKey as string)                                                as email_encoding_key,
-    cast(UserType as string)                                                        as user_type,
-    cast(StartDay as string)                                                        as start_day,
-    cast(EndDay as string)                                                          as end_day,
-    cast(LanguageLocaleKey as string)                                               as language_locale_key,
-    cast(EmployeeNumber as string)                                                  as employee_number,
-    cast(DelegatedApproverId as string)                                             as delegated_approver_id,
-    cast(ManagerId as string)                                                       as manager_id,
-    datetime(LastLoginDate, 'America/Sao_Paulo')                                                as last_login_date,
-    datetime(CreatedDate, 'America/Sao_Paulo')                                                  as created_date,
-    cast(CreatedById as string)                                                     as created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo')                                             as last_modified_date,
-    cast(LastModifiedById as string)                                                as last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo')                                               as system_modstamp,
-    datetime(PasswordExpirationDate, 'America/Sao_Paulo')                                       as password_expiration_date,
-    cast(SuAccessExpirationDate as date)                                            as su_access_expiration_date,
-    datetime(OfflineTrialExpirationDate, 'America/Sao_Paulo')                                   as offline_trial_expiration_date,
-    datetime(OfflinePdaTrialExpirationDate, 'America/Sao_Paulo')                                as offline_pda_trial_expiration_date,
-    cast(UserPermissionsMarketingUser as boolean)                                   as user_permissions_marketing_user,
-    cast(UserPermissionsOfflineUser as boolean)                                     as user_permissions_offline_user,
-    cast(UserPermissionsAvantgoUser as boolean)                                     as user_permissions_avantgo_user,
-    cast(UserPermissionsCallCenterAutoLogin as boolean)                             as user_permissions_call_center_auto_login,
-    cast(UserPermissionsSFContentUser as boolean)                                   as user_permissions_sf_content_user,
-    cast(UserPermissionsKnowledgeUser as boolean)                                   as user_permissions_knowledge_user,
-    cast(UserPermissionsInteractionUser as boolean)                                 as user_permissions_interaction_user,
-    cast(UserPermissionsSupportUser as boolean)                                     as user_permissions_support_user,
-    cast(ForecastEnabled as boolean)                                                as forecast_enabled,
-    cast(UserPreferencesActivityRemindersPopup as boolean)                          as user_preferences_activity_reminders_popup,
-    cast(UserPreferencesEventRemindersCheckboxDefault as boolean)                   as user_preferences_event_reminders_checkbox_default,
-    cast(UserPreferencesTaskRemindersCheckboxDefault as boolean)                    as user_preferences_task_reminders_checkbox_default,
-    cast(UserPreferencesReminderSoundOff as boolean)                                as user_preferences_reminder_sound_off,
-    cast(UserPreferencesDisableAllFeedsEmail as boolean)                            as user_preferences_disable_all_feeds_email,
-    cast(UserPreferencesDisableFollowersEmail as boolean)                           as user_preferences_disable_followers_email,
-    cast(UserPreferencesDisableProfilePostEmail as boolean)                         as user_preferences_disable_profile_post_email,
-    cast(UserPreferencesDisableChangeCommentEmail as boolean)                       as user_preferences_disable_change_comment_email,
-    cast(UserPreferencesDisableLaterCommentEmail as boolean)                        as user_preferences_disable_later_comment_email,
-    cast(UserPreferencesDisProfPostCommentEmail as boolean)                         as user_preferences_dis_prof_post_comment_email,
-    cast(UserPreferencesHideCSNGetChatterMobileTask as boolean)                     as user_preferences_hide_csn_get_chatter_mobile_task,
-    cast(UserPreferencesDisableMentionsPostEmail as boolean)                        as user_preferences_disable_mentions_post_email,
-    cast(UserPreferencesDisMentionsCommentEmail as boolean)                         as user_preferences_dis_mentions_comment_email,
-    cast(UserPreferencesHideCSNDesktopTask as boolean)                              as user_preferences_hide_csn_desktop_task,
-    cast(UserPreferencesHideChatterOnboardingSplash as boolean)                     as user_preferences_hide_chatter_onboarding_splash,
-    cast(UserPreferencesHideSecondChatterOnboardingSplash as boolean)               as user_preferences_hide_second_chatter_onboarding_splash,
-    cast(UserPreferencesDisCommentAfterLikeEmail as boolean)                        as user_preferences_dis_comment_after_like_email,
-    cast(UserPreferencesDisableLikeEmail as boolean)                                as user_preferences_disable_like_email,
-    cast(UserPreferencesSortFeedByComment as boolean)                               as user_preferences_sort_feed_by_comment,
-    cast(UserPreferencesDisableMessageEmail as boolean)                             as user_preferences_disable_message_email,
-    cast(UserPreferencesDisableBookmarkEmail as boolean)                            as user_preferences_disable_bookmark_email,
-    cast(UserPreferencesDisableSharePostEmail as boolean)                           as user_preferences_disable_share_post_email,
-    cast(UserPreferencesActionLauncherEinsteinGptConsent as boolean)                as user_preferences_action_launcher_einstein_gpt_consent,
-    cast(UserPreferencesAssistiveActionsEnabledInActionLauncher as boolean)         as user_preferences_assistive_actions_enabled_in_action_launcher,
-    cast(UserPreferencesEnableAutoSubForFeeds as boolean)                           as user_preferences_enable_auto_sub_for_feeds,
-    cast(UserPreferencesDisableFileShareNotificationsForApi as boolean)             as user_preferences_disable_file_share_notifications_for_api,
-    cast(UserPreferencesShowTitleToExternalUsers as boolean)                        as user_preferences_show_title_to_external_users,
-    cast(UserPreferencesShowManagerToExternalUsers as boolean)                      as user_preferences_show_manager_to_external_users,
-    cast(UserPreferencesShowEmailToExternalUsers as boolean)                        as user_preferences_show_email_to_external_users,
-    cast(UserPreferencesShowWorkPhoneToExternalUsers as boolean)                    as user_preferences_show_work_phone_to_external_users,
-    cast(UserPreferencesShowMobilePhoneToExternalUsers as boolean)                  as user_preferences_show_mobile_phone_to_external_users,
-    cast(UserPreferencesShowFaxToExternalUsers as boolean)                          as user_preferences_show_fax_to_external_users,
-    cast(UserPreferencesShowStreetAddressToExternalUsers as boolean)                as user_preferences_show_street_address_to_external_users,
-    cast(UserPreferencesShowCityToExternalUsers as boolean)                         as user_preferences_show_city_to_external_users,
-    cast(UserPreferencesShowStateToExternalUsers as boolean)                        as user_preferences_show_state_to_external_users,
-    cast(UserPreferencesShowPostalCodeToExternalUsers as boolean)                   as user_preferences_show_postal_code_to_external_users,
-    cast(UserPreferencesShowCountryToExternalUsers as boolean)                      as user_preferences_show_country_to_external_users,
-    cast(UserPreferencesShowProfilePicToGuestUsers as boolean)                      as user_preferences_show_profile_pic_to_guest_users,
-    cast(UserPreferencesShowTitleToGuestUsers as boolean)                           as user_preferences_show_title_to_guest_users,
-    cast(UserPreferencesShowCityToGuestUsers as boolean)                            as user_preferences_show_city_to_guest_users,
-    cast(UserPreferencesShowStateToGuestUsers as boolean)                           as user_preferences_show_state_to_guest_users,
-    cast(UserPreferencesShowPostalCodeToGuestUsers as boolean)                      as user_preferences_show_postal_code_to_guest_users,
-    cast(UserPreferencesShowCountryToGuestUsers as boolean)                         as user_preferences_show_country_to_guest_users,
-    cast(UserPreferencesShowForecastingChangeSignals as boolean)                    as user_preferences_show_forecasting_change_signals,
-    cast(UserPreferencesLiveAgentMiawSetupDeflection as boolean)                   as user_preferences_live_agent_miaw_setup_deflection,
-    cast(UserPreferencesHideS1BrowserUI as boolean)                                 as user_preferences_hide_s1_browser_ui,
-    cast(UserPreferencesDisableEndorsementEmail as boolean)                         as user_preferences_disable_endorsement_email,
-    cast(UserPreferencesPathAssistantCollapsed as boolean)                          as user_preferences_path_assistant_collapsed,
-    cast(UserPreferencesCacheDiagnostics as boolean)                                as user_preferences_cache_diagnostics,
-    cast(UserPreferencesShowEmailToGuestUsers as boolean)                           as user_preferences_show_email_to_guest_users,
-    cast(UserPreferencesShowManagerToGuestUsers as boolean)                         as user_preferences_show_manager_to_guest_users,
-    cast(UserPreferencesShowWorkPhoneToGuestUsers as boolean)                       as user_preferences_show_work_phone_to_guest_users,
-    cast(UserPreferencesShowMobilePhoneToGuestUsers as boolean)                     as user_preferences_show_mobile_phone_to_guest_users,
-    cast(UserPreferencesShowFaxToGuestUsers as boolean)                             as user_preferences_show_fax_to_guest_users,
-    cast(UserPreferencesShowStreetAddressToGuestUsers as boolean)                   as user_preferences_show_street_address_to_guest_users,
-    cast(UserPreferencesLightningExperiencePreferred as boolean)                    as user_preferences_lightning_experience_preferred,
-    cast(UserPreferencesHideEndUserOnboardingAssistantModal as boolean)             as user_preferences_hide_end_user_onboarding_assistant_modal,
-    cast(UserPreferencesHideLightningMigrationModal as boolean)                     as user_preferences_hide_lightning_migration_modal,
-    cast(UserPreferencesHideSfxWelcomeMat as boolean)                               as user_preferences_hide_sfx_welcome_mat,
-    cast(UserPreferencesHideBiggerPhotoCallout as boolean)                          as user_preferences_hide_bigger_photo_callout,
-    cast(UserPreferencesGlobalNavBarWTShown as boolean)                             as user_preferences_global_nav_bar_wt_shown,
-    cast(UserPreferencesGlobalNavGridMenuWTShown as boolean)                        as user_preferences_global_nav_grid_menu_wt_shown,
-    cast(UserPreferencesCreateLEXAppsWTShown as boolean)                            as user_preferences_create_lex_apps_wt_shown,
-    cast(UserPreferencesFavoritesWTShown as boolean)                                as user_preferences_favorites_wt_shown,
-    cast(UserPreferencesRecordHomeSectionCollapseWTShown as boolean)                as user_preferences_record_home_section_collapse_wt_shown,
-    cast(UserPreferencesRecordHomeReservedWTShown as boolean)                       as user_preferences_record_home_reserved_wt_shown,
-    cast(UserPreferencesFavoritesShowTopFavorites as boolean)                       as user_preferences_favorites_show_top_favorites,
-    cast(UserPreferencesExcludeMailAppAttachments as boolean)                       as user_preferences_exclude_mail_app_attachments,
-    cast(UserPreferencesSuppressTaskSFXReminders as boolean)                        as user_preferences_suppress_task_sfx_reminders,
-    cast(UserPreferencesSuppressEventSFXReminders as boolean)                       as user_preferences_suppress_event_sfx_reminders,
-    cast(UserPreferencesPreviewCustomTheme as boolean)                              as user_preferences_preview_custom_theme,
-    cast(UserPreferencesHasCelebrationBadge as boolean)                             as user_preferences_has_celebration_badge,
-    cast(UserPreferencesUserDebugModePref as boolean)                               as user_preferences_user_debug_mode_pref,
-    cast(UserPreferencesSRHOverrideActivities as boolean)                           as user_preferences_srh_override_activities,
-    cast(UserPreferencesReverseOpenActivitiesView as boolean)                       as user_preferences_reverse_open_activities_view,
-    cast(UserPreferencesHasSentWarningEmail as boolean)                             as user_preferences_has_sent_warning_email,
-    cast(UserPreferencesHasSentWarningEmail238 as boolean)                          as user_preferences_has_sent_warning_email238,
-    cast(UserPreferencesHasSentWarningEmail240 as boolean)                          as user_preferences_has_sent_warning_email240,
-    cast(UserPreferencesBRELookupTableWelcomeMat as boolean)                        as user_preferences_bre_lookup_table_welcome_mat,
-    cast(UserPreferencesHideBrowseProductRedirectConfirmation as boolean)           as user_preferences_hide_browse_product_redirect_confirmation,
-    cast(UserPreferencesHideOnlineSalesAppTabVisibilityRequirementsModal as boolean) as user_preferences_hide_online_sales_app_tab_visibility_requirements_modal,
-    cast(UserPreferencesHideOnlineSalesAppWelcomeMat as boolean)                    as user_preferences_hide_online_sales_app_welcome_mat,
-    cast(UserPreferencesShowForecastingRoundedAmounts as boolean)                   as user_preferences_show_forecasting_rounded_amounts,
-    cast(IsPartner as boolean)                                                      as is_partner,
-    cast(ContactId as string)                                                       as contact_id,
-    cast(AccountId as string)                                                       as account_id,
-    cast(CallCenterId as string)                                                    as call_center_id,
-    cast(Extension as string)                                                       as extension,
-    cast(PortalRole as string)                                                      as portal_role,
-    cast(IsPortalEnabled as boolean)                                                as is_portal_enabled,
-    cast(FederationIdentifier as string)                                            as federation_identifier,
-    cast(AboutMe as string)                                                         as about_me,
-    cast(FullPhotoUrl as string)                                                    as full_photo_url,
-    cast(SmallPhotoUrl as string)                                                   as small_photo_url,
-    cast(IsExtIndicatorVisible as boolean)                                          as is_ext_indicator_visible,
-    cast(OutOfOfficeMessage as string)                                              as out_of_office_message,
-    cast(MediumPhotoUrl as string)                                                  as medium_photo_url,
-    cast(DigestFrequency as string)                                                 as digest_frequency,
-    cast(DefaultGroupNotificationFrequency as string)                               as default_group_notification_frequency,
-    datetime(LastViewedDate, 'America/Sao_Paulo')                                               as last_viewed_date,
-    datetime(LastReferencedDate, 'America/Sao_Paulo')                                           as last_referenced_date,
-    cast(BannerPhotoUrl as string)                                                  as banner_photo_url,
-    cast(SmallBannerPhotoUrl as string)                                             as small_banner_photo_url,
-    cast(MediumBannerPhotoUrl as string)                                            as medium_banner_photo_url,
-    cast(IsProfilePhotoActive as boolean)                                           as is_profile_photo_active,
-    cast(IndividualId as string)                                                    as individual_id,
-    cast(Nome_ficticio__c as string)                                                as nome_ficticio,
-    cast(main_organizational_unit__c as string)                                     as main_organizational_unit,
-    cast(et4ae5__Default_ET_Page__c as string)                                      as et4ae5_default_et_page,
-    cast(et4ae5__Default_MID__c as string)                                          as et4ae5_default_mid,
-    cast(et4ae5__ExactTargetForAppExchangeAdmin__c as boolean)                      as et4ae5_exact_target_for_app_exchange_admin,
-    cast(et4ae5__ExactTargetForAppExchangeUser__c as boolean)                       as et4ae5_exact_target_for_app_exchange_user,
-    cast(et4ae5__ExactTargetUsername__c as string)                                  as et4ae5_exact_target_username,
-    cast(et4ae5__ExactTarget_OAuth_Token__c as string)                              as et4ae5_exact_target_o_auth_token,
-    cast(et4ae5__ValidExactTargetAdmin__c as boolean)                               as et4ae5_valid_exact_target_admin,
-    cast(et4ae5__ValidExactTargetUser__c as boolean)                                as et4ae5_valid_exact_target_user,
-    cast(Is_External_Public_Servant__c as boolean)                                  as is_external_public_servant,
-    cast(CPF__c as string)                                                          as cpf,
-    cast(Canal_Preferencial__c as string)                                           as canal_preferencial,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo')                                         as _airbyte_extracted_at
-from {{ source(source_name, "User") }}
-{% if is_incremental() %}
-    where SystemModstamp > (select coalesce(max(system_modstamp), '1900-01-01 00:00:00') from {{ this }})
-{% endif %}
-
-{% endmacro %}
+{% macro raw_czrm__user (source_name) %}
+SELECT
+    cast(Id AS string) AS id,
+    cast(Username AS string) AS username,
+    cast(LastName AS string) AS last_name,
+    cast(FirstName AS string) AS first_name,
+    cast(Name AS string) AS name,
+    cast(CompanyName AS string) AS company_name,
+    cast(Division AS string) AS division,
+    cast(Department AS string) AS department,
+    cast(Title AS string) AS title,
+    cast(Street AS string) AS street,
+    cast(City AS string) AS city,
+    cast(State AS string) AS state,
+    cast(PostalCode AS string) AS postal_code,
+    cast(Country AS string) AS country,
+    cast(Latitude AS numeric) AS latitude,
+    cast(Longitude AS numeric) AS longitude,
+    cast(GeocodeAccuracy AS string) AS geocode_accuracy,
+    cast(Address AS json) AS address,
+    cast(Email AS string) AS email,
+    cast(EmailPreferencesAutoBcc AS boolean) AS email_preferences_auto_bcc,
+    cast(EmailPreferencesAutoBccStayInTouch AS boolean) AS email_preferences_auto_bcc_stay_in_touch,
+    cast(EmailPreferencesStayInTouchReminder AS boolean) AS email_preferences_stay_in_touch_reminder,
+    cast(SenderEmail AS string) AS sender_email,
+    cast(SenderName AS string) AS sender_name,
+    cast(Signature AS string) AS signature,
+    cast(StayInTouchSubject AS string) AS stay_in_touch_subject,
+    cast(StayInTouchSignature AS string) AS stay_in_touch_signature,
+    cast(StayInTouchNote AS string) AS stay_in_touch_note,
+    cast(Phone AS string) AS phone,
+    cast(Fax AS string) AS fax,
+    cast(MobilePhone AS string) AS mobile_phone,
+    cast(Alias AS string) AS alias,
+    cast(CommunityNickname AS string) AS community_nickname,
+    cast(BadgeText AS string) AS badge_text,
+    cast(IsActive AS boolean) AS is_active,
+    cast(TimeZoneSidKey AS string) AS time_zone_sid_key,
+    cast(LocaleSidKey AS string) AS locale_sid_key,
+    cast(ReceivesInfoEmails AS boolean) AS receives_info_emails,
+    cast(ReceivesAdminInfoEmails AS boolean) AS receives_admin_info_emails,
+    cast(EmailEncodingKey AS string) AS email_encoding_key,
+    cast(UserType AS string) AS user_type,
+    cast(StartDay AS string) AS start_day,
+    cast(EndDay AS string) AS end_day,
+    cast(LanguageLocaleKey AS string) AS language_locale_key,
+    cast(EmployeeNumber AS string) AS employee_number,
+    cast(DelegatedApproverId AS string) AS delegated_approver_id,
+    cast(ManagerId AS string) AS manager_id,
+    datetime(LastLoginDate, 'America/Sao_Paulo') AS last_login_date,
+    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    cast(CreatedById AS string) AS created_by_id,
+    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    cast(LastModifiedById AS string) AS last_modified_by_id,
+    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
+    datetime(PasswordExpirationDate, 'America/Sao_Paulo') AS password_expiration_date,
+    cast(SuAccessExpirationDate AS date) AS su_access_expiration_date,
+    datetime(OfflineTrialExpirationDate, 'America/Sao_Paulo') AS offline_trial_expiration_date,
+    datetime(
+        OfflinePdaTrialExpirationDate,
+        'America/Sao_Paulo'
+    ) AS offline_pda_trial_expiration_date,
+    cast(UserPermissionsMarketingUser AS boolean) AS user_permissions_marketing_user,
+    cast(UserPermissionsOfflineUser AS boolean) AS user_permissions_offline_user,
+    cast(UserPermissionsAvantgoUser AS boolean) AS user_permissions_avantgo_user,
+    cast(UserPermissionsCallCenterAutoLogin AS boolean) AS user_permissions_call_center_auto_login,
+    cast(UserPermissionsSFContentUser AS boolean) AS user_permissions_sf_content_user,
+    cast(UserPermissionsKnowledgeUser AS boolean) AS user_permissions_knowledge_user,
+    cast(UserPermissionsInteractionUser AS boolean) AS user_permissions_interaction_user,
+    cast(UserPermissionsSupportUser AS boolean) AS user_permissions_support_user,
+    cast(ForecastEnabled AS boolean) AS forecast_enabled,
+    cast(UserPreferencesActivityRemindersPopup AS boolean) AS user_preferences_activity_reminders_popup,
+    cast(
+        UserPreferencesEventRemindersCheckboxDefault AS boolean
+    ) AS user_preferences_event_reminders_checkbox_default,
+    cast(
+        UserPreferencesTaskRemindersCheckboxDefault AS boolean
+    ) AS user_preferences_task_reminders_checkbox_default,
+    cast(UserPreferencesReminderSoundOff AS boolean) AS user_preferences_reminder_sound_off,
+    cast(UserPreferencesDisableAllFeedsEmail AS boolean) AS user_preferences_disable_all_feeds_email,
+    cast(UserPreferencesDisableFollowersEmail AS boolean) AS user_preferences_disable_followers_email,
+    cast(UserPreferencesDisableProfilePostEmail AS boolean) AS user_preferences_disable_profile_post_email,
+    cast(
+        UserPreferencesDisableChangeCommentEmail AS boolean
+    ) AS user_preferences_disable_change_comment_email,
+    cast(
+        UserPreferencesDisableLaterCommentEmail AS boolean
+    ) AS user_preferences_disable_later_comment_email,
+    cast(UserPreferencesDisProfPostCommentEmail AS boolean) AS user_preferences_dis_prof_post_comment_email,
+    cast(
+        UserPreferencesHideCSNGetChatterMobileTask AS boolean
+    ) AS user_preferences_hide_csn_get_chatter_mobile_task,
+    cast(
+        UserPreferencesDisableMentionsPostEmail AS boolean
+    ) AS user_preferences_disable_mentions_post_email,
+    cast(UserPreferencesDisMentionsCommentEmail AS boolean) AS user_preferences_dis_mentions_comment_email,
+    cast(UserPreferencesHideCSNDesktopTask AS boolean) AS user_preferences_hide_csn_desktop_task,
+    cast(
+        UserPreferencesHideChatterOnboardingSplash AS boolean
+    ) AS user_preferences_hide_chatter_onboarding_splash,
+    cast(
+        UserPreferencesHideSecondChatterOnboardingSplash AS boolean
+    ) AS user_preferences_hide_second_chatter_onboarding_splash,
+    cast(
+        UserPreferencesDisCommentAfterLikeEmail AS boolean
+    ) AS user_preferences_dis_comment_after_like_email,
+    cast(UserPreferencesDisableLikeEmail AS boolean) AS user_preferences_disable_like_email,
+    cast(UserPreferencesSortFeedByComment AS boolean) AS user_preferences_sort_feed_by_comment,
+    cast(UserPreferencesDisableMessageEmail AS boolean) AS user_preferences_disable_message_email,
+    cast(UserPreferencesDisableBookmarkEmail AS boolean) AS user_preferences_disable_bookmark_email,
+    cast(UserPreferencesDisableSharePostEmail AS boolean) AS user_preferences_disable_share_post_email,
+    cast(
+        UserPreferencesActionLauncherEinsteinGptConsent AS boolean
+    ) AS user_preferences_action_launcher_einstein_gpt_consent,
+    cast(
+        UserPreferencesAssistiveActionsEnabledInActionLauncher AS boolean
+    ) AS user_preferences_assistive_actions_enabled_in_action_launcher,
+    cast(UserPreferencesEnableAutoSubForFeeds AS boolean) AS user_preferences_enable_auto_sub_for_feeds,
+    cast(
+        UserPreferencesDisableFileShareNotificationsForApi AS boolean
+    ) AS user_preferences_disable_file_share_notifications_for_api,
+    cast(
+        UserPreferencesShowTitleToExternalUsers AS boolean
+    ) AS user_preferences_show_title_to_external_users,
+    cast(
+        UserPreferencesShowManagerToExternalUsers AS boolean
+    ) AS user_preferences_show_manager_to_external_users,
+    cast(
+        UserPreferencesShowEmailToExternalUsers AS boolean
+    ) AS user_preferences_show_email_to_external_users,
+    cast(
+        UserPreferencesShowWorkPhoneToExternalUsers AS boolean
+    ) AS user_preferences_show_work_phone_to_external_users,
+    cast(
+        UserPreferencesShowMobilePhoneToExternalUsers AS boolean
+    ) AS user_preferences_show_mobile_phone_to_external_users,
+    cast(UserPreferencesShowFaxToExternalUsers AS boolean) AS user_preferences_show_fax_to_external_users,
+    cast(
+        UserPreferencesShowStreetAddressToExternalUsers AS boolean
+    ) AS user_preferences_show_street_address_to_external_users,
+    cast(UserPreferencesShowCityToExternalUsers AS boolean) AS user_preferences_show_city_to_external_users,
+    cast(
+        UserPreferencesShowStateToExternalUsers AS boolean
+    ) AS user_preferences_show_state_to_external_users,
+    cast(
+        UserPreferencesShowPostalCodeToExternalUsers AS boolean
+    ) AS user_preferences_show_postal_code_to_external_users,
+    cast(
+        UserPreferencesShowCountryToExternalUsers AS boolean
+    ) AS user_preferences_show_country_to_external_users,
+    cast(
+        UserPreferencesShowProfilePicToGuestUsers AS boolean
+    ) AS user_preferences_show_profile_pic_to_guest_users,
+    cast(UserPreferencesShowTitleToGuestUsers AS boolean) AS user_preferences_show_title_to_guest_users,
+    cast(UserPreferencesShowCityToGuestUsers AS boolean) AS user_preferences_show_city_to_guest_users,
+    cast(UserPreferencesShowStateToGuestUsers AS boolean) AS user_preferences_show_state_to_guest_users,
+    cast(
+        UserPreferencesShowPostalCodeToGuestUsers AS boolean
+    ) AS user_preferences_show_postal_code_to_guest_users,
+    cast(UserPreferencesShowCountryToGuestUsers AS boolean) AS user_preferences_show_country_to_guest_users,
+    cast(
+        UserPreferencesShowForecastingChangeSignals AS boolean
+    ) AS user_preferences_show_forecasting_change_signals,
+    cast(
+        UserPreferencesLiveAgentMiawSetupDeflection AS boolean
+    ) AS user_preferences_live_agent_miaw_setup_deflection,
+    cast(UserPreferencesHideS1BrowserUI AS boolean) AS user_preferences_hide_s1_browser_ui,
+    cast(UserPreferencesDisableEndorsementEmail AS boolean) AS user_preferences_disable_endorsement_email,
+    cast(UserPreferencesPathAssistantCollapsed AS boolean) AS user_preferences_path_assistant_collapsed,
+    cast(UserPreferencesCacheDiagnostics AS boolean) AS user_preferences_cache_diagnostics,
+    cast(UserPreferencesShowEmailToGuestUsers AS boolean) AS user_preferences_show_email_to_guest_users,
+    cast(UserPreferencesShowManagerToGuestUsers AS boolean) AS user_preferences_show_manager_to_guest_users,
+    cast(
+        UserPreferencesShowWorkPhoneToGuestUsers AS boolean
+    ) AS user_preferences_show_work_phone_to_guest_users,
+    cast(
+        UserPreferencesShowMobilePhoneToGuestUsers AS boolean
+    ) AS user_preferences_show_mobile_phone_to_guest_users,
+    cast(UserPreferencesShowFaxToGuestUsers AS boolean) AS user_preferences_show_fax_to_guest_users,
+    cast(
+        UserPreferencesShowStreetAddressToGuestUsers AS boolean
+    ) AS user_preferences_show_street_address_to_guest_users,
+    cast(
+        UserPreferencesLightningExperiencePreferred AS boolean
+    ) AS user_preferences_lightning_experience_preferred,
+    cast(
+        UserPreferencesHideEndUserOnboardingAssistantModal AS boolean
+    ) AS user_preferences_hide_end_user_onboarding_assistant_modal,
+    cast(
+        UserPreferencesHideLightningMigrationModal AS boolean
+    ) AS user_preferences_hide_lightning_migration_modal,
+    cast(UserPreferencesHideSfxWelcomeMat AS boolean) AS user_preferences_hide_sfx_welcome_mat,
+    cast(UserPreferencesHideBiggerPhotoCallout AS boolean) AS user_preferences_hide_bigger_photo_callout,
+    cast(UserPreferencesGlobalNavBarWTShown AS boolean) AS user_preferences_global_nav_bar_wt_shown,
+    cast(
+        UserPreferencesGlobalNavGridMenuWTShown AS boolean
+    ) AS user_preferences_global_nav_grid_menu_wt_shown,
+    cast(UserPreferencesCreateLEXAppsWTShown AS boolean) AS user_preferences_create_lex_apps_wt_shown,
+    cast(UserPreferencesFavoritesWTShown AS boolean) AS user_preferences_favorites_wt_shown,
+    cast(
+        UserPreferencesRecordHomeSectionCollapseWTShown AS boolean
+    ) AS user_preferences_record_home_section_collapse_wt_shown,
+    cast(
+        UserPreferencesRecordHomeReservedWTShown AS boolean
+    ) AS user_preferences_record_home_reserved_wt_shown,
+    cast(
+        UserPreferencesFavoritesShowTopFavorites AS boolean
+    ) AS user_preferences_favorites_show_top_favorites,
+    cast(
+        UserPreferencesExcludeMailAppAttachments AS boolean
+    ) AS user_preferences_exclude_mail_app_attachments,
+    cast(
+        UserPreferencesSuppressTaskSFXReminders AS boolean
+    ) AS user_preferences_suppress_task_sfx_reminders,
+    cast(
+        UserPreferencesSuppressEventSFXReminders AS boolean
+    ) AS user_preferences_suppress_event_sfx_reminders,
+    cast(UserPreferencesPreviewCustomTheme AS boolean) AS user_preferences_preview_custom_theme,
+    cast(UserPreferencesHasCelebrationBadge AS boolean) AS user_preferences_has_celebration_badge,
+    cast(UserPreferencesUserDebugModePref AS boolean) AS user_preferences_user_debug_mode_pref,
+    cast(UserPreferencesSRHOverrideActivities AS boolean) AS user_preferences_srh_override_activities,
+    cast(
+        UserPreferencesReverseOpenActivitiesView AS boolean
+    ) AS user_preferences_reverse_open_activities_view,
+    cast(UserPreferencesHasSentWarningEmail AS boolean) AS user_preferences_has_sent_warning_email,
+    cast(UserPreferencesHasSentWarningEmail238 AS boolean) AS user_preferences_has_sent_warning_email238,
+    cast(UserPreferencesHasSentWarningEmail240 AS boolean) AS user_preferences_has_sent_warning_email240,
+    cast(
+        UserPreferencesBRELookupTableWelcomeMat AS boolean
+    ) AS user_preferences_bre_lookup_table_welcome_mat,
+    cast(
+        UserPreferencesHideBrowseProductRedirectConfirmation AS boolean
+    ) AS user_preferences_hide_browse_product_redirect_confirmation,
+    cast(
+        UserPreferencesHideOnlineSalesAppTabVisibilityRequirementsModal AS boolean
+    ) AS user_preferences_hide_online_sales_app_tab_visibility_requirements_modal,
+    cast(
+        UserPreferencesHideOnlineSalesAppWelcomeMat AS boolean
+    ) AS user_preferences_hide_online_sales_app_welcome_mat,
+    cast(
+        UserPreferencesShowForecastingRoundedAmounts AS boolean
+    ) AS user_preferences_show_forecasting_rounded_amounts,
+    cast(IsPartner AS boolean) AS is_partner,
+    cast(ContactId AS string) AS contact_id,
+    cast(AccountId AS string) AS account_id,
+    cast(CallCenterId AS string) AS call_center_id,
+    cast(Extension AS string) AS extension,
+    cast(PortalRole AS string) AS portal_role,
+    cast(IsPortalEnabled AS boolean) AS is_portal_enabled,
+    cast(FederationIdentifier AS string) AS federation_identifier,
+    cast(AboutMe AS string) AS about_me,
+    cast(FullPhotoUrl AS string) AS full_photo_url,
+    cast(SmallPhotoUrl AS string) AS small_photo_url,
+    cast(IsExtIndicatorVisible AS boolean) AS is_ext_indicator_visible,
+    cast(OutOfOfficeMessage AS string) AS out_of_office_message,
+    cast(MediumPhotoUrl AS string) AS medium_photo_url,
+    cast(DigestFrequency AS string) AS digest_frequency,
+    cast(DefaultGroupNotificationFrequency AS string) AS default_group_notification_frequency,
+    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
+    datetime(LastReferencedDate, 'America/Sao_Paulo') AS last_referenced_date,
+    cast(BannerPhotoUrl AS string) AS banner_photo_url,
+    cast(SmallBannerPhotoUrl AS string) AS small_banner_photo_url,
+    cast(MediumBannerPhotoUrl AS string) AS medium_banner_photo_url,
+    cast(IsProfilePhotoActive AS boolean) AS is_profile_photo_active,
+    cast(IndividualId AS string) AS individual_id,
+    cast(Nome_ficticio__c AS string) AS nome_ficticio,
+    cast(main_organizational_unit__c AS string) AS main_organizational_unit,
+    cast(et4ae5__Default_ET_Page__c AS string) AS et4ae5_default_et_page,
+    cast(et4ae5__Default_MID__c AS string) AS et4ae5_default_mid,
+    cast(
+        et4ae5__ExactTargetForAppExchangeAdmin__c AS boolean
+    ) AS et4ae5_exact_target_for_app_exchange_admin,
+    cast(
+        et4ae5__ExactTargetForAppExchangeUser__c AS boolean
+    ) AS et4ae5_exact_target_for_app_exchange_user,
+    cast(et4ae5__ExactTargetUsername__c AS string) AS et4ae5_exact_target_username,
+    cast(et4ae5__ExactTarget_OAuth_Token__c AS string) AS et4ae5_exact_target_o_auth_token,
+    cast(et4ae5__ValidExactTargetAdmin__c AS boolean) AS et4ae5_valid_exact_target_admin,
+    cast(et4ae5__ValidExactTargetUser__c AS boolean) AS et4ae5_valid_exact_target_user,
+    cast(Is_External_Public_Servant__c AS boolean) AS is_external_public_servant,
+    cast(CPF__c AS string) AS cpf,
+    cast(Canal_Preferencial__c AS string) AS canal_preferencial,
+    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+FROM
+    {{source (source_name, "User")}} {% if is_incremental () %}
+WHERE
+    SystemModstamp >= (
+        SELECT
+            coalesce(max(system_modstamp), '1900-01-01 00:00:00')
+        FROM
+            {{this}}
+    ) {% endif %} {% endmacro %}

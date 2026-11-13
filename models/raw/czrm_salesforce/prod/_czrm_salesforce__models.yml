@@ -495,8 +495,8 @@ models:
         description: "Telefone do assistente"
         data_type: string
       - name: reports_to_id
-         description: "ID do contato superior (hierarquia de contatos)."
-         data_type: string
+        description: "ID do contato superior (hierarquia de contatos)."
+        data_type: string
       - name: email
         description: "E-mail"
         data_type: string
