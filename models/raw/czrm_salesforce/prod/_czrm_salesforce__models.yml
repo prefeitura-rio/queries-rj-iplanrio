@@ -98,7 +98,7 @@ models:
         description: "Endereço de entrega"
         data_type: string
       - name: phone
-        description: "Phone numbers are a great way to call people on phones.  Phones are what we call our pocket computers even though we use them for games, selfies, and facebook."
+        description: "Telefone da conta."
         data_type: string
       - name: fax
         description: "Fax da conta"
@@ -173,7 +173,7 @@ models:
         description: "Conta parceira"
         data_type: boolean
       - name: is_customer_portal
-        description: "Customer Portal Account"
+        description: "Conta do portal do cliente."
         data_type: boolean
       - name: person_contact_id
         description: "ID do contato"
@@ -495,8 +495,8 @@ models:
         description: "Telefone do assistente"
         data_type: string
       - name: reports_to_id
-        description: "Reports To ID"
-        data_type: string
+         description: "ID do contato superior (hierarquia de contatos)."
+         data_type: string
       - name: email
         description: "E-mail"
         data_type: string
@@ -570,7 +570,7 @@ models:
         description: "Retenção de privacidade"
         data_type: boolean
       - name: is_priority_record
-        description: "Important"
+        description: "Indica se o contato é marcado como prioritário."
         data_type: boolean
       - name: contact_source
         description: "Origem de criação"
@@ -643,7 +643,7 @@ models:
         description: "Esquecer este indivíduo"
         data_type: boolean
       - name: send_individual_data
-        description: "Export Individual's Data"
+        description: "Exportar dados do indivíduo."
         data_type: boolean
       - name: can_store_pii_elsewhere
         description: "Permitido armazenar dados pessoais em outros locais"
@@ -1159,7 +1159,7 @@ models:
         description: "Telefone"
         data_type: string
       - name: supplied_company
-        description: "Company"
+        description: "Empresa informada pelo solicitante externo."
         data_type: string
       - name: case_type
         description: "Tipo do protocolo"
@@ -1225,7 +1225,7 @@ models:
         description: "Fax do contato"
         data_type: string
       - name: comments
-        description: "Internal Comments"
+        description: "Comentários internos do protocolo."
         data_type: string
       - name: last_viewed_date
         description: "Data da última visualização"
@@ -1476,7 +1476,7 @@ models:
         description: "Nome completo"
         data_type: string
       - name: company_name
-        description: "Company Name"
+        description: "Nome da empresa do usuário."
         data_type: string
       - name: division
         description: "Divisão"
@@ -1662,7 +1662,7 @@ models:
         description: "Pop-up de lembretes de atividades"
         data_type: boolean
       - name: user_preferences_event_reminders_checkbox_default
-        description: "EventRemindersCheckboxDefault"
+        description: "Checkbox padrão de lembretes de eventos."
         data_type: boolean
       - name: user_preferences_task_reminders_checkbox_default
         description: "Checkbox padrão de lembretes de tarefas"
@@ -1680,13 +1680,13 @@ models:
         description: "Desabilitar e-mail de posts no perfil"
         data_type: boolean
       - name: user_preferences_disable_change_comment_email
-        description: "DisableChangeCommentEmail"
+        description: "Desabilitar e-mail de alteração de comentário."
         data_type: boolean
       - name: user_preferences_disable_later_comment_email
-        description: "DisableLaterCommentEmail"
+        description: "Desabilitar e-mail de comentário posterior."
         data_type: boolean
       - name: user_preferences_dis_prof_post_comment_email
-        description: "DisProfPostCommentEmail"
+        description: "Desabilitar e-mail de comentário em post de perfil."
         data_type: boolean
       - name: user_preferences_hide_csn_get_chatter_mobile_task
         description: "Ocultar tarefa CSN Chatter mobile"
@@ -1695,7 +1695,7 @@ models:
         description: "Desabilitar e-mail de menções em posts"
         data_type: boolean
       - name: user_preferences_dis_mentions_comment_email
-        description: "DisMentionsCommentEmail"
+        description: "Desabilitar e-mail de menções em comentários."
         data_type: boolean
       - name: user_preferences_hide_csn_desktop_task
         description: "Ocultar tarefa CSN desktop"
@@ -1707,13 +1707,13 @@ models:
         description: "Ocultar segunda tela de boas-vindas do Chatter"
         data_type: boolean
       - name: user_preferences_dis_comment_after_like_email
-        description: "DisCommentAfterLikeEmail"
+        description: "Desabilitar e-mail de comentário após curtida."
         data_type: boolean
       - name: user_preferences_disable_like_email
         description: "Desabilitar e-mail de curtidas"
         data_type: boolean
       - name: user_preferences_sort_feed_by_comment
-        description: "SortFeedByComment"
+        description: "Ordenar feed por comentário."
         data_type: boolean
       - name: user_preferences_disable_message_email
         description: "Desabilitar e-mail de mensagens"
@@ -1837,7 +1837,7 @@ models:
         description: "Ocultar modal de migração Lightning"
         data_type: boolean
       - name: user_preferences_hide_sfx_welcome_mat
-        description: "HideSfxWelcomeMat"
+        description: "Ocultar tela inicial SFX."
         data_type: boolean
       - name: user_preferences_hide_bigger_photo_callout
         description: "Ocultar aviso de foto ampliada"
@@ -1864,7 +1864,7 @@ models:
         description: "Exibir principais favoritos"
         data_type: boolean
       - name: user_preferences_exclude_mail_app_attachments
-        description: "ExcludeMailAppAttachments"
+        description: "Excluir anexos do aplicativo de e-mail."
         data_type: boolean
       - name: user_preferences_suppress_task_sfx_reminders
         description: "Suprimir lembretes de tarefas SFX"
@@ -1912,7 +1912,7 @@ models:
         description: "Ocultar modal de requisitos de visibilidade de abas do app de vendas online"
         data_type: boolean
       - name: user_preferences_hide_online_sales_app_welcome_mat
-        description: "HideOnlineSalesAppWelcomeMat"
+        description: "Ocultar tela inicial do app de vendas online."
         data_type: boolean
       - name: user_preferences_hide_managed_eca_mobile_pub_modal
         data_type: boolean
@@ -1943,10 +1943,10 @@ models:
         description: "Ramal"
         data_type: string
       - name: portal_role
-        description: "Portal Role Level"
+        description: "Nível de papel no portal."
         data_type: string
       - name: is_portal_enabled
-        description: "Is Portal Enabled"
+        description: "Indica se o portal está habilitado para o usuário."
         data_type: boolean
       - name: federation_identifier
         description: "ID de federação SAML"
@@ -1961,7 +1961,7 @@ models:
         description: "Foto"
         data_type: string
       - name: is_ext_indicator_visible
-        description: "Show external indicator"
+        description: "Exibir indicador de usuário externo."
         data_type: boolean
       - name: out_of_office_message
         description: "Mensagem de ausência"

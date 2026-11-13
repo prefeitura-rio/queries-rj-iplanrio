@@ -30,13 +30,13 @@ models:
         description: 'Prioridade da OS. Os valores misturam português e inglês (ex.: `Média`, `Low`).'
       - name: canal_atendimento
         data_type: string
-        description: 'Canal de atendimento da OS (valor de API de Case.Origin).'
+        description: 'Canal de atendimento da OS (valor de API de Case.Origin). Gravado na criação: copiado do chamado pelo WorkOrderTrigger (WorkOrderOriginService) quando a OS tem chamado e o campo vem vazio; OS sem chamado grava o próprio canal.'
       - name: tipo_solicitante
         data_type: string
-        description: 'Tipo do solicitante do chamado.'
+        description: 'Tipo do solicitante do chamado. Preenchido no reverso da Defesa (m14); um protocolo pode ter chamados do cidadão e internos/servidor.'
       - name: motivo_encerramento
         data_type: string
-        description: 'Motivo informado no encerramento da OS.'
+        description: 'Motivo informado no encerramento da OS (ex.: `Fechado com solução`, `Cancelado`, `Não constatado`). Vem vazio na maioria das OSs.'
       - name: tipo_categoria_servico
         data_type: string
         description: 'Indica a categoria do serviço associado a ordem do serviço'
@@ -72,7 +72,7 @@ models:
         description: 'Nome do usuário que criou o registro.'
       - name: fechada_em
         data_type: timestamp
-        description: 'Data/hora em que a WorkOrder foi fechada.'
+        description: 'Data/hora em que a WorkOrder foi fechada (status Fechado ou Cancelado). Gravado automaticamente no after insert/update. É a fonte da janela pós-fechamento de Ouvidoria (CZRM-2369). Não confundir com WorkOrder.EndDate, que não é populado nesta org.'
       - name: sla_prazo
         data_type: timestamp
         description: 'Data/hora limite para atendimento da OS.'
@@ -177,19 +177,25 @@ models:
         description: 'Quantidade de andamentos registrados para a OS.'
       - name: ultimo_andamento_em
         data_type: timestamp
-        description: 'Data/hora do andamento mais recente.'
+        description: 'Data do andamento mais recente: `coalesce(data_hora_andamento, created_date)`. Usa a data informada pelo órgão quando existe e a criação do registro quando não. Nunca nula.'
       - name: ultimo_andamento
         data_type: string
-        description: 'Título do andamento mais recente da OS.'
+        description: 'Código do andamento mais recente (`WorkOrderUpdate__c.Name`, formato `AOS-00000`). Não é título nem resumo: o texto do andamento está em `event_comments` / `modified_comments`.'
       - name: ultimo_andamento_tipo
         data_type: string
-        description: 'Tipo do andamento mais recente.'
+        description: 'Tipo do evento de andamento (`Event_Type__c`): `Close_WO`, `Partial_Update`, `Internal_Note`, `Change_Queue_UO`, `Integracao`, `External_Update`, `Transfer_WO`, `Cancel_WO`, `Change_Priority`.'
       - name: ultimo_andamento_status
         data_type: string
-        description: 'Status normalizado do andamento mais recente.'
+        description: 'Status do órgão normalizado (`Status_Normalizado__c`). Só existe em andamentos que carregam status do órgão (~18%).'
+      - name: ultimo_andamento_situacao
+        data_type: string
+        description: 'Situação do andamento no CRM (`Status__c`): Publicado, Aguardando aprovação, Rejeitado, Cancelado, Rascunho etc. Sempre preenchida; é o que diferencia um andamento publicado de um rascunho.'
+      - name: ultimo_andamento_informado_em
+        data_type: timestamp
+        description: 'Data/hora crua informada pelo órgão (`Data_Hora_Andamento__c`). Nula nos andamentos criados no CRM.'
       - name: ultimo_andamento_publicado_em
         data_type: timestamp
-        description: 'Data e hora em que o último andamento foi publicado.'
+        description: 'Data/hora em que o andamento virou oficial (`publication_datetime`). Pode ser posterior à criação; não usar para ordenar a timeline.'
       - name: os_pai_numero
         data_type: string
         description: 'Número da OS pai, quando a OS é filha de outra.'
@@ -198,7 +204,7 @@ models:
         description: 'Quantidade de WOs equivalentes vinculadas a esta WO agrupadora.'
       - name: e_equivalencia
         data_type: boolean
-        description: 'Indica que esta OS foi agrupada por uma OS agrupadora.'
+        description: 'Indica que esta OS foi agrupada por uma OS agrupadora (é membro de um agrupamento de equivalência). NÃO indica que a OS é agrupadora: para isso usar Has_Equivalents__c. A agrupadora permanece com este campo false.'
       - name: qtd_respostas
         data_type: int64
         description: 'Quantidade de respostas do formulário de atributos vinculadas à OS.'
@@ -207,4 +213,4 @@ models:
         description: 'Respostas do formulário em JSON, no formato `[{"campo": ..., "valor": ...}]`.'
       - name: respostas_internas
         data_type: int64
-        description: 'Quantidade de respostas da seção interna, não visível ao cidadão.'
+        description: 'Quantidade de respostas que pertencem à seção interna (Atualização da OS), preenchida pelo despachador e não visível ao cidadão.'
