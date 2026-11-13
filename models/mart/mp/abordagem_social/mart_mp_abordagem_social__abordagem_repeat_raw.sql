@@ -282,4 +282,3 @@ from {{ source("arcgis_raw_smas", "abordagem_repeat_raw") }}
 where date(
     timestamp_millis(safe_cast(regexp_replace(data_abordagem, r'\.0$', '') as int64))
 ) >= date '2026-01-01'
-order by data_abordagem desc
