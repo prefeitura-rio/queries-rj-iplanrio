@@ -1,6 +1,4 @@
-{
-    % macro raw_czrm__work_order_update (source_name) %
-}
+{% macro raw_czrm__work_order_update(source_name) %}
 SELECT
     cast(Id AS string) AS id,
     cast(IsDeleted AS boolean) AS is_deleted,
@@ -58,7 +56,7 @@ SELECT
 FROM
     {{source (source_name, "WorkOrderUpdate__c")}} {% if is_incremental () %}
 WHERE
-    SystemModstamp >= (
+    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

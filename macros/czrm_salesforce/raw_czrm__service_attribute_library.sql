@@ -1,6 +1,4 @@
-{
-    % macro raw_czrm__service_attribute_library (source_name) %
-}
+{% macro raw_czrm__service_attribute_library(source_name) %}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -26,13 +24,9 @@ SELECT
     cast(Custom_LWC_Name__c AS string) AS custom_lwc_name,
     datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
 FROM
-    {
-        {
-            source (source_name, "Service_Attribute_Library__c")
-        }
-    } {% if is_incremental () %}
+    {{source(source_name, "Service_Attribute_Library__c")}} {% if is_incremental() %}
 WHERE
-    SystemModstamp >= (
+    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

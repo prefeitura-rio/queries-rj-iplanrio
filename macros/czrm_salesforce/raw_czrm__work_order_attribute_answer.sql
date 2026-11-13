@@ -1,6 +1,4 @@
-{
-    % macro raw_czrm__work_order_attribute_answer (source_name) %
-}
+{% macro raw_czrm__work_order_attribute_answer(source_name) %}
 SELECT
     cast(Id AS string) AS id,
     cast(IsDeleted AS boolean) AS is_deleted,
@@ -33,13 +31,9 @@ SELECT
     cast(Is_Internal__c AS boolean) AS is_internal,
     datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
 FROM
-    {
-        {
-            source (source_name, "WorkOrder_Attribute_Answer__c")
-        }
-    } {% if is_incremental () %}
+    {{source(source_name, "WorkOrder_Attribute_Answer__c")}} {% if is_incremental() %}
 WHERE
-    SystemModstamp >= (
+    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

@@ -33,7 +33,7 @@ SELECT
 FROM
     {{source (source_name, "Service_Catalog__c")}} {% if is_incremental () %}
 WHERE
-    SystemModstamp >= (
+    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

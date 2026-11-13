@@ -1,6 +1,4 @@
-{
-    % macro raw_czrm__work_order_relationship (source_name) %
-}
+{% macro raw_czrm__work_order_relationship(source_name) %}
 SELECT
     cast(Id AS string) AS id,
     cast(OwnerId AS string) AS owner_id,
@@ -17,11 +15,9 @@ SELECT
     cast(WO_Relacionada__c AS string) AS wo_relacionada,
     datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
 FROM
-    {
-        {source (source_name, "WorkOrder_Relationship__c")}
-    } {% if is_incremental () %}
+    {{source(source_name, "WorkOrder_Relationship__c")}} {% if is_incremental() %}
 WHERE
-    SystemModstamp >= (
+    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

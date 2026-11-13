@@ -76,7 +76,7 @@ SELECT
 FROM
     {{source (source_name, "Case")}} {% if is_incremental () %}
 WHERE
-    SystemModstamp >= (
+    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM
