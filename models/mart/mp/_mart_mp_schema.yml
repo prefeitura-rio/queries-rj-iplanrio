@@ -8,7 +8,10 @@ models:
     columns:
       - name: objectid
         data_type: string
-        description: Identificador único do registro na camada ArcGIS
+        description: Identificador único do registro na camada ArcGIS (chave primária)
+        tests:
+          - unique
+          - not_null
       - name: globalid
         data_type: string
         description: Identificador global único (GUID) do registro no ArcGIS
@@ -825,12 +828,18 @@ models:
 
   - name: mart_mp_prontuario_carioca__gh_cidadao_pac
     description: >
-      Usuários do sistema GH (AcolheRio) filtrados por ciclos ativos em unidades
-      válidas (excluindo unidades de teste) e sem registros de teste no nome.
+      Usuários do sistema GH (AcolheRio) que possuem ao menos um ciclo registrado
+      em unidades válidas (excluindo unidades de teste: sequs 80-83, 142-145, 156, 172-173, 184)
+      e cujo nome não contém 'TESTE'. Não há filtro de status de ciclo ativo —
+      o join com gh_pac_ciclos é usado apenas para garantir que o paciente
+      tenha passado por uma unidade real.
     columns:
       - name: seqpac
         data_type: int64
-        description: Numero sequencial do usuário no sistema (Prontuario RAPS)
+        description: Numero sequencial do usuário no sistema (Prontuario RAPS) — chave primária
+        tests:
+          - unique
+          - not_null
       - name: numrg
         data_type: string
         description: Numero do Registro civil do usuário
@@ -1000,17 +1009,20 @@ models:
   - name: mart_mp_prontuario_carioca__gh_pac_dados
     description: >
       Dados complementares dos usuários do sistema GH, restrito aos usuários
-      presentes em mart_mp_prontuario_carioca__gh_cidadao_pac.
+      presentes em mart_mp_prontuario_carioca__gh_cidadao_pac (join por seqpac).
     columns:
+      - name: seqpac
+        data_type: int64
+        description: Sequencial do usuário no sistema (Prontuário RAPS) — chave primária, FK para gh_cidadao_pac
+        tests:
+          - unique
+          - not_null
       - name: indavd
         data_type: string
         description: Indicador (S/N) de dependência em atividades da vida diária (AVD)
       - name: indmig
         data_type: string
         description: Indicador de migrante
-      - name: seqpac
-        data_type: int64
-        description: Sequencial do usuário no sistema (Prontuário RAPS)
       - name: dsczona
         data_type: string
         description: sem descrição documentada; campo de 'zona', no bloco de título de eleitor

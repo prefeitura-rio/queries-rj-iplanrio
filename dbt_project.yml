@@ -134,11 +134,11 @@ models:
         prontuario_carioca:
           +materialized: table
           +schema: prontuario_carioca
-          +tags: ["daily"]
+          +tags: ["weekly"]
         abordagem_social:
           +materialized: table
           +schema: abordagem_social
-          +tags: ["daily"]
+          +tags: ["weekly"]
     raw:
       +tags: "raw"
       datario:
