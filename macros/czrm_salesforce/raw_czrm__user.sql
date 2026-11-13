@@ -47,18 +47,18 @@ SELECT
     cast(EmployeeNumber AS string) AS employee_number,
     cast(DelegatedApproverId AS string) AS delegated_approver_id,
     cast(ManagerId AS string) AS manager_id,
-    datetime(LastLoginDate, 'America/Sao_Paulo') AS last_login_date,
-    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    datetime(LastLoginDate, 'UTC') AS last_login_date,
+    datetime(CreatedDate, 'UTC') AS created_date,
     cast(CreatedById AS string) AS created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    datetime(LastModifiedDate, 'UTC') AS last_modified_date,
     cast(LastModifiedById AS string) AS last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
-    datetime(PasswordExpirationDate, 'America/Sao_Paulo') AS password_expiration_date,
+    datetime(SystemModstamp, 'UTC') AS system_modstamp,
+    datetime(PasswordExpirationDate, 'UTC') AS password_expiration_date,
     cast(SuAccessExpirationDate AS date) AS su_access_expiration_date,
-    datetime(OfflineTrialExpirationDate, 'America/Sao_Paulo') AS offline_trial_expiration_date,
+    datetime(OfflineTrialExpirationDate, 'UTC') AS offline_trial_expiration_date,
     datetime(
         OfflinePdaTrialExpirationDate,
-        'America/Sao_Paulo'
+        'UTC'
     ) AS offline_pda_trial_expiration_date,
     cast(UserPermissionsMarketingUser AS boolean) AS user_permissions_marketing_user,
     cast(UserPermissionsOfflineUser AS boolean) AS user_permissions_offline_user,
@@ -256,8 +256,8 @@ SELECT
     cast(MediumPhotoUrl AS string) AS medium_photo_url,
     cast(DigestFrequency AS string) AS digest_frequency,
     cast(DefaultGroupNotificationFrequency AS string) AS default_group_notification_frequency,
-    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
-    datetime(LastReferencedDate, 'America/Sao_Paulo') AS last_referenced_date,
+    datetime(LastViewedDate, 'UTC') AS last_viewed_date,
+    datetime(LastReferencedDate, 'UTC') AS last_referenced_date,
     cast(BannerPhotoUrl AS string) AS banner_photo_url,
     cast(SmallBannerPhotoUrl AS string) AS small_banner_photo_url,
     cast(MediumBannerPhotoUrl AS string) AS medium_banner_photo_url,
@@ -280,11 +280,11 @@ SELECT
     cast(Is_External_Public_Servant__c AS boolean) AS is_external_public_servant,
     cast(CPF__c AS string) AS cpf,
     cast(Canal_Preferencial__c AS string) AS canal_preferencial,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+    datetime(_airbyte_extracted_at, 'UTC') AS _airbyte_extracted_at
 FROM
     {{source (source_name, "User")}} {% if is_incremental () %}
 WHERE
-    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
+    datetime(SystemModstamp, 'UTC') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

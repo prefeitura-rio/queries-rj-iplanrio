@@ -43,14 +43,14 @@ SELECT
     cast(Rating AS string) AS rating,
     cast(Site AS string) AS site,
     cast(OwnerId AS string) AS owner_id,
-    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    datetime(CreatedDate, 'UTC') AS created_date,
     cast(CreatedById AS string) AS created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    datetime(LastModifiedDate, 'UTC') AS last_modified_date,
     cast(LastModifiedById AS string) AS last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
+    datetime(SystemModstamp, 'UTC') AS system_modstamp,
     cast(LastActivityDate AS date) AS last_activity_date,
-    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
-    datetime(LastReferencedDate, 'America/Sao_Paulo') AS last_referenced_date,
+    datetime(LastViewedDate, 'UTC') AS last_viewed_date,
+    datetime(LastReferencedDate, 'UTC') AS last_referenced_date,
     cast(SourceSystemIdentifier AS string) AS source_system_identifier,
     cast(IsPartner AS boolean) AS is_partner,
     cast(IsCustomerPortal AS boolean) AS is_customer_portal,
@@ -87,10 +87,10 @@ SELECT
     cast(PersonHasOptedOutOfEmail AS boolean) AS person_has_opted_out_of_email,
     cast(PersonHasOptedOutOfFax AS boolean) AS person_has_opted_out_of_fax,
     cast(PersonDoNotCall AS boolean) AS person_do_not_call,
-    datetime(PersonLastCURequestDate, 'America/Sao_Paulo') AS person_last_cu_request_date,
-    datetime(PersonLastCUUpdateDate, 'America/Sao_Paulo') AS person_last_cu_update_date,
+    datetime(PersonLastCURequestDate, 'UTC') AS person_last_cu_request_date,
+    datetime(PersonLastCUUpdateDate, 'UTC') AS person_last_cu_update_date,
     cast(PersonEmailBouncedReason AS string) AS person_email_bounced_reason,
-    datetime(PersonEmailBouncedDate, 'America/Sao_Paulo') AS person_email_bounced_date,
+    datetime(PersonEmailBouncedDate, 'UTC') AS person_email_bounced_date,
     cast(PersonIndividualId AS string) AS person_individual_id,
     cast(PersonPronouns AS string) AS person_pronouns,
     cast(PersonGenderIdentity AS string) AS person_gender_identity,
@@ -105,7 +105,7 @@ SELECT
     cast(IsTourist__c AS boolean) AS is_tourist,
     datetime(
         Last_Access_Servant_Portal__c,
-        'America/Sao_Paulo'
+        'UTC'
     ) AS last_access_servant_portal,
     cast(Passport_number__c AS string) AS passport_number,
     cast(Phone_1__c AS string) AS phone_1,
@@ -134,11 +134,11 @@ SELECT
     cast(Receber_Email_Notificacao__c AS boolean) AS receber_email_notificacao,
     cast(et4ae5__HasOptedOutOfMobile__pc AS boolean) AS et4ae5_has_opted_out_of_mobile_pc,
     cast(et4ae5__Mobile_Country_Code__pc AS string) AS et4ae5_mobile_country_code_pc,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+    datetime(_airbyte_extracted_at, 'UTC') AS _airbyte_extracted_at
 FROM
     {{source (source_name, "Account")}} {% if is_incremental () %}
 WHERE
-    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
+    datetime(SystemModstamp, 'UTC') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

@@ -21,21 +21,21 @@ SELECT
     cast(Priority AS string) AS priority,
     cast(Description AS string) AS description,
     cast(IsClosed AS boolean) AS is_closed,
-    datetime(ClosedDate, 'America/Sao_Paulo') AS closed_date,
+    datetime(ClosedDate, 'UTC') AS closed_date,
     cast(IsEscalated AS boolean) AS is_escalated,
     cast(OwnerId AS string) AS owner_id,
-    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    datetime(CreatedDate, 'UTC') AS created_date,
     cast(CreatedById AS string) AS created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    datetime(LastModifiedDate, 'UTC') AS last_modified_date,
     cast(LastModifiedById AS string) AS last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
+    datetime(SystemModstamp, 'UTC') AS system_modstamp,
     cast(ContactPhone AS string) AS contact_phone,
     cast(ContactMobile AS string) AS contact_mobile,
     cast(ContactEmail AS string) AS contact_email,
     cast(ContactFax AS string) AS contact_fax,
     cast(Comments AS string) AS comments,
-    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
-    datetime(LastReferencedDate, 'America/Sao_Paulo') AS last_referenced_date,
+    datetime(LastViewedDate, 'UTC') AS last_viewed_date,
+    datetime(LastReferencedDate, 'UTC') AS last_referenced_date,
     cast(MilestoneTimer AS string) AS milestone_timer,
     cast(Protocolo_Formula__c AS string) AS protocolo_formula,
     cast(Protocolo_Texto__c AS string) AS protocolo_texto,
@@ -56,7 +56,7 @@ SELECT
     cast(Detalhe__c AS string) AS detalhe,
     cast(Descricao_resumida__c AS string) AS descricao_resumida,
     cast(Substatus__c AS string) AS substatus,
-    datetime(Data_hora_de_resolucao__c, 'America/Sao_Paulo') AS data_hora_de_resolucao,
+    datetime(Data_hora_de_resolucao__c, 'UTC') AS data_hora_de_resolucao,
     cast(possui_data_hora_resolucao_formula__c AS boolean) AS possui_data_hora_resolucao_formula,
     cast(Nome_do_proprietario__c AS string) AS nome_do_proprietario,
     cast(Chat_fora_do_horario_de_atendimento__c AS boolean) AS chat_fora_do_horario_de_atendimento,
@@ -72,11 +72,11 @@ SELECT
     cast(Solicitante_Telefone__c AS string) AS solicitante_telefone,
     cast(Tem_Dados_Departamentais__c AS boolean) AS tem_dados_departamentais,
     cast(Esqueleto__c AS boolean) AS esqueleto,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+    datetime(_airbyte_extracted_at, 'UTC') AS _airbyte_extracted_at
 FROM
     {{source (source_name, "Case")}} {% if is_incremental () %}
 WHERE
-    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
+    datetime(SystemModstamp, 'UTC') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

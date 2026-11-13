@@ -30,18 +30,18 @@ SELECT
     cast(Department AS string) AS department,
     cast(Birthdate AS date) AS birthdate,
     cast(OwnerId AS string) AS owner_id,
-    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    datetime(CreatedDate, 'UTC') AS created_date,
     cast(CreatedById AS string) AS created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    datetime(LastModifiedDate, 'UTC') AS last_modified_date,
     cast(LastModifiedById AS string) AS last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
+    datetime(SystemModstamp, 'UTC') AS system_modstamp,
     cast(LastActivityDate AS date) AS last_activity_date,
-    datetime(LastCURequestDate, 'America/Sao_Paulo') AS last_cu_request_date,
-    datetime(LastCUUpdateDate, 'America/Sao_Paulo') AS last_cu_update_date,
-    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
-    datetime(LastReferencedDate, 'America/Sao_Paulo') AS last_referenced_date,
+    datetime(LastCURequestDate, 'UTC') AS last_cu_request_date,
+    datetime(LastCUUpdateDate, 'UTC') AS last_cu_update_date,
+    datetime(LastViewedDate, 'UTC') AS last_viewed_date,
+    datetime(LastReferencedDate, 'UTC') AS last_referenced_date,
     cast(EmailBouncedReason AS string) AS email_bounced_reason,
-    datetime(EmailBouncedDate, 'America/Sao_Paulo') AS email_bounced_date,
+    datetime(EmailBouncedDate, 'UTC') AS email_bounced_date,
     cast(IsEmailBounced AS boolean) AS is_email_bounced,
     cast(PhotoUrl AS string) AS photo_url,
     cast(Jigsaw AS string) AS jigsaw,
@@ -56,11 +56,11 @@ SELECT
     cast(BuyerAttributes AS string) AS buyer_attributes,
     cast(et4ae5__HasOptedOutOfMobile__c AS boolean) AS et4ae5_has_opted_out_of_mobile,
     cast(et4ae5__Mobile_Country_Code__c AS string) AS et4ae5_mobile_country_code,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+    datetime(_airbyte_extracted_at, 'UTC') AS _airbyte_extracted_at
 FROM
     {{source (source_name, "Contact")}} {% if is_incremental () %}
 WHERE
-    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
+    datetime(SystemModstamp, 'UTC') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM

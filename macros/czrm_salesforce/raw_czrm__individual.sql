@@ -24,22 +24,22 @@ SELECT
     cast(Occupation AS string) AS occupation,
     cast(Website AS string) AS website,
     cast(IndividualsAge AS string) AS individuals_age,
-    datetime(LastViewedDate, 'America/Sao_Paulo') AS last_viewed_date,
+    datetime(LastViewedDate, 'UTC') AS last_viewed_date,
     cast(MasterRecordId AS string) AS master_record_id,
     cast(ConsumerCreditScore AS int64) AS consumer_credit_score,
     cast(ConsumerCreditScoreProviderName AS string) AS consumer_credit_score_provider_name,
     cast(InfluencerRating AS int64) AS influencer_rating,
     cast(HasPrivacyHold AS boolean) AS has_privacy_hold,
-    datetime(CreatedDate, 'America/Sao_Paulo') AS created_date,
+    datetime(CreatedDate, 'UTC') AS created_date,
     cast(CreatedById AS string) AS created_by_id,
-    datetime(LastModifiedDate, 'America/Sao_Paulo') AS last_modified_date,
+    datetime(LastModifiedDate, 'UTC') AS last_modified_date,
     cast(LastModifiedById AS string) AS last_modified_by_id,
-    datetime(SystemModstamp, 'America/Sao_Paulo') AS system_modstamp,
-    datetime(_airbyte_extracted_at, 'America/Sao_Paulo') AS _airbyte_extracted_at
+    datetime(SystemModstamp, 'UTC') AS system_modstamp,
+    datetime(_airbyte_extracted_at, 'UTC') AS _airbyte_extracted_at
 FROM
     {{source (source_name, "Individual")}} {% if is_incremental () %}
 WHERE
-    datetime(SystemModstamp, 'America/Sao_Paulo') >= (
+    datetime(SystemModstamp, 'UTC') >= (
         SELECT
             coalesce(max(system_modstamp), '1900-01-01 00:00:00')
         FROM
