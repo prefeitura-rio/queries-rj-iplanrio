@@ -12,6 +12,34 @@ sources:
       - name: tb_atributo
       - name: tb_classificacao
       - name: tb_classificacao_atributo
+      - name: tb_bairro
+      - name: tb_bairro_logradouro
+      - name: tb_categoria
+      - name: tb_classificacao_chamado
+      - name: tb_dicionario_ic
+      - name: tb_email
+      - name: tb_email_grupo_email
+      - name: tb_envio_email
+      - name: tb_envio_email_destinatario
+      - name: tb_tipo_endereco
+      - name: tb_unidade_organizacional
+      - name: tb_chamado_vinculado
+      - name: tb_gerador_protocolo
+      - name: tb_grupo_email
+      - name: tb_justificativa
+      - name: tb_log_email
+      - name: tb_logradouro
+      - name: tb_reclassificacao
+      - name: tb_responsavel_chamado
+      - name: tb_status
+      - name: tb_status_especifico
+      - name: tb_subtipo
+      - name: tb_territorialidade_regiao_administrativa
+      - name: tb_territorialidade_regiao_administrativa_bairro
+      - name: tb_tipo
+      - name: tb_chamado_sla
+      - name: tb_chamado
+      - name: tb_andamento
 
 
     config:
