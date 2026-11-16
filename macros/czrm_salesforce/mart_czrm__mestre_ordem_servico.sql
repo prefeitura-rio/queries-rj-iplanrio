@@ -70,6 +70,7 @@ servico as (
         theme_formula,
         subtheme_formula
     from {{ ref(ref_prefix ~ 'service_catalog') }}
+    where not coalesce(is_deleted, false)
 ),
 
 uo as (
@@ -78,6 +79,8 @@ uo as (
         shortname,
         name
     from {{ ref(ref_prefix ~ 'organizational_unity') }}
+WHERE
+    NOT coalesce(is_deleted, FALSE)
 ),
 
 usuario as (
@@ -85,6 +88,8 @@ usuario as (
         id,
         name
     from {{ ref(ref_prefix ~ 'user') }}
+WHERE
+    NOT coalesce(is_deleted, FALSE)
 ),
 
 fila as (
@@ -92,6 +97,8 @@ fila as (
         id,
         name
     from {{ ref(ref_prefix ~ 'queue_group') }}
+WHERE
+    NOT coalesce(is_deleted, FALSE)
 ),
 
 bairro as (
@@ -101,6 +108,8 @@ bairro as (
         subprefeitura,
         ra
     from {{ ref(ref_prefix ~ 'neighborhood') }}
+WHERE
+    NOT coalesce(is_deleted, FALSE)
 ),
 
 conta as (
@@ -114,6 +123,8 @@ conta as (
         phone_2,
         phone_3
     from {{ ref(ref_prefix ~ 'account') }}
+WHERE
+    NOT coalesce(is_deleted, FALSE)
 ),
 
 andamentos as (
@@ -140,7 +151,7 @@ ultimo_andamento as (
         publication_datetime                        as publicado_em
     from {{ ref(ref_prefix ~ 'work_order_update') }}
     where not coalesce(is_deleted, false)
-      and status <> 'Rascunho'
+      and coalesce(status, '') <> 'Rascunho'
     qualify row_number() over (
         partition by work_order
         order by created_date desc, id desc
@@ -153,7 +164,22 @@ respostas as (
         count(*) as qtd_respostas,
         countif(is_internal) as respostas_internas,
         to_json_string(
-            array_agg(struct(attribute_label as campo, value_display as valor))
+            array_agg(
+                struct(
+                    attribute_label as campo,
+                    coalesce(
+                        value_display,
+                        value_text,
+                        value_long_text,
+                        value_multipicklist,
+                        cast(value_number as string),
+                        cast(value_date as string),
+                        cast(value_date_time as string),
+                        cast(value_boolean as string)
+                    ) as valor
+                )
+                order by attribute_order, id
+            )
         ) as respostas_json
     from {{ ref(ref_prefix ~ 'work_order_attribute_answer') }}
     where not coalesce(is_deleted, false)
@@ -171,7 +197,12 @@ select
     -- status e classificação
     os.status,
     os.is_wo_closed              as encerrada,
-    os.priority                  as prioridade,
+    case os.priority
+        when 'Low'    then 'Baixa'
+        when 'Medium' then 'Média'
+        when 'High'   then 'Alta'
+        else os.priority
+    end                          as prioridade,
     os.canal_atendimento,
     os.tipo_solicitante,
     os.close_reason              as motivo_encerramento,

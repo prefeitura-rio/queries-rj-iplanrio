@@ -48,7 +48,11 @@ SELECT
     datetime(Data_Hora_Andamento__c, 'UTC') AS data_hora_andamento,
     cast(Integration_Event__c AS string) AS integration_event,
     cast(Status_Especifico_Orgao__c AS string) AS status_especifico_orgao,
-    cast(Status_Normalizado__c AS string) AS status_normalizado,
+    -- normaliza casing inconsistente vindo da origem (ex.: "Em Andamento" → "Em andamento")
+    case 
+        when Status_Normalizado__c = 'Em Andamento' then 'Em andamento'
+        else cast(Status_Normalizado__c AS string)
+    end AS status_normalizado,
     cast(UO_Informada_Orgao__c AS string) AS uo_informada_orgao,
     cast(Related_WorkOrder__c AS string) AS related_work_order,
     cast(Form_Answers_Json__c AS string) AS form_answers_json,

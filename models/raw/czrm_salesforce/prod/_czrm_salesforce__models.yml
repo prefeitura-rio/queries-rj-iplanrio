@@ -2,10 +2,10 @@ version: 2
 
 models:
   - name: raw_czrm__account
-    description: "Tabela raw do objeto Salesforce correspondente a account."
+    description: '{{ doc("czrm_salesforce__account") }}'
     columns:
       - name: id
-        description: "ID da conta"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -17,404 +17,404 @@ models:
               config:
                 severity: error
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: master_record_id
-        description: "ID do registro mestre"
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
         data_type: string
       - name: name
-        description: "Nome da conta"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: last_name
-        description: "Sobrenome"
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
         data_type: string
       - name: first_name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
         data_type: string
       - name: salutation
-        description: "Tratamento"
+        description: '{{ doc("czrm_salesforce__col__salutation") }}'
         data_type: string
       - name: account_type
-        description: "Tipo de conta"
+        description: '{{ doc("czrm_salesforce__col__account_type") }}'
         data_type: string
       - name: record_type_id
-        description: "ID do tipo de registro"
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
         data_type: string
       - name: parent_id
-        description: "ID da conta pai"
+        description: '{{ doc("czrm_salesforce__col__parent_id") }}'
         data_type: string
       - name: billing_street
-        description: "Logradouro de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_street") }}'
         data_type: string
       - name: billing_city
-        description: "Cidade de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_city") }}'
         data_type: string
       - name: billing_state
-        description: "Estado/Província de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_state") }}'
         data_type: string
       - name: billing_postal_code
-        description: "CEP de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_postal_code") }}'
         data_type: string
       - name: billing_country
-        description: "País de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_country") }}'
         data_type: string
       - name: billing_latitude
-        description: "Latitude de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_latitude") }}'
         data_type: numeric
       - name: billing_longitude
-        description: "Longitude de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_longitude") }}'
         data_type: numeric
       - name: billing_geocode_accuracy
-        description: "Precisão do geocódigo de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_geocode_accuracy") }}'
         data_type: string
       - name: billing_address
-        description: "Endereço de cobrança"
+        description: '{{ doc("czrm_salesforce__col__billing_address") }}'
         data_type: json
       - name: shipping_street
-        description: "Logradouro de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_street") }}'
         data_type: string
       - name: shipping_city
-        description: "Cidade de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_city") }}'
         data_type: string
       - name: shipping_state
-        description: "Estado/Província de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_state") }}'
         data_type: string
       - name: shipping_postal_code
-        description: "CEP de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_postal_code") }}'
         data_type: string
       - name: shipping_country
-        description: "País de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_country") }}'
         data_type: string
       - name: shipping_latitude
-        description: "Latitude de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_latitude") }}'
         data_type: numeric
       - name: shipping_longitude
-        description: "Longitude de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_longitude") }}'
         data_type: numeric
       - name: shipping_geocode_accuracy
-        description: "Precisão do geocódigo de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_geocode_accuracy") }}'
         data_type: string
       - name: shipping_address
-        description: "Endereço de entrega"
+        description: '{{ doc("czrm_salesforce__col__shipping_address") }}'
         data_type: json
       - name: phone
-        description: "Telefone da conta."
+        description: '{{ doc("czrm_salesforce__col__phone") }}'
         data_type: string
       - name: fax
-        description: "Fax da conta"
+        description: '{{ doc("czrm_salesforce__col__fax") }}'
         data_type: string
       - name: account_number
-        description: "Número da conta"
+        description: '{{ doc("czrm_salesforce__col__account_number") }}'
         data_type: string
       - name: website
-        description: "Website"
+        description: '{{ doc("czrm_salesforce__col__website") }}'
         data_type: string
       - name: photo_url
-        description: "URL da foto"
+        description: '{{ doc("czrm_salesforce__col__photo_url") }}'
         data_type: string
       - name: sic
-        description: "Código SIC"
+        description: '{{ doc("czrm_salesforce__col__sic") }}'
         data_type: string
       - name: industry
-        description: "Setor"
+        description: '{{ doc("czrm_salesforce__col__industry") }}'
         data_type: string
       - name: annual_revenue
-        description: "Receita anual"
+        description: '{{ doc("czrm_salesforce__col__annual_revenue") }}'
         data_type: numeric
       - name: number_of_employees
-        description: "Funcionários"
+        description: '{{ doc("czrm_salesforce__col__number_of_employees") }}'
         data_type: int64
       - name: ownership
-        description: "Propriedade"
+        description: '{{ doc("czrm_salesforce__col__ownership") }}'
         data_type: string
       - name: ticker_symbol
-        description: "Símbolo do ticker"
+        description: '{{ doc("czrm_salesforce__col__ticker_symbol") }}'
         data_type: string
       - name: description
-        description: "Descrição da conta"
+        description: '{{ doc("czrm_salesforce__col__description") }}'
         data_type: string
       - name: rating
-        description: "Classificação da conta"
+        description: '{{ doc("czrm_salesforce__col__rating") }}'
         data_type: string
       - name: site
-        description: "Site da conta"
+        description: '{{ doc("czrm_salesforce__col__site") }}'
         data_type: string
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_activity_date
-        description: "Última atividade"
+        description: '{{ doc("czrm_salesforce__col__last_activity_date") }}'
         data_type: date
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: source_system_identifier
-        description: "ID do sistema de origem"
+        description: '{{ doc("czrm_salesforce__col__source_system_identifier") }}'
         data_type: string
       - name: is_partner
-        description: "Conta parceira"
+        description: '{{ doc("czrm_salesforce__col__is_partner") }}'
         data_type: boolean
       - name: is_customer_portal
-        description: "Conta do portal do cliente."
+        description: '{{ doc("czrm_salesforce__col__is_customer_portal") }}'
         data_type: boolean
       - name: person_contact_id
-        description: "ID do contato"
+        description: '{{ doc("czrm_salesforce__col__person_contact_id") }}'
         data_type: string
       - name: is_person_account
-        description: "É conta pessoal"
+        description: '{{ doc("czrm_salesforce__col__is_person_account") }}'
         data_type: boolean
       - name: person_mailing_street
-        description: "Logradouro de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_street") }}'
         data_type: string
       - name: person_mailing_city
-        description: "Cidade de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_city") }}'
         data_type: string
       - name: person_mailing_state
-        description: "Estado/Província de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_state") }}'
         data_type: string
       - name: person_mailing_postal_code
-        description: "CEP de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_postal_code") }}'
         data_type: string
       - name: person_mailing_country
-        description: "País de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_country") }}'
         data_type: string
       - name: person_mailing_latitude
-        description: "Latitude de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_latitude") }}'
         data_type: numeric
       - name: person_mailing_longitude
-        description: "Longitude de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_longitude") }}'
         data_type: numeric
       - name: person_mailing_geocode_accuracy
-        description: "Precisão do geocódigo de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_geocode_accuracy") }}'
         data_type: string
       - name: person_mailing_address
-        description: "Endereço de correspondência"
+        description: '{{ doc("czrm_salesforce__col__person_mailing_address") }}'
         data_type: json
       - name: person_other_street
-        description: "Outro logradouro"
+        description: '{{ doc("czrm_salesforce__col__person_other_street") }}'
         data_type: string
       - name: person_other_city
-        description: "Outra cidade"
+        description: '{{ doc("czrm_salesforce__col__person_other_city") }}'
         data_type: string
       - name: person_other_state
-        description: "Outro estado/província"
+        description: '{{ doc("czrm_salesforce__col__person_other_state") }}'
         data_type: string
       - name: person_other_postal_code
-        description: "Outro CEP"
+        description: '{{ doc("czrm_salesforce__col__person_other_postal_code") }}'
         data_type: string
       - name: person_other_country
-        description: "Outro país"
+        description: '{{ doc("czrm_salesforce__col__person_other_country") }}'
         data_type: string
       - name: person_other_latitude
-        description: "Outra latitude"
+        description: '{{ doc("czrm_salesforce__col__person_other_latitude") }}'
         data_type: numeric
       - name: person_other_longitude
-        description: "Outra longitude"
+        description: '{{ doc("czrm_salesforce__col__person_other_longitude") }}'
         data_type: numeric
       - name: person_other_geocode_accuracy
-        description: "Precisão do outro geocódigo"
+        description: '{{ doc("czrm_salesforce__col__person_other_geocode_accuracy") }}'
         data_type: string
       - name: person_other_address
-        description: "Outro endereço"
+        description: '{{ doc("czrm_salesforce__col__person_other_address") }}'
         data_type: json
       - name: person_mobile_phone
-        description: "Telefone celular do cidadão no formato 55 + DDD + número."
+        description: '{{ doc("czrm_salesforce__col__person_mobile_phone") }}'
         data_type: string
       - name: person_home_phone
-        description: "Telefone residencial"
+        description: '{{ doc("czrm_salesforce__col__person_home_phone") }}'
         data_type: string
       - name: person_other_phone
-        description: "Outro telefone"
+        description: '{{ doc("czrm_salesforce__col__person_other_phone") }}'
         data_type: string
       - name: person_assistant_phone
-        description: "Telefone do assistente"
+        description: '{{ doc("czrm_salesforce__col__person_assistant_phone") }}'
         data_type: string
       - name: person_email
-        description: "E-mail"
+        description: '{{ doc("czrm_salesforce__col__person_email") }}'
         data_type: string
       - name: person_title
-        description: "Título"
+        description: '{{ doc("czrm_salesforce__col__person_title") }}'
         data_type: string
       - name: person_department
-        description: "Departamento"
+        description: '{{ doc("czrm_salesforce__col__person_department") }}'
         data_type: string
       - name: person_assistant_name
-        description: "Assistente"
+        description: '{{ doc("czrm_salesforce__col__person_assistant_name") }}'
         data_type: string
       - name: person_lead_source
-        description: "Origem do lead"
+        description: '{{ doc("czrm_salesforce__col__person_lead_source") }}'
         data_type: string
       - name: person_birthdate
-        description: "Data de nascimento"
+        description: '{{ doc("czrm_salesforce__col__person_birthdate") }}'
         data_type: date
       - name: person_has_opted_out_of_email
-        description: "Cancelar recebimento de e-mail"
+        description: '{{ doc("czrm_salesforce__col__person_has_opted_out_of_email") }}'
         data_type: boolean
       - name: person_has_opted_out_of_fax
-        description: "Cancelar recebimento de fax"
+        description: '{{ doc("czrm_salesforce__col__person_has_opted_out_of_fax") }}'
         data_type: boolean
       - name: person_do_not_call
-        description: "Não ligar"
+        description: '{{ doc("czrm_salesforce__col__person_do_not_call") }}'
         data_type: boolean
       - name: person_last_cu_request_date
-        description: "Data do último pedido de manter contato"
+        description: '{{ doc("czrm_salesforce__col__person_last_cu_request_date") }}'
         data_type: datetime
       - name: person_last_cu_update_date
-        description: "Data de salvamento do último manter contato"
+        description: '{{ doc("czrm_salesforce__col__person_last_cu_update_date") }}'
         data_type: datetime
       - name: person_email_bounced_reason
-        description: "Motivo de rejeição do e-mail"
+        description: '{{ doc("czrm_salesforce__col__person_email_bounced_reason") }}'
         data_type: string
       - name: person_email_bounced_date
-        description: "Data de rejeição do e-mail"
+        description: '{{ doc("czrm_salesforce__col__person_email_bounced_date") }}'
         data_type: datetime
       - name: person_individual_id
-        description: "ID do indivíduo"
+        description: '{{ doc("czrm_salesforce__col__person_individual_id") }}'
         data_type: string
       - name: person_pronouns
-        description: "Pronomes"
+        description: '{{ doc("czrm_salesforce__col__person_pronouns") }}'
         data_type: string
       - name: person_gender_identity
-        description: "Identidade de gênero"
+        description: '{{ doc("czrm_salesforce__col__person_gender_identity") }}'
         data_type: string
       - name: jigsaw
-        description: "Data.com Key"
+        description: '{{ doc("czrm_salesforce__col__jigsaw") }}'
         data_type: string
       - name: jigsaw_company_id
-        description: "Jigsaw Company ID"
+        description: '{{ doc("czrm_salesforce__col__jigsaw_company_id") }}'
         data_type: string
       - name: account_source
-        description: "Origem da conta"
+        description: '{{ doc("czrm_salesforce__col__account_source") }}'
         data_type: string
       - name: sic_desc
-        description: "Descrição SIC"
+        description: '{{ doc("czrm_salesforce__col__sic_desc") }}'
         data_type: string
       - name: has_privacy_hold
-        description: "Retenção de privacidade"
+        description: '{{ doc("czrm_salesforce__col__has_privacy_hold") }}'
         data_type: boolean
       - name: cpf
-        description: "Campo de identificação única (CPF) do cidadão. Configurado como ID Externo para integração com sistemas externos.=. Possui Regra de Validação para garantir exatamente 11 dígitos numéricos."
+        description: '{{ doc("czrm_salesforce__col__cpf") }}'
         data_type: string
       - name: nome_completo
-        description: "Campo fórmula para exibir o nome completo sem exibir o campo de tratamento."
+        description: '{{ doc("czrm_salesforce__col__nome_completo") }}'
         data_type: string
       - name: ignore_validation_rule
-        description: "Campo técnico que realiza bypass das regras de validação"
+        description: '{{ doc("czrm_salesforce__col__ignore_validation_rule") }}'
         data_type: boolean
       - name: is_tourist
-        description: "Indica se o cidadao e um turista estrangeiro. Quando marcado, o campo de CPF e substituido pelo campo de Passaporte."
+        description: '{{ doc("czrm_salesforce__col__is_tourist") }}'
         data_type: boolean
       - name: last_access_servant_portal
-        description: "Armazena a data e hora do último acesso do servidor ao portal de andamentos externos. Utilizado para calcular inatividade de 12 meses."
+        description: '{{ doc("czrm_salesforce__col__last_access_servant_portal") }}'
         data_type: datetime
       - name: passport_number
-        description: "Numero do passaporte do cidadao estrangeiro. Obrigatorio quando IsTourist__c = true. Formato: 5 a 20 caracteres alfanumericos."
+        description: '{{ doc("czrm_salesforce__col__passport_number") }}'
         data_type: string
       - name: phone_1
-        description: "Telefone principal do cidadao. Substitui o campo PersonMobilePhone. Formato hibrido: celular (55 + DDD + 9 + 8 digitos = 13) ou fixo (55 + DDD + 8 digitos = 12). Utilizado como primeiro canal de contato e para higienizacao de cadastro."
+        description: '{{ doc("czrm_salesforce__col__phone_1") }}'
         data_type: string
       - name: phone_2
-        description: "Telefone secundario do cidadao. Formato hibrido: celular (55+DDD+9+8 digitos) ou fixo (55+DDD+8 digitos). Utilizado no processo de higienizacao: se Phone_1__c falhar, Phone_2__c e promovido para Phone_1__c."
+        description: '{{ doc("czrm_salesforce__col__phone_2") }}'
         data_type: string
       - name: phone_3
-        description: "Telefone terciario do cidadao. Formato hibrido: celular (55+DDD+9+8 digitos) ou fixo (55+DDD+8 digitos). Utilizado no processo de higienizacao como terceira opcao apos Phone_1__c e Phone_2__c."
+        description: '{{ doc("czrm_salesforce__col__phone_3") }}'
         data_type: string
       - name: social_name
-        description: "Nome social do cidadao, quando informado. Exibido quando o checkbox Possui nome social estiver marcado no formulario de atendimento."
+        description: '{{ doc("czrm_salesforce__col__social_name") }}'
         data_type: string
       - name: address_complement
-        description: "Complemento do endereco do cidadao (apto, bloco, sala, etc.). Armazenado separadamente do campo de endereco padrao do Salesforce."
+        description: '{{ doc("czrm_salesforce__col__address_complement") }}'
         data_type: string
       - name: disability_type
-        description: "Indica se o cidadão possui alguma deficiência e, em caso positivo, qual o tipo."
+        description: '{{ doc("czrm_salesforce__col__disability_type") }}'
         data_type: string
       - name: display_name
-        description: "Nome de exibição (apelido/nickname) autodeclarado pelo cidadão no portal. Difere do nome social (identidade de gênero)."
+        description: '{{ doc("czrm_salesforce__col__display_name") }}'
         data_type: string
       - name: education_level
-        description: "Nível de escolaridade do cidadão."
+        description: '{{ doc("czrm_salesforce__col__education_level") }}'
         data_type: string
       - name: family_income
-        description: "Faixa de renda familiar mensal do cidadão, expressa em salários mínimos."
+        description: '{{ doc("czrm_salesforce__col__family_income") }}'
         data_type: string
       - name: public_servant_status
-        description: "Indica o status de acesso do servidor ao portal de andamentos externos. Controlado automaticamente por login e scheduled job de inatividade."
+        description: '{{ doc("czrm_salesforce__col__public_servant_status") }}'
         data_type: string
       - name: nationality
-        description: "Nacionalidade do cidadão."
+        description: '{{ doc("czrm_salesforce__col__nationality") }}'
         data_type: string
       - name: phone_1_type
-        description: "Identifica automaticamente o tipo do Telefone principal com base no numero de digitos: 13 digitos = Celular (55+DDD+9+8), 12 digitos = Fixo (55+DDD+8)."
+        description: '{{ doc("czrm_salesforce__col__phone_1_type") }}'
         data_type: string
       - name: phone_2_type
-        description: "Identifica automaticamente o tipo do Telefone secundario com base no numero de digitos: 13 digitos = Celular (55+DDD+9+8), 12 digitos = Fixo (55+DDD+8)."
+        description: '{{ doc("czrm_salesforce__col__phone_2_type") }}'
         data_type: string
       - name: phone_3_type
-        description: "Identifica automaticamente o tipo do Telefone terciario com base no numero de digitos: 13 digitos = Celular (55+DDD+9+8), 12 digitos = Fixo (55+DDD+8)."
+        description: '{{ doc("czrm_salesforce__col__phone_3_type") }}'
         data_type: string
       - name: phone_international
-        description: "Telefone internacional do cidadao, destinado principalmente a turistas. Aceita qualquer formato de numero internacional sem validacao de DDI especifico."
+        description: '{{ doc("czrm_salesforce__col__phone_international") }}'
         data_type: string
       - name: race_color
-        description: "Cor ou raça autodeclarada pelo cidadão, conforme categorias do IBGE."
+        description: '{{ doc("czrm_salesforce__col__race_color") }}'
         data_type: string
       - name: is_public_servant
-        description: "Indica se a Person Account presta serviço público (servidor/terceirizado/consultor). Utilizado para controlar acesso ao portal /servidor-pcrj."
+        description: '{{ doc("czrm_salesforce__col__is_public_servant") }}'
         data_type: boolean
       - name: speaking_language
-        description: "Idioma preferencial do cidadao para comunicacao. Campo opcional de perfil."
+        description: '{{ doc("czrm_salesforce__col__speaking_language") }}'
         data_type: string
       - name: last_update_channel
-        description: "Canal da última atualização"
+        description: '{{ doc("czrm_salesforce__col__last_update_channel") }}'
         data_type: string
       - name: email_corporativo
-        description: "Email corporativo do servidor (obtido do User.Email interno). Usado para auditoria de quem presta serviço público e seu email funcional."
+        description: '{{ doc("czrm_salesforce__col__email_corporativo") }}'
         data_type: string
       - name: user_internal
-        description: "Usuário interno (licenca Standard) vinculado a esta Person Account. Amarra o User interno a conta do servidor."
+        description: '{{ doc("czrm_salesforce__col__user_internal") }}'
         data_type: string
       - name: main_organizational_unit
-        description: "Órgão central do servidor (sincronizado do User.main_organizational_unit__c). Picklist governada pelo GVS main_organizational_unit."
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
         data_type: string
       - name: user_external
-        description: "Usuário externo (portal/cidadão) vinculado a esta Person Account. Espelha o Usuário Interno para dar visibilidade de qual User de comunidade representa o cadastro. Preenchido automaticamente pelo UserSyncHandler."
+        description: '{{ doc("czrm_salesforce__col__user_external") }}'
         data_type: string
       - name: receber_email_notificacao
-        description: "Indica se o prestador deve receber e-mail de notificação ao ser acionado em um andamento externo. Desmarcado, o prestador continua vendo e respondendo o andamento no portal, mas não recebe o e-mail. Default true."
+        description: '{{ doc("czrm_salesforce__col__receber_email_notificacao") }}'
         data_type: boolean
       - name: et4ae5_has_opted_out_of_mobile_pc
-        description: "Cancelar recebimento mobile"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_has_opted_out_of_mobile_pc") }}'
         data_type: boolean
       - name: et4ae5_mobile_country_code_pc
-        description: "Código de país do celular"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_mobile_country_code_pc") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__contact
-    description: "Tabela raw do objeto Salesforce correspondente a contact."
+    description: '{{ doc("czrm_salesforce__contact") }}'
     columns:
       - name: id
-        description: "ID do contato"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -426,179 +426,179 @@ models:
               config:
                 severity: error
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: master_record_id
-        description: "ID do registro mestre"
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
         data_type: string
       - name: account_id
-        description: "ID da conta"
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
         data_type: string
       - name: is_person_account
-        description: "É conta pessoal"
+        description: '{{ doc("czrm_salesforce__col__is_person_account") }}'
         data_type: boolean
       - name: last_name
-        description: "Sobrenome"
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
         data_type: string
       - name: first_name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
         data_type: string
       - name: salutation
-        description: "Tratamento"
+        description: '{{ doc("czrm_salesforce__col__salutation") }}'
         data_type: string
       - name: name
-        description: "Nome completo"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: mailing_street
-        description: "Logradouro de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_street") }}'
         data_type: string
       - name: mailing_city
-        description: "Cidade de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_city") }}'
         data_type: string
       - name: mailing_state
-        description: "Estado/Província de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_state") }}'
         data_type: string
       - name: mailing_postal_code
-        description: "CEP de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_postal_code") }}'
         data_type: string
       - name: mailing_country
-        description: "País de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_country") }}'
         data_type: string
       - name: mailing_latitude
-        description: "Latitude de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_latitude") }}'
         data_type: numeric
       - name: mailing_longitude
-        description: "Longitude de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_longitude") }}'
         data_type: numeric
       - name: mailing_geocode_accuracy
-        description: "Precisão do geocódigo de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_geocode_accuracy") }}'
         data_type: string
       - name: mailing_address
-        description: "Endereço de correspondência"
+        description: '{{ doc("czrm_salesforce__col__mailing_address") }}'
         data_type: json
       - name: phone
-        description: "Telefone comercial"
+        description: '{{ doc("czrm_salesforce__col__phone") }}'
         data_type: string
       - name: fax
-        description: "Fax comercial"
+        description: '{{ doc("czrm_salesforce__col__fax") }}'
         data_type: string
       - name: mobile_phone
-        description: "Telefone celular"
+        description: '{{ doc("czrm_salesforce__col__mobile_phone") }}'
         data_type: string
       - name: home_phone
-        description: "Telefone residencial"
+        description: '{{ doc("czrm_salesforce__col__home_phone") }}'
         data_type: string
       - name: other_phone
-        description: "Outro telefone"
+        description: '{{ doc("czrm_salesforce__col__other_phone") }}'
         data_type: string
       - name: assistant_phone
-        description: "Telefone do assistente"
+        description: '{{ doc("czrm_salesforce__col__assistant_phone") }}'
         data_type: string
       - name: reports_to_id
-        description: "ID do contato superior (hierarquia de contatos)."
+        description: '{{ doc("czrm_salesforce__col__reports_to_id") }}'
         data_type: string
       - name: email
-        description: "E-mail"
+        description: '{{ doc("czrm_salesforce__col__email") }}'
         data_type: string
       - name: title
-        description: "Título"
+        description: '{{ doc("czrm_salesforce__col__title") }}'
         data_type: string
       - name: department
-        description: "Departamento"
+        description: '{{ doc("czrm_salesforce__col__department") }}'
         data_type: string
       - name: birthdate
-        description: "Data de nascimento"
+        description: '{{ doc("czrm_salesforce__col__birthdate") }}'
         data_type: date
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_activity_date
-        description: "Última atividade"
+        description: '{{ doc("czrm_salesforce__col__last_activity_date") }}'
         data_type: date
       - name: last_cu_request_date
-        description: "Data do último pedido de manter contato"
+        description: '{{ doc("czrm_salesforce__col__last_cu_request_date") }}'
         data_type: datetime
       - name: last_cu_update_date
-        description: "Data de salvamento do último manter contato"
+        description: '{{ doc("czrm_salesforce__col__last_cu_update_date") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: email_bounced_reason
-        description: "Motivo de rejeição do e-mail"
+        description: '{{ doc("czrm_salesforce__col__email_bounced_reason") }}'
         data_type: string
       - name: email_bounced_date
-        description: "Data de rejeição do e-mail"
+        description: '{{ doc("czrm_salesforce__col__email_bounced_date") }}'
         data_type: datetime
       - name: is_email_bounced
-        description: "E-mail rejeitado"
+        description: '{{ doc("czrm_salesforce__col__is_email_bounced") }}'
         data_type: boolean
       - name: photo_url
-        description: "URL da foto"
+        description: '{{ doc("czrm_salesforce__col__photo_url") }}'
         data_type: string
       - name: jigsaw
-        description: "Data.com Key"
+        description: '{{ doc("czrm_salesforce__col__jigsaw") }}'
         data_type: string
       - name: jigsaw_contact_id
-        description: "ID do contato Jigsaw"
+        description: '{{ doc("czrm_salesforce__col__jigsaw_contact_id") }}'
         data_type: string
       - name: individual_id
-        description: "ID do indivíduo"
+        description: '{{ doc("czrm_salesforce__col__individual_id") }}'
         data_type: string
       - name: gender_identity
-        description: "Identidade de gênero"
+        description: '{{ doc("czrm_salesforce__col__gender_identity") }}'
         data_type: string
       - name: has_privacy_hold
-        description: "Retenção de privacidade"
+        description: '{{ doc("czrm_salesforce__col__has_privacy_hold") }}'
         data_type: boolean
       - name: is_priority_record
-        description: "Indica se o contato é marcado como prioritário."
+        description: '{{ doc("czrm_salesforce__col__is_priority_record") }}'
         data_type: boolean
       - name: contact_source
-        description: "Origem de criação"
+        description: '{{ doc("czrm_salesforce__col__contact_source") }}'
         data_type: string
       - name: title_type
-        description: "Nível de senioridade"
+        description: '{{ doc("czrm_salesforce__col__title_type") }}'
         data_type: string
       - name: department_group
-        description: "Grupo de departamento"
+        description: '{{ doc("czrm_salesforce__col__department_group") }}'
         data_type: string
       - name: buyer_attributes
-        description: "Atributos do comprador"
+        description: '{{ doc("czrm_salesforce__col__buyer_attributes") }}'
         data_type: string
       - name: et4ae5_has_opted_out_of_mobile
-        description: "Cancelar recebimento mobile"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_has_opted_out_of_mobile") }}'
         data_type: boolean
       - name: et4ae5_mobile_country_code
-        description: "Código de país do celular"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_mobile_country_code") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__individual
-    description: "Tabela raw do objeto Salesforce correspondente a individual."
+    description: '{{ doc("czrm_salesforce__individual") }}'
     columns:
       - name: id
-        description: "ID do indivíduo"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -610,116 +610,116 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: last_name
-        description: "Sobrenome"
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
         data_type: string
       - name: first_name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
         data_type: string
       - name: salutation
-        description: "Tratamento"
+        description: '{{ doc("czrm_salesforce__col__salutation") }}'
         data_type: string
       - name: name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: has_opted_out_tracking
-        description: "Não rastrear"
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_tracking") }}'
         data_type: boolean
       - name: has_opted_out_profiling
-        description: "Não perfilar"
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_profiling") }}'
         data_type: boolean
       - name: has_opted_out_processing
-        description: "Não processar"
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_processing") }}'
         data_type: boolean
       - name: has_opted_out_solicit
-        description: "Não enviar marketing"
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_solicit") }}'
         data_type: boolean
       - name: should_forget
-        description: "Esquecer este indivíduo"
+        description: '{{ doc("czrm_salesforce__col__should_forget") }}'
         data_type: boolean
       - name: send_individual_data
-        description: "Exportar dados do indivíduo."
+        description: '{{ doc("czrm_salesforce__col__send_individual_data") }}'
         data_type: boolean
       - name: can_store_pii_elsewhere
-        description: "Permitido armazenar dados pessoais em outros locais"
+        description: '{{ doc("czrm_salesforce__col__can_store_pii_elsewhere") }}'
         data_type: boolean
       - name: has_opted_out_geo_tracking
-        description: "Bloquear rastreamento de geolocalização"
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_geo_tracking") }}'
         data_type: boolean
       - name: birth_date
-        description: "Data de nascimento"
+        description: '{{ doc("czrm_salesforce__col__birth_date") }}'
         data_type: date
       - name: death_date
-        description: "Data de falecimento"
+        description: '{{ doc("czrm_salesforce__col__death_date") }}'
         data_type: date
       - name: convictions_count
-        description: "Número de condenações"
+        description: '{{ doc("czrm_salesforce__col__convictions_count") }}'
         data_type: int64
       - name: children_count
-        description: "Número de filhos"
+        description: '{{ doc("czrm_salesforce__col__children_count") }}'
         data_type: int64
       - name: military_service
-        description: "Serviço militar"
+        description: '{{ doc("czrm_salesforce__col__military_service") }}'
         data_type: string
       - name: is_home_owner
-        description: "É proprietário de imóvel"
+        description: '{{ doc("czrm_salesforce__col__is_home_owner") }}'
         data_type: boolean
       - name: occupation
-        description: "Ocupação"
+        description: '{{ doc("czrm_salesforce__col__occupation") }}'
         data_type: string
       - name: website
-        description: "Website"
+        description: '{{ doc("czrm_salesforce__col__website") }}'
         data_type: string
       - name: individuals_age
-        description: "Idade do indivíduo"
+        description: '{{ doc("czrm_salesforce__col__individuals_age") }}'
         data_type: string
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: master_record_id
-        description: "ID do registro mestre"
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
         data_type: string
       - name: consumer_credit_score
-        description: "Pontuação de crédito do consumidor"
+        description: '{{ doc("czrm_salesforce__col__consumer_credit_score") }}'
         data_type: int64
       - name: consumer_credit_score_provider_name
-        description: "Nome do provedor de pontuação de crédito"
+        description: '{{ doc("czrm_salesforce__col__consumer_credit_score_provider_name") }}'
         data_type: string
       - name: influencer_rating
-        description: "Classificação de influenciador"
+        description: '{{ doc("czrm_salesforce__col__influencer_rating") }}'
         data_type: int64
       - name: has_privacy_hold
-        description: "Retenção de privacidade"
+        description: '{{ doc("czrm_salesforce__col__has_privacy_hold") }}'
         data_type: boolean
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__neighborhood
-    description: "Tabela raw do objeto Salesforce correspondente a neighborhood."
+    description: '{{ doc("czrm_salesforce__neighborhood") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -731,74 +731,74 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Nome do bairro"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: codbairro
-        description: "Código com zero à esquerda (ex: \"013\"). External ID para upsert."
+        description: '{{ doc("czrm_salesforce__col__codbairro") }}'
         data_type: string
       - name: codbnum
-        description: "Código inteiro. Chave de join com cod_bairro do Logradouro__c."
+        description: '{{ doc("czrm_salesforce__col__codbnum") }}'
         data_type: numeric
       - name: ra
-        description: "Lookup para o registro de recorte administrativo do tipo RA"
+        description: '{{ doc("czrm_salesforce__col__ra") }}'
         data_type: string
       - name: ap
-        description: "Lookup para o registro de recorte administrativo do tipo AP"
+        description: '{{ doc("czrm_salesforce__col__ap") }}'
         data_type: string
       - name: rp
-        description: "Lookup para o registro de recorte administrativo do tipo RP"
+        description: '{{ doc("czrm_salesforce__col__rp") }}'
         data_type: string
       - name: subprefeitura
-        description: "Lookup para o registro de recorte administrativo do tipo Subprefeitura."
+        description: '{{ doc("czrm_salesforce__col__subprefeitura") }}'
         data_type: string
       - name: aps
-        description: "Lookup para o registro de recorte administrativo do tipo APS (Área Programática)"
+        description: '{{ doc("czrm_salesforce__col__aps") }}'
         data_type: string
       - name: cre
-        description: "Lookup para o registro de recorte administrativo do tipo Coordenadoria Regional de Educação"
+        description: '{{ doc("czrm_salesforce__col__cre") }}'
         data_type: string
       - name: coverage
-        description: "Aponta para o registro de abrangência da UO responsável por este bairro. Utilizado pelo roteador de Work Orders para identificar a UO destino a partir do logradouro informado pelo cidadão. Um bairro só pode pertencer a uma abrangência."
+        description: '{{ doc("czrm_salesforce__col__coverage") }}'
         data_type: string
       - name: google_neighborhood_name
-        description: "Nome do bairro conforme retornado pelo Google Places API. Usado para resolver o lookup WorkOrder.Neighborhood__c quando o nome do Google difere do nome oficial IPP."
+        description: '{{ doc("czrm_salesforce__col__google_neighborhood_name") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__organizational_unity
-    description: "Tabela raw do objeto Salesforce correspondente a organizational_unity."
+    description: '{{ doc("czrm_salesforce__organizational_unity") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -810,110 +810,110 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Nome da unidade"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: record_type_id
-        description: "ID do tipo de registro"
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: external_integration_key
-        description: "URL/endpoint do webservice de integração definido no SGRC. Preenchido apenas para unidades com integração externa (RIOLUZ, COMLURB, DEFESA CIVIL, GM-RIO)."
+        description: '{{ doc("czrm_salesforce__col__external_integration_key") }}'
         data_type: string
       - name: parent_uo
-        description: "Aponta para a unidade imediatamente superior (N-1). Obrigatório para Unidade Administrativa e Unidade de Ouvidoria."
+        description: '{{ doc("czrm_salesforce__col__parent_uo") }}'
         data_type: string
       - name: ativo
-        description: "Indica se a UO existe no organograma ativo. Se desmarcado impede roteamento novo"
+        description: '{{ doc("czrm_salesforce__col__ativo") }}'
         data_type: boolean
       - name: email_institucional
-        description: "E-mail genérico da UO (ex: ouvidoria@smtr) para alertas ou cópias automatizadas do CRM"
+        description: '{{ doc("czrm_salesforce__col__email_institucional") }}'
         data_type: string
       - name: gestor_responsavel
-        description: "Funcionário público líder atual pela UO. Ideal para receber notificações de SLAs vencidos"
+        description: '{{ doc("czrm_salesforce__col__gestor_responsavel") }}'
         data_type: string
       - name: natureza_orgao
-        description: "Exclusivo do Record Type 'Órgão'. Classifica a natureza institucional da UO."
+        description: '{{ doc("czrm_salesforce__col__natureza_orgao") }}'
         data_type: string
       - name: permite_atribuir_chamados
-        description: "Indica se a UO está habilitada para receber demandas através de filas ou se é uma UO de caráter somente gerencial"
+        description: '{{ doc("czrm_salesforce__col__permite_atribuir_chamados") }}'
         data_type: boolean
       - name: role_id
-        description: "Guarda o ID do papel associado à UO"
+        description: '{{ doc("czrm_salesforce__col__role_id") }}'
         data_type: string
       - name: queue_id
-        description: "Guarda o ID (00G) da fila associada a UO"
+        description: '{{ doc("czrm_salesforce__col__queue_id") }}'
         data_type: string
       - name: sgrc_uo_id
-        description: "ID numérico da unidade organizacional no sistema legado SGRC. Usado como External Id para integração e resolução de hierarquia."
+        description: '{{ doc("czrm_salesforce__col__sgrc_uo_id") }}'
         data_type: numeric
       - name: telefone_institucional
-        description: "Contato telefônico geral não pessoal do órgão (permanente ao longo das gestões)"
+        description: '{{ doc("czrm_salesforce__col__telefone_institucional") }}'
         data_type: string
       - name: record_type_developer_name
-        description: "Indica o nome API do tipo de registro de Unidade Organizacional"
+        description: '{{ doc("czrm_salesforce__col__record_type_developer_name") }}'
         data_type: string
       - name: wo_update_event_bundle
-        description: "Quando preenchido, indica que existe um pacote de eventos de andamento padrão para todos os serviços daquele órgão"
+        description: '{{ doc("czrm_salesforce__col__wo_update_event_bundle") }}'
         data_type: string
       - name: main_organizational_unit
-        description: "Órgão central da Unidade Organizacional. Campo sincronizado com GVS main_organizational_unit (inclui SINC-RIO)."
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
         data_type: string
       - name: unity_type
-        description: "Indica o tipo da unidade organizacional: Órgão (N1), Unidade Administrativa (subordinada hierarquica) ou Unidade de Ouvidoria (ouvidoria setorial)."
+        description: '{{ doc("czrm_salesforce__col__unity_type") }}'
         data_type: string
       - name: shortname
-        description: "Nome reduzido da unidade organizacional, usado como identificador único para filas de atendimento. Máximo 40 caracteres."
+        description: '{{ doc("czrm_salesforce__col__shortname") }}'
         data_type: string
       - name: oversight_target_uo
-        description: "UO alvo cujos chamados (e camadas abaixo) são fiscalizados por esta Unidade Organizacional. Preenchido SOMENTE em UOs com Unity_type__c = Ouvidoria. O ouvidor enxerga os chamados da UO Fiscalizada mais toda a subárvore descendente (via Parent_UO__c), somente leitura. Uma ouvidoria fiscaliza uma única UO."
+        description: '{{ doc("czrm_salesforce__col__oversight_target_uo") }}'
         data_type: string
       - name: approval_queue_id
-        description: "ID do Group (Queue) de aprovação desta UO (UO_<SHORTNAME>_APPROVAL). Preenchido pelo SyncUOSetup (criação da UO) ou pelo QueueMembershipService.ApprovalQueueJob. Usado pelos fluxos de aprovação para resolver o aprovador dos Andamentos da OS."
+        description: '{{ doc("czrm_salesforce__col__approval_queue_id") }}'
         data_type: string
       - name: integracao_ativa
-        description: "Indica que o registro é usado na integração (IDA) e tem a edição travada no Painel SUBTD."
+        description: '{{ doc("czrm_salesforce__col__integracao_ativa") }}'
         data_type: boolean
       - name: sici_code
-        description: "Código da Unidade Administrativa (UA) no SICI (Sistema Integrado de Codificação Institucional). Usado como identificador externo para cruzamento com bases municipais e futuras integrações. Consulta: https://sici.rio.rj.gov.br/PAG/principal.aspx"
+        description: '{{ doc("czrm_salesforce__col__sici_code") }}'
         data_type: string
       - name: content_approval_queue_id
-        description: "ID do Group (Queue) de aprovacao de conteudo desta UO (UO_<SHORTNAME>_APV_CONTENT). Preenchido somente em UOs do tipo Orgao (N1)."
+        description: '{{ doc("czrm_salesforce__col__content_approval_queue_id") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__queue_group
-    description: "Tabela raw do objeto Salesforce correspondente a queue_group."
+    description: '{{ doc("czrm_salesforce__queue_group") }}'
     columns:
       - name: id
-        description: "ID do grupo"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -925,59 +925,59 @@ models:
               config:
                 severity: error
       - name: name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: developer_name
-        description: "Nome do desenvolvedor"
+        description: '{{ doc("czrm_salesforce__col__developer_name") }}'
         data_type: string
       - name: related_id
-        description: "ID relacionado"
+        description: '{{ doc("czrm_salesforce__col__related_id") }}'
         data_type: string
       - name: group_type
-        description: "Tipo"
+        description: '{{ doc("czrm_salesforce__col__group_type") }}'
         data_type: string
       - name: email
-        description: "E-mail"
+        description: '{{ doc("czrm_salesforce__col__email") }}'
         data_type: string
       - name: queue_routing_config_id
-        description: "ID de configuração de roteamento"
+        description: '{{ doc("czrm_salesforce__col__queue_routing_config_id") }}'
         data_type: string
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: does_send_email_to_members
-        description: "Enviar e-mail aos membros"
+        description: '{{ doc("czrm_salesforce__col__does_send_email_to_members") }}'
         data_type: boolean
       - name: does_include_bosses
-        description: "Incluir superiores"
+        description: '{{ doc("czrm_salesforce__col__does_include_bosses") }}'
         data_type: boolean
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: description
-        description: "Descrição"
+        description: '{{ doc("czrm_salesforce__col__description") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__record_type
-    description: "Tabela raw do objeto Salesforce correspondente a record_type."
+    description: '{{ doc("czrm_salesforce__record_type") }}'
     columns:
       - name: id
-        description: "ID do tipo de registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -989,53 +989,53 @@ models:
               config:
                 severity: error
       - name: name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: developer_name
-        description: "Nome do tipo de registro"
+        description: '{{ doc("czrm_salesforce__col__developer_name") }}'
         data_type: string
       - name: namespace_prefix
-        description: "Prefixo de namespace"
+        description: '{{ doc("czrm_salesforce__col__namespace_prefix") }}'
         data_type: string
       - name: description
-        description: "Descrição"
+        description: '{{ doc("czrm_salesforce__col__description") }}'
         data_type: string
       - name: business_process_id
-        description: "ID do processo de negócio"
+        description: '{{ doc("czrm_salesforce__col__business_process_id") }}'
         data_type: string
       - name: sobject_type
-        description: "Nome do tipo de SObject"
+        description: '{{ doc("czrm_salesforce__col__sobject_type") }}'
         data_type: string
       - name: is_active
-        description: "Ativo"
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
         data_type: boolean
       - name: is_person_type
-        description: "É tipo pessoal"
+        description: '{{ doc("czrm_salesforce__col__is_person_type") }}'
         data_type: boolean
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__service_attribute_library
-    description: "Tabela raw do objeto Salesforce correspondente a service_attribute_library."
+    description: '{{ doc("czrm_salesforce__service_attribute_library") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -1047,77 +1047,77 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Cód. Atributo de Serviço"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: field_label_name
-        description: "Rótulo amigável do atributo, exibido no formulário dinâmico. Limite de 100 caracteres, alinhado à trava do SGRC (tb_atributo.no_amigavel)."
+        description: '{{ doc("czrm_salesforce__col__field_label_name") }}'
         data_type: string
       - name: integracao_ativa
-        description: "Atributo usado no mapeamento de integração (IDA). Edição travada no Painel SUBTD."
+        description: '{{ doc("czrm_salesforce__col__integracao_ativa") }}'
         data_type: boolean
       - name: field_type
-        description: "Define o data type do campo (Text, Picklist, etc.) que será exibido no formulário."
+        description: '{{ doc("czrm_salesforce__col__field_type") }}'
         data_type: string
       - name: unique_key
-        description: "Slug do rótulo do atributo, gerado por trigger (SlugService). Usado para impedir dois atributos com o mesmo rótulo dentro da org. Não é referencial externo — para integração use SGRC_Attribute_Id__c."
+        description: '{{ doc("czrm_salesforce__col__unique_key") }}'
         data_type: string
       - name: validation_regex
-        description: "Expressão regular para validar o formato do dado inserido pelo usuário."
+        description: '{{ doc("czrm_salesforce__col__validation_regex") }}'
         data_type: string
       - name: validation_error_message
-        description: "Mensagem de erro padrão exibida quando o Regex falha."
+        description: '{{ doc("czrm_salesforce__col__validation_error_message") }}'
         data_type: string
       - name: global_help_text
-        description: "Instrução de preenchimento padrão para este atributo em todos os serviços que o utilizam."
+        description: '{{ doc("czrm_salesforce__col__global_help_text") }}'
         data_type: string
       - name: is_active
-        description: "Define se o campo está disponível para uso. Caso desativado, não aparecerá no formulário."
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
         data_type: boolean
       - name: valores_cadastrados
-        description: "Campo Roll-Up Summary que indica o total de valores cadastrados ativos para um determinado atributo."
+        description: '{{ doc("czrm_salesforce__col__valores_cadastrados") }}'
         data_type: numeric
       - name: form_section
-        description: "Define em qual agrupamento visual do formulário dinâmico este atributo será exibido. Esta informação é consumida pelo componente LWC para organizar os campos em seções (Accordions) na tela de atendimento, separando dados do cidadão, informações gerais da ocorrência e campos técnicos específicos."
+        description: '{{ doc("czrm_salesforce__col__form_section") }}'
         data_type: string
       - name: custom_lwc_name
-        description: "Nome do LWC customizado a renderizar quando Field_Type__c = Customizado."
+        description: '{{ doc("czrm_salesforce__col__custom_lwc_name") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__service_case
-    description: "Tabela raw do objeto Salesforce correspondente a service_case."
+    description: '{{ doc("czrm_salesforce__service_case") }}'
     columns:
       - name: id
-        description: "ID do protocolo"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -1129,227 +1129,227 @@ models:
               config:
                 severity: error
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: master_record_id
-        description: "ID do registro mestre"
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
         data_type: string
       - name: case_number
-        description: "Número do protocolo"
+        description: '{{ doc("czrm_salesforce__col__case_number") }}'
         data_type: string
       - name: contact_id
-        description: "ID do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_id") }}'
         data_type: string
       - name: account_id
-        description: "ID da conta"
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
         data_type: string
       - name: source_id
-        description: "ID da origem do protocolo"
+        description: '{{ doc("czrm_salesforce__col__source_id") }}'
         data_type: string
       - name: parent_id
-        description: "ID do protocolo pai"
+        description: '{{ doc("czrm_salesforce__col__parent_id") }}'
         data_type: string
       - name: supplied_name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__supplied_name") }}'
         data_type: string
       - name: supplied_email
-        description: "Endereço de e-mail"
+        description: '{{ doc("czrm_salesforce__col__supplied_email") }}'
         data_type: string
       - name: supplied_phone
-        description: "Telefone"
+        description: '{{ doc("czrm_salesforce__col__supplied_phone") }}'
         data_type: string
       - name: supplied_company
-        description: "Empresa informada pelo solicitante externo."
+        description: '{{ doc("czrm_salesforce__col__supplied_company") }}'
         data_type: string
       - name: case_type
-        description: "Tipo do protocolo"
+        description: '{{ doc("czrm_salesforce__col__case_type") }}'
         data_type: string
       - name: record_type_id
-        description: "ID do tipo de registro"
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
         data_type: string
       - name: status
-        description: "Status"
+        description: '{{ doc("czrm_salesforce__col__status") }}'
         data_type: string
       - name: origin
-        description: "Origem do protocolo"
+        description: '{{ doc("czrm_salesforce__col__origin") }}'
         data_type: string
       - name: language
-        description: "Idioma"
+        description: '{{ doc("czrm_salesforce__col__language") }}'
         data_type: string
       - name: subject
-        description: "Assunto"
+        description: '{{ doc("czrm_salesforce__col__subject") }}'
         data_type: string
       - name: priority
-        description: "Prioridade"
+        description: '{{ doc("czrm_salesforce__col__priority") }}'
         data_type: string
       - name: description
-        description: "Descrição"
+        description: '{{ doc("czrm_salesforce__col__description") }}'
         data_type: string
       - name: is_closed
-        description: "Fechado"
+        description: '{{ doc("czrm_salesforce__col__is_closed") }}'
         data_type: boolean
       - name: closed_date
-        description: "Data de fechamento"
+        description: '{{ doc("czrm_salesforce__col__closed_date") }}'
         data_type: datetime
       - name: is_escalated
-        description: "Escalado"
+        description: '{{ doc("czrm_salesforce__col__is_escalated") }}'
         data_type: boolean
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: contact_phone
-        description: "Telefone do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_phone") }}'
         data_type: string
       - name: contact_mobile
-        description: "Celular do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_mobile") }}'
         data_type: string
       - name: contact_email
-        description: "E-mail do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_email") }}'
         data_type: string
       - name: contact_fax
-        description: "Fax do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_fax") }}'
         data_type: string
       - name: comments
-        description: "Comentários internos do protocolo."
+        description: '{{ doc("czrm_salesforce__col__comments") }}'
         data_type: string
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: milestone_timer
-        description: "Tempo para o próximo marco"
+        description: '{{ doc("czrm_salesforce__col__milestone_timer") }}'
         data_type: string
       - name: protocolo_formula
-        description: "Gera o número de protocolo oficial no formato RIO-YY-XXXXXXXX"
+        description: '{{ doc("czrm_salesforce__col__protocolo_formula") }}'
         data_type: string
       - name: protocolo_texto
-        description: "Gera o número de protocolo oficial no formato RIO-YYYYXXXXXXXX (16 caracteres). Utiliza o ano de criação do registro e uma lógica de dispersão baseada na Semente do Protocolo para evitar números sequenciais, dificultando o scraping e garantindo 100 milhões de combinações anuais."
+        description: '{{ doc("czrm_salesforce__col__protocolo_texto") }}'
         data_type: string
       - name: protocolo_hyperlink
-        description: "Gera o número de protocolo oficial no formato RIO-YYYYXXXXXXXX (16 caracteres). Utiliza o ano de criação do registro e uma lógica de dispersão baseada na Semente do Protocolo para evitar números sequenciais, dificultando o scraping e garantindo 100 milhões de combinações anuais."
+        description: '{{ doc("czrm_salesforce__col__protocolo_hyperlink") }}'
         data_type: string
       - name: comentarios_de_solucao
-        description: "Campo para que o usuário informe detalhes sobre como foi o atendimento"
+        description: '{{ doc("czrm_salesforce__col__comentarios_de_solucao") }}'
         data_type: string
       - name: bypass_validation_rule
-        description: "Campo técnico que permite que alguns flows executem sem esbarrar em regras de validação criadas para impedir modificações manais por usuários"
+        description: '{{ doc("czrm_salesforce__col__bypass_validation_rule") }}'
         data_type: boolean
       - name: esta_na_fila
-        description: "Campo que indica se o caso está ou não em uma fila"
+        description: '{{ doc("czrm_salesforce__col__esta_na_fila") }}'
         data_type: boolean
       - name: record_type_developer_name
-        description: "Indica o developer name do tipo de registro do caso"
+        description: '{{ doc("czrm_salesforce__col__record_type_developer_name") }}'
         data_type: string
       - name: qtd_emails_recebidos
-        description: "Campo que mede a quantidade de e-mails recebidos dentro de um protocolo"
+        description: '{{ doc("czrm_salesforce__col__qtd_emails_recebidos") }}'
         data_type: numeric
       - name: qtd_emails_enviados
-        description: "Campo que mede a quantidade de emails enviados dentro de um protocolo"
+        description: '{{ doc("czrm_salesforce__col__qtd_emails_enviados") }}'
         data_type: numeric
       - name: tipo_de_registro_name_formula
-        description: "Campo formula que indica o tipo de registro do caso. Criado para impedir que usuários tentem converter o tipo de registro a partir do layout da página"
+        description: '{{ doc("czrm_salesforce__col__tipo_de_registro_name_formula") }}'
         data_type: string
       - name: assinatura_case_owner
-        description: "Campo que retorna o nome do usuário no formato \"Primeiro nome + primeira letra do sobrenome\", para utilização em assinatura básica de e-mail."
+        description: '{{ doc("czrm_salesforce__col__assinatura_case_owner") }}'
         data_type: string
       - name: nome_equipe_assinatura
-        description: "Campo para compor o template padrão de resposta por e-mail"
+        description: '{{ doc("czrm_salesforce__col__nome_equipe_assinatura") }}'
         data_type: string
       - name: nome_cidadao_assinatura
-        description: "Campo que define o nome do usuário que abriu o ticket, consolidando dos campos existentes no objeto contato e no campo SuppliedName."
+        description: '{{ doc("czrm_salesforce__col__nome_cidadao_assinatura") }}'
         data_type: string
       - name: assunto_tratado
-        description: "Trata o campo assunto do e-mail para remover a marcação de possível SPAM"
+        description: '{{ doc("czrm_salesforce__col__assunto_tratado") }}'
         data_type: string
       - name: categoria
-        description: "Campo N1 para catalogação do protocolo"
+        description: '{{ doc("czrm_salesforce__col__categoria") }}'
         data_type: string
       - name: subcategoria
-        description: "Subcategoria"
+        description: '{{ doc("czrm_salesforce__col__subcategoria") }}'
         data_type: string
       - name: detalhe
-        description: "Detalhe"
+        description: '{{ doc("czrm_salesforce__col__detalhe") }}'
         data_type: string
       - name: descricao_resumida
-        description: "Campo de área de texto que recebe a descrição resumida do caso a partir de um flow"
+        description: '{{ doc("czrm_salesforce__col__descricao_resumida") }}'
         data_type: string
       - name: substatus
-        description: "Detalha o status do protocolo. Atualizado automaticamente através de flow"
+        description: '{{ doc("czrm_salesforce__col__substatus") }}'
         data_type: string
       - name: data_hora_de_resolucao
-        description: "Campo data/hora preenchido por flow sempre que um caso é atualizado para resolvido"
+        description: '{{ doc("czrm_salesforce__col__data_hora_de_resolucao") }}'
         data_type: datetime
       - name: possui_data_hora_resolucao_formula
-        description: "campo formula para controlar o campo data/hora resolução no layout do caso"
+        description: '{{ doc("czrm_salesforce__col__possui_data_hora_resolucao_formula") }}'
         data_type: boolean
       - name: nome_do_proprietario
-        description: "Fórmula de texto que indica o nome do proprietário do caso"
+        description: '{{ doc("czrm_salesforce__col__nome_do_proprietario") }}'
         data_type: string
       - name: chat_fora_do_horario_de_atendimento
-        description: "Campo que registra caso o protocolo gerado seja a partir de uma tentativa de contato no chat enquanto o time de atendimento estava indisponível."
+        description: '{{ doc("czrm_salesforce__col__chat_fora_do_horario_de_atendimento") }}'
         data_type: boolean
       - name: tipo_de_usuario
-        description: "Indica o perfil do usuário que está entrando em contato"
+        description: '{{ doc("czrm_salesforce__col__tipo_de_usuario") }}'
         data_type: string
       - name: possui_pesquisa_respondida
-        description: "Possui pesquisa respondida"
+        description: '{{ doc("czrm_salesforce__col__possui_pesquisa_respondida") }}'
         data_type: boolean
       - name: link_da_corrida
-        description: "Campo URL que grava o link da corrida no aplicativo Taxi.Rio."
+        description: '{{ doc("czrm_salesforce__col__link_da_corrida") }}'
         data_type: string
       - name: survey_invitation_sent
-        description: "Indica se houve envio de convite de pesquisa para esse protocolo."
+        description: '{{ doc("czrm_salesforce__col__survey_invitation_sent") }}'
         data_type: boolean
       - name: is_reiteracao
-        description: "Reiteração"
+        description: '{{ doc("czrm_salesforce__col__is_reiteracao") }}'
         data_type: boolean
       - name: is_anonymous
-        description: "Indica que o protocolo foi aberto anonimamente."
+        description: '{{ doc("czrm_salesforce__col__is_anonymous") }}'
         data_type: boolean
       - name: solicitante_departamental
-        description: "Nome do solicitante do reverso departamental (m14 da Defesa). Texto livre — o órgão/documento (OFICIO/MANDADO/SUBPDEC); sem Person Account/CPF."
+        description: '{{ doc("czrm_salesforce__col__solicitante_departamental") }}'
         data_type: string
       - name: operador_nome
-        description: "Nome do operador informado pelo orgao no reverso departamental (m14)."
+        description: '{{ doc("czrm_salesforce__col__operador_nome") }}'
         data_type: string
       - name: operador_telefone
-        description: "Telefone do operador informado pelo orgao no reverso departamental (m14)."
+        description: '{{ doc("czrm_salesforce__col__operador_telefone") }}'
         data_type: string
       - name: solicitante_telefone
-        description: "Telefone do solicitante informado pelo orgao no reverso departamental (m14)."
+        description: '{{ doc("czrm_salesforce__col__solicitante_telefone") }}'
         data_type: string
       - name: tem_dados_departamentais
-        description: "True quando o protocolo do reverso possui dados departamentais (solicitante/operador nome ou telefone). Governa a visibilidade condicional no layout."
+        description: '{{ doc("czrm_salesforce__col__tem_dados_departamentais") }}'
         data_type: boolean
       - name: esqueleto
-        description: "Case de voz que chegou vazio da telefonia (sem cidadão e sem categoria) e ainda não foi completado pelo wizard. Marcado pelo CaseTrigger (CaseSkeletonService) no insert ou enviado já marcado pela integração; limpo pelo Completar."
+        description: '{{ doc("czrm_salesforce__col__esqueleto") }}'
         data_type: boolean
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__service_catalog
-    description: "Tabela raw do objeto Salesforce correspondente a service_catalog."
+    description: '{{ doc("czrm_salesforce__service_catalog") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -1361,98 +1361,98 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: record_type_id
-        description: "ID do tipo de registro"
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: is_active
-        description: "Controle de disponibilidade. Se desmarcado, o serviço é removido das opções de seleção no sistema."
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
         data_type: boolean
       - name: available_for_citizen
-        description: "Define se o serviço ficará visível para solicitação direta nos canais de atendimento ao cidadão."
+        description: '{{ doc("czrm_salesforce__col__available_for_citizen") }}'
         data_type: boolean
       - name: slug
-        description: "Slug URL-safe gerado automaticamente a partir do Nome. Único e imutável."
+        description: '{{ doc("czrm_salesforce__col__slug") }}'
         data_type: string
       - name: ombudsman_exclusive
-        description: "Marca registros exclusivos de Ouvidoria (Tema/Subtema/Serviço). Não aparecem na carta de serviços pública."
+        description: '{{ doc("czrm_salesforce__col__ombudsman_exclusive") }}'
         data_type: boolean
       - name: is_lai
-        description: "Sinaliza que este serviço faz parte do fluxo de Acesso à Informação (LAI). Usado pela API de consulta de chamados para classificar a ordem de serviço como \"Acesso à Informação\" na UI do Portal, sem alterar a categoria interna do serviço."
+        description: '{{ doc("czrm_salesforce__col__is_lai") }}'
         data_type: boolean
       - name: service_hierarchy
-        description: "Campo fórmula que exibe automaticamente a hierarquia Tema > Subtema > Serviço em texto único."
+        description: '{{ doc("czrm_salesforce__col__service_hierarchy") }}'
         data_type: string
       - name: internal_only
-        description: "Somente abertura interna: quando marcado, o serviço não fica disponível para abertura de chamado pelo cidadão. Substitui Available_For_Citizen__c (semântica invertida)."
+        description: '{{ doc("czrm_salesforce__col__internal_only") }}'
         data_type: boolean
       - name: sgrc_legacy_crm_subtype_id
-        description: "Indica o código do subtipo no sistema de CZRM legado (SGRC)."
+        description: '{{ doc("czrm_salesforce__col__sgrc_legacy_crm_subtype_id") }}'
         data_type: string
       - name: unique_key
-        description: "Chave composta gerada automaticamente (Record Type + ID do Tema + ID do Subtema + Nome do Serviço) que garante a unicidade da combinação. Impede a criação de registros duplicados para o mesmo serviço dentro da mesma hierarquia. Preenchida por Flow Before Save — não editar manualmente."
+        description: '{{ doc("czrm_salesforce__col__unique_key") }}'
         data_type: string
       - name: theme
-        description: "Primeiro nível de classificação (N1), agrupando serviços por grandes áreas temáticas da prefeitura."
+        description: '{{ doc("czrm_salesforce__col__theme") }}'
         data_type: string
       - name: subtheme
-        description: "Segundo nível de classificação (N2), que detalha a área do serviço vinculada ao Tema selecionado."
+        description: '{{ doc("czrm_salesforce__col__subtheme") }}'
         data_type: string
       - name: theme_formula
-        description: "Campo fórmula que permite exibição do tema sem formato lookup."
+        description: '{{ doc("czrm_salesforce__col__theme_formula") }}'
         data_type: string
       - name: subtheme_formula
-        description: "Campo fórmula que permite exibição do subtema sem formato lookup."
+        description: '{{ doc("czrm_salesforce__col__subtheme_formula") }}'
         data_type: string
       - name: service_name
-        description: "Campo preenchido via flow com intuito de permitr gravar o nome do serviço com mais de 80 caracteres. Terceiro nível de classificação (N3), identificando especificamente o serviço que está sendo solicitado."
+        description: '{{ doc("czrm_salesforce__col__service_name") }}'
         data_type: string
       - name: service_hyperlink_formula
-        description: "Campo fórmula que permite exibição de hyperlink para o registro a partir de listviews."
+        description: '{{ doc("czrm_salesforce__col__service_hyperlink_formula") }}'
         data_type: string
       - name: responsible_org_unit
-        description: "Órgão municipal (Nível 1) que detém a responsabilidade administrativa sobre a execução do serviço."
+        description: '{{ doc("czrm_salesforce__col__responsible_org_unit") }}'
         data_type: string
       - name: record_type_developer_name
-        description: "Indica o nome API do tipo de registro de Unidade Organizacional."
+        description: '{{ doc("czrm_salesforce__col__record_type_developer_name") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__user
-    description: "Tabela raw do objeto Salesforce correspondente a user."
+    description: '{{ doc("czrm_salesforce__user") }}'
     columns:
       - name: id
-        description: "ID do usuário"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -1464,437 +1464,437 @@ models:
               config:
                 severity: error
       - name: username
-        description: "Nome de usuário"
+        description: '{{ doc("czrm_salesforce__col__username") }}'
         data_type: string
       - name: last_name
-        description: "Sobrenome"
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
         data_type: string
       - name: first_name
-        description: "Nome"
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
         data_type: string
       - name: name
-        description: "Nome completo"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: company_name
-        description: "Nome da empresa do usuário."
+        description: '{{ doc("czrm_salesforce__col__company_name") }}'
         data_type: string
       - name: division
-        description: "Divisão"
+        description: '{{ doc("czrm_salesforce__col__division") }}'
         data_type: string
       - name: department
-        description: "Departamento"
+        description: '{{ doc("czrm_salesforce__col__department") }}'
         data_type: string
       - name: title
-        description: "Título"
+        description: '{{ doc("czrm_salesforce__col__title") }}'
         data_type: string
       - name: street
-        description: "Logradouro"
+        description: '{{ doc("czrm_salesforce__col__street") }}'
         data_type: string
       - name: city
-        description: "Cidade"
+        description: '{{ doc("czrm_salesforce__col__city") }}'
         data_type: string
       - name: state
-        description: "Estado/Província"
+        description: '{{ doc("czrm_salesforce__col__state") }}'
         data_type: string
       - name: postal_code
-        description: "CEP"
+        description: '{{ doc("czrm_salesforce__col__postal_code") }}'
         data_type: string
       - name: country
-        description: "País"
+        description: '{{ doc("czrm_salesforce__col__country") }}'
         data_type: string
       - name: latitude
-        description: "Latitude"
+        description: '{{ doc("czrm_salesforce__col__latitude") }}'
         data_type: numeric
       - name: longitude
-        description: "Longitude"
+        description: '{{ doc("czrm_salesforce__col__longitude") }}'
         data_type: numeric
       - name: geocode_accuracy
-        description: "Precisão do geocódigo"
+        description: '{{ doc("czrm_salesforce__col__geocode_accuracy") }}'
         data_type: string
       - name: address
-        description: "Endereço"
+        description: '{{ doc("czrm_salesforce__col__address") }}'
         data_type: json
       - name: email
-        description: "E-mail"
+        description: '{{ doc("czrm_salesforce__col__email") }}'
         data_type: string
       - name: email_preferences_auto_bcc
-        description: "BCC automático"
+        description: '{{ doc("czrm_salesforce__col__email_preferences_auto_bcc") }}'
         data_type: boolean
       - name: email_preferences_auto_bcc_stay_in_touch
-        description: "BCC automático manter contato"
+        description: '{{ doc("czrm_salesforce__col__email_preferences_auto_bcc_stay_in_touch") }}'
         data_type: boolean
       - name: email_preferences_stay_in_touch_reminder
-        description: "Lembrete de manter contato"
+        description: '{{ doc("czrm_salesforce__col__email_preferences_stay_in_touch_reminder") }}'
         data_type: boolean
       - name: sender_email
-        description: "Endereço do remetente do e-mail"
+        description: '{{ doc("czrm_salesforce__col__sender_email") }}'
         data_type: string
       - name: sender_name
-        description: "Nome do remetente do e-mail"
+        description: '{{ doc("czrm_salesforce__col__sender_name") }}'
         data_type: string
       - name: signature
-        description: "Assinatura de e-mail"
+        description: '{{ doc("czrm_salesforce__col__signature") }}'
         data_type: string
       - name: stay_in_touch_subject
-        description: "Assunto do e-mail de manter contato"
+        description: '{{ doc("czrm_salesforce__col__stay_in_touch_subject") }}'
         data_type: string
       - name: stay_in_touch_signature
-        description: "Assinatura do e-mail de manter contato"
+        description: '{{ doc("czrm_salesforce__col__stay_in_touch_signature") }}'
         data_type: string
       - name: stay_in_touch_note
-        description: "Nota do e-mail de manter contato"
+        description: '{{ doc("czrm_salesforce__col__stay_in_touch_note") }}'
         data_type: string
       - name: phone
-        description: "Telefone"
+        description: '{{ doc("czrm_salesforce__col__phone") }}'
         data_type: string
       - name: fax
-        description: "Fax"
+        description: '{{ doc("czrm_salesforce__col__fax") }}'
         data_type: string
       - name: mobile_phone
-        description: "Celular"
+        description: '{{ doc("czrm_salesforce__col__mobile_phone") }}'
         data_type: string
       - name: alias
-        description: "Apelido"
+        description: '{{ doc("czrm_salesforce__col__alias") }}'
         data_type: string
       - name: community_nickname
-        description: "Apelido"
+        description: '{{ doc("czrm_salesforce__col__community_nickname") }}'
         data_type: string
       - name: badge_text
-        description: "Texto sobreposto no emblema da foto do usuário"
+        description: '{{ doc("czrm_salesforce__col__badge_text") }}'
         data_type: string
       - name: is_active
-        description: "Ativo"
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
         data_type: boolean
       - name: time_zone_sid_key
-        description: "Fuso horário"
+        description: '{{ doc("czrm_salesforce__col__time_zone_sid_key") }}'
         data_type: string
       - name: locale_sid_key
-        description: "Localidade"
+        description: '{{ doc("czrm_salesforce__col__locale_sid_key") }}'
         data_type: string
       - name: receives_info_emails
-        description: "E-mails informativos"
+        description: '{{ doc("czrm_salesforce__col__receives_info_emails") }}'
         data_type: boolean
       - name: receives_admin_info_emails
-        description: "E-mails de informações do administrador"
+        description: '{{ doc("czrm_salesforce__col__receives_admin_info_emails") }}'
         data_type: boolean
       - name: email_encoding_key
-        description: "Codificação de e-mail"
+        description: '{{ doc("czrm_salesforce__col__email_encoding_key") }}'
         data_type: string
       - name: user_type
-        description: "Tipo de usuário"
+        description: '{{ doc("czrm_salesforce__col__user_type") }}'
         data_type: string
       - name: start_day
-        description: "Início do dia"
+        description: '{{ doc("czrm_salesforce__col__start_day") }}'
         data_type: string
       - name: end_day
-        description: "Fim do dia"
+        description: '{{ doc("czrm_salesforce__col__end_day") }}'
         data_type: string
       - name: language_locale_key
-        description: "Idioma"
+        description: '{{ doc("czrm_salesforce__col__language_locale_key") }}'
         data_type: string
       - name: employee_number
-        description: "Número do funcionário"
+        description: '{{ doc("czrm_salesforce__col__employee_number") }}'
         data_type: string
       - name: delegated_approver_id
-        description: "ID do aprovador delegado"
+        description: '{{ doc("czrm_salesforce__col__delegated_approver_id") }}'
         data_type: string
       - name: manager_id
-        description: "ID do gerente"
+        description: '{{ doc("czrm_salesforce__col__manager_id") }}'
         data_type: string
       - name: last_login_date
-        description: "Último login"
+        description: '{{ doc("czrm_salesforce__col__last_login_date") }}'
         data_type: datetime
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: password_expiration_date
-        description: "Data de expiração da senha"
+        description: '{{ doc("czrm_salesforce__col__password_expiration_date") }}'
         data_type: datetime
       - name: su_access_expiration_date
-        description: "Data de expiração do acesso SU"
+        description: '{{ doc("czrm_salesforce__col__su_access_expiration_date") }}'
         data_type: date
       - name: offline_trial_expiration_date
-        description: "Data de expiração do período de teste offline"
+        description: '{{ doc("czrm_salesforce__col__offline_trial_expiration_date") }}'
         data_type: datetime
       - name: offline_pda_trial_expiration_date
-        description: "Data de expiração do período de teste Sales Anywhere"
+        description: '{{ doc("czrm_salesforce__col__offline_pda_trial_expiration_date") }}'
         data_type: datetime
       - name: user_permissions_marketing_user
-        description: "Usuário de marketing"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_marketing_user") }}'
         data_type: boolean
       - name: user_permissions_offline_user
-        description: "Usuário offline"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_offline_user") }}'
         data_type: boolean
       - name: user_permissions_avantgo_user
-        description: "Usuário AvantGo"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_avantgo_user") }}'
         data_type: boolean
       - name: user_permissions_call_center_auto_login
-        description: "Login automático no call center"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_call_center_auto_login") }}'
         data_type: boolean
       - name: user_permissions_sf_content_user
-        description: "Usuário de conteúdo Salesforce CRM"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_sf_content_user") }}'
         data_type: boolean
       - name: user_permissions_knowledge_user
-        description: "Usuário de knowledge"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_knowledge_user") }}'
         data_type: boolean
       - name: user_permissions_interaction_user
-        description: "Usuário de fluxo"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_interaction_user") }}'
         data_type: boolean
       - name: user_permissions_support_user
-        description: "Usuário do Service Cloud"
+        description: '{{ doc("czrm_salesforce__col__user_permissions_support_user") }}'
         data_type: boolean
       - name: forecast_enabled
-        description: "Permitir previsão"
+        description: '{{ doc("czrm_salesforce__col__forecast_enabled") }}'
         data_type: boolean
       - name: user_preferences_activity_reminders_popup
-        description: "Pop-up de lembretes de atividades"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_activity_reminders_popup") }}'
         data_type: boolean
       - name: user_preferences_event_reminders_checkbox_default
-        description: "Checkbox padrão de lembretes de eventos."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_event_reminders_checkbox_default") }}'
         data_type: boolean
       - name: user_preferences_task_reminders_checkbox_default
-        description: "Checkbox padrão de lembretes de tarefas"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_task_reminders_checkbox_default") }}'
         data_type: boolean
       - name: user_preferences_reminder_sound_off
-        description: "Som de lembretes desligado"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_reminder_sound_off") }}'
         data_type: boolean
       - name: user_preferences_disable_all_feeds_email
-        description: "Desabilitar e-mails de todos os feeds"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_all_feeds_email") }}'
         data_type: boolean
       - name: user_preferences_disable_followers_email
-        description: "Desabilitar e-mail de seguidores"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_followers_email") }}'
         data_type: boolean
       - name: user_preferences_disable_profile_post_email
-        description: "Desabilitar e-mail de posts no perfil"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_profile_post_email") }}'
         data_type: boolean
       - name: user_preferences_disable_change_comment_email
-        description: "Desabilitar e-mail de alteração de comentário."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_change_comment_email") }}'
         data_type: boolean
       - name: user_preferences_disable_later_comment_email
-        description: "Desabilitar e-mail de comentário posterior."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_later_comment_email") }}'
         data_type: boolean
       - name: user_preferences_dis_prof_post_comment_email
-        description: "Desabilitar e-mail de comentário em post de perfil."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_dis_prof_post_comment_email") }}'
         data_type: boolean
       - name: user_preferences_hide_csn_get_chatter_mobile_task
-        description: "Ocultar tarefa CSN Chatter mobile"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_csn_get_chatter_mobile_task") }}'
         data_type: boolean
       - name: user_preferences_disable_mentions_post_email
-        description: "Desabilitar e-mail de menções em posts"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_mentions_post_email") }}'
         data_type: boolean
       - name: user_preferences_dis_mentions_comment_email
-        description: "Desabilitar e-mail de menções em comentários."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_dis_mentions_comment_email") }}'
         data_type: boolean
       - name: user_preferences_hide_csn_desktop_task
-        description: "Ocultar tarefa CSN desktop"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_csn_desktop_task") }}'
         data_type: boolean
       - name: user_preferences_hide_chatter_onboarding_splash
-        description: "Ocultar tela de boas-vindas do Chatter"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_chatter_onboarding_splash") }}'
         data_type: boolean
       - name: user_preferences_hide_second_chatter_onboarding_splash
-        description: "Ocultar segunda tela de boas-vindas do Chatter"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_second_chatter_onboarding_splash") }}'
         data_type: boolean
       - name: user_preferences_dis_comment_after_like_email
-        description: "Desabilitar e-mail de comentário após curtida."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_dis_comment_after_like_email") }}'
         data_type: boolean
       - name: user_preferences_disable_like_email
-        description: "Desabilitar e-mail de curtidas"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_like_email") }}'
         data_type: boolean
       - name: user_preferences_sort_feed_by_comment
-        description: "Ordenar feed por comentário."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_sort_feed_by_comment") }}'
         data_type: boolean
       - name: user_preferences_disable_message_email
-        description: "Desabilitar e-mail de mensagens"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_message_email") }}'
         data_type: boolean
       - name: user_preferences_dismiss_record_channels_suggested_objects
         data_type: boolean
       - name: user_preferences_disable_bookmark_email
-        description: "Desabilitar e-mail de favoritos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_bookmark_email") }}'
         data_type: boolean
       - name: user_preferences_disable_share_post_email
-        description: "Desabilitar e-mail de compartilhamento de posts"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_share_post_email") }}'
         data_type: boolean
       - name: user_preferences_action_launcher_einstein_gpt_consent
-        description: "Consentimento Einstein GPT no lançador de ações"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_action_launcher_einstein_gpt_consent") }}'
         data_type: boolean
       - name: user_preferences_assistive_actions_enabled_in_action_launcher
-        description: "Ações assistivas habilitadas no lançador"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_assistive_actions_enabled_in_action_launcher") }}'
         data_type: boolean
       - name: user_preferences_enable_auto_sub_for_feeds
-        description: "Habilitar assinatura automática de feeds"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_enable_auto_sub_for_feeds") }}'
         data_type: boolean
       - name: user_preferences_disable_file_share_notifications_for_api
-        description: "Desabilitar notificações de compartilhamento de arquivo para API"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_file_share_notifications_for_api") }}'
         data_type: boolean
       - name: user_preferences_enable_lwr_lex_pilot
         data_type: boolean
       - name: user_preferences_show_title_to_external_users
-        description: "Exibir título para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_title_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_manager_to_external_users
-        description: "Exibir gerente para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_manager_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_email_to_external_users
-        description: "Exibir e-mail para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_email_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_work_phone_to_external_users
-        description: "Exibir telefone comercial para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_work_phone_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_mobile_phone_to_external_users
-        description: "Exibir celular para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_mobile_phone_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_fax_to_external_users
-        description: "Exibir fax para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_fax_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_street_address_to_external_users
-        description: "Exibir endereço para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_street_address_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_city_to_external_users
-        description: "Exibir cidade para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_city_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_state_to_external_users
-        description: "Exibir estado para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_state_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_postal_code_to_external_users
-        description: "Exibir CEP para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_postal_code_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_country_to_external_users
-        description: "Exibir país para usuários externos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_country_to_external_users") }}'
         data_type: boolean
       - name: user_preferences_show_profile_pic_to_guest_users
-        description: "Exibir foto de perfil para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_profile_pic_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_title_to_guest_users
-        description: "Exibir título para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_title_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_city_to_guest_users
-        description: "Exibir cidade para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_city_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_state_to_guest_users
-        description: "Exibir estado para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_state_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_postal_code_to_guest_users
-        description: "Exibir CEP para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_postal_code_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_country_to_guest_users
-        description: "Exibir país para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_country_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_forecasting_change_signals
-        description: "Exibir sinais de mudança de previsão"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_forecasting_change_signals") }}'
         data_type: boolean
       - name: user_preferences_live_agent_miaw_setup_deflection
-        description: "Desvio de configuração LiveAgent MIAW"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_live_agent_miaw_setup_deflection") }}'
         data_type: boolean
       - name: user_preferences_hide_s1_browser_ui
-        description: "Ocultar interface do navegador S1"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_s1_browser_ui") }}'
         data_type: boolean
       - name: user_preferences_disable_endorsement_email
-        description: "Desabilitar e-mail de endosso"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_endorsement_email") }}'
         data_type: boolean
       - name: user_preferences_path_assistant_collapsed
-        description: "Assistente de caminho recolhido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_path_assistant_collapsed") }}'
         data_type: boolean
       - name: user_preferences_cache_diagnostics
-        description: "Diagnósticos de cache"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_cache_diagnostics") }}'
         data_type: boolean
       - name: user_preferences_show_email_to_guest_users
-        description: "Exibir e-mail para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_email_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_manager_to_guest_users
-        description: "Exibir gerente para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_manager_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_work_phone_to_guest_users
-        description: "Exibir telefone comercial para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_work_phone_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_mobile_phone_to_guest_users
-        description: "Exibir celular para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_mobile_phone_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_fax_to_guest_users
-        description: "Exibir fax para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_fax_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_show_street_address_to_guest_users
-        description: "Exibir endereço para usuários convidados"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_street_address_to_guest_users") }}'
         data_type: boolean
       - name: user_preferences_lightning_experience_preferred
-        description: "Preferência pela experiência Lightning"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_lightning_experience_preferred") }}'
         data_type: boolean
       - name: user_preferences_hide_end_user_onboarding_assistant_modal
-        description: "Ocultar modal de assistente de onboarding"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_end_user_onboarding_assistant_modal") }}'
         data_type: boolean
       - name: user_preferences_hide_lightning_migration_modal
-        description: "Ocultar modal de migração Lightning"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_lightning_migration_modal") }}'
         data_type: boolean
       - name: user_preferences_hide_sfx_welcome_mat
-        description: "Ocultar tela inicial SFX."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_sfx_welcome_mat") }}'
         data_type: boolean
       - name: user_preferences_hide_bigger_photo_callout
-        description: "Ocultar aviso de foto ampliada"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_bigger_photo_callout") }}'
         data_type: boolean
       - name: user_preferences_global_nav_bar_wt_shown
-        description: "Tutorial barra de navegação global exibido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_global_nav_bar_wt_shown") }}'
         data_type: boolean
       - name: user_preferences_global_nav_grid_menu_wt_shown
-        description: "Tutorial menu de grade de navegação global exibido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_global_nav_grid_menu_wt_shown") }}'
         data_type: boolean
       - name: user_preferences_create_lex_apps_wt_shown
-        description: "Tutorial criação de apps LEX exibido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_create_lex_apps_wt_shown") }}'
         data_type: boolean
       - name: user_preferences_favorites_wt_shown
-        description: "Tutorial de favoritos exibido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_favorites_wt_shown") }}'
         data_type: boolean
       - name: user_preferences_record_home_section_collapse_wt_shown
-        description: "Tutorial de colapso de seção da página inicial exibido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_record_home_section_collapse_wt_shown") }}'
         data_type: boolean
       - name: user_preferences_record_home_reserved_wt_shown
-        description: "Tutorial reservado da página inicial do registro exibido"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_record_home_reserved_wt_shown") }}'
         data_type: boolean
       - name: user_preferences_favorites_show_top_favorites
-        description: "Exibir principais favoritos"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_favorites_show_top_favorites") }}'
         data_type: boolean
       - name: user_preferences_exclude_mail_app_attachments
-        description: "Excluir anexos do aplicativo de e-mail."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_exclude_mail_app_attachments") }}'
         data_type: boolean
       - name: user_preferences_suppress_task_sfx_reminders
-        description: "Suprimir lembretes de tarefas SFX"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_suppress_task_sfx_reminders") }}'
         data_type: boolean
       - name: user_preferences_suppress_event_sfx_reminders
-        description: "Suprimir lembretes de eventos SFX"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_suppress_event_sfx_reminders") }}'
         data_type: boolean
       - name: user_preferences_preview_custom_theme
-        description: "Visualizar tema personalizado"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_preview_custom_theme") }}'
         data_type: boolean
       - name: user_preferences_has_celebration_badge
-        description: "Possui emblema de celebração"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_celebration_badge") }}'
         data_type: boolean
       - name: user_preferences_user_debug_mode_pref
-        description: "Preferência de modo de depuração do usuário"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_user_debug_mode_pref") }}'
         data_type: boolean
       - name: user_preferences_srh_override_activities
-        description: "Substituição de atividades SRH"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_srh_override_activities") }}'
         data_type: boolean
       - name: user_preferences_reverse_open_activities_view
-        description: "Visualização reversa de atividades abertas"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_reverse_open_activities_view") }}'
         data_type: boolean
       - name: user_preferences_has_sent_warning_email
-        description: "E-mail de aviso enviado"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_sent_warning_email") }}'
         data_type: boolean
       - name: user_preferences_has_sent_warning_email238
-        description: "E-mail de aviso 238 enviado"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_sent_warning_email238") }}'
         data_type: boolean
       - name: user_preferences_has_sent_warning_email240
-        description: "E-mail de aviso 240 enviado"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_sent_warning_email240") }}'
         data_type: boolean
       - name: user_preferences_dismiss_personal_space_legal_message
         data_type: boolean
@@ -1903,16 +1903,16 @@ models:
       - name: user_preferences_override_default_page_context
         data_type: boolean
       - name: user_preferences_bre_lookup_table_welcome_mat
-        description: "Tela inicial tabela de lookup BRE"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_bre_lookup_table_welcome_mat") }}'
         data_type: boolean
       - name: user_preferences_hide_browse_product_redirect_confirmation
-        description: "Ocultar confirmação de redirecionamento de produto"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_browse_product_redirect_confirmation") }}'
         data_type: boolean
       - name: user_preferences_hide_online_sales_app_tab_visibility_requirements_modal
-        description: "Ocultar modal de requisitos de visibilidade de abas do app de vendas online"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_online_sales_app_tab_visibility_requirements_modal") }}'
         data_type: boolean
       - name: user_preferences_hide_online_sales_app_welcome_mat
-        description: "Ocultar tela inicial do app de vendas online."
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_online_sales_app_welcome_mat") }}'
         data_type: boolean
       - name: user_preferences_hide_managed_eca_mobile_pub_modal
         data_type: boolean
@@ -1921,129 +1921,129 @@ models:
       - name: user_preferences_hide_flow_type_change_confirmation_modal
         data_type: boolean
       - name: user_preferences_show_forecasting_rounded_amounts
-        description: "Exibir valores arredondados de previsão"
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_forecasting_rounded_amounts") }}'
         data_type: boolean
       - name: has_user_verified_phone
         data_type: boolean
       - name: has_user_verified_email
         data_type: boolean
       - name: is_partner
-        description: "É parceiro"
+        description: '{{ doc("czrm_salesforce__col__is_partner") }}'
         data_type: boolean
       - name: contact_id
-        description: "ID do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_id") }}'
         data_type: string
       - name: account_id
-        description: "ID da conta"
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
         data_type: string
       - name: call_center_id
-        description: "ID do call center"
+        description: '{{ doc("czrm_salesforce__col__call_center_id") }}'
         data_type: string
       - name: extension
-        description: "Ramal"
+        description: '{{ doc("czrm_salesforce__col__extension") }}'
         data_type: string
       - name: portal_role
-        description: "Nível de papel no portal."
+        description: '{{ doc("czrm_salesforce__col__portal_role") }}'
         data_type: string
       - name: is_portal_enabled
-        description: "Indica se o portal está habilitado para o usuário."
+        description: '{{ doc("czrm_salesforce__col__is_portal_enabled") }}'
         data_type: boolean
       - name: federation_identifier
-        description: "ID de federação SAML"
+        description: '{{ doc("czrm_salesforce__col__federation_identifier") }}'
         data_type: string
       - name: about_me
-        description: "Sobre mim"
+        description: '{{ doc("czrm_salesforce__col__about_me") }}'
         data_type: string
       - name: full_photo_url
-        description: "URL da foto em tamanho completo"
+        description: '{{ doc("czrm_salesforce__col__full_photo_url") }}'
         data_type: string
       - name: small_photo_url
-        description: "Foto"
+        description: '{{ doc("czrm_salesforce__col__small_photo_url") }}'
         data_type: string
       - name: is_ext_indicator_visible
-        description: "Exibir indicador de usuário externo."
+        description: '{{ doc("czrm_salesforce__col__is_ext_indicator_visible") }}'
         data_type: boolean
       - name: out_of_office_message
-        description: "Mensagem de ausência"
+        description: '{{ doc("czrm_salesforce__col__out_of_office_message") }}'
         data_type: string
       - name: medium_photo_url
-        description: "URL da foto de perfil média"
+        description: '{{ doc("czrm_salesforce__col__medium_photo_url") }}'
         data_type: string
       - name: digest_frequency
-        description: "Frequência de destaques do Chatter por e-mail"
+        description: '{{ doc("czrm_salesforce__col__digest_frequency") }}'
         data_type: string
       - name: default_group_notification_frequency
-        description: "Frequência de notificação padrão ao entrar em grupos"
+        description: '{{ doc("czrm_salesforce__col__default_group_notification_frequency") }}'
         data_type: string
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: banner_photo_url
-        description: "URL da foto de banner"
+        description: '{{ doc("czrm_salesforce__col__banner_photo_url") }}'
         data_type: string
       - name: small_banner_photo_url
-        description: "URL da foto de banner para iOS"
+        description: '{{ doc("czrm_salesforce__col__small_banner_photo_url") }}'
         data_type: string
       - name: medium_banner_photo_url
-        description: "URL da foto de banner para Android"
+        description: '{{ doc("czrm_salesforce__col__medium_banner_photo_url") }}'
         data_type: string
       - name: is_profile_photo_active
-        description: "Possui foto de perfil"
+        description: '{{ doc("czrm_salesforce__col__is_profile_photo_active") }}'
         data_type: boolean
       - name: individual_id
-        description: "ID do indivíduo"
+        description: '{{ doc("czrm_salesforce__col__individual_id") }}'
         data_type: string
       - name: nome_ficticio
-        description: "Campo de nome fictício para ser usado por alguns times de atendimento que tem como procedimento não expor o nome real do atendente (Ex: Fila do atendimento Táxi Rio)."
+        description: '{{ doc("czrm_salesforce__col__nome_ficticio") }}'
         data_type: string
       - name: main_organizational_unit
-        description: "Órgão central ao qual o usuário pertence. Obrigatório para controle de licenças e agrupamento."
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
         data_type: string
       - name: et4ae5_default_et_page
-        description: "Página padrão do Marketing Cloud"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_default_et_page") }}'
         data_type: string
       - name: et4ae5_default_mid
-        description: "MID padrão"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_default_mid") }}'
         data_type: string
       - name: et4ae5_exact_target_for_app_exchange_admin
-        description: "Marketing Cloud para administrador do AppExchange"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_for_app_exchange_admin") }}'
         data_type: boolean
       - name: et4ae5_exact_target_for_app_exchange_user
-        description: "Marketing Cloud para usuário do AppExchange"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_for_app_exchange_user") }}'
         data_type: boolean
       - name: et4ae5_exact_target_username
-        description: "Nome de usuário do Marketing Cloud"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_username") }}'
         data_type: string
       - name: et4ae5_exact_target_o_auth_token
-        description: "Descontinuado"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_o_auth_token") }}'
         data_type: string
       - name: et4ae5_valid_exact_target_admin
-        description: "Administrador válido do Marketing Cloud"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_valid_exact_target_admin") }}'
         data_type: boolean
       - name: et4ae5_valid_exact_target_user
-        description: "Usuário válido do Marketing Cloud"
+        description: '{{ doc("czrm_salesforce__col__et4ae5_valid_exact_target_user") }}'
         data_type: boolean
       - name: is_external_public_servant
-        description: "Indica se a conta pertence a um servidor da PCRJ com acesso externo (via portal dos servidores)"
+        description: '{{ doc("czrm_salesforce__col__is_external_public_servant") }}'
         data_type: boolean
       - name: cpf
-        description: "Chave de ligação (External ID) entre User e Person Account por CPF. NÃO único: permite até 2 Users do mesmo CPF (1 interno + 1 externo); a cardinalidade é garantida por Validation Rule."
+        description: '{{ doc("czrm_salesforce__col__cpf") }}'
         data_type: string
       - name: canal_preferencial
-        description: "Canal de atendimento preferido do próprio usuário no wizard Novo Protocolo (beta). Guarda o valor de API de Case.Origin de um dos canais manuais (ProtocolService.MANUAL_ORIGINS); valor fora da lista é ignorado na leitura. Gravado só pelo próprio usuário (ProtocolWizardController.savePreferredOrigin)."
+        description: '{{ doc("czrm_salesforce__col__canal_preferencial") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__work_order
-    description: "Tabela raw do objeto Salesforce correspondente a work_order."
+    description: '{{ doc("czrm_salesforce__work_order") }}'
     columns:
       - name: id
-        description: "ID da ordem de serviço"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -2055,13 +2055,13 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: work_order_number
-        description: "Número da ordem de serviço"
+        description: '{{ doc("czrm_salesforce__col__work_order_number") }}'
         data_type: string
         data_tests:
           - not_null:
@@ -2069,7 +2069,7 @@ models:
               config:
                 severity: error
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
         data_tests:
           - not_null:
@@ -2077,85 +2077,85 @@ models:
               config:
                 severity: error
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: account_id
-        description: "ID da conta"
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
         data_type: string
       - name: contact_id
-        description: "ID do contato"
+        description: '{{ doc("czrm_salesforce__col__contact_id") }}'
         data_type: string
       - name: case_id
-        description: "ID do protocolo"
+        description: '{{ doc("czrm_salesforce__col__case_id") }}'
         data_type: string
       - name: entitlement_id
-        description: "ID do direito"
+        description: '{{ doc("czrm_salesforce__col__entitlement_id") }}'
         data_type: string
       - name: service_contract_id
-        description: "ID do contrato de serviço"
+        description: '{{ doc("czrm_salesforce__col__service_contract_id") }}'
         data_type: string
       - name: asset_id
-        description: "ID do ativo"
+        description: '{{ doc("czrm_salesforce__col__asset_id") }}'
         data_type: string
       - name: street
-        description: "Logradouro"
+        description: '{{ doc("czrm_salesforce__col__street") }}'
         data_type: string
       - name: city
-        description: "Cidade"
+        description: '{{ doc("czrm_salesforce__col__city") }}'
         data_type: string
       - name: state
-        description: "Estado/Província"
+        description: '{{ doc("czrm_salesforce__col__state") }}'
         data_type: string
       - name: postal_code
-        description: "CEP"
+        description: '{{ doc("czrm_salesforce__col__postal_code") }}'
         data_type: string
       - name: country
-        description: "País"
+        description: '{{ doc("czrm_salesforce__col__country") }}'
         data_type: string
       - name: latitude
-        description: "Latitude"
+        description: '{{ doc("czrm_salesforce__col__latitude") }}'
         data_type: numeric
       - name: longitude
-        description: "Longitude"
+        description: '{{ doc("czrm_salesforce__col__longitude") }}'
         data_type: numeric
       - name: geocode_accuracy
-        description: "Precisão do geocódigo"
+        description: '{{ doc("czrm_salesforce__col__geocode_accuracy") }}'
         data_type: string
       - name: address
-        description: "Endereço"
+        description: '{{ doc("czrm_salesforce__col__address") }}'
         data_type: json
       - name: description
-        description: "Descrição"
+        description: '{{ doc("czrm_salesforce__col__description") }}'
         data_type: string
       - name: start_date
-        description: "Data de início"
+        description: '{{ doc("czrm_salesforce__col__start_date") }}'
         data_type: datetime
       - name: end_date
-        description: "Data de término"
+        description: '{{ doc("czrm_salesforce__col__end_date") }}'
         data_type: datetime
       - name: subject
-        description: "Assunto"
+        description: '{{ doc("czrm_salesforce__col__subject") }}'
         data_type: string
       - name: root_work_order_id
-        description: "ID da ordem de serviço raiz"
+        description: '{{ doc("czrm_salesforce__col__root_work_order_id") }}'
         data_type: string
       - name: status
-        description: "Status"
+        description: '{{ doc("czrm_salesforce__col__status") }}'
         data_type: string
         data_tests:
           - not_null:
@@ -2163,130 +2163,130 @@ models:
               config:
                 severity: error
       - name: priority
-        description: "Prioridade"
+        description: '{{ doc("czrm_salesforce__col__priority") }}'
         data_type: string
       - name: tax
-        description: "Imposto"
+        description: '{{ doc("czrm_salesforce__col__tax") }}'
         data_type: numeric
       - name: subtotal
-        description: "Subtotal"
+        description: '{{ doc("czrm_salesforce__col__subtotal") }}'
         data_type: numeric
       - name: total_price
-        description: "Preço total"
+        description: '{{ doc("czrm_salesforce__col__total_price") }}'
         data_type: numeric
       - name: line_item_count
-        description: "Itens de linha"
+        description: '{{ doc("czrm_salesforce__col__line_item_count") }}'
         data_type: int64
       - name: pricebook2_id
-        description: "ID do catálogo de preços"
+        description: '{{ doc("czrm_salesforce__col__pricebook2_id") }}'
         data_type: string
       - name: discount
-        description: "Desconto"
+        description: '{{ doc("czrm_salesforce__col__discount") }}'
         data_type: numeric
       - name: grand_total
-        description: "Total geral"
+        description: '{{ doc("czrm_salesforce__col__grand_total") }}'
         data_type: numeric
       - name: parent_work_order_id
-        description: "ID da ordem de serviço pai"
+        description: '{{ doc("czrm_salesforce__col__parent_work_order_id") }}'
         data_type: string
       - name: is_closed
-        description: "Está fechado"
+        description: '{{ doc("czrm_salesforce__col__is_closed") }}'
         data_type: boolean
       - name: is_stopped
-        description: "Parado"
+        description: '{{ doc("czrm_salesforce__col__is_stopped") }}'
         data_type: boolean
       - name: stop_start_date
-        description: "Parado desde"
+        description: '{{ doc("czrm_salesforce__col__stop_start_date") }}'
         data_type: datetime
       - name: sla_start_date
-        description: "Hora de início do SLA"
+        description: '{{ doc("czrm_salesforce__col__sla_start_date") }}'
         data_type: datetime
       - name: sla_exit_date
-        description: "Hora de término do SLA"
+        description: '{{ doc("czrm_salesforce__col__sla_exit_date") }}'
         data_type: datetime
       - name: business_hours_id
-        description: "ID do horário comercial"
+        description: '{{ doc("czrm_salesforce__col__business_hours_id") }}'
         data_type: string
       - name: milestone_status
-        description: "Status do marco"
+        description: '{{ doc("czrm_salesforce__col__milestone_status") }}'
         data_type: string
       - name: duration
-        description: "Duração"
+        description: '{{ doc("czrm_salesforce__col__duration") }}'
         data_type: numeric
       - name: duration_type
-        description: "Tipo de duração"
+        description: '{{ doc("czrm_salesforce__col__duration_type") }}'
         data_type: string
       - name: duration_in_minutes
-        description: "Duração em minutos"
+        description: '{{ doc("czrm_salesforce__col__duration_in_minutes") }}'
         data_type: numeric
       - name: service_appointment_count
-        description: "Quantidade de agendamentos de serviço"
+        description: '{{ doc("czrm_salesforce__col__service_appointment_count") }}'
         data_type: int64
       - name: status_category
-        description: "Categoria do status"
+        description: '{{ doc("czrm_salesforce__col__status_category") }}'
         data_type: string
       - name: location_id
-        description: "ID da localização"
+        description: '{{ doc("czrm_salesforce__col__location_id") }}'
         data_type: string
       - name: pre_work_brief_prompt_template
-        description: "Enter the ID of your activated Pre-Work Brief prompt template. To find your ID, open the template in Prompt Builder and copy the characters after \"EinsteinPromptStudio/\" from the URL. For example, in this URL:  https://testcom98.test1.my.pc-rnd.salesforce-setup.com/lightning/setup/EinsteinPromptStudio/0hfSG000001SUFVYA4/edit?c__versionId=3vNSG0000000g8v2AA, the ID is 0hfSG000001SUFVYA4."
+        description: '{{ doc("czrm_salesforce__col__pre_work_brief_prompt_template") }}'
         data_type: string
       - name: post_work_summary
-        description: "Enter a summary manually. Or if you’re using Agentforce, your AI agent can fill in the summary for you."
+        description: '{{ doc("czrm_salesforce__col__post_work_summary") }}'
         data_type: string
       - name: is_confidential
-        description: "Serviços sigilosos não aparecem na consulta pública do portal e também na busca padrão dentro do sistema. A visibilidade da ordem de serviço fica restrita à fila da UO executora e ao perfil de Ouvidor."
+        description: '{{ doc("czrm_salesforce__col__is_confidential") }}'
         data_type: boolean
       - name: service_category
-        description: "Categoria do serviço (Solicitação, Reclamação, Informação, etc.). Define o SLA, regras de roteamento, campos de formulário e outros parâmetros aplicáveis a esta OS."
+        description: '{{ doc("czrm_salesforce__col__service_category") }}'
         data_type: string
       - name: service
-        description: "Tema/assunto mestre do serviço solicitado. Referência ao catálogo de serviços da Prefeitura, identificando \"o quê\" está sendo atendido."
+        description: '{{ doc("czrm_salesforce__col__service") }}'
         data_type: string
       - name: main_organizational_unit
-        description: "Órgão central responsável pelo serviço"
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
         data_type: string
       - name: service_hyperlink
-        description: "Exibe o nome e a categoria do serviço como hyperlink para a categoria do serviço. Uso exclusivo de UI (compact layout, list views). NÃO usar em e-mails ou comunicações externas: o valor contém marcação HTML de âncora."
+        description: '{{ doc("czrm_salesforce__col__service_hyperlink") }}'
         data_type: string
       - name: dynamic_form_config
-        description: "Snapshot JSON da configuração do formulário dinâmico no momento da criação da Work Order. Gravado pelo Screen Flow de criação de protocolo. Lido pelo LWC serviceAttributesViewer na Record Page."
+        description: '{{ doc("czrm_salesforce__col__dynamic_form_config") }}'
         data_type: string
       - name: has_equivalents
-        description: "Indica que esta OS e uma agrupadora, ou seja, possui OS equivalentes vinculadas a ela (WorkOrder_Relationship__c com Tipo = Equivalencia). Derivado de Equivalent_Count__c, por isso e sempre consistente com o vinculo real."
+        description: '{{ doc("czrm_salesforce__col__has_equivalents") }}'
         data_type: boolean
       - name: last_update_status
-        description: "Cópia de WorkOrderUpdate__c.Status__c do andamento mais recente da OS pai (CreatedDate DESC, Id DESC, sem Rascunho); vazio quando não há andamento. Mantido por WorkOrderLastUpdateStatusService (painel-filtro-status-andamento) para o filtro Status do andamento do Painel de Monitoramento. Não editar à mão."
+        description: '{{ doc("czrm_salesforce__col__last_update_status") }}'
         data_type: string
       - name: origin
-        description: "Canal de origem onde o serviço foi ingressado."
+        description: '{{ doc("czrm_salesforce__col__origin") }}'
         data_type: string
       - name: assigned_uo
-        description: "Unidade Organizacional responsável pelo atendimento desta Work Order."
+        description: '{{ doc("czrm_salesforce__col__assigned_uo") }}'
         data_type: string
       - name: fsl_is_fill_in_candidate
-        description: "É candidato a preenchimento"
+        description: '{{ doc("czrm_salesforce__col__fsl_is_fill_in_candidate") }}'
         data_type: boolean
       - name: fsl_prevent_geocoding_for_chatter_actions
-        description: "Impedir geocodificação para ações do Chatter"
+        description: '{{ doc("czrm_salesforce__col__fsl_prevent_geocoding_for_chatter_actions") }}'
         data_type: boolean
       - name: fsl_scheduling_priority
-        description: "Prioridade de agendamento"
+        description: '{{ doc("czrm_salesforce__col__fsl_scheduling_priority") }}'
         data_type: numeric
       - name: external_ticket_id
-        description: "Número do chamado no sistema do órgão (codigoOcorrencia). Referência; não parear com a categoria do serviço."
+        description: '{{ doc("czrm_salesforce__col__external_ticket_id") }}'
         data_type: string
       - name: integration_direction
-        description: "Marcador anti-loop: inbound = chamado originado de um evento da VOLTA (não redispara IDA)."
+        description: '{{ doc("czrm_salesforce__col__integration_direction") }}'
         data_type: string
       - name: neighborhood
-        description: "Bairro"
+        description: '{{ doc("czrm_salesforce__col__neighborhood") }}'
         data_type: string
       - name: close_reason
-        description: "Motivo de fechamento"
+        description: '{{ doc("czrm_salesforce__col__close_reason") }}'
         data_type: string
       - name: categoria
-        description: "Indica a categoria do serviço associado a ordem do serviço"
+        description: '{{ doc("czrm_salesforce__col__categoria") }}'
         data_type: string
         data_tests:
           - accepted_values:
@@ -2295,146 +2295,146 @@ models:
               config:
                 severity: error
       - name: service_catalog_formula
-        description: "Nome e categoria do serviço em texto puro. Consumido por e-mails transacionais (nova solicitação, andamento da OS, pedido de informação) — NÃO adicionar HYPERLINK() aqui, pois o valor é injetado sem sanitização no corpo dos e-mails. Para exibição clicável em UI usar Service_Hyperlink__c."
+        description: '{{ doc("czrm_salesforce__col__service_catalog_formula") }}'
         data_type: string
       - name: protocolo_hyperlink
-        description: "Gera o número de protocolo oficial no formato RIO-YYYYXXXXXXXX (16 caracteres). Utiliza o ano de criação do registro e uma lógica de dispersão baseada na Semente do Protocolo para evitar números sequenciais, dificultando o scraping e garantindo 100 milhões de combinações anuais."
+        description: '{{ doc("czrm_salesforce__col__protocolo_hyperlink") }}'
         data_type: string
       - name: is_abrangencia
-        description: "Indica que o estagio de abrangencia foi executado com sucesso para esta WO."
+        description: '{{ doc("czrm_salesforce__col__is_abrangencia") }}'
         data_type: boolean
       - name: is_equivalencia
-        description: "Indica que esta OS foi agrupada por uma OS agrupadora (e membro de um agrupamento de equivalencia). NAO indica que a OS e agrupadora: para isso usar Has_Equivalents__c. A agrupadora permanece com este campo false."
+        description: '{{ doc("czrm_salesforce__col__is_equivalencia") }}'
         data_type: boolean
       - name: is_vinculacao
-        description: "Indica que o estagio de vinculacao foi executado para esta WO."
+        description: '{{ doc("czrm_salesforce__col__is_vinculacao") }}'
         data_type: boolean
       - name: integration_source
-        description: "Origem do chamado quando criado pela integração (marcador anti-loop). Ex.: DEFESA."
+        description: '{{ doc("czrm_salesforce__col__integration_source") }}'
         data_type: string
       - name: operador_matricula
-        description: "Matrícula do operador informada pelo órgão no reverso (texto; não é usuário do Salesforce)."
+        description: '{{ doc("czrm_salesforce__col__operador_matricula") }}'
         data_type: string
       - name: operador_nome
-        description: "Nome do operador informado pelo órgão no reverso (texto; não é usuário do Salesforce)."
+        description: '{{ doc("czrm_salesforce__col__operador_nome") }}'
         data_type: string
       - name: address_type
-        description: "Tipo do endereco da ocorrencia: Casa, Condominio ou Vila."
+        description: '{{ doc("czrm_salesforce__col__address_type") }}'
         data_type: string
       - name: complement
-        description: "Complemento do endereco da ocorrencia (apto, bloco, sala, casa, etc.)."
+        description: '{{ doc("czrm_salesforce__col__complement") }}'
         data_type: string
       - name: door_number
-        description: "Numero da porta separado do logradouro. Compatibilidade com SGRC."
+        description: '{{ doc("czrm_salesforce__col__door_number") }}'
         data_type: string
       - name: favela_code
-        description: "Codigo da favela conforme IPP Favelas_Urbanizacao (cod_favela_1). Preenchido automaticamente pelo mapa."
+        description: '{{ doc("czrm_salesforce__col__favela_code") }}'
         data_type: string
       - name: favela_name
-        description: "Nome da favela/comunidade onde a ocorrencia esta localizada. Preenchido do IPP Favelas_Urbanizacao ou GeoJSON local."
+        description: '{{ doc("czrm_salesforce__col__favela_name") }}'
         data_type: string
       - name: geolocation_precise
-        description: "Indica se a geolocalizacao do endereco foi obtida com precisao ROOFTOP"
+        description: '{{ doc("czrm_salesforce__col__geolocation_precise") }}'
         data_type: boolean
       - name: ipp_street_name
-        description: "Nome oficial do logradouro conforme cadastro IPP (Logradouro Georreferenciamento). Pode diferir de Address.Street se o cidadao digitou um nome popular."
+        description: '{{ doc("czrm_salesforce__col__ipp_street_name") }}'
         data_type: string
       - name: is_favela
-        description: "Indica se o local da ocorrencia esta dentro de uma area de favela/comunidade. Preenchido automaticamente pelo mapa via GeoJSON/IPP."
+        description: '{{ doc("czrm_salesforce__col__is_favela") }}'
         data_type: boolean
       - name: landmark
-        description: "Ponto de referencia do local da ocorrencia para facilitar a localizacao (ex: proximo ao mercado, em frente a praca)."
+        description: '{{ doc("czrm_salesforce__col__landmark") }}'
         data_type: string
       - name: no_number
-        description: "Indica que o local da ocorrencia nao possui numero. Quando marcado, o campo de nome de via nao oficial pode ser preenchido."
+        description: '{{ doc("czrm_salesforce__col__no_number") }}'
         data_type: boolean
       - name: public_way_code
-        description: "Codigo do Logradouro (CL) IPP da via da ocorrencia. Preenchido via enriquecimento Apex apos confirmacao do endereco."
+        description: '{{ doc("czrm_salesforce__col__public_way_code") }}'
         data_type: string
       - name: public_way
-        description: "Nome do logradouro extraido do Google Places (sem numero). Ex: Avenida Lucio Costa"
+        description: '{{ doc("czrm_salesforce__col__public_way") }}'
         data_type: string
       - name: operador_origem
-        description: "Origem do operador informado pelo órgão no reverso (ex.: PCRJ). Texto livre; não é usuário do Salesforce."
+        description: '{{ doc("czrm_salesforce__col__operador_origem") }}'
         data_type: string
       - name: is_anonymous
-        description: "Indica que a ordem de serviço foi aberta anonimamente."
+        description: '{{ doc("czrm_salesforce__col__is_anonymous") }}'
         data_type: boolean
       - name: latitude_display
-        description: "Exibe a latitude do endereco da OS em formato texto."
+        description: '{{ doc("czrm_salesforce__col__latitude_display") }}'
         data_type: string
       - name: longitude_display
-        description: "Exibe a longitude do endereco da OS em formato texto."
+        description: '{{ doc("czrm_salesforce__col__longitude_display") }}'
         data_type: string
       - name: equivalent_count
-        description: "Quantidade de WOs equivalentes vinculadas a esta WO agrupadora (vinculos com Tipo = Equivalencia)."
+        description: '{{ doc("czrm_salesforce__col__equivalent_count") }}'
         data_type: numeric
       - name: data_fechamento
-        description: "Data/hora em que a WorkOrder foi fechada (status Fechado ou Cancelado). Gravado automaticamente no after insert/update. É a fonte da janela pós-fechamento de Ouvidoria (CZRM-2369). Não confundir com WorkOrder.EndDate, que não é populado nesta org."
+        description: '{{ doc("czrm_salesforce__col__data_fechamento") }}'
         data_type: datetime
       - name: is_wo_closed
-        description: "Indica se a ordem de serviço está fechada considerando os status Fechado e Cancelado (o IsClosed nativo não trata Cancelado)."
+        description: '{{ doc("czrm_salesforce__col__is_wo_closed") }}'
         data_type: boolean
       - name: em_fila_fallback
-        description: "CZRM-1785. Verdadeiro enquanto a OS estiver na fila de falhas de roteamento. Diferente de Routing_Fallback__c, que e marca historica e permanece verdadeira mesmo depois de a OS ser reatribuida. Este campo existe para o aviso em tela aparecer apenas enquanto a OS estiver de fato parada na fila."
+        description: '{{ doc("czrm_salesforce__col__em_fila_fallback") }}'
         data_type: boolean
       - name: routing_fallback
-        description: "CZRM-1785. Marcado quando o roteamento por abrangencia nao concluiu e a OS foi atribuida a fila de falhas de roteamento. Diferente de Is_Abrangencia__c, que apenas indica que o estagio de roteamento foi executado."
+        description: '{{ doc("czrm_salesforce__col__routing_fallback") }}'
         data_type: boolean
       - name: tipo_solicitante
-        description: "Tipo do solicitante do chamado. Preenchido no reverso da Defesa (m14); um protocolo pode ter chamados do cidadão e internos/servidor."
+        description: '{{ doc("czrm_salesforce__col__tipo_solicitante") }}'
         data_type: string
       - name: integration_number
-        description: "Número do chamado usado na integração = base + WorkOrderNumber. Fonte da faixa de roteamento (>= base = Salesforce). Formula, sem armazenamento."
+        description: '{{ doc("czrm_salesforce__col__integration_number") }}'
         data_type: numeric
       - name: os_owner
-        description: "Campo fórmula que indica o proprietário da Ordem de Serviço, com atalho para visualização do usuário ou dos membros da fila da UO"
+        description: '{{ doc("czrm_salesforce__col__os_owner") }}'
         data_type: string
       - name: motivo_nao_execucao
-        description: "Motivo pelo qual o serviço não pôde ser executado. Preenchido pelo executor no app mobile. Fonte: Carta de Serviço 1746 (PPTX 10/06/2025)."
+        description: '{{ doc("czrm_salesforce__col__motivo_nao_execucao") }}'
         data_type: string
       - name: operador_telefone
-        description: "Telefone do operador informado pelo orgao no reverso (m14)."
+        description: '{{ doc("czrm_salesforce__col__operador_telefone") }}'
         data_type: string
       - name: solicitante_nome
-        description: "Nome do solicitante do reverso (m14). Texto livre - sem Person Account/CPF."
+        description: '{{ doc("czrm_salesforce__col__solicitante_nome") }}'
         data_type: string
       - name: solicitante_telefone
-        description: "Telefone do solicitante informado pelo orgao no reverso (m14)."
+        description: '{{ doc("czrm_salesforce__col__solicitante_telefone") }}'
         data_type: string
       - name: tem_dados_departamentais
-        description: "True quando a OS do reverso possui dados departamentais (solicitante/operador nome ou telefone). Governa a visibilidade condicional no layout."
+        description: '{{ doc("czrm_salesforce__col__tem_dados_departamentais") }}'
         data_type: boolean
       - name: service_hyperlink_without_category
-        description: "Exibe o nome do serviço como hyperlink para a categoria do serviço. Uso exclusivo de UI (compact layout, list views). NÃO usar em e-mails ou comunicações externas: o valor contém marcação HTML de âncora."
+        description: '{{ doc("czrm_salesforce__col__service_hyperlink_without_category") }}'
         data_type: string
       - name: sla_target_date
-        description: "Prazo do serviço"
+        description: '{{ doc("czrm_salesforce__col__sla_target_date") }}'
         data_type: datetime
       - name: canal_atendimento
-        description: "Canal de atendimento da OS (valor de API de Case.Origin). Gravado na criação: copiado do chamado pelo WorkOrderTrigger (WorkOrderOriginService) quando a OS tem chamado e o campo vem vazio; OS sem chamado grava o próprio canal. Substitui a leitura da fórmula Origin__c, que continua existindo."
+        description: '{{ doc("czrm_salesforce__col__canal_atendimento") }}'
         data_type: string
       - name: expected_attachments
-        description: "Quantidade de anexos que o cidadao vai enviar nesta OS (informada na abertura - ex.: attachmentsCount do portal). O gate de automacao do M1 aguarda o vinculo destes anexos antes de liberar a Ocorrencia (CZRM-1670)."
+        description: '{{ doc("czrm_salesforce__col__expected_attachments") }}'
         data_type: numeric
       - name: address_enrichment_at
-        description: "Momento em que o enriquecimento de endereco via IPP foi TENTADO (sucesso, divergencia ou falha). O gate do m1 usa este carimbo para nao esperar indefinidamente por um enriquecimento que nao vem mais."
+        description: '{{ doc("czrm_salesforce__col__address_enrichment_at") }}'
         data_type: datetime
       - name: equivalence_analysis_at
-        description: "Momento em que a analise de equivalencia pos-criacao terminou (com ou sem agrupamento). O gate do m1 usa este carimbo para nao liberar a ocorrencia antes da relationship existir - evita chamado duplicado no orgao."
+        description: '{{ doc("czrm_salesforce__col__equivalence_analysis_at") }}'
         data_type: datetime
       - name: last_update_date
-        description: "Cópia de WorkOrderUpdate__c.CreatedDate do andamento mais recente da OS pai (CreatedDate DESC, Id DESC, sem Rascunho); vazio quando não há andamento. Mantido por WorkOrderLastUpdateStatusService junto com Last_Update_Status__c (CZRM-2422) para a base Último andamento do filtro Período do Painel de Monitoramento. Não editar à mão."
+        description: '{{ doc("czrm_salesforce__col__last_update_date") }}'
         data_type: datetime
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__work_order_attribute_answer
-    description: "Tabela raw do objeto Salesforce correspondente a work_order_attribute_answer."
+    description: '{{ doc("czrm_salesforce__work_order_attribute_answer") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -2446,98 +2446,98 @@ models:
               config:
                 severity: error
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Cód. Atributo da Ordem de Serviço"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: work_order
-        description: "Ordem de Serviço à qual a resposta do atributo pertence. Relacionamento Mestre-Detalhe: herda o compartilhamento da OS e é excluído em cascata com ela."
+        description: '{{ doc("czrm_salesforce__col__work_order") }}'
         data_type: string
       - name: answered_at
-        description: "Data e hora em que a resposta foi registrada na Ordem de Serviço."
+        description: '{{ doc("czrm_salesforce__col__answered_at") }}'
         data_type: datetime
       - name: attribute_label
-        description: "Rótulo do atributo exibido ao cidadão/despachador no momento da resposta. Congelado aqui para preservar o histórico e permitir relatório sem depender da configuração atual."
+        description: '{{ doc("czrm_salesforce__col__attribute_label") }}'
         data_type: string
       - name: attribute_type
-        description: "Tipo do atributo (Text, TextArea, Number, Date, DateTime, Picklist, Multipicklist, Checkbox, Phone, Email, Endereco, Customizado) no momento da resposta. Define qual campo de valor está preenchido nesta linha."
+        description: '{{ doc("czrm_salesforce__col__attribute_type") }}'
         data_type: string
       - name: external_key
-        description: "Chave de idempotência da resposta, composta por Ordem de Serviço + Atributo (ou chave própria para atributos customizados como o COMLURB). Usada para upsert sem duplicar linhas."
+        description: '{{ doc("czrm_salesforce__col__external_key") }}'
         data_type: string
       - name: attribute_order
-        description: "Ordem de exibição do atributo no formulário no momento da resposta. Permite reconstruir a sequência original das perguntas."
+        description: '{{ doc("czrm_salesforce__col__attribute_order") }}'
         data_type: numeric
       - name: section
-        description: "Seção do formulário dinâmico à qual o atributo pertencia (abertura ou atualização da OS). Usada para separar as respostas visíveis ao cidadão das internas."
+        description: '{{ doc("czrm_salesforce__col__section") }}'
         data_type: string
       - name: service_attribute_library
-        description: "Atributo do formulário dinâmico respondido nesta linha. Chave usada pelo roteamento condicional e pelo SLA para localizar o valor da resposta."
+        description: '{{ doc("czrm_salesforce__col__service_attribute_library") }}'
         data_type: string
       - name: service_form_config
-        description: "Configuração do formulário (serviço + atributo) vigente no momento da resposta: guarda ordem, obrigatoriedade, seção e dependência condicional. Lookup (não Mestre-Detalhe) para preservar o histórico mesmo que o campo saia do formulário."
+        description: '{{ doc("czrm_salesforce__col__service_form_config") }}'
         data_type: string
       - name: value_boolean
-        description: "Valor da resposta para atributos do tipo Checkbox (pergunta lógica Sim/Não)."
+        description: '{{ doc("czrm_salesforce__col__value_boolean") }}'
         data_type: boolean
       - name: value_date_time
-        description: "Valor da resposta para atributos do tipo DateTime."
+        description: '{{ doc("czrm_salesforce__col__value_date_time") }}'
         data_type: datetime
       - name: value_date
-        description: "Valor da resposta para atributos do tipo Date."
+        description: '{{ doc("czrm_salesforce__col__value_date") }}'
         data_type: date
       - name: value_display
-        description: "Versão legível (denormalizada) da resposta, preenchida para TODOS os tipos. Permite exibir e reportar o valor sem parse (ex.: JSON do COMLURB vira lista de itens; Date vira dd/MM/yyyy)."
+        description: '{{ doc("czrm_salesforce__col__value_display") }}'
         data_type: string
       - name: value_json
-        description: "Valor da resposta para atributos compostos (ex.: Customizado/materiais COMLURB). Guardado como JSON estruturado. Para exibicao use Value_Display__c."
+        description: '{{ doc("czrm_salesforce__col__value_json") }}'
         data_type: string
       - name: value_long_text
-        description: "Valor da resposta para atributos do tipo TextArea (texto longo)."
+        description: '{{ doc("czrm_salesforce__col__value_long_text") }}'
         data_type: string
       - name: value_multipicklist
-        description: "Valor da resposta para atributos do tipo Multipicklist (selecao multipla). Armazena os valores separados por ponto e virgula."
+        description: '{{ doc("czrm_salesforce__col__value_multipicklist") }}'
         data_type: string
       - name: value_number
-        description: "Valor da resposta para atributos do tipo Number. Tipado para permitir somas e agregações em relatórios e no Data 360."
+        description: '{{ doc("czrm_salesforce__col__value_number") }}'
         data_type: numeric
       - name: value_text
-        description: "Valor da resposta para atributos dos tipos Text, Phone, Email e Picklist."
+        description: '{{ doc("czrm_salesforce__col__value_text") }}'
         data_type: string
       - name: is_internal
-        description: "Verdadeiro quando a resposta pertence à seção interna (Atualização da OS), preenchida pelo despachador e não visível ao cidadão."
+        description: '{{ doc("czrm_salesforce__col__is_internal") }}'
         data_type: boolean
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__work_order_relationship
-    description: "Tabela raw do objeto Salesforce correspondente a work_order_relationship."
+    description: '{{ doc("czrm_salesforce__work_order_relationship") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -2549,50 +2549,50 @@ models:
               config:
                 severity: error
       - name: owner_id
-        description: "ID do proprietário"
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
         data_type: string
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Nº Relação"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: created_date
-        description: "Data de criação"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: case_id
-        description: "Caso (protocolo) associado ao vínculo entre as ordens de serviço."
+        description: '{{ doc("czrm_salesforce__col__case_id") }}'
         data_type: string
       - name: tipo
-        description: "Indica a natureza do vínculo entre as ordens de serviço."
+        description: '{{ doc("czrm_salesforce__col__tipo") }}'
         data_type: string
       - name: wo_origem
-        description: "Ordem de serviço de origem do vínculo."
+        description: '{{ doc("czrm_salesforce__col__wo_origem") }}'
         data_type: string
       - name: wo_relacionada
-        description: "Ordem de serviço destino do vínculo (a WO relacionada)."
+        description: '{{ doc("czrm_salesforce__col__wo_relacionada") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime
 
   - name: raw_czrm__work_order_update
-    description: "Tabela raw do objeto Salesforce correspondente a work_order_update."
+    description: '{{ doc("czrm_salesforce__work_order_update") }}'
     columns:
       - name: id
-        description: "ID do registro"
+        description: '{{ doc("czrm_salesforce__col__id") }}'
         data_type: string
         data_tests:
           - unique:
@@ -2604,34 +2604,34 @@ models:
               config:
                 severity: error
       - name: is_deleted
-        description: "Excluído"
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
         data_type: boolean
       - name: name
-        description: "Cód. Andamento da OS"
+        description: '{{ doc("czrm_salesforce__col__name") }}'
         data_type: string
       - name: created_date
-        description: "Campo formula que indica a data e hora de criação da OS (campo original não aparece na flexipage)"
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
         data_type: datetime
       - name: created_by_id
-        description: "ID do criador"
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
         data_type: string
       - name: last_modified_date
-        description: "Data da última modificação"
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
         data_type: datetime
       - name: last_modified_by_id
-        description: "ID do último modificador"
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
         data_type: string
       - name: system_modstamp
-        description: "Carimbo de modificação do sistema"
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
         data_type: datetime
       - name: last_viewed_date
-        description: "Data da última visualização"
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
         data_type: datetime
       - name: last_referenced_date
-        description: "Data da última referência"
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
         data_type: datetime
       - name: work_order
-        description: "Relacionamento que vincula o presente andamento ao registro mestre da Ordem de Serviço (WorkOrder)."
+        description: '{{ doc("czrm_salesforce__col__work_order") }}'
         data_type: string
         data_tests:
           - not_null:
@@ -2645,128 +2645,128 @@ models:
               config:
                 severity: warn
       - name: event_type
-        description: "Classifica o tipo do evento de andamento a partir de valores prédefinidos no Global Value Set = WorkOrderUpdate_Event_Type."
+        description: '{{ doc("czrm_salesforce__col__event_type") }}'
         data_type: string
       - name: response_deadline
-        description: "Armazena a data e hora limite calculada para resposta do cidadão. Campo só é aplicável quanto o tipo de andamento é \"Pedido de informação\". Caso não haja resposta dentro desse prazo, a ordem de serviço é cancelada automaticamente."
+        description: '{{ doc("czrm_salesforce__col__response_deadline") }}'
         data_type: datetime
       - name: response_time_days
-        description: "Quantidade de dias corridos definidos como prazo para aguardar a resposta do cidadão. A OS será encerrada automaticamente caso o cidadão não responda dentro do prazo. Campo só é aplicável quanto o tipo de andamento é \"Pedido de informação\"."
+        description: '{{ doc("czrm_salesforce__col__response_time_days") }}'
         data_type: numeric
       - name: event_comments
-        description: "Campo de texto longo que permite o registro do relato associado ao andamento. Acomoda pareceres descritivos e também interações via portal do cidadão."
+        description: '{{ doc("czrm_salesforce__col__event_comments") }}'
         data_type: string
       - name: status
-        description: "Indica o status do registro de andamento. Registros só são considerados oficiais quando o status for \"Publicado\" A visibilidade do andamento pelo cidadão depende do status ser \"Publicado\" e da configuração do evento permitir compartilhar essa informação."
+        description: '{{ doc("czrm_salesforce__col__status") }}'
         data_type: string
       - name: allow_citizen_visibility
-        description: "Campo flag preenchido via flow no momento da criação do registro de andamento da OS e que replica a configuração de visibilidade definida no objeto."
+        description: '{{ doc("czrm_salesforce__col__allow_citizen_visibility") }}'
         data_type: boolean
       - name: is_visible_to_citizen
-        description: "Campo fórmula que verifica se a configuração do evento permite visibilidade para o cidadão e se o evento de andamento já encontra-se publicado."
+        description: '{{ doc("czrm_salesforce__col__is_visible_to_citizen") }}'
         data_type: boolean
       - name: approver
-        description: "Caso o evento tenha passado por um processo de aprovação é armazenado neste campo o usuário que aprovou ou rejeitou o registro de andamento."
+        description: '{{ doc("czrm_salesforce__col__approver") }}'
         data_type: string
       - name: rejection_reason
-        description: "Campo destinado a armazenar a justificativa técnica ou administrativa fornecida pelo Despachador Central ao recusar a publicação ou validade deste andamento. Preenchido ativamente durante o fluxo de aprovação. Exibe valores do campo GVS = WorkOrderUpdate_Rejection_Reason"
+        description: '{{ doc("czrm_salesforce__col__rejection_reason") }}'
         data_type: string
       - name: email_servidor_sent
-        description: "Indica se a notificação por e-mail aos destinatários (servidores) já foi processada para este andamento, evitando reenvios em caso de atualizações subsequentes do registro."
+        description: '{{ doc("czrm_salesforce__col__email_servidor_sent") }}'
         data_type: boolean
       - name: transaction_id
-        description: "Campo exclusivo para registrar a transação recebida de sistemas externos dos órgãos através de integração com Mulesoft"
+        description: '{{ doc("czrm_salesforce__col__transaction_id") }}'
         data_type: string
       - name: approval_process_start
-        description: "Campo preenchido via flow sempre que é iniciado um processo de aprovação para o registro de andamento."
+        description: '{{ doc("czrm_salesforce__col__approval_process_start") }}'
         data_type: datetime
       - name: approve_decision_datetime
-        description: "Campo preenchido via flow sempre que é finalizado um processo de aprovação para o registro de andamento"
+        description: '{{ doc("czrm_salesforce__col__approve_decision_datetime") }}'
         data_type: datetime
       - name: has_approval_process
-        description: "Campo fórmula que indica se houve um processo de aprovação para o registgro de andamento."
+        description: '{{ doc("czrm_salesforce__col__has_approval_process") }}'
         data_type: boolean
       - name: justification
-        description: "Justificativa selecionada para o andamento. Vinculada ao catálogo global de justificativas. Preenchida quando o evento configurado possui justificativas associadas via Event_Config_Justification__c."
+        description: '{{ doc("czrm_salesforce__col__justification") }}'
         data_type: string
       - name: approval_outcome
-        description: "Registra o resultado do processo de aprovação do andamento. Preenchido pelo screen flow de aprovação. Usado em métricas de intervenção do Despachador Central."
+        description: '{{ doc("czrm_salesforce__col__approval_outcome") }}'
         data_type: string
       - name: modification_reason
-        description: "Justificativa fornecida pelo Despachador Central quando o andamento foi aprovado com modificações no relato original. Preenchido pelo screen flow de aprovação."
+        description: '{{ doc("czrm_salesforce__col__modification_reason") }}'
         data_type: string
       - name: response_to
-        description: "Andamento de origem (pedido de informação ao servidor) que esta resposta atende. Vínculo explícito resposta→pedido, permitindo rastrear qual pedido foi respondido e rejeitar duplicatas por pedido."
+        description: '{{ doc("czrm_salesforce__col__response_to") }}'
         data_type: string
       - name: cancellation_datetime
-        description: "Data e hora em que o andamento foi cancelado. Preenchido automaticamente quando o status passa para Cancelado."
+        description: '{{ doc("czrm_salesforce__col__cancellation_datetime") }}'
         data_type: datetime
       - name: transfer_target
-        description: "Armazena o ID do serviço destino e da categoria config para transferência de OS. Formato: {serviceId},{categoryConfigId}."
+        description: '{{ doc("czrm_salesforce__col__transfer_target") }}'
         data_type: string
       - name: modified_comments
-        description: "Relato atual do andamento. Preenchido automaticamente na criação com o relato original e atualizado quando o Despachador Central aprova com modificação."
+        description: '{{ doc("czrm_salesforce__col__modified_comments") }}'
         data_type: string
       - name: is_replicated
-        description: "Indica que este WOU foi criado por replicacao de equivalencia. Usado como guard de recursao no WorkOrderUpdateTrigger."
+        description: '{{ doc("czrm_salesforce__col__is_replicated") }}'
         data_type: boolean
       - name: email_notification_sent
-        description: "Indica se o fluxo de notificação por e-mail ao cidadão já foi processado para este andamento, evitando reenvios em caso de atualizações subsequentes do registro."
+        description: '{{ doc("czrm_salesforce__col__email_notification_sent") }}'
         data_type: boolean
       - name: share_citizen_data
-        description: "Indica se os dados do cidadão (nome, endereço) devem ser exibidos ao servidor no portal de andamentos externos. Marcado pelo despachador no momento do envio do andamento."
+        description: '{{ doc("czrm_salesforce__col__share_citizen_data") }}'
         data_type: boolean
       - name: target_account
-        description: "Servidor destinatário individual de um andamento externo (\"Pedido de informação ao servidor\"). Mutuamente exclusivo com Target_Group__c."
+        description: '{{ doc("czrm_salesforce__col__target_account") }}'
         data_type: string
       - name: target_group
-        description: "Grupo de acionamento destino de um andamento externo (\"Pedido de informação ao servidor\"). Mutuamente exclusivo com Target_Account__c."
+        description: '{{ doc("czrm_salesforce__col__target_group") }}'
         data_type: string
       - name: dynamic_fields_json
-        description: "Guarda o JSON dos campos dinamicos da secao \"Atualizacao da OS\" ate a aprovacao da WOU. Apos aprovar, os valores sao aplicados na WorkOrder."
+        description: '{{ doc("czrm_salesforce__col__dynamic_fields_json") }}'
         data_type: string
       - name: target_uo_id
-        description: "Destino da mudança de fila/troca de UO (Change_Queue_UO). Aplicado na WorkOrder somente após a aprovação."
+        description: '{{ doc("czrm_salesforce__col__target_uo_id") }}'
         data_type: string
       - name: cancellation_reason
-        description: "Motivo do cancelamento do andamento. Preenchido automaticamente pelo cancelamento automático (fechamento/cancelamento da OS) ou pelo cancelamento manual do andamento. Exibe valores do GVS = WorkOrderUpdate_Cancellation_Reason"
+        description: '{{ doc("czrm_salesforce__col__cancellation_reason") }}'
         data_type: string
       - name: publication_datetime
-        description: "Data e hora em que o andamento foi publicado. Preenchido via flow quando o status passa para Publicado, com ou sem aprovação. Campo único de publicação (CZRM-2306)."
+        description: '{{ doc("czrm_salesforce__col__publication_datetime") }}'
         data_type: datetime
       - name: origin_service
-        description: "Serviço de origem de uma transferência de OS (Event_Type__c = Transfer_WO). Gravado no registro do andamento com o WorkOrder.Service__c vigente no momento da solicitação, porque a aprovação da transferência sobrescreve o serviço da OS com o destino e a origem deixaria de ser recuperável. Permite exibir \"Transferida de [origem] para [destino]\" na linha do tempo."
+        description: '{{ doc("czrm_salesforce__col__origin_service") }}'
         data_type: string
       - name: data_criacao
-        description: "Data/hora de criação informada pelo órgão (campo `Created_date__c`). Diferente de `created_date`, que é a criação do registro."
+        description: '{{ doc("czrm_salesforce__col__data_criacao") }}'
         data_type: datetime
       - name: notificacao_proprietario_sent
-        description: "Indica se a notificação ao proprietário da OS sobre a resposta a um andamento externo já foi processada, evitando reenvios em retriggers do registro."
+        description: '{{ doc("czrm_salesforce__col__notificacao_proprietario_sent") }}'
         data_type: boolean
       - name: whats_app_notification_sent
-        description: "Indica se o fluxo de notificacao por WhatsApp ao cidadao ja foi processado para este andamento, evitando reenvios em caso de atualizacoes subsequentes do registro. Independente do Email_Notification_Sent__c."
+        description: '{{ doc("czrm_salesforce__col__whats_app_notification_sent") }}'
         data_type: boolean
       - name: data_hora_andamento
-        description: "Referência de negócio do andamento (dataHora do órgão), com checagem de sanidade. Não usar Publication_Datetime__c."
+        description: '{{ doc("czrm_salesforce__col__data_hora_andamento") }}'
         data_type: datetime
       - name: integration_event
-        description: "Evento de integração que originou este andamento. Discriminador do resolvedor de status (integração ⇒ CMT2) e rastro/idempotência."
+        description: '{{ doc("czrm_salesforce__col__integration_event") }}'
         data_type: string
       - name: status_especifico_orgao
-        description: "statusEspecifico cru informado pelo órgão (contrato da VOLTA — não perder). Base do de-para CMT1."
+        description: '{{ doc("czrm_salesforce__col__status_especifico_orgao") }}'
         data_type: string
       - name: status_normalizado
-        description: "Status do órgão já normalizado (de-para 1 / CMT1). Distingue casos que reusam o mesmo evento (ex.: 21 x 16)."
+        description: '{{ doc("czrm_salesforce__col__status_normalizado") }}'
         data_type: string
       - name: uo_informada_orgao
-        description: "Unidade organizacional informada pelo órgão no andamento (siglaUnidadeOrganizacional). Texto, sem match com a base do Salesforce."
+        description: '{{ doc("czrm_salesforce__col__uo_informada_orgao") }}'
         data_type: string
       - name: related_work_order
-        description: "OS citada por este andamento quando ele é registrado em outra OS (ex.: aviso de equivalência gravado na agrupadora, apontando a OS agrupada). Alimenta o atalho da linha do tempo."
+        description: '{{ doc("czrm_salesforce__col__related_work_order") }}'
         data_type: string
       - name: form_answers_json
-        description: "Guarda o JSON das respostas do formulario do servico de destino preenchidas na transferencia, ate a aprovacao da WOU. Ao aprovar, as respostas sao gravadas em WorkOrder_Attribute_Answer__c antes de montar o payload do orgao."
+        description: '{{ doc("czrm_salesforce__col__form_answers_json") }}'
         data_type: string
       - name: _airbyte_extracted_at
-        description: "Data/hora da extração no Airbyte (controle de carga)."
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
         data_type: datetime

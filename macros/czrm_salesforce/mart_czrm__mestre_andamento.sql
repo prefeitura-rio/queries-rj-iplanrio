@@ -11,7 +11,7 @@ select
     a.status_normalizado                            as status,
     a.status                                        as situacao,
     a.name                                          as titulo,
-    a.modified_comments                             as descricao,
+    coalesce(a.modified_comments, a.event_comments) as descricao,
     u.name                                          as criado_por,
     a.is_visible_to_citizen                         as visivel_cidadao,
     a.publication_datetime                          as publicado_em
