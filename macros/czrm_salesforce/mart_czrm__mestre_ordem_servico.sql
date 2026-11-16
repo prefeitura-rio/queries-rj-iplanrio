@@ -88,8 +88,6 @@ usuario as (
         id,
         name
     from {{ ref(ref_prefix ~ 'user') }}
-WHERE
-    NOT coalesce(is_deleted, FALSE)
 ),
 
 fila as (
@@ -97,8 +95,6 @@ fila as (
         id,
         name
     from {{ ref(ref_prefix ~ 'queue_group') }}
-WHERE
-    NOT coalesce(is_deleted, FALSE)
 ),
 
 bairro as (
