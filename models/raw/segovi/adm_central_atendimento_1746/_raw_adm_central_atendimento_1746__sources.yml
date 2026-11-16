@@ -12,6 +12,18 @@ sources:
       - name: tb_atributo
       - name: tb_classificacao
       - name: tb_classificacao_atributo
+      - name: tb_chamado
+      - name: tb_andamento
+      - name: tb_unidade_organizacional
+      - name: tb_bairro_logradouro
+      - name: tb_bairro
+      - name: tb_logradouro
+      - name: tb_status
+      - name: tb_chamado_sla
+      - name: tb_categoria
+      - name: tb_classificacao_chamado
+      - name: tb_subtipo
+      - name: tb_tipo
 
 
     config:
