@@ -1,6 +1,6 @@
 {{
     config(
-        alias='vw_protocolo',
+        alias='protocolo',
         schema='adm_central_atendimento_1746',
         materialized='table',
     )

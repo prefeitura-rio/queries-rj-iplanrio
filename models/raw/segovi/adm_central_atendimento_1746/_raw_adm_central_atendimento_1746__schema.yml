@@ -156,45 +156,7 @@ models:
         description: Chave estrangeira para o protocolo.
       - name: nu_tentativa_integracao
         description: Número de tentativas de integração.
-  - name: raw_adm_central_atendimento_1746__vw_pessoa
-    description: "**Descrição**: View de pessoas cadastradas no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
-    columns:
-      - name: ic_sexo
-        description: Indicador de sexo da pessoa.
-      - name: id_bairro_logradouro_fk
-        description: Chave estrangeira para o bairro/logradouro.
-      - name: id_cargo_fk
-        description: Chave estrangeira para o cargo.
-      - name: id_escolaridade_fk
-        description: Chave estrangeira para a escolaridade.
-      - name: id_idioma_fk
-        description: Chave estrangeira para o idioma de preferência.
-      - name: id_pais_ddi_fk
-        description: Chave estrangeira para o DDI do país.
-      - name: id_pessoa
-        description: Identificador único da pessoa.
-        tests:
-          - not_null
-          - unique
-      - name: id_tipo_endereco_fk
-        description: Chave estrangeira para o tipo de endereço.
-      - name: id_tratamento_fk
-        description: Chave estrangeira para o pronome de tratamento.
-      - name: id_unidade_organizacional_fk
-        description: Chave estrangeira para a unidade organizacional.
-      - name: no_mae
-        description: Nome da mãe da pessoa.
-      - name: no_pessoa
-        description: Nome da pessoa.
-      - name: nu_coord_x
-        description: Coordenada X do endereço da pessoa.
-      - name: nu_coord_y
-        description: Coordenada Y do endereço da pessoa.
-      - name: nu_matricula
-        description: Número de matrícula da pessoa.
-      - name: nu_prazo_expira_senha
-        description: Prazo de expiração da senha.
-  - name: raw_adm_central_atendimento_1746__vw_protocolo
+  - name: raw_adm_central_atendimento_1746__protocolo
     description: "**Descrição**: View de protocolos do sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
     columns:
       - name: ds_codigo_fk
