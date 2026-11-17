@@ -137,6 +137,17 @@ models:
           +project: rj-cvl
           +schema: czrm_salesforce_staging
           +tags: ["quarter_hourly"]
+      mp:
+        +project: rj-externo-mprj
+        +tags: ["mp"]
+        prontuario_carioca:
+          +materialized: table
+          +schema: prontuario_carioca
+          +tags: ["weekly"]
+        abordagem_social:
+          +materialized: table
+          +schema: abordagem_social
+          +tags: ["weekly"]
     raw:
       czrm_salesforce:
         prod:

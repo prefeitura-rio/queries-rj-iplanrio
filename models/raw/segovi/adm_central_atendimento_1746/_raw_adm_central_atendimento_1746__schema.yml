@@ -1,5 +1,450 @@
 version: 2
-models :
+models:
+  - name: raw_adm_central_atendimento_1746__bairro
+    description: "**Descrição**: Bairros cadastrados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_ativo
+        description: Flag que indica se o bairro está ativo.
+      - name: id_bairro
+        description: Identificador único do bairro no banco de dados.
+        tests:
+          - not_null
+          - unique
+      - name: no_bairro
+        description: Nome do bairro.
+  - name: raw_adm_central_atendimento_1746__atributo
+    description: "**Descrição**: Atributos configuráveis dos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: cd_atributo_comum
+        description: Código do atributo comum.
+      - name: ds_expressao
+        description: Expressão de validação do atributo.
+      - name: ds_instrucao
+        description: Instrução de preenchimento do atributo.
+      - name: ds_valores
+        description: Valores possíveis para o atributo.
+      - name: fl_ativo
+        description: Flag que indica se o atributo está ativo.
+      - name: fl_reposta_numerica
+        description: Flag que indica se a resposta do atributo é numérica.
+      - name: ic_interface_atributo
+        description: Indicador do tipo de interface do atributo.
+      - name: ic_tipo_atributo
+        description: Indicador do tipo do atributo.
+      - name: id_atributo
+        description: Identificador único do atributo.
+        tests:
+          - not_null
+          - unique
+      - name: no_amigavel
+        description: Nome amigável do atributo.
+  - name: raw_adm_central_atendimento_1746__classificacao
+    description: "**Descrição**: Classificações de chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_envia_sms_fechamento
+        description: Flag que indica se envia SMS no fechamento do chamado.
+      - name: fl_exibe_alerta_monitoramento
+        description: Flag que indica se exibe alerta de monitoramento.
+      - name: fl_exibe_arvore_chamado
+        description: Flag que indica se exibe a árvore do chamado.
+      - name: fl_exige_solicitante
+        description: Flag que indica se exige solicitante identificado.
+      - name: fl_integrada_portal_web
+        description: Flag que indica se a classificação está integrada ao portal web.
+      - name: fl_nao_exibir_script_atendimento
+        description: Flag que indica se não deve exibir o script de atendimento.
+      - name: fl_prazo_corrido
+        description: Flag que indica se o prazo é em dias corridos.
+      - name: fl_resolver
+        description: Flag que indica se a classificação é do tipo resolver.
+      - name: fl_sigilo_obrigatorio
+        description: Flag que indica se o sigilo é obrigatório.
+      - name: ic_prazo_unidade_tempo
+        description: Indicador da unidade de tempo do prazo (D ou H).
+      - name: id_categoria_fk
+        description: Chave estrangeira para a categoria.
+      - name: id_classificacao
+        description: Identificador único da classificação.
+        tests:
+          - not_null
+          - unique
+      - name: id_subtipo_fk
+        description: Chave estrangeira para o subtipo.
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: nu_prazo
+        description: Prazo da classificação.
+      - name: nu_prazo_reincidencia
+        description: Prazo de reincidência da classificação.
+  - name: raw_adm_central_atendimento_1746__classificacao_atributo
+    description: "**Descrição**: Associação entre classificações e atributos no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_equivalente
+        description: Flag que indica se o atributo é equivalente.
+      - name: fl_obrigatorio
+        description: Flag que indica se o atributo é obrigatório.
+      - name: fl_visivel
+        description: Flag que indica se o atributo é visível.
+      - name: id_atributo_fk
+        description: Chave estrangeira para o atributo.
+      - name: id_classificacao_atributo
+        description: Identificador único da associação classificação/atributo.
+        tests:
+          - not_null
+          - unique
+      - name: id_classificacao_fk
+        description: Chave estrangeira para a classificação.
+  - name: raw_adm_central_atendimento_1746__andamento
+    description: "**Descrição**: Andamentos dos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: dt_insercao
+        description: Data e hora de inserção do andamento.
+      - name: fl_aceito
+        description: Flag que indica se o andamento foi aceito.
+      - name: fl_dados_pessoais
+        description: Flag que indica se o andamento contém dados pessoais.
+      - name: fl_enviado
+        description: Flag que indica se o andamento foi enviado.
+      - name: fl_providencia_siso
+        description: Flag que indica se o andamento é uma providência do SISO.
+      - name: fl_publico
+        description: Flag que indica se o andamento é público.
+      - name: id_andamento
+        description: Identificador único do andamento.
+        tests:
+          - not_null
+          - unique
+      - name: id_andamento_pai_fk
+        description: Chave estrangeira para o andamento pai.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado.
+      - name: id_justificativa_fk
+        description: Chave estrangeira para a justificativa.
+      - name: id_pessoa_fk
+        description: Chave estrangeira para a pessoa responsável.
+      - name: id_pessoa_moderador_fk
+        description: Chave estrangeira para o moderador.
+      - name: id_status_especifico_fk
+        description: Chave estrangeira para o status específico.
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: no_status_unidade
+        description: Nome do status da unidade organizacional.
+      - name: nu_tentativa_integracao
+        description: Número de tentativas de integração.
+  - name: raw_adm_central_atendimento_1746__protocolo_chamado
+    description: "**Descrição**: Protocolos associados aos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: dt_insercao
+        description: Data e hora de inserção do protocolo.
+      - name: fl_ativo
+        description: Flag que indica se o protocolo está ativo.
+      - name: fl_enviado
+        description: Flag que indica se o protocolo foi enviado.
+      - name: ic_motivo
+        description: Indicador do motivo do protocolo.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado.
+      - name: id_pessoa_operador_fk
+        description: Chave estrangeira para o operador.
+      - name: id_protocolo_chamado
+        description: Identificador único do protocolo/chamado.
+        tests:
+          - not_null
+          - unique
+      - name: id_protocolo_fk
+        description: Chave estrangeira para o protocolo.
+      - name: nu_tentativa_integracao
+        description: Número de tentativas de integração.
+  - name: raw_adm_central_atendimento_1746__protocolo
+    description: "**Descrição**: View de protocolos do sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_codigo_fk
+        description: Código do gerador de protocolo associado.
+      - name: dt_atualizacao
+        description: Data e hora da última atualização do protocolo.
+      - name: dt_fim
+        description: Data e hora de encerramento do protocolo.
+      - name: dt_inicio
+        description: Data e hora de abertura do protocolo.
+      - name: fl_solicitante_sigiloso
+        description: Flag que indica se o solicitante é sigiloso.
+      - name: id_pessoa_fk
+        description: Chave estrangeira para a pessoa solicitante.
+      - name: id_protocolo
+        description: Identificador único do protocolo.
+        tests:
+          - not_null
+          - unique
+      - name: id_submotivo_fk
+        description: Chave estrangeira para o submotivo.
+  - name: raw_adm_central_atendimento_1746__chamado_sla
+    description: "**Descrição**: SLA dos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: dt_alvo_bonus
+        description: Data e hora alvo para o bônus do SLA.
+      - name: dt_alvo_diagnostico
+        description: Data e hora alvo para o diagnóstico.
+      - name: dt_alvo_finalizacao
+        description: Data e hora alvo para a finalização do chamado.
+      - name: dt_atualizacao
+        description: Data e hora da última atualização do registro.
+      - name: ic_status_sla_bonus
+        description: Indicador de status do SLA de bônus.
+      - name: ic_status_sla_diagnostico
+        description: Indicador de status do SLA de diagnóstico.
+      - name: ic_status_sla_finalizacao
+        description: Indicador de status do SLA de finalização.
+      - name: ic_tipo
+        description: Indicador do tipo de SLA.
+      - name: ic_tipo_bonus
+        description: Indicador do tipo de SLA de bônus.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado.
+  - name: raw_adm_central_atendimento_1746__bairro_logradouro
+    description: "**Descrição**: Associação entre bairros e logradouros no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_ativo
+        description: Flag que indica se o registro está ativo.
+      - name: id_bairro_fk
+        description: Chave estrangeira para o bairro.
+      - name: id_bairro_logradouro
+        description: Identificador único da associação bairro-logradouro.
+        tests:
+          - not_null
+          - unique
+      - name: id_logradouro_fk
+        description: Chave estrangeira para o logradouro.
+  - name: raw_adm_central_atendimento_1746__categoria
+    description: "**Descrição**: Categorias de chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: cd_externo
+        description: Código externo da categoria.
+      - name: fl_apenas_ouvidor
+        description: Flag que indica se a categoria é exclusiva de ouvidor.
+      - name: fl_ativo
+        description: Flag que indica se a categoria está ativa.
+      - name: fl_permite_siso
+        description: Flag que indica se a categoria permite integração com SISO.
+      - name: ic_tratamento
+        description: Indicador de tratamento da categoria.
+      - name: id_categoria
+        description: Identificador único da categoria.
+        tests:
+          - not_null
+          - unique
+      - name: no_categoria
+        description: Nome da categoria.
+  - name: raw_adm_central_atendimento_1746__classificacao_chamado
+    description: "**Descrição**: Classificações dos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_anotacao
+        description: Anotação da classificação do chamado.
+      - name: ds_despacho
+        description: Despacho da classificação do chamado.
+      - name: ds_diagnostico
+        description: Diagnóstico do chamado.
+      - name: ds_diagnostico_moderado
+        description: Diagnóstico moderado do chamado.
+      - name: ds_diagnostico_traduzido
+        description: Diagnóstico traduzido do chamado.
+      - name: dt_classificacao
+        description: Data e hora da classificação do chamado.
+      - name: dt_envio
+        description: Data e hora do envio do chamado.
+      - name: dt_info_sistema
+        description: Data e hora da informação no sistema.
+      - name: dt_prevista_atendimento
+        description: Data e hora prevista para atendimento.
+      - name: dt_real_diagnostico
+        description: Data e hora real do diagnóstico.
+      - name: fl_aceito
+        description: Flag que indica se o chamado foi aceito.
+      - name: fl_dados_pessoais
+        description: Flag que indica se há dados pessoais no chamado.
+      - name: fl_enviado
+        description: Flag que indica se o chamado foi enviado.
+      - name: fl_publico
+        description: Flag que indica se o chamado é público.
+      - name: id_cenario_fk
+        description: Chave estrangeira para o cenário.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado.
+      - name: id_classificacao_chamado
+        description: Identificador único da classificação do chamado.
+        tests:
+          - not_null
+          - unique
+      - name: id_classificacao_fk
+        description: Chave estrangeira para a classificação.
+      - name: id_justificativa_fk
+        description: Chave estrangeira para a justificativa.
+      - name: id_pessoa_diagnostico_fk
+        description: Chave estrangeira para a pessoa responsável pelo diagnóstico.
+      - name: id_pessoa_fk
+        description: Chave estrangeira para a pessoa.
+      - name: id_pessoa_moderador_fk
+        description: Chave estrangeira para o moderador.
+      - name: id_pessoa_programacao_fk
+        description: Chave estrangeira para a pessoa de programação.
+      - name: id_status_especifico_fk
+        description: Chave estrangeira para o status específico.
+      - name: id_subtipo_fk
+        description: Chave estrangeira para o subtipo.
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: no_status_especifico
+        description: Nome do status específico.
+      - name: nu_tentativa_integracao
+        description: Número de tentativas de integração.
+  - name: raw_adm_central_atendimento_1746__dicionario_ic
+    description: "**Descrição**: Dicionário de indicadores do sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_coluna
+        description: Descrição da coluna referenciada.
+      - name: ds_ic
+        description: Descrição do indicador.
+      - name: ds_tabela
+        description: Descrição da tabela referenciada.
+      - name: ic
+        description: Valor do indicador.
+      - name: id_dicionario_ic
+        description: Identificador único do registro no dicionário de indicadores.
+        tests:
+          - not_null
+          - unique
+  - name: raw_adm_central_atendimento_1746__email
+    description: "**Descrição**: E-mails cadastrados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_email
+        description: Endereço de e-mail.
+      - name: fl_ativo
+        description: Flag que indica se o e-mail está ativo.
+      - name: id_email
+        description: Identificador único do e-mail.
+        tests:
+          - not_null
+          - unique
+      - name: id_setor_fk
+        description: Chave estrangeira para o setor.
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: no_pessoa
+        description: Nome da pessoa associada ao e-mail.
+  - name: raw_adm_central_atendimento_1746__email_grupo_email
+    description: "**Descrição**: Associação entre e-mails e grupos de e-mail no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: id_cadastro_email_fk
+        description: Chave estrangeira para o cadastro de e-mail.
+      - name: id_email_grupo_email
+        description: Identificador único da associação e-mail/grupo.
+        tests:
+          - not_null
+          - unique
+      - name: id_grupo_email_fk
+        description: Chave estrangeira para o grupo de e-mail.
+  - name: raw_adm_central_atendimento_1746__envio_email
+    description: "**Descrição**: Registros de envio de e-mails do sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_assunto
+        description: Assunto do e-mail enviado.
+      - name: ds_corpo
+        description: Corpo do e-mail enviado.
+      - name: dt_envio
+        description: Data e hora do envio do e-mail.
+      - name: fl_dados_pessoais
+        description: Flag que indica se o e-mail contém dados pessoais.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado associado.
+      - name: id_envio_email
+        description: Identificador único do envio de e-mail.
+        tests:
+          - not_null
+          - unique
+      - name: id_pessoa_fk
+        description: Chave estrangeira para a pessoa remetente.
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+  - name: raw_adm_central_atendimento_1746__envio_email_destinatario
+    description: "**Descrição**: Destinatários dos e-mails enviados pelo sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: data_resposta
+        description: Data e hora da resposta do destinatário.
+      - name: ds_resposta
+        description: Texto da resposta do destinatário.
+      - name: fl_lido
+        description: Flag que indica se o e-mail foi lido pelo destinatário.
+      - name: ic_tipo_destinatario
+        description: Indicador do tipo de destinatário (ex. Para, CC, CCO).
+      - name: id_email_fk
+        description: Chave estrangeira para o e-mail do destinatário.
+      - name: id_envio_email_destinatario
+        description: Identificador único do destinatário do envio.
+        tests:
+          - not_null
+          - unique
+      - name: id_envio_email_fk
+        description: Chave estrangeira para o envio de e-mail.
+  - name: raw_adm_central_atendimento_1746__tipo_endereco
+    description: "**Descrição**: Tipos de endereço cadastrados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_ativo
+        description: Flag que indica se o tipo de endereço está ativo.
+      - name: id_tipo_endereco
+        description: Identificador único do tipo de endereço.
+        tests:
+          - not_null
+          - unique
+      - name: no_tipo_endereco
+        description: Nome do tipo de endereço.
+  - name: raw_adm_central_atendimento_1746__unidade_organizacional
+    description: "**Descrição**: Unidades organizacionais responsáveis por chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_bi
+        description: Descrição para Business Intelligence.
+      - name: ds_email
+        description: E-mail da unidade organizacional.
+      - name: ds_endereco_numero
+        description: Número do endereço da unidade organizacional.
+      - name: ds_sigla
+        description: Sigla da unidade organizacional.
+      - name: ds_telefone_1
+        description: Telefone principal da unidade organizacional.
+      - name: ds_telefone_2
+        description: Telefone secundário da unidade organizacional.
+      - name: ds_telefone_3
+        description: Telefone terciário da unidade organizacional.
+      - name: ds_url_webservice
+        description: URL do webservice da unidade organizacional.
+      - name: fl_ativo
+        description: Flag que indica se a unidade organizacional está ativa.
+      - name: fl_bi_incluir
+        description: Flag que indica se a unidade deve ser incluída no BI.
+      - name: fl_integrar_chamado
+        description: Flag que indica se a unidade integra chamados.
+      - name: fl_orgao
+        description: Flag que indica se a unidade é um órgão.
+      - name: fl_ouvidoria
+        description: Flag que indica se a unidade é uma ouvidoria.
+      - name: fl_recebe_email_multi_transferencia
+        description: Flag que indica se a unidade recebe e-mail de múltiplas transferências.
+      - name: id_bairro_logradouro_fk
+        description: Chave estrangeira para o bairro/logradouro da unidade.
+      - name: id_instituicao_fk
+        description: Chave estrangeira para a instituição.
+      - name: id_unidade_organizacional
+        description: Identificador único da unidade organizacional.
+        tests:
+          - not_null
+          - unique
+      - name: id_unidade_pai_fk
+        description: Chave estrangeira para a unidade organizacional pai.
+      - name: no_unidade_organizacional
+        description: Nome da unidade organizacional.
+      - name: nu_expediente_fim
+        description: Horário de fim do expediente.
+      - name: nu_expediente_inicio
+        description: Horário de início do expediente.
   - name: raw_adm_central_atendimento_1746__chamado
     description: "**Descrição**: Chamados feitos ao 1746. São chamados desde março de  2011, quando começou o projeto 1746.\r\n\r\n**Frequência de atualização**: Diário\n**Cobertura temporal**: Março de  2011\n**Órgão gestor dos dados**: SEGOVI\n**Publicado por**: Patricia Catandi\n**Publicado por (email)**: patriciabcatandi@gmail.com\n"
     columns:
@@ -99,6 +544,9 @@ models :
     columns:
       - name: id_origem_ocorrencia
         description: Identificador único da origem da ocorrência.
+        tests:
+          - not_null
+          - unique
       - name: no_origem_ocorrencia
         description: Nome da origem da ocorrência.
       - name: id_origem_ocorrencia_categoria_fk
@@ -311,3 +759,301 @@ models :
       - name: dt_atualizacao
         description: "Data da última atualização do chamado."
         data_type: datetime
+  - name: raw_adm_central_atendimento_1746__chamado_vinculado
+    description: "**Descrição**: Vínculos entre chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: dt_insercao
+        description: Data e hora de inserção do vínculo.
+      - name: fl_aceito
+        description: Flag que indica se o vínculo foi aceito.
+      - name: fl_enviado
+        description: Flag que indica se o vínculo foi enviado.
+      - name: ic_vinculo
+        description: Indicador do tipo de vínculo entre os chamados.
+      - name: id_chamado_filho_fk
+        description: Chave estrangeira para o chamado filho.
+      - name: id_chamado_pai_fk
+        description: Chave estrangeira para o chamado pai.
+      - name: id_chamado_vinculado
+        description: Identificador único do vínculo entre chamados.
+        tests:
+          - not_null
+          - unique
+      - name: id_status_fk
+        description: Chave estrangeira para o status do vínculo.
+      - name: nu_reiteracoes
+        description: Número de reiterações do vínculo.
+      - name: nu_tentativa_integracao
+        description: Número de tentativas de integração.
+  - name: raw_adm_central_atendimento_1746__gerador_protocolo
+    description: "**Descrição**: Geradores de protocolo do sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: cd_chave_unica_cti
+        description: Código de chave única CTI.
+      - name: ds_codigo
+        description: Descrição do código do gerador de protocolo.
+      - name: ic_origem
+        description: Indicador de origem do protocolo.
+      - name: id_gerador_protocolo
+        description: Identificador único do gerador de protocolo.
+        tests:
+          - not_null
+          - unique
+  - name: raw_adm_central_atendimento_1746__grupo_email
+    description: "**Descrição**: Grupos de e-mail do sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_grupo_email
+        description: Descrição do grupo de e-mail.
+      - name: fl_ativo
+        description: Flag que indica se o grupo de e-mail está ativo.
+      - name: id_grupo_email
+        description: Identificador único do grupo de e-mail.
+        tests:
+          - not_null
+          - unique
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: nm_grupo_email
+        description: Nome do grupo de e-mail.
+  - name: raw_adm_central_atendimento_1746__justificativa
+    description: "**Descrição**: Justificativas de status dos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_sms
+        description: Descrição para envio via SMS.
+      - name: fl_ativo
+        description: Flag que indica se a justificativa está ativa.
+      - name: fl_falha_integracao
+        description: Flag que indica se a justificativa é de falha de integração.
+      - name: id_justificativa
+        description: Identificador único da justificativa.
+        tests:
+          - not_null
+          - unique
+      - name: no_justificativa
+        description: Nome da justificativa.
+      - name: no_justificativa_espanhol
+        description: Nome da justificativa em espanhol.
+      - name: no_justificativa_ingles
+        description: Nome da justificativa em inglês.
+  - name: raw_adm_central_atendimento_1746__log_email
+    description: "**Descrição**: Log de e-mails enviados pelo sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_destinatario
+        description: Endereço de e-mail do destinatário.
+      - name: ds_enviado_assunto
+        description: Assunto do e-mail enviado.
+      - name: ds_enviado_corpo
+        description: Corpo do e-mail enviado.
+      - name: ds_erro
+        description: Descrição do erro ocorrido no envio, se houver.
+      - name: dt_envio
+        description: Data e hora do envio do e-mail.
+      - name: dt_primeiro_envio
+        description: Data e hora do primeiro envio do e-mail.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado associado.
+      - name: id_envio_email_destinatario_fk
+        description: Chave estrangeira para o destinatário do envio.
+      - name: id_log_email
+        description: Identificador único do log de e-mail.
+        tests:
+          - not_null
+          - unique
+      - name: id_log_webservice_fk
+        description: Chave estrangeira para o log de webservice.
+      - name: id_protocolo_fk
+        description: Chave estrangeira para o protocolo.
+      - name: id_reintegracao_fk
+        description: Chave estrangeira para a reintegração.
+      - name: id_template_email_fk
+        description: Chave estrangeira para o template de e-mail.
+  - name: raw_adm_central_atendimento_1746__logradouro
+    description: "**Descrição**: Logradouros cadastrados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_ativo
+        description: Flag que indica se o logradouro está ativo.
+      - name: id_logradouro
+        description: Identificador único do logradouro.
+        tests:
+          - not_null
+          - unique
+      - name: no_logradouro
+        description: Nome do logradouro.
+      - name: no_logradouro_invertido
+        description: Nome do logradouro na forma invertida.
+  - name: raw_adm_central_atendimento_1746__reclassificacao
+    description: "**Descrição**: Reclassificações de chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_justificativa
+        description: Descrição da justificativa da reclassificação.
+      - name: dt_reclassificacao
+        description: Data e hora da reclassificação.
+      - name: ic_origem
+        description: Indicador de origem da reclassificação.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado reclassificado.
+      - name: id_classificacao_anterior_fk
+        description: Chave estrangeira para a classificação anterior.
+      - name: id_classificacao_nova_fk
+        description: Chave estrangeira para a nova classificação.
+      - name: id_pessoa_operador_fk
+        description: Chave estrangeira para o operador que realizou a reclassificação.
+      - name: id_reclassificacao
+        description: Identificador único da reclassificação.
+        tests:
+          - not_null
+          - unique
+  - name: raw_adm_central_atendimento_1746__responsavel_chamado
+    description: "**Descrição**: Responsáveis pelos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: cd_ocorrencia
+        description: Código da ocorrência.
+      - name: dt_aceito
+        description: Data e hora em que o chamado foi aceito.
+      - name: dt_aquisicao
+        description: Data e hora de aquisição do chamado.
+      - name: dt_enviado
+        description: Data e hora em que o chamado foi enviado.
+      - name: dt_incompleto_retido
+        description: Data e hora em que o chamado ficou incompleto/retido.
+      - name: fl_aceito
+        description: Flag que indica se o chamado foi aceito.
+      - name: fl_aguardando_integracao
+        description: Flag que indica se o chamado está aguardando integração.
+      - name: fl_contingencia
+        description: Flag que indica se o chamado está em contingência.
+      - name: fl_enviado
+        description: Flag que indica se o chamado foi enviado.
+      - name: fl_recebido
+        description: Flag que indica se o chamado foi recebido.
+      - name: fl_reintegracao_manual
+        description: Flag que indica se o chamado passou por reintegração manual.
+      - name: id_chamado_fk
+        description: Chave estrangeira para o chamado.
+      - name: id_pessoa_fk
+        description: Chave estrangeira para a pessoa responsável.
+      - name: id_responsavel_chamado
+        description: Identificador único do responsável pelo chamado.
+        tests:
+          - not_null
+          - unique
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: nu_tentativa_integracao
+        description: Número de tentativas de integração.
+      - name: nu_tentativa_integracao_incompleto
+        description: Número de tentativas de integração com chamado incompleto.
+  - name: raw_adm_central_atendimento_1746__status
+    description: "**Descrição**: Status dos chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_sms
+        description: Descrição para envio via SMS.
+      - name: fl_ativo
+        description: Flag que indica se o status está ativo.
+      - name: fl_encerramento
+        description: Flag que indica se o status representa encerramento.
+      - name: fl_falha_integracao
+        description: Flag que indica se o status é de falha de integração.
+      - name: fl_nao_conta_sla
+        description: Flag que indica se o status não contabiliza no SLA.
+      - name: fl_solucao
+        description: Flag que indica se o status representa solução.
+      - name: id_status
+        description: Identificador único do status.
+        tests:
+          - not_null
+          - unique
+      - name: no_status
+        description: Nome do status.
+      - name: no_status_espanhol
+        description: Nome do status em espanhol.
+      - name: no_status_ingles
+        description: Nome do status em inglês.
+      - name: no_status_view
+        description: Nome do status exibido na view.
+  - name: raw_adm_central_atendimento_1746__status_especifico
+    description: "**Descrição**: Status específicos por unidade organizacional no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_ativo
+        description: Flag que indica se o status específico está ativo.
+      - name: fl_encerramento_atendimento
+        description: Flag que indica se o status representa encerramento de atendimento.
+      - name: fl_moderacao_obrigatoria
+        description: Flag que indica se a moderação é obrigatória.
+      - name: fl_publico
+        description: Flag que indica se o status é público.
+      - name: id_status_especifico
+        description: Identificador único do status específico.
+        tests:
+          - not_null
+          - unique
+      - name: id_status_fk
+        description: Chave estrangeira para o status.
+      - name: id_unidade_organizacional_fk
+        description: Chave estrangeira para a unidade organizacional.
+      - name: no_status_especifico
+        description: Nome do status específico.
+  - name: raw_adm_central_atendimento_1746__subtipo
+    description: "**Descrição**: Subtipos de chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_palavra_chave
+        description: Palavras-chave associadas ao subtipo.
+      - name: ds_script_atendimento
+        description: Script de atendimento do subtipo.
+      - name: fl_ativo
+        description: Flag que indica se o subtipo está ativo.
+      - name: fl_nao_selecionavel_atendimento
+        description: Flag que indica se o subtipo não é selecionável no atendimento.
+      - name: ic_grau_prioridade
+        description: Indicador do grau de prioridade do subtipo.
+      - name: id_subtipo
+        description: Identificador único do subtipo.
+        tests:
+          - not_null
+          - unique
+      - name: id_tipo_fk
+        description: Chave estrangeira para o tipo.
+      - name: no_subtipo
+        description: Nome do subtipo.
+      - name: no_subtipo_espanhol
+        description: Nome do subtipo em espanhol.
+      - name: no_subtipo_ingles
+        description: Nome do subtipo em inglês.
+  - name: raw_adm_central_atendimento_1746__territorialidade_regiao_administrativa
+    description: "**Descrição**: Territorialidades e regiões administrativas no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: ds_regiao_administrativa
+        description: Descrição da região administrativa.
+      - name: id_territorialidade_fk
+        description: Chave estrangeira para a territorialidade.
+      - name: id_territorialidade_regiao_administrativa
+        description: Identificador único da territorialidade/região administrativa.
+        tests:
+          - not_null
+          - unique
+      - name: no_regiao_administrativa
+        description: Nome da região administrativa.
+  - name: raw_adm_central_atendimento_1746__territorialidade_regiao_administrativa_bairro
+    description: "**Descrição**: Associação entre territorialidades, regiões administrativas e bairros no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: id_bairro_fk
+        description: Chave estrangeira para o bairro.
+      - name: id_territorialidade_regiao_administrativa_bairro
+        description: Identificador único da associação territorialidade/região/bairro.
+        tests:
+          - not_null
+          - unique
+      - name: id_territorialidade_regiao_administrativa_fk
+        description: Chave estrangeira para a territorialidade/região administrativa.
+  - name: raw_adm_central_atendimento_1746__tipo
+    description: "**Descrição**: Tipos de chamados no sistema 1746.\n**Frequência de atualização**: Diário\n**Órgão gestor dos dados**: SEGOVI\n"
+    columns:
+      - name: fl_ativo
+        description: Flag que indica se o tipo está ativo.
+      - name: id_tipo
+        description: Identificador único do tipo.
+        tests:
+          - not_null
+          - unique
+      - name: no_tipo
+        description: Nome do tipo.
