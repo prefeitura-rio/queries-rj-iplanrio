@@ -4,6 +4,29 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 > O formato utilizado para documentação segue as boas práticas de [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
+### 🗑️ Remoção
+
+#### Commit: `bdcf0c4` - 17/11/2026
+**chore(sme/frequencia): remove o modelo mart_frequencia__vw_alunos_frequencia_acumulada**
+
+Remove o modelo `mart_frequencia__vw_alunos_frequencia_acumulada` (alias `frequencia_acumulada`), que não será mais atualizado. Foi alinhado com a SME que a tabela não é mais necessária: todas as referências do negócio foram migradas para a tabela `frequencia_acumulada_dias_letivos`.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/mart_frequencia__vw_alunos_frequencia_acumulada.sql` (removido)
+- `models/mart/sme/frequencia/_mart_frequencia__schema.yml`
+
+**Mudanças aplicadas:**
+1. **Modelo removido**
+   - Exclui o `.sql` e a entrada correspondente (descrição, colunas e teste `not_null`) do `_mart_frequencia__schema.yml`
+2. **Tabela no BigQuery**
+   - Já excluída manualmente
+
+**Impacto:**
+- Nenhum outro modelo ou teste fazia `ref` ao modelo removido
+- Os modelos `*_dias_letivos` (`int_`, `mart_` e `_pivoted`) não são afetados
+
+---
+
 ### 🔧 Correção
 
 #### Commit: `c0878a7` - 10/11/2026
