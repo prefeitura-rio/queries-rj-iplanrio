@@ -1,0 +1,124 @@
+version: 2
+
+models:
+  - name: raw_crf__periodos_simples
+    description: "**Descrição**: Períodos das empresas no Simples Nacional\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: SMFP / Receita Federal\n"
+    columns:
+      - name: cnpj
+        description: CNPJ básico da empresa (posições 1-8)
+      - name: data_inicio
+        description: Data de início do período de opção pelo Simples Nacional (posições 9-16)
+      - name: data_fim
+        description: Data final do período de opção pelo Simples Nacional (posições 17-24)
+      - name: identificador_cancelamento
+        description: Indica se o período foi cancelado no processo de migração do sistema de eventos para a sistemática de períodos (posição 25)
+      - name: numero_opcao
+        description: Código que relaciona o evento ao período em que ele foi praticado (posições 26-34)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
+
+  - name: raw_crf__periodos_mei
+    description: "**Descrição**: Períodos das empresas no SIMEI\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: SMFP / Receita Federal\n"
+    columns:
+      - name: cnpj
+        description: CNPJ básico da empresa (posições 1-8)
+      - name: data_inicio
+        description: Data de início do período de opção pelo SIMEI (posições 9-16)
+      - name: data_fim
+        description: Data final do período de opção pelo SIMEI (posições 17-24)
+      - name: identificador_cancelamento
+        description: Indica se o período foi cancelado no processo de migração do sistema de eventos para a sistemática de períodos (posição 25)
+      - name: numero_opcao
+        description: Código que relaciona o evento ao período Simples em que ele foi praticado (posições 26-34)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
+
+  - name: raw_crf__eventos_simples
+    description: "**Descrição**: Eventos das empresas no Simples Nacional\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: SMFP / Receita Federal\n"
+    columns:
+      - name: cnpj
+        description: CNPJ básico da empresa (posições 1-8)
+      - name: natureza_evento
+        description: "Natureza do evento: 1 - Medida Judicial, 2 - Ato Administrativo, 3 - Opção do Contribuinte (posição 9)"
+      - name: codigo_evento
+        description: Código do evento no Simples Nacional (posições 10-12)
+      - name: data_fato_motivador
+        description: Data do fato que motivou o evento quando houver (posições 13-20)
+      - name: data_efeito
+        description: Data em que passa a vigorar os efeitos do evento praticado (posições 21-28)
+      - name: numero_processo_judicial
+        description: Número do processo judicial quando se tratar de medida jurídica (posições 29-78)
+      - name: numero_processo_administrativo
+        description: Número do processo administrativo que gerou o evento (posições 79-103)
+      - name: observacoes
+        description: Observações adicionadas pelo usuário (posições 104-353)
+      - name: codigo_ua
+        description: Código da UA responsável pela prática do evento (posições 354-360)
+      - name: codigo_uf
+        description: Código da Unidade de Federação responsável pela prática do evento (posições 361-362)
+      - name: codigo_municipio
+        description: Código da tabela TOM correspondente ao município responsável pela prática do evento (posições 363-366)
+      - name: data_ocorrencia
+        description: Data de ocorrência do evento (posições 367-374)
+      - name: numero_opcao
+        description: Código que relaciona o evento ao período em que ele foi praticado (posições 381-389)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
+
+  - name: raw_crf__eventos_mei
+    description: "**Descrição**: Eventos das empresas no SIMEI\n**Frequência de atualização**: Indefinida\n**Cobertura temporal**: Indefinida\n**Órgão gestor dos dados**: SMFP / Receita Federal\n"
+    columns:
+      - name: cnpj
+        description: CNPJ básico da empresa (posições 1-8)
+      - name: natureza_evento
+        description: "Natureza do evento: 1 - Medida Judicial, 2 - Ato Administrativo, 3 - Opção do Contribuinte, 4 - Desenquadramento do SIMEI por comunicação obrigatória do contribuinte (posição 9)"
+      - name: codigo_evento
+        description: Código do evento no Simples Nacional (posições 10-12)
+      - name: data_fato_motivador
+        description: Data do fato que motivou o evento quando houver, (posições 13-20)
+      - name: data_efeito
+        description: Data em que passa a vigorar os efeitos do evento praticado (posições 21-28)
+      - name: numero_processo_judicial
+        description: Número do processo judicial quando se tratar de medida jurídica (posições 29-78)
+      - name: numero_processo_administrativo
+        description: Número do processo administrativo que gerou o evento (posições 79-103)
+      - name: observacoes
+        description: Observações adicionadas pelo usuário (posições 104-353)
+      - name: codigo_ua
+        description: Código da UA responsável pela prática do evento (posições 354-360)
+      - name: codigo_uf
+        description: Código da Unidade de Federação responsável pela prática do evento (posições 361-362)
+      - name: codigo_municipio
+        description: Código da tabela TOM correspondente ao município responsável pela prática do evento (posições 363-366)
+      - name: data_ocorrencia
+        description: Data de ocorrência do evento (posições 367-374)
+      - name: hora_ocorrencia
+        description: Hora da ocorrência HHMMSS (posições 375-380)
+      - name: numero_opcao
+        description: Código que relaciona o evento ao período Simples em que ele foi praticado (posições 381-389)
+      - name: ano_particao
+        description: Ano de partição dos dados
+      - name: mes_particao
+        description: Mês de partição dos dados
+      - name: data_particao
+        description: Data de partição dos dados
+      - name: arquivo_origem
+        description: Nome do arquivo de origem dos dados
