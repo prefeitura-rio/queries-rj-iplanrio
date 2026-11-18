@@ -16,6 +16,6 @@ SELECT
     SAFE_CAST(orgaoresponsavelid AS STRING) AS id_orgao_responsavel,
     SAFE_CAST(usuarioregistroid AS STRING) AS id_usuario_registro,
     SAFE_CAST(dataregistro AS DATETIME) AS data_registro,
-    SAFE.PARSE_DATETIME('%Y-%m-%d %H:%M:%E*S', _prefect_extracted_at) AS datalake_loaded_at,
+    safe_cast(_prefect_extracted_at as datetime) AS datalake_loaded_at,
     CURRENT_DATETIME('America/Sao_Paulo') AS datalake_transformed_at
 FROM {{ source('brutos_formulario_ocorrencia_staging', 'Chamado') }} as a
