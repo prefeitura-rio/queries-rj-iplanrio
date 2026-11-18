@@ -1,0 +1,216 @@
+version: 2
+
+models:
+  - name: mart_czrm__mestre_ordem_servico
+    description: '{{ doc("czrm_salesforce__mart__mestre_ordem_servico") }}'
+    columns:
+      - name: os_id
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__os_id") }}'
+      - name: numero_os
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__numero_os") }}'
+      - name: numero_protocolo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__numero_protocolo") }}'
+      - name: criado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__criado_em") }}'
+      - name: atualizado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__atualizado_em") }}'
+      - name: status
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__status") }}'
+      - name: encerrada
+        data_type: boolean
+        description: '{{ doc("czrm_salesforce__mart__col__encerrada") }}'
+      - name: prioridade
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__prioridade") }}'
+      - name: canal_atendimento
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__canal_atendimento") }}'
+      - name: tipo_solicitante
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__tipo_solicitante") }}'
+      - name: motivo_encerramento
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__motivo_encerramento") }}'
+      - name: tipo_categoria_servico
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__tipo_categoria_servico") }}'
+      - name: descricao_wo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__descricao_wo") }}'
+      - name: servico
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__servico") }}'
+      - name: servico_tema
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__servico_tema") }}'
+      - name: servico_subtema
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__servico_subtema") }}'
+      - name: uo_sigla
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__uo_sigla") }}'
+      - name: uo_nome
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__uo_nome") }}'
+      - name: orgao_central
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__orgao_central") }}'
+      - name: dono_nome
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__dono_nome") }}'
+      - name: fila
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__fila") }}'
+      - name: criado_por
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__criado_por") }}'
+      - name: fechada_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__fechada_em") }}'
+      - name: sla_prazo
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__sla_prazo") }}'
+      - name: logradouro
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__logradouro") }}'
+      - name: numero
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__numero") }}'
+      - name: sem_numero
+        data_type: boolean
+        description: '{{ doc("czrm_salesforce__mart__col__sem_numero") }}'
+      - name: complemento
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__complemento") }}'
+      - name: referencia
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__referencia") }}'
+      - name: bairro
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__bairro") }}'
+      - name: subprefeitura
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__subprefeitura") }}'
+      - name: regiao_administrativa
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__regiao_administrativa") }}'
+      - name: cep
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__cep") }}'
+      - name: cidade
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__cidade") }}'
+      - name: uf
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__uf") }}'
+      - name: latitude
+        data_type: numeric
+        description: '{{ doc("czrm_salesforce__mart__col__latitude") }}'
+      - name: longitude
+        data_type: numeric
+        description: '{{ doc("czrm_salesforce__mart__col__longitude") }}'
+      - name: precisao_geo
+        data_type: boolean
+        description: '{{ doc("czrm_salesforce__mart__col__precisao_geo") }}'
+      - name: favela
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__favela") }}'
+      - name: codigo_logradouro
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__codigo_logradouro") }}'
+      - name: solicitante_nome
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__solicitante_nome") }}'
+      - name: solicitante_telefone
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__solicitante_telefone") }}'
+      - name: nome_completo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__nome_completo") }}'
+      - name: cpf
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__cpf") }}'
+      - name: email
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__email") }}'
+      - name: telefone_1
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__telefone_1") }}'
+      - name: telefone_1_tipo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__telefone_1_tipo") }}'
+      - name: telefone_2
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__telefone_2") }}'
+      - name: telefone_3
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__telefone_3") }}'
+      - name: protocolo_status
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_status") }}'
+      - name: protocolo_assunto
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_assunto") }}'
+      - name: protocolo_origem
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_origem") }}'
+      - name: protocolo_prioridade
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_prioridade") }}'
+      - name: protocolo_criado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_criado_em") }}'
+      - name: protocolo_fechado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_fechado_em") }}'
+      - name: protocolo_fechado
+        data_type: boolean
+        description: '{{ doc("czrm_salesforce__mart__col__protocolo_fechado") }}'
+      - name: qtd_andamentos
+        data_type: int64
+        description: '{{ doc("czrm_salesforce__mart__col__qtd_andamentos") }}'
+      - name: ultimo_andamento_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento_em") }}'
+      - name: ultimo_andamento
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento") }}'
+      - name: ultimo_andamento_tipo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento_tipo") }}'
+      - name: ultimo_andamento_status
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento_status") }}'
+      - name: ultimo_andamento_situacao
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento_situacao") }}'
+      - name: ultimo_andamento_informado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento_informado_em") }}'
+      - name: ultimo_andamento_publicado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__ultimo_andamento_publicado_em") }}'
+      - name: os_pai_numero
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__os_pai_numero") }}'
+      - name: qtd_equivalentes
+        data_type: numeric
+        description: '{{ doc("czrm_salesforce__mart__col__qtd_equivalentes") }}'
+      - name: e_equivalencia
+        data_type: boolean
+        description: '{{ doc("czrm_salesforce__mart__col__e_equivalencia") }}'
+      - name: qtd_respostas
+        data_type: int64
+        description: '{{ doc("czrm_salesforce__mart__col__qtd_respostas") }}'
+      - name: respostas_json
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__respostas_json") }}'
+      - name: respostas_internas
+        data_type: int64
+        description: '{{ doc("czrm_salesforce__mart__col__respostas_internas") }}'
