@@ -1,0 +1,81 @@
+version: 2
+
+# Seeds sintéticas da trilha nota_carioca_v2 (dados fictícios, sem PII). Existem só nos targets dev e pr e substituem as fontes
+# reais (macro nc2_fonte): o raw do parser (raw_nfse_nacional), as réplicas do Oracle (brutos_nota_fiscal) e as MVTs atuais
+# (nota_carioca). Os tipos repetem os das tabelas reais: o raw segue schemas_bq/ do parser (INT64, NUMERIC, DATETIME,
+# TIMESTAMP); as réplicas do Oracle seguem o oracle_to_bq (NUMBER vira NUMERIC; texto, data e RAW viram STRING, com datas
+# AAAA-MM-DDTHH:MM:SS e RAW em base64); as MVTs repetem as 19 e as 17 colunas, na ordem, de
+# mart_nota_carioca__notas_nacionais_exigiveis_detalhes e mart_nota_carioca__notas_nacionais_exigiveis (o teste
+# nc2_colunas_iguais usa estas seeds como referência de layout em dev e pr, e a MVT real em prod).
+# Os rótulos das chaves (A01_..., H09_...) dizem o caso de borda que cada linha exercita; os testes singulares de
+# tests/singular/nota_carioca_v2/ leem esses rótulos. O lado 'Oracle' foi gerado por uma implementação independente das
+# regras (VB e PL/SQL, com NFSE-1003), inclusive as diferenças catalogadas B-04 e B-06, que a paridade classifica como
+# correcao_catalogada. O maior NSU das réplicas do Oracle é 8000 (o corte); as linhas do raw acima disso (9001 a 9003)
+# provam o corte da paridade.
+# Esta parte: o raw do parser (raw_nfse_nacional) e a CONFIGURACOES do Oracle, que as regras R-01 a R-04 leem.
+
+seeds:
+  - name: nc2_seed__raw_nfse_nacional__dps
+    config:
+      column_types:
+        dps: string
+        data_emissao: datetime
+        data_competencia: datetime
+        pessoa_prestador: string
+        pessoa_tomador: string
+        pessoa_intermediario: string
+        tributacao_nacional: int64
+        tributacao_municipal: int64
+        valor_servico: numeric
+        issqn: int64
+        tipo_suspensao: int64
+        tipo_retencao_issqn: int64
+        nsu: int64
+        data_hora_geracao: timestamp
+        ingerido_em: timestamp
+  - name: nc2_seed__raw_nfse_nacional__eventos
+    config:
+      column_types:
+        evento: string
+        chave_acesso: string
+        tipo_evento: string
+        data_evento: datetime
+        chave_acesso_substituta: string
+        nsu: int64
+        data_hora_geracao: timestamp
+        ingerido_em: timestamp
+  - name: nc2_seed__raw_nfse_nacional__nfse
+    config:
+      column_types:
+        nota_nacional: string
+        chave_acesso: string
+        nota_fiscal: int64
+        dps: string
+        cod_local_incidencia: string
+        data_validacao: datetime
+        valor_ded_red: numeric
+        valor_base_calculo: numeric
+        aliquota: numeric
+        valor_issqn: numeric
+        chave_acesso_substituida: string
+        nsu: int64
+        data_hora_geracao: timestamp
+        ingerido_em: timestamp
+  - name: nc2_seed__raw_nfse_nacional__pessoas
+    config:
+      column_types:
+        hash_id: string
+        cpf_cnpj: string
+        nome: string
+        opcao_simples_nacional: int64
+        regime_apuracao_simples: int64
+        regime_tributacao: int64
+        nsu: int64
+        data_hora_geracao: timestamp
+        ingerido_em: timestamp
+  - name: nc2_seed__nota_carioca__configuracoes
+    config:
+      column_types:
+        sessao: string
+        chave: string
+        valor: string

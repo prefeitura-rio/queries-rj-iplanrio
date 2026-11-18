@@ -1,0 +1,23 @@
+version: 2
+
+# Unit tests do dbt (só em dev e pr; dbt_project.yml desliga os de prod): cada um fixa uma regra com poucas linhas e deixa as
+# entradas que a regra não usa vazias. Os casos de borda sobre as seeds ficam em tests/singular/nota_carioca_v2/.
+
+unit_tests:
+  - name: int_nc2__competencia__retida_vai_para_o_mes_seguinte
+    description: >
+      R-01: tpRetISSQN 2 e 3 somam 1 mês à competência municipal (inclusive na virada do ano); 1 e nulo mantêm o mês.
+    model: int_nc2__competencia
+    given:
+      - input: ref('int_nc2__dedup')
+        rows:
+          - {chave_acesso: NAO_RETIDA, tipo_retencao_issqn: 1, data_competencia_servico: "2026-06-10"}
+          - {chave_acesso: RETIDA_ABRIL, tipo_retencao_issqn: 2, data_competencia_servico: "2026-04-15"}
+          - {chave_acesso: INTERMEDIARIO_DEZEMBRO, tipo_retencao_issqn: 3, data_competencia_servico: "2026-12-20"}
+          - {chave_acesso: RETENCAO_NULA, tipo_retencao_issqn: null, data_competencia_servico: "2026-06-12"}
+    expect:
+      rows:
+        - {chave_acesso: NAO_RETIDA, data_compmunicipio: "2026-06-01"}
+        - {chave_acesso: RETIDA_ABRIL, data_compmunicipio: "2026-05-01"}
+        - {chave_acesso: INTERMEDIARIO_DEZEMBRO, data_compmunicipio: "2027-01-01"}
+        - {chave_acesso: RETENCAO_NULA, data_compmunicipio: "2026-06-01"}

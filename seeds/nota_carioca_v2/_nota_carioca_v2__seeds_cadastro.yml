@@ -1,0 +1,96 @@
+version: 2
+
+# Seeds sintéticas da trilha nota_carioca_v2 (dados fictícios, sem PII). Existem só nos targets dev e pr e substituem as fontes
+# reais (macro nc2_fonte): o raw do parser (raw_nfse_nacional), as réplicas do Oracle (brutos_nota_fiscal) e as MVTs atuais
+# (nota_carioca). Os tipos repetem os das tabelas reais: o raw segue schemas_bq/ do parser (INT64, NUMERIC, DATETIME,
+# TIMESTAMP); as réplicas do Oracle seguem o oracle_to_bq (NUMBER vira NUMERIC; texto, data e RAW viram STRING, com datas
+# AAAA-MM-DDTHH:MM:SS e RAW em base64); as MVTs repetem as 19 e as 17 colunas, na ordem, de
+# mart_nota_carioca__notas_nacionais_exigiveis_detalhes e mart_nota_carioca__notas_nacionais_exigiveis (o teste
+# nc2_colunas_iguais usa estas seeds como referência de layout em dev e pr, e a MVT real em prod).
+# Os rótulos das chaves (A01_..., H09_...) dizem o caso de borda que cada linha exercita; os testes singulares de
+# tests/singular/nota_carioca_v2/ leem esses rótulos. O lado 'Oracle' foi gerado por uma implementação independente das
+# regras (VB e PL/SQL, com NFSE-1003), inclusive as diferenças catalogadas B-04 e B-06, que a paridade classifica como
+# correcao_catalogada. O maior NSU das réplicas do Oracle é 8000 (o corte); as linhas do raw acima disso (9001 a 9003)
+# provam o corte da paridade.
+# Esta parte: o cadastro (MV_CONTRIBUINTES, DESIFINSTITUICOES), a réplica de NOTAS_NACIONAIS (FISCALIZACAO) e as MVTs atuais, que
+# as regras R-06, R-07, R-10 e R-11 leem e que o teste nc2_colunas_iguais usa como referência de layout.
+
+seeds:
+  - name: nc2_seed__nota_carioca__mv_contribuintes
+    config:
+      column_types:
+        inscricao: numeric
+        cpf_cnpj: string
+        raiz_cnpj: string
+        inscricao_notanacional: numeric
+        pedagio: numeric
+        categoria: numeric
+  - name: nc2_seed__nota_carioca__desifinstituicoes
+    config:
+      column_types:
+        instituicao: numeric
+        raiz_cnpj: string
+        status: numeric
+  - name: nc2_seed__nota_carioca__notas_nacionais
+    config:
+      column_types:
+        nota_nacional: string
+        chave_acesso: string
+        nota_fiscal: numeric
+        dps: string
+        chave_acesso_substituida: string
+        chave_acesso_substituta: string
+        data_validacao: string
+        data_compmunicipio: string
+        status_nota: numeric
+        fiscalizacao: numeric
+        cenario_exigibilidade: numeric
+        cod_local_incidencia: string
+        valor_base_calculo: numeric
+        valor_ded_red: numeric
+        valor_issqn: numeric
+        aliquota: numeric
+        nsu: numeric
+        data_cancelamento: string
+  - name: nc2_seed__nota_carioca_mvt__mvt_notas_nacionais_exigiveis_detalhes
+    config:
+      column_types:
+        cpf_cnpj_responsavel: string
+        nome_contraparte: string
+        cpf_cnpj_contraparte: string
+        retencao: int64
+        valor_servico: numeric
+        valor_ded_red: numeric
+        valor_issqn: numeric
+        valor_base_calculo: numeric
+        nota_fiscal: numeric
+        chave_acesso: string
+        data_validacao: string
+        data_competencia_municipio: string
+        tipo_retencao: numeric
+        nota_nacional: string
+        dps: string
+        opcao_simples_nacional: numeric
+        _bigquery_particao_data: date
+        _bigquery_updated_at: datetime
+        _bigquery_uid: string
+  - name: nc2_seed__nota_carioca_mvt__mvt_notas_nacionais_exigiveis
+    config:
+      column_types:
+        cpf_cnpj_responsavel: string
+        data_competencia_municipio: string
+        tipo_retencao: numeric
+        opcao_simples_nacional: numeric
+        retencao: int64
+        quantidade_notas: int64
+        total_valor_servico: numeric
+        total_valor_ded_red: numeric
+        total_valor_issqn: numeric
+        total_valor_base_calculo: numeric
+        cnt_valor_servico: int64
+        cnt_valor_ded_red: int64
+        cnt_valor_issqn: int64
+        cnt_valor_base_calculo: int64
+        _bigquery_particao_data: date
+        _bigquery_updated_at: datetime
+        _bigquery_uid: string
