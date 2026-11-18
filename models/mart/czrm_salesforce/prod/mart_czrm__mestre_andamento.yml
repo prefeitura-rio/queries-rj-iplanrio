@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: mart_czrm__mestre_andamento
+    description: '{{ doc("czrm_salesforce__mart__mestre_andamento") }}'
+    columns:
+      - name: andamento_id
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__andamento_id") }}'
+      - name: os_id
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__os_id") }}'
+      - name: numero_os
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__numero_os") }}'
+      - name: numero_protocolo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__numero_protocolo") }}'
+      - name: data_hora
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__data_hora") }}'
+      - name: tipo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__tipo") }}'
+      - name: status
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__status") }}'
+      - name: titulo
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__titulo") }}'
+      - name: descricao
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__descricao") }}'
+      - name: criado_por
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__criado_por") }}'
+      - name: visivel_cidadao
+        data_type: boolean
+        description: '{{ doc("czrm_salesforce__mart__col__visivel_cidadao") }}'
+      - name: informado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__informado_em") }}'
+      - name: situacao
+        data_type: string
+        description: '{{ doc("czrm_salesforce__mart__col__situacao") }}'
+      - name: publicado_em
+        data_type: datetime
+        description: '{{ doc("czrm_salesforce__mart__col__publicado_em") }}'
