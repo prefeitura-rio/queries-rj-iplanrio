@@ -1,0 +1,2766 @@
+version: 2
+
+models:
+  - name: raw_czrm_staging__account
+    description: '{{ doc("czrm_salesforce__account") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__account__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__account__id__not_null
+              config:
+                severity: error
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: master_record_id
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
+        data_type: string
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: last_name
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
+        data_type: string
+      - name: first_name
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
+        data_type: string
+      - name: salutation
+        description: '{{ doc("czrm_salesforce__col__salutation") }}'
+        data_type: string
+      - name: account_type
+        description: '{{ doc("czrm_salesforce__col__account_type") }}'
+        data_type: string
+      - name: record_type_id
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
+        data_type: string
+      - name: parent_id
+        description: '{{ doc("czrm_salesforce__col__parent_id") }}'
+        data_type: string
+      - name: billing_street
+        description: '{{ doc("czrm_salesforce__col__billing_street") }}'
+        data_type: string
+      - name: billing_city
+        description: '{{ doc("czrm_salesforce__col__billing_city") }}'
+        data_type: string
+      - name: billing_state
+        description: '{{ doc("czrm_salesforce__col__billing_state") }}'
+        data_type: string
+      - name: billing_postal_code
+        description: '{{ doc("czrm_salesforce__col__billing_postal_code") }}'
+        data_type: string
+      - name: billing_country
+        description: '{{ doc("czrm_salesforce__col__billing_country") }}'
+        data_type: string
+      - name: billing_latitude
+        description: '{{ doc("czrm_salesforce__col__billing_latitude") }}'
+        data_type: numeric
+      - name: billing_longitude
+        description: '{{ doc("czrm_salesforce__col__billing_longitude") }}'
+        data_type: numeric
+      - name: billing_geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__billing_geocode_accuracy") }}'
+        data_type: string
+      - name: billing_address
+        description: '{{ doc("czrm_salesforce__col__billing_address") }}'
+        data_type: json
+      - name: shipping_street
+        description: '{{ doc("czrm_salesforce__col__shipping_street") }}'
+        data_type: string
+      - name: shipping_city
+        description: '{{ doc("czrm_salesforce__col__shipping_city") }}'
+        data_type: string
+      - name: shipping_state
+        description: '{{ doc("czrm_salesforce__col__shipping_state") }}'
+        data_type: string
+      - name: shipping_postal_code
+        description: '{{ doc("czrm_salesforce__col__shipping_postal_code") }}'
+        data_type: string
+      - name: shipping_country
+        description: '{{ doc("czrm_salesforce__col__shipping_country") }}'
+        data_type: string
+      - name: shipping_latitude
+        description: '{{ doc("czrm_salesforce__col__shipping_latitude") }}'
+        data_type: numeric
+      - name: shipping_longitude
+        description: '{{ doc("czrm_salesforce__col__shipping_longitude") }}'
+        data_type: numeric
+      - name: shipping_geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__shipping_geocode_accuracy") }}'
+        data_type: string
+      - name: shipping_address
+        description: '{{ doc("czrm_salesforce__col__shipping_address") }}'
+        data_type: json
+      - name: phone
+        description: '{{ doc("czrm_salesforce__col__phone") }}'
+        data_type: string
+      - name: fax
+        description: '{{ doc("czrm_salesforce__col__fax") }}'
+        data_type: string
+      - name: account_number
+        description: '{{ doc("czrm_salesforce__col__account_number") }}'
+        data_type: string
+      - name: website
+        description: '{{ doc("czrm_salesforce__col__website") }}'
+        data_type: string
+      - name: photo_url
+        description: '{{ doc("czrm_salesforce__col__photo_url") }}'
+        data_type: string
+      - name: sic
+        description: '{{ doc("czrm_salesforce__col__sic") }}'
+        data_type: string
+      - name: industry
+        description: '{{ doc("czrm_salesforce__col__industry") }}'
+        data_type: string
+      - name: annual_revenue
+        description: '{{ doc("czrm_salesforce__col__annual_revenue") }}'
+        data_type: numeric
+      - name: number_of_employees
+        description: '{{ doc("czrm_salesforce__col__number_of_employees") }}'
+        data_type: int64
+      - name: ownership
+        description: '{{ doc("czrm_salesforce__col__ownership") }}'
+        data_type: string
+      - name: ticker_symbol
+        description: '{{ doc("czrm_salesforce__col__ticker_symbol") }}'
+        data_type: string
+      - name: description
+        description: '{{ doc("czrm_salesforce__col__description") }}'
+        data_type: string
+      - name: rating
+        description: '{{ doc("czrm_salesforce__col__rating") }}'
+        data_type: string
+      - name: site
+        description: '{{ doc("czrm_salesforce__col__site") }}'
+        data_type: string
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_activity_date
+        description: '{{ doc("czrm_salesforce__col__last_activity_date") }}'
+        data_type: date
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: source_system_identifier
+        description: '{{ doc("czrm_salesforce__col__source_system_identifier") }}'
+        data_type: string
+      - name: is_partner
+        description: '{{ doc("czrm_salesforce__col__is_partner") }}'
+        data_type: boolean
+      - name: is_customer_portal
+        description: '{{ doc("czrm_salesforce__col__is_customer_portal") }}'
+        data_type: boolean
+      - name: person_contact_id
+        description: '{{ doc("czrm_salesforce__col__person_contact_id") }}'
+        data_type: string
+      - name: is_person_account
+        description: '{{ doc("czrm_salesforce__col__is_person_account") }}'
+        data_type: boolean
+      - name: person_mailing_street
+        description: '{{ doc("czrm_salesforce__col__person_mailing_street") }}'
+        data_type: string
+      - name: person_mailing_city
+        description: '{{ doc("czrm_salesforce__col__person_mailing_city") }}'
+        data_type: string
+      - name: person_mailing_state
+        description: '{{ doc("czrm_salesforce__col__person_mailing_state") }}'
+        data_type: string
+      - name: person_mailing_postal_code
+        description: '{{ doc("czrm_salesforce__col__person_mailing_postal_code") }}'
+        data_type: string
+      - name: person_mailing_country
+        description: '{{ doc("czrm_salesforce__col__person_mailing_country") }}'
+        data_type: string
+      - name: person_mailing_latitude
+        description: '{{ doc("czrm_salesforce__col__person_mailing_latitude") }}'
+        data_type: numeric
+      - name: person_mailing_longitude
+        description: '{{ doc("czrm_salesforce__col__person_mailing_longitude") }}'
+        data_type: numeric
+      - name: person_mailing_geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__person_mailing_geocode_accuracy") }}'
+        data_type: string
+      - name: person_mailing_address
+        description: '{{ doc("czrm_salesforce__col__person_mailing_address") }}'
+        data_type: json
+      - name: person_other_street
+        description: '{{ doc("czrm_salesforce__col__person_other_street") }}'
+        data_type: string
+      - name: person_other_city
+        description: '{{ doc("czrm_salesforce__col__person_other_city") }}'
+        data_type: string
+      - name: person_other_state
+        description: '{{ doc("czrm_salesforce__col__person_other_state") }}'
+        data_type: string
+      - name: person_other_postal_code
+        description: '{{ doc("czrm_salesforce__col__person_other_postal_code") }}'
+        data_type: string
+      - name: person_other_country
+        description: '{{ doc("czrm_salesforce__col__person_other_country") }}'
+        data_type: string
+      - name: person_other_latitude
+        description: '{{ doc("czrm_salesforce__col__person_other_latitude") }}'
+        data_type: numeric
+      - name: person_other_longitude
+        description: '{{ doc("czrm_salesforce__col__person_other_longitude") }}'
+        data_type: numeric
+      - name: person_other_geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__person_other_geocode_accuracy") }}'
+        data_type: string
+      - name: person_other_address
+        description: '{{ doc("czrm_salesforce__col__person_other_address") }}'
+        data_type: json
+      - name: person_mobile_phone
+        description: '{{ doc("czrm_salesforce__col__person_mobile_phone") }}'
+        data_type: string
+      - name: person_home_phone
+        description: '{{ doc("czrm_salesforce__col__person_home_phone") }}'
+        data_type: string
+      - name: person_other_phone
+        description: '{{ doc("czrm_salesforce__col__person_other_phone") }}'
+        data_type: string
+      - name: person_assistant_phone
+        description: '{{ doc("czrm_salesforce__col__person_assistant_phone") }}'
+        data_type: string
+      - name: person_email
+        description: '{{ doc("czrm_salesforce__col__person_email") }}'
+        data_type: string
+      - name: person_title
+        description: '{{ doc("czrm_salesforce__col__person_title") }}'
+        data_type: string
+      - name: person_department
+        description: '{{ doc("czrm_salesforce__col__person_department") }}'
+        data_type: string
+      - name: person_assistant_name
+        description: '{{ doc("czrm_salesforce__col__person_assistant_name") }}'
+        data_type: string
+      - name: person_lead_source
+        description: '{{ doc("czrm_salesforce__col__person_lead_source") }}'
+        data_type: string
+      - name: person_birthdate
+        description: '{{ doc("czrm_salesforce__col__person_birthdate") }}'
+        data_type: date
+      - name: person_has_opted_out_of_email
+        description: '{{ doc("czrm_salesforce__col__person_has_opted_out_of_email") }}'
+        data_type: boolean
+      - name: person_has_opted_out_of_fax
+        description: '{{ doc("czrm_salesforce__col__person_has_opted_out_of_fax") }}'
+        data_type: boolean
+      - name: person_do_not_call
+        description: '{{ doc("czrm_salesforce__col__person_do_not_call") }}'
+        data_type: boolean
+      - name: person_last_cu_request_date
+        description: '{{ doc("czrm_salesforce__col__person_last_cu_request_date") }}'
+        data_type: datetime
+      - name: person_last_cu_update_date
+        description: '{{ doc("czrm_salesforce__col__person_last_cu_update_date") }}'
+        data_type: datetime
+      - name: person_email_bounced_reason
+        description: '{{ doc("czrm_salesforce__col__person_email_bounced_reason") }}'
+        data_type: string
+      - name: person_email_bounced_date
+        description: '{{ doc("czrm_salesforce__col__person_email_bounced_date") }}'
+        data_type: datetime
+      - name: person_individual_id
+        description: '{{ doc("czrm_salesforce__col__person_individual_id") }}'
+        data_type: string
+      - name: person_pronouns
+        description: '{{ doc("czrm_salesforce__col__person_pronouns") }}'
+        data_type: string
+      - name: person_gender_identity
+        description: '{{ doc("czrm_salesforce__col__person_gender_identity") }}'
+        data_type: string
+      - name: jigsaw
+        description: '{{ doc("czrm_salesforce__col__jigsaw") }}'
+        data_type: string
+      - name: jigsaw_company_id
+        description: '{{ doc("czrm_salesforce__col__jigsaw_company_id") }}'
+        data_type: string
+      - name: account_source
+        description: '{{ doc("czrm_salesforce__col__account_source") }}'
+        data_type: string
+      - name: sic_desc
+        description: '{{ doc("czrm_salesforce__col__sic_desc") }}'
+        data_type: string
+      - name: has_privacy_hold
+        description: '{{ doc("czrm_salesforce__col__has_privacy_hold") }}'
+        data_type: boolean
+      - name: cpf
+        description: '{{ doc("czrm_salesforce__col__cpf") }}'
+        data_type: string
+      - name: nome_completo
+        description: '{{ doc("czrm_salesforce__col__nome_completo") }}'
+        data_type: string
+      - name: ignore_validation_rule
+        description: '{{ doc("czrm_salesforce__col__ignore_validation_rule") }}'
+        data_type: boolean
+      - name: is_tourist
+        description: '{{ doc("czrm_salesforce__col__is_tourist") }}'
+        data_type: boolean
+      - name: last_access_servant_portal
+        description: '{{ doc("czrm_salesforce__col__last_access_servant_portal") }}'
+        data_type: datetime
+      - name: passport_number
+        description: '{{ doc("czrm_salesforce__col__passport_number") }}'
+        data_type: string
+      - name: phone_1
+        description: '{{ doc("czrm_salesforce__col__phone_1") }}'
+        data_type: string
+      - name: phone_2
+        description: '{{ doc("czrm_salesforce__col__phone_2") }}'
+        data_type: string
+      - name: phone_3
+        description: '{{ doc("czrm_salesforce__col__phone_3") }}'
+        data_type: string
+      - name: social_name
+        description: '{{ doc("czrm_salesforce__col__social_name") }}'
+        data_type: string
+      - name: address_complement
+        description: '{{ doc("czrm_salesforce__col__address_complement") }}'
+        data_type: string
+      - name: disability_type
+        description: '{{ doc("czrm_salesforce__col__disability_type") }}'
+        data_type: string
+      - name: display_name
+        description: '{{ doc("czrm_salesforce__col__display_name") }}'
+        data_type: string
+      - name: education_level
+        description: '{{ doc("czrm_salesforce__col__education_level") }}'
+        data_type: string
+      - name: family_income
+        description: '{{ doc("czrm_salesforce__col__family_income") }}'
+        data_type: string
+      - name: public_servant_status
+        description: '{{ doc("czrm_salesforce__col__public_servant_status") }}'
+        data_type: string
+      - name: nationality
+        description: '{{ doc("czrm_salesforce__col__nationality") }}'
+        data_type: string
+      - name: phone_1_type
+        description: '{{ doc("czrm_salesforce__col__phone_1_type") }}'
+        data_type: string
+      - name: phone_2_type
+        description: '{{ doc("czrm_salesforce__col__phone_2_type") }}'
+        data_type: string
+      - name: phone_3_type
+        description: '{{ doc("czrm_salesforce__col__phone_3_type") }}'
+        data_type: string
+      - name: phone_international
+        description: '{{ doc("czrm_salesforce__col__phone_international") }}'
+        data_type: string
+      - name: race_color
+        description: '{{ doc("czrm_salesforce__col__race_color") }}'
+        data_type: string
+      - name: is_public_servant
+        description: '{{ doc("czrm_salesforce__col__is_public_servant") }}'
+        data_type: boolean
+      - name: speaking_language
+        description: '{{ doc("czrm_salesforce__col__speaking_language") }}'
+        data_type: string
+      - name: last_update_channel
+        description: '{{ doc("czrm_salesforce__col__last_update_channel") }}'
+        data_type: string
+      - name: email_corporativo
+        description: '{{ doc("czrm_salesforce__col__email_corporativo") }}'
+        data_type: string
+      - name: user_internal
+        description: '{{ doc("czrm_salesforce__col__user_internal") }}'
+        data_type: string
+      - name: main_organizational_unit
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
+        data_type: string
+      - name: user_external
+        description: '{{ doc("czrm_salesforce__col__user_external") }}'
+        data_type: string
+      - name: receber_email_notificacao
+        description: '{{ doc("czrm_salesforce__col__receber_email_notificacao") }}'
+        data_type: boolean
+      - name: et4ae5_has_opted_out_of_mobile_pc
+        description: '{{ doc("czrm_salesforce__col__et4ae5_has_opted_out_of_mobile_pc") }}'
+        data_type: boolean
+      - name: et4ae5_mobile_country_code_pc
+        description: '{{ doc("czrm_salesforce__col__et4ae5_mobile_country_code_pc") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__contact
+    description: '{{ doc("czrm_salesforce__contact") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__contact__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__contact__id__not_null
+              config:
+                severity: error
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: master_record_id
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
+        data_type: string
+      - name: account_id
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
+        data_type: string
+      - name: is_person_account
+        description: '{{ doc("czrm_salesforce__col__is_person_account") }}'
+        data_type: boolean
+      - name: last_name
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
+        data_type: string
+      - name: first_name
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
+        data_type: string
+      - name: salutation
+        description: '{{ doc("czrm_salesforce__col__salutation") }}'
+        data_type: string
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: mailing_street
+        description: '{{ doc("czrm_salesforce__col__mailing_street") }}'
+        data_type: string
+      - name: mailing_city
+        description: '{{ doc("czrm_salesforce__col__mailing_city") }}'
+        data_type: string
+      - name: mailing_state
+        description: '{{ doc("czrm_salesforce__col__mailing_state") }}'
+        data_type: string
+      - name: mailing_postal_code
+        description: '{{ doc("czrm_salesforce__col__mailing_postal_code") }}'
+        data_type: string
+      - name: mailing_country
+        description: '{{ doc("czrm_salesforce__col__mailing_country") }}'
+        data_type: string
+      - name: mailing_latitude
+        description: '{{ doc("czrm_salesforce__col__mailing_latitude") }}'
+        data_type: numeric
+      - name: mailing_longitude
+        description: '{{ doc("czrm_salesforce__col__mailing_longitude") }}'
+        data_type: numeric
+      - name: mailing_geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__mailing_geocode_accuracy") }}'
+        data_type: string
+      - name: mailing_address
+        description: '{{ doc("czrm_salesforce__col__mailing_address") }}'
+        data_type: json
+      - name: phone
+        description: '{{ doc("czrm_salesforce__col__phone") }}'
+        data_type: string
+      - name: fax
+        description: '{{ doc("czrm_salesforce__col__fax") }}'
+        data_type: string
+      - name: mobile_phone
+        description: '{{ doc("czrm_salesforce__col__mobile_phone") }}'
+        data_type: string
+      - name: home_phone
+        description: '{{ doc("czrm_salesforce__col__home_phone") }}'
+        data_type: string
+      - name: other_phone
+        description: '{{ doc("czrm_salesforce__col__other_phone") }}'
+        data_type: string
+      - name: assistant_phone
+        description: '{{ doc("czrm_salesforce__col__assistant_phone") }}'
+        data_type: string
+      - name: reports_to_id
+        description: '{{ doc("czrm_salesforce__col__reports_to_id") }}'
+        data_type: string
+      - name: email
+        description: '{{ doc("czrm_salesforce__col__email") }}'
+        data_type: string
+      - name: title
+        description: '{{ doc("czrm_salesforce__col__title") }}'
+        data_type: string
+      - name: department
+        description: '{{ doc("czrm_salesforce__col__department") }}'
+        data_type: string
+      - name: birthdate
+        description: '{{ doc("czrm_salesforce__col__birthdate") }}'
+        data_type: date
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_activity_date
+        description: '{{ doc("czrm_salesforce__col__last_activity_date") }}'
+        data_type: date
+      - name: last_cu_request_date
+        description: '{{ doc("czrm_salesforce__col__last_cu_request_date") }}'
+        data_type: datetime
+      - name: last_cu_update_date
+        description: '{{ doc("czrm_salesforce__col__last_cu_update_date") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: email_bounced_reason
+        description: '{{ doc("czrm_salesforce__col__email_bounced_reason") }}'
+        data_type: string
+      - name: email_bounced_date
+        description: '{{ doc("czrm_salesforce__col__email_bounced_date") }}'
+        data_type: datetime
+      - name: is_email_bounced
+        description: '{{ doc("czrm_salesforce__col__is_email_bounced") }}'
+        data_type: boolean
+      - name: photo_url
+        description: '{{ doc("czrm_salesforce__col__photo_url") }}'
+        data_type: string
+      - name: jigsaw
+        description: '{{ doc("czrm_salesforce__col__jigsaw") }}'
+        data_type: string
+      - name: jigsaw_contact_id
+        description: '{{ doc("czrm_salesforce__col__jigsaw_contact_id") }}'
+        data_type: string
+      - name: individual_id
+        description: '{{ doc("czrm_salesforce__col__individual_id") }}'
+        data_type: string
+      - name: gender_identity
+        description: '{{ doc("czrm_salesforce__col__gender_identity") }}'
+        data_type: string
+      - name: has_privacy_hold
+        description: '{{ doc("czrm_salesforce__col__has_privacy_hold") }}'
+        data_type: boolean
+      - name: is_priority_record
+        description: '{{ doc("czrm_salesforce__col__is_priority_record") }}'
+        data_type: boolean
+      - name: contact_source
+        description: '{{ doc("czrm_salesforce__col__contact_source") }}'
+        data_type: string
+      - name: title_type
+        description: '{{ doc("czrm_salesforce__col__title_type") }}'
+        data_type: string
+      - name: department_group
+        description: '{{ doc("czrm_salesforce__col__department_group") }}'
+        data_type: string
+      - name: buyer_attributes
+        description: '{{ doc("czrm_salesforce__col__buyer_attributes") }}'
+        data_type: string
+      - name: et4ae5_has_opted_out_of_mobile
+        description: '{{ doc("czrm_salesforce__col__et4ae5_has_opted_out_of_mobile") }}'
+        data_type: boolean
+      - name: et4ae5_mobile_country_code
+        description: '{{ doc("czrm_salesforce__col__et4ae5_mobile_country_code") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__individual
+    description: '{{ doc("czrm_salesforce__individual") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__individual__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__individual__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: last_name
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
+        data_type: string
+      - name: first_name
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
+        data_type: string
+      - name: salutation
+        description: '{{ doc("czrm_salesforce__col__salutation") }}'
+        data_type: string
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: has_opted_out_tracking
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_tracking") }}'
+        data_type: boolean
+      - name: has_opted_out_profiling
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_profiling") }}'
+        data_type: boolean
+      - name: has_opted_out_processing
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_processing") }}'
+        data_type: boolean
+      - name: has_opted_out_solicit
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_solicit") }}'
+        data_type: boolean
+      - name: should_forget
+        description: '{{ doc("czrm_salesforce__col__should_forget") }}'
+        data_type: boolean
+      - name: send_individual_data
+        description: '{{ doc("czrm_salesforce__col__send_individual_data") }}'
+        data_type: boolean
+      - name: can_store_pii_elsewhere
+        description: '{{ doc("czrm_salesforce__col__can_store_pii_elsewhere") }}'
+        data_type: boolean
+      - name: has_opted_out_geo_tracking
+        description: '{{ doc("czrm_salesforce__col__has_opted_out_geo_tracking") }}'
+        data_type: boolean
+      - name: birth_date
+        description: '{{ doc("czrm_salesforce__col__birth_date") }}'
+        data_type: date
+      - name: death_date
+        description: '{{ doc("czrm_salesforce__col__death_date") }}'
+        data_type: date
+      - name: convictions_count
+        description: '{{ doc("czrm_salesforce__col__convictions_count") }}'
+        data_type: int64
+      - name: children_count
+        description: '{{ doc("czrm_salesforce__col__children_count") }}'
+        data_type: int64
+      - name: military_service
+        description: '{{ doc("czrm_salesforce__col__military_service") }}'
+        data_type: string
+      - name: is_home_owner
+        description: '{{ doc("czrm_salesforce__col__is_home_owner") }}'
+        data_type: boolean
+      - name: occupation
+        description: '{{ doc("czrm_salesforce__col__occupation") }}'
+        data_type: string
+      - name: website
+        description: '{{ doc("czrm_salesforce__col__website") }}'
+        data_type: string
+      - name: individuals_age
+        description: '{{ doc("czrm_salesforce__col__individuals_age") }}'
+        data_type: string
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: master_record_id
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
+        data_type: string
+      - name: consumer_credit_score
+        description: '{{ doc("czrm_salesforce__col__consumer_credit_score") }}'
+        data_type: int64
+      - name: consumer_credit_score_provider_name
+        description: '{{ doc("czrm_salesforce__col__consumer_credit_score_provider_name") }}'
+        data_type: string
+      - name: influencer_rating
+        description: '{{ doc("czrm_salesforce__col__influencer_rating") }}'
+        data_type: int64
+      - name: has_privacy_hold
+        description: '{{ doc("czrm_salesforce__col__has_privacy_hold") }}'
+        data_type: boolean
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__neighborhood
+    description: '{{ doc("czrm_salesforce__neighborhood") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__neighborhood__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__neighborhood__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: codbairro
+        description: '{{ doc("czrm_salesforce__col__codbairro") }}'
+        data_type: string
+      - name: codbnum
+        description: '{{ doc("czrm_salesforce__col__codbnum") }}'
+        data_type: numeric
+      - name: ra
+        description: '{{ doc("czrm_salesforce__col__ra") }}'
+        data_type: string
+      - name: ap
+        description: '{{ doc("czrm_salesforce__col__ap") }}'
+        data_type: string
+      - name: rp
+        description: '{{ doc("czrm_salesforce__col__rp") }}'
+        data_type: string
+      - name: subprefeitura
+        description: '{{ doc("czrm_salesforce__col__subprefeitura") }}'
+        data_type: string
+      - name: aps
+        description: '{{ doc("czrm_salesforce__col__aps") }}'
+        data_type: string
+      - name: cre
+        description: '{{ doc("czrm_salesforce__col__cre") }}'
+        data_type: string
+      - name: coverage
+        description: '{{ doc("czrm_salesforce__col__coverage") }}'
+        data_type: string
+      - name: google_neighborhood_name
+        description: '{{ doc("czrm_salesforce__col__google_neighborhood_name") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__organizational_unity
+    description: '{{ doc("czrm_salesforce__organizational_unity") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__organizational_unity__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__organizational_unity__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: record_type_id
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: external_integration_key
+        description: '{{ doc("czrm_salesforce__col__external_integration_key") }}'
+        data_type: string
+      - name: parent_uo
+        description: '{{ doc("czrm_salesforce__col__parent_uo") }}'
+        data_type: string
+      - name: ativo
+        description: '{{ doc("czrm_salesforce__col__ativo") }}'
+        data_type: boolean
+      - name: email_institucional
+        description: '{{ doc("czrm_salesforce__col__email_institucional") }}'
+        data_type: string
+      - name: gestor_responsavel
+        description: '{{ doc("czrm_salesforce__col__gestor_responsavel") }}'
+        data_type: string
+      - name: natureza_orgao
+        description: '{{ doc("czrm_salesforce__col__natureza_orgao") }}'
+        data_type: string
+      - name: permite_atribuir_chamados
+        description: '{{ doc("czrm_salesforce__col__permite_atribuir_chamados") }}'
+        data_type: boolean
+      - name: role_id
+        description: '{{ doc("czrm_salesforce__col__role_id") }}'
+        data_type: string
+      - name: queue_id
+        description: '{{ doc("czrm_salesforce__col__queue_id") }}'
+        data_type: string
+      - name: sgrc_uo_id
+        description: '{{ doc("czrm_salesforce__col__sgrc_uo_id") }}'
+        data_type: numeric
+      - name: telefone_institucional
+        description: '{{ doc("czrm_salesforce__col__telefone_institucional") }}'
+        data_type: string
+      - name: record_type_developer_name
+        description: '{{ doc("czrm_salesforce__col__record_type_developer_name") }}'
+        data_type: string
+      - name: wo_update_event_bundle
+        description: '{{ doc("czrm_salesforce__col__wo_update_event_bundle") }}'
+        data_type: string
+      - name: main_organizational_unit
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
+        data_type: string
+      - name: unity_type
+        description: '{{ doc("czrm_salesforce__col__unity_type") }}'
+        data_type: string
+      - name: shortname
+        description: '{{ doc("czrm_salesforce__col__shortname") }}'
+        data_type: string
+      - name: oversight_target_uo
+        description: '{{ doc("czrm_salesforce__col__oversight_target_uo") }}'
+        data_type: string
+      - name: approval_queue_id
+        description: '{{ doc("czrm_salesforce__col__approval_queue_id") }}'
+        data_type: string
+      - name: integracao_ativa
+        description: '{{ doc("czrm_salesforce__col__integracao_ativa") }}'
+        data_type: boolean
+      - name: sici_code
+        description: '{{ doc("czrm_salesforce__col__sici_code") }}'
+        data_type: string
+      - name: content_approval_queue_id
+        description: '{{ doc("czrm_salesforce__col__content_approval_queue_id") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__queue_group
+    description: '{{ doc("czrm_salesforce__queue_group") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__queue_group__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__queue_group__id__not_null
+              config:
+                severity: error
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: developer_name
+        description: '{{ doc("czrm_salesforce__col__developer_name") }}'
+        data_type: string
+      - name: related_id
+        description: '{{ doc("czrm_salesforce__col__related_id") }}'
+        data_type: string
+      - name: group_type
+        description: '{{ doc("czrm_salesforce__col__group_type") }}'
+        data_type: string
+      - name: email
+        description: '{{ doc("czrm_salesforce__col__email") }}'
+        data_type: string
+      - name: queue_routing_config_id
+        description: '{{ doc("czrm_salesforce__col__queue_routing_config_id") }}'
+        data_type: string
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: does_send_email_to_members
+        description: '{{ doc("czrm_salesforce__col__does_send_email_to_members") }}'
+        data_type: boolean
+      - name: does_include_bosses
+        description: '{{ doc("czrm_salesforce__col__does_include_bosses") }}'
+        data_type: boolean
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: description
+        description: '{{ doc("czrm_salesforce__col__description") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__record_type
+    description: '{{ doc("czrm_salesforce__record_type") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__record_type__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__record_type__id__not_null
+              config:
+                severity: error
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: developer_name
+        description: '{{ doc("czrm_salesforce__col__developer_name") }}'
+        data_type: string
+      - name: namespace_prefix
+        description: '{{ doc("czrm_salesforce__col__namespace_prefix") }}'
+        data_type: string
+      - name: description
+        description: '{{ doc("czrm_salesforce__col__description") }}'
+        data_type: string
+      - name: business_process_id
+        description: '{{ doc("czrm_salesforce__col__business_process_id") }}'
+        data_type: string
+      - name: sobject_type
+        description: '{{ doc("czrm_salesforce__col__sobject_type") }}'
+        data_type: string
+      - name: is_active
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
+        data_type: boolean
+      - name: is_person_type
+        description: '{{ doc("czrm_salesforce__col__is_person_type") }}'
+        data_type: boolean
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__service_attribute_library
+    description: '{{ doc("czrm_salesforce__service_attribute_library") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__service_attribute_library__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__service_attribute_library__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: field_label_name
+        description: '{{ doc("czrm_salesforce__col__field_label_name") }}'
+        data_type: string
+      - name: integracao_ativa
+        description: '{{ doc("czrm_salesforce__col__integracao_ativa") }}'
+        data_type: boolean
+      - name: field_type
+        description: '{{ doc("czrm_salesforce__col__field_type") }}'
+        data_type: string
+      - name: unique_key
+        description: '{{ doc("czrm_salesforce__col__unique_key") }}'
+        data_type: string
+      - name: validation_regex
+        description: '{{ doc("czrm_salesforce__col__validation_regex") }}'
+        data_type: string
+      - name: validation_error_message
+        description: '{{ doc("czrm_salesforce__col__validation_error_message") }}'
+        data_type: string
+      - name: global_help_text
+        description: '{{ doc("czrm_salesforce__col__global_help_text") }}'
+        data_type: string
+      - name: is_active
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
+        data_type: boolean
+      - name: valores_cadastrados
+        description: '{{ doc("czrm_salesforce__col__valores_cadastrados") }}'
+        data_type: numeric
+      - name: form_section
+        description: '{{ doc("czrm_salesforce__col__form_section") }}'
+        data_type: string
+      - name: custom_lwc_name
+        description: '{{ doc("czrm_salesforce__col__custom_lwc_name") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__service_case
+    description: '{{ doc("czrm_salesforce__service_case") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__service_case__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__service_case__id__not_null
+              config:
+                severity: error
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: master_record_id
+        description: '{{ doc("czrm_salesforce__col__master_record_id") }}'
+        data_type: string
+      - name: case_number
+        description: '{{ doc("czrm_salesforce__col__case_number") }}'
+        data_type: string
+      - name: contact_id
+        description: '{{ doc("czrm_salesforce__col__contact_id") }}'
+        data_type: string
+      - name: account_id
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
+        data_type: string
+      - name: source_id
+        description: '{{ doc("czrm_salesforce__col__source_id") }}'
+        data_type: string
+      - name: parent_id
+        description: '{{ doc("czrm_salesforce__col__parent_id") }}'
+        data_type: string
+      - name: supplied_name
+        description: '{{ doc("czrm_salesforce__col__supplied_name") }}'
+        data_type: string
+      - name: supplied_email
+        description: '{{ doc("czrm_salesforce__col__supplied_email") }}'
+        data_type: string
+      - name: supplied_phone
+        description: '{{ doc("czrm_salesforce__col__supplied_phone") }}'
+        data_type: string
+      - name: supplied_company
+        description: '{{ doc("czrm_salesforce__col__supplied_company") }}'
+        data_type: string
+      - name: case_type
+        description: '{{ doc("czrm_salesforce__col__case_type") }}'
+        data_type: string
+      - name: record_type_id
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
+        data_type: string
+      - name: status
+        description: '{{ doc("czrm_salesforce__col__status") }}'
+        data_type: string
+      - name: origin
+        description: '{{ doc("czrm_salesforce__col__origin") }}'
+        data_type: string
+      - name: language
+        description: '{{ doc("czrm_salesforce__col__language") }}'
+        data_type: string
+      - name: subject
+        description: '{{ doc("czrm_salesforce__col__subject") }}'
+        data_type: string
+      - name: priority
+        description: '{{ doc("czrm_salesforce__col__priority") }}'
+        data_type: string
+      - name: description
+        description: '{{ doc("czrm_salesforce__col__description") }}'
+        data_type: string
+      - name: is_closed
+        description: '{{ doc("czrm_salesforce__col__is_closed") }}'
+        data_type: boolean
+      - name: closed_date
+        description: '{{ doc("czrm_salesforce__col__closed_date") }}'
+        data_type: datetime
+      - name: is_escalated
+        description: '{{ doc("czrm_salesforce__col__is_escalated") }}'
+        data_type: boolean
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: contact_phone
+        description: '{{ doc("czrm_salesforce__col__contact_phone") }}'
+        data_type: string
+      - name: contact_mobile
+        description: '{{ doc("czrm_salesforce__col__contact_mobile") }}'
+        data_type: string
+      - name: contact_email
+        description: '{{ doc("czrm_salesforce__col__contact_email") }}'
+        data_type: string
+      - name: contact_fax
+        description: '{{ doc("czrm_salesforce__col__contact_fax") }}'
+        data_type: string
+      - name: comments
+        description: '{{ doc("czrm_salesforce__col__comments") }}'
+        data_type: string
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: milestone_timer
+        description: '{{ doc("czrm_salesforce__col__milestone_timer") }}'
+        data_type: string
+      - name: protocolo_formula
+        description: '{{ doc("czrm_salesforce__col__protocolo_formula") }}'
+        data_type: string
+      - name: protocolo_texto
+        description: '{{ doc("czrm_salesforce__col__protocolo_texto") }}'
+        data_type: string
+      - name: protocolo_hyperlink
+        description: '{{ doc("czrm_salesforce__col__protocolo_hyperlink") }}'
+        data_type: string
+      - name: comentarios_de_solucao
+        description: '{{ doc("czrm_salesforce__col__comentarios_de_solucao") }}'
+        data_type: string
+      - name: bypass_validation_rule
+        description: '{{ doc("czrm_salesforce__col__bypass_validation_rule") }}'
+        data_type: boolean
+      - name: esta_na_fila
+        description: '{{ doc("czrm_salesforce__col__esta_na_fila") }}'
+        data_type: boolean
+      - name: record_type_developer_name
+        description: '{{ doc("czrm_salesforce__col__record_type_developer_name") }}'
+        data_type: string
+      - name: qtd_emails_recebidos
+        description: '{{ doc("czrm_salesforce__col__qtd_emails_recebidos") }}'
+        data_type: numeric
+      - name: qtd_emails_enviados
+        description: '{{ doc("czrm_salesforce__col__qtd_emails_enviados") }}'
+        data_type: numeric
+      - name: tipo_de_registro_name_formula
+        description: '{{ doc("czrm_salesforce__col__tipo_de_registro_name_formula") }}'
+        data_type: string
+      - name: assinatura_case_owner
+        description: '{{ doc("czrm_salesforce__col__assinatura_case_owner") }}'
+        data_type: string
+      - name: nome_equipe_assinatura
+        description: '{{ doc("czrm_salesforce__col__nome_equipe_assinatura") }}'
+        data_type: string
+      - name: nome_cidadao_assinatura
+        description: '{{ doc("czrm_salesforce__col__nome_cidadao_assinatura") }}'
+        data_type: string
+      - name: assunto_tratado
+        description: '{{ doc("czrm_salesforce__col__assunto_tratado") }}'
+        data_type: string
+      - name: categoria
+        description: '{{ doc("czrm_salesforce__col__categoria") }}'
+        data_type: string
+      - name: subcategoria
+        description: '{{ doc("czrm_salesforce__col__subcategoria") }}'
+        data_type: string
+      - name: detalhe
+        description: '{{ doc("czrm_salesforce__col__detalhe") }}'
+        data_type: string
+      - name: descricao_resumida
+        description: '{{ doc("czrm_salesforce__col__descricao_resumida") }}'
+        data_type: string
+      - name: substatus
+        description: '{{ doc("czrm_salesforce__col__substatus") }}'
+        data_type: string
+      - name: data_hora_de_resolucao
+        description: '{{ doc("czrm_salesforce__col__data_hora_de_resolucao") }}'
+        data_type: datetime
+      - name: possui_data_hora_resolucao_formula
+        description: '{{ doc("czrm_salesforce__col__possui_data_hora_resolucao_formula") }}'
+        data_type: boolean
+      - name: nome_do_proprietario
+        description: '{{ doc("czrm_salesforce__col__nome_do_proprietario") }}'
+        data_type: string
+      - name: chat_fora_do_horario_de_atendimento
+        description: '{{ doc("czrm_salesforce__col__chat_fora_do_horario_de_atendimento") }}'
+        data_type: boolean
+      - name: tipo_de_usuario
+        description: '{{ doc("czrm_salesforce__col__tipo_de_usuario") }}'
+        data_type: string
+      - name: possui_pesquisa_respondida
+        description: '{{ doc("czrm_salesforce__col__possui_pesquisa_respondida") }}'
+        data_type: boolean
+      - name: link_da_corrida
+        description: '{{ doc("czrm_salesforce__col__link_da_corrida") }}'
+        data_type: string
+      - name: survey_invitation_sent
+        description: '{{ doc("czrm_salesforce__col__survey_invitation_sent") }}'
+        data_type: boolean
+      - name: is_reiteracao
+        description: '{{ doc("czrm_salesforce__col__is_reiteracao") }}'
+        data_type: boolean
+      - name: is_anonymous
+        description: '{{ doc("czrm_salesforce__col__is_anonymous") }}'
+        data_type: boolean
+      - name: solicitante_departamental
+        description: '{{ doc("czrm_salesforce__col__solicitante_departamental") }}'
+        data_type: string
+      - name: operador_nome
+        description: '{{ doc("czrm_salesforce__col__operador_nome") }}'
+        data_type: string
+      - name: operador_telefone
+        description: '{{ doc("czrm_salesforce__col__operador_telefone") }}'
+        data_type: string
+      - name: solicitante_telefone
+        description: '{{ doc("czrm_salesforce__col__solicitante_telefone") }}'
+        data_type: string
+      - name: tem_dados_departamentais
+        description: '{{ doc("czrm_salesforce__col__tem_dados_departamentais") }}'
+        data_type: boolean
+      - name: esqueleto
+        description: '{{ doc("czrm_salesforce__col__esqueleto") }}'
+        data_type: boolean
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__service_catalog
+    description: '{{ doc("czrm_salesforce__service_catalog") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__service_catalog__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__service_catalog__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: record_type_id
+        description: '{{ doc("czrm_salesforce__col__record_type_id") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: is_active
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
+        data_type: boolean
+      - name: available_for_citizen
+        description: '{{ doc("czrm_salesforce__col__available_for_citizen") }}'
+        data_type: boolean
+      - name: slug
+        description: '{{ doc("czrm_salesforce__col__slug") }}'
+        data_type: string
+      - name: ombudsman_exclusive
+        description: '{{ doc("czrm_salesforce__col__ombudsman_exclusive") }}'
+        data_type: boolean
+      - name: is_lai
+        description: '{{ doc("czrm_salesforce__col__is_lai") }}'
+        data_type: boolean
+      - name: service_hierarchy
+        description: '{{ doc("czrm_salesforce__col__service_hierarchy") }}'
+        data_type: string
+      - name: internal_only
+        description: '{{ doc("czrm_salesforce__col__internal_only") }}'
+        data_type: boolean
+      - name: sgrc_legacy_crm_subtype_id
+        description: '{{ doc("czrm_salesforce__col__sgrc_legacy_crm_subtype_id") }}'
+        data_type: string
+      - name: unique_key
+        description: '{{ doc("czrm_salesforce__col__unique_key") }}'
+        data_type: string
+      - name: theme
+        description: '{{ doc("czrm_salesforce__col__theme") }}'
+        data_type: string
+      - name: subtheme
+        description: '{{ doc("czrm_salesforce__col__subtheme") }}'
+        data_type: string
+      - name: theme_formula
+        description: '{{ doc("czrm_salesforce__col__theme_formula") }}'
+        data_type: string
+      - name: subtheme_formula
+        description: '{{ doc("czrm_salesforce__col__subtheme_formula") }}'
+        data_type: string
+      - name: service_name
+        description: '{{ doc("czrm_salesforce__col__service_name") }}'
+        data_type: string
+      - name: service_hyperlink_formula
+        description: '{{ doc("czrm_salesforce__col__service_hyperlink_formula") }}'
+        data_type: string
+      - name: responsible_org_unit
+        description: '{{ doc("czrm_salesforce__col__responsible_org_unit") }}'
+        data_type: string
+      - name: record_type_developer_name
+        description: '{{ doc("czrm_salesforce__col__record_type_developer_name") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__user
+    description: '{{ doc("czrm_salesforce__user") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__user__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__user__id__not_null
+              config:
+                severity: error
+      - name: username
+        description: '{{ doc("czrm_salesforce__col__username") }}'
+        data_type: string
+      - name: last_name
+        description: '{{ doc("czrm_salesforce__col__last_name") }}'
+        data_type: string
+      - name: first_name
+        description: '{{ doc("czrm_salesforce__col__first_name") }}'
+        data_type: string
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: company_name
+        description: '{{ doc("czrm_salesforce__col__company_name") }}'
+        data_type: string
+      - name: division
+        description: '{{ doc("czrm_salesforce__col__division") }}'
+        data_type: string
+      - name: department
+        description: '{{ doc("czrm_salesforce__col__department") }}'
+        data_type: string
+      - name: title
+        description: '{{ doc("czrm_salesforce__col__title") }}'
+        data_type: string
+      - name: street
+        description: '{{ doc("czrm_salesforce__col__street") }}'
+        data_type: string
+      - name: city
+        description: '{{ doc("czrm_salesforce__col__city") }}'
+        data_type: string
+      - name: state
+        description: '{{ doc("czrm_salesforce__col__state") }}'
+        data_type: string
+      - name: postal_code
+        description: '{{ doc("czrm_salesforce__col__postal_code") }}'
+        data_type: string
+      - name: country
+        description: '{{ doc("czrm_salesforce__col__country") }}'
+        data_type: string
+      - name: latitude
+        description: '{{ doc("czrm_salesforce__col__latitude") }}'
+        data_type: numeric
+      - name: longitude
+        description: '{{ doc("czrm_salesforce__col__longitude") }}'
+        data_type: numeric
+      - name: geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__geocode_accuracy") }}'
+        data_type: string
+      - name: address
+        description: '{{ doc("czrm_salesforce__col__address") }}'
+        data_type: json
+      - name: email
+        description: '{{ doc("czrm_salesforce__col__email") }}'
+        data_type: string
+      - name: email_preferences_auto_bcc
+        description: '{{ doc("czrm_salesforce__col__email_preferences_auto_bcc") }}'
+        data_type: boolean
+      - name: email_preferences_auto_bcc_stay_in_touch
+        description: '{{ doc("czrm_salesforce__col__email_preferences_auto_bcc_stay_in_touch") }}'
+        data_type: boolean
+      - name: email_preferences_stay_in_touch_reminder
+        description: '{{ doc("czrm_salesforce__col__email_preferences_stay_in_touch_reminder") }}'
+        data_type: boolean
+      - name: sender_email
+        description: '{{ doc("czrm_salesforce__col__sender_email") }}'
+        data_type: string
+      - name: sender_name
+        description: '{{ doc("czrm_salesforce__col__sender_name") }}'
+        data_type: string
+      - name: signature
+        description: '{{ doc("czrm_salesforce__col__signature") }}'
+        data_type: string
+      - name: stay_in_touch_subject
+        description: '{{ doc("czrm_salesforce__col__stay_in_touch_subject") }}'
+        data_type: string
+      - name: stay_in_touch_signature
+        description: '{{ doc("czrm_salesforce__col__stay_in_touch_signature") }}'
+        data_type: string
+      - name: stay_in_touch_note
+        description: '{{ doc("czrm_salesforce__col__stay_in_touch_note") }}'
+        data_type: string
+      - name: phone
+        description: '{{ doc("czrm_salesforce__col__phone") }}'
+        data_type: string
+      - name: fax
+        description: '{{ doc("czrm_salesforce__col__fax") }}'
+        data_type: string
+      - name: mobile_phone
+        description: '{{ doc("czrm_salesforce__col__mobile_phone") }}'
+        data_type: string
+      - name: alias
+        description: '{{ doc("czrm_salesforce__col__alias") }}'
+        data_type: string
+      - name: community_nickname
+        description: '{{ doc("czrm_salesforce__col__community_nickname") }}'
+        data_type: string
+      - name: badge_text
+        description: '{{ doc("czrm_salesforce__col__badge_text") }}'
+        data_type: string
+      - name: is_active
+        description: '{{ doc("czrm_salesforce__col__is_active") }}'
+        data_type: boolean
+      - name: time_zone_sid_key
+        description: '{{ doc("czrm_salesforce__col__time_zone_sid_key") }}'
+        data_type: string
+      - name: locale_sid_key
+        description: '{{ doc("czrm_salesforce__col__locale_sid_key") }}'
+        data_type: string
+      - name: receives_info_emails
+        description: '{{ doc("czrm_salesforce__col__receives_info_emails") }}'
+        data_type: boolean
+      - name: receives_admin_info_emails
+        description: '{{ doc("czrm_salesforce__col__receives_admin_info_emails") }}'
+        data_type: boolean
+      - name: email_encoding_key
+        description: '{{ doc("czrm_salesforce__col__email_encoding_key") }}'
+        data_type: string
+      - name: user_type
+        description: '{{ doc("czrm_salesforce__col__user_type") }}'
+        data_type: string
+      - name: start_day
+        description: '{{ doc("czrm_salesforce__col__start_day") }}'
+        data_type: string
+      - name: end_day
+        description: '{{ doc("czrm_salesforce__col__end_day") }}'
+        data_type: string
+      - name: language_locale_key
+        description: '{{ doc("czrm_salesforce__col__language_locale_key") }}'
+        data_type: string
+      - name: employee_number
+        description: '{{ doc("czrm_salesforce__col__employee_number") }}'
+        data_type: string
+      - name: delegated_approver_id
+        description: '{{ doc("czrm_salesforce__col__delegated_approver_id") }}'
+        data_type: string
+      - name: manager_id
+        description: '{{ doc("czrm_salesforce__col__manager_id") }}'
+        data_type: string
+      - name: last_login_date
+        description: '{{ doc("czrm_salesforce__col__last_login_date") }}'
+        data_type: datetime
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: password_expiration_date
+        description: '{{ doc("czrm_salesforce__col__password_expiration_date") }}'
+        data_type: datetime
+      - name: su_access_expiration_date
+        description: '{{ doc("czrm_salesforce__col__su_access_expiration_date") }}'
+        data_type: date
+      - name: offline_trial_expiration_date
+        description: '{{ doc("czrm_salesforce__col__offline_trial_expiration_date") }}'
+        data_type: datetime
+      - name: offline_pda_trial_expiration_date
+        description: '{{ doc("czrm_salesforce__col__offline_pda_trial_expiration_date") }}'
+        data_type: datetime
+      - name: user_permissions_marketing_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_marketing_user") }}'
+        data_type: boolean
+      - name: user_permissions_offline_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_offline_user") }}'
+        data_type: boolean
+      - name: user_permissions_avantgo_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_avantgo_user") }}'
+        data_type: boolean
+      - name: user_permissions_call_center_auto_login
+        description: '{{ doc("czrm_salesforce__col__user_permissions_call_center_auto_login") }}'
+        data_type: boolean
+      - name: user_permissions_sf_content_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_sf_content_user") }}'
+        data_type: boolean
+      - name: user_permissions_knowledge_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_knowledge_user") }}'
+        data_type: boolean
+      - name: user_permissions_interaction_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_interaction_user") }}'
+        data_type: boolean
+      - name: user_permissions_support_user
+        description: '{{ doc("czrm_salesforce__col__user_permissions_support_user") }}'
+        data_type: boolean
+      - name: forecast_enabled
+        description: '{{ doc("czrm_salesforce__col__forecast_enabled") }}'
+        data_type: boolean
+      - name: user_preferences_activity_reminders_popup
+        description: '{{ doc("czrm_salesforce__col__user_preferences_activity_reminders_popup") }}'
+        data_type: boolean
+      - name: user_preferences_event_reminders_checkbox_default
+        description: '{{ doc("czrm_salesforce__col__user_preferences_event_reminders_checkbox_default") }}'
+        data_type: boolean
+      - name: user_preferences_task_reminders_checkbox_default
+        description: '{{ doc("czrm_salesforce__col__user_preferences_task_reminders_checkbox_default") }}'
+        data_type: boolean
+      - name: user_preferences_reminder_sound_off
+        description: '{{ doc("czrm_salesforce__col__user_preferences_reminder_sound_off") }}'
+        data_type: boolean
+      - name: user_preferences_disable_all_feeds_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_all_feeds_email") }}'
+        data_type: boolean
+      - name: user_preferences_disable_followers_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_followers_email") }}'
+        data_type: boolean
+      - name: user_preferences_disable_profile_post_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_profile_post_email") }}'
+        data_type: boolean
+      - name: user_preferences_disable_change_comment_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_change_comment_email") }}'
+        data_type: boolean
+      - name: user_preferences_disable_later_comment_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_later_comment_email") }}'
+        data_type: boolean
+      - name: user_preferences_dis_prof_post_comment_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_dis_prof_post_comment_email") }}'
+        data_type: boolean
+      - name: user_preferences_hide_csn_get_chatter_mobile_task
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_csn_get_chatter_mobile_task") }}'
+        data_type: boolean
+      - name: user_preferences_disable_mentions_post_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_mentions_post_email") }}'
+        data_type: boolean
+      - name: user_preferences_dis_mentions_comment_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_dis_mentions_comment_email") }}'
+        data_type: boolean
+      - name: user_preferences_hide_csn_desktop_task
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_csn_desktop_task") }}'
+        data_type: boolean
+      - name: user_preferences_hide_chatter_onboarding_splash
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_chatter_onboarding_splash") }}'
+        data_type: boolean
+      - name: user_preferences_hide_second_chatter_onboarding_splash
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_second_chatter_onboarding_splash") }}'
+        data_type: boolean
+      - name: user_preferences_dis_comment_after_like_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_dis_comment_after_like_email") }}'
+        data_type: boolean
+      - name: user_preferences_disable_like_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_like_email") }}'
+        data_type: boolean
+      - name: user_preferences_sort_feed_by_comment
+        description: '{{ doc("czrm_salesforce__col__user_preferences_sort_feed_by_comment") }}'
+        data_type: boolean
+      - name: user_preferences_disable_message_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_message_email") }}'
+        data_type: boolean
+      - name: user_preferences_dismiss_record_channels_suggested_objects
+        data_type: boolean
+      - name: user_preferences_disable_bookmark_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_bookmark_email") }}'
+        data_type: boolean
+      - name: user_preferences_disable_share_post_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_share_post_email") }}'
+        data_type: boolean
+      - name: user_preferences_action_launcher_einstein_gpt_consent
+        description: '{{ doc("czrm_salesforce__col__user_preferences_action_launcher_einstein_gpt_consent") }}'
+        data_type: boolean
+      - name: user_preferences_assistive_actions_enabled_in_action_launcher
+        description: '{{ doc("czrm_salesforce__col__user_preferences_assistive_actions_enabled_in_action_launcher") }}'
+        data_type: boolean
+      - name: user_preferences_enable_auto_sub_for_feeds
+        description: '{{ doc("czrm_salesforce__col__user_preferences_enable_auto_sub_for_feeds") }}'
+        data_type: boolean
+      - name: user_preferences_disable_file_share_notifications_for_api
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_file_share_notifications_for_api") }}'
+        data_type: boolean
+      - name: user_preferences_enable_lwr_lex_pilot
+        data_type: boolean
+      - name: user_preferences_show_title_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_title_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_manager_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_manager_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_email_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_email_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_work_phone_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_work_phone_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_mobile_phone_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_mobile_phone_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_fax_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_fax_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_street_address_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_street_address_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_city_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_city_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_state_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_state_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_postal_code_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_postal_code_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_country_to_external_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_country_to_external_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_profile_pic_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_profile_pic_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_title_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_title_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_city_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_city_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_state_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_state_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_postal_code_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_postal_code_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_country_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_country_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_forecasting_change_signals
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_forecasting_change_signals") }}'
+        data_type: boolean
+      - name: user_preferences_live_agent_miaw_setup_deflection
+        description: '{{ doc("czrm_salesforce__col__user_preferences_live_agent_miaw_setup_deflection") }}'
+        data_type: boolean
+      - name: user_preferences_hide_s1_browser_ui
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_s1_browser_ui") }}'
+        data_type: boolean
+      - name: user_preferences_disable_endorsement_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_disable_endorsement_email") }}'
+        data_type: boolean
+      - name: user_preferences_path_assistant_collapsed
+        description: '{{ doc("czrm_salesforce__col__user_preferences_path_assistant_collapsed") }}'
+        data_type: boolean
+      - name: user_preferences_cache_diagnostics
+        description: '{{ doc("czrm_salesforce__col__user_preferences_cache_diagnostics") }}'
+        data_type: boolean
+      - name: user_preferences_show_email_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_email_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_manager_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_manager_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_work_phone_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_work_phone_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_mobile_phone_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_mobile_phone_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_fax_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_fax_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_show_street_address_to_guest_users
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_street_address_to_guest_users") }}'
+        data_type: boolean
+      - name: user_preferences_lightning_experience_preferred
+        description: '{{ doc("czrm_salesforce__col__user_preferences_lightning_experience_preferred") }}'
+        data_type: boolean
+      - name: user_preferences_hide_end_user_onboarding_assistant_modal
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_end_user_onboarding_assistant_modal") }}'
+        data_type: boolean
+      - name: user_preferences_hide_lightning_migration_modal
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_lightning_migration_modal") }}'
+        data_type: boolean
+      - name: user_preferences_hide_sfx_welcome_mat
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_sfx_welcome_mat") }}'
+        data_type: boolean
+      - name: user_preferences_hide_bigger_photo_callout
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_bigger_photo_callout") }}'
+        data_type: boolean
+      - name: user_preferences_global_nav_bar_wt_shown
+        description: '{{ doc("czrm_salesforce__col__user_preferences_global_nav_bar_wt_shown") }}'
+        data_type: boolean
+      - name: user_preferences_global_nav_grid_menu_wt_shown
+        description: '{{ doc("czrm_salesforce__col__user_preferences_global_nav_grid_menu_wt_shown") }}'
+        data_type: boolean
+      - name: user_preferences_create_lex_apps_wt_shown
+        description: '{{ doc("czrm_salesforce__col__user_preferences_create_lex_apps_wt_shown") }}'
+        data_type: boolean
+      - name: user_preferences_favorites_wt_shown
+        description: '{{ doc("czrm_salesforce__col__user_preferences_favorites_wt_shown") }}'
+        data_type: boolean
+      - name: user_preferences_record_home_section_collapse_wt_shown
+        description: '{{ doc("czrm_salesforce__col__user_preferences_record_home_section_collapse_wt_shown") }}'
+        data_type: boolean
+      - name: user_preferences_record_home_reserved_wt_shown
+        description: '{{ doc("czrm_salesforce__col__user_preferences_record_home_reserved_wt_shown") }}'
+        data_type: boolean
+      - name: user_preferences_favorites_show_top_favorites
+        description: '{{ doc("czrm_salesforce__col__user_preferences_favorites_show_top_favorites") }}'
+        data_type: boolean
+      - name: user_preferences_exclude_mail_app_attachments
+        description: '{{ doc("czrm_salesforce__col__user_preferences_exclude_mail_app_attachments") }}'
+        data_type: boolean
+      - name: user_preferences_suppress_task_sfx_reminders
+        description: '{{ doc("czrm_salesforce__col__user_preferences_suppress_task_sfx_reminders") }}'
+        data_type: boolean
+      - name: user_preferences_suppress_event_sfx_reminders
+        description: '{{ doc("czrm_salesforce__col__user_preferences_suppress_event_sfx_reminders") }}'
+        data_type: boolean
+      - name: user_preferences_preview_custom_theme
+        description: '{{ doc("czrm_salesforce__col__user_preferences_preview_custom_theme") }}'
+        data_type: boolean
+      - name: user_preferences_has_celebration_badge
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_celebration_badge") }}'
+        data_type: boolean
+      - name: user_preferences_user_debug_mode_pref
+        description: '{{ doc("czrm_salesforce__col__user_preferences_user_debug_mode_pref") }}'
+        data_type: boolean
+      - name: user_preferences_srh_override_activities
+        description: '{{ doc("czrm_salesforce__col__user_preferences_srh_override_activities") }}'
+        data_type: boolean
+      - name: user_preferences_reverse_open_activities_view
+        description: '{{ doc("czrm_salesforce__col__user_preferences_reverse_open_activities_view") }}'
+        data_type: boolean
+      - name: user_preferences_has_sent_warning_email
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_sent_warning_email") }}'
+        data_type: boolean
+      - name: user_preferences_has_sent_warning_email238
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_sent_warning_email238") }}'
+        data_type: boolean
+      - name: user_preferences_has_sent_warning_email240
+        description: '{{ doc("czrm_salesforce__col__user_preferences_has_sent_warning_email240") }}'
+        data_type: boolean
+      - name: user_preferences_dismiss_personal_space_legal_message
+        data_type: boolean
+      - name: user_preferences_dismiss_reuse_update_reminder_modal
+        data_type: boolean
+      - name: user_preferences_override_default_page_context
+        data_type: boolean
+      - name: user_preferences_bre_lookup_table_welcome_mat
+        description: '{{ doc("czrm_salesforce__col__user_preferences_bre_lookup_table_welcome_mat") }}'
+        data_type: boolean
+      - name: user_preferences_hide_browse_product_redirect_confirmation
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_browse_product_redirect_confirmation") }}'
+        data_type: boolean
+      - name: user_preferences_hide_online_sales_app_tab_visibility_requirements_modal
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_online_sales_app_tab_visibility_requirements_modal") }}'
+        data_type: boolean
+      - name: user_preferences_hide_online_sales_app_welcome_mat
+        description: '{{ doc("czrm_salesforce__col__user_preferences_hide_online_sales_app_welcome_mat") }}'
+        data_type: boolean
+      - name: user_preferences_hide_managed_eca_mobile_pub_modal
+        data_type: boolean
+      - name: user_preferences_gen_ai_summarization_user_consent
+        data_type: boolean
+      - name: user_preferences_hide_flow_type_change_confirmation_modal
+        data_type: boolean
+      - name: user_preferences_show_forecasting_rounded_amounts
+        description: '{{ doc("czrm_salesforce__col__user_preferences_show_forecasting_rounded_amounts") }}'
+        data_type: boolean
+      - name: has_user_verified_phone
+        data_type: boolean
+      - name: has_user_verified_email
+        data_type: boolean
+      - name: is_partner
+        description: '{{ doc("czrm_salesforce__col__is_partner") }}'
+        data_type: boolean
+      - name: contact_id
+        description: '{{ doc("czrm_salesforce__col__contact_id") }}'
+        data_type: string
+      - name: account_id
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
+        data_type: string
+      - name: call_center_id
+        description: '{{ doc("czrm_salesforce__col__call_center_id") }}'
+        data_type: string
+      - name: extension
+        description: '{{ doc("czrm_salesforce__col__extension") }}'
+        data_type: string
+      - name: portal_role
+        description: '{{ doc("czrm_salesforce__col__portal_role") }}'
+        data_type: string
+      - name: is_portal_enabled
+        description: '{{ doc("czrm_salesforce__col__is_portal_enabled") }}'
+        data_type: boolean
+      - name: federation_identifier
+        description: '{{ doc("czrm_salesforce__col__federation_identifier") }}'
+        data_type: string
+      - name: about_me
+        description: '{{ doc("czrm_salesforce__col__about_me") }}'
+        data_type: string
+      - name: full_photo_url
+        description: '{{ doc("czrm_salesforce__col__full_photo_url") }}'
+        data_type: string
+      - name: small_photo_url
+        description: '{{ doc("czrm_salesforce__col__small_photo_url") }}'
+        data_type: string
+      - name: is_ext_indicator_visible
+        description: '{{ doc("czrm_salesforce__col__is_ext_indicator_visible") }}'
+        data_type: boolean
+      - name: out_of_office_message
+        description: '{{ doc("czrm_salesforce__col__out_of_office_message") }}'
+        data_type: string
+      - name: medium_photo_url
+        description: '{{ doc("czrm_salesforce__col__medium_photo_url") }}'
+        data_type: string
+      - name: digest_frequency
+        description: '{{ doc("czrm_salesforce__col__digest_frequency") }}'
+        data_type: string
+      - name: default_group_notification_frequency
+        description: '{{ doc("czrm_salesforce__col__default_group_notification_frequency") }}'
+        data_type: string
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: banner_photo_url
+        description: '{{ doc("czrm_salesforce__col__banner_photo_url") }}'
+        data_type: string
+      - name: small_banner_photo_url
+        description: '{{ doc("czrm_salesforce__col__small_banner_photo_url") }}'
+        data_type: string
+      - name: medium_banner_photo_url
+        description: '{{ doc("czrm_salesforce__col__medium_banner_photo_url") }}'
+        data_type: string
+      - name: is_profile_photo_active
+        description: '{{ doc("czrm_salesforce__col__is_profile_photo_active") }}'
+        data_type: boolean
+      - name: individual_id
+        description: '{{ doc("czrm_salesforce__col__individual_id") }}'
+        data_type: string
+      - name: nome_ficticio
+        description: '{{ doc("czrm_salesforce__col__nome_ficticio") }}'
+        data_type: string
+      - name: main_organizational_unit
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
+        data_type: string
+      - name: et4ae5_default_et_page
+        description: '{{ doc("czrm_salesforce__col__et4ae5_default_et_page") }}'
+        data_type: string
+      - name: et4ae5_default_mid
+        description: '{{ doc("czrm_salesforce__col__et4ae5_default_mid") }}'
+        data_type: string
+      - name: et4ae5_exact_target_for_app_exchange_admin
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_for_app_exchange_admin") }}'
+        data_type: boolean
+      - name: et4ae5_exact_target_for_app_exchange_user
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_for_app_exchange_user") }}'
+        data_type: boolean
+      - name: et4ae5_exact_target_username
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_username") }}'
+        data_type: string
+      - name: et4ae5_exact_target_o_auth_token
+        description: '{{ doc("czrm_salesforce__col__et4ae5_exact_target_o_auth_token") }}'
+        data_type: string
+      - name: et4ae5_valid_exact_target_admin
+        description: '{{ doc("czrm_salesforce__col__et4ae5_valid_exact_target_admin") }}'
+        data_type: boolean
+      - name: et4ae5_valid_exact_target_user
+        description: '{{ doc("czrm_salesforce__col__et4ae5_valid_exact_target_user") }}'
+        data_type: boolean
+      - name: is_external_public_servant
+        description: '{{ doc("czrm_salesforce__col__is_external_public_servant") }}'
+        data_type: boolean
+      - name: cpf
+        description: '{{ doc("czrm_salesforce__col__cpf") }}'
+        data_type: string
+      - name: canal_preferencial
+        description: '{{ doc("czrm_salesforce__col__canal_preferencial") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__work_order
+    description: '{{ doc("czrm_salesforce__work_order") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: work_order_number
+        description: '{{ doc("czrm_salesforce__col__work_order_number") }}'
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order__work_order_number__not_null
+              config:
+                severity: error
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order__created_date__not_null
+              config:
+                severity: error
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: account_id
+        description: '{{ doc("czrm_salesforce__col__account_id") }}'
+        data_type: string
+      - name: contact_id
+        description: '{{ doc("czrm_salesforce__col__contact_id") }}'
+        data_type: string
+      - name: case_id
+        description: '{{ doc("czrm_salesforce__col__case_id") }}'
+        data_type: string
+      - name: entitlement_id
+        description: '{{ doc("czrm_salesforce__col__entitlement_id") }}'
+        data_type: string
+      - name: service_contract_id
+        description: '{{ doc("czrm_salesforce__col__service_contract_id") }}'
+        data_type: string
+      - name: asset_id
+        description: '{{ doc("czrm_salesforce__col__asset_id") }}'
+        data_type: string
+      - name: street
+        description: '{{ doc("czrm_salesforce__col__street") }}'
+        data_type: string
+      - name: city
+        description: '{{ doc("czrm_salesforce__col__city") }}'
+        data_type: string
+      - name: state
+        description: '{{ doc("czrm_salesforce__col__state") }}'
+        data_type: string
+      - name: postal_code
+        description: '{{ doc("czrm_salesforce__col__postal_code") }}'
+        data_type: string
+      - name: country
+        description: '{{ doc("czrm_salesforce__col__country") }}'
+        data_type: string
+      - name: latitude
+        description: '{{ doc("czrm_salesforce__col__latitude") }}'
+        data_type: numeric
+      - name: longitude
+        description: '{{ doc("czrm_salesforce__col__longitude") }}'
+        data_type: numeric
+      - name: geocode_accuracy
+        description: '{{ doc("czrm_salesforce__col__geocode_accuracy") }}'
+        data_type: string
+      - name: address
+        description: '{{ doc("czrm_salesforce__col__address") }}'
+        data_type: json
+      - name: description
+        description: '{{ doc("czrm_salesforce__col__description") }}'
+        data_type: string
+      - name: start_date
+        description: '{{ doc("czrm_salesforce__col__start_date") }}'
+        data_type: datetime
+      - name: end_date
+        description: '{{ doc("czrm_salesforce__col__end_date") }}'
+        data_type: datetime
+      - name: subject
+        description: '{{ doc("czrm_salesforce__col__subject") }}'
+        data_type: string
+      - name: root_work_order_id
+        description: '{{ doc("czrm_salesforce__col__root_work_order_id") }}'
+        data_type: string
+      - name: status
+        description: '{{ doc("czrm_salesforce__col__status") }}'
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order__status__not_null
+              config:
+                severity: error
+      - name: priority
+        description: '{{ doc("czrm_salesforce__col__priority") }}'
+        data_type: string
+      - name: tax
+        description: '{{ doc("czrm_salesforce__col__tax") }}'
+        data_type: numeric
+      - name: subtotal
+        description: '{{ doc("czrm_salesforce__col__subtotal") }}'
+        data_type: numeric
+      - name: total_price
+        description: '{{ doc("czrm_salesforce__col__total_price") }}'
+        data_type: numeric
+      - name: line_item_count
+        description: '{{ doc("czrm_salesforce__col__line_item_count") }}'
+        data_type: int64
+      - name: pricebook2_id
+        description: '{{ doc("czrm_salesforce__col__pricebook2_id") }}'
+        data_type: string
+      - name: discount
+        description: '{{ doc("czrm_salesforce__col__discount") }}'
+        data_type: numeric
+      - name: grand_total
+        description: '{{ doc("czrm_salesforce__col__grand_total") }}'
+        data_type: numeric
+      - name: parent_work_order_id
+        description: '{{ doc("czrm_salesforce__col__parent_work_order_id") }}'
+        data_type: string
+      - name: is_closed
+        description: '{{ doc("czrm_salesforce__col__is_closed") }}'
+        data_type: boolean
+      - name: is_stopped
+        description: '{{ doc("czrm_salesforce__col__is_stopped") }}'
+        data_type: boolean
+      - name: stop_start_date
+        description: '{{ doc("czrm_salesforce__col__stop_start_date") }}'
+        data_type: datetime
+      - name: sla_start_date
+        description: '{{ doc("czrm_salesforce__col__sla_start_date") }}'
+        data_type: datetime
+      - name: sla_exit_date
+        description: '{{ doc("czrm_salesforce__col__sla_exit_date") }}'
+        data_type: datetime
+      - name: business_hours_id
+        description: '{{ doc("czrm_salesforce__col__business_hours_id") }}'
+        data_type: string
+      - name: milestone_status
+        description: '{{ doc("czrm_salesforce__col__milestone_status") }}'
+        data_type: string
+      - name: duration
+        description: '{{ doc("czrm_salesforce__col__duration") }}'
+        data_type: numeric
+      - name: duration_type
+        description: '{{ doc("czrm_salesforce__col__duration_type") }}'
+        data_type: string
+      - name: duration_in_minutes
+        description: '{{ doc("czrm_salesforce__col__duration_in_minutes") }}'
+        data_type: numeric
+      - name: service_appointment_count
+        description: '{{ doc("czrm_salesforce__col__service_appointment_count") }}'
+        data_type: int64
+      - name: status_category
+        description: '{{ doc("czrm_salesforce__col__status_category") }}'
+        data_type: string
+      - name: location_id
+        description: '{{ doc("czrm_salesforce__col__location_id") }}'
+        data_type: string
+      - name: pre_work_brief_prompt_template
+        description: '{{ doc("czrm_salesforce__col__pre_work_brief_prompt_template") }}'
+        data_type: string
+      - name: post_work_summary
+        description: '{{ doc("czrm_salesforce__col__post_work_summary") }}'
+        data_type: string
+      - name: is_confidential
+        description: '{{ doc("czrm_salesforce__col__is_confidential") }}'
+        data_type: boolean
+      - name: service_category
+        description: '{{ doc("czrm_salesforce__col__service_category") }}'
+        data_type: string
+      - name: service
+        description: '{{ doc("czrm_salesforce__col__service") }}'
+        data_type: string
+      - name: main_organizational_unit
+        description: '{{ doc("czrm_salesforce__col__main_organizational_unit") }}'
+        data_type: string
+      - name: service_hyperlink
+        description: '{{ doc("czrm_salesforce__col__service_hyperlink") }}'
+        data_type: string
+      - name: dynamic_form_config
+        description: '{{ doc("czrm_salesforce__col__dynamic_form_config") }}'
+        data_type: string
+      - name: has_equivalents
+        description: '{{ doc("czrm_salesforce__col__has_equivalents") }}'
+        data_type: boolean
+      - name: last_update_status
+        description: '{{ doc("czrm_salesforce__col__last_update_status") }}'
+        data_type: string
+      - name: origin
+        description: '{{ doc("czrm_salesforce__col__origin") }}'
+        data_type: string
+      - name: assigned_uo
+        description: '{{ doc("czrm_salesforce__col__assigned_uo") }}'
+        data_type: string
+      - name: fsl_is_fill_in_candidate
+        description: '{{ doc("czrm_salesforce__col__fsl_is_fill_in_candidate") }}'
+        data_type: boolean
+      - name: fsl_prevent_geocoding_for_chatter_actions
+        description: '{{ doc("czrm_salesforce__col__fsl_prevent_geocoding_for_chatter_actions") }}'
+        data_type: boolean
+      - name: fsl_scheduling_priority
+        description: '{{ doc("czrm_salesforce__col__fsl_scheduling_priority") }}'
+        data_type: numeric
+      - name: external_ticket_id
+        description: '{{ doc("czrm_salesforce__col__external_ticket_id") }}'
+        data_type: string
+      - name: integration_direction
+        description: '{{ doc("czrm_salesforce__col__integration_direction") }}'
+        data_type: string
+      - name: neighborhood
+        description: '{{ doc("czrm_salesforce__col__neighborhood") }}'
+        data_type: string
+      - name: close_reason
+        description: '{{ doc("czrm_salesforce__col__close_reason") }}'
+        data_type: string
+      - name: categoria
+        description: '{{ doc("czrm_salesforce__col__categoria") }}'
+        data_type: string
+      - name: service_catalog_formula
+        description: '{{ doc("czrm_salesforce__col__service_catalog_formula") }}'
+        data_type: string
+      - name: protocolo_hyperlink
+        description: '{{ doc("czrm_salesforce__col__protocolo_hyperlink") }}'
+        data_type: string
+      - name: is_abrangencia
+        description: '{{ doc("czrm_salesforce__col__is_abrangencia") }}'
+        data_type: boolean
+      - name: is_equivalencia
+        description: '{{ doc("czrm_salesforce__col__is_equivalencia") }}'
+        data_type: boolean
+      - name: is_vinculacao
+        description: '{{ doc("czrm_salesforce__col__is_vinculacao") }}'
+        data_type: boolean
+      - name: integration_source
+        description: '{{ doc("czrm_salesforce__col__integration_source") }}'
+        data_type: string
+      - name: operador_matricula
+        description: '{{ doc("czrm_salesforce__col__operador_matricula") }}'
+        data_type: string
+      - name: operador_nome
+        description: '{{ doc("czrm_salesforce__col__operador_nome") }}'
+        data_type: string
+      - name: address_type
+        description: '{{ doc("czrm_salesforce__col__address_type") }}'
+        data_type: string
+      - name: complement
+        description: '{{ doc("czrm_salesforce__col__complement") }}'
+        data_type: string
+      - name: door_number
+        description: '{{ doc("czrm_salesforce__col__door_number") }}'
+        data_type: string
+      - name: favela_code
+        description: '{{ doc("czrm_salesforce__col__favela_code") }}'
+        data_type: string
+      - name: favela_name
+        description: '{{ doc("czrm_salesforce__col__favela_name") }}'
+        data_type: string
+      - name: geolocation_precise
+        description: '{{ doc("czrm_salesforce__col__geolocation_precise") }}'
+        data_type: boolean
+      - name: ipp_street_name
+        description: '{{ doc("czrm_salesforce__col__ipp_street_name") }}'
+        data_type: string
+      - name: is_favela
+        description: '{{ doc("czrm_salesforce__col__is_favela") }}'
+        data_type: boolean
+      - name: landmark
+        description: '{{ doc("czrm_salesforce__col__landmark") }}'
+        data_type: string
+      - name: no_number
+        description: '{{ doc("czrm_salesforce__col__no_number") }}'
+        data_type: boolean
+      - name: public_way_code
+        description: '{{ doc("czrm_salesforce__col__public_way_code") }}'
+        data_type: string
+      - name: public_way
+        description: '{{ doc("czrm_salesforce__col__public_way") }}'
+        data_type: string
+      - name: operador_origem
+        description: '{{ doc("czrm_salesforce__col__operador_origem") }}'
+        data_type: string
+      - name: is_anonymous
+        description: '{{ doc("czrm_salesforce__col__is_anonymous") }}'
+        data_type: boolean
+      - name: latitude_display
+        description: '{{ doc("czrm_salesforce__col__latitude_display") }}'
+        data_type: string
+      - name: longitude_display
+        description: '{{ doc("czrm_salesforce__col__longitude_display") }}'
+        data_type: string
+      - name: equivalent_count
+        description: '{{ doc("czrm_salesforce__col__equivalent_count") }}'
+        data_type: numeric
+      - name: data_fechamento
+        description: '{{ doc("czrm_salesforce__col__data_fechamento") }}'
+        data_type: datetime
+      - name: is_wo_closed
+        description: '{{ doc("czrm_salesforce__col__is_wo_closed") }}'
+        data_type: boolean
+      - name: em_fila_fallback
+        description: '{{ doc("czrm_salesforce__col__em_fila_fallback") }}'
+        data_type: boolean
+      - name: routing_fallback
+        description: '{{ doc("czrm_salesforce__col__routing_fallback") }}'
+        data_type: boolean
+      - name: tipo_solicitante
+        description: '{{ doc("czrm_salesforce__col__tipo_solicitante") }}'
+        data_type: string
+      - name: integration_number
+        description: '{{ doc("czrm_salesforce__col__integration_number") }}'
+        data_type: numeric
+      - name: os_owner
+        description: '{{ doc("czrm_salesforce__col__os_owner") }}'
+        data_type: string
+      - name: motivo_nao_execucao
+        description: '{{ doc("czrm_salesforce__col__motivo_nao_execucao") }}'
+        data_type: string
+      - name: operador_telefone
+        description: '{{ doc("czrm_salesforce__col__operador_telefone") }}'
+        data_type: string
+      - name: solicitante_nome
+        description: '{{ doc("czrm_salesforce__col__solicitante_nome") }}'
+        data_type: string
+      - name: solicitante_telefone
+        description: '{{ doc("czrm_salesforce__col__solicitante_telefone") }}'
+        data_type: string
+      - name: tem_dados_departamentais
+        description: '{{ doc("czrm_salesforce__col__tem_dados_departamentais") }}'
+        data_type: boolean
+      - name: service_hyperlink_without_category
+        description: '{{ doc("czrm_salesforce__col__service_hyperlink_without_category") }}'
+        data_type: string
+      - name: sla_target_date
+        description: '{{ doc("czrm_salesforce__col__sla_target_date") }}'
+        data_type: datetime
+      - name: canal_atendimento
+        description: '{{ doc("czrm_salesforce__col__canal_atendimento") }}'
+        data_type: string
+      - name: expected_attachments
+        description: '{{ doc("czrm_salesforce__col__expected_attachments") }}'
+        data_type: numeric
+      - name: address_enrichment_at
+        description: '{{ doc("czrm_salesforce__col__address_enrichment_at") }}'
+        data_type: datetime
+      - name: equivalence_analysis_at
+        description: '{{ doc("czrm_salesforce__col__equivalence_analysis_at") }}'
+        data_type: datetime
+      - name: last_update_date
+        description: '{{ doc("czrm_salesforce__col__last_update_date") }}'
+        data_type: datetime
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__work_order_attribute_answer
+    description: '{{ doc("czrm_salesforce__work_order_attribute_answer") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order_attribute_answer__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order_attribute_answer__id__not_null
+              config:
+                severity: error
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: work_order
+        description: '{{ doc("czrm_salesforce__col__work_order") }}'
+        data_type: string
+      - name: answered_at
+        description: '{{ doc("czrm_salesforce__col__answered_at") }}'
+        data_type: datetime
+      - name: attribute_label
+        description: '{{ doc("czrm_salesforce__col__attribute_label") }}'
+        data_type: string
+      - name: attribute_type
+        description: '{{ doc("czrm_salesforce__col__attribute_type") }}'
+        data_type: string
+      - name: external_key
+        description: '{{ doc("czrm_salesforce__col__external_key") }}'
+        data_type: string
+      - name: attribute_order
+        description: '{{ doc("czrm_salesforce__col__attribute_order") }}'
+        data_type: numeric
+      - name: section
+        description: '{{ doc("czrm_salesforce__col__section") }}'
+        data_type: string
+      - name: service_attribute_library
+        description: '{{ doc("czrm_salesforce__col__service_attribute_library") }}'
+        data_type: string
+      - name: service_form_config
+        description: '{{ doc("czrm_salesforce__col__service_form_config") }}'
+        data_type: string
+      - name: value_boolean
+        description: '{{ doc("czrm_salesforce__col__value_boolean") }}'
+        data_type: boolean
+      - name: value_date_time
+        description: '{{ doc("czrm_salesforce__col__value_date_time") }}'
+        data_type: datetime
+      - name: value_date
+        description: '{{ doc("czrm_salesforce__col__value_date") }}'
+        data_type: date
+      - name: value_display
+        description: '{{ doc("czrm_salesforce__col__value_display") }}'
+        data_type: string
+      - name: value_json
+        description: '{{ doc("czrm_salesforce__col__value_json") }}'
+        data_type: string
+      - name: value_long_text
+        description: '{{ doc("czrm_salesforce__col__value_long_text") }}'
+        data_type: string
+      - name: value_multipicklist
+        description: '{{ doc("czrm_salesforce__col__value_multipicklist") }}'
+        data_type: string
+      - name: value_number
+        description: '{{ doc("czrm_salesforce__col__value_number") }}'
+        data_type: numeric
+      - name: value_text
+        description: '{{ doc("czrm_salesforce__col__value_text") }}'
+        data_type: string
+      - name: is_internal
+        description: '{{ doc("czrm_salesforce__col__is_internal") }}'
+        data_type: boolean
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__work_order_relationship
+    description: '{{ doc("czrm_salesforce__work_order_relationship") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order_relationship__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order_relationship__id__not_null
+              config:
+                severity: error
+      - name: owner_id
+        description: '{{ doc("czrm_salesforce__col__owner_id") }}'
+        data_type: string
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: case_id
+        description: '{{ doc("czrm_salesforce__col__case_id") }}'
+        data_type: string
+      - name: tipo
+        description: '{{ doc("czrm_salesforce__col__tipo") }}'
+        data_type: string
+      - name: wo_origem
+        description: '{{ doc("czrm_salesforce__col__wo_origem") }}'
+        data_type: string
+      - name: wo_relacionada
+        description: '{{ doc("czrm_salesforce__col__wo_relacionada") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
+
+  - name: raw_czrm_staging__work_order_update
+    description: '{{ doc("czrm_salesforce__work_order_update") }}'
+    columns:
+      - name: id
+        description: '{{ doc("czrm_salesforce__col__id") }}'
+        data_type: string
+        data_tests:
+          - unique:
+              name: raw_czrm_staging__work_order_update__id__unique
+              config:
+                severity: error
+          - not_null:
+              name: raw_czrm_staging__work_order_update__id__not_null
+              config:
+                severity: error
+      - name: is_deleted
+        description: '{{ doc("czrm_salesforce__col__is_deleted") }}'
+        data_type: boolean
+      - name: name
+        description: '{{ doc("czrm_salesforce__col__name") }}'
+        data_type: string
+      - name: created_date
+        description: '{{ doc("czrm_salesforce__col__created_date") }}'
+        data_type: datetime
+      - name: created_by_id
+        description: '{{ doc("czrm_salesforce__col__created_by_id") }}'
+        data_type: string
+      - name: last_modified_date
+        description: '{{ doc("czrm_salesforce__col__last_modified_date") }}'
+        data_type: datetime
+      - name: last_modified_by_id
+        description: '{{ doc("czrm_salesforce__col__last_modified_by_id") }}'
+        data_type: string
+      - name: system_modstamp
+        description: '{{ doc("czrm_salesforce__col__system_modstamp") }}'
+        data_type: datetime
+      - name: last_viewed_date
+        description: '{{ doc("czrm_salesforce__col__last_viewed_date") }}'
+        data_type: datetime
+      - name: last_referenced_date
+        description: '{{ doc("czrm_salesforce__col__last_referenced_date") }}'
+        data_type: datetime
+      - name: work_order
+        description: '{{ doc("czrm_salesforce__col__work_order") }}'
+        data_type: string
+        data_tests:
+          - not_null:
+              name: raw_czrm_staging__work_order_update__work_order__not_null
+              config:
+                severity: error
+          - relationships:
+              name: raw_czrm_staging__work_order_update__work_order__relationships
+              to: ref('raw_czrm_staging__work_order')
+              field: id
+              config:
+                severity: warn
+      - name: event_type
+        description: '{{ doc("czrm_salesforce__col__event_type") }}'
+        data_type: string
+      - name: response_deadline
+        description: '{{ doc("czrm_salesforce__col__response_deadline") }}'
+        data_type: datetime
+      - name: response_time_days
+        description: '{{ doc("czrm_salesforce__col__response_time_days") }}'
+        data_type: numeric
+      - name: event_comments
+        description: '{{ doc("czrm_salesforce__col__event_comments") }}'
+        data_type: string
+      - name: status
+        description: '{{ doc("czrm_salesforce__col__status") }}'
+        data_type: string
+      - name: allow_citizen_visibility
+        description: '{{ doc("czrm_salesforce__col__allow_citizen_visibility") }}'
+        data_type: boolean
+      - name: is_visible_to_citizen
+        description: '{{ doc("czrm_salesforce__col__is_visible_to_citizen") }}'
+        data_type: boolean
+      - name: approver
+        description: '{{ doc("czrm_salesforce__col__approver") }}'
+        data_type: string
+      - name: rejection_reason
+        description: '{{ doc("czrm_salesforce__col__rejection_reason") }}'
+        data_type: string
+      - name: email_servidor_sent
+        description: '{{ doc("czrm_salesforce__col__email_servidor_sent") }}'
+        data_type: boolean
+      - name: transaction_id
+        description: '{{ doc("czrm_salesforce__col__transaction_id") }}'
+        data_type: string
+      - name: approval_process_start
+        description: '{{ doc("czrm_salesforce__col__approval_process_start") }}'
+        data_type: datetime
+      - name: approve_decision_datetime
+        description: '{{ doc("czrm_salesforce__col__approve_decision_datetime") }}'
+        data_type: datetime
+      - name: has_approval_process
+        description: '{{ doc("czrm_salesforce__col__has_approval_process") }}'
+        data_type: boolean
+      - name: justification
+        description: '{{ doc("czrm_salesforce__col__justification") }}'
+        data_type: string
+      - name: approval_outcome
+        description: '{{ doc("czrm_salesforce__col__approval_outcome") }}'
+        data_type: string
+      - name: modification_reason
+        description: '{{ doc("czrm_salesforce__col__modification_reason") }}'
+        data_type: string
+      - name: response_to
+        description: '{{ doc("czrm_salesforce__col__response_to") }}'
+        data_type: string
+      - name: cancellation_datetime
+        description: '{{ doc("czrm_salesforce__col__cancellation_datetime") }}'
+        data_type: datetime
+      - name: transfer_target
+        description: '{{ doc("czrm_salesforce__col__transfer_target") }}'
+        data_type: string
+      - name: modified_comments
+        description: '{{ doc("czrm_salesforce__col__modified_comments") }}'
+        data_type: string
+      - name: is_replicated
+        description: '{{ doc("czrm_salesforce__col__is_replicated") }}'
+        data_type: boolean
+      - name: email_notification_sent
+        description: '{{ doc("czrm_salesforce__col__email_notification_sent") }}'
+        data_type: boolean
+      - name: share_citizen_data
+        description: '{{ doc("czrm_salesforce__col__share_citizen_data") }}'
+        data_type: boolean
+      - name: target_account
+        description: '{{ doc("czrm_salesforce__col__target_account") }}'
+        data_type: string
+      - name: target_group
+        description: '{{ doc("czrm_salesforce__col__target_group") }}'
+        data_type: string
+      - name: dynamic_fields_json
+        description: '{{ doc("czrm_salesforce__col__dynamic_fields_json") }}'
+        data_type: string
+      - name: target_uo_id
+        description: '{{ doc("czrm_salesforce__col__target_uo_id") }}'
+        data_type: string
+      - name: cancellation_reason
+        description: '{{ doc("czrm_salesforce__col__cancellation_reason") }}'
+        data_type: string
+      - name: publication_datetime
+        description: '{{ doc("czrm_salesforce__col__publication_datetime") }}'
+        data_type: datetime
+      - name: origin_service
+        description: '{{ doc("czrm_salesforce__col__origin_service") }}'
+        data_type: string
+      - name: data_criacao
+        description: '{{ doc("czrm_salesforce__col__data_criacao") }}'
+        data_type: datetime
+      - name: notificacao_proprietario_sent
+        description: '{{ doc("czrm_salesforce__col__notificacao_proprietario_sent") }}'
+        data_type: boolean
+      - name: whats_app_notification_sent
+        description: '{{ doc("czrm_salesforce__col__whats_app_notification_sent") }}'
+        data_type: boolean
+      - name: data_hora_andamento
+        description: '{{ doc("czrm_salesforce__col__data_hora_andamento") }}'
+        data_type: datetime
+      - name: integration_event
+        description: '{{ doc("czrm_salesforce__col__integration_event") }}'
+        data_type: string
+      - name: status_especifico_orgao
+        description: '{{ doc("czrm_salesforce__col__status_especifico_orgao") }}'
+        data_type: string
+      - name: status_normalizado
+        description: '{{ doc("czrm_salesforce__col__status_normalizado") }}'
+        data_type: string
+      - name: uo_informada_orgao
+        description: '{{ doc("czrm_salesforce__col__uo_informada_orgao") }}'
+        data_type: string
+      - name: related_work_order
+        description: '{{ doc("czrm_salesforce__col__related_work_order") }}'
+        data_type: string
+      - name: form_answers_json
+        description: '{{ doc("czrm_salesforce__col__form_answers_json") }}'
+        data_type: string
+      - name: _airbyte_extracted_at
+        description: '{{ doc("czrm_salesforce__airbyte_extracted_at") }}'
+        data_type: datetime
