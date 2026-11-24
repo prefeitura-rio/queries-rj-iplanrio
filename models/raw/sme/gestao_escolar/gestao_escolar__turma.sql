@@ -22,8 +22,10 @@ renamed as (
         SAFE_CAST({{ adapter.quote("tur_id") }} AS STRING) AS id_turma,
         SAFE_CAST({{ adapter.quote("turma") }} AS STRING) AS id_turma_escola,
         SAFE_CAST({{ adapter.quote("turno") }} AS STRING) AS turno,
-        SAFE_CAST(_prefect_extracted_at AS DATETIME) AS data_particao,
-        SAFE_CAST (batch AS STRING) AS batch
+        SAFE_CAST(_prefect_extracted_at AS DATETIME) AS extracted_at,
+        SAFE_CAST(ano_particao AS INT64) as ano_particao,
+        SAFE_CAST(mes_particao as INT64) as mes_particao,
+        SAFE_CAST(data_particao as DATETIME) as data_particao,
     from source
 )
 

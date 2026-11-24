@@ -4,6 +4,133 @@ Todas as mudanças notáveis nos modelos `sme/frequencia` são documentadas nest
 
 > O formato utilizado para documentação segue as boas práticas de [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
+### 🗑️ Remoção
+
+#### Commit: `bdcf0c4` - 17/11/2026
+**chore(sme/frequencia): remove o modelo mart_frequencia__vw_alunos_frequencia_acumulada**
+
+Remove o modelo `mart_frequencia__vw_alunos_frequencia_acumulada` (alias `frequencia_acumulada`), que não será mais atualizado. Foi alinhado com a SME que a tabela não é mais necessária: todas as referências do negócio foram migradas para a tabela `frequencia_acumulada_dias_letivos`.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/mart_frequencia__vw_alunos_frequencia_acumulada.sql` (removido)
+- `models/mart/sme/frequencia/_mart_frequencia__schema.yml`
+
+**Mudanças aplicadas:**
+1. **Modelo removido**
+   - Exclui o `.sql` e a entrada correspondente (descrição, colunas e teste `not_null`) do `_mart_frequencia__schema.yml`
+2. **Tabela no BigQuery**
+   - Já excluída manualmente
+
+**Impacto:**
+- Nenhum outro modelo ou teste fazia `ref` ao modelo removido
+- Os modelos `*_dias_letivos` (`int_`, `mart_` e `_pivoted`) não são afetados
+
+---
+
+### 🔧 Correção
+
+#### Commit: `c0878a7` - 10/11/2026
+**fix(sme/frequencia): regras da SME para o EJA e COC 3 da EJA aberto**
+
+Aplica ao EJA as regras validadas pela SME em 10/11 e passa a calcular o COC 3 da EJA, que ainda está aberto.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+
+**Mudanças aplicadas:**
+1. **Par EJA** (CTE `aat_cocs_fechados`)
+   - Um par aluno/COC é EJA quando todas as suas `aat` são de turma do calendário "Educação Jovens e Adultos" de cada ano
+   - Cada par segue uma única regra: a do EJA ou a do regular
+2. **Pares não-EJA** (CTE `frequencia_cocs_fechados_regular`)
+   - Mesma regra de antes (matrícula ativa no fim do COC), sem mudança
+3. **Pares EJA nos COCs fechados** (CTE `frequencia_cocs_fechados_eja`)
+   - Ignora avaliação cancelada (`aat_situacao = 3`)
+   - Vale a `aat` da matrícula de maior `mtu_id`
+   - A frequência é a gravada no SGA (`aat_frequencia`); se for nula ou 0,00 (aula zero), vale a acumulada (`aat_frequenciaacumuladacalculada`)
+   - Aulas e faltas continuam as da `aat`; pares EJA com aulas nulas e frequência gravada deixam de ser descartados
+4. **COC 3 da EJA aberto** (CTEs `matriculas_eja`, `alunos_aulas` e `frequencia_coc_aberto`)
+   - Antes: só o COC 4 era calculado pelas aulas
+   - Agora: o COC 3 de 2026 também é calculado pelas aulas, só nas matrículas de turma da EJA (aluno + `mtu_id`), com comentário `-- ALTERAR EM TODA VIRADA DE COC`
+
+**Impacto (dev × prod de 10/11):**
+- Nenhuma linha não-EJA muda
+- Falhas de EJA: de 559 para 0 em `freq_coc_fechados_igual` e de 2 para 0 em `todos_alunos_presentes`
+- COC 3 aberto da EJA: 14.060 alunos
+
+---
+
+#### Commit: `2576dc0` - 10/11/2026
+**fix(sme/frequencia): remove o filtro temporário de EJA/PROEJA**
+
+Remove o filtro de EJA/PROEJA incluído em `5d5de0c` (22/10/2026), que descartava mais do que o EJA.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+
+**Mudanças aplicadas:**
+1. **Filtro removido do modelo e do teste**
+   - Antes: `left join` com `vw_bi_aluno` e `where grupamento not like 'EJA%' and grupamento not like 'PROEJA%'`
+   - Agora: sem filtro; o modelo termina em `select * from correcao`
+
+**Impacto (dev × prod de 10/11):**
+- As linhas que já existiam em prod não mudam; entram 672.159 linhas (2024 a 2026)
+- Das linhas que o filtro descartava, só 111.516 eram de turma EJA ou mista:
+  - 584.978 eram de alunos fora da `vw_bi_aluno`, que só tem os alunos de 2026. O `left join` deixava o grupamento nulo, e `NULL not like ...` descartava a linha
+  - 22.007 eram COCs em turma regular de alunos que hoje estão no EJA
+- Prod deixava de fora 24,3% dos pares de 2024 e 11,3% dos de 2025
+
+---
+
+### 🔧 Correção
+
+#### Commit: `18a0303` - 03/11/2026
+**fix(sme): virada do COC 4 + atualização dos testes (#356)**
+
+Passa o COC aberto para o COC 4, já que o COC 3 de 2026 está fechado, e atualiza os testes para a virada.
+
+**Arquivos modificados:**
+- `models/mart/sme/frequencia/intermediate/int_frequencia__vw_alunos_frequencia_acumulada_dias_letivos.sql`
+- `models/raw/sme/gestao_escolar/gestao_escolar__cls_confirmacao_efetivacao.yml`
+- `tests/singular/int__freq_acumulada_dias_letivos__freq_coc_fechados_igual.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+- `tests/singular/mart_frequencia__freq_acumulada_dias_letivos__delta_alto_qtd_aulas.sql`
+
+**Mudanças aplicadas:**
+1. **COC aberto fixo no COC 4** (CTE `frequencia_coc_aberto`)
+   - Antes: `where ano_calendario = 2026 and tpc_id = 3`
+   - Agora: `where ano_calendario = 2026 and tpc_id = 4`, com comentário `-- ALTERAR EM TODA VIRADA DE COC`
+   - A produção segue sem usar `cls_confirmacao_efetivacao` por ora (decisão de reunião com a SME)
+2. **Testes de COC fechado**
+   - `freq_coc_fechados_igual` e `todos_alunos_presentes`: o filtro de COC passa de `in ('1', '2')` para `in ('1', '2', '3')`, incluindo o COC 3 recém-fechado
+3. **Teste de COC aberto**
+   - `delta_alto_qtd_aulas`: passa a comparar o COC 4 com o COC 3 (`numero_aulas_4` / `numero_aulas_3`). Antes comparava COC 3 com COC 2
+4. **Documentação da `cls_confirmacao_efetivacao`**
+   - Descrição da tabela e testes `not_null` (`cal_id`, `cap_id`, `esc_id`, `cne_situacao`) e `accepted_values` em `cne_situacao`, todos com `severity: warn`
+
+**Impacto:**
+- O cálculo pelas aulas (COC aberto) passa a valer para o COC 4
+- Os testes passam a validar o COC 3 como fechado
+
+---
+
+#### Commit: `1e862c8` - 03/11/2026
+**fix: queys sme**
+
+Corrige a tipagem de dados usados nos joins e filtros dos testes da frequência acumulada e de modelos vizinhos de `sme/frequencia` devido à mudança de esquema no BigQuery, decorrente da migração das tabelas do GCS para o formato Delta Lake.
+
+**Arquivos modificados:**
+- `tests/singular/int__freq_acumulada_dias_letivos__freq_coc_fechados_igual.sql`
+- `tests/singular/int_frequencia__freq_acumulada_dias_letivos__todos_alunos_presentes.sql`
+- `models/mart/sme/frequencia/mart_frequencia__carga_aluno_frequencia.sql`
+- `models/mart/sme/frequencia/mart_frequencia__vw_alunos_aulas.sql`
+- `models/raw/sme/gestao_escolar/` (`aluno_avaliacao_turma`, `turma`, `turma_aula_aluno` e `turma_disciplina_rel`)
+
+**Impacto:**
+- Nenhuma mudança de regra de negócio no cálculo da frequência acumulada
+
+---
+
 ### 🔧 Correção
 
 #### Commit: `e5f98d8` - 27/10/2026

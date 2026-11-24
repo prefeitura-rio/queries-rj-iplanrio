@@ -8,7 +8,7 @@
 with source as (
     select * from {{ source('brutos_gestao_escolar_staging', 'TUR_TurmaRelTurmaDisciplina') }}
     {% if is_incremental() %}
-      where DATETIME(_prefect_extracted_at) > (select max(loaded_at) from {{ this }})
+      where SAFE_CAST(_prefect_extracted_at AS DATETIME) > (select max(loaded_at) from {{ this }})
     {% endif %}
 ),
 

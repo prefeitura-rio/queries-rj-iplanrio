@@ -14,7 +14,7 @@ with base as (
         TIPO_UNIDADE as tipo_unidade,
         DATA_INAUGURACAO as data_inauguracao,
         Flg_Ativo as flg_ativo,
-        CNES_1 as cnes_,
+        CNES_ as cnes_,
         GlobalID as globalid,
         latitude as latitude,
         longitude as longitude,

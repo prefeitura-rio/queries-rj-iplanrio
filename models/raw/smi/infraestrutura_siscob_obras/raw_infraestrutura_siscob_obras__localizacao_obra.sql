@@ -9,7 +9,7 @@
 WITH loc AS (
   SELECT
       SAFE_CAST(
-          cd_obra AS STRING
+          REGEXP_REPLACE(cd_obra, r'\.0$', '') AS STRING
       ) id_obra,
       SAFE_CAST(
         REPLACE(
