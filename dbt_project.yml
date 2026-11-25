@@ -331,7 +331,7 @@ models:
       iplanrio:
         +project: rj-iplanrio
         sisvisa:
-          +project:	rj-ivisa
+          +project: rj-ivisa
           +schema: sisvisa
           +tags: ["daily"]
         ergon_iplanrio:
