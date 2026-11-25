@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: planejamento_gestao_dashboard_metas_staging
+    database: rj-iplanrio
+    schema: planejamento_gestao_dashboard_metas_staging
+    tables:
+      - name: acordo_resultado
+      - name: auditoria
+      - name: avaliacao_meta
+      - name: chance
+      - name: comentario
+      - name: estimativa_premiacao
+      - name: formato_acordo
+      - name: indicador
+      - name: meta
+      - name: meta_desdobrada
+      - name: nota_meta
+      - name: recurso
+      - name: regra
+      - name: metas_acordo_resultados_ordenacao
+      - name: metas_acordo_resultados_planilha
+      - name: metas_planejamento_estrategico
+      - name: orgaos
+      - name: relacao_metas

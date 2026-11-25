@@ -135,7 +135,7 @@ models:
           +tags: ["quarter_hourly"]
         staging:
           +project: rj-cvl
-          +schema: czrm_salesforce_staging
+          +schema: czrm_salesforce_staging_org
           +tags: ["quarter_hourly"]
       mp:
         +project: rj-externo-mprj
@@ -156,7 +156,7 @@ models:
           +tags: ["quarter_hourly"]
         staging:
           +project: rj-cvl
-          +schema: czrm_salesforce_staging
+          +schema: czrm_salesforce_staging_org
           +tags: ["quarter_hourly"]
       +tags: "raw"
       datario:
@@ -223,6 +223,9 @@ models:
           +materialized: table
           +schema: atividade_economica
           +tags: "daily"
+        atividade_economica_sinae:
+          +materialized: table
+          +schema: atividade_economica_sinae
         adm_instrumentos_firmados:
           +materialized: table
           +schema: adm_instrumentos_firmados
@@ -233,6 +236,9 @@ models:
         porte_empresa:
           +materialized: table
           +schema: porte_empresa
+        planejamento_gestao_acordo_resultados:
+          +materialized: table
+          +schema: planejamento_gestao_acordo_resultados
 
 
       sma:
@@ -324,6 +330,10 @@ models:
           +tags: ["hourly", "ssm"]      
       iplanrio:
         +project: rj-iplanrio
+        sisvisa:
+          +project: rj-ivisa
+          +schema: sisvisa
+          +tags: ["daily"]
         ergon_iplanrio:
           +materialized: table
           +schema: brutos_ergon_iplanrio
