@@ -11,6 +11,32 @@ with
         select * from {{ ref("mart_cgm_triagem_nf__despesas_classificada") }}
     ),
 
+    -- Recálculo do excedente: Grave apenas se diferença > R$ 10.000; demais
+    -- excedentes seguem como Leve
+    indicadores_recalculados as (
+        select
+            * except (
+                apontamento_valor_pago_excedente_indicador,
+                apontamento_emissao_anterior_abertura_indicador
+            ),
+            apontamento_valor_pago_excedente_indicador
+            as apontamento_valor_pago_excedente_original,
+            case
+                when
+                    apontamento_valor_pago_excedente_indicador is true
+                    and (
+                        cast(declaracao_pago_valor as float64)
+                        - extracao_documento_valor
+                    )
+                    > 10000.0
+                then true
+                when apontamento_valor_pago_excedente_indicador is null
+                then null
+                else false
+            end as apontamento_valor_pago_excedente_indicador
+        from despesas_base
+    ),
+
     -- =========================================================================
     -- RECÁLCULO DOS APONTAMENTOS E SEPARAÇÃO DO RASTREIO DE DUPLICIDADE
     -- =========================================================================
@@ -55,8 +81,8 @@ with
             fornecedor_cnae_descricao,
             fornecedor_situacao_cadastral_atual,
 
-            -- Classificação final recalculada sem valor_pago_excedente e
-            -- emissao_anterior_abertura
+            -- Classificação final recalculada: excedente > 10k fica Grave; excedente
+            -- <= 10k vai para Leve
             case
                 when extracao_resultado = 'NF Sem Match'
                 then 'Não avaliado'
@@ -69,10 +95,12 @@ with
                             apontamento_duplicidade_indicador is true
                             or apontamento_cancelamento_indicador is true
                             or apontamento_cnpj_inativo_indicador is true
+                            or apontamento_valor_pago_excedente_indicador is true
                         then 'Grave'
                         when
                             apontamento_emissao_divergente_indicador is true
                             or apontamento_valor_divergente_indicador is true
+                            or apontamento_valor_pago_excedente_original is true
                         then 'Leve'
                         else 'Descartado'
                     end
@@ -90,6 +118,7 @@ with
             apontamento_duplicidade_ids as declaracoes_contendo_nf_ids,
             apontamento_cancelamento_indicador,
             apontamento_cnpj_inativo_indicador,
+            apontamento_valor_pago_excedente_indicador,
             apontamento_emissao_divergente_indicador,
             apontamento_valor_divergente_indicador,
 
@@ -98,7 +127,7 @@ with
             data_processamento,
             timestamp_processamento,
             current_timestamp() as timestamp_geracao
-        from despesas_base
+        from indicadores_recalculados
     )
 
 select *

@@ -37,7 +37,7 @@ data_tests:
   - name: assert_despesas_classificada_cgm_apontamento
     description: |
       Valida a coerência da matriz de apontamentos do mart da CGM em 5 quadrantes,
-      considerando apenas os 3 indicadores graves mantidos (`duplicidade`, `cancelamento`, `cnpj_inativo`)
+      considerando os 4 indicadores graves mantidos (`duplicidade`, `cancelamento`, `cnpj_inativo`, `valor_pago_excedente`)
       e os 2 indicadores leves (`emissao_divergente`, `valor_divergente`).
     config:
       severity: error

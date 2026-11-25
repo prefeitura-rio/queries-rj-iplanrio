@@ -12,6 +12,7 @@ where
         apontamento_duplicidade_indicador is true
         or apontamento_cancelamento_indicador is true
         or apontamento_cnpj_inativo_indicador is true
+        or apontamento_valor_pago_excedente_indicador is true
         or extracao_resultado_agente_ia = 'NF Não Encontrada'
     )
     and apontamento_resultado <> 'Grave'
@@ -33,6 +34,7 @@ where
         apontamento_duplicidade_indicador is true
         or apontamento_cancelamento_indicador is true
         or apontamento_cnpj_inativo_indicador is true
+        or apontamento_valor_pago_excedente_indicador is true
     )
 
 union all
@@ -53,10 +55,15 @@ where
         apontamento_duplicidade_indicador is true
         or apontamento_cancelamento_indicador is true
         or apontamento_cnpj_inativo_indicador is true
-        -- Deve ter ao menos uma leve
+        or apontamento_valor_pago_excedente_indicador is true
+        -- Deve ter ao menos uma leve (ou excedente <= 10k)
         or not (
             apontamento_emissao_divergente_indicador is true
             or apontamento_valor_divergente_indicador is true
+            or (
+                cast(declaracao_pago_valor_osinfo as float64)
+                > extracao_documento_valor_agente_ia + 1
+            )
         )
     )
 
@@ -75,8 +82,13 @@ where
         apontamento_duplicidade_indicador is true
         or apontamento_cancelamento_indicador is true
         or apontamento_cnpj_inativo_indicador is true
+        or apontamento_valor_pago_excedente_indicador is true
         or apontamento_emissao_divergente_indicador is true
         or apontamento_valor_divergente_indicador is true
+        or (
+            cast(declaracao_pago_valor_osinfo as float64)
+            > extracao_documento_valor_agente_ia + 1
+        )
     )
 
 union all

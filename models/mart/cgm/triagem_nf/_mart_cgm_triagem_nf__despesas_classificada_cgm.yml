@@ -11,8 +11,9 @@ models:
 
       Aplica os ajustes solicitados pela CGM após avaliação do processamento de 10% da base:
       - Identifica a origem dos campos principais por sufixo (`_OSINFO` e `_AGENTE_IA`)
-      - Desconsidera os apontamentos de baixo acerto (`valor_pago_excedente` e `emissao_anterior_abertura`), recalculando `apontamento_resultado` apenas com os 3 indicadores graves restantes (`duplicidade`, `cancelamento`, `cnpj_inativo`) além de `NF Não Encontrada` e dos 2 indicadores leves (`emissao_divergente`, `valor_divergente`)
-      - Restringe `apontamento_duplicidade_ids` aos casos com `apontamento_duplicidade_indicador = TRUE` e move o rastreio de rateios/grupos sem duplicidade confirmada para `declaracoes_contendo_nf_ids`
+      - Desconsidera o apontamento `emissao_anterior_abertura` e ajusta `apontamento_valor_pago_excedente_indicador` para marcar `Grave` apenas quando a diferença for `> R$ 10.000` (excedentes `<= R$ 10.000` passam obrigatoriamente para `Leve`)
+      - Recalcula `apontamento_resultado` com os 4 indicadores graves resultantes (`duplicidade`, `cancelamento`, `cnpj_inativo`, `valor_pago_excedente`), além de `NF Não Encontrada` e dos casos `Leve` (`emissao_divergente`, `valor_divergente` e excedentes `<= R$ 10.000`)
+      - Restringe `apontamento_duplicidade_ids` aos casos com `apontamento_duplicidade_indicador = TRUE` e mantém o rastreio completo de declarações da mesma NF em `declaracoes_contendo_nf_ids`
 
     config:
       schema: poc_cgm_triagem_nf
@@ -231,12 +232,12 @@ models:
 
       - name: apontamento_resultado
         description: |
-          Classificação final consolidada recalculada sem os indicadores de valor pago excedente
-          e emissão anterior à abertura do CNPJ:
+          Classificação final consolidada recalculada sem `emissao_anterior_abertura` e com o corte
+          de `valor_pago_excedente` em `R$ 10.000`:
 
           - `"Não avaliado"`: Extração inconclusiva (`NF Sem Match`)
-          - `"Grave"`: `NF Não Encontrada` ou ao menos um indicador grave ativo (`duplicidade`, `cancelamento`, `cnpj_inativo`)
-          - `"Leve"`: Ausência de graves e ao menos um indicador leve ativo (`emissao_divergente`, `valor_divergente`)
+          - `"Grave"`: `NF Não Encontrada` ou ao menos um indicador grave ativo (`duplicidade`, `cancelamento`, `cnpj_inativo`, `valor_pago_excedente` `> R$ 10.000`)
+          - `"Leve"`: Ausência de graves e ao menos um critério leve ativo (`emissao_divergente`, `valor_divergente` ou `valor_pago_excedente` `<= R$ 10.000`)
           - `"Descartado"`: Sem anomalias consideradas
         data_type: string
         quote: true
@@ -296,6 +297,17 @@ models:
           Comparar com data de emissão não é confiável.
 
           **Prioridade:** Grave (se implementado no futuro)
+        data_type: bool
+
+      - name: apontamento_valor_pago_excedente_indicador
+        description: |
+          Flag indicando que o valor pago excede em mais de R$ 10.000 o valor extraído pela IA.
+
+          **Regra:** `apontamento_valor_pago_excedente_indicador` original TRUE e `(declaracao_pago_valor - extracao_documento_valor) > 10000`
+
+          TRUE = excedente > R$ 10.000 (Grave) | FALSE = excedente <= R$ 10.000 (classificado como Leve) ou sem excedente | NULL = inconclusivo
+
+          **Prioridade:** Grave (quando TRUE) / Leve (excedentes menores)
         data_type: bool
 
       - name: apontamento_emissao_divergente_indicador
