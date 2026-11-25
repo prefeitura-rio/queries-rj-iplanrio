@@ -35,6 +35,7 @@ WITH chamados AS (
     CAST(tempo_prazo AS STRING) as tempo_prazo,	
     CAST(dentro_prazo AS STRING) as dentro_prazo,
     CAST(id_logradouro AS STRING) as id_logradouro,	
+    CAST(id_bairro_logradouro as STRING) as id_bairro_logradouro,
     CAST(prazo_unidade AS STRING) as prazo_unidade,
     CAST(tipo_situacao AS STRING)  as tipo_situacao,
     CAST(dt_atualizacao AS STRING) as dt_atualizacao,
@@ -92,8 +93,11 @@ SELECT DISTINCT
     SAFE_CAST(
         REGEXP_REPLACE(ch.id_logradouro, r'\.0$', '') AS STRING
     ) id_logradouro,
+    SAFE_CAST (
+        REGEXP_REPLACE(ch.id_bairro_logradouro, r'\.0$', '') AS STRING
+    ) id_bairro_logradouro,
     SAFE_CAST(
-      SAFE_CAST(ch.numero_logradouro AS FLOAT64) AS INT64
+        SAFE_CAST(ch.numero_logradouro AS FLOAT64) AS INT64
     ) numero_logradouro,
     SAFE_CAST(
         REGEXP_REPLACE(ch.id_unidade_organizacional, r'\.0$', '') AS STRING
