@@ -10,6 +10,10 @@ sources:
       - name: HistoricoDeLicenca
       - name: Estabelecimento
       - name: Vw_Rest_Alvara_Estab_Sinae_Datalake
+      - name: Vw_Estab_Sem_Licenciamento_Datalake
+      - name: Vw_Estab_Pendente_Licenciamento_Datalake
+      - name: AtividadesDoEstabelecimento
+      - name: Atividade
 
     config:
       freshness: # default freshness
