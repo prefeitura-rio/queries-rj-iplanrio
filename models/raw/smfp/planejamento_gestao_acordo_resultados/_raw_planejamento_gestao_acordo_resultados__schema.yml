@@ -1,0 +1,599 @@
+version: 2
+models:
+  - name: raw_planejamento_gestao_acordo_resultados__comentario
+    description: "**Descrição**: Comentários feitos pelos analistas de gerenciamento
+      de projetos e metas sobre as apurações mensais do desempenho dos órgãos para
+      se alcançar a meta. Pode haver mais de um comentário sobre uma meta, feitos
+      pelo mesmo analista ou por vários.\n**Frequência de atualização**: Mensal\n
+      **Cobertura temporal**: Desde 2013 até a data corrente.\n**Órgão gestor dos
+      dados**: Secretaria Municipal de Fazenda e Planejamento (SMFP)\n**Publicado
+      por**: Bruno Almeida\n**Publicado por (email)**: brunodepauloalmeida@gmail.com\n"
+    columns:
+      - name: id_camada
+        description: Código identificador da meta, do órgão ou da área de resultado
+          dependendo do atributo indice_camada.
+      - name: indice_camada
+        description: Nos diz a quem está associado o comentário. 1 - Uma meta, 2 -
+          Todas as metas de um órgão.
+      - name: ano
+        description: Ano referente à meta comentada.
+      - name: mes
+        description: Mês referente à meta comentada.
+      - name: comentario
+        description: Comentário feito pelo analista.
+      - name: numero_analista
+        description: Código identificador do analista que fez o comentário.
+      - name: ordem
+        description: Ordem do comentário. Pode haver mais de um comentário para uma
+          mesma meta em um mesmo período (ano e mês).
+  - name: raw_planejamento_gestao_acordo_resultados__chance
+    description: "**Descrição**: Chance, avaliada pelo analista de gestão de projetos,
+      em determinado mês, de atingimento de meta de Acordo de Resultados.\n**Frequência
+      de atualização**: Mensal\n**Cobertura temporal**: Desde 2013 até a data corrente.\n
+      **Órgão gestor dos dados**: Secretaria Municipal de Fazenda e Planejamento (SMFP)\n
+      **Publicado por**: Bruno Almeida\n**Publicado por (email)**: brunodepauloalmeida@gmail.com\n"
+    columns:
+      - name: id_camada
+        description: Código identificador da meta, do órgão ou da área de resultado
+          dependendo do atributo indice_camada.
+      - name: indice_camada
+        description: Nos diz a quem está associada a chance.  1 - Uma meta, 2 - Todas
+          as metas de um órgão.
+      - name: ano
+        description: Ano do indicador para o qual foi avaliada a chance.
+      - name: mes
+        description: Mês do indicador para o qual foi avaliada a chance.
+      - name: cor_chance
+        description: "Diz qual a tendência de cumprimento da meta, de acordo com a
+          seguinte tradução:\r\nse ch.cor_chance = '1' então 'Indefinida\"', \r\n
+          se ch.cor_chance = '2' então 'Não cumprida',\r\nse ch.cor_chance = '3' então
+          'Atraso grave',\r\nse ch.cor_chance = '4' então 'Atraso Recuperável',\r\n
+          se ch.cor_chance = '5' então 'Andamento Satisfatório',\r\nse ch.cor_chance
+          = '6' então 'Cumprida'."
+  - name: raw_planejamento_gestao_acordo_resultados__nota_meta
+    description: "**Descrição**: Nota dada pela prefeitura para o que foi alcançado
+      por um órgão para determinado identificador de meta. Uma meta pode ter vários
+      identificadores, um para cada indicador associado a ela.\n**Frequência de atualização**:
+      Mensal\n**Cobertura temporal**: Desde 2022 até a data corrente.\n**Órgão gestor
+      dos dados**: Secretaria Municipal de Fazenda e Planejamento (SMFP)\n**Publicado
+      por**: Bruno Almeida\n**Publicado por (email)**: brunodepauloalmeida@gmail.com\n"
+    columns:
+      - name: id_meta
+        description: Identificador da meta para a qual a nota foi dada. Existe um
+          identificador para cada meta, por órgão e por indicador.
+      - name: ano
+        description: Ano para o qual a nota foi dada.
+      - name: mes
+        description: Mês para o qual a nota foi dada.
+      - name: valor
+        description: Valor da nota.
+  - name: raw_planejamento_gestao_acordo_resultados__indicador
+    description: "**Descrição**: Indicadores, apurados mensalmente, que servem para
+      medir o quanto foi alcançado das metas dos acordos de resultados.\n**Frequência
+      de atualização**: Mensal\n**Cobertura temporal**: Desde 2022 até a data corrente.\n
+      **Órgão gestor dos dados**: Secretaria Municipal de Fazenda e Planejamento (SMFP)\n
+      **Publicado por**: Bruno Almeida\n**Publicado por (email)**: brunodepauloalmeida@gmail.com\n"
+    columns:
+      - name: id_meta
+        description: Código identificador da meta medida pelo indicador.
+      - name: ano
+        description: Ano de aferição do indicador.
+      - name: mes
+        description: Mês de aferição do indicador.
+      - name: valor
+        description: Valor alcançado pelo indicador no mês. Pode ser um dado número,
+          um percentual ou uma sinalização indicando que foi entregue ou não.
+  - name: raw_planejamento_gestao_acordo_resultados__meta
+    description: "**Descrição**: Metas, por indicador e por órgão, dos Acordos de
+      Resultados. Se uma meta tiver dois indicadores ela aparecerá duas vezes. Uma
+      mesma meta que inclua mais de um órgão também aparecerá mais de uma vez.\n**Frequência
+      de atualização**: Mensal\n**Cobertura temporal**: Desde 2013 até a data corrente.\n
+      **Órgão gestor dos dados**: Secretaria Municipal de Fazenda e Planejamento (SMFP)\n
+      **Publicado por**: Bruno Almeida\n**Publicado por (email)**: brunodepauloalmeida@gmail.com\n"
+    columns:
+      - name: id_meta
+        description: Código identificador da meta por indicador e por órgão.
+      - name: descricao
+        description: Descrição da meta.
+      - name: observacao
+        description: Observação sobre a meta. Registra detalhes como divergência entre
+          os indicadores do PE e AR, metas que são desdobradas por ter mais de 1 indicador,
+          detalhes que ajudam na medição do indicador e que estarão no Anexo 2, etc..
+      - name: ordem
+        description: Ordem da meta no Acordo de Resultados no órgão. Metas Estratégicas
+          são as primeiras, depois vêm as Complementares e depois a Meta de Performance
+      - name: referencia
+        description: Valor usado como referência para comparação com o valor desejado
+          para o indicador usado para medir a meta.
+      - name: data_referencia
+        description: Data que diz respeito ao valor de referência.
+      - name: ano
+        description: Ano do acordo de resultados relacionado à meta.
+      - name: fonte
+        description: Órgão interno ou órgão externo que nos dá o valor indicador.
+      - name: formula
+        description: Fórmula de cálculo do indicador.
+      - name: tipo_acompanhamento
+        description: Indica se a meta é acumulada ou se é uma média dos valores.
+      - name: tipo_gestao
+        description: Indica se a meta é estratégica ou complementar.
+      - name: id_orgao
+        description: Código identificador do órgão associado a meta.
+      - name: orgao
+        description: Nome do órgão associado a meta.
+      - name: sigla_orgao
+        description: Sigla do órgão associado a meta.
+      - name: unidade_medida
+        description: Unidade de medida do indicador.
+      - name: numero_meta_mae
+        description: Identificador da meta mãe. Meta de ano anterior usada como referência,
+          para aproveitamento de informações, para a meta atual.
+      - name: area_resultado
+        description: Área de resultado do plano estratégico referente a meta.
+      - name: tipo
+        description: Indica se a meta é estratégica, complementar ou de performance.
+          Metas Estratégicas são as mais relevantes e é preciso atingir um número
+          mínimo de metas estratégicas para que sejam consideradas as metas complementares
+          e a meta performance. Metas complementares são metas de menor peso na nota
+          final do órgão e a meta performance registra o desempenho do órgão avaliado
+          por diferentes órgãos.
+      - name: indicador_recurso
+        description: Identifica se o órgão apresentou recurso para a meta. Um órgão
+          pode fazer o recurso para retirar a meta do seu acordo de resultado ou ter
+          seu resultado aceito.
+      - name: indicador_auditoria
+        description: Identifica se a meta foi selecionada para auditoria pela CGM.
+      - name: janeiro
+        description: Desdobramento da meta no mês de janeiro. Objetiva registrar o
+          valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+      - name: fevereiro
+        description: Desdobramento da meta no mês de fevereiro. Objetiva registrar
+          o valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+      - name: marco
+        description: Desdobramento da meta no mês de março. Objetiva registrar o valor
+          planejado, do indicador, no mês para fins de acompanhamento mensal da mesma.
+      - name: abril
+        description: Desdobramento da meta no mês de abril. Objetiva registrar o valor
+          planejado, do indicador, no mês para fins de acompanhamento mensal da mesma.
+      - name: maio
+        description: Desdobramento da meta no mês de maio. Objetiva registrar o valor
+          planejado, do indicador, no mês para fins de acompanhamento mensal da mesma.
+      - name: junho
+        description: Desdobramento da meta no mês de junho. Objetiva registrar o valor
+          planejado, do indicador, no mês para fins de acompanhamento mensal da mesma.
+      - name: julho
+        description: Desdobramento da meta no mês de julho. Objetiva registrar o valor
+          planejado, do indicador, no mês para fins de acompanhamento mensal da mesma.
+      - name: agosto
+        description: Desdobramento da meta no mês de agosto. Objetiva registrar o
+          valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+      - name: setembro
+        description: Desdobramento da meta no mês de setembro. Objetiva registrar
+          o valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+      - name: outubro
+        description: Desdobramento da meta no mês de outubro. Objetiva registrar o
+          valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+      - name: novembro
+        description: Desdobramento da meta no mês de novembro. Objetiva registrar
+          o valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+      - name: dezembro
+        description: Desdobramento da meta no mês de dezembro. Objetiva registrar
+          o valor planejado, do indicador, no mês para fins de acompanhamento mensal
+          da mesma.
+  - name: raw_planejamento_gestao_acordo_resultados__metas_acordo_resultados_ordenacao
+    description: "Ordenação das metas dos Acordos de Resultados 2022 por meta e órgão."
+    columns:
+      - name: chave_meta_ar_2022
+        description: Chave de identificação da Meta AR 2022.
+      - name: ec
+        description: Classificação E/C.
+      - name: descricao_meta_ar_2022_desdobrada
+        description: Descrição desdobrada da Meta AR 2022.
+      - name: numero_d
+        description: Número desdobrado.
+      - name: codigo_egpweb
+        description: Código da meta no EGPWEB.
+      - name: relacionada_meta_estrategica
+        description: Indica se está relacionada a uma Meta Estratégica.
+      - name: orgao_ar
+        description: Órgão relacionado à Meta AR.
+  - name: raw_planejamento_gestao_acordo_resultados__metas_acordo_resultados_planilha
+    description: "Planilha de metas dos Acordos de Resultados 2022, com resultados e chances de cumprimento."
+    columns:
+      - name: chave_meta_ar_2022
+        description: Chave de identificação da Meta AR 2022.
+      - name: orgao_ar
+        description: Órgão relacionado à Meta AR.
+      - name: orgao_resp
+        description: Órgão responsável pela meta.
+      - name: numero
+        description: Número de identificação da meta.
+      - name: numero_d
+        description: Número D da meta.
+      - name: ec
+        description: Classificação E/C da meta.
+      - name: descricao_meta_ar_2022
+        description: Descrição da Meta AR 2022.
+      - name: descricao_meta_ar_2022_desdobrada
+        description: Descrição desdobrada da Meta AR 2022.
+      - name: fonte
+        description: Fonte dos dados da meta.
+      - name: valor_referencia
+        description: Valor de referência da meta.
+      - name: data_referencia
+        description: Data de referência da meta.
+      - name: meta_2022
+        description: Valor da meta estabelecida para 2022.
+      - name: codigo_egpweb
+        description: Código de identificação no EGPWEB.
+      - name: relacionada_meta_estrategica
+        description: Indica a relação com uma meta estratégica.
+      - name: unidade_medida
+        description: Unidade de medida utilizada para acompanhamento da meta.
+      - name: gerencia
+        description: Gerência responsável ou relacionada à meta.
+      - name: codigo_meta_ar
+        description: Código de identificação da Meta AR.
+      - name: ano
+        description: Ano de referência.
+      - name: ref_resultado
+        description: Referência temporal do resultado.
+      - name: resultado
+        description: Resultado registrado.
+      - name: ref_chance
+        description: Referência temporal da chance.
+      - name: chance
+        description: Chance registrada.
+      - name: ref_resultado_2
+        description: Segunda referência temporal do resultado.
+      - name: resultado_2
+        description: Segundo resultado registrado.
+      - name: ref_chance_2
+        description: Segunda referência temporal da chance.
+      - name: chance_2
+        description: Segunda chance registrada.
+      - name: resultado_orgao_1
+        description: Resultado do primeiro órgão.
+      - name: resultado_orgao_2_performance
+        description: Resultado do segundo órgão relacionado à performance.
+      - name: caso_chance
+        description: Caso de chance da meta.
+      - name: caso_chance_orgao_2_performance
+        description: Caso de chance do segundo órgão relacionado à performance.
+      - name: pior_caso_chance
+        description: Pior cenário de chance da meta.
+      - name: cor_chance_meta
+        description: Cor indicativa da chance da meta.
+      - name: cor_chance_meta_orgao_2
+        description: Cor indicativa da chance da meta para o segundo órgão.
+  - name: raw_planejamento_gestao_acordo_resultados__metas_planejamento_estrategico
+    description: "Metas do Planejamento Estratégico, com resultados mensais, alinhamento ao PDS e informações de acompanhamento."
+    columns:
+      - name: numero_metas
+        description: Identificador do conjunto de metas.
+      - name: numero_meta
+        description: Identificador da meta.
+      - name: codigo_tema
+        description: Código do tema transversal.
+      - name: tema_transversal
+        description: Tema transversal associado à meta.
+      - name: iniciativa_estrategica
+        description: Nome da iniciativa estratégica.
+      - name: codigo_meta_desdobrada
+        description: Código da meta desdobrada.
+      - name: palavras_chave_meta
+        description: Palavras-chave associadas à meta.
+      - name: chave_meta_pe
+        description: Chave de identificação da meta do planejamento estratégico.
+      - name: meta
+        description: Descrição da meta.
+      - name: orgao_responsavel
+        description: Órgão responsável pela meta.
+      - name: descricao_indicador
+        description: Descrição do indicador utilizado para acompanhamento.
+      - name: unidade_medida
+        description: Unidade de medida do indicador.
+      - name: fonte_dados
+        description: Fonte dos dados do indicador.
+      - name: frequencia_medicao
+        description: Frequência de medição do indicador.
+      - name: formula_calculo
+        description: Fórmula utilizada para cálculo do indicador.
+      - name: valor_referencia
+        description: Valor de referência do indicador.
+      - name: data_referencia
+        description: Data de referência da meta.
+      - name: regionalizavel
+        description: Indica se a meta pode ser regionalizada.
+      - name: ano_2021
+        description: Meta estabelecida para 2021.
+      - name: ano_2022
+        description: Meta estabelecida para 2022.
+      - name: ano_2023
+        description: Meta estabelecida para 2023.
+      - name: ano_2024
+        description: Meta estabelecida para 2024.
+      - name: ano_2025
+        description: Meta estabelecida para 2025.
+      - name: meta_validada_prefeito
+        description: Indica se a meta foi validada pelo prefeito.
+      - name: meta_global
+        description: Indica se a meta está alinhada a mais de um tema transversal.
+      - name: temas_relacionados
+        description: Temas transversais relacionados à meta global.
+      - name: alinhada_participacao_social
+        description: Alinhamento da meta com contribuições da participação social.
+      - name: alinhada_meta_pds
+        description: Alinhamento da meta com o PDS.
+      - name: palavra_chave_estrategia_pds
+        description: Palavra-chave da estratégia do PDS.
+      - name: codigo_meta_pds
+        description: Código da meta do PDS.
+      - name: meta_pds_relacionada
+        description: Meta do PDS relacionada.
+      - name: ponto_atencao_alinhamento
+        description: Pontos de atenção relacionados ao alinhamento com o PDS.
+      - name: meta_pds_desalinhada
+        description: Meta do PDS relacionada ao desalinhamento.
+      - name: selo_participacao
+        description: Indica se a meta está entre as mais solicitadas na participação social.
+      - name: preenchimento_atualizado_em
+        description: Data da última atualização do preenchimento.
+      - name: observacoes
+        description: Observações gerais sobre a meta.
+      - name: ultimo_resultado
+        description: Último resultado registrado para a meta.
+      - name: data_referencia_resultado
+        description: Data de referência do último resultado.
+      - name: comentarios_meta
+        description: Comentários relacionados à meta.
+      - name: resumo_executivo
+        description: Resumo executivo da meta.
+      - name: data_referencia_revisao
+        description: Data de referência da revisão.
+      - name: detalhe_revisao
+        description: Detalhamento da revisão da meta.
+      - name: tendencia_cumprimento_meta_2021
+        description: Tendência de cumprimento da meta em 2021.
+      - name: tendencia_cumprimento_meta_2022
+        description: Tendência de cumprimento da meta em 2022.
+      - name: tendencia_cumprimento_meta_2023
+        description: Tendência de cumprimento da meta em 2023.
+      - name: tendencia_cumprimento_meta_2024
+        description: Tendência de cumprimento da meta em 2024.
+      - name: jan_21
+        description: Resultado referente a janeiro de 2021.
+      - name: fev_21
+        description: Resultado referente a fevereiro de 2021.
+      - name: mar_21
+        description: Resultado referente a março de 2021.
+      - name: abr_21
+        description: Resultado referente a abril de 2021.
+      - name: mai_21
+        description: Resultado referente a maio de 2021.
+      - name: jun_21
+        description: Resultado referente a junho de 2021.
+      - name: jul_21
+        description: Resultado referente a julho de 2021.
+      - name: ago_21
+        description: Resultado referente a agosto de 2021.
+      - name: set_21
+        description: Resultado referente a setembro de 2021.
+      - name: out_21
+        description: Resultado referente a outubro de 2021.
+      - name: nov_21
+        description: Resultado referente a novembro de 2021.
+      - name: dez_21
+        description: Resultado referente a dezembro de 2021.
+      - name: final_2021
+        description: Resultado final de 2021.
+      - name: jan_22
+        description: Resultado referente a janeiro de 2022.
+      - name: fev_22
+        description: Resultado referente a fevereiro de 2022.
+      - name: mar_22
+        description: Resultado referente a março de 2022.
+      - name: abr_22
+        description: Resultado referente a abril de 2022.
+      - name: mai_22
+        description: Resultado referente a maio de 2022.
+      - name: jun_22
+        description: Resultado referente a junho de 2022.
+      - name: jul_22
+        description: Resultado referente a julho de 2022.
+      - name: ago_22
+        description: Resultado referente a agosto de 2022.
+      - name: set_22
+        description: Resultado referente a setembro de 2022.
+      - name: out_22
+        description: Resultado referente a outubro de 2022.
+      - name: nov_22
+        description: Resultado referente a novembro de 2022.
+      - name: dez_22
+        description: Resultado referente a dezembro de 2022.
+      - name: final_2022
+        description: Resultado final de 2022.
+      - name: final_acumulado_2022
+        description: Resultado final acumulado até 2022.
+      - name: jan_23
+        description: Resultado referente a janeiro de 2023.
+      - name: fev_23
+        description: Resultado referente a fevereiro de 2023.
+      - name: mar_23
+        description: Resultado referente a março de 2023.
+      - name: abr_23
+        description: Resultado referente a abril de 2023.
+      - name: mai_23
+        description: Resultado referente a maio de 2023.
+      - name: jun_23
+        description: Resultado referente a junho de 2023.
+      - name: jul_23
+        description: Resultado referente a julho de 2023.
+      - name: ago_23
+        description: Resultado referente a agosto de 2023.
+      - name: set_23
+        description: Resultado referente a setembro de 2023.
+      - name: out_23
+        description: Resultado referente a outubro de 2023.
+      - name: nov_23
+        description: Resultado referente a novembro de 2023.
+      - name: dez_23
+        description: Resultado referente a dezembro de 2023.
+      - name: final_2023
+        description: Resultado final de 2023.
+      - name: final_acumulado_2023
+        description: Resultado final acumulado até 2023.
+      - name: jan_24
+        description: Resultado referente a janeiro de 2024.
+      - name: fev_24
+        description: Resultado referente a fevereiro de 2024.
+      - name: mar_24
+        description: Resultado referente a março de 2024.
+      - name: abr_24
+        description: Resultado referente a abril de 2024.
+      - name: mai_24
+        description: Resultado referente a maio de 2024.
+      - name: jun_24
+        description: Resultado referente a junho de 2024.
+      - name: jul_24
+        description: Resultado referente a julho de 2024.
+      - name: ago_24
+        description: Resultado referente a agosto de 2024.
+      - name: set_24
+        description: Resultado referente a setembro de 2024.
+      - name: out_24
+        description: Resultado referente a outubro de 2024.
+      - name: nov_24
+        description: Resultado referente a novembro de 2024.
+      - name: dez_24
+        description: Resultado referente a dezembro de 2024.
+      - name: final_2024
+        description: Resultado final de 2024.
+      - name: final_acumulado_2024
+        description: Resultado final acumulado até 2024.
+      - name: chaves_projetos_associados
+        description: Chaves dos projetos associados à meta.
+      - name: nome_projetos
+        description: Nomes dos projetos associados à meta.
+      - name: gerencia_egp_rio
+        description: Gerência responsável no EGP-Rio.
+      - name: quantidade_indicadores_meta
+        description: Quantidade de indicadores associados à meta.
+      - name: meta_resultado
+        description: Indica se a meta é uma meta de resultado.
+      - name: medicao_em_2021
+        description: Indica se houve medição em 2021.
+      - name: quantidade_projetos_associados
+        description: Quantidade de projetos associados à meta.
+      - name: tipo_compromisso
+        description: Tipo do compromisso relacionado à meta.
+      - name: texto_compromisso
+        description: Texto descritivo do compromisso.
+      - name: o_globo
+        description: Informação relacionada ao veículo O Globo.
+      - name: g1
+        description: Informação relacionada ao veículo G1.
+      - name: folha
+        description: Informação relacionada ao veículo Folha.
+      - name: texto_o_globo
+        description: Texto relacionado à publicação de O Globo.
+      - name: ar
+        description: Campo AR da planilha.
+      - name: descricao_meta_desdobrada
+        description: Descrição da meta desdobrada.
+      - name: indicador_dashboard_prefeito
+        description: Indicador apresentado no Dashboard do Prefeito.
+      - name: tipo_meta
+        description: Classificação do tipo de meta.
+      - name: casas_decimais
+        description: Quantidade de casas decimais utilizadas na apresentação do indicador.
+      - name: meta_valor
+        description: Valor numérico da meta desdobrada.
+      - name: ano_meta_desdobrada
+        description: Ano de referência da meta desdobrada.
+      - name: usa_valor_referencia_calculo
+        description: Indica se o valor de referência é utilizado no cálculo do resultado.
+      - name: resultado_alcancado_2024
+        description: Resultado alcançado em 2024.
+      - name: ordem_meta_dashboard_prefeito
+        description: Ordem de exibição da meta no Dashboard do Prefeito.
+      - name: problemas_encontrados_orientacoes
+        description: Problemas encontrados e orientações relacionadas à meta.
+      - name: andamento_projeto_prioritario_1
+        description: Andamento do primeiro projeto prioritário associado à meta.
+      - name: andamento_projeto_prioritario_2
+        description: Andamento do segundo projeto prioritário associado à meta.
+      - name: andamento_projeto_prioritario_3
+        description: Andamento do terceiro projeto prioritário associado à meta.
+      - name: andamento_projeto_prioritario_4
+        description: Andamento do quarto projeto prioritário associado à meta.
+      - name: andamento_projeto_prioritario_5
+        description: Andamento do quinto projeto prioritário associado à meta.
+      - name: analista_setorial
+        description: Analista setorial responsável pelo acompanhamento da meta.
+      - name: caracteristica_apuracao
+        description: Característica da apuração do indicador.
+      - name: status_meta_2021
+        description: Status da meta em 2021.
+      - name: status_meta_2022
+        description: Status da meta em 2022.
+      - name: status_meta_2023
+        description: Status da meta em 2023.
+      - name: status_meta_2024
+        description: Status da meta em 2024.
+  - name: raw_planejamento_gestao_acordo_resultados__orgaos
+    description: "Órgãos da Prefeitura, com siglas, status e ordem de exibição nos acordos e relatórios."
+    columns:
+      - name: sigla
+        description: Sigla de identificação do órgão.
+      - name: orgao
+        description: Nome do órgão.
+      - name: ordem_secretariado_relatorios
+        description: Ordem de exibição no secretariado e nos relatórios.
+      - name: ordem_ar2021
+        description: Ordem de exibição na AR 2021.
+      - name: ordem_ar2022
+        description: Ordem de exibição na AR 2022.
+      - name: status
+        description: Status do órgão.
+      - name: coluna_antiga_ordem
+        description: Valor da coluna antiga Ordem.
+      - name: coluna_antiga_ordem_2
+        description: Valor da segunda coluna antiga Ordem.
+      - name: coluna_antiga_ordem_3
+        description: Valor da terceira coluna antiga Ordem.
+      - name: balanco
+        description: Informações de balanço do órgão.
+      - name: orgao_ar
+        description: Órgão relacionado à AR.
+  - name: raw_planejamento_gestao_acordo_resultados__relacao_metas
+    description: "Relação entre as metas do Planejamento Estratégico (PE) e as metas dos Acordos de Resultados (AR)."
+    columns:
+      - name: chave_meta_pe
+        description: Chave de identificação da Meta PE.
+      - name: texto_meta_pe
+        description: Texto descritivo da Meta PE.
+      - name: chave_meta_ar
+        description: Chave de identificação da Meta AR.
+      - name: texto_meta_ar
+        description: Texto descritivo da Meta AR.
+      - name: relacao_entre_indicadores
+        description: Relação entre os indicadores.
+      - name: meta_pe
+        description: Valor da Meta PE.
+      - name: ar_2022
+        description: Valor da AR 2022.
+      - name: chave_meta_ar_egpweb
+        description: Chave da Meta AR no EGPWEB.
+      - name: ordem_meta_no_orgao
+        description: Ordem da meta no órgão.
+      - name: orgao_pe
+        description: Órgão relacionado à Meta PE.
+      - name: orgao_ar
+        description: Órgão relacionado à Meta AR.

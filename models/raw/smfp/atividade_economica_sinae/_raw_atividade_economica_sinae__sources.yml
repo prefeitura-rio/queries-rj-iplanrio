@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: atividade_economica_sinae_staging
+    database: rj-smfp
+    schema: atividade_economica_sinae_staging
+    description: Dados brutos de atividade econômica (SINAE) da SMFP
+    tables:
+      - name: vw_clf_arrecad
+      - name: vw_clf_ativ_econ
+      - name: vw_clf_ativ_estabelecimento
+      - name: vw_clf_estabelecimento
+      - name: vw_clf_restricao_ativ_econ
+      - name: vw_clf_socio
+      - name: vw_clf_status_contribuinte_iss
+      - name: vw_codigo_receita_smf
