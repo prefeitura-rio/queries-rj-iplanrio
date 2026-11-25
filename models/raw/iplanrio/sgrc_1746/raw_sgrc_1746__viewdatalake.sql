@@ -39,6 +39,7 @@ SELECT
 	b.id_bairro						as id_bairro,							-- id_bairro: Identificador único do bairro onde ocorreu o fato.
 	tra.id_territorialidade_fk		as id_territorialidade,				-- id_territorialidade: Identificador único da territorialidade (região da cidade com órgão responsável, ex.: CDURP).
 	bl.id_logradouro_fk				as id_logradouro,						-- id_logradouro: Identificador único do logradouro onde ocorreu o fato.
+    c.id_bairro_logradouro_fk       as id_bairro_logradouro,
 	c.ds_endereco_numero			as numero_logradouro,					-- numero_logradouro: Número do logradouro onde ocorreu o fato.
 	rc.id_unidade_organizacional_fk	as id_unidade_organizacional,			-- id_unidade_organizacional: Identificador único do órgão executor do chamado (ex.: COMLURB).
 	uo.no_unidade_organizacional	as nome_unidade_organizacional,		-- nome_unidade_organizacional: Nome do órgão executor da demanda.
