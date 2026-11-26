@@ -1,0 +1,58 @@
+version: 2
+
+unit_tests:
+  - name: ut_despesas_classificada_cgm_resultado_por_extracao
+    description: |
+      `NF Sem Match` resulta em 'Não avaliado' e `NF Não Encontrada` resulta em 'Grave',
+      independentemente das flags de apontamento no mart de origem.
+    model: mart_cgm_triagem_nf__despesas_classificada_cgm
+    given:
+      - input: ref('mart_cgm_triagem_nf__despesas_classificada')
+        rows:
+          - {id_documento: '1', extracao_resultado: 'NF Sem Match', apontamento_duplicidade_indicador: true, apontamento_cancelamento_indicador: true}
+          - {id_documento: '2', extracao_resultado: 'NF Não Encontrada', apontamento_duplicidade_indicador: false, apontamento_cancelamento_indicador: false, apontamento_cnpj_inativo_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+    expect:
+      rows:
+        - {id_documento_OSINFO: '1', extracao_resultado_AGENTE_IA: 'NF Sem Match', apontamento_resultado: 'Não avaliado'}
+        - {id_documento_OSINFO: '2', extracao_resultado_AGENTE_IA: 'NF Não Encontrada', apontamento_resultado: 'Grave'}
+
+  - name: ut_despesas_classificada_cgm_regras_apontamento_e_duplicidade
+    description: |
+      Valida o recálculo de `apontamento_resultado` sem os indicadores descartados,
+      a separação entre `apontamento_duplicidade_ids` e `declaracoes_contendo_nf_ids`,
+      e a renomeação das 12 colunas com sufixos `_OSINFO` e `_AGENTE_IA`.
+
+      Cenários (id_documento_OSINFO):
+      3  - duplicidade TRUE: Grave, mantém `apontamento_duplicidade_ids` e `declaracoes_contendo_nf_ids` preenchidos
+      4  - cancelamento TRUE: Grave
+      5  - cnpj_inativo TRUE: Grave
+      6  - valor_pago_excedente TRUE com diferença <= R$ 10.000 (R$ 130 vs R$ 100): rebaixado para Leve (obrigatoriamente)
+      7  - apenas emissao_anterior_abertura TRUE (descartado) + valor_divergente TRUE: rebaixado para Leve
+      8  - rateio sem duplicidade (indicador FALSE com grupo de IDs): Descartado, `apontamento_duplicidade_ids` NULL e `declaracoes_contendo_nf_ids` preenchido
+      9  - grupo NF com indicador NULL + emissao_divergente TRUE: Leve, `apontamento_duplicidade_ids` NULL e `declaracoes_contendo_nf_ids` preenchido
+      10 - tudo conforme: Descartado, valida todas as 12 colunas renomeadas
+      11 - valor_pago_excedente TRUE com diferença > R$ 10.000 (R$ 111.000 vs R$ 100.000): mantém Grave
+    model: mart_cgm_triagem_nf__despesas_classificada_cgm
+    given:
+      - input: ref('mart_cgm_triagem_nf__despesas_classificada')
+        rows:
+          - {id_documento: '3',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 200.0,    extracao_documento_valor: 100.0,    apontamento_duplicidade_indicador: true,  apontamento_duplicidade_ids: '3, 4', apontamento_cancelamento_indicador: false, apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: true,  apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+          - {id_documento: '4',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 100.0,    extracao_documento_valor: 100.0,    apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   apontamento_cancelamento_indicador: true,  apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+          - {id_documento: '5',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 100.0,    extracao_documento_valor: 100.0,    apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   apontamento_cancelamento_indicador: false, apontamento_cnpj_inativo_indicador: true, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+          - {id_documento: '6',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 130.0,    extracao_documento_valor: 100.0,    apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   apontamento_cancelamento_indicador: null,  apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: true,  apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+          - {id_documento: '7',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 100.0,    extracao_documento_valor: 100.0,    apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   apontamento_cancelamento_indicador: null,  apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: true,  apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: true}
+          - {id_documento: '8',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 50.0,     extracao_documento_valor: 100.0,    apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: '8, 9', apontamento_cancelamento_indicador: false, apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+          - {id_documento: '9',  extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 50.0,     extracao_documento_valor: null,     apontamento_duplicidade_indicador: null,  apontamento_duplicidade_ids: '8, 9', apontamento_cancelamento_indicador: false, apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: true,  apontamento_valor_divergente_indicador: false}
+          - {id_documento: '10', secretaria_nome: 'SMS', organizacao_nome: 'OS Exemplo', declaracao_referencia_ano: '2024', declaracao_referencia_mes: '5', contrato_numero: '001/2024', declaracao_emissao_data: '2024-05-10', declaracao_documento_valor: 100.0, declaracao_pago_valor: 100.0, extracao_resultado: 'NF Encontrada', extracao_emissao_data: '2024-05-10', extracao_documento_valor: 100.0, apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null, apontamento_cancelamento_indicador: false, apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: false, apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+          - {id_documento: '11', extracao_resultado: 'NF Encontrada', declaracao_pago_valor: 111000.0, extracao_documento_valor: 100000.0, apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   apontamento_cancelamento_indicador: null,  apontamento_cnpj_inativo_indicador: null, apontamento_valor_pago_excedente_indicador: true,  apontamento_emissao_anterior_abertura_indicador: false, apontamento_emissao_divergente_indicador: false, apontamento_valor_divergente_indicador: false}
+    expect:
+      rows:
+        - {id_documento_OSINFO: '3',  apontamento_resultado: 'Grave',      apontamento_duplicidade_indicador: true,  apontamento_duplicidade_ids: '3, 4', declaracoes_contendo_nf_ids: '3, 4'}
+        - {id_documento_OSINFO: '4',  apontamento_resultado: 'Grave',      apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   declaracoes_contendo_nf_ids: null}
+        - {id_documento_OSINFO: '5',  apontamento_resultado: 'Grave',      apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   declaracoes_contendo_nf_ids: null}
+        - {id_documento_OSINFO: '6',  apontamento_resultado: 'Leve',       apontamento_valor_pago_excedente_indicador: false, apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null, declaracoes_contendo_nf_ids: null}
+        - {id_documento_OSINFO: '7',  apontamento_resultado: 'Leve',       apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   declaracoes_contendo_nf_ids: null}
+        - {id_documento_OSINFO: '8',  apontamento_resultado: 'Descartado', apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null,   declaracoes_contendo_nf_ids: '8, 9'}
+        - {id_documento_OSINFO: '9',  apontamento_resultado: 'Leve',       apontamento_duplicidade_indicador: null,  apontamento_duplicidade_ids: null,   declaracoes_contendo_nf_ids: '8, 9'}
+        - {id_documento_OSINFO: '10', secretaria_nome_OSINFO: 'SMS', organizacao_nome_OSINFO: 'OS Exemplo', declaracao_referencia_ano_OSINFO: '2024', declaracao_referencia_mes_OSINFO: '5', contrato_numero_OSINFO: '001/2024', declaracao_emissao_data_OSINFO: '2024-05-10', declaracao_documento_valor_OSINFO: 100.0, declaracao_pago_valor_OSINFO: 100.0, extracao_resultado_AGENTE_IA: 'NF Encontrada', extracao_emissao_data_AGENTE_IA: '2024-05-10', extracao_documento_valor_AGENTE_IA: 100.0, apontamento_resultado: 'Descartado', apontamento_duplicidade_ids: null, declaracoes_contendo_nf_ids: null}
+        - {id_documento_OSINFO: '11', apontamento_resultado: 'Grave',      apontamento_valor_pago_excedente_indicador: true, apontamento_duplicidade_indicador: false, apontamento_duplicidade_ids: null, declaracoes_contendo_nf_ids: null}

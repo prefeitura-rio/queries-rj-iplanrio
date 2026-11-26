@@ -21,7 +21,7 @@
     {%- set s = "cast(" ~ column ~ " as string)" -%}
     {%- set s_sem_ponto = "regexp_replace(" ~ s ~ ", r'\\.', '')" -%}
     {%- set partes = "split(regexp_replace(" ~ s ~ ", r'[/_\\-\\s]+', '#'), '#')" -%}
-    {%- set ano_inicio = "r'^(20[12][0-9])0+'" -%}
+    {%- set ano_inicio = "r'^(20[12][0-9])0*'" -%}
     array(
         select distinct c
         from

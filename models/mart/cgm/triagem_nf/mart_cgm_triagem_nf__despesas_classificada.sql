@@ -65,7 +65,12 @@ WITH
       CASE
         WHEN epd.data_emissao_extracao_ia IS NULL THEN NULL
         WHEN bc.inicio_atividade_data IS NULL THEN NULL
-        WHEN DATE(bc.inicio_atividade_data) > DATE(epd.data_emissao_extracao_ia)
+        WHEN
+          DATE(bc.inicio_atividade_data) > IF(
+            EXTRACT(YEAR FROM epd.data_emissao_extracao_ia) < 100,
+            DATE_ADD(DATE(epd.data_emissao_extracao_ia), INTERVAL 2000 YEAR),
+            DATE(epd.data_emissao_extracao_ia)
+          )
           THEN TRUE
         ELSE FALSE
         END AS apontamento_emissao_anterior_abertura_indicador,
@@ -73,7 +78,7 @@ WITH
       (od.data_emissao <> epd.data_emissao_extracao_ia)
         AS apontamento_emissao_divergente_indicador,
 
-      (od.valor_documento <> epd.valor_documento_extracao_ia)
+      (ABS(od.valor_documento - epd.valor_documento_extracao_ia) > 1.0)
         AS apontamento_valor_divergente_indicador
     FROM od
     LEFT JOIN epd ON epd.id_documento = od.id_documento
@@ -81,10 +86,10 @@ WITH
       ON
         canc.nome_arquivo = od.nome_arquivo
         AND canc.cnpj_modelo = epd.cnpj_cpf_extracao_ia
-        AND canc.numero_nf_modelo = epd.numero_documento_extracao_ia_norm
-    LEFT JOIN bc
-      ON epd.cnpj_cpf_extracao_ia = bc.cnpj
-  ),
+        AND canc.numero_nf_modelo = SAFE_CAST(epd.numero_documento_extracao_ia_norm AS INT64)
+          LEFT JOIN bc
+            ON epd.cnpj_cpf_extracao_ia = bc.cnpj
+        ),
 
   apontamentos AS (
     SELECT
@@ -153,13 +158,13 @@ SELECT
   ap.apontamento_cancelamento_indicador,
   ap.apontamento_cnpj_inativo_indicador,
   ap.apontamento_valor_pago_excedente_indicador,
-   ap.apontamento_emissao_anterior_abertura_indicador,
-   ap.apontamento_emissao_divergente_indicador,
-   ap.apontamento_valor_divergente_indicador,
-   ep.versao_pipeline,
-   ep.data_processamento AS data_processamento,
-   ep.timestamp_processamento,
-   current_timestamp() AS timestamp_geracao
+  ap.apontamento_emissao_anterior_abertura_indicador,
+  ap.apontamento_emissao_divergente_indicador,
+  ap.apontamento_valor_divergente_indicador,
+  ep.versao_pipeline,
+  ep.data_processamento AS data_processamento,
+  ep.timestamp_processamento,
+  current_timestamp() AS timestamp_geracao
 FROM od
 LEFT JOIN ep
   ON od.nome_arquivo = ep.nome_arquivo

@@ -1,6 +1,6 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
-    {% if target.name == "dev" -%}
+    {%- if target.name == "dev" -%}
 
         {%- set default_schema = target.schema -%}
         {%- if custom_schema_name is none -%}

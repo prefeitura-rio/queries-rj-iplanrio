@@ -33,3 +33,31 @@ data_tests:
       severity: error
       store_failures: false
       tags: ['cgm', 'mart', 'duplicidade']
+
+  - name: assert_despesas_classificada_cgm_apontamento
+    description: |
+      Valida a coerência da matriz de apontamentos do mart da CGM em 5 quadrantes,
+      considerando os 4 indicadores graves mantidos (`duplicidade`, `cancelamento`, `cnpj_inativo`, `valor_pago_excedente`)
+      e os 2 indicadores leves (`emissao_divergente`, `valor_divergente`).
+    config:
+      severity: error
+      store_failures: false
+      tags: ['cgm', 'mart', 'regras_apontamento']
+
+  - name: assert_despesas_classificada_cgm_emissao_posterior_pagamento
+    description: |
+      Verifica a consistência temporal das despesas declaradas no mart da CGM:
+      a data de emissão declarada não deve ser posterior à data de pagamento.
+    config:
+      severity: warn
+      store_failures: false
+      tags: ['cgm', 'mart', 'temporal']
+
+  - name: assert_despesas_classificada_cgm_duplicidade
+    description: |
+      Audita a integridade referencial de `apontamento_duplicidade_ids` e `declaracoes_contendo_nf_ids`
+      no mart da CGM, bem como a separação estrita controlada por `apontamento_duplicidade_indicador`.
+    config:
+      severity: error
+      store_failures: false
+      tags: ['cgm', 'mart', 'duplicidade']

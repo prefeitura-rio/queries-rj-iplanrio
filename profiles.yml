@@ -8,6 +8,7 @@ iplan:
       keyfile: /tmp/credentials.json
       location: US
       method: service-account
+      # method to run locally: oauth
       priority: interactive
       project: rj-iplanrio-dev
       threads: 8
