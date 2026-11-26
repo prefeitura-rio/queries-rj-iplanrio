@@ -11,7 +11,7 @@ SELECT
     safe_cast(usuarioid AS int64) AS id_usuario,
     safe_cast((
         CASE 
-            WHEN resolvido = "1" THEN TRUE
+            WHEN safe_cast(resolvido AS int64) = 1 THEN TRUE
             ELSE FALSE
         END
 
@@ -20,6 +20,6 @@ SELECT
     safe_cast(dataresolucao AS datetime) AS data_resolucao,
     safe_cast(caminhofoto AS string) AS caminho_foto,
     safe_cast(dataregistro AS datetime) AS data_registro,
-    safe.parse_datetime('%Y-%m-%d %H:%M:%E*S', _prefect_extracted_at) as datalake_loaded_at,
+    safe_cast(_prefect_extracted_at as datetime) as datalake_loaded_at,
     safe_cast(current_timestamp() as datetime) AS datalake_transformed_at
 FROM {{ source('brutos_formulario_ocorrencia_staging', 'TratamentoFator') }}
