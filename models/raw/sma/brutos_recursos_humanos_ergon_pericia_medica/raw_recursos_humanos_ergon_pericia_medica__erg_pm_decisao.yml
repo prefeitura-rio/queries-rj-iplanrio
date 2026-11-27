@@ -1,0 +1,184 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_decisao
+    description: "**Descrição**: Decisões possíveis da perícia médica.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_decisao__unique_combination_of_columns
+          combination_of_columns:
+            - id_decisao
+            - sigla_exame
+          config:
+            severity: warn
+    columns:
+      - name: id_decisao
+        description: Código da decisão.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_decisao__id_decisao__not_null
+              config:
+                severity: warn
+      - name: sigla_exame
+        description: Sigla do exame.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_decisao__sigla_exame__not_null
+              config:
+                severity: warn
+      - name: sigla
+        description: Sigla da decisão.
+        data_type: string
+        quote: true
+      - name: descricao
+        description: Descrição da decisão.
+        data_type: string
+        quote: true
+      - name: gera_licenca_afastamento
+        description: Indica se a decisão gera licença ou afastamento.
+        data_type: string
+        quote: true
+      - name: gera_readaptacao
+        description: Indica se a decisão gera readaptação.
+        data_type: string
+        quote: true
+      - name: alta_at
+        description: Indica alta.
+        data_type: string
+        quote: true
+      - name: negado
+        description: Indica se foi negado.
+        data_type: string
+        quote: true
+      - name: quantidade_peritos
+        description: Quantidade de peritos.
+        data_type: integer
+      - name: texto_laudo
+        description: Texto do laudo.
+        data_type: string
+        quote: true
+      - name: numero_meses
+        description: Número de meses.
+        data_type: integer
+      - name: retifica
+        description: Indica se retifica.
+        data_type: string
+        quote: true
+      - name: intervalo_dias
+        description: Intervalo em dias.
+        data_type: integer
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10.
+        data_type: string
+        quote: true
+      - name: conclui_ingresso
+        description: Indica se conclui o ingresso.
+        data_type: string
+        quote: true
+      - name: flex_campo_11
+        description: Campo flexível 11.
+        data_type: string
+        quote: true
+      - name: flex_campo_12
+        description: Campo flexível 12.
+        data_type: string
+        quote: true
+      - name: flex_campo_13
+        description: Campo flexível 13.
+        data_type: string
+        quote: true
+      - name: flex_campo_14
+        description: Campo flexível 14.
+        data_type: string
+        quote: true
+      - name: flex_campo_15
+        description: Campo flexível 15.
+        data_type: string
+        quote: true
+      - name: flex_campo_16
+        description: Campo flexível 16.
+        data_type: string
+        quote: true
+      - name: flex_campo_17
+        description: Campo flexível 17.
+        data_type: string
+        quote: true
+      - name: flex_campo_18
+        description: Campo flexível 18.
+        data_type: string
+        quote: true
+      - name: flex_campo_19
+        description: Campo flexível 19.
+        data_type: string
+        quote: true
+      - name: flex_campo_20
+        description: Campo flexível 20.
+        data_type: string
+        quote: true
+      - name: exame_encaminhado
+        description: Exame encaminhado.
+        data_type: string
+        quote: true
+      - name: retificacao_por_exclusao
+        description: Indica retificação por exclusão.
+        data_type: string
+        quote: true
+      - name: titulo_laudo
+        description: Título do laudo.
+        data_type: string
+        quote: true
+      - name: titulo_01
+        description: Título 01.
+        data_type: string
+        quote: true
+      - name: titulo_02
+        description: Título 02.
+        data_type: string
+        quote: true
+      - name: titulo_03
+        description: Título 03.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

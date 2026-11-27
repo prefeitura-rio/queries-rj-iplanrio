@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_resultjunta
+    description: "**Descrição**: Resultados das juntas médicas.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_resultado_junta
+        description: Identificador do resultado da junta.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_resultjunta__id_resultado_junta__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_resultjunta__id_resultado_junta__not_null
+              config:
+                severity: warn
+      - name: id_junta
+        description: Identificador da junta.
+        data_type: string
+        quote: true
+      - name: id_decisao
+        description: Código da decisão.
+        data_type: string
+        quote: true
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data de início.
+        data_type: date
+      - name: data_final
+        description: Data de término.
+        data_type: date
+      - name: dias
+        description: Número de dias.
+        data_type: integer
+      - name: id_resultado_junta_retificacao
+        description: Identificador do resultado retificado.
+        data_type: string
+        quote: true
+      - name: pontuacao_publicacao
+        description: Pontuação prevista em publicação.
+        data_type: integer
+      - name: justificativa_retificacao
+        description: Justificativa da retificação.
+        data_type: string
+        quote: true
+      - name: retificado
+        description: Indica se foi retificado.
+        data_type: string
+        quote: true
+      - name: tipo_afastamento
+        description: Tipo de afastamento.
+        data_type: string
+        quote: true
+      - name: id_afastamento
+        description: Código do afastamento.
+        data_type: string
+        quote: true
+      - name: crm
+        description: Número do CRM do médico.
+        data_type: string
+        quote: true
+      - name: id_profissional
+        description: Identificador do profissional.
+        data_type: string
+        quote: true
+      - name: complemento_decisao_publicacao
+        description: Complemento da decisão publicada.
+        data_type: string
+        quote: true
+      - name: erro_conclusao
+        description: Erro na conclusão.
+        data_type: string
+        quote: true
+      - name: lote_publicacao
+        description: Lote da publicação.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

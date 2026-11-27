@@ -10,4 +10,4 @@
 SELECT
     SAFE_CAST(NUMFUNC AS string) AS id_funcionario,
     SAFE_CAST(MATRIC AS string) AS id_matricula
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_ERG_MATRICULAS') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_erg_matriculas') }} AS t

@@ -16,4 +16,4 @@ SELECT
     safe_cast(SAFE_CAST(DTINI AS timestamp) as date) AS data_validade,
     SAFE_CAST(EMP_CODIGO AS string) AS id_empresa,
     SAFE_CAST(FLEX_CAMPO_01 AS STRING) AS observacoes
-FROM {{ source('brutos_ergon_staging', 'PRE_CONTA') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'pre_conta') }} AS t

@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__sirhu_afastamento
+    description: "**Descrição**: Afastamentos do sistema SIRHU.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: string
+        quote: true
+      - name: id_matricula
+        description: Número da matrícula.
+        data_type: string
+        quote: true
+      - name: id_afastamento
+        description: Código do afastamento.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data de início do afastamento.
+        data_type: datetime
+      - name: data_previsao_retorno
+        description: Data de previsão de retorno.
+        data_type: datetime
+      - name: data_fim
+        description: Data de retorno.
+        data_type: datetime
+      - name: numero_ato_oficial
+        description: Número do ato oficial.
+        data_type: string
+        quote: true
+      - name: id_movimentacao
+        description: Identificador da movimentação.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__sirhu_afastamento__id_movimentacao__not_null
+              config:
+                severity: warn
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper
+    description: "**Descrição**: Visão dos tipos de conclusão de perícia.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper__unique_combination_of_columns
+          combination_of_columns:
+            - id_chave
+            - sigla_exame
+          config:
+            severity: warn
+    columns:
+      - name: id_grupo_exame
+        description: Código do grupo de exame.
+        data_type: string
+        quote: true
+      - name: nome_grupo
+        description: Nome do grupo.
+        data_type: string
+        quote: true
+      - name: sigla_exame
+        description: Sigla do exame.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper__sigla_exame__not_null
+              config:
+                severity: warn
+      - name: sigla_exame_2
+        description: Sigla do exame (2).
+        data_type: string
+        quote: true
+      - name: id_chave
+        description: Chave do registro.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwtpconclper__id_chave__not_null
+              config:
+                severity: warn
+      - name: id_decisao
+        description: Código da decisão.
+        data_type: string
+        quote: true
+      - name: sigla_decisao
+        description: Sigla da decisão.
+        data_type: string
+        quote: true
+      - name: sigla_decisao_2
+        description: Sigla da decisão (2).
+        data_type: string
+        quote: true
+      - name: data_atendimento
+        description: Data do atendimento.
+        data_type: date
+      - name: matricula
+        description: Matrícula.
+        data_type: string
+        quote: true
+      - name: nome_servidor
+        description: Nome do servidor.
+        data_type: string
+        quote: true
+      - name: data_conclusao
+        description: Data de conclusão.
+        data_type: date
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

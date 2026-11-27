@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: brutos_recursos_humanos_ergon_pericia_medica
+    description: "Dados de perícia médica do sistema ERGON da Prefeitura do Rio de Janeiro"
+    database: rj-iplanrio
+    schema: brutos_recursos_humanos_ergon_pericia_medica_staging
+    tables:
+      - name: cid
+        description: "Classificação Internacional de Doenças (CID)"
+      - name: designacoes_ev
+        description: "Eventos de designação dos funcionários"
+      - name: erg_pm_cid10_capitulo
+        description: "Capítulos da CID-10 usados na perícia médica"
+      - name: erg_pm_decisao
+        description: "Decisões possíveis da perícia médica"
+      - name: erg_pm_grupoexame
+        description: "Grupos de exames da perícia médica"
+      - name: erg_pm_pront_med
+        description: "Prontuários médicos da perícia médica"
+      - name: erg_pm_resultpront
+        description: "Resultados dos prontuários da perícia médica"
+      - name: exames
+        description: "Exames realizados na perícia médica"
+      - name: funcoes_ev_
+        description: "Eventos de função dos funcionários"
+      - name: medicos
+        description: "Médicos peritos"
+      - name: prontuario
+        description: "Prontuários da perícia médica"
+      - name: tpmrj_pm_juntas
+        description: "Juntas médicas da perícia médica"
+      - name: tpmrj_pm_periciasjunta
+        description: "Perícias realizadas pelas juntas médicas"
+      - name: tpmrj_pm_resultjunta
+        description: "Resultados das juntas médicas"
+      - name: tpmrj_pm_vwbim
+        description: "Visão de boletins de inspeção médica"
+      - name: tpmrj_pm_vwtpconclper
+        description: "Visão dos tipos de conclusão de perícia"
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _prefect_extracted_at

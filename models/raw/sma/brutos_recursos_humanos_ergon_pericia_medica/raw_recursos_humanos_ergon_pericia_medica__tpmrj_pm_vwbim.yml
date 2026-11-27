@@ -1,0 +1,156 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwbim
+    description: "**Descrição**: Visão de boletins de inspeção médica.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: rowid_registro
+        description: Identificador de linha do registro.
+        data_type: string
+        quote: true
+      - name: id_bim
+        description: Identificador do BIM.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwbim__id_bim__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__tpmrj_pm_vwbim__id_bim__not_null
+              config:
+                severity: warn
+      - name: id_solicitacao_bim
+        description: Identificador da solicitação do BIM.
+        data_type: string
+        quote: true
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: string
+        quote: true
+      - name: matricula
+        description: Matrícula.
+        data_type: string
+        quote: true
+      - name: nome
+        description: Nome do servidor.
+        data_type: string
+        quote: true
+      - name: tipo_vinculo
+        description: Tipo de vínculo.
+        data_type: string
+        quote: true
+      - name: id_cargo
+        description: Código do cargo.
+        data_type: string
+        quote: true
+      - name: nome_cargo
+        description: Descrição do cargo.
+        data_type: string
+        quote: true
+      - name: setor
+        description: Setor.
+        data_type: string
+        quote: true
+      - name: nome_setor
+        description: Nome do setor.
+        data_type: string
+        quote: true
+      - name: readaptado
+        description: Indica se é readaptado.
+        data_type: string
+        quote: true
+      - name: tipo_pessoa
+        description: Tipo de pessoa.
+        data_type: string
+        quote: true
+      - name: id_dependente
+        description: Número do dependente.
+        data_type: string
+        quote: true
+      - name: data_solicitacao
+        description: Data da solicitação.
+        data_type: date
+      - name: requerimento
+        description: Requerimento.
+        data_type: string
+        quote: true
+      - name: reassuncao
+        description: Indica se é reassunção.
+        data_type: string
+        quote: true
+      - name: email
+        description: E-mail.
+        data_type: string
+        quote: true
+      - name: telefone
+        description: Telefone.
+        data_type: string
+        quote: true
+      - name: nome_dependente
+        description: Nome do dependente.
+        data_type: string
+        quote: true
+      - name: motivo_inspecao
+        description: Motivo da inspeção.
+        data_type: string
+        quote: true
+      - name: situacao
+        description: Código da situação.
+        data_type: integer
+      - name: descricao_situacao
+        description: Descrição da situação.
+        data_type: string
+        quote: true
+      - name: faltando_servico
+        description: Indica se está faltando ao serviço.
+        data_type: string
+        quote: true
+      - name: faltando_servico_desde
+        description: Data desde a qual está faltando ao serviço.
+        data_type: date
+      - name: situacao_funcional_regular
+        description: Indica se a situação funcional é regular.
+        data_type: string
+        quote: true
+      - name: horario_trabalho_inicio
+        description: Horário de início do trabalho.
+        data_type: integer
+      - name: horario_trabalho_fim
+        description: Horário de término do trabalho.
+        data_type: integer
+      - name: observacao_rh
+        description: Observação do RH.
+        data_type: string
+        quote: true
+      - name: motivo_rejeicao
+        description: Motivo da rejeição.
+        data_type: string
+        quote: true
+      - name: artigo
+        description: Artigo.
+        data_type: string
+        quote: true
+      - name: dias_diferenca_agendamento
+        description: Dias de diferença no agendamento.
+        data_type: string
+        quote: true
+      - name: documento_medico
+        description: Documento médico.
+        data_type: string
+        quote: true
+      - name: dias_concedidos
+        description: Dias concedidos.
+        data_type: integer
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

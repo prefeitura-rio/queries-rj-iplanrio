@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__hist_funcao
+    description: "**Descrição**: Histórico de funções dos servidores.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon__hist_funcao__unique_combination_of_columns
+          combination_of_columns:
+            - id_funcao
+            - data_inicio
+          config:
+            severity: warn
+    columns:
+      - name: id_funcao
+        description: Código da função.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__hist_funcao__id_funcao__not_null
+              config:
+                severity: warn
+      - name: data_inicio
+        description: Data de início da vigência.
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__hist_funcao__data_inicio__not_null
+              config:
+                severity: warn
+      - name: data_final
+        description: Data de término da vigência.
+        data_type: date
+      - name: tabela_vencimentos
+        description: Tabela de vencimentos.
+        data_type: string
+        quote: true
+      - name: referencia
+        description: Referência.
+        data_type: string
+        quote: true
+      - name: natureza
+        description: Natureza da função.
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: Observações.
+        data_type: string
+        quote: true
+      - name: pontuacao_lei
+        description: Pontuação prevista em lei.
+        data_type: integer
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

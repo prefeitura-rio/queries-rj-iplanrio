@@ -1,0 +1,265 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__hist_cargo
+    description: "**Descrição**: Histórico de cargos dos servidores.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_cargo
+        description: Código do cargo.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data de início da vigência.
+        data_type: date
+      - name: data_final
+        description: Data de término da vigência.
+        data_type: date
+      - name: tabela_vencimentos
+        description: Tabela de vencimentos.
+        data_type: string
+        quote: true
+      - name: referencia_inicial
+        description: Referência inicial.
+        data_type: string
+        quote: true
+      - name: referencia_final
+        description: Referência final.
+        data_type: string
+        quote: true
+      - name: percentual_insalubridade
+        description: Percentual de insalubridade.
+        data_type: numeric
+      - name: percentual_periculosidade
+        description: Percentual de periculosidade.
+        data_type: numeric
+      - name: cbo
+        description: Código Brasileiro de Ocupações.
+        data_type: string
+        quote: true
+      - name: sindicato
+        description: Sindicato.
+        data_type: string
+        quote: true
+      - name: observacoes
+        description: Observações.
+        data_type: string
+        quote: true
+      - name: nivel_superior
+        description: Indica se o cargo é de nível superior.
+        data_type: string
+        quote: true
+      - name: tipo_controle_vaga
+        description: Tipo de controle de vaga.
+        data_type: string
+        quote: true
+      - name: permite_substituicao
+        description: Indica se permite substituição.
+        data_type: string
+        quote: true
+      - name: pontuacao_lei
+        description: Pontuação prevista em lei.
+        data_type: integer
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10.
+        data_type: string
+        quote: true
+      - name: flex_campo_11
+        description: Campo flexível 11.
+        data_type: string
+        quote: true
+      - name: flex_campo_12
+        description: Campo flexível 12.
+        data_type: string
+        quote: true
+      - name: flex_campo_13
+        description: Campo flexível 13.
+        data_type: string
+        quote: true
+      - name: flex_campo_14
+        description: Campo flexível 14.
+        data_type: string
+        quote: true
+      - name: flex_campo_15
+        description: Campo flexível 15.
+        data_type: string
+        quote: true
+      - name: requer_comb_cargo
+        description: Indica se requer combinação de cargo.
+        data_type: string
+        quote: true
+      - name: tipo_subst
+        description: Tipo de substituição.
+        data_type: string
+        quote: true
+      - name: ind_subst_conc
+        description: Indicador de substituição concomitante.
+        data_type: string
+        quote: true
+      - name: dias_prazo_posse
+        description: Dias de prazo para posse.
+        data_type: integer
+      - name: dias_prazo_prorrog_posse
+        description: Dias de prazo para prorrogação da posse.
+        data_type: integer
+      - name: dias_prazo_exerc
+        description: Dias de prazo para exercício.
+        data_type: integer
+      - name: dias_prazo_prorrog_exerc
+        description: Dias de prazo para prorrogação do exercício.
+        data_type: integer
+      - name: flex_campo_16
+        description: Campo flexível 16.
+        data_type: string
+        quote: true
+      - name: flex_campo_17
+        description: Campo flexível 17.
+        data_type: string
+        quote: true
+      - name: flex_campo_18
+        description: Campo flexível 18.
+        data_type: string
+        quote: true
+      - name: flex_campo_19
+        description: Campo flexível 19.
+        data_type: string
+        quote: true
+      - name: flex_campo_20
+        description: Campo flexível 20.
+        data_type: string
+        quote: true
+      - name: flex_campo_21
+        description: Campo flexível 21.
+        data_type: string
+        quote: true
+      - name: flex_campo_22
+        description: Campo flexível 22.
+        data_type: string
+        quote: true
+      - name: flex_campo_23
+        description: Campo flexível 23.
+        data_type: string
+        quote: true
+      - name: flex_campo_24
+        description: Campo flexível 24.
+        data_type: string
+        quote: true
+      - name: flex_campo_25
+        description: Campo flexível 25.
+        data_type: string
+        quote: true
+      - name: flex_campo_26
+        description: Campo flexível 26.
+        data_type: string
+        quote: true
+      - name: flex_campo_27
+        description: Campo flexível 27.
+        data_type: string
+        quote: true
+      - name: flex_campo_28
+        description: Campo flexível 28.
+        data_type: string
+        quote: true
+      - name: flex_campo_29
+        description: Campo flexível 29.
+        data_type: string
+        quote: true
+      - name: flex_campo_30
+        description: Campo flexível 30.
+        data_type: string
+        quote: true
+      - name: flex_campo_31
+        description: Campo flexível 31.
+        data_type: string
+        quote: true
+      - name: flex_campo_32
+        description: Campo flexível 32.
+        data_type: string
+        quote: true
+      - name: flex_campo_33
+        description: Campo flexível 33.
+        data_type: string
+        quote: true
+      - name: flex_campo_34
+        description: Campo flexível 34.
+        data_type: string
+        quote: true
+      - name: flex_campo_35
+        description: Campo flexível 35.
+        data_type: string
+        quote: true
+      - name: permite_regressao
+        description: Indica se permite regressão.
+        data_type: string
+        quote: true
+      - name: flex_campo_36
+        description: Campo flexível 36.
+        data_type: string
+        quote: true
+      - name: flex_campo_37
+        description: Campo flexível 37.
+        data_type: string
+        quote: true
+      - name: flex_campo_38
+        description: Campo flexível 38.
+        data_type: string
+        quote: true
+      - name: flex_campo_39
+        description: Campo flexível 39.
+        data_type: string
+        quote: true
+      - name: flex_campo_40
+        description: Campo flexível 40.
+        data_type: string
+        quote: true
+      - name: indic_previa
+        description: Indicador de prévia.
+        data_type: string
+        quote: true
+      - name: id_registro
+        description: Identificador do registro.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__hist_cargo__id_registro__unique
+              config:
+                severity: warn
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

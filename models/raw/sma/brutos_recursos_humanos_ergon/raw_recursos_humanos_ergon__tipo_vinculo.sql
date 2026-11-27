@@ -10,4 +10,4 @@
 SELECT
     SAFE_CAST(sigla AS STRING) AS sigla,
     SAFE_CAST(nome AS STRING) AS nome
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_TIPO_VINC_') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_tipo_vinc_') }} AS t

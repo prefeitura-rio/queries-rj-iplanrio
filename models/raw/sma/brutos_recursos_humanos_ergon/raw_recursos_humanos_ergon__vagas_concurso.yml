@@ -1,0 +1,111 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__vagas_concurso
+    description: "**Descrição**: Vagas de concursos públicos.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_vaga
+        description: Chave da vaga.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__vagas_concurso__id_vaga__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon__vagas_concurso__id_vaga__not_null
+              config:
+                severity: warn
+      - name: id_concurso
+        description: Chave do concurso.
+        data_type: string
+        quote: true
+      - name: id_cargo
+        description: Código do cargo.
+        data_type: string
+        quote: true
+      - name: especialidade
+        description: Especialidade.
+        data_type: string
+        quote: true
+      - name: hlocal
+        description: Local da vaga.
+        data_type: string
+        quote: true
+      - name: quantidade_vagas
+        description: Quantidade de vagas.
+        data_type: integer
+      - name: quantidade_vagas_deficientes
+        description: Quantidade de vagas para pessoas com deficiência.
+        data_type: integer
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: string
+        quote: true
+      - name: sexo
+        description: Sexo.
+        data_type: string
+        quote: true
+      - name: percentual_vagas_deficientes
+        description: Percentual de vagas para pessoas com deficiência.
+        data_type: integer
+      - name: dias_prazo_posse
+        description: Dias de prazo para posse.
+        data_type: integer
+      - name: dias_prazo_prorrog_posse
+        description: Dias de prazo para prorrogação da posse.
+        data_type: integer
+      - name: dias_prazo_exerc
+        description: Dias de prazo para exercício.
+        data_type: integer
+      - name: dias_prazo_prorrog_exerc
+        description: Dias de prazo para prorrogação do exercício.
+        data_type: integer
+      - name: grupo_vagas
+        description: Grupo de vagas.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

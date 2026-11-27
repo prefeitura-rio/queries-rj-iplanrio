@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__categoria
+    description: "**Descrição**: Categorias existentes na administração direta ou indireta da PCRJ.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: sigla
+        description: Sigla da categoria.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__categoria__sigla__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon__categoria__sigla__not_null
+              config:
+                severity: warn
+      - name: nome
+        description: Nome da categoria.
+        data_type: string
+        quote: true
+      - name: pontuacao_lei
+        description: Pontuação da categoria prevista em lei.
+        data_type: integer
+      - name: pontuacao_publicacao
+        description: Pontuação da categoria prevista em publicação.
+        data_type: integer
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

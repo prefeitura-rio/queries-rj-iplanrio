@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__lic_afast_gbp
+    description: "**Descrição**: Licenças e afastamentos dos servidores (view GBP).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon__lic_afast_gbp__unique_combination_of_columns
+          combination_of_columns:
+            - m7
+            - id_afastamento
+            - data_inicio
+          config:
+            severity: warn
+    columns:
+      - name: data_inicio
+        description: Data de início da licença ou afastamento.
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__lic_afast_gbp__data_inicio__not_null
+              config:
+                severity: warn
+      - name: data_final
+        description: Data de término da licença ou afastamento.
+        data_type: date
+      - name: m7
+        description: Identificador de matrícula no sistema de origem (GBP).
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__lic_afast_gbp__m7__not_null
+              config:
+                severity: warn
+      - name: id_afastamento
+        description: Código do afastamento.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__lic_afast_gbp__id_afastamento__not_null
+              config:
+                severity: warn
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

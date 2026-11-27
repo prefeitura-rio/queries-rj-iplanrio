@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__frequencias_gbp
+    description: "**Descrição**: Tabela que armazena as ocorrências de frequência do servidor municipal (view GBP).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon__frequencias_gbp__unique_combination_of_columns
+          combination_of_columns:
+            - m6
+            - id_frequencia
+            - data_inicio
+          config:
+            severity: warn
+    columns:
+      - name: data_inicio
+        description: Data de início da ocorrência de frequência.
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__frequencias_gbp__data_inicio__not_null
+              config:
+                severity: warn
+      - name: data_final
+        description: Data de término da ocorrência de frequência.
+        data_type: date
+      - name: m6
+        description: Identificador de matrícula no sistema de origem (GBP).
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__frequencias_gbp__m6__not_null
+              config:
+                severity: warn
+      - name: id_frequencia
+        description: Código da frequência.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__frequencias_gbp__id_frequencia__not_null
+              config:
+                severity: warn
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

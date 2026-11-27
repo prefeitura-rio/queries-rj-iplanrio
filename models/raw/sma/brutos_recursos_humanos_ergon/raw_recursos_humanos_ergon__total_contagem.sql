@@ -20,4 +20,4 @@ SELECT
     SAFE_CAST(data_proximo AS date) AS data_previsao_proximo_periodo,
     SAFE_CAST(nome_proximo AS STRING) AS nome_finalidade_proximo_periodo,
     SAFE_CAST(emp_codigo AS string) AS id_empresa
-FROM {{ source('brutos_ergon_staging', 'TOTAL_CONTA') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'total_conta') }} AS t

@@ -15,4 +15,4 @@ SELECT
     SAFE_CAST(CARGA_HR_SEMANA AS STRING) AS carga_horaria_semana,
     SAFE_CAST(CARGA_HR_DIA AS STRING) AS carga_horaria_dia,
     SAFE_CAST(ID_REG AS STRING) AS id_registro
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_HORARIO_TRAB_') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_horario_trab_') }} AS t

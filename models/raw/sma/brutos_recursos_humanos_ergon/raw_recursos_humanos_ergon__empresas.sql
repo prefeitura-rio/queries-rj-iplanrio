@@ -32,5 +32,5 @@ SELECT
     SAFE_CAST(MUNICIPIO_CODIGO AS STRING) AS municipio_codigo,
     SAFE_CAST(MUNICIPIO AS STRING) AS municipio_sede,
     SAFE_CAST(UF_SIGLA AS STRING) AS uf_sigla,
-    SAFE_CAST(_airbyte_extracted_at AS timestamp) AS updated_at
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_EMPRESAS')}}
+    _prefect_extracted_at AS updated_at
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_empresas')}}

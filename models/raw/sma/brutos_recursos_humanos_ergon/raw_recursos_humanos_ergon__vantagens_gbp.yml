@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__vantagens_gbp
+    description: "**Descrição**: Vantagens e atributos dos servidores (view GBP).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon__vantagens_gbp__unique_combination_of_columns
+          combination_of_columns:
+            - m2
+            - data_inicio_abono
+          config:
+            severity: warn
+    columns:
+      - name: m2
+        description: Identificador de matrícula no sistema de origem (GBP).
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__vantagens_gbp__m2__not_null
+              config:
+                severity: warn
+      - name: data_inicio_abono
+        description: Data de início do abono.
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__vantagens_gbp__data_inicio_abono__not_null
+              config:
+                severity: warn
+      - name: abono
+        description: Informação do abono.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

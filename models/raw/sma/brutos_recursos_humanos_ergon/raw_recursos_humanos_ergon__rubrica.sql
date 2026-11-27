@@ -8,7 +8,7 @@
 }}
 
 /*SELECT *
-FROM {{ source('brutos_ergon_staging', 'RUBRICAS') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'rubricas') }} AS t
 */
 
 select safe_cast(rubrica as string) as id_rubrica, 
@@ -17,4 +17,4 @@ select safe_cast(rubrica as string) as id_rubrica,
   safe_cast(nome_abrev as string) as nome_abreviado, 
   safe_cast(fat_vant as int64) as fator, 
   safe_cast(flex_campo_16 as string) as observacoes
-FROM {{ source('brutos_ergon_staging', 'RUBRICAS') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'rubricas') }} AS t

@@ -16,7 +16,7 @@ SELECT
     SAFE_CAST(REGEXP_REPLACE(ESCOLARIDADE, r'\.0$', '') AS STRING) AS escolaridade,
     SAFE_CAST(E_AGLUTINADOR AS STRING) AS aglutinador,
     SAFE_CAST(TIPO_CARGO AS STRING) AS tipo_cargo,
-    SAFE_CAST( SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DT_EXTINCAO) AS DATE) AS dt_extincao,
+    DATETIME(DT_EXTINCAO) AS dt_extincao,
     SAFE_CAST(CARGO_FUNCAO AS STRING) AS cargo_funcao,
-    _airbyte_extracted_at AS updated_at
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_CARGOS_')}}
+    _prefect_extracted_at AS updated_at
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_cargos_')}}

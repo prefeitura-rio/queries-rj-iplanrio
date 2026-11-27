@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__pre_conta_gbp
+    description: "**Descrição**: Contagens anteriores ao início do sistema (view GBP).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: m4
+        description: Identificador de matrícula no sistema de origem (GBP).
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__pre_conta_gbp__m4__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon__pre_conta_gbp__m4__not_null
+              config:
+                severity: warn
+      - name: pre_contagem
+        description: Valor da pré-contagem.
+        data_type: integer
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

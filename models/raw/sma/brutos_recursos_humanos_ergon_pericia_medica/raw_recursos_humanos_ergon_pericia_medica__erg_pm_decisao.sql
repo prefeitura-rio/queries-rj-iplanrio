@@ -1,0 +1,52 @@
+{{
+    config(
+        alias='erg_pm_decisao',
+        materialized="table",
+        tags=["raw", "ergon", "pericia_medica", "erg_pm_decisao"],
+        description="Decisões possíveis da perícia médica."
+    )
+}}
+
+SELECT
+    SAFE_CAST(decisao AS STRING) AS id_decisao,
+    SAFE_CAST(siglaexame AS STRING) AS sigla_exame,
+    SAFE_CAST(sigla AS STRING) AS sigla,
+    SAFE_CAST(descricao AS STRING) AS descricao,
+    SAFE_CAST(gera_licafast AS STRING) AS gera_licenca_afastamento,
+    SAFE_CAST(gera_readaptacao AS STRING) AS gera_readaptacao,
+    SAFE_CAST(alta_at AS STRING) AS alta_at,
+    SAFE_CAST(negado AS STRING) AS negado,
+    SAFE_CAST(quant_peritos AS INT64) AS quantidade_peritos,
+    SAFE_CAST(texto_laudo AS STRING) AS texto_laudo,
+    SAFE_CAST(num_meses AS INT64) AS numero_meses,
+    SAFE_CAST(retifica AS STRING) AS retifica,
+    SAFE_CAST(intervalo_dias AS INT64) AS intervalo_dias,
+    SAFE_CAST(flex_campo_01 AS STRING) AS flex_campo_01,
+    SAFE_CAST(flex_campo_02 AS STRING) AS flex_campo_02,
+    SAFE_CAST(flex_campo_03 AS STRING) AS flex_campo_03,
+    SAFE_CAST(flex_campo_04 AS STRING) AS flex_campo_04,
+    SAFE_CAST(flex_campo_05 AS STRING) AS flex_campo_05,
+    SAFE_CAST(flex_campo_06 AS STRING) AS flex_campo_06,
+    SAFE_CAST(flex_campo_07 AS STRING) AS flex_campo_07,
+    SAFE_CAST(flex_campo_08 AS STRING) AS flex_campo_08,
+    SAFE_CAST(flex_campo_09 AS STRING) AS flex_campo_09,
+    SAFE_CAST(flex_campo_10 AS STRING) AS flex_campo_10,
+    SAFE_CAST(conclui_ingresso AS STRING) AS conclui_ingresso,
+    SAFE_CAST(flex_campo_11 AS STRING) AS flex_campo_11,
+    SAFE_CAST(flex_campo_12 AS STRING) AS flex_campo_12,
+    SAFE_CAST(flex_campo_13 AS STRING) AS flex_campo_13,
+    SAFE_CAST(flex_campo_14 AS STRING) AS flex_campo_14,
+    SAFE_CAST(flex_campo_15 AS STRING) AS flex_campo_15,
+    SAFE_CAST(flex_campo_16 AS STRING) AS flex_campo_16,
+    SAFE_CAST(flex_campo_17 AS STRING) AS flex_campo_17,
+    SAFE_CAST(flex_campo_18 AS STRING) AS flex_campo_18,
+    SAFE_CAST(flex_campo_19 AS STRING) AS flex_campo_19,
+    SAFE_CAST(flex_campo_20 AS STRING) AS flex_campo_20,
+    SAFE_CAST(exame_encam AS STRING) AS exame_encaminhado,
+    SAFE_CAST(retif_por_exclusao AS STRING) AS retificacao_por_exclusao,
+    SAFE_CAST(titulo_laudo AS STRING) AS titulo_laudo,
+    SAFE_CAST(titulo_01 AS STRING) AS titulo_01,
+    SAFE_CAST(titulo_02 AS STRING) AS titulo_02,
+    SAFE_CAST(titulo_03 AS STRING) AS titulo_03,
+    _prefect_extracted_at AS updated_at
+FROM {{ source('brutos_recursos_humanos_ergon_pericia_medica', 'erg_pm_decisao') }} AS t

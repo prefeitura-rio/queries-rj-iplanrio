@@ -11,4 +11,4 @@ SELECT
     SAFE_CAST(orgao AS STRING) AS nome,
     SAFE_CAST(descr AS STRING) AS nome_completo,
     SAFE_CAST(tipo_orgao AS STRING) AS tipo
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_ORGAOS_EXTERNOS') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_orgaos_externos') }} AS t

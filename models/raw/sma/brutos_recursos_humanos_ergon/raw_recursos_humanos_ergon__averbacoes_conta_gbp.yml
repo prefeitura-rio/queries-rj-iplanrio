@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__averbacoes_conta_gbp
+    description: "**Descrição**: Tabela que armazena o total de dias averbados por tipo de tempo (view GBP).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: m8
+        description: Identificador de matrícula no sistema de origem (GBP).
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__averbacoes_conta_gbp__m8__not_null
+              config:
+                severity: warn
+      - name: id_tipo_tempo
+        description: Código numérico referente ao tipo de tempo.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__averbacoes_conta_gbp__id_tipo_tempo__not_null
+              config:
+                severity: warn
+      - name: nome_tipo_tempo
+        description: Nome do tipo de tempo.
+        data_type: string
+        quote: true
+      - name: total_dias
+        description: Total de dias averbados para o tipo de tempo.
+        data_type: integer
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

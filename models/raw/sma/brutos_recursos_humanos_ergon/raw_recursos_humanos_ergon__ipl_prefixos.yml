@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__ipl_prefixos
+    description: "**Descrição**: Prefixos utilizados pelo IPLANRIO por funcionário, vínculo e mês.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon__ipl_prefixos__unique_combination_of_columns
+          combination_of_columns:
+            - id_funcionario
+            - id_vinculo
+            - mes_ano
+          config:
+            severity: warn
+    columns:
+      - name: id_funcionario
+        description: Número do funcionário gerado pelo ERGON.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__ipl_prefixos__id_funcionario__not_null
+              config:
+                severity: warn
+      - name: id_vinculo
+        description: Número do vínculo relativo ao pagamento.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__ipl_prefixos__id_vinculo__not_null
+              config:
+                severity: warn
+      - name: mes_ano
+        description: Mês e ano de referência.
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__ipl_prefixos__mes_ano__not_null
+              config:
+                severity: warn
+      - name: prefixo
+        description: Prefixo.
+        data_type: integer
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

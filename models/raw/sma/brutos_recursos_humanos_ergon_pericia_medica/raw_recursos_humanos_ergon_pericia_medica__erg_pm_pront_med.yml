@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_pront_med
+    description: "**Descrição**: Prontuários médicos da perícia médica.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_profissional_prontuario
+        description: Identificador do profissional no prontuário.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_pront_med__id_profissional_prontuario__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon_pericia_medica__erg_pm_pront_med__id_profissional_prontuario__not_null
+              config:
+                severity: warn
+      - name: id_prontuario
+        description: Chave do prontuário.
+        data_type: string
+        quote: true
+      - name: crm
+        description: Número do CRM do médico.
+        data_type: string
+        quote: true
+      - name: id_profissional
+        description: Identificador do profissional.
+        data_type: string
+        quote: true
+      - name: ok
+        description: Indicador de aprovação.
+        data_type: string
+        quote: true
+      - name: nok
+        description: Indicador de reprovação.
+        data_type: string
+        quote: true
+      - name: justificativa
+        description: Justificativa.
+        data_type: string
+        quote: true
+      - name: data
+        description: Data do registro.
+        data_type: date
+      - name: ordem_homologacao
+        description: Ordem de homologação.
+        data_type: integer
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05.
+        data_type: string
+        quote: true
+      - name: flex_campo_06
+        description: Campo flexível 06.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

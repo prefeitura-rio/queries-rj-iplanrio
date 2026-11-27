@@ -1,0 +1,139 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__folhas_emp_dlk
+    description: "**Descrição**: Tabela que armazena as folhas de pagamento por empresa (view DLK).\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          name: raw_recursos_humanos_ergon__folhas_emp_dlk__unique_combination_of_columns
+          combination_of_columns:
+            - mes_ano_folha
+            - numero_folha
+            - id_empresa
+          config:
+            severity: warn
+    columns:
+      - name: mes_ano_folha
+        description: Mês e ano de referência da folha.
+        data_type: date
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__folhas_emp_dlk__mes_ano_folha__not_null
+              config:
+                severity: warn
+      - name: numero_folha
+        description: Número da folha.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__folhas_emp_dlk__numero_folha__not_null
+              config:
+                severity: warn
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: string
+        quote: true
+        data_tests:
+          - not_null:
+              name: raw_recursos_humanos_ergon__folhas_emp_dlk__id_empresa__not_null
+              config:
+                severity: warn
+      - name: tipo_folha
+        description: Tipo da folha de pagamento.
+        data_type: string
+        quote: true
+      - name: nome
+        description: Nome da folha.
+        data_type: string
+        quote: true
+      - name: data_abertura
+        description: Data de abertura da folha.
+        data_type: date
+      - name: mes_principal
+        description: Mês principal da folha.
+        data_type: integer
+      - name: meses_retro
+        description: Quantidade de meses retroativos.
+        data_type: integer
+      - name: meses_retro_full
+        description: Quantidade de meses retroativos (completo).
+        data_type: integer
+      - name: meses_adiant
+        description: Quantidade de meses de adiantamento.
+        data_type: integer
+      - name: meses_pre_ergon
+        description: Quantidade de meses anteriores ao ERGON.
+        data_type: integer
+      - name: data_processamento
+        description: Data e hora de processamento da folha.
+        data_type: datetime
+      - name: data_consolidacao
+        description: Data e hora de consolidação da folha.
+        data_type: datetime
+      - name: responsavel
+        description: Responsável pela folha.
+        data_type: string
+        quote: true
+      - name: tipo_calculo
+        description: Tipo de cálculo da folha.
+        data_type: string
+        quote: true
+      - name: data_credito
+        description: Data de crédito do pagamento.
+        data_type: date
+      - name: destino
+        description: Destino da folha.
+        data_type: string
+        quote: true
+      - name: expiracao
+        description: Prazo de expiração da folha.
+        data_type: integer
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: numero_sec
+        description: Número da folha secundária.
+        data_type: string
+        quote: true
+      - name: grupo_empresas
+        description: Grupo de empresas da folha.
+        data_type: string
+        quote: true
+      - name: classe_calculo
+        description: Classe de cálculo da folha.
+        data_type: string
+        quote: true
+      - name: classe_estorno
+        description: Classe de estorno da folha.
+        data_type: string
+        quote: true
+      - name: data_limites
+        description: Data limite da folha.
+        data_type: date
+      - name: id_grupo_fol_seg
+        description: Identificador do grupo de folha de segurança.
+        data_type: string
+        quote: true
+      - name: data_geraeleitos
+        description: Data e hora da geração de eleitos.
+        data_type: datetime
+      - name: data_geraeleitos_ant
+        description: Data e hora da geração de eleitos anterior.
+        data_type: datetime
+      - name: numero_terc
+        description: Número da folha terciária.
+        data_type: string
+        quote: true
+      - name: id_registro
+        description: Identificador do registro.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

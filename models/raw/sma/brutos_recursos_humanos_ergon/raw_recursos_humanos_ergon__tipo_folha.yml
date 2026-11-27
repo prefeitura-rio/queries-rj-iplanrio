@@ -1,0 +1,223 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__tipo_folha
+    description: "**Descrição**: Tipos de folha de pagamento existentes na administração direta ou indireta da PCRJ.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_tipo_folha
+        description: Código do tipo de folha.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__tipo_folha__id_tipo_folha__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon__tipo_folha__id_tipo_folha__not_null
+              config:
+                severity: warn
+      - name: nome
+        description: Nome do tipo de folha.
+        data_type: string
+        quote: true
+      - name: e_normal
+        description: Indica se é folha normal.
+        data_type: string
+        quote: true
+      - name: e_ferias
+        description: Indica se é folha de férias.
+        data_type: string
+        quote: true
+      - name: e_suplementar
+        description: Indica se é folha suplementar.
+        data_type: string
+        quote: true
+      - name: e_decter
+        description: Indica se é folha de décimo terceiro.
+        data_type: string
+        quote: true
+      - name: e_adiant
+        description: Indica se é folha de adiantamento.
+        data_type: string
+        quote: true
+      - name: e_adiant13
+        description: Indica se é folha de adiantamento de décimo terceiro.
+        data_type: string
+        quote: true
+      - name: e_rescisao
+        description: Indica se é folha de rescisão.
+        data_type: string
+        quote: true
+      - name: proc_consig
+        description: Indica se processa consignações.
+        data_type: string
+        quote: true
+      - name: proc_mov
+        description: Indica se processa movimentações.
+        data_type: string
+        quote: true
+      - name: e_avulsa
+        description: Indica se é folha avulsa.
+        data_type: string
+        quote: true
+      - name: e_complementar
+        description: Indica se é folha complementar.
+        data_type: string
+        quote: true
+      - name: e_adiantfer
+        description: Indica se é folha de adiantamento de férias.
+        data_type: string
+        quote: true
+      - name: e_multipla
+        description: Indica se é folha múltipla.
+        data_type: string
+        quote: true
+      - name: proc_retro
+        description: Indica se processa retroativos.
+        data_type: string
+        quote: true
+      - name: desabilita_alt
+        description: Indica se a alteração está desabilitada.
+        data_type: string
+        quote: true
+      - name: visivel_para_dif
+        description: Indica se é visível para diferenças.
+        data_type: string
+        quote: true
+      - name: e_estorno
+        description: Indica se é folha de estorno.
+        data_type: string
+        quote: true
+      - name: pagavel
+        description: Indica se a folha é pagável.
+        data_type: string
+        quote: true
+      - name: mes_principal
+        description: Mês principal da folha.
+        data_type: integer
+      - name: meses_retro
+        description: Quantidade de meses retroativos.
+        data_type: integer
+      - name: meses_retro_full
+        description: Quantidade de meses retroativos (completo).
+        data_type: integer
+      - name: meses_adiant
+        description: Quantidade de meses de adiantamento.
+        data_type: integer
+      - name: proc_ativos
+        description: Indica se processa servidores ativos.
+        data_type: string
+        quote: true
+      - name: proc_inativos
+        description: Indica se processa servidores inativos.
+        data_type: string
+        quote: true
+      - name: proc_desligados
+        description: Indica se processa servidores desligados.
+        data_type: string
+        quote: true
+      - name: expiracao
+        description: Prazo de expiração da folha.
+        data_type: integer
+      - name: mes_inicial
+        description: Mês inicial da folha.
+        data_type: date
+      - name: calculavel
+        description: Indica se a folha é calculável.
+        data_type: string
+        quote: true
+      - name: meses_pre_ergon
+        description: Quantidade de meses anteriores ao ERGON.
+        data_type: integer
+      - name: e_vacfalec
+        description: Indica se é folha de vacância por falecimento.
+        data_type: string
+        quote: true
+      - name: per_liq_neg
+        description: Indica se permite líquido negativo.
+        data_type: string
+        quote: true
+      - name: visibilidade_dirf
+        description: Visibilidade na DIRF.
+        data_type: string
+        quote: true
+      - name: visibilidade_rais
+        description: Visibilidade na RAIS.
+        data_type: string
+        quote: true
+      - name: finalidade_calculo
+        description: Finalidade do cálculo.
+        data_type: string
+        quote: true
+      - name: utiliza_hist_pagto
+        description: Indica se utiliza histórico de pagamento.
+        data_type: string
+        quote: true
+      - name: grupo_tipo_folha
+        description: Grupo do tipo de folha.
+        data_type: string
+        quote: true
+      - name: proc_parcel
+        description: Indica se processa parcelamentos.
+        data_type: string
+        quote: true
+      - name: indicador_01
+        description: Indicador 01.
+        data_type: string
+        quote: true
+      - name: indicador_02
+        description: Indicador 02.
+        data_type: string
+        quote: true
+      - name: indicador_03
+        description: Indicador 03.
+        data_type: string
+        quote: true
+      - name: indicador_04
+        description: Indicador 04.
+        data_type: string
+        quote: true
+      - name: indicador_05
+        description: Indicador 05.
+        data_type: string
+        quote: true
+      - name: indicador_06
+        description: Indicador 06.
+        data_type: string
+        quote: true
+      - name: indicador_07
+        description: Indicador 07.
+        data_type: string
+        quote: true
+      - name: indicador_08
+        description: Indicador 08.
+        data_type: string
+        quote: true
+      - name: indicador_09
+        description: Indicador 09.
+        data_type: string
+        quote: true
+      - name: indicador_10
+        description: Indicador 10.
+        data_type: string
+        quote: true
+      - name: grp_nulo_folparcial
+        description: Grupo nulo de folha parcial.
+        data_type: string
+        quote: true
+      - name: prevalencia
+        description: Prevalência do tipo de folha.
+        data_type: string
+        quote: true
+      - name: ter_secundaria
+        description: Indica se possui folha secundária.
+        data_type: string
+        quote: true
+      - name: ter_terciaria
+        description: Indica se possui folha terciária.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

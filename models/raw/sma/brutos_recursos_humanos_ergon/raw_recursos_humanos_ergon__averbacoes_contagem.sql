@@ -13,4 +13,4 @@ SELECT
     SAFE_CAST(CHAVEAVERB AS string) AS id_averbacao,
     SAFE_CAST(FINALIDADE AS STRING) AS finalidade,
     SAFE_CAST(DIAS AS int64) AS dias
-FROM {{ source('brutos_ergon_staging', 'AVERB_OQUE_CONTA') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'averb_oque_conta') }} AS t

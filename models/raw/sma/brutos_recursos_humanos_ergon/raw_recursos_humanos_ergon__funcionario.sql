@@ -122,5 +122,5 @@ SELECT
     SAFE_CAST(FLEX_CAMPO_24 AS STRING) AS login_linkedin,
     SAFE_CAST(FLEX_CAMPO_25 AS STRING) AS login_myspace,
     SAFE_CAST(CAST(ID_REG AS STRING) AS STRING) AS ID_REG,
-    _airbyte_extracted_at as updated_at
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_FUNCIONARIOS')}}
+    _prefect_extracted_at AS updated_at
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_funcionarios')}}

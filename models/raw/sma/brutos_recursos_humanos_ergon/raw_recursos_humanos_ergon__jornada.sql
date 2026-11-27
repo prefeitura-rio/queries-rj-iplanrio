@@ -12,4 +12,4 @@ SELECT
     SAFE_CAST(nome AS STRING) AS nome,
     SAFE_CAST(horassem AS numeric) AS horas_semana,
     SAFE_CAST(horasmen AS numeric) AS horas_mes
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_JORNADAS_') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_jornadas_') }} AS t

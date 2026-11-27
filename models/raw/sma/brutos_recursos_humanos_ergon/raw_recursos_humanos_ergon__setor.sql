@@ -8,16 +8,16 @@
 }}
 
 SELECT
-    safe_cast(SETOR as string) as id_setor,
-    safe_cast(paisetor as string) as id_setor_pai,
-    SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DATAINI) AS DATE) AS data_inicio,
-    SAFE_CAST(SAFE.PARSE_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S',DATAFIM) AS DATE) AS data_fim,
-    SAFE_CAST(NOMESETOR AS STRING) AS nome,
-    SAFE_CAST(NOMESETORLONGO AS STRING) AS nome_completo,
-    SAFE_CAST(FLEX_CAMPO_01 AS STRING) AS sigla,
-    safe_cast(emp_codigo as string) as id_empresa,
-    safe_cast(FLEX_CAMPO_02 as string) as id_empresa_prevrio,
-    safe_cast(FLEX_CAMPO_05 as string) as id_secretaria,
-    SAFE_CAST(ifnull(EXTINTO, 'N') AS STRING) AS extinto,
-    _airbyte_extracted_at AS updated_at
-FROM {{ source('brutos_ergon_staging', 'VW_DLK_ERG_HSETOR_')}}
+    safe_cast (SETOR AS string) AS id_setor,
+    safe_cast (paisetor AS string) AS id_setor_pai,
+    DATETIME(DATAINI) AS data_inicio,
+    DATETIME(DATAFIM) AS data_fim,
+    SAFE_CAST (NOMESETOR AS STRING) AS nome,
+    SAFE_CAST (NOMESETORLONGO AS STRING) AS nome_completo,
+    SAFE_CAST (FLEX_CAMPO_01 AS STRING) AS sigla,
+    safe_cast (emp_codigo AS string) AS id_empresa,
+    safe_cast (FLEX_CAMPO_02 AS string) AS id_empresa_prevrio,
+    safe_cast (FLEX_CAMPO_05 AS string) AS id_secretaria,
+    SAFE_CAST (ifnull (EXTINTO, 'N') AS STRING) AS extinto,
+    _prefect_extracted_at AS updated_at
+FROM {{ source('brutos_recursos_humanos_ergon', 'vw_dlk_erg_hsetor_')}}

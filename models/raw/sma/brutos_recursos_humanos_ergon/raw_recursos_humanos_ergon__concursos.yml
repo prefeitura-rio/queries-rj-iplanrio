@@ -1,0 +1,137 @@
+version: 2
+
+models:
+  - name: raw_recursos_humanos_ergon__concursos
+    description: "**Descrição**: Concursos públicos cadastrados.\n**Frequência de atualização**: Diária\n**Cobertura temporal**: Data do menor registro\n**Órgão gestor dos dados**: SMA\n"
+    columns:
+      - name: id_concurso
+        description: Chave do concurso.
+        data_type: string
+        quote: true
+        data_tests:
+          - unique:
+              name: raw_recursos_humanos_ergon__concursos__id_concurso__unique
+              config:
+                severity: warn
+          - not_null:
+              name: raw_recursos_humanos_ergon__concursos__id_concurso__not_null
+              config:
+                severity: warn
+      - name: sigla
+        description: Sigla do concurso.
+        data_type: string
+        quote: true
+      - name: regime_juridico
+        description: Regime jurídico do concurso.
+        data_type: string
+        quote: true
+      - name: data_inicio
+        description: Data de início do concurso.
+        data_type: date
+      - name: data_validade
+        description: Data de validade do concurso.
+        data_type: date
+      - name: data_publicacao_edital
+        description: Data de publicação do edital.
+        data_type: date
+      - name: data_resultado
+        description: Data do resultado.
+        data_type: date
+      - name: objetivo
+        description: Objetivo do concurso.
+        data_type: string
+        quote: true
+      - name: flex_campo_01
+        description: Campo flexível 01.
+        data_type: string
+        quote: true
+      - name: flex_campo_02
+        description: Campo flexível 02.
+        data_type: string
+        quote: true
+      - name: flex_campo_03
+        description: Campo flexível 03.
+        data_type: string
+        quote: true
+      - name: flex_campo_04
+        description: Campo flexível 04.
+        data_type: string
+        quote: true
+      - name: flex_campo_05
+        description: Campo flexível 05.
+        data_type: string
+        quote: true
+      - name: id_empresa
+        description: Código da empresa.
+        data_type: string
+        quote: true
+      - name: data_prorrogacao
+        description: Data de prorrogação.
+        data_type: date
+      - name: data_cancelamento
+        description: Data de cancelamento.
+        data_type: date
+      - name: abrangencia
+        description: Abrangência do concurso.
+        data_type: string
+        quote: true
+      - name: pontuacao_publicacao
+        description: Pontuação prevista em publicação.
+        data_type: integer
+      - name: data_inicio_inscricao
+        description: Data de início das inscrições.
+        data_type: date
+      - name: data_fim_inscricao
+        description: Data de término das inscrições.
+        data_type: date
+      - name: setor
+        description: Setor.
+        data_type: string
+        quote: true
+      - name: tipo_concurso
+        description: Tipo do concurso.
+        data_type: string
+        quote: true
+      - name: tipo_vinculo
+        description: Tipo de vínculo.
+        data_type: string
+        quote: true
+      - name: id_instituicao
+        description: Código da instituição.
+        data_type: string
+        quote: true
+      - name: dias_prazo_posse
+        description: Dias de prazo para posse.
+        data_type: integer
+      - name: dias_prazo_prorrog_posse
+        description: Dias de prazo para prorrogação da posse.
+        data_type: integer
+      - name: dias_prazo_exerc
+        description: Dias de prazo para exercício.
+        data_type: integer
+      - name: dias_prazo_prorrog_exerc
+        description: Dias de prazo para prorrogação do exercício.
+        data_type: integer
+      - name: flex_campo_06
+        description: Campo flexível 06.
+        data_type: string
+        quote: true
+      - name: flex_campo_07
+        description: Campo flexível 07.
+        data_type: string
+        quote: true
+      - name: flex_campo_08
+        description: Campo flexível 08.
+        data_type: string
+        quote: true
+      - name: flex_campo_09
+        description: Campo flexível 09.
+        data_type: string
+        quote: true
+      - name: flex_campo_10
+        description: Campo flexível 10.
+        data_type: string
+        quote: true
+      - name: updated_at
+        description: Data e hora da última atualização do registro.
+        data_type: timestamp

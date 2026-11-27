@@ -18,4 +18,4 @@ SELECT
     SAFE_CAST(dias_licesp AS string) AS dias_de_licenca_especial,
     SAFE_CAST(adictchefia AS string) AS tempo_de_chefia,
     SAFE_CAST(progressao AS string) AS progressao
-FROM {{ source('brutos_ergon_staging', 'TIPO_TEMPO') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'tipo_tempo') }} AS t

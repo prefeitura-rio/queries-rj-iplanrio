@@ -1,84 +1,114 @@
 version: 2
 
 sources:
-  - name: brutos_ergon_staging
+  - name: brutos_recursos_humanos_ergon
     description: "Dados de recursos humanos do sistema ERGON da Prefeitura do Rio de Janeiro"
     database: rj-iplanrio
-    schema: brutos_ergon_staging
+    schema: brutos_recursos_humanos_ergon_staging
     tables:
-      - name: VW_SIMPA_SIRHU_AFASTAMENTO_GBP
+      - name: vw_simpa_sirhu_afastamento_gbp
         description: "Tabela de afastamentos antigos dos servidores"
-      - name: SIRHU_DBTABELAS_AFASTAMENTO
+      - name: sirhu_dbtabelas_afastamento
         description: "Nomes dos tipos de afastamentos antigos"
-      - name: AVERBACOES_CONTA
+      - name: averbacoes_conta
         description: "Tabela de averbações de tempo de serviço"
-      - name: AVERB_OQUE_CONTA
+      - name: averb_oque_conta
         description: "Contagem de averbações por finalidade"
-      - name: VW_DLK_ERG_CARGOS_
+      - name: vw_dlk_erg_cargos_
         description: "Tipos de cargos existentes na administração"
-      - name: VW_DLK_ERG_CATEGORIAS_
+      - name: vw_dlk_erg_categorias_
         description: "Categorias existentes na administração"
-      - name: FICHAS_FINANCEIRAS
+      - name: fichas_financeiras
         description: "Fichas financeiras dos funcionários da COMLURB"
         config:
           freshness:
-      - name: IPL_PT_FICHAS
+      - name: ipl_pt_fichas
         description: "Fichas financeiras contábeis dos funcionários"
         config:
           freshness:
-      - name: VW_DLK_ERG_FITA_BANCO
+      - name: vw_dlk_erg_fita_banco
         description: "Fitas enviadas para o tesouro municipal"
         config:
           freshness:
-      - name: VW_DLK_ERG_FORMAS_PROV_
+      - name: vw_dlk_erg_formas_prov_
         description: "Formas de provimentos possíveis"
-      - name: FREQUENCIAS
+      - name: frequencias
         description: "Ocorrências de frequência do servidor municipal"
-      - name: VW_SIMPA_SIRHU_FREQUENCIA_GBP
+      - name: vw_simpa_sirhu_frequencia_gbp
         description: "Frequência de servidores em sistemas antigos"
-      - name: VW_DLK_ERG_FUNCIONARIOS
+      - name: vw_dlk_erg_funcionarios
         description: "Pessoas físicas cadastradas no sistema"
-      - name: VW_DLK_ERG_HORARIO_TRAB_
+      - name: vw_dlk_erg_horario_trab_
         description: "Horários possíveis para funcionários"
-      - name: VW_DLK_ERG_JORNADAS_
+      - name: vw_dlk_erg_jornadas_
         description: "Tipos de jornadas existentes"
-      - name: LIC_AFAST
+      - name: lic_afast
         description: "Licenças e afastamentos dos servidores"
-      - name: VW_DLK_ERG_ERG_MATRICULAS
+      - name: vw_dlk_erg_erg_matriculas
         description: "Matrículas dos funcionários"
-      - name: VW_DLK_ERG_ORGAOS_EXTERNOS
+      - name: vw_dlk_erg_orgaos_externos
         description: "Órgãos de outros entes federativos"
-      - name: VW_DLK_ERG_ORGAOS_REGIMES_JUR_
+      - name: vw_dlk_erg_orgaos_regimes_jur_
         description: "Regimes jurídicos aceitos para contratação"
-      - name: PRE_CONTA
+      - name: pre_conta
         description: "Contagens anteriores ao sistema"
-      - name: VW_DLK_ERG_PROVIMENTOS_EV
+      - name: vw_dlk_erg_provimentos_ev
         description: "Eventos relacionados aos vínculos funcionais"
-      - name: VW_DLK_ERG_REGIMES_JUR_
+      - name: vw_dlk_erg_regimes_jur_
         description: "Tipos de regimes jurídicos existentes"
-      - name: RUBRICAS
+      - name: rubricas
         description: "Rubricas de pagamento"
-      - name: VW_DLK_ERG_HSETOR_
+      - name: vw_dlk_erg_hsetor_
         description: "Setores existentes na administração"
-      - name: VW_DLK_ERG_TIPO_ORGAO
+      - name: vw_dlk_erg_tipo_orgao
         description: "Tipos de órgãos da administração"
-      - name: TIPO_TEMPO
+      - name: tipo_tempo
         description: "Tipos de tempo para contagem de benefícios"
-      - name: VW_DLK_ERG_TIPO_VINC_
+      - name: vw_dlk_erg_tipo_vinc_
         description: "Tipos de vínculos existentes"
-      - name: TOTAL_CONTA
+      - name: total_conta
         description: "Resultado das contagens de tempo para benefícios"
-        config:
-          freshness:
-      - name: VANTAGENS
+      - name: vantagens
         description: "Vantagens e atributos dos servidores"
-        config:
-          freshness:
-      - name: VW_DLK_ERG_VINCULOS
+      - name: vw_dlk_erg_vinculos
         description: "Vínculos de pagamento dos funcionários"
-      - name: VW_DLK_ERG_EMPRESAS
+      - name: vw_dlk_erg_empresas
         description: "Empresas da administração direta ou indireta"
-    # config:
-    #   freshness: # default freshness
-    #     error_after: {count: 24, period: hour}
-    #   loaded_at_field: _airbyte_extracted_at
+      - name: vw_averbacoes_conta_gbp
+        description: "Averbações de tempo de serviço (view GBP)"
+      - name: vw_dlk_erg_folhas_emp
+        description: "Folhas de pagamento por empresa (view DLK)"
+      - name: vw_dlk_erg_tipo_folha
+        description: "Tipos de folha de pagamento"
+      - name: vw_frequencias_gbp
+        description: "Ocorrências de frequência do servidor (view GBP)"
+      - name: vw_lic_afast_gbp
+        description: "Licenças e afastamentos dos servidores (view GBP)"
+      - name: vw_pre_conta_gbp
+        description: "Contagens anteriores ao sistema (view GBP)"
+      - name: vw_vantagens_gbp
+        description: "Vantagens e atributos dos servidores (view GBP)"
+      - name: ipl_prefixos
+        description: "Prefixos utilizados pelo IPLANRIO"
+      - name: concursos
+        description: "Concursos públicos cadastrados"
+      - name: folhas_emp
+        description: "Folhas de pagamento por empresa"
+      - name: formas_vac
+        description: "Formas de vacância"
+      - name: formas_vac_
+        description: "Formas de vacância (tabela formas_vac_)"
+      - name: hist_cargo
+        description: "Histórico de cargos dos servidores"
+      - name: hist_funcao
+        description: "Histórico de funções dos servidores"
+      - name: inscritos
+        description: "Inscritos em concursos públicos"
+      - name: sirhu_afastamento
+        description: "Afastamentos do sistema SIRHU"
+      - name: vagas_concurso
+        description: "Vagas de concursos públicos"
+    config:
+      freshness: # default freshness
+        error_after: {count: 24, period: hour}
+      loaded_at_field: _prefect_extracted_at

@@ -17,4 +17,4 @@ SELECT
     SAFE_CAST(CODFREQ AS string) AS id_frequencia,
     SAFE_CAST(OBS AS STRING) AS observacoes,
     SAFE_CAST(EMP_CODIGO AS string) AS id_empresa
-FROM {{ source('brutos_ergon_staging', 'FREQUENCIAS') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'frequencias') }} AS t

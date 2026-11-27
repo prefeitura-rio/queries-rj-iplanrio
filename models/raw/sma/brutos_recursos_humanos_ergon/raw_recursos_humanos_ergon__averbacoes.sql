@@ -22,4 +22,4 @@ SELECT
     SAFE_CAST(EMP_CODIGO AS int64) AS id_empresa,
     SAFE_CAST(OBS AS STRING) AS obs,
     SAFE_CAST(REGPREV AS STRING) AS regime_previdenciario
-FROM {{ source('brutos_ergon_staging', 'AVERBACOES_CONTA') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'averbacoes_conta') }} AS t

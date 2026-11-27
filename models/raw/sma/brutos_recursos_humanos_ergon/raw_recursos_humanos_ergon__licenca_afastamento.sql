@@ -23,4 +23,4 @@ SELECT
     safe.parse_date('%d/%m/%Y', FLEX_CAMPO_02) AS data_atendimento,
     SAFE_CAST(EMP_CODIGO AS string) AS id_empresa,
     SAFE_CAST(FLEX_CAMPO_07 AS STRING) AS crm
-FROM {{ source('brutos_ergon_staging', 'LIC_AFAST') }} AS t
+FROM {{ source('brutos_recursos_humanos_ergon', 'lic_afast') }} AS t
